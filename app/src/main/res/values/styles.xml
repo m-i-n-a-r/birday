@@ -12,4 +12,50 @@
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
     </style>
 
+    <!-- Accent styles -->
+    <style name="AppTheme.green" parent="AppTheme">
+        <item name="colorAccent">@color/greenAccent</item>
+        <item name="colorPrimary">@color/greenAccent</item>
+    </style>
+
+    <style name="AppTheme.orange" parent="AppTheme">
+        <item name="colorAccent">@color/orangeAccent</item>
+        <item name="colorPrimary">@color/orangeAccent</item>
+    </style>
+
+    <style name="AppTheme.yellow" parent="AppTheme">
+        <item name="colorAccent">@color/yellowAccent</item>
+        <item name="colorPrimary">@color/yellowAccent</item>
+    </style>
+
+    <style name="AppTheme.teal" parent="AppTheme">
+        <item name="colorAccent">@color/tealAccent</item>
+        <item name="colorPrimary">@color/tealAccent</item>
+    </style>
+
+    <style name="AppTheme.violet" parent="AppTheme">
+        <item name="colorAccent">@color/violetAccent</item>
+        <item name="colorPrimary">@color/violetAccent</item>
+    </style>
+
+    <style name="AppTheme.pink" parent="AppTheme">
+        <item name="colorAccent">@color/pinkAccent</item>
+        <item name="colorPrimary">@color/pinkAccent</item>
+    </style>
+
+    <style name="AppTheme.lightBlue" parent="AppTheme">
+        <item name="colorAccent">@color/lightBlueAccent</item>
+        <item name="colorPrimary">@color/lightBlueAccent</item>
+    </style>
+
+    <style name="AppTheme.red" parent="AppTheme">
+        <item name="colorAccent">@color/redAccent</item>
+        <item name="colorPrimary">@color/redAccent</item>
+    </style>
+
+    <style name="AppTheme.lime" parent="AppTheme">
+        <item name="colorAccent">@color/limeAccent</item>
+        <item name="colorPrimary">@color/limeAccent</item>
+    </style>
+
 </resources>

@@ -10,11 +10,11 @@ An open source app to remember birthdays without having to open Facebook or set 
 </p>
 
 ## Introduction
-This is an open source app to remember **birthdays** in a fast, light and beautiful way. No less, no more. I had this idea considering that Google Calendar doesn't display an automatic notification the day of the birthday, and sometimes a person i need to remember a birthday for a person who is not in my phone contacts. 
+This is an open source app to remember **birthdays** in a fast, light and beautiful way. No less, no more. I had this idea considering that Google Calendar doesn't display an automatic notification the day of the birthday, and sometimes i need to remember a birthday for a person who is not in my phone contacts. 
 
 ## Features (and TODO list)
 - Notification the day of the birthday
-- Sync the birthdays from your Google contacts or insert them manually, just specifying a name, a birthday and some optional parameters
+- Sync the birthdays from your Google contacts or insert them manually, just specifying a name, a date and some optional parameters
 - Customize behaviour and appearence of each person in the list
 - Light and dark themes (Android 10 dark mode supported)
 - Selectable accent (no app restart needed)
