@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="leave_review_title">Recensisci Birday</string>
+    <string name="leave_review_subtitle">Lascia una recensione per aiutarmi con l\'app. Ricordati che,
+        donazioni a parte, questa app è completamente gratis e senza pubblicità!</string>
+    <string name="yes_review">Recensione!</string>
+    <string name="later">Dopo, giuro</string>
+    <string name="no_thanks">Anche no!</string>
+</resources>
