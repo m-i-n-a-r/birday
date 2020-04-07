@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/devStuff"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/titleSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center_horizontal"
+        android:maxLines="1"
+        android:text="@string/hello_settings_fragment"
+        android:textAllCaps="true"
+        android:textSize="@dimen/title_text_size"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imageMinar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/minar_banner_height"
+        android:layout_weight="0.21"
+        android:clickable="true"
+        android:contentDescription="@string/dev_name"
+        android:focusable="true"
+        android:paddingLeft="@dimen/minar_banner_padding"
+        android:paddingTop="@dimen/minar_banner_padding"
+        android:paddingRight="@dimen/minar_banner_padding"
+        android:paddingBottom="@dimen/minar_banner_padding"
+        android:tint="?colorAccent"
+        app:srcCompat="@drawable/banner_minar" />
+
+    <TextView
+        android:id="@+id/descriptionMinar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.21"
+        android:paddingLeft="@dimen/minar_description_padding"
+        android:paddingRight="@dimen/minar_description_padding"
+        android:text="@string/dev_description"
+        android:textAlignment="center" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin">
+
+        <ImageView
+            android:id="@+id/minarig"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="@string/dev_instagram"
+            android:focusable="true"
+            android:src="@drawable/ic_instagram_black_24dp"
+            android:tint="?colorAccent" />
+
+        <ImageView
+            android:id="@+id/minarpp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="@string/dev_paypal"
+            android:focusable="true"
+            android:src="@drawable/ic_paypal_black_24dp"
+            android:tint="?colorAccent" />
+
+        <ImageView
+            android:id="@+id/minarps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="@string/dev_other_apps"
+            android:focusable="true"
+            android:src="@drawable/ic_play_store_black_24dp"
+            android:tint="?colorAccent" />
+
+        <ImageView
+            android:id="@+id/minargit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="@string/dev_github"
+            android:focusable="true"
+            android:src="@drawable/ic_github_black_24dp"
+            android:tint="?colorAccent" />
+
+        <ImageView
+            android:id="@+id/minarxda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="@string/dev_xda"
+            android:focusable="true"
+            android:src="@drawable/ic_xda_black_24dp"
+            android:tint="?colorAccent" />
+    </LinearLayout>
+</LinearLayout>

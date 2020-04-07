@@ -1,4 +1,4 @@
-package com.minar.birday
+package com.minar.birday.utils
 
 import android.content.Context
 import android.content.Intent

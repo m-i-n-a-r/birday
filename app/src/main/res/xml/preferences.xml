@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.minar.birday.CustomAuthorPreference
+        android:layout="@layout/fragment_settings"
+        android:selectable="false" />
+
+    <PreferenceCategory
+        android:key="app_behavior"
+        android:title="@string/app_behavior"
+        app:iconSpaceReserved="false">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="rude_answers"
+            android:summaryOff="@string/rude_answers_description_off"
+            android:summaryOn="@string/rude_answers_description_on"
+            android:title="@string/rude_answers_name"
+            app:iconSpaceReserved="false" />
+
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/diceNumber"
+            android:entryValues="@array/diceNumberValues"
+            android:key="dice_number"
+            android:negativeButtonText="@null"
+            android:summary="%s"
+            android:title="@string/dice_number_name"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
