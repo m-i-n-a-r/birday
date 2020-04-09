@@ -7,26 +7,36 @@
         android:selectable="false" />
 
     <PreferenceCategory
-        android:key="app_behavior"
-        android:title="@string/app_behavior"
+        android:key="customization"
+        android:title="@string/customization"
         app:iconSpaceReserved="false">
 
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="rude_answers"
-            android:summaryOff="@string/rude_answers_description_off"
-            android:summaryOn="@string/rude_answers_description_on"
-            android:title="@string/rude_answers_name"
+        <ListPreference
+            android:defaultValue="system"
+            android:entries="@array/themes"
+            android:entryValues="@array/themeValues"
+            android:key="theme_color"
+            android:negativeButtonText="@null"
+            android:summary="%s"
+            android:title="@string/theme_name"
             app:iconSpaceReserved="false" />
 
         <ListPreference
-            android:defaultValue="1"
-            android:entries="@array/diceNumber"
-            android:entryValues="@array/diceNumberValues"
-            android:key="dice_number"
+            android:defaultValue="blue"
+            android:entries="@array/accents"
+            android:entryValues="@array/accentValues"
+            android:key="accent_color"
             android:negativeButtonText="@null"
             android:summary="%s"
-            android:title="@string/dice_number_name"
+            android:title="@string/accent_name"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="vibration"
+            android:summaryOff="@string/vibration_description_off"
+            android:summaryOn="@string/vibration_description_on"
+            android:title="@string/vibration_name"
             app:iconSpaceReserved="false" />
 
     </PreferenceCategory>

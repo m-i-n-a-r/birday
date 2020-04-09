@@ -1,0 +1,17 @@
+<resources>
+
+    <!-- Screen resolution related dimensions -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="linear_vertical_margin">22dp</dimen>
+    <!-- Using 0 elevation will cause a lot of weird behaviors -->
+    <dimen name="bottom_navbar_elevation">0.1dp</dimen>
+
+    <!-- Unchanged dimensions -->
+    <dimen name="minar_banner_height">56dp</dimen>
+    <dimen name="minar_banner_padding">12dp</dimen>
+    <dimen name="minar_description_padding">16dp</dimen>
+    <dimen name="bottom_navbar_height">52dp</dimen>
+    <dimen name="result_text_margin">42dp</dimen>
+
+</resources>

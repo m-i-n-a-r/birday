@@ -6,4 +6,27 @@
     <string name="yes_review">Recensione!</string>
     <string name="later">Dopo, giuro</string>
     <string name="no_thanks">Anche no!</string>
+    <string name="customization">Personalizzazione</string>
+    <string name="vibration_name">Vibrazione</string>
+    <string name="vibration_description_on">Vibra alla pressione di alcuni bottoni</string>
+    <string name="vibration_description_off">Nessuna vibrazione alla pressione</string>
+    <string name="accent_description">Cambia il colore di accento di default</string>
+    <string name="accent_name">Colore accent</string>
+    <string name="theme_description">Usa un tema scuro, chiaro o automatico</string>
+    <string name="theme_name">Tema applicazione</string>
+    <string name="blue">Blu</string>
+    <string name="green">Verde</string>
+    <string name="orange">Arancione</string>
+    <string name="yellow">Giallo</string>
+    <string name="teal">Turchese</string>
+    <string name="violet">Viola</string>
+    <string name="pink">Rosa</string>
+    <string name="light_blue">Azzurro</string>
+    <string name="red">Rosso</string>
+    <string name="lime">Lime</string>
+    <string name="system_theme">Default di sistema</string>
+    <string name="dark_theme">Scuro</string>
+    <string name="light_theme">Chiaro</string>
+    <string name="dev_description">Sono un ragazzo educato e mi piacciono le cose belle, come animazioni, icone, macchine sportive e stampa 3d. Lavoro come designer e ingegnere informatico.</string>
+    <string name="easter_egg">Bel logo, eh? ;D</string>
 </resources>

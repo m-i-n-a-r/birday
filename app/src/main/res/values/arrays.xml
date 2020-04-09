@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="themes">
+        <item>@string/system_theme</item>
+        <item>@string/dark_theme</item>
+        <item>@string/light_theme</item>
+    </string-array>
+
+    <string-array name="themeValues">
+        <item>system</item>
+        <item>dark</item>
+        <item>light</item>
+    </string-array>
+
+    <string-array name="accents">
+        <item>@string/blue</item>
+        <item>@string/green</item>
+        <item>@string/orange</item>
+        <item>@string/yellow</item>
+        <item>@string/teal</item>
+        <item>@string/violet</item>
+        <item>@string/pink</item>
+        <item>@string/light_blue</item>
+        <item>@string/red</item>
+        <item>@string/lime</item>
+    </string-array>
+
+    <string-array name="accentValues">
+        <item>blue</item>
+        <item>green</item>
+        <item>orange</item>
+        <item>yellow</item>
+        <item>teal</item>
+        <item>violet</item>
+        <item>pink</item>
+        <item>lightBlue</item>
+        <item>red</item>
+        <item>lime</item>
+    </string-array>
+
+</resources>
