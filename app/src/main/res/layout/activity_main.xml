@@ -19,7 +19,7 @@
         app:navGraph="@navigation/nav_graph" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bar"
+        android:id="@+id/bottombar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
