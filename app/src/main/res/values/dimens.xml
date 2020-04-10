@@ -6,6 +6,8 @@
     <dimen name="linear_vertical_margin">22dp</dimen>
     <!-- Using 0 elevation will cause a lot of weird behaviors -->
     <dimen name="bottom_navbar_elevation">0.1dp</dimen>
+    <dimen name="cradle_margin">8dp</dimen>
+    <dimen name="cradle_corners">12dp</dimen>
 
     <!-- Unchanged dimensions -->
     <dimen name="minar_banner_height">56dp</dimen>

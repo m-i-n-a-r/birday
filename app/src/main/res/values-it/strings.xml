@@ -29,4 +29,7 @@
     <string name="light_theme">Chiaro</string>
     <string name="dev_description">Sono un ragazzo educato e mi piacciono le cose belle, come animazioni, icone, macchine sportive e stampa 3d. Lavoro come designer e ingegnere informatico.</string>
     <string name="easter_egg">Bel logo, eh? ;D</string>
+    <string name="title_home">Home</string>
+    <string name="title_favorites">Preferiti</string>
+    <string name="title_settings">Impostazioni</string>
 </resources>

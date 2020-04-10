@@ -23,12 +23,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:navigationIcon="@drawable/ic_settings_black_24dp"/>
+        app:backgroundTint="@color/goodGray"
+        app:fabAlignmentMode="end"
+        app:fabAnimationMode="scale"
+        app:fabCradleMargin="@dimen/cradle_margin"
+        app:fabCradleRoundedCornerRadius="@dimen/cradle_corners"
+        app:elevation="@dimen/bottom_navbar_elevation"
+        app:logo="@drawable/ic_github_black_24dp"
+        app:title="@string/app_name"
+        app:menu="@menu/navigation_bottomappbar" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:backgroundTint="?colorAccent"
+        android:elevation="@dimen/bottom_navbar_elevation"
         app:layout_anchor="@id/bottomBar"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

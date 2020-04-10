@@ -7,6 +7,9 @@
     <string name="yes_review">Review!</string>
     <string name="later">Later, i swear</string>
     <string name="no_thanks">No way!</string>
+    <string name="title_home">Home</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="title_settings">Settings</string>
 
     <!-- Settings -->
     <string name="customization">Customization</string>
