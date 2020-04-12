@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Get the bottom navigation bar and configure it for the navigation plugin
-        val navigation = findViewById<BottomAppBar>(R.id.bottomBar)
+        val navigation = findViewById<BottomNavigationView>(R.id.navigation)
         val navController: NavController = Navigation.findNavController(this, R.id.navHostFragment)
         navigation.setupWithNavController(navController)
 

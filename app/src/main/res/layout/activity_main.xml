@@ -29,10 +29,22 @@
         app:fabCradleMargin="@dimen/cradle_margin"
         app:fabCradleRoundedCornerRadius="@dimen/cradle_corners"
         app:elevation="@dimen/bottom_navbar_elevation"
-        app:logo="@drawable/ic_github_black_24dp"
         app:title="@string/app_name"
-        app:menu="@menu/navigation_bottomappbar"
-        app:itemIconTint="?colorAccent"/>
+        app:contentInsetStart="0dp">
+
+        <!-- A transparent background navigation view, with no elevation -->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigation"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_navbar_height"
+            android:background="#00ffffff"
+            app:itemIconTint="@drawable/bottom_navbar_item"
+            app:labelVisibilityMode="unlabeled"
+            app:itemRippleColor="?colorAccent"
+            app:elevation="0dp"
+            app:menu="@menu/navigation_bottomappbar" />
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -40,6 +52,8 @@
         android:layout_height="wrap_content"
         app:backgroundTint="?colorAccent"
         app:elevation="@dimen/bottom_navbar_elevation"
-        app:layout_anchor="@id/bottomBar"/>
+        app:layout_anchor="@id/bottomBar"
+        app:srcCompat="@drawable/ic_party_black_24dp"
+        app:tint="@color/deepGray"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

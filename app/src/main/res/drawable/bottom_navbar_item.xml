@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- change the following colors to use the colored bottom navigation bar -->
+    <item android:state_checked="true" android:color="?colorAccent" />
+    <item android:color="@color/goodGray"  />
+</selector>

@@ -10,6 +10,11 @@
         android:label="fragment_roulette"
         tools:layout="@layout/fragment_home" />
     <fragment
+        android:id="@+id/navigationFavorites"
+        android:name="com.minar.birday.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
         android:id="@+id/navigationSettings"
         android:name="com.minar.birday.SettingsFragment"
         android:label="fragment_settings"
