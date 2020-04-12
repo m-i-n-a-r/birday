@@ -4,8 +4,9 @@
     <!-- basic colors -->
     <color name="colorAccent">@color/blueAccent</color>
     <color name="almostWhite">#fbfbfb</color>
-    <color name="goodGray">#888888</color>
-    <color name="goodGrayTranslucent">#66888888</color>
+    <color name="goodGray">#959595</color>
+    <color name="goodGrayTranslucent">#66909090</color>
+    <color name="deepGray">#0f0f0f</color>
 
     <!-- light theme colors -->
     <color name="colorBackground">#fefefe</color>

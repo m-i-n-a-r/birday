@@ -9,8 +9,7 @@
         <item name="android:statusBarColor">@color/colorBackground</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
-        <item name="android:windowLightNavigationBar">true</item>
-        <item name="android:navigationBarColor">@color/goodGray</item>
+        <item name="android:navigationBarColor">@color/deepGray</item>
     </style>
 
     <!-- Accent styles -->
