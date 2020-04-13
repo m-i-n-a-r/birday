@@ -11,13 +11,13 @@ import com.minar.birday.R
 
 object AppRater {
 
-    private const val DO_NOT_SHOW_AGAIN = "do_not_show_again" // package name
-    private const val APP_RATING = "app_rating" // package name
-    private const val LAUNCH_COUNT = "launch_count" // package name
-    private const val DATE_FIRST_LAUNCH = "date_first_launch" // package name
+    private const val DO_NOT_SHOW_AGAIN = "do_not_show_again"
+    private const val APP_RATING = "app_rating"
+    private const val LAUNCH_COUNT = "launch_count"
+    private const val DATE_FIRST_LAUNCH = "date_first_launch"
 
     private const val DAYS_UNTIL_PROMPT = 2 // min number of days
-    private const val LAUNCHES_UNTIL_PROMPT = 4 // min number of launches
+    private const val LAUNCHES_UNTIL_PROMPT = 3 // min number of launches
 
     private const val DIALOG_CORNER = 16.toFloat()
 

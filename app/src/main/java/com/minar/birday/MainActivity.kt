@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
+import android.widget.Toast
 import androidx.preference.PreferenceManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -12,6 +13,8 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.minar.birday.utils.AppRater
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,6 +47,16 @@ class MainActivity : AppCompatActivity() {
         val navigation = findViewById<BottomNavigationView>(R.id.navigation)
         val navController: NavController = Navigation.findNavController(this, R.id.navHostFragment)
         navigation.setupWithNavController(navController)
+
+        // Rating stuff
+        AppRater.appLaunched(this)
+
+        // Manage the fab
+        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        fab.setOnClickListener{
+            Toast.makeText(this, this.getString(R.string.easter_egg), Toast.LENGTH_SHORT).show()
+
+        }
 
     }
 
