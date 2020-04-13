@@ -51,7 +51,7 @@
         app:elevation="@dimen/bottom_navbar_elevation"
         app:rippleColor="@color/deepGray"
         app:layout_anchor="@id/bottomBar"
-        app:srcCompat="@drawable/ic_party_black_24dp"
+        app:srcCompat="@drawable/ic_party_24dp"
         app:tint="@color/deepGray"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

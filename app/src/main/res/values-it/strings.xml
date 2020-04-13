@@ -33,4 +33,8 @@
     <string name="title_home">Home</string>
     <string name="title_favorites">Preferiti</string>
     <string name="title_settings">Impostazioni</string>
+    <string name="new_birthday">Nuovo compleanno</string>
+    <string name="new_birthday_description">Inserisci una nuova persona cara, e Birday ti aiuterà a ricordarti del suo compleanno!</string>
+    <string name="insert_birthday">Inserisci compleanno</string>
+    <string name="cancel_birthday">Annulla</string>
 </resources>

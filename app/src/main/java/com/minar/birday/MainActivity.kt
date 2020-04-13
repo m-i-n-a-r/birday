@@ -4,14 +4,15 @@ import android.content.Context
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
-import android.widget.Toast
 import androidx.preference.PreferenceManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomappbar.BottomAppBar
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.bottomsheets.BottomSheet
+import com.afollestad.materialdialogs.customview.customView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.minar.birday.utils.AppRater
@@ -54,8 +55,20 @@ class MainActivity : AppCompatActivity() {
         // Manage the fab
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener{
-            Toast.makeText(this, this.getString(R.string.easter_egg), Toast.LENGTH_SHORT).show()
-
+            // Show a bottom sheet containing the form to insert a new birthday
+            MaterialDialog(this, BottomSheet()).show {
+                cornerRadius(16.toFloat())
+                title(R.string.new_birthday)
+                icon(R.drawable.ic_party_24dp)
+                message(R.string.new_birthday_description)
+                customView(R.layout.dialog_insert_birthday)
+                positiveButton(R.string.insert_birthday) { dialog ->
+                    // Do something
+                }
+                negativeButton(R.string.cancel_birthday) { dialog ->
+                    // Do something
+                }
+            }
         }
 
     }

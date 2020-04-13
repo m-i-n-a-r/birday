@@ -46,7 +46,10 @@
     <string name="dev_other_apps" translatable="false">https://play.google.com/store/apps/dev?id=7720251761301594831</string>
     <string name="easter_egg">Nice logo, huh? ;D</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- New birthday -->
+    <string name="new_birthday">New birthday</string>
+    <string name="new_birthday_description">Enter a new person you care about, and Birday will help you reminding his/her birthday!</string>
+    <string name="insert_birthday">Insert birthday</string>
+    <string name="cancel_birthday">Cancel</string>
 
 </resources>
