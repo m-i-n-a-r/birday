@@ -19,13 +19,14 @@ class MainActivity : AppCompatActivity() {
         // getSharedPreferences(MyPrefs, Context.MODE_PRIVATE); retrieves a specific shared preferences file
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val theme = sp.getString("theme_color", "system")
-        val accent = sp.getString("accent_color", "blue")
+        val accent = sp.getString("accent_color", "brown")
 
         // Set the base theme and the accent
         if (theme == "system") AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         if (theme == "dark") AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         if (theme == "light") AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
+        if (accent == "blue") setTheme(R.style.AppTheme_blue)
         if (accent == "green") setTheme(R.style.AppTheme_green)
         if (accent == "orange") setTheme(R.style.AppTheme_orange)
         if (accent == "yellow") setTheme(R.style.AppTheme_yellow)

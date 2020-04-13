@@ -2,7 +2,7 @@
 <resources>
 
     <!-- basic colors -->
-    <color name="colorAccent">@color/blueAccent</color>
+    <color name="colorAccent">@color/brownAccent</color>
     <color name="almostWhite">#fbfbfb</color>
     <color name="goodGray">#959595</color>
     <color name="goodGrayTranslucent">#66909090</color>
@@ -21,6 +21,7 @@
     <color name="textColorSecondaryInverse">#f0f0f0</color>
 
     <!-- accents -->
+    <color name="brownAccent">#c55a2c</color>
     <color name="blueAccent">#4285f4</color>
     <color name="greenAccent">#3ddc84</color>
     <color name="yellowAccent">#f4b400</color>

@@ -13,6 +13,11 @@
     </style>
 
     <!-- Accent styles -->
+    <style name="AppTheme.blue" parent="AppTheme">
+        <item name="colorAccent">@color/blueAccent</item>
+        <item name="colorPrimary">@color/blueAccent</item>
+    </style>
+
     <style name="AppTheme.green" parent="AppTheme">
         <item name="colorAccent">@color/greenAccent</item>
         <item name="colorPrimary">@color/greenAccent</item>
