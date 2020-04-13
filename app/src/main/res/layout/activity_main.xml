@@ -9,19 +9,16 @@
     <fragment
         android:id="@+id/navHostFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/bottom_navbar_height"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@id/bottomBar"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/nav_graph" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/bottom_navbar_height"
         android:layout_gravity="bottom"
         app:backgroundTint="@color/deepGray"
         app:fabAlignmentMode="end"
@@ -52,6 +49,7 @@
         android:layout_height="wrap_content"
         app:backgroundTint="?colorAccent"
         app:elevation="@dimen/bottom_navbar_elevation"
+        app:rippleColor="@color/deepGray"
         app:layout_anchor="@id/bottomBar"
         app:srcCompat="@drawable/ic_party_black_24dp"
         app:tint="@color/deepGray"/>
