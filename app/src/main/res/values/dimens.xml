@@ -15,5 +15,7 @@
     <dimen name="minar_description_padding">16dp</dimen>
     <dimen name="bottom_navbar_height">52dp</dimen>
     <dimen name="result_text_margin">42dp</dimen>
+    <dimen name="text_field_height">56dp</dimen>
+    <dimen name="text_field_horizontal_margin">12dp</dimen>
 
 </resources>

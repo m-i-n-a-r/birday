@@ -37,4 +37,7 @@
     <string name="new_birthday_description">Inserisci una nuova persona cara, e Birday ti aiuterà a ricordarti del suo compleanno!</string>
     <string name="insert_birthday">Inserisci compleanno</string>
     <string name="cancel_birthday">Annulla</string>
+    <string name="insert_name_hint">Inserisci nome</string>
+    <string name="insert_surname_hint">Inserisci cognome</string>
+    <string name="insert_date_hint">Seleziona una data</string>
 </resources>

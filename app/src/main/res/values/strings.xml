@@ -51,5 +51,8 @@
     <string name="new_birthday_description">Enter a new person you care about, and Birday will help you reminding his/her birthday!</string>
     <string name="insert_birthday">Insert birthday</string>
     <string name="cancel_birthday">Cancel</string>
+    <string name="insert_name_hint">Insert name</string>
+    <string name="insert_surname_hint">Insert surname</string>
+    <string name="insert_date_hint">Select a date</string>
 
 </resources>

@@ -7,6 +7,7 @@
     <color name="goodGray">#959595</color>
     <color name="goodGrayTranslucent">#66909090</color>
     <color name="deepGray">#0f0f0f</color>
+    <color name="transparent">#00ffffff</color>
 
     <!-- light theme colors -->
     <color name="colorBackground">#fefefe</color>

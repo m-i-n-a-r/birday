@@ -4,18 +4,28 @@ import android.content.Context
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
-import androidx.preference.PreferenceManager
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
+import androidx.preference.PreferenceManager
+import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.WhichButton
+import com.afollestad.materialdialogs.actions.getActionButton
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
+import com.afollestad.materialdialogs.customview.getCustomView
+import com.afollestad.materialdialogs.datetime.datePicker
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.minar.birday.utils.AppRater
+import java.time.LocalDateTime
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -56,20 +66,68 @@ class MainActivity : AppCompatActivity() {
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener{
             // Show a bottom sheet containing the form to insert a new birthday
-            MaterialDialog(this, BottomSheet()).show {
+            val dialog = MaterialDialog(this, BottomSheet(LayoutMode.WRAP_CONTENT)).show {
                 cornerRadius(16.toFloat())
                 title(R.string.new_birthday)
                 icon(R.drawable.ic_party_24dp)
                 message(R.string.new_birthday_description)
                 customView(R.layout.dialog_insert_birthday)
-                positiveButton(R.string.insert_birthday) { dialog ->
-                    // Do something
+                positiveButton(R.string.insert_birthday) {
+                    // TODO save the data in Room after controlling them
+                    dismiss()
                 }
-                negativeButton(R.string.cancel_birthday) { dialog ->
-                    // Do something
+                negativeButton(R.string.cancel_birthday) {
+                    dismiss()
                 }
             }
+
+            // Setup listeners and checks on the fields
+            dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
+            val customView = dialog.getCustomView()
+            val name = customView.findViewById<TextView>(R.id.nameBirthday)
+            val surname = customView.findViewById<TextView>(R.id.surnameBirthday)
+            val birthDate = customView.findViewById<TextView>(R.id.dateBirthday)
+            val endDate = Calendar.getInstance()
+
+            birthDate.setOnClickListener {
+                MaterialDialog(this).show {
+                    datePicker(maxDate = endDate) { dialog, date ->
+                        val year = date.get(Calendar.YEAR)
+                        val month = date.get(Calendar.MONTH)
+                        val day = date.get(Calendar.DAY_OF_MONTH)
+                        val selectedDate = day.toString() + month.toString() + year.toString()
+                        birthDate.text = selectedDate
+                    }
+                }
+            }
+
+            name.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+                override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+                override fun afterTextChanged(editable: Editable) {
+                    name.text.toString()
+                }
+            })
+
+            surname.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+                override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+                override fun afterTextChanged(editable: Editable) {
+                    surname.text.toString()
+                }
+            })
+
+            birthDate.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+                override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+                override fun afterTextChanged(editable: Editable) {
+                    birthDate.text.toString()
+                }
+            })
+
         }
+
+
 
     }
 
