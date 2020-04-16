@@ -13,6 +13,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
+import androidx.room.Room
 import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.WhichButton
@@ -25,16 +26,16 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.minar.birday.persistence.BirdayDatabase
 import com.minar.birday.persistence.Birthday
-import com.minar.birday.persistence.BirthdayDao
 import com.minar.birday.utils.AppRater
 import java.time.LocalDate
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private var db: BirdayDatabase? = null
-    private var birthdayDao: BirthdayDao? = null
 
+    @ExperimentalStdlibApi
     override fun onCreate(savedInstanceState: Bundle?) {
+        db = Room.databaseBuilder(applicationContext, BirdayDatabase::class.java,"BirdayDB").build()
         // getSharedPreferences(MyPrefs, Context.MODE_PRIVATE); retrieves a specific shared preferences file
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val theme = sp.getString("theme_color", "system")
@@ -71,9 +72,9 @@ class MainActivity : AppCompatActivity() {
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
             // Show a bottom sheet containing the form to insert a new birthday
-            var nameValue: String
-            var surnameValue: String
-            var birthDateValue: LocalDate
+            var nameValue  = "error"
+            var surnameValue = "error"
+            var birthDateValue: LocalDate = LocalDate.of(1970,1,1)
             val dialog = MaterialDialog(this, BottomSheet(LayoutMode.WRAP_CONTENT)).show {
                 cornerRadius(16.toFloat())
                 title(R.string.new_birthday)
@@ -81,19 +82,23 @@ class MainActivity : AppCompatActivity() {
                 message(R.string.new_birthday_description)
                 customView(R.layout.dialog_insert_birthday)
                 positiveButton(R.string.insert_birthday) {
-
-                    db = BirdayDatabase.getBirdayDataBase(context = context)
-                    birthdayDao = db?.birthdayDao()
-
-                    val date: LocalDate = LocalDate.of(1995, 2, 23)
-                    val birthday1 = Birthday(
-                        id = "GianlucaConti23021995", birthDate = date,
-                        name = "Gianluca", surname = "Conti", type = "birthday"
+                    // Use the data to create a birthday object and insert it in the db
+                    val tuple = Birthday(
+                        id = nameValue+surnameValue+birthDateValue.toString().toLowerCase(Locale.getDefault()),
+                        birthDate = birthDateValue, name = nameValue.capitalize(Locale.getDefault()),
+                        surname = surnameValue.capitalize(Locale.getDefault()), type = "birthday"
                     )
 
-                    with(birthdayDao) {
-                        this?.insertBirthday(birthday1)
+                    val thread = Thread {
+                        db!!.birthdayDao().insertBirthday(tuple)
+                        //fetch Records
+                        db!!.birthdayDao().getBirthdays().forEach()
+                        {
+                            println("Fetch Records Id:  : ${it.id}")
+                            println("Fetch Records Name:  : ${it.name}")
+                        }
                     }
+                    thread.start()
 
                     dismiss()
                 }
@@ -114,10 +119,15 @@ class MainActivity : AppCompatActivity() {
                 MaterialDialog(this).show {
                     datePicker(maxDate = endDate) { _, date ->
                         val year = date.get(Calendar.YEAR)
-                        val month = date.get(Calendar.MONTH)
+                        val month = date.get(Calendar.MONTH) + 1
                         val day = date.get(Calendar.DAY_OF_MONTH)
-                        // TODO add a setting to change the date format in the entire app
-                        val selectedDate = "$day/$month/$year"
+                        val americanDate = sp.getBoolean("date_format", false)
+                        val selectedDate: String
+                        selectedDate = if (americanDate) {
+                            "$month-$day-$year"
+                        } else {
+                            "$day-$month-$year"
+                        }
                         birthDate.text = selectedDate
                     }
                 }
@@ -135,7 +145,7 @@ class MainActivity : AppCompatActivity() {
                         editable === name.editableText -> {
                             val nameText = name.text.toString()
                             if (nameText.isBlank() || !checkString(nameText)) {
-                                name.error = getString(R.string.invalid_value)
+                                name.error = getString(R.string.invalid_value_name)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                             }
                             else {
@@ -146,7 +156,7 @@ class MainActivity : AppCompatActivity() {
                         editable === surname.editableText -> {
                             val surnameText = surname.text.toString()
                             if (surnameText.isBlank() || !checkString(surnameText)) {
-                                surname.error = getString(R.string.invalid_value)
+                                surname.error = getString(R.string.invalid_value_name)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                             }
                             else {
@@ -157,14 +167,18 @@ class MainActivity : AppCompatActivity() {
                         editable === birthDate.editableText -> {
                             val birthDateText = birthDate.text.toString()
                             if (birthDateText.isBlank()) {
-                                birthDate.error = getString(R.string.invalid_value)
+                                birthDate.error = getString(R.string.invalid_value_date)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                             }
                             else {
-                                val dataDate = birthDateText.split("/")
-                                println(dataDate)
-                                println(birthDateText)
-                                birthDateValue = LocalDate.of(dataDate[2].toInt(), dataDate[1].toInt(), dataDate[0].toInt())
+                                val dataDate = birthDateText.split("-")
+                                val americanDate = sp.getBoolean("date_format", false)
+                                birthDateValue = if (americanDate) {
+                                    LocalDate.of(dataDate[2].toInt(), dataDate[0].toInt(), dataDate[1].toInt())
+                                }
+                                else {
+                                    LocalDate.of(dataDate[2].toInt(), dataDate[1].toInt(), dataDate[0].toInt())
+                                }
                                 birthDateCorrect = true
                             }
                         }

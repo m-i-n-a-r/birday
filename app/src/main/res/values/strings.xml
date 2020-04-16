@@ -13,6 +13,7 @@
 
     <!-- Settings -->
     <string name="customization">Customization</string>
+    <string name="app_behavior">App behavior</string>
     <string name="vibration_name">Vibration</string>
     <string name="vibration_description_on">Vibrate when a button is pressed</string>
     <string name="vibration_description_off">No vibrations when a button is pressed</string>
@@ -57,6 +58,7 @@
     <string name="insert_name_hint">Insert name</string>
     <string name="insert_surname_hint">Insert surname</string>
     <string name="insert_date_hint">Select a date</string>
-    <string name="invalid_value">Invalid value!</string>
+    <string name="invalid_value_name">Invalid value! Use only letters.</string>
+    <string name="invalid_value_date">Select a date!</string>
 
 </resources>
