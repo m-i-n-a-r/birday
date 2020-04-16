@@ -40,4 +40,8 @@
     <string name="insert_name_hint">Inserisci nome</string>
     <string name="insert_surname_hint">Inserisci cognome</string>
     <string name="insert_date_hint">Seleziona una data</string>
+    <string name="invalid_value">Valore non valido!</string>
+    <string name="date_format_name">Formato data</string>
+    <string name="date_format_description_on">Formato americano (MM/gg/AAAA)</string>
+    <string name="date_format_description_off">Formato europeo (gg/MM/AAAA)</string>
 </resources>

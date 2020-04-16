@@ -23,11 +23,16 @@ import com.afollestad.materialdialogs.customview.getCustomView
 import com.afollestad.materialdialogs.datetime.datePicker
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.minar.birday.persistence.BirdayDatabase
+import com.minar.birday.persistence.Birthday
+import com.minar.birday.persistence.BirthdayDao
 import com.minar.birday.utils.AppRater
-import java.time.LocalDateTime
+import java.time.LocalDate
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
+    private var db: BirdayDatabase? = null
+    private var birthdayDao: BirthdayDao? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // getSharedPreferences(MyPrefs, Context.MODE_PRIVATE); retrieves a specific shared preferences file
@@ -64,8 +69,11 @@ class MainActivity : AppCompatActivity() {
 
         // Manage the fab
         val fab = findViewById<FloatingActionButton>(R.id.fab)
-        fab.setOnClickListener{
+        fab.setOnClickListener {
             // Show a bottom sheet containing the form to insert a new birthday
+            var nameValue: String
+            var surnameValue: String
+            var birthDateValue: LocalDate
             val dialog = MaterialDialog(this, BottomSheet(LayoutMode.WRAP_CONTENT)).show {
                 cornerRadius(16.toFloat())
                 title(R.string.new_birthday)
@@ -73,7 +81,20 @@ class MainActivity : AppCompatActivity() {
                 message(R.string.new_birthday_description)
                 customView(R.layout.dialog_insert_birthday)
                 positiveButton(R.string.insert_birthday) {
-                    // TODO save the data in Room after controlling them
+
+                    db = BirdayDatabase.getBirdayDataBase(context = context)
+                    birthdayDao = db?.birthdayDao()
+
+                    val date: LocalDate = LocalDate.of(1995, 2, 23)
+                    val birthday1 = Birthday(
+                        id = "GianlucaConti23021995", birthDate = date,
+                        name = "Gianluca", surname = "Conti", type = "birthday"
+                    )
+
+                    with(birthdayDao) {
+                        this?.insertBirthday(birthday1)
+                    }
+
                     dismiss()
                 }
                 negativeButton(R.string.cancel_birthday) {
@@ -91,46 +112,70 @@ class MainActivity : AppCompatActivity() {
 
             birthDate.setOnClickListener {
                 MaterialDialog(this).show {
-                    datePicker(maxDate = endDate) { dialog, date ->
+                    datePicker(maxDate = endDate) { _, date ->
                         val year = date.get(Calendar.YEAR)
                         val month = date.get(Calendar.MONTH)
                         val day = date.get(Calendar.DAY_OF_MONTH)
-                        val selectedDate = day.toString() + month.toString() + year.toString()
+                        // TODO add a setting to change the date format in the entire app
+                        val selectedDate = "$day/$month/$year"
                         birthDate.text = selectedDate
                     }
                 }
             }
 
-            name.addTextChangedListener(object : TextWatcher {
+            // Validate each field in the form with the same watcher
+            var nameCorrect = false
+            var surnameCorrect = false
+            var birthDateCorrect = false
+            val watcher = object : TextWatcher {
                 override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
                 override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
                 override fun afterTextChanged(editable: Editable) {
-                    name.text.toString()
+                    when {
+                        editable === name.editableText -> {
+                            val nameText = name.text.toString()
+                            if (nameText.isBlank() || !checkString(nameText)) {
+                                name.error = getString(R.string.invalid_value)
+                                dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
+                            }
+                            else {
+                                nameValue = nameText
+                                nameCorrect = true
+                            }
+                        }
+                        editable === surname.editableText -> {
+                            val surnameText = surname.text.toString()
+                            if (surnameText.isBlank() || !checkString(surnameText)) {
+                                surname.error = getString(R.string.invalid_value)
+                                dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
+                            }
+                            else {
+                                surnameValue = surnameText
+                                surnameCorrect = true
+                            }
+                        }
+                        editable === birthDate.editableText -> {
+                            val birthDateText = surname.text.toString()
+                            if (birthDateText.isBlank() || !checkString(birthDateText)) {
+                                birthDate.error = getString(R.string.invalid_value)
+                                dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
+                            }
+                            else {
+                                val dataDate = birthDateText.split("/")
+                                birthDateValue = LocalDate.of(dataDate[2].toInt(), dataDate[1].toInt(), dataDate[0].toInt())
+                                birthDateCorrect = true
+                            }
+                        }
+                    }
+                    if(birthDateCorrect && nameCorrect && surnameCorrect) dialog.getActionButton(WhichButton.POSITIVE).isEnabled = true
                 }
-            })
+            }
 
-            surname.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
-                override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
-                override fun afterTextChanged(editable: Editable) {
-                    surname.text.toString()
-                }
-            })
-
-            birthDate.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
-                override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
-                override fun afterTextChanged(editable: Editable) {
-                    birthDate.text.toString()
-                }
-            })
-
+            name.addTextChangedListener(watcher)
+            surname.addTextChangedListener(watcher)
+            birthDate.addTextChangedListener(watcher)
         }
-
-
-
     }
-
     // Some utility functions, used from every fragment connected to this activity
     fun vibrate() {
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
@@ -139,4 +184,11 @@ class MainActivity : AppCompatActivity() {
             vib.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
     }
 
+    fun checkString(submission : String): Boolean {
+        for (s in submission.replace("\\s".toRegex(), "")) {
+            if (s.isLetter()) continue
+            else return false
+        }
+        return true
+    }
 }

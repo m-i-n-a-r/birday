@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.minar.birday.CustomAuthorPreference
+    <com.minar.birday.utils.CustomAuthorPreference
         android:layout="@layout/fragment_settings"
         android:selectable="false" />
 
@@ -37,6 +37,14 @@
             android:summaryOff="@string/vibration_description_off"
             android:summaryOn="@string/vibration_description_on"
             android:title="@string/vibration_name"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="date_format"
+            android:summaryOff="@string/date_format_description_off"
+            android:summaryOn="@string/date_format_description_on"
+            android:title="@string/date_format_name"
             app:iconSpaceReserved="false" />
 
     </PreferenceCategory>

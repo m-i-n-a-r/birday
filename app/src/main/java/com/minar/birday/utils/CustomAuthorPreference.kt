@@ -1,4 +1,4 @@
-package com.minar.birday
+package com.minar.birday.utils
 
 import android.app.Activity
 import android.content.Context
@@ -10,6 +10,8 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
+import com.minar.birday.MainActivity
+import com.minar.birday.R
 
 class CustomAuthorPreference(
     context: Context?,
