@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/birthdayList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/noFavorites"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:text="@string/no_favorites"
+            android:textColor="@color/goodGraySemiTranslucent"
+            android:gravity="center"
+            android:paddingTop="@dimen/placeholders_vertical_padding"
+            android:textSize="@dimen/empty_fragment_text_size"
+            android:drawableTop="@drawable/ic_neutral_120dp"
+            android:drawableTint="@color/goodGraySemiTranslucent" />
+    </LinearLayout>
+
+</ScrollView>

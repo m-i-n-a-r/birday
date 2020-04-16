@@ -41,4 +41,25 @@
         <item>lime</item>
     </string-array>
 
+    <string-array name="notificationHours">
+        <item>0:00</item>
+        <item>1:00</item>
+        <item>7:00</item>
+        <item>8:00</item>
+        <item>9:00</item>
+        <item>10:00</item>
+        <item>11:00</item>
+        <item>12:00</item>
+    </string-array>
+
+    <string-array name="notificationHourValues">
+        <item>0:00</item>
+        <item>1:00</item>
+        <item>7:00</item>
+        <item>8:00</item>
+        <item>9:00</item>
+        <item>10:00</item>
+        <item>11:00</item>
+        <item>12:00</item>
+    </string-array>
 </resources>

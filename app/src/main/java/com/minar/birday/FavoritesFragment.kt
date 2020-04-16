@@ -8,7 +8,7 @@ import android.view.ViewGroup
 
 class FavoritesFragment : Fragment() {
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            inflater.inflate(R.layout.fragment_home, container, false)
+            inflater.inflate(R.layout.fragment_favorites, container, false)
 
         override fun onActivityCreated(savedInstanceState: Bundle?) {
             super.onActivityCreated(savedInstanceState)

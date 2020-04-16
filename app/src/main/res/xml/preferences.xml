@@ -19,8 +19,17 @@
             android:title="@string/date_format_name"
             app:iconSpaceReserved="false" />
 
+        <DropDownPreference
+            android:defaultValue="8:00"
+            android:entries="@array/notificationHours"
+            android:entryValues="@array/notificationHourValues"
+            android:key="notification_hour"
+            android:title="@string/notification_hour_name"
+            android:summary="%s"
+            app:iconSpaceReserved="false"/>
+
     </PreferenceCategory>
-    
+
     <PreferenceCategory
         android:key="customization"
         android:title="@string/customization"

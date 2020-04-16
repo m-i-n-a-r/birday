@@ -8,6 +8,12 @@
     <dimen name="bottom_navbar_elevation">0.1dp</dimen>
     <dimen name="cradle_margin">8dp</dimen>
     <dimen name="cradle_corners">12dp</dimen>
+    <dimen name="empty_fragment_text_size">32sp</dimen>
+    <dimen name="placeholders_vertical_padding">96dp</dimen>
+    <dimen name="card_margin">8dp</dimen>
+    <dimen name="card_stroke">2dp</dimen>
+    <dimen name="card_corners">16dp</dimen>
+    <dimen name="card_image_height">96dp</dimen>
 
     <!-- Unchanged dimensions -->
     <dimen name="minar_banner_height">56dp</dimen>
