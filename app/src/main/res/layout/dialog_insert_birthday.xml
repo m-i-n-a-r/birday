@@ -36,7 +36,8 @@
             android:maxLength="30"
             android:padding="0dp"
             android:textAlignment="center"
-            android:textCursorDrawable="@null"/>
+            android:textCursorDrawable="@null"
+            android:inputType="textCapSentences"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,7 +70,8 @@
             android:maxLength="30"
             android:padding="0dp"
             android:textAlignment="center"
-            android:textCursorDrawable="@null"/>
+            android:textCursorDrawable="@null"
+            android:inputType="textCapSentences"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

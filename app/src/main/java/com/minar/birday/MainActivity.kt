@@ -155,13 +155,15 @@ class MainActivity : AppCompatActivity() {
                             }
                         }
                         editable === birthDate.editableText -> {
-                            val birthDateText = surname.text.toString()
-                            if (birthDateText.isBlank() || !checkString(birthDateText)) {
+                            val birthDateText = birthDate.text.toString()
+                            if (birthDateText.isBlank()) {
                                 birthDate.error = getString(R.string.invalid_value)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                             }
                             else {
                                 val dataDate = birthDateText.split("/")
+                                println(dataDate)
+                                println(birthDateText)
                                 birthDateValue = LocalDate.of(dataDate[2].toInt(), dataDate[1].toInt(), dataDate[0].toInt())
                                 birthDateCorrect = true
                             }
