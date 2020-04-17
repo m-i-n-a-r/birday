@@ -8,7 +8,6 @@
     <dimen name="bottom_navbar_elevation">0.1dp</dimen>
     <dimen name="cradle_margin">8dp</dimen>
     <dimen name="cradle_corners">12dp</dimen>
-    <dimen name="placeholder_text_size">24sp</dimen>
     <dimen name="placeholders_vertical_padding">96dp</dimen>
     <dimen name="placeholders_horizontal_padding">48dp</dimen>
     <dimen name="card_margin">8dp</dimen>

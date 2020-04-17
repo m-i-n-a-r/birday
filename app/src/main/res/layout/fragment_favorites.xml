@@ -74,13 +74,14 @@
             android:id="@+id/noFavorites"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             android:paddingLeft="@dimen/placeholders_horizontal_padding"
             android:paddingRight="@dimen/placeholders_horizontal_padding"
+            android:paddingBottom="@dimen/placeholders_horizontal_padding"
+            android:paddingTop="@dimen/placeholders_vertical_padding"
             android:text="@string/no_favorites"
             android:textColor="@color/goodGraySemiTranslucent"
             android:gravity="center"
-            android:paddingTop="@dimen/placeholders_vertical_padding"
-            android:textSize="@dimen/placeholder_text_size"
             android:drawableTop="@drawable/ic_neutral_96dp"
             android:drawableTint="@color/goodGraySemiTranslucent" />
     </LinearLayout>

@@ -18,4 +18,7 @@ interface BirthdayDao {
 
     @Query("SELECT * FROM Birthday")
     fun getBirthdays(): List<Birthday>
+
+    @Query("SELECT *, CASE WHEN (strftime('%m','now') > strftime('%m',date) or (strftime('%m','now') = strftime('%m',date) and strftime('%d','now') > strftime('%d',date)))  then DATE(date, + (strftime('%Y','now')-strftime('%Y',date)+1  year) else DATE(date, + (strftime('%Y','now')-strftime('%Y',date)) year) end as next_bd FROM Birthday order by next_bd;")
+    fun getOrderedBirthdays(): List<Birthday>
 }

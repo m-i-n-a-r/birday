@@ -44,8 +44,6 @@
     <string name="invalid_value_name">Valore non valido! Usa solo lettere.</string>
     <string name="invalid_value_date">Seleziona una data!</string>
     <string name="date_format_name">Formato data</string>
-    <string name="date_format_description_on">Formato americano (MM/gg/AAAA)</string>
-    <string name="date_format_description_off">Formato europeo (gg/MM/AAAA)</string>
     <string name="app_behavior">Comportamento dell\'app</string>
     <string name="no_birthdays">Nessun compleanno! Comincia aggiungendone uno usando il bottone sotto!</string>
     <string name="no_favorites">Nessun preferito! Premi la stella per salvare una persona nei tuoi preferiti!</string>

@@ -11,14 +11,6 @@
         android:title="@string/app_behavior"
         app:iconSpaceReserved="false">
 
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="date_format"
-            android:summaryOff="@string/date_format_description_off"
-            android:summaryOn="@string/date_format_description_on"
-            android:title="@string/date_format_name"
-            app:iconSpaceReserved="false" />
-
         <ListPreference
             android:defaultValue="8"
             android:entries="@array/notificationHours"

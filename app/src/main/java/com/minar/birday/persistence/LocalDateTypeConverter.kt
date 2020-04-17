@@ -1,16 +1,18 @@
 package com.minar.birday.persistence
 
 import androidx.room.TypeConverter
+import java.sql.Date
+import java.sql.Date.valueOf
 import java.time.LocalDate
 
 class LocalDateTypeConverter {
     @TypeConverter
-    fun StringToLocalDate(value: String?): LocalDate? {
-        return if (value == null) null else LocalDate.parse(value)
+    fun DateToLocalDate(dateSql: Date?): LocalDate? {
+        return dateSql.toLocalDate()
     }
 
     @TypeConverter
-    fun localDateToString(date: LocalDate?): String? {
-        return date?.toString()
+    fun localDateToDate(date: LocalDate?): Date? {
+        return valueOf(date)
     }
 }

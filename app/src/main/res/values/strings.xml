@@ -21,8 +21,6 @@
     <string name="vibration_description_on">Vibrate when a button is pressed</string>
     <string name="vibration_description_off">No vibrations when a button is pressed</string>
     <string name="date_format_name">Date format</string>
-    <string name="date_format_description_on">American date format (MM/gg/AAAA)</string>
-    <string name="date_format_description_off">European date format (gg/MM/AAAA)</string>
     <string name="notification_hour_name">Notification hour</string>
     <string name="accent_description">Change the default accent color</string>
     <string name="accent_name">Accent color</string>

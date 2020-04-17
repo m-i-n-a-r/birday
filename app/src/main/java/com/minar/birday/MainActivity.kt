@@ -28,6 +28,7 @@ import com.minar.birday.persistence.BirdayDatabase
 import com.minar.birday.persistence.Birthday
 import com.minar.birday.utils.AppRater
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -83,15 +84,15 @@ class MainActivity : AppCompatActivity() {
                 customView(R.layout.dialog_insert_birthday, scrollable = true)
                 positiveButton(R.string.insert_birthday) {
                     // Use the data to create a birthday object and insert it in the db
+                    val id = UUID. randomUUID()
                     val tuple = Birthday(
-                        id = nameValue+surnameValue+birthDateValue.toString().toLowerCase(Locale.getDefault()),
-                        birthDate = birthDateValue, name = nameValue.capitalize(Locale.getDefault()),
-                        surname = surnameValue.capitalize(Locale.getDefault()), type = "birthday"
+                        id, birthDate = birthDateValue, name = nameValue.capitalize(Locale.getDefault()),
+                        surname = surnameValue.capitalize(Locale.getDefault())
                     )
 
                     val thread = Thread {
                         db!!.birthdayDao().insertBirthday(tuple)
-                        //fetch Records
+                        //fetch Records TODO remove since it's for debug purposes
                         db!!.birthdayDao().getBirthdays().forEach()
                         {
                             println("Fetch Records Id:  : ${it.id}")
@@ -121,14 +122,13 @@ class MainActivity : AppCompatActivity() {
                         val year = date.get(Calendar.YEAR)
                         val month = date.get(Calendar.MONTH) + 1
                         val day = date.get(Calendar.DAY_OF_MONTH)
-                        val americanDate = sp.getBoolean("date_format", false)
-                        val selectedDate: String
-                        selectedDate = if (americanDate) {
-                            "$month-$day-$year"
-                        } else {
-                            "$day-$month-$year"
+                        birthDateValue = LocalDate.of(year, month, day)
+                        // TODO adapt the text to the default locale
+                        val dateFormatter: DateTimeFormatter = DateTimeFormatter.getDateFormat(applicationContext)
+                        if (dateFormatter != null) {
+                            birthDate.text = dateFormatter.format(birthDateValue)
                         }
-                        birthDate.text = selectedDate
+                        else birthDate.text = birthDateValue.toString()
                     }
                 }
             }
@@ -153,6 +153,7 @@ class MainActivity : AppCompatActivity() {
                                 nameCorrect = true
                             }
                         }
+                        // TODO surname not mandatory?
                         editable === surname.editableText -> {
                             val surnameText = surname.text.toString()
                             if (surnameText.isBlank() || !checkString(surnameText)) {
@@ -171,14 +172,6 @@ class MainActivity : AppCompatActivity() {
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                             }
                             else {
-                                val dataDate = birthDateText.split("-")
-                                val americanDate = sp.getBoolean("date_format", false)
-                                birthDateValue = if (americanDate) {
-                                    LocalDate.of(dataDate[2].toInt(), dataDate[0].toInt(), dataDate[1].toInt())
-                                }
-                                else {
-                                    LocalDate.of(dataDate[2].toInt(), dataDate[1].toInt(), dataDate[0].toInt())
-                                }
                                 birthDateCorrect = true
                             }
                         }
