@@ -45,14 +45,14 @@
                         android:id="@+id/home_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/app_name"
+                        android:text="@string/stats"
                         android:textAppearance="?attr/textAppearanceHeadline6"/>
                     <TextView
                         android:id="@+id/home_subtitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="@string/app_name_extended"
+                        android:text="@string/no_stats"
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary"/>
                     <TextView
@@ -60,7 +60,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="@string/app_name_extended"
+                        android:text="@string/no_stats_description"
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary"/>
 

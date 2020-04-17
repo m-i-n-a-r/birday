@@ -85,14 +85,14 @@ class MainActivity : AppCompatActivity() {
                 customView(R.layout.dialog_insert_birthday, scrollable = true)
                 positiveButton(R.string.insert_birthday) {
                     // Use the data to create a birthday object and insert it in the db
-                    val id = UUID. randomUUID()
                     val tuple = Birthday(
-                        id, birthDate = birthDateValue, name = nameValue.capitalize(Locale.getDefault()),
+                        id = 0, birthDate = birthDateValue, name = nameValue.capitalize(Locale.getDefault()),
                         surname = surnameValue.capitalize(Locale.getDefault())
                     )
 
                     val thread = Thread {
                         db!!.birthdayDao().insertBirthday(tuple)
+
                         //fetch Records TODO remove since it's for debug purposes
                         db!!.birthdayDao().getBirthdays().forEach()
                         {
@@ -124,7 +124,7 @@ class MainActivity : AppCompatActivity() {
                         val month = date.get(Calendar.MONTH) + 1
                         val day = date.get(Calendar.DAY_OF_MONTH)
                         birthDateValue = LocalDate.of(year, month, day)
-                        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);
+                        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)
                         birthDate.text = birthDateValue.format(formatter)
                     }
                 }

@@ -48,4 +48,10 @@
     <string name="no_birthdays">Nessun compleanno! Comincia aggiungendone uno usando il bottone sotto!</string>
     <string name="no_favorites">Nessun preferito! Premi la stella per salvare una persona nei tuoi preferiti!</string>
     <string name="notification_hour_name">Ora di invio notifica</string>
+    <string name="stats">Statistiche</string>
+    <string name="no_stats">Nessuna statistica da mostrare!</string>
+    <string name="no_stats_description">Non hai abbastanza compleanni per mostrare le statistiche. Aggiungine alcuni e torna a controllare!</string>
+    <string name="next_birthday">Prossimo compleanno</string>
+    <string name="no_next_birthday">Nessun compleanno da mostrare!</string>
+    <string name="no_next_birthday_description">Non hai inserito o impotato alcun compleanno. Aggiungine uno e lascia che Birday ti aiuti!</string>
 </resources>

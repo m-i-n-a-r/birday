@@ -7,8 +7,8 @@ import java.util.*
 
 @Entity
 data class Birthday(
-    @PrimaryKey(autoGenerate = false)
-    val id: UUID,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int,
     val type: String? = "birthday",
     val name: String,
     val surname: String? = "",
