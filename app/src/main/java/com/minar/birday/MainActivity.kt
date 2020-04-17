@@ -29,6 +29,7 @@ import com.minar.birday.persistence.Birthday
 import com.minar.birday.utils.AppRater
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -123,12 +124,8 @@ class MainActivity : AppCompatActivity() {
                         val month = date.get(Calendar.MONTH) + 1
                         val day = date.get(Calendar.DAY_OF_MONTH)
                         birthDateValue = LocalDate.of(year, month, day)
-                        // TODO adapt the text to the default locale
-                        val dateFormatter: DateTimeFormatter = DateTimeFormatter.getDateFormat(applicationContext)
-                        if (dateFormatter != null) {
-                            birthDate.text = dateFormatter.format(birthDateValue)
-                        }
-                        else birthDate.text = birthDateValue.toString()
+                        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);
+                        birthDate.text = birthDateValue.format(formatter)
                     }
                 }
             }
@@ -147,6 +144,7 @@ class MainActivity : AppCompatActivity() {
                             if (nameText.isBlank() || !checkString(nameText)) {
                                 name.error = getString(R.string.invalid_value_name)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
+                                nameCorrect = false
                             }
                             else {
                                 nameValue = nameText
@@ -159,6 +157,7 @@ class MainActivity : AppCompatActivity() {
                             if (surnameText.isBlank() || !checkString(surnameText)) {
                                 surname.error = getString(R.string.invalid_value_name)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
+                                surnameCorrect = false
                             }
                             else {
                                 surnameValue = surnameText
@@ -170,6 +169,7 @@ class MainActivity : AppCompatActivity() {
                             if (birthDateText.isBlank()) {
                                 birthDate.error = getString(R.string.invalid_value_date)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
+                                birthDateCorrect = false
                             }
                             else {
                                 birthDateCorrect = true
