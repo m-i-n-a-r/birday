@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:id="@+id/birthdayList"
@@ -11,17 +11,77 @@
         android:gravity="center"
         android:orientation="vertical">
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/homeCard"
+            app:strokeWidth="@dimen/card_stroke"
+            app:strokeColor="@color/goodGrayTranslucent"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="@dimen/card_corners"
+            app:rippleColor="?colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/card_margin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Media -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/card_image_height"
+                    app:srcCompat="@drawable/ic_party_24dp"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/app_name"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/home_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_name"
+                        android:textAppearance="?attr/textAppearanceHeadline6"/>
+                    <TextView
+                        android:id="@+id/home_subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/app_name_extended"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="?android:attr/textColorSecondary"/>
+                    <TextView
+                        android:id="@+id/home_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/app_name_extended"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="?android:attr/textColorSecondary"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
         <TextView
             android:id="@+id/noFavorites"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:paddingLeft="@dimen/placeholders_horizontal_padding"
+            android:paddingRight="@dimen/placeholders_horizontal_padding"
             android:text="@string/no_favorites"
             android:textColor="@color/goodGraySemiTranslucent"
             android:gravity="center"
             android:paddingTop="@dimen/placeholders_vertical_padding"
-            android:textSize="@dimen/empty_fragment_text_size"
-            android:drawableTop="@drawable/ic_neutral_120dp"
+            android:textSize="@dimen/placeholder_text_size"
+            android:drawableTop="@drawable/ic_neutral_96dp"
             android:drawableTint="@color/goodGraySemiTranslucent" />
     </LinearLayout>
 

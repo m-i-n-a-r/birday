@@ -74,13 +74,14 @@
             android:id="@+id/noBirthdays"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:paddingLeft="@dimen/placeholders_horizontal_padding"
+            android:paddingRight="@dimen/placeholders_horizontal_padding"
             android:text="@string/no_birthdays"
             android:textColor="@color/goodGraySemiTranslucent"
             android:gravity="center"
             android:paddingTop="@dimen/placeholders_vertical_padding"
-            android:textSize="@dimen/empty_fragment_text_size"
-            android:drawableTop="@drawable/ic_sad_120dp"
+            android:textSize="@dimen/placeholder_text_size"
+            android:drawableTop="@drawable/ic_sad_96dp"
             android:drawableTint="@color/goodGraySemiTranslucent" />
     </LinearLayout>
 

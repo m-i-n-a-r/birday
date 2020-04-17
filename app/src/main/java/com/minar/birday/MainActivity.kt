@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
                 title(R.string.new_birthday)
                 icon(R.drawable.ic_party_24dp)
                 message(R.string.new_birthday_description)
-                customView(R.layout.dialog_insert_birthday)
+                customView(R.layout.dialog_insert_birthday, scrollable = true)
                 positiveButton(R.string.insert_birthday) {
                     // Use the data to create a birthday object and insert it in the db
                     val tuple = Birthday(

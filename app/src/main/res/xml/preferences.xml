@@ -19,8 +19,8 @@
             android:title="@string/date_format_name"
             app:iconSpaceReserved="false" />
 
-        <DropDownPreference
-            android:defaultValue="8:00"
+        <ListPreference
+            android:defaultValue="8"
             android:entries="@array/notificationHours"
             android:entryValues="@array/notificationHourValues"
             android:key="notification_hour"
@@ -40,17 +40,15 @@
             android:entries="@array/themes"
             android:entryValues="@array/themeValues"
             android:key="theme_color"
-            android:negativeButtonText="@null"
             android:summary="%s"
             android:title="@string/theme_name"
             app:iconSpaceReserved="false" />
 
         <ListPreference
-            android:defaultValue="blue"
+            android:defaultValue="brown"
             android:entries="@array/accents"
             android:entryValues="@array/accentValues"
             android:key="accent_color"
-            android:negativeButtonText="@null"
             android:summary="%s"
             android:title="@string/accent_name"
             app:iconSpaceReserved="false" />
