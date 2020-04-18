@@ -29,7 +29,7 @@
         app:hintTextColor="?colorAccent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/nameBirthday"
+            android:id="@+id/nameEvent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:imeOptions="actionDone"
@@ -63,7 +63,7 @@
         app:hintTextColor="?colorAccent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/surnameBirthday"
+            android:id="@+id/surnameEvent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:imeOptions="actionDone"
@@ -97,7 +97,7 @@
         app:hintTextColor="?colorAccent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/dateBirthday"
+            android:id="@+id/dateEvent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:imeOptions="actionDone"

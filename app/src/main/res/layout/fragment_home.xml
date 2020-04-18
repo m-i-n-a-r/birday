@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        android:id="@+id/birthdayList"
+        android:id="@+id/eventList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -45,14 +45,14 @@
                         android:id="@+id/home_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/next_birthday"
+                        android:text="@string/next_event"
                         android:textAppearance="?attr/textAppearanceHeadline6"/>
                     <TextView
                         android:id="@+id/home_subtitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="@string/no_next_birthday"
+                        android:text="@string/no_next_event"
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary"/>
                     <TextView
@@ -60,7 +60,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="@string/no_next_birthday_description"
+                        android:text="@string/no_next_event_description"
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary"/>
 
@@ -71,7 +71,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <TextView
-            android:id="@+id/noBirthdays"
+            android:id="@+id/noEvents"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
@@ -79,7 +79,7 @@
             android:paddingRight="@dimen/placeholders_horizontal_padding"
             android:paddingBottom="@dimen/placeholders_horizontal_padding"
             android:paddingTop="@dimen/placeholders_vertical_padding"
-            android:text="@string/no_birthdays"
+            android:text="@string/no_events"
             android:textColor="@color/goodGraySemiTranslucent"
             android:gravity="center"
             android:drawableTop="@drawable/ic_sad_96dp"

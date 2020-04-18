@@ -9,27 +9,27 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.minar.birday.persistence.BirdayDatabase
-import com.minar.birday.persistence.BirdayDatabase.Companion.getBirdayDataBase
+import com.minar.birday.persistence.EventDatabase
+import com.minar.birday.persistence.EventDatabase.Companion.getBirdayDataBase
 import java.util.*
 
 
 class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) : View {
         val v: View = inflater.inflate(R.layout.fragment_home, container, false)
-        val db: BirdayDatabase? =
+        val db: EventDatabase? =
             activity?.applicationContext?.let { getBirdayDataBase(it) }
         var index = 0
-        val homeList: LinearLayout? = view?.findViewById(R.id.birthdayList)
+        val homeList: LinearLayout? = view?.findViewById(R.id.eventList)
         val thread = Thread {
-            db?.birthdayDao()?.getBirthdays()?.sortedWith(compareBy { it.birthDate })?.forEach {
-                val birthday = TextView(context)
-                val concatString = it.name + " " + it.surname + " " + it.birthDate
-                birthday.text = concatString
-                birthday.id = index
-                birthday.textSize = 15f
-                birthday.setPadding(28, 18, 28, 18)
-                birthday.gravity = Gravity.CENTER_HORIZONTAL
+            db?.eventDao()?.getEvents()?.sortedWith(compareBy { it.originalDate })?.forEach {
+                val event = TextView(context)
+                val concatString = it.name + " " + it.surname + " " + it.originalDate
+                event.text = concatString
+                event.id = index
+                event.textSize = 15f
+                event.setPadding(28, 18, 28, 18)
+                event.gravity = Gravity.CENTER_HORIZONTAL
                 // Ripple effect
                 val outValue = TypedValue()
                 Objects.requireNonNull(activity)?.theme?.resolveAttribute(
@@ -37,16 +37,16 @@ class HomeFragment : Fragment() {
                     outValue,
                     true
                 )
-                birthday.setBackgroundResource(outValue.resourceId)
-                birthday.setOnClickListener { _: View? ->
-                    val optionNumber = birthday.id
+                event.setBackgroundResource(outValue.resourceId)
+                event.setOnClickListener { _: View? ->
+                    val optionNumber = event.id
                 }
-                homeList?.addView(birthday)
+                homeList?.addView(event)
                 index++
             }
         }
         /*if (sortedBirthdays. > 0) {
-            val placeholder: TextView? = view?.findViewById(R.id.noBirthdays)
+            val placeholder: TextView? = view?.findViewById(R.id.noEvents)
             homeList?.removeView(placeholder)
         }*/
             return v

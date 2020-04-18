@@ -1,6 +1,6 @@
 # Birday
 
-An open source app to remember birthdays without having to open Facebook or set alarms.
+An open source app to remember birthdays and events without having to open Facebook or set alarms.
 
 <p align='center'>
   <a href='https://github.com/m-i-n-a-r/birday/blob/master/LICENSE.md'><img src='https://img.shields.io/cocoapods/l/AFNetworking.svg'/></a>
@@ -10,10 +10,10 @@ An open source app to remember birthdays without having to open Facebook or set 
 </p>
 
 ## Introduction
-This is an open source app to remember **birthdays** in a fast, light and beautiful way. No less, no more. I had this idea considering that Google Calendar doesn't display an automatic notification the day of the birthday, and sometimes i need to remember a birthday for a person who is not in my phone contacts. 
+This is an open source app to remember **birthdays** (and soon, events) in a fast, light and beautiful way. No less, no more. I had this idea considering that Google Calendar doesn't display an automatic notification the day of the birthday, and sometimes i need to remember a birthday for a person who is not in my phone contacts.
 
 ## Features (and TODO list)
-- Notification the day of the birthday
+- Notification the day of the event
 - Sync the birthdays from your Google contacts or insert them manually, just specifying a name, a date and some optional parameters
 - Customize behaviour and appearence of each person in the list
 - Light and dark themes (Android 10 dark mode supported)

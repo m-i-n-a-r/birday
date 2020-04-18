@@ -34,10 +34,10 @@
     <string name="title_home">Home</string>
     <string name="title_favorites">Preferiti</string>
     <string name="title_settings">Impostazioni</string>
-    <string name="new_birthday">Nuovo compleanno</string>
-    <string name="new_birthday_description">Inserisci una nuova persona cara, e Birday ti aiuterà a ricordarti del suo compleanno!</string>
-    <string name="insert_birthday">Inserisci compleanno</string>
-    <string name="cancel_birthday">Annulla</string>
+    <string name="new_event">Nuovo compleanno</string>
+    <string name="new_event_description">Inserisci una nuova persona cara, e Birday ti aiuterà a ricordarti del suo compleanno!</string>
+    <string name="insert_event">Inserisci compleanno</string>
+    <string name="cancel_event_insert">Annulla</string>
     <string name="insert_name_hint">Inserisci nome</string>
     <string name="insert_surname_hint">Inserisci cognome</string>
     <string name="insert_date_hint">Seleziona una data</string>
@@ -45,13 +45,13 @@
     <string name="invalid_value_date">Seleziona una data!</string>
     <string name="date_format_name">Formato data</string>
     <string name="app_behavior">Comportamento dell\'app</string>
-    <string name="no_birthdays">Nessun compleanno! Comincia aggiungendone uno usando il bottone sotto!</string>
+    <string name="no_events">Nessun compleanno! Comincia aggiungendone uno usando il bottone sotto!</string>
     <string name="no_favorites">Nessun preferito! Premi la stella per salvare una persona nei tuoi preferiti!</string>
     <string name="notification_hour_name">Ora di invio notifica</string>
     <string name="stats">Statistiche</string>
     <string name="no_stats">Nessuna statistica da mostrare!</string>
     <string name="no_stats_description">Non hai abbastanza compleanni per mostrare le statistiche. Aggiungine alcuni e torna a controllare!</string>
-    <string name="next_birthday">Prossimo compleanno</string>
-    <string name="no_next_birthday">Nessun compleanno da mostrare!</string>
-    <string name="no_next_birthday_description">Non hai inserito o impotato alcun compleanno. Aggiungine uno e lascia che Birday ti aiuti!</string>
+    <string name="next_event">Prossimo evento</string>
+    <string name="no_next_event">Nessun compleanno da mostrare!</string>
+    <string name="no_next_event_description">Non hai inserito o impotato alcun compleanno. Aggiungine uno e lascia che Birday ti aiuti!</string>
 </resources>

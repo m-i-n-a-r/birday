@@ -11,14 +11,14 @@
     <string name="title_home">Home</string>
     <string name="title_favorites">Favorites</string>
     <string name="title_settings">Settings</string>
-    <string name="no_birthdays">No birthdays! Start adding one using the button below!</string>
+    <string name="no_events">No birthdays! Start adding one using the button below!</string>
     <string name="no_favorites">No favorites! Just press the star to save a person in your favorites!</string>
     <string name="stats">Statistics</string>
     <string name="no_stats">No stats to show!</string>
     <string name="no_stats_description">You haven\'t enough birthdays to display the stats. Add some and come back later!</string>
-    <string name="next_birthday">Next birthday</string>
-    <string name="no_next_birthday">No birthdays to show!</string>
-    <string name="no_next_birthday_description">You haven\'t entered or imported a birthday yet. Add one and let Birday help you!</string>
+    <string name="next_event">Next event</string>
+    <string name="no_next_event">No birthdays to show!</string>
+    <string name="no_next_event_description">You haven\'t entered or imported a birthday yet. Add one and let Birday help you!</string>
 
     <!-- Settings -->
     <string name="customization">Customization</string>
@@ -58,11 +58,11 @@
     <string name="dev_other_apps" translatable="false">https://play.google.com/store/apps/dev?id=7720251761301594831</string>
     <string name="easter_egg">Nice logo, huh? ;D</string>
 
-    <!-- New birthday -->
-    <string name="new_birthday">New birthday</string>
-    <string name="new_birthday_description">Enter a new person you care about, and Birday will help you reminding his/her birthday!</string>
-    <string name="insert_birthday">Insert birthday</string>
-    <string name="cancel_birthday">Cancel</string>
+    <!-- New event -->
+    <string name="new_event">New birthday</string>
+    <string name="new_event_description">Enter a new person you care about, and Birday will help you reminding his/her birthday!</string>
+    <string name="insert_event">Insert birthday</string>
+    <string name="cancel_event_insert">Cancel</string>
     <string name="insert_name_hint">Insert name</string>
     <string name="insert_surname_hint">Insert surname</string>
     <string name="insert_date_hint">Select a date</string>

@@ -24,8 +24,8 @@ import com.afollestad.materialdialogs.customview.getCustomView
 import com.afollestad.materialdialogs.datetime.datePicker
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.minar.birday.persistence.BirdayDatabase
-import com.minar.birday.persistence.Birthday
+import com.minar.birday.persistence.EventDatabase
+import com.minar.birday.persistence.Event
 import com.minar.birday.utils.AppRater
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -33,11 +33,11 @@ import java.time.format.FormatStyle
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-    private var db: BirdayDatabase? = null
+    private var db: EventDatabase? = null
 
     @ExperimentalStdlibApi
     override fun onCreate(savedInstanceState: Bundle?) {
-        db = Room.databaseBuilder(applicationContext, BirdayDatabase::class.java,"BirdayDB").build()
+        db = Room.databaseBuilder(applicationContext, EventDatabase::class.java,"BirdayDB").build()
         // getSharedPreferences(MyPrefs, Context.MODE_PRIVATE); retrieves a specific shared preferences file
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val theme = sp.getString("theme_color", "system")
@@ -73,30 +73,33 @@ class MainActivity : AppCompatActivity() {
         // Manage the fab
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
-            // Show a bottom sheet containing the form to insert a new birthday
+            // Show a bottom sheet containing the form to insert a new event
             var nameValue  = "error"
             var surnameValue = "error"
-            var birthDateValue: LocalDate = LocalDate.of(1970,1,1)
+            var eventDateValue: LocalDate = LocalDate.of(1970,1,1)
             val dialog = MaterialDialog(this, BottomSheet(LayoutMode.WRAP_CONTENT)).show {
                 cornerRadius(16.toFloat())
-                title(R.string.new_birthday)
+                title(R.string.new_event)
                 icon(R.drawable.ic_party_24dp)
-                message(R.string.new_birthday_description)
-                customView(R.layout.dialog_insert_birthday, scrollable = true)
-                positiveButton(R.string.insert_birthday) {
-                    // Use the data to create a birthday object and insert it in the db
-                    val tuple = Birthday(
-                        id = 0, birthDate = birthDateValue, name = nameValue.capitalize(Locale.getDefault()),
+                message(R.string.new_event_description)
+                customView(R.layout.dialog_insert_event, scrollable = true)
+                positiveButton(R.string.insert_event) {
+                    // Use the data to create a event object and insert it in the db
+                    val tuple = Event(
+                        id = 0, originalDate = eventDateValue, name = nameValue.capitalize(Locale.getDefault()),
                         surname = surnameValue.capitalize(Locale.getDefault())
                     )
 
                     val thread = Thread {
-                        db!!.birthdayDao().insertBirthday(tuple)
+                        db!!.eventDao().insertEvent(tuple)
 
                         //fetch Records TODO remove since it's for debug purposes
-                        db!!.birthdayDao().getBirthdays().forEach()
+                        db!!.eventDao().getEventsOrdered().forEach()
                         {
+                            println("=================================")
                             println("Fetch Records Id:  : ${it.id}")
+                            println("Prossimo compleanno:   : ${it.nextDate}")
+                            println("Fetch Records date:   : ${it.originalDate}")
                             println("Fetch Records Name:  : ${it.name}")
                         }
                     }
@@ -104,7 +107,7 @@ class MainActivity : AppCompatActivity() {
 
                     dismiss()
                 }
-                negativeButton(R.string.cancel_birthday) {
+                negativeButton(R.string.cancel_event_insert) {
                     dismiss()
                 }
             }
@@ -112,20 +115,20 @@ class MainActivity : AppCompatActivity() {
             // Setup listeners and checks on the fields
             dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
             val customView = dialog.getCustomView()
-            val name = customView.findViewById<TextView>(R.id.nameBirthday)
-            val surname = customView.findViewById<TextView>(R.id.surnameBirthday)
-            val birthDate = customView.findViewById<TextView>(R.id.dateBirthday)
+            val name = customView.findViewById<TextView>(R.id.nameEvent)
+            val surname = customView.findViewById<TextView>(R.id.surnameEvent)
+            val eventDate = customView.findViewById<TextView>(R.id.dateEvent)
             val endDate = Calendar.getInstance()
 
-            birthDate.setOnClickListener {
+            eventDate.setOnClickListener {
                 MaterialDialog(this).show {
                     datePicker(maxDate = endDate) { _, date ->
                         val year = date.get(Calendar.YEAR)
                         val month = date.get(Calendar.MONTH) + 1
                         val day = date.get(Calendar.DAY_OF_MONTH)
-                        birthDateValue = LocalDate.of(year, month, day)
+                        eventDateValue = LocalDate.of(year, month, day)
                         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)
-                        birthDate.text = birthDateValue.format(formatter)
+                        eventDate.text = eventDateValue.format(formatter)
                     }
                 }
             }
@@ -133,7 +136,7 @@ class MainActivity : AppCompatActivity() {
             // Validate each field in the form with the same watcher
             var nameCorrect = false
             var surnameCorrect = false
-            var birthDateCorrect = false
+            var eventDateCorrect = false
             val watcher = object : TextWatcher {
                 override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
                 override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
@@ -164,25 +167,25 @@ class MainActivity : AppCompatActivity() {
                                 surnameCorrect = true
                             }
                         }
-                        editable === birthDate.editableText -> {
-                            val birthDateText = birthDate.text.toString()
-                            if (birthDateText.isBlank()) {
-                                birthDate.error = getString(R.string.invalid_value_date)
+                        editable === eventDate.editableText -> {
+                            val eventDateText = eventDate.text.toString()
+                            if (eventDateText.isBlank()) {
+                                eventDate.error = getString(R.string.invalid_value_date)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
-                                birthDateCorrect = false
+                                eventDateCorrect = false
                             }
                             else {
-                                birthDateCorrect = true
+                                eventDateCorrect = true
                             }
                         }
                     }
-                    if(birthDateCorrect && nameCorrect && surnameCorrect) dialog.getActionButton(WhichButton.POSITIVE).isEnabled = true
+                    if(eventDateCorrect && nameCorrect && surnameCorrect) dialog.getActionButton(WhichButton.POSITIVE).isEnabled = true
                 }
             }
 
             name.addTextChangedListener(watcher)
             surname.addTextChangedListener(watcher)
-            birthDate.addTextChangedListener(watcher)
+            eventDate.addTextChangedListener(watcher)
         }
     }
     // Some utility functions, used from every fragment connected to this activity
