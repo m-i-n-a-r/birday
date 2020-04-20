@@ -20,13 +20,12 @@ interface EventDao {
     @Query("SELECT * FROM Event")
     fun getEvents(): List<Event>
 
-    @Query("SELECT *, CASE when (strftime('%m', 'now') > strftime('%m', originalDate) or (strftime('%m', 'now') = strftime('%m', originalDate) and strftime('%d', 'now') > strftime('%d', originalDate))) then date(strftime('%Y', 'now') || '-' || strftime('%m', originalDate) || '-' || strftime('%d', originalDate), '+1 year') else date(strftime('%Y', 'now') || '-' || strftime('%m', originalDate) || '-' || strftime('%d', originalDate)) end as nextDate FROM Event order by nextDate, originalDate asc")
+    @Query("SELECT *, CASE WHEN (strftime('%m', 'now') > strftime('%m', originalDate) OR (strftime('%m', 'now') = strftime('%m', originalDate) AND strftime('%d', 'now') > strftime('%d', originalDate))) THEN date(strftime('%Y', 'now') || '-' || strftime('%m', originalDate) || '-' || strftime('%d', originalDate), '+1 year') ELSE date(strftime('%Y', 'now') || '-' || strftime('%m', originalDate) || '-' || strftime('%d', originalDate)) END AS nextDate FROM Event ORDER BY nextDate, originalDate")
     fun getEventsOrdered(): List<EventResult>
 
-    @Query("SELECT *, CASE when (strftime('%m', 'now') > strftime('%m', originalDate) or (strftime('%m', 'now') = strftime('%m', originalDate) and strftime('%d', 'now') > strftime('%d', originalDate))) then date(strftime('%Y', 'now') || '-' || strftime('%m', originalDate) || '-' || strftime('%d', originalDate),'+1 year') else date(strftime('%Y', 'now') || '-' || strftime('%m', originalDate) || '-' || strftime('%d', originalDate)) end as nextDate FROM Event WHERE nextDate <> :date order by nextDate, originalDate")
+    @Query("SELECT *, CASE WHEN (strftime('%m', 'now') > strftime('%m', originalDate) OR (strftime('%m', 'now') = strftime('%m', originalDate) AND strftime('%d', 'now') > strftime('%d', originalDate))) THEN date(strftime('%Y', 'now') || '-' || strftime('%m', originalDate) || '-' || strftime('%d', originalDate),'+1 year') ELSE date(strftime('%Y', 'now') || '-' || strftime('%m', originalDate) || '-' || strftime('%d', originalDate)) END AS nextDate FROM Event WHERE nextDate <> :date ORDER BY nextDate, originalDate")
     fun getOrderedEventsExceptNext(date: LocalDate): List<EventResult>
-
-    // TODO select the type
-    @Query("SELECT * from Event where strftime('%Y', 'now') - strftime('%Y', originalDate) = :age and strftime('%m', 'now') < strftime('%m', originalDate) or (strftime('%m', 'now') = strftime('%m', originalDate) and strftime('%d', 'now') <= strftime('%d', originalDate))")
-    fun getSpecialAgeEvents(age: Int): List<Event>
+    
+    @Query("SELECT *, CASE WHEN (strftime('%m', 'now') > strftime('%m', originalDate) OR (strftime('%m', 'now') = strftime('%m', originalDate) AND strftime('%d', 'now') > strftime('%d', originalDate))) THEN date(strftime('%Y', 'now') || '-' || strftime('%m', originalDate) || '-' || strftime('%d', originalDate), '+1 year') ELSE date(strftime('%Y', 'now') || '-' || strftime('%m', originalDate) || '-' || strftime('%d', originalDate)) END AS nextDate FROM Event WHERE strftime('%Y', nextDate)-strftime('%Y', originalDate) = :age AND type = :type ORDER BY nextDate, originalDate;")
+    fun getSpecialAgeEvents(age: Int, type: String): List<Event>
 }
