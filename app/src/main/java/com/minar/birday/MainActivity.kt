@@ -86,22 +86,12 @@ class MainActivity : AppCompatActivity() {
                 positiveButton(R.string.insert_event) {
                     // Use the data to create a event object and insert it in the db
                     val tuple = Event(
-                        id = 0, originalDate = eventDateValue, name = nameValue.capitalize(Locale.getDefault()),
-                        surname = surnameValue.capitalize(Locale.getDefault())
+                        id = 0, originalDate = eventDateValue, name = nameValue.smartCapitalize(),
+                        surname = surnameValue.smartCapitalize()
                     )
 
                     val thread = Thread {
                         db!!.eventDao().insertEvent(tuple)
-
-                        //fetch Records TODO remove since it's for debug purposes
-                        db!!.eventDao().getEventsOrdered().forEach()
-                        {
-                            println("=================================")
-                            println("Fetch Records Id:  : ${it.id}")
-                            println("Prossimo compleanno:   : ${it.nextDate}")
-                            println("Fetch Records date:   : ${it.originalDate}")
-                            println("Fetch Records Name:  : ${it.name}")
-                        }
                     }
                     thread.start()
 
@@ -188,7 +178,10 @@ class MainActivity : AppCompatActivity() {
             eventDate.addTextChangedListener(watcher)
         }
     }
+
     // Some utility functions, used from every fragment connected to this activity
+
+    // Vibrate using a standard vibration pattern
     fun vibrate() {
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val vib = this.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
@@ -196,6 +189,7 @@ class MainActivity : AppCompatActivity() {
             vib.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
     }
 
+    // Simply checks if the string is written using only letters
     fun checkString(submission : String): Boolean {
         for (s in submission.replace("\\s".toRegex(), "")) {
             if (s.isLetter()) continue
@@ -203,4 +197,8 @@ class MainActivity : AppCompatActivity() {
         }
         return true
     }
+
+    // Extension function to quickly capitalize a name, also considering other uppercase letter or multiple words
+    @ExperimentalStdlibApi
+    fun String.smartCapitalize(): String = split(" ").map { it.toLowerCase(Locale.ROOT).capitalize(Locale.ROOT) }.joinToString(" ")
 }

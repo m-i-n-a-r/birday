@@ -11,20 +11,21 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.persistence.EventDatabase.Companion.getBirdayDataBase
-import java.util.*
 
 
 class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) : View {
         val v: View = inflater.inflate(R.layout.fragment_home, container, false)
-        val db: EventDatabase? =
-            activity?.applicationContext?.let { getBirdayDataBase(it) }
+        val db: EventDatabase? = activity?.applicationContext?.let { getBirdayDataBase(it) }
         var index = 0
         val homeList: LinearLayout? = view?.findViewById(R.id.eventList)
         val thread = Thread {
-            db?.eventDao()?.getEvents()?.sortedWith(compareBy { it.originalDate })?.forEach {
+            db?.eventDao()?.getOrderedEvents()?.forEach {
+                // TODO remove, it's for debug
+                println("===========")
+                println(it.nextDate)
                 val event = TextView(context)
-                val concatString = it.name + " " + it.surname + " " + it.originalDate
+                val concatString = it.name + " " + it.surname + " " + it.nextDate
                 event.text = concatString
                 event.id = index
                 event.textSize = 15f
@@ -32,24 +33,24 @@ class HomeFragment : Fragment() {
                 event.gravity = Gravity.CENTER_HORIZONTAL
                 // Ripple effect
                 val outValue = TypedValue()
-                Objects.requireNonNull(activity)?.theme?.resolveAttribute(
+                requireActivity().theme.resolveAttribute(
                     android.R.attr.selectableItemBackground,
                     outValue,
                     true
                 )
                 event.setBackgroundResource(outValue.resourceId)
-                event.setOnClickListener { _: View? ->
-                    val optionNumber = event.id
+                event.setOnClickListener {
+                    //val optionNumber = event.id
+                    println("Clicked")
                 }
                 homeList?.addView(event)
                 index++
             }
-        }
-        /*if (sortedBirthdays. > 0) {
             val placeholder: TextView? = view?.findViewById(R.id.noEvents)
             homeList?.removeView(placeholder)
-        }*/
-            return v
+        }
+        thread.start()
+        return v
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

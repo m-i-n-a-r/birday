@@ -13,10 +13,7 @@ import androidx.preference.PreferenceViewHolder
 import com.minar.birday.MainActivity
 import com.minar.birday.R
 
-class CustomAuthorPreference(
-    context: Context?,
-    attrs: AttributeSet?
-) :
+class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
     Preference(context, attrs), View.OnClickListener {
     // Easter egg stuff, why not
     private var easterEgg = 0

@@ -74,7 +74,7 @@
             android:id="@+id/noEvents"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             android:paddingLeft="@dimen/placeholders_horizontal_padding"
             android:paddingRight="@dimen/placeholders_horizontal_padding"
             android:paddingBottom="@dimen/placeholders_horizontal_padding"
@@ -82,8 +82,13 @@
             android:text="@string/no_events"
             android:textColor="@color/goodGraySemiTranslucent"
             android:gravity="center"
-            android:drawableTop="@drawable/ic_sad_96dp"
+            android:drawableTop="@drawable/ic_sad_72dp"
             android:drawableTint="@color/goodGraySemiTranslucent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </LinearLayout>
 
 </ScrollView>
