@@ -17,6 +17,7 @@
     <dimen name="list_vertical_padding">4dp</dimen>
     <dimen name="in_row_padding">2dp</dimen>
     <dimen name="in_row_image_padding">12dp</dimen>
+    <dimen name="in_row_image">72dp</dimen>
 
     <!-- Unchanged dimensions -->
     <dimen name="minar_banner_height">68dp</dimen>

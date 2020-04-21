@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        android:id="@+id/eventList"
+        android:id="@+id/eventRecycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -42,13 +42,13 @@
                     android:padding="16dp">
 
                     <TextView
-                        android:id="@+id/home_title"
+                        android:id="@+id/homeTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/stats"
                         android:textAppearance="?attr/textAppearanceHeadline6"/>
                     <TextView
-                        android:id="@+id/home_subtitle"
+                        android:id="@+id/homeSubtitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -56,7 +56,7 @@
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary"/>
                     <TextView
-                        android:id="@+id/home_description"
+                        android:id="@+id/homeDescription"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"

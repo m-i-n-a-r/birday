@@ -1,4 +1,4 @@
-package com.minar.birday.utils
+package com.minar.birday.utilities
 
 import com.minar.birday.persistence.EventResult
 

@@ -26,7 +26,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.persistence.Event
-import com.minar.birday.utils.AppRater
+import com.minar.birday.utilities.AppRater
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle

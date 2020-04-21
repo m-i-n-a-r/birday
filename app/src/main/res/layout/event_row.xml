@@ -33,8 +33,9 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/favoriteButton"
+        android:layout_width="@dimen/in_row_image"
+        android:layout_height="@dimen/in_row_image"
         android:src="@drawable/animated_to_favorite"
         android:clickable="true"
         android:focusable="true"
