@@ -13,6 +13,7 @@
     <string name="title_settings">Settings</string>
     <string name="no_events">No birthdays! Start adding one using the button below!</string>
     <string name="no_favorites">No favorites! Just press the star to save a person in your favorites!</string>
+    <string name="add_favorite">Add to favorites</string>
     <string name="stats">Statistics</string>
     <string name="no_stats">No stats to show!</string>
     <string name="no_stats_description">You haven\'t enough birthdays to display the stats. Add some and come back later!</string>

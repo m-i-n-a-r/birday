@@ -14,6 +14,9 @@
     <dimen name="card_stroke">2dp</dimen>
     <dimen name="card_corners">16dp</dimen>
     <dimen name="card_image_height">96dp</dimen>
+    <dimen name="list_vertical_padding">4dp</dimen>
+    <dimen name="in_row_padding">2dp</dimen>
+    <dimen name="in_row_image_padding">12dp</dimen>
 
     <!-- Unchanged dimensions -->
     <dimen name="minar_banner_height">68dp</dimen>

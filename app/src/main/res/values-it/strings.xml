@@ -54,4 +54,5 @@
     <string name="next_event">Prossimo evento</string>
     <string name="no_next_event">Nessun compleanno da mostrare!</string>
     <string name="no_next_event_description">Non hai inserito o impotato alcun compleanno. Aggiungine uno e lascia che Birday ti aiuti!</string>
+    <string name="add_favorite">Add to favorites</string>
 </resources>
