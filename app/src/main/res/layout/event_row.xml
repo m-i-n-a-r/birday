@@ -3,45 +3,48 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="@dimen/list_vertical_padding">
+    android:paddingLeft="@dimen/recycler_padding"
+    android:paddingRight="@dimen/recycler_padding">
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_weight="0.8">
+        android:layout_weight="0.95">
 
         <TextView
             android:id="@+id/eventPerson"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             android:padding="@dimen/in_row_padding" />
         <TextView
             android:id="@+id/eventDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
             android:padding="@dimen/in_row_padding" />
         <TextView
             android:id="@+id/eventYears"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
             android:padding="@dimen/in_row_padding" />
 
     </LinearLayout>
 
     <ImageView
+        android:layout_gravity="center"
         android:id="@+id/favoriteButton"
         android:layout_width="@dimen/in_row_image"
         android:layout_height="@dimen/in_row_image"
         android:src="@drawable/animated_to_favorite"
         android:clickable="true"
         android:focusable="true"
-        android:padding="@dimen/in_row_image_padding"
+        android:paddingTop="@dimen/in_row_image_padding"
+        android:paddingBottom="@dimen/in_row_image_padding"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:layout_weight="0.2"
+        android:layout_weight="0.05"
         android:contentDescription="@string/add_favorite"/>
 
 </LinearLayout>

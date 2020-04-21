@@ -1,15 +1,16 @@
 package com.minar.birday.adapters
 
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
 import com.minar.birday.persistence.EventResult
 import kotlinx.android.synthetic.main.event_row.view.*
+
 
 class EventAdapter: BaseRecyclerViewAdapter<EventResult>() {
 
@@ -33,14 +34,22 @@ class EventAdapter: BaseRecyclerViewAdapter<EventResult>() {
         }
 
         fun setUpView(event: EventResult?) {
-            //favoriteButton.setImageDrawable(getDrawable(activity.context, R.drawable.animated_to_favorite))
             eventPerson.text = event?.name
-            eventDate.text = event?.nextDate.toString() // TODO properly format the date
+            eventDate.text = event?.originalDate.toString() // TODO properly format the date
             eventYears.text = event?.nextDate.toString() // TODO properly calculate the years
+
+            favoriteButton.setOnClickListener {
+                addToFavorite(it)
+                (favoriteButton.drawable as AnimatedVectorDrawable).start()
+            }
         }
 
         override fun onClick(v: View?) {
             itemClickListener?.onItemClick(adapterPosition, v)
         }
     }
+
+    fun addToFavorite(v: View?) {
+    }
+
 }

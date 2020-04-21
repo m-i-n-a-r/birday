@@ -1,95 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/homeMain"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/homeMain"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/homeCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_marginLeft="@dimen/card_margin"
+        android:layout_marginRight="@dimen/card_margin"
+        app:cardCornerRadius="@dimen/card_corners"
+        app:cardElevation="0dp"
+        app:rippleColor="?colorAccent"
+        app:strokeColor="@color/goodGrayTranslucent"
+        app:strokeWidth="@dimen/card_stroke">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/homeCard"
-            app:strokeWidth="@dimen/card_stroke"
-            app:strokeColor="@color/goodGrayTranslucent"
-            app:cardElevation="0dp"
-            app:cardCornerRadius="@dimen/card_corners"
-            app:rippleColor="?colorAccent"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/card_margin">
+            android:orientation="vertical">
+
+            <!-- Media -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/card_image_height"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/ic_party_24dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="16dp">
 
-                <!-- Media -->
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/card_image_height"
-                    app:srcCompat="@drawable/ic_party_24dp"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="@string/app_name"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/homeTitle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:text="@string/next_event"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
 
-                    <TextView
-                        android:id="@+id/homeTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/next_event"
-                        android:textAppearance="?attr/textAppearanceHeadline6"/>
-                    <TextView
-                        android:id="@+id/homeSubtitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/no_next_event"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary"/>
-                    <TextView
-                        android:id="@+id/homeDescription"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/no_next_event_description"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary"/>
+                <TextView
+                    android:id="@+id/homeSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/no_next_event"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="?android:attr/textColorSecondary" />
 
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/homeDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/no_next_event_description"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="?android:attr/textColorSecondary" />
 
             </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/noEvents"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-            android:paddingLeft="@dimen/placeholders_horizontal_padding"
-            android:paddingRight="@dimen/placeholders_horizontal_padding"
-            android:paddingBottom="@dimen/placeholders_horizontal_padding"
-            android:paddingTop="@dimen/placeholders_vertical_padding"
-            android:text="@string/no_events"
-            android:textColor="@color/goodGraySemiTranslucent"
-            android:gravity="center"
-            android:drawableTop="@drawable/ic_sad_72dp"
-            android:drawableTint="@color/goodGraySemiTranslucent" />
+    </com.google.android.material.card.MaterialCardView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/eventRecycler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/noEvents"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:drawableTop="@drawable/ic_sad_72dp"
+        android:drawableTint="@color/goodGraySemiTranslucent"
+        android:gravity="center"
+        android:paddingLeft="@dimen/placeholders_horizontal_padding"
+        android:paddingTop="@dimen/placeholders_vertical_padding"
+        android:paddingRight="@dimen/placeholders_horizontal_padding"
+        android:paddingBottom="@dimen/placeholders_horizontal_padding"
+        android:text="@string/no_events"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:textColor="@color/goodGraySemiTranslucent" />
 
-    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/eventRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-</ScrollView>
+</LinearLayout>
