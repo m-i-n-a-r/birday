@@ -11,12 +11,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
 import com.minar.birday.persistence.EventResult
 import kotlinx.android.synthetic.main.event_row.view.*
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 
 
 class EventAdapter internal constructor(context: Context) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
-
-    private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var events = emptyList<EventResult>() // Cached copy of events
+    private val appContext = context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         return EventViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.event_row, parent, false))
@@ -37,13 +38,18 @@ class EventAdapter internal constructor(context: Context) : RecyclerView.Adapter
             view.setOnClickListener(this)
         }
 
+        // Set every necessary text and click action in each row
         fun setUpView(event: EventResult?) {
-            eventPerson.text = event?.name
-            eventDate.text = event?.originalDate.toString() // TODO properly format the date
-            eventYears.text = event?.nextDate.toString() // TODO properly calculate the years
+            val personName = event?.name + " " + event?.surname
+            val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
+            val nextDate = event?.nextDate?.format(formatter)
+            val nextAge = appContext.getString(R.string.next_age_years) + ": " + (event?.nextDate?.year?.minus(event.originalDate.year)).toString()
+            eventPerson.text = personName
+            eventDate.text = nextDate
+            eventYears.text = nextAge
 
             favoriteButton.setOnClickListener {
-                addToFavorite(it)
+                addRemoveFavorite(it)
                 (favoriteButton.drawable as AnimatedVectorDrawable).start()
             }
         }
@@ -60,7 +66,7 @@ class EventAdapter internal constructor(context: Context) : RecyclerView.Adapter
 
     override fun getItemCount() = events.size
 
-    fun addToFavorite(v: View?) {
+    fun addRemoveFavorite(v: View?) {
     }
 
 }

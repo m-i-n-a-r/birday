@@ -4,7 +4,9 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:paddingLeft="@dimen/recycler_padding"
-    android:paddingRight="@dimen/recycler_padding">
+    android:paddingRight="@dimen/recycler_padding"
+    android:paddingBottom="@dimen/between_row_padding"
+    android:paddingTop="@dimen/between_row_padding">
 
     <LinearLayout
         android:layout_width="0dp"

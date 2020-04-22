@@ -47,9 +47,6 @@ class MainActivity : AppCompatActivity() {
         db = Room.databaseBuilder(applicationContext, EventDatabase::class.java,"BirdayDB").build()
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         adapter = EventAdapter(this.applicationContext)
-        homeViewModel.allEvents.observe(this, Observer { events ->
-            events?.let { adapter.setEvents(it) }
-        })
 
         // getSharedPreferences(MyPrefs, Context.MODE_PRIVATE); retrieves a specific shared preferences file
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
@@ -105,6 +102,7 @@ class MainActivity : AppCompatActivity() {
 
                     val thread = Thread {
                         homeViewModel.insert(tuple)
+                        adapter.notifyDataSetChanged()
                     }
                     thread.start()
 
@@ -212,5 +210,5 @@ class MainActivity : AppCompatActivity() {
 
     // Extension function to quickly capitalize a name, also considering other uppercase letter or multiple words
     @ExperimentalStdlibApi
-    fun String.smartCapitalize(): String = split(" ").map { it.toLowerCase(Locale.ROOT).capitalize(Locale.ROOT) }.joinToString(" ")
+    fun String.smartCapitalize(): String = trim().split(" ").map { it.toLowerCase(Locale.ROOT).capitalize(Locale.ROOT) }.joinToString(" ")
 }
