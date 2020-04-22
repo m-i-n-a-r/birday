@@ -138,7 +138,7 @@ class MainActivity : AppCompatActivity() {
 
             // Validate each field in the form with the same watcher
             var nameCorrect = false
-            var surnameCorrect = false
+            var surnameCorrect = true // Surname is not mandatory
             var eventDateCorrect = false
             val watcher = object : TextWatcher {
                 override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
@@ -157,10 +157,9 @@ class MainActivity : AppCompatActivity() {
                                 nameCorrect = true
                             }
                         }
-                        // TODO surname not mandatory?
                         editable === surname.editableText -> {
                             val surnameText = surname.text.toString()
-                            if (surnameText.isBlank() || !checkString(surnameText)) {
+                            if (!checkString(surnameText)) {
                                 surname.error = getString(R.string.invalid_value_name)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                                 surnameCorrect = false
