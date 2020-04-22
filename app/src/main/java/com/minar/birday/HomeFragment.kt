@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
 
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         homeViewModel.allEvents.observe(viewLifecycleOwner, Observer { events ->
-            // Update the cached copy of the words in the adapter.
+            // Update the cached copy of the words in the adapter
             events?.let { adapter.setEvents(it) }
         })
 

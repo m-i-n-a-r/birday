@@ -11,6 +11,7 @@
         android:id="@+id/homeCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/card_margin"
         android:layout_marginLeft="@dimen/card_margin"
         android:layout_marginRight="@dimen/card_margin"
         app:cardCornerRadius="@dimen/card_corners"

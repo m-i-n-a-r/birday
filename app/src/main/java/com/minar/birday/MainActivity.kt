@@ -9,11 +9,13 @@ import android.text.TextWatcher
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
 import androidx.room.Room
+import androidx.lifecycle.Observer
 import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.WhichButton
@@ -24,9 +26,11 @@ import com.afollestad.materialdialogs.customview.getCustomView
 import com.afollestad.materialdialogs.datetime.datePicker
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.persistence.Event
 import com.minar.birday.utilities.AppRater
+import com.minar.birday.viewmodels.HomeViewModel
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -34,10 +38,19 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private var db: EventDatabase? = null
+    private lateinit var homeViewModel: HomeViewModel
+    lateinit var adapter: EventAdapter
 
     @ExperimentalStdlibApi
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Db and viewmodel stuff
         db = Room.databaseBuilder(applicationContext, EventDatabase::class.java,"BirdayDB").build()
+        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        adapter = EventAdapter(this.applicationContext)
+        homeViewModel.allEvents.observe(this, Observer { events ->
+            events?.let { adapter.setEvents(it) }
+        })
+
         // getSharedPreferences(MyPrefs, Context.MODE_PRIVATE); retrieves a specific shared preferences file
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val theme = sp.getString("theme_color", "system")
@@ -91,7 +104,7 @@ class MainActivity : AppCompatActivity() {
                     )
 
                     val thread = Thread {
-                        db!!.eventDao().insertEvent(tuple)
+                        homeViewModel.insert(tuple)
                     }
                     thread.start()
 
