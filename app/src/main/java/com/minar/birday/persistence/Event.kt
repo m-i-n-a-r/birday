@@ -11,6 +11,7 @@ data class Event(
     val type: String? = "birthday",
     val name: String,
     val surname: String? = "",
+    val favorite: Boolean? = false,
     val yearMatter: Boolean? = true,
     val originalDate: LocalDate
 )

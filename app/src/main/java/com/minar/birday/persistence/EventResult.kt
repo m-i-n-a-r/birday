@@ -7,6 +7,7 @@ data class EventResult (
     val type: String? = "birthday",
     val name: String,
     val surname: String? = "",
+    val favorite: Boolean? = false,
     val yearMatter: Boolean? = true,
     val originalDate: LocalDate,
     val nextDate: LocalDate? = null
