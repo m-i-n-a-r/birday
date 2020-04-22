@@ -1,5 +1,6 @@
 package com.minar.birday.adapters
 
+import android.content.Context
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.view.LayoutInflater
 import android.view.View
@@ -12,15 +13,18 @@ import com.minar.birday.persistence.EventResult
 import kotlinx.android.synthetic.main.event_row.view.*
 
 
-class EventAdapter: BaseRecyclerViewAdapter<EventResult>() {
+class EventAdapter internal constructor(context: Context) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    private val inflater: LayoutInflater = LayoutInflater.from(context)
+    private var events = emptyList<EventResult>() // Cached copy of events
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         return EventViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.event_row, parent, false))
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val eventHolder = holder as? EventViewHolder
-        eventHolder?.setUpView(event = getItem(position))
+    override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
+        val current = events[position]
+        holder.setUpView(event = current)
     }
 
     inner class EventViewHolder (view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
@@ -45,9 +49,16 @@ class EventAdapter: BaseRecyclerViewAdapter<EventResult>() {
         }
 
         override fun onClick(v: View?) {
-            itemClickListener?.onItemClick(adapterPosition, v)
+            println("test")
         }
     }
+
+    internal fun setEvents(events: List<EventResult>) {
+        this.events = events
+        notifyDataSetChanged()
+    }
+
+    override fun getItemCount() = events.size
 
     fun addToFavorite(v: View?) {
     }
