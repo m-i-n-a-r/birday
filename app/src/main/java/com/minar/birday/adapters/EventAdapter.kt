@@ -40,7 +40,7 @@ class EventAdapter internal constructor(context: Context) : RecyclerView.Adapter
 
         // Set every necessary text and click action in each row
         fun setUpView(event: EventResult?) {
-            val personName = event?.name + " " + event?.surname
+            val personName = event?.name + " " + event?.surname + " is favorite? " + event?.favorite
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
             val nextDate = event?.nextDate?.format(formatter)
             val nextAge = appContext.getString(R.string.next_age_years) + ": " + (event?.nextDate?.year?.minus(event.originalDate.year)).toString()
@@ -48,8 +48,20 @@ class EventAdapter internal constructor(context: Context) : RecyclerView.Adapter
             eventDate.text = nextDate
             eventYears.text = nextAge
 
+            // Manage the favorite logic
+            if(event?.favorite == false) favoriteButton.setImageResource(R.drawable.animated_to_favorite)
+            else favoriteButton.setImageResource(R.drawable.animated_from_favorite)
             favoriteButton.setOnClickListener {
-                addRemoveFavorite(it)
+                if(event?.favorite == true) {
+                    event.favorite = false
+                    setEvents(events)
+                    favoriteButton.setImageResource(R.drawable.animated_from_favorite)
+                }
+                else {
+                    event?.favorite = true
+                    setEvents(events)
+                    favoriteButton.setImageResource(R.drawable.animated_to_favorite)
+                }
                 (favoriteButton.drawable as AnimatedVectorDrawable).start()
             }
         }
@@ -65,8 +77,5 @@ class EventAdapter internal constructor(context: Context) : RecyclerView.Adapter
     }
 
     override fun getItemCount() = events.size
-
-    fun addRemoveFavorite(v: View?) {
-    }
 
 }

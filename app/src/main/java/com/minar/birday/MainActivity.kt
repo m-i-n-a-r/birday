@@ -2,6 +2,7 @@ package com.minar.birday
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.text.Editable
@@ -15,7 +16,6 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
 import androidx.room.Room
-import androidx.lifecycle.Observer
 import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.WhichButton
@@ -27,8 +27,8 @@ import com.afollestad.materialdialogs.datetime.datePicker
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.minar.birday.adapters.EventAdapter
-import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.persistence.Event
+import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.AppRater
 import com.minar.birday.viewmodels.HomeViewModel
 import java.time.LocalDate
@@ -120,17 +120,25 @@ class MainActivity : AppCompatActivity() {
             val surname = customView.findViewById<TextView>(R.id.surnameEvent)
             val eventDate = customView.findViewById<TextView>(R.id.dateEvent)
             val endDate = Calendar.getInstance()
+            var dateDialog: MaterialDialog? = null
 
             eventDate.setOnClickListener {
-                MaterialDialog(this).show {
-                    datePicker(maxDate = endDate) { _, date ->
-                        val year = date.get(Calendar.YEAR)
-                        val month = date.get(Calendar.MONTH) + 1
-                        val day = date.get(Calendar.DAY_OF_MONTH)
-                        eventDateValue = LocalDate.of(year, month, day)
-                        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)
-                        eventDate.text = eventDateValue.format(formatter)
+                // Prevent double dialogs on fast click
+                if(dateDialog == null) {
+                    dateDialog = MaterialDialog(this).show {
+                        cancelable(false)
+                        cancelOnTouchOutside(false)
+                        datePicker(maxDate = endDate) { _, date ->
+                            val year = date.get(Calendar.YEAR)
+                            val month = date.get(Calendar.MONTH) + 1
+                            val day = date.get(Calendar.DAY_OF_MONTH)
+                            eventDateValue = LocalDate.of(year, month, day)
+                            val formatter: DateTimeFormatter =
+                                DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)
+                            eventDate.text = eventDateValue.format(formatter)
+                        }
                     }
+                    Handler().postDelayed({ dateDialog = null }, 750)
                 }
             }
 
