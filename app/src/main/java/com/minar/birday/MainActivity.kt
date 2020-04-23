@@ -37,14 +37,11 @@ import java.time.format.FormatStyle
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-    private var db: EventDatabase? = null
     private lateinit var homeViewModel: HomeViewModel
-    lateinit var adapter: EventAdapter
+    private lateinit var adapter: EventAdapter
 
     @ExperimentalStdlibApi
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Db and viewmodel stuff
-        db = Room.databaseBuilder(applicationContext, EventDatabase::class.java,"BirdayDB").build()
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         adapter = EventAdapter(this.applicationContext)
 
@@ -85,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         fab.setOnClickListener {
             // Show a bottom sheet containing the form to insert a new event
             var nameValue  = "error"
-            var surnameValue = "error"
+            var surnameValue = ""
             var eventDateValue: LocalDate = LocalDate.of(1970,1,1)
             val dialog = MaterialDialog(this, BottomSheet(LayoutMode.WRAP_CONTENT)).show {
                 cornerRadius(16.toFloat())

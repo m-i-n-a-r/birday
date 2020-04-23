@@ -30,11 +30,6 @@ class HomeFragment : Fragment() {
         val v: View = inflater.inflate(R.layout.fragment_home, container, false)
         rootView = v
 
-        // Remove the placeholder
-        val homeMain: LinearLayout = v.findViewById(R.id.homeMain)
-        val placeholder: TextView = v.findViewById(R.id.noEvents)
-        homeMain.removeView(placeholder)
-
         // Setup the recycler view
         initializeRecyclerView()
 
@@ -43,6 +38,13 @@ class HomeFragment : Fragment() {
             // Update the cached copy of the words in the adapter
             events?.let { adapter.setEvents(it) }
         })
+
+        // Remove placeholder TODO properly check if the table is empty
+        if (homeViewModel.getAnyEvent() != null) {
+            val homeMain: LinearLayout = v.findViewById(R.id.homeMain)
+            val placeholder: TextView = v.findViewById(R.id.noEvents)
+            homeMain.removeView(placeholder)
+        }
 
         return v
     }

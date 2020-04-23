@@ -54,12 +54,12 @@ class EventAdapter internal constructor(context: Context) : RecyclerView.Adapter
             favoriteButton.setOnClickListener {
                 if(event?.favorite == true) {
                     event.favorite = false
-                    setEvents(events)
+                    //setEvents(events)
                     favoriteButton.setImageResource(R.drawable.animated_from_favorite)
                 }
                 else {
                     event?.favorite = true
-                    setEvents(events)
+                    //setEvents(events)
                     favoriteButton.setImageResource(R.drawable.animated_to_favorite)
                 }
                 (favoriteButton.drawable as AnimatedVectorDrawable).start()
