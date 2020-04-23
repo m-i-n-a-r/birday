@@ -19,6 +19,7 @@
         <item name="android:statusBarColor">@color/colorBackground</item>
         <item name="android:colorBackground">@color/colorBackground</item>
         <item name="android:navigationBarColor">@color/colorBackground</item>
+        <item name="colorAccent">@color/brownAccent</item>
     </style>
 
     <!-- Accent styles for splash screen -->

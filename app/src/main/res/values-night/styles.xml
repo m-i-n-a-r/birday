@@ -19,6 +19,7 @@
         <item name="android:statusBarColor">@color/colorBackgroundInverse</item>
         <item name="android:colorBackground">@color/colorBackgroundInverse</item>
         <item name="android:navigationBarColor">@color/colorBackgroundInverse</item>
+        <item name="colorAccent">@color/brownAccent</item>
     </style>
 
 </resources>
