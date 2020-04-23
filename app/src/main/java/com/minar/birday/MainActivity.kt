@@ -15,7 +15,6 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
-import androidx.room.Room
 import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.WhichButton
@@ -28,7 +27,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.persistence.Event
-import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.AppRater
 import com.minar.birday.viewmodels.HomeViewModel
 import java.time.LocalDate
@@ -55,16 +53,17 @@ class MainActivity : AppCompatActivity() {
         if (theme == "dark") AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         if (theme == "light") AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
-        if (accent == "blue") setTheme(R.style.AppTheme_blue)
-        if (accent == "green") setTheme(R.style.AppTheme_green)
-        if (accent == "orange") setTheme(R.style.AppTheme_orange)
-        if (accent == "yellow") setTheme(R.style.AppTheme_yellow)
-        if (accent == "teal") setTheme(R.style.AppTheme_teal)
-        if (accent == "violet") setTheme(R.style.AppTheme_violet)
-        if (accent == "pink") setTheme(R.style.AppTheme_pink)
-        if (accent == "lightBlue") setTheme(R.style.AppTheme_lightBlue)
-        if (accent == "red") setTheme(R.style.AppTheme_red)
-        if (accent == "lime") setTheme(R.style.AppTheme_lime)
+
+        if (accent == "blue") setTheme(R.style.AppTheme_Blue)
+        if (accent == "green") setTheme(R.style.AppTheme_Green)
+        if (accent == "orange") setTheme(R.style.AppTheme_Orange)
+        if (accent == "yellow") setTheme(R.style.AppTheme_Yellow)
+        if (accent == "teal") setTheme(R.style.AppTheme_Teal)
+        if (accent == "violet") setTheme(R.style.AppTheme_Violet)
+        if (accent == "pink") setTheme(R.style.AppTheme_Pink)
+        if (accent == "lightBlue") setTheme(R.style.AppTheme_LightBlue)
+        if (accent == "red") setTheme(R.style.AppTheme_Red)
+        if (accent == "lime") setTheme(R.style.AppTheme_Lime)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

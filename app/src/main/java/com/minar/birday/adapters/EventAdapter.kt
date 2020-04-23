@@ -40,7 +40,7 @@ class EventAdapter internal constructor(context: Context) : RecyclerView.Adapter
 
         // Set every necessary text and click action in each row
         fun setUpView(event: EventResult?) {
-            val personName = event?.name + " " + event?.surname + " is favorite? " + event?.favorite
+            val personName = event?.name + " " + event?.surname + " is favorite? " + event?.favorite // TODO remove favorite data
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
             val nextDate = event?.nextDate?.format(formatter)
             val nextAge = appContext.getString(R.string.next_age_years) + ": " + (event?.nextDate?.year?.minus(event.originalDate.year)).toString()

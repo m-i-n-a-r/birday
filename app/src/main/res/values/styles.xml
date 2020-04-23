@@ -12,53 +12,103 @@
         <item name="android:navigationBarColor">@color/deepGray</item>
     </style>
 
-    <!-- Accent styles -->
-    <style name="AppTheme.blue" parent="AppTheme">
+    <!-- Splash screen theme -->
+    <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:statusBarColor">@color/colorBackground</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="android:navigationBarColor">@color/colorBackground</item>
+    </style>
+
+    <!-- Accent styles for splash screen -->
+    <style name="Splash.Blue" parent="SplashTheme">
+        <item name="colorAccent">@color/blueAccent</item>
+    </style>
+
+    <style name="Splash.Green" parent="SplashTheme">
+        <item name="colorAccent">@color/greenAccent</item>
+    </style>
+
+    <style name="Splash.Orange" parent="SplashTheme">
+        <item name="colorAccent">@color/orangeAccent</item>
+    </style>
+
+    <style name="Splash.Yellow" parent="SplashTheme">
+        <item name="colorAccent">@color/yellowAccent</item>
+    </style>
+
+    <style name="Splash.Teal" parent="SplashTheme">
+        <item name="colorAccent">@color/tealAccent</item>
+    </style>
+
+    <style name="Splash.Violet" parent="SplashTheme">
+        <item name="colorAccent">@color/violetAccent</item>
+    </style>
+
+    <style name="Splash.Pink" parent="SplashTheme">
+        <item name="colorAccent">@color/pinkAccent</item>
+    </style>
+
+    <style name="Splash.LightBlue" parent="SplashTheme">
+        <item name="colorAccent">@color/lightBlueAccent</item>
+    </style>
+
+    <style name="Splash.Red" parent="SplashTheme">
+        <item name="colorAccent">@color/redAccent</item>
+    </style>
+
+    <style name="Splash.Lime" parent="SplashTheme">
+        <item name="colorAccent">@color/limeAccent</item>
+    </style>
+
+    <!-- Accent styles for main activity and fragments -->
+    <style name="AppTheme.Blue" parent="AppTheme">
         <item name="colorAccent">@color/blueAccent</item>
         <item name="colorPrimary">@color/blueAccent</item>
     </style>
 
-    <style name="AppTheme.green" parent="AppTheme">
+    <style name="AppTheme.Green" parent="AppTheme">
         <item name="colorAccent">@color/greenAccent</item>
         <item name="colorPrimary">@color/greenAccent</item>
     </style>
 
-    <style name="AppTheme.orange" parent="AppTheme">
+    <style name="AppTheme.Orange" parent="AppTheme">
         <item name="colorAccent">@color/orangeAccent</item>
         <item name="colorPrimary">@color/orangeAccent</item>
     </style>
 
-    <style name="AppTheme.yellow" parent="AppTheme">
+    <style name="AppTheme.Yellow" parent="AppTheme">
         <item name="colorAccent">@color/yellowAccent</item>
         <item name="colorPrimary">@color/yellowAccent</item>
     </style>
 
-    <style name="AppTheme.teal" parent="AppTheme">
+    <style name="AppTheme.Teal" parent="AppTheme">
         <item name="colorAccent">@color/tealAccent</item>
         <item name="colorPrimary">@color/tealAccent</item>
     </style>
 
-    <style name="AppTheme.violet" parent="AppTheme">
+    <style name="AppTheme.Violet" parent="AppTheme">
         <item name="colorAccent">@color/violetAccent</item>
         <item name="colorPrimary">@color/violetAccent</item>
     </style>
 
-    <style name="AppTheme.pink" parent="AppTheme">
+    <style name="AppTheme.Pink" parent="AppTheme">
         <item name="colorAccent">@color/pinkAccent</item>
         <item name="colorPrimary">@color/pinkAccent</item>
     </style>
 
-    <style name="AppTheme.lightBlue" parent="AppTheme">
+    <style name="AppTheme.LightBlue" parent="AppTheme">
         <item name="colorAccent">@color/lightBlueAccent</item>
         <item name="colorPrimary">@color/lightBlueAccent</item>
     </style>
 
-    <style name="AppTheme.red" parent="AppTheme">
+    <style name="AppTheme.Red" parent="AppTheme">
         <item name="colorAccent">@color/redAccent</item>
         <item name="colorPrimary">@color/redAccent</item>
     </style>
 
-    <style name="AppTheme.lime" parent="AppTheme">
+    <style name="AppTheme.Lime" parent="AppTheme">
         <item name="colorAccent">@color/limeAccent</item>
         <item name="colorPrimary">@color/limeAccent</item>
     </style>

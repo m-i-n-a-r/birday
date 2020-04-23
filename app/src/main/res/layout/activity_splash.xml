@@ -1,0 +1,17 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/icon_foreground"
+        android:textColor="?colorAccent"
+        android:drawableTint="?colorAccent"
+        android:text="@string/app_name"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:textAllCaps="true" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
