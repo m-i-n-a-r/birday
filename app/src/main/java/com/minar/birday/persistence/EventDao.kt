@@ -40,4 +40,7 @@ interface EventDao {
 
     @Query("SELECT * FROM Event LIMIT 1")
     fun getAnyEvent(): LiveData<List<EventResult>>
+
+    @Query("SELECT * FROM Event WHERE favorite = 1 LIMIT 1")
+    fun getAnyFavoriteEvent(): LiveData<List<EventResult>>
 }
