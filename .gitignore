@@ -56,5 +56,8 @@ freeline.py
 freeline/
 freeline_project_description.json
 
-### Android Patch ###
+# Android Patch
 gen-external-apklibs
+
+# Json Output
+app/debug/output.json
