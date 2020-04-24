@@ -49,21 +49,24 @@ class MainActivity : AppCompatActivity() {
         val accent = sp.getString("accent_color", "brown")
 
         // Set the base theme and the accent
-        if (theme == "system") AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-        if (theme == "dark") AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        if (theme == "light") AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        when (theme) {
+            "dark" -> AppCompatDelegate.MODE_NIGHT_YES
+            "light" -> AppCompatDelegate.MODE_NIGHT_NO
+            else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+        }
 
-
-        if (accent == "blue") setTheme(R.style.AppTheme_Blue)
-        if (accent == "green") setTheme(R.style.AppTheme_Green)
-        if (accent == "orange") setTheme(R.style.AppTheme_Orange)
-        if (accent == "yellow") setTheme(R.style.AppTheme_Yellow)
-        if (accent == "teal") setTheme(R.style.AppTheme_Teal)
-        if (accent == "violet") setTheme(R.style.AppTheme_Violet)
-        if (accent == "pink") setTheme(R.style.AppTheme_Pink)
-        if (accent == "lightBlue") setTheme(R.style.AppTheme_LightBlue)
-        if (accent == "red") setTheme(R.style.AppTheme_Red)
-        if (accent == "lime") setTheme(R.style.AppTheme_Lime)
+        when (accent) {
+            "blue" -> setTheme(R.style.AppTheme_Blue)
+            "green" -> setTheme(R.style.AppTheme_Green)
+            "orange" -> setTheme(R.style.AppTheme_Orange)
+            "yellow" -> setTheme(R.style.AppTheme_Yellow)
+            "teal" -> setTheme(R.style.AppTheme_Teal)
+            "violet" -> setTheme(R.style.AppTheme_Violet)
+            "pink" -> setTheme(R.style.AppTheme_Pink)
+            "lightBlue" -> setTheme(R.style.AppTheme_LightBlue)
+            "red" -> setTheme(R.style.AppTheme_Red)
+            "lime" -> setTheme(R.style.AppTheme_Lime)
+        }
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
