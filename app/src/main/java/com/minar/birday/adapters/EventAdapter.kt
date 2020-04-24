@@ -1,17 +1,14 @@
 package com.minar.birday.adapters
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.os.HandlerCompat.postDelayed
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.HomeFragment
-import com.minar.birday.MainActivity
 import com.minar.birday.R
 import com.minar.birday.persistence.EventResult
 import kotlinx.android.synthetic.main.event_row.view.*
@@ -21,7 +18,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
-import java.util.logging.Handler
 
 
 class EventAdapter internal constructor(context: Context, homeFragment: HomeFragment?) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {

@@ -20,22 +20,22 @@ class SplashActivity : AppCompatActivity() {
 
         // Set the base theme and the accent
         when (theme) {
-            "dark" -> AppCompatDelegate.MODE_NIGHT_YES
-            "light" -> AppCompatDelegate.MODE_NIGHT_NO
-            else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+            "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            "system" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         }
 
         when (accent) {
-            "blue" -> setTheme(R.style.AppTheme_Blue)
-            "green" -> setTheme(R.style.AppTheme_Green)
-            "orange" -> setTheme(R.style.AppTheme_Orange)
-            "yellow" -> setTheme(R.style.AppTheme_Yellow)
-            "teal" -> setTheme(R.style.AppTheme_Teal)
-            "violet" -> setTheme(R.style.AppTheme_Violet)
-            "pink" -> setTheme(R.style.AppTheme_Pink)
-            "lightBlue" -> setTheme(R.style.AppTheme_LightBlue)
-            "red" -> setTheme(R.style.AppTheme_Red)
-            "lime" -> setTheme(R.style.AppTheme_Lime)
+            "blue" -> setTheme(R.style.Splash_Blue)
+            "green" -> setTheme(R.style.Splash_Green)
+            "orange" -> setTheme(R.style.Splash_Orange)
+            "yellow" -> setTheme(R.style.Splash_Yellow)
+            "teal" -> setTheme(R.style.Splash_Teal)
+            "violet" -> setTheme(R.style.Splash_Violet)
+            "pink" -> setTheme(R.style.Splash_Pink)
+            "lightBlue" -> setTheme(R.style.Splash_LightBlue)
+            "red" -> setTheme(R.style.Splash_Red)
+            "lime" -> setTheme(R.style.Splash_Lime)
         }
 
         super.onCreate(savedInstanceState)
