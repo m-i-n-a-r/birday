@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.adapters.EventAdapter
+import com.minar.birday.persistence.Event
 import com.minar.birday.persistence.EventResult
 import com.minar.birday.viewmodels.HomeViewModel
 import java.time.format.DateTimeFormatter
@@ -26,7 +27,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = EventAdapter(requireActivity().applicationContext)
+        adapter = EventAdapter(requireActivity().applicationContext, this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) : View {
@@ -77,5 +78,11 @@ class HomeFragment : Fragment() {
         cardTitle.text = personName
         cardSubtitle.text = nextDate
         cardDescription.text = nextAge
+    }
+
+    // Update creating an Event object to pass instead of the returning object passed
+    fun updateFavorite(event: EventResult) {
+        val originalEvent = Event(id = event.id, name = event.name, surname = event.surname, favorite = event.favorite, originalDate = event.originalDate)
+        homeViewModel.update(originalEvent)
     }
 }

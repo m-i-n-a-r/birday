@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.minar.birday.adapters.EventAdapter
+import com.minar.birday.adapters.FavoritesAdapter
 import com.minar.birday.persistence.EventResult
 import com.minar.birday.utilities.StatsGenerator
 import com.minar.birday.viewmodels.FavoritesViewModel
@@ -20,11 +20,11 @@ class FavoritesFragment : Fragment() {
     private lateinit var rootView: View
     private lateinit var recyclerView: RecyclerView
     private lateinit var favoritesViewModel: FavoritesViewModel
-    lateinit var adapter: EventAdapter // TODO use a different adapter?
+    lateinit var adapter: FavoritesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = EventAdapter(requireActivity().applicationContext)
+        adapter = FavoritesAdapter(requireActivity().applicationContext, this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

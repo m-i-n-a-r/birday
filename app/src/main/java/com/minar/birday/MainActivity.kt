@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     @ExperimentalStdlibApi
     override fun onCreate(savedInstanceState: Bundle?) {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        adapter = EventAdapter(this.applicationContext)
+        adapter = EventAdapter(this.applicationContext, null)
 
         // getSharedPreferences(MyPrefs, Context.MODE_PRIVATE); retrieves a specific shared preferences file
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
