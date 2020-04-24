@@ -38,13 +38,9 @@ class HomeFragment : Fragment() {
             // Update the cached copy of the words in the adapter
             events?.let { adapter.setEvents(it) }
         })
-
-        // Remove placeholder TODO properly check if the table is empty
-        if (homeViewModel.getAnyEvent() != null) {
-            val homeMain: LinearLayout = v.findViewById(R.id.homeMain)
-            val placeholder: TextView = v.findViewById(R.id.noEvents)
-            homeMain.removeView(placeholder)
-        }
+        homeViewModel.anyEvent.observe(viewLifecycleOwner, Observer { eventList ->
+            if (eventList.isNotEmpty()) removePlaceholder()
+        })
 
         return v
     }
@@ -56,4 +52,9 @@ class HomeFragment : Fragment() {
         recyclerView.adapter = adapter
     }
 
+    private fun removePlaceholder() {
+        val homeMain: LinearLayout = requireView().findViewById(R.id.homeMain)
+        val placeholder: TextView = requireView().findViewById(R.id.noEvents)
+        homeMain.removeView(placeholder)
+    }
 }

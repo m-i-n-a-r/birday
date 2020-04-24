@@ -14,9 +14,11 @@ import kotlinx.coroutines.launch
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     val allEvents: LiveData<List<EventResult>>
+    val anyEvent: LiveData<List<EventResult>>
     private val eventDao: EventDao = EventDatabase.getBirdayDataBase(application)!!.eventDao()
 
     init {
+        anyEvent = eventDao.getAnyEvent()
         allEvents = eventDao.getOrderedEvents()
     }
 
@@ -32,9 +34,5 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     fun update(event: Event) = viewModelScope.launch(Dispatchers.IO) {
         eventDao.updateEvent(event)
-    }
-
-    fun getAnyEvent() = viewModelScope.launch(Dispatchers.Default) {
-        eventDao.getAnyEvent()
     }
 }

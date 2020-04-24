@@ -35,6 +35,9 @@ interface EventDao {
     @Query("SELECT *, CASE WHEN (strftime('%m', 'now') > strftime('%m', originalDate) OR (strftime('%m', 'now') = strftime('%m', originalDate) AND strftime('%d', 'now') > strftime('%d', originalDate))) THEN date(strftime('%Y', 'now') || '-' || strftime('%m', originalDate) || '-' || strftime('%d', originalDate), '+1 year') ELSE date(strftime('%Y', 'now') || '-' || strftime('%m', originalDate) || '-' || strftime('%d', originalDate)) END AS nextDate FROM Event WHERE favorite = 1 ORDER BY nextDate, originalDate")
     fun getOrderedFavoriteEvents(): LiveData<List<EventResult>>
 
+    @Query("SELECT COUNT(*) FROM Event")
+    fun getCount(): LiveData<Int>
+
     @Query("SELECT * FROM Event LIMIT 1")
-    fun getAnyEvent(): EventResult?
+    fun getAnyEvent(): LiveData<List<EventResult>>
 }
