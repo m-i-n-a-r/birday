@@ -5,6 +5,7 @@ import kotlin.random.Random
 
 class StatsGenerator(eventList: List<EventResult>) {
 
+    // TODO generate the stats!
     fun generateRandomStat(): String {
         return when(Random.nextInt(0, 6)) {
             1 -> ageAverage()

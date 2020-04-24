@@ -214,5 +214,6 @@ class MainActivity : AppCompatActivity() {
 
     // Extension function to quickly capitalize a name, also considering other uppercase letter or multiple words
     @ExperimentalStdlibApi
-    fun String.smartCapitalize(): String = trim().split(" ").map { it.toLowerCase(Locale.ROOT).capitalize(Locale.ROOT) }.joinToString(" ")
+    fun String.smartCapitalize(): String =
+        trim().split(" ").joinToString(" ") { it.toLowerCase(Locale.ROOT).capitalize(Locale.ROOT) }
 }

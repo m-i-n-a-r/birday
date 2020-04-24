@@ -12,6 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.adapters.EventAdapter
+import com.minar.birday.persistence.EventResult
+import com.minar.birday.utilities.StatsGenerator
 import com.minar.birday.viewmodels.FavoritesViewModel
 
 class FavoritesFragment : Fragment() {
@@ -40,6 +42,10 @@ class FavoritesFragment : Fragment() {
         favoritesViewModel.anyFavoriteEvent.observe(viewLifecycleOwner, Observer { eventList ->
             if (eventList.isNotEmpty()) removePlaceholder()
         })
+        favoritesViewModel.allEvents.observe(viewLifecycleOwner, Observer { eventList ->
+            // Under a minimum size, no stats will be shown
+            if (eventList.size > 4) generateStat(eventList)
+        })
 
         return v
     }
@@ -51,9 +57,20 @@ class FavoritesFragment : Fragment() {
         recyclerView.adapter = adapter
     }
 
+    // Remove the placeholder or return if the placeholder was already removed before
     private fun removePlaceholder() {
         val favoritesMain: LinearLayout = requireView().findViewById(R.id.favoritesMain)
-        val placeholder: TextView = requireView().findViewById(R.id.noFavorites)
+        val placeholder: TextView = requireView().findViewById(R.id.noFavorites) ?: return
         favoritesMain.removeView(placeholder)
+    }
+
+    // Use the generator to generate a random stat and display it
+    private fun generateStat(events: List<EventResult>) {
+        val cardSubtitle: TextView = requireView().findViewById(R.id.statsSubtitle)
+        val cardDescription: TextView = requireView().findViewById(R.id.statsDescription)
+        val generator = StatsGenerator(events)
+        cardSubtitle.text = generator.generateRandomStat()
+        val summary = getString(R.string.stats_total) + " " + events.size + " " + getString(R.string.birthdays)
+        cardDescription.text = summary
     }
 }

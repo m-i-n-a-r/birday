@@ -56,4 +56,11 @@
     <string name="no_next_event_description">Non hai inserito o importato alcun compleanno. Aggiungine uno e lascia che Birday ti aiuti!</string>
     <string name="add_favorite">Add to favorites</string>
     <string name="next_age_years">Anni</string>
+    <string name="stats_total">Birday ti sta aiutando a ricordare un totale di</string>
+    <string name="birthday">compleanno</string>
+    <string name="birthdays">compleanni</string>
+    <string name="event">evento</string>
+    <string name="events">eventi</string>
+    <string name="day">giorno</string>
+    <string name="days">giorni</string>
 </resources>

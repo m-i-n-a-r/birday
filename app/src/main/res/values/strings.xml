@@ -17,6 +17,7 @@
     <string name="stats">Statistics</string>
     <string name="no_stats">No stats to show!</string>
     <string name="no_stats_description">You haven\'t enough birthdays to display the stats. Add some and come back later!</string>
+    <string name="stats_total">Birday is helping you to remember a total of</string>
     <string name="next_event">Next event</string>
     <string name="no_next_event">No birthdays to show!</string>
     <string name="no_next_event_description">You haven\'t entered or imported a birthday yet. Add one and let Birday help you!</string>
@@ -70,5 +71,13 @@
     <string name="insert_date_hint">Select a date</string>
     <string name="invalid_value_name">Invalid value! Use only letters.</string>
     <string name="invalid_value_date">Select a date!</string>
+
+    <!-- Common words -->
+    <string name="birthday">birthday</string>
+    <string name="birthdays">birthdays</string>
+    <string name="event">event</string>
+    <string name="events">events</string>
+    <string name="day">day</string>
+    <string name="days">days</string>
 
 </resources>
