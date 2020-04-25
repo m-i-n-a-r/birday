@@ -28,13 +28,14 @@ class FavoritesAdapter internal constructor(context: Context, favoritesFragment:
         holder.setUpView(event = current)
     }
 
-    inner class EventViewHolder (view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+    inner class EventViewHolder (view: View) : RecyclerView.ViewHolder(view), View.OnClickListener, View.OnLongClickListener {
         private val eventPerson: TextView = view.eventPerson
         private val eventDate: TextView = view.eventDate
         private val eventYears: TextView = view.eventYears
 
         init {
             view.setOnClickListener(this)
+            view.setOnLongClickListener(this)
         }
 
         // Set every necessary text and click action in each row
@@ -51,6 +52,11 @@ class FavoritesAdapter internal constructor(context: Context, favoritesFragment:
         // TODO define some action on click or long click
         override fun onClick(v: View?) {
             println("test")
+        }
+
+        override fun onLongClick(v: View?): Boolean {
+            println("test")
+            return true
         }
     }
 

@@ -70,7 +70,7 @@ class FavoritesFragment : Fragment() {
         val cardDescription: TextView = requireView().findViewById(R.id.statsDescription)
         val generator = StatsGenerator(events)
         cardSubtitle.text = generator.generateRandomStat()
-        val summary = getString(R.string.stats_total) + " " + events.size + " " + getString(R.string.birthdays)
+        val summary = getString(R.string.stats_total) + " " + events.size + " " + getString(R.string.birthdays) + "!"
         cardDescription.text = summary
     }
 }
