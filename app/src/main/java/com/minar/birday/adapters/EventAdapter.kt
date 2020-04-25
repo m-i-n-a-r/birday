@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.HomeFragment
 import com.minar.birday.R
 import com.minar.birday.persistence.EventResult
+import com.minar.birday.utilities.OnItemClickListener
 import kotlinx.android.synthetic.main.event_row.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,6 +26,7 @@ class EventAdapter internal constructor(context: Context, homeFragment: HomeFrag
     private val appContext = context
     private val fragment = homeFragment
     private val activityScope = CoroutineScope(Dispatchers.Main)
+    var itemClickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         return EventViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.event_row, parent, false))
@@ -35,7 +37,7 @@ class EventAdapter internal constructor(context: Context, homeFragment: HomeFrag
         holder.setUpView(event = current)
     }
 
-    inner class EventViewHolder (view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+    inner class EventViewHolder (view: View) : RecyclerView.ViewHolder(view), View.OnClickListener, View.OnLongClickListener {
         private val favoriteButton: ImageView = view.favoriteButton
         private val eventPerson: TextView = view.eventPerson
         private val eventDate: TextView = view.eventDate
@@ -43,6 +45,7 @@ class EventAdapter internal constructor(context: Context, homeFragment: HomeFrag
 
         init {
             view.setOnClickListener(this)
+            view.setOnLongClickListener(this)
         }
 
         // Set every necessary text and click action in each row
@@ -62,7 +65,7 @@ class EventAdapter internal constructor(context: Context, homeFragment: HomeFrag
                 if(event?.favorite == true) {
                     event.favorite = false
                     activityScope.launch {
-                        delay(1300)
+                        delay(1550)
                         fragment?.updateFavorite(event)
                     }
 
@@ -71,7 +74,7 @@ class EventAdapter internal constructor(context: Context, homeFragment: HomeFrag
                 else {
                     event!!.favorite = true
                     activityScope.launch {
-                        delay(1300)
+                        delay(1550)
                         fragment?.updateFavorite(event)
                     }
 
@@ -81,9 +84,13 @@ class EventAdapter internal constructor(context: Context, homeFragment: HomeFrag
             }
         }
 
-        // TODO define some action on click or long click
         override fun onClick(v: View?) {
-            println("test")
+            itemClickListener?.onItemClick(adapterPosition, v)
+        }
+
+        override fun onLongClick(v: View?): Boolean {
+            itemClickListener?.onItemLongClick(adapterPosition, v)
+            return true
         }
     }
 
@@ -91,6 +98,12 @@ class EventAdapter internal constructor(context: Context, homeFragment: HomeFrag
         this.events = events
         notifyDataSetChanged()
     }
+
+    fun setOnItemClickListener(onItemClickListener: OnItemClickListener) {
+        this.itemClickListener = onItemClickListener
+    }
+
+    fun getItem(position: Int) = events[position]
 
     override fun getItemCount() = events.size
 

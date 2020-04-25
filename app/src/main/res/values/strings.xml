@@ -22,6 +22,8 @@
     <string name="no_next_event">No birthdays to show!</string>
     <string name="no_next_event_description">You haven\'t entered or imported a birthday yet. Add one and let Birday help you!</string>
     <string name="next_age_years">Years</string>
+    <string name="event_others">and others</string>
+    <string name="days_left">days left</string>
 
     <!-- Settings -->
     <string name="customization">Customization</string>
