@@ -1,5 +1,6 @@
 package com.minar.birday
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -68,7 +70,8 @@ class HomeFragment : Fragment() {
             }
 
             override fun onItemLongClick(position: Int, view: View?): Boolean {
-                println("CIAOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+                val act = activity as MainActivity
+                act.vibrate()
                 deleteEvent(adapter.getItem(position))
                 return true
             }

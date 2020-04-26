@@ -4,6 +4,7 @@ import android.content.Context
 import com.minar.birday.R
 import com.minar.birday.persistence.EventResult
 import java.time.LocalDate
+import java.time.format.TextStyle
 import java.util.*
 import kotlin.math.truncate
 import kotlin.random.Random
@@ -17,7 +18,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         // Use a response string to re-execute the stats calculation if a stat cannot be computed correctly
         var response: String? = null
         while (response.isNullOrBlank()) {
-            response = when (Random.nextInt(0, 11)) {
+            response = when (Random.nextInt(0, 12)) {
                 1 -> ageAverage()
                 2 -> mostCommonMonth()
                 3 -> mostCommonDecade()
@@ -28,6 +29,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
                 8 -> randomDayOfWeek()
                 9 -> mostCommonDayOfWeek()
                 10 -> leapYearTotal()
+                11 -> randomChineseYear()
                 else -> ageAverage()
             }
         }
@@ -45,8 +47,9 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         val months = mutableMapOf<String, Int>()
         val commonMonth: String
         events.forEach {
-            if(months[it.originalDate.month.toString()] == null) months[it.originalDate.month.toString()] = 1
-            else months[it.originalDate.month.toString()] = months[it.originalDate.month.toString()]!!.plus(1)
+            val month = it.originalDate.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
+            if(months[month] == null) months[month] = 1
+            else months[month] = months[month]!!.plus(1)
         }
         commonMonth = evaluateResult(months)
         if (commonMonth.isBlank()) return commonMonth
@@ -129,8 +132,9 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         val weekDays = mutableMapOf<String, Int>()
         val commonWeekDay: String
         events.forEach {
-            if(weekDays[it.originalDate.dayOfWeek.toString()] == null) weekDays[it.originalDate.dayOfWeek.toString()] = 1
-            else weekDays[it.originalDate.dayOfWeek.toString()] = weekDays[it.originalDate.dayOfWeek.toString()]!!.plus(1)
+            val weekDay = it.originalDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault())
+            if(weekDays[weekDay] == null) weekDays[weekDay] = 1
+            else weekDays[weekDay] = weekDays[weekDay]!!.plus(1)
         }
         commonWeekDay = evaluateResult(weekDays)
         if (commonWeekDay.isBlank()) return commonWeekDay
@@ -145,6 +149,42 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
             if (it.originalDate.isLeapYear) leapTotal++
         }
         return applicationContext?.getString(R.string.leap_year_total) + " " + leapTotal.toString()
+    }
+
+    // Get the chinese year of a random person
+    private fun randomChineseYear(): String {
+        val randomPerson = events.random()
+        var sign = ""
+        var signNumber = 0
+        when (randomPerson.originalDate.year % 12) {
+            4 -> signNumber = 0
+            5 -> signNumber = 1
+            6 -> signNumber = 2
+            7 -> signNumber = 3
+            8 -> signNumber = 4
+            9 -> signNumber = 5
+            10 -> signNumber = 6
+            11 -> signNumber = 7
+            0 -> signNumber = 8
+            1 -> signNumber = 9
+            2 -> signNumber = 10
+            3 -> signNumber = 11
+        }
+        when (signNumber) {
+            0 -> sign = applicationContext?.getString(R.string.chinese_zodiac_rat).toString()
+            1 -> sign = applicationContext?.getString(R.string.chinese_zodiac_ox).toString()
+            2 -> sign = applicationContext?.getString(R.string.chinese_zodiac_tiger).toString()
+            3 -> sign = applicationContext?.getString(R.string.chinese_zodiac_rabbit).toString()
+            4 -> sign = applicationContext?.getString(R.string.chinese_zodiac_dragon).toString()
+            5 -> sign = applicationContext?.getString(R.string.chinese_zodiac_snake).toString()
+            6 -> sign = applicationContext?.getString(R.string.chinese_zodiac_horse).toString()
+            7 -> sign = applicationContext?.getString(R.string.chinese_zodiac_goat).toString()
+            8 -> sign = applicationContext?.getString(R.string.chinese_zodiac_monkey).toString()
+            9 -> sign = applicationContext?.getString(R.string.chinese_zodiac_rooster).toString()
+            10 -> sign = applicationContext?.getString(R.string.chinese_zodiac_dog).toString()
+            11 -> sign = applicationContext?.getString(R.string.chinese_zodiac_pig).toString()
+        }
+        return applicationContext?.getString(R.string.random_chinese_year) + " " + randomPerson.name + ": " + sign
     }
 
     // Get a list containing all the ages without any reference to the names

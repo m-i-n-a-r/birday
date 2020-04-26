@@ -77,4 +77,17 @@
     <string name="random_day_of_week">è nato di</string>
     <string name="most_common_day_of_week">Il giorno di settimana di nascita più comune è</string>
     <string name="leap_year_total">Il numero di persone nate in un anno bisestile è</string>
+    <string name="random_chinese_year">Segno zodiacale cinese di</string>
+    <string name="chinese_zodiac_rat">topo</string>
+    <string name="chinese_zodiac_ox">bue</string>
+    <string name="chinese_zodiac_tiger">tigre</string>
+    <string name="chinese_zodiac_rabbit">coniglio</string>
+    <string name="chinese_zodiac_dragon">drago</string>
+    <string name="chinese_zodiac_snake">serpente</string>
+    <string name="chinese_zodiac_horse">cavallo</string>
+    <string name="chinese_zodiac_goat">capra</string>
+    <string name="chinese_zodiac_monkey">scimmia</string>
+    <string name="chinese_zodiac_rooster">gallo</string>
+    <string name="chinese_zodiac_dog">cane</string>
+    <string name="chinese_zodiac_pig">maiale</string>
 </resources>

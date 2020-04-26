@@ -62,6 +62,7 @@ class EventAdapter internal constructor(context: Context, homeFragment: HomeFrag
             if(event?.favorite == false) favoriteButton.setImageResource(R.drawable.animated_to_favorite)
             else favoriteButton.setImageResource(R.drawable.animated_from_favorite)
             favoriteButton.setOnClickListener {
+                // TODO vibrate?
                 if(event?.favorite == true) {
                     event.favorite = false
                     activityScope.launch {
