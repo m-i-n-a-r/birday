@@ -87,7 +87,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         val specialAges = arrayOf(10,18,20,30,40,50,60,70,80,90,100,110,120,130)
         val specialPersons = mutableMapOf<String, Int>()
         events.forEach {
-            val nextAge = getAge(it)
+            val nextAge = getNextAge(it)
             if (nextAge in specialAges) specialPersons[it.name] = nextAge
         }
         return if (specialPersons.isEmpty()) ""
@@ -197,7 +197,9 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         return ages
     }
 
-    private fun getAge(eventResult: EventResult) = eventResult.nextDate!!.year - eventResult.originalDate.year
+    private fun getAge(eventResult: EventResult) = eventResult.nextDate!!.year - eventResult.originalDate.year - 1
+
+    private fun getNextAge(eventResult: EventResult) = eventResult.nextDate!!.year - eventResult.originalDate.year
 
     private fun getDecade(originalDate: LocalDate) = ((originalDate.year.toDouble() / 10).toInt() * 10).toString()
 
