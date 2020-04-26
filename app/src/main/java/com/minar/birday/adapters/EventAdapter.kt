@@ -41,7 +41,6 @@ class EventAdapter internal constructor(context: Context, homeFragment: HomeFrag
         private val favoriteButton: ImageView = view.favoriteButton
         private val eventPerson: TextView = view.eventPerson
         private val eventDate: TextView = view.eventDate
-        private val eventYears: TextView = view.eventYears
 
         init {
             view.setOnClickListener(this)
@@ -53,10 +52,8 @@ class EventAdapter internal constructor(context: Context, homeFragment: HomeFrag
             val personName = event?.name + " " + event?.surname
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
             val nextDate = event?.nextDate?.format(formatter)
-            val nextAge = appContext.getString(R.string.next_age_years) + ": " + (event?.nextDate?.year?.minus(event.originalDate.year)).toString()
             eventPerson.text = personName
             eventDate.text = nextDate
-            eventYears.text = nextAge
 
             // Manage the favorite logic
             if(event?.favorite == false) favoriteButton.setImageResource(R.drawable.animated_to_favorite)

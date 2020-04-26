@@ -108,5 +108,6 @@
     <string name="day">day</string>
     <string name="days">days</string>
     <string name="years">years</string>
+    <string name="born_in">born in</string>
 
 </resources>

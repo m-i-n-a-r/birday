@@ -27,12 +27,6 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
             android:padding="@dimen/in_row_padding" />
-        <TextView
-            android:id="@+id/eventYears"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-            android:padding="@dimen/in_row_padding" />
 
     </LinearLayout>
 

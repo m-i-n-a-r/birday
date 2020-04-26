@@ -90,4 +90,5 @@
     <string name="chinese_zodiac_rooster">gallo</string>
     <string name="chinese_zodiac_dog">cane</string>
     <string name="chinese_zodiac_pig">maiale</string>
+    <string name="born_in">nato nel</string>
 </resources>
