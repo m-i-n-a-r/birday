@@ -1,5 +1,7 @@
 package com.minar.birday
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
@@ -42,6 +44,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         adapter = EventAdapter(this.applicationContext, null)
+
+        // Create the notification channel
+        createNotificationChannel()
 
         // getSharedPreferences(MyPrefs, Context.MODE_PRIVATE); retrieves a specific shared preferences file
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
@@ -194,6 +199,18 @@ class MainActivity : AppCompatActivity() {
             surname.addTextChangedListener(watcher)
             eventDate.addTextChangedListener(watcher)
         }
+    }
+
+    // Create the NotificationChannel. When created the first time, this code does nothing
+    private fun createNotificationChannel() {
+        val name = getString(R.string.events_notification_channel)
+        val descriptionText = getString(R.string.events_channel_description)
+        val importance = NotificationManager.IMPORTANCE_HIGH
+        val channel = NotificationChannel("events_channel", name, importance).apply { description = descriptionText }
+        // Register the channel with the system
+        val notificationManager: NotificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
     }
 
     // Some utility functions, used from every fragment connected to this activity

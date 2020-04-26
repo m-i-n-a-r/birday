@@ -110,4 +110,8 @@
     <string name="years">years</string>
     <string name="born_in">born in</string>
 
+    <!-- Notification channel -->
+    <string name="events_notification_channel">Event Reminder</string>
+    <string name="events_channel_description">Reminders about the upcoming birthdays from Birday</string>
+
 </resources>

@@ -124,7 +124,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     private fun randomDayOfWeek(): String {
         val randomPerson = events.random()
         return randomPerson.name + " " + applicationContext?.getString(R.string.random_day_of_week) + " " +
-                randomPerson.originalDate.dayOfWeek.toString().toLowerCase(Locale.ROOT)
+                randomPerson.originalDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault()).toLowerCase(Locale.ROOT)
     }
 
     // The most common day of the week of birth. When there's no common day of the week, return a blank string
@@ -138,8 +138,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         }
         commonWeekDay = evaluateResult(weekDays)
         if (commonWeekDay.isBlank()) return commonWeekDay
-        return applicationContext?.getString(R.string.most_common_day_of_week) + " " + commonWeekDay.toLowerCase(
-            Locale.ROOT)
+        return applicationContext?.getString(R.string.most_common_day_of_week) + " " + commonWeekDay.toLowerCase(Locale.ROOT)
     }
 
     // Get the number of persons born in a leap year. Even 0 is an acceptable result
