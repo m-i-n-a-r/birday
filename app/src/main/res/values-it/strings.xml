@@ -65,4 +65,16 @@
     <string name="days">giorni</string>
     <string name="event_others">ed altri</string>
     <string name="days_left">giorni rimasti</string>
+    <string name="years">anni</string>
+    <string name="did_you_know">Lo sapevi?</string>
+    <string name="age_average">L\'età media è</string>
+    <string name="most_common_month">Il mese di nascita più comune è</string>
+    <string name="most_common_decade">La decade di nascita più comune è</string>
+    <string name="most_common_age_range">La fascia d\'età più comune è</string>
+    <string name="special_ages">Un importante compleanno in arrivo è</string>
+    <string name="random_zodiac_sign">Segno zodiacale di</string>
+    <string name="most_common_zodiac_sign">Il segno zodiacale più comune è</string>
+    <string name="random_day_of_week">è nato di</string>
+    <string name="most_common_day_of_week">Il giorno di settimana di nascita più comune è</string>
+    <string name="leap_year_total">Il numero di persone nate in un anno bisestile è</string>
 </resources>

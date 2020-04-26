@@ -74,6 +74,19 @@
     <string name="invalid_value_name">Invalid value! Use only letters.</string>
     <string name="invalid_value_date">Select a date!</string>
 
+    <!-- Statistics -->
+    <string name="did_you_know">Did you know?</string>
+    <string name="age_average">The average age is</string>
+    <string name="most_common_month">The most common month of birth is</string>
+    <string name="most_common_decade">The most common decade of birth is</string>
+    <string name="most_common_age_range">The most common age range is</string>
+    <string name="special_ages">An important upcoming birthday is</string>
+    <string name="random_zodiac_sign">Zodiac sign of</string>
+    <string name="most_common_zodiac_sign">The most common zodiac sign is</string>
+    <string name="random_day_of_week">was born on</string>
+    <string name="most_common_day_of_week">The most common day of the week of birth is</string>
+    <string name="leap_year_total">The number of persons born in a leap year is</string>
+
     <!-- Common words -->
     <string name="birthday">birthday</string>
     <string name="birthdays">birthdays</string>
@@ -81,5 +94,6 @@
     <string name="events">events</string>
     <string name="day">day</string>
     <string name="days">days</string>
+    <string name="years">years</string>
 
 </resources>

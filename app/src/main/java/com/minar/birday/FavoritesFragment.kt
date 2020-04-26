@@ -68,7 +68,7 @@ class FavoritesFragment : Fragment() {
     private fun generateStat(events: List<EventResult>) {
         val cardSubtitle: TextView = requireView().findViewById(R.id.statsSubtitle)
         val cardDescription: TextView = requireView().findViewById(R.id.statsDescription)
-        val generator = StatsGenerator(events)
+        val generator = StatsGenerator(events, context)
         cardSubtitle.text = generator.generateRandomStat()
         val summary = getString(R.string.stats_total) + " " + events.size + " " + getString(R.string.birthdays) + "!"
         cardDescription.text = summary
