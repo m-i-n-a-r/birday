@@ -52,14 +52,13 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         val currentDate = Calendar.getInstance()
         val dueDate = Calendar.getInstance()
         // Set Execution at the time specified
-        // TODO test put workHour back in
-        dueDate.set(Calendar.HOUR_OF_DAY, 0)
-        dueDate.set(Calendar.MINUTE, 1)
+        dueDate.set(Calendar.HOUR_OF_DAY, workHour)
+        dueDate.set(Calendar.MINUTE, 0)
         dueDate.set(Calendar.SECOND, 0)
         if (dueDate.before(currentDate)) dueDate.add(Calendar.HOUR_OF_DAY, 24)
         val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis
         val dailyWorkRequest = OneTimeWorkRequestBuilder<EventWorker>()
-            .setInitialDelay(1, TimeUnit.MINUTES)
+            .setInitialDelay(timeDiff, TimeUnit.MINUTES)
             .build()
         workManager.enqueue(dailyWorkRequest)
     }

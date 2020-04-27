@@ -33,9 +33,9 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         if(!nextEvents.isNullOrEmpty() && nextEvents[0].nextDate!!.isEqual(LocalDate.now())) sendNotification(nextEvents)
 
         // Set Execution at the time specified
-        dueDate.set(Calendar.HOUR_OF_DAY, 0)
+        dueDate.set(Calendar.HOUR_OF_DAY, workHour)
         dueDate.set(Calendar.MINUTE, 0)
-        dueDate.set(Calendar.SECOND, 30)
+        dueDate.set(Calendar.SECOND, 0)
         if (dueDate.before(currentDate)) dueDate.add(Calendar.HOUR_OF_DAY, 24)
         val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis
         // Cancel every previous scheduled work
@@ -50,7 +50,6 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
 
     private fun sendNotification(nextEvents: List<EventResult>) {
         // Send notification if there's a birthday today
-        // TODO for testing purposes, the notification is sent anyway
         val intent = Intent(applicationContext, SplashActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
@@ -73,6 +72,16 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
     }
 
     private fun formulateNotificationText(nextEvents: List<EventResult>): String {
-        return "banana"
+        var response = applicationContext.getString(R.string.notification_description_part_1) + ": "
+        nextEvents.forEach {
+            if(nextEvents.indexOf(it) == 0) response += it.name + ", " + it.nextDate?.year?.minus(it.originalDate.year)
+            if((nextEvents.indexOf(it) > 0) and (nextEvents.indexOf(it) < nextEvents.lastIndex))
+                response += ", " + it.name + ", " + it.nextDate?.year?.minus(it.originalDate.year)
+            if(nextEvents.indexOf(it) == nextEvents.lastIndex) response += applicationContext.getString(R.string.and) +
+                    " " + it.name + ", " + it.nextDate?.year?.minus(it.originalDate.year) + ". "
+        }
+        response += applicationContext.getString(R.string.notification_description_part_2)
+
+        return response
     }
 }
