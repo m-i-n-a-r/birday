@@ -30,5 +30,7 @@
     <dimen name="result_text_margin">42dp</dimen>
     <dimen name="text_field_height">56dp</dimen>
     <dimen name="text_field_horizontal_margin">12dp</dimen>
+    <dimen name="splash_image_size">192dp</dimen>
+    <dimen name="splash_image_padding">24dp</dimen>
 
 </resources>

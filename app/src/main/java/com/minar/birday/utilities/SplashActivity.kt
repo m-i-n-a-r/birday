@@ -1,8 +1,11 @@
 package com.minar.birday.utilities
 
 import android.content.Intent
+import android.graphics.drawable.AnimatedVectorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import com.minar.birday.MainActivity
@@ -40,6 +43,10 @@ class SplashActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+        val splash: ImageView = findViewById(R.id.splashImage)
+        splash.setImageResource(R.drawable.animated_birday)
+        (splash.drawable as AnimatedVectorDrawable).start()
 
         activityScope.launch {
             delay(1000)

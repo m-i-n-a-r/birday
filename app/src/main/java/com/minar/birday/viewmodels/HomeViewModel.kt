@@ -47,16 +47,19 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     // Check if there's a birthday today, using the hour range specified in shared preferences
     private fun checkEvents() {
+        // Cancel every previous scheduled work
+        workManager.pruneWork()
         val currentDate = Calendar.getInstance()
         val dueDate = Calendar.getInstance()
         // Set Execution at the time specified
-        dueDate.set(Calendar.HOUR_OF_DAY, workHour)
-        dueDate.set(Calendar.MINUTE, 0)
+        // TODO test put workHour back in
+        dueDate.set(Calendar.HOUR_OF_DAY, 0)
+        dueDate.set(Calendar.MINUTE, 1)
         dueDate.set(Calendar.SECOND, 0)
         if (dueDate.before(currentDate)) dueDate.add(Calendar.HOUR_OF_DAY, 24)
         val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis
         val dailyWorkRequest = OneTimeWorkRequestBuilder<EventWorker>()
-            .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)
+            .setInitialDelay(1, TimeUnit.MINUTES)
             .build()
         workManager.enqueue(dailyWorkRequest)
     }

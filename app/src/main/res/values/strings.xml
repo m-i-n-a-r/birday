@@ -122,9 +122,13 @@
     <string name="today">Today</string>
     <string name="years">years</string>
     <string name="born_in">born in</string>
+    <string name="and">and</string>
 
-    <!-- Notification channel -->
+    <!-- Notifications -->
     <string name="events_notification_channel">Event Reminder</string>
     <string name="events_channel_description">Reminders about the upcoming birthdays from Birday</string>
+    <string name="notification_title">Birday Reminder</string>
+    <string name="notification_description_part_1">Hi there, today\'s birthdays are</string>
+    <string name="notification_description_part_2">Have a great day!</string>
 
 </resources>

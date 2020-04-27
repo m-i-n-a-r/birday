@@ -67,6 +67,7 @@
     <string name="event_others">ed altri</string>
     <string name="days_left">giorni rimasti</string>
     <string name="years">anni</string>
+    <string name="and">e</string>
     <string name="did_you_know">Lo sapevi?</string>
     <string name="age_average">L\'età media è</string>
     <string name="most_common_month">Il mese di nascita più comune è</string>
@@ -106,4 +107,8 @@
     <string name="born_in">nato/a nel</string>
     <string name="events_notification_channel">Promemoria Eventi</string>
     <string name="events_channel_description">Promemoria sui compleanni in arrivo di Birday</string>
+    <string name="notification_title">Promemoria Birday</string>
+    <string name="notification_description_part_1">Ciao, i compleanni di oggi sono</string>
+    <string name="notification_description_part_2">Ti auguro una buona giornata!</string>
+
 </resources>
