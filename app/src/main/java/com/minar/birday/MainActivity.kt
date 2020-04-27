@@ -236,4 +236,5 @@ class MainActivity : AppCompatActivity() {
     @ExperimentalStdlibApi
     fun String.smartCapitalize(): String =
         trim().split(" ").joinToString(" ") { it.toLowerCase(Locale.ROOT).capitalize(Locale.ROOT) }
+
 }

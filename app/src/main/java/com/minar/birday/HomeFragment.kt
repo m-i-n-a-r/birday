@@ -1,16 +1,21 @@
 package com.minar.birday
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.annotation.DrawableRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.vectordrawable.graphics.drawable.Animatable2Compat
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.persistence.Event
 import com.minar.birday.persistence.EventResult
@@ -35,6 +40,8 @@ class HomeFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) : View {
         val v: View = inflater.inflate(R.layout.fragment_home, container, false)
+        val upcomingImage = v.findViewById<ImageView>(R.id.upcomingImage)
+            upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
         rootView = v
 
         // Setup the recycler view
@@ -132,5 +139,17 @@ class HomeFragment : Fragment() {
     fun deleteEvent(eventResult: EventResult) = homeViewModel.delete(toEvent(eventResult))
 
     private fun toEvent(event: EventResult) = Event(id = event.id, name = event.name, surname = event.surname, favorite = event.favorite, originalDate = event.originalDate)
+
+    // Loop the animated vector drawable
+    internal fun ImageView.applyLoopingAnimatedVectorDrawable(@DrawableRes animatedVector: Int) {
+        val animated = AnimatedVectorDrawableCompat.create(context, animatedVector)
+        animated?.registerAnimationCallback(object : Animatable2Compat.AnimationCallback() {
+            override fun onAnimationEnd(drawable: Drawable?) {
+                this@applyLoopingAnimatedVectorDrawable.post { animated.start() }
+            }
+        })
+        this.setImageDrawable(animated)
+        animated?.start()
+    }
 }
 

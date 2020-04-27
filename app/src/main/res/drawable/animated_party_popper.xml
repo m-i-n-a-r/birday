@@ -1,0 +1,143 @@
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+            android:name="vector"
+            android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="24"
+            android:viewportHeight="24">
+            <path
+                android:name="party_popper"
+                android:pathData="M 8.035 9.739 L 6.955 10.819 L 8.555 12.419 C 8.775 12.669 8.885 12.959 8.885 13.289 C 8.885 13.619 8.775 13.929 8.555 14.149 L 5.005 17.759 L 6.005 18.839 L 9.635 15.229 C 10.165 14.639 10.425 13.989 10.425 13.289 C 10.425 12.589 10.165 11.929 9.635 11.339 L 8.035 9.739 M 8.363 10.03 L 7.283 11.11 L 7.893 11.67 C 8.113 11.89 8.223 12.19 8.223 12.56 C 8.223 12.93 8.113 13.23 7.893 13.45 L 7.283 14.01 L 8.363 15.09 L 8.923 14.48 C 9.453 13.89 9.723 13.25 9.723 12.56 C 9.723 11.84 9.453 11.19 8.923 10.59 L 8.363 10.03 M 10.785 13.382 C 10.095 13.382 9.455 13.652 8.865 14.182 L 3.235 19.822 L 4.315 20.822 L 9.895 15.262 C 10.145 15.012 10.445 14.882 10.785 14.882 C 11.125 14.882 11.418 15.019 11.675 15.262 L 12.285 15.872 L 13.315 14.792 L 12.755 14.182 C 12.165 13.652 11.505 13.382 10.785 13.382 M 7 8 L 2 22 L 16 17 L 7 8 M 11.2 13.899 C 10.5 13.899 9.86 14.169 9.26 14.699 L 7.67 16.289 L 8.75 17.369 L 10.34 15.779 C 10.59 15.529 10.87 15.399 11.2 15.399 C 11.53 15.399 11.83 15.529 12.08 15.779 L 13.7 17.369 L 14.75 16.339 L 13.15 14.699 C 12.56 14.169 11.9 13.899 11.2 13.899 Z"
+                android:fillColor="?colorAccent"
+                android:strokeColor="@color/goodGray"/>
+            <path
+                android:name="popper"
+                android:pathData="M 7 8 L 2 22 L 16 17 L 7 8"
+                android:fillColor="@color/goodGray"
+                android:strokeColor="@color/goodGray"
+                android:strokeWidth="0.1"/>
+            <path
+                android:name="confetti"
+                android:pathData="M 14.53 1.45 L 13.45 2.53 L 15.05 4.13 C 15.27 4.38 15.38 4.67 15.38 5 C 15.38 5.33 15.27 5.64 15.05 5.86 L 11.5 9.47 L 12.5 10.55 L 16.13 6.94 C 16.66 6.35 16.92 5.7 16.92 5 C 16.92 4.3 16.66 3.64 16.13 3.05 L 14.53 1.45 M 10.55 3.47 L 9.47 4.55 L 10.08 5.11 C 10.3 5.33 10.41 5.63 10.41 6 C 10.41 6.37 10.3 6.67 10.08 6.89 L 9.47 7.45 L 10.55 8.53 L 11.11 7.92 C 11.64 7.33 11.91 6.69 11.91 6 C 11.91 5.28 11.64 4.63 11.11 4.03 L 10.55 3.47 M 21 5.06 C 20.31 5.06 19.67 5.33 19.08 5.86 L 13.45 11.5 L 14.53 12.5 L 20.11 6.94 C 20.36 6.69 20.66 6.56 21 6.56 C 21.34 6.56 21.64 6.69 21.89 6.94 L 22.5 7.55 L 23.53 6.47 L 22.97 5.86 C 22.38 5.33 21.72 5.06 21 5.06 M 19 11.06 C 18.3 11.06 17.66 11.33 17.06 11.86 L 15.47 13.45 L 16.55 14.53 L 18.14 12.94 C 18.39 12.69 18.67 12.56 19 12.56 C 19.33 12.56 19.63 12.69 19.88 12.94 L 21.5 14.53 L 22.55 13.5 L 20.95 11.86 C 20.36 11.33 19.7 11.06 19 11.06 Z"
+                android:fillColor="?colorAccent"
+                android:fillAlpha="0"
+                android:strokeColor="@color/goodGray"/>
+        </vector>
+    </aapt:attr>
+    <target android:name="party_popper">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:propertyName="pathData"
+                    android:duration="1300"
+                    android:valueFrom="M 8.035 9.739 L 6.955 10.819 L 8.555 12.419 C 8.775 12.669 8.885 12.959 8.885 13.289 C 8.885 13.619 8.775 13.929 8.555 14.149 L 5.005 17.759 L 6.005 18.839 L 9.635 15.229 C 10.165 14.639 10.425 13.989 10.425 13.289 C 10.425 12.589 10.165 11.929 9.635 11.339 L 8.035 9.739 M 8.363 10.03 L 7.283 11.11 L 7.893 11.67 C 8.113 11.89 8.223 12.19 8.223 12.56 C 8.223 12.93 8.113 13.23 7.893 13.45 L 7.283 14.01 L 8.363 15.09 L 8.923 14.48 C 9.453 13.89 9.723 13.25 9.723 12.56 C 9.723 11.84 9.453 11.19 8.923 10.59 L 8.363 10.03 M 10.785 13.382 C 10.095 13.382 9.455 13.652 8.865 14.182 L 3.235 19.822 L 4.315 20.822 L 9.895 15.262 C 10.145 15.012 10.445 14.882 10.785 14.882 C 11.125 14.882 11.418 15.019 11.675 15.262 L 12.285 15.872 L 13.315 14.792 L 12.755 14.182 C 12.165 13.652 11.505 13.382 10.785 13.382 M 7 8 L 2 22 L 16 17 L 7 8 M 11.2 13.899 C 10.5 13.899 9.86 14.169 9.26 14.699 L 7.67 16.289 L 8.75 17.369 L 10.34 15.779 C 10.59 15.529 10.87 15.399 11.2 15.399 C 11.53 15.399 11.83 15.529 12.08 15.779 L 13.7 17.369 L 14.75 16.339 L 13.15 14.699 C 12.56 14.169 11.9 13.899 11.2 13.899 Z"
+                    android:valueTo="M 14.53 1.45 L 13.45 2.53 L 15.05 4.13 C 15.27 4.38 15.38 4.67 15.38 5 C 15.38 5.33 15.27 5.64 15.05 5.86 L 11.5 9.47 L 12.5 10.55 L 16.13 6.94 C 16.66 6.35 16.92 5.7 16.92 5 C 16.92 4.3 16.66 3.64 16.13 3.05 L 14.53 1.45 M 10.55 3.47 L 9.47 4.55 L 10.08 5.11 C 10.3 5.33 10.41 5.63 10.41 6 C 10.41 6.37 10.3 6.67 10.08 6.89 L 9.47 7.45 L 10.55 8.53 L 11.11 7.92 C 11.64 7.33 11.91 6.69 11.91 6 C 11.91 5.28 11.64 4.63 11.11 4.03 L 10.55 3.47 M 21 5.06 C 20.31 5.06 19.67 5.33 19.08 5.86 L 13.45 11.5 L 14.53 12.5 L 20.11 6.94 C 20.36 6.69 20.66 6.56 21 6.56 C 21.34 6.56 21.64 6.69 21.89 6.94 L 22.5 7.55 L 23.53 6.47 L 22.97 5.86 C 22.38 5.33 21.72 5.06 21 5.06 M 7 8 L 2 22 L 16 17 L 7 8 M 19 11.06 C 18.3 11.06 17.66 11.33 17.06 11.86 L 15.47 13.45 L 16.55 14.53 L 18.14 12.94 C 18.39 12.69 18.67 12.56 19 12.56 C 19.33 12.56 19.63 12.69 19.88 12.94 L 21.5 14.53 L 22.55 13.5 L 20.95 11.86 C 20.36 11.33 19.7 11.06 19 11.06 Z"
+                    android:valueType="pathType"
+                    android:interpolator="@android:anim/bounce_interpolator"/>
+                <objectAnimator
+                    android:propertyName="fillAlpha"
+                    android:startOffset="1300"
+                    android:duration="1"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+                <objectAnimator
+                    android:propertyName="strokeAlpha"
+                    android:startOffset="1300"
+                    android:duration="1"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="confetti">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:propertyName="fillAlpha"
+                    android:startOffset="1300"
+                    android:duration="1"
+                    android:valueFrom="0"
+                    android:valueTo="1"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+                <objectAnimator
+                    android:propertyName="strokeColor"
+                    android:startOffset="1301"
+                    android:duration="599"
+                    android:valueFrom="?colorAccent"
+                    android:valueTo="@color/goodGray"
+                    android:valueType="colorType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+                <objectAnimator
+                    android:propertyName="strokeAlpha"
+                    android:startOffset="1301"
+                    android:duration="399"
+                    android:valueFrom="0"
+                    android:valueTo="0.7"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+                <objectAnimator
+                    android:propertyName="strokeWidth"
+                    android:startOffset="1301"
+                    android:duration="599"
+                    android:valueFrom="0"
+                    android:valueTo="0.5"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+                <objectAnimator
+                    android:propertyName="fillAlpha"
+                    android:startOffset="1700"
+                    android:duration="300"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+                <objectAnimator
+                    android:propertyName="strokeAlpha"
+                    android:startOffset="1700"
+                    android:duration="200"
+                    android:valueFrom="0.7"
+                    android:valueTo="0"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="popper">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:propertyName="fillAlpha"
+                    android:duration="350"
+                    android:valueFrom="1"
+                    android:valueTo="0.5"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+                <objectAnimator
+                    android:propertyName="fillAlpha"
+                    android:startOffset="350"
+                    android:duration="350"
+                    android:valueFrom="0.5"
+                    android:valueTo="1"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+                <!-- Animation to just create a pause -->
+                <objectAnimator
+                    android:propertyName="fillAlpha"
+                    android:startOffset="2000"
+                    android:duration="1000"
+                    android:valueFrom="1"
+                    android:valueTo="1"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/linear"/>
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

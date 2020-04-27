@@ -23,21 +23,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- Media -->
-            <ImageView
-                android:id="@+id/upcomingImage"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/card_image_height"
-                android:contentDescription="@string/app_name"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_party_24dp" />
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_weight="10"
                 android:padding="16dp">
 
                 <TextView
@@ -66,6 +58,18 @@
                     android:textColor="?android:attr/textColorSecondary" />
 
             </LinearLayout>
+
+            <!-- Media -->
+            <ImageView
+                android:id="@+id/upcomingImage"
+                android:layout_width="@dimen/card_image_height"
+                android:layout_height="@dimen/card_image_height"
+                android:layout_gravity="center"
+                android:paddingLeft="@dimen/card_image_padding"
+                android:paddingRight="@dimen/card_image_padding"
+                android:contentDescription="@string/app_name"
+                android:layout_weight="1"
+                android:src="@drawable/animated_party_popper" />
 
         </LinearLayout>
 
