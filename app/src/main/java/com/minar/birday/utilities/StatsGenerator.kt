@@ -206,19 +206,34 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
 
     private fun getZodiacSign(day: Int, month: Int): String {
         var sign = ""
+        var signNumber = 0
         when (month) {
-            12 -> sign = if (day < 22) "Sagittarius" else "Capricorn"
-            1 -> sign = if (day < 20) "Capricorn" else "Aquarius"
-            2 -> sign = if (day < 19) "Aquarius" else "Pisces"
-            3 -> sign = if (day < 21) "Pisces" else "Aries"
-            4 -> sign = if (day < 20) "Aries" else "Taurus"
-            5 -> sign = if (day < 21) "Taurus" else "Gemini"
-            6 -> sign = if (day < 21) "Gemini" else "Cancer"
-            7 -> sign = if (day < 23) "Cancer" else "Leo"
-            8 -> sign = if (day < 23) "Leo" else "Virgo"
-            9 -> sign = if (day < 23) "Virgo" else "Libra"
-            10 -> sign = if (day < 23) "Libra" else "Scorpio"
-            11 -> sign = if (day < 22) "Scorpio" else "Sagittarius"
+            12 -> signNumber = if (day < 22) 0 else 1
+            1 -> signNumber = if (day < 20) 1 else 2
+            2 -> signNumber = if (day < 19) 2 else 3
+            3 -> signNumber = if (day < 21) 3 else 4
+            4 -> signNumber = if (day < 20) 4 else 5
+            5 -> signNumber = if (day < 21) 5 else 6
+            6 -> signNumber = if (day < 21) 6 else 7
+            7 -> signNumber = if (day < 23) 7 else 8
+            8 -> signNumber = if (day < 23) 8 else 9
+            9 -> signNumber = if (day < 23) 9 else 10
+            10 -> signNumber = if (day < 23) 10 else 11
+            11 -> signNumber = if (day < 22) 11 else 0
+        }
+        when (signNumber) {
+            0 -> sign = applicationContext?.getString(R.string.zodiac_sagittarius).toString()
+            1 -> sign = applicationContext?.getString(R.string.zodiac_capricorn).toString()
+            2 -> sign = applicationContext?.getString(R.string.zodiac_aquarius).toString()
+            3 -> sign = applicationContext?.getString(R.string.zodiac_pisces).toString()
+            4 -> sign = applicationContext?.getString(R.string.zodiac_aries).toString()
+            5 -> sign = applicationContext?.getString(R.string.zodiac_taurus).toString()
+            6 -> sign = applicationContext?.getString(R.string.zodiac_gemini).toString()
+            7 -> sign = applicationContext?.getString(R.string.zodiac_cancer).toString()
+            8 -> sign = applicationContext?.getString(R.string.zodiac_leo).toString()
+            9 -> sign = applicationContext?.getString(R.string.zodiac_virgo).toString()
+            10 -> sign = applicationContext?.getString(R.string.zodiac_libra).toString()
+            11 -> sign = applicationContext?.getString(R.string.zodiac_scorpio).toString()
         }
         return sign
     }

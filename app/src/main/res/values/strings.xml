@@ -99,6 +99,18 @@
     <string name="chinese_zodiac_rooster">rooster</string>
     <string name="chinese_zodiac_dog">dog</string>
     <string name="chinese_zodiac_pig">pig</string>
+    <string name="zodiac_sagittarius">sagittarius</string>
+    <string name="zodiac_capricorn">capricorn</string>
+    <string name="zodiac_aquarius">aquarius</string>
+    <string name="zodiac_pisces">pisces</string>
+    <string name="zodiac_aries">aries</string>
+    <string name="zodiac_taurus">taurus</string>
+    <string name="zodiac_gemini">gemini</string>
+    <string name="zodiac_cancer">cancer</string>
+    <string name="zodiac_leo">leo</string>
+    <string name="zodiac_virgo">virgo</string>
+    <string name="zodiac_libra">libra</string>
+    <string name="zodiac_scorpio">scorpio</string>
 
     <!-- Common words -->
     <string name="birthday">birthday</string>
