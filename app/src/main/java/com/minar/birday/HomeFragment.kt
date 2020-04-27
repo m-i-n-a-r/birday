@@ -103,7 +103,9 @@ class HomeFragment : Fragment() {
                     0 -> {
                         personName = actualPersonName
                         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
-                        nextDateText = event.nextDate.format(formatter) + ". " + ChronoUnit.DAYS.between(LocalDate.now(), upcomingDate) + " " + getString(R.string.days_left)
+                        val daysRemaining = ChronoUnit.DAYS.between(LocalDate.now(), upcomingDate).toInt()
+                        nextDateText = if (daysRemaining != 0) event.nextDate.format(formatter) + ". " + daysRemaining + " " + getString(R.string.days_left)
+                        else event.nextDate.format(formatter) + ". " + getString(R.string.today) + "!"
                         nextAge = getString(R.string.next_age_years) + ": " + (event.nextDate.year.minus(event.originalDate.year)).toString()
                     }
                     1, 2 -> {
