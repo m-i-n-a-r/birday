@@ -3,6 +3,7 @@ package com.minar.birday.utilities
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.net.Uri
 import android.util.AttributeSet
 import android.view.View
@@ -12,9 +13,14 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import com.minar.birday.MainActivity
 import com.minar.birday.R
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
     Preference(context, attrs), View.OnClickListener {
+    private val activityScope = CoroutineScope(Dispatchers.Main)
     // Easter egg stuff, why not
     private var easterEgg = 0
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
@@ -28,6 +34,11 @@ class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
         val l3 = v.findViewById<ImageView>(R.id.minarps)
         val l4 = v.findViewById<ImageView>(R.id.minargit)
         val l5 = v.findViewById<ImageView>(R.id.minarsite)
+        // Spawn the logo with a little delay
+        activityScope.launch {
+            delay(400)
+            (logo.drawable as AnimatedVectorDrawable).start()
+        }
         logo.setOnClickListener(this)
         l1.setOnClickListener(this)
         l2.setOnClickListener(this)

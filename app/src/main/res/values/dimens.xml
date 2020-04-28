@@ -23,7 +23,7 @@
     <dimen name="recycler_padding">24dp</dimen>
 
     <!-- Unchanged dimensions -->
-    <dimen name="minar_banner_height">68dp</dimen>
+    <dimen name="minar_banner_height">84dp</dimen>
     <dimen name="minar_banner_padding">12dp</dimen>
     <dimen name="minar_description_padding">16dp</dimen>
     <dimen name="bottom_navbar_height">52dp</dimen>

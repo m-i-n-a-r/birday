@@ -20,7 +20,6 @@ import java.util.concurrent.TimeUnit
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val workManager = WorkManager.getInstance(application)
     private val sp = PreferenceManager.getDefaultSharedPreferences(application)
-    private val workHour = sp.getString("notification_hour", "8")!!.toInt()
     val allEvents: LiveData<List<EventResult>>
     val anyEvent: LiveData<List<EventResult>>
     private val eventDao: EventDao = EventDatabase.getBirdayDataBase(application)!!.eventDao()
@@ -46,7 +45,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     // Check if there's a birthday today, using the hour range specified in shared preferences
-    private fun checkEvents() {
+    fun checkEvents() {
+        val workHour = sp.getString("notification_hour", "8")!!.toInt()
         // Cancel every previous scheduled work
         workManager.pruneWork()
         val currentDate = Calendar.getInstance()

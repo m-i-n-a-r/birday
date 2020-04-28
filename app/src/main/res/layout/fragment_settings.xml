@@ -21,7 +21,7 @@
         android:paddingRight="@dimen/minar_banner_padding"
         android:paddingBottom="@dimen/minar_banner_padding"
         android:tint="?colorAccent"
-        app:srcCompat="@drawable/banner_minar" />
+        android:src="@drawable/animated_logo" />
 
     <TextView
         android:id="@+id/descriptionMinar"
