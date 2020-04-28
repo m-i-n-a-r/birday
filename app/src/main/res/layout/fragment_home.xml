@@ -94,6 +94,8 @@
         android:id="@+id/eventRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="@dimen/recycler_padding"
+        android:clipToPadding="false"
         android:overScrollMode="never"/>
 
 </LinearLayout>

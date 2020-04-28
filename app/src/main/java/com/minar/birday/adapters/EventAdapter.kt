@@ -50,7 +50,7 @@ class EventAdapter internal constructor(context: Context, homeFragment: HomeFrag
         // Set every necessary text and click action in each row
         fun setUpView(event: EventResult?) {
             val personName = event?.name + " " + event?.surname
-            val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
+            val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
             val nextDate = event?.nextDate?.format(formatter)
             eventPerson.text = personName
             eventDate.text = nextDate

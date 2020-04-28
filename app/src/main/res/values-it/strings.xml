@@ -64,6 +64,7 @@
     <string name="day">giorno</string>
     <string name="days">giorni</string>
     <string name="today">Oggi</string>
+    <string name="tomorrow">Domani</string>
     <string name="event_others">ed altri</string>
     <string name="days_left">giorni rimasti</string>
     <string name="years">anni</string>
