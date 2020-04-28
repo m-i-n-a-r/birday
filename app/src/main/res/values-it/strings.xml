@@ -113,5 +113,9 @@
     <string name="notification_description_part_2">Ti auguro una buona giornata!</string>
     <string name="event_actions">Azioni evento</string>
     <string name="event_actions_description">qui puoi eliminare questo evento o modificarlo al volo!</string>
+    <string name="edit_event">Modifica evento</string>
+    <string name="update_event">Aggiorna evento</string>
+
+
 
 </resources>

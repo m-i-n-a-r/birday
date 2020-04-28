@@ -2,6 +2,9 @@ package com.minar.birday
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.os.Handler
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,11 +19,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
+import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.WhichButton
 import com.afollestad.materialdialogs.actions.getActionButton
+import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
+import com.afollestad.materialdialogs.datetime.datePicker
 import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.persistence.Event
 import com.minar.birday.persistence.EventResult
@@ -31,6 +37,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.time.temporal.ChronoUnit
+import java.util.*
 
 
 class HomeFragment : Fragment() {
@@ -38,12 +45,15 @@ class HomeFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var homeViewModel: HomeViewModel
     lateinit var adapter: EventAdapter
+    lateinit var act: MainActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adapter = EventAdapter(requireActivity().applicationContext, this)
+        act = activity as MainActivity
     }
 
+    @ExperimentalStdlibApi
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) : View {
         val v: View = inflater.inflate(R.layout.fragment_home, container, false)
         val upcomingImage = v.findViewById<ImageView>(R.id.upcomingImage)
@@ -74,6 +84,7 @@ class HomeFragment : Fragment() {
         recyclerView.adapter = adapter
     }
 
+    @ExperimentalStdlibApi
     private fun setUpAdapter() {
         adapter.setOnItemClickListener(onItemClickListener = object : OnItemClickListener {
             override fun onItemClick(position: Int, view: View?) {
@@ -105,12 +116,12 @@ class HomeFragment : Fragment() {
 
                 editButton.setOnClickListener {
                     act.vibrate()
+                    editEvent(adapter.getItem(position))
                     dialog.dismiss()
                 }
             }
 
             override fun onItemLongClick(position: Int, view: View?): Boolean {
-                val act = activity as MainActivity
                 act.vibrate()
                 return true
             }
@@ -175,7 +186,110 @@ class HomeFragment : Fragment() {
 
     fun deleteEvent(eventResult: EventResult) = homeViewModel.delete(toEvent(eventResult))
 
-    private fun toEvent(event: EventResult) = Event(id = event.id, name = event.name, surname = event.surname, favorite = event.favorite, originalDate = event.originalDate)
+    private fun toEvent(eventResult: EventResult) = Event(id = eventResult.id, name = eventResult.name, surname = eventResult.surname, favorite = eventResult.favorite, originalDate = eventResult.originalDate)
+
+    @ExperimentalStdlibApi
+    private fun editEvent(eventResult: EventResult) {
+        var nameValue  = eventResult.name
+        var surnameValue = eventResult.surname
+        var eventDateValue: LocalDate = eventResult.originalDate
+        val dialog = MaterialDialog(act, BottomSheet(LayoutMode.WRAP_CONTENT)).show {
+            cornerRadius(res = R.dimen.rounded_corners)
+            title(R.string.edit_event)
+            icon(R.drawable.ic_edit_24dp)
+            customView(R.layout.dialog_insert_event, scrollable = true)
+            positiveButton(R.string.update_event) {
+                // Use the data to create a event object and update the db
+                val tuple = Event(
+                    id = eventResult.id, originalDate = eventDateValue, name = nameValue.smartCapitalize(),
+                    surname = surnameValue?.smartCapitalize(), favorite = eventResult.favorite
+                )
+                homeViewModel.update(tuple)
+                dismiss()
+            }
+            negativeButton(R.string.cancel) {
+                dismiss()
+            }
+        }
+
+        // Setup listeners and checks on the fields
+        dialog.getActionButton(WhichButton.POSITIVE).isEnabled = true
+        val customView = dialog.getCustomView()
+        val name = customView.findViewById<TextView>(R.id.nameEvent)
+        val surname = customView.findViewById<TextView>(R.id.surnameEvent)
+        val eventDate = customView.findViewById<TextView>(R.id.dateEvent)
+        name.text = nameValue
+        surname.text = surnameValue
+        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)
+        eventDate.text = eventDateValue.format(formatter)
+        val endDate = Calendar.getInstance()
+        var dateDialog: MaterialDialog? = null
+
+        eventDate.setOnClickListener {
+            // Prevent double dialogs on fast click
+            if(dateDialog == null) {
+                dateDialog = MaterialDialog(act).show {
+                    cancelable(false)
+                    cancelOnTouchOutside(false)
+                    datePicker(maxDate = endDate) { _, date ->
+                        val year = date.get(Calendar.YEAR)
+                        val month = date.get(Calendar.MONTH) + 1
+                        val day = date.get(Calendar.DAY_OF_MONTH)
+                        eventDateValue = LocalDate.of(year, month, day)
+                        eventDate.text = eventDateValue.format(formatter)
+                    }
+                }
+                Handler().postDelayed({ dateDialog = null }, 750)
+            }
+        }
+
+        // Validate each field in the form with the same watcher
+        var nameCorrect = false
+        var surnameCorrect = true // Surname is not mandatory
+        val watcher = object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+            override fun afterTextChanged(editable: Editable) {
+                when {
+                    editable === name.editableText -> {
+                        val nameText = name.text.toString()
+                        if (nameText.isBlank() || !act.checkString(nameText)) {
+                            name.error = getString(R.string.invalid_value_name)
+                            dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
+                            nameCorrect = false
+                        }
+                        else {
+                            nameValue = nameText
+                            nameCorrect = true
+                        }
+                    }
+                    editable === surname.editableText -> {
+                        val surnameText = surname.text.toString()
+                        if (!act.checkString(surnameText)) {
+                            surname.error = getString(R.string.invalid_value_name)
+                            dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
+                            surnameCorrect = false
+                        }
+                        else {
+                            surnameValue = surnameText
+                            surnameCorrect = true
+                        }
+                    }
+                }
+                if(nameCorrect && surnameCorrect) dialog.getActionButton(WhichButton.POSITIVE).isEnabled = true
+            }
+        }
+
+        name.addTextChangedListener(watcher)
+        surname.addTextChangedListener(watcher)
+        eventDate.addTextChangedListener(watcher)
+    }
+
+    // Extension function to quickly capitalize a name, also considering other uppercase letter or multiple words
+    @ExperimentalStdlibApi
+    fun String.smartCapitalize(): String =
+        trim().split(" ").joinToString(" ") { it.toLowerCase(Locale.ROOT).capitalize(Locale.ROOT) }
+
 
     // Loop the animated vector drawable
     internal fun ImageView.applyLoopingAnimatedVectorDrawable(@DrawableRes animatedVector: Int) {

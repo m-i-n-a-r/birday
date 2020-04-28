@@ -13,7 +13,7 @@
         android:id="@+id/editButton"
         android:layout_width="@dimen/in_row_image"
         android:layout_height="@dimen/in_row_image"
-        android:src="@drawable/ic_edit_black_24dp"
+        android:src="@drawable/ic_edit_24dp"
         android:clickable="true"
         android:focusable="true"
         android:tint="?colorAccent"

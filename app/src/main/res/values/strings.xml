@@ -77,6 +77,8 @@
     <!-- Event actions -->
     <string name="event_actions">Event actions</string>
     <string name="event_actions_description">here you can delete or easily modify this event!</string>
+    <string name="edit_event">Edit event</string>
+    <string name="update_event">Update event</string>
 
     <!-- Statistics -->
     <string name="did_you_know">Did you know?</string>
