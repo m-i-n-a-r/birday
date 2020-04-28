@@ -67,12 +67,16 @@
     <string name="new_event">New birthday</string>
     <string name="new_event_description">Enter a new person you care about, and Birday will help you reminding his/her birthday!</string>
     <string name="insert_event">Insert birthday</string>
-    <string name="cancel_event_insert">Cancel</string>
+    <string name="cancel">Cancel</string>
     <string name="insert_name_hint">Insert name</string>
     <string name="insert_surname_hint">Insert surname</string>
     <string name="insert_date_hint">Select a date</string>
     <string name="invalid_value_name">Invalid value! Use only letters.</string>
     <string name="invalid_value_date">Select a date!</string>
+
+    <!-- Event actions -->
+    <string name="event_actions">Event actions</string>
+    <string name="event_actions_description">here you can delete or easily modify this event!</string>
 
     <!-- Statistics -->
     <string name="did_you_know">Did you know?</string>

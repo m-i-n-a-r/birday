@@ -87,12 +87,13 @@ class MainActivity : AppCompatActivity() {
         // Manage the fab
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
+            vibrate()
             // Show a bottom sheet containing the form to insert a new event
             var nameValue  = "error"
             var surnameValue = ""
             var eventDateValue: LocalDate = LocalDate.of(1970,1,1)
             val dialog = MaterialDialog(this, BottomSheet(LayoutMode.WRAP_CONTENT)).show {
-                cornerRadius(16.toFloat())
+                cornerRadius(res = R.dimen.rounded_corners)
                 title(R.string.new_event)
                 icon(R.drawable.ic_party_24dp)
                 message(R.string.new_event_description)
@@ -112,7 +113,7 @@ class MainActivity : AppCompatActivity() {
 
                     dismiss()
                 }
-                negativeButton(R.string.cancel_event_insert) {
+                negativeButton(R.string.cancel) {
                     dismiss()
                 }
             }

@@ -16,11 +16,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.WhichButton
+import com.afollestad.materialdialogs.actions.getActionButton
+import com.afollestad.materialdialogs.customview.customView
+import com.afollestad.materialdialogs.customview.getCustomView
 import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.persistence.Event
 import com.minar.birday.persistence.EventResult
 import com.minar.birday.utilities.OnItemClickListener
 import com.minar.birday.viewmodels.HomeViewModel
+import kotlinx.android.synthetic.main.dialog_actions_event.view.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -71,13 +77,41 @@ class HomeFragment : Fragment() {
     private fun setUpAdapter() {
         adapter.setOnItemClickListener(onItemClickListener = object : OnItemClickListener {
             override fun onItemClick(position: Int, view: View?) {
-                // TODO do something on normal click
+                val act = activity as MainActivity
+                act.vibrate()
+                val dialog = MaterialDialog(act).show {
+                    title(R.string.event_actions)
+                    icon(R.drawable.ic_balloon_24dp)
+                    message(R.string.event_actions_description)
+                    cornerRadius(res = R.dimen.rounded_corners)
+                    customView(R.layout.dialog_actions_event, scrollable = true)
+                    negativeButton(R.string.cancel) {
+                        dismiss()
+                    }
+                }
+
+                // Setup listeners and checks on the fields
+                dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
+                val customView = dialog.getCustomView()
+                // Using viewbinding to fetch the buttons
+                val deleteButton = customView.deleteButton
+                val editButton = customView.editButton
+
+                deleteButton.setOnClickListener {
+                    act.vibrate()
+                    deleteEvent(adapter.getItem(position))
+                    dialog.dismiss()
+                }
+
+                editButton.setOnClickListener {
+                    act.vibrate()
+                    dialog.dismiss()
+                }
             }
 
             override fun onItemLongClick(position: Int, view: View?): Boolean {
                 val act = activity as MainActivity
                 act.vibrate()
-                deleteEvent(adapter.getItem(position))
                 return true
             }
         })
@@ -91,7 +125,7 @@ class HomeFragment : Fragment() {
         homeMain.removeView(placeholder)
     }
 
-    // Insert the necessary information in the upcoming event cardview TODO add other information if possible
+    // Insert the necessary information in the upcoming event cardview
     private fun insertUpcomingEvents(events: List<EventResult>) {
         val cardTitle: TextView = requireView().findViewById(R.id.upcomingTitle)
         val cardSubtitle: TextView = requireView().findViewById(R.id.upcomingSubtitle)

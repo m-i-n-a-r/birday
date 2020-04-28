@@ -12,7 +12,7 @@
     <dimen name="placeholders_horizontal_padding">48dp</dimen>
     <dimen name="card_margin">8dp</dimen>
     <dimen name="card_stroke">2dp</dimen>
-    <dimen name="card_corners">16dp</dimen>
+    <dimen name="rounded_corners">16dp</dimen>
     <dimen name="card_image_height">72dp</dimen>
     <dimen name="card_image_padding">16dp</dimen>
     <dimen name="list_vertical_padding">4dp</dimen>
@@ -21,6 +21,7 @@
     <dimen name="in_row_image">54dp</dimen>
     <dimen name="between_row_padding">8dp</dimen>
     <dimen name="recycler_padding">24dp</dimen>
+    <dimen name="dialog_actions_padding">32dp</dimen>
 
     <!-- Unchanged dimensions -->
     <dimen name="minar_banner_height">84dp</dimen>

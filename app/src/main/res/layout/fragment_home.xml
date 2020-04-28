@@ -14,7 +14,7 @@
         android:layout_marginTop="@dimen/card_margin"
         android:layout_marginLeft="@dimen/card_margin"
         android:layout_marginRight="@dimen/card_margin"
-        app:cardCornerRadius="@dimen/card_corners"
+        app:cardCornerRadius="@dimen/rounded_corners"
         app:cardElevation="0dp"
         app:rippleColor="?colorAccent"
         app:strokeColor="@color/goodGrayTranslucent"
@@ -96,6 +96,7 @@
         android:layout_height="match_parent"
         android:paddingBottom="@dimen/recycler_padding"
         android:clipToPadding="false"
-        android:overScrollMode="never"/>
+        android:scrollbarStyle="outsideOverlay"
+        android:overScrollMode="never" />
 
 </LinearLayout>

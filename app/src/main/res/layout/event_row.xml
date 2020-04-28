@@ -7,6 +7,7 @@
     android:paddingRight="@dimen/recycler_padding"
     android:paddingBottom="@dimen/between_row_padding"
     android:paddingTop="@dimen/between_row_padding"
+    android:hapticFeedbackEnabled="false"
     android:background="?attr/selectableItemBackground">
 
     <LinearLayout

@@ -37,7 +37,7 @@
     <string name="new_event">Nuovo compleanno</string>
     <string name="new_event_description">Inserisci una nuova persona cara, e Birday ti aiuterà a ricordarti del suo compleanno!</string>
     <string name="insert_event">Inserisci compleanno</string>
-    <string name="cancel_event_insert">Annulla</string>
+    <string name="cancel">Annulla</string>
     <string name="insert_name_hint">Inserisci nome</string>
     <string name="insert_surname_hint">Inserisci cognome</string>
     <string name="insert_date_hint">Seleziona una data</string>
@@ -111,5 +111,7 @@
     <string name="notification_title">Promemoria Birday</string>
     <string name="notification_description_part_1">Ciao, i compleanni di oggi sono</string>
     <string name="notification_description_part_2">Ti auguro una buona giornata!</string>
+    <string name="event_actions">Azioni evento</string>
+    <string name="event_actions_description">qui puoi eliminare questo evento o modificarlo al volo!</string>
 
 </resources>
