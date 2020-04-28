@@ -58,7 +58,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         if (dueDate.before(currentDate)) dueDate.add(Calendar.HOUR_OF_DAY, 24)
         val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis
         val dailyWorkRequest = OneTimeWorkRequestBuilder<EventWorker>()
-            .setInitialDelay(timeDiff, TimeUnit.MINUTES)
+            .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)
             .build()
         workManager.enqueue(dailyWorkRequest)
     }

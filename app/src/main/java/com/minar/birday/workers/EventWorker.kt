@@ -15,6 +15,7 @@ import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.persistence.EventResult
 import com.minar.birday.utilities.SplashActivity
+import java.lang.Exception
 import java.time.LocalDate
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -29,27 +30,33 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         val sp = PreferenceManager.getDefaultSharedPreferences(applicationContext)
         val workHour = sp.getString("notification_hour", "8")!!.toInt()
 
-        // Send notification
-        if(!nextEvents.isNullOrEmpty() && nextEvents[0].nextDate!!.isEqual(LocalDate.now())) sendNotification(nextEvents)
+        try {
+            // Cancel every previous scheduled work
+            WorkManager.getInstance(applicationContext).pruneWork()
 
-        // Set Execution at the time specified
-        dueDate.set(Calendar.HOUR_OF_DAY, workHour)
-        dueDate.set(Calendar.MINUTE, 0)
-        dueDate.set(Calendar.SECOND, 0)
-        if (dueDate.before(currentDate)) dueDate.add(Calendar.HOUR_OF_DAY, 24)
-        val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis
-        // Cancel every previous scheduled work
-        WorkManager.getInstance(applicationContext).pruneWork()
-        val dailyWorkRequest = OneTimeWorkRequestBuilder<EventWorker>()
-            .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)
-            .build()
+            // Send notification
+            if (!nextEvents.isNullOrEmpty() && nextEvents[0].nextDate!!.isEqual(LocalDate.now())) sendNotification(nextEvents)
 
-        WorkManager.getInstance(applicationContext).enqueue(dailyWorkRequest)
+            // Set Execution at the time specified
+            dueDate.set(Calendar.HOUR_OF_DAY, workHour)
+            dueDate.set(Calendar.MINUTE, 0)
+            dueDate.set(Calendar.SECOND, 0)
+            if (dueDate.before(currentDate)) dueDate.add(Calendar.HOUR_OF_DAY, 24)
+            val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis
+            val dailyWorkRequest = OneTimeWorkRequestBuilder<EventWorker>()
+                .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)
+                .build()
+            WorkManager.getInstance(applicationContext).enqueue(dailyWorkRequest)
+        }
+        catch (e: Exception) {
+            return Result.retry()
+        }
+
         return Result.success()
     }
 
+    // Send notification if there's one or more birthdays today
     private fun sendNotification(nextEvents: List<EventResult>) {
-        // Send notification if there's a birthday today
         val intent = Intent(applicationContext, SplashActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
@@ -62,25 +69,22 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             .setContentText(notificationText)
             .setStyle(NotificationCompat.BigTextStyle()
                 .bigText(notificationText))
-            // Set the intent that will fire when the user taps the notification
+            // Intent that will fire when the user taps the notification
             .setContentIntent(pendingIntent)
 
-        with(NotificationManagerCompat.from(applicationContext)) {
-            // notificationId is a unique int for each notification that you must define
-            notify(1, builder.build())
-        }
+        with(NotificationManagerCompat.from(applicationContext)) { notify(1, builder.build()) }
     }
 
     private fun formulateNotificationText(nextEvents: List<EventResult>): String {
         var response = applicationContext.getString(R.string.notification_description_part_1) + ": "
         nextEvents.forEach {
-            if(nextEvents.indexOf(it) == 0) response += it.name + ", " + it.nextDate?.year?.minus(it.originalDate.year)
-            if((nextEvents.indexOf(it) > 0) and (nextEvents.indexOf(it) < nextEvents.lastIndex))
-                response += ", " + it.name + ", " + it.nextDate?.year?.minus(it.originalDate.year)
-            if(nextEvents.indexOf(it) == nextEvents.lastIndex) response += applicationContext.getString(R.string.and) +
-                    " " + it.name + ", " + it.nextDate?.year?.minus(it.originalDate.year) + ". "
+            if (nextEvents.indexOf(it) == 0) response += it.name + ", " +
+                    it.nextDate?.year?.minus(it.originalDate.year) + " " + applicationContext.getString(R.string.years)
+            if (nextEvents.indexOf(it) in 1..2) response += ", " + it.name + ", " +
+                    it.nextDate?.year?.minus(it.originalDate.year) + " " + applicationContext.getString(R.string.years)
+            if (nextEvents.indexOf(it) == 3) response += ", " + applicationContext.getString(R.string.event_others)
         }
-        response += applicationContext.getString(R.string.notification_description_part_2)
+        response += ". " + applicationContext.getString(R.string.notification_description_part_2)
 
         return response
     }
