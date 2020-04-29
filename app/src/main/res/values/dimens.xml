@@ -22,6 +22,7 @@
     <dimen name="between_row_padding">8dp</dimen>
     <dimen name="recycler_padding">24dp</dimen>
     <dimen name="dialog_actions_padding">40dp</dimen>
+    <dimen name="settings_row_padding">16dp</dimen>
 
     <!-- Unchanged dimensions -->
     <dimen name="minar_banner_height">84dp</dimen>

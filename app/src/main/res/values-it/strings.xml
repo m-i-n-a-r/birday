@@ -133,5 +133,7 @@
     già salvato dai tuoi contatti Google. Birday può farlo per te, devi solo consentire il permesso di leggere
     i contatti. Buon divertimento!
     </string>
+    <string name="import_contacts_title">Importa compleanni da Google</string>
+    <string name="import_contacts_description">Importa i compleanni che hai su Google, se ne hai salvati in precedenza</string>
 
 </resources>

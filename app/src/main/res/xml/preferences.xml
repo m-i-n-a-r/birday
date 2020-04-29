@@ -20,6 +20,10 @@
             android:summary="@string/notification_hour_description"
             app:iconSpaceReserved="false"/>
 
+        <com.minar.birday.utilities.ContactsImporter
+            android:layout="@layout/contacts_import_row"
+            android:selectable="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
