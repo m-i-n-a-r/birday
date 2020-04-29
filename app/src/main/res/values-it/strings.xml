@@ -47,7 +47,7 @@
     <string name="date_format_name">Formato data</string>
     <string name="app_behavior">Comportamento dell\'app</string>
     <string name="no_events">Nessun compleanno! Comincia aggiungendone uno usando il bottone sotto!</string>
-    <string name="no_favorites">Nessun preferito! Premi la stella per salvare una persona nei tuoi preferiti!</string>
+    <string name="no_favorites">Nessun preferito! Premi la stella per salvare una persona nei preferiti!</string>
     <string name="notification_hour_name">Ora di invio notifica</string>
     <string name="notification_hour_description">%s \n\nLa notifica potrebbe non funzionare se l\'applicazione
         viene terminata dal sistema in alcuni dispositivi Huawei, Xiaomi e Onpelus. Ulteriori informazioni
@@ -137,5 +137,7 @@
     <string name="import_contacts_description">Importa i compleanni che hai su Google, se ne hai salvati in precedenza</string>
     <string name="import_success">Importazione completata con successo!</string>
     <string name="import_failed">Qualcosa è andato storto!</string>
+    <string name="missing_permission">Birday non ha potuto importare i tuoi contatti, perché il permesso di leggerli
+    è stato precedentemente negato. Prova a riaprire l\'app, o attiva il permesso manualmente!</string>
 
 </resources>

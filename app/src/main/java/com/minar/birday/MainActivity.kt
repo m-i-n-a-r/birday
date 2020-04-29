@@ -13,6 +13,7 @@ import android.os.Vibrator
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
@@ -236,6 +237,17 @@ class MainActivity : AppCompatActivity() {
 
     // Import the contacts from Google Contacts
     fun importContacts() : Boolean {
+        // No permission. For now, just send an explanation toast
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, getString(R.string.missing_permission), Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        // Phase 1: get every contact having at least a name and a birthday
+        // Phase 2: convert the extracted data in an Event List
+        // Phase 3: verify if any of this event is already in the db
+        // Phase 4: insert the remaining events in the db
+
         return true
     }
 

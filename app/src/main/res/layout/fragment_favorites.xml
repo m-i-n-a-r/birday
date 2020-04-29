@@ -82,6 +82,7 @@
         android:drawableTop="@drawable/ic_neutral_72dp"
         android:drawableTint="@color/goodGraySemiTranslucent"
         android:gravity="center"
+        android:maxLines="3"
         android:paddingLeft="@dimen/placeholders_horizontal_padding"
         android:paddingTop="@dimen/placeholders_vertical_padding"
         android:paddingRight="@dimen/placeholders_horizontal_padding"

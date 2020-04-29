@@ -72,6 +72,7 @@ class HomeFragment : Fragment() {
         })
         homeViewModel.anyEvent.observe(viewLifecycleOwner, Observer { eventList ->
             if (eventList.isNotEmpty()) removePlaceholder()
+            else restorePlaceholders()
         })
 
         return v
@@ -131,9 +132,20 @@ class HomeFragment : Fragment() {
 
     // Remove the placeholder or return if the placeholder was already removed before
     private fun removePlaceholder() {
-        val homeMain: LinearLayout = requireView().findViewById(R.id.homeMain)
         val placeholder: TextView = requireView().findViewById(R.id.noEvents) ?: return
-        homeMain.removeView(placeholder)
+        placeholder.visibility = View.GONE
+    }
+
+    // Restore the placeholder and the default texts when the event list is empty
+    private fun restorePlaceholders() {
+        val cardTitle: TextView = requireView().findViewById(R.id.upcomingTitle)
+        val cardSubtitle: TextView = requireView().findViewById(R.id.upcomingSubtitle)
+        val cardDescription: TextView = requireView().findViewById(R.id.upcomingDescription)
+        val placeholder: TextView = requireView().findViewById(R.id.noEvents)
+        cardTitle.text = getString(R.string.next_event)
+        cardSubtitle.text = getString(R.string.no_next_event)
+        cardDescription.text = getString(R.string.no_next_event_description)
+        placeholder.visibility = View.VISIBLE
     }
 
     // Insert the necessary information in the upcoming event cardview
