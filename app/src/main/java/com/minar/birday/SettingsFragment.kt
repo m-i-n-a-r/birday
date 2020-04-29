@@ -3,10 +3,7 @@ package com.minar.birday
 import android.app.Activity
 import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
-import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
-import android.view.View
-import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceFragmentCompat
 import com.minar.birday.viewmodels.HomeViewModel

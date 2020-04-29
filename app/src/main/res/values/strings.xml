@@ -57,6 +57,8 @@
     <string name="light_theme">Light</string>
     <string name="import_contacts_title">Import birthdays from Google</string>
     <string name="import_contacts_description">Import the birthdays you have on Google, if you entered one or more birthdays</string>
+    <string name="import_success">Import completed successfully!</string>
+    <string name="import_failed">Something went wrong!</string>
 
     <!-- Developer -->
     <string name="dev_name" translatable="false">m.i.n.a.r.</string>

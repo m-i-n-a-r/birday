@@ -48,7 +48,7 @@ class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
     }
 
     override fun onClick(v: View) {
-        // Vibrate and play sound using the common method in MainActivity
+        // Vibrate using the common method in MainActivity
         val act = context as Activity
         val uri: Uri
         when (v.id) {

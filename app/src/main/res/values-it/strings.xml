@@ -135,5 +135,7 @@
     </string>
     <string name="import_contacts_title">Importa compleanni da Google</string>
     <string name="import_contacts_description">Importa i compleanni che hai su Google, se ne hai salvati in precedenza</string>
+    <string name="import_success">Importazione completata con successo!</string>
+    <string name="import_failed">Qualcosa è andato storto!</string>
 
 </resources>

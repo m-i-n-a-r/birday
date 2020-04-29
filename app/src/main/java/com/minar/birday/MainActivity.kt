@@ -234,6 +234,11 @@ class MainActivity : AppCompatActivity() {
         notificationManager.createNotificationChannel(channel)
     }
 
+    // Import the contacts from Google Contacts
+    fun importContacts() : Boolean {
+        return true
+    }
+
     // Some utility functions, used from every fragment connected to this activity
 
     // Vibrate using a standard vibration pattern
