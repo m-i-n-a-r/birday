@@ -42,15 +42,15 @@
     </string-array>
 
     <string-array name="notificationHours">
-        <item>0:00 – 0:30</item>
-        <item>1:00 – 1:30</item>
-        <item>6:00 – 6:30</item>
-        <item>7:00 – 7:30</item>
-        <item>8:00 – 8:30</item>
-        <item>9:00 – 9:30</item>
-        <item>10:00 – 10:30</item>
-        <item>11:00 – 11:30</item>
-        <item>12:00 – 12:30</item>
+        <item>0:00 – 0:15</item>
+        <item>1:00 – 1:15</item>
+        <item>6:00 – 6:15</item>
+        <item>7:00 – 7:15</item>
+        <item>8:00 – 8:15</item>
+        <item>9:00 – 9:15</item>
+        <item>10:00 – 10:15</item>
+        <item>11:00 – 11:15</item>
+        <item>12:00 – 12:15</item>
     </string-array>
 
     <string-array name="notificationHourValues">

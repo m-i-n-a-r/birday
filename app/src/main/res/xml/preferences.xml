@@ -17,7 +17,7 @@
             android:entryValues="@array/notificationHourValues"
             android:key="notification_hour"
             android:title="@string/notification_hour_name"
-            android:summary="%s"
+            android:summary="@string/notification_hour_description"
             app:iconSpaceReserved="false"/>
 
     </PreferenceCategory>

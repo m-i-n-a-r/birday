@@ -48,6 +48,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     fun checkEvents() {
         val workHour = sp.getString("notification_hour", "8")!!.toInt()
         // Cancel every previous scheduled work
+        workManager.cancelAllWork()
         workManager.pruneWork()
         val currentDate = Calendar.getInstance()
         val dueDate = Calendar.getInstance()

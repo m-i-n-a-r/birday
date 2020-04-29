@@ -33,6 +33,9 @@
     <string name="vibration_description_off">No vibrations when a button is pressed</string>
     <string name="date_format_name">Date format</string>
     <string name="notification_hour_name">Notification hour</string>
+    <string name="notification_hour_description">%s \n\nPlease note that the notification might not work when the
+        app is killed by the system in some Huawei, Xiaomi and Oneplus devices. Refer to dontkillmyapp.com
+        for more informations</string>
     <string name="accent_description">Change the default accent color</string>
     <string name="accent_name">Accent color</string>
     <string name="theme_description">Use a dark, light or automatic app theme</string>

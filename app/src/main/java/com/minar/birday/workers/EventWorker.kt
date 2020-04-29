@@ -31,9 +31,6 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         val workHour = sp.getString("notification_hour", "8")!!.toInt()
 
         try {
-            // Cancel every previous scheduled work
-            WorkManager.getInstance(applicationContext).pruneWork()
-
             // Send notification
             if (!nextEvents.isNullOrEmpty() && nextEvents[0].nextDate!!.isEqual(LocalDate.now())) sendNotification(nextEvents)
 
@@ -71,6 +68,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                 .bigText(notificationText))
             // Intent that will fire when the user taps the notification
             .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
 
         with(NotificationManagerCompat.from(applicationContext)) { notify(1, builder.build()) }
     }
