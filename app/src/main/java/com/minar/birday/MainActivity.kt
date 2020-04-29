@@ -236,7 +236,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Import the contacts from Google Contacts
-    fun importContacts() : Boolean {
+    fun importContacts(): Boolean {
         // No permission. For now, just send an explanation toast
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(this, getString(R.string.missing_permission), Toast.LENGTH_SHORT).show()

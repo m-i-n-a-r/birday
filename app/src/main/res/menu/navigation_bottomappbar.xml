@@ -4,19 +4,19 @@
 
     <item
         android:id="@+id/navigationMain"
-        android:icon="@drawable/ic_home_24dp"
+        android:icon="@drawable/nav_animation_home"
         android:title="@string/title_home"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/navigationFavorites"
-        android:icon="@drawable/ic_favorites_24dp"
+        android:icon="@drawable/nav_animation_favorites"
         android:title="@string/title_favorites"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/navigationSettings"
-        android:icon="@drawable/ic_settings_24dp"
+        android:icon="@drawable/nav_animation_settings"
         android:title="@string/title_settings"
         app:showAsAction="ifRoom"/>
 
