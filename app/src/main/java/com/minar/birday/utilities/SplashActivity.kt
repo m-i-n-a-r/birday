@@ -2,15 +2,15 @@ package com.minar.birday.utilities
 
 import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import com.minar.birday.MainActivity
 import com.minar.birday.R
 import kotlinx.coroutines.*
+
 
 class SplashActivity : AppCompatActivity() {
 

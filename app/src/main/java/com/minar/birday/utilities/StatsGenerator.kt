@@ -250,5 +250,6 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         }
         return if(map.values.count { it == maxValue } > 1) ""
         else result
+
     }
 }

@@ -65,4 +65,5 @@ dependencies {
     implementation 'com.afollestad.material-dialogs:datetime:3.3.0'
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation 'com.github.AppIntro:AppIntro:5.1.0'
 }

@@ -244,8 +244,8 @@ class HomeFragment : Fragment() {
         }
 
         // Validate each field in the form with the same watcher
-        var nameCorrect = false
-        var surnameCorrect = true // Surname is not mandatory
+        var nameCorrect = true
+        var surnameCorrect = true
         val watcher = object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}

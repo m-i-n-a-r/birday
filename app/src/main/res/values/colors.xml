@@ -35,4 +35,9 @@
     <color name="redAccent">#ff5252</color>
     <color name="limeAccent">#c5de00</color>
 
+    <!-- slides -->
+    <color name="slideOne">#4285f4</color>
+    <color name="slideTwo">#222222</color>
+    <color name="slideThree">#e4a522</color>
+
 </resources>

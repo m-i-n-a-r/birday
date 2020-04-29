@@ -3,6 +3,7 @@ package com.minar.birday
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.VibrationEffect
@@ -30,6 +31,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.persistence.Event
 import com.minar.birday.utilities.AppRater
+import com.minar.birday.utilities.WelcomeActivity
 import com.minar.birday.viewmodels.HomeViewModel
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -52,6 +54,16 @@ class MainActivity : AppCompatActivity() {
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val theme = sp.getString("theme_color", "system")
         val accent = sp.getString("accent_color", "brown")
+
+        // Show the introduction for the first launch
+        if (sp.getBoolean("first", true)) {
+            val editor = sp.edit()
+            editor.putBoolean("first", false)
+            editor.apply()
+            val intent = Intent(this, WelcomeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         // Set the base theme and the accent
         when (theme) {

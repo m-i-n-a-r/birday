@@ -3,6 +3,7 @@
     package="com.minar.birday">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -28,6 +29,8 @@
             android:screenOrientation="fullSensor"
             android:windowSoftInputMode="adjustPan">
         </activity>
+        <activity android:name=".utilities.WelcomeActivity"
+            android:label="@string/app_welcome" />
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_welcome">Benvenuto in Birday</string>
     <string name="app_name_extended">Birday - Gestore di Compleanni</string>
     <string name="leave_review_title">Recensisci Birday</string>
     <string name="leave_review_subtitle">Lascia una recensione per aiutarmi con l\'app. Ricordati che,
@@ -118,7 +119,19 @@
     <string name="event_actions_description">qui puoi eliminare questo evento o modificarlo al volo!</string>
     <string name="edit_event">Modifica evento</string>
     <string name="update_event">Aggiorna evento</string>
-
-
+    <string name="slide_one_title">Benvenuto/a in Birday!</string>
+    <string name="slide_one_description">Birday è un\'app semplice e leggera per gestire eventi importanti!
+    Puoi usarla per ricordare e raccogliere i compleanni delle persone che ami, in modo affidabile e veloce.
+    </string>
+    <string name="slide_two_title">Gratis, semplice, personalizzabile</string>
+    <string name="slide_two_description">Birday è gratis, senza pubblicità ed open source. Fornisce
+    una serie di interessanti statistiche sui compleanni che inserisci, un sistema di preferiti e un\'
+    interfaccia completamente personalizzabile. Con supporto e aggiornamenti garantiti!
+    </string>
+    <string name="slide_three_title">Importa da Google Contacts</string>
+    <string name="slide_three_description">Un\'altra possibilità interessante è importare i compleanni che hai
+    già salvato dai tuoi contatti Google. Birday può farlo per te, devi solo consentire il permesso di leggere
+    i contatti. Buon divertimento!
+    </string>
 
 </resources>

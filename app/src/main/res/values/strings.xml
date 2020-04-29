@@ -1,6 +1,7 @@
 <resources>
 
     <string name="app_name" translatable="false">Birday</string>
+    <string name="app_welcome">Welcome to Birday</string>
     <string name="app_name_extended">Birday - Birthday Manager</string>
     <string name="leave_review_title">Review Birday</string>
     <string name="leave_review_subtitle">Leave a review to help me with the app. Keep in mind that,
@@ -140,5 +141,20 @@
     <string name="notification_title">Birday Reminder</string>
     <string name="notification_description_part_1">Hi there, today\'s birthdays are</string>
     <string name="notification_description_part_2">Have a great day!</string>
+
+    <!-- Introduction slides -->
+    <string name="slide_one_title">Welcome to Birday!</string>
+    <string name="slide_one_description">Birday is a simple and lightweight app to manage important events!
+    You can use it to remember and store the birthdays of the people you love, in a reliable and fast way.
+    </string>
+    <string name="slide_two_title">Free, simple, customizable</string>
+    <string name="slide_two_description">Birday is free, ad-free and open source. It provides a set of
+    interesting stats about your birthdays, a favorite system and a customizable interface. And guaranteed
+    support and updates!
+    </string>
+    <string name="slide_three_title">Import from Google Contacts</string>
+    <string name="slide_three_description">Another interesting possibility is to import your already saved
+    birthdays from your Google Contacts. Birday can do it for you, just allow the contacts permission. Enjoy!
+    </string>
 
 </resources>
