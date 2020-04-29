@@ -1,6 +1,5 @@
 package com.minar.birday.utilities
 
-import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -13,7 +12,6 @@ import com.minar.birday.R
 
 
 class WelcomeActivity : AppIntro2() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Enter immersive mode

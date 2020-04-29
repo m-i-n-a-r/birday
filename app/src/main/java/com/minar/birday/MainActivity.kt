@@ -1,9 +1,11 @@
 package com.minar.birday
 
+import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.VibrationEffect
@@ -13,6 +15,8 @@ import android.text.TextWatcher
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -64,6 +68,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        // Ask for contact permission TODO temporary, waiting for AppIntro 6.0.0
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED)
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_CONTACTS), 1)
 
         // Set the base theme and the accent
         when (theme) {
