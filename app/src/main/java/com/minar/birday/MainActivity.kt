@@ -3,13 +3,16 @@ package com.minar.birday
 import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
 import android.os.Bundle
 import android.os.Handler
 import android.os.VibrationEffect
 import android.os.Vibrator
+import android.provider.ContactsContract
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
@@ -244,11 +247,82 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Phase 1: get every contact having at least a name and a birthday
-        // Phase 2: convert the extracted data in an Event List
-        // Phase 3: verify if any of this event is already in the db
-        // Phase 4: insert the remaining events in the db
+        val contacts = getContacts()
 
+        // Phase 2: convert the extracted data in an Event List, verify duplicates
+        val events = mutableListOf<Event>()
+        loop@ for (contact in contacts) {
+            // Take the name and split it to separate name and surname
+            val splitterName = contact.value[0].split(",")
+            var name: String
+            var surname = ""
+            var date: LocalDate
+            when (splitterName.size) {
+                // Not considering surname only contacts, but considering name only
+                1 -> name = splitterName[0].trim()
+                2 -> {
+                    name = splitterName[1].trim()
+                    surname = splitterName[0].trim()
+                }
+                else -> continue@loop
+            }
+
+            try {
+                // Missing year, put 2000 as a placeholder
+                var parseDate = contact.value[1]
+                if (contact.value[1].length < 9) parseDate = contact.value[1].replaceFirst("-", "2000")
+                date = LocalDate.parse(parseDate)
+            }
+            catch (e: Exception) { continue }
+            val event = Event(id = 0, name = name, surname = surname, originalDate = date)
+
+            // Check if the event is duplicate with a query
+            //if (!homeViewModel.checkExisting(it.key, it.value) == 0) events.add(event)
+            events.add(event) // TODO remove
+        }
+
+        // Phase 3: insert the remaining events in the db
+        events.forEach { homeViewModel.insert(it) }
+        adapter.notifyDataSetChanged()
         return true
+    }
+
+    // Get the contacts and save them in a map
+    private fun getContacts(): Map<String, List<String>> {
+        val nameBirth = mutableMapOf<String, List<String>>()
+
+        // Retrieve name and id
+        val resolver: ContentResolver = contentResolver
+        val cursor = resolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null)
+        if (cursor != null) {
+            if (cursor.count > 0) {
+                while (cursor.moveToNext()) {
+                    val id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
+                    val name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME_ALTERNATIVE))
+                    // Retrieve the birthday
+                    val bd = contentResolver
+                    val bdc: Cursor? = bd.query(ContactsContract.Data.CONTENT_URI, arrayOf(ContactsContract.CommonDataKinds.Event.DATA),
+                        ContactsContract.Data.CONTACT_ID + " = " + id + " AND " + ContactsContract.Data.MIMETYPE + " = '" +
+                                ContactsContract.CommonDataKinds.Event.CONTENT_ITEM_TYPE + "' AND " + ContactsContract.CommonDataKinds.Event.TYPE +
+                                " = " + ContactsContract.CommonDataKinds.Event.TYPE_BIRTHDAY, null, ContactsContract.Data.DISPLAY_NAME
+                    )
+
+                    if (bdc != null) {
+                        if (bdc.count > 0) {
+                            while (bdc.moveToNext()) {
+                                // Using a list as key will prevent collisions on same name
+                                val birthday: String = bdc.getString(0)
+                                val person = listOf<String>(name, birthday)
+                                nameBirth[id] = person
+                            }
+                        }
+                        bdc.close()
+                    }
+                }
+            }
+        }
+        cursor?.close()
+        return nameBirth
     }
 
     // Some utility functions, used from every fragment connected to this activity

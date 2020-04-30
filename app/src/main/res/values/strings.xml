@@ -56,7 +56,8 @@
     <string name="dark_theme">Dark</string>
     <string name="light_theme">Light</string>
     <string name="import_contacts_title">Import birthdays from Google</string>
-    <string name="import_contacts_description">Import the birthdays you have on Google, if you entered one or more birthdays</string>
+    <string name="import_contacts_description">If an imported birthday doesn\'t contain the year, Birday will automatically set
+    the year 2000. Make sure to modify the events with the missing year to always have accurate statistics!</string>
     <string name="import_success">Import completed successfully!</string>
     <string name="import_failed">Something went wrong!</string>
     <string name="missing_permission">Birday could not import your contacts, because the contact permission
