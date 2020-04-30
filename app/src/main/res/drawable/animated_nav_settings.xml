@@ -17,7 +17,7 @@
                     android:pathData="M 19.1 12.9 C 19.182 12.607 19.216 12.303 19.2 12 C 19.216 11.697 19.182 11.393 19.1 11.1 L 21.2 9.5 C 21.261 9.414 21.301 9.315 21.319 9.211 C 21.336 9.108 21.33 9.001 21.3 8.9 L 19.4 5.5 C 19.323 5.422 19.228 5.363 19.124 5.328 C 19.02 5.294 18.909 5.284 18.8 5.3 L 16.4 6.3 C 15.912 5.926 15.373 5.623 14.8 5.4 L 14.4 2.8 C 14.377 2.685 14.314 2.583 14.222 2.509 C 14.131 2.436 14.017 2.398 13.9 2.4 L 10.1 2.4 C 9.983 2.398 9.869 2.436 9.778 2.509 C 9.686 2.583 9.623 2.685 9.6 2.8 L 9.3 5.4 C 8.686 5.6 8.111 5.904 7.6 6.3 L 5.2 5.3 C 5.107 5.265 5.004 5.266 4.911 5.303 C 4.819 5.34 4.743 5.41 4.7 5.5 L 2.7 8.9 C 2.6 9.1 2.7 9.3 2.9 9.5 L 4.9 11.1 C 4.818 11.393 4.784 11.697 4.8 12 C 4.784 12.303 4.818 12.607 4.9 12.9 L 2.8 14.5 C 2.739 14.586 2.699 14.685 2.681 14.789 C 2.664 14.892 2.67 14.999 2.7 15.1 L 4.6 18.5 C 4.677 18.578 4.772 18.637 4.876 18.672 C 4.98 18.706 5.091 18.716 5.2 18.7 L 7.6 17.7 C 8.088 18.074 8.627 18.377 9.2 18.6 L 9.6 21.2 C 9.623 21.315 9.686 21.417 9.778 21.491 C 9.869 21.564 9.983 21.602 10.1 21.6 L 13.9 21.6 C 14.017 21.602 14.131 21.564 14.222 21.491 C 14.314 21.417 14.377 21.315 14.4 21.2 L 14.7 18.6 C 15.314 18.4 15.889 18.096 16.4 17.7 L 18.8 18.7 C 18.893 18.735 18.996 18.734 19.089 18.697 C 19.181 18.66 19.257 18.59 19.3 18.5 L 21.3 15.1 C 21.4 14.9 21.3 14.7 21.1 14.5 Z M 12 15.6 C 11.046 15.6 10.129 15.22 9.454 14.546 C 8.78 13.871 8.4 12.954 8.4 12 C 8.4 11.046 8.78 10.129 9.454 9.454 C 10.129 8.78 11.046 8.4 12 8.4 C 12.954 8.4 13.871 8.78 14.546 9.454 C 15.22 10.129 15.6 11.046 15.6 12 C 15.6 12.954 15.22 13.871 14.546 14.546 C 13.871 15.22 12.954 15.6 12 15.6 Z"
                     android:fillColor="#000000"
                     android:strokeColor="#000000"
-                    android:strokeAlpha="0.3"/>
+                    android:strokeAlpha="0.4"/>
             </group>
         </vector>
     </aapt:attr>
@@ -35,14 +35,14 @@
                     android:propertyName="translateY"
                     android:duration="150"
                     android:valueFrom="0"
-                    android:valueTo="-1.5"
+                    android:valueTo="-0.5"
                     android:valueType="floatType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
                 <objectAnimator
                     android:propertyName="translateY"
                     android:startOffset="150"
                     android:duration="150"
-                    android:valueFrom="-1.5"
+                    android:valueFrom="-0.5"
                     android:valueTo="0"
                     android:valueType="floatType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
@@ -56,14 +56,14 @@
                     android:propertyName="strokeWidth"
                     android:duration="150"
                     android:valueFrom="0"
-                    android:valueTo="1.5"
+                    android:valueTo="2"
                     android:valueType="floatType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
                 <objectAnimator
                     android:propertyName="strokeWidth"
                     android:startOffset="150"
                     android:duration="150"
-                    android:valueFrom="1.5"
+                    android:valueFrom="2"
                     android:valueTo="0"
                     android:valueType="floatType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>

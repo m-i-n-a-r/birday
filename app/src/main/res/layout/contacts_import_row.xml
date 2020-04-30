@@ -16,14 +16,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/import_contacts_title"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
 
         <TextView
             android:id="@+id/importContactsDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/import_contacts_description"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
             android:textStyle="normal" />
 
 </LinearLayout>

@@ -17,7 +17,7 @@
                     android:pathData="M 12 1 L 9 9 L 1 12 L 9 15 L 12 23 L 15 15 L 23 12 L 15 9 L 12 1 Z"
                     android:fillColor="#000000"
                     android:strokeColor="#000000"
-                    android:strokeAlpha="0.3"/>
+                    android:strokeAlpha="0.4"/>
             </group>
         </vector>
     </aapt:attr>
@@ -28,14 +28,14 @@
                     android:propertyName="strokeWidth"
                     android:duration="200"
                     android:valueFrom="0"
-                    android:valueTo="1.5"
+                    android:valueTo="2"
                     android:valueType="floatType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
                 <objectAnimator
                     android:propertyName="strokeWidth"
                     android:startOffset="200"
                     android:duration="200"
-                    android:valueFrom="1.5"
+                    android:valueFrom="2"
                     android:valueTo="0"
                     android:valueType="floatType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
@@ -49,21 +49,21 @@
                     android:propertyName="scaleX"
                     android:duration="250"
                     android:valueFrom="1"
-                    android:valueTo="0.8"
+                    android:valueTo="0.6"
                     android:valueType="floatType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
                 <objectAnimator
                     android:propertyName="scaleY"
                     android:duration="250"
                     android:valueFrom="1"
-                    android:valueTo="0.8"
+                    android:valueTo="0.6"
                     android:valueType="floatType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
                 <objectAnimator
                     android:propertyName="scaleX"
                     android:startOffset="250"
                     android:duration="250"
-                    android:valueFrom="0.8"
+                    android:valueFrom="0.6"
                     android:valueTo="1"
                     android:valueType="floatType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
@@ -71,7 +71,7 @@
                     android:propertyName="scaleY"
                     android:startOffset="250"
                     android:duration="250"
-                    android:valueFrom="0.8"
+                    android:valueFrom="0.6"
                     android:valueTo="1"
                     android:valueType="floatType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
