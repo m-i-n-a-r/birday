@@ -31,6 +31,14 @@
         android:title="@string/customization"
         app:iconSpaceReserved="false">
 
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="vibration"
+            android:summaryOff="@string/vibration_description_off"
+            android:summaryOn="@string/vibration_description_on"
+            android:title="@string/vibration_name"
+            app:iconSpaceReserved="false" />
+
         <ListPreference
             android:defaultValue="system"
             android:entries="@array/themes"
@@ -47,14 +55,6 @@
             android:key="accent_color"
             android:summary="%s"
             android:title="@string/accent_name"
-            app:iconSpaceReserved="false" />
-
-        <SwitchPreference
-            android:defaultValue="true"
-            android:key="vibration"
-            android:summaryOff="@string/vibration_description_off"
-            android:summaryOn="@string/vibration_description_on"
-            android:title="@string/vibration_name"
             app:iconSpaceReserved="false" />
     </PreferenceCategory>
 

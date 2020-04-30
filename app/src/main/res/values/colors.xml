@@ -13,8 +13,8 @@
     <!-- light theme colors -->
     <color name="colorBackground">#fefefe</color>
     <color name="colorPrimary">#fefefe</color>
-    <color name="textColorPrimary">#5f5f5f</color>
-    <color name="textColorSecondary">#2f2f2f</color>
+    <color name="textColorPrimary">#1f1f1f</color>
+    <color name="textColorSecondary">#0f0f0f</color>
 
     <!-- dark theme colors -->
     <color name="colorBackgroundInverse">#1f1f1f</color>

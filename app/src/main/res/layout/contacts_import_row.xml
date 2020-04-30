@@ -24,6 +24,6 @@
             android:layout_height="wrap_content"
             android:text="@string/import_contacts_description"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-            android:textSize="13sp"/>
+            android:textSize="13.5sp"/>
 
 </LinearLayout>

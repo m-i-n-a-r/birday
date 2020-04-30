@@ -270,18 +270,15 @@ class MainActivity : AppCompatActivity() {
             try {
                 // Missing year, put 2000 as a placeholder
                 var parseDate = contact.value[1]
-                if (contact.value[1].length < 9) parseDate = contact.value[1].replaceFirst("-", "2000")
+                if (contact.value[1].length < 8) parseDate = contact.value[1].replaceFirst("-", "2000")
                 date = LocalDate.parse(parseDate)
             }
             catch (e: Exception) { continue }
             val event = Event(id = 0, name = name, surname = surname, originalDate = date)
-
-            // Check if the event is duplicate with a query
-            //if (!homeViewModel.checkExisting(it.key, it.value) == 0) events.add(event)
-            events.add(event) // TODO remove
+            events.add(event)
         }
 
-        // Phase 3: insert the remaining events in the db
+        // Phase 3: insert the remaining events in the db and update the recycler
         events.forEach { homeViewModel.insert(it) }
         adapter.notifyDataSetChanged()
         return true

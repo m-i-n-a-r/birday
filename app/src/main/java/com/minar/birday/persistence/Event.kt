@@ -1,10 +1,11 @@
 package com.minar.birday.persistence
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import java.time.LocalDate
 
-@Entity
+@Entity(indices = [Index(value = arrayOf("name", "surname", "originalDate"), unique = true)])
 data class Event(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
