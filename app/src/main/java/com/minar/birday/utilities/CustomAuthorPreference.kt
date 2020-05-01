@@ -36,7 +36,7 @@ class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
         val l5 = v.findViewById<ImageView>(R.id.minarsite)
         // Spawn the logo with a little delay
         activityScope.launch {
-            delay(400)
+            delay(300)
             (logo.drawable as AnimatedVectorDrawable).start()
         }
         logo.setOnClickListener(this)
