@@ -5,7 +5,7 @@ import androidx.room.*
 
 @Dao
 interface EventDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertEvent(event: Event)
 
     @Update
