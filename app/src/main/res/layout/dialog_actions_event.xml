@@ -2,40 +2,45 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:gravity="center"
     android:paddingTop="@dimen/dialog_actions_padding"
     android:paddingLeft="@dimen/dialog_actions_padding"
     android:paddingRight="@dimen/dialog_actions_padding">
 
-    <ImageView
+    <Button
         android:layout_gravity="center"
         android:id="@+id/editButton"
-        android:layout_width="@dimen/in_row_image"
-        android:layout_height="@dimen/in_row_image"
-        android:src="@drawable/ic_edit_24dp"
-        android:clickable="true"
-        android:focusable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_event"
+        android:textColor="?colorAccent"
         android:tint="?colorAccent"
-        android:paddingTop="@dimen/in_row_image_padding"
-        android:paddingBottom="@dimen/in_row_image_padding"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:paddingTop="@dimen/in_row_button_padding"
+        android:paddingBottom="@dimen/in_row_button_padding"
         android:layout_weight="0.5"
-        android:contentDescription="@string/event_actions"/>
+        android:contentDescription="@string/event_actions"
+        app:icon="@drawable/ic_edit_24dp"
+        app:iconGravity="start"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        app:rippleColor="?colorAccent" />
 
-    <ImageView
+    <Button
         android:layout_gravity="center"
         android:id="@+id/deleteButton"
-        android:layout_width="@dimen/in_row_image"
-        android:layout_height="@dimen/in_row_image"
-        android:src="@drawable/ic_delete_black_24dp"
-        android:clickable="true"
-        android:focusable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete_event"
+        android:textColor="?colorAccent"
         android:tint="?colorAccent"
-        android:paddingTop="@dimen/in_row_image_padding"
-        android:paddingBottom="@dimen/in_row_image_padding"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:paddingTop="@dimen/in_row_button_padding"
+        android:paddingBottom="@dimen/in_row_button_padding"
         android:layout_weight="0.5"
-        android:contentDescription="@string/event_actions"/>
+        android:contentDescription="@string/event_actions"
+        app:icon="@drawable/ic_delete_black_24dp"
+        app:iconGravity="end"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        app:rippleColor="?colorAccent" />
 
 </LinearLayout>

@@ -39,8 +39,8 @@
         android:src="@drawable/animated_to_favorite"
         android:clickable="true"
         android:focusable="true"
-        android:paddingTop="@dimen/in_row_image_padding"
-        android:paddingBottom="@dimen/in_row_image_padding"
+        android:paddingTop="@dimen/in_row_button_padding"
+        android:paddingBottom="@dimen/in_row_button_padding"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:layout_weight="0.05"
         android:contentDescription="@string/add_favorite"/>

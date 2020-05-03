@@ -118,6 +118,7 @@
     <string name="event_actions">Azioni evento</string>
     <string name="event_actions_description">qui puoi eliminare questo evento o modificarlo al volo!</string>
     <string name="edit_event">Modifica evento</string>
+    <string name="delete_event">Elimina evento</string>
     <string name="update_event">Aggiorna evento</string>
     <string name="slide_one_title">Benvenuto/a in Birday!</string>
     <string name="slide_one_description">Birday è un\'app semplice e leggera per gestire eventi importanti!
