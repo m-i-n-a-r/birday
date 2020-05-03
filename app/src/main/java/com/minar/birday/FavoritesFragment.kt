@@ -25,7 +25,7 @@ class FavoritesFragment : Fragment() {
     private lateinit var rootView: View
     private lateinit var recyclerView: RecyclerView
     private lateinit var favoritesViewModel: FavoritesViewModel
-    lateinit var adapter: FavoritesAdapter
+    private lateinit var adapter: FavoritesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

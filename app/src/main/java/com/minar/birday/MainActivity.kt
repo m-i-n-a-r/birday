@@ -279,9 +279,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Phase 3: insert the remaining events in the db and update the recycler
-        events.forEach { homeViewModel.insert(it) }
-        adapter.notifyDataSetChanged()
-        return true
+        return if (events.size == 0) {
+            Toast.makeText(this, getString(R.string.import_nothing_found), Toast.LENGTH_SHORT).show()
+            true
+        } else {
+            events.forEach { homeViewModel.insert(it) }
+            adapter.notifyDataSetChanged()
+            Toast.makeText(this, getString(R.string.import_success), Toast.LENGTH_SHORT).show()
+            true
+        }
     }
 
     // Get the contacts and save them in a map

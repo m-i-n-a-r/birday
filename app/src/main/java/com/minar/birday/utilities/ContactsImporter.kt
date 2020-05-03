@@ -20,8 +20,7 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
     override fun onClick(v: View) {
         val act = context as MainActivity
         act.vibrate()
-        if(act.importContacts()) Toast.makeText(context, context.getString(R.string.import_success), Toast.LENGTH_SHORT).show()
-        else Toast.makeText(context, context.getString(R.string.import_failed), Toast.LENGTH_SHORT).show()
+        if(!act.importContacts()) Toast.makeText(context, context.getString(R.string.import_failed), Toast.LENGTH_SHORT).show()
 
     }
 }
