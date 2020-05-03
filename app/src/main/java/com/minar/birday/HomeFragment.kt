@@ -232,7 +232,7 @@ class HomeFragment : Fragment() {
         val eventDate = customView.findViewById<TextView>(R.id.dateEvent)
         name.text = nameValue
         surname.text = surnameValue
-        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)
+        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
         eventDate.text = eventDateValue.format(formatter)
         val endDate = Calendar.getInstance()
         var dateDialog: MaterialDialog? = null

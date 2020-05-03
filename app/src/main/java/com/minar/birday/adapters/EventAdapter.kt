@@ -62,21 +62,21 @@ class EventAdapter internal constructor(context: Context, homeFragment: HomeFrag
                     event.favorite = false
                     activityScope.launch {
                         delay(800)
+                        favoriteButton.setImageResource(R.drawable.animated_to_favorite)
                         fragment?.updateFavorite(event)
                     }
-
-                    favoriteButton.setImageResource(R.drawable.animated_from_favorite)
+                    (favoriteButton.drawable as AnimatedVectorDrawable).start()
                 }
                 else {
                     event!!.favorite = true
                     activityScope.launch {
                         delay(800)
+                        favoriteButton.setImageResource(R.drawable.animated_from_favorite)
                         fragment?.updateFavorite(event)
                     }
-
-                    favoriteButton.setImageResource(R.drawable.animated_to_favorite)
+                    (favoriteButton.drawable as AnimatedVectorDrawable).start()
                 }
-                (favoriteButton.drawable as AnimatedVectorDrawable).start()
+
             }
         }
 

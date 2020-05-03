@@ -59,6 +59,7 @@
     <string name="import_contacts_description">If an imported birthday doesn\'t contain the year, Birday will automatically set
     the year 2000. Make sure to modify the events with the missing year to always have accurate statistics!</string>
     <string name="import_success">Import completed successfully!</string>
+    <string name="import_nothing_found">No birthday found!</string>
     <string name="import_failed">Something went wrong!</string>
     <string name="missing_permission">Birday could not import your contacts, because the contact permission
     was denied earlier. Try reopening the app or activate the permission manually!</string>
@@ -156,12 +157,12 @@
     </string>
     <string name="slide_two_title">Free, simple, customizable</string>
     <string name="slide_two_description">Birday is free, ad-free and open source. It provides a set of
-    interesting stats about your birthdays, a favorite system and a customizable interface. And guaranteed
+    stats about your birthdays, a favorite system and a customizable interface. And guaranteed
     support and updates!
     </string>
     <string name="slide_three_title">Import from Google Contacts</string>
-    <string name="slide_three_description">Another interesting possibility is to import your already saved
-    birthdays from your Google Contacts. Birday can do it for you, just allow the contacts permission. Enjoy!
+    <string name="slide_three_description">It\'s also possible to import the birthdays you\'ve already saved
+    from your Google Contacts. Birday can do it for you, just grant the contacts permission. Enjoy!
     </string>
 
 </resources>

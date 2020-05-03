@@ -163,7 +163,7 @@ class MainActivity : AppCompatActivity() {
                             val day = date.get(Calendar.DAY_OF_MONTH)
                             eventDateValue = LocalDate.of(year, month, day)
                             val formatter: DateTimeFormatter =
-                                DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)
+                                DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
                             eventDate.text = eventDateValue.format(formatter)
                         }
                     }
