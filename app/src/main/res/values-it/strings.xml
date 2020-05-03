@@ -115,7 +115,7 @@
     <string name="notification_title">Promemoria Birday</string>
     <string name="notification_description_part_1">Ciao, i compleanni di oggi sono</string>
     <string name="notification_description_part_2">Ti auguro una buona giornata!</string>
-    <string name="event_actions">Azioni evento</string>
+    <string name="event_actions">Azioni</string>
     <string name="event_actions_description">qui puoi eliminare questo evento o modificarlo al volo!</string>
     <string name="edit_event">Modifica evento</string>
     <string name="delete_event">Elimina evento</string>

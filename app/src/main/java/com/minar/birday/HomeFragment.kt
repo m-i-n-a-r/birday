@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.fragment.app.Fragment
@@ -90,9 +89,10 @@ class HomeFragment : Fragment() {
         adapter.setOnItemClickListener(onItemClickListener = object : OnItemClickListener {
             override fun onItemClick(position: Int, view: View?) {
                 val act = activity as MainActivity
+                val title = getString(R.string.event_actions) + " - " + adapter.getItem(position).name
                 act.vibrate()
                 val dialog = MaterialDialog(act).show {
-                    title(R.string.event_actions)
+                    title(text = title)
                     icon(R.drawable.ic_balloon_24dp)
                     message(R.string.event_actions_description)
                     cornerRadius(res = R.dimen.rounded_corners)

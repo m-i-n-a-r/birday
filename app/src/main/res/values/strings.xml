@@ -87,7 +87,7 @@
     <string name="invalid_value_date">Select a date!</string>
 
     <!-- Event actions -->
-    <string name="event_actions">Event actions</string>
+    <string name="event_actions">Actions</string>
     <string name="event_actions_description">here you can delete or easily modify this event!</string>
     <string name="edit_event">Edit event</string>
     <string name="delete_event">Delete event</string>
