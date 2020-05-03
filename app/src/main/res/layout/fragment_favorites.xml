@@ -97,7 +97,12 @@
         android:layout_height="match_parent"
         android:paddingBottom="@dimen/recycler_padding"
         android:clipToPadding="false"
+        android:overScrollMode="never"
         android:scrollbarStyle="outsideOverlay"
-        android:overScrollMode="never" />
+        app:fastScrollEnabled="true"
+        app:fastScrollHorizontalThumbDrawable="@drawable/scroll_thumb_drawable"
+        app:fastScrollHorizontalTrackDrawable="@drawable/scroll_line_drawable"
+        app:fastScrollVerticalThumbDrawable="@drawable/scroll_thumb_drawable"
+        app:fastScrollVerticalTrackDrawable="@drawable/scroll_line_drawable"/>
 
 </LinearLayout>

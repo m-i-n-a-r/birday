@@ -23,6 +23,7 @@
     <dimen name="recycler_padding">24dp</dimen>
     <dimen name="dialog_actions_padding">40dp</dimen>
     <dimen name="settings_row_padding">16dp</dimen>
+    <dimen name="fast_scroll_corners">32dp</dimen>
 
     <!-- Unchanged dimensions -->
     <dimen name="minar_banner_height">84dp</dimen>
