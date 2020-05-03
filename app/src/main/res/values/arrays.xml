@@ -64,4 +64,26 @@
         <item>11</item>
         <item>12</item>
     </string-array>
+
+    <string-array name="additionalNotification">
+        <item>No additional notification</item>
+        <item>1 day before</item>
+        <item>2 day before</item>
+        <item>3 day before</item>
+        <item>4 day before</item>
+        <item>5 day before</item>
+        <item>6 day before</item>
+        <item>7 day before</item>
+    </string-array>
+
+    <string-array name="additionalNotificationValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
 </resources>

@@ -17,6 +17,7 @@ import com.minar.birday.persistence.EventResult
 import com.minar.birday.utilities.SplashActivity
 import java.lang.Exception
 import java.time.LocalDate
+import java.time.temporal.ChronoUnit
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -25,14 +26,25 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         val appContext = applicationContext
         val eventDao: EventDao = EventDatabase.getBirdayDataBase(appContext)!!.eventDao()
         val nextEvents: List<EventResult> = eventDao.getOrderedNextEvents()
+        val allEvents: List<EventResult> = eventDao.getOrderedAllEvents()
         val currentDate = Calendar.getInstance()
         val dueDate = Calendar.getInstance()
         val sp = PreferenceManager.getDefaultSharedPreferences(applicationContext)
         val workHour = sp.getString("notification_hour", "8")!!.toInt()
+        val additionalNotification = sp.getString("additional_notification", "0")!!.toInt()
 
         try {
             // Send notification
             if (!nextEvents.isNullOrEmpty() && nextEvents[0].nextDate!!.isEqual(LocalDate.now())) sendNotification(nextEvents)
+            // Check for upcoming birthdays
+            if (additionalNotification != 0) {
+                val anticipated = mutableListOf<EventResult>()
+                for (event in allEvents) {
+                    if(ChronoUnit.DAYS.between(LocalDate.now(), event.nextDate).toInt() == additionalNotification)
+                        anticipated.add(event)
+                }
+                if (anticipated.size > 0) sendNotification(anticipated, true)
+            }
 
             // Set Execution at the time specified
             dueDate.set(Calendar.HOUR_OF_DAY, workHour)
@@ -53,13 +65,16 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
     }
 
     // Send notification if there's one or more birthdays today
-    private fun sendNotification(nextEvents: List<EventResult>) {
+    private fun sendNotification(nextEvents: List<EventResult>, upcoming: Boolean = false) {
         val intent = Intent(applicationContext, SplashActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
         val pendingIntent: PendingIntent = PendingIntent.getActivity(applicationContext, 0, intent, 0)
 
-        val notificationText = formulateNotificationText(nextEvents)
+        // Distinguish between normal notification and upcoming birthday notification
+        val notificationText = if (!upcoming) formulateNotificationText(nextEvents)
+        else formulateAdditionalNotificationText(nextEvents)
+
         val builder = NotificationCompat.Builder(applicationContext, "events_channel")
             .setSmallIcon(R.drawable.notification_icon)
             .setContentTitle(applicationContext.getString(R.string.notification_title))
@@ -71,6 +86,20 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             .setAutoCancel(true)
 
         with(NotificationManagerCompat.from(applicationContext)) { notify(1, builder.build()) }
+    }
+
+    private fun formulateAdditionalNotificationText(nextEvents: List<EventResult>): String {
+        var response = applicationContext.getString(R.string.additional_notification_text) + " "
+        nextEvents.forEach {
+            if (nextEvents.indexOf(it) == 0) response += it.name + ", " +
+                    it.nextDate?.year?.minus(it.originalDate.year) + " " + applicationContext.getString(R.string.years)
+            if (nextEvents.indexOf(it) in 1..2) response += ", " + it.name + ", " +
+                    it.nextDate?.year?.minus(it.originalDate.year) + " " + applicationContext.getString(R.string.years)
+            if (nextEvents.indexOf(it) == 3) response += ", " + applicationContext.getString(R.string.event_others)
+        }
+        response += ". "
+
+        return response
     }
 
     private fun formulateNotificationText(nextEvents: List<EventResult>): String {

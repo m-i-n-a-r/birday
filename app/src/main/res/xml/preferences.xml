@@ -24,6 +24,15 @@
             android:summary="@string/notification_hour_description"
             app:iconSpaceReserved="false"/>
 
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/additionalNotification"
+            android:entryValues="@array/additionalNotificationValues"
+            android:key="additional_notification"
+            android:title="@string/additional_notification_name"
+            android:summary="@string/additional_notification_description"
+            app:iconSpaceReserved="false"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory

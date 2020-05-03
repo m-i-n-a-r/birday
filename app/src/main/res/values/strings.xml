@@ -29,6 +29,8 @@
     <!-- Settings -->
     <string name="customization">Customization</string>
     <string name="app_behavior">App behavior</string>
+    <string name="additional_notification_name">Additional notification</string>
+    <string name="additional_notification_description">Send an additional notification days before the event. %s</string>
     <string name="vibration_name">Vibration</string>
     <string name="vibration_description_on">Vibrate when a button is pressed</string>
     <string name="vibration_description_off">No vibrations when a button is pressed</string>
@@ -150,6 +152,7 @@
     <string name="notification_title">Birday Reminder</string>
     <string name="notification_description_part_1">Hi there, today\'s birthdays are</string>
     <string name="notification_description_part_2">Have a great day!</string>
+    <string name="additional_notification_text">Upcoming birthdays!</string>
 
     <!-- Introduction slides -->
     <string name="slide_one_title">Welcome to Birday!</string>
