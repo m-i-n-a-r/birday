@@ -16,6 +16,8 @@
         android:layout_marginRight="@dimen/card_margin"
         app:cardCornerRadius="@dimen/rounded_corners"
         app:cardElevation="0dp"
+        android:clickable="true"
+        android:focusable="true"
         app:rippleColor="?colorAccent"
         app:strokeColor="@color/goodGrayTranslucent"
         app:strokeWidth="@dimen/card_stroke">

@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -32,6 +33,7 @@ import com.minar.birday.persistence.EventResult
 import com.minar.birday.utilities.OnItemClickListener
 import com.minar.birday.viewmodels.HomeViewModel
 import kotlinx.android.synthetic.main.dialog_actions_event.view.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -56,7 +58,13 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) : View {
         val v: View = inflater.inflate(R.layout.fragment_home, container, false)
         val upcomingImage = v.findViewById<ImageView>(R.id.upcomingImage)
-            upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
+        val homeCard = v.homeCard
+        upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
+
+        // TODO open a dialog to open Whatsapp, messages or phone
+        homeCard.setOnClickListener {
+            Toast.makeText(context, "Work in progress!", Toast.LENGTH_SHORT).show()
+        }
         rootView = v
 
         // Setup the recycler view

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -20,6 +21,7 @@ import com.minar.birday.adapters.FavoritesAdapter
 import com.minar.birday.persistence.EventResult
 import com.minar.birday.utilities.StatsGenerator
 import com.minar.birday.viewmodels.FavoritesViewModel
+import kotlinx.android.synthetic.main.fragment_favorites.view.*
 
 class FavoritesFragment : Fragment() {
     private lateinit var rootView: View
@@ -35,7 +37,13 @@ class FavoritesFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.fragment_favorites, container, false)
         val statsImage = v.findViewById<ImageView>(R.id.statsImage)
+        val favoritesCard = v.favoritesCard
         statsImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_candle)
+
+        // TODO open a dialog to show a full set of stats (mean values)
+        favoritesCard.setOnClickListener {
+            Toast.makeText(context, "Work in progress!", Toast.LENGTH_SHORT).show()
+        }
         rootView = v
 
         // Setup the recycler view
