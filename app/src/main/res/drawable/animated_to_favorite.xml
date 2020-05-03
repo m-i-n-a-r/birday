@@ -19,55 +19,55 @@ xmlns:aapt="http://schemas.android.com/aapt">
         <set>
             <objectAnimator
                 android:propertyName="pathData"
-                android:duration="1500"
+                android:duration="750"
                 android:valueFrom="M 12 1 L 9 9 L 1 12 L 9 15 L 12 23 L 15 15 L 23 12 L 15 9 L 12 1 Z M 12 6.7 L 13.45 10.55 L 17.3 12 L 13.45 13.45 L 12 17.3 L 10.55 13.45 L 6.7 12 L 10.55 10.55 L 12 6.7"
                 android:valueTo="M 12 1 L 9 9 L 1 12 L 9 15 L 12 23 L 15 15 L 23 12 L 15 9 L 12 1 Z M 12 12 L 12 12 L 12 12 L 12 12 L 12 12 L 12 12 L 12 12 L 12 12 L 12 12"
                 android:valueType="pathType"
                 android:interpolator="@android:interpolator/fast_out_slow_in"/>
             <objectAnimator
                 android:propertyName="strokeWidth"
-                android:startOffset="500"
-                android:duration="500"
+                android:startOffset="250"
+                android:duration="250"
                 android:valueFrom="0"
                 android:valueTo="1.5"
                 android:valueType="floatType"
                 android:interpolator="@android:interpolator/fast_out_slow_in"/>
             <objectAnimator
                 android:propertyName="strokeAlpha"
-                android:startOffset="500"
-                android:duration="500"
+                android:startOffset="250"
+                android:duration="250"
                 android:valueFrom="0"
                 android:valueTo="1"
                 android:valueType="floatType"
                 android:interpolator="@android:interpolator/fast_out_slow_in"/>
             <objectAnimator
                 android:propertyName="strokeColor"
-                android:startOffset="500"
-                android:duration="500"
+                android:startOffset="250"
+                android:duration="250"
                 android:valueFrom="@color/goodGray"
                 android:valueTo="?colorAccent"
                 android:valueType="colorType"
                 android:interpolator="@android:interpolator/fast_out_slow_in"/>
             <objectAnimator
                 android:propertyName="strokeWidth"
-                android:startOffset="1000"
-                android:duration="500"
+                android:startOffset="500"
+                android:duration="250"
                 android:valueFrom="1.5"
                 android:valueTo="0"
                 android:valueType="floatType"
                 android:interpolator="@android:interpolator/fast_out_slow_in"/>
             <objectAnimator
                 android:propertyName="strokeAlpha"
-                android:startOffset="1000"
-                android:duration="500"
+                android:startOffset="500"
+                android:duration="250"
                 android:valueFrom="1"
                 android:valueTo="0"
                 android:valueType="floatType"
                 android:interpolator="@android:interpolator/fast_out_slow_in"/>
             <objectAnimator
                 android:propertyName="strokeColor"
-                android:startOffset="1000"
-                android:duration="500"
+                android:startOffset="500"
+                android:duration="250"
                 android:valueFrom="?colorAccent"
                 android:valueTo="@color/goodGray"
                 android:valueType="colorType"

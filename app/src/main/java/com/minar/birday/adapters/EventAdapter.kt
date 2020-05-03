@@ -23,7 +23,6 @@ import java.time.format.FormatStyle
 
 class EventAdapter internal constructor(context: Context, homeFragment: HomeFragment?) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
     private var events = emptyList<EventResult>() // Cached copy of events
-    private val appContext = context
     private val fragment = homeFragment
     private val activityScope = CoroutineScope(Dispatchers.Main)
     var itemClickListener: OnItemClickListener? = null
@@ -51,19 +50,18 @@ class EventAdapter internal constructor(context: Context, homeFragment: HomeFrag
         fun setUpView(event: EventResult?) {
             val personName = event?.name + " " + event?.surname
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
-            val nextDate = event?.nextDate?.format(formatter)
+            val originalDate = event?.originalDate?.format(formatter)
             eventPerson.text = personName
-            eventDate.text = nextDate
+            eventDate.text = originalDate
 
             // Manage the favorite logic
             if(event?.favorite == false) favoriteButton.setImageResource(R.drawable.animated_to_favorite)
             else favoriteButton.setImageResource(R.drawable.animated_from_favorite)
             favoriteButton.setOnClickListener {
-                // TODO vibrate?
                 if(event?.favorite == true) {
                     event.favorite = false
                     activityScope.launch {
-                        delay(1550)
+                        delay(800)
                         fragment?.updateFavorite(event)
                     }
 
@@ -72,7 +70,7 @@ class EventAdapter internal constructor(context: Context, homeFragment: HomeFrag
                 else {
                     event!!.favorite = true
                     activityScope.launch {
-                        delay(1550)
+                        delay(800)
                         fragment?.updateFavorite(event)
                     }
 
@@ -104,5 +102,4 @@ class EventAdapter internal constructor(context: Context, homeFragment: HomeFrag
     fun getItem(position: Int) = events[position]
 
     override fun getItemCount() = events.size
-
 }
