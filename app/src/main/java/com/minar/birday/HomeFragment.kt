@@ -14,6 +14,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -96,16 +97,24 @@ class HomeFragment : Fragment() {
 
             dialerButton.setOnClickListener {
                 act.vibrate()
-                val dialIntent = Intent(Intent.ACTION_DIAL)
-                ctx.startActivity(dialIntent)
+                try {
+                    val dialIntent = Intent(Intent.ACTION_DIAL)
+                    ctx.startActivity(dialIntent)
+                } catch (e: Exception) {
+                    Toast.makeText(ctx, ctx.getString(R.string.no_default_dialer), Toast.LENGTH_SHORT).show()
+                }
                 dialog.dismiss()
             }
 
             messagesButton.setOnClickListener {
                 act.vibrate()
-                val defaultSmsPackage = Telephony.Sms.getDefaultSmsPackage(requireContext())
-                val smsIntent: Intent? = ctx.packageManager.getLaunchIntentForPackage(defaultSmsPackage)
-                ctx.startActivity(smsIntent)
+                try {
+                    val defaultSmsPackage = Telephony.Sms.getDefaultSmsPackage(requireContext())
+                    val smsIntent: Intent? = ctx.packageManager.getLaunchIntentForPackage(defaultSmsPackage)
+                    ctx.startActivity(smsIntent)
+                } catch (e: Exception) {
+                    Toast.makeText(ctx, ctx.getString(R.string.no_default_sms), Toast.LENGTH_SHORT).show()
+                }
                 dialog.dismiss()
             }
 

@@ -152,5 +152,7 @@
     <string name="textMessage">Messaggio sms</string>
     <string name="dialer">Telefono</string>
     <string name="wishes">Tanti auguri!</string>
+    <string name="no_default_dialer">Nessuna app telefono di default trovata!</string>
+    <string name="no_default_sms">Nessuna app sms di default trovata!</string>
 
 </resources>

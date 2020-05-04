@@ -104,6 +104,8 @@
     <string name="textMessage">Text message</string>
     <string name="dialer">Dialer</string>
     <string name="wishes">Happy birthday!</string>
+    <string name="no_default_dialer">No default dialer app found!</string>
+    <string name="no_default_sms">No default sms app found!</string>
 
     <!-- Statistics -->
     <string name="did_you_know">Did you know?</string>
