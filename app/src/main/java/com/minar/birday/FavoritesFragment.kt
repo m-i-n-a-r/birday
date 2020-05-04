@@ -2,6 +2,7 @@ package com.minar.birday
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.text.SpannableStringBuilder
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +17,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
+import com.afollestad.materialdialogs.LayoutMode
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.minar.birday.adapters.FavoritesAdapter
 import com.minar.birday.persistence.EventResult
 import com.minar.birday.utilities.StatsGenerator
@@ -28,6 +31,7 @@ class FavoritesFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var favoritesViewModel: FavoritesViewModel
     private lateinit var adapter: FavoritesAdapter
+    private lateinit var fullStats: SpannableStringBuilder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +44,14 @@ class FavoritesFragment : Fragment() {
         val favoritesCard = v.favoritesCard
         statsImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_candle)
 
-        // TODO open a dialog to show a full set of stats (mean values)
+        // Show full stats in a bottom sheet
         favoritesCard.setOnClickListener {
-            Toast.makeText(context, "Work in progress!", Toast.LENGTH_SHORT).show()
+            MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
+                cornerRadius(res = R.dimen.rounded_corners)
+                title(R.string.stats_summary)
+                icon(R.drawable.ic_stats_24dp)
+                message(text = fullStats)
+            }
         }
         rootView = v
 
@@ -60,6 +69,7 @@ class FavoritesFragment : Fragment() {
         favoritesViewModel.allEvents.observe(viewLifecycleOwner, Observer { eventList ->
             // Under a minimum size, no stats will be shown
             if (eventList.size > 4) generateStat(eventList)
+            else fullStats = SpannableStringBuilder(requireActivity().applicationContext.getString(R.string.no_stats_description))
         })
 
         return v
@@ -85,6 +95,7 @@ class FavoritesFragment : Fragment() {
         val cardDescription: TextView = requireView().findViewById(R.id.statsDescription)
         val generator = StatsGenerator(events, context)
         cardSubtitle.text = generator.generateRandomStat()
+        fullStats = generator.generateFullStats()
         val summary = getString(R.string.stats_total) + " " + events.size + " " + getString(R.string.birthdays) + "!"
         cardDescription.text = summary
     }

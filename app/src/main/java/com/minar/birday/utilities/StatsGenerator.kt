@@ -1,6 +1,11 @@
 package com.minar.birday.utilities
 
 import android.content.Context
+import android.os.Build
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.style.BulletSpan
+import androidx.annotation.ColorInt
 import com.minar.birday.R
 import com.minar.birday.persistence.EventResult
 import java.time.LocalDate
@@ -34,6 +39,22 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
             }
         }
         return response
+    }
+
+    // Generate a summary of the stats
+    fun generateFullStats(): SpannableStringBuilder {
+        val sb = SpannableStringBuilder()
+        val stats = mutableListOf<String>()
+        stats.add(ageAverage())
+        stats.add(mostCommonAgeRange())
+        stats.add(mostCommonDayOfWeek())
+        stats.add(mostCommonDecade())
+        stats.add(mostCommonMonth())
+        stats.add(mostCommonZodiacSign())
+        stats.add(leapYearTotal())
+        stats.removeIf { it.isBlank() }
+        sb.appendBulletSpans(stats, 20, applicationContext!!.getColor(R.color.goodGray))
+        return sb
     }
 
     // The average age
@@ -251,5 +272,25 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         return if(map.values.count { it == maxValue } > 1) ""
         else result
 
+    }
+
+    private fun SpannableStringBuilder.appendBulletSpans(paragraphs: List<String>, margin: Int, @ColorInt color: Int): SpannableStringBuilder {
+        for (paragraph in paragraphs) {
+            if (paragraphs.indexOf(paragraph) == 0) appendBulletSpan(paragraph, margin, color, true)
+            else appendBulletSpan(paragraph, margin, color)
+        }
+        return this
+    }
+
+    private fun SpannableStringBuilder.appendBulletSpan(paragraph: String, margin: Int, @ColorInt color: Int, first: Boolean = false): SpannableStringBuilder {
+        if (!first) append("\n")
+        val bulletSpan = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) BulletSpan(margin, color, 10)
+        else BulletSpan(margin, color)
+        val spaceBefore = length
+        append(paragraph)
+        val spaceAfter = length
+        append("\n")
+        setSpan(bulletSpan, spaceBefore, spaceAfter, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
+        return this
     }
 }

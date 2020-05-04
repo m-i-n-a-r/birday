@@ -54,6 +54,7 @@
         su dontkillmyapp.com</string>
     <string name="stats">Statistiche</string>
     <string name="no_stats">Nessuna statistica da mostrare!</string>
+    <string name="stats_summary">Riepiligo statistiche</string>
     <string name="no_stats_description">Non hai abbastanza compleanni per mostrare le statistiche. Aggiungine alcuni e torna a controllare!</string>
     <string name="next_event">Prossimo evento</string>
     <string name="no_next_event">Nessun compleanno da mostrare!</string>

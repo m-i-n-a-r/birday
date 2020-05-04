@@ -17,6 +17,7 @@
     <string name="add_favorite">Add to favorites</string>
     <string name="stats">Statistics</string>
     <string name="no_stats">No stats to show!</string>
+    <string name="stats_summary">Stats summary</string>
     <string name="no_stats_description">You haven\'t enough birthdays to display the stats. Add some and come back later!</string>
     <string name="stats_total">Birday is helping you to remember a total of</string>
     <string name="next_event">Next event</string>
