@@ -145,5 +145,12 @@
     <string name="additional_notification_name">Notifica aggiuntiva</string>
     <string name="additional_notification_description">Manda una notifica aggiuntiva alcuni giorni prime dell\'evento. %s</string>
     <string name="additional_notification_text">Compleanni in arrivo!</string>
+    <string name="event_apps">App rapide</string>
+    <string name="event_apps_description">Applicazione per fare tanti auguri ai festeggiati!</string>
+    <string name="whatsapp">Whatsapp</string>
+    <string name="telegram">Telegram</string>
+    <string name="textMessage">Messaggio sms</string>
+    <string name="dialer">Telefono</string>
+    <string name="wishes">Tanti auguri!</string>
 
 </resources>

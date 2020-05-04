@@ -1,8 +1,12 @@
 package com.minar.birday
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
+import android.provider.Telephony
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -10,7 +14,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -33,6 +36,7 @@ import com.minar.birday.persistence.EventResult
 import com.minar.birday.utilities.OnItemClickListener
 import com.minar.birday.viewmodels.HomeViewModel
 import kotlinx.android.synthetic.main.dialog_actions_event.view.*
+import kotlinx.android.synthetic.main.dialog_apps_event.view.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -61,9 +65,60 @@ class HomeFragment : Fragment() {
         val homeCard = v.homeCard
         upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
 
-        // TODO open a dialog to open Whatsapp, messages or phone
+        // Open a micro app launcher
         homeCard.setOnClickListener {
-            Toast.makeText(context, "Work in progress!", Toast.LENGTH_SHORT).show()
+            val dialog = MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
+                cornerRadius(res = R.dimen.rounded_corners)
+                title(R.string.event_apps)
+                icon(R.drawable.ic_apps_24dp)
+                message(R.string.event_apps_description)
+                customView(R.layout.dialog_apps_event, scrollable = true)
+            }
+
+            val customView = dialog.getCustomView()
+            // Using viewbinding to fetch the buttons
+            val whatsappButton = customView.whatsappButton
+            val dialerButton = customView.dialerButton
+            val messagesButton = customView.messagesButton
+            val telegramButton = customView.telegramButton
+            val ctx: Context = requireContext()
+
+            whatsappButton.setOnClickListener {
+                act.vibrate()
+                try {
+                    val i: Intent? = ctx.packageManager.getLaunchIntentForPackage("com.whatsapp")
+                    ctx.startActivity(i)
+                } catch (e: Exception) {
+                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.whatsapp")))
+                }
+                dialog.dismiss()
+            }
+
+            dialerButton.setOnClickListener {
+                act.vibrate()
+                val dialIntent = Intent(Intent.ACTION_DIAL)
+                ctx.startActivity(dialIntent)
+                dialog.dismiss()
+            }
+
+            messagesButton.setOnClickListener {
+                act.vibrate()
+                val defaultSmsPackage = Telephony.Sms.getDefaultSmsPackage(requireContext())
+                val smsIntent: Intent? = ctx.packageManager.getLaunchIntentForPackage(defaultSmsPackage)
+                ctx.startActivity(smsIntent)
+                dialog.dismiss()
+            }
+
+            telegramButton.setOnClickListener {
+                act.vibrate()
+                try {
+                    val i: Intent? = ctx.packageManager.getLaunchIntentForPackage("org.telegram.messenger")
+                    ctx.startActivity(i)
+                } catch (e: Exception) {
+                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=org.telegram.messenger")))
+                }
+                dialog.dismiss()
+            }
         }
         rootView = v
 
@@ -111,7 +166,6 @@ class HomeFragment : Fragment() {
                 }
 
                 // Setup listeners and checks on the fields
-                dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                 val customView = dialog.getCustomView()
                 // Using viewbinding to fetch the buttons
                 val deleteButton = customView.deleteButton

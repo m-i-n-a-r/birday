@@ -96,6 +96,15 @@
     <string name="delete_event">Delete event</string>
     <string name="update_event">Update event</string>
 
+    <!-- Quick apps -->
+    <string name="event_apps">Quick apps</string>
+    <string name="event_apps_description">Apps to wish all the best rapidly!</string>
+    <string name="whatsapp">Whatsapp</string>
+    <string name="telegram">Telegram</string>
+    <string name="textMessage">Text message</string>
+    <string name="dialer">Dialer</string>
+    <string name="wishes">Happy birthday!</string>
+
     <!-- Statistics -->
     <string name="did_you_know">Did you know?</string>
     <string name="age_average">The average age is</string>
