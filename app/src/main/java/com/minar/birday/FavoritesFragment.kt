@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -32,7 +34,7 @@ class FavoritesFragment : Fragment() {
     private lateinit var favoritesViewModel: FavoritesViewModel
     private lateinit var adapter: FavoritesAdapter
     private lateinit var fullStats: SpannableStringBuilder
-    lateinit var act: MainActivity
+    private lateinit var act: MainActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +66,8 @@ class FavoritesFragment : Fragment() {
         favoritesViewModel = ViewModelProvider(this).get(FavoritesViewModel::class.java)
         favoritesViewModel.allFavoriteEvents.observe(viewLifecycleOwner, Observer { events ->
             // Update the cached copy of the words in the adapter
+            val animationController: LayoutAnimationController = AnimationUtils.loadLayoutAnimation(v.context, R.anim.layout_animation_fall)
+            recyclerView.layoutAnimation = animationController
             events?.let { adapter.setEvents(it) }
         })
         favoritesViewModel.anyFavoriteEvent.observe(viewLifecycleOwner, Observer { eventList ->

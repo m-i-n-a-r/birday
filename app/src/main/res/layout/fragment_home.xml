@@ -90,6 +90,7 @@
         android:paddingRight="@dimen/placeholders_horizontal_padding"
         android:paddingBottom="@dimen/placeholders_horizontal_padding"
         android:text="@string/no_events"
+        android:scrollbarSize="0dp"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         android:textColor="@color/goodGraySemiTranslucent" />
 
@@ -102,6 +103,7 @@
         android:overScrollMode="never"
         android:scrollbarStyle="outsideOverlay"
         android:scrollbarSize="0dp"
+        android:layoutAnimation="@anim/layout_animation_fall"
         app:fastScrollEnabled="true"
         app:fastScrollHorizontalThumbDrawable="@drawable/scroll_thumb_drawable"
         app:fastScrollHorizontalTrackDrawable="@drawable/scroll_line_drawable"
