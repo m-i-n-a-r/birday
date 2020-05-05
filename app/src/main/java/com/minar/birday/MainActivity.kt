@@ -129,10 +129,7 @@ class MainActivity : AppCompatActivity() {
                         surname = surnameValue.smartCapitalize()
                     )
 
-                    val thread = Thread {
-                        homeViewModel.insert(tuple)
-                        adapter.notifyDataSetChanged()
-                    }
+                    val thread = Thread { homeViewModel.insert(tuple) }
                     thread.start()
 
                     dismiss()
@@ -284,7 +281,6 @@ class MainActivity : AppCompatActivity() {
             true
         } else {
             events.forEach { homeViewModel.insert(it) }
-            adapter.notifyDataSetChanged()
             Toast.makeText(this, getString(R.string.import_success), Toast.LENGTH_SHORT).show()
             true
         }

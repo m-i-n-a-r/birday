@@ -12,8 +12,6 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
-import android.view.animation.LayoutAnimationController
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -141,8 +139,6 @@ class HomeFragment : Fragment() {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         homeViewModel.allEvents.observe(viewLifecycleOwner, Observer { events ->
             // Update the cached copy of the words in the adapter
-            val animationController: LayoutAnimationController = AnimationUtils.loadLayoutAnimation(v.context, R.anim.layout_animation_fall)
-            recyclerView.layoutAnimation = animationController
             events?.let { adapter.submitList(it) }
             if (events.isNotEmpty()) insertUpcomingEvents(events)
         })
