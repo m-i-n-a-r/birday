@@ -228,24 +228,15 @@ class HomeFragment : Fragment() {
         var personName = ""
         var nextDateText = ""
         var nextAge = ""
-
-        // TODO probably a problem with the query. Improve management of this case
-        // Sometimes, the first date is yesterday (maybe for time zone reasons)
-        var nextEvents = mutableListOf<EventResult>()
-        for (event in events) {
-            if (ChronoUnit.DAYS.between(LocalDate.now(), event.nextDate).toInt() < 0) continue
-            else nextEvents.add(event)
-        }
-        if (nextEvents.isEmpty()) nextEvents = events as MutableList<EventResult>
-        val upcomingDate = nextEvents[0].nextDate
+        val upcomingDate = events[0].nextDate
         val daysRemaining = ChronoUnit.DAYS.between(LocalDate.now(), upcomingDate).toInt()
 
         // Manage multiple events in the same day considering first case, middle cases and last case if more than 3
-        for (event in nextEvents) {
+        for (event in events) {
             if (event.nextDate!!.isEqual(upcomingDate)) {
                 val actualPersonName = if (event.surname.isNullOrBlank()) event.name
                 else event.name + " " + event.surname
-                when (nextEvents.indexOf(event)) {
+                when (events.indexOf(event)) {
                     0 -> {
                         personName = actualPersonName
                         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
