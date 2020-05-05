@@ -68,6 +68,7 @@ class HomeFragment : Fragment() {
 
         // Open a micro app launcher
         homeCard.setOnClickListener {
+            act.vibrate()
             val dialog = MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
                 cornerRadius(res = R.dimen.rounded_corners)
                 title(R.string.event_apps)
@@ -221,24 +222,36 @@ class HomeFragment : Fragment() {
 
     // Insert the necessary information in the upcoming event cardview
     private fun insertUpcomingEvents(events: List<EventResult>) {
-        val cardTitle: TextView = requireView().findViewById(R.id.upcomingTitle)
-        val cardSubtitle: TextView = requireView().findViewById(R.id.upcomingSubtitle)
-        val cardDescription: TextView = requireView().findViewById(R.id.upcomingDescription)
+        val cardTitle: TextView = requireView().upcomingTitle
+        val cardSubtitle: TextView = requireView().upcomingSubtitle
+        val cardDescription: TextView = requireView().upcomingDescription
         var personName = ""
         var nextDateText = ""
         var nextAge = ""
-        val upcomingDate = events[0].nextDate
+
+        // TODO probably a problem with the query. Improve management of this case
+        // Sometimes, the first date is yesterday (maybe for time zone reasons)
+        var nextEvents = mutableListOf<EventResult>()
+        for (event in events) {
+            if (ChronoUnit.DAYS.between(LocalDate.now(), event.nextDate).toInt() < 0) continue
+            else nextEvents.add(event)
+        }
+        if (nextEvents.isEmpty()) nextEvents = events as MutableList<EventResult>
+        val upcomingDate = nextEvents[0].nextDate
+        val daysRemaining = ChronoUnit.DAYS.between(LocalDate.now(), upcomingDate).toInt()
 
         // Manage multiple events in the same day considering first case, middle cases and last case if more than 3
-        for (event in events) {
+        for (event in nextEvents) {
             if (event.nextDate!!.isEqual(upcomingDate)) {
                 val actualPersonName = if (event.surname.isNullOrBlank()) event.name
                 else event.name + " " + event.surname
-                when (events.indexOf(event)) {
+                when (nextEvents.indexOf(event)) {
                     0 -> {
                         personName = actualPersonName
                         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
-                        nextDateText = when (val daysRemaining = ChronoUnit.DAYS.between(LocalDate.now(), upcomingDate).toInt()) {
+                        nextDateText = when (daysRemaining) {
+                            // The -1 case should never happen
+                            -1 -> event.nextDate.format(formatter) + ". " + getString(R.string.yesterday) + "!"
                             0 -> event.nextDate.format(formatter) + ". " + getString(R.string.today) + "!"
                             1 -> event.nextDate.format(formatter) + ". " + getString(R.string.tomorrow) +"!"
                             else -> event.nextDate.format(formatter) + ". " + daysRemaining + " " + getString(R.string.days_left)
@@ -256,7 +269,8 @@ class HomeFragment : Fragment() {
                     }
                 }
             }
-            if (!event.nextDate.isEqual(upcomingDate)) break
+            if (ChronoUnit.DAYS.between(event.nextDate, upcomingDate) < 0) break
+
         }
 
         cardTitle.text = personName

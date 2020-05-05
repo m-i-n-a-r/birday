@@ -32,10 +32,12 @@ class FavoritesFragment : Fragment() {
     private lateinit var favoritesViewModel: FavoritesViewModel
     private lateinit var adapter: FavoritesAdapter
     private lateinit var fullStats: SpannableStringBuilder
+    lateinit var act: MainActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adapter = FavoritesAdapter(requireActivity().applicationContext, this)
+        act = activity as MainActivity
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -46,6 +48,7 @@ class FavoritesFragment : Fragment() {
 
         // Show full stats in a bottom sheet
         favoritesCard.setOnClickListener {
+            act.vibrate()
             MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
                 cornerRadius(res = R.dimen.rounded_corners)
                 title(R.string.stats_summary)

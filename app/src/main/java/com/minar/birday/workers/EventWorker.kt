@@ -25,7 +25,6 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
     override fun doWork(): Result {
         val appContext = applicationContext
         val eventDao: EventDao = EventDatabase.getBirdayDataBase(appContext)!!.eventDao()
-        val nextEvents: List<EventResult> = eventDao.getOrderedNextEvents()
         val allEvents: List<EventResult> = eventDao.getOrderedAllEvents()
         val currentDate = Calendar.getInstance()
         val dueDate = Calendar.getInstance()
@@ -34,22 +33,24 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         val additionalNotification = sp.getString("additional_notification", "0")!!.toInt()
 
         try {
-            // Send notification
-            if (!nextEvents.isNullOrEmpty() && nextEvents[0].nextDate!!.isEqual(LocalDate.now())) sendNotification(nextEvents)
-            // Check for upcoming birthdays
-            if (additionalNotification != 0) {
-                val anticipated = mutableListOf<EventResult>()
-                for (event in allEvents) {
-                    if(ChronoUnit.DAYS.between(LocalDate.now(), event.nextDate).toInt() == additionalNotification)
+            // Check for upcoming and actual birthdays and send notification
+            val anticipated = mutableListOf<EventResult>()
+            val actual = mutableListOf<EventResult>()
+            for (event in allEvents) {
+                if (additionalNotification != 0) {
+                    if (ChronoUnit.DAYS.between(LocalDate.now(), event.nextDate).toInt() == additionalNotification)
                         anticipated.add(event)
-                }
-                if (anticipated.size > 0) sendNotification(anticipated, true)
+                    }
+                if(event.nextDate!!.isEqual(LocalDate.now()))
+                    actual.add(event)
             }
+            if (anticipated.size > 0) sendNotification(anticipated, true)
+            if (actual.size > 0) sendNotification(actual)
 
-            // Set Execution at the time specified
+            // Set Execution at the time specified + 15 seconds to avoid midnight problems
             dueDate.set(Calendar.HOUR_OF_DAY, workHour)
             dueDate.set(Calendar.MINUTE, 0)
-            dueDate.set(Calendar.SECOND, 0)
+            dueDate.set(Calendar.SECOND, 15)
             if (dueDate.before(currentDate)) dueDate.add(Calendar.HOUR_OF_DAY, 24)
             val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis
             val dailyWorkRequest = OneTimeWorkRequestBuilder<EventWorker>()
