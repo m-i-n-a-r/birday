@@ -143,7 +143,7 @@ class HomeFragment : Fragment() {
             // Update the cached copy of the words in the adapter
             val animationController: LayoutAnimationController = AnimationUtils.loadLayoutAnimation(v.context, R.anim.layout_animation_fall)
             recyclerView.layoutAnimation = animationController
-            events?.let { adapter.setEvents(it) }
+            events?.let { adapter.submitList(it) }
             if (events.isNotEmpty()) insertUpcomingEvents(events)
         })
         homeViewModel.anyEvent.observe(viewLifecycleOwner, Observer { eventList ->

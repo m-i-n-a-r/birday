@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.HomeFragment
 import com.minar.birday.R
@@ -21,8 +23,7 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
 
-class EventAdapter internal constructor(context: Context, homeFragment: HomeFragment?) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
-    private var events = emptyList<EventResult>() // Cached copy of events
+class EventAdapter internal constructor(context: Context, homeFragment: HomeFragment?): ListAdapter<EventResult, EventAdapter.EventViewHolder>(EventsDiffCallback()) {
     private val fragment = homeFragment
     private val activityScope = CoroutineScope(Dispatchers.Main)
     var itemClickListener: OnItemClickListener? = null
@@ -32,8 +33,12 @@ class EventAdapter internal constructor(context: Context, homeFragment: HomeFrag
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-        val current = events[position]
-        holder.setUpView(event = current)
+        holder.bind(getItem(position))
+    }
+
+    // Can't use elsewhere without overriding as a public function
+    public override fun getItem(position: Int): EventResult {
+        return super.getItem(position)
     }
 
     inner class EventViewHolder (view: View) : RecyclerView.ViewHolder(view), View.OnClickListener, View.OnLongClickListener {
@@ -47,7 +52,7 @@ class EventAdapter internal constructor(context: Context, homeFragment: HomeFrag
         }
 
         // Set every necessary text and click action in each row
-        fun setUpView(event: EventResult?) {
+        fun bind(event: EventResult?) {
             val personName = event?.name + " " + event?.surname
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
             val originalDate = event?.originalDate?.format(formatter)
@@ -90,16 +95,18 @@ class EventAdapter internal constructor(context: Context, homeFragment: HomeFrag
         }
     }
 
-    internal fun setEvents(events: List<EventResult>) {
-        this.events = events
-        notifyDataSetChanged()
-    }
-
     fun setOnItemClickListener(onItemClickListener: OnItemClickListener) {
         this.itemClickListener = onItemClickListener
     }
 
-    fun getItem(position: Int) = events[position]
+}
 
-    override fun getItemCount() = events.size
+class EventsDiffCallback : DiffUtil.ItemCallback<EventResult>() {
+    override fun areItemsTheSame(oldItem: EventResult, newItem: EventResult): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: EventResult, newItem: EventResult): Boolean {
+        return oldItem == newItem
+    }
 }
