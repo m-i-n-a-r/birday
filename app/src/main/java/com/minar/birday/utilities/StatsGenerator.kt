@@ -46,6 +46,8 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         val sb = SpannableStringBuilder()
         val stats = mutableListOf<String>()
         stats.add(ageAverage())
+        stats.add(oldestPerson())
+        stats.add(youngestPerson())
         stats.add(mostCommonAgeRange())
         stats.add(mostCommonDayOfWeek())
         stats.add(mostCommonDecade())
@@ -61,6 +63,18 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     private fun ageAverage(): String {
         val average = truncate(getAges().values.average())
         return applicationContext?.getString(R.string.age_average) + " " + average.toString() + " " + applicationContext?.getString(R.string.years)
+    }
+
+    private fun oldestPerson(): String {
+        val oldest = getAges().maxBy { it.value }
+        return applicationContext?.getString(R.string.oldest_person) + " " + oldest?.key + ", " + oldest?.value +
+                " " + applicationContext?.getString(R.string.years)
+    }
+
+    private fun youngestPerson(): String {
+        val youngest = getAges().minBy { it.value }
+        return applicationContext?.getString(R.string.youngest_person) + " " + youngest?.key + ", " + youngest?.value +
+                " " + applicationContext?.getString(R.string.years)
     }
 
     // The most common month. When there's no common month, return a blank string

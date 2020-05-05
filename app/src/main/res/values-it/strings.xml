@@ -76,6 +76,8 @@
     <string name="and">e</string>
     <string name="did_you_know">Lo sapevi?</string>
     <string name="age_average">L\'età media è</string>
+    <string name="oldest_person">La persona più anziana è</string>
+    <string name="youngest_person">La persona più giovane è</string>
     <string name="most_common_month">Il mese di nascita più comune è</string>
     <string name="most_common_decade">La decade di nascita più comune è</string>
     <string name="most_common_age_range">La fascia d\'età più comune è</string>
@@ -143,7 +145,7 @@
     <string name="missing_permission">Birday non ha potuto importare i tuoi contatti, perché il permesso di leggerli
     è stato precedentemente negato. Prova a riaprire l\'app, o attiva il permesso manualmente!</string>
     <string name="additional_notification_name">Notifica aggiuntiva</string>
-    <string name="additional_notification_description">Manda una notifica aggiuntiva alcuni giorni prime dell\'evento. %s</string>
+    <string name="additional_notification_description">Manda una notifica aggiuntiva alcuni giorni prima dell\'evento. %s</string>
     <string name="additional_notification_text">Compleanni in arrivo!</string>
     <string name="event_apps">App rapide</string>
     <string name="event_apps_description">Applicazione per fare tanti auguri ai festeggiati!</string>

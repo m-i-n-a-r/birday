@@ -110,6 +110,8 @@
     <!-- Statistics -->
     <string name="did_you_know">Did you know?</string>
     <string name="age_average">The average age is</string>
+    <string name="oldest_person">The oldest person is</string>
+    <string name="youngest_person">The youngest person is</string>
     <string name="most_common_month">The most common month of birth is</string>
     <string name="most_common_decade">The most common decade of birth is</string>
     <string name="most_common_age_range">The most common age range is</string>
