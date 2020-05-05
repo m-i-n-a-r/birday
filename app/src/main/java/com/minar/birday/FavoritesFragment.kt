@@ -38,7 +38,7 @@ class FavoritesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = FavoritesAdapter(requireActivity().applicationContext, this)
+        adapter = FavoritesAdapter(requireActivity().applicationContext)
         act = activity as MainActivity
     }
 
@@ -66,9 +66,7 @@ class FavoritesFragment : Fragment() {
         favoritesViewModel = ViewModelProvider(this).get(FavoritesViewModel::class.java)
         favoritesViewModel.allFavoriteEvents.observe(viewLifecycleOwner, Observer { events ->
             // Update the cached copy of the words in the adapter
-            val animationController: LayoutAnimationController = AnimationUtils.loadLayoutAnimation(v.context, R.anim.layout_animation_fall)
-            recyclerView.layoutAnimation = animationController
-            events?.let { adapter.setEvents(it) }
+            events?.let { adapter.submitList(it) }
         })
         favoritesViewModel.anyFavoriteEvent.observe(viewLifecycleOwner, Observer { eventList ->
             if (eventList.isNotEmpty()) removePlaceholder()

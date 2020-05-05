@@ -103,7 +103,6 @@
         android:overScrollMode="never"
         android:scrollbarStyle="outsideOverlay"
         android:scrollbarSize="0dp"
-        android:layoutAnimation="@anim/layout_animation_fall"
         app:fastScrollEnabled="true"
         app:fastScrollHorizontalThumbDrawable="@drawable/scroll_thumb_drawable"
         app:fastScrollHorizontalTrackDrawable="@drawable/scroll_line_drawable"
