@@ -1,8 +1,10 @@
 package com.minar.birday.workers
 
 import android.app.PendingIntent
+import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.preference.PreferenceManager
@@ -15,11 +17,11 @@ import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.persistence.EventResult
 import com.minar.birday.utilities.SplashActivity
-import java.lang.Exception
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 import java.util.*
 import java.util.concurrent.TimeUnit
+
 
 class EventWorker(context: Context, params: WorkerParameters) : Worker(context, params) {
     override fun doWork(): Result {

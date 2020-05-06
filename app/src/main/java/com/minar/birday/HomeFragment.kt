@@ -195,11 +195,10 @@ class HomeFragment : Fragment() {
             }
 
             override fun onItemLongClick(position: Int, view: View?): Boolean {
-                act.vibrate()
+                //act.vibrate()
                 return true
             }
         })
-        adapter
     }
 
     // Remove the placeholder or return if the placeholder was already removed before

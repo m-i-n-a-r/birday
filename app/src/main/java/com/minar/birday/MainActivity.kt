@@ -8,6 +8,9 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
+import android.media.AudioAttributes
+import android.media.AudioAttributes.Builder
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.VibrationEffect
@@ -225,13 +228,17 @@ class MainActivity : AppCompatActivity() {
 
     // Create the NotificationChannel. When created the first time, this code does nothing
     private fun createNotificationChannel() {
+        val soundUri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + applicationContext.packageName + "/" + R.raw.birday_notification)
+        val attributes: AudioAttributes = Builder()
+            .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+            .build()
         val name = getString(R.string.events_notification_channel)
         val descriptionText = getString(R.string.events_channel_description)
         val importance = NotificationManager.IMPORTANCE_HIGH
         val channel = NotificationChannel("events_channel", name, importance).apply { description = descriptionText }
+        channel.setSound(soundUri, attributes)
         // Register the channel with the system
-        val notificationManager: NotificationManager =
-            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannel(channel)
     }
 

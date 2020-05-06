@@ -52,10 +52,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         workManager.pruneWork()
         val currentDate = Calendar.getInstance()
         val dueDate = Calendar.getInstance()
-        // Set Execution at the time specified
+        // Set Execution at the time specified + 15 seconds to avoid midnight problems
         dueDate.set(Calendar.HOUR_OF_DAY, workHour)
         dueDate.set(Calendar.MINUTE, 0)
-        dueDate.set(Calendar.SECOND, 0)
+        dueDate.set(Calendar.SECOND, 15)
         if (dueDate.before(currentDate)) dueDate.add(Calendar.HOUR_OF_DAY, 24)
         val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis
         val dailyWorkRequest = OneTimeWorkRequestBuilder<EventWorker>()
