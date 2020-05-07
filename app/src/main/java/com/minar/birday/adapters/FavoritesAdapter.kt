@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.minar.birday.FavoritesFragment
 import com.minar.birday.R
 import com.minar.birday.persistence.EventResult
 import kotlinx.android.synthetic.main.event_row.view.eventDate
@@ -45,8 +44,8 @@ class FavoritesAdapter internal constructor(context: Context) : ListAdapter<Even
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
             val nextDate = event?.nextDate?.format(formatter)
             val nextAge = appContext.getString(R.string.next_age_years) + ": " +
-                    (event?.nextDate?.year?.minus(event.originalDate.year)).toString() +
-                    ", " + appContext.getString(R.string.born_in) + " " + event?.originalDate?.year
+                    (event!!.nextDate!!.year - event.originalDate.year - 1).toString() +
+                    ", " + appContext.getString(R.string.born_in) + " " + event.originalDate.year
             eventPerson.text = personName
             eventDate.text = nextDate
             eventYears.text = nextAge
