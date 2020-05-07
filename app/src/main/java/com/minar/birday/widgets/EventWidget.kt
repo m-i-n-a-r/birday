@@ -30,7 +30,7 @@ internal fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManage
         val allEvents: List<EventResult> = eventDao.getOrderedAllEvents()
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
         val widgetUpcoming: String
-        widgetUpcoming = if (allEvents.isEmpty()) context.getString(R.string.no_events)
+        widgetUpcoming = if (allEvents.isEmpty()) context.getString(R.string.no_next_event)
         else allEvents[0].name + ", " + allEvents[0].nextDate?.format(formatter)
         val widgetText = context.getString(R.string.appwidget_upcoming)
 

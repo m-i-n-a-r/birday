@@ -242,7 +242,7 @@ class HomeFragment : Fragment() {
         val intent = Intent(context, SplashActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
 
-        widgetUpcoming = if (events.isEmpty()) requireContext().getString(R.string.no_events)
+        widgetUpcoming = if (events.isEmpty()) requireContext().getString(R.string.no_next_event)
         else events[0].name + ", " + events[0].nextDate?.format(formatter)
 
         remoteViews.setOnClickPendingIntent(R.id.event_widget_main, pendingIntent)
