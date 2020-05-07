@@ -19,13 +19,6 @@ class EventWidget : AppWidgetProvider() {
         for (appWidgetId in appWidgetIds) updateAppWidget(context, appWidgetManager, appWidgetId)
     }
 
-    override fun onEnabled(context: Context) {
-        //updateAppWidget(context, appWidgetManager, appWidgetId)
-    }
-
-    override fun onDisabled(context: Context) {
-        // Enter relevant functionality for when the last widget is disabled
-    }
 }
 
 internal fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int) {
@@ -33,7 +26,9 @@ internal fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManage
         val eventDao: EventDao = EventDatabase.getBirdayDataBase(context)!!.eventDao()
         val allEvents: List<EventResult> = eventDao.getOrderedAllEvents()
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
-        val widgetUpcoming = allEvents[0].name + ", " + allEvents[0].nextDate?.format(formatter)
+        val widgetUpcoming: String
+        widgetUpcoming = if (allEvents.isEmpty()) context.getString(R.string.no_events)
+        else allEvents[0].name + ", " + allEvents[0].nextDate?.format(formatter)
         val widgetText = context.getString(R.string.appwidget_upcoming)
         val views = RemoteViews(context.packageName, R.layout.event_widget)
         views.setTextViewText(R.id.event_widget_title, widgetText)

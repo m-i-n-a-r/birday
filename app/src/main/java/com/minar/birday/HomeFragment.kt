@@ -1,5 +1,7 @@
 package com.minar.birday
 
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
@@ -13,6 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RemoteViews
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.DrawableRes
@@ -36,6 +39,7 @@ import com.minar.birday.persistence.Event
 import com.minar.birday.persistence.EventResult
 import com.minar.birday.utilities.OnItemClickListener
 import com.minar.birday.viewmodels.HomeViewModel
+import com.minar.birday.widgets.EventWidget
 import kotlinx.android.synthetic.main.dialog_actions_event.view.*
 import kotlinx.android.synthetic.main.dialog_apps_event.view.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -141,6 +145,8 @@ class HomeFragment : Fragment() {
             // Update the cached copy of the words in the adapter
             events?.let { adapter.submitList(it) }
             if (events.isNotEmpty()) insertUpcomingEvents(events)
+            // Update the widgets
+            updateWidget(events)
         })
         homeViewModel.anyEvent.observe(viewLifecycleOwner, Observer { eventList ->
             if (eventList.isNotEmpty()) removePlaceholder()
@@ -217,6 +223,19 @@ class HomeFragment : Fragment() {
         cardSubtitle.text = getString(R.string.no_next_event)
         cardDescription.text = getString(R.string.no_next_event_description)
         placeholder.visibility = View.VISIBLE
+    }
+
+    // Update the existing widgets with the newest data
+    private fun updateWidget(events: List<EventResult>) {
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        val remoteViews = RemoteViews(context?.packageName, R.layout.event_widget)
+        val thisWidget = context?.let { ComponentName(it, EventWidget::class.java) }
+        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
+        val widgetUpcoming: String
+        widgetUpcoming = if (events.isEmpty()) requireContext().getString(R.string.no_events)
+        else events[0].name + ", " + events[0].nextDate?.format(formatter)
+        remoteViews.setTextViewText(R.id.event_widget_text, widgetUpcoming)
+        appWidgetManager.updateAppWidget(thisWidget, remoteViews)
     }
 
     // Insert the necessary information in the upcoming event cardview

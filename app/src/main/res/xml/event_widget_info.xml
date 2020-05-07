@@ -2,7 +2,7 @@
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:initialKeyguardLayout="@layout/event_widget"
     android:initialLayout="@layout/event_widget"
-    android:minWidth="120dp"
+    android:minWidth="180dp"
     android:minHeight="60dp"
     android:previewImage="@drawable/birday_widget_preview"
     android:resizeMode="horizontal|vertical"

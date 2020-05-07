@@ -2,22 +2,25 @@
     android:id="@+id/event_widget_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/widget_background"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@drawable/widget_background"
     android:padding="@dimen/widget_margin">
 
     <TextView
         android:id="@+id/event_widget_title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/widget_title_height"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/widget_margin"
         android:contentDescription="@string/appwidget_upcoming"
+        android:padding="@dimen/widget_padding"
         android:text="@string/appwidget_upcoming"
-        android:textColor="@color/deepGray"
         android:textAllCaps="true"
-        android:textSize="@dimen/widget_text_size"
+        android:drawablePadding="@dimen/widget_padding"
+        android:drawableStart="@drawable/ic_smile_black_24dp"
+        android:drawableTint="@color/deepGray"
+        android:textColor="@color/deepGray"
+        android:textSize="@dimen/widget_text_size_title"
         android:textStyle="bold" />
 
     <TextView
@@ -25,11 +28,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/widget_margin"
         android:contentDescription="@string/appwidget_upcoming"
+        android:padding="@dimen/widget_padding"
         android:textColor="@color/deepGray"
-        android:textAllCaps="true"
-        android:textSize="@dimen/widget_text_size"
-        android:textStyle="bold" />
+        android:textSize="@dimen/widget_text_size_title" />
 
 </LinearLayout>

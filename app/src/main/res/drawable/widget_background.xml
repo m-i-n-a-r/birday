@@ -9,8 +9,8 @@
         android:bottomRightRadius="@dimen/widget_corners"/>
 
     <padding
-        android:paddingLeft="@dimen/widget_margin"
-        android:paddingRight="@dimen/widget_margin" />
+        android:paddingLeft="@dimen/widget_padding"
+        android:paddingRight="@dimen/widget_padding" />
 
     <solid android:color="@color/widgetBackground" />
 
