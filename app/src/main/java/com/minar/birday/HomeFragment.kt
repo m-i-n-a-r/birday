@@ -5,7 +5,6 @@ import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.ClipDrawable.HORIZONTAL
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
@@ -24,7 +23,6 @@ import androidx.annotation.DrawableRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat
@@ -237,13 +235,12 @@ class HomeFragment : Fragment() {
         val appWidgetManager = AppWidgetManager.getInstance(context)
         val remoteViews = RemoteViews(context?.packageName, R.layout.event_widget)
         val thisWidget = context?.let { ComponentName(it, EventWidget::class.java) }
-        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
-        val widgetUpcoming: String
         val intent = Intent(context, SplashActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
+        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
 
-        widgetUpcoming = if (events.isEmpty()) requireContext().getString(R.string.no_next_event)
-        else events[0].name + ", " + events[0].nextDate?.format(formatter)
+        val widgetUpcoming = if (events.isEmpty()) requireContext().getString(R.string.no_next_event)
+        else events[0].name + ", " + nextDate(events[0], formatter)
 
         remoteViews.setOnClickPendingIntent(R.id.event_widget_main, pendingIntent)
         remoteViews.setTextViewText(R.id.event_widget_text, widgetUpcoming)
@@ -259,7 +256,7 @@ class HomeFragment : Fragment() {
         var nextDateText = ""
         var nextAge = ""
         val upcomingDate = events[0].nextDate
-        val daysRemaining = ChronoUnit.DAYS.between(LocalDate.now(), upcomingDate).toInt()
+        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
 
         // Manage multiple events in the same day considering first case, middle cases and last case if more than 3
         for (event in events) {
@@ -269,15 +266,7 @@ class HomeFragment : Fragment() {
                 when (events.indexOf(event)) {
                     0 -> {
                         personName = actualPersonName
-                        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
-                        nextDateText = when (daysRemaining) {
-                            // The -1 case should never happen
-                            -1 -> event.nextDate.format(formatter) + ". " + getString(R.string.yesterday) + "!"
-                            0 -> event.nextDate.format(formatter) + ". " + getString(R.string.today) + "!"
-                            1 -> event.nextDate.format(formatter) + ". " + getString(R.string.tomorrow) +"!"
-                            else -> event.nextDate.format(formatter) + ". " + daysRemaining + " " + getString(R.string.days_left)
-
-                        }
+                        nextDateText = nextDate(event, formatter)
                         nextAge = getString(R.string.next_age_years) + ": " + (event.nextDate.year.minus(event.originalDate.year)).toString()
                     }
                     1, 2 -> {
@@ -401,6 +390,18 @@ class HomeFragment : Fragment() {
         name.addTextChangedListener(watcher)
         surname.addTextChangedListener(watcher)
         eventDate.addTextChangedListener(watcher)
+    }
+
+    // Properly format the next date for widget and next event card
+    private fun nextDate(event: EventResult, formatter: DateTimeFormatter): String {
+        val upcomingDate = event.nextDate!!
+        return when (val daysRemaining = ChronoUnit.DAYS.between(LocalDate.now(), upcomingDate).toInt()) {
+            // The -1 case should never happen
+            -1 -> event.nextDate.format(formatter) + ". " + getString(R.string.yesterday) + "!"
+            0 -> event.nextDate.format(formatter) + ". " + getString(R.string.today) + "!"
+            1 -> event.nextDate.format(formatter) + ". " + getString(R.string.tomorrow) + "!"
+            else -> event.nextDate.format(formatter) + ". " + daysRemaining + " " + getString(R.string.days_left)
+        }
     }
 
     // Extension function to quickly capitalize a name, also considering other uppercase letter or multiple words

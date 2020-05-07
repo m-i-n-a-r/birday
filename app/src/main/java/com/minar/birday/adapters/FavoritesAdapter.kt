@@ -43,12 +43,13 @@ class FavoritesAdapter internal constructor(context: Context) : ListAdapter<Even
             val personName = event?.name + " " + event?.surname
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
             val nextDate = event?.nextDate?.format(formatter)
-            val nextAge = appContext.getString(R.string.next_age_years) + ": " +
-                    (event!!.nextDate!!.year - event.originalDate.year - 1).toString() +
+            var age = (event!!.nextDate!!.year - event.originalDate.year - 1)
+            if (age < 0) age = 0
+            val actualAge = appContext.getString(R.string.next_age_years) + ": " + age.toString() +
                     ", " + appContext.getString(R.string.born_in) + " " + event.originalDate.year
             eventPerson.text = personName
             eventDate.text = nextDate
-            eventYears.text = nextAge
+            eventYears.text = actualAge
         }
     }
 }

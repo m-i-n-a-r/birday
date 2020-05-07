@@ -11,8 +11,10 @@ import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.persistence.EventResult
 import com.minar.birday.utilities.SplashActivity
+import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
+import java.time.temporal.ChronoUnit
 
 
 class EventWidget : AppWidgetProvider() {
@@ -28,18 +30,25 @@ internal fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManage
     val thread = Thread {
         val eventDao: EventDao = EventDatabase.getBirdayDataBase(context)!!.eventDao()
         val allEvents: List<EventResult> = eventDao.getOrderedAllEvents()
-        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
+        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
         val widgetUpcoming: String
-        widgetUpcoming = if (allEvents.isEmpty()) context.getString(R.string.no_next_event)
-        else allEvents[0].name + ", " + allEvents[0].nextDate?.format(formatter)
-        val widgetText = context.getString(R.string.appwidget_upcoming)
+        val event = allEvents[0]
 
         // Set the texts and the onclick action to open the app
+        val upcomingDate = event.nextDate!!
+        val nextDate = when (val daysRemaining = ChronoUnit.DAYS.between(LocalDate.now(), upcomingDate).toInt()) {
+            // The -1 case should never happen
+            -1 -> event.nextDate.format(formatter) + ". " + context.getString(R.string.yesterday) + "!"
+            0 -> event.nextDate.format(formatter) + ". " + context.getString(R.string.today) + "!"
+            1 -> event.nextDate.format(formatter) + ". " + context.getString(R.string.tomorrow) + "!"
+            else -> event.nextDate.format(formatter) + ". " + daysRemaining + " " + context.getString(R.string.days_left)
+        }
+        widgetUpcoming = if (allEvents.isEmpty()) context.getString(R.string.no_next_event)
+        else allEvents[0].name + ", " + nextDate
         val views = RemoteViews(context.packageName, R.layout.event_widget)
         val intent = Intent(context, SplashActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
         views.setOnClickPendingIntent(R.id.event_widget_main, pendingIntent)
-        views.setTextViewText(R.id.event_widget_title, widgetText)
         views.setTextViewText(R.id.event_widget_text, widgetUpcoming)
 
         // Instruct the widget manager to update the widget
