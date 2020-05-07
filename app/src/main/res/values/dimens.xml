@@ -43,6 +43,6 @@
     <dimen name="widget_title_height">36dp</dimen>
     <dimen name="widget_text_size_title">18sp</dimen>
     <dimen name="widget_text_size_body">13sp</dimen>
-    <dimen name="widget_corners">32dp</dimen>
+    <dimen name="widget_shadow_radius">4</dimen>
 
 </resources>

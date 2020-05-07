@@ -2,7 +2,6 @@
     android:id="@+id/event_widget_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/widget_background"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="@dimen/widget_margin">
@@ -17,9 +16,10 @@
         android:text="@string/appwidget_upcoming"
         android:textAllCaps="true"
         android:drawablePadding="@dimen/widget_padding"
-        android:drawableStart="@drawable/ic_smile_black_24dp"
-        android:drawableTint="@color/deepGray"
-        android:textColor="@color/deepGray"
+        android:shadowColor="@color/deepGray"
+        android:shadowRadius="@dimen/widget_shadow_radius"
+        android:drawableStart="@drawable/ic_party_white_24dp"
+        android:textColor="@color/widgetTextPrimary"
         android:textSize="@dimen/widget_text_size_title"
         android:textStyle="bold" />
 
@@ -28,9 +28,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:shadowColor="@color/deepGray"
+        android:shadowRadius="@dimen/widget_shadow_radius"
         android:contentDescription="@string/appwidget_upcoming"
         android:padding="@dimen/widget_padding"
-        android:textColor="@color/deepGray"
+        android:textColor="@color/widgetTextSecondary"
         android:textSize="@dimen/widget_text_size_title" />
 
 </LinearLayout>

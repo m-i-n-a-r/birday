@@ -41,6 +41,7 @@
     <color name="slideThree">#e4a522</color>
 
     <!-- widget -->
-    <color name="widgetBackground">#88ffffff</color>
+    <color name="widgetTextPrimary">#ffffff</color>
+    <color name="widgetTextSecondary">#f0f0f0</color>
 
 </resources>
