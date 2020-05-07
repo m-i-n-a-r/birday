@@ -61,3 +61,4 @@ gen-external-apklibs
 
 # Json Output
 app/debug/output.json
+app/release/output.json
