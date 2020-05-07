@@ -42,8 +42,8 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                 if(event.nextDate!!.isEqual(LocalDate.now()))
                     actual.add(event)
             }
-            if (anticipated.isNotEmpty()) sendNotification(anticipated, true)
-            if (actual.isNotEmpty()) sendNotification(actual)
+            if (anticipated.isNotEmpty()) sendNotification(anticipated, 1, true)
+            if (actual.isNotEmpty()) sendNotification(actual, 2)
 
             // Set Execution at the time specified + 15 seconds to avoid midnight problems
             dueDate.set(Calendar.HOUR_OF_DAY, workHour)
@@ -64,7 +64,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
     }
 
     // Send notification if there's one or more birthdays today
-    private fun sendNotification(nextEvents: List<EventResult>, upcoming: Boolean = false) {
+    private fun sendNotification(nextEvents: List<EventResult>, id: Int, upcoming: Boolean = false) {
         val intent = Intent(applicationContext, SplashActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
@@ -84,7 +84,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
 
-        with(NotificationManagerCompat.from(applicationContext)) { notify(1, builder.build()) }
+        with(NotificationManagerCompat.from(applicationContext)) { notify(id, builder.build()) }
     }
 
     private fun formulateAdditionalNotificationText(nextEvents: List<EventResult>): String {
