@@ -4,7 +4,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="linear_vertical_margin">22dp</dimen>
-    <!-- Using 0 elevation will cause a lot of weird behaviors -->
     <dimen name="bottom_navbar_elevation">0.1dp</dimen>
     <dimen name="cradle_margin">8dp</dimen>
     <dimen name="cradle_corners">12dp</dimen>
@@ -40,9 +39,9 @@
     <!-- Widgets -->
     <dimen name="widget_margin">8dp</dimen>
     <dimen name="widget_padding">6dp</dimen>
-    <dimen name="widget_title_height">36dp</dimen>
+    <dimen name="widget_title_height">34dp</dimen>
     <dimen name="widget_text_size_title">18sp</dimen>
-    <dimen name="widget_text_size_body">13sp</dimen>
+    <dimen name="widget_text_size_body">15sp</dimen>
     <dimen name="widget_shadow_radius">4</dimen>
 
 </resources>

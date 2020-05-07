@@ -1,9 +1,11 @@
 package com.minar.birday
 
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.ClipDrawable.HORIZONTAL
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
@@ -22,6 +24,7 @@ import androidx.annotation.DrawableRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat
@@ -38,6 +41,7 @@ import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.persistence.Event
 import com.minar.birday.persistence.EventResult
 import com.minar.birday.utilities.OnItemClickListener
+import com.minar.birday.utilities.SplashActivity
 import com.minar.birday.viewmodels.HomeViewModel
 import com.minar.birday.widgets.EventWidget
 import kotlinx.android.synthetic.main.dialog_actions_event.view.*
@@ -161,6 +165,9 @@ class HomeFragment : Fragment() {
         recyclerView = rootView.findViewById(R.id.eventRecycler)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = adapter
+        // Set a separator between items in the recycler
+        //val itemDecor = DividerItemDecoration(context, HORIZONTAL)
+        //recyclerView.addItemDecoration(itemDecor)
     }
 
     @ExperimentalStdlibApi
@@ -225,15 +232,20 @@ class HomeFragment : Fragment() {
         placeholder.visibility = View.VISIBLE
     }
 
-    // Update the existing widgets with the newest data
+    // Update the existing widgets with the newest data and the onclick action
     private fun updateWidget(events: List<EventResult>) {
         val appWidgetManager = AppWidgetManager.getInstance(context)
         val remoteViews = RemoteViews(context?.packageName, R.layout.event_widget)
         val thisWidget = context?.let { ComponentName(it, EventWidget::class.java) }
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
         val widgetUpcoming: String
+        val intent = Intent(context, SplashActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
+
         widgetUpcoming = if (events.isEmpty()) requireContext().getString(R.string.no_events)
         else events[0].name + ", " + events[0].nextDate?.format(formatter)
+
+        remoteViews.setOnClickPendingIntent(R.id.event_widget_main, pendingIntent)
         remoteViews.setTextViewText(R.id.event_widget_text, widgetUpcoming)
         appWidgetManager.updateAppWidget(thisWidget, remoteViews)
     }
