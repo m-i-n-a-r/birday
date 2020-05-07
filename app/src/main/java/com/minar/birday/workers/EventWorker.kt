@@ -1,10 +1,8 @@
 package com.minar.birday.workers
 
 import android.app.PendingIntent
-import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.preference.PreferenceManager
@@ -39,15 +37,13 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             val anticipated = mutableListOf<EventResult>()
             val actual = mutableListOf<EventResult>()
             for (event in allEvents) {
-                if (additionalNotification != 0) {
-                    if (ChronoUnit.DAYS.between(LocalDate.now(), event.nextDate).toInt() == additionalNotification)
-                        anticipated.add(event)
-                    }
+                if (additionalNotification != 0 && ChronoUnit.DAYS.between(LocalDate.now(), event.nextDate).toInt() == additionalNotification)
+                   anticipated.add(event)
                 if(event.nextDate!!.isEqual(LocalDate.now()))
                     actual.add(event)
             }
-            if (anticipated.size > 0) sendNotification(anticipated, true)
-            if (actual.size > 0) sendNotification(actual)
+            if (anticipated.isNotEmpty()) sendNotification(anticipated, true)
+            if (actual.isNotEmpty()) sendNotification(actual)
 
             // Set Execution at the time specified + 15 seconds to avoid midnight problems
             dueDate.set(Calendar.HOUR_OF_DAY, workHour)

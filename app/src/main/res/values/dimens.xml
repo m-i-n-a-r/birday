@@ -37,4 +37,9 @@
     <dimen name="splash_image_size">192dp</dimen>
     <dimen name="splash_image_padding">24dp</dimen>
 
+    <!-- Widgets -->
+    <dimen name="widget_margin">10dp</dimen>
+    <dimen name="widget_text_size">18sp</dimen>
+    <dimen name="widget_corners">32dp</dimen>
+
 </resources>

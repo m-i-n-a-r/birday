@@ -10,29 +10,39 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:resizeableActivity="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:resizeableActivity="true"
         android:theme="@style/SplashTheme">
+
+        <receiver android:name=".widgets.EventWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/event_widget_info" />
+        </receiver>
+
         <activity
             android:name=".utilities.SplashActivity"
-            android:noHistory="true" >
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:theme="@style/AppTheme"
             android:name=".MainActivity"
-            android:label="@string/app_name"
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
+            android:label="@string/app_name"
             android:screenOrientation="fullUser"
-            android:windowSoftInputMode="adjustPan">
-        </activity>
-        <activity android:name=".utilities.WelcomeActivity"
-            android:noHistory="true"
-            android:label="@string/app_welcome" />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".utilities.WelcomeActivity"
+            android:label="@string/app_welcome"
+            android:noHistory="true" />
     </application>
 
 </manifest>

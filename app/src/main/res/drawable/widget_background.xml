@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <corners
+        android:topLeftRadius="@dimen/widget_corners"
+        android:topRightRadius="@dimen/widget_corners"
+        android:bottomLeftRadius="@dimen/widget_corners"
+        android:bottomRightRadius="@dimen/widget_corners"/>
+
+    <padding
+        android:paddingLeft="@dimen/widget_margin"
+        android:paddingRight="@dimen/widget_margin" />
+
+    <solid android:color="@color/widgetBackground" />
+
+</shape>

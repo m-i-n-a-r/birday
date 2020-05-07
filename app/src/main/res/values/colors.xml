@@ -40,4 +40,7 @@
     <color name="slideTwo">#222222</color>
     <color name="slideThree">#e4a522</color>
 
+    <!-- widget -->
+    <color name="widgetBackground">#99ffffff</color>
+
 </resources>

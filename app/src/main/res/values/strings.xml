@@ -184,4 +184,8 @@
     from your Google Contacts. Birday can do it for you, just grant the contacts permission. Enjoy!
     </string>
 
+    <!-- Widget -->
+    <string name="appwidget_upcoming">Upcoming birthdays</string>
+    <string name="add_widget">Birday - upcoming</string>
+
 </resources>
