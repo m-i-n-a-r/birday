@@ -32,6 +32,14 @@
     <string name="app_behavior">App behavior</string>
     <string name="additional_notification_name">Additional notification</string>
     <string name="additional_notification_description">Send an additional notification days before the event. %s</string>
+    <string name="no_additional_notification">No additional notification</string>
+    <string name="one_day_before">One day before</string>
+    <string name="two_days_before">Two days before</string>
+    <string name="three_days_before">Three days before</string>
+    <string name="four_days_before">Four days before</string>
+    <string name="five_days_before">Five days before</string>
+    <string name="six_days_before">Six days before</string>
+    <string name="seven_days_before">Seven days before</string>
     <string name="vibration_name">Vibration</string>
     <string name="vibration_description_on">Vibrate when a button is pressed</string>
     <string name="vibration_description_off">No vibrations when a button is pressed</string>
@@ -58,6 +66,7 @@
     <string name="system_theme">System default</string>
     <string name="dark_theme">Dark</string>
     <string name="light_theme">Light</string>
+    <string name="import_export">Import and Export</string>
     <string name="import_contacts_title">Import birthdays from Google</string>
     <string name="import_contacts_description">If an imported birthday doesn\'t contain the year, Birday will automatically set
     the year 2000. Make sure to modify the events with the missing year to always have accurate statistics!</string>

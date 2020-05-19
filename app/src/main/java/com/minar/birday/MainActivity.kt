@@ -175,7 +175,7 @@ class MainActivity : AppCompatActivity() {
             var nameCorrect = false
             var surnameCorrect = true // Surname is not mandatory
             var eventDateCorrect = false
-            val watcher = object : TextWatcher {
+            val watcher = object: TextWatcher {
                 override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
                 override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
                 override fun afterTextChanged(editable: Editable) {

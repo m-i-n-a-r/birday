@@ -11,10 +11,6 @@
         android:title="@string/app_behavior"
         app:iconSpaceReserved="false">
 
-        <com.minar.birday.utilities.ContactsImporter
-            android:layout="@layout/contacts_import_row"
-            android:selectable="true" />
-
         <ListPreference
             android:defaultValue="8"
             android:entries="@array/notificationHours"
@@ -65,6 +61,17 @@
             android:summary="%s"
             android:title="@string/accent_name"
             app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        android:key="import_export"
+        android:title="@string/import_export"
+        app:iconSpaceReserved="false">
+
+    <com.minar.birday.utilities.ContactsImporter
+        android:layout="@layout/contacts_import_row"
+        android:selectable="true" />
     </PreferenceCategory>
 
 </PreferenceScreen>

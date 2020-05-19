@@ -147,6 +147,14 @@
     è stato precedentemente negato. Prova a riaprire l\'app, o attiva il permesso manualmente!</string>
     <string name="additional_notification_name">Notifica aggiuntiva</string>
     <string name="additional_notification_description">Manda una notifica aggiuntiva alcuni giorni prima dell\'evento. %s</string>
+    <string name="no_additional_notification">Nessuna notifica aggiuntiva</string>
+    <string name="one_day_before">Un giorno prima</string>
+    <string name="two_days_before">Due giorni prima</string>
+    <string name="three_days_before">Tre giorni prima</string>
+    <string name="four_days_before">Quattro giorni prima</string>
+    <string name="five_days_before">Cinque giorni prima</string>
+    <string name="six_days_before">Sei giorni prima</string>
+    <string name="seven_days_before">Sette giorni prima</string>
     <string name="additional_notification_text">Compleanni in arrivo!</string>
     <string name="event_apps">App rapide</string>
     <string name="event_apps_description">Applicazione per fare tanti auguri ai festeggiati!</string>
@@ -159,5 +167,7 @@
     <string name="no_default_sms">Nessuna app sms di default trovata!</string>
     <string name="appwidget_upcoming">Compleanni in arrivo</string>
     <string name="add_widget">Birday - in arrivo</string>
+    <string name="import_export">Importazione ed esportazione</string>
+
 
 </resources>
