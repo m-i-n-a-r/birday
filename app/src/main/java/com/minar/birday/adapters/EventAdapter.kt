@@ -1,6 +1,5 @@
 package com.minar.birday.adapters
 
-import android.content.Context
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +22,7 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
 
-class EventAdapter internal constructor(context: Context, homeFragment: HomeFragment?): ListAdapter<EventResult, EventAdapter.EventViewHolder>(EventsDiffCallback()) {
+class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapter<EventResult, EventAdapter.EventViewHolder>(EventsDiffCallback()) {
     private val fragment = homeFragment
     private val activityScope = CoroutineScope(Dispatchers.Main)
     var itemClickListener: OnItemClickListener? = null

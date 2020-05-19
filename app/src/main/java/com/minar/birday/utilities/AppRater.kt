@@ -72,6 +72,7 @@ object AppRater {
                     negativeButton(R.string.later) {
                         dismiss()
                     }
+                    @Suppress("DEPRECATION")
                     neutralButton(R.string.no_thanks) {
                         editor.putBoolean(DO_NOT_SHOW_AGAIN, true)
                         editor.commit()

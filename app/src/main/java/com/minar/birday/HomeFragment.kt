@@ -61,7 +61,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = EventAdapter(requireActivity().applicationContext, this)
+        adapter = EventAdapter(this)
         act = activity as MainActivity
     }
 

@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
     @ExperimentalStdlibApi
     override fun onCreate(savedInstanceState: Bundle?) {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        adapter = EventAdapter(this.applicationContext, null)
+        adapter = EventAdapter(null)
 
         // Create the notification channel
         createNotificationChannel()
