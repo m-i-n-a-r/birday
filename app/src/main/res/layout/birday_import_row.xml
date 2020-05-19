@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/birdayimport"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/settings_row_padding"
+    android:paddingRight="@dimen/settings_row_padding"
+    android:paddingBottom="@dimen/settings_row_padding"
+    android:paddingTop="@dimen/settings_row_padding"
+    android:hapticFeedbackEnabled="false"
+    android:background="?attr/selectableItemBackground">
+
+        <TextView
+            android:id="@+id/birdayimportTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/birday_import_title"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+        <TextView
+            android:id="@+id/birdayimportDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/birday_import_description"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textSize="13.5sp"/>
+
+</LinearLayout>

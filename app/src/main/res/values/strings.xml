@@ -75,6 +75,12 @@
     <string name="import_failed">Something went wrong!</string>
     <string name="missing_permission">Birday could not import your contacts, because the contact permission
     was denied earlier. Try reopening the app or activate the permission manually!</string>
+    <string name="birday_import_title">Import a Birday backup</string>
+    <string name="birday_import_description">Choose a valid Birday backup to manually restore your birthdays. Useful
+    if you keep the automatic Google backup disabled</string>
+    <string name="birday_export_title">Export your birthdays</string>
+    <string name="birday_export_description">Export the available birthdays to an handy file. You can both open
+    the file or restore it later</string>
 
     <!-- Developer -->
     <string name="dev_name" translatable="false">m.i.n.a.r.</string>

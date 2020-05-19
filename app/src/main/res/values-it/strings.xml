@@ -168,6 +168,11 @@
     <string name="appwidget_upcoming">Compleanni in arrivo</string>
     <string name="add_widget">Birday - in arrivo</string>
     <string name="import_export">Importazione ed esportazione</string>
-
+    <string name="birday_import_title">Importa un backup di Birday</string>
+    <string name="birday_import_description">Scegli un file di backup di Birday per ripristinare manualmente
+    i tuoi compleanni. Utile se il backup automatico di Google è disattivato</string>
+    <string name="birday_export_title">Esporta i tuoi compleanni</string>
+    <string name="birday_export_description">Esporta i compleanni disponibili in un comodo file. Puoi sia consultarlo
+    altrove che ripristinarlo successivamente</string>
 
 </resources>
