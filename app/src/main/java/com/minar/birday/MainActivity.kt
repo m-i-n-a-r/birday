@@ -58,7 +58,8 @@ class MainActivity : AppCompatActivity() {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         adapter = EventAdapter(null)
 
-        // Create the notification channel
+        // Create the notification channel and check the permission (note: appIntro 6.0 is still buggy, better avoid to use it for asking permissions)
+        askContactsPermission()
         createNotificationChannel()
 
         // getSharedPreferences(MyPrefs, Context.MODE_PRIVATE); retrieves a specific shared preferences file
@@ -75,10 +76,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
-        // Ask for contact permission TODO temporary, waiting for AppIntro 6.0.0
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED)
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_CONTACTS), 1)
 
         // Set the base theme and the accent
         when (theme) {
@@ -244,11 +241,9 @@ class MainActivity : AppCompatActivity() {
 
     // Import the contacts from Google Contacts
     fun importContacts(): Boolean {
-        // No permission. For now, just send an explanation toast
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(this, getString(R.string.missing_permission), Toast.LENGTH_LONG).show()
-            return false
-        }
+        // Ask for contacts permission
+        val permission = askContactsPermission(102)
+        if (!permission) return false
 
         // Phase 1: get every contact having at least a name and a birthday
         val contacts = getContacts()
@@ -348,6 +343,46 @@ class MainActivity : AppCompatActivity() {
             else return false
         }
         return true
+    }
+
+    // Ask contacts permission
+    private fun askContactsPermission(code: Int = 101): Boolean {
+        return if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_CONTACTS), code)
+                ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED
+            }
+        else true
+    }
+
+    // Manage user response to permission requests
+    override fun onRequestPermissionsResult(requestCode : Int, permissions: Array<String>, grantResults: IntArray){
+        when (requestCode) {
+            // Contacts at startup
+            101 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS))
+                        Toast.makeText(this, getString(R.string.missing_permission_contacts), Toast.LENGTH_LONG).show()
+                    else Toast.makeText(this, getString(R.string.missing_permission_contacts_forever), Toast.LENGTH_LONG).show()
+                }
+            }
+            // Contacts while trying to import Google contacts
+            102 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS))
+                        Toast.makeText(this, getString(R.string.missing_permission_contacts), Toast.LENGTH_LONG).show()
+                    else Toast.makeText(this, getString(R.string.missing_permission_contacts_forever), Toast.LENGTH_LONG).show()
+                }
+                else importContacts()
+            }
+            // Storage
+            201 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    if (shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE))
+                        Toast.makeText(this, getString(R.string.missing_permission_storage), Toast.LENGTH_LONG).show()
+                    else Toast.makeText(this, getString(R.string.missing_permission_storage_forever), Toast.LENGTH_LONG).show()
+                }
+            }
+        }
     }
 
     // Extension function to quickly capitalize a name, also considering other uppercase letter or multiple words

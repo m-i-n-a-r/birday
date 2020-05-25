@@ -73,8 +73,14 @@
     <string name="import_success">Import completed successfully!</string>
     <string name="import_nothing_found">No birthday found!</string>
     <string name="import_failed">Something went wrong!</string>
-    <string name="missing_permission">Birday could not import your contacts, because the contact permission
-    was denied earlier. Try reopening the app or activate the permission manually!</string>
+    <string name="missing_permission_storage">The storage permission was denied. Try again or activate the permission manually,
+    or the export/import feature won\'t work!</string>
+    <string name="missing_permission_contacts">The contact permission was denied. Try again or activate the permission manually,
+    or the contacts import from Google won\'t work!</string>
+    <string name="missing_permission_contacts_forever">Birday could not import your contacts nor ask the permission,
+    since you checked "never ask again". Enable it manually!</string>
+    <string name="missing_permission_storage_forever">Birday cannot ask for storage permission,
+    since you checked "never ask again". Enable it manually!</string>
     <string name="birday_import_title">Import a Birday backup</string>
     <string name="birday_import_description">Choose a valid Birday backup to manually restore your birthdays. Useful
     if you keep the automatic Google backup disabled</string>

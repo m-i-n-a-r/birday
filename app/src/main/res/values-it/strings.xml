@@ -143,8 +143,14 @@
     <string name="import_success">Importazione completata con successo!</string>
     <string name="import_failed">Qualcosa è andato storto!</string>
     <string name="import_nothing_found">Nessun compleanno trovato!</string>
-    <string name="missing_permission">Birday non ha potuto importare i tuoi contatti, perché il permesso di leggerli
-    è stato precedentemente negato. Prova a riaprire l\'app, o attiva il permesso manualmente!</string>
+    <string name="missing_permission_storage">Il permesso di archiviazione è stato negato. Prova ancora o attiva il permesso manualmente,
+    o la funzionalità di importazione/esportazione non funzionerà!</string>
+    <string name="missing_permission_contacts">Il permesso di lettura contatti è stato negato. Prova ancora o attiva il permesso manualmente,
+    o l\'importazione dai contatti Google non funzionerà!</string>
+    <string name="missing_permission_contacts_forever">Birday non ha potuto importare i tuoi contatti o chiedere il permesso,
+    perché lo hai negato selezionando "non chiedere più". Abilitalo manualmente!</string>
+    <string name="missing_permission_storage_forever">Birday non può chiedere il permesso per l\'archiviazione,
+    perché hai selezionato "non chiedere più". Abilitalo manualmente!</string>
     <string name="additional_notification_name">Notifica aggiuntiva</string>
     <string name="additional_notification_description">Manda una notifica aggiuntiva alcuni giorni prima dell\'evento. %s</string>
     <string name="no_additional_notification">Nessuna notifica aggiuntiva</string>
