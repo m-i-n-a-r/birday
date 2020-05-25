@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
+import androidx.sqlite.db.SimpleSQLiteQuery
 import com.minar.birday.MainActivity
 import com.minar.birday.R
 import com.minar.birday.persistence.EventDatabase
@@ -26,38 +27,32 @@ class BirdayExporter(context: Context?, attrs: AttributeSet?) : Preference(conte
     override fun onClick(v: View) {
         val act = context as MainActivity
         act.vibrate()
-        val exported = exportBirthdays(context)
-        shareBackup(exported)
+        val thread = Thread {
+            val exported = exportBirthdays(context)
+            if (exported.isNotBlank()) shareBackup(exported)
+        }
+        thread.start()
     }
 
     // Export the room database to a file in Android/data/com.minar.birday/files
     private fun exportBirthdays(context: Context): String {
-        val birdayDB: EventDatabase? = EventDatabase.getBirdayDataBase(context)
-        birdayDB!!.close()
-        val dbFile: File = context.getDatabasePath("BirdayDB")
-        val directory = File(context.getExternalFilesDir(null)!!.absolutePath)
+        // Perform a checkpoint to empty the write ahead logging temporary files and avoid closing the entire db
+        val eventDao = EventDatabase.getBirdayDataBase(context)!!.eventDao()
+        eventDao.checkpoint(SimpleSQLiteQuery("pragma wal_checkpoint(full)"))
+
+        val dbFile = context.getDatabasePath("BirdayDB").absoluteFile
+        val appDirectory = File(context.getExternalFilesDir(null)!!.absolutePath)
         val fileName: String = "BirdayBackup_" + LocalDate.now()
-        val fileFullPath: String = directory.path + File.separator.toString() + fileName
-        if (!directory.exists()) directory.mkdirs()
-        val saveFile = File(fileFullPath)
-        if (saveFile.exists()) saveFile.delete() // Overwrite if existing
+        val fileFullPath: String = appDirectory.path + File.separator.toString() + fileName
+        // Toasts need the ui thread to work, so they must be forced on that thread
         try {
-            if (saveFile.createNewFile()) {
-                val bufferSize = 8 * 1024
-                var bytesRead: Int
-                val buffer = ByteArray(bufferSize)
-                val saveDb: OutputStream = FileOutputStream(fileFullPath)
-                val inDb: InputStream = FileInputStream(dbFile)
-                while (inDb.read(buffer, 0, bufferSize).also { bytesRead = it } > 0) saveDb.write(buffer, 0, bytesRead)
-                saveDb.flush()
-                inDb.close()
-                saveDb.close()
-                Toast.makeText(context, context.getString(R.string.birday_export_success), Toast.LENGTH_SHORT).show()
-            }
+            dbFile.copyTo(File(fileFullPath), true)
+            (context as MainActivity).runOnUiThread { Toast.makeText(context, context.getString(R.string.birday_export_success), Toast.LENGTH_SHORT).show() }
         }
         catch (e: Exception) {
-            Toast.makeText(context, context.getString(R.string.birday_export_failure), Toast.LENGTH_SHORT).show()
+            (context as MainActivity).runOnUiThread { Toast.makeText(context, context.getString(R.string.birday_export_failure), Toast.LENGTH_SHORT).show() }
             e.printStackTrace()
+            return ""
         }
         return fileFullPath
     }

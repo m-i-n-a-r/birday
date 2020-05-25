@@ -2,6 +2,8 @@ package com.minar.birday.persistence
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import androidx.sqlite.db.SupportSQLiteQuery
+
 
 @Dao
 interface EventDao {
@@ -50,4 +52,8 @@ interface EventDao {
 
     @Query("SELECT *, CASE WHEN (strftime('%m', datetime('now', 'localtime')) > strftime('%m', originalDate) OR (strftime('%m', datetime('now', 'localtime')) = strftime('%m', originalDate) AND strftime('%d', datetime('now', 'localtime')) > strftime('%d', originalDate))) THEN date(strftime('%Y', datetime('now', 'localtime')) || '-' || strftime('%m', originalDate) || '-' || strftime('%d', originalDate), '+1 year') ELSE date(strftime('%Y', datetime('now', 'localtime')) || '-' || strftime('%m', originalDate) || '-' || strftime('%d', originalDate)) END AS nextDate FROM Event ORDER BY nextDate, originalDate")
     fun getOrderedAllEvents(): List<EventResult>
+
+    // Checkpoint functionality, not yet supported in room but useful to avoid closing the db during the backup creation
+    @RawQuery
+    fun checkpoint(supportSQLiteQuery: SupportSQLiteQuery?): Int
 }

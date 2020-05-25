@@ -1,13 +1,13 @@
 package com.minar.birday.backup
 
 import android.content.Context
+import android.content.Intent
 import android.util.AttributeSet
 import android.view.View
-import android.widget.Toast
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import com.minar.birday.MainActivity
-import com.minar.birday.R
+
 
 class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(context, attrs), View.OnClickListener {
 
@@ -26,6 +26,17 @@ class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(conte
 
     // Import a backup selecting it manually and checking if the file is valid
     private fun importBirthdays(context: Context): Boolean {
-        return false
+        chooseFile(context)
+        return true
     }
+
+    // Start an intent to choose a file
+    private fun chooseFile(context: Context) {
+        val fileIntent = Intent(Intent.ACTION_GET_CONTENT)
+        fileIntent.type = "*/*"
+        // Verify that the intent will resolve to an activity
+        if (fileIntent.resolveActivity(context.packageManager) != null)
+            context.startActivity(fileIntent)
+    }
+
 }

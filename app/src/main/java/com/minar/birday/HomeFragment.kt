@@ -94,8 +94,8 @@ class HomeFragment : Fragment() {
             whatsappButton.setOnClickListener {
                 act.vibrate()
                 try {
-                    val i: Intent? = ctx.packageManager.getLaunchIntentForPackage("com.whatsapp")
-                    ctx.startActivity(i)
+                    val whatsIntent: Intent? = ctx.packageManager.getLaunchIntentForPackage("com.whatsapp")
+                    ctx.startActivity(whatsIntent)
                 } catch (e: Exception) {
                     startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.whatsapp")))
                 }
@@ -128,8 +128,8 @@ class HomeFragment : Fragment() {
             telegramButton.setOnClickListener {
                 act.vibrate()
                 try {
-                    val i: Intent? = ctx.packageManager.getLaunchIntentForPackage("org.telegram.messenger")
-                    ctx.startActivity(i)
+                    val telegramIntent: Intent? = ctx.packageManager.getLaunchIntentForPackage("org.telegram.messenger")
+                    ctx.startActivity(telegramIntent)
                 } catch (e: Exception) {
                     startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=org.telegram.messenger")))
                 }
