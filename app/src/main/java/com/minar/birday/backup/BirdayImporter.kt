@@ -17,10 +17,15 @@ class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(conte
         v.setOnClickListener(this)
     }
 
+    // Vibrate and import the backup if possible
     override fun onClick(v: View) {
         val act = context as MainActivity
         act.vibrate()
-        if (!act.importBirthdays()) Toast.makeText(context, context.getString(R.string.import_failed), Toast.LENGTH_SHORT).show()
+        importBirthdays(context)
+    }
 
+    // Import a backup selecting it manually and checking if the file is valid
+    private fun importBirthdays(context: Context): Boolean {
+        return false
     }
 }

@@ -73,20 +73,16 @@
     <string name="import_success">Import completed successfully!</string>
     <string name="import_nothing_found">No birthday found!</string>
     <string name="import_failed">Something went wrong!</string>
-    <string name="missing_permission_storage">The storage permission was denied. Try again or activate the permission manually,
-    or the export/import feature won\'t work!</string>
     <string name="missing_permission_contacts">The contact permission was denied. Try again or activate the permission manually,
     or the contacts import from Google won\'t work!</string>
     <string name="missing_permission_contacts_forever">Birday could not import your contacts nor ask the permission,
     since you checked "never ask again". Enable it manually!</string>
-    <string name="missing_permission_storage_forever">Birday cannot ask for storage permission,
-    since you checked "never ask again". Enable it manually!</string>
     <string name="birday_import_title">Import a Birday backup</string>
     <string name="birday_import_description">Choose a valid Birday backup to manually restore your birthdays. Every existing data
     will be overwritten!</string>
-    <string name="birday_export_title">Export your birthdays</string>
-    <string name="birday_export_description">Export the available birthdays to an handy file. You can both open
-    the file or restore it later</string>
+    <string name="birday_export_title">Export and share birthdays</string>
+    <string name="birday_export_description">Export the available birthdays and share them, if you want. The file is in
+    Android/data/com.minar.birday/files</string>
     <string name="birday_import_success">Import completed!</string>
     <string name="birday_import_failure">Import failed. Did you choose the file correctly?</string>
     <string name="birday_export_success">Export completed!</string>

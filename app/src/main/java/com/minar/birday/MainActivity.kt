@@ -7,12 +7,10 @@ import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.database.Cursor
 import android.media.AudioAttributes
 import android.media.AudioAttributes.Builder
 import android.net.Uri
 import android.os.*
-import android.provider.ContactsContract
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
@@ -37,19 +35,18 @@ import com.afollestad.materialdialogs.datetime.datePicker
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.minar.birday.adapters.EventAdapter
+import com.minar.birday.backup.ContactsImporter
 import com.minar.birday.persistence.Event
-import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.AppRater
 import com.minar.birday.utilities.WelcomeActivity
 import com.minar.birday.viewmodels.HomeViewModel
-import java.io.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var homeViewModel: HomeViewModel
+    lateinit var homeViewModel: HomeViewModel
     private lateinit var adapter: EventAdapter
 
     @ExperimentalStdlibApi
@@ -238,133 +235,6 @@ class MainActivity : AppCompatActivity() {
         notificationManager.createNotificationChannel(channel)
     }
 
-    // Export the room database to a file
-    fun exportBirthdays(context: Context): Boolean {
-        val birdayDB: EventDatabase? = EventDatabase.getBirdayDataBase(context)
-        // TODO manage no birthday case
-        //Toast.makeText(this, getString(R.string.birday_export_nothing_found), Toast.LENGTH_SHORT).show()
-        birdayDB!!.close()
-        val dbFile: File = context.getDatabasePath("BirdayDB")
-        val directory = File(context.getExternalFilesDir(null)!!.absolutePath)
-        val fileName: String = "BirdayDB" + LocalDate.now()
-        val fileFullPath: String = directory.path + File.separator.toString() + fileName
-        if (!directory.exists()) directory.mkdirs()
-        val savefile = File(fileFullPath)
-        if (savefile.exists()) savefile.delete()
-        try {
-            if (savefile.createNewFile()) {
-                val bufferSize = 8 * 1024
-                var bytesRead: Int
-                val buffer = ByteArray(bufferSize)
-                val saveDb: OutputStream = FileOutputStream(fileFullPath)
-                val inDb: InputStream = FileInputStream(dbFile)
-                while (inDb.read(buffer, 0, bufferSize).also { bytesRead = it } > 0) {
-                    saveDb.write(buffer, 0, bytesRead)
-                }
-                saveDb.flush()
-                inDb.close()
-                saveDb.close()
-                Toast.makeText(this, getString(R.string.birday_export_success), Toast.LENGTH_SHORT).show()
-            }
-        }
-        catch (e: Exception) {
-            Toast.makeText(this, getString(R.string.birday_export_failure), Toast.LENGTH_SHORT).show()
-            e.printStackTrace()
-        }
-        return true
-    }
-
-    // Import a backup selecting it manually and checking if the file is valid
-    fun importBirthdays(): Boolean {
-        return false
-    }
-
-    // Import the contacts from Google Contacts
-    fun importContacts(): Boolean {
-        // Ask for contacts permission
-        val permission = askContactsPermission(102)
-        if (!permission) return false
-
-        // Phase 1: get every contact having at least a name and a birthday
-        val contacts = getContacts()
-
-        // Phase 2: convert the extracted data in an Event List, verify duplicates
-        val events = mutableListOf<Event>()
-        loop@ for (contact in contacts) {
-            // Take the name and split it to separate name and surname
-            val splitterName = contact.value[0].split(",")
-            var name: String
-            var surname = ""
-            var date: LocalDate
-            when (splitterName.size) {
-                // Not considering surname only contacts, but considering name only
-                1 -> name = splitterName[0].trim()
-                2 -> {
-                    name = splitterName[1].trim()
-                    surname = splitterName[0].trim()
-                }
-                else -> continue@loop
-            }
-
-            try {
-                // Missing year, put 2000 as a placeholder
-                var parseDate = contact.value[1]
-                if (contact.value[1].length < 8) parseDate = contact.value[1].replaceFirst("-", "2000")
-                date = LocalDate.parse(parseDate)
-            }
-            catch (e: Exception) { continue }
-            val event = Event(id = 0, name = name, surname = surname, originalDate = date)
-            events.add(event)
-        }
-
-        // Phase 3: insert the remaining events in the db and update the recycler
-        return if (events.size == 0) {
-            Toast.makeText(this, getString(R.string.import_nothing_found), Toast.LENGTH_SHORT).show()
-            true
-        } else {
-            events.forEach { homeViewModel.insert(it) }
-            Toast.makeText(this, getString(R.string.import_success), Toast.LENGTH_SHORT).show()
-            true
-        }
-    }
-
-    // Get the contacts and save them in a map
-    private fun getContacts(): Map<String, List<String>> {
-        val nameBirth = mutableMapOf<String, List<String>>()
-
-        // Retrieve name and id
-        val resolver: ContentResolver = contentResolver
-        val cursor = resolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null)
-        if (cursor != null) {
-            if (cursor.count > 0) {
-                while (cursor.moveToNext()) {
-                    val id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
-                    val name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME_ALTERNATIVE))
-                    // Retrieve the birthday
-                    val bd = contentResolver
-                    val bdc: Cursor? = bd.query(ContactsContract.Data.CONTENT_URI, arrayOf(ContactsContract.CommonDataKinds.Event.DATA),
-                        ContactsContract.Data.CONTACT_ID + " = " + id + " AND " + ContactsContract.Data.MIMETYPE + " = '" +
-                                ContactsContract.CommonDataKinds.Event.CONTENT_ITEM_TYPE + "' AND " + ContactsContract.CommonDataKinds.Event.TYPE +
-                                " = " + ContactsContract.CommonDataKinds.Event.TYPE_BIRTHDAY, null, ContactsContract.Data.DISPLAY_NAME
-                    )
-
-                    if (bdc != null) {
-                        if (bdc.count > 0) {
-                            while (bdc.moveToNext()) {
-                                // Using a list as key will prevent collisions on same name
-                                val birthday: String = bdc.getString(0)
-                                val person = listOf<String>(name, birthday)
-                                nameBirth[id] = person
-                            }
-                        }
-                        bdc.close()
-                    }
-                }
-            }
-        }
-        cursor?.close()
-        return nameBirth
-    }
 
     // Some utility functions, used from every fragment connected to this activity
 
@@ -386,7 +256,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Ask contacts permission
-    private fun askContactsPermission(code: Int = 101): Boolean {
+    fun askContactsPermission(code: Int = 101): Boolean {
         return if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_CONTACTS), code)
                 ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED
@@ -412,14 +282,9 @@ class MainActivity : AppCompatActivity() {
                         Toast.makeText(this, getString(R.string.missing_permission_contacts), Toast.LENGTH_LONG).show()
                     else Toast.makeText(this, getString(R.string.missing_permission_contacts_forever), Toast.LENGTH_LONG).show()
                 }
-                else importContacts()
-            }
-            // Storage
-            201 -> {
-                if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                    if (shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE))
-                        Toast.makeText(this, getString(R.string.missing_permission_storage), Toast.LENGTH_LONG).show()
-                    else Toast.makeText(this, getString(R.string.missing_permission_storage_forever), Toast.LENGTH_LONG).show()
+                else {
+                    val contactImporter = ContactsImporter(this, null)
+                    contactImporter.importContacts(this)
                 }
             }
         }

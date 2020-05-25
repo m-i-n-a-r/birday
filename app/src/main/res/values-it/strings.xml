@@ -143,14 +143,10 @@
     <string name="import_success">Importazione completata con successo!</string>
     <string name="import_failed">Qualcosa è andato storto!</string>
     <string name="import_nothing_found">Nessun compleanno trovato!</string>
-    <string name="missing_permission_storage">Il permesso di archiviazione è stato negato. Prova ancora o attiva il permesso manualmente,
-    o la funzionalità di importazione/esportazione non funzionerà!</string>
     <string name="missing_permission_contacts">Il permesso di lettura contatti è stato negato. Prova ancora o attiva il permesso manualmente,
     o l\'importazione dai contatti Google non funzionerà!</string>
     <string name="missing_permission_contacts_forever">Birday non ha potuto importare i tuoi contatti o chiedere il permesso,
     perché lo hai negato selezionando "non chiedere più". Abilitalo manualmente!</string>
-    <string name="missing_permission_storage_forever">Birday non può chiedere il permesso per l\'archiviazione,
-    perché hai selezionato "non chiedere più". Abilitalo manualmente!</string>
     <string name="additional_notification_name">Notifica aggiuntiva</string>
     <string name="additional_notification_description">Manda una notifica aggiuntiva alcuni giorni prima dell\'evento. %s</string>
     <string name="no_additional_notification">Nessuna notifica aggiuntiva</string>
@@ -177,9 +173,9 @@
     <string name="birday_import_title">Importa un backup di Birday</string>
     <string name="birday_import_description">Scegli un file di backup di Birday per ripristinare manualmente
     i tuoi compleanni. I dati attualmente presenti verranno sovrascritti!</string>
-    <string name="birday_export_title">Esporta i tuoi compleanni</string>
-    <string name="birday_export_description">Esporta i compleanni disponibili in un comodo file. Puoi sia consultarlo
-    altrove che ripristinarlo successivamente</string>
+    <string name="birday_export_title">Esporta e condividi compleanni</string>
+    <string name="birday_export_description">Esporta i compleanni disponibili e condividi il backup, se vuoi.
+    Il file si trova in Android/data/com.minar.birday/files</string>
     <string name="birday_import_success">Importazione completata!</string>
     <string name="birday_import_failure">Importazione fallita. Hai scelto il file giusto?</string>
     <string name="birday_export_success">Esportazione completata!</string>
