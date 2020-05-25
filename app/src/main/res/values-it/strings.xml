@@ -176,9 +176,14 @@
     <string name="import_export">Importazione ed esportazione</string>
     <string name="birday_import_title">Importa un backup di Birday</string>
     <string name="birday_import_description">Scegli un file di backup di Birday per ripristinare manualmente
-    i tuoi compleanni. Utile se il backup automatico di Google è disattivato</string>
+    i tuoi compleanni. I dati attualmente presenti verranno sovrascritti!</string>
     <string name="birday_export_title">Esporta i tuoi compleanni</string>
     <string name="birday_export_description">Esporta i compleanni disponibili in un comodo file. Puoi sia consultarlo
     altrove che ripristinarlo successivamente</string>
+    <string name="birday_import_success">Importazione completata!</string>
+    <string name="birday_import_failure">Importazione fallita. Hai scelto il file giusto?</string>
+    <string name="birday_export_success">Esportazione completata!</string>
+    <string name="birday_export_failure">Esportazione fallita. Ooops!</string>
+    <string name="birday_export_nothing_found">Nulla da esportare!</string>
 
 </resources>

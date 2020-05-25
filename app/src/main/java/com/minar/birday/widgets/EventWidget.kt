@@ -32,6 +32,8 @@ internal fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManage
         val allEvents: List<EventResult> = eventDao.getOrderedAllEvents()
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
         val widgetUpcoming: String
+        // Don't update if there's no birthday in the db
+        if (allEvents.isEmpty()) return@Thread
         val event = allEvents[0]
 
         // Set the texts and the onclick action to open the app

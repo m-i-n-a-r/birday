@@ -82,11 +82,16 @@
     <string name="missing_permission_storage_forever">Birday cannot ask for storage permission,
     since you checked "never ask again". Enable it manually!</string>
     <string name="birday_import_title">Import a Birday backup</string>
-    <string name="birday_import_description">Choose a valid Birday backup to manually restore your birthdays. Useful
-    if you keep the automatic Google backup disabled</string>
+    <string name="birday_import_description">Choose a valid Birday backup to manually restore your birthdays. Every existing data
+    will be overwritten!</string>
     <string name="birday_export_title">Export your birthdays</string>
     <string name="birday_export_description">Export the available birthdays to an handy file. You can both open
     the file or restore it later</string>
+    <string name="birday_import_success">Import completed!</string>
+    <string name="birday_import_failure">Import failed. Did you choose the file correctly?</string>
+    <string name="birday_export_success">Export completed!</string>
+    <string name="birday_export_failure">Export failed. Whoopsie!</string>
+    <string name="birday_export_nothing_found">Nothing to export!</string>
 
     <!-- Developer -->
     <string name="dev_name" translatable="false">m.i.n.a.r.</string>

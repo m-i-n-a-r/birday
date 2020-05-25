@@ -11,10 +11,7 @@ import android.database.Cursor
 import android.media.AudioAttributes
 import android.media.AudioAttributes.Builder
 import android.net.Uri
-import android.os.Bundle
-import android.os.Handler
-import android.os.VibrationEffect
-import android.os.Vibrator
+import android.os.*
 import android.provider.ContactsContract
 import android.text.Editable
 import android.text.TextWatcher
@@ -41,9 +38,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.persistence.Event
+import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.AppRater
 import com.minar.birday.utilities.WelcomeActivity
 import com.minar.birday.viewmodels.HomeViewModel
+import java.io.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -237,6 +236,47 @@ class MainActivity : AppCompatActivity() {
         // Register the channel with the system
         val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannel(channel)
+    }
+
+    // Export the room database to a file
+    fun exportBirthdays(context: Context): Boolean {
+        val birdayDB: EventDatabase? = EventDatabase.getBirdayDataBase(context)
+        // TODO manage no birthday case
+        //Toast.makeText(this, getString(R.string.birday_export_nothing_found), Toast.LENGTH_SHORT).show()
+        birdayDB!!.close()
+        val dbFile: File = context.getDatabasePath("BirdayDB")
+        val directory = File(context.getExternalFilesDir(null)!!.absolutePath)
+        val fileName: String = "BirdayDB" + LocalDate.now()
+        val fileFullPath: String = directory.path + File.separator.toString() + fileName
+        if (!directory.exists()) directory.mkdirs()
+        val savefile = File(fileFullPath)
+        if (savefile.exists()) savefile.delete()
+        try {
+            if (savefile.createNewFile()) {
+                val bufferSize = 8 * 1024
+                var bytesRead: Int
+                val buffer = ByteArray(bufferSize)
+                val saveDb: OutputStream = FileOutputStream(fileFullPath)
+                val inDb: InputStream = FileInputStream(dbFile)
+                while (inDb.read(buffer, 0, bufferSize).also { bytesRead = it } > 0) {
+                    saveDb.write(buffer, 0, bytesRead)
+                }
+                saveDb.flush()
+                inDb.close()
+                saveDb.close()
+                Toast.makeText(this, getString(R.string.birday_export_success), Toast.LENGTH_SHORT).show()
+            }
+        }
+        catch (e: Exception) {
+            Toast.makeText(this, getString(R.string.birday_export_failure), Toast.LENGTH_SHORT).show()
+            e.printStackTrace()
+        }
+        return true
+    }
+
+    // Import a backup selecting it manually and checking if the file is valid
+    fun importBirthdays(): Boolean {
+        return false
     }
 
     // Import the contacts from Google Contacts
