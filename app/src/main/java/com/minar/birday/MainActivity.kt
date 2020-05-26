@@ -1,6 +1,7 @@
 package com.minar.birday
 
 import android.Manifest
+import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.ContentResolver
@@ -10,7 +11,10 @@ import android.content.pm.PackageManager
 import android.media.AudioAttributes
 import android.media.AudioAttributes.Builder
 import android.net.Uri
-import android.os.*
+import android.os.Bundle
+import android.os.Handler
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
@@ -35,11 +39,13 @@ import com.afollestad.materialdialogs.datetime.datePicker
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.minar.birday.adapters.EventAdapter
+import com.minar.birday.backup.BirdayImporter
 import com.minar.birday.backup.ContactsImporter
 import com.minar.birday.persistence.Event
 import com.minar.birday.utilities.AppRater
 import com.minar.birday.utilities.WelcomeActivity
 import com.minar.birday.viewmodels.HomeViewModel
+import java.io.IOException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -286,6 +292,21 @@ class MainActivity : AppCompatActivity() {
                     val contactImporter = ContactsImporter(this, null)
                     contactImporter.importContacts(this)
                 }
+            }
+        }
+    }
+
+    // When a file is chosen to restore, handle the checks and restore it properly
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK && data != null) {
+            val fileUri = data.data
+            try {
+                val birdayImporter = BirdayImporter(this, null)
+                if (fileUri != null) birdayImporter.importBirthdays(this, fileUri)
+            }
+            catch (e: IOException) {
+                e.printStackTrace()
             }
         }
     }
