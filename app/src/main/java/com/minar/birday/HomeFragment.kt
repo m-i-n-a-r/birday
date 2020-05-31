@@ -44,6 +44,7 @@ import com.minar.birday.viewmodels.HomeViewModel
 import com.minar.birday.widgets.EventWidget
 import kotlinx.android.synthetic.main.dialog_actions_event.view.*
 import kotlinx.android.synthetic.main.dialog_apps_event.view.*
+import kotlinx.android.synthetic.main.dialog_insert_event.view.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -186,9 +187,8 @@ class HomeFragment : Fragment() {
                     }
                 }
 
-                // Setup listeners and checks on the fields
+                // Setup listeners and checks on the fields. Using view binding to fetch the buttons
                 val customView = dialog.getCustomView()
-                // Using viewbinding to fetch the buttons
                 val deleteButton = customView.deleteButton
                 val editButton = customView.editButton
 
@@ -206,7 +206,7 @@ class HomeFragment : Fragment() {
             }
 
             override fun onItemLongClick(position: Int, view: View?): Boolean {
-                //act.vibrate()
+                //act.vibrate() TODO show dialog with person details
                 return true
             }
         })
@@ -335,10 +335,13 @@ class HomeFragment : Fragment() {
         eventDate.setOnClickListener {
             // Prevent double dialogs on fast click
             if(dateDialog == null) {
+                // To automatically show the last selected date, parse it to another Calendar object
+                val lastDate = Calendar.getInstance()
+                lastDate.set(eventDateValue.year, eventDateValue.monthValue - 1, eventDateValue.dayOfMonth)
                 dateDialog = MaterialDialog(act).show {
                     cancelable(false)
                     cancelOnTouchOutside(false)
-                    datePicker(maxDate = endDate) { _, date ->
+                    datePicker(maxDate = endDate, currentDate = lastDate) { _, date ->
                         val year = date.get(Calendar.YEAR)
                         val month = date.get(Calendar.MONTH) + 1
                         val day = date.get(Calendar.DAY_OF_MONTH)
@@ -361,24 +364,26 @@ class HomeFragment : Fragment() {
                     editable === name.editableText -> {
                         val nameText = name.text.toString()
                         if (nameText.isBlank() || !act.checkString(nameText)) {
-                            name.error = getString(R.string.invalid_value_name)
+                            customView.nameEventLayout.error = getString(R.string.invalid_value_name)
                             dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                             nameCorrect = false
                         }
                         else {
                             nameValue = nameText
+                            customView.nameEventLayout.error = null
                             nameCorrect = true
                         }
                     }
                     editable === surname.editableText -> {
                         val surnameText = surname.text.toString()
                         if (!act.checkString(surnameText)) {
-                            surname.error = getString(R.string.invalid_value_name)
+                            customView.surnameEventLayout.error = getString(R.string.invalid_value_name)
                             dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                             surnameCorrect = false
                         }
                         else {
                             surnameValue = surnameText
+                            customView.surnameEventLayout.error = null
                             surnameCorrect = true
                         }
                     }

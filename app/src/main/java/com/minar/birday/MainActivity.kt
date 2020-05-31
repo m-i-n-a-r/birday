@@ -208,19 +208,8 @@ class MainActivity : AppCompatActivity() {
                                 surnameCorrect = true
                             }
                         }
-                        editable === eventDate.editableText -> {
-                            val eventDateText = eventDate.text.toString()
-                            if (eventDateText.isBlank()) {
-                                // Setting the error on the layout is important to make the properties work. Kotlin synthetics are being used here. This error should never pop up
-                                customView.dateEventLayout.error = getString(R.string.invalid_value_date)
-                                dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
-                                eventDateCorrect = false
-                            }
-                            else {
-                                customView.dateEventLayout.error = null
-                                eventDateCorrect = true
-                            }
-                        }
+                        // Once selected, the date can't be blank anymore
+                        editable === eventDate.editableText -> eventDateCorrect = true
                     }
                     if(eventDateCorrect && nameCorrect && surnameCorrect) dialog.getActionButton(WhichButton.POSITIVE).isEnabled = true
                 }
