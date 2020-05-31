@@ -1,18 +1,17 @@
 package com.minar.birday.utilities
 
-import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.github.appintro.AppIntro2
+import com.github.appintro.AppIntro
 import com.github.appintro.AppIntroFragment
 import com.github.appintro.model.SliderPagerBuilder
 import com.minar.birday.MainActivity
 import com.minar.birday.R
 
 
-class WelcomeActivity : AppIntro2() {
+class WelcomeActivity : AppIntro() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY

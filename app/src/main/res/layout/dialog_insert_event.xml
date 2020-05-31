@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingLeft="@dimen/text_field_horizontal_margin"
-    android:paddingRight="@dimen/text_field_horizontal_margin">
+    android:paddingHorizontal="@dimen/text_field_horizontal_margin">
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameEventLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/text_field_height"
-        android:layout_margin="@dimen/activity_vertical_margin"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/form_vertical_margin"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
         android:hint="@string/insert_name_hint"
         app:boxBackgroundColor="@color/transparent"
         app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
@@ -23,7 +25,7 @@
         app:errorIconDrawable="@drawable/ic_alert_black_24dp"
         app:errorIconTint="?colorAccent"
         app:errorContentDescription="@string/insert_name_hint"
-        app:boxStrokeErrorColor="@color/goodGray"
+        app:boxStrokeErrorColor="@color/redError"
         app:startIconDrawable="@drawable/ic_cool_black_24dp"
         app:startIconTint="@color/goodGray"
         app:hintAnimationEnabled="true"
@@ -32,21 +34,23 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nameEvent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:imeOptions="actionDone"
             android:maxLength="25"
             android:padding="0dp"
             android:textAlignment="center"
             android:textCursorDrawable="@null"
-            android:inputType="textCapSentences"/>
+            android:inputType="textPersonName"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/surnameEventLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/text_field_height"
-        android:layout_margin="@dimen/activity_vertical_margin"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/form_vertical_margin"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
         android:hint="@string/insert_surname_hint"
         app:boxBackgroundColor="@color/transparent"
         app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
@@ -58,7 +62,7 @@
         app:errorIconDrawable="@drawable/ic_alert_black_24dp"
         app:errorIconTint="?colorAccent"
         app:errorContentDescription="@string/insert_surname_hint"
-        app:boxStrokeErrorColor="@color/goodGray"
+        app:boxStrokeErrorColor="@color/redError"
         app:startIconDrawable="@drawable/ic_smile_black_24dp"
         app:startIconTint="@color/goodGray"
         app:hintAnimationEnabled="true"
@@ -67,21 +71,23 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/surnameEvent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:imeOptions="actionDone"
             android:maxLength="25"
             android:padding="0dp"
             android:textAlignment="center"
             android:textCursorDrawable="@null"
-            android:inputType="textCapSentences"/>
+            android:inputType="textPersonName"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dateEventLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/text_field_height"
-        android:layout_margin="@dimen/activity_vertical_margin"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/form_vertical_margin"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
         android:hint="@string/insert_date_hint"
         app:boxBackgroundColor="@color/transparent"
         app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
@@ -93,7 +99,7 @@
         app:errorIconDrawable="@drawable/ic_alert_black_24dp"
         app:errorIconTint="?colorAccent"
         app:errorContentDescription="@string/insert_date_hint"
-        app:boxStrokeErrorColor="@color/goodGray"
+        app:boxStrokeErrorColor="@color/redError"
         app:startIconDrawable="@drawable/ic_date_black_24dp"
         app:startIconTint="@color/goodGray"
         app:hintAnimationEnabled="true"
@@ -102,7 +108,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/dateEvent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:inputType="none"
             android:clickable="true"
             android:focusable="false"

@@ -45,6 +45,7 @@ import com.minar.birday.persistence.Event
 import com.minar.birday.utilities.AppRater
 import com.minar.birday.utilities.WelcomeActivity
 import com.minar.birday.viewmodels.HomeViewModel
+import kotlinx.android.synthetic.main.dialog_insert_event.view.*
 import java.io.IOException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -182,35 +183,41 @@ class MainActivity : AppCompatActivity() {
                         editable === name.editableText -> {
                             val nameText = name.text.toString()
                             if (nameText.isBlank() || !checkString(nameText)) {
-                                name.error = getString(R.string.invalid_value_name)
+                                // Setting the error on the layout is important to make the properties work. Kotlin synthetics are being used here
+                                customView.nameEventLayout.error = getString(R.string.invalid_value_name)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                                 nameCorrect = false
                             }
                             else {
                                 nameValue = nameText
+                                customView.nameEventLayout.error = null
                                 nameCorrect = true
                             }
                         }
                         editable === surname.editableText -> {
                             val surnameText = surname.text.toString()
                             if (!checkString(surnameText)) {
-                                surname.error = getString(R.string.invalid_value_name)
+                                // Setting the error on the layout is important to make the properties work. Kotlin synthetics are being used here
+                                customView.surnameEventLayout.error = getString(R.string.invalid_value_name)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                                 surnameCorrect = false
                             }
                             else {
                                 surnameValue = surnameText
+                                customView.surnameEventLayout.error = null
                                 surnameCorrect = true
                             }
                         }
                         editable === eventDate.editableText -> {
                             val eventDateText = eventDate.text.toString()
                             if (eventDateText.isBlank()) {
-                                eventDate.error = getString(R.string.invalid_value_date)
+                                // Setting the error on the layout is important to make the properties work. Kotlin synthetics are being used here. This error should never pop up
+                                customView.dateEventLayout.error = getString(R.string.invalid_value_date)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                                 eventDateCorrect = false
                             }
                             else {
+                                customView.dateEventLayout.error = null
                                 eventDateCorrect = true
                             }
                         }

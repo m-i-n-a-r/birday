@@ -4,6 +4,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="linear_vertical_margin">22dp</dimen>
+    <dimen name="form_vertical_margin">8dp</dimen>
     <dimen name="bottom_navbar_elevation">0.1dp</dimen>
     <dimen name="cradle_margin">8dp</dimen>
     <dimen name="cradle_corners">12dp</dimen>
@@ -30,7 +31,6 @@
     <dimen name="minar_description_padding">16dp</dimen>
     <dimen name="bottom_navbar_height">52dp</dimen>
     <dimen name="result_text_margin">42dp</dimen>
-    <dimen name="text_field_height">56dp</dimen>
     <dimen name="text_field_corner">12dp</dimen>
     <dimen name="text_field_horizontal_margin">12dp</dimen>
     <dimen name="splash_image_size">192dp</dimen>

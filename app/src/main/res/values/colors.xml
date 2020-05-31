@@ -9,6 +9,7 @@
     <color name="goodGrayTranslucent">#66909090</color>
     <color name="deepGray">#0f0f0f</color>
     <color name="transparent">#00ffffff</color>
+    <color name="redError">#70df5252</color>
 
     <!-- light theme colors -->
     <color name="colorBackground">#fefefe</color>

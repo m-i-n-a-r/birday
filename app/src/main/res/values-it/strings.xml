@@ -50,7 +50,7 @@
     <string name="no_favorites">Nessun preferito! Premi la stella per salvare una persona nei preferiti!</string>
     <string name="notification_hour_name">Ora di invio notifica</string>
     <string name="notification_hour_description">%s \n\nLa notifica potrebbe non funzionare se l\'applicazione
-        viene terminata dal sistema in alcuni dispositivi Huawei, Xiaomi e Onpelus. Ulteriori informazioni
+        viene terminata dal sistema in alcuni dispositivi Huawei, Xiaomi e OnePlus. Ulteriori informazioni
         su dontkillmyapp.com</string>
     <string name="stats">Statistiche</string>
     <string name="no_stats">Nessuna statistica da mostrare!</string>

@@ -46,7 +46,7 @@
     <string name="date_format_name">Date format</string>
     <string name="notification_hour_name">Notification hour</string>
     <string name="notification_hour_description">%s \n\nPlease note that the notification might not work when the
-        app is killed by the system in some Huawei, Xiaomi and Oneplus devices. Refer to dontkillmyapp.com
+        app is killed by the system in some Huawei, Xiaomi and OnePlus devices. Refer to dontkillmyapp.com
         for more informations</string>
     <string name="accent_description">Change the default accent color</string>
     <string name="accent_name">Accent color</string>
@@ -103,7 +103,7 @@
 
     <!-- New event -->
     <string name="new_event">New birthday</string>
-    <string name="new_event_description">Enter a new person you care about, and Birday will help you reminding his/her birthday!</string>
+    <string name="new_event_description">Enter a new person you care about, and Birday will help you to remind his/her birthday!</string>
     <string name="insert_event">Insert birthday</string>
     <string name="cancel">Cancel</string>
     <string name="insert_name_hint">Insert name</string>
