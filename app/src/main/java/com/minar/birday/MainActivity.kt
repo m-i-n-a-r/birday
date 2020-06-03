@@ -1,7 +1,6 @@
 package com.minar.birday
 
 import android.Manifest
-import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.ContentResolver
@@ -19,6 +18,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
@@ -237,6 +237,17 @@ class MainActivity : AppCompatActivity() {
         notificationManager.createNotificationChannel(channel)
     }
 
+    // Choose a backup registering a callback and following the latest guidelines
+    val selectBackup = registerForActivityResult(ActivityResultContracts.GetContent())  { fileUri: Uri? ->
+        try {
+            val birdayImporter = BirdayImporter(this, null)
+            if (fileUri != null) birdayImporter.importBirthdays(this, fileUri)
+        }
+        catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
 
     // Some utility functions, used from every fragment connected to this activity
 
@@ -268,6 +279,7 @@ class MainActivity : AppCompatActivity() {
 
     // Manage user response to permission requests
     override fun onRequestPermissionsResult(requestCode : Int, permissions: Array<String>, grantResults: IntArray){
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             // Contacts at startup
             101 -> {
@@ -288,21 +300,6 @@ class MainActivity : AppCompatActivity() {
                     val contactImporter = ContactsImporter(this, null)
                     contactImporter.importContacts(this)
                 }
-            }
-        }
-    }
-
-    // When a file is chosen to restore, handle the checks and restore it properly
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 1 && resultCode == Activity.RESULT_OK && data != null) {
-            val fileUri = data.data
-            try {
-                val birdayImporter = BirdayImporter(this, null)
-                if (fileUri != null) birdayImporter.importBirthdays(this, fileUri)
-            }
-            catch (e: IOException) {
-                e.printStackTrace()
             }
         }
     }

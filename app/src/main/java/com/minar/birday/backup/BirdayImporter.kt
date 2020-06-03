@@ -1,7 +1,6 @@
 package com.minar.birday.backup
 
 import android.content.Context
-import android.content.Intent
 import android.net.Uri
 import android.util.AttributeSet
 import android.view.View
@@ -10,10 +9,11 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import com.minar.birday.MainActivity
 import com.minar.birday.R
-import java.io.File
+import java.io.FileOutputStream
 
 
-class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(context, attrs), View.OnClickListener {
+class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(context, attrs),
+    View.OnClickListener {
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
@@ -25,39 +25,33 @@ class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(conte
     override fun onClick(v: View) {
         val act = context as MainActivity
         act.vibrate()
-        chooseFile(context)
+        act.selectBackup.launch("*/*")
     }
 
     // Import a backup overwriting any existing data and checking if the file is valid
     fun importBirthdays(context: Context, fileUri: Uri): Boolean {
-        if (!isBackupValid(context, fileUri)) {
+        if (!isBackupValid(fileUri)) {
             Toast.makeText(context, context.getString(R.string.birday_import_invalid_file), Toast.LENGTH_SHORT).show()
             return false
         }
+        val fileStream = context.contentResolver.openInputStream(fileUri)!!
         val dbFile = context.getDatabasePath("BirdayDB").absoluteFile
         try {
-            File(fileUri.toString()).copyTo(dbFile, true)
+            fileStream.copyTo(FileOutputStream(dbFile))
             Toast.makeText(context, context.getString(R.string.birday_import_success), Toast.LENGTH_SHORT).show()
         }
         catch (e: Exception) {
             Toast.makeText(context, context.getString(R.string.birday_import_failure), Toast.LENGTH_SHORT).show()
             e.printStackTrace()
+            return false
         }
+        (context as MainActivity).recreate()
         return true
     }
 
-    // Start an intent to choose a file
-    private fun chooseFile(context: Context) {
-        val fileIntent = Intent(Intent.ACTION_GET_CONTENT)
-        fileIntent.type = "*/*"
-        // Verify that the intent will resolve to an activity
-        if (fileIntent.resolveActivity(context.packageManager) != null)
-            context.startActivity(fileIntent)
-    }
+        // Check if a backup file is valid using various strategies. A wrong import would result in a crash
+        private fun isBackupValid(fileUri: Uri): Boolean {
+            return fileUri.toString().contains("BirdayBackup_")
+        }
 
-    // Check if a backup file is valid using various strategies. A wrong import would result in a crash
-    private fun isBackupValid(context: Context, fileUri: Uri): Boolean {
-        return fileUri.toString().contains("BirdayBackup_")
     }
-
-}
