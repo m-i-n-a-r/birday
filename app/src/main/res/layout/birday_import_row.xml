@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/birdayimport"
+    android:id="@+id/birdayImport"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -12,14 +12,14 @@
     android:background="?attr/selectableItemBackground">
 
         <TextView
-            android:id="@+id/birdayimportTitle"
+            android:id="@+id/birdayImportTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/birday_import_title"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
 
         <TextView
-            android:id="@+id/birdayimportDescription"
+            android:id="@+id/birdayImportDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/birday_import_description"

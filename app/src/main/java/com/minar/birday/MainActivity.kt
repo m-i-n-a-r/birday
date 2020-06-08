@@ -259,10 +259,13 @@ class MainActivity : AppCompatActivity() {
             vib.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
     }
 
-    // Simply checks if the string is written using only letters
+    // Simply checks if the string is written using only letters or an apostrophe
     fun checkString(submission : String): Boolean {
+        var apostropheFound = false
+        if (submission.length == 1 && submission == "\'") return false
         for (s in submission.replace("\\s".toRegex(), "")) {
             if (s.isLetter()) continue
+            if (s == '\'' && !apostropheFound) apostropheFound = true
             else return false
         }
         return true
@@ -304,9 +307,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Extension function to quickly capitalize a name, also considering other uppercase letter or multiple words
+    // Extension function to quickly capitalize a name, also considering other uppercase letter, multiple words and the apostrophe
     @ExperimentalStdlibApi
-    fun String.smartCapitalize(): String =
-        trim().split(" ").joinToString(" ") { it.toLowerCase(Locale.ROOT).capitalize(Locale.ROOT) }
-
+    fun String.smartCapitalize(): String {
+        return trim().split(" ").joinToString(" ") { it.toLowerCase(Locale.ROOT).capitalize(Locale.ROOT) }
+            .split("'").joinToString("'") { it.capitalize(Locale.ROOT) }
+    }
 }

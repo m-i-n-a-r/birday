@@ -1,6 +1,7 @@
 package com.minar.birday.backup
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.util.AttributeSet
 import android.view.View
@@ -9,11 +10,12 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import com.minar.birday.MainActivity
 import com.minar.birday.R
+import com.minar.birday.persistence.EventDatabase
 import java.io.FileOutputStream
 
 
-class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(context, attrs),
-    View.OnClickListener {
+class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(context, attrs), View.OnClickListener {
+    private val act = context as MainActivity
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
@@ -23,9 +25,9 @@ class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(conte
 
     // Vibrate and import the backup if possible
     override fun onClick(v: View) {
-        val act = context as MainActivity
         act.vibrate()
         act.selectBackup.launch("*/*")
+
     }
 
     // Import a backup overwriting any existing data and checking if the file is valid
@@ -34,6 +36,7 @@ class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(conte
             Toast.makeText(context, context.getString(R.string.birday_import_invalid_file), Toast.LENGTH_SHORT).show()
             return false
         }
+        EventDatabase.getBirdayDataBase(context)?.close()
         val fileStream = context.contentResolver.openInputStream(fileUri)!!
         val dbFile = context.getDatabasePath("BirdayDB").absoluteFile
         try {
@@ -45,7 +48,11 @@ class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(conte
             e.printStackTrace()
             return false
         }
-        (context as MainActivity).recreate()
+        // Completely restart the application TODO still crashes after the restore
+        act.finish()
+        val intent: Intent = act.intent
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        act.startActivity(intent)
         return true
     }
 
