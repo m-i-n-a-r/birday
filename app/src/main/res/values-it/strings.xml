@@ -42,7 +42,7 @@
     <string name="insert_name_hint">Inserisci nome</string>
     <string name="insert_surname_hint">Inserisci cognome</string>
     <string name="insert_date_hint">Seleziona una data</string>
-    <string name="invalid_value_name">Inserisci più di una lettera. I simboli non sono permessi!</string>
+    <string name="invalid_value_name">Nome non valido. Numeri e simboli non sono permessi!</string>
     <string name="date_format_name">Formato data</string>
     <string name="app_behavior">Comportamento dell\'app</string>
     <string name="no_events">Nessun compleanno! Comincia aggiungendone uno usando il bottone sotto!</string>

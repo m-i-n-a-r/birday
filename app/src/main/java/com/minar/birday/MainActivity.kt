@@ -259,7 +259,7 @@ class MainActivity : AppCompatActivity() {
             vib.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
     }
 
-    // Simply checks if the string is written using only letters or an apostrophe
+    // Simply checks if the string is written using only letters and at most one apostrophe
     fun checkString(submission : String): Boolean {
         var apostropheFound = false
         if (submission.length == 1 && submission == "\'") return false
