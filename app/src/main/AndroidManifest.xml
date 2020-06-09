@@ -24,6 +24,16 @@
                 android:resource="@xml/event_widget_info" />
         </receiver>
 
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.minar.birday.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
         <activity
             android:name=".utilities.SplashActivity"
             android:noHistory="true">
@@ -32,6 +42,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
@@ -39,10 +50,12 @@
             android:screenOrientation="fullUser"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
+
         <activity
             android:name=".utilities.WelcomeActivity"
             android:label="@string/app_welcome"
             android:noHistory="true" />
+
     </application>
 
 </manifest>

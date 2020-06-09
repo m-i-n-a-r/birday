@@ -2,9 +2,11 @@ package com.minar.birday.backup
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.util.AttributeSet
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.FileProvider.getUriForFile
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import androidx.sqlite.db.SimpleSQLiteQuery
@@ -13,6 +15,7 @@ import com.minar.birday.R
 import com.minar.birday.persistence.EventDatabase
 import java.io.File
 import java.time.LocalDate
+
 
 class BirdayExporter(context: Context?, attrs: AttributeSet?) : Preference(context, attrs), View.OnClickListener {
 
@@ -28,7 +31,7 @@ class BirdayExporter(context: Context?, attrs: AttributeSet?) : Preference(conte
         act.vibrate()
         val thread = Thread {
             val exported = exportBirthdays(context)
-            //if (exported.isNotBlank()) shareBackup(exported)
+            if (exported.isNotBlank()) shareBackup(exported)
         }
         thread.start()
     }
@@ -59,9 +62,10 @@ class BirdayExporter(context: Context?, attrs: AttributeSet?) : Preference(conte
     // Share the backup to a supported app
     private fun shareBackup(fileUri: String) {
         val file = File(fileUri)
+        val contentUri: Uri = getUriForFile(context, "com.minar.birday.fileprovider", file)
         val shareIntent = Intent().apply {
             action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_STREAM, file)
+            putExtra(Intent.EXTRA_STREAM, contentUri)
             type = "*/*"
         }
         // Verify that the intent will resolve to an activity
