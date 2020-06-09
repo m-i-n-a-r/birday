@@ -3,6 +3,7 @@ package com.minar.birday.backup
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Handler
 import android.util.AttributeSet
 import android.view.View
 import android.widget.Toast
@@ -36,7 +37,7 @@ class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(conte
             Toast.makeText(context, context.getString(R.string.birday_import_invalid_file), Toast.LENGTH_SHORT).show()
             return false
         }
-        EventDatabase.getBirdayDataBase(context)?.close()
+        EventDatabase.destroyInstance()
         val fileStream = context.contentResolver.openInputStream(fileUri)!!
         val dbFile = context.getDatabasePath("BirdayDB").absoluteFile
         try {
@@ -49,16 +50,16 @@ class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(conte
             return false
         }
         // Completely restart the application TODO still crashes after the restore
-        act.finish()
-        val intent: Intent = act.intent
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        act.startActivity(intent)
+        val intent: Intent = act.baseContext.packageManager.getLaunchIntentForPackage(act.baseContext.packageName)!!
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        Handler().postDelayed({ act.startActivity(intent) }, 500)
         return true
     }
 
-        // Check if a backup file is valid using various strategies. A wrong import would result in a crash
+        // Check if a backup file is valid, only with a naive approach atm. A wrong import would result in a crash
         private fun isBackupValid(fileUri: Uri): Boolean {
-            return fileUri.toString().contains("BirdayBackup_")
+            return fileUri.toString().contains("birday", true)
         }
 
     }

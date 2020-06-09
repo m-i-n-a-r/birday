@@ -27,7 +27,8 @@ abstract class EventDatabase : RoomDatabase() {
             }
         }
 
-        fun destroyDataBase(){
+        fun destroyInstance() {
+            if (INSTANCE?.isOpen == true) { INSTANCE?.close() }
             INSTANCE = null
         }
     }
