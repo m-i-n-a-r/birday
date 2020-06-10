@@ -9,11 +9,11 @@
     <TextView
         android:id="@+id/event_widget_title"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/widget_title_height"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textAlignment="center"
         android:contentDescription="@string/appwidget_upcoming"
-        android:padding="@dimen/widget_padding"
+        android:paddingHorizontal="@dimen/widget_padding"
         android:text="@string/appwidget_upcoming"
         android:textAllCaps="true"
         android:drawablePadding="@dimen/widget_padding"
@@ -21,7 +21,7 @@
         android:shadowRadius="@dimen/widget_shadow_radius"
         android:drawableStart="@drawable/ic_party_white_24dp"
         android:textColor="@color/widgetTextPrimary"
-        android:textSize="@dimen/widget_text_size_title"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
         android:textStyle="bold" />
 
     <TextView
@@ -33,8 +33,8 @@
         android:shadowColor="@color/deepGray"
         android:shadowRadius="@dimen/widget_shadow_radius"
         android:contentDescription="@string/appwidget_upcoming"
-        android:padding="@dimen/widget_padding"
-        android:textColor="@color/widgetTextSecondary"
-        android:textSize="@dimen/widget_text_size_title" />
+        android:paddingHorizontal="@dimen/widget_padding"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        android:textColor="@color/widgetTextSecondary" />
 
 </LinearLayout>

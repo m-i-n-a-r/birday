@@ -39,9 +39,6 @@
     <!-- Widgets -->
     <dimen name="widget_margin">8dp</dimen>
     <dimen name="widget_padding">6dp</dimen>
-    <dimen name="widget_title_height">34dp</dimen>
-    <dimen name="widget_text_size_title">18sp</dimen>
-    <dimen name="widget_text_size_body">15sp</dimen>
-    <dimen name="widget_shadow_radius">4</dimen>
+    <dimen name="widget_shadow_radius">5</dimen>
 
 </resources>

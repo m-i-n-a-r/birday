@@ -49,7 +49,7 @@ class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(conte
             e.printStackTrace()
             return false
         }
-        // Completely restart the application TODO still crashes after the restore
+        // Completely restart the application
         val intent: Intent = act.baseContext.packageManager.getLaunchIntentForPackage(act.baseContext.packageName)!!
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
@@ -59,7 +59,8 @@ class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(conte
 
         // Check if a backup file is valid, only with a naive approach atm. A wrong import would result in a crash
         private fun isBackupValid(fileUri: Uri): Boolean {
-            return fileUri.toString().contains("birday", true)
+            return (fileUri.toString().contains("birdaybackup", true) ||
+                    fileUri.toString().contains("document", true))
         }
 
     }
