@@ -3,8 +3,7 @@
     <string name="app_welcome">Benvenuto in Birday</string>
     <string name="app_name_extended">Birday - Gestore di Compleanni</string>
     <string name="leave_review_title">Recensisci Birday</string>
-    <string name="leave_review_subtitle">Lascia una recensione per aiutarmi con l\'app. Ricordati che,
-        donazioni a parte, questa app è completamente gratis e senza pubblicità!</string>
+    <string name="leave_review_subtitle">Lascia una recensione per aiutarmi con l\'app. Ricordati che,         donazioni a parte, questa app è completamente gratis e senza pubblicità!</string>
     <string name="yes_review">Recensione!</string>
     <string name="later">Dopo, giuro</string>
     <string name="no_thanks">Anche no!</string>
@@ -58,7 +57,7 @@
     <string name="next_event">Prossimo evento</string>
     <string name="no_next_event">Nessun compleanno da mostrare!</string>
     <string name="no_next_event_description">Non hai inserito o importato alcun compleanno. Aggiungine uno e lascia che Birday ti aiuti!</string>
-    <string name="add_favorite">Add to favorites</string>
+    <string name="add_favorite">Aggiungi ai preferiti</string>
     <string name="next_age_years">Anni</string>
     <string name="stats_total">Birday ti sta aiutando a ricordare un totale di</string>
     <string name="birthday">compleanno</string>
@@ -124,28 +123,18 @@
     <string name="delete_event">Elimina evento</string>
     <string name="update_event">Aggiorna evento</string>
     <string name="slide_one_title">Benvenuto/a in Birday!</string>
-    <string name="slide_one_description">Birday è un\'app semplice e leggera per gestire eventi importanti!
-    Puoi usarla per ricordare e raccogliere i compleanni delle persone che ami, in modo affidabile e veloce.
-    </string>
+    <string name="slide_one_description">"Birday è un'app semplice e leggera per gestire eventi importanti!     Puoi usarla per ricordare e raccogliere i compleanni delle persone che ami, in modo affidabile e veloce.     "</string>
     <string name="slide_two_title">Gratis, semplice, personalizzabile</string>
-    <string name="slide_two_description">Birday è gratis, senza pubblicità ed open source. Fornisce
-    una serie di statistiche, un sistema di preferiti e un\'interfaccia personalizzabile. Con supporto e aggiornamenti garantiti!
-    </string>
+    <string name="slide_two_description">"Birday è gratis, senza pubblicità ed open source. Fornisce     una serie di statistiche, un sistema di preferiti e un'interfaccia personalizzabile. Con supporto e aggiornamenti garantiti!     "</string>
     <string name="slide_three_title">Importa da Contatti Google</string>
-    <string name="slide_three_description">È inoltre possibile importare i compleanni che hai già salvato
-    dai tuoi contatti Google. Birday può farlo per te, devi solo dare il permesso di lettura contatti.
-    Buon divertimento!
-    </string>
+    <string name="slide_three_description">"È inoltre possibile importare i compleanni che hai già salvato     dai tuoi contatti Google. Birday può farlo per te, devi solo dare il permesso di lettura contatti.     Buon divertimento!     "</string>
     <string name="import_contacts_title">Importa compleanni da Google</string>
-    <string name="import_contacts_description">Se un compleanno importato contiene soltanto la data senza l\'anno, verrà
-    automaticamente impostato l\'anno 2000. Modificare gli eventi con anno mancante per avere statistiche accurate!</string>
+    <string name="import_contacts_description">Se un compleanno importato contiene soltanto la data senza l\'anno, verrà     automaticamente impostato l\'anno 2000. Modificare gli eventi con anno mancante per avere statistiche accurate!</string>
     <string name="import_success">Importazione completata con successo!</string>
     <string name="import_failed">Qualcosa è andato storto!</string>
     <string name="import_nothing_found">Nessun compleanno trovato!</string>
-    <string name="missing_permission_contacts">Il permesso di lettura contatti è stato negato. Prova ancora o attiva il permesso manualmente,
-    o l\'importazione dai contatti Google non funzionerà!</string>
-    <string name="missing_permission_contacts_forever">Birday non ha potuto importare i tuoi contatti o chiedere il permesso,
-    perché lo hai negato selezionando "non chiedere più". Abilitalo manualmente!</string>
+    <string name="missing_permission_contacts">Il permesso di lettura contatti è stato negato. Prova ancora o attiva il permesso manualmente,     o l\'importazione dai contatti Google non funzionerà!</string>
+    <string name="missing_permission_contacts_forever">Birday non ha potuto importare i tuoi contatti o chiedere il permesso,     perché lo hai negato selezionando non chiedere più. Abilitalo manualmente!</string>
     <string name="additional_notification_name">Notifica aggiuntiva</string>
     <string name="additional_notification_description">Manda una notifica aggiuntiva alcuni giorni prima dell\'evento. %s</string>
     <string name="no_additional_notification">Nessuna notifica aggiuntiva</string>
@@ -158,7 +147,7 @@
     <string name="seven_days_before">Sette giorni prima</string>
     <string name="additional_notification_text">Compleanni in arrivo!</string>
     <string name="event_apps">App rapide</string>
-    <string name="event_apps_description">Applicazione per fare tanti auguri ai festeggiati!</string>
+    <string name="event_apps_description">Applicazioni per fare tanti auguri ai festeggiati!</string>
     <string name="whatsapp">Whatsapp</string>
     <string name="telegram">Telegram</string>
     <string name="textMessage">Messaggio sms</string>
@@ -170,11 +159,9 @@
     <string name="add_widget">Birday - in arrivo</string>
     <string name="import_export">Importazione ed esportazione</string>
     <string name="birday_import_title">Importa un backup di Birday</string>
-    <string name="birday_import_description">Scegli un file di backup di Birday per ripristinare manualmente
-    i tuoi compleanni. I dati attualmente presenti verranno sovrascritti!</string>
+    <string name="birday_import_description">Scegli un file di backup di Birday per ripristinare manualmente     i tuoi compleanni. I dati attualmente presenti verranno sovrascritti!</string>
     <string name="birday_export_title">Esporta e condividi compleanni</string>
-    <string name="birday_export_description">Esporta i compleanni disponibili e condividi il backup, se vuoi.
-    Il file si trova in Android/data/com.minar.birday/files</string>
+    <string name="birday_export_description">Esporta i compleanni disponibili e condividi il backup, se vuoi.     Il file si trova in Android/data/com.minar.birday/files</string>
     <string name="birday_import_success">Importazione completata!</string>
     <string name="birday_import_failure">Importazione fallita. Hai scelto il file giusto?</string>
     <string name="birday_import_invalid_file">Importazione fallita. Il file scelto non è un backup di Birday!</string>
