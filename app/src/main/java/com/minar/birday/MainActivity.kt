@@ -131,12 +131,12 @@ class MainActivity : AppCompatActivity() {
                         id = 0, originalDate = eventDateValue, name = nameValue.smartCapitalize(),
                         surname = surnameValue.smartCapitalize()
                     )
-
+                    // Insert using another thread
                     val thread = Thread { homeViewModel.insert(tuple) }
                     thread.start()
-
                     dismiss()
                 }
+
                 negativeButton(R.string.cancel) {
                     dismiss()
                 }

@@ -168,5 +168,9 @@
     <string name="birday_export_success">Esportazione completata!</string>
     <string name="birday_export_failure">Esportazione fallita. Ooops!</string>
     <string name="birday_export_nothing_found">Nulla da esportare!</string>
-
+    <string name="event_details">Dettagli</string>
+    <string name="next_age">Prossima età:</string>
+    <string name="birth_date">Data di nascita</string>
+    <string name="zodiac_sign">Segno zodiacale:</string>
+    <string name="chinese_zodiac_sign">Segno zodiacale cinese:</string>
 </resources>

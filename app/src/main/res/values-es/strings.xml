@@ -166,4 +166,9 @@
     <string name="slide_three_description">También puede importar cumpleaños que ya haya guardado de sus contactos de Google. Birday puede hacerlo por usted, solo tiene que dar permiso de lectura al contacto. ¡Buena diversión!</string>
     <string name="appwidget_upcoming">Cumpleaños que vienen pronto</string>
     <string name="add_widget">Birday - próximamente</string>
+    <string name="event_details">Detalles</string>
+    <string name="next_age">Próxima edad:</string>
+    <string name="birth_date">Fecha de nacimiento</string>
+    <string name="zodiac_sign">Signo del zodiaco:</string>
+    <string name="chinese_zodiac_sign">Signo del zodiaco chino:</string>
 </resources>

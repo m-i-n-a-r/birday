@@ -40,10 +40,12 @@ import com.minar.birday.persistence.Event
 import com.minar.birday.persistence.EventResult
 import com.minar.birday.utilities.OnItemClickListener
 import com.minar.birday.utilities.SplashActivity
+import com.minar.birday.utilities.StatsGenerator
 import com.minar.birday.viewmodels.HomeViewModel
 import com.minar.birday.widgets.EventWidget
 import kotlinx.android.synthetic.main.dialog_actions_event.view.*
 import kotlinx.android.synthetic.main.dialog_apps_event.view.*
+import kotlinx.android.synthetic.main.dialog_details_event.view.*
 import kotlinx.android.synthetic.main.dialog_insert_event.view.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.time.LocalDate
@@ -205,8 +207,46 @@ class HomeFragment : Fragment() {
                 }
             }
 
+            // Show a dialog with the details of the selected contact
             override fun onItemLongClick(position: Int, view: View?): Boolean {
-                //act.vibrate() TODO show dialog with person details
+                act.vibrate()
+                val person = adapter.getItem(position)
+                val title = getString(R.string.event_details) + " - " + person.name
+                val dialog = MaterialDialog(act).show {
+                    title(text = title)
+                    icon(R.drawable.ic_smile_24dp)
+                    cornerRadius(res = R.dimen.rounded_corners)
+                    customView(R.layout.dialog_details_event, scrollable = true)
+                    negativeButton(R.string.cancel) {
+                        dismiss()
+                    }
+                }
+                // Setup listeners and texts
+                val customView = dialog.getCustomView()
+                val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
+                val subject: MutableList<EventResult> = mutableListOf()
+                subject.add(person)
+                val statsGenerator = StatsGenerator(subject, context)
+                customView.detailsBirthDateValue.text = person.originalDate.format(formatter)
+                customView.detailsNextAgeValue.text = (person.nextDate!!.year.minus(person.originalDate.year)).toString()
+                customView.detailsZodiacSignValue.text = statsGenerator.getZodiacSign(person)
+                customView.detailsChineseSignValue.text = statsGenerator.getChineseSign(person)
+
+                // Set the drawable of the zodiac sign
+                when (statsGenerator.getZodiacSignNumber(person)) {
+                    0 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_sagittarius))
+                    1 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_capricorn))
+                    2 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_aquarius))
+                    3 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_pisces))
+                    4 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_aries))
+                    5 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_taurus))
+                    6 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_gemini))
+                    7 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_cancer))
+                    8 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_leo))
+                    9 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_virgo))
+                    10 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_libra))
+                    11 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_scorpio))
+                }
                 return true
             }
         })

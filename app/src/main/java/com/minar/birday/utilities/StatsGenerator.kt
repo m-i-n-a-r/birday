@@ -22,6 +22,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     fun generateRandomStat(): String {
         // Use a response string to re-execute the stats calculation if a stat cannot be computed correctly
         var response: String? = null
+        val randomPerson = events.random()
         while (response.isNullOrBlank()) {
             response = when (Random.nextInt(0, 12)) {
                 1 -> ageAverage()
@@ -29,12 +30,12 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
                 3 -> mostCommonDecade()
                 4 -> mostCommonAgeRange()
                 5 -> specialAges()
-                6 -> randomZodiacSign()
+                6 -> zodiacSign(randomPerson)
                 7 -> mostCommonZodiacSign()
-                8 -> randomDayOfWeek()
+                8 -> dayOfWeek(randomPerson)
                 9 -> mostCommonDayOfWeek()
                 10 -> leapYearTotal()
-                11 -> randomChineseYear()
+                11 -> chineseSign(randomPerson)
                 else -> ageAverage()
             }
         }
@@ -134,10 +135,8 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     }
 
     // Get the zodiac sign for a random person
-    private fun randomZodiacSign(): String {
-        val randomPerson = events.random()
-        return applicationContext?.getString(R.string.random_zodiac_sign) + " " + randomPerson.name + ": " +
-                getZodiacSign(randomPerson.originalDate.dayOfMonth, randomPerson.originalDate.month.value)
+    private fun zodiacSign(person: EventResult): String {
+        return applicationContext?.getString(R.string.random_zodiac_sign) + " " + person.name + ": " + getZodiacSign(person)
     }
 
     // The most common zodiac sign. When there's no common zodiac sign, return a blank string
@@ -145,10 +144,8 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         val zodiacSigns = mutableMapOf<String, Int>()
         val commonZodiacSign: String
         events.forEach {
-            if(zodiacSigns[getZodiacSign(it.originalDate.dayOfMonth, it.originalDate.month.value)] == null)
-                zodiacSigns[getZodiacSign(it.originalDate.dayOfMonth, it.originalDate.month.value)] = 1
-            else zodiacSigns[getZodiacSign(it.originalDate.dayOfMonth, it.originalDate.month.value)] =
-                zodiacSigns[getZodiacSign(it.originalDate.dayOfMonth, it.originalDate.month.value)]!!.plus(1)
+            if(zodiacSigns[getZodiacSign(it)] == null) zodiacSigns[getZodiacSign(it)] = 1
+            else zodiacSigns[getZodiacSign(it)] = zodiacSigns[getZodiacSign(it)]!!.plus(1)
         }
         commonZodiacSign = evaluateResult(zodiacSigns)
         if (commonZodiacSign.isBlank()) return commonZodiacSign
@@ -156,10 +153,9 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     }
 
     // Get the day of the week of birth for a random person
-    private fun randomDayOfWeek(): String {
-        val randomPerson = events.random()
-        return randomPerson.name + " " + applicationContext?.getString(R.string.random_day_of_week) + " " +
-                randomPerson.originalDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault()).toLowerCase(Locale.ROOT)
+    private fun dayOfWeek(person: EventResult): String {
+        return person.name + " " + applicationContext?.getString(R.string.random_day_of_week) + " " +
+                person.originalDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault()).toLowerCase(Locale.ROOT)
     }
 
     // The most common day of the week of birth. When there's no common day of the week, return a blank string
@@ -186,11 +182,32 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     }
 
     // Get the chinese year of a random person
-    private fun randomChineseYear(): String {
-        val randomPerson = events.random()
+    private fun chineseSign(person: EventResult): String {
+        return applicationContext?.getString(R.string.random_chinese_year) + " " + person.name + ": " + getChineseSign(person)
+    }
+
+    // Get a list containing all the ages without any reference to the names
+    private fun getAges(): Map<String, Int> {
+        val ages = mutableMapOf<String, Int>()
+        events.forEach {
+            val age = getAge(it)
+            ages[it.name] = age
+        }
+        return ages
+    }
+
+    private fun getAge(eventResult: EventResult) = eventResult.nextDate!!.year - eventResult.originalDate.year - 1
+
+    private fun getNextAge(eventResult: EventResult) = eventResult.nextDate!!.year - eventResult.originalDate.year
+
+    private fun getDecade(originalDate: LocalDate) = ((originalDate.year.toDouble() / 10).toInt() * 10).toString()
+
+    private fun getAgeRange(originalDate: LocalDate) = (((LocalDate.now().year - originalDate.year).toDouble() / 10).toInt() * 10).toString()
+
+    fun getChineseSign(person: EventResult): String {
         var sign = ""
         var signNumber = 0
-        when (randomPerson.originalDate.year % 12) {
+        when (person.originalDate.year % 12) {
             4 -> signNumber = 0
             5 -> signNumber = 1
             6 -> signNumber = 2
@@ -218,28 +235,12 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
             10 -> sign = applicationContext?.getString(R.string.chinese_zodiac_dog).toString()
             11 -> sign = applicationContext?.getString(R.string.chinese_zodiac_pig).toString()
         }
-        return applicationContext?.getString(R.string.random_chinese_year) + " " + randomPerson.name + ": " + sign
+        return sign
     }
 
-    // Get a list containing all the ages without any reference to the names
-    private fun getAges(): Map<String, Int> {
-        val ages = mutableMapOf<String, Int>()
-        events.forEach {
-            val age = getAge(it)
-            ages[it.name] = age
-        }
-        return ages
-    }
-
-    private fun getAge(eventResult: EventResult) = eventResult.nextDate!!.year - eventResult.originalDate.year - 1
-
-    private fun getNextAge(eventResult: EventResult) = eventResult.nextDate!!.year - eventResult.originalDate.year
-
-    private fun getDecade(originalDate: LocalDate) = ((originalDate.year.toDouble() / 10).toInt() * 10).toString()
-
-    private fun getAgeRange(originalDate: LocalDate) = (((LocalDate.now().year - originalDate.year).toDouble() / 10).toInt() * 10).toString()
-
-    private fun getZodiacSign(day: Int, month: Int): String {
+    fun getZodiacSign(person: EventResult): String {
+        val day = person.originalDate.dayOfMonth
+        val month = person.originalDate.month.value
         var sign = ""
         var signNumber = 0
         when (month) {
@@ -271,6 +272,28 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
             11 -> sign = applicationContext?.getString(R.string.zodiac_scorpio).toString()
         }
         return sign
+    }
+
+    // Only return the number of the sign
+    fun getZodiacSignNumber(person: EventResult): Int {
+        val day = person.originalDate.dayOfMonth
+        val month = person.originalDate.month.value
+        var signNumber = 0
+        when (month) {
+            12 -> signNumber = if (day < 22) 0 else 1
+            1 -> signNumber = if (day < 20) 1 else 2
+            2 -> signNumber = if (day < 19) 2 else 3
+            3 -> signNumber = if (day < 21) 3 else 4
+            4 -> signNumber = if (day < 20) 4 else 5
+            5 -> signNumber = if (day < 21) 5 else 6
+            6 -> signNumber = if (day < 21) 6 else 7
+            7 -> signNumber = if (day < 23) 7 else 8
+            8 -> signNumber = if (day < 23) 8 else 9
+            9 -> signNumber = if (day < 23) 9 else 10
+            10 -> signNumber = if (day < 23) 10 else 11
+            11 -> signNumber = if (day < 22) 11 else 0
+        }
+        return signNumber
     }
 
     // Evaluate the result, differently from maxBy. If there's a tie, return an empty string

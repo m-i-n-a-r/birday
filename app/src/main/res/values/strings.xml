@@ -116,6 +116,13 @@
     <string name="delete_event">Delete event</string>
     <string name="update_event">Update event</string>
 
+    <!-- Event details -->
+    <string name="event_details">Details</string>
+    <string name="birth_date">Birth date</string>
+    <string name="next_age">Next age:</string>
+    <string name="zodiac_sign">Zodiac sign:</string>
+    <string name="chinese_zodiac_sign">Chinese sign:</string>
+
     <!-- Quick apps -->
     <string name="event_apps">Quick apps</string>
     <string name="event_apps_description">Apps to wish all the best rapidly!</string>

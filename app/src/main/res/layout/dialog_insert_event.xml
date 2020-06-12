@@ -63,7 +63,7 @@
         app:errorIconTint="?colorAccent"
         app:errorContentDescription="@string/insert_surname_hint"
         app:boxStrokeErrorColor="@color/redError"
-        app:startIconDrawable="@drawable/ic_smile_black_24dp"
+        app:startIconDrawable="@drawable/ic_smile_24dp"
         app:startIconTint="@color/goodGray"
         app:hintAnimationEnabled="true"
         app:hintTextColor="?colorAccent">
