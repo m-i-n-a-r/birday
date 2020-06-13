@@ -4,7 +4,7 @@ An open source app to remember birthdays and events without having to open Faceb
 
 <p align='center'>
   <a href='https://github.com/m-i-n-a-r/birday/blob/master/LICENSE.md'><img src='https://img.shields.io/cocoapods/l/AFNetworking.svg'/></a>
-  <img src='https://img.shields.io/badge/version-1.2.X-blue'/>
+  <img src='https://img.shields.io/badge/version-1.3.X-blue'/>
 	<img src='https://img.shields.io/badge/status-released-success'/>
 	<img src='https://img.shields.io/badge/-translations%20needed!-yellow'/>
 </p>
@@ -16,9 +16,11 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 - Notification the day of the event, in a customizable time range
 - Additional notification up to 7 days before the event
 - Sync the existing birthdays from Google Contacts
+- Easily backup and restore your saved birthdays!
 - insert a birthday manually, just specifying a name, an optional surname and a date
 - Choose your favorite birthdays to see detailed informations about them
-- The birthdays are automagically backed up when the app is installed from Play Store, so you should have your birthdays back if you uninstall and reinstall the app
+- Long press on a birthday to see every possible detail
+- The birthdays are also automagically backed up in cloud by Google Play Services when the app is installed from Play Store
 - A huge set of randomly generated stats (zodiac, average age and a lot more) when more than 5 birthdays are inserted
 - Easily delete and modify the birthdays
 - Quick apps launcher
@@ -48,5 +50,6 @@ The app is available through Google Play\
       src='https://play.google.com/intl/en_us/badges/images/apps/en-play-badge.png' />
 </a>
 
-## Credits
+## Credits and contributions
+Currently, Birday supports english, spanish and italian. If you want to translate the app in any other language, just contact me: you'll be quoted both on Github and in the Play Store description.
 This app was written during my free time as a training. Many good devs have helped me understanding the best practices and they taught me a lot of useful tricks. **Every translation is well appreciated!**
