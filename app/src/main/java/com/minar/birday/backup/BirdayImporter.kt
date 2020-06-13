@@ -59,8 +59,8 @@ class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(conte
         // Check if a backup file is valid, only with a naive approach atm. A wrong import would result in a crash or empty db
         private fun isBackupValid(fileUri: Uri): Boolean {
             val uri = fileUri.toString()
-            return (uri.contains("birdaybackup", true) ||
-                    uri.contains("document", true) && !uri.contains("."))
+            return ((uri.contains("birdaybackup", true) && !uri.contains(".")) ||
+                    uri.contains("document", true))
         }
 
     }
