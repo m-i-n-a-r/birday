@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         askContactsPermission()
         createNotificationChannel()
 
-        // getSharedPreferences(MyPrefs, Context.MODE_PRIVATE); retrieves a specific shared preferences file
+        // retrieve the shared preferences
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val theme = sp.getString("theme_color", "system")
         val accent = sp.getString("accent_color", "brown")
