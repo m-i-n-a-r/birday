@@ -42,5 +42,6 @@
     <dimen name="widget_margin">8dp</dimen>
     <dimen name="widget_padding">6dp</dimen>
     <dimen name="widget_shadow_radius">5</dimen>
+    <dimen name="dialog_details_text_horizontal_margin">8dp</dimen>
 
 </resources>
