@@ -16,25 +16,22 @@ object AppRater {
     private const val LAUNCH_COUNT = "launch_count"
     private const val DATE_FIRST_LAUNCH = "date_first_launch"
 
-    private const val DAYS_UNTIL_PROMPT = 2 // min number of days
-    private const val LAUNCHES_UNTIL_PROMPT = 3 // min number of launches
+    private const val DAYS_UNTIL_PROMPT = 2 // Min number of days
+    private const val LAUNCHES_UNTIL_PROMPT = 3 // Min number of launches
 
     private const val DIALOG_CORNER = 16.toFloat()
 
     @JvmStatic
     fun appLaunched(context: Context) {
         val prefs = context.getSharedPreferences(APP_RATING, 0)
-        if (prefs.getBoolean(DO_NOT_SHOW_AGAIN, false)) {
-            return
-        }
-
+        if (prefs.getBoolean(DO_NOT_SHOW_AGAIN, false)) return
         val editor = prefs.edit()
 
-        // increment launch counter
+        // Increment launch counter
         val launchCount = prefs.getLong(LAUNCH_COUNT, 0) + 1
         editor.putLong(LAUNCH_COUNT, launchCount)
 
-        // get date of first launch
+        // Get date of first launch
         var dateFirstLaunch = prefs.getLong(DATE_FIRST_LAUNCH, 0)
         if (dateFirstLaunch == 0L) {
             dateFirstLaunch = System.currentTimeMillis()
@@ -47,37 +44,36 @@ object AppRater {
                 showRateDialog(context, editor)
             }
         }
-
         editor.apply()
     }
 
     private fun showRateDialog(context: Context, editor: SharedPreferences.Editor) {
         MaterialDialog(context, BottomSheet(LayoutMode.WRAP_CONTENT))
-                .show {
-
-                    cornerRadius(DIALOG_CORNER)
-                    title(R.string.leave_review_title)
-                    message(R.string.leave_review_subtitle)
-                    positiveButton(R.string.yes_review) {
-                        context.startActivity(
-                                Intent(
-                                        Intent.ACTION_VIEW,
-                                        Uri.parse("market://details?id=${context.packageName}")
-                                )
+            .show {
+                cornerRadius(DIALOG_CORNER)
+                title(R.string.leave_review_title)
+                icon(R.drawable.ic_pen_24dp)
+                message(R.string.leave_review_subtitle)
+                positiveButton(R.string.yes_review) {
+                    context.startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("market://details?id=${context.packageName}")
                         )
-                        editor.putBoolean(DO_NOT_SHOW_AGAIN, true)
-                        editor.commit()
-                        dismiss()
-                    }
-                    negativeButton(R.string.later) {
-                        dismiss()
-                    }
-                    @Suppress("DEPRECATION")
-                    neutralButton(R.string.no_thanks) {
-                        editor.putBoolean(DO_NOT_SHOW_AGAIN, true)
-                        editor.commit()
-                        dismiss()
-                    }
+                    )
+                    editor.putBoolean(DO_NOT_SHOW_AGAIN, true)
+                    editor.commit()
+                    dismiss()
                 }
+                negativeButton(R.string.later) {
+                    dismiss()
+                }
+                @Suppress("DEPRECATION")
+                neutralButton(R.string.no_thanks) {
+                    editor.putBoolean(DO_NOT_SHOW_AGAIN, true)
+                    editor.commit()
+                    dismiss()
+                }
+            }
     }
 }
