@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.provider.Telephony
 import android.text.Editable
 import android.text.TextWatcher
@@ -417,7 +418,7 @@ class HomeFragment : Fragment() {
                         eventDate.text = eventDateValue.format(formatter)
                     }
                 }
-                Handler().postDelayed({ dateDialog = null }, 750)
+                Handler(Looper.getMainLooper()).postDelayed({ dateDialog = null }, 750)
             }
         }
 

@@ -10,10 +10,7 @@ import android.content.pm.PackageManager
 import android.media.AudioAttributes
 import android.media.AudioAttributes.Builder
 import android.net.Uri
-import android.os.Bundle
-import android.os.Handler
-import android.os.VibrationEffect
-import android.os.Vibrator
+import android.os.*
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
@@ -65,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         askContactsPermission()
         createNotificationChannel()
 
-        // retrieve the shared preferences
+        // Retrieve the shared preferences
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val theme = sp.getString("theme_color", "system")
         val accent = sp.getString("accent_color", "brown")
@@ -109,6 +106,9 @@ class MainActivity : AppCompatActivity() {
             R.id.navHostFragment
         )
         navigation.setupWithNavController(navController)
+        navigation.setOnNavigationItemReselectedListener {
+            // Just ignore the reselection of the same item
+        }
 
         // Rating stuff
         AppRater.appLaunched(this)
@@ -169,7 +169,7 @@ class MainActivity : AppCompatActivity() {
                             eventDate.text = eventDateValue.format(formatter)
                         }
                     }
-                    Handler().postDelayed({ dateDialog = null }, 750)
+                    Handler(Looper.getMainLooper()).postDelayed({ dateDialog = null }, 750)
                 }
             }
 

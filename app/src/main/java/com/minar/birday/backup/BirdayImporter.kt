@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Handler
+import android.os.Looper
 import android.util.AttributeSet
 import android.view.View
 import android.widget.Toast
@@ -52,7 +53,7 @@ class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(conte
         val intent: Intent = act.baseContext.packageManager.getLaunchIntentForPackage(act.baseContext.packageName)!!
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        Handler().postDelayed({ act.startActivity(intent) }, 400)
+        Handler(Looper.getMainLooper()).postDelayed({ act.startActivity(intent) }, 400)
         return true
     }
 
