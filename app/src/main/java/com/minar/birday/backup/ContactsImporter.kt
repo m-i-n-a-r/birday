@@ -9,10 +9,12 @@ import android.view.View
 import android.widget.Toast
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.R
 import com.minar.birday.persistence.Event
 import java.time.LocalDate
+import kotlin.concurrent.thread
 
 class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(context, attrs), View.OnClickListener {
 
@@ -24,8 +26,13 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
 
     override fun onClick(v: View) {
         val act = context as MainActivity
+        val shimmer = v as ShimmerFrameLayout
+        shimmer.startShimmer()
         act.vibrate()
-        importContacts(context)
+        thread {
+            importContacts(context)
+            (context as MainActivity).runOnUiThread { shimmer.stopShimmer() }
+        }
     }
 
     // Import the contacts from Google Contacts
@@ -69,11 +76,15 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
 
         // Phase 3: insert the remaining events in the db and update the recycler
         return if (events.size == 0) {
-            Toast.makeText(context, context.getString(R.string.import_nothing_found), Toast.LENGTH_SHORT).show()
+            context.runOnUiThread(Runnable {
+                Toast.makeText(context, context.getString(R.string.import_nothing_found), Toast.LENGTH_SHORT).show()
+            })
             true
         } else {
             events.forEach { act.homeViewModel.insert(it) }
-            Toast.makeText(context, context.getString(R.string.import_success), Toast.LENGTH_SHORT).show()
+            context.runOnUiThread(Runnable {
+                    Toast.makeText(context, context.getString(R.string.import_success), Toast.LENGTH_SHORT).show()
+                })
             true
         }
     }
