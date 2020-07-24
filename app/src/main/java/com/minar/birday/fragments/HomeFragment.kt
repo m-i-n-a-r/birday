@@ -373,7 +373,7 @@ class HomeFragment : Fragment() {
             cornerRadius(res = R.dimen.rounded_corners)
             title(R.string.edit_event)
             icon(R.drawable.ic_edit_24dp)
-            customView(R.layout.dialog_insert_event, scrollable = true)
+            customView(R.layout.dialog_insert_event)
             positiveButton(R.string.update_event) {
                 // Use the data to create a event object and update the db
                 val tuple = Event(

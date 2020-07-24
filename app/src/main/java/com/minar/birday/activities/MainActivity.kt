@@ -126,7 +126,7 @@ class MainActivity : AppCompatActivity() {
                 title(R.string.new_event)
                 icon(R.drawable.ic_party_24dp)
                 message(R.string.new_event_description)
-                customView(R.layout.dialog_insert_event, scrollable = true)
+                customView(R.layout.dialog_insert_event)
                 positiveButton(R.string.insert_event) {
                     // Use the data to create a event object and insert it in the db
                     val tuple = Event(
