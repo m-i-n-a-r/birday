@@ -9,7 +9,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
-import com.minar.birday.MainActivity
+import com.minar.birday.activities.MainActivity
 import com.minar.birday.R
 import com.minar.birday.persistence.EventDatabase
 import java.io.FileOutputStream

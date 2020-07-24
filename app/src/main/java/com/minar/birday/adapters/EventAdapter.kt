@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.minar.birday.HomeFragment
+import com.minar.birday.fragments.HomeFragment
 import com.minar.birday.R
 import com.minar.birday.persistence.EventResult
 import com.minar.birday.utilities.OnItemClickListener

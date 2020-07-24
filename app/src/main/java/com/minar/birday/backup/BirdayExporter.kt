@@ -10,7 +10,7 @@ import androidx.core.content.FileProvider.getUriForFile
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import androidx.sqlite.db.SimpleSQLiteQuery
-import com.minar.birday.MainActivity
+import com.minar.birday.activities.MainActivity
 import com.minar.birday.R
 import com.minar.birday.persistence.EventDatabase
 import java.io.File

@@ -1,4 +1,4 @@
-package com.minar.birday
+package com.minar.birday.fragments
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -20,6 +20,8 @@ import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
+import com.minar.birday.activities.MainActivity
+import com.minar.birday.R
 import com.minar.birday.adapters.FavoritesAdapter
 import com.minar.birday.persistence.EventResult
 import com.minar.birday.utilities.StatsGenerator
@@ -72,7 +74,9 @@ class FavoritesFragment : Fragment() {
         favoritesViewModel.allEvents.observe(viewLifecycleOwner, Observer { eventList ->
             // Under a minimum size, no stats will be shown
             if (eventList.size > 4) generateStat(eventList)
-            else fullStats = SpannableStringBuilder(requireActivity().applicationContext.getString(R.string.no_stats_description))
+            else fullStats = SpannableStringBuilder(requireActivity().applicationContext.getString(
+                R.string.no_stats_description
+            ))
         })
 
         return v
@@ -99,7 +103,9 @@ class FavoritesFragment : Fragment() {
         val generator = StatsGenerator(events, context)
         cardSubtitle.text = generator.generateRandomStat()
         fullStats = generator.generateFullStats()
-        val summary = getString(R.string.stats_total) + " " + events.size + " " + getString(R.string.birthdays) + "!"
+        val summary = getString(R.string.stats_total) + " " + events.size + " " + getString(
+            R.string.birthdays
+        ) + "!"
         cardDescription.text = summary
     }
 

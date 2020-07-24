@@ -1,4 +1,4 @@
-package com.minar.birday.utilities
+package com.minar.birday.activities
 
 import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
@@ -7,7 +7,6 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
-import com.minar.birday.MainActivity
 import com.minar.birday.R
 import kotlinx.coroutines.*
 

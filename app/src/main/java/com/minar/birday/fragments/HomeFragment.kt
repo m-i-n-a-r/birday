@@ -1,4 +1,4 @@
-package com.minar.birday
+package com.minar.birday.fragments
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -35,11 +35,13 @@ import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
 import com.afollestad.materialdialogs.datetime.datePicker
+import com.minar.birday.activities.MainActivity
+import com.minar.birday.R
 import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.persistence.Event
 import com.minar.birday.persistence.EventResult
 import com.minar.birday.utilities.OnItemClickListener
-import com.minar.birday.utilities.SplashActivity
+import com.minar.birday.activities.SplashActivity
 import com.minar.birday.utilities.StatsGenerator
 import com.minar.birday.viewmodels.HomeViewModel
 import com.minar.birday.widgets.EventWidget
@@ -234,18 +236,42 @@ class HomeFragment : Fragment() {
 
                 // Set the drawable of the zodiac sign
                 when (statsGenerator.getZodiacSignNumber(person)) {
-                    0 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_sagittarius))
-                    1 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_capricorn))
-                    2 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_aquarius))
-                    3 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_pisces))
-                    4 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_aries))
-                    5 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_taurus))
-                    6 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_gemini))
-                    7 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_cancer))
-                    8 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_leo))
-                    9 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_virgo))
-                    10 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_libra))
-                    11 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(R.drawable.ic_zodiac_scorpio))
+                    0 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
+                        R.drawable.ic_zodiac_sagittarius
+                    ))
+                    1 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
+                        R.drawable.ic_zodiac_capricorn
+                    ))
+                    2 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
+                        R.drawable.ic_zodiac_aquarius
+                    ))
+                    3 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
+                        R.drawable.ic_zodiac_pisces
+                    ))
+                    4 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
+                        R.drawable.ic_zodiac_aries
+                    ))
+                    5 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
+                        R.drawable.ic_zodiac_taurus
+                    ))
+                    6 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
+                        R.drawable.ic_zodiac_gemini
+                    ))
+                    7 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
+                        R.drawable.ic_zodiac_cancer
+                    ))
+                    8 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
+                        R.drawable.ic_zodiac_leo
+                    ))
+                    9 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
+                        R.drawable.ic_zodiac_virgo
+                    ))
+                    10 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
+                        R.drawable.ic_zodiac_libra
+                    ))
+                    11 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
+                        R.drawable.ic_zodiac_scorpio
+                    ))
                 }
                 return true
             }
@@ -273,7 +299,9 @@ class HomeFragment : Fragment() {
     // Update the existing widgets with the newest data and the onclick action
     private fun updateWidget(events: List<EventResult>) {
         val appWidgetManager = AppWidgetManager.getInstance(context)
-        val remoteViews = RemoteViews(context?.packageName, R.layout.event_widget)
+        val remoteViews = RemoteViews(context?.packageName,
+            R.layout.event_widget
+        )
         val thisWidget = context?.let { ComponentName(it, EventWidget::class.java) }
         val intent = Intent(context, SplashActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
@@ -445,7 +473,9 @@ class HomeFragment : Fragment() {
             -1 -> event.nextDate.format(formatter) + ". " + getString(R.string.yesterday) + "!"
             0 -> event.nextDate.format(formatter) + ". " + getString(R.string.today) + "!"
             1 -> event.nextDate.format(formatter) + ". " + getString(R.string.tomorrow) + "!"
-            else -> event.nextDate.format(formatter) + ". " + daysRemaining + " " + getString(R.string.days_left)
+            else -> event.nextDate.format(formatter) + ". " + daysRemaining + " " + getString(
+                R.string.days_left
+            )
         }
     }
 

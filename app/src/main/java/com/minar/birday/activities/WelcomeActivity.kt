@@ -1,4 +1,4 @@
-package com.minar.birday.utilities
+package com.minar.birday.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import com.github.appintro.AppIntro
 import com.github.appintro.AppIntroFragment
 import com.github.appintro.model.SliderPagerBuilder
-import com.minar.birday.MainActivity
 import com.minar.birday.R
 
 

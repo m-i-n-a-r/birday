@@ -6,17 +6,17 @@
     app:startDestination="@id/navigationMain">
     <fragment
         android:id="@+id/navigationMain"
-        android:name="com.minar.birday.HomeFragment"
+        android:name="com.minar.birday.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/navigationFavorites"
-        android:name="com.minar.birday.FavoritesFragment"
+        android:name="com.minar.birday.fragments.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
     <fragment
         android:id="@+id/navigationSettings"
-        android:name="com.minar.birday.SettingsFragment"
+        android:name="com.minar.birday.fragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>

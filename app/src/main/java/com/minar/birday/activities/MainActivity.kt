@@ -1,4 +1,4 @@
-package com.minar.birday
+package com.minar.birday.activities
 
 import android.Manifest
 import android.app.NotificationChannel
@@ -38,12 +38,12 @@ import com.afollestad.materialdialogs.customview.getCustomView
 import com.afollestad.materialdialogs.datetime.datePicker
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.minar.birday.R
 import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.backup.BirdayImporter
 import com.minar.birday.backup.ContactsImporter
 import com.minar.birday.persistence.Event
 import com.minar.birday.utilities.AppRater
-import com.minar.birday.utilities.WelcomeActivity
 import com.minar.birday.viewmodels.HomeViewModel
 import kotlinx.android.synthetic.main.dialog_insert_event.view.*
 import java.io.IOException
@@ -105,7 +105,9 @@ class MainActivity : AppCompatActivity() {
 
         // Get the bottom navigation bar and configure it for the navigation plugin
         val navigation = findViewById<BottomNavigationView>(R.id.navigation)
-        val navController: NavController = Navigation.findNavController(this, R.id.navHostFragment)
+        val navController: NavController = Navigation.findNavController(this,
+            R.id.navHostFragment
+        )
         navigation.setupWithNavController(navController)
 
         // Rating stuff

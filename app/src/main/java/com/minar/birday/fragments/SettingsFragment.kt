@@ -1,4 +1,4 @@
-package com.minar.birday
+package com.minar.birday.fragments
 
 import android.app.Activity
 import android.content.SharedPreferences
@@ -6,6 +6,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceFragmentCompat
+import com.minar.birday.R
 import com.minar.birday.viewmodels.HomeViewModel
 
 

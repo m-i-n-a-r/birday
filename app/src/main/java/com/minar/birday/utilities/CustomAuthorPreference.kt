@@ -11,7 +11,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
-import com.minar.birday.MainActivity
+import com.minar.birday.activities.MainActivity
 import com.minar.birday.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
