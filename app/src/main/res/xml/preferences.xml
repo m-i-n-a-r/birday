@@ -16,18 +16,18 @@
             android:entries="@array/notificationHours"
             android:entryValues="@array/notificationHourValues"
             android:key="notification_hour"
-            android:title="@string/notification_hour_name"
             android:summary="@string/notification_hour_description"
-            app:iconSpaceReserved="false"/>
+            android:title="@string/notification_hour_name"
+            app:iconSpaceReserved="false" />
 
         <ListPreference
             android:defaultValue="0"
             android:entries="@array/additionalNotification"
             android:entryValues="@array/additionalNotificationValues"
             android:key="additional_notification"
-            android:title="@string/additional_notification_name"
             android:summary="@string/additional_notification_description"
-            app:iconSpaceReserved="false"/>
+            android:title="@string/additional_notification_name"
+            app:iconSpaceReserved="false" />
 
     </PreferenceCategory>
 
@@ -61,25 +61,32 @@
             android:summary="%s"
             android:title="@string/accent_name"
             app:iconSpaceReserved="false" />
-    </PreferenceCategory>
 
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="shimmer"
+            android:summaryOff="@string/shimmer_description_off"
+            android:summaryOn="@string/shimmer_description_on"
+            android:title="@string/shimmer_name"
+            app:iconSpaceReserved="false" />
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="import_export"
         android:title="@string/import_export"
         app:iconSpaceReserved="false">
 
-    <com.minar.birday.backup.ContactsImporter
-        android:layout="@layout/contacts_import_row"
-        android:selectable="true" />
+        <com.minar.birday.backup.ContactsImporter
+            android:layout="@layout/contacts_import_row"
+            android:selectable="true" />
 
-    <com.minar.birday.backup.BirdayExporter
-        android:layout="@layout/birday_export_row"
-        android:selectable="true" />
+        <com.minar.birday.backup.BirdayExporter
+            android:layout="@layout/birday_export_row"
+            android:selectable="true" />
 
-    <com.minar.birday.backup.BirdayImporter
-        android:layout="@layout/birday_import_row"
-        android:selectable="true" />
+        <com.minar.birday.backup.BirdayImporter
+            android:layout="@layout/birday_import_row"
+            android:selectable="true" />
     </PreferenceCategory>
 
 </PreferenceScreen>

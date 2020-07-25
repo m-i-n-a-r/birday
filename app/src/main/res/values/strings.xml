@@ -63,6 +63,9 @@
     <string name="system_theme">System default</string>
     <string name="dark_theme">Dark</string>
     <string name="light_theme">Light</string>
+    <string name="shimmer_name">Shimmer effect</string>
+    <string name="shimmer_description_on">A shiny animation here and there in the app</string>
+    <string name="shimmer_description_off">No additional graphic effects</string>
     <string name="import_export">Import and Export</string>
     <string name="import_contacts_title">Import birthdays from Google</string>
     <string name="import_contacts_description">If an imported birthday doesn\'t contain the year, Birday will automatically set
