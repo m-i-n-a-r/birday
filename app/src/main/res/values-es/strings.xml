@@ -41,7 +41,7 @@
     <string name="vibration_description_off">Sin vibraciones por presión</string>
     <string name="date_format_name">Formato de fecha</string>
     <string name="notification_hour_name">Hora de envio de la notificación</string>
-    <string name="notification_hour_description">%s Tenga en cuenta que la notificación podría no funcionar cuando el sistema mata la aplicación en algunos dispositivos Huawei, Xiaomi y OnePlus. Consulte dontkillmyapp.com para obtener más información.</string>
+    <string name="notification_hour_description">%s \n\nTenga en cuenta que la notificación podría no funcionar cuando el sistema mata la aplicación en algunos dispositivos Huawei, Xiaomi y OnePlus. Consulte dontkillmyapp.com para obtener más información.</string>
     <string name="accent_description">Cambiar el color de acento predeterminado</string>
     <string name="accent_name">Color de acento</string>
     <string name="theme_description">Usa un tema oscuro, claro o automático</string>
@@ -76,7 +76,7 @@
     <string name="birday_import_failure">Importación fallida. ¿Elegiste el archivo correcto?</string>
     <string name="birday_import_invalid_file">Importación fallida. ¡El archivo elegido no es un backup de Birday!</string>
     <string name="birday_export_success">¡Exportación completada!</string>
-    <string name="birday_export_failure">"Exportación fallida. ¡Ooops! "</string>
+    <string name="birday_export_failure">Exportación fallida. ¡Ooops!</string>
     <string name="birday_export_nothing_found">¡Nada que exportar!</string>
     <string name="dev_description">Soy un niño educado y me gustan las cosas bellas, como animaciones, íconos, autos deportivos e impresión 3D. Trabajo como diseñador e ingeniero informático.</string>
     <string name="easter_egg">Bonito logo, ¿eh? ;D</string>
@@ -128,7 +128,7 @@
     <string name="chinese_zodiac_rooster">gallo</string>
     <string name="chinese_zodiac_dog">perro</string>
     <string name="chinese_zodiac_pig">cerdo</string>
-    <string name="zodiac_sagittarius">"sagitario "</string>
+    <string name="zodiac_sagittarius">sagitario</string>
     <string name="zodiac_capricorn">capricornio</string>
     <string name="zodiac_pisces">piscis</string>
     <string name="zodiac_aries">aries</string>
