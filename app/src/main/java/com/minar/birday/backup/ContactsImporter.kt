@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.Toast
 import androidx.preference.Preference
+import androidx.preference.PreferenceManager
 import androidx.preference.PreferenceViewHolder
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.minar.birday.activities.MainActivity
@@ -28,16 +29,22 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
         val act = context as MainActivity
         val shimmer = v as ShimmerFrameLayout
 
-        // Disable the onclick and show the shimmer
+        // Disable the onclick and show the shimmer if the option is enabled
+        val sp = PreferenceManager.getDefaultSharedPreferences(context)
+        val shimmerEnabled = sp.getBoolean("shimmer", false)
         v.setOnClickListener(null)
-        shimmer.startShimmer()
-        shimmer.showShimmer(true)
+        if(shimmerEnabled) {
+            shimmer.startShimmer()
+            shimmer.showShimmer(true)
+        }
         act.vibrate()
         thread {
             importContacts(context)
             (context as MainActivity).runOnUiThread {
-                shimmer.stopShimmer()
-                shimmer.hideShimmer()
+                if(shimmerEnabled) {
+                    shimmer.stopShimmer()
+                    shimmer.hideShimmer()
+                }
                 v.setOnClickListener(this)
             }
         }

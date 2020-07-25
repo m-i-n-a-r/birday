@@ -11,69 +11,78 @@
         android:id="@+id/homeCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/card_margin"
         android:layout_marginLeft="@dimen/card_margin"
+        android:layout_marginTop="@dimen/card_margin"
         android:layout_marginRight="@dimen/card_margin"
-        app:cardCornerRadius="@dimen/rounded_corners"
-        app:cardElevation="0dp"
         android:clickable="true"
         android:focusable="true"
+        app:cardCornerRadius="@dimen/rounded_corners"
+        app:cardElevation="0dp"
         app:rippleColor="?colorAccent"
         app:strokeColor="@color/goodGrayTranslucent"
         app:strokeWidth="@dimen/card_stroke">
 
-        <LinearLayout
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/homeCardShimmer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            app:shimmer_auto_start="false"
+            app:shimmer_base_alpha="1"
+            app:shimmer_highlight_alpha="0.2">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="10"
-                android:padding="16dp">
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/upcomingTitle"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/next_event"
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
+                    android:layout_weight="10"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <TextView
-                    android:id="@+id/upcomingSubtitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/no_next_event"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary" />
+                    <TextView
+                        android:id="@+id/upcomingTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/next_event"
+                        android:textAppearance="?attr/textAppearanceHeadline6" />
 
-                <TextView
-                    android:id="@+id/upcomingDescription"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/no_next_event_description"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary" />
+                    <TextView
+                        android:id="@+id/upcomingSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/no_next_event"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="?android:attr/textColorSecondary" />
+
+                    <TextView
+                        android:id="@+id/upcomingDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/no_next_event_description"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="?android:attr/textColorSecondary" />
+
+                </LinearLayout>
+
+                <!-- Media -->
+                <ImageView
+                    android:id="@+id/upcomingImage"
+                    android:layout_width="@dimen/card_image_height"
+                    android:layout_height="@dimen/card_image_height"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/app_name"
+                    android:paddingLeft="@dimen/card_image_padding"
+                    android:paddingRight="@dimen/card_image_padding"
+                    android:src="@drawable/animated_party_popper" />
 
             </LinearLayout>
-
-            <!-- Media -->
-            <ImageView
-                android:id="@+id/upcomingImage"
-                android:layout_width="@dimen/card_image_height"
-                android:layout_height="@dimen/card_image_height"
-                android:layout_gravity="center"
-                android:paddingLeft="@dimen/card_image_padding"
-                android:paddingRight="@dimen/card_image_padding"
-                android:contentDescription="@string/app_name"
-                android:layout_weight="1"
-                android:src="@drawable/animated_party_popper" />
-
-        </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -89,8 +98,8 @@
         android:paddingTop="@dimen/placeholders_vertical_padding"
         android:paddingRight="@dimen/placeholders_horizontal_padding"
         android:paddingBottom="@dimen/placeholders_horizontal_padding"
-        android:text="@string/no_events"
         android:scrollbarSize="0dp"
+        android:text="@string/no_events"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         android:textColor="@color/goodGraySemiTranslucent" />
 
@@ -98,11 +107,11 @@
         android:id="@+id/eventRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="@dimen/recycler_padding"
         android:clipToPadding="false"
         android:overScrollMode="never"
-        android:scrollbarStyle="outsideOverlay"
+        android:paddingBottom="@dimen/recycler_padding"
         android:scrollbarSize="0dp"
+        android:scrollbarStyle="outsideOverlay"
         app:fastScrollEnabled="true"
         app:fastScrollHorizontalThumbDrawable="@drawable/scroll_thumb_drawable"
         app:fastScrollHorizontalTrackDrawable="@drawable/scroll_line_drawable"

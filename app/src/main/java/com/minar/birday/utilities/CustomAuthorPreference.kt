@@ -10,9 +10,11 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.preference.Preference
+import androidx.preference.PreferenceManager
 import androidx.preference.PreferenceViewHolder
-import com.minar.birday.activities.MainActivity
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.minar.birday.R
+import com.minar.birday.activities.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -27,6 +29,12 @@ class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
         super.onBindViewHolder(holder)
         val v = holder.itemView
 
+        // Manage the shimmer
+        val shimmer = v.findViewById<ShimmerFrameLayout>(R.id.settingsShimmer)
+        val sp = PreferenceManager.getDefaultSharedPreferences(context)
+        val shimmerEnabled = sp.getBoolean("shimmer", false)
+        if (shimmerEnabled) shimmer.startShimmer()
+
         // Make the icons clickable
         val logo = v.findViewById<ImageView>(R.id.imageMinar)
         val l1 = v.findViewById<ImageView>(R.id.minarig)
@@ -34,6 +42,7 @@ class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
         val l3 = v.findViewById<ImageView>(R.id.minarps)
         val l4 = v.findViewById<ImageView>(R.id.minargit)
         val l5 = v.findViewById<ImageView>(R.id.minarsite)
+
         // Spawn the logo with a little delay
         activityScope.launch {
             delay(300)

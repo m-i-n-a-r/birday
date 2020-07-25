@@ -24,6 +24,7 @@ import androidx.annotation.DrawableRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat
@@ -36,6 +37,7 @@ import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
 import com.afollestad.materialdialogs.datetime.datePicker
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.R
 import com.minar.birday.adapters.EventAdapter
@@ -50,6 +52,7 @@ import kotlinx.android.synthetic.main.dialog_actions_event.view.*
 import kotlinx.android.synthetic.main.dialog_apps_event.view.*
 import kotlinx.android.synthetic.main.dialog_details_event.view.*
 import kotlinx.android.synthetic.main.dialog_insert_event.view.*
+import kotlinx.android.synthetic.main.fragment_favorites.view.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -75,7 +78,11 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) : View {
         val v: View = inflater.inflate(R.layout.fragment_home, container, false)
         val upcomingImage = v.findViewById<ImageView>(R.id.upcomingImage)
+        val shimmer = v.findViewById<ShimmerFrameLayout>(R.id.homeCardShimmer)
+        val sp = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val shimmerEnabled = sp.getBoolean("shimmer", false)
         val homeCard = v.homeCard
+        if (shimmerEnabled) shimmer.startShimmer()
         upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
 
         // Open a micro app launcher
@@ -169,9 +176,6 @@ class HomeFragment : Fragment() {
         recyclerView = rootView.findViewById(R.id.eventRecycler)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = adapter
-        // Set a separator between items in the recycler
-        //val itemDecor = DividerItemDecoration(context, HORIZONTAL)
-        //recyclerView.addItemDecoration(itemDecor)
     }
 
     @ExperimentalStdlibApi

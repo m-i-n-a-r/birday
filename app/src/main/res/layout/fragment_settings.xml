@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/devStuff"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="top"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageMinar"
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/settingsShimmer"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/minar_banner_height"
-        android:layout_weight="0.21"
-        android:clickable="true"
-        android:contentDescription="@string/dev_name"
-        android:focusable="true"
-        android:paddingLeft="@dimen/minar_banner_padding"
-        android:paddingTop="@dimen/minar_banner_padding"
-        android:paddingRight="@dimen/minar_banner_padding"
-        android:paddingBottom="@dimen/minar_banner_padding"
-        android:tint="?colorAccent"
-        android:src="@drawable/animated_logo" />
+        android:layout_height="wrap_content"
+        app:shimmer_auto_start="false"
+        app:shimmer_base_alpha="1"
+        app:shimmer_highlight_alpha="0.2">
+
+        <ImageView
+            android:id="@+id/imageMinar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/minar_banner_height"
+            android:layout_weight="0.21"
+            android:clickable="true"
+            android:contentDescription="@string/dev_name"
+            android:focusable="true"
+            android:paddingLeft="@dimen/minar_banner_padding"
+            android:paddingTop="@dimen/minar_banner_padding"
+            android:paddingRight="@dimen/minar_banner_padding"
+            android:paddingBottom="@dimen/minar_banner_padding"
+            android:src="@drawable/animated_logo"
+            android:tint="?colorAccent" />
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
     <TextView
         android:id="@+id/descriptionMinar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="0.21"
         android:paddingLeft="@dimen/minar_description_padding"
         android:paddingRight="@dimen/minar_description_padding"

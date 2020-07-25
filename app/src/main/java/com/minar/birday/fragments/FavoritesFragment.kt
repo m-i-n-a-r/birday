@@ -13,6 +13,7 @@ import androidx.annotation.DrawableRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat
@@ -20,6 +21,7 @@ import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.R
 import com.minar.birday.adapters.FavoritesAdapter
@@ -45,7 +47,11 @@ class FavoritesFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.fragment_favorites, container, false)
         val statsImage = v.findViewById<ImageView>(R.id.statsImage)
+        val shimmer = v.findViewById<ShimmerFrameLayout>(R.id.favoritesCardShimmer)
+        val sp = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val shimmerEnabled = sp.getBoolean("shimmer", false)
         val favoritesCard = v.favoritesCard
+        if (shimmerEnabled) shimmer.startShimmer()
         statsImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_candle)
 
         // Show full stats in a bottom sheet
