@@ -27,11 +27,19 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
     override fun onClick(v: View) {
         val act = context as MainActivity
         val shimmer = v as ShimmerFrameLayout
+
+        // Disable the onclick and show the shimmer
+        v.setOnClickListener(null)
         shimmer.startShimmer()
+        shimmer.showShimmer(true)
         act.vibrate()
         thread {
             importContacts(context)
-            (context as MainActivity).runOnUiThread { shimmer.stopShimmer() }
+            (context as MainActivity).runOnUiThread {
+                shimmer.stopShimmer()
+                shimmer.hideShimmer()
+                v.setOnClickListener(this)
+            }
         }
     }
 
