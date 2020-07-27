@@ -174,6 +174,6 @@
     <string name="zodiac_sign">Segno zodiacale:</string>
     <string name="chinese_zodiac_sign">Segno zodiacale cinese:</string>
     <string name="shimmer_name">Effetto bagliore</string>
-    <string name="shimmer_description_on">Un\'animazione luminosa qua e li nell\'app</string>
+    <string name="shimmer_description_on">Un\'animazione luminosa qui e li nell\'app</string>
     <string name="shimmer_description_off">Nessun effetto grafico aggiuntivo</string>
 </resources>
