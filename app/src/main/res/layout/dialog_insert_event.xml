@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionDone"
-                android:inputType="textPersonName"
+                android:inputType="textCapSentences"
                 android:maxLength="25"
                 android:padding="0dp"
                 android:textCursorDrawable="@null" />
@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionDone"
-                android:inputType="textPersonName"
+                android:inputType="textCapSentences"
                 android:maxLength="25"
                 android:padding="0dp"
                 android:textCursorDrawable="@null" />

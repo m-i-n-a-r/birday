@@ -13,6 +13,7 @@ import com.minar.birday.R
 class WelcomeActivity : AppIntro() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // TODO wait for a non-deprecated solution which works on every Android version
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
         showIntroSlides()
     }
