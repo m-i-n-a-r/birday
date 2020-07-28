@@ -38,6 +38,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
             when (key) {
                 "theme_color" -> activity.recreate()
                 "accent_color" -> activity.recreate()
+                "shimmer" -> activity.recreate()
                 "notification_hour" -> homeViewModel.checkEvents()
             }
         }

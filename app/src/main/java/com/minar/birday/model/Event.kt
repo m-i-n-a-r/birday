@@ -1,4 +1,4 @@
-package com.minar.birday.persistence
+package com.minar.birday.model
 
 import androidx.room.Entity
 import androidx.room.Index

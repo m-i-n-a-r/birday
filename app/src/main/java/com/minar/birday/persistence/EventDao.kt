@@ -3,6 +3,8 @@ package com.minar.birday.persistence
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteQuery
+import com.minar.birday.model.Event
+import com.minar.birday.model.EventResult
 
 
 @Dao

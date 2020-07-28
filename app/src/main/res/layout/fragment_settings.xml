@@ -8,13 +8,19 @@
     android:layout_gravity="top"
     android:orientation="vertical">
 
+    <!-- Duration and repeat delay must be hardcoded -->
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/settingsShimmer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:shimmer_auto_start="false"
-        app:shimmer_base_alpha="1"
-        app:shimmer_highlight_alpha="0.2">
+        app:shimmer_tilt="@dimen/shimmer_tilt"
+        app:shimmer_base_alpha="@dimen/shimmer_base_alpha"
+        app:shimmer_intensity="@dimen/shimmer_intensity"
+        app:shimmer_highlight_alpha="@dimen/shimmer_highlight_alpha"
+        app:shimmer_duration="80"
+        app:shimmer_repeat_delay="1800"
+        app:shimmer_dropoff="@dimen/shimmer_dropoff">
 
         <ImageView
             android:id="@+id/imageMinar"

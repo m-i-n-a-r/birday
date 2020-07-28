@@ -39,7 +39,7 @@ import com.minar.birday.R
 import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.backup.BirdayImporter
 import com.minar.birday.backup.ContactsImporter
-import com.minar.birday.persistence.Event
+import com.minar.birday.model.Event
 import com.minar.birday.utilities.AppRater
 import com.minar.birday.viewmodels.HomeViewModel
 import kotlinx.android.synthetic.main.dialog_insert_event.view.*

@@ -25,7 +25,7 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.R
 import com.minar.birday.adapters.FavoritesAdapter
-import com.minar.birday.persistence.EventResult
+import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.StatsGenerator
 import com.minar.birday.viewmodels.FavoritesViewModel
 import kotlinx.android.synthetic.main.fragment_favorites.view.*

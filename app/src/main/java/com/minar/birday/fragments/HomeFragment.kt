@@ -41,8 +41,8 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.R
 import com.minar.birday.adapters.EventAdapter
-import com.minar.birday.persistence.Event
-import com.minar.birday.persistence.EventResult
+import com.minar.birday.model.Event
+import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.OnItemClickListener
 import com.minar.birday.activities.SplashActivity
 import com.minar.birday.utilities.StatsGenerator
@@ -52,7 +52,6 @@ import kotlinx.android.synthetic.main.dialog_actions_event.view.*
 import kotlinx.android.synthetic.main.dialog_apps_event.view.*
 import kotlinx.android.synthetic.main.dialog_details_event.view.*
 import kotlinx.android.synthetic.main.dialog_insert_event.view.*
-import kotlinx.android.synthetic.main.fragment_favorites.view.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -366,7 +365,13 @@ class HomeFragment : Fragment() {
 
     fun deleteEvent(eventResult: EventResult) = homeViewModel.delete(toEvent(eventResult))
 
-    private fun toEvent(eventResult: EventResult) = Event(id = eventResult.id, name = eventResult.name, surname = eventResult.surname, favorite = eventResult.favorite, originalDate = eventResult.originalDate)
+    private fun toEvent(eventResult: EventResult) = Event(
+        id = eventResult.id,
+        name = eventResult.name,
+        surname = eventResult.surname,
+        favorite = eventResult.favorite,
+        originalDate = eventResult.originalDate
+    )
 
     @ExperimentalStdlibApi
     private fun editEvent(eventResult: EventResult) {
@@ -381,8 +386,11 @@ class HomeFragment : Fragment() {
             positiveButton(R.string.update_event) {
                 // Use the data to create a event object and update the db
                 val tuple = Event(
-                    id = eventResult.id, originalDate = eventDateValue, name = nameValue.smartCapitalize(),
-                    surname = surnameValue?.smartCapitalize(), favorite = eventResult.favorite
+                    id = eventResult.id,
+                    originalDate = eventDateValue,
+                    name = nameValue.smartCapitalize(),
+                    surname = surnameValue?.smartCapitalize(),
+                    favorite = eventResult.favorite
                 )
                 homeViewModel.update(tuple)
                 dismiss()

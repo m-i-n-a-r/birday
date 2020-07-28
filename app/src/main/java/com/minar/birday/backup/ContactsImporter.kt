@@ -13,7 +13,7 @@ import androidx.preference.PreferenceViewHolder
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.R
-import com.minar.birday.persistence.Event
+import com.minar.birday.model.Event
 import java.time.LocalDate
 import kotlin.concurrent.thread
 
@@ -85,7 +85,12 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
                 date = LocalDate.parse(parseDate)
             }
             catch (e: Exception) { continue }
-            val event = Event(id = 0, name = name, surname = surname, originalDate = date)
+            val event = Event(
+                id = 0,
+                name = name,
+                surname = surname,
+                originalDate = date
+            )
             events.add(event)
         }
 

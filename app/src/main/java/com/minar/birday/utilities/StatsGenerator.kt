@@ -7,7 +7,7 @@ import android.text.Spanned
 import android.text.style.BulletSpan
 import androidx.annotation.ColorInt
 import com.minar.birday.R
-import com.minar.birday.persistence.EventResult
+import com.minar.birday.model.EventResult
 import java.time.LocalDate
 import java.time.format.TextStyle
 import java.util.*

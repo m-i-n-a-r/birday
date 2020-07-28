@@ -4,10 +4,10 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.minar.birday.persistence.Event
+import com.minar.birday.model.Event
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
-import com.minar.birday.persistence.EventResult
+import com.minar.birday.model.EventResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

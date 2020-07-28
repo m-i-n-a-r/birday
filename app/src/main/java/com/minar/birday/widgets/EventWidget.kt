@@ -9,7 +9,7 @@ import android.widget.RemoteViews
 import com.minar.birday.R
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
-import com.minar.birday.persistence.EventResult
+import com.minar.birday.model.EventResult
 import com.minar.birday.activities.SplashActivity
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter

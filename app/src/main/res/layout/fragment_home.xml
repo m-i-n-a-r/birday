@@ -22,13 +22,20 @@
         app:strokeColor="@color/goodGrayTranslucent"
         app:strokeWidth="@dimen/card_stroke">
 
+        <!-- Duration and repeat delay must be hardcoded -->
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/homeCardShimmer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:shimmer_auto_start="false"
-            app:shimmer_base_alpha="1"
-            app:shimmer_highlight_alpha="0.2">
+            app:shimmer_tilt="@dimen/shimmer_tilt"
+            app:shimmer_repeat_mode="reverse"
+            app:shimmer_base_alpha="@dimen/shimmer_base_alpha"
+            app:shimmer_intensity="@dimen/shimmer_intensity"
+            app:shimmer_highlight_alpha="@dimen/shimmer_highlight_alpha"
+            app:shimmer_duration="600"
+            app:shimmer_repeat_delay="2400"
+            app:shimmer_dropoff="@dimen/shimmer_dropoff">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="10"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="@dimen/card_margin_big">
 
                     <TextView
                         android:id="@+id/upcomingTitle"
@@ -53,7 +60,7 @@
                         android:id="@+id/upcomingSubtitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="@dimen/card_margin"
                         android:text="@string/no_next_event"
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary" />
@@ -62,7 +69,7 @@
                         android:id="@+id/upcomingDescription"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="@dimen/card_margin_big"
                         android:text="@string/no_next_event_description"
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary" />

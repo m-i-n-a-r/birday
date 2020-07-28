@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
-import com.minar.birday.persistence.EventResult
+import com.minar.birday.model.EventResult
 import kotlinx.android.synthetic.main.event_row.view.eventDate
 import kotlinx.android.synthetic.main.event_row.view.eventPerson
 import kotlinx.android.synthetic.main.favorite_row.view.*

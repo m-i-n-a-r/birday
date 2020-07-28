@@ -7,10 +7,10 @@ import androidx.lifecycle.viewModelScope
 import androidx.preference.PreferenceManager
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import com.minar.birday.persistence.Event
+import com.minar.birday.model.Event
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
-import com.minar.birday.persistence.EventResult
+import com.minar.birday.model.EventResult
 import com.minar.birday.workers.EventWorker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
