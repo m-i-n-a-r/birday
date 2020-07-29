@@ -12,7 +12,7 @@
     app:shimmer_intensity="@dimen/shimmer_intensity"
     app:shimmer_highlight_alpha="@dimen/shimmer_highlight_alpha"
     app:shimmer_duration="200"
-    app:shimmer_repeat_delay="400"
+    app:shimmer_repeat_delay="1000"
     app:shimmer_dropoff="@dimen/shimmer_dropoff">
 
     <LinearLayout
