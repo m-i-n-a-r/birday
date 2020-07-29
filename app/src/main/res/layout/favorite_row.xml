@@ -3,9 +3,8 @@
     android:layout_height="wrap_content"
     android:layout_weight="0.95"
     android:orientation="vertical"
-    android:paddingLeft="@dimen/recycler_padding"
+    android:paddingHorizontal="@dimen/recycler_padding"
     android:paddingTop="@dimen/between_row_padding"
-    android:paddingRight="@dimen/recycler_padding"
     android:paddingBottom="@dimen/between_row_padding">
 
     <TextView
