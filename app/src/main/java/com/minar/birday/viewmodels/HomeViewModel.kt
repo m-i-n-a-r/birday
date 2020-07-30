@@ -1,9 +1,7 @@
 package com.minar.birday.viewmodels
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.preference.PreferenceManager
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
@@ -22,11 +20,15 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val sp = PreferenceManager.getDefaultSharedPreferences(application)
     val allEvents: LiveData<List<EventResult>>
     val anyEvent: LiveData<List<EventResult>>
+    private val searchStringLiveData = MutableLiveData<String>()
     private val eventDao: EventDao = EventDatabase.getBirdayDataBase(application)!!.eventDao()
 
     init {
+        searchStringLiveData.value = ""
         anyEvent = eventDao.getAnyEvent()
-        allEvents = eventDao.getOrderedEvents()
+        allEvents = Transformations.switchMap(searchStringLiveData) { string ->
+            eventDao.getOrderedEventsByName(string)
+        }
         checkEvents()
     }
 
@@ -62,5 +64,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)
             .build()
         workManager.enqueue(dailyWorkRequest)
+    }
+
+    // Update the name searched in the search bar
+    fun searchNameChanged(name: String) {
+        searchStringLiveData.value = name
     }
 }

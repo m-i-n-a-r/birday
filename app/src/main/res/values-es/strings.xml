@@ -175,4 +175,5 @@
     <string name="shimmer_description_on">Una animación brillante aquí y allá en la aplicación</string>
     <string name="shimmer_description_off">Sin efectos gráficos adicionales</string>
     <string name="search_event">Busca…</string>
+    <string name="search_no_result">No hay resultados</string>
 </resources>

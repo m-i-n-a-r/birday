@@ -219,5 +219,6 @@
 
     <!-- Search -->
     <string name="search_event">Search…</string>
+    <string name="search_no_result">No results found</string>
 
 </resources>

@@ -16,11 +16,9 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RemoteViews
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.DrawableRes
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -52,6 +50,7 @@ import kotlinx.android.synthetic.main.dialog_actions_event.view.*
 import kotlinx.android.synthetic.main.dialog_apps_event.view.*
 import kotlinx.android.synthetic.main.dialog_details_event.view.*
 import kotlinx.android.synthetic.main.dialog_insert_event.view.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -83,6 +82,11 @@ class HomeFragment : Fragment() {
         val homeCard = v.homeCard
         if (shimmerEnabled) shimmer.startShimmer()
         upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
+
+        // Setup the search bar
+        v.findViewById<EditText>(R.id.homeSearch).addTextChangedListener { text ->
+            homeViewModel.searchNameChanged(text.toString())
+        }
 
         // Open a micro app launcher
         homeCard.setOnClickListener {
