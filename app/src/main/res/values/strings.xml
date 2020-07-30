@@ -217,4 +217,7 @@
     <string name="appwidget_upcoming">Upcoming birthdays</string>
     <string name="add_widget">Birday - upcoming</string>
 
+    <!-- Search -->
+    <string name="search_event">Search…</string>
+
 </resources>

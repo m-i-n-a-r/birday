@@ -28,53 +28,57 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:shimmer_auto_start="false"
-            app:shimmer_tilt="@dimen/shimmer_tilt"
-            app:shimmer_repeat_mode="reverse"
             app:shimmer_base_alpha="@dimen/shimmer_base_alpha"
-            app:shimmer_intensity="@dimen/shimmer_intensity"
-            app:shimmer_highlight_alpha="@dimen/shimmer_highlight_alpha"
+            app:shimmer_dropoff="@dimen/shimmer_dropoff"
             app:shimmer_duration="600"
+            app:shimmer_highlight_alpha="@dimen/shimmer_highlight_alpha"
+            app:shimmer_intensity="@dimen/shimmer_intensity"
             app:shimmer_repeat_delay="2400"
-            app:shimmer_dropoff="@dimen/shimmer_dropoff">
+            app:shimmer_repeat_mode="reverse"
+            app:shimmer_tilt="@dimen/shimmer_tilt">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="@dimen/card_margin_big">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/statsTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="10"
-                    android:orientation="vertical"
-                    android:padding="@dimen/card_margin_big">
+                    android:layout_marginEnd="@dimen/card_image_padding"
+                    android:text="@string/stats"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    app:layout_constraintEnd_toStartOf="@+id/favoriteCardGuideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/statsTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/stats"
-                        android:textAppearance="?attr/textAppearanceHeadline6" />
+                <TextView
+                    android:id="@+id/statsSubtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/card_margin"
+                    android:layout_marginEnd="@dimen/card_image_padding"
+                    android:text="@string/no_stats"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="?android:attr/textColorSecondary"
+                    app:layout_constraintEnd_toStartOf="@+id/favoriteCardGuideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/statsTitle" />
 
-                    <TextView
-                        android:id="@+id/statsSubtitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/card_margin"
-                        android:text="@string/no_stats"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary" />
-
-                    <TextView
-                        android:id="@+id/statsDescription"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/card_margin_big"
-                        android:text="@string/no_stats_description"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary" />
-
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/statsDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/card_margin_big"
+                    android:layout_marginEnd="@dimen/card_image_padding"
+                    android:text="@string/no_stats_description"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="?android:attr/textColorSecondary"
+                    app:layout_constraintEnd_toStartOf="@+id/favoriteCardGuideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/statsSubtitle" />
 
                 <!-- Media -->
                 <ImageView
@@ -82,13 +86,21 @@
                     android:layout_width="@dimen/card_image_height"
                     android:layout_height="@dimen/card_image_height"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
                     android:contentDescription="@string/app_name"
-                    android:paddingLeft="@dimen/card_image_padding"
-                    android:paddingRight="@dimen/card_image_padding"
-                    android:src="@drawable/animated_candle" />
+                    android:src="@drawable/animated_candle"
+                    app:layout_constraintBottom_toBottomOf="@id/statsDescription"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/favoriteCardGuideline"
+                    app:layout_constraintTop_toTopOf="@id/statsTitle" />
 
-            </LinearLayout>
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/favoriteCardGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.8" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </com.facebook.shimmer.ShimmerFrameLayout>
 
     </com.google.android.material.card.MaterialCardView>

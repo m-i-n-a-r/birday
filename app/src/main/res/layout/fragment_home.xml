@@ -22,74 +22,125 @@
         app:strokeColor="@color/goodGrayTranslucent"
         app:strokeWidth="@dimen/card_stroke">
 
-        <!-- Duration and repeat delay must be hardcoded -->
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/homeCardShimmer"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:shimmer_auto_start="false"
-            app:shimmer_tilt="@dimen/shimmer_tilt"
-            app:shimmer_repeat_mode="reverse"
-            app:shimmer_base_alpha="@dimen/shimmer_base_alpha"
-            app:shimmer_intensity="@dimen/shimmer_intensity"
-            app:shimmer_highlight_alpha="@dimen/shimmer_highlight_alpha"
-            app:shimmer_duration="600"
-            app:shimmer_repeat_delay="2400"
-            app:shimmer_dropoff="@dimen/shimmer_dropoff">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <!-- Duration and repeat delay must be hardcoded -->
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/homeCardShimmer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shimmer_auto_start="false"
+                app:shimmer_base_alpha="@dimen/shimmer_base_alpha"
+                app:shimmer_dropoff="@dimen/shimmer_dropoff"
+                app:shimmer_duration="600"
+                app:shimmer_highlight_alpha="@dimen/shimmer_highlight_alpha"
+                app:shimmer_intensity="@dimen/shimmer_intensity"
+                app:shimmer_repeat_delay="2400"
+                app:shimmer_repeat_mode="reverse"
+                app:shimmer_tilt="@dimen/shimmer_tilt">
 
-                <LinearLayout
-                    android:layout_width="0dp"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="10"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:padding="@dimen/card_margin_big">
 
                     <TextView
                         android:id="@+id/upcomingTitle"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/card_image_padding"
                         android:text="@string/next_event"
-                        android:textAppearance="?attr/textAppearanceHeadline6" />
+                        android:textAppearance="?attr/textAppearanceHeadline6"
+                        app:layout_constraintEnd_toStartOf="@+id/homeCardGuideline"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/upcomingSubtitle"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/card_margin"
+                        android:layout_marginEnd="@dimen/card_image_padding"
                         android:text="@string/no_next_event"
                         android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary" />
+                        android:textColor="?android:attr/textColorSecondary"
+                        app:layout_constraintEnd_toStartOf="@+id/homeCardGuideline"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/upcomingTitle" />
 
                     <TextView
                         android:id="@+id/upcomingDescription"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/card_margin_big"
+                        android:layout_marginEnd="@dimen/card_image_padding"
                         android:text="@string/no_next_event_description"
                         android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary" />
+                        android:textColor="?android:attr/textColorSecondary"
+                        app:layout_constraintEnd_toStartOf="@+id/homeCardGuideline"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/upcomingSubtitle" />
 
-                </LinearLayout>
+                    <!-- Media -->
+                    <ImageView
+                        android:id="@+id/upcomingImage"
+                        android:layout_width="@dimen/card_image_height"
+                        android:layout_height="@dimen/card_image_height"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/animated_party_popper"
+                        app:layout_constraintBottom_toBottomOf="@id/upcomingDescription"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/homeCardGuideline"
+                        app:layout_constraintTop_toTopOf="@id/upcomingTitle" />
 
-                <!-- Media -->
-                <ImageView
-                    android:id="@+id/upcomingImage"
-                    android:layout_width="@dimen/card_image_height"
-                    android:layout_height="@dimen/card_image_height"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/app_name"
-                    android:paddingLeft="@dimen/card_image_padding"
-                    android:paddingRight="@dimen/card_image_padding"
-                    android:src="@drawable/animated_party_popper" />
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/homeCardGuideline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.8" />
 
-            </LinearLayout>
-        </com.facebook.shimmer.ShimmerFrameLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/homeSearchLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/search_event"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:boxCornerRadiusBottomEnd="@dimen/rounded_corners"
+                app:boxCornerRadiusBottomStart="@dimen/rounded_corners"
+                app:boxCornerRadiusTopEnd="@dimen/rounded_corners"
+                app:boxCornerRadiusTopStart="@dimen/rounded_corners"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/homeCardShimmer"
+                app:startIconDrawable="@drawable/ic_person_search_24dp"
+                app:startIconTint="?colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/homeSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/search_event"
+                    android:inputType="textPersonName"
+                    android:maxLength="25"
+                    android:padding="0dp"
+                    android:textCursorDrawable="@null" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
