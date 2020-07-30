@@ -19,13 +19,11 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val workManager = WorkManager.getInstance(application)
     private val sp = PreferenceManager.getDefaultSharedPreferences(application)
     val allEvents: LiveData<List<EventResult>>
-    val anyEvent: LiveData<List<EventResult>>
-    private val searchStringLiveData = MutableLiveData<String>()
+    val searchStringLiveData = MutableLiveData<String>()
     private val eventDao: EventDao = EventDatabase.getBirdayDataBase(application)!!.eventDao()
 
     init {
         searchStringLiveData.value = ""
-        anyEvent = eventDao.getAnyEvent()
         allEvents = Transformations.switchMap(searchStringLiveData) { string ->
             eventDao.getOrderedEventsByName(string)
         }

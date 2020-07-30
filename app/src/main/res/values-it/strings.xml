@@ -177,5 +177,7 @@
     <string name="shimmer_description_on">Un\'animazione luminosa qui e li nell\'app</string>
     <string name="shimmer_description_off">Nessun effetto grafico aggiuntivo</string>
     <string name="search_event">Cerca…</string>
-    <string name="search_no_result">Nessun risultato trovato</string>
+    <string name="search_no_result_title">Nessun risultato trovato</string>
+    <string name="search_no_result_description">La stringa cercata non corrisponde ad alcun evento nel database di Birday!</string>
+
 </resources>

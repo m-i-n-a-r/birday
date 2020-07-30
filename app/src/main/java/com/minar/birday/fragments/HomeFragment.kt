@@ -36,13 +36,13 @@ import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
 import com.afollestad.materialdialogs.datetime.datePicker
 import com.facebook.shimmer.ShimmerFrameLayout
-import com.minar.birday.activities.MainActivity
 import com.minar.birday.R
+import com.minar.birday.activities.MainActivity
+import com.minar.birday.activities.SplashActivity
 import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.OnItemClickListener
-import com.minar.birday.activities.SplashActivity
 import com.minar.birday.utilities.StatsGenerator
 import com.minar.birday.viewmodels.HomeViewModel
 import com.minar.birday.widgets.EventWidget
@@ -50,7 +50,6 @@ import kotlinx.android.synthetic.main.dialog_actions_event.view.*
 import kotlinx.android.synthetic.main.dialog_apps_event.view.*
 import kotlinx.android.synthetic.main.dialog_details_event.view.*
 import kotlinx.android.synthetic.main.dialog_insert_event.view.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -160,15 +159,17 @@ class HomeFragment : Fragment() {
 
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         homeViewModel.allEvents.observe(viewLifecycleOwner, Observer { events ->
-            // Update the cached copy of the words in the adapter
+            // Manage placeholders, search results and the main list
             events?.let { adapter.submitList(it) }
-            if (events.isNotEmpty()) insertUpcomingEvents(events)
+            if (events.isNotEmpty()) {
+                insertUpcomingEvents(events)
+                removePlaceholder()
+            }
+            if (events.isEmpty()) restorePlaceholders()
+            if (events.isEmpty() && homeViewModel.searchStringLiveData.value!!.isNotBlank())
+                restorePlaceholders(true)
             // Update the widgets
             updateWidget(events)
-        })
-        homeViewModel.anyEvent.observe(viewLifecycleOwner, Observer { eventList ->
-            if (eventList.isNotEmpty()) removePlaceholder()
-            else restorePlaceholders()
         })
 
         return v
@@ -292,15 +293,23 @@ class HomeFragment : Fragment() {
         placeholder.visibility = View.GONE
     }
 
-    // Restore the placeholder and the default texts when the event list is empty
-    private fun restorePlaceholders() {
+    // Restore the placeholder and texts when there are no events. If search is true, show the "no result" placeholder
+    private fun restorePlaceholders(search: Boolean = false) {
         val cardTitle: TextView = requireView().findViewById(R.id.upcomingTitle)
         val cardSubtitle: TextView = requireView().findViewById(R.id.upcomingSubtitle)
         val cardDescription: TextView = requireView().findViewById(R.id.upcomingDescription)
         val placeholder: TextView = requireView().findViewById(R.id.noEvents)
-        cardTitle.text = getString(R.string.next_event)
-        cardSubtitle.text = getString(R.string.no_next_event)
-        cardDescription.text = getString(R.string.no_next_event_description)
+        if (!search) {
+            cardTitle.text = getString(R.string.next_event)
+            cardSubtitle.text = getString(R.string.no_next_event)
+            cardDescription.text = getString(R.string.no_next_event_description)
+        }
+        else {
+            cardTitle.text = getString(R.string.search_no_result_title)
+            cardSubtitle.text = ""
+            cardDescription.text = getString(R.string.search_no_result_description)
+            placeholder.text = getString(R.string.search_no_result_title)
+        }
         placeholder.visibility = View.VISIBLE
     }
 

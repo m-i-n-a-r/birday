@@ -42,10 +42,6 @@ interface EventDao {
     fun getOrderedFavoriteEvents(): LiveData<List<EventResult>>
 
     @SuppressWarnings(RoomWarnings.CURSOR_MISMATCH)
-    @Query("SELECT * FROM Event LIMIT 1")
-    fun getAnyEvent(): LiveData<List<EventResult>>
-
-    @SuppressWarnings(RoomWarnings.CURSOR_MISMATCH)
     @Query("SELECT * FROM Event WHERE favorite = 1 LIMIT 1")
     fun getAnyFavoriteEvent(): LiveData<List<EventResult>>
 
