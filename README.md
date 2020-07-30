@@ -4,7 +4,7 @@ An open source app to remember birthdays and events without having to open Faceb
 
 <p align='center'>
   <a href='https://github.com/m-i-n-a-r/birday/blob/master/LICENSE.md'><img src='https://img.shields.io/cocoapods/l/AFNetworking.svg'/></a>
-  <img src='https://img.shields.io/badge/version-1.3.X-blue'/>
+  <img src='https://img.shields.io/badge/version-1.4.X-blue'/>
 	<img src='https://img.shields.io/badge/status-released-success'/>
 	<img src='https://img.shields.io/badge/-translations%20needed!-yellow'/>
 </p>
@@ -23,9 +23,11 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 - The birthdays are also automagically backed up in cloud by Google Play Services when the app is installed from Play Store
 - A huge set of randomly generated stats (zodiac, average age and a lot more) when more than 5 birthdays are inserted
 - Easily delete and modify the birthdays
+- A nice searchbar, to quickly search a person in the saved events
 - Quick apps launcher
 - Light and dark themes (Android 10 dark mode supported)
 - Selectable accent (no app restart needed)
+- Shimmer effect, because why not
 - Beautiful animations
 - Multiwindow support
 - Splashscreen and app intro
