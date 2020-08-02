@@ -261,13 +261,14 @@ class MainActivity : AppCompatActivity() {
             vib.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
     }
 
-    // Simply checks if the string is written using only letters and at most one apostrophe
+    // Simply checks if the string is written using only letters and at most one apostrophe and one hypen
     fun checkString(submission : String): Boolean {
-        var apostropheFound = false
-        if (submission.length == 1 && submission == "\'") return false
+        var permittedSymbolFound = false
+        if (submission == "\'") return false
+        if (submission.startsWith('-')) return false
         for (s in submission.replace("\\s".toRegex(), "")) {
             if (s.isLetter()) continue
-            if (s == '\'' && !apostropheFound) apostropheFound = true
+            if ((s == '\'' || s == '-') && !permittedSymbolFound) permittedSymbolFound = true
             else return false
         }
         return true
