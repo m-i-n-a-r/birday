@@ -324,8 +324,26 @@ class HomeFragment : Fragment() {
         val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
 
-        val widgetUpcoming = if (events.isEmpty()) requireContext().getString(R.string.no_next_event)
-        else events[0].name + ", " + nextDate(events[0], formatter)
+        // Make sure to show if there's more than one event
+        val widgetUpcoming = when {
+            // No events
+            events.isEmpty() -> requireContext().getString(R.string.no_next_event)
+            // Two events
+            events.size == 2 && events[0].nextDate!!.isEqual(events[1].nextDate) ->
+                events[0].name + " " + requireContext().getString(R.string.and) +
+                        " " + events[1].name + ", " + nextDate(events[0], formatter)
+            events.size > 2 && events[0].nextDate!!.isEqual(events[1].nextDate) &&
+                    !events[1].nextDate!!.isEqual(events[2].nextDate) ->
+                events[0].name + " " + requireContext().getString(R.string.and) +
+                        " " + events[1].name + ", " + nextDate(events[0], formatter)
+            // More than two events
+            events.size > 2 && events[0].nextDate!!.isEqual(events[1].nextDate) &&
+                    events[1].nextDate!!.isEqual(events[2].nextDate) ->
+                events[0].name + " " + requireContext().getString(R.string.event_others) +
+                        ", " + nextDate(events[0], formatter)
+            // One event
+            else -> events[0].name + ", " + nextDate(events[0], formatter)
+        }
 
         remoteViews.setOnClickPendingIntent(R.id.event_widget_main, pendingIntent)
         remoteViews.setTextViewText(R.id.event_widget_text, widgetUpcoming)
