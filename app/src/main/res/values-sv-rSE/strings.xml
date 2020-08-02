@@ -40,8 +40,8 @@
     <string name="vibration_description_on">Vibrera när en knapp är nedtryckt</string>
     <string name="vibration_description_off">Inga vibrationer när en knapp är nedtryckt</string>
     <string name="date_format_name">Datumformat</string>
-    <string name="notification_hour_name">Notification hour</string>
-    <string name="notification_hour_description">"%s "</string>
+    <string name="notification_hour_name">Timme för notifikation</string>
+    <string name="notification_hour_description">%s   Notera att notifikationer kanske inte fungerar när appen dödas av systemet på några Huawei, Xiaomi och OnePlus enheter. Se dontkillmyapp.com för mer information</string>
     <string name="accent_description">Ändra standard accentfärg</string>
     <string name="accent_name">Accentfärg</string>
     <string name="theme_description">Använd ett mörkt, ljust eller automatiskt apptema</string>
