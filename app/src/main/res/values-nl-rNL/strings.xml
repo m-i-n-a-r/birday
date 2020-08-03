@@ -1,0 +1,223 @@
+<resources>
+
+    <string name="app_name" translatable="false">Birday</string>
+    <string name="app_welcome">Welkom bij Birday</string>
+    <string name="app_name_extended">Birday - Verjaardag Beheerder</string>
+    <string name="leave_review_title">Beordeel Birday</string>
+    <string name="leave_review_subtitle">Laat een review achter om mij te helpen met Birday. Deze app is, naast de donaties, geheel gratis en reclamevrij!</string>
+    <string name="yes_review">Beoordelen</string>
+    <string name="later">Later, dat beloof ik</string>
+    <string name="no_thanks">Absoluut niet!</string>
+    <string name="title_home">Startpagina</string>
+    <string name="title_favorites">Favorieten</string>
+    <string name="title_settings">Instellingen</string>
+    <string name="no_events">Geen verjaardagen! Voeg er eentje toe met de knop hieronder!</string>
+    <string name="no_favorites">Geen favorieten! Druk op de ster om een persoon aan je favorieten toe te voegen!</string>
+    <string name="add_favorite">Toevoegen aan favorieten</string>
+    <string name="stats">Statistieken</string>
+    <string name="no_stats">Geen statistieken beschikbaar!</string>
+    <string name="stats_summary">Overzicht statistieken</string>
+    <string name="no_stats_description">Je hebt te weinig verjaardagen om statistieken te laten zien. Voeg er een aantal toe en kom dan terug!</string>
+    <string name="stats_total">Birday herinnert je aan</string>
+    <string name="next_event">Volgende gebeurtenis</string>
+    <string name="no_next_event">Geen verjaardagen om weer te geven!</string>
+    <string name="no_next_event_description">Je hebt nog geen verjaardagen opgegeven of geïmporteerd. Voeg er eentje toe en laat Birday je helpen!</string>
+    <string name="next_age_years">jaar</string>
+    <string name="event_others">en anderen</string>
+    <string name="days_left">dagen resterend</string>
+
+    <!-- Settings -->
+    <string name="customization">Aanpassingen</string>
+    <string name="app_behavior">App gedrag</string>
+    <string name="additional_notification_name">Aanvullende notificatie</string>
+    <string name="additional_notification_description">Stuur een aantal dagen voor de gebeurtenis een aanvullende notificatie. %s</string>
+    <string name="no_additional_notification">Geen aanvullende notificatie</string>
+    <string name="one_day_before">Een dag van tevoren</string>
+    <string name="two_days_before">Twee dagen van tevoren</string>
+    <string name="three_days_before">Drie dagen van tevoren</string>
+    <string name="four_days_before">Vier dagen van tevoren</string>
+    <string name="five_days_before">Vijf dagen van tevoren</string>
+    <string name="six_days_before">Zes dagen van tevoren</string>
+    <string name="seven_days_before">Zeven dagen van tevoren</string>
+    <string name="vibration_name">Trilling</string>
+    <string name="vibration_description_on">Tril wanneer een knop wordt ingedrukt</string>
+    <string name="vibration_description_off">Geen trillingen wanneer een knop wordt ingedrukt</string>
+    <string name="date_format_name">Datumweergave</string>
+    <string name="notification_hour_name">Notificatie tijdstip</string>
+    <string name="notification_hour_description">%s \n\nHoud er rekening mee dat de notificaties wellicht niet werken op Huawei, Xiaomi of OnePlus apparaten. Zie dontkillmyapp.com voor meer informatie en mogelijke oplossingen.</string>
+    <string name="accent_description">Verander de standaard accentkleur</string>
+    <string name="accent_name">Accentkleur</string>
+    <string name="theme_description">Gebruik een donker, licht of automatisch app thema</string>
+    <string name="theme_name">App thema</string>
+    <string name="brown">Bruin</string>
+    <string name="blue">Blauw</string>
+    <string name="green">Groen</string>
+    <string name="orange">Oranje</string>
+    <string name="yellow">Geel</string>
+    <string name="teal">Groenblauw</string>
+    <string name="violet">Violet</string>
+    <string name="pink">Roze</string>
+    <string name="light_blue">Lichtblauw</string>
+    <string name="red">Rood</string>
+    <string name="lime">Limoen</string>
+    <string name="system_theme">Systeem standaard</string>
+    <string name="dark_theme">Donker</string>
+    <string name="light_theme">Licht</string>
+    <string name="shimmer_name">Glimmend effect</string>
+    <string name="shimmer_description_on">Af en toe een glinsterende animatie in de app</string>
+    <string name="shimmer_description_off">Geen aanvullende animaties</string>
+    <string name="import_export">Importeren en Exporteren</string>
+    <string name="import_contacts_title">Importeer verjaardagen vanuit Google</string>
+    <string name="import_contacts_description">Als een geïmporteede verjaardag geen jaar bevat, zal Birday automatisch het jaar
+    2000 selecteren. Zorg er dus voor dat je het jaar aanpast om de meest accurate statistieken te krijgen!</string>
+    <string name="import_success">Het importeren is gelukt!</string>
+    <string name="import_nothing_found">Geen verjaardagen gevonden!</string>
+    <string name="import_failed">Er ging iets mis!</string>
+    <string name="missing_permission_contacts">Toestemming tot contacten is geweigerd. Probeer het opnieuw of geef handmatig toestemming,
+    anders kunnen de contacten niet van Google worden geïmporteerd!</string>
+    <string name="missing_permission_contacts_forever">Birday kan je contacten niet importeren en ook niet opnieuw om toestemming vragen,
+    aangezien "Niet meer vragen" is aangevinkt. Geef handmatig toestemming!</string>
+    <string name="birday_import_title">Importeer een Birday backup</string>
+    <string name="birday_import_description">Kies een geldige Birday backup om handmatig je verjaardagen te herstellen. Bestaande
+    data zal worden overschreven!</string>
+    <string name="birday_export_title">Exporteer en deel verjaardagen</string>
+    <string name="birday_export_description">Exporteer de beschikbare verjaardagen en deel ze, als je wilt. Het bestand staat in
+    Android/data/com.minar.birday/files</string>
+    <string name="birday_import_success">Importeren voltooid!</string>
+    <string name="birday_import_failure">Importeren mislukt. Heb je het juiste bestand gekozen?</string>
+    <string name="birday_import_invalid_file">Importeren mislukt. Het gekozen bestand is geen Birday backup!</string>
+    <string name="birday_export_success">Exporteren voltooid!</string>
+    <string name="birday_export_failure">Exporteren mislukt. Oeps!</string>
+    <string name="birday_export_nothing_found">Niets om te exporteren!</string>
+
+    <!-- Developer -->
+    <string name="dev_name" translatable="false">m.i.n.a.r.</string>
+    <string name="dev_description">Ik ben een beleefde kerel en ik hou van mooie dingen, zoals animaties, icoontjes, sportauto\'s en 3d printen. Ik werk als een ontwerper en computer ingenieur.</string>
+    <string name="dev_email" translatable="false">minar.tastic@gmail.com</string>
+    <string name="dev_personal_site" translatable="false">https://minar.ml</string>
+    <string name="dev_instagram" translatable="false">https://www.instagram.com/minar.tastic/</string>
+    <string name="dev_paypal" translatable="false">https://www.paypal.me/minardev</string>
+    <string name="dev_github" translatable="false">https://github.com/m-i-n-a-r</string>
+    <string name="dev_other_apps" translatable="false">https://play.google.com/store/apps/dev?id=7720251761301594831</string>
+    <string name="easter_egg">Puik logootje, hè? ;D</string>
+
+    <!-- New event -->
+    <string name="new_event">Nieuwe verjaardag</string>
+    <string name="new_event_description">Voeg een nieuw persoon toe en Birday helpt je om zijn/haar verjaardag niet te vergeten!</string>
+    <string name="insert_event">Verjaardag toevoegen</string>
+    <string name="cancel">Annuleren</string>
+    <string name="insert_name_hint">Naam</string>
+    <string name="insert_surname_hint">Achternaam</string>
+    <string name="insert_date_hint">Selecteer een datum</string>
+    <string name="invalid_value_name">Ongeldige naam. Getallen en symbolen zijn niet toegestaan.</string>
+
+    <!-- Event actions -->
+    <string name="event_actions">Acties</string>
+    <string name="event_actions_description">hier kun je eenvoudig de gebeurtenis veranderen of verwijderen!</string>
+    <string name="edit_event">Gebeurtenis wijzigen</string>
+    <string name="delete_event">Gebeurtenis verwijderen</string>
+    <string name="update_event">Gebeurtenis bijwerken</string>
+
+    <!-- Event details -->
+    <string name="event_details">Details</string>
+    <string name="birth_date">Geboortedatum</string>
+    <string name="next_age">Volgende leeftijd:</string>
+    <string name="zodiac_sign">Sterrenbeeld:</string>
+    <string name="chinese_zodiac_sign">Chinees sterrenbeeld:</string>
+
+    <!-- Quick apps -->
+    <string name="event_apps">Snelkoppelingen</string>
+    <string name="event_apps_description">Apps om je verjaardagswensen direct te versturen!</string>
+    <string name="whatsapp">Whatsapp</string>
+    <string name="telegram">Telegram</string>
+    <string name="textMessage">Sms-bericht</string>
+    <string name="dialer">Telefoon</string>
+    <string name="wishes">Fijne verjaardag!</string>
+    <string name="no_default_dialer">Geen standaard telefoon app gevonden!</string>
+    <string name="no_default_sms">Geen standaard sms app gevonden!</string>
+
+    <!-- Statistics -->
+    <string name="did_you_know">Wist je dat?</string>
+    <string name="age_average">De gemiddelde leeftijd is</string>
+    <string name="oldest_person">De oudste persoon is</string>
+    <string name="youngest_person">De jongste persoon is</string>
+    <string name="most_common_month">De maand met de meeste verjaardagen is</string>
+    <string name="most_common_decade">Het decennium met de meeste verjaardagen is</string>
+    <string name="most_common_age_range">De meest voorkomende leeftijdsgroep is</string>
+    <string name="special_ages">Een belangrijke aankomende verjaardag is</string>
+    <string name="random_zodiac_sign">Sterrenbeeld van</string>
+    <string name="most_common_zodiac_sign">Het meest voorkomende sterrenbeeld is</string>
+    <string name="random_day_of_week">is geboren op</string>
+    <string name="most_common_day_of_week">De meest voorkomende geboortedag is</string>
+    <string name="leap_year_total">Het aantal mensen dat geboren is in een schrikkeljaar is</string>
+    <string name="random_chinese_year">Chinees sterrenbeeld van</string>
+    <string name="chinese_zodiac_rat">rat</string>
+    <string name="chinese_zodiac_ox">os</string>
+    <string name="chinese_zodiac_tiger">tijger</string>
+    <string name="chinese_zodiac_rabbit">konijn</string>
+    <string name="chinese_zodiac_dragon">draak</string>
+    <string name="chinese_zodiac_snake">slang</string>
+    <string name="chinese_zodiac_horse">paard</string>
+    <string name="chinese_zodiac_goat">geit</string>
+    <string name="chinese_zodiac_monkey">aap</string>
+    <string name="chinese_zodiac_rooster">haan</string>
+    <string name="chinese_zodiac_dog">hond</string>
+    <string name="chinese_zodiac_pig">varken</string>
+    <string name="zodiac_sagittarius">boogschutter</string>
+    <string name="zodiac_capricorn">steenbok</string>
+    <string name="zodiac_aquarius">waterman</string>
+    <string name="zodiac_pisces">vissen</string>
+    <string name="zodiac_aries">ram</string>
+    <string name="zodiac_taurus">stier</string>
+    <string name="zodiac_gemini">tweelingen</string>
+    <string name="zodiac_cancer">kreeft</string>
+    <string name="zodiac_leo">leeuw</string>
+    <string name="zodiac_virgo">maagd</string>
+    <string name="zodiac_libra">weegschaal</string>
+    <string name="zodiac_scorpio">schorpioen</string>
+
+    <!-- Common words -->
+    <string name="birthday">verjaardag</string>
+    <string name="birthdays">verjaardagen</string>
+    <string name="event">gebeurtenis</string>
+    <string name="events">gebeurtenissen</string>
+    <string name="day">dag</string>
+    <string name="days">dagen</string>
+    <string name="today">Vandaag</string>
+    <string name="yesterday">Gisteren</string>
+    <string name="tomorrow">Morgen</string>
+    <string name="years">jaar</string>
+    <string name="born_in">geboren in</string>
+    <string name="and">en</string>
+
+    <!-- Notifications -->
+    <string name="events_notification_channel">Gebeurtenis Reminder</string>
+    <string name="events_channel_description">Reminders over de aankomende verjaardagen van Birday</string>
+    <string name="notification_title">Birday Reminder</string>
+    <string name="notification_description_part_1">De verjaardagen van vandaag zijn</string>
+    <string name="notification_description_part_2">Fijne dag nog!</string>
+    <string name="additional_notification_text">Aankomende verjaardagen!</string>
+
+    <!-- Introduction slides -->
+    <string name="slide_one_title">Welkom bij Birday!</string>
+    <string name="slide_one_description">Birday is een simpele, lichtgewicht app waarmee je belangrijke gebeurtenissen kunt bijhouden!
+    Verjaardagen van dierbaren sla je snel en eenvoudig op, zodat je er nooit meer een vergeet!</string>
+    <string name="slide_two_title">Gratis, eenvoudig, aanpasbaar</string>
+    <string name="slide_two_description">Birday is gratis, reclamevrij en open source. De app heeft 
+    statistieken over jouw verjaardagen, een favorieten systeem en een aanpasbaar interface. Updates en
+    ondersteuning zijn gegarandeerd!
+    </string>
+    <string name="slide_three_title">Importeren vanuit Google Contacten</string>
+    <string name="slide_three_description">Het is ook mogelijk om verjaardagen over te zetten vanuit Google
+    Contacten. Birday doet het voor je als je toestemming geeft tot je contacten. Niemand houdt immers van dubbel werk!</string>
+
+    <!-- Widget -->
+    <string name="appwidget_upcoming">Aankomende verjaardagen</string>
+    <string name="add_widget">Birday - aankomend</string>
+
+    <!-- Search -->
+    <string name="search_event">Zoeken…</string>
+    <string name="search_no_result_title">Geen resultaten gevonden</string>
+    <string name="search_no_result_description">Je zoekopdracht komt niet overeen met een gebeurtenis uit de Birday database!</string>
+
+</resources>
