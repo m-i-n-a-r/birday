@@ -1,6 +1,5 @@
 <resources>
 
-    <string name="app_name" translatable="false">Birday</string>
     <string name="app_welcome">Üdvözlünk a Birday-ben</string>
     <string name="app_name_extended">Birday - Születésnap Kezelő</string>
     <string name="leave_review_title">Birday Véleményezése</string>
@@ -86,14 +85,7 @@
     <string name="birday_export_nothing_found">Nincs mit exportálni!</string>
 
     <!-- Developer -->
-    <string name="dev_name" translatable="false">m.i.n.a.r.</string>
     <string name="dev_description">Udvarias srác vagyok, és szeretem a szép dolgokat, mint animációk, ikonok, sportkocsik és 3D nyomtatás. Tervezőként és számítógépes mérnökként dolgozom.</string>
-    <string name="dev_email" translatable="false">minar.tastic@gmail.com</string>
-    <string name="dev_personal_site" translatable="false">https://minar.ml</string>
-    <string name="dev_instagram" translatable="false">https://www.instagram.com/minar.tastic/</string>
-    <string name="dev_paypal" translatable="false">https://www.paypal.me/minardev</string>
-    <string name="dev_github" translatable="false">https://github.com/m-i-n-a-r</string>
-    <string name="dev_other_apps" translatable="false">https://play.google.com/store/apps/dev?id=7720251761301594831</string>
     <string name="easter_egg">Szép logó, mi? ;D</string>
 
     <!-- New event -->

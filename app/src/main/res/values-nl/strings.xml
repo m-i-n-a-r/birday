@@ -1,6 +1,5 @@
 <resources>
 
-    <string name="app_name" translatable="false">Birday</string>
     <string name="app_welcome">Welkom bij Birday</string>
     <string name="app_name_extended">Birday - Verjaardag Beheerder</string>
     <string name="leave_review_title">Beordeel Birday</string>
@@ -91,14 +90,7 @@
     <string name="birday_export_nothing_found">Niets om te exporteren!</string>
 
     <!-- Developer -->
-    <string name="dev_name" translatable="false">m.i.n.a.r.</string>
     <string name="dev_description">Ik ben een beleefde kerel en ik hou van mooie dingen, zoals animaties, icoontjes, sportauto\'s en 3d printen. Ik werk als een ontwerper en computer ingenieur.</string>
-    <string name="dev_email" translatable="false">minar.tastic@gmail.com</string>
-    <string name="dev_personal_site" translatable="false">https://minar.ml</string>
-    <string name="dev_instagram" translatable="false">https://www.instagram.com/minar.tastic/</string>
-    <string name="dev_paypal" translatable="false">https://www.paypal.me/minardev</string>
-    <string name="dev_github" translatable="false">https://github.com/m-i-n-a-r</string>
-    <string name="dev_other_apps" translatable="false">https://play.google.com/store/apps/dev?id=7720251761301594831</string>
     <string name="easter_egg">Puik logootje, hè? ;D</string>
 
     <!-- New event -->
