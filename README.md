@@ -4,13 +4,28 @@ An open source app to remember birthdays and events without having to open Faceb
 
 <p align='center'>
   <a href='https://github.com/m-i-n-a-r/birday/blob/master/LICENSE.md'><img src='https://img.shields.io/cocoapods/l/AFNetworking.svg'/></a>
-  <img src='https://img.shields.io/badge/version-1.4.X-blue'/>
+  <img src='https://img.shields.io/badge/version-1.5.X-blue'/>
 	<img src='https://img.shields.io/badge/status-released-success'/>
 	<img src='https://img.shields.io/badge/-translations%20needed!-yellow'/>
 </p>
 
 ## Introduction
-This is an open source app to remember **birthdays** in a fast, light and beautiful way. No less, no more. I had this idea considering that Google Calendar doesn't display an automatic notification the day of the birthday, and sometimes i need to remember a birthday for a person who is not in my Google Contacts. Also, adding to much birthdays to the calendar make it messy and i prefer to manage them separately.
+This is an open source app to remember **birthdays** in a fast, light and beautiful way. No less, no more. I had this idea considering that Google Calendar doesn't display an automatic notification the day of the birthday, and sometimes i need to remember a birthday for a person who is not in my Google Contacts. Also, adding to much birthdays to the calendar make it messy and i prefer to manage them separately. The main focus of this app is being easy to use, clean and lightweight. I'm always glad to add features, but only important and really useful features!
+
+## Translations
+
+| LANGUAGE       | STATUS   | SPECIAL THANKS |
+|:---------------|:--------:|---------------:|
+| **English**    | complete | myself         |
+| **Spanish**    | complete | myself         |
+| **Svedish**    | complete | SlowNicoFish   |
+| **Dutch**      | complete | stefanvi       |
+| **Italian**    | complete | myself         |
+| **French**     | complete | Mattis Biton   |
+| **Hungarian**  | complete | Obi            |
+| **German**     | complete | pizzapastamix  |
+| Portuguese     | unknown  |                |
+| Russian        | unknown  |                |
 
 ## Features
 - Notification the day of the event, in a customizable time range
@@ -53,5 +68,6 @@ The app is available through Google Play\
 </a>
 
 ## Credits and contributions
-Currently, Birday supports english, spanish and italian. If you want to translate the app in any other language, just contact me: you'll be quoted both on Github and in the Play Store description.
-This app was written during my free time as a training. Many good devs have helped me understanding the best practices and they taught me a lot of useful tricks. **Every translation is well appreciated!**
+Currently, Birday supports the languages in the above table. If you want to translate the app in any other language, just contact me: you'll be quoted both on Github and in the Play Store description.
+
+This app was written during my free time as a training. Many good devs have helped me understanding the best practices and they taught me a lot of useful tricks. A special thank to every contributor here and on Reddit.
