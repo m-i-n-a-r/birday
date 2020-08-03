@@ -1,0 +1,216 @@
+<resources>
+
+    <string name="app_name" translatable="false">Birday</string>
+    <string name="app_welcome">Üdvözlünk a Birday-ben</string>
+    <string name="app_name_extended">Birday - Születésnap Kezelő</string>
+    <string name="leave_review_title">Birday Véleményezése</string>
+    <string name="leave_review_subtitle">Írj egy véleményt, hogy segíts nekem az alkalmazással. Vedd figyelembe, hogy az adományoktól eltekintve ez az alkalmazás teljesen ingyenes és hirdetésmentes!</string>
+    <string name="yes_review">Véleményezés!</string>
+    <string name="later">Később, esküszöm</string>
+    <string name="no_thanks">Semmiképpen!</string>
+    <string name="title_home">Kezdőlap</string>
+    <string name="title_favorites">Kedvencek</string>
+    <string name="title_settings">Beállítások</string>
+    <string name="no_events">Nincsenek születésnapok! Adj hozzá egyet az alábbi gomb segítségével!</string>
+    <string name="no_favorites">Nincsenek kedvencek! Ha hozzá akarsz adni egy személyt a kedvenceidhez, nyomd meg a csillagot!</string>
+    <string name="add_favorite">Hozzáadás a kedvencekhez</string>
+    <string name="stats">Statisztika</string>
+    <string name="no_stats">Nincs megjeleníthető statisztika!</string>
+    <string name="stats_summary">Statisztika összefoglaló</string>
+    <string name="no_stats_description">Nincs elég születésnap a statisztikák megjelenítéséhez. Adj hozzá néhányat, és gyere vissza később!</string>
+    <string name="stats_total">A Birday segít, hogy összesen emlékezz</string>
+    <string name="next_event">Következő esemény</string>
+    <string name="no_next_event">Nincs megjeleníthető születésnap!</string>
+    <string name="no_next_event_description">Még nem írtál be vagy importáltál születésnapot. Adj hozzá egyet, és hagyd, hogy a Birday segítsen!</string>
+    <string name="next_age_years">Évek</string>
+    <string name="event_others">és mások</string>
+    <string name="days_left">nap van hátra</string>
+
+    <!-- Settings -->
+    <string name="customization">Testreszabás</string>
+    <string name="app_behavior">Az alkalmazás viselkedése</string>
+    <string name="additional_notification_name">További értesítés</string>
+    <string name="additional_notification_description">Küldjön további értesítést napokkal az esemény előtt. %s</string>
+    <string name="no_additional_notification">Nincs további értesítés</string>
+    <string name="one_day_before">Egy nappal korábban</string>
+    <string name="two_days_before">Két nappal korábban</string>
+    <string name="three_days_before">Három nappal korábban</string>
+    <string name="four_days_before">Négy nappal korábban</string>
+    <string name="five_days_before">Öt nappal korábban</string>
+    <string name="six_days_before">Hat nappal korábban</string>
+    <string name="seven_days_before">Hét nappal korábban</string>
+    <string name="vibration_name">Rezgés</string>
+    <string name="vibration_description_on">Rezgés egy gomb megnyomásakor</string>
+    <string name="vibration_description_off">Nincs rezgés egy gomb megnyomásakor</string>
+    <string name="date_format_name">Dátum formátum</string>
+    <string name="notification_hour_name">Értesítési óra</string>
+    <string name="notification_hour_description">%s \n\nFelhívjuk a figyelmed, hogy az értesítés nem működik, ha a rendszer leállítja az alkalmazást néhány Huawei, Xiaomi és OnePlus eszközön. További információt a dontkillmyapp.com oldalon találsz</string>
+    <string name="accent_description">Alapértelmezett ékezetes szín módosítása</string>
+    <string name="accent_name">Ékezetes szín</string>
+    <string name="theme_description">Használjon sötét, világos vagy automatikus alkalmazás témát</string>
+    <string name="theme_name">Alkalmazás téma</string>
+    <string name="brown">Barna</string>
+    <string name="blue">Kék</string>
+    <string name="green">Zöld</string>
+    <string name="orange">Narancssárga</string>
+    <string name="yellow">Citromsárga</string>
+    <string name="teal">Zöldeskék</string>
+    <string name="violet">Ibolyaszínű</string>
+    <string name="pink">Rózsaszín</string>
+    <string name="light_blue">Világoskék</string>
+    <string name="red">Piros</string>
+    <string name="lime">Lime</string>
+    <string name="system_theme">A rendszer alapértelmezése</string>
+    <string name="dark_theme">Sötét</string>
+    <string name="light_theme">Világos</string>
+    <string name="shimmer_name">Csillámló hatás</string>
+    <string name="shimmer_description_on">Fényes animáció itt-ott az alkalmazásban</string>
+    <string name="shimmer_description_off">Nincs további grafikai hatás</string>
+    <string name="import_export">Import és export</string>
+    <string name="import_contacts_title">Születésnapok importálása a Google-ból</string>
+    <string name="import_contacts_description">Ha az importált születésnap nem tartalmazza az évet, akkor a Birday automatikusan beállítja azt 2000-re. Ügyelj arra, hogy módosítsd az eseményeket a hiányzó évvel, hogy mindig pontos statisztikák legyenek!</string>
+    <string name="import_success">Az importálás sikeresen befejeződött!</string>
+    <string name="import_nothing_found">Nem található születésnap!</string>
+    <string name="import_failed">Hiba történt!</string>
+    <string name="missing_permission_contacts">A kapcsolattartási engedély meg lett tagadva. Próbálkozz újra, vagy aktiváld az engedélyt manuálisan, vagy a névjegyek importálása a Google-ból nem fog működni!</string>
+    <string name="missing_permission_contacts_forever">A Birday nem tudta importálni a kapcsolatait, és nem kérhető engedély, mivel bejelölted a "soha ne kérdezzen újra" lehetőséget. Manuálisan engedélyezd!</string>
+    <string name="birday_import_title">Importálj egy Birday biztonsági másolatot</string>
+    <string name="birday_import_description">Válasszon egy érvényes Birday biztonsági másolatot a születésnapjainak manuális visszaállításához. Minden létező adat felül lesz írva!</string>
+    <string name="birday_export_title">Születésnapok exportálása és megosztása</string>
+    <string name="birday_export_description">Exportáld a rendelkezésre álló születésnapokat, és oszd meg őket, ha szeretnéd. A fájl az Android/data/com.minar.birday/files helyen található.</string>
+    <string name="birday_import_success">Az importálás befejeződött!</string>
+    <string name="birday_import_failure">Az importálás sikertelen. Helyes fájlt választottál?</string>
+    <string name="birday_import_invalid_file">Az importálás sikertelen. A kiválasztott fájl nem Birday biztonsági másolat!</string>
+    <string name="birday_export_success">Az exportálás befejeződött!</string>
+    <string name="birday_export_failure">Az exportálás sikertelen. Hoppá!</string>
+    <string name="birday_export_nothing_found">Nincs mit exportálni!</string>
+
+    <!-- Developer -->
+    <string name="dev_name" translatable="false">m.i.n.a.r.</string>
+    <string name="dev_description">Udvarias srác vagyok, és szeretem a szép dolgokat, mint animációk, ikonok, sportkocsik és 3D nyomtatás. Tervezőként és számítógépes mérnökként dolgozom.</string>
+    <string name="dev_email" translatable="false">minar.tastic@gmail.com</string>
+    <string name="dev_personal_site" translatable="false">https://minar.ml</string>
+    <string name="dev_instagram" translatable="false">https://www.instagram.com/minar.tastic/</string>
+    <string name="dev_paypal" translatable="false">https://www.paypal.me/minardev</string>
+    <string name="dev_github" translatable="false">https://github.com/m-i-n-a-r</string>
+    <string name="dev_other_apps" translatable="false">https://play.google.com/store/apps/dev?id=7720251761301594831</string>
+    <string name="easter_egg">Szép logó, mi? ;D</string>
+
+    <!-- New event -->
+    <string name="new_event">Új születésnap</string>
+    <string name="new_event_description">Írj be egy új embert, akivel törődsz, és Birday segít emlékeztetni születésnapjára!</string>
+    <string name="insert_event">Születésnap beírása</string>
+    <string name="cancel">Mégsem</string>
+    <string name="insert_name_hint">Név beírása</string>
+    <string name="insert_surname_hint">Vezetéknév beírása</string>
+    <string name="insert_date_hint">Dátum kiválasztása</string>
+    <string name="invalid_value_name">Érvénytelen név. A számok és szimbólumok nem engedélyezettek!</string>
+
+    <!-- Event actions -->
+    <string name="event_actions">Tevékenységek</string>
+    <string name="event_actions_description">itt törölheti vagy egyszerűen módosíthatja ezt az eseményt!</string>
+    <string name="edit_event">Esemény szerkesztése</string>
+    <string name="delete_event">Esemény törlése</string>
+    <string name="update_event">Esemény frissítése</string>
+
+    <!-- Event details -->
+    <string name="event_details">Részletek</string>
+    <string name="birth_date">Születési dátum</string>
+    <string name="next_age">Következő kor:</string>
+    <string name="zodiac_sign">Csillagjegy:</string>
+    <string name="chinese_zodiac_sign">Kínai csillagjegy:</string>
+
+    <!-- Quick apps -->
+    <string name="event_apps">Gyors alkalmazások</string>
+    <string name="event_apps_description">Az alkalmazások arra, hogy gyorsan kívánd a legjobbakat!</string>
+    <string name="whatsapp">Whatsapp</string>
+    <string name="telegram">Telegram</string>
+    <string name="textMessage">Szöveges üzenet</string>
+    <string name="dialer">Tárcsázó</string>
+    <string name="wishes">Boldog születésnapot!</string>
+    <string name="no_default_dialer">Nem található alapértelmezett tárcsázó alkalmazás!</string>
+    <string name="no_default_sms">Nem található alapértelmezett sms alkalmazás!</string>
+
+    <!-- Statistics -->
+    <string name="did_you_know">Tudtad?</string>
+    <string name="age_average">Az átlagos életkor</string>
+    <string name="oldest_person">A legidősebb ember</string>
+    <string name="youngest_person">A legfiatalabb ember</string>
+    <string name="most_common_month">A leggyakoribb születési hónap a(z)</string>
+    <string name="most_common_decade">A leggyakoribb születési évtized a(z)</string>
+    <string name="most_common_age_range">A leggyakoribb korcsoport a</string>
+    <string name="special_ages">Egy fontos közelgő születésnap:</string>
+    <string name="random_zodiac_sign">Az ő csillagjegye:</string>
+    <string name="most_common_zodiac_sign">A leggyakoribb csillagjegy a(z)</string>
+    <string name="random_day_of_week">ekkor született:</string>
+    <string name="most_common_day_of_week">A leggyakoribb születési nap a</string>
+    <string name="leap_year_total">A szökőévben születettek száma</string>
+    <string name="random_chinese_year">Kínai csillagjegye neki:</string>
+    <string name="chinese_zodiac_rat">patkány</string>
+    <string name="chinese_zodiac_ox">bivaly</string>
+    <string name="chinese_zodiac_tiger">tigris</string>
+    <string name="chinese_zodiac_rabbit">nyúl</string>
+    <string name="chinese_zodiac_dragon">sárkány</string>
+    <string name="chinese_zodiac_snake">kígyó</string>
+    <string name="chinese_zodiac_horse">ló</string>
+    <string name="chinese_zodiac_goat">kecske</string>
+    <string name="chinese_zodiac_monkey">majom</string>
+    <string name="chinese_zodiac_rooster">kakas</string>
+    <string name="chinese_zodiac_dog">kutya</string>
+    <string name="chinese_zodiac_pig">disznó</string>
+    <string name="zodiac_sagittarius">nyilas</string>
+    <string name="zodiac_capricorn">bak</string>
+    <string name="zodiac_aquarius">vízöntő</string>
+    <string name="zodiac_pisces">halak</string>
+    <string name="zodiac_aries">kos</string>
+    <string name="zodiac_taurus">bika</string>
+    <string name="zodiac_gemini">ikrek</string>
+    <string name="zodiac_cancer">rák</string>
+    <string name="zodiac_leo">oroszlán</string>
+    <string name="zodiac_virgo">szűz</string>
+    <string name="zodiac_libra">mérleg</string>
+    <string name="zodiac_scorpio">skorpió</string>
+
+    <!-- Common words -->
+    <string name="birthday">születésnap</string>
+    <string name="birthdays">születésnapok</string>
+    <string name="event">esemény</string>
+    <string name="events">események</string>
+    <string name="day">nap</string>
+    <string name="days">napokkal</string>
+    <string name="today">Ma</string>
+    <string name="yesterday">Tegnap</string>
+    <string name="tomorrow">Holnap</string>
+    <string name="years">évek</string>
+    <string name="born_in">született</string>
+    <string name="and">és</string>
+
+    <!-- Notifications -->
+    <string name="events_notification_channel">Esemény Emlékeztető</string>
+    <string name="events_channel_description">Emlékeztetők a közelgő születésnapokra a Birday-től</string>
+    <string name="notification_title">Birday Emlékeztető</string>
+    <string name="notification_description_part_1">Üdvözlet, a mai születésnapok:</string>
+    <string name="notification_description_part_2">Szép napot!</string>
+    <string name="additional_notification_text">Közelgő születésnapok!</string>
+
+    <!-- Introduction slides -->
+    <string name="slide_one_title">Üdvözlünk a Birday-ben!</string>
+    <string name="slide_one_description">A Birday egy egyszerű és könnyű alkalmazás a fontos események kezelésére! Arra használhatod, hogy megbízhatóan és gyorsan mentsd és tárold a szeretett emberek születésnapjait.
+	</string>
+    <string name="slide_two_title">Ingyenes, egyszerű, testreszabható</string>
+    <string name="slide_two_description">A Birday ingyenes, hirdetésmentes és nyílt forráskódú. Statisztikát biztosít a születésnapokról, kedvenc rendszert és a testreszabható felületet biztosít. És garantált támogatást és frissítéseket!
+    </string>
+    <string name="slide_three_title">Importálás a Google Névjegyekből</string>
+    <string name="slide_three_description">A már elmentett születésnapokat is importálhatod a Google Névjegyekből. A Birday meg tudja csinálni számodra, csak adja meg a névjegyek engedélyt. Élvezd!
+    </string>
+
+    <!-- Widget -->
+    <string name="appwidget_upcoming">Közelgő születésnapok</string>
+    <string name="add_widget">Birday - közelgő</string>
+
+    <!-- Search -->
+    <string name="search_event">Keresés…</string>
+    <string name="search_no_result_title">Nincs találat</string>
+    <string name="search_no_result_description">A keresési karakterlánc nem felel meg a Birday adatbázis egyetlen eseményének sem!</string>
+
+</resources>
