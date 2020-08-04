@@ -233,7 +233,11 @@ class MainActivity : AppCompatActivity() {
         val descriptionText = getString(R.string.events_channel_description)
         val importance = NotificationManager.IMPORTANCE_HIGH
         val channel = NotificationChannel("events_channel", name, importance).apply { description = descriptionText }
+        // Additional tuning over sound, vibration and notification light
         channel.setSound(soundUri, attributes)
+        channel.enableLights(true)
+        channel.lightColor = R.color.brownAccent
+        channel.enableVibration(true)
         // Register the channel with the system
         val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannel(channel)
