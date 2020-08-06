@@ -1,0 +1,4 @@
+- Added vietnamese translation
+- Notifications improved
+- Icon restyled
+- Some important fixes

@@ -1,0 +1,30 @@
+<h2><b>Introduction 👋</b></h2>
+This is an open source app, created to remember and manage events in a simple and effective way.
+The app contains some basic personalization options and an introduction, plus some new resources like animated vector drawables and the automatic dark/light theme. Support and updates are guaranteed!
+  
+
+<h2><b>Why should i use Birday? 😕</b></h2>
+Well, i'll tell you 3 main reasons:
+◾ It can help you to remember every birthday in the moment you prefer!
+◾ It will cost just 4MB of storage!
+◾ It's beautiful, full of animations and simple to use!
+
+Birday allow you to import the birthdays directly from your Google Contacts, with a simple favorite system and a set of stats to discover!
+if you're starting to develop apps and you need an app to look at, to find some inspiration and tricks: click on the Github link, and the Birday source code is served!
+  
+
+<h2><b>Features 🎂</b></h2>
+◾ Simple birthday timeline, with the next date and the name of each person
+◾ Favorite system, to aggregate your favorite birthdays and see more informations
+◾ Google Contacts import! Intelligent duplicate detection
+◾ Easily delete or modify every birthday
+◾ Customizable notification the day of the birthday!
+◾ Light and dark themes (Android 10 automatic dark mode supported)
+◾ Selectable accent (11 choices)
+◾ A quick search bar!
+◾ Vibration, first introduction and beautiful animations
+◾ Simple and precise ui, following the material guidelines
+
+Please note: the notification system relies on the Android OS resources, thus some manufacturers may cause malfunctions. The reason is that some Xiaomi, Huawei and Oneplus devices kill the apps instead of simply closing it, or block the automatic startup of the app process. I can't fix this, but you can find more informations on dontkillmyapp.com.
+  
+
