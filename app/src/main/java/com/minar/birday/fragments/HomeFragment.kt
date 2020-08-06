@@ -44,6 +44,8 @@ import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.OnItemClickListener
 import com.minar.birday.utilities.StatsGenerator
+import com.minar.birday.utilities.checkString
+import com.minar.birday.utilities.smartCapitalize
 import com.minar.birday.viewmodels.HomeViewModel
 import com.minar.birday.widgets.EventWidget
 import kotlinx.android.synthetic.main.dialog_actions_event.view.*
@@ -186,7 +188,6 @@ class HomeFragment : Fragment() {
     private fun setUpAdapter() {
         adapter.setOnItemClickListener(onItemClickListener = object : OnItemClickListener {
             override fun onItemClick(position: Int, view: View?) {
-                val act = activity as MainActivity
                 val title = getString(R.string.event_actions) + " - " + adapter.getItem(position).name
                 act.vibrate()
                 val dialog = MaterialDialog(act).show {
@@ -475,7 +476,7 @@ class HomeFragment : Fragment() {
                 when {
                     editable === name.editableText -> {
                         val nameText = name.text.toString()
-                        if (nameText.isBlank() || !act.checkString(nameText)) {
+                        if (nameText.isBlank() || !checkString(nameText)) {
                             customView.nameEventLayout.error = getString(R.string.invalid_value_name)
                             dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                             nameCorrect = false
@@ -488,7 +489,7 @@ class HomeFragment : Fragment() {
                     }
                     editable === surname.editableText -> {
                         val surnameText = surname.text.toString()
-                        if (!act.checkString(surnameText)) {
+                        if (!checkString(surnameText)) {
                             customView.surnameEventLayout.error = getString(R.string.invalid_value_name)
                             dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                             surnameCorrect = false
@@ -522,12 +523,6 @@ class HomeFragment : Fragment() {
             )
         }
     }
-
-    // Extension function to quickly capitalize a name, also considering other uppercase letter or multiple words
-    @ExperimentalStdlibApi
-    fun String.smartCapitalize(): String =
-        trim().split(" ").joinToString(" ") { it.toLowerCase(Locale.ROOT).capitalize(Locale.ROOT) }
-
 
     // Loop the animated vector drawable
     internal fun ImageView.applyLoopingAnimatedVectorDrawable(@DrawableRes animatedVector: Int) {

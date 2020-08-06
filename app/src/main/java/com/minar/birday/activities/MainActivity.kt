@@ -7,6 +7,7 @@ import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.media.AudioAttributes
 import android.media.AudioAttributes.Builder
 import android.net.Uri
@@ -41,6 +42,8 @@ import com.minar.birday.backup.BirdayImporter
 import com.minar.birday.backup.ContactsImporter
 import com.minar.birday.model.Event
 import com.minar.birday.utilities.AppRater
+import com.minar.birday.utilities.checkString
+import com.minar.birday.utilities.smartCapitalize
 import com.minar.birday.viewmodels.HomeViewModel
 import kotlinx.android.synthetic.main.dialog_insert_event.view.*
 import java.io.IOException
@@ -236,7 +239,7 @@ class MainActivity : AppCompatActivity() {
         // Additional tuning over sound, vibration and notification light
         channel.setSound(soundUri, attributes)
         channel.enableLights(true)
-        channel.lightColor = R.color.brownAccent
+        channel.lightColor = Color.GREEN
         channel.enableVibration(true)
         // Register the channel with the system
         val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -263,19 +266,6 @@ class MainActivity : AppCompatActivity() {
         val vib = this.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         if (sp.getBoolean("vibration", true)) // Vibrate if the vibration in options is set to on
             vib.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
-    }
-
-    // Simply checks if the string is written using only letters and at most one apostrophe and one hypen
-    fun checkString(submission : String): Boolean {
-        var permittedSymbolFound = false
-        if (submission == "\'") return false
-        if (submission.startsWith('-')) return false
-        for (s in submission.replace("\\s".toRegex(), "")) {
-            if (s.isLetter()) continue
-            if ((s == '\'' || s == '-') && !permittedSymbolFound) permittedSymbolFound = true
-            else return false
-        }
-        return true
     }
 
     // Ask contacts permission
@@ -312,12 +302,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    // Extension function to quickly capitalize a name, also considering other uppercase letter, multiple words and the apostrophe
-    @ExperimentalStdlibApi
-    fun String.smartCapitalize(): String {
-        return trim().split(" ").joinToString(" ") { it.toLowerCase(Locale.ROOT).capitalize(Locale.ROOT) }
-            .split("'").joinToString("'") { it.capitalize(Locale.ROOT) }
     }
 }

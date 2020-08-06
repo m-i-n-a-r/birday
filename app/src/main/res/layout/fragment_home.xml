@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Focusable in touch mode removes the default focus
+from the search bar when focused for the first time -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/homeMain"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:focusableInTouchMode="true"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -115,13 +118,13 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusedByDefault="false"
                 android:hint="@string/search_event"
                 app:boxBackgroundColor="@android:color/transparent"
                 app:boxCornerRadiusBottomEnd="@dimen/rounded_corners"
                 app:boxCornerRadiusBottomStart="@dimen/rounded_corners"
                 app:boxCornerRadiusTopEnd="@dimen/rounded_corners"
                 app:boxCornerRadiusTopStart="@dimen/rounded_corners"
+                app:boxStrokeWidth="@dimen/card_stroke"
                 app:endIconContentDescription="@string/cancel"
                 app:endIconMode="clear_text"
                 app:endIconTint="?colorAccent"
@@ -129,6 +132,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/homeCardShimmer"
+                app:startIconContentDescription="@string/search_event"
                 app:startIconDrawable="@drawable/ic_person_search_24dp"
                 app:startIconTint="?colorAccent">
 
