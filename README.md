@@ -50,14 +50,14 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 
 ## Screenshots
 <p align='center'>
-  <img src='https://i.imgur.com/vUUPGs6.png' width='22%'/>
-  <img src='https://i.imgur.com/RNcS4EE.png' width='22%'/>
-  <img src='https://i.imgur.com/psHudR6.png' width='22%'/>
+  <img src='https://i.imgur.com/1Qh4dLK.png' width='22%'/>
+  <img src='https://i.imgur.com/jHvNwKF.png' width='22%'/>
+  <img src='https://i.imgur.com/iBkrZYs.png' width='22%'/>
   <img src='https://i.imgur.com/T81V4im.png' width='22%'/>
   <img src='https://i.imgur.com/rTz4ULx.png' width='22%'/>
   <img src='https://i.imgur.com/WpLbKQu.png' width='22%'/>
-  <img src='https://i.imgur.com/sAGdFyr.png' width='22%'/>
-  <img src='https://i.imgur.com/dCuCgCi.png' width='22%'/>
+  <img src='https://i.imgur.com/7AmLd8J.png' width='22%'/>
+  <img src='https://i.imgur.com/1mhhSPW.png' width='22%'/>
 </p>
 
 ## Download
