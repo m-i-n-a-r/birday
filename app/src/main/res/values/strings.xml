@@ -69,7 +69,7 @@
     <string name="import_export">Import and Export</string>
     <string name="import_contacts_title">Import birthdays from Google</string>
     <string name="import_contacts_description">If an imported birthday doesn\'t contain the year, Birday will automatically set
-    the year 2000. Make sure to modify the events with the missing year to always have accurate statistics!</string>
+    the year 1970. Make sure to modify the events with the missing year to always have accurate statistics!</string>
     <string name="import_success">Import completed successfully!</string>
     <string name="import_nothing_found">No birthday found!</string>
     <string name="import_failed">Something went wrong!</string>
@@ -110,6 +110,7 @@
     <string name="insert_surname_hint">Insert surname</string>
     <string name="insert_date_hint">Select a date</string>
     <string name="invalid_value_name">Invalid Name. Numbers and symbols aren\'t allowed!</string>
+    <string name="consider_year">Consider the year</string>
 
     <!-- Event actions -->
     <string name="event_actions">Actions</string>

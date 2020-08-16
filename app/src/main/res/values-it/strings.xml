@@ -127,7 +127,7 @@
     <string name="slide_three_title">Importa da Contatti Google</string>
     <string name="slide_three_description">È inoltre possibile importare i compleanni che hai già salvato dai tuoi contatti Google. Birday può farlo per te, devi solo dare il permesso di lettura contatti. Buon divertimento!</string>
     <string name="import_contacts_title">Importa compleanni da Google</string>
-    <string name="import_contacts_description">Se un compleanno importato contiene soltanto la data senza l\'anno, verrà automaticamente impostato l\'anno 2000. Modificare gli eventi con anno mancante per avere statistiche accurate!</string>
+    <string name="import_contacts_description">Se un compleanno importato contiene soltanto la data senza l\'anno, verrà automaticamente impostato l\'anno 1970. Modificare gli eventi con anno mancante per avere statistiche accurate!</string>
     <string name="import_success">Importazione completata con successo!</string>
     <string name="import_failed">Qualcosa è andato storto!</string>
     <string name="import_nothing_found">Nessun compleanno trovato!</string>
@@ -177,5 +177,6 @@
     <string name="search_event">Cerca…</string>
     <string name="search_no_result_title">Nessun risultato trovato</string>
     <string name="search_no_result_description">La stringa cercata non corrisponde ad alcun evento nel database di Birday!</string>
+    <string name="consider_year">Considera l\'anno</string>
 
 </resources>

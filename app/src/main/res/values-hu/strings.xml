@@ -67,7 +67,7 @@
     <string name="shimmer_description_off">Nincs további grafikai hatás</string>
     <string name="import_export">Import és export</string>
     <string name="import_contacts_title">Születésnapok importálása a Google-ból</string>
-    <string name="import_contacts_description">Ha az importált születésnap nem tartalmazza az évet, akkor a Birday automatikusan beállítja azt 2000-re. Ügyelj arra, hogy módosítsd az eseményeket a hiányzó évvel, hogy mindig pontos statisztikák legyenek!</string>
+    <string name="import_contacts_description">Ha az importált születésnap nem tartalmazza az évet, akkor a Birday automatikusan beállítja azt 1970-re. Ügyelj arra, hogy módosítsd az eseményeket a hiányzó évvel, hogy mindig pontos statisztikák legyenek!</string>
     <string name="import_success">Az importálás sikeresen befejeződött!</string>
     <string name="import_nothing_found">Nem található születésnap!</string>
     <string name="import_failed">Hiba történt!</string>
@@ -204,5 +204,6 @@
     <string name="search_event">Keresés…</string>
     <string name="search_no_result_title">Nincs találat</string>
     <string name="search_no_result_description">A keresési karakterlánc nem felel meg a Birday adatbázis egyetlen eseményének sem!</string>
+    <string name="consider_year">Számolja az évet</string>
 
 </resources>

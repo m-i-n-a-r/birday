@@ -68,6 +68,7 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
             var name: String
             var surname = ""
             var date: LocalDate
+            var countYear = true
             when (splitterName.size) {
                 // Not considering surname only contacts, but considering name only
                 1 -> name = splitterName[0].trim()
@@ -79,9 +80,12 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
             }
 
             try {
-                // Missing year, put 2000 as a placeholder
+                // Missing year, simply don't consider the yar exactly like Google Contacts does
                 var parseDate = contact.value[1]
-                if (contact.value[1].length < 8) parseDate = contact.value[1].replaceFirst("-", "2000")
+                if (contact.value[1].length < 8) {
+                    parseDate = contact.value[1].replaceFirst("-", "1970")
+                    countYear = false
+                }
                 date = LocalDate.parse(parseDate)
             }
             catch (e: Exception) { continue }
@@ -89,7 +93,8 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
                 id = 0,
                 name = name,
                 surname = surname,
-                originalDate = date
+                originalDate = date,
+                yearMatter = countYear
             )
             events.add(event)
         }

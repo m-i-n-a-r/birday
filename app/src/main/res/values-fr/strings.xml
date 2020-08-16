@@ -67,7 +67,7 @@
     <string name="shimmer_description_off">Pas d\'effets graphiques supplémentaires</string>
     <string name="import_export">Importation et exportation</string>
     <string name="import_contacts_title">Importer des anniversaires de votre compte Google</string>
-    <string name="import_contacts_description">Si un anniversaire importé ne comprend pas l\'année de naissance, Birday définira automatiquemennt l\'année en 2000. Veuillez modifier les événements dont les années manquent pour avoir des statistiques plus précises !</string>
+    <string name="import_contacts_description">Si un anniversaire importé ne comprend pas l\'année de naissance, Birday définira automatiquemennt l\'année en 1970. Veuillez modifier les événements dont les années manquent pour avoir des statistiques plus précises !</string>
     <string name="import_success">Importation terminée avec succès !</string>
     <string name="import_nothing_found">Aucun anniversaire n\'a été trouvé !</string>
     <string name="import_failed">Il y a eu un problème !</string>
@@ -201,5 +201,6 @@
     <string name="search_event">Rechercher…</string>
     <string name="search_no_result_title">Aucun résultat n\'a été trouvé</string>
     <string name="search_no_result_description">Votre requête ne correspond à aucun événement de la base de données Birday !</string>
+    <string name="consider_year">Considérez l\'année</string>
 
 </resources>

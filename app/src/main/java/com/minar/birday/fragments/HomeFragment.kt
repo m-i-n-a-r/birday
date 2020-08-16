@@ -18,6 +18,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -246,41 +247,41 @@ class HomeFragment : Fragment() {
 
                 // Set the drawable of the zodiac sign
                 when (statsGenerator.getZodiacSignNumber(person)) {
-                    0 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
-                        R.drawable.ic_zodiac_sagittarius
+                    0 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_sagittarius
                     ))
-                    1 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
-                        R.drawable.ic_zodiac_capricorn
+                    1 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_capricorn
                     ))
-                    2 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
-                        R.drawable.ic_zodiac_aquarius
+                    2 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_aquarius
                     ))
-                    3 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
-                        R.drawable.ic_zodiac_pisces
+                    3 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_pisces
                     ))
-                    4 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
-                        R.drawable.ic_zodiac_aries
+                    4 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_aries
                     ))
-                    5 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
-                        R.drawable.ic_zodiac_taurus
+                    5 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_taurus
                     ))
-                    6 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
-                        R.drawable.ic_zodiac_gemini
+                    6 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_gemini
                     ))
-                    7 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
-                        R.drawable.ic_zodiac_cancer
+                    7 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_cancer
                     ))
-                    8 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
-                        R.drawable.ic_zodiac_leo
+                    8 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_leo
                     ))
-                    9 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
-                        R.drawable.ic_zodiac_virgo
+                    9 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_virgo
                     ))
-                    10 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
-                        R.drawable.ic_zodiac_libra
+                    10 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_libra
                     ))
-                    11 -> customView.detailsZodiacImage.setImageDrawable(act.getDrawable(
-                        R.drawable.ic_zodiac_scorpio
+                    11 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_scorpio
                     ))
                 }
                 return true
@@ -409,6 +410,7 @@ class HomeFragment : Fragment() {
     private fun editEvent(eventResult: EventResult) {
         var nameValue  = eventResult.name
         var surnameValue = eventResult.surname
+        var countYearValue = eventResult.yearMatter
         var eventDateValue: LocalDate = eventResult.originalDate
         val dialog = MaterialDialog(act, BottomSheet(LayoutMode.WRAP_CONTENT)).show {
             cornerRadius(res = R.dimen.rounded_corners)
@@ -421,6 +423,7 @@ class HomeFragment : Fragment() {
                     id = eventResult.id,
                     originalDate = eventDateValue,
                     name = nameValue.smartCapitalize(),
+                    yearMatter = countYearValue,
                     surname = surnameValue?.smartCapitalize(),
                     favorite = eventResult.favorite
                 )
@@ -438,13 +441,20 @@ class HomeFragment : Fragment() {
         val name = customView.findViewById<TextView>(R.id.nameEvent)
         val surname = customView.findViewById<TextView>(R.id.surnameEvent)
         val eventDate = customView.findViewById<TextView>(R.id.dateEvent)
+        val countYear = customView.findViewById<CheckBox>(R.id.countYearCheckbox)
         name.text = nameValue
         surname.text = surnameValue
+        countYear.isChecked = countYearValue!!
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
         eventDate.text = eventDateValue.format(formatter)
         val endDate = Calendar.getInstance()
         var dateDialog: MaterialDialog? = null
 
+        // Update the boolean value on each click
+        countYear.setOnCheckedChangeListener { _, isChecked ->
+            countYearValue = isChecked
+        }
+        
         eventDate.setOnClickListener {
             // Prevent double dialogs on fast click
             if(dateDialog == null) {

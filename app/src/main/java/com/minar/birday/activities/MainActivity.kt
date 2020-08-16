@@ -14,6 +14,7 @@ import android.net.Uri
 import android.os.*
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -124,6 +125,7 @@ class MainActivity : AppCompatActivity() {
             var nameValue  = "error"
             var surnameValue = ""
             var eventDateValue: LocalDate = LocalDate.of(1970,1,1)
+            var countYearValue = true
             val dialog = MaterialDialog(this, BottomSheet(LayoutMode.WRAP_CONTENT)).show {
                 cornerRadius(res = R.dimen.rounded_corners)
                 title(R.string.new_event)
@@ -134,7 +136,7 @@ class MainActivity : AppCompatActivity() {
                     // Use the data to create a event object and insert it in the db
                     val tuple = Event(
                         id = 0, originalDate = eventDateValue, name = nameValue.smartCapitalize(),
-                        surname = surnameValue.smartCapitalize()
+                        surname = surnameValue.smartCapitalize(), yearMatter = countYearValue
                     )
                     // Insert using another thread
                     val thread = Thread { homeViewModel.insert(tuple) }
@@ -153,8 +155,14 @@ class MainActivity : AppCompatActivity() {
             val name = customView.findViewById<TextView>(R.id.nameEvent)
             val surname = customView.findViewById<TextView>(R.id.surnameEvent)
             val eventDate = customView.findViewById<TextView>(R.id.dateEvent)
+            val countYear = customView.findViewById<CheckBox>(R.id.countYearCheckbox)
             val endDate = Calendar.getInstance()
             var dateDialog: MaterialDialog? = null
+
+            // Update the boolean value on each click
+            countYear.setOnCheckedChangeListener { _, isChecked ->
+                countYearValue = isChecked
+            }
 
             eventDate.setOnClickListener {
                 // Prevent double dialogs on fast click

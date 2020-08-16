@@ -68,7 +68,7 @@
     <string name="import_export">Importeren en Exporteren</string>
     <string name="import_contacts_title">Importeer verjaardagen vanuit Google</string>
     <string name="import_contacts_description">Als een geïmporteede verjaardag geen jaar bevat, zal Birday automatisch het jaar
-    2000 selecteren. Zorg er dus voor dat je het jaar aanpast om de meest accurate statistieken te krijgen!</string>
+    1970 selecteren. Zorg er dus voor dat je het jaar aanpast om de meest accurate statistieken te krijgen!</string>
     <string name="import_success">Het importeren is gelukt!</string>
     <string name="import_nothing_found">Geen verjaardagen gevonden!</string>
     <string name="import_failed">Er ging iets mis!</string>
@@ -211,5 +211,6 @@
     <string name="search_event">Zoeken…</string>
     <string name="search_no_result_title">Geen resultaten gevonden</string>
     <string name="search_no_result_description">Je zoekopdracht komt niet overeen met een gebeurtenis uit de Birday database!</string>
+    <string name="consider_year">Overweeg het jaar</string>
 
 </resources>

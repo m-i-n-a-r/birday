@@ -201,5 +201,6 @@
     <string name="search_event">Suchen…</string>
     <string name="search_no_result_title">Keine Ergebnisse gefunden</string>
     <string name="search_no_result_description">Dein Suchbegriff stimmt mit keinem Ereignis in der Birday-Datenbank überein!</string>
+    <string name="consider_year">Betrachten Sie das Jahr</string>
 
 </resources>
