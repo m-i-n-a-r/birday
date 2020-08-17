@@ -54,7 +54,11 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapte
         fun bind(event: EventResult?) {
             val personName = event?.name + " " + event?.surname
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
-            val originalDate = event?.originalDate?.format(formatter)
+
+            // TODO Check if the year is considered and display the full date only if it is
+            var originalDate = event?.originalDate?.format(formatter)
+            if (event?.yearMatter == false) originalDate = event.originalDate.format(formatter)
+
             eventPerson.text = personName
             eventDate.text = originalDate
 

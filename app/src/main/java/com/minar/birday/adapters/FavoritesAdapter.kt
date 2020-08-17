@@ -42,7 +42,11 @@ class FavoritesAdapter internal constructor(context: Context) : ListAdapter<Even
         fun bind(event: EventResult?) {
             val personName = event?.name + " " + event?.surname
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
-            val nextDate = event?.nextDate?.format(formatter)
+
+            // TODO Check if the year is considered and display the full date only if it is
+            var nextDate = event?.nextDate?.format(formatter)
+            if (event?.yearMatter == false) nextDate = event.nextDate?.format(formatter)
+
             var age = (event!!.nextDate!!.year - event.originalDate.year - 1)
             if (age < 0) age = 0
             val actualAge = appContext.getString(R.string.next_age_years) + ": " + age.toString() +
