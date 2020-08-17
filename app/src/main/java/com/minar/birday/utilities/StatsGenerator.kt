@@ -30,11 +30,11 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
                 3 -> mostCommonDecade()
                 4 -> mostCommonAgeRange()
                 5 -> specialAges()
-                6 -> zodiacSign(randomPerson)
+                6 -> leapYearTotal()
                 7 -> mostCommonZodiacSign()
-                8 -> dayOfWeek(randomPerson)
-                9 -> mostCommonDayOfWeek()
-                10 -> leapYearTotal()
+                8 -> mostCommonDayOfWeek()
+                9 -> dayOfWeek(randomPerson)
+                10 -> zodiacSign(randomPerson)
                 11 -> chineseSign(randomPerson)
                 else -> ageAverage()
             }
@@ -97,8 +97,11 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         val ageRanges = mutableMapOf<String, Int>()
         val commonRange: String
         events.forEach {
-            if(ageRanges[getAgeRange(it.originalDate)] == null) ageRanges[getAgeRange(it.originalDate)] = 1
-            else ageRanges[getAgeRange(it.originalDate)] = ageRanges[getAgeRange(it.originalDate)]!!.plus(1)
+            // Quite unnecessary both here and in other functions, but it's for extra safety
+            if (it.yearMatter!!) {
+                if (ageRanges[getAgeRange(it.originalDate)] == null) ageRanges[getAgeRange(it.originalDate)] = 1
+                else ageRanges[getAgeRange(it.originalDate)] = ageRanges[getAgeRange(it.originalDate)]!!.plus(1)
+            }
         }
         commonRange = evaluateResult(ageRanges)
         if (commonRange.isBlank()) return commonRange
@@ -110,8 +113,11 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         val decades = mutableMapOf<String, Int>()
         val commonDecade: String
         events.forEach {
-            if(decades[getDecade(it.originalDate)] == null) decades[getDecade(it.originalDate)] = 1
-            else decades[getDecade(it.originalDate)] = decades[getDecade(it.originalDate)]!!.plus(1)
+            // Quite unnecessary both here and in other functions, but it's for extra safety
+            if (it.yearMatter!!) {
+                if (decades[getDecade(it.originalDate)] == null) decades[getDecade(it.originalDate)] = 1
+                else decades[getDecade(it.originalDate)] = decades[getDecade(it.originalDate)]!!.plus(1)
+            }
         }
         commonDecade = evaluateResult(decades)
         if (commonDecade.isBlank()) return commonDecade
@@ -123,8 +129,11 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         val specialAges = arrayOf(10,18,20,30,40,50,60,70,80,90,100,110,120,130)
         val specialPersons = mutableMapOf<String, Int>()
         events.forEach {
-            val nextAge = getNextAge(it)
-            if (nextAge in specialAges) specialPersons[it.name] = nextAge
+            // Quite unnecessary both here and in other functions, but it's for extra safety
+            if (it.yearMatter!!) {
+                val nextAge = getNextAge(it)
+                if (nextAge in specialAges) specialPersons[it.name] = nextAge
+            }
         }
         return if (specialPersons.isEmpty()) ""
         else {
@@ -154,7 +163,8 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
 
     // Get the day of the week of birth for a random person
     private fun dayOfWeek(person: EventResult): String {
-        return person.name + " " + applicationContext?.getString(R.string.random_day_of_week) + " " +
+        return if (!person.yearMatter!!) ""
+        else person.name + " " + applicationContext?.getString(R.string.random_day_of_week) + " " +
                 person.originalDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault()).toLowerCase(Locale.ROOT)
     }
 
@@ -163,9 +173,11 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         val weekDays = mutableMapOf<String, Int>()
         val commonWeekDay: String
         events.forEach {
-            val weekDay = it.originalDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault())
-            if(weekDays[weekDay] == null) weekDays[weekDay] = 1
-            else weekDays[weekDay] = weekDays[weekDay]!!.plus(1)
+            if (it.yearMatter!!) {
+                val weekDay = it.originalDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault())
+                if (weekDays[weekDay] == null) weekDays[weekDay] = 1
+                else weekDays[weekDay] = weekDays[weekDay]!!.plus(1)
+            }
         }
         commonWeekDay = evaluateResult(weekDays)
         if (commonWeekDay.isBlank()) return commonWeekDay
@@ -176,29 +188,32 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     private fun leapYearTotal(): String {
         var leapTotal = 0
         events.forEach {
-            if (it.originalDate.isLeapYear) leapTotal++
+            if (it.yearMatter!!) if (it.originalDate.isLeapYear) leapTotal++
         }
         return applicationContext?.getString(R.string.leap_year_total) + " " + leapTotal.toString()
     }
 
     // Get the chinese year of a random person
     private fun chineseSign(person: EventResult): String {
-        return applicationContext?.getString(R.string.random_chinese_year) + " " + person.name + ": " + getChineseSign(person)
+        return if (!person.yearMatter!!) ""
+        else applicationContext?.getString(R.string.random_chinese_year) + " " + person.name + ": " + getChineseSign(person)
     }
 
     // Get a list containing all the ages without any reference to the names
     private fun getAges(): Map<String, Int> {
         val ages = mutableMapOf<String, Int>()
         events.forEach {
-            val age = getAge(it)
-            ages[it.name] = age
+            if (it.yearMatter!!) {
+                val age = getAge(it)
+                ages[it.name] = age
+            }
         }
         return ages
     }
 
-    private fun getAge(eventResult: EventResult) = eventResult.nextDate!!.year - eventResult.originalDate.year - 1
+    private fun getAge(eventResult: EventResult) = if (!eventResult.yearMatter!!) -1 else eventResult.nextDate!!.year - eventResult.originalDate.year - 1
 
-    private fun getNextAge(eventResult: EventResult) = eventResult.nextDate!!.year - eventResult.originalDate.year
+    private fun getNextAge(eventResult: EventResult) = if (!eventResult.yearMatter!!) -1 else eventResult.nextDate!!.year - eventResult.originalDate.year
 
     private fun getDecade(originalDate: LocalDate) = ((originalDate.year.toDouble() / 10).toInt() * 10).toString()
 
