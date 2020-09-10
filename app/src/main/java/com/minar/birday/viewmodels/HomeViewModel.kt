@@ -20,7 +20,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val sp = PreferenceManager.getDefaultSharedPreferences(application)
     val allEvents: LiveData<List<EventResult>>
     val searchStringLiveData = MutableLiveData<String>()
-    private val eventDao: EventDao = EventDatabase.getBirdayDataBase(application)!!.eventDao()
+    private val eventDao: EventDao = EventDatabase.getBirdayDatabase(application)!!.eventDao()
 
     init {
         searchStringLiveData.value = ""

@@ -15,7 +15,7 @@ class FavoritesViewModel(application: Application) : AndroidViewModel(applicatio
     val allFavoriteEvents: LiveData<List<EventResult>>
     val allEvents: LiveData<List<EventResult>>
     val anyFavoriteEvent: LiveData<List<EventResult>>
-    private val eventDao: EventDao = EventDatabase.getBirdayDataBase(application)!!.eventDao()
+    private val eventDao: EventDao = EventDatabase.getBirdayDatabase(application)!!.eventDao()
 
     init {
         allEvents = eventDao.getOrderedEvents()

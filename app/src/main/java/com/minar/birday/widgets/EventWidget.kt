@@ -28,7 +28,7 @@ class EventWidget : AppWidgetProvider() {
 
 internal fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int) {
     val thread = Thread {
-        val eventDao: EventDao = EventDatabase.getBirdayDataBase(context)!!.eventDao()
+        val eventDao: EventDao = EventDatabase.getBirdayDatabase(context)!!.eventDao()
         val allEvents: List<EventResult> = eventDao.getOrderedAllEvents()
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
         val widgetUpcoming: String

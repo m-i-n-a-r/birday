@@ -16,7 +16,7 @@ abstract class EventDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: EventDatabase? = null
 
-        fun getBirdayDataBase(context: Context): EventDatabase? {
+        fun getBirdayDatabase(context: Context): EventDatabase? {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
