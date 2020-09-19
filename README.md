@@ -61,12 +61,14 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 </p>
 
 ## Download
-The app is available through Google Play\
+The app is available through Google Play and F-Droid\
 \
-<a href='https://play.google.com/store/apps/details?id=com.minar.birday'>
-  <img height="45" alt="Get it on Google Play"
-      src='https://play.google.com/intl/en_us/badges/images/apps/en-play-badge.png' />
-</a>
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+     alt="Get it on F-Droid"
+     height="80">](https://f-droid.org/packages/com.minar.birday/)
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
+     alt="Get it on Google Play"
+     height="80">](https://play.google.com/store/apps/details?id=com.minar.birday)
 
 ## Credits and contributions
 Currently, Birday supports the languages in the above table. If you want to translate the app in any other language, just contact me: you'll be quoted both on Github and in the Play Store description.
