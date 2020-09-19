@@ -17,7 +17,7 @@
     <string name="no_stats">Keine Statistiken zu zeigen!</string>
     <string name="stats_summary">Zusammenfassung der Statistiken</string>
     <string name="no_stats_description">Zusammenfassung der Statistiken</string>
-    <string name="stats_total">Birday hilft dir, sich an insgesamt</string>
+    <string name="stats_total">Birday hilft dir beim Erinnern an insgesamt</string>
     <string name="next_event">Nächstes Ereignis</string>
     <string name="no_next_event">Keine Geburtstage zu zeigen!</string>
     <string name="no_next_event_description">Du hast noch keinen Geburtstag hinzugefügt oder importiert. Füge einen hinzu und lass dir von Birday helfen!</string>
@@ -29,9 +29,9 @@
     <string name="customization">Anpassung</string>
     <string name="app_behavior">App-Verhalten</string>
     <string name="additional_notification_name">Zusätzliche Benachrichtigung</string>
-    <string name="additional_notification_description">Sende eine zusätzliche Benachrichtigung Tage vor dem Ereignis %s</string>
-    <string name="no_additional_notification">Keine zusätzlichen Benachrichtigungen</string>
-    <string name="one_day_before">Einen Tag vorhere</string>
+    <string name="additional_notification_description">Sende eine zusätzliche Benachrichtigung %s Tage vor jedem Geburtstag</string>
+    <string name="no_additional_notification">Nie</string>
+    <string name="one_day_before">Einen Tag vorher</string>
     <string name="two_days_before">Zwei Tag vorher</string>
     <string name="three_days_before">Drei Tage vorher</string>
     <string name="four_days_before">Vier Tage vorher</string>
@@ -39,8 +39,8 @@
     <string name="six_days_before">Sechs Tage vorher</string>
     <string name="seven_days_before">Sieben Tage vorher</string>
     <string name="vibration_name">Vibration</string>
-    <string name="vibration_description_on">Vibriere wenn eine Taste gedrückt wird</string>
-    <string name="vibration_description_off">Keine Vibration wenn die Taste gedrückt wird</string>
+    <string name="vibration_description_on">Vibriere bei Tastendruck</string>
+    <string name="vibration_description_off">Keine Vibration bei Tastendruck</string>
     <string name="date_format_name">Datumsformat</string>
     <string name="notification_hour_name">Uhrzeit der Benachrichtigung</string>
     <string name="notification_hour_description">%s \n\nBitte beachte, dass die Benachrichtigung möglicherweise nicht funktioniert, wenn die App in einigen Huawei-, Xiaomi- und OnePlus-Geräten vom System beendet wird. Weitere informationnen findest du unter dontkillmyapp.com</string>
@@ -64,16 +64,16 @@
     <string name="light_theme">Hell</string>
     <string name="shimmer_name">Schimmereffekt</string>
     <string name="shimmer_description_on">Eine glänzende Animation hier und da in der App</string>
-    <string name="shimmer_description_off">Keine zusätzlichen grafischen Effekte</string>
+    <string name="shimmer_description_off">Keine zusätzlichen graphischen Effekte</string>
     <string name="import_export">Import und Export</string>
     <string name="import_contacts_title">Importiere Geburtstage von Google</string>
-    <string name="import_contacts_description">Wenn ein importierter Geburtstag das Jahr nicht enthält, setzt Birday automatisch das Jahr 2000. Achte darauf, die Ereignisse mit dem fehlenden Jahr zu ändern, um immer genaue Statistiken zu haben!</string>
+    <string name="import_contacts_description">Wenn ein importierter Geburtstag das Jahr nicht enthält, setzt Birday automatisch das Jahr 2000. Achte darauf, die Ereignisse mit fehlendem Jahr zu ändern, um immer genaue Statistiken zu haben!</string>
     <string name="import_success">Import erfolgreich abgeschlossen!</string>
     <string name="import_nothing_found">Keine Geburtstage gefunden!</string>
     <string name="import_failed">Etwas ist schief gelaufen!</string>
     <string name="missing_permission_contacts">Die Kontakterlaubnis wurde verweigert. Versuche es noch einmal oder aktiviere die Berechtigung manuell, sonst funktioniert der Import der Kontakte aus Google nicht!</string>
-    <string name="missing_permission_contacts_forever">Birday konnte Ihre Kontakte weder importieren noch um Berechtigung fragen, da "nie wieder fragen" angekreuzt wurde. Aktiviere es manuell!</string>
-    <string name="birday_import_title">Importier ein Birday Backup</string>
+    <string name="missing_permission_contacts_forever">Birday konnte deine Kontakte weder importieren noch um Berechtigung fragen, da "nie wieder fragen" angekreuzt wurde. Du musst es manuell aktivieren!</string>
+    <string name="birday_import_title">Importiere ein Birday Backup</string>
     <string name="birday_import_description">Wähle ein gültiges Birday Backup, um deine Geburtstage manuell wiederherzustellen. Alle vorhandenen Daten werden dabei überschrieben!</string>
     <string name="birday_export_title">Exportiere und teile Geburtstage</string>
     <string name="birday_export_description">Exportiere die verfügbaren Geburtstage und teile sie, wenn du möchtest. Die Datei befindet sich in Android/data/com.minar.birday/files</string>
@@ -81,7 +81,7 @@
     <string name="birday_import_failure">Import fehlgeschlagen. Hast du die Datei richtig ausgewählt?</string>
     <string name="birday_import_invalid_file">Import fehlgeschlagen. Die ausgewählte Datei ist kein Birday Backup!</string>
     <string name="birday_export_success">Export abgeschlossen!</string>
-    <string name="birday_export_failure">Export fehlgeschlagen. Whoopsie!</string>
+    <string name="birday_export_failure">Export fehlgeschlagen. Ups!</string>
     <string name="birday_export_nothing_found">Nichts zum exportieren!</string>
 
     <!-- Developer -->
@@ -114,7 +114,7 @@
 
     <!-- Quick apps -->
     <string name="event_apps">Quick apps</string>
-    <string name="event_apps_description">Apps um alles Gute schnell zu wünschen!</string>
+    <string name="event_apps_description">Apps um schnell alles Gute zu wünschen!</string>
     <string name="whatsapp">Whatsapp</string>
     <string name="telegram">Telegram</string>
     <string name="textMessage">Textnachricht</string>
