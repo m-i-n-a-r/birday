@@ -9,6 +9,7 @@ import androidx.annotation.ColorInt
 import com.minar.birday.R
 import com.minar.birday.model.EventResult
 import java.time.LocalDate
+import java.time.Period
 import java.time.format.TextStyle
 import java.util.*
 import kotlin.math.truncate
@@ -66,16 +67,41 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         return applicationContext?.getString(R.string.age_average) + " " + average.toString() + " " + applicationContext?.getString(R.string.years)
     }
 
+    // The oldest person, taking into account months and days
     private fun oldestPerson(): String {
-        val oldest = getAges().maxBy { it.value }
-        return applicationContext?.getString(R.string.oldest_person) + " " + oldest?.key + ", " + oldest?.value +
+        var oldestDate = LocalDate.now()
+        var oldestName = ""
+        var oldestAge = 0
+        events.forEach {
+            if (oldestDate.isAfter(it.originalDate) && it.yearMatter!!) {
+                oldestName = it.name
+                oldestDate = it.originalDate
+                oldestAge = getAge(it)
+            }
+        }
+        return applicationContext?.getString(R.string.oldest_person) + " " + oldestName + ", " + oldestAge +
                 " " + applicationContext?.getString(R.string.years)
     }
 
+    // The youngest person, taking into account months and days
     private fun youngestPerson(): String {
-        val youngest = getAges().minBy { it.value }
-        return applicationContext?.getString(R.string.youngest_person) + " " + youngest?.key + ", " + youngest?.value +
-                " " + applicationContext?.getString(R.string.years)
+        var youngestDate = LocalDate.of(1900,1,1)
+        var youngestName = ""
+        var youngestAge = 0
+        events.forEach {
+            if (youngestDate.isBefore(it.originalDate) && it.yearMatter!!) {
+                youngestName = it.name
+                youngestDate = it.originalDate
+                youngestAge = getAge(it)
+            }
+        }
+        // If the youngest person is a baby, return the age in months
+        return if (youngestAge == 0)
+            applicationContext?.getString(R.string.youngest_person) + " " + youngestName + ", " +
+                getAgeMonths(youngestDate) + " " + applicationContext?.getString(R.string.months)
+        else
+            applicationContext?.getString(R.string.youngest_person) + " " + youngestName + ", " +
+                youngestAge + " " + applicationContext?.getString(R.string.years)
     }
 
     // The most common month. When there's no common month, return a blank string
@@ -199,7 +225,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         else applicationContext?.getString(R.string.random_chinese_year) + " " + person.name + ": " + getChineseSign(person)
     }
 
-    // Get a list containing all the ages without any reference to the names
+    // Get a list containing the names and an int containing the age
     private fun getAges(): Map<String, Int> {
         val ages = mutableMapOf<String, Int>()
         events.forEach {
@@ -211,14 +237,27 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         return ages
     }
 
-    private fun getAge(eventResult: EventResult) = if (!eventResult.yearMatter!!) -1 else eventResult.nextDate!!.year - eventResult.originalDate.year - 1
+    // Get the age also considering the possible corner cases
+    private fun getAge(eventResult: EventResult): Int {
+        var age = -1
+        if (!eventResult.yearMatter!!) return age
+        else age = eventResult.nextDate!!.year - eventResult.originalDate.year - 1
+        return if (age == -1) 0 else age
+    }
 
-    private fun getNextAge(eventResult: EventResult) = if (!eventResult.yearMatter!!) -1 else eventResult.nextDate!!.year - eventResult.originalDate.year
+    // Get the months of the age. Useful for babies
+    private fun getAgeMonths(date: LocalDate) = Period.between(date, LocalDate.now()).months
 
+    // Get the next age also considering the possible corner cases
+    private fun getNextAge(eventResult: EventResult) = getAge(eventResult) + 1
+
+    // Get the decade of birth
     private fun getDecade(originalDate: LocalDate) = ((originalDate.year.toDouble() / 10).toInt() * 10).toString()
 
+    // Get the age range, in decades
     private fun getAgeRange(originalDate: LocalDate) = (((LocalDate.now().year - originalDate.year).toDouble() / 10).toInt() * 10).toString()
 
+    // Get the chinese sign
     fun getChineseSign(person: EventResult): String {
         var sign = ""
         var signNumber = 0
@@ -253,6 +292,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         return sign
     }
 
+    // Get the zodiac sign
     fun getZodiacSign(person: EventResult): String {
         val day = person.originalDate.dayOfMonth
         val month = person.originalDate.month.value

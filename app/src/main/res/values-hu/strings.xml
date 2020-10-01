@@ -170,6 +170,7 @@
     <string name="events">események</string>
     <string name="day">nap</string>
     <string name="days">napokkal</string>
+    <string name="months">hónapok</string>
     <string name="today">Ma</string>
     <string name="yesterday">Tegnap</string>
     <string name="tomorrow">Holnap</string>

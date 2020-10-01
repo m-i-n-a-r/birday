@@ -175,6 +175,7 @@
     <string name="events">gebeurtenissen</string>
     <string name="day">dag</string>
     <string name="days">dagen</string>
+    <string name="months">maanden</string>
     <string name="today">Vandaag</string>
     <string name="yesterday">Gisteren</string>
     <string name="tomorrow">Morgen</string>

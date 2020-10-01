@@ -64,6 +64,7 @@
     <string name="events">eventi</string>
     <string name="day">giorno</string>
     <string name="days">giorni</string>
+    <string name="months">mesi</string>
     <string name="today">Oggi</string>
     <string name="yesterday">Ieri</string>
     <string name="tomorrow">Domani</string>

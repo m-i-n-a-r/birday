@@ -146,6 +146,7 @@
     <string name="event">evento</string>
     <string name="day">día</string>
     <string name="days">días</string>
+    <string name="months">meses</string>
     <string name="tomorrow">Mañana</string>
     <string name="today">Hoy</string>
     <string name="yesterday">Ayer</string>
@@ -178,5 +179,4 @@
     <string name="search_no_result_title">No hay resultados</string>
     <string name="search_no_result_description">¡Su cadena de búsqueda no coincide con ningún evento en la base de datos de Birday!</string>
     <string name="consider_year">Considere el año</string>
-
 </resources>

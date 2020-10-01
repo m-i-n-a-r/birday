@@ -154,6 +154,7 @@
     <string name="events">händelser</string>
     <string name="day">dag</string>
     <string name="days">dagar</string>
+    <string name="months">månader</string>
     <string name="today">I dag</string>
     <string name="yesterday">I går</string>
     <string name="tomorrow">I morgon</string>
