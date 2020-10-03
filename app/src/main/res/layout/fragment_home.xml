@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Focusable in touch mode removes the default focus
-from the search bar when focused for the first time -->
+<!-- Focusable in touch mode removes the default focus from the search bar when focused for the first time -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/homeMain"
@@ -156,8 +155,6 @@ from the search bar when focused for the first time -->
         android:id="@+id/noEvents"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:drawableTop="@drawable/ic_sad_72dp"
-        android:drawableTint="@color/goodGraySemiTranslucent"
         android:gravity="center"
         android:maxLines="3"
         android:paddingLeft="@dimen/placeholders_horizontal_padding"
@@ -167,7 +164,9 @@ from the search bar when focused for the first time -->
         android:scrollbarSize="0dp"
         android:text="@string/no_events"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-        android:textColor="@color/goodGraySemiTranslucent" />
+        android:textColor="@color/goodGraySemiTranslucent"
+        app:drawableTopCompat="@drawable/ic_sad_72dp"
+        app:drawableTint="@color/goodGraySemiTranslucent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/eventRecycler"

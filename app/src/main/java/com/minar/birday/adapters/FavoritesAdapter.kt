@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
 import com.minar.birday.model.EventResult
+import com.minar.birday.utilities.getAge
 import kotlinx.android.synthetic.main.event_row.view.eventDate
 import kotlinx.android.synthetic.main.event_row.view.eventPerson
 import kotlinx.android.synthetic.main.favorite_row.view.*
@@ -39,21 +40,22 @@ class FavoritesAdapter internal constructor(context: Context) : ListAdapter<Even
         private val eventYears: TextView = view.eventYears
 
         // Set every necessary text and click action in each row
-        fun bind(event: EventResult?) {
-            val personName = event?.name + " " + event?.surname
+        fun bind(event: EventResult) {
+            val personName = event.name + " " + event.surname
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
+            val age = getAge(event)
+            var nextDate = event.nextDate?.format(formatter)
 
-            // TODO Check if the year is considered and display the full date only if it is
-            var nextDate = event?.nextDate?.format(formatter)
-            if (event?.yearMatter == false) nextDate = event.nextDate?.format(formatter)
-
-            var age = (event!!.nextDate!!.year - event.originalDate.year - 1)
-            if (age < 0) age = 0
+            if (event.yearMatter == false) nextDate = event.nextDate?.format(formatter)
             val actualAge = appContext.getString(R.string.next_age_years) + ": " + age.toString() +
                     ", " + appContext.getString(R.string.born_in) + " " + event.originalDate.year
             eventPerson.text = personName
             eventDate.text = nextDate
-            eventYears.text = actualAge
+            if (age != -1) {
+                eventYears.visibility = View.VISIBLE
+                eventYears.text = actualAge
+            }
+            else eventYears.visibility = View.GONE
         }
     }
 }

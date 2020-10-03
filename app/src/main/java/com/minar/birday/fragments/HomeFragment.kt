@@ -43,10 +43,7 @@ import com.minar.birday.activities.SplashActivity
 import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
-import com.minar.birday.utilities.OnItemClickListener
-import com.minar.birday.utilities.StatsGenerator
-import com.minar.birday.utilities.checkString
-import com.minar.birday.utilities.smartCapitalize
+import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.HomeViewModel
 import com.minar.birday.widgets.EventWidget
 import kotlinx.android.synthetic.main.dialog_actions_event.view.*
@@ -241,7 +238,7 @@ class HomeFragment : Fragment() {
                 subject.add(person)
                 val statsGenerator = StatsGenerator(subject, context)
                 customView.detailsBirthDateValue.text = person.originalDate.format(formatter)
-                customView.detailsNextAgeValue.text = (person.nextDate!!.year.minus(person.originalDate.year)).toString()
+                customView.detailsNextAgeValue.text = getNextAge(person).toString()
                 customView.detailsZodiacSignValue.text = statsGenerator.getZodiacSign(person)
                 customView.detailsChineseSignValue.text = statsGenerator.getChineseSign(person)
 

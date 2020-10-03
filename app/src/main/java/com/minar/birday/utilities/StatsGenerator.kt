@@ -9,7 +9,6 @@ import androidx.annotation.ColorInt
 import com.minar.birday.R
 import com.minar.birday.model.EventResult
 import java.time.LocalDate
-import java.time.Period
 import java.time.format.TextStyle
 import java.util.*
 import kotlin.math.truncate
@@ -237,26 +236,6 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         return ages
     }
 
-    // Get the age also considering the possible corner cases
-    private fun getAge(eventResult: EventResult): Int {
-        var age = -1
-        if (!eventResult.yearMatter!!) return age
-        else age = eventResult.nextDate!!.year - eventResult.originalDate.year - 1
-        return if (age == -1) 0 else age
-    }
-
-    // Get the months of the age. Useful for babies
-    private fun getAgeMonths(date: LocalDate) = Period.between(date, LocalDate.now()).months
-
-    // Get the next age also considering the possible corner cases
-    private fun getNextAge(eventResult: EventResult) = getAge(eventResult) + 1
-
-    // Get the decade of birth
-    private fun getDecade(originalDate: LocalDate) = ((originalDate.year.toDouble() / 10).toInt() * 10).toString()
-
-    // Get the age range, in decades
-    private fun getAgeRange(originalDate: LocalDate) = (((LocalDate.now().year - originalDate.year).toDouble() / 10).toInt() * 10).toString()
-
     // Get the chinese sign
     fun getChineseSign(person: EventResult): String {
         var sign = ""
@@ -363,9 +342,9 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         }
         return if(map.values.count { it == maxValue } > 1) ""
         else result
-
     }
 
+    // Functions to build the
     private fun SpannableStringBuilder.appendBulletSpans(paragraphs: List<String>, margin: Int, @ColorInt color: Int): SpannableStringBuilder {
         for (paragraph in paragraphs) {
             if (paragraphs.indexOf(paragraph) == 0) appendBulletSpan(paragraph, margin, color, true)
