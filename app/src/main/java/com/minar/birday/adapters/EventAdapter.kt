@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.fragments.HomeFragment
 import com.minar.birday.R
 import com.minar.birday.model.EventResult
-import com.minar.birday.utilities.OnItemClickListener
+import com.minar.birday.listeners.OnItemClickListener
 import kotlinx.android.synthetic.main.event_row.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

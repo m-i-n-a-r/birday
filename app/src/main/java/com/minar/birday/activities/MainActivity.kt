@@ -157,7 +157,11 @@ class MainActivity : AppCompatActivity() {
             val eventDate = customView.findViewById<TextView>(R.id.dateEvent)
             val countYear = customView.findViewById<CheckBox>(R.id.countYearCheckbox)
             val endDate = Calendar.getInstance()
+            val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
             var dateDialog: MaterialDialog? = null
+
+            // To automatically show the last selected date, parse it to another Calendar object
+            val lastDate = Calendar.getInstance()
 
             // Update the boolean value on each click
             countYear.setOnCheckedChangeListener { _, isChecked ->
@@ -170,14 +174,14 @@ class MainActivity : AppCompatActivity() {
                     dateDialog = MaterialDialog(this).show {
                         cancelable(false)
                         cancelOnTouchOutside(false)
-                        datePicker(maxDate = endDate) { _, date ->
+                        datePicker(maxDate = endDate, currentDate = lastDate) { _, date ->
                             val year = date.get(Calendar.YEAR)
                             val month = date.get(Calendar.MONTH) + 1
                             val day = date.get(Calendar.DAY_OF_MONTH)
                             eventDateValue = LocalDate.of(year, month, day)
-                            val formatter: DateTimeFormatter =
-                                DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
                             eventDate.text = eventDateValue.format(formatter)
+                            // If ok is pressed, the last selected date is saved if the dialog is reopened
+                            lastDate.set(year, month - 1, day)
                         }
                     }
                     Handler(Looper.getMainLooper()).postDelayed({ dateDialog = null }, 750)

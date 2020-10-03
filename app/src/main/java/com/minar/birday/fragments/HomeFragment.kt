@@ -41,6 +41,7 @@ import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.activities.SplashActivity
 import com.minar.birday.adapters.EventAdapter
+import com.minar.birday.listeners.OnItemClickListener
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.*
@@ -447,6 +448,10 @@ class HomeFragment : Fragment() {
         val endDate = Calendar.getInstance()
         var dateDialog: MaterialDialog? = null
 
+        // To automatically show the last selected date, parse it to another Calendar object
+        val lastDate = Calendar.getInstance()
+        lastDate.set(eventDateValue.year, eventDateValue.monthValue - 1, eventDateValue.dayOfMonth)
+
         // Update the boolean value on each click
         countYear.setOnCheckedChangeListener { _, isChecked ->
             countYearValue = isChecked
@@ -454,10 +459,7 @@ class HomeFragment : Fragment() {
         
         eventDate.setOnClickListener {
             // Prevent double dialogs on fast click
-            if(dateDialog == null) {
-                // To automatically show the last selected date, parse it to another Calendar object
-                val lastDate = Calendar.getInstance()
-                lastDate.set(eventDateValue.year, eventDateValue.monthValue - 1, eventDateValue.dayOfMonth)
+            if (dateDialog == null) {
                 dateDialog = MaterialDialog(act).show {
                     cancelable(false)
                     cancelOnTouchOutside(false)
@@ -467,6 +469,8 @@ class HomeFragment : Fragment() {
                         val day = date.get(Calendar.DAY_OF_MONTH)
                         eventDateValue = LocalDate.of(year, month, day)
                         eventDate.text = eventDateValue.format(formatter)
+                        // If ok is pressed, the last selected date is saved if the dialog is reopened
+                        lastDate.set(year, month - 1, day)
                     }
                 }
                 Handler(Looper.getMainLooper()).postDelayed({ dateDialog = null }, 750)
