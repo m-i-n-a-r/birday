@@ -14,7 +14,6 @@ import android.net.Uri
 import android.os.*
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -37,6 +36,7 @@ import com.afollestad.materialdialogs.customview.getCustomView
 import com.afollestad.materialdialogs.datetime.datePicker
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.switchmaterial.SwitchMaterial
 import com.minar.birday.R
 import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.backup.BirdayImporter
@@ -155,7 +155,7 @@ class MainActivity : AppCompatActivity() {
             val name = customView.findViewById<TextView>(R.id.nameEvent)
             val surname = customView.findViewById<TextView>(R.id.surnameEvent)
             val eventDate = customView.findViewById<TextView>(R.id.dateEvent)
-            val countYear = customView.findViewById<CheckBox>(R.id.countYearCheckbox)
+            val countYear = customView.findViewById<SwitchMaterial>(R.id.countYearSwitch)
             val endDate = Calendar.getInstance()
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
             var dateDialog: MaterialDialog? = null

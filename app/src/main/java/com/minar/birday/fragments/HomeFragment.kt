@@ -37,6 +37,7 @@ import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
 import com.afollestad.materialdialogs.datetime.datePicker
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.google.android.material.switchmaterial.SwitchMaterial
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.activities.SplashActivity
@@ -439,7 +440,7 @@ class HomeFragment : Fragment() {
         val name = customView.findViewById<TextView>(R.id.nameEvent)
         val surname = customView.findViewById<TextView>(R.id.surnameEvent)
         val eventDate = customView.findViewById<TextView>(R.id.dateEvent)
-        val countYear = customView.findViewById<CheckBox>(R.id.countYearCheckbox)
+        val countYear = customView.findViewById<SwitchMaterial>(R.id.countYearSwitch)
         name.text = nameValue
         surname.text = surnameValue
         countYear.isChecked = countYearValue!!

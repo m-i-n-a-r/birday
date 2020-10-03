@@ -119,10 +119,16 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/countYearCheckbox"
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/countYearSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/text_field_horizontal_margin"
+            android:textColor="@color/goodGray"
+            android:drawableTint="@color/goodGray"
+            android:textAlignment="center"
+            app:thumbTextPadding="@dimen/activity_horizontal_margin"
+            android:drawableStart="@drawable/ic_date_question_black_24dp"
             android:text="@string/consider_year"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             android:layout_gravity="center_horizontal"
