@@ -78,8 +78,8 @@ class FavoritesFragment : Fragment() {
             if (eventList.isNotEmpty()) removePlaceholder()
         })
         favoritesViewModel.allEvents.observe(viewLifecycleOwner, Observer { eventList ->
-            // Under a minimum size, no stats will be shown
-            if (eventList.size > 4) generateStat(eventList)
+            // Under a minimum size, no stats will be shown (at least 5 events containing a year)
+            if (eventList.filter { it.yearMatter == true }.size > 4) generateStat(eventList)
             else fullStats = SpannableStringBuilder(requireActivity().applicationContext.getString(
                 R.string.no_stats_description
             ))
