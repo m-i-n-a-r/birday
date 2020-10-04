@@ -377,17 +377,20 @@ class HomeFragment : Fragment() {
         // Manage multiple events in the same day considering first case, middle cases and last case if more than 3
         for (event in events) {
             if (event.nextDate!!.isEqual(upcomingDate)) {
+                // Consider the case of null surname and the case of unknown age
                 val actualPersonName = if (event.surname.isNullOrBlank()) event.name
                 else event.name + " " + event.surname
+                val age = if (event.yearMatter!!) event.nextDate.year.minus(event.originalDate.year).toString()
+                else getString(R.string.unknown_age)
                 when (events.indexOf(event)) {
                     0 -> {
                         personName = actualPersonName
                         nextDateText = nextDate(event, formatter)
-                        nextAge = getString(R.string.next_age_years) + ": " + (event.nextDate.year.minus(event.originalDate.year)).toString()
+                        nextAge = getString(R.string.next_age_years) + ": $age"
                     }
                     1, 2 -> {
                         personName += ", $actualPersonName"
-                        nextAge += ", " + (event.nextDate.year.minus(event.originalDate.year)).toString()
+                        nextAge += ", $age"
                     }
                     3 -> {
                         personName += " " + getString(R.string.event_others)

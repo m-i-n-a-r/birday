@@ -191,6 +191,7 @@
     <string name="years">years</string>
     <string name="born_in">born in</string>
     <string name="and">and</string>
+    <string name="unknown_age" translatable="false">\??</string>
 
     <!-- Notifications -->
     <string name="events_notification_channel">Event Reminder</string>
