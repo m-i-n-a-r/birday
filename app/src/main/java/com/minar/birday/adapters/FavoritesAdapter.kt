@@ -4,13 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.getAge
+import com.minar.birday.utilities.getRemainingDays
 import kotlinx.android.synthetic.main.event_row.view.eventDate
 import kotlinx.android.synthetic.main.event_row.view.eventPerson
 import kotlinx.android.synthetic.main.favorite_row.view.*
@@ -35,22 +35,25 @@ class FavoritesAdapter internal constructor(context: Context) : ListAdapter<Even
     }
 
     inner class FavoriteViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-        private val eventPerson: TextView = view.eventPerson
-        private val eventDate: TextView = view.eventDate
-        private val eventYears: TextView = view.eventYears
+        private val eventPerson = view.eventPerson
+        private val eventDate = view.eventDate
+        private val eventYears = view.eventYears
+        private val eventCountdown = view.eventCountdown
 
         // Set every necessary text and click action in each row
         fun bind(event: EventResult) {
             val personName = event.name + " " + event.surname
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
             val age = getAge(event)
-            var nextDate = event.nextDate?.format(formatter)
+            val daysCountdown = "-" + getRemainingDays(event.nextDate!!)
+            var nextDate = event.nextDate.format(formatter)
 
-            if (event.yearMatter == false) nextDate = event.nextDate?.format(formatter)
+            if (event.yearMatter == false) nextDate = event.nextDate.format(formatter)
             val actualAge = appContext.getString(R.string.next_age_years) + ": " + age.toString() +
                     ", " + appContext.getString(R.string.born_in) + " " + event.originalDate.year
             eventPerson.text = personName
             eventDate.text = nextDate
+            eventCountdown.text = daysCountdown
             // Age -2 means that the year is not considered and the age is meaningless
             // TODO write something else in the third line instead of removing it
             if (age != -2) {
