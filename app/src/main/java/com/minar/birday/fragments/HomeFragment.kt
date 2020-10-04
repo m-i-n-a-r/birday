@@ -187,40 +187,8 @@ class HomeFragment : Fragment() {
     @ExperimentalStdlibApi
     private fun setUpAdapter() {
         adapter.setOnItemClickListener(onItemClickListener = object : OnItemClickListener {
-            override fun onItemClick(position: Int, view: View?) {
-                val title = getString(R.string.event_actions) + " - " + adapter.getItem(position).name
-                act.vibrate()
-                val dialog = MaterialDialog(act).show {
-                    title(text = title)
-                    icon(R.drawable.ic_balloon_24dp)
-                    message(R.string.event_actions_description)
-                    cornerRadius(res = R.dimen.rounded_corners)
-                    customView(R.layout.dialog_actions_event, scrollable = true)
-                    negativeButton(R.string.cancel) {
-                        dismiss()
-                    }
-                }
-
-                // Setup listeners and checks on the fields. Using view binding to fetch the buttons
-                val customView = dialog.getCustomView()
-                val deleteButton = customView.deleteButton
-                val editButton = customView.editButton
-
-                deleteButton.setOnClickListener {
-                    act.vibrate()
-                    deleteEvent(adapter.getItem(position))
-                    dialog.dismiss()
-                }
-
-                editButton.setOnClickListener {
-                    act.vibrate()
-                    editEvent(adapter.getItem(position))
-                    dialog.dismiss()
-                }
-            }
-
             // Show a dialog with the details of the selected contact
-            override fun onItemLongClick(position: Int, view: View?): Boolean {
+            override fun onItemClick(position: Int, view: View?) {
                 act.vibrate()
                 val person = adapter.getItem(position)
                 val title = getString(R.string.event_details) + " - " + person.name
@@ -296,6 +264,39 @@ class HomeFragment : Fragment() {
                     11 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_scorpio
                     ))
+                }
+            }
+
+            // Show a dialog with the available actions
+            override fun onItemLongClick(position: Int, view: View?): Boolean {
+                val title = getString(R.string.event_actions) + " - " + adapter.getItem(position).name
+                act.vibrate()
+                val dialog = MaterialDialog(act).show {
+                    title(text = title)
+                    icon(R.drawable.ic_smile_24dp)
+                    message(R.string.event_actions_description)
+                    cornerRadius(res = R.dimen.rounded_corners)
+                    customView(R.layout.dialog_actions_event, scrollable = true)
+                    negativeButton(R.string.cancel) {
+                        dismiss()
+                    }
+                }
+
+                // Setup listeners and checks on the fields. Using view binding to fetch the buttons
+                val customView = dialog.getCustomView()
+                val deleteButton = customView.deleteButton
+                val editButton = customView.editButton
+
+                deleteButton.setOnClickListener {
+                    act.vibrate()
+                    deleteEvent(adapter.getItem(position))
+                    dialog.dismiss()
+                }
+
+                editButton.setOnClickListener {
+                    act.vibrate()
+                    editEvent(adapter.getItem(position))
+                    dialog.dismiss()
                 }
                 return true
             }
