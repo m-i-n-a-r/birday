@@ -74,7 +74,11 @@ class HomeFragment : Fragment() {
     }
 
     @ExperimentalStdlibApi
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) : View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         val v: View = inflater.inflate(R.layout.fragment_home, container, false)
         val upcomingImage = v.findViewById<ImageView>(R.id.upcomingImage)
         val shimmer = v.findViewById<ShimmerFrameLayout>(R.id.homeCardShimmer)
@@ -92,13 +96,14 @@ class HomeFragment : Fragment() {
         // Open a micro app launcher
         homeCard.setOnClickListener {
             act.vibrate()
-            val dialog = MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
-                cornerRadius(res = R.dimen.rounded_corners)
-                title(R.string.event_apps)
-                icon(R.drawable.ic_apps_24dp)
-                message(R.string.event_apps_description)
-                customView(R.layout.dialog_apps_event, scrollable = true)
-            }
+            val dialog =
+                MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
+                    cornerRadius(res = R.dimen.rounded_corners)
+                    title(R.string.event_apps)
+                    icon(R.drawable.ic_apps_24dp)
+                    message(R.string.event_apps_description)
+                    customView(R.layout.dialog_apps_event, scrollable = true)
+                }
 
             val customView = dialog.getCustomView()
             // Using viewbinding to fetch the buttons
@@ -111,10 +116,16 @@ class HomeFragment : Fragment() {
             whatsappButton.setOnClickListener {
                 act.vibrate()
                 try {
-                    val whatsIntent: Intent? = ctx.packageManager.getLaunchIntentForPackage("com.whatsapp")
+                    val whatsIntent: Intent? =
+                        ctx.packageManager.getLaunchIntentForPackage("com.whatsapp")
                     ctx.startActivity(whatsIntent)
                 } catch (e: Exception) {
-                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.whatsapp")))
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("https://play.google.com/store/apps/details?id=com.whatsapp")
+                        )
+                    )
                 }
                 dialog.dismiss()
             }
@@ -125,7 +136,11 @@ class HomeFragment : Fragment() {
                     val dialIntent = Intent(Intent.ACTION_DIAL)
                     ctx.startActivity(dialIntent)
                 } catch (e: Exception) {
-                    Toast.makeText(ctx, ctx.getString(R.string.no_default_dialer), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        ctx,
+                        ctx.getString(R.string.no_default_dialer),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
                 dialog.dismiss()
             }
@@ -134,10 +149,12 @@ class HomeFragment : Fragment() {
                 act.vibrate()
                 try {
                     val defaultSmsPackage = Telephony.Sms.getDefaultSmsPackage(requireContext())
-                    val smsIntent: Intent? = ctx.packageManager.getLaunchIntentForPackage(defaultSmsPackage)
+                    val smsIntent: Intent? =
+                        ctx.packageManager.getLaunchIntentForPackage(defaultSmsPackage)
                     ctx.startActivity(smsIntent)
                 } catch (e: Exception) {
-                    Toast.makeText(ctx, ctx.getString(R.string.no_default_sms), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(ctx, ctx.getString(R.string.no_default_sms), Toast.LENGTH_SHORT)
+                        .show()
                 }
                 dialog.dismiss()
             }
@@ -145,10 +162,16 @@ class HomeFragment : Fragment() {
             telegramButton.setOnClickListener {
                 act.vibrate()
                 try {
-                    val telegramIntent: Intent? = ctx.packageManager.getLaunchIntentForPackage("org.telegram.messenger")
+                    val telegramIntent: Intent? =
+                        ctx.packageManager.getLaunchIntentForPackage("org.telegram.messenger")
                     ctx.startActivity(telegramIntent)
                 } catch (e: Exception) {
-                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=org.telegram.messenger")))
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("https://play.google.com/store/apps/details?id=org.telegram.messenger")
+                        )
+                    )
                 }
                 dialog.dismiss()
             }
@@ -203,73 +226,100 @@ class HomeFragment : Fragment() {
                 }
                 // Setup listeners and texts
                 val customView = dialog.getCustomView()
-                val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
+                val formatter: DateTimeFormatter =
+                    DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
                 val subject: MutableList<EventResult> = mutableListOf()
                 subject.add(person)
                 val statsGenerator = StatsGenerator(subject, context)
-                val daysRemaining = getRemainingDays(person.nextDate!!).toString() + " " + getString(R.string.days_left)
+                val daysRemaining =
+                    getRemainingDays(person.nextDate!!).toString() + " " + getString(R.string.days_left)
                 customView.detailsZodiacSignValue.text = statsGenerator.getZodiacSign(person)
-                customView.detailsChineseSignValue.text = statsGenerator.getChineseSign(person)
                 customView.detailsCountdown.text = daysRemaining
 
-                // Hide the age and use a shorter birth date if the year is unknown
-                if (person.yearMatter!!) {
-                    customView.detailsNextAgeValue.text = getNextAge(person).toString()
-                    customView.detailsBirthDateValue.text = person.originalDate.format(formatter)
-                }
-                else {
+                // Hide the age and the chinese sign and use a shorter birth date if the year is unknown
+                if (!person.yearMatter!!) {
                     customView.detailsNextAge.visibility = View.GONE
                     customView.detailsNextAgeValue.visibility = View.GONE
+                    customView.detailsChineseSign.visibility = View.GONE
+                    customView.detailsChineseSignValue.visibility = View.GONE
                     val reducedBirthDate = person.originalDate.month.name
                         .toLowerCase(Locale.getDefault()).capitalize(Locale.getDefault()) +
                             ", " + person.originalDate.dayOfMonth.toString()
                     customView.detailsBirthDateValue.text = reducedBirthDate
+                } else {
+                    customView.detailsNextAgeValue.text = getNextAge(person).toString()
+                    customView.detailsBirthDateValue.text = person.originalDate.format(formatter)
+                    customView.detailsChineseSignValue.text = statsGenerator.getChineseSign(person)
                 }
-
                 // Set the drawable of the zodiac sign
                 when (statsGenerator.getZodiacSignNumber(person)) {
-                    0 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
-                        requireContext(), R.drawable.ic_zodiac_sagittarius
-                    ))
-                    1 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
-                        requireContext(), R.drawable.ic_zodiac_capricorn
-                    ))
-                    2 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
-                        requireContext(), R.drawable.ic_zodiac_aquarius
-                    ))
-                    3 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
-                        requireContext(), R.drawable.ic_zodiac_pisces
-                    ))
-                    4 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
-                        requireContext(), R.drawable.ic_zodiac_aries
-                    ))
-                    5 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
-                        requireContext(), R.drawable.ic_zodiac_taurus
-                    ))
-                    6 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
-                        requireContext(), R.drawable.ic_zodiac_gemini
-                    ))
-                    7 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
-                        requireContext(), R.drawable.ic_zodiac_cancer
-                    ))
-                    8 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
-                        requireContext(), R.drawable.ic_zodiac_leo
-                    ))
-                    9 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
-                        requireContext(), R.drawable.ic_zodiac_virgo
-                    ))
-                    10 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
-                        requireContext(), R.drawable.ic_zodiac_libra
-                    ))
-                    11 -> customView.detailsZodiacImage.setImageDrawable(ContextCompat.getDrawable(
-                        requireContext(), R.drawable.ic_zodiac_scorpio
-                    ))
+                    0 -> customView.detailsZodiacImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(), R.drawable.ic_zodiac_sagittarius
+                        )
+                    )
+                    1 -> customView.detailsZodiacImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(), R.drawable.ic_zodiac_capricorn
+                        )
+                    )
+                    2 -> customView.detailsZodiacImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(), R.drawable.ic_zodiac_aquarius
+                        )
+                    )
+                    3 -> customView.detailsZodiacImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(), R.drawable.ic_zodiac_pisces
+                        )
+                    )
+                    4 -> customView.detailsZodiacImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(), R.drawable.ic_zodiac_aries
+                        )
+                    )
+                    5 -> customView.detailsZodiacImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(), R.drawable.ic_zodiac_taurus
+                        )
+                    )
+                    6 -> customView.detailsZodiacImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(), R.drawable.ic_zodiac_gemini
+                        )
+                    )
+                    7 -> customView.detailsZodiacImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(), R.drawable.ic_zodiac_cancer
+                        )
+                    )
+                    8 -> customView.detailsZodiacImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(), R.drawable.ic_zodiac_leo
+                        )
+                    )
+                    9 -> customView.detailsZodiacImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(), R.drawable.ic_zodiac_virgo
+                        )
+                    )
+                    10 -> customView.detailsZodiacImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(), R.drawable.ic_zodiac_libra
+                        )
+                    )
+                    11 -> customView.detailsZodiacImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(), R.drawable.ic_zodiac_scorpio
+                        )
+                    )
                 }
             }
 
             // Show a dialog with the available actions
             override fun onItemLongClick(position: Int, view: View?): Boolean {
-                val title = getString(R.string.event_actions) + " - " + adapter.getItem(position).name
+                val title =
+                    getString(R.string.event_actions) + " - " + adapter.getItem(position).name
                 act.vibrate()
                 val dialog = MaterialDialog(act).show {
                     title(text = title)
@@ -319,8 +369,7 @@ class HomeFragment : Fragment() {
             cardTitle.text = getString(R.string.next_event)
             cardSubtitle.text = getString(R.string.no_next_event)
             cardDescription.text = getString(R.string.no_next_event_description)
-        }
-        else {
+        } else {
             cardTitle.text = getString(R.string.search_no_result_title)
             cardSubtitle.text = ""
             cardDescription.text = getString(R.string.search_no_result_description)
@@ -332,7 +381,8 @@ class HomeFragment : Fragment() {
     // Update the existing widgets with the newest data and the onclick action
     private fun updateWidget(events: List<EventResult>) {
         val appWidgetManager = AppWidgetManager.getInstance(context)
-        val remoteViews = RemoteViews(context?.packageName,
+        val remoteViews = RemoteViews(
+            context?.packageName,
             R.layout.event_widget
         )
         val thisWidget = context?.let { ComponentName(it, EventWidget::class.java) }
@@ -383,7 +433,8 @@ class HomeFragment : Fragment() {
                 // Consider the case of null surname and the case of unknown age
                 val actualPersonName = if (event.surname.isNullOrBlank()) event.name
                 else event.name + " " + event.surname
-                val age = if (event.yearMatter!!) event.nextDate.year.minus(event.originalDate.year).toString()
+                val age = if (event.yearMatter!!) event.nextDate.year.minus(event.originalDate.year)
+                    .toString()
                 else getString(R.string.unknown_age)
                 when (events.indexOf(event)) {
                     0 -> {
@@ -425,7 +476,7 @@ class HomeFragment : Fragment() {
 
     @ExperimentalStdlibApi
     private fun editEvent(eventResult: EventResult) {
-        var nameValue  = eventResult.name
+        var nameValue = eventResult.name
         var surnameValue = eventResult.surname
         var countYearValue = eventResult.yearMatter
         var eventDateValue: LocalDate = eventResult.originalDate
@@ -499,7 +550,7 @@ class HomeFragment : Fragment() {
         // Validate each field in the form with the same watcher
         var nameCorrect = true
         var surnameCorrect = true
-        val watcher = object: TextWatcher {
+        val watcher = object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun afterTextChanged(editable: Editable) {
@@ -507,11 +558,11 @@ class HomeFragment : Fragment() {
                     editable === name.editableText -> {
                         val nameText = name.text.toString()
                         if (nameText.isBlank() || !checkString(nameText)) {
-                            customView.nameEventLayout.error = getString(R.string.invalid_value_name)
+                            customView.nameEventLayout.error =
+                                getString(R.string.invalid_value_name)
                             dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                             nameCorrect = false
-                        }
-                        else {
+                        } else {
                             nameValue = nameText
                             customView.nameEventLayout.error = null
                             nameCorrect = true
@@ -520,18 +571,19 @@ class HomeFragment : Fragment() {
                     editable === surname.editableText -> {
                         val surnameText = surname.text.toString()
                         if (!checkString(surnameText)) {
-                            customView.surnameEventLayout.error = getString(R.string.invalid_value_name)
+                            customView.surnameEventLayout.error =
+                                getString(R.string.invalid_value_name)
                             dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                             surnameCorrect = false
-                        }
-                        else {
+                        } else {
                             surnameValue = surnameText
                             customView.surnameEventLayout.error = null
                             surnameCorrect = true
                         }
                     }
                 }
-                if(nameCorrect && surnameCorrect) dialog.getActionButton(WhichButton.POSITIVE).isEnabled = true
+                if (nameCorrect && surnameCorrect) dialog.getActionButton(WhichButton.POSITIVE).isEnabled =
+                    true
             }
         }
 
