@@ -6,9 +6,8 @@ import java.time.Period
 
 // Get the age also considering the possible corner cases
 fun getAge(eventResult: EventResult): Int {
-    var age = -1
-    if (!eventResult.yearMatter!!) return age
-    else age = eventResult.nextDate!!.year - eventResult.originalDate.year - 1
+    var age = -2
+    if (eventResult.yearMatter!!) age = eventResult.nextDate!!.year - eventResult.originalDate.year - 1
     return if (age == -1) 0 else age
 }
 

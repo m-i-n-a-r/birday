@@ -119,8 +119,8 @@
         android:text="@string/no_favorites"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         android:textColor="@color/goodGraySemiTranslucent"
-        app:drawableTopCompat="@drawable/ic_neutral_72dp"
-        app:drawableTint="@color/goodGraySemiTranslucent" />
+        app:drawableTint="@color/goodGraySemiTranslucent"
+        app:drawableTopCompat="@drawable/ic_neutral_72dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favoritesRecycler"
@@ -128,7 +128,7 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:overScrollMode="never"
-        android:paddingBottom="@dimen/recycler_padding"
+        android:paddingVertical="@dimen/recycler_padding"
         android:scrollbarSize="0dp"
         android:scrollbarStyle="outsideOverlay"
         app:fastScrollEnabled="true"

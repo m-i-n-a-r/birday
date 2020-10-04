@@ -20,6 +20,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
+import java.util.*
 
 
 class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapter<EventResult, EventAdapter.EventViewHolder>(EventsDiffCallback()) {
@@ -31,6 +32,7 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapte
         return EventViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.event_row, parent, false))
     }
 
+    @ExperimentalStdlibApi
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
@@ -51,22 +53,25 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapte
         }
 
         // Set every necessary text and click action in each row
-        fun bind(event: EventResult?) {
-            val personName = event?.name + " " + event?.surname
+        @ExperimentalStdlibApi
+        fun bind(event: EventResult) {
+            val personName = event.name + " " + event.surname
+            // If the year isn't considered, show only the day and the month
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
-
-            // TODO Check if the year is considered and display the full date only if it is
-            var originalDate = event?.originalDate?.format(formatter)
-            if (event?.yearMatter == false) originalDate = event.originalDate.format(formatter)
+            var originalDate = event.originalDate.format(formatter)
+            if (!event.yearMatter!!)
+                originalDate = event.originalDate.month.name
+                    .toLowerCase(Locale.getDefault()).capitalize(Locale.getDefault()) +
+                        ", " + event.originalDate.dayOfMonth.toString()
 
             eventPerson.text = personName
             eventDate.text = originalDate
 
             // Manage the favorite logic
-            if(event?.favorite == false) favoriteButton.setImageResource(R.drawable.animated_to_favorite)
+            if(event.favorite == false) favoriteButton.setImageResource(R.drawable.animated_to_favorite)
             else favoriteButton.setImageResource(R.drawable.animated_from_favorite)
             favoriteButton.setOnClickListener {
-                if(event?.favorite == true) {
+                if(event.favorite == true) {
                     event.favorite = false
                     activityScope.launch {
                         delay(800)
@@ -76,7 +81,7 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapte
                     (favoriteButton.drawable as AnimatedVectorDrawable).start()
                 }
                 else {
-                    event!!.favorite = true
+                    event.favorite = true
                     activityScope.launch {
                         delay(800)
                         favoriteButton.setImageResource(R.drawable.animated_from_favorite)

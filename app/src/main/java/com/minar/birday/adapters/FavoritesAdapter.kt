@@ -51,7 +51,9 @@ class FavoritesAdapter internal constructor(context: Context) : ListAdapter<Even
                     ", " + appContext.getString(R.string.born_in) + " " + event.originalDate.year
             eventPerson.text = personName
             eventDate.text = nextDate
-            if (age != -1) {
+            // Age -2 means that the year is not considered and the age is meaningless
+            // TODO write something else in the third line instead of removing it
+            if (age != -2) {
                 eventYears.visibility = View.VISIBLE
                 eventYears.text = actualAge
             }

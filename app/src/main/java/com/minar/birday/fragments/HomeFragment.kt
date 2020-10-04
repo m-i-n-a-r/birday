@@ -239,10 +239,22 @@ class HomeFragment : Fragment() {
                 val subject: MutableList<EventResult> = mutableListOf()
                 subject.add(person)
                 val statsGenerator = StatsGenerator(subject, context)
-                customView.detailsBirthDateValue.text = person.originalDate.format(formatter)
-                customView.detailsNextAgeValue.text = getNextAge(person).toString()
                 customView.detailsZodiacSignValue.text = statsGenerator.getZodiacSign(person)
                 customView.detailsChineseSignValue.text = statsGenerator.getChineseSign(person)
+
+                // Hide the age and use a shorter birth date if the year is unknown
+                if (person.yearMatter!!) {
+                    customView.detailsNextAgeValue.text = getNextAge(person).toString()
+                    customView.detailsBirthDateValue.text = person.originalDate.format(formatter)
+                }
+                else {
+                    customView.detailsNextAge.visibility = View.GONE
+                    customView.detailsNextAgeValue.visibility = View.GONE
+                    val reducedBirthDate = person.originalDate.month.name
+                        .toLowerCase(Locale.getDefault()).capitalize(Locale.getDefault()) +
+                            ", " + person.originalDate.dayOfMonth.toString()
+                    customView.detailsBirthDateValue.text = reducedBirthDate
+                }
 
                 // Set the drawable of the zodiac sign
                 when (statsGenerator.getZodiacSignNumber(person)) {
@@ -457,7 +469,7 @@ class HomeFragment : Fragment() {
         countYear.setOnCheckedChangeListener { _, isChecked ->
             countYearValue = isChecked
         }
-        
+
         eventDate.setOnClickListener {
             // Prevent double dialogs on fast click
             if (dateDialog == null) {
