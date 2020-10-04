@@ -226,7 +226,7 @@ class HomeFragment : Fragment() {
                 val title = getString(R.string.event_details) + " - " + person.name
                 val dialog = MaterialDialog(act).show {
                     title(text = title)
-                    icon(R.drawable.ic_smile_24dp)
+                    icon(R.drawable.ic_balloon_24dp)
                     cornerRadius(res = R.dimen.rounded_corners)
                     customView(R.layout.dialog_details_event, scrollable = true)
                     negativeButton(R.string.cancel) {
@@ -239,8 +239,10 @@ class HomeFragment : Fragment() {
                 val subject: MutableList<EventResult> = mutableListOf()
                 subject.add(person)
                 val statsGenerator = StatsGenerator(subject, context)
+                val daysRemaining = getRemainingDays(person.nextDate!!).toString() + " " + getString(R.string.days_left)
                 customView.detailsZodiacSignValue.text = statsGenerator.getZodiacSign(person)
                 customView.detailsChineseSignValue.text = statsGenerator.getChineseSign(person)
+                customView.detailsCountdown.text = daysRemaining
 
                 // Hide the age and use a shorter birth date if the year is unknown
                 if (person.yearMatter!!) {
@@ -539,8 +541,7 @@ class HomeFragment : Fragment() {
 
     // Properly format the next date for widget and next event card
     private fun nextDate(event: EventResult, formatter: DateTimeFormatter): String {
-        val upcomingDate = event.nextDate!!
-        return when (val daysRemaining = ChronoUnit.DAYS.between(LocalDate.now(), upcomingDate).toInt()) {
+        return when (val daysRemaining = getRemainingDays(event.nextDate!!)) {
             // The -1 case should never happen
             -1 -> event.nextDate.format(formatter) + ". " + getString(R.string.yesterday) + "!"
             0 -> event.nextDate.format(formatter) + ". " + getString(R.string.today) + "!"

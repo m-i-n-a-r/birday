@@ -3,6 +3,7 @@ package com.minar.birday.utilities
 import com.minar.birday.model.EventResult
 import java.time.LocalDate
 import java.time.Period
+import java.time.temporal.ChronoUnit
 
 // Get the age also considering the possible corner cases
 fun getAge(eventResult: EventResult): Int {
@@ -22,3 +23,6 @@ fun getDecade(originalDate: LocalDate) = ((originalDate.year.toDouble() / 10).to
 
 // Get the age range, in decades
 fun getAgeRange(originalDate: LocalDate) = (((LocalDate.now().year - originalDate.year).toDouble() / 10).toInt() * 10).toString()
+
+// Get the days remaining before an event from today
+fun getRemainingDays(nextDate: LocalDate) = ChronoUnit.DAYS.between(LocalDate.now(), nextDate).toInt()
