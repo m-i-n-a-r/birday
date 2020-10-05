@@ -471,7 +471,8 @@ class HomeFragment : Fragment() {
         name = eventResult.name,
         surname = eventResult.surname,
         favorite = eventResult.favorite,
-        originalDate = eventResult.originalDate
+        originalDate = eventResult.originalDate,
+        yearMatter = eventResult.yearMatter
     )
 
     @ExperimentalStdlibApi
