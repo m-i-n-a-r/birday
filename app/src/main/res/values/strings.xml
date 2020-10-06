@@ -192,6 +192,7 @@
     <string name="born_in">born in</string>
     <string name="and">and</string>
     <string name="unknown_age" translatable="false">\??</string>
+    <string name="exclamation" translatable="false">! ! !</string>
 
     <!-- Notifications -->
     <string name="events_notification_channel">Event Reminder</string>

@@ -46,6 +46,7 @@
         android:alpha="0.3"
         android:padding="@dimen/card_margin"
         android:textStyle="bold"
+        android:textAlignment="center"
         android:text="@string/unknown_age"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
         android:textColor="?colorAccent"

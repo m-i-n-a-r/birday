@@ -45,7 +45,9 @@ class FavoritesAdapter internal constructor(context: Context) : ListAdapter<Even
             val personName = event.name + " " + event.surname
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
             val age = getAge(event)
-            val daysCountdown = "-" + getRemainingDays(event.nextDate!!)
+            val daysRemaining = getRemainingDays(event.nextDate!!)
+            val daysCountdown = if (daysRemaining > 0) "-$daysRemaining"
+            else appContext.getString(R.string.exclamation)
             var nextDate = event.nextDate.format(formatter)
 
             if (event.yearMatter == false) nextDate = event.nextDate.format(formatter)
@@ -55,7 +57,6 @@ class FavoritesAdapter internal constructor(context: Context) : ListAdapter<Even
             eventDate.text = nextDate
             eventCountdown.text = daysCountdown
             // Age -2 means that the year is not considered and the age is meaningless
-            // TODO write something else in the third line instead of removing it
             if (age != -2) {
                 eventYears.visibility = View.VISIBLE
                 eventYears.text = actualAge
