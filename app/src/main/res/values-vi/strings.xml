@@ -67,7 +67,7 @@
     <string name="shimmer_description_off">Không có hiệu ứng đồ họa bổ sung</string>
     <string name="import_export">Nhập khẩu và xuất khẩu</string>
     <string name="import_contacts_title">Nhập ngày sinh nhật từ Google</string>
-    <string name="import_contacts_description">Nếu sinh nhật đã nhập không chứa năm, Birday sẽ tự động đặt năm 1970. Hãy chắc chắn sửa đổi các sự kiện với đúng năm để luôn có số liệu thống kê chính xác!</string>
+    <string name="import_contacts_description">Hãy chắc chắn sửa đổi các sự kiện với đúng năm để luôn có số liệu thống kê chính xác!</string>
     <string name="import_success">Nhập hoàn tất thành công!</string>
     <string name="import_nothing_found">Không tìm thấy sinh nhật!</string>
     <string name="import_failed">Đã bị lỗi!</string>

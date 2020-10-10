@@ -62,7 +62,7 @@
     <string name="system_theme">Default del sistema</string>
     <string name="import_export">Importación y exportación</string>
     <string name="import_contacts_title">Importar cumpleaños de Google</string>
-    <string name="import_contacts_description">Si un cumpleaños importado solo contiene la fecha sin el año, se establecerá automáticamente el año 1970. ¡Cambie los eventos con el año faltante para obtener estadísticas precisas!</string>
+    <string name="import_contacts_description">¡Cambie los eventos con el año faltante para obtener estadísticas precisas!</string>
     <string name="import_success">¡Importación completada con éxito!</string>
     <string name="import_nothing_found">¡No se encontró cumpleaños!</string>
     <string name="import_failed">¡Algo salió mal!</string>

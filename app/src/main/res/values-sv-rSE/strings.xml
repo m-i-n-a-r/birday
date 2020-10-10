@@ -65,7 +65,7 @@
     <string name="import_contacts_title">Importera födelsedagar från Google</string>
     <string name="shimmer_description_off">Inga ytterligare grafiska effekter</string>
     <string name="import_export">Importera och Exportera</string>
-    <string name="import_contacts_description">Om en importerad födelsedag från inte innehåller året kommer Birday att sätta året till 1970. Se till att rätta till åren på de händelserna där det fattas så det statistiken blir exakt!</string>
+    <string name="import_contacts_description">Se till att rätta till åren på de händelserna där det fattas så det statistiken blir exakt!</string>
     <string name="import_success">Importen lyckades!</string>
     <string name="import_nothing_found">Hittade ingen födelsedag!</string>
     <string name="import_failed">Något gick fel!</string>

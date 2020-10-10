@@ -67,8 +67,7 @@
     <string name="shimmer_description_off">Geen aanvullende animaties</string>
     <string name="import_export">Importeren en Exporteren</string>
     <string name="import_contacts_title">Importeer verjaardagen vanuit Google</string>
-    <string name="import_contacts_description">Als een geïmporteede verjaardag geen jaar bevat, zal Birday automatisch het jaar
-    1970 selecteren. Zorg er dus voor dat je het jaar aanpast om de meest accurate statistieken te krijgen!</string>
+    <string name="import_contacts_description">Zorg er dus voor dat je het jaar aanpast om de meest accurate statistieken te krijgen!</string>
     <string name="import_success">Het importeren is gelukt!</string>
     <string name="import_nothing_found">Geen verjaardagen gevonden!</string>
     <string name="import_failed">Er ging iets mis!</string>

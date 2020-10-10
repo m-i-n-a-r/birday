@@ -67,7 +67,7 @@
     <string name="shimmer_description_off">Keine zusätzlichen graphischen Effekte</string>
     <string name="import_export">Import und Export</string>
     <string name="import_contacts_title">Importiere Geburtstage von Google</string>
-    <string name="import_contacts_description">Wenn ein importierter Geburtstag das Jahr nicht enthält, setzt Birday automatisch das Jahr 2000. Achte darauf, die Ereignisse mit fehlendem Jahr zu ändern, um immer genaue Statistiken zu haben!</string>
+    <string name="import_contacts_description">Achte darauf, die Ereignisse mit fehlendem Jahr zu ändern, um immer genaue Statistiken zu haben!</string>
     <string name="import_success">Import erfolgreich abgeschlossen!</string>
     <string name="import_nothing_found">Keine Geburtstage gefunden!</string>
     <string name="import_failed">Etwas ist schief gelaufen!</string>

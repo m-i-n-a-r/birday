@@ -68,8 +68,7 @@
     <string name="shimmer_description_off">No additional graphic effects</string>
     <string name="import_export">Import and Export</string>
     <string name="import_contacts_title">Import birthdays from Google</string>
-    <string name="import_contacts_description">If an imported birthday doesn\'t contain the year, Birday will automatically set
-    the year 1970. Make sure to modify the events with the missing year to always have accurate statistics!</string>
+    <string name="import_contacts_description">Make sure to modify the events with the missing year to always have accurate statistics!</string>
     <string name="import_success">Import completed successfully!</string>
     <string name="import_nothing_found">No birthday found!</string>
     <string name="import_failed">Something went wrong!</string>
