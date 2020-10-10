@@ -29,6 +29,14 @@
             android:title="@string/additional_notification_name"
             app:iconSpaceReserved="false" />
 
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="surname_first"
+            android:summaryOff="@string/surname_first_description_off"
+            android:summaryOn="@string/surname_first_description_on"
+            android:title="@string/surname_first"
+            app:iconSpaceReserved="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

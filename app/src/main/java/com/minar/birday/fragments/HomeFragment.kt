@@ -231,10 +231,9 @@ class HomeFragment : Fragment() {
                 val subject: MutableList<EventResult> = mutableListOf()
                 subject.add(person)
                 val statsGenerator = StatsGenerator(subject, context)
-                val daysRemaining =
-                    getRemainingDays(person.nextDate!!).toString() + " " + getString(R.string.days_left)
+                val daysCountdown = daysRemaining(getRemainingDays(person.nextDate!!))
                 customView.detailsZodiacSignValue.text = statsGenerator.getZodiacSign(person)
-                customView.detailsCountdown.text = daysRemaining
+                customView.detailsCountdown.text = daysCountdown
 
                 // Hide the age and the chinese sign and use a shorter birth date if the year is unknown
                 if (!person.yearMatter!!) {
@@ -595,14 +594,18 @@ class HomeFragment : Fragment() {
 
     // Properly format the next date for widget and next event card
     private fun nextDate(event: EventResult, formatter: DateTimeFormatter): String {
-        return when (val daysRemaining = getRemainingDays(event.nextDate!!)) {
+        val daysRemaining = getRemainingDays(event.nextDate!!)
+        return event.nextDate.format(formatter) + ". " + daysRemaining(daysRemaining)
+    }
+
+    // Return the remaining days or a string
+    private fun daysRemaining(daysRemaining: Int): String {
+        return when (daysRemaining) {
             // The -1 case should never happen
-            -1 -> event.nextDate.format(formatter) + ". " + getString(R.string.yesterday) + "!"
-            0 -> event.nextDate.format(formatter) + ". " + getString(R.string.today) + "!"
-            1 -> event.nextDate.format(formatter) + ". " + getString(R.string.tomorrow) + "!"
-            else -> event.nextDate.format(formatter) + ". " + daysRemaining + " " + getString(
-                R.string.days_left
-            )
+            -1 -> getString(R.string.yesterday) + "!"
+            0 -> getString(R.string.today) + "!"
+            1 -> getString(R.string.tomorrow) + "!"
+            else -> daysRemaining.toString() + " " + getString(R.string.days_left)
         }
     }
 

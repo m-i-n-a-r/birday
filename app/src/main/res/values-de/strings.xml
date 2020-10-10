@@ -83,6 +83,9 @@
     <string name="birday_export_success">Export abgeschlossen!</string>
     <string name="birday_export_failure">Export fehlgeschlagen. Ups!</string>
     <string name="birday_export_nothing_found">Nichts zum exportieren!</string>
+    <string name="surname_first">Nachname für zuerst</string>
+    <string name="surname_first_description_on">Zeigen Sie den Nachnamen vor dem Namen</string>
+    <string name="surname_first_description_off">Zeigen Sie den Namen vor dem Nachnamen</string>
 
     <!-- Developer -->
     <string name="dev_description">Ich bin ein netter Mensch und ich mag schöne Dinge, wie Animationen, Icons, Sportwagen und 3D-Druck. Ich arbeite als Designer und Computeringenieur.</string>

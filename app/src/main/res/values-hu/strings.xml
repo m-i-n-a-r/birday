@@ -83,6 +83,9 @@
     <string name="birday_export_success">Az exportálás befejeződött!</string>
     <string name="birday_export_failure">Az exportálás sikertelen. Hoppá!</string>
     <string name="birday_export_nothing_found">Nincs mit exportálni!</string>
+    <string name="surname_first">Vezetéknév először</string>
+    <string name="surname_first_description_on">Mutassa meg a vezetéknevet a név előtt</string>
+    <string name="surname_first_description_off">Mutassa meg a nevet a vezetéknév előtt</string>
 
     <!-- Developer -->
     <string name="dev_description">Udvarias srác vagyok, és szeretem a szép dolgokat, mint animációk, ikonok, sportkocsik és 3D nyomtatás. Tervezőként és számítógépes mérnökként dolgozom.</string>

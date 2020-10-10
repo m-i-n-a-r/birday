@@ -179,4 +179,7 @@
     <string name="search_no_result_title">No hay resultados</string>
     <string name="search_no_result_description">¡Su cadena de búsqueda no coincide con ningún evento en la base de datos de Birday!</string>
     <string name="consider_year">Considere el año</string>
+    <string name="surname_first">Primer apellido</string>
+    <string name="surname_first_description_on">Muestra el apellido antes del nombre</string>
+    <string name="surname_first_description_off">Muestra el numbre antes del apellido</string>
 </resources>

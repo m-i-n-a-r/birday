@@ -88,6 +88,9 @@
     <string name="birday_export_success">Export completed!</string>
     <string name="birday_export_failure">Export failed. Whoopsie!</string>
     <string name="birday_export_nothing_found">Nothing to export!</string>
+    <string name="surname_first">Surname first</string>
+    <string name="surname_first_description_on">Show the surname before the name</string>
+    <string name="surname_first_description_off">Show the name before the surname</string>
 
     <!-- Developer -->
     <string name="dev_name" translatable="false">m.i.n.a.r.</string>

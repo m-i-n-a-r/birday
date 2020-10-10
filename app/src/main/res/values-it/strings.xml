@@ -179,5 +179,8 @@
     <string name="search_no_result_title">Nessun risultato trovato</string>
     <string name="search_no_result_description">La stringa cercata non corrisponde ad alcun evento nel database di Birday!</string>
     <string name="consider_year">Considera l\'anno</string>
+    <string name="surname_first">Prima il cognome</string>
+    <string name="surname_first_description_on">Mostra il cognome prima del nome</string>
+    <string name="surname_first_description_off">Mostra il nome prima del cognome</string>
 
 </resources>

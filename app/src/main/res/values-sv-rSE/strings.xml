@@ -179,4 +179,8 @@
     <string name="search_no_result_title">Inga resultat funna</string>
     <string name="search_no_result_description">Din söksträng matchar inte någon händelse i Birday-databasen!</string>
     <string name="consider_year">Överväg år</string>
+    <string name="surname_first">Efternamn för första</string>
+    <string name="surname_first_description_on">Visa efternamnet före namnet</string>
+    <string name="surname_first_description_off">Visa namnet före efternamnet</string>
+
 </resources>
