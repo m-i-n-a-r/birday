@@ -28,9 +28,9 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         val allEvents: List<EventResult> = eventDao.getOrderedAllEvents()
         val currentDate = Calendar.getInstance()
         val dueDate = Calendar.getInstance()
-        val sp = PreferenceManager.getDefaultSharedPreferences(applicationContext)
-        val workHour = sp.getString("notification_hour", "8")!!.toInt()
-        val additionalNotification = sp.getString("additional_notification", "0")!!.toInt()
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(applicationContext)
+        val workHour = sharedPrefs.getString("notification_hour", "8")!!.toInt()
+        val additionalNotification = sharedPrefs.getString("additional_notification", "0")!!.toInt()
 
         try {
             // Check for upcoming and actual birthdays and send notification

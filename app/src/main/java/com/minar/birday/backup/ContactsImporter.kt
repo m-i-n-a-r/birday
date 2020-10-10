@@ -17,7 +17,8 @@ import com.minar.birday.model.Event
 import java.time.LocalDate
 import kotlin.concurrent.thread
 
-class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(context, attrs), View.OnClickListener {
+class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(context, attrs),
+    View.OnClickListener {
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
@@ -33,7 +34,7 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context)
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
         v.setOnClickListener(null)
-        if(shimmerEnabled) {
+        if (shimmerEnabled) {
             shimmer.startShimmer()
             shimmer.showShimmer(true)
         }
@@ -41,7 +42,7 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
         thread {
             importContacts(context)
             (context as MainActivity).runOnUiThread {
-                if(shimmerEnabled) {
+                if (shimmerEnabled) {
                     shimmer.stopShimmer()
                     shimmer.hideShimmer()
                 }
@@ -87,8 +88,9 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
                     countYear = false
                 }
                 date = LocalDate.parse(parseDate)
+            } catch (e: Exception) {
+                continue
             }
-            catch (e: Exception) { continue }
             val event = Event(
                 id = 0,
                 name = name,
@@ -102,14 +104,22 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
         // Phase 3: insert the remaining events in the db and update the recycler
         return if (events.size == 0) {
             context.runOnUiThread(Runnable {
-                Toast.makeText(context, context.getString(R.string.import_nothing_found), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    context,
+                    context.getString(R.string.import_nothing_found),
+                    Toast.LENGTH_SHORT
+                ).show()
             })
             true
         } else {
             events.forEach { act.homeViewModel.insert(it) }
             context.runOnUiThread(Runnable {
-                    Toast.makeText(context, context.getString(R.string.import_success), Toast.LENGTH_SHORT).show()
-                })
+                Toast.makeText(
+                    context,
+                    context.getString(R.string.import_success),
+                    Toast.LENGTH_SHORT
+                ).show()
+            })
             true
         }
     }
@@ -125,14 +135,18 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
             if (cursor.count > 0) {
                 while (cursor.moveToNext()) {
                     val id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
-                    val name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME_ALTERNATIVE))
+                    val name =
+                        cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME_ALTERNATIVE))
                     // Retrieve the birthday
                     val bd = context.contentResolver
                     val bdc: Cursor? = bd.query(
-                        ContactsContract.Data.CONTENT_URI, arrayOf(ContactsContract.CommonDataKinds.Event.DATA),
+                        ContactsContract.Data.CONTENT_URI,
+                        arrayOf(ContactsContract.CommonDataKinds.Event.DATA),
                         ContactsContract.Data.CONTACT_ID + " = " + id + " AND " + ContactsContract.Data.MIMETYPE + " = '" +
                                 ContactsContract.CommonDataKinds.Event.CONTENT_ITEM_TYPE + "' AND " + ContactsContract.CommonDataKinds.Event.TYPE +
-                                " = " + ContactsContract.CommonDataKinds.Event.TYPE_BIRTHDAY, null, ContactsContract.Data.DISPLAY_NAME
+                                " = " + ContactsContract.CommonDataKinds.Event.TYPE_BIRTHDAY,
+                        null,
+                        ContactsContract.Data.DISPLAY_NAME
                     )
 
                     if (bdc != null) {

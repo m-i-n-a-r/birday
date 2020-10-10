@@ -43,7 +43,6 @@ import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.backup.BirdayImporter
 import com.minar.birday.backup.ContactsImporter
 import com.minar.birday.model.Event
-import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.AppRater
 import com.minar.birday.utilities.checkString
 import com.minar.birday.utilities.smartCapitalize
@@ -71,13 +70,13 @@ class MainActivity : AppCompatActivity() {
         createNotificationChannel()
 
         // Retrieve the shared preferences
-        val sp = PreferenceManager.getDefaultSharedPreferences(this)
-        val theme = sp.getString("theme_color", "system")
-        val accent = sp.getString("accent_color", "brown")
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val theme = sharedPrefs.getString("theme_color", "system")
+        val accent = sharedPrefs.getString("accent_color", "brown")
 
         // Show the introduction for the first launch
-        if (sp.getBoolean("first", true)) {
-            val editor = sp.edit()
+        if (sharedPrefs.getBoolean("first", true)) {
+            val editor = sharedPrefs.edit()
             editor.putBoolean("first", false)
             editor.apply()
             val intent = Intent(this, WelcomeActivity::class.java)

@@ -31,8 +31,8 @@ class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
 
         // Manage the shimmer
         val shimmer = v.findViewById<ShimmerFrameLayout>(R.id.settingsShimmer)
-        val sp = PreferenceManager.getDefaultSharedPreferences(context)
-        val shimmerEnabled = sp.getBoolean("shimmer", false)
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context)
+        val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
         if (shimmerEnabled) shimmer.startShimmer()
 
         // Make the icons clickable

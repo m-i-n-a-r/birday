@@ -48,8 +48,8 @@ class FavoritesFragment : Fragment() {
         val v: View = inflater.inflate(R.layout.fragment_favorites, container, false)
         val statsImage = v.findViewById<ImageView>(R.id.statsImage)
         val shimmer = v.findViewById<ShimmerFrameLayout>(R.id.favoritesCardShimmer)
-        val sp = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        val shimmerEnabled = sp.getBoolean("shimmer", false)
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
         val favoritesCard = v.favoritesCard
         if (shimmerEnabled) shimmer.startShimmer()
         statsImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_candle)

@@ -16,9 +16,9 @@ class SplashActivity : AppCompatActivity() {
     private val activityScope = CoroutineScope(Dispatchers.Main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val sp = PreferenceManager.getDefaultSharedPreferences(this)
-        val theme = sp.getString("theme_color", "system")
-        val accent = sp.getString("accent_color", "brown")
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val theme = sharedPrefs.getString("theme_color", "system")
+        val accent = sharedPrefs.getString("accent_color", "brown")
 
         // Set the base theme and the accent
         when (theme) {
