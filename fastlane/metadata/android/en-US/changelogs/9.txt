@@ -1,0 +1,9 @@
+- Create yearless events
+- The yearless events imported will remain yearless
+- Surname first option
+- The favorite screen has now a better layout and a countdown for each event!
+- Unified details and actions screen: simply tap an event to open it 
+- Share an event: tap the share button to share a message containing the information about the event!
+- Celebrating 1500 Play Store downloads with a new accent color
+- Some important fixes and improvements
+- Translations updated

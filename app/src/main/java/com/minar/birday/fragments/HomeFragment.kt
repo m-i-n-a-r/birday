@@ -49,7 +49,6 @@ import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.HomeViewModel
 import com.minar.birday.widgets.EventWidget
-import kotlinx.android.synthetic.main.dialog_actions_event.view.*
 import kotlinx.android.synthetic.main.dialog_apps_event.view.*
 import kotlinx.android.synthetic.main.dialog_details_event.view.*
 import kotlinx.android.synthetic.main.dialog_insert_event.view.*
@@ -228,6 +227,26 @@ class HomeFragment : Fragment() {
                 }
                 // Setup listeners and texts
                 val customView = dialog.getCustomView()
+                val deleteButton = customView.detailsDeleteButton
+                val editButton = customView.detailsEditButton
+                //val shareButton = customView.detailsShareButton
+
+                deleteButton.setOnClickListener {
+                    act.vibrate()
+                    deleteEvent(adapter.getItem(position))
+                    dialog.dismiss()
+                }
+
+                editButton.setOnClickListener {
+                    act.vibrate()
+                    editEvent(adapter.getItem(position))
+                    dialog.dismiss()
+                }
+
+                /*shareButton.setOnClickListener {
+                    act.vibrate()
+                }*/
+
                 val formatter: DateTimeFormatter =
                     DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
                 val subject: MutableList<EventResult> = mutableListOf()
@@ -317,38 +336,8 @@ class HomeFragment : Fragment() {
                 }
             }
 
-            // Show a dialog with the available actions
+            // TODO reassign an action to the long press
             override fun onItemLongClick(position: Int, view: View?): Boolean {
-                val title =
-                    getString(R.string.event_actions) + " - " + adapter.getItem(position).name
-                act.vibrate()
-                val dialog = MaterialDialog(act).show {
-                    title(text = title)
-                    icon(R.drawable.ic_smile_24dp)
-                    message(R.string.event_actions_description)
-                    cornerRadius(res = R.dimen.rounded_corners)
-                    customView(R.layout.dialog_actions_event, scrollable = true)
-                    negativeButton(R.string.cancel) {
-                        dismiss()
-                    }
-                }
-
-                // Setup listeners and checks on the fields. Using view binding to fetch the buttons
-                val customView = dialog.getCustomView()
-                val deleteButton = customView.deleteButton
-                val editButton = customView.editButton
-
-                deleteButton.setOnClickListener {
-                    act.vibrate()
-                    deleteEvent(adapter.getItem(position))
-                    dialog.dismiss()
-                }
-
-                editButton.setOnClickListener {
-                    act.vibrate()
-                    editEvent(adapter.getItem(position))
-                    dialog.dismiss()
-                }
                 return true
             }
         })
