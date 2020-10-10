@@ -18,7 +18,7 @@ if you're starting to develop apps and you need an app to look at, to find some 
 <h2><b>Features 🎂</b></h2>
 <ul>
     <li> Simple birthday timeline, with the next date and the name of each person </li>
-    <li> Favorite system, to aggregate your favorite birthdays and see more informations </li>
+    <li> Favorite system, to aggregate your favorite birthdays and see more information </li>
     <li> Google Contacts import! Intelligent duplicate detection </li>
     <li> Easily delete or modify every birthday </li>
     <li> Customizable notification the day of the birthday! </li>
@@ -29,6 +29,6 @@ if you're starting to develop apps and you need an app to look at, to find some 
     <li> Simple and precise ui, following the material guidelines </li>
 </ul>
 
-Please note: the notification system relies on the Android OS resources, thus some manufacturers may cause malfunctions. The reason is that some Xiaomi, Huawei and Oneplus devices kill the apps instead of simply closing it, or block the automatic startup of the app process. I can't fix this, but you can find more informations on dontkillmyapp.com.
+Please note: the notification system relies on the Android OS resources, thus some manufacturers may cause malfunctions. The reason is that some Xiaomi, Huawei and Oneplus devices kill the apps instead of simply closing it, or block the automatic startup of the app process. I can't fix this, but you can find more information on dontkillmyapp.com.
   
 

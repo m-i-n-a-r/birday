@@ -34,7 +34,7 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 - Sync the existing birthdays from Google Contacts
 - Easily backup and restore your saved birthdays!
 - insert a birthday manually, just specifying a name, an optional surname and a date
-- Choose your favorite birthdays to see detailed informations about them
+- Choose your favorite birthdays to see detailed information about them
 - Long press on a birthday to see every possible detail
 - The birthdays are also automagically backed up in cloud by Google Play Services when the app is installed from Play Store
 - A huge set of randomly generated stats (zodiac, average age and a lot more) when more than 5 birthdays are inserted
