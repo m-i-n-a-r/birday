@@ -4,11 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
 import com.minar.birday.model.EventResult
+import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getAge
 import com.minar.birday.utilities.getRemainingDays
 import kotlinx.android.synthetic.main.event_row.view.eventDate
@@ -18,10 +20,11 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
 
-class FavoritesAdapter internal constructor(context: Context) : ListAdapter<EventResult, FavoritesAdapter.FavoriteViewHolder>(FavoritesDiffCallback()) {
-    private val appContext = context
+class FavoritesAdapter internal constructor() : ListAdapter<EventResult, FavoritesAdapter.FavoriteViewHolder>(FavoritesDiffCallback()) {
+    private lateinit var context: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
+        context = parent.context
         return FavoriteViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.favorite_row, parent, false))
     }
 
@@ -42,18 +45,19 @@ class FavoritesAdapter internal constructor(context: Context) : ListAdapter<Even
 
         // Set every necessary text and click action in each row
         fun bind(event: EventResult) {
-            val personName = event.name + " " + event.surname
+            val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context)
+            val formattedPersonName = formatName(event, sharedPrefs.getBoolean("surname_first", false))
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
             val age = getAge(event)
             val daysRemaining = getRemainingDays(event.nextDate!!)
             val daysCountdown = if (daysRemaining > 0) "-$daysRemaining"
-            else appContext.getString(R.string.exclamation)
+            else context.getString(R.string.exclamation)
             var nextDate = event.nextDate.format(formatter)
 
             if (event.yearMatter == false) nextDate = event.nextDate.format(formatter)
-            val actualAge = appContext.getString(R.string.next_age_years) + ": " + age.toString() +
-                    ", " + appContext.getString(R.string.born_in) + " " + event.originalDate.year
-            eventPerson.text = personName
+            val actualAge = context.getString(R.string.next_age_years) + ": " + age.toString() +
+                    ", " + context.getString(R.string.born_in) + " " + event.originalDate.year
+            eventPerson.text = formattedPersonName
             eventDate.text = nextDate
             eventCountdown.text = daysCountdown
             // Age -2 means that the year is not considered and the age is meaningless

@@ -30,8 +30,8 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
         val shimmer = v as ShimmerFrameLayout
 
         // Disable the onclick and show the shimmer if the option is enabled
-        val sp = PreferenceManager.getDefaultSharedPreferences(context)
-        val shimmerEnabled = sp.getBoolean("shimmer", false)
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context)
+        val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
         v.setOnClickListener(null)
         if(shimmerEnabled) {
             shimmer.startShimmer()

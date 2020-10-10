@@ -40,7 +40,7 @@ class FavoritesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = FavoritesAdapter(requireActivity().applicationContext)
+        adapter = FavoritesAdapter()
         act = activity as MainActivity
     }
 

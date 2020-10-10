@@ -5,6 +5,15 @@ import java.time.LocalDate
 import java.time.Period
 import java.time.temporal.ChronoUnit
 
+// Format the name considering the preference and the surname (which could be empty)
+fun formatName(event: EventResult, surnameFirst: Boolean): String {
+    return if (event.surname.isNullOrBlank()) event.name
+    else {
+        if (!surnameFirst) event.name + " " + event.surname
+        else event.surname + " " + event.name
+    }
+}
+
 // Get the age also considering the possible corner cases
 fun getAge(eventResult: EventResult): Int {
     var age = -2

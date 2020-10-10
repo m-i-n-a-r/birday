@@ -1,11 +1,13 @@
 package com.minar.birday.adapters
 
+import android.content.Context
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +15,7 @@ import com.minar.birday.fragments.HomeFragment
 import com.minar.birday.R
 import com.minar.birday.model.EventResult
 import com.minar.birday.listeners.OnItemClickListener
+import com.minar.birday.utilities.formatName
 import kotlinx.android.synthetic.main.event_row.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,11 +27,13 @@ import java.util.*
 
 
 class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapter<EventResult, EventAdapter.EventViewHolder>(EventsDiffCallback()) {
+    private lateinit var context: Context
     private val fragment = homeFragment
     private val activityScope = CoroutineScope(Dispatchers.Main)
     var itemClickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
+        context = parent.context
         return EventViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.event_row, parent, false))
     }
 
@@ -55,7 +60,8 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapte
         // Set every necessary text and click action in each row
         @ExperimentalStdlibApi
         fun bind(event: EventResult) {
-            val personName = event.name + " " + event.surname
+            val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context)
+            val formattedPersonName = formatName(event, sharedPrefs.getBoolean("surname_first", false))
             // If the year isn't considered, show only the day and the month
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
             var originalDate = event.originalDate.format(formatter)
@@ -64,7 +70,7 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapte
                     .toLowerCase(Locale.getDefault()).capitalize(Locale.getDefault()) +
                         ", " + event.originalDate.dayOfMonth.toString()
 
-            eventPerson.text = personName
+            eventPerson.text = formattedPersonName
             eventDate.text = originalDate
 
             // Manage the favorite logic

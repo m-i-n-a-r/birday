@@ -6,6 +6,7 @@ import android.app.NotificationManager
 import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.media.AudioAttributes
@@ -42,6 +43,7 @@ import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.backup.BirdayImporter
 import com.minar.birday.backup.ContactsImporter
 import com.minar.birday.model.Event
+import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.AppRater
 import com.minar.birday.utilities.checkString
 import com.minar.birday.utilities.smartCapitalize
@@ -56,10 +58,12 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     lateinit var homeViewModel: HomeViewModel
     private lateinit var adapter: EventAdapter
+    private lateinit var sharedPrefs: SharedPreferences
 
     @ExperimentalStdlibApi
     override fun onCreate(savedInstanceState: Bundle?) {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
         adapter = EventAdapter(null)
 
         // Create the notification channel and check the permission (note: appIntro 6.0 is still buggy, better avoid to use it for asking permissions)
@@ -274,9 +278,8 @@ class MainActivity : AppCompatActivity() {
 
     // Vibrate using a standard vibration pattern
     fun vibrate() {
-        val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val vib = this.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        if (sp.getBoolean("vibration", true)) // Vibrate if the vibration in options is set to on
+        if (sharedPrefs.getBoolean("vibration", true)) // Vibrate if the vibration in options is set to on
             vib.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
     }
 

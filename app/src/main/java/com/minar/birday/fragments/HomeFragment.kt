@@ -5,6 +5,7 @@ import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
@@ -66,11 +67,13 @@ class HomeFragment : Fragment() {
     private lateinit var homeViewModel: HomeViewModel
     lateinit var adapter: EventAdapter
     lateinit var act: MainActivity
+    lateinit var sharedPrefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adapter = EventAdapter(this)
         act = activity as MainActivity
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
     }
 
     @ExperimentalStdlibApi
@@ -82,8 +85,7 @@ class HomeFragment : Fragment() {
         val v: View = inflater.inflate(R.layout.fragment_home, container, false)
         val upcomingImage = v.findViewById<ImageView>(R.id.upcomingImage)
         val shimmer = v.findViewById<ShimmerFrameLayout>(R.id.homeCardShimmer)
-        val sp = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        val shimmerEnabled = sp.getBoolean("shimmer", false)
+        val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
         val homeCard = v.homeCard
         if (shimmerEnabled) shimmer.startShimmer()
         upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
@@ -430,19 +432,18 @@ class HomeFragment : Fragment() {
         for (event in events) {
             if (event.nextDate!!.isEqual(upcomingDate)) {
                 // Consider the case of null surname and the case of unknown age
-                val actualPersonName = if (event.surname.isNullOrBlank()) event.name
-                else event.name + " " + event.surname
+                val formattedPersonName = formatName(event, sharedPrefs.getBoolean("surname_first", false))
                 val age = if (event.yearMatter!!) event.nextDate.year.minus(event.originalDate.year)
                     .toString()
                 else getString(R.string.unknown_age)
                 when (events.indexOf(event)) {
                     0 -> {
-                        personName = actualPersonName
+                        personName = formattedPersonName
                         nextDateText = nextDate(event, formatter)
                         nextAge = getString(R.string.next_age_years) + ": $age"
                     }
                     1, 2 -> {
-                        personName += ", $actualPersonName"
+                        personName += ", $formattedPersonName"
                         nextAge += ", $age"
                     }
                     3 -> {
