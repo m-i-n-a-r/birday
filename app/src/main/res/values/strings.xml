@@ -60,6 +60,7 @@
     <string name="light_blue">Light blue</string>
     <string name="red">Red</string>
     <string name="lime">Lime</string>
+    <string name="crimson">Crimson</string>
     <string name="system_theme">System default</string>
     <string name="dark_theme">Dark</string>
     <string name="light_theme">Light</string>

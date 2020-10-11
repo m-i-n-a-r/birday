@@ -25,6 +25,7 @@
         <item>@string/light_blue</item>
         <item>@string/red</item>
         <item>@string/lime</item>
+        <item>@string/crimson</item>
     </string-array>
 
     <string-array name="accentValues">
@@ -39,6 +40,7 @@
         <item>lightBlue</item>
         <item>red</item>
         <item>lime</item>
+        <item>crimson</item>
     </string-array>
 
     <string-array name="notificationHours">

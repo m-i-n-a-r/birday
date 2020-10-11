@@ -35,6 +35,7 @@
     <color name="lightBlueAccent">#29b6f6</color>
     <color name="redAccent">#ff5252</color>
     <color name="limeAccent">#c5de00</color>
+    <color name="crimsonAccent">#dc143c</color>
 
     <!-- slides -->
     <color name="slideOne">#4285f4</color>

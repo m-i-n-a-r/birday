@@ -102,6 +102,7 @@ class MainActivity : AppCompatActivity() {
             "lightBlue" -> setTheme(R.style.AppTheme_LightBlue)
             "red" -> setTheme(R.style.AppTheme_Red)
             "lime" -> setTheme(R.style.AppTheme_Lime)
+            "crimson" -> setTheme(R.style.AppTheme_Crimson)
         }
 
         super.onCreate(savedInstanceState)

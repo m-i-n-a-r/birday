@@ -62,6 +62,10 @@
         <item name="colorAccent">@color/limeAccent</item>
     </style>
 
+    <style name="Splash.Crimson" parent="SplashTheme">
+        <item name="colorAccent">@color/crimsonAccent</item>
+    </style>
+
     <!-- Accent styles for main activity and fragments -->
     <style name="AppTheme.Blue" parent="AppTheme">
         <item name="colorAccent">@color/blueAccent</item>
@@ -111,6 +115,11 @@
     <style name="AppTheme.Lime" parent="AppTheme">
         <item name="colorAccent">@color/limeAccent</item>
         <item name="colorPrimary">@color/limeAccent</item>
+    </style>
+
+    <style name="AppTheme.Crimson" parent="AppTheme">
+        <item name="colorAccent">@color/crimsonAccent</item>
+        <item name="colorPrimary">@color/crimsonAccent</item>
     </style>
 
 </resources>

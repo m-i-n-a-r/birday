@@ -38,6 +38,7 @@ class SplashActivity : AppCompatActivity() {
             "lightBlue" -> setTheme(R.style.Splash_LightBlue)
             "red" -> setTheme(R.style.Splash_Red)
             "lime" -> setTheme(R.style.Splash_Lime)
+            "crimson" -> setTheme(R.style.Splash_Crimson)
         }
 
         super.onCreate(savedInstanceState)

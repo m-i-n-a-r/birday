@@ -59,6 +59,7 @@
     <string name="light_blue">Bleu clair</string>
     <string name="red">Rouge</string>
     <string name="lime">Citron vert</string>
+    <string name="crimson">Cramoisi</string>
     <string name="system_theme">Suivre le système</string>
     <string name="dark_theme">Sombre</string>
     <string name="light_theme">Clair</string>
