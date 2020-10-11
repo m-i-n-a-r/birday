@@ -36,8 +36,8 @@
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
                 <objectAnimator
                     android:propertyName="fillColor"
-                    android:duration="400"
-                    android:valueFrom="@color/goodGray"
+                    android:duration="700"
+                    android:valueFrom="@android:color/transparent"
                     android:valueTo="?colorAccent"
                     android:valueType="colorType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>

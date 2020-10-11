@@ -589,11 +589,11 @@ class HomeFragment : Fragment() {
     private fun shareEvent(event: EventResult) {
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
         val eventInformation =
-            String(Character.toChars(0x1F388)) + " " +
-                    getString(R.string.notification_title) + " " +
-                    "\n" + String(Character.toChars(0x1F973)) + " " +
+            String(Character.toChars(0x1F388)) + "  " +
+                    getString(R.string.notification_title) +
+                    "\n" + String(Character.toChars(0x1F973)) + "  " +
                     formatName(event, sharedPrefs.getBoolean("surname_first", false)) +
-                    "\n" + String(Character.toChars(0x1F4C5)) + " " +
+                    "\n" + String(Character.toChars(0x1F4C5)) + "  " +
                     event.nextDate!!.format(formatter)
         ShareCompat.IntentBuilder
             .from(requireActivity())
