@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/detailsChineseSignValue"
         app:srcCompat="@drawable/ic_favorites_24dp"
         app:tint="@color/goodGray" />
 
@@ -162,7 +162,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginHorizontal="@dimen/linear_vertical_margin"
-        android:contentDescription="@string/event_actions"
+        android:layout_marginTop="@dimen/linear_vertical_margin"
+        android:contentDescription="@string/edit_event"
         android:paddingVertical="@dimen/in_row_button_padding"
         android:text="@string/edit_event"
         android:textColor="?colorAccent"
@@ -180,7 +181,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginHorizontal="@dimen/linear_vertical_margin"
-        android:contentDescription="@string/event_actions"
+        android:contentDescription="@string/delete_event"
         android:paddingVertical="@dimen/in_row_button_padding"
         android:text="@string/delete_event"
         android:textColor="?colorAccent"
@@ -189,6 +190,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/detailsEditButton"
+        app:rippleColor="?colorAccent" />
+
+    <Button
+        android:id="@+id/detailsShareButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="@dimen/linear_vertical_margin"
+        android:contentDescription="@string/share_event"
+        android:paddingVertical="@dimen/in_row_button_padding"
+        android:text="@string/share_event"
+        android:textColor="?colorAccent"
+        android:tint="?colorAccent"
+        app:icon="@drawable/ic_share_black_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detailsDeleteButton"
         app:rippleColor="?colorAccent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

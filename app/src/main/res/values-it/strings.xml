@@ -121,6 +121,7 @@
     <string name="edit_event">Modifica evento</string>
     <string name="delete_event">Elimina evento</string>
     <string name="update_event">Aggiorna evento</string>
+    <string name="share_event">Condividi evento</string>
     <string name="slide_one_title">Benvenuto/a in Birday!</string>
     <string name="slide_one_description">Birday è un\'app semplice e leggera per gestire eventi importanti! Puoi usarla per ricordare e raccogliere i compleanni delle persone che ami, in modo affidabile e veloce.</string>
     <string name="slide_two_title">Gratis, semplice, personalizzabile</string>

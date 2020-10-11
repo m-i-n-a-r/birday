@@ -92,6 +92,7 @@
     <string name="event_actions_description">¡aquí puedes eliminar este evento o editarlo fácilmente!</string>
     <string name="edit_event">Editar evento</string>
     <string name="delete_event">Eliminar evento</string>
+    <string name="share_event">Compartir evento</string>
     <string name="update_event">Actualizar evento</string>
     <string name="event_apps">App rápidas</string>
     <string name="event_apps_description">¡Aplicaciones para hacer feliz cumpleaños a los cumpleañeros!</string>

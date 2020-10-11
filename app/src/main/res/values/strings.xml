@@ -120,6 +120,7 @@
     <string name="edit_event">Edit event</string>
     <string name="delete_event">Delete event</string>
     <string name="update_event">Update event</string>
+    <string name="share_event">Share event</string>
 
     <!-- Event details -->
     <string name="event_details">Details</string>

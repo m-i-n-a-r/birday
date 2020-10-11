@@ -107,6 +107,7 @@
     <string name="edit_event">Chỉnh sửa sự kiện</string>
     <string name="delete_event">Xóa sự kiện</string>
     <string name="update_event">Cập nhật sự kiện</string>
+    <string name="share_event">Chia sẻ sự kiện</string>
 
     <!-- Event details -->
     <string name="event_details">Chi tiết</string>

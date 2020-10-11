@@ -91,7 +91,6 @@
     <string name="surname_first_description_on">Laat de achternaam voor de naam zien</string>
     <string name="surname_first_description_off">Laat de naam voor de achternaam zien</string>
 
-
     <!-- Developer -->
     <string name="dev_description">Ik ben een beleefde kerel en ik hou van mooie dingen, zoals animaties, icoontjes, sportauto\'s en 3d printen. Ik werk als een ontwerper en computer ingenieur.</string>
     <string name="easter_egg">Puik logootje, hè? ;D</string>
@@ -112,6 +111,7 @@
     <string name="edit_event">Gebeurtenis wijzigen</string>
     <string name="delete_event">Gebeurtenis verwijderen</string>
     <string name="update_event">Gebeurtenis bijwerken</string>
+    <string name="share_event">Deel gebeurtenis</string>
 
     <!-- Event details -->
     <string name="event_details">Details</string>

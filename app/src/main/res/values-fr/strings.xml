@@ -107,6 +107,7 @@
     <string name="edit_event">Modifier l\'anniversaire</string>
     <string name="delete_event">Supprimer l\'anniversaire</string>
     <string name="update_event">Appliquer</string>
+    <string name="share_event">Partager l\'anniversaire</string>
 
     <!-- Event details -->
     <string name="event_details">Détails</string>

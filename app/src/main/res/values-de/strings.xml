@@ -107,6 +107,7 @@
     <string name="edit_event">Ereignis bearbeiten</string>
     <string name="delete_event">Ereignis löschen</string>
     <string name="update_event">Ereignis updaten</string>
+    <string name="share_event">Ereignis teilen</string>
 
     <!-- Event details -->
     <string name="event_details">Details</string>

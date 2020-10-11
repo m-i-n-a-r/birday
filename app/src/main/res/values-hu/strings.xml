@@ -107,6 +107,7 @@
     <string name="edit_event">Esemény szerkesztése</string>
     <string name="delete_event">Esemény törlése</string>
     <string name="update_event">Esemény frissítése</string>
+    <string name="share_event">Esemény megosztása</string>
 
     <!-- Event details -->
     <string name="event_details">Részletek</string>
