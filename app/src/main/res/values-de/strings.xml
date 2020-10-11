@@ -176,9 +176,9 @@
     <string name="day">Tag</string>
     <string name="days">Tage</string>
     <string name="months">Monate</string>
-    <string name="today">Heute</string>
-    <string name="yesterday">Gestern</string>
-    <string name="tomorrow">Morgen</string>
+    <string name="today">Heute!</string>
+    <string name="yesterday">Gestern!</string>
+    <string name="tomorrow">Morgen!</string>
     <string name="years">Jahre</string>
     <string name="born_in">geboren in</string>
     <string name="and">und</string>

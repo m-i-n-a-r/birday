@@ -613,9 +613,9 @@ class HomeFragment : Fragment() {
     private fun daysRemaining(daysRemaining: Int): String {
         return when (daysRemaining) {
             // The -1 case should never happen
-            -1 -> getString(R.string.yesterday) + "!"
-            0 -> getString(R.string.today) + "!"
-            1 -> getString(R.string.tomorrow) + "!"
+            -1 -> getString(R.string.yesterday)
+            0 -> getString(R.string.today)
+            1 -> getString(R.string.tomorrow)
             else -> daysRemaining.toString() + " " + getString(R.string.days_left)
         }
     }

@@ -40,9 +40,9 @@ internal fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManage
         val upcomingDate = event.nextDate!!
         val nextDate = when (val daysRemaining = ChronoUnit.DAYS.between(LocalDate.now(), upcomingDate).toInt()) {
             // The -1 case should never happen
-            -1 -> event.nextDate.format(formatter) + ". " + context.getString(R.string.yesterday) + "!"
-            0 -> event.nextDate.format(formatter) + ". " + context.getString(R.string.today) + "!"
-            1 -> event.nextDate.format(formatter) + ". " + context.getString(R.string.tomorrow) + "!"
+            -1 -> event.nextDate.format(formatter) + ". " + context.getString(R.string.yesterday)
+            0 -> event.nextDate.format(formatter) + ". " + context.getString(R.string.today)
+            1 -> event.nextDate.format(formatter) + ". " + context.getString(R.string.tomorrow)
             else -> event.nextDate.format(formatter) + ". " + daysRemaining + " " + context.getString(R.string.days_left)
         }
         widgetUpcoming = if (allEvents.isEmpty()) context.getString(R.string.no_next_event)

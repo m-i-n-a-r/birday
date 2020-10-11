@@ -180,9 +180,9 @@
     <string name="day">dag</string>
     <string name="days">dagen</string>
     <string name="months">maanden</string>
-    <string name="today">Vandaag</string>
-    <string name="yesterday">Gisteren</string>
-    <string name="tomorrow">Morgen</string>
+    <string name="today">Vandaag!</string>
+    <string name="yesterday">Gisteren!</string>
+    <string name="tomorrow">Morgen!</string>
     <string name="years">jaar</string>
     <string name="born_in">geboren in</string>
     <string name="and">en</string>

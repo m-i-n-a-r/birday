@@ -176,9 +176,9 @@
     <string name="day">ngày</string>
     <string name="days">ngày</string>
     <string name="months">tháng</string>
-    <string name="today">hôm nay</string>
-    <string name="yesterday">hôm qua</string>
-    <string name="tomorrow">ngày mai</string>
+    <string name="today">hôm nay!</string>
+    <string name="yesterday">hôm qua!</string>
+    <string name="tomorrow">ngày mai!</string>
     <string name="years">năm</string>
     <string name="born_in">sinh ra</string>
     <string name="and">và</string>

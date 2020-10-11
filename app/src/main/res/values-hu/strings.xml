@@ -176,9 +176,9 @@
     <string name="day">nap</string>
     <string name="days">napokkal</string>
     <string name="months">hónapok</string>
-    <string name="today">Ma</string>
-    <string name="yesterday">Tegnap</string>
-    <string name="tomorrow">Holnap</string>
+    <string name="today">Ma!</string>
+    <string name="yesterday">Tegnap!</string>
+    <string name="tomorrow">Holnap!</string>
     <string name="years">évek</string>
     <string name="born_in">született</string>
     <string name="and">és</string>

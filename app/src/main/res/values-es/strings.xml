@@ -149,9 +149,9 @@
     <string name="day">día</string>
     <string name="days">días</string>
     <string name="months">meses</string>
-    <string name="tomorrow">Mañana</string>
-    <string name="today">Hoy</string>
-    <string name="yesterday">Ayer</string>
+    <string name="tomorrow">¡Mañana!</string>
+    <string name="today">¡Hoy!</string>
+    <string name="yesterday">¡Ayer!</string>
     <string name="years">años</string>
     <string name="born_in">nacido en</string>
     <string name="and">y</string>
