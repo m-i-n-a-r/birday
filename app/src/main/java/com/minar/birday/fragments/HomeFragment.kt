@@ -215,8 +215,8 @@ class HomeFragment : Fragment() {
             // Show a dialog with the details of the selected contact
             override fun onItemClick(position: Int, view: View?) {
                 act.vibrate()
-                val person = adapter.getItem(position)
-                val title = getString(R.string.event_details) + " - " + person.name
+                val event = adapter.getItem(position)
+                val title = getString(R.string.event_details) + " - " + event.name
                 val dialog = MaterialDialog(act).show {
                     title(text = title)
                     icon(R.drawable.ic_balloon_24dp)
@@ -253,29 +253,27 @@ class HomeFragment : Fragment() {
                 val formatter: DateTimeFormatter =
                     DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
                 val subject: MutableList<EventResult> = mutableListOf()
-                subject.add(person)
+                subject.add(event)
                 val statsGenerator = StatsGenerator(subject, context)
-                val daysCountdown = daysRemaining(getRemainingDays(person.nextDate!!))
-                customView.detailsZodiacSignValue.text = statsGenerator.getZodiacSign(person)
+                val daysCountdown = daysRemaining(getRemainingDays(event.nextDate!!))
+                customView.detailsZodiacSignValue.text = statsGenerator.getZodiacSign(event)
                 customView.detailsCountdown.text = daysCountdown
 
                 // Hide the age and the chinese sign and use a shorter birth date if the year is unknown
-                if (!person.yearMatter!!) {
+                if (!event.yearMatter!!) {
                     customView.detailsNextAge.visibility = View.GONE
                     customView.detailsNextAgeValue.visibility = View.GONE
                     customView.detailsChineseSign.visibility = View.GONE
                     customView.detailsChineseSignValue.visibility = View.GONE
-                    val reducedBirthDate = person.originalDate.month.name
-                        .toLowerCase(Locale.getDefault()).capitalize(Locale.getDefault()) +
-                            ", " + person.originalDate.dayOfMonth.toString()
+                    val reducedBirthDate = getReducedDate(event.originalDate)
                     customView.detailsBirthDateValue.text = reducedBirthDate
                 } else {
-                    customView.detailsNextAgeValue.text = getNextAge(person).toString()
-                    customView.detailsBirthDateValue.text = person.originalDate.format(formatter)
-                    customView.detailsChineseSignValue.text = statsGenerator.getChineseSign(person)
+                    customView.detailsNextAgeValue.text = getNextAge(event).toString()
+                    customView.detailsBirthDateValue.text = event.originalDate.format(formatter)
+                    customView.detailsChineseSignValue.text = statsGenerator.getChineseSign(event)
                 }
                 // Set the drawable of the zodiac sign
-                when (statsGenerator.getZodiacSignNumber(person)) {
+                when (statsGenerator.getZodiacSignNumber(event)) {
                     0 -> customView.detailsZodiacImage.setImageDrawable(
                         ContextCompat.getDrawable(
                             requireContext(), R.drawable.ic_zodiac_sagittarius

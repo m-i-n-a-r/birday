@@ -16,6 +16,7 @@ import com.minar.birday.R
 import com.minar.birday.model.EventResult
 import com.minar.birday.listeners.OnItemClickListener
 import com.minar.birday.utilities.formatName
+import com.minar.birday.utilities.getReducedDate
 import kotlinx.android.synthetic.main.event_row.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -64,12 +65,8 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapte
             val formattedPersonName = formatName(event, sharedPrefs.getBoolean("surname_first", false))
             // If the year isn't considered, show only the day and the month
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
-            var originalDate = event.originalDate.format(formatter)
-            if (!event.yearMatter!!)
-                originalDate = event.originalDate.month.name
-                    .toLowerCase(Locale.getDefault()).capitalize(Locale.getDefault()) +
-                        ", " + event.originalDate.dayOfMonth.toString()
-
+            val originalDate = if (event.yearMatter!!) event.originalDate.format(formatter)
+            else getReducedDate(event.originalDate).capitalize(Locale.getDefault())
             eventPerson.text = formattedPersonName
             eventDate.text = originalDate
 

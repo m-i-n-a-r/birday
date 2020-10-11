@@ -3,7 +3,9 @@ package com.minar.birday.utilities
 import com.minar.birday.model.EventResult
 import java.time.LocalDate
 import java.time.Period
+import java.time.format.TextStyle
 import java.time.temporal.ChronoUnit
+import java.util.*
 
 // Format the name considering the preference and the surname (which could be empty)
 fun formatName(event: EventResult, surnameFirst: Boolean): String {
@@ -13,6 +15,10 @@ fun formatName(event: EventResult, surnameFirst: Boolean): String {
         else event.surname + " " + event.name
     }
 }
+
+// Get the reduced date for an event, i.e. the month and day date, unsupported natively
+fun getReducedDate(date: LocalDate) = date.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
+    .toLowerCase(Locale.getDefault()) + ", " + date.dayOfMonth.toString()
 
 // Get the age also considering the possible corner cases
 fun getAge(eventResult: EventResult): Int {
