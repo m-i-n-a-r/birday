@@ -585,14 +585,16 @@ class HomeFragment : Fragment() {
         eventDate.addTextChangedListener(watcher)
     }
 
-    // Share an event as a plain string (plus a party emoji) on every supported app
+    // Share an event as a plain string (plus some explanatory emotes) on every supported app
     private fun shareEvent(event: EventResult) {
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
         val eventInformation =
-            getString(R.string.notification_title) + " " +
-                    String(Character.toChars(0x1F973)) +
-                    "\n" + formatName(event, sharedPrefs.getBoolean("surname_first", false)) +
-                    "\n" + event.nextDate!!.format(formatter)
+            String(Character.toChars(0x1F388)) + " " +
+                    getString(R.string.notification_title) + " " +
+                    "\n" + String(Character.toChars(0x1F973)) + " " +
+                    formatName(event, sharedPrefs.getBoolean("surname_first", false)) +
+                    "\n" + String(Character.toChars(0x1F4C5)) + " " +
+                    event.nextDate!!.format(formatter)
         ShareCompat.IntentBuilder
             .from(requireActivity())
             .setText(eventInformation)
