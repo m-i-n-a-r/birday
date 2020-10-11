@@ -44,13 +44,16 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        // Launch the animated splashscreen with a delay to avoid cutting a part of the animation
         val splash: ImageView = findViewById(R.id.splashImage)
         splash.setImageResource(R.drawable.animated_birday)
-        (splash.drawable as AnimatedVectorDrawable).start()
+        activityScope.launch {
+            delay(150)
+            (splash.drawable as AnimatedVectorDrawable).start()
+        }
 
         activityScope.launch {
             delay(1000)
-
             val intent = Intent(this@SplashActivity, MainActivity::class.java)
             startActivity(intent)
             finish()
