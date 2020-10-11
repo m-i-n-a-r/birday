@@ -19,6 +19,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.DrawableRes
+import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -229,7 +230,7 @@ class HomeFragment : Fragment() {
                 val customView = dialog.getCustomView()
                 val deleteButton = customView.detailsDeleteButton
                 val editButton = customView.detailsEditButton
-                //val shareButton = customView.detailsShareButton
+                val shareButton = customView.detailsShareButton
 
                 deleteButton.setOnClickListener {
                     act.vibrate()
@@ -243,9 +244,11 @@ class HomeFragment : Fragment() {
                     dialog.dismiss()
                 }
 
-                /*shareButton.setOnClickListener {
+                shareButton.setOnClickListener {
                     act.vibrate()
-                }*/
+                    shareEvent(adapter.getItem(position))
+                    dialog.dismiss()
+                }
 
                 val formatter: DateTimeFormatter =
                     DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
@@ -580,6 +583,22 @@ class HomeFragment : Fragment() {
         name.addTextChangedListener(watcher)
         surname.addTextChangedListener(watcher)
         eventDate.addTextChangedListener(watcher)
+    }
+
+    // Share an event as a plain string (plus a party emoji) on every supported app
+    private fun shareEvent(event: EventResult) {
+        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
+        val eventInformation =
+            getString(R.string.notification_title) + " " +
+                    String(Character.toChars(0x1F973)) +
+                    "\n" + formatName(event, sharedPrefs.getBoolean("surname_first", false)) +
+                    "\n" + event.nextDate!!.format(formatter)
+        ShareCompat.IntentBuilder
+            .from(requireActivity())
+            .setText(eventInformation)
+            .setType("text/plain")
+            .setChooserTitle(getString(R.string.share_event))
+            .startChooser()
     }
 
     // Properly format the next date for widget and next event card
