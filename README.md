@@ -14,19 +14,19 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 
 ## Translations
 
-| LANGUAGE           | STATUS   | SPECIAL THANKS |
-|:-------------------|:--------:|---------------:|
-| **English**        | complete | myself         |
-| **Spanish**        | complete | myself         |
-| **Svedish**        | complete | SlowNicoFish   |
-| **Dutch**          | complete | stefanvi       |
-| **Italian**        | complete | myself         |
-| **French**         | complete | Mattis Biton   |
-| **Hungarian**      | complete | Obi            |
-| **German**         | complete | pizzapastamix  |
-| **Vietnamese**     | complete | Lee Huynh      |
-| Portuguese         | unknown  |                |
-| Russian            | unknown  |                |
+| LANGUAGE           | STATUS   | SPECIAL THANKS | IMPROVED BY                 |
+|:-------------------|:--------:|:---------------|:----------------------------|
+| **English**        | complete | myself         | ar-maged                    |
+| **Spanish**        | complete | myself         | myself                      |
+| **Svedish**        | complete | SlowNicoFish   |                             |
+| **Dutch**          | complete | stefanvi       |                             |
+| **Italian**        | complete | myself         | myself                      |
+| **French**         | complete | Mattis Biton   |                             |
+| **Hungarian**      | complete | Obi            |                             |
+| **German**         | complete | pizzapastamix  | WrstFngr, AlexanderRitter02 |
+| **Vietnamese**     | complete | Lee Huynh      |                             |
+| Portuguese         | unknown  |                |                             |
+| Russian            | unknown  |                |                             |
 
 ## Features
 - Notification the day of the event, in a customizable time range
