@@ -114,7 +114,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         }
         commonMonth = evaluateResult(months)
         if (commonMonth.isBlank()) return commonMonth
-        return applicationContext?.getString(R.string.most_common_month) + " " + commonMonth.toLowerCase(Locale.ROOT)
+        return applicationContext?.getString(R.string.most_common_month) + " " + commonMonth
     }
 
     // The most common age range (decade). When there's no common range, return a blank string
@@ -190,7 +190,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     private fun dayOfWeek(person: EventResult): String {
         return if (!person.yearMatter!!) ""
         else person.name + " " + applicationContext?.getString(R.string.random_day_of_week) + " " +
-                person.originalDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault()).toLowerCase(Locale.ROOT)
+                person.originalDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault())
     }
 
     // The most common day of the week of birth. When there's no common day of the week, return a blank string
@@ -206,7 +206,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         }
         commonWeekDay = evaluateResult(weekDays)
         if (commonWeekDay.isBlank()) return commonWeekDay
-        return applicationContext?.getString(R.string.most_common_day_of_week) + " " + commonWeekDay.toLowerCase(Locale.ROOT)
+        return applicationContext?.getString(R.string.most_common_day_of_week) + " " + commonWeekDay
     }
 
     // Get the number of persons born in a leap year. Even 0 is an acceptable result
