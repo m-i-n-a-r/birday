@@ -29,7 +29,7 @@
     <string name="customization">Anpassung</string>
     <string name="app_behavior">App-Verhalten</string>
     <string name="additional_notification_name">Zusätzliche Benachrichtigung</string>
-    <string name="additional_notification_description">Sende eine zusätzliche Benachrichtigung  vor jedem Geburtstag: %s</string>
+    <string name="additional_notification_description">Sende eine zusätzliche Benachrichtigung vor jedem Geburtstag: %s</string>
     <string name="no_additional_notification">Keine</string>
     <string name="one_day_before">Einen Tag vorher</string>
     <string name="two_days_before">Zwei Tag vorher</string>

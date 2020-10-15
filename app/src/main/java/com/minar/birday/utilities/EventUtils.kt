@@ -17,8 +17,9 @@ fun formatName(event: EventResult, surnameFirst: Boolean): String {
 }
 
 // Get the reduced date for an event, i.e. the month and day date, unsupported natively
-fun getReducedDate(date: LocalDate) = date.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
-    .toLowerCase(Locale.getDefault()) + ", " + date.dayOfMonth.toString()
+fun getReducedDate(date: LocalDate) =
+    date.month.getDisplayName(TextStyle.FULL, Locale.getDefault()) +
+            ", " + date.dayOfMonth.toString()
 
 // Get the age also considering the possible corner cases
 fun getAge(eventResult: EventResult): Int {
