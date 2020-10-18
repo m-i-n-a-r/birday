@@ -24,7 +24,9 @@
     <string name="no_next_event_description">You haven\'t entered or imported a birthday yet. Add one and let Birday help you!</string>
     <string name="next_age_years">Years</string>
     <string name="event_others">and others</string>
-    <string name="days_left">days left</string>
+    <plurals name="days_left">
+        <item quantity="other">%d days left</item>
+    </plurals>
 
     <!-- Settings -->
     <string name="customization">Customization</string>

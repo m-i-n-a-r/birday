@@ -23,7 +23,9 @@
     <string name="no_next_event_description">No ha ingresado ni importado ningún cumpleaños. ¡Agregue uno y deje que Birday lo ayude!</string>
     <string name="next_age_years">Años</string>
     <string name="event_others">y otros</string>
-    <string name="days_left">días restantes</string>
+    <plurals name="days_left">
+        <item quantity="other">%d días restantes</item>
+    </plurals>
     <string name="customization">Personalización</string>
     <string name="app_behavior">Comportamiento de la app</string>
     <string name="additional_notification_name">Notificación adicional</string>

@@ -23,7 +23,9 @@
     <string name="no_next_event_description">Vous n\'avez pas encore ajouté ni importé d\'anniversaires. Ajoutez-en un et laissez Birday vous aidez !</string>
     <string name="next_age_years">Âge</string>
     <string name="event_others">et d\'autres</string>
-    <string name="days_left">jours restants</string>
+    <plurals name="days_left">
+        <item quantity="other">%d jours restants</item>
+    </plurals>
 
     <!-- Settings -->
     <string name="customization">Personnalisation</string>

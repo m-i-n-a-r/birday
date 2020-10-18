@@ -23,7 +23,9 @@
     <string name="no_next_event_description">Még nem írtál be vagy importáltál születésnapot. Adj hozzá egyet, és hagyd, hogy a Birday segítsen!</string>
     <string name="next_age_years">Évek</string>
     <string name="event_others">és mások</string>
-    <string name="days_left">nap van hátra</string>
+    <plurals name="days_left">
+	<item quantity="other">%d nap van hátra</item>
+    </plurals>
 
     <!-- Settings -->
     <string name="customization">Testreszabás</string>

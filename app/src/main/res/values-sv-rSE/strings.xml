@@ -23,7 +23,9 @@
     <string name="no_next_event_description">Du har inte lagt till eller importerat en födelsedag än. Lägg till en och låt Birday hjälpa dig!</string>
     <string name="next_age_years">År</string>
     <string name="event_others">och andra</string>
-    <string name="days_left">dagar kvar</string>
+    <plurals name="days_left">
+        <item quantity="other">%d dagar kvar</item>
+    </plurals>
     <string name="customization">Anpassning</string>
     <string name="app_behavior">Appbeteende</string>
     <string name="additional_notification_name">Ytterligare notifikation</string>

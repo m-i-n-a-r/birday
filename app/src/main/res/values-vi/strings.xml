@@ -23,7 +23,9 @@
     <string name="no_next_event_description">Bạn chưa nhập ngày sinh nhật. Lưu thêm sinh nhât để Birday giúp bạn!</string>
     <string name="next_age_years">tuổi</string>
     <string name="event_others">và những thứ khác</string>
-    <string name="days_left">ngày còn lại</string>
+    <plurals name="days_left">
+        <item quantity="other">%d ngày còn lại</item>
+    </plurals>
 
     <!-- Settings -->
     <string name="customization">Tùy biến</string>

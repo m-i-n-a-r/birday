@@ -23,7 +23,9 @@
     <string name="no_next_event_description">Je hebt nog geen verjaardagen opgegeven of geïmporteerd. Voeg er eentje toe en laat Birday je helpen!</string>
     <string name="next_age_years">jaar</string>
     <string name="event_others">en anderen</string>
-    <string name="days_left">dagen resterend</string>
+    <plurals name="days_left">
+        <item quantity="other">%d dagen resterend</item>
+    </plurals>
 
     <!-- Settings -->
     <string name="customization">Aanpassingen</string>

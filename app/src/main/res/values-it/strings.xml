@@ -70,7 +70,9 @@
     <string name="yesterday">Ieri!</string>
     <string name="tomorrow">Domani!</string>
     <string name="event_others">ed altri</string>
-    <string name="days_left">giorni rimasti</string>
+    <plurals name="days_left">
+        <item quantity="other">%d giorni rimasti</item>
+    </plurals>
     <string name="years">anni</string>
     <string name="and">e</string>
     <string name="did_you_know">Lo sapevi?</string>
