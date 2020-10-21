@@ -148,11 +148,15 @@
     <string name="zodiac_virgo">virgo</string>
     <string name="zodiac_libra">libra</string>
     <string name="zodiac_scorpio">escorpio</string>
-    <string name="months">meses</string>
+    <plurals name="months">
+      <item quantity="other">%d meses</item>
+    </plurals>
     <string name="tomorrow">¡Mañana!</string>
     <string name="today">¡Hoy!</string>
     <string name="yesterday">¡Ayer!</string>
-    <string name="years">años</string>
+    <plurals name="years">
+      <item quantity="other">%d años</item>
+    </plurals>
     <string name="born_in">nacido en</string>
     <string name="and">y</string>
     <string name="events_notification_channel">Recordatorios de Eventos</string>

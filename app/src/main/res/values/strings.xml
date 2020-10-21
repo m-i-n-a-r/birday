@@ -188,11 +188,15 @@
     <string name="zodiac_scorpio">scorpio</string>
 
     <!-- Common words -->
-    <string name="months">months</string>
+    <plurals name="months">
+      <item quantity="other">%d months</item>
+    </plurals>
     <string name="today">Today!</string>
     <string name="yesterday">Yesterday!</string>
     <string name="tomorrow">Tomorrow!</string>
-    <string name="years">years</string>
+    <plurals name="years">
+      <item quantity="other">%d years</item>
+    </plurals>
     <string name="born_in">born in</string>
     <string name="and">and</string>
     <string name="unknown_age" translatable="false">\??</string>

@@ -179,11 +179,15 @@
     <string name="zodiac_scorpio">schorpioen</string>
 
     <!-- Common words -->
-    <string name="months">maanden</string>
+    <plurals name="months">
+      <item quantity="other">%d maanden</item>
+    </plurals>
     <string name="today">Vandaag!</string>
     <string name="yesterday">Gisteren!</string>
     <string name="tomorrow">Morgen!</string>
-    <string name="years">jaar</string>
+    <plurals name="years">
+      <item quantity="other">%d jaar</item>
+    </plurals>
     <string name="born_in">geboren in</string>
     <string name="and">en</string>
 

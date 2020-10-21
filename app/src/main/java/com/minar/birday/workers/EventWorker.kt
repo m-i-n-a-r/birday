@@ -91,9 +91,9 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         var response = applicationContext.getString(R.string.additional_notification_text) + " "
         nextEvents.forEach {
             if (nextEvents.indexOf(it) == 0) response += it.name + ", " +
-                    it.nextDate?.year?.minus(it.originalDate.year) + " " + applicationContext.getString(R.string.years)
+                    applicationContext.getResources().getQuantityString(R.plurals.years, it.nextDate?.year?.minus(it.originalDate.year)!!)
             if (nextEvents.indexOf(it) in 1..2) response += ", " + it.name + ", " +
-                    it.nextDate?.year?.minus(it.originalDate.year) + " " + applicationContext.getString(R.string.years)
+                    applicationContext.getResources().getQuantityString(R.plurals.years, it.nextDate?.year?.minus(it.originalDate.year)!!)
             if (nextEvents.indexOf(it) == 3) response += ", " + applicationContext.getString(R.string.event_others)
         }
         response += ". "
@@ -105,9 +105,9 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         var response = applicationContext.getString(R.string.notification_description_part_1) + ": "
         nextEvents.forEach {
             if (nextEvents.indexOf(it) == 0) response += it.name + ", " +
-                    it.nextDate?.year?.minus(it.originalDate.year) + " " + applicationContext.getString(R.string.years)
+                    applicationContext.getResources().getQuantityString(R.plurals.years, it.nextDate?.year?.minus(it.originalDate.year)!!)
             if (nextEvents.indexOf(it) in 1..2) response += ", " + it.name + ", " +
-                    it.nextDate?.year?.minus(it.originalDate.year) + " " + applicationContext.getString(R.string.years)
+                    applicationContext.getResources().getQuantityString(R.plurals.years, it.nextDate?.year?.minus(it.originalDate.year)!!)
             if (nextEvents.indexOf(it) == 3) response += ", " + applicationContext.getString(R.string.event_others)
         }
         response += ". " + applicationContext.getString(R.string.notification_description_part_2)

@@ -62,8 +62,8 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
 
     // The average age
     private fun ageAverage(): String {
-        val average = truncate(getAges().values.average())
-        return applicationContext?.getString(R.string.age_average) + " " + average.toString() + " " + applicationContext?.getString(R.string.years)
+        val average = truncate(getAges().values.average()).toInt()
+        return applicationContext?.getString(R.string.age_average) + " " + applicationContext?.getResources()?.getQuantityString(R.plurals.years, average).toString()
     }
 
     // The oldest person, taking into account months and days
@@ -78,8 +78,8 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
                 oldestAge = getAge(it)
             }
         }
-        return applicationContext?.getString(R.string.oldest_person) + " " + oldestName + ", " + oldestAge +
-                " " + applicationContext?.getString(R.string.years)
+        return applicationContext?.getString(R.string.oldest_person) + " " + oldestName + ", " +
+                applicationContext?.getResources()?.getQuantityString(R.plurals.years, oldestAge).toString()
     }
 
     // The youngest person, taking into account months and days
@@ -97,10 +97,10 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         // If the youngest person is a baby, return the age in months
         return if (youngestAge == 0)
             applicationContext?.getString(R.string.youngest_person) + " " + youngestName + ", " +
-                getAgeMonths(youngestDate) + " " + applicationContext?.getString(R.string.months)
+                applicationContext?.getResources()?.getQuantityString(R.plurals.months, getAgeMonths(youngestDate))
         else
             applicationContext?.getString(R.string.youngest_person) + " " + youngestName + ", " +
-                youngestAge + " " + applicationContext?.getString(R.string.years)
+                applicationContext?.getResources()?.getQuantityString(R.plurals.years, youngestAge)
     }
 
     // The most common month. When there's no common month, return a blank string
@@ -164,7 +164,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         else {
             val chosen = specialPersons.keys.random()
             applicationContext?.getString(R.string.special_ages) + " " + chosen + ", " +
-                    specialPersons[chosen] + " " + applicationContext?.getString(R.string.years)
+                    applicationContext?.getResources()?.getQuantityString(R.plurals.years, specialPersons[chosen]!!).toString()
         }
     }
 

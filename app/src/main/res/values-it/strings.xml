@@ -61,7 +61,9 @@
     <plurals name="stats_total">
       <item quantity="other">Birday ti sta aiutando a ricordare un totale di %d compleanni</item>
     </plurals>
-    <string name="months">mesi</string>
+    <plurals name="months">
+      <item quantity="other">%d mesi</item>
+    </plurals>
     <string name="today">Oggi!</string>
     <string name="yesterday">Ieri!</string>
     <string name="tomorrow">Domani!</string>
@@ -69,7 +71,9 @@
     <plurals name="days_left">
         <item quantity="other">%d giorni rimasti</item>
     </plurals>
-    <string name="years">anni</string>
+    <plurals name="years">
+      <item quantity="other">%d anni</item>
+    </plurals>
     <string name="and">e</string>
     <string name="did_you_know">Lo sapevi?</string>
     <string name="age_average">L\'età media è</string>

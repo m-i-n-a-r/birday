@@ -156,11 +156,15 @@
     <string name="zodiac_virgo">jungfrun</string>
     <string name="zodiac_scorpio">skorpionen</string>
     <string name="zodiac_libra">vågen</string>
-    <string name="months">månader</string>
+    <plurals name="months">
+      <item quantity="other">%d månader</item>
+    </plurals>
     <string name="today">I dag!</string>
     <string name="yesterday">I går!</string>
     <string name="tomorrow">I morgon!</string>
-    <string name="years">år</string>
+    <plurals name="years">
+      <item quantity="other">%d år</item>
+    </plurals>
     <string name="born_in">född i</string>
     <string name="and">och</string>
     <string name="events_notification_channel">Händelsepåminnelse</string>
