@@ -614,7 +614,7 @@ class HomeFragment : Fragment() {
             -1 -> getString(R.string.yesterday)
             0 -> getString(R.string.today)
             1 -> getString(R.string.tomorrow)
-            else -> getQuantityString(R.string.days_left, daysRemaining)
+            else -> getResources().getQuantityString(R.plurals.days_left, daysRemaining)
         }
     }
 
