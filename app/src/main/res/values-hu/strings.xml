@@ -175,8 +175,6 @@
     <string name="zodiac_scorpio">skorpió</string>
 
     <!-- Common words -->
-    <string name="day">nap</string>
-    <string name="days">napokkal</string>
     <string name="months">hónapok</string>
     <string name="today">Ma!</string>
     <string name="yesterday">Tegnap!</string>

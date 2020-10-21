@@ -188,8 +188,6 @@
     <string name="zodiac_scorpio">scorpio</string>
 
     <!-- Common words -->
-    <string name="day">day</string>
-    <string name="days">days</string>
     <string name="months">months</string>
     <string name="today">Today!</string>
     <string name="yesterday">Yesterday!</string>

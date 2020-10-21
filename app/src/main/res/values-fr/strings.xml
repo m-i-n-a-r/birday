@@ -175,8 +175,6 @@
     <string name="zodiac_scorpio">scorpion</string>
 
     <!-- Common words -->
-    <string name="day">jour</string>
-    <string name="days">jours</string>
     <string name="months">mois</string>
     <string name="today">Aujourd\'hui !</string>
     <string name="yesterday">Hier !</string>
