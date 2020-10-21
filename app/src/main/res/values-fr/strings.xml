@@ -17,7 +17,9 @@
     <string name="no_stats">Vous n\'avez pas de statistiques</string>
     <string name="stats_summary">Vos statistiques</string>
     <string name="no_stats_description">Vous n\'avez pas enregistré assez d\'anniversaires pour pouvoir afficher des statistiques. Ajoutez-en quelques-uns et revenez plus tard !</string>
-    <string name="stats_total">Birday vous aide à retenir un total de</string>
+    <plurals name="stats_total">
+      <item quantity="other">Birday vous aide à retenir un total de %d anniversaires</item>
+    </plurals>
     <string name="next_event">Prochain événement</string>
     <string name="no_next_event">Il n\'y a aucun anniversaire ici !</string>
     <string name="no_next_event_description">Vous n\'avez pas encore ajouté ni importé d\'anniversaires. Ajoutez-en un et laissez Birday vous aidez !</string>
@@ -173,8 +175,6 @@
     <string name="zodiac_scorpio">scorpion</string>
 
     <!-- Common words -->
-    <string name="birthday">anniversaire</string>
-    <string name="birthdays">anniversaires</string>
     <string name="event">événement</string>
     <string name="events">événements</string>
     <string name="day">jour</string>

@@ -109,8 +109,7 @@ class FavoritesFragment : Fragment() {
         val generator = StatsGenerator(events, context)
         cardSubtitle.text = generator.generateRandomStat()
         fullStats = generator.generateFullStats()
-        val summary = getString(R.string.stats_total) + " " +
-                events.size + " " + getString(R.string.birthdays)
+        val summary = getResources().getQuantityString(R.plurals.stats_total, events.size)
         cardDescription.text = summary
     }
 

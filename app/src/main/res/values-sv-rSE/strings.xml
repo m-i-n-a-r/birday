@@ -17,7 +17,9 @@
     <string name="no_stats">Ingen statistik att visa!</string>
     <string name="stats_summary">Statistiköversikt</string>
     <string name="no_stats_description">Du har inte tillräckligt många födelsedagar för att visa statistik. Lägg till några och kom tillbaka senare!</string>
-    <string name="stats_total">Birday hjälper dig att komma ihåg totalt</string>
+    <plurals name="stats_total">
+      <item quantity="other">Birday hjälper dig att komma ihåg totalt %d födelsedagar</item>
+    </plurals>
     <string name="next_event">Nästa händelse</string>
     <string name="no_next_event">Inga födelsedagar att visa!</string>
     <string name="no_next_event_description">Du har inte lagt till eller importerat en födelsedag än. Lägg till en och låt Birday hjälpa dig!</string>
@@ -154,8 +156,6 @@
     <string name="zodiac_virgo">jungfrun</string>
     <string name="zodiac_scorpio">skorpionen</string>
     <string name="zodiac_libra">vågen</string>
-    <string name="birthday">födelsedag</string>
-    <string name="birthdays">födelsedagar</string>
     <string name="event">händelse</string>
     <string name="events">händelser</string>
     <string name="day">dag</string>

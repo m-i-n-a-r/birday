@@ -17,7 +17,9 @@
     <string name="no_stats">Geen statistieken beschikbaar!</string>
     <string name="stats_summary">Overzicht statistieken</string>
     <string name="no_stats_description">Je hebt te weinig verjaardagen om statistieken te laten zien. Voeg er een aantal toe en kom dan terug!</string>
-    <string name="stats_total">Birday herinnert je aan</string>
+    <plurals name="stats_total">
+      <item quantity="other">Birday herinnert je aan %d verjaardagen</item>
+    </plurals>
     <string name="next_event">Volgende gebeurtenis</string>
     <string name="no_next_event">Geen verjaardagen om weer te geven!</string>
     <string name="no_next_event_description">Je hebt nog geen verjaardagen opgegeven of geïmporteerd. Voeg er eentje toe en laat Birday je helpen!</string>
@@ -177,8 +179,6 @@
     <string name="zodiac_scorpio">schorpioen</string>
 
     <!-- Common words -->
-    <string name="birthday">verjaardag</string>
-    <string name="birthdays">verjaardagen</string>
     <string name="event">gebeurtenis</string>
     <string name="events">gebeurtenissen</string>
     <string name="day">dag</string>

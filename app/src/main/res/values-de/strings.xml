@@ -17,7 +17,9 @@
     <string name="no_stats">Keine Statistiken zu zeigen!</string>
     <string name="stats_summary">Zusammenfassung der Statistiken</string>
     <string name="no_stats_description">Zusammenfassung der Statistiken</string>
-    <string name="stats_total">Birday hilft dir beim Erinnern an insgesamt</string>
+    <plurals name="stats_total">
+      <item quantity="other">Birday hilft dir beim Erinnern an insgesamt %d Geburtstage</item>
+    </plurals>
     <string name="next_event">Nächstes Ereignis</string>
     <string name="no_next_event">Keine Geburtstage zu zeigen!</string>
     <string name="no_next_event_description">Du hast noch keinen Geburtstag hinzugefügt oder importiert. Füge einen hinzu und lass dir von Birday helfen!</string>
@@ -173,8 +175,6 @@
     <string name="zodiac_scorpio">Skorpion</string>
 
     <!-- Common words -->
-    <string name="birthday">Geburtstag</string>
-    <string name="birthdays">Geburtstage</string>
     <string name="event">Ereignis</string>
     <string name="events">Ereignisse</string>
     <string name="day">Tag</string>
