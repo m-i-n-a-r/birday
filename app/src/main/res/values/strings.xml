@@ -156,7 +156,9 @@
     <string name="most_common_zodiac_sign">The most common zodiac sign is</string>
     <string name="random_day_of_week">was born on</string>
     <string name="most_common_day_of_week">The most common day of the week of birth is</string>
-    <string name="leap_year_total">The number of persons born in a leap year is</string>
+    <plurals name="leap_year_total">
+        <item quantity="other">The number of persons born in a leap year is %d</item>
+    </plurals>
     <string name="random_chinese_year">Chinese zodiac sign of</string>
     <string name="chinese_zodiac_rat">rat</string>
     <string name="chinese_zodiac_ox">ox</string>

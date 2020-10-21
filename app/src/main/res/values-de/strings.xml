@@ -143,7 +143,9 @@
     <string name="most_common_zodiac_sign">Das häufigste Sternzeichen ist</string>
     <string name="random_day_of_week">ist geboren am</string>
     <string name="most_common_day_of_week">Der häufigste Geburtswochentag ist</string>
-    <string name="leap_year_total">Die Zahl der in einem Schaltjahr geborenen Personen ist</string>
+    <plurals name="leap_year_total">
+        <item quantity="other">Die Zahl der in einem Schaltjahr geborenen Personen ist %d</item>
+    </plurals>
     <string name="random_chinese_year">Chinesisches Sternzeichen von</string>
     <string name="chinese_zodiac_rat">Ratte</string>
     <string name="chinese_zodiac_ox">Ochse</string>

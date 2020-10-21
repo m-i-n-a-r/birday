@@ -215,7 +215,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         events.forEach {
             if (it.yearMatter!!) if (it.originalDate.isLeapYear) leapTotal++
         }
-        return applicationContext?.getString(R.string.leap_year_total) + " " + leapTotal.toString()
+        return applicationContext?.getResources()?.getQuantityString(R.plurals.leap_year_total, leapTotal).toString()
     }
 
     // Get the chinese year of a random person

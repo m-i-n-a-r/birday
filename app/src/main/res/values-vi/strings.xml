@@ -143,7 +143,9 @@
     <string name="most_common_zodiac_sign">Dấu hiệu hoàng đạo phổ biến nhất là</string>
     <string name="random_day_of_week">sinh vào</string>
     <string name="most_common_day_of_week">Ngày phổ biến nhất trong tuần sinh là</string>
-    <string name="leap_year_total">Số người sinh ra trong một năm nhuận là</string>
+    <plurals name="leap_year_total">
+        <item quantity="other">Số người sinh ra trong một năm nhuận là %d</item>
+    </plurals>
     <string name="random_chinese_year">Cung hoàng đạo Việt Nam của</string>
     <string name="chinese_zodiac_rat">chuột</string>
     <string name="chinese_zodiac_ox">châu</string>

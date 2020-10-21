@@ -118,7 +118,9 @@
     <string name="most_common_zodiac_sign">El signo zodiacal más común es</string>
     <string name="random_day_of_week">nació en</string>
     <string name="most_common_day_of_week">El día de la semana de nacimiento más común es</string>
-    <string name="leap_year_total">El número de personas nacidas en un año bisiesto es</string>
+    <plurals name="leap_year_total">
+        <item quantity="other">El número de personas nacidas en un año bisiesto es %d</item>
+    </plurals>
     <string name="random_chinese_year">Signo del zodiaco chino de</string>
     <string name="chinese_zodiac_rat">ratón</string>
     <string name="chinese_zodiac_ox">buey</string>

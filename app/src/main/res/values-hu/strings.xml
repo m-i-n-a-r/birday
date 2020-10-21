@@ -143,7 +143,9 @@
     <string name="most_common_zodiac_sign">A leggyakoribb csillagjegy a(z)</string>
     <string name="random_day_of_week">ekkor született:</string>
     <string name="most_common_day_of_week">A leggyakoribb születési nap a</string>
-    <string name="leap_year_total">A szökőévben születettek száma</string>
+    <plurals name="leap_year_total">
+        <item quantity="other">A szökőévben születettek száma %d</item>
+    </plurals>
     <string name="random_chinese_year">Kínai csillagjegye neki:</string>
     <string name="chinese_zodiac_rat">patkány</string>
     <string name="chinese_zodiac_ox">bivaly</string>

@@ -143,7 +143,9 @@
     <string name="most_common_zodiac_sign">Le signe astrologique le plus répandu est</string>
     <string name="random_day_of_week">est né(e) le </string>
     <string name="most_common_day_of_week">Le jour de naissance le plus répandu est</string>
-    <string name="leap_year_total">Le nombre de personnes nées dans une année bissextiles est de</string>
+    <plurals name="leap_year_total">
+        <item quantity="other">Le nombre de personnes nées dans une année bissextiles est de %d</item>
+    </plurals>
     <string name="random_chinese_year">Signe chinois de</string>
     <string name="chinese_zodiac_rat">rat</string>
     <string name="chinese_zodiac_ox">buffle</string>

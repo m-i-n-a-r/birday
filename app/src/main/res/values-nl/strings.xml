@@ -147,7 +147,9 @@
     <string name="most_common_zodiac_sign">Het meest voorkomende sterrenbeeld is</string>
     <string name="random_day_of_week">is geboren op</string>
     <string name="most_common_day_of_week">De meest voorkomende geboortedag is</string>
-    <string name="leap_year_total">Het aantal mensen dat geboren is in een schrikkeljaar is</string>
+    <plurals name="leap_year_total">
+        <item quantity="other">Het aantal mensen dat geboren is in een schrikkeljaar is %d</item>
+    </plurals>
     <string name="random_chinese_year">Chinees sterrenbeeld van</string>
     <string name="chinese_zodiac_rat">rat</string>
     <string name="chinese_zodiac_ox">os</string>
