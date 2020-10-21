@@ -175,8 +175,6 @@
     <string name="zodiac_scorpio">Skorpion</string>
 
     <!-- Common words -->
-    <string name="event">Ereignis</string>
-    <string name="events">Ereignisse</string>
     <string name="day">Tag</string>
     <string name="days">Tage</string>
     <string name="months">Monate</string>

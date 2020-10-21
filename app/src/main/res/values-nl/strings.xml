@@ -179,8 +179,6 @@
     <string name="zodiac_scorpio">schorpioen</string>
 
     <!-- Common words -->
-    <string name="event">gebeurtenis</string>
-    <string name="events">gebeurtenissen</string>
     <string name="day">dag</string>
     <string name="days">dagen</string>
     <string name="months">maanden</string>

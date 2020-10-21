@@ -175,8 +175,6 @@
     <string name="zodiac_scorpio">skorpió</string>
 
     <!-- Common words -->
-    <string name="event">esemény</string>
-    <string name="events">események</string>
     <string name="day">nap</string>
     <string name="days">napokkal</string>
     <string name="months">hónapok</string>

@@ -175,8 +175,6 @@
     <string name="zodiac_scorpio">scorpion</string>
 
     <!-- Common words -->
-    <string name="event">événement</string>
-    <string name="events">événements</string>
     <string name="day">jour</string>
     <string name="days">jours</string>
     <string name="months">mois</string>
