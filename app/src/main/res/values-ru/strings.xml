@@ -1,0 +1,239 @@
+<resources>
+
+    <string name="app_welcome">Добро пожаловать в Birday</string>
+    <string name="app_name_extended">Birday - менеджер дней рождения</string>
+    <string name="leave_review_title">Оставить отзыв о Birday</string>
+    <string name="leave_review_subtitle">Оставьте отзыв, чтобы помочь мне с приложением. Имейте в виду, что, не считая пожертвований, это приложение бесплатно и не содержит рекламы!</string>
+    <string name="yes_review">Оставить отзыв!</string>
+    <string name="later">Потом, честно!</string>
+    <string name="no_thanks">Ни за что!</string>
+    <string name="title_home">Главная</string>
+    <string name="title_favorites">Избранное</string>
+    <string name="title_settings">Настройки</string>
+    <string name="no_events">Нет дней рождения! Добавьте, нажав на кнопку внизу!</string>
+    <string name="no_favorites">Нет избранных! Нажмите звездочку, чтобы сохранить кого-то в избранное!</string>
+    <string name="add_favorite">Добавить в избранное</string>
+    <string name="stats">Статистика</string>
+    <string name="no_stats">Нет статистики для просмотра!</string>
+    <string name="stats_summary">Обзор статистики</string>
+    <string name="no_stats_description">Недостаточно дней рождения, чтобы показать статистику. Добавьте несколько и заходите еще! You haven\'t enough birthdays to display the stats. Add some and come back later!</string>
+    <plurals name="stats_total">
+        <item quantity="one">Birday помогает вам запомнить %d день рождения</item>
+        <item quantity="few">Birday помогает вам запомнить %d дня рождения</item>
+        <item quantity="many">Birday помогает вам запомнить %d дней рождения</item>
+        <item quantity="other">Birday помогает вам запомнить %d дней рождения</item>
+    </plurals>
+    <string name="next_event">Следующее событие</string>
+    <string name="no_next_event">Нет дней рождения для просмотра!</string>
+    <string name="no_next_event_description">Вы не ввели и не импортировали ни одного дня рождения. Добавьте их и позвольте Birday вам помочь!</string>
+    <string name="next_age_years">Лет</string>
+    <string name="event_others">и другие</string>
+    <plurals name="days_left">
+        <item quantity="one">Остался %d день</item>
+        <item quantity="few">Осталось %d дня</item>
+        <item quantity="many">Осталось %d дней</item>
+        <item quantity="other">Осталось %d дней</item>
+    </plurals>
+
+    <!-- Settings -->
+    <string name="customization">Настройка</string>
+    <string name="app_behavior">Поведение приложения</string>
+    <string name="additional_notification_name">Дополнительные уведомления</string>
+    <string name="additional_notification_description">Отправлять дополнительные уведомления до наступления события. %s</string>
+    <string name="no_additional_notification">Нет дополнительных уведомлений</string>
+    <string name="one_day_before">За день</string>
+    <string name="two_days_before">За два дня</string>
+    <string name="three_days_before">За три дня</string>
+    <string name="four_days_before">За четыре дня</string>
+    <string name="five_days_before">За пять дней</string>
+    <string name="six_days_before">За шесть дней</string>
+    <string name="seven_days_before">За семь дней</string>
+    <string name="vibration_name">Вибрация</string>
+    <string name="vibration_description_on">Вибрировать, когда нажата кнопка</string>
+    <string name="vibration_description_off">Не вибрировать, когда нажата кнопка</string>
+    <string name="date_format_name">Формат даты</string>
+    <string name="notification_hour_name">Час уведомления</string>
+    <string name="notification_hour_description">%s \n\nОбратите внимание, что уведомление может не работать, когда приложение остановлено системой в некоторых устройствах Huawei, Xiaomi и OnePlus. Подробности на dontkillmyapp.com.</string>
+    <string name="accent_description">Изменить цвет акцента по умолчанию</string>
+    <string name="accent_name">Цвет акцента</string>
+    <string name="theme_description">Использовать темную, светлую тему или менять автоматически</string>
+    <string name="theme_name">Тема приложения</string>
+    <string name="brown">Коричневый</string>
+    <string name="blue">Синий</string>
+    <string name="green">Зеленый</string>
+    <string name="orange">Оранжевый</string>
+    <string name="yellow">Желтый</string>
+    <string name="teal">Бирюзовый</string>
+    <string name="violet">Фиолетовый</string>
+    <string name="pink">Розовый</string>
+    <string name="light_blue">Голубой</string>
+    <string name="red">Красный</string>
+    <string name="lime">Лайм</string>
+    <string name="crimson">Багровый</string>
+    <string name="system_theme">По умолчанию</string>
+    <string name="dark_theme">Темная</string>
+    <string name="light_theme">Светлая</string>
+    <string name="shimmer_name">Эффект отблесков</string>
+    <string name="shimmer_description_on">Блестящая анимация кое-где в приложении</string>
+    <string name="shimmer_description_off">Без дополнительных графических эффектов</string>
+    <string name="import_export">Импорт и экспорт</string>
+    <string name="import_contacts_title">Импортировать дни рождения из Google</string>
+    <string name="import_contacts_description">Дополните события, в которых не указан год, чтобы улучшить статистику!</string>
+    <string name="import_success">Импорт успешно завершен!</string>
+    <string name="import_nothing_found">Дни рождения не найдены!</string>
+    <string name="import_failed">Что-то пошло не так!</string>
+    <string name="missing_permission_contacts">Доступ к контактам запрещен. Попробуйте еще раз или разрешите доступ вручную - без него импорт контактов из Google работать не будет!</string>
+    <string name="missing_permission_contacts_forever">Birday не может импортировать контакты или спросить на это разрешения, так как вы выбрали "Больше не спрашивать". Разрешите доступ вручную!</string>
+    <string name="birday_import_title">Импортировать резервную копию Birday</string>
+    <string name="birday_import_description">Выберите резервную копию Birday, чтобы восстановить дни рождения. Все текущие данные будут потеряны!</string>
+    <string name="birday_export_title">Экспортируйте и делитесь днями рождения</string>
+    <string name="birday_export_description">Экспортируйте дни рождения и делитесь ими, если хотите. Файл находится в
+    Android/data/com.minar.birday/files</string>
+    <string name="birday_import_success">Импорт завершен!</string>
+    <string name="birday_import_failure">Импорт не удался! Вы выбрали тот файл, что нужно?</string>
+    <string name="birday_import_invalid_file">Импорт не удался. Выбранный файл - не резервная копия Birday!</string>
+    <string name="birday_export_success">Экспорт завершен!</string>
+    <string name="birday_export_failure">Экспорт не удался. Ой!</string>
+    <string name="birday_export_nothing_found">Нечего экспортировать!</string>
+    <string name="surname_first">Фамилия впереди</string>
+    <string name="surname_first_description_on">Показывать фамилию перед именем</string>
+    <string name="surname_first_description_off">Показывать имя перед фамилией</string>
+
+    <!-- Developer -->
+    <string name="dev_description">I\'m a polite guy and i like beautiful things, like animations, icons, sport cars and 3d printing. I work as designer and computer engineer.</string>
+    <string name="easter_egg">Nice logo, huh? ;D</string>
+
+    <!-- New event -->
+    <string name="new_event">Новый день рождения</string>
+    <string name="new_event_description">Запишите человека, который вам дорог, и Birday напомнит вам о его/ее дне рождения!</string>
+    <string name="insert_event">Введите день рождения</string>
+    <string name="cancel">Отмена</string>
+    <string name="insert_name_hint">Введите имя</string>
+    <string name="insert_surname_hint">Введите фамилию</string>
+    <string name="insert_date_hint">Выберите дату</string>
+    <string name="invalid_value_name">Неверное имя. Цифры и символы не допускаются!</string>
+    <string name="consider_year">Consider the year</string>
+
+    <!-- Event actions -->
+    <string name="event_actions">Действия</string>
+    <string name="event_actions_description">Здесь вы можете удалить или изменить это событие!</string>
+    <string name="edit_event">Изменить событие</string>
+    <string name="delete_event">Удалить событие</string>
+    <string name="update_event">Обновить событие</string>
+    <string name="share_event">Поделиться событием</string>
+
+    <!-- Event details -->
+    <string name="event_details">Подробности</string>
+    <string name="birth_date">Дата рождения</string>
+    <string name="next_age">Следующий юбилей:</string>
+    <string name="zodiac_sign">Знак зодиака:</string>
+    <string name="chinese_zodiac_sign">Животное по китайскому календарю:</string>
+
+    <!-- Quick apps -->
+    <string name="event_apps">Быстрые приложения</string>
+    <string name="event_apps_description">Приложения, где можно быстро поздравить!</string>
+    <string name="whatsapp">Whatsapp</string>
+    <string name="telegram">Telegram</string>
+    <string name="textMessage">СМС</string>
+    <string name="dialer">Телефон</string>
+    <string name="wishes">С днем рожения!</string>
+    <string name="no_default_dialer">Не найдено приложение по умолчанию для звонков!</string>
+    <string name="no_default_sms">Не найдено приложение по умолчанию для СМС!</string>
+
+    <!-- Statistics -->
+    <string name="did_you_know">Знаете ли вы?</string>
+    <string name="age_average">Средний возраст</string>
+    <string name="oldest_person">Самый старший -</string>
+    <string name="youngest_person">Самый младший</string>
+    <string name="most_common_month">Самый частый месяц рождения -</string>
+    <string name="most_common_decade">Самая частая декада рождения</string>
+    <string name="most_common_age_range">Самый частый возрастной период -</string>
+    <string name="special_ages">Приближается юбилей у:</string>
+    <string name="random_zodiac_sign">Знак зодиака</string>
+    <string name="most_common_zodiac_sign">Самый частый знак зодиака - </string>
+    <string name="random_day_of_week">родился/лась в</string>
+    <string name="most_common_day_of_week">Самый частый день недели среди дней рождения - </string>
+    <plurals name="leap_year_total">
+        <item quantity="one">В високосный год родился %d человек</item>
+        <item quantity="few">В високосный год родились %d человека</item>
+        <item quantity="many">В високосный год родилось %d людей</item>
+        <item quantity="other">В високосный год родилось %d людей</item>
+    </plurals>
+    <string name="random_chinese_year">По китайскому календарю</string>
+    <string name="chinese_zodiac_rat">крыса/мышь</string>
+    <string name="chinese_zodiac_ox">бык</string>
+    <string name="chinese_zodiac_tiger">тигр</string>
+    <string name="chinese_zodiac_rabbit">кролик</string>
+    <string name="chinese_zodiac_dragon">дракон</string>
+    <string name="chinese_zodiac_snake">змея</string>
+    <string name="chinese_zodiac_horse">лошадь</string>
+    <string name="chinese_zodiac_goat">коза/овца</string>
+    <string name="chinese_zodiac_monkey">обезьяна</string>
+    <string name="chinese_zodiac_rooster">петух</string>
+    <string name="chinese_zodiac_dog">собака</string>
+    <string name="chinese_zodiac_pig">свинья</string>
+    <string name="zodiac_sagittarius">стрелец</string>
+    <string name="zodiac_capricorn">козерог</string>
+    <string name="zodiac_aquarius">водолей</string>
+    <string name="zodiac_pisces">рыбы</string>
+    <string name="zodiac_aries">овен</string>
+    <string name="zodiac_taurus">телец</string>
+    <string name="zodiac_gemini">близнецы</string>
+    <string name="zodiac_cancer">рак</string>
+    <string name="zodiac_leo">лев</string>
+    <string name="zodiac_virgo">дева</string>
+    <string name="zodiac_libra">весы</string>
+    <string name="zodiac_scorpio">скорпион</string>
+
+    <!-- Common words -->
+    <plurals name="months">
+        <item quantity="one">%d месяц</item>
+        <item quantity="few">%d месяца</item>
+        <item quantity="many">%d месяцев</item>
+        <item quantity="other">%d месяцев</item>
+    </plurals>
+    <string name="today">Сегодня!</string>
+    <string name="yesterday">Вчера!</string>
+    <string name="tomorrow">Завтра!</string>
+    <plurals name="years">
+        <item quantity="one">%d год</item>
+        <item quantity="few">%d года</item>
+        <item quantity="many">%d лет</item>
+      <item quantity="other">%d лет</item>
+    </plurals>
+    <string name="born_in">родился/лась в</string>
+    <string name="and">и</string>
+
+    <!-- Notifications -->
+    <string name="events_notification_channel">Напоминания о событиях</string>
+    <string name="events_channel_description">Напоминания о приближающихся днях рождения от Birday</string>
+    <string name="notification_title">Напоминание Birday</string>
+    <string name="notification_description_part_1">Привет, сегодня дни рождения у</string>
+    <string name="notification_description_part_2">Хорошего дня!</string>
+    <string name="additional_notification_text">Приближаются дни рождения!</string>
+
+    <!-- Introduction slides -->
+    <string name="slide_one_title">Добро пожаловать в Birday!</string>
+    <string name="slide_one_description">Birday - легкое и простое приложение для отслеживания важных событий!
+    В нем вы можете быстро и надежно записать дни рождения людей, которые вам дороги.
+    </string>
+    <string name="slide_two_title">Простое, быстрое, настраиваемое</string>
+    <string name="slide_two_description">Birday - бесплатное приложение без рекламы с открытым исходным кодом.
+    В нем есть статистика по дням рождения, система избранного и настраиваемый интерфейс. И гарантированная
+    поддержка и обновления!
+    </string>
+    <string name="slide_three_title">Импорт из контактов Google</string>
+    <string name="slide_three_description">Вы можете импортировать дни рождения, которые вы уже сохранили в
+    контактах Google. Birday все сделает автоматически, только разрешите доступ к контактам. Удачи!
+    </string>
+
+    <!-- Widget -->
+    <string name="appwidget_upcoming">Предстоящие дни рождения</string>
+    <string name="add_widget">Birday - предстоящие</string>
+
+    <!-- Search -->
+    <string name="search_event">Поиск…</string>
+    <string name="search_no_result_title">Ничего не найдено</string>
+    <string name="search_no_result_description">К вашему запросу не подходит ни одно событие в базе Birday!</string>
+
+</resources>
