@@ -43,7 +43,7 @@
                 android:inputType="textCapSentences"
                 android:maxLength="25"
                 android:padding="0dp"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@drawable/custom_cursor" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,7 +79,7 @@
                 android:inputType="textCapSentences"
                 android:maxLength="25"
                 android:padding="0dp"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@drawable/custom_cursor" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -115,7 +115,7 @@
                 android:focusable="false"
                 android:inputType="none"
                 android:padding="0dp"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@drawable/custom_cursor" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

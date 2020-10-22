@@ -39,6 +39,7 @@
     <dimen name="text_field_horizontal_margin">12dp</dimen>
     <dimen name="splash_image_size">192dp</dimen>
     <dimen name="splash_image_padding">24dp</dimen>
+    <dimen name="cursor_size">3dp</dimen>
 
     <!-- Widgets -->
     <dimen name="widget_margin">8dp</dimen>
