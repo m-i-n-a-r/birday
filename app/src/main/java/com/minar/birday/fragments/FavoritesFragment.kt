@@ -70,14 +70,14 @@ class FavoritesFragment : Fragment() {
         initializeRecyclerView()
 
         favoritesViewModel = ViewModelProvider(this).get(FavoritesViewModel::class.java)
-        favoritesViewModel.allFavoriteEvents.observe(viewLifecycleOwner, Observer { events ->
+        favoritesViewModel.allFavoriteEvents.observe(viewLifecycleOwner, { events ->
             // Update the cached copy of the words in the adapter
             events?.let { adapter.submitList(it) }
         })
-        favoritesViewModel.anyFavoriteEvent.observe(viewLifecycleOwner, Observer { eventList ->
+        favoritesViewModel.anyFavoriteEvent.observe(viewLifecycleOwner, { eventList ->
             if (eventList.isNotEmpty()) removePlaceholder()
         })
-        favoritesViewModel.allEvents.observe(viewLifecycleOwner, Observer { eventList ->
+        favoritesViewModel.allEvents.observe(viewLifecycleOwner, { eventList ->
             // Under a minimum size, no stats will be shown (at least 5 events containing a year)
             if (eventList.filter { it.yearMatter == true }.size > 4) generateStat(eventList)
             else fullStats = SpannableStringBuilder(requireActivity().applicationContext.getString(
