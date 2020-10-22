@@ -1,0 +1,6 @@
+- Animated notification icon
+- Many graphic improvements
+- Russian translation, thanks koterpillar
+- Under the hood improvements
+- Less annoying permission related toast messages
+- Fixed some typos

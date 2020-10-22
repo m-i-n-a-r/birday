@@ -1,19 +1,17 @@
 {
-  "version": 1,
+  "version": 2,
   "artifactType": {
     "type": "APK",
     "kind": "Directory"
   },
   "applicationId": "com.minar.birday",
-  "variantName": "release",
+  "variantName": "processReleaseResources",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
-      "properties": [],
-      "versionCode": 9,
-      "versionName": "1.7.0",
-      "enabled": true,
+      "versionCode": 10,
+      "versionName": "1.8.0",
       "outputFile": "app-release.apk"
     }
   ]
