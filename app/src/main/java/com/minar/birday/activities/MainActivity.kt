@@ -296,12 +296,11 @@ class MainActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode : Int, permissions: Array<String>, grantResults: IntArray){
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
-            // Contacts at startup
+            // Contacts at startup, show a toast only for permission denied (don't ask again not selected)
             101 -> {
                 if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS))
                         Toast.makeText(this, getString(R.string.missing_permission_contacts), Toast.LENGTH_LONG).show()
-                    else Toast.makeText(this, getString(R.string.missing_permission_contacts_forever), Toast.LENGTH_LONG).show()
                 }
             }
             // Contacts while trying to import Google contacts

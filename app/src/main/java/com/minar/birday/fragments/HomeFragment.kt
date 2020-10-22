@@ -23,7 +23,6 @@ import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -185,7 +184,7 @@ class HomeFragment : Fragment() {
         setUpAdapter()
 
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        homeViewModel.allEvents.observe(viewLifecycleOwner, Observer { events ->
+        homeViewModel.allEvents.observe(viewLifecycleOwner, { events ->
             // Manage placeholders, search results and the main list
             events?.let { adapter.submitList(it) }
             if (events.isNotEmpty()) {
