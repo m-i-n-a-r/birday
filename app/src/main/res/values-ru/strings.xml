@@ -49,8 +49,8 @@
     <string name="six_days_before">За шесть дней</string>
     <string name="seven_days_before">За семь дней</string>
     <string name="vibration_name">Вибрация</string>
-    <string name="vibration_description_on">Вибрировать, когда нажата кнопка</string>
-    <string name="vibration_description_off">Не вибрировать, когда нажата кнопка</string>
+    <string name="vibration_description_on">Вибрировать при нажатии</string>
+    <string name="vibration_description_off">Не вибрировать при нажатии</string>
     <string name="date_format_name">Формат даты</string>
     <string name="notification_hour_name">Час уведомления</string>
     <string name="notification_hour_description">%s \n\nОбратите внимание, что уведомление может не работать, когда приложение остановлено системой в некоторых устройствах Huawei, Xiaomi и OnePlus. Подробности на dontkillmyapp.com.</string>
@@ -101,7 +101,7 @@
 
     <!-- Developer -->
     <string name="dev_description">I\'m a polite guy and i like beautiful things, like animations, icons, sport cars and 3d printing. I work as designer and computer engineer.</string>
-    <string name="easter_egg">Nice logo, huh? ;D</string>
+    <string name="easter_egg">Прикольный логотип, не? ;D</string>
 
     <!-- New event -->
     <string name="new_event">Новый день рождения</string>
@@ -127,7 +127,7 @@
     <string name="birth_date">Дата рождения</string>
     <string name="next_age">Следующий юбилей:</string>
     <string name="zodiac_sign">Знак зодиака:</string>
-    <string name="chinese_zodiac_sign">Животное по китайскому календарю:</string>
+    <string name="chinese_zodiac_sign">По китайскому календарю:</string>
 
     <!-- Quick apps -->
     <string name="event_apps">Быстрые приложения</string>
