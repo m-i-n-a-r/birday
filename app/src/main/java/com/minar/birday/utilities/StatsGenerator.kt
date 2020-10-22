@@ -240,7 +240,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         return ages
     }
 
-    // Get the chinese sign
+    // Get the chinese sign TODO get the proper lunar calendar
     fun getChineseSign(person: EventResult): String {
         var sign = ""
         var signNumber = 0
