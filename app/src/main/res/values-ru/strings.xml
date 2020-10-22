@@ -106,7 +106,7 @@
     <!-- New event -->
     <string name="new_event">Новый день рождения</string>
     <string name="new_event_description">Запишите человека, который вам дорог, и Birday напомнит вам о его/ее дне рождения!</string>
-    <string name="insert_event">Введите день рождения</string>
+    <string name="insert_event">Добавить день рождения</string>
     <string name="cancel">Отмена</string>
     <string name="insert_name_hint">Введите имя</string>
     <string name="insert_surname_hint">Введите фамилию</string>
@@ -228,8 +228,8 @@
     </string>
 
     <!-- Widget -->
-    <string name="appwidget_upcoming">Предстоящие дни рождения</string>
-    <string name="add_widget">Birday - предстоящие</string>
+    <string name="appwidget_upcoming">Скоро дни рождения</string>
+    <string name="add_widget">Birday - скоро</string>
 
     <!-- Search -->
     <string name="search_event">Поиск…</string>
