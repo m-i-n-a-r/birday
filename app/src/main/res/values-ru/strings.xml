@@ -11,7 +11,7 @@
     <string name="title_favorites">Избранное</string>
     <string name="title_settings">Настройки</string>
     <string name="no_events">Нет дней рождения! Добавьте, нажав на кнопку внизу!</string>
-    <string name="no_favorites">Нет избранных! Нажмите звездочку, чтобы сохранить кого-то в избранное!</string>
+    <string name="no_favorites">Нет избранных! Нажмите звездочку, чтобы добавить кого-то сюда!</string>
     <string name="add_favorite">Добавить в избранное</string>
     <string name="stats">Статистика</string>
     <string name="no_stats">Нет статистики для просмотра!</string>
