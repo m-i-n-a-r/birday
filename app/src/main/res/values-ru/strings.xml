@@ -100,7 +100,7 @@
     <string name="surname_first_description_off">Показывать имя перед фамилией</string>
 
     <!-- Developer -->
-    <string name="dev_description">I\'m a polite guy and i like beautiful things, like animations, icons, sport cars and 3d printing. I work as designer and computer engineer.</string>
+    <string name="dev_description">Я вежливый парень и люблю красивые вещи - анимации, иконки, спортивные машины и 3D-печать. Я работаю дизайнером и компьютерным инженером.</string>
     <string name="easter_egg">Прикольный логотип, не? ;D</string>
 
     <!-- New event -->
@@ -112,7 +112,7 @@
     <string name="insert_surname_hint">Введите фамилию</string>
     <string name="insert_date_hint">Выберите дату</string>
     <string name="invalid_value_name">Неверное имя. Цифры и символы не допускаются!</string>
-    <string name="consider_year">Consider the year</string>
+    <string name="consider_year">Учитывать год</string>
 
     <!-- Event actions -->
     <string name="event_actions">Действия</string>
@@ -136,7 +136,7 @@
     <string name="telegram">Telegram</string>
     <string name="textMessage">СМС</string>
     <string name="dialer">Телефон</string>
-    <string name="wishes">С днем рожения!</string>
+    <string name="wishes">С днем рождения!</string>
     <string name="no_default_dialer">Не найдено приложение по умолчанию для звонков!</string>
     <string name="no_default_sms">Не найдено приложение по умолчанию для СМС!</string>
 
