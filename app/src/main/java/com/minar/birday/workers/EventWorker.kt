@@ -90,10 +90,11 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
     private fun formulateAdditionalNotificationText(nextEvents: List<EventResult>): String {
         var response = applicationContext.getString(R.string.additional_notification_text) + " "
         nextEvents.forEach {
+            val years = it.nextDate?.year?.minus(it.originalDate.year)!!
             if (nextEvents.indexOf(it) == 0) response += it.name + ", " +
-                    applicationContext.getResources().getQuantityString(R.plurals.years, it.nextDate?.year?.minus(it.originalDate.year)!!)
+                    applicationContext.getResources().getQuantityString(R.plurals.years, years, years)
             if (nextEvents.indexOf(it) in 1..2) response += ", " + it.name + ", " +
-                    applicationContext.getResources().getQuantityString(R.plurals.years, it.nextDate?.year?.minus(it.originalDate.year)!!)
+                    applicationContext.getResources().getQuantityString(R.plurals.years, years, years)
             if (nextEvents.indexOf(it) == 3) response += ", " + applicationContext.getString(R.string.event_others)
         }
         response += ". "
@@ -104,10 +105,11 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
     private fun formulateNotificationText(nextEvents: List<EventResult>): String {
         var response = applicationContext.getString(R.string.notification_description_part_1) + ": "
         nextEvents.forEach {
+            val years = it.nextDate?.year?.minus(it.originalDate.year)!!
             if (nextEvents.indexOf(it) == 0) response += it.name + ", " +
-                    applicationContext.getResources().getQuantityString(R.plurals.years, it.nextDate?.year?.minus(it.originalDate.year)!!)
+                    applicationContext.getResources().getQuantityString(R.plurals.years, years, years)
             if (nextEvents.indexOf(it) in 1..2) response += ", " + it.name + ", " +
-                    applicationContext.getResources().getQuantityString(R.plurals.years, it.nextDate?.year?.minus(it.originalDate.year)!!)
+                    applicationContext.getResources().getQuantityString(R.plurals.years, years, years)
             if (nextEvents.indexOf(it) == 3) response += ", " + applicationContext.getString(R.string.event_others)
         }
         response += ". " + applicationContext.getString(R.string.notification_description_part_2)
