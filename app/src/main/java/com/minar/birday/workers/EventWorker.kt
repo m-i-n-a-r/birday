@@ -92,9 +92,9 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         nextEvents.forEach {
             val years = it.nextDate?.year?.minus(it.originalDate.year)!!
             if (nextEvents.indexOf(it) == 0) response += it.name + ", " +
-                    applicationContext.getResources().getQuantityString(R.plurals.years, years, years)
+                    applicationContext.resources.getQuantityString(R.plurals.years, years, years)
             if (nextEvents.indexOf(it) in 1..2) response += ", " + it.name + ", " +
-                    applicationContext.getResources().getQuantityString(R.plurals.years, years, years)
+                    applicationContext.resources.getQuantityString(R.plurals.years, years, years)
             if (nextEvents.indexOf(it) == 3) response += ", " + applicationContext.getString(R.string.event_others)
         }
         response += ". "
@@ -107,9 +107,9 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         nextEvents.forEach {
             val years = it.nextDate?.year?.minus(it.originalDate.year)!!
             if (nextEvents.indexOf(it) == 0) response += it.name + ", " +
-                    applicationContext.getResources().getQuantityString(R.plurals.years, years, years)
+                    applicationContext.resources.getQuantityString(R.plurals.years, years, years)
             if (nextEvents.indexOf(it) in 1..2) response += ", " + it.name + ", " +
-                    applicationContext.getResources().getQuantityString(R.plurals.years, years, years)
+                    applicationContext.resources.getQuantityString(R.plurals.years, years, years)
             if (nextEvents.indexOf(it) == 3) response += ", " + applicationContext.getString(R.string.event_others)
         }
         response += ". " + applicationContext.getString(R.string.notification_description_part_2)
