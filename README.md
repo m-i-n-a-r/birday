@@ -25,8 +25,8 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 | **Hungarian**      | complete | Obi            |                             |
 | **German**         | complete | pizzapastamix  | WrstFngr, AlexanderRitter02 |
 | **Vietnamese**     | complete | Lee Huynh      |                             |
+| **Russian**        | complete | koterpillar    |                             |
 | Portuguese         | unknown  |                |                             |
-| Russian            | unknown  |                |                             |
 
 ## Features
 - Notification the day of the event, in a customizable time range
