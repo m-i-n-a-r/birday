@@ -17,13 +17,17 @@
     <string name="no_stats">Keine Statistiken zu zeigen!</string>
     <string name="stats_summary">Zusammenfassung der Statistiken</string>
     <string name="no_stats_description">Zusammenfassung der Statistiken</string>
-    <string name="stats_total">Birday hilft dir beim Erinnern an insgesamt</string>
+    <plurals name="stats_total">
+      <item quantity="other">Birday hilft dir beim Erinnern an insgesamt %d Geburtstage</item>
+    </plurals>
     <string name="next_event">Nächstes Ereignis</string>
     <string name="no_next_event">Keine Geburtstage zu zeigen!</string>
     <string name="no_next_event_description">Du hast noch keinen Geburtstag hinzugefügt oder importiert. Füge einen hinzu und lass dir von Birday helfen!</string>
     <string name="next_age_years">Jahre</string>
     <string name="event_others">und andere</string>
-    <string name="days_left">verbleibende Tage</string>
+    <plurals name="days_left">
+        <item quantity="other">%d verbleibende Tage</item>
+    </plurals>
 
     <!-- Settings -->
     <string name="customization">Anpassung</string>
@@ -141,7 +145,9 @@
     <string name="most_common_zodiac_sign">Das häufigste Sternzeichen ist</string>
     <string name="random_day_of_week">ist geboren am</string>
     <string name="most_common_day_of_week">Der häufigste Geburtswochentag ist</string>
-    <string name="leap_year_total">Die Zahl der in einem Schaltjahr geborenen Personen ist</string>
+    <plurals name="leap_year_total">
+        <item quantity="other">Die Zahl der in einem Schaltjahr geborenen Personen ist %d</item>
+    </plurals>
     <string name="random_chinese_year">Chinesisches Sternzeichen von</string>
     <string name="chinese_zodiac_rat">Ratte</string>
     <string name="chinese_zodiac_ox">Ochse</string>
@@ -169,17 +175,15 @@
     <string name="zodiac_scorpio">Skorpion</string>
 
     <!-- Common words -->
-    <string name="birthday">Geburtstag</string>
-    <string name="birthdays">Geburtstage</string>
-    <string name="event">Ereignis</string>
-    <string name="events">Ereignisse</string>
-    <string name="day">Tag</string>
-    <string name="days">Tage</string>
-    <string name="months">Monate</string>
+    <plurals name="months">
+      <item quantity="other">%d Monate</item>
+    </plurals>
     <string name="today">Heute!</string>
     <string name="yesterday">Gestern!</string>
     <string name="tomorrow">Morgen!</string>
-    <string name="years">Jahre</string>
+    <plurals name="years">
+      <item quantity="other">%d Jahre</item>
+    </plurals>
     <string name="born_in">geboren in</string>
     <string name="and">und</string>
 

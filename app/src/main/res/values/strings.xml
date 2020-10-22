@@ -18,13 +18,17 @@
     <string name="no_stats">No stats to show!</string>
     <string name="stats_summary">Stats summary</string>
     <string name="no_stats_description">You don\'t have enough birthdays to display the stats. Add some and come back later!</string>
-    <string name="stats_total">Birday is helping you to remember a total of</string>
+    <plurals name="stats_total">
+      <item quantity="other">Birday is helping you to remember a total of %d birthdays</item>
+    </plurals>
     <string name="next_event">Next event</string>
     <string name="no_next_event">No birthdays to show!</string>
     <string name="no_next_event_description">You haven\'t entered or imported a birthday yet. Add one and let Birday help you!</string>
     <string name="next_age_years">Years</string>
     <string name="event_others">and others</string>
-    <string name="days_left">days left</string>
+    <plurals name="days_left">
+        <item quantity="other">%d days left</item>
+    </plurals>
 
     <!-- Settings -->
     <string name="customization">Customization</string>
@@ -154,7 +158,9 @@
     <string name="most_common_zodiac_sign">The most common zodiac sign is</string>
     <string name="random_day_of_week">was born on</string>
     <string name="most_common_day_of_week">The most common day of the week of birth is</string>
-    <string name="leap_year_total">The number of persons born in a leap year is</string>
+    <plurals name="leap_year_total">
+        <item quantity="other">The number of persons born in a leap year is %d</item>
+    </plurals>
     <string name="random_chinese_year">Chinese zodiac sign of</string>
     <string name="chinese_zodiac_rat">rat</string>
     <string name="chinese_zodiac_ox">ox</string>
@@ -182,17 +188,15 @@
     <string name="zodiac_scorpio">scorpio</string>
 
     <!-- Common words -->
-    <string name="birthday">birthday</string>
-    <string name="birthdays">birthdays</string>
-    <string name="event">event</string>
-    <string name="events">events</string>
-    <string name="day">day</string>
-    <string name="days">days</string>
-    <string name="months">months</string>
+    <plurals name="months">
+      <item quantity="other">%d months</item>
+    </plurals>
     <string name="today">Today!</string>
     <string name="yesterday">Yesterday!</string>
     <string name="tomorrow">Tomorrow!</string>
-    <string name="years">years</string>
+    <plurals name="years">
+      <item quantity="other">%d years</item>
+    </plurals>
     <string name="born_in">born in</string>
     <string name="and">and</string>
     <string name="unknown_age" translatable="false">\??</string>

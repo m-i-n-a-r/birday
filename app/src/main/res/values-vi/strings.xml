@@ -17,13 +17,17 @@
     <string name="no_stats">Chưa có số liệu!</string>
     <string name="stats_summary">Tóm tắt số liệu</string>
     <string name="no_stats_description">Bạn chưa có lưu đủ sinh nhật đệ xem số liệu thống kê. Mời bạn lưu thêm sinh nhật và quay lại sau!</string>
-    <string name="stats_total">Birday giúp bạn nhớ sinh nhật tổng cộng</string>
+    <plurals name="stats_total">
+      <item quantity="other">Birday giúp bạn nhớ sinh nhật tổng cộng %d sinh nhật</item>
+    </plurals>
     <string name="next_event">Sự kiện tiếp theo</string>
     <string name="no_next_event">Không có sinh nhật!</string>
     <string name="no_next_event_description">Bạn chưa nhập ngày sinh nhật. Lưu thêm sinh nhât để Birday giúp bạn!</string>
     <string name="next_age_years">tuổi</string>
     <string name="event_others">và những thứ khác</string>
-    <string name="days_left">ngày còn lại</string>
+    <plurals name="days_left">
+        <item quantity="other">%d ngày còn lại</item>
+    </plurals>
 
     <!-- Settings -->
     <string name="customization">Tùy biến</string>
@@ -141,7 +145,9 @@
     <string name="most_common_zodiac_sign">Dấu hiệu hoàng đạo phổ biến nhất là</string>
     <string name="random_day_of_week">sinh vào</string>
     <string name="most_common_day_of_week">Ngày phổ biến nhất trong tuần sinh là</string>
-    <string name="leap_year_total">Số người sinh ra trong một năm nhuận là</string>
+    <plurals name="leap_year_total">
+        <item quantity="other">Số người sinh ra trong một năm nhuận là %d</item>
+    </plurals>
     <string name="random_chinese_year">Cung hoàng đạo Việt Nam của</string>
     <string name="chinese_zodiac_rat">chuột</string>
     <string name="chinese_zodiac_ox">châu</string>
@@ -169,17 +175,15 @@
     <string name="zodiac_scorpio">thiên yết</string>
 
     <!-- Common words -->
-    <string name="birthday">sinh nhật</string>
-    <string name="birthdays">sinh nhật</string>
-    <string name="event">sự kiện</string>
-    <string name="events">sự kiện</string>
-    <string name="day">ngày</string>
-    <string name="days">ngày</string>
-    <string name="months">tháng</string>
+    <plurals name="months">
+      <item quantity="other">%d tháng</item>
+    </plurals>
     <string name="today">hôm nay!</string>
     <string name="yesterday">hôm qua!</string>
     <string name="tomorrow">ngày mai!</string>
-    <string name="years">năm</string>
+    <plurals name="years">
+      <item quantity="other">%d năm</item>
+    </plurals>
     <string name="born_in">sinh ra</string>
     <string name="and">và</string>
 

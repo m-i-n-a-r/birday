@@ -58,20 +58,22 @@
     <string name="no_next_event_description">Non hai inserito o importato alcun compleanno. Aggiungine uno e lascia che Birday ti aiuti!</string>
     <string name="add_favorite">Aggiungi ai preferiti</string>
     <string name="next_age_years">Anni</string>
-    <string name="stats_total">Birday ti sta aiutando a ricordare un totale di</string>
-    <string name="birthday">compleanno</string>
-    <string name="birthdays">compleanni</string>
-    <string name="event">evento</string>
-    <string name="events">eventi</string>
-    <string name="day">giorno</string>
-    <string name="days">giorni</string>
-    <string name="months">mesi</string>
+    <plurals name="stats_total">
+      <item quantity="other">Birday ti sta aiutando a ricordare un totale di %d compleanni</item>
+    </plurals>
+    <plurals name="months">
+      <item quantity="other">%d mesi</item>
+    </plurals>
     <string name="today">Oggi!</string>
     <string name="yesterday">Ieri!</string>
     <string name="tomorrow">Domani!</string>
     <string name="event_others">ed altri</string>
-    <string name="days_left">giorni rimasti</string>
-    <string name="years">anni</string>
+    <plurals name="days_left">
+        <item quantity="other">%d giorni rimasti</item>
+    </plurals>
+    <plurals name="years">
+      <item quantity="other">%d anni</item>
+    </plurals>
     <string name="and">e</string>
     <string name="did_you_know">Lo sapevi?</string>
     <string name="age_average">L\'età media è</string>
@@ -85,7 +87,9 @@
     <string name="most_common_zodiac_sign">Il segno zodiacale più comune è</string>
     <string name="random_day_of_week">è nato/a di</string>
     <string name="most_common_day_of_week">Il giorno di settimana di nascita più comune è</string>
-    <string name="leap_year_total">Il numero di persone nate in un anno bisestile è</string>
+    <plurals name="leap_year_total">
+        <item quantity="other">Il numero di persone nate in un anno bisestile è %d</item>
+    </plurals>
     <string name="random_chinese_year">Segno zodiacale cinese di</string>
     <string name="chinese_zodiac_rat">topo</string>
     <string name="chinese_zodiac_ox">bue</string>

@@ -17,13 +17,17 @@
     <string name="no_stats">Vous n\'avez pas de statistiques</string>
     <string name="stats_summary">Vos statistiques</string>
     <string name="no_stats_description">Vous n\'avez pas enregistré assez d\'anniversaires pour pouvoir afficher des statistiques. Ajoutez-en quelques-uns et revenez plus tard !</string>
-    <string name="stats_total">Birday vous aide à retenir un total de</string>
+    <plurals name="stats_total">
+      <item quantity="other">Birday vous aide à retenir un total de %d anniversaires</item>
+    </plurals>
     <string name="next_event">Prochain événement</string>
     <string name="no_next_event">Il n\'y a aucun anniversaire ici !</string>
     <string name="no_next_event_description">Vous n\'avez pas encore ajouté ni importé d\'anniversaires. Ajoutez-en un et laissez Birday vous aidez !</string>
     <string name="next_age_years">Âge</string>
     <string name="event_others">et d\'autres</string>
-    <string name="days_left">jours restants</string>
+    <plurals name="days_left">
+        <item quantity="other">%d jours restants</item>
+    </plurals>
 
     <!-- Settings -->
     <string name="customization">Personnalisation</string>
@@ -141,7 +145,9 @@
     <string name="most_common_zodiac_sign">Le signe astrologique le plus répandu est</string>
     <string name="random_day_of_week">est né(e) le </string>
     <string name="most_common_day_of_week">Le jour de naissance le plus répandu est</string>
-    <string name="leap_year_total">Le nombre de personnes nées dans une année bissextiles est de</string>
+    <plurals name="leap_year_total">
+        <item quantity="other">Le nombre de personnes nées dans une année bissextiles est de %d</item>
+    </plurals>
     <string name="random_chinese_year">Signe chinois de</string>
     <string name="chinese_zodiac_rat">rat</string>
     <string name="chinese_zodiac_ox">buffle</string>
@@ -169,17 +175,15 @@
     <string name="zodiac_scorpio">scorpion</string>
 
     <!-- Common words -->
-    <string name="birthday">anniversaire</string>
-    <string name="birthdays">anniversaires</string>
-    <string name="event">événement</string>
-    <string name="events">événements</string>
-    <string name="day">jour</string>
-    <string name="days">jours</string>
-    <string name="months">mois</string>
+    <plurals name="months">
+      <item quantity="other">%d mois</item>
+    </plurals>
     <string name="today">Aujourd\'hui !</string>
     <string name="yesterday">Hier !</string>
     <string name="tomorrow">Demain !</string>
-    <string name="years">âge</string>
+    <plurals name="years">
+      <item quantity="other">%d âge</item>
+    </plurals>
     <string name="born_in">né(e) en</string>
     <string name="and">et</string>
 

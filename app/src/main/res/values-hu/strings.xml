@@ -17,13 +17,17 @@
     <string name="no_stats">Nincs megjeleníthető statisztika!</string>
     <string name="stats_summary">Statisztika összefoglaló</string>
     <string name="no_stats_description">Nincs elég születésnap a statisztikák megjelenítéséhez. Adj hozzá néhányat, és gyere vissza később!</string>
-    <string name="stats_total">A Birday segít, hogy összesen emlékezz</string>
+    <plurals name="stats_total">
+      <item quantity="other">A Birday segít, hogy összesen emlékezz %d születésnapok</item>
+    </plurals>
     <string name="next_event">Következő esemény</string>
     <string name="no_next_event">Nincs megjeleníthető születésnap!</string>
     <string name="no_next_event_description">Még nem írtál be vagy importáltál születésnapot. Adj hozzá egyet, és hagyd, hogy a Birday segítsen!</string>
     <string name="next_age_years">Évek</string>
     <string name="event_others">és mások</string>
-    <string name="days_left">nap van hátra</string>
+    <plurals name="days_left">
+	<item quantity="other">%d nap van hátra</item>
+    </plurals>
 
     <!-- Settings -->
     <string name="customization">Testreszabás</string>
@@ -141,7 +145,9 @@
     <string name="most_common_zodiac_sign">A leggyakoribb csillagjegy a(z)</string>
     <string name="random_day_of_week">ekkor született:</string>
     <string name="most_common_day_of_week">A leggyakoribb születési nap a</string>
-    <string name="leap_year_total">A szökőévben születettek száma</string>
+    <plurals name="leap_year_total">
+        <item quantity="other">A szökőévben születettek száma %d</item>
+    </plurals>
     <string name="random_chinese_year">Kínai csillagjegye neki:</string>
     <string name="chinese_zodiac_rat">patkány</string>
     <string name="chinese_zodiac_ox">bivaly</string>
@@ -169,17 +175,15 @@
     <string name="zodiac_scorpio">skorpió</string>
 
     <!-- Common words -->
-    <string name="birthday">születésnap</string>
-    <string name="birthdays">születésnapok</string>
-    <string name="event">esemény</string>
-    <string name="events">események</string>
-    <string name="day">nap</string>
-    <string name="days">napokkal</string>
-    <string name="months">hónapok</string>
+    <plurals name="months">
+      <item quantity="other">%d hónapok</item>
+    </plurals>
     <string name="today">Ma!</string>
     <string name="yesterday">Tegnap!</string>
     <string name="tomorrow">Holnap!</string>
-    <string name="years">évek</string>
+    <plurals name="years">
+      <item quantity="other">%d évek</item>
+    </plurals>
     <string name="born_in">született</string>
     <string name="and">és</string>
 

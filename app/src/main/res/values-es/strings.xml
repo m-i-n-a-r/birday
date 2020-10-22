@@ -17,13 +17,17 @@
     <string name="no_stats">¡No hay estadísticas para mostrar!</string>
     <string name="stats_summary">Resumen de estadísticas</string>
     <string name="no_stats_description">No tienes suficientes cumpleaños para mostrar las estadísticas. ¡Agregue un poco y regrese más tarde!</string>
-    <string name="stats_total">Birday te està ayudando a recordar un total de</string>
+    <plurals name="stats_total">
+      <item quantity="other">Birday te està ayudando a recordar un total de %d cumpleaños</item>
+    </plurals>
     <string name="next_event">Próximo evento</string>
     <string name="no_next_event">¡No hay cumpleaños para mostrar!</string>
     <string name="no_next_event_description">No ha ingresado ni importado ningún cumpleaños. ¡Agregue uno y deje que Birday lo ayude!</string>
     <string name="next_age_years">Años</string>
     <string name="event_others">y otros</string>
-    <string name="days_left">días restantes</string>
+    <plurals name="days_left">
+        <item quantity="other">%d días restantes</item>
+    </plurals>
     <string name="customization">Personalización</string>
     <string name="app_behavior">Comportamiento de la app</string>
     <string name="additional_notification_name">Notificación adicional</string>
@@ -116,7 +120,9 @@
     <string name="most_common_zodiac_sign">El signo zodiacal más común es</string>
     <string name="random_day_of_week">nació en</string>
     <string name="most_common_day_of_week">El día de la semana de nacimiento más común es</string>
-    <string name="leap_year_total">El número de personas nacidas en un año bisiesto es</string>
+    <plurals name="leap_year_total">
+        <item quantity="other">El número de personas nacidas en un año bisiesto es %d</item>
+    </plurals>
     <string name="random_chinese_year">Signo del zodiaco chino de</string>
     <string name="chinese_zodiac_rat">ratón</string>
     <string name="chinese_zodiac_ox">buey</string>
@@ -142,17 +148,15 @@
     <string name="zodiac_virgo">virgo</string>
     <string name="zodiac_libra">libra</string>
     <string name="zodiac_scorpio">escorpio</string>
-    <string name="birthday">cumpleaños</string>
-    <string name="birthdays">cumpleaños</string>
-    <string name="events">eventos</string>
-    <string name="event">evento</string>
-    <string name="day">día</string>
-    <string name="days">días</string>
-    <string name="months">meses</string>
+    <plurals name="months">
+      <item quantity="other">%d meses</item>
+    </plurals>
     <string name="tomorrow">¡Mañana!</string>
     <string name="today">¡Hoy!</string>
     <string name="yesterday">¡Ayer!</string>
-    <string name="years">años</string>
+    <plurals name="years">
+      <item quantity="other">%d años</item>
+    </plurals>
     <string name="born_in">nacido en</string>
     <string name="and">y</string>
     <string name="events_notification_channel">Recordatorios de Eventos</string>

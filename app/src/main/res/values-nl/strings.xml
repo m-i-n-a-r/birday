@@ -17,13 +17,17 @@
     <string name="no_stats">Geen statistieken beschikbaar!</string>
     <string name="stats_summary">Overzicht statistieken</string>
     <string name="no_stats_description">Je hebt te weinig verjaardagen om statistieken te laten zien. Voeg er een aantal toe en kom dan terug!</string>
-    <string name="stats_total">Birday herinnert je aan</string>
+    <plurals name="stats_total">
+      <item quantity="other">Birday herinnert je aan %d verjaardagen</item>
+    </plurals>
     <string name="next_event">Volgende gebeurtenis</string>
     <string name="no_next_event">Geen verjaardagen om weer te geven!</string>
     <string name="no_next_event_description">Je hebt nog geen verjaardagen opgegeven of geïmporteerd. Voeg er eentje toe en laat Birday je helpen!</string>
     <string name="next_age_years">jaar</string>
     <string name="event_others">en anderen</string>
-    <string name="days_left">dagen resterend</string>
+    <plurals name="days_left">
+        <item quantity="other">%d dagen resterend</item>
+    </plurals>
 
     <!-- Settings -->
     <string name="customization">Aanpassingen</string>
@@ -145,7 +149,9 @@
     <string name="most_common_zodiac_sign">Het meest voorkomende sterrenbeeld is</string>
     <string name="random_day_of_week">is geboren op</string>
     <string name="most_common_day_of_week">De meest voorkomende geboortedag is</string>
-    <string name="leap_year_total">Het aantal mensen dat geboren is in een schrikkeljaar is</string>
+    <plurals name="leap_year_total">
+        <item quantity="other">Het aantal mensen dat geboren is in een schrikkeljaar is %d</item>
+    </plurals>
     <string name="random_chinese_year">Chinees sterrenbeeld van</string>
     <string name="chinese_zodiac_rat">rat</string>
     <string name="chinese_zodiac_ox">os</string>
@@ -173,17 +179,15 @@
     <string name="zodiac_scorpio">schorpioen</string>
 
     <!-- Common words -->
-    <string name="birthday">verjaardag</string>
-    <string name="birthdays">verjaardagen</string>
-    <string name="event">gebeurtenis</string>
-    <string name="events">gebeurtenissen</string>
-    <string name="day">dag</string>
-    <string name="days">dagen</string>
-    <string name="months">maanden</string>
+    <plurals name="months">
+      <item quantity="other">%d maanden</item>
+    </plurals>
     <string name="today">Vandaag!</string>
     <string name="yesterday">Gisteren!</string>
     <string name="tomorrow">Morgen!</string>
-    <string name="years">jaar</string>
+    <plurals name="years">
+      <item quantity="other">%d jaar</item>
+    </plurals>
     <string name="born_in">geboren in</string>
     <string name="and">en</string>
 

@@ -43,7 +43,7 @@ internal fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManage
             -1 -> event.nextDate.format(formatter) + ". " + context.getString(R.string.yesterday)
             0 -> event.nextDate.format(formatter) + ". " + context.getString(R.string.today)
             1 -> event.nextDate.format(formatter) + ". " + context.getString(R.string.tomorrow)
-            else -> event.nextDate.format(formatter) + ". " + daysRemaining + " " + context.getString(R.string.days_left)
+            else -> event.nextDate.format(formatter) + ". " + context.getResources().getQuantityString(R.plurals.days_left, daysRemaining, daysRemaining)
         }
         widgetUpcoming = if (allEvents.isEmpty()) context.getString(R.string.no_next_event)
         else allEvents[0].name + ", " + nextDate

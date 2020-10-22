@@ -17,13 +17,17 @@
     <string name="no_stats">Ingen statistik att visa!</string>
     <string name="stats_summary">Statistiköversikt</string>
     <string name="no_stats_description">Du har inte tillräckligt många födelsedagar för att visa statistik. Lägg till några och kom tillbaka senare!</string>
-    <string name="stats_total">Birday hjälper dig att komma ihåg totalt</string>
+    <plurals name="stats_total">
+      <item quantity="other">Birday hjälper dig att komma ihåg totalt %d födelsedagar</item>
+    </plurals>
     <string name="next_event">Nästa händelse</string>
     <string name="no_next_event">Inga födelsedagar att visa!</string>
     <string name="no_next_event_description">Du har inte lagt till eller importerat en födelsedag än. Lägg till en och låt Birday hjälpa dig!</string>
     <string name="next_age_years">År</string>
     <string name="event_others">och andra</string>
-    <string name="days_left">dagar kvar</string>
+    <plurals name="days_left">
+        <item quantity="other">%d dagar kvar</item>
+    </plurals>
     <string name="customization">Anpassning</string>
     <string name="app_behavior">Appbeteende</string>
     <string name="additional_notification_name">Ytterligare notifikation</string>
@@ -124,7 +128,9 @@
     <string name="most_common_zodiac_sign">Det vanligaste stjärntecknet är</string>
     <string name="random_day_of_week">föddes den</string>
     <string name="most_common_day_of_week">Den vanligaste födelsedagen i veckan är</string>
-    <string name="leap_year_total">Antalet personer födda under ett skottår är</string>
+    <plurals name="leap_year_total">
+        <item quantity="other">Antalet personer födda under ett skottår är %d</item>
+    </plurals>
     <string name="random_chinese_year">Kinesiska stjärntecken på</string>
     <string name="chinese_zodiac_rat">råtta</string>
     <string name="chinese_zodiac_ox">oxe</string>
@@ -150,17 +156,15 @@
     <string name="zodiac_virgo">jungfrun</string>
     <string name="zodiac_scorpio">skorpionen</string>
     <string name="zodiac_libra">vågen</string>
-    <string name="birthday">födelsedag</string>
-    <string name="birthdays">födelsedagar</string>
-    <string name="event">händelse</string>
-    <string name="events">händelser</string>
-    <string name="day">dag</string>
-    <string name="days">dagar</string>
-    <string name="months">månader</string>
+    <plurals name="months">
+      <item quantity="other">%d månader</item>
+    </plurals>
     <string name="today">I dag!</string>
     <string name="yesterday">I går!</string>
     <string name="tomorrow">I morgon!</string>
-    <string name="years">år</string>
+    <plurals name="years">
+      <item quantity="other">%d år</item>
+    </plurals>
     <string name="born_in">född i</string>
     <string name="and">och</string>
     <string name="events_notification_channel">Händelsepåminnelse</string>
