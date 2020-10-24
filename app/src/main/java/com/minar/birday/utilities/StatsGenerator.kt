@@ -7,6 +7,7 @@ import android.text.Spanned
 import android.text.style.BulletSpan
 import androidx.annotation.ColorInt
 import com.minar.birday.R
+import com.minar.birday.calendar.chineseAnimal
 import com.minar.birday.model.EventResult
 import java.time.LocalDate
 import java.time.format.TextStyle
@@ -240,39 +241,22 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         return ages
     }
 
-    // Get the chinese sign TODO get the proper lunar calendar
     fun getChineseSign(person: EventResult): String {
-        var sign = ""
-        var signNumber = 0
-        when (person.originalDate.year % 12) {
-            4 -> signNumber = 0
-            5 -> signNumber = 1
-            6 -> signNumber = 2
-            7 -> signNumber = 3
-            8 -> signNumber = 4
-            9 -> signNumber = 5
-            10 -> signNumber = 6
-            11 -> signNumber = 7
-            0 -> signNumber = 8
-            1 -> signNumber = 9
-            2 -> signNumber = 10
-            3 -> signNumber = 11
+        return when (chineseAnimal(person.originalDate)) {
+            0 -> applicationContext!!.getString(R.string.chinese_zodiac_rat)
+            1 -> applicationContext!!.getString(R.string.chinese_zodiac_ox)
+            2 -> applicationContext!!.getString(R.string.chinese_zodiac_tiger)
+            3 -> applicationContext!!.getString(R.string.chinese_zodiac_rabbit)
+            4 -> applicationContext!!.getString(R.string.chinese_zodiac_dragon)
+            5 -> applicationContext!!.getString(R.string.chinese_zodiac_snake)
+            6 -> applicationContext!!.getString(R.string.chinese_zodiac_horse)
+            7 -> applicationContext!!.getString(R.string.chinese_zodiac_goat)
+            8 -> applicationContext!!.getString(R.string.chinese_zodiac_monkey)
+            9 -> applicationContext!!.getString(R.string.chinese_zodiac_rooster)
+            10 -> applicationContext!!.getString(R.string.chinese_zodiac_dog)
+            11 -> applicationContext!!.getString(R.string.chinese_zodiac_pig)
+            else -> throw Exception("Unexpected Chinese animal index")
         }
-        when (signNumber) {
-            0 -> sign = applicationContext?.getString(R.string.chinese_zodiac_rat).toString()
-            1 -> sign = applicationContext?.getString(R.string.chinese_zodiac_ox).toString()
-            2 -> sign = applicationContext?.getString(R.string.chinese_zodiac_tiger).toString()
-            3 -> sign = applicationContext?.getString(R.string.chinese_zodiac_rabbit).toString()
-            4 -> sign = applicationContext?.getString(R.string.chinese_zodiac_dragon).toString()
-            5 -> sign = applicationContext?.getString(R.string.chinese_zodiac_snake).toString()
-            6 -> sign = applicationContext?.getString(R.string.chinese_zodiac_horse).toString()
-            7 -> sign = applicationContext?.getString(R.string.chinese_zodiac_goat).toString()
-            8 -> sign = applicationContext?.getString(R.string.chinese_zodiac_monkey).toString()
-            9 -> sign = applicationContext?.getString(R.string.chinese_zodiac_rooster).toString()
-            10 -> sign = applicationContext?.getString(R.string.chinese_zodiac_dog).toString()
-            11 -> sign = applicationContext?.getString(R.string.chinese_zodiac_pig).toString()
-        }
-        return sign
     }
 
     // Get the zodiac sign

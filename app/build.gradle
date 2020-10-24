@@ -86,4 +86,7 @@ dependencies {
 
     // Facebook shimmer effect
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    // ICU for testing
+    testImplementation group: 'com.ibm.icu', name: 'icu4j', version: '67.1'
 }
