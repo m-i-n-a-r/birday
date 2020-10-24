@@ -1,11 +1,31 @@
 package com.minar.birday.utilities
 
+import android.content.Context
+import com.minar.birday.R
 import com.minar.birday.model.EventResult
 import java.time.LocalDate
 import java.time.Period
+import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.time.temporal.ChronoUnit
 import java.util.*
+
+// Properly format the next date for widget and next event card
+fun nextDateFormatted(event: EventResult, formatter: DateTimeFormatter, context: Context): String {
+    val daysRemaining = getRemainingDays(event.nextDate!!)
+    return event.nextDate.format(formatter) + ". " + daysRemaining(daysRemaining, context)
+}
+
+// Return the remaining days or a string
+fun daysRemaining(daysRemaining: Int, context: Context): String {
+    return when (daysRemaining) {
+        // The -1 case should never happen
+        -1 -> context.getString(R.string.yesterday)
+        0 -> context.getString(R.string.today)
+        1 -> context.getString(R.string.tomorrow)
+        else -> context.resources.getQuantityString(R.plurals.days_left, daysRemaining, daysRemaining)
+    }
+}
 
 // Format the name considering the preference and the surname (which could be empty)
 fun formatName(event: EventResult, surnameFirst: Boolean): String {

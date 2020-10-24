@@ -256,7 +256,8 @@ class HomeFragment : Fragment() {
                 val subject: MutableList<EventResult> = mutableListOf()
                 subject.add(event)
                 val statsGenerator = StatsGenerator(subject, context)
-                val daysCountdown = daysRemaining(getRemainingDays(event.nextDate!!))
+                val daysCountdown =
+                    daysRemaining(getRemainingDays(event.nextDate!!), requireContext())
                 customView.detailsZodiacSignValue.text = statsGenerator.getZodiacSign(event)
                 customView.detailsCountdown.text = daysCountdown
 
@@ -389,18 +390,30 @@ class HomeFragment : Fragment() {
             // Two events
             events.size == 2 && events[0].nextDate!!.isEqual(events[1].nextDate) ->
                 events[0].name + " " + requireContext().getString(R.string.and) +
-                        " " + events[1].name + ", " + nextDateFormatted(events[0], formatter)
+                        " " + events[1].name + ", " + nextDateFormatted(
+                    events[0],
+                    formatter,
+                    requireContext()
+                )
             events.size > 2 && events[0].nextDate!!.isEqual(events[1].nextDate) &&
                     !events[1].nextDate!!.isEqual(events[2].nextDate) ->
                 events[0].name + " " + requireContext().getString(R.string.and) +
-                        " " + events[1].name + ", " + nextDateFormatted(events[0], formatter)
+                        " " + events[1].name + ", " + nextDateFormatted(
+                    events[0],
+                    formatter,
+                    requireContext()
+                )
             // More than two events
             events.size > 2 && events[0].nextDate!!.isEqual(events[1].nextDate) &&
                     events[1].nextDate!!.isEqual(events[2].nextDate) ->
                 events[0].name + " " + requireContext().getString(R.string.event_others) +
-                        ", " + nextDateFormatted(events[0], formatter)
+                        ", " + nextDateFormatted(events[0], formatter, requireContext())
             // One event
-            else -> events[0].name + ", " + nextDateFormatted(events[0], formatter)
+            else -> events[0].name + ", " + nextDateFormatted(
+                events[0],
+                formatter,
+                requireContext()
+            )
         }
 
         remoteViews.setOnClickPendingIntent(R.id.event_widget_main, pendingIntent)
@@ -423,14 +436,15 @@ class HomeFragment : Fragment() {
         for (event in events) {
             if (event.nextDate!!.isEqual(upcomingDate)) {
                 // Consider the case of null surname and the case of unknown age
-                val formattedPersonName = formatName(event, sharedPrefs.getBoolean("surname_first", false))
+                val formattedPersonName =
+                    formatName(event, sharedPrefs.getBoolean("surname_first", false))
                 val age = if (event.yearMatter!!) event.nextDate.year.minus(event.originalDate.year)
                     .toString()
                 else getString(R.string.unknown_age)
                 when (events.indexOf(event)) {
                     0 -> {
                         personName = formattedPersonName
-                        nextDateText = nextDateFormatted(event, formatter)
+                        nextDateText = nextDateFormatted(event, formatter, requireContext())
                         nextAge = getString(R.string.next_age_years) + ": $age"
                     }
                     1, 2 -> {
@@ -600,23 +614,6 @@ class HomeFragment : Fragment() {
             .setType("text/plain")
             .setChooserTitle(getString(R.string.share_event))
             .startChooser()
-    }
-
-    // Properly format the next date for widget and next event card
-    private fun nextDateFormatted(event: EventResult, formatter: DateTimeFormatter): String {
-        val daysRemaining = getRemainingDays(event.nextDate!!)
-        return event.nextDate.format(formatter) + ". " + daysRemaining(daysRemaining)
-    }
-
-    // Return the remaining days or a string
-    private fun daysRemaining(daysRemaining: Int): String {
-        return when (daysRemaining) {
-            // The -1 case should never happen
-            -1 -> getString(R.string.yesterday)
-            0 -> getString(R.string.today)
-            1 -> getString(R.string.tomorrow)
-            else -> resources.getQuantityString(R.plurals.days_left, daysRemaining, daysRemaining)
-        }
     }
 
     // Loop the animated vector drawable
