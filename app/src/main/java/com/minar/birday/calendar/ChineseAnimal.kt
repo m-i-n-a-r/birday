@@ -4,25 +4,13 @@ import android.icu.util.*
 import java.time.LocalDate
 import java.time.ZoneOffset
 
-/**
- * Adapter to use either Android's provided ICU or the original one.
- *
- * This is required as:
- * - In runtime, ICU is already available on the Android devices under
- *   android.icu.* and doesn't require extra dependencies.
- * - In tests, all functions, including ICU, aren't available
- *   (https://g.co/androidstudio/not-mocked), so the actual ICU library
- *   is needed as a test dependency.
- */
+// Adapter to use either Android's provided ICU or the original one.
 interface CalendarAdapter {
-    /**
-     * Wrapper for Calendar.setTimeInMillis.
-     */
+
+    // Wrapper for Calendar.setTimeInMillis
     fun setTimeInMillis(value: Long)
 
-    /**
-     * Wrapper for Calendar.get.
-     */
+    // Wrapper for Calendar.get
     fun get(field: Int): Int
 }
 
@@ -45,21 +33,15 @@ fun<C: CalendarAdapter> chineseAnimalGeneric(getChinese: () -> C, date: LocalDat
     return (year - 1) % 12
 }
 
-/**
- * Implementation of calendar adapter for Android-provided ICU.
- */
+// Implementation of calendar adapter for Android-provided ICU.
 class AndroidCalendar(private val calendar: Calendar): CalendarAdapter {
     override fun setTimeInMillis(value: Long) {
         calendar.timeInMillis = value
     }
-
     override fun get(field: Int): Int = calendar.get(field)
 }
 
-/**
- * Finds the Chinese calendar year animal corresponding to the given date.
- * @returns Animal index, starting from 0 = rat
- */
+// return the Animal index (starting from 0 = rat) corresponding to the given date
 fun chineseAnimal(date: LocalDate): Int = chineseAnimalGeneric(
     getChinese = { AndroidCalendar(ChineseCalendar()) },
     date

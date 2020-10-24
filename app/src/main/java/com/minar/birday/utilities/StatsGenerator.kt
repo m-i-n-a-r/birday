@@ -226,7 +226,8 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     // Get the chinese year of a random person
     private fun chineseSign(person: EventResult): String {
         return if (!person.yearMatter!!) ""
-        else applicationContext?.getString(R.string.random_chinese_year) + " " + person.name + ": " + getChineseSign(person)
+        else applicationContext?.getString(R.string.random_chinese_year) + " " +
+                person.name + ": " + getChineseSign(person)
     }
 
     // Get a list containing the names and an int containing the age
@@ -332,7 +333,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         else result
     }
 
-    // Functions to build the
+    // Functions to build the statistics in a bullet list
     private fun SpannableStringBuilder.appendBulletSpans(paragraphs: List<String>, margin: Int, @ColorInt color: Int): SpannableStringBuilder {
         for (paragraph in paragraphs) {
             if (paragraphs.indexOf(paragraph) == 0) appendBulletSpan(paragraph, margin, color, true)

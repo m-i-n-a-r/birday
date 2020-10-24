@@ -4,49 +4,66 @@
     <item android:drawable="@drawable/icon_birday_normal" android:duration="1500" />
     
     <!-- Eye -->
-    <item android:drawable="@drawable/icon_birday_eye_1" android:duration="40" />
-    <item android:drawable="@drawable/icon_birday_eye_2" android:duration="40" />
-    <item android:drawable="@drawable/icon_birday_eye_3" android:duration="40" />
-    <item android:drawable="@drawable/icon_birday_eye_4" android:duration="40" />
-    <item android:drawable="@drawable/icon_birday_eye_5" android:duration="40" />
-    <item android:drawable="@drawable/icon_birday_eye_6" android:duration="40" />
-    <item android:drawable="@drawable/icon_birday_eye_5" android:duration="40" />
-    <item android:drawable="@drawable/icon_birday_eye_4" android:duration="40" />
-    <item android:drawable="@drawable/icon_birday_eye_3" android:duration="40" />
-    <item android:drawable="@drawable/icon_birday_eye_2" android:duration="40" />
-    <item android:drawable="@drawable/icon_birday_eye_1" android:duration="40" />
+    <item android:drawable="@drawable/icon_birday_eye_1" android:duration="30" />
+    <item android:drawable="@drawable/icon_birday_eye_2" android:duration="30" />
+    <item android:drawable="@drawable/icon_birday_eye_3" android:duration="30" />
+    <item android:drawable="@drawable/icon_birday_eye_4" android:duration="30" />
+    <item android:drawable="@drawable/icon_birday_eye_5" android:duration="30" />
+    <item android:drawable="@drawable/icon_birday_eye_6" android:duration="30" />
+    <item android:drawable="@drawable/icon_birday_eye_5" android:duration="30" />
+    <item android:drawable="@drawable/icon_birday_eye_4" android:duration="30" />
+    <item android:drawable="@drawable/icon_birday_eye_3" android:duration="30" />
+    <item android:drawable="@drawable/icon_birday_eye_2" android:duration="30" />
+    <item android:drawable="@drawable/icon_birday_eye_1" android:duration="30" />
     
     <!-- Wings -->
-    <item android:drawable="@drawable/icon_birday_wing_1" android:duration="20" />
-    <item android:drawable="@drawable/icon_birday_wing_2" android:duration="20" />
-    <item android:drawable="@drawable/icon_birday_wing_3" android:duration="20" />
-    <item android:drawable="@drawable/icon_birday_wing_4" android:duration="20" />
-    <item android:drawable="@drawable/icon_birday_wing_5" android:duration="20" />
-    <item android:drawable="@drawable/icon_birday_wing_6" android:duration="30" />
-    <item android:drawable="@drawable/icon_birday_wing_7" android:duration="30" />
-    <item android:drawable="@drawable/icon_birday_wing_8" android:duration="40" />
-    <item android:drawable="@drawable/icon_birday_wing_7" android:duration="30" />
-    <item android:drawable="@drawable/icon_birday_wing_6" android:duration="30" />
-    <item android:drawable="@drawable/icon_birday_wing_5" android:duration="20" />
-    <item android:drawable="@drawable/icon_birday_wing_4" android:duration="20" />
-    <item android:drawable="@drawable/icon_birday_wing_3" android:duration="20" />
-    <item android:drawable="@drawable/icon_birday_wing_2" android:duration="20" />
-    <item android:drawable="@drawable/icon_birday_wing_1" android:duration="20" />
+    <item android:drawable="@drawable/icon_birday_wing_1" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_2" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_3" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_4" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_5" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_6" android:duration="25" />
+    <item android:drawable="@drawable/icon_birday_wing_7" android:duration="25" />
+    <item android:drawable="@drawable/icon_birday_wing_8" android:duration="35" />
+    <item android:drawable="@drawable/icon_birday_wing_7" android:duration="25" />
+    <item android:drawable="@drawable/icon_birday_wing_6" android:duration="25" />
+    <item android:drawable="@drawable/icon_birday_wing_5" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_4" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_3" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_2" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_1" android:duration="15" />
 
     <!-- Wings -->
-    <item android:drawable="@drawable/icon_birday_wing_1" android:duration="20" />
-    <item android:drawable="@drawable/icon_birday_wing_2" android:duration="20" />
-    <item android:drawable="@drawable/icon_birday_wing_3" android:duration="20" />
-    <item android:drawable="@drawable/icon_birday_wing_4" android:duration="20" />
-    <item android:drawable="@drawable/icon_birday_wing_5" android:duration="20" />
-    <item android:drawable="@drawable/icon_birday_wing_6" android:duration="30" />
-    <item android:drawable="@drawable/icon_birday_wing_7" android:duration="30" />
-    <item android:drawable="@drawable/icon_birday_wing_8" android:duration="40" />
-    <item android:drawable="@drawable/icon_birday_wing_7" android:duration="30" />
-    <item android:drawable="@drawable/icon_birday_wing_6" android:duration="30" />
-    <item android:drawable="@drawable/icon_birday_wing_5" android:duration="20" />
-    <item android:drawable="@drawable/icon_birday_wing_4" android:duration="20" />
-    <item android:drawable="@drawable/icon_birday_wing_3" android:duration="20" />
-    <item android:drawable="@drawable/icon_birday_wing_2" android:duration="20" />
-    <item android:drawable="@drawable/icon_birday_wing_1" android:duration="20" />
+    <item android:drawable="@drawable/icon_birday_wing_1" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_2" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_3" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_4" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_5" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_6" android:duration="25" />
+    <item android:drawable="@drawable/icon_birday_wing_7" android:duration="25" />
+    <item android:drawable="@drawable/icon_birday_wing_8" android:duration="35" />
+    <item android:drawable="@drawable/icon_birday_wing_7" android:duration="25" />
+    <item android:drawable="@drawable/icon_birday_wing_6" android:duration="25" />
+    <item android:drawable="@drawable/icon_birday_wing_5" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_4" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_3" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_2" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_1" android:duration="15" />
+
+    <!-- Wings -->
+    <item android:drawable="@drawable/icon_birday_wing_1" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_2" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_3" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_4" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_5" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_6" android:duration="25" />
+    <item android:drawable="@drawable/icon_birday_wing_7" android:duration="25" />
+    <item android:drawable="@drawable/icon_birday_wing_8" android:duration="35" />
+    <item android:drawable="@drawable/icon_birday_wing_7" android:duration="25" />
+    <item android:drawable="@drawable/icon_birday_wing_6" android:duration="25" />
+    <item android:drawable="@drawable/icon_birday_wing_5" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_4" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_3" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_2" android:duration="15" />
+    <item android:drawable="@drawable/icon_birday_wing_1" android:duration="15" />
 </animation-list>
