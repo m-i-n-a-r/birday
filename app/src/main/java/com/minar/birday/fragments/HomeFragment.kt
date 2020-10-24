@@ -194,8 +194,10 @@ class HomeFragment : Fragment() {
             if (events.isEmpty()) restorePlaceholders()
             if (events.isEmpty() && homeViewModel.searchStringLiveData.value!!.isNotBlank())
                 restorePlaceholders(true)
-            // Update the widgets
-            updateWidget(events)
+        })
+        homeViewModel.nextEvents.observe(viewLifecycleOwner, { nextEvents ->
+            // Update the widgets using the next events, to avoid strange behaviors when searching
+            updateWidget(nextEvents)
         })
 
         return v
@@ -387,18 +389,18 @@ class HomeFragment : Fragment() {
             // Two events
             events.size == 2 && events[0].nextDate!!.isEqual(events[1].nextDate) ->
                 events[0].name + " " + requireContext().getString(R.string.and) +
-                        " " + events[1].name + ", " + nextDate(events[0], formatter)
+                        " " + events[1].name + ", " + nextDateFormatted(events[0], formatter)
             events.size > 2 && events[0].nextDate!!.isEqual(events[1].nextDate) &&
                     !events[1].nextDate!!.isEqual(events[2].nextDate) ->
                 events[0].name + " " + requireContext().getString(R.string.and) +
-                        " " + events[1].name + ", " + nextDate(events[0], formatter)
+                        " " + events[1].name + ", " + nextDateFormatted(events[0], formatter)
             // More than two events
             events.size > 2 && events[0].nextDate!!.isEqual(events[1].nextDate) &&
                     events[1].nextDate!!.isEqual(events[2].nextDate) ->
                 events[0].name + " " + requireContext().getString(R.string.event_others) +
-                        ", " + nextDate(events[0], formatter)
+                        ", " + nextDateFormatted(events[0], formatter)
             // One event
-            else -> events[0].name + ", " + nextDate(events[0], formatter)
+            else -> events[0].name + ", " + nextDateFormatted(events[0], formatter)
         }
 
         remoteViews.setOnClickPendingIntent(R.id.event_widget_main, pendingIntent)
@@ -428,7 +430,7 @@ class HomeFragment : Fragment() {
                 when (events.indexOf(event)) {
                     0 -> {
                         personName = formattedPersonName
-                        nextDateText = nextDate(event, formatter)
+                        nextDateText = nextDateFormatted(event, formatter)
                         nextAge = getString(R.string.next_age_years) + ": $age"
                     }
                     1, 2 -> {
@@ -601,7 +603,7 @@ class HomeFragment : Fragment() {
     }
 
     // Properly format the next date for widget and next event card
-    private fun nextDate(event: EventResult, formatter: DateTimeFormatter): String {
+    private fun nextDateFormatted(event: EventResult, formatter: DateTimeFormatter): String {
         val daysRemaining = getRemainingDays(event.nextDate!!)
         return event.nextDate.format(formatter) + ". " + daysRemaining(daysRemaining)
     }

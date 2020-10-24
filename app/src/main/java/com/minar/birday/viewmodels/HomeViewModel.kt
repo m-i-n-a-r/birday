@@ -19,14 +19,18 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val workManager = WorkManager.getInstance(application)
     private val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(application)
     val allEvents: LiveData<List<EventResult>>
+    val nextEvents: LiveData<List<EventResult>>
     val searchStringLiveData = MutableLiveData<String>()
     private val eventDao: EventDao = EventDatabase.getBirdayDatabase(application)!!.eventDao()
 
     init {
         searchStringLiveData.value = ""
+        // All the events, filtered by search string
         allEvents = Transformations.switchMap(searchStringLiveData) { string ->
             eventDao.getOrderedEventsByName(string)
         }
+        // Only the upcoming events not considering the search
+        nextEvents = eventDao.getOrderedNextEvents()
         checkEvents()
     }
 

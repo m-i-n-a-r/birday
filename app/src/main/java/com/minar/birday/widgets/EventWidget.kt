@@ -29,7 +29,7 @@ class EventWidget : AppWidgetProvider() {
 internal fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int) {
     val thread = Thread {
         val eventDao: EventDao = EventDatabase.getBirdayDatabase(context)!!.eventDao()
-        val allEvents: List<EventResult> = eventDao.getOrderedAllEvents()
+        val allEvents: List<EventResult> = eventDao.getOrderedNextEventsStatic()
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
         val widgetUpcoming: String
         // Don't update if there's no birthday in the db

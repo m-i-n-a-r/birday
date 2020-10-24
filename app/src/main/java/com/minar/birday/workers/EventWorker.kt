@@ -25,7 +25,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
     override fun doWork(): Result {
         val appContext = applicationContext
         val eventDao: EventDao = EventDatabase.getBirdayDatabase(appContext)!!.eventDao()
-        val allEvents: List<EventResult> = eventDao.getOrderedAllEvents()
+        val allEvents: List<EventResult> = eventDao.getOrderedEventsStatic()
         val currentDate = Calendar.getInstance()
         val dueDate = Calendar.getInstance()
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(applicationContext)
