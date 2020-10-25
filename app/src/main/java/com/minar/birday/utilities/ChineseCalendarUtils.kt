@@ -1,4 +1,4 @@
-package com.minar.birday.calendar
+package com.minar.birday.utilities
 
 import android.icu.util.*
 import java.time.LocalDate
