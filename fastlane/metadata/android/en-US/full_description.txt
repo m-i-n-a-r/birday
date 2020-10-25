@@ -7,7 +7,7 @@ The app contains some basic personalization options and an introduction, plus so
 Well, i'll tell you 3 main reasons:
 <ul>
     <li> It can help you to remember every birthday in the moment you prefer! </li>
-    <li> It will cost just 4MB of storage! </li>
+    <li> It will cost just 5MB of storage! </li>
     <li> It's beautiful, full of animations and simple to use! </li>
 </ul>
 
@@ -19,13 +19,14 @@ if you're starting to develop apps and you need an app to look at, to find some 
 <ul>
     <li> Simple birthday timeline, with the next date and the name of each person </li>
     <li> Favorite system, to aggregate your favorite birthdays and see more information </li>
-    <li> Google Contacts import! Intelligent duplicate detection </li>
+    <li> Google Contacts import with basic duplicate detection </li>
     <li> Easily delete or modify every birthday </li>
     <li> Customizable notification the day of the birthday! </li>
     <li> Light and dark themes (Android 10 automatic dark mode supported) </li>
-    <li> Selectable accent (11 choices) </li>
+    <li> Selectable accent (12 choices) </li>
     <li> A quick search bar! </li>
-    <li> Vibration, first introduction and beautiful animations </li>
+    <li> A minimal widget </li>
+    <li> First introduction and beautiful animations including an animated notification icon </li>
     <li> Simple and precise ui, following the material guidelines </li>
 </ul>
 

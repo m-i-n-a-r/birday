@@ -41,7 +41,7 @@ class AndroidCalendar(private val calendar: Calendar): CalendarAdapter {
     override fun get(field: Int): Int = calendar.get(field)
 }
 
-// return the Animal index (starting from 0 = rat) corresponding to the given date
+// Return the Animal index (starting from 0 = rat) corresponding to the given date
 fun chineseAnimal(date: LocalDate): Int = chineseAnimalGeneric(
     getChinese = { AndroidCalendar(ChineseCalendar()) },
     date

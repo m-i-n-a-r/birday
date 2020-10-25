@@ -4,13 +4,13 @@ An open source app to remember birthdays and events without having to open Faceb
 
 <p align='center'>
   <a href='https://github.com/m-i-n-a-r/birday/blob/master/LICENSE.md'><img src='https://img.shields.io/cocoapods/l/AFNetworking.svg'/></a>
-  <img src='https://img.shields.io/badge/version-1.8.X-blue'/>
+  <img src='https://img.shields.io/badge/version-1.9.X-blue'/>
 	<img src='https://img.shields.io/badge/status-released-success'/>
 	<img src='https://img.shields.io/badge/-translations%20needed!-yellow'/>
 </p>
 
 ## Introduction
-This is an open source app to remember **birthdays** in a fast, light and beautiful way. No less, no more. I had this idea considering that Google Calendar doesn't display an automatic notification the day of the birthday, and sometimes i need to remember a birthday for a person who is not in my Google Contacts. Also, adding to much birthdays to the calendar make it messy and i prefer to manage them separately. The main focus of this app is being easy to use, clean and lightweight. I'm always glad to add features, but only important and really useful features!
+This is an open source app to remember **birthdays** in a fast, light and beautiful way. No less, no more. I had this idea considering that Google Calendar doesn't display an automatic notification the day of the birthday, and sometimes i need to remember a birthday for a person who is not in my Google Contacts. Also, adding too much birthdays to the calendar makes it messy and i prefer to manage them separately. The main focus of this app is being easy to use, clean and lightweight. I'm always glad to add features, but only important and really useful features!
 
 ## Translations
 
@@ -35,19 +35,20 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 - Easily backup and restore your saved events!
 - insert an event manually, just specifying a name, an optional surname and a date (with optional year)
 - Choose your favorite events to see detailed information about them and a countdown for each one
-- Tap on an event to see every possible detail
+- Tap on an event to see every possible detail and the available actions
 - The birthdays are also automagically backed up in cloud by Google Play Services when the app is installed from Play Store
 - A huge set of randomly generated stats (zodiac, average age and a lot more) when more than 5 events are inserted
 - Easily delete, modify and share the saved events!
 - A nice searchbar, to quickly search a person in the saved events
 - Quick apps launcher
 - Light and dark themes (Android 10 dark mode supported)
-- Selectable accent (no app restart needed)
+- Selectable accent (no app restart needed, 12 choices)
 - Shimmer effect, because why not
 - Name first or surname first
 - Beautiful animations (and animated notification icon)
-- Multiwindow support
-- Splashscreen and app intro
+- Multiwindow / freeform support
+- Animated splashscreen and app intro
+- Small and optimized 5MB size
 
 ## Screenshots
 <p align='center'>
