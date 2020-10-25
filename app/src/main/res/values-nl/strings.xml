@@ -18,7 +18,8 @@
     <string name="stats_summary">Overzicht statistieken</string>
     <string name="no_stats_description">Je hebt te weinig verjaardagen om statistieken te laten zien. Voeg er een aantal toe en kom dan terug!</string>
     <plurals name="stats_total">
-      <item quantity="other">Birday herinnert je aan %d verjaardagen</item>
+        <item quantity="one">Birday herinnert je aan %d verjaardag</item>
+        <item quantity="other">Birday herinnert je aan %d verjaardagen</item>
     </plurals>
     <string name="next_event">Volgende gebeurtenis</string>
     <string name="no_next_event">Geen verjaardagen om weer te geven!</string>
@@ -26,6 +27,7 @@
     <string name="next_age_years">jaar</string>
     <string name="event_others">en anderen</string>
     <plurals name="days_left">
+        <item quantity="one">%d dag resterend</item>
         <item quantity="other">%d dagen resterend</item>
     </plurals>
 
@@ -150,6 +152,7 @@
     <string name="random_day_of_week">is geboren op</string>
     <string name="most_common_day_of_week">De meest voorkomende geboortedag is</string>
     <plurals name="leap_year_total">
+        <item quantity="one">Het aantal mensen dat geboren is in een schrikkeljaar is %d</item>
         <item quantity="other">Het aantal mensen dat geboren is in een schrikkeljaar is %d</item>
     </plurals>
     <string name="random_chinese_year">Chinees sterrenbeeld van</string>
@@ -180,13 +183,15 @@
 
     <!-- Common words -->
     <plurals name="months">
-      <item quantity="other">%d maanden</item>
+        <item quantity="one">%d maand</item>
+        <item quantity="other">%d maanden</item>
     </plurals>
     <string name="today">Vandaag!</string>
     <string name="yesterday">Gisteren!</string>
     <string name="tomorrow">Morgen!</string>
     <plurals name="years">
-      <item quantity="other">%d jaar</item>
+        <item quantity="one">%d jaar</item>
+        <item quantity="other">%d jaren</item>
     </plurals>
     <string name="born_in">geboren in</string>
     <string name="and">en</string>

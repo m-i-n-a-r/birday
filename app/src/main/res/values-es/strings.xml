@@ -18,7 +18,8 @@
     <string name="stats_summary">Resumen de estadísticas</string>
     <string name="no_stats_description">No tienes suficientes cumpleaños para mostrar las estadísticas. ¡Agregue un poco y regrese más tarde!</string>
     <plurals name="stats_total">
-      <item quantity="other">Birday te està ayudando a recordar un total de %d cumpleaños</item>
+        <item quantity="one">Birday te està ayudando a recordar un total de %d cumpleaños</item>
+        <item quantity="other">Birday te està ayudando a recordar un total de %d cumpleaños</item>
     </plurals>
     <string name="next_event">Próximo evento</string>
     <string name="no_next_event">¡No hay cumpleaños para mostrar!</string>
@@ -26,6 +27,7 @@
     <string name="next_age_years">Años</string>
     <string name="event_others">y otros</string>
     <plurals name="days_left">
+        <item quantity="one">%d día restante</item>
         <item quantity="other">%d días restantes</item>
     </plurals>
     <string name="customization">Personalización</string>
@@ -121,6 +123,7 @@
     <string name="random_day_of_week">nació en</string>
     <string name="most_common_day_of_week">El día de la semana de nacimiento más común es</string>
     <plurals name="leap_year_total">
+        <item quantity="one">El número de personas nacidas en un año bisiesto es %d</item>
         <item quantity="other">El número de personas nacidas en un año bisiesto es %d</item>
     </plurals>
     <string name="random_chinese_year">Signo del zodiaco chino de</string>
@@ -149,13 +152,15 @@
     <string name="zodiac_libra">libra</string>
     <string name="zodiac_scorpio">escorpio</string>
     <plurals name="months">
-      <item quantity="other">%d meses</item>
+        <item quantity="one">%d mes</item>
+        <item quantity="other">%d meses</item>
     </plurals>
     <string name="tomorrow">¡Mañana!</string>
     <string name="today">¡Hoy!</string>
     <string name="yesterday">¡Ayer!</string>
     <plurals name="years">
-      <item quantity="other">%d años</item>
+        <item quantity="one">%d año</item>
+        <item quantity="other">%d años</item>
     </plurals>
     <string name="born_in">nacido en</string>
     <string name="and">y</string>

@@ -59,20 +59,24 @@
     <string name="add_favorite">Aggiungi ai preferiti</string>
     <string name="next_age_years">Anni</string>
     <plurals name="stats_total">
-      <item quantity="other">Birday ti sta aiutando a ricordare un totale di %d compleanni</item>
+        <item quantity="one">Birday ti sta aiutando a ricordare un totale di %d compleanno</item>
+        <item quantity="other">Birday ti sta aiutando a ricordare un totale di %d compleanni</item>
     </plurals>
     <plurals name="months">
-      <item quantity="other">%d mesi</item>
+        <item quantity="one">%d mese</item>
+        <item quantity="other">%d mesi</item>
     </plurals>
     <string name="today">Oggi!</string>
     <string name="yesterday">Ieri!</string>
     <string name="tomorrow">Domani!</string>
     <string name="event_others">ed altri</string>
     <plurals name="days_left">
+        <item quantity="one">%d giorno rimasto</item>
         <item quantity="other">%d giorni rimasti</item>
     </plurals>
     <plurals name="years">
-      <item quantity="other">%d anni</item>
+        <item quantity="one">%d anno</item>
+        <item quantity="other">%d anni</item>
     </plurals>
     <string name="and">e</string>
     <string name="did_you_know">Lo sapevi?</string>
@@ -88,6 +92,7 @@
     <string name="random_day_of_week">è nato/a di</string>
     <string name="most_common_day_of_week">Il giorno di settimana di nascita più comune è</string>
     <plurals name="leap_year_total">
+        <item quantity="one">Il numero di persone nate in un anno bisestile è %d</item>
         <item quantity="other">Il numero di persone nate in un anno bisestile è %d</item>
     </plurals>
     <string name="random_chinese_year">Segno zodiacale cinese di</string>

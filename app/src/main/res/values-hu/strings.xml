@@ -18,7 +18,8 @@
     <string name="stats_summary">Statisztika összefoglaló</string>
     <string name="no_stats_description">Nincs elég születésnap a statisztikák megjelenítéséhez. Adj hozzá néhányat, és gyere vissza később!</string>
     <plurals name="stats_total">
-      <item quantity="other">A Birday segít, hogy összesen emlékezz %d születésnapok</item>
+        <item quantity="one">A Birday segít, hogy összesen emlékezz %d születésnap</item>
+        <item quantity="other">A Birday segít, hogy összesen emlékezz %d születésnapok</item>
     </plurals>
     <string name="next_event">Következő esemény</string>
     <string name="no_next_event">Nincs megjeleníthető születésnap!</string>
@@ -26,7 +27,8 @@
     <string name="next_age_years">Évek</string>
     <string name="event_others">és mások</string>
     <plurals name="days_left">
-	<item quantity="other">%d nap van hátra</item>
+        <item quantity="one">%d hátralevő nap</item>
+        <item quantity="other">%d nap van hátra</item>
     </plurals>
 
     <!-- Settings -->
@@ -146,6 +148,7 @@
     <string name="random_day_of_week">ekkor született:</string>
     <string name="most_common_day_of_week">A leggyakoribb születési nap a</string>
     <plurals name="leap_year_total">
+        <item quantity="one">A szökőévben születettek száma %d</item>
         <item quantity="other">A szökőévben születettek száma %d</item>
     </plurals>
     <string name="random_chinese_year">Kínai csillagjegye neki:</string>
@@ -176,13 +179,15 @@
 
     <!-- Common words -->
     <plurals name="months">
-      <item quantity="other">%d hónapok</item>
+        <item quantity="one">%d hónap</item>
+        <item quantity="other">%d hónapok</item>
     </plurals>
     <string name="today">Ma!</string>
     <string name="yesterday">Tegnap!</string>
     <string name="tomorrow">Holnap!</string>
     <plurals name="years">
-      <item quantity="other">%d évek</item>
+        <item quantity="one">%d év</item>
+        <item quantity="other">%d évek</item>
     </plurals>
     <string name="born_in">született</string>
     <string name="and">és</string>

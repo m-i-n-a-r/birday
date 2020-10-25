@@ -19,7 +19,8 @@
     <string name="stats_summary">Stats summary</string>
     <string name="no_stats_description">You don\'t have enough birthdays to display the stats. Add some and come back later!</string>
     <plurals name="stats_total">
-      <item quantity="other">Birday is helping you to remember a total of %d birthdays</item>
+        <item quantity="one">Birday is helping you to remember a total of %d birthday</item>
+        <item quantity="other">Birday is helping you to remember a total of %d birthdays</item>
     </plurals>
     <string name="next_event">Next event</string>
     <string name="no_next_event">No birthdays to show!</string>
@@ -27,6 +28,7 @@
     <string name="next_age_years">Years</string>
     <string name="event_others">and others</string>
     <plurals name="days_left">
+        <item quantity="one">%d day left</item>
         <item quantity="other">%d days left</item>
     </plurals>
 
@@ -159,6 +161,7 @@
     <string name="random_day_of_week">was born on</string>
     <string name="most_common_day_of_week">The most common day of the week of birth is</string>
     <plurals name="leap_year_total">
+        <item quantity="one">The number of persons born in a leap year is %d</item>
         <item quantity="other">The number of persons born in a leap year is %d</item>
     </plurals>
     <string name="random_chinese_year">Chinese zodiac sign of</string>
@@ -189,13 +192,15 @@
 
     <!-- Common words -->
     <plurals name="months">
-      <item quantity="other">%d months</item>
+        <item quantity="one">%d month</item>
+        <item quantity="other">%d months</item>
     </plurals>
     <string name="today">Today!</string>
     <string name="yesterday">Yesterday!</string>
     <string name="tomorrow">Tomorrow!</string>
     <plurals name="years">
-      <item quantity="other">%d years</item>
+        <item quantity="one">%d year</item>
+        <item quantity="other">%d years</item>
     </plurals>
     <string name="born_in">born in</string>
     <string name="and">and</string>

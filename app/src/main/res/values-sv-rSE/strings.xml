@@ -18,7 +18,8 @@
     <string name="stats_summary">Statistiköversikt</string>
     <string name="no_stats_description">Du har inte tillräckligt många födelsedagar för att visa statistik. Lägg till några och kom tillbaka senare!</string>
     <plurals name="stats_total">
-      <item quantity="other">Birday hjälper dig att komma ihåg totalt %d födelsedagar</item>
+        <item quantity="one">Birday hjälper dig att komma ihåg totalt %d födelsedag</item>
+        <item quantity="other">Birday hjälper dig att komma ihåg totalt %d födelsedagar</item>
     </plurals>
     <string name="next_event">Nästa händelse</string>
     <string name="no_next_event">Inga födelsedagar att visa!</string>
@@ -26,6 +27,7 @@
     <string name="next_age_years">År</string>
     <string name="event_others">och andra</string>
     <plurals name="days_left">
+        <item quantity="one">%d dag kvar</item>
         <item quantity="other">%d dagar kvar</item>
     </plurals>
     <string name="customization">Anpassning</string>
@@ -129,6 +131,7 @@
     <string name="random_day_of_week">föddes den</string>
     <string name="most_common_day_of_week">Den vanligaste födelsedagen i veckan är</string>
     <plurals name="leap_year_total">
+        <item quantity="one">Antalet personer födda under ett skottår är %d</item>
         <item quantity="other">Antalet personer födda under ett skottår är %d</item>
     </plurals>
     <string name="random_chinese_year">Kinesiska stjärntecken på</string>
@@ -157,13 +160,15 @@
     <string name="zodiac_scorpio">skorpionen</string>
     <string name="zodiac_libra">vågen</string>
     <plurals name="months">
-      <item quantity="other">%d månader</item>
+        <item quantity="one">%d månad</item>
+        <item quantity="other">%d månader</item>
     </plurals>
     <string name="today">I dag!</string>
     <string name="yesterday">I går!</string>
     <string name="tomorrow">I morgon!</string>
     <plurals name="years">
-      <item quantity="other">%d år</item>
+        <item quantity="one">%d år</item>
+        <item quantity="other">%d år</item>
     </plurals>
     <string name="born_in">född i</string>
     <string name="and">och</string>

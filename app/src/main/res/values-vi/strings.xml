@@ -1,5 +1,6 @@
 <resources>
 
+    <!-- Vietnamese doesn't need plurals -->
     <string name="app_welcome">Birday Chào bạn</string>
     <string name="app_name_extended">Birday - Quản Lý Sinh Nhật</string>
     <string name="leave_review_title">Đánh giá cho Birday</string>
@@ -18,7 +19,7 @@
     <string name="stats_summary">Tóm tắt số liệu</string>
     <string name="no_stats_description">Bạn chưa có lưu đủ sinh nhật đệ xem số liệu thống kê. Mời bạn lưu thêm sinh nhật và quay lại sau!</string>
     <plurals name="stats_total">
-      <item quantity="other">Birday giúp bạn nhớ sinh nhật tổng cộng %d sinh nhật</item>
+        <item quantity="other">Birday giúp bạn nhớ sinh nhật tổng cộng %d sinh nhật</item>
     </plurals>
     <string name="next_event">Sự kiện tiếp theo</string>
     <string name="no_next_event">Không có sinh nhật!</string>
@@ -176,13 +177,13 @@
 
     <!-- Common words -->
     <plurals name="months">
-      <item quantity="other">%d tháng</item>
+        <item quantity="other">%d tháng</item>
     </plurals>
     <string name="today">hôm nay!</string>
     <string name="yesterday">hôm qua!</string>
     <string name="tomorrow">ngày mai!</string>
     <plurals name="years">
-      <item quantity="other">%d năm</item>
+        <item quantity="other">%d năm</item>
     </plurals>
     <string name="born_in">sinh ra</string>
     <string name="and">và</string>

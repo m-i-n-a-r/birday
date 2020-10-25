@@ -18,7 +18,8 @@
     <string name="stats_summary">Zusammenfassung der Statistiken</string>
     <string name="no_stats_description">Zusammenfassung der Statistiken</string>
     <plurals name="stats_total">
-      <item quantity="other">Birday hilft dir beim Erinnern an insgesamt %d Geburtstage</item>
+        <item quantity="one">Birday hilft dir beim Erinnern an insgesamt %d Geburtstag</item>
+        <item quantity="other">Birday hilft dir beim Erinnern an insgesamt %d Geburtstage</item>
     </plurals>
     <string name="next_event">Nächstes Ereignis</string>
     <string name="no_next_event">Keine Geburtstage zu zeigen!</string>
@@ -26,6 +27,7 @@
     <string name="next_age_years">Jahre</string>
     <string name="event_others">und andere</string>
     <plurals name="days_left">
+        <item quantity="one">%d verbleibende Tag</item>
         <item quantity="other">%d verbleibende Tage</item>
     </plurals>
 
@@ -146,6 +148,7 @@
     <string name="random_day_of_week">ist geboren am</string>
     <string name="most_common_day_of_week">Der häufigste Geburtswochentag ist</string>
     <plurals name="leap_year_total">
+        <item quantity="one">Die Zahl der in einem Schaltjahr geborenen Personen ist %d</item>
         <item quantity="other">Die Zahl der in einem Schaltjahr geborenen Personen ist %d</item>
     </plurals>
     <string name="random_chinese_year">Chinesisches Sternzeichen von</string>
@@ -176,13 +179,15 @@
 
     <!-- Common words -->
     <plurals name="months">
-      <item quantity="other">%d Monate</item>
+        <item quantity="one">%d Monat</item>
+        <item quantity="other">%d Monate</item>
     </plurals>
     <string name="today">Heute!</string>
     <string name="yesterday">Gestern!</string>
     <string name="tomorrow">Morgen!</string>
     <plurals name="years">
-      <item quantity="other">%d Jahre</item>
+        <item quantity="one">%d Jahr</item>
+        <item quantity="other">%d Jahre</item>
     </plurals>
     <string name="born_in">geboren in</string>
     <string name="and">und</string>
