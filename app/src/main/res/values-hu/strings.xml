@@ -71,12 +71,12 @@
     <string name="shimmer_description_on">Fényes animáció itt-ott az alkalmazásban</string>
     <string name="shimmer_description_off">Nincs további grafikai hatás</string>
     <string name="import_export">Import és export</string>
-    <string name="import_contacts_title">Születésnapok importálása a Google-ból</string>
+    <string name="import_contacts_title">Születésnapok importálása a névjegyekből</string>
     <string name="import_contacts_description">Ügyelj arra, hogy módosítsd az eseményeket a hiányzó évvel, hogy mindig pontos statisztikák legyenek!</string>
     <string name="import_success">Az importálás sikeresen befejeződött!</string>
     <string name="import_nothing_found">Nem található születésnap!</string>
     <string name="import_failed">Hiba történt!</string>
-    <string name="missing_permission_contacts">A kapcsolattartási engedély meg lett tagadva. Próbálkozz újra, vagy aktiváld az engedélyt manuálisan, vagy a névjegyek importálása a Google-ból nem fog működni!</string>
+    <string name="missing_permission_contacts">A kapcsolattartási engedély meg lett tagadva. Próbálkozz újra, vagy aktiváld az engedélyt manuálisan, vagy a névjegyek importálása nem fog működni!</string>
     <string name="missing_permission_contacts_forever">A Birday nem tudta importálni a kapcsolatait, és nem kérhető engedély, mivel bejelölted a "soha ne kérdezzen újra" lehetőséget. Manuálisan engedélyezd!</string>
     <string name="birday_import_title">Importálj egy Birday biztonsági másolatot</string>
     <string name="birday_import_description">Válasszon egy érvényes Birday biztonsági másolatot a születésnapjainak manuális visszaállításához. Minden létező adat felül lesz írva!</string>
@@ -202,8 +202,8 @@
     <string name="slide_two_title">Ingyenes, egyszerű, testreszabható</string>
     <string name="slide_two_description">A Birday ingyenes, hirdetésmentes és nyílt forráskódú. Statisztikát biztosít a születésnapokról, kedvenc rendszert és a testreszabható felületet biztosít. És garantált támogatást és frissítéseket!
     </string>
-    <string name="slide_three_title">Importálás a Google Névjegyekből</string>
-    <string name="slide_three_description">A már elmentett születésnapokat is importálhatod a Google Névjegyekből. A Birday meg tudja csinálni számodra, csak adja meg a névjegyek engedélyt. Élvezd!
+    <string name="slide_three_title">Importálás a névjegyekből</string>
+    <string name="slide_three_description">A már elmentett születésnapokat is importálhatod a névjegyekből. A Birday meg tudja csinálni számodra, csak adja meg a névjegyek engedélyt. Élvezd!
     </string>
 
     <!-- Widget -->

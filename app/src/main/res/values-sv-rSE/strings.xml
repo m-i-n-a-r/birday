@@ -67,14 +67,14 @@
     <string name="light_theme">Ljus</string>
     <string name="shimmer_name">Skimmereffekt</string>
     <string name="shimmer_description_on">En skinande animation här och där i appen</string>
-    <string name="import_contacts_title">Importera födelsedagar från Google</string>
+    <string name="import_contacts_title">Importera födelsedagar från kontakter</string>
     <string name="shimmer_description_off">Inga ytterligare grafiska effekter</string>
     <string name="import_export">Importera och Exportera</string>
     <string name="import_contacts_description">Se till att rätta till åren på de händelserna där det fattas så det statistiken blir exakt!</string>
     <string name="import_success">Importen lyckades!</string>
     <string name="import_nothing_found">Hittade ingen födelsedag!</string>
     <string name="import_failed">Något gick fel!</string>
-    <string name="missing_permission_contacts">Tillståndet för kontakter är nekat. Försök igen eller aktivera tillståndet manuellt, annars kommer inte kontaktimporten från Google att fungera!</string>
+    <string name="missing_permission_contacts">Tillståndet för kontakter är nekat. Försök igen eller aktivera tillståndet manuellt, annars kommer inte kontakter importen att fungera!</string>
     <string name="missing_permission_contacts_forever">Birday kunde inte importera dina kontakter eller fråga om tillstånd, eftersom du har klickat i ”fråga aldrig igen”. Aktivera det manuellt!</string>
     <string name="birday_import_title">Importera en Birday-säkerhetskopia</string>
     <string name="birday_import_description">Välj en giltig Birday-säkerhetskopia för att manuellt återställa födelsedagarna. Varje befintlig data kommer att skrivas över!</string>
@@ -177,8 +177,8 @@
     <string name="slide_one_description">Birday är en enkel och lätt app för att hantera viktiga händelser! Du kan använda den för att komma ihåg och lagra födelsedagarna på de människor du älskar, på ett tillförlitligt och snabbt sätt.</string>
     <string name="slide_two_title">Gratis, enkel, anpassningsbar</string>
     <string name="slide_two_description">Birday är gratis, annonsfri och har öppen källkod. Den ger en uppsättning av statistik om dina födelsedagar, ett favoritsystem och ett anpassningsbart gränssnitt. Och garanterat support och uppdateringar!</string>
-    <string name="slide_three_title">Importera från Google-kontakter</string>
-    <string name="slide_three_description">Det är också möjligt att importera de födelsedagar som du redan har sparat från dina Google-kontakter. Birday kan göra det åt dig, ge bara kontakt-tillstånd. Njut!</string>
+    <string name="slide_three_title">Importera från kontakter</string>
+    <string name="slide_three_description">Det är också möjligt att importera de födelsedagar som du redan har sparat från dina kontakter. Birday kan göra det åt dig, ge bara kontakt-tillstånd. Njut!</string>
     <string name="appwidget_upcoming">Kommande födelsedagar</string>
     <string name="add_widget">Birday - kommande</string>
     <string name="search_event">Sök…</string>

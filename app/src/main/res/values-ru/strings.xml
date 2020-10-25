@@ -77,12 +77,12 @@
     <string name="shimmer_description_on">Блестящая анимация кое-где в приложении</string>
     <string name="shimmer_description_off">Без дополнительных графических эффектов</string>
     <string name="import_export">Импорт и экспорт</string>
-    <string name="import_contacts_title">Импортировать дни рождения из Google</string>
+    <string name="import_contacts_title">Импортировать дни рождения из контактов</string>
     <string name="import_contacts_description">Дополните события, в которых не указан год, чтобы улучшить статистику!</string>
     <string name="import_success">Импорт успешно завершен!</string>
     <string name="import_nothing_found">Дни рождения не найдены!</string>
     <string name="import_failed">Что-то пошло не так!</string>
-    <string name="missing_permission_contacts">Доступ к контактам запрещен. Попробуйте еще раз или разрешите доступ вручную - без него импорт контактов из Google работать не будет!</string>
+    <string name="missing_permission_contacts">Доступ к контактам запрещен. Попробуйте еще раз или разрешите доступ вручную - без него импорт контактов работать не будет!</string>
     <string name="missing_permission_contacts_forever">Birday не может импортировать контакты или спросить на это разрешения, так как вы выбрали "Больше не спрашивать". Разрешите доступ вручную!</string>
     <string name="birday_import_title">Импортировать резервную копию Birday</string>
     <string name="birday_import_description">Выберите резервную копию Birday, чтобы восстановить дни рождения. Все текущие данные будут потеряны!</string>
@@ -222,9 +222,9 @@
     В нем есть статистика по дням рождения, система избранного и настраиваемый интерфейс. И гарантированная
     поддержка и обновления!
     </string>
-    <string name="slide_three_title">Импорт из контактов Google</string>
+    <string name="slide_three_title">Импорт из контактов</string>
     <string name="slide_three_description">Вы можете импортировать дни рождения, которые вы уже сохранили в
-    контактах Google. Birday все сделает автоматически, только разрешите доступ к контактам. Удачи!
+    контактах. Birday все сделает автоматически, только разрешите доступ к контактам. Удачи!
     </string>
 
     <!-- Widget -->

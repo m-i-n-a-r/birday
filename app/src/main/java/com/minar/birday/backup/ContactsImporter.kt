@@ -51,7 +51,7 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
         }
     }
 
-    // Import the contacts from Google Contacts
+    // Import the contacts from device contacts (not necessarily Google)
     fun importContacts(context: Context): Boolean {
         val act = context as MainActivity
         // Ask for contacts permission
@@ -81,7 +81,7 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
             }
 
             try {
-                // Missing year, simply don't consider the yar exactly like Google Contacts does
+                // Missing year, simply don't consider the year exactly like the contacts app does
                 var parseDate = contact.value[1]
                 if (contact.value[1].length < 8) {
                     parseDate = contact.value[1].replaceFirst("-", "1970")

@@ -71,12 +71,12 @@
     <string name="shimmer_description_on">Eine glänzende Animation hier und da in der App</string>
     <string name="shimmer_description_off">Keine zusätzlichen graphischen Effekte</string>
     <string name="import_export">Import und Export</string>
-    <string name="import_contacts_title">Importiere Geburtstage von Google</string>
+    <string name="import_contacts_title">Importiere Geburtstage von Kontakte</string>
     <string name="import_contacts_description">Achte darauf, die Ereignisse mit fehlendem Jahr zu ändern, um immer genaue Statistiken zu haben!</string>
     <string name="import_success">Import erfolgreich abgeschlossen!</string>
     <string name="import_nothing_found">Keine Geburtstage gefunden!</string>
     <string name="import_failed">Etwas ist schief gelaufen!</string>
-    <string name="missing_permission_contacts">Die Kontakterlaubnis wurde verweigert. Versuche es noch einmal oder aktiviere die Berechtigung manuell, sonst funktioniert der Import der Kontakte aus Google nicht!</string>
+    <string name="missing_permission_contacts">Die Kontakterlaubnis wurde verweigert. Versuche es noch einmal oder aktiviere die Berechtigung manuell, sonst funktioniert der Import der Kontakte nicht!</string>
     <string name="missing_permission_contacts_forever">Birday konnte deine Kontakte weder importieren noch um Berechtigung fragen, da "nie wieder fragen" angekreuzt wurde. Du musst es manuell aktivieren!</string>
     <string name="birday_import_title">Importiere ein Birday Backup</string>
     <string name="birday_import_description">Wähle ein gültiges Birday Backup, um deine Geburtstage manuell wiederherzustellen. Alle vorhandenen Daten werden dabei überschrieben!</string>
@@ -200,8 +200,8 @@
     <string name="slide_one_description">Birday ist eine einfache und leichte App zum Verwalten wichtiger Ereignisse! Mit ihr kannst du Geburtstage von Menschen, die du liebst, zuverlässig und schnell merken und speichern.</string>
     <string name="slide_two_title">Kostenlos, einfach, individualisierbar</string>
     <string name="slide_two_description">Birday ist kostenlos, werbefrei und quelloffen. Es bietet eine Reihe von Statistiken über deine Geburtstage, ein Favoritensystem und eine anpassbare Oberfläche. Und garantierten Support und Updates!</string>
-    <string name="slide_three_title">Import aus Google-Kontakten</string>
-    <string name="slide_three_description">Es ist auch möglich, die bereits gespeicherten Geburtstage aus deinen Google-Kontakten zu importieren. Birday kann das für dich erledigen, gib der App einfach die Kontakterlaubnis. Viel Spaß!</string>
+    <string name="slide_three_title">Import aus Kontakten</string>
+    <string name="slide_three_description">Es ist auch möglich, die bereits gespeicherten Geburtstage aus deinen Kontakten zu importieren. Birday kann das für dich erledigen, gib der App einfach die Kontakterlaubnis. Viel Spaß!</string>
 
     <!-- Widget -->
     <string name="appwidget_upcoming">Bevorstehende Geburtstage</string>

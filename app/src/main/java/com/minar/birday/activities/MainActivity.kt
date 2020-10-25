@@ -303,7 +303,7 @@ class MainActivity : AppCompatActivity() {
                         Toast.makeText(this, getString(R.string.missing_permission_contacts), Toast.LENGTH_LONG).show()
                 }
             }
-            // Contacts while trying to import Google contacts
+            // Contacts while trying to import from contacts
             102 -> {
                 if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS))

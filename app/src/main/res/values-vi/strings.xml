@@ -71,12 +71,12 @@
     <string name="shimmer_description_on">Một hình ảnh động sáng bóng trong ứng dụng</string>
     <string name="shimmer_description_off">Không có hiệu ứng đồ họa bổ sung</string>
     <string name="import_export">Nhập khẩu và xuất khẩu</string>
-    <string name="import_contacts_title">Nhập ngày sinh nhật từ Google</string>
+    <string name="import_contacts_title">Nhập sinh nhật từ danh bạ</string>
     <string name="import_contacts_description">Hãy chắc chắn sửa đổi các sự kiện với đúng năm để luôn có số liệu thống kê chính xác!</string>
     <string name="import_success">Nhập hoàn tất thành công!</string>
     <string name="import_nothing_found">Không tìm thấy sinh nhật!</string>
     <string name="import_failed">Đã bị lỗi!</string>
-    <string name="missing_permission_contacts">Sự cho phép liên lạc đã bị từ chối. Thử lại hoặc kích hoạt quyền theo cách thủ công, không thôi nhập danh bạ từ Google sẽ không hoạt động!</string>
+    <string name="missing_permission_contacts">Sự cho phép liên lạc đã bị từ chối. Thử lại hoặc kích hoạt quyền theo cách thủ công, Nếu không, nhập danh bạ sẽ không hoạt động!</string>
     <string name="missing_permission_contacts_forever">Birday không thể nhập danh bạ của bạn và không xin phép được. Lý do khi bạn bấm "không bao giờ hỏi lại". Kích hoạt thủ công!</string>
     <string name="birday_import_title">Nhập bản sao lưu Birday</string>
     <string name="birday_import_description">Chọn một bản sao lưu Birday hợp lệ để tự khôi phục ngày sinh nhật của bạn. Mọi dữ liệu hiện có sẽ bị ghi đè!</string>
@@ -203,8 +203,8 @@
     <string name="slide_two_title">Miễn phí, đơn giản, tùy biến</string>
     <string name="slide_two_description">Birday là miễn phí, không có quảng cáo và nguồn mở. Birday cung cấp một bộ số liệu thống kê về ngày sinh nhật của bạn, một hệ thống yêu thích và giao diện tùy biến. Và đảm bảo hỗ trợ và cập nhật!
     </string>
-    <string name="slide_three_title">Nhập từ Danh bạ Google</string>
-    <string name="slide_three_description">Bạn cũng có thể nhập ngày sinh nhật mà bạn đã lưu từ Danh bạ Google của bạn. Birday có thể làm điều đó cho bạn, chỉ cần cấp quyền liên hệ. Thưởng thức!
+    <string name="slide_three_title">Nhập từ Danh bạ</string>
+    <string name="slide_three_description">Bạn cũng có thể nhập ngày sinh nhật mà bạn đã lưu từ Danh bạ của bạn. Birday có thể làm điều đó cho bạn, chỉ cần cấp quyền liên hệ. Thưởng thức!
     </string>
 
     <!-- Widget -->

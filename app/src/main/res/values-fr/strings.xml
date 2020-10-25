@@ -71,12 +71,12 @@
     <string name="shimmer_description_on">Affichage d\'une animation scintillante par-ci par-là dans l\'application</string>
     <string name="shimmer_description_off">Pas d\'effets graphiques supplémentaires</string>
     <string name="import_export">Importation et exportation</string>
-    <string name="import_contacts_title">Importer des anniversaires de votre compte Google</string>
+    <string name="import_contacts_title">Importer des anniversaires de votre contacts</string>
     <string name="import_contacts_description">Veuillez modifier les événements dont les années manquent pour avoir des statistiques plus précises !</string>
     <string name="import_success">Importation terminée avec succès !</string>
     <string name="import_nothing_found">Aucun anniversaire n\'a été trouvé !</string>
     <string name="import_failed">Il y a eu un problème !</string>
-    <string name="missing_permission_contacts">Vous n\'avez pas autorisé l\'accès aux contacts. Veuillez réessayer ou l\'importation des contacts de votre compte Google ne pourra aboutir !</string>
+    <string name="missing_permission_contacts">Vous n\'avez pas autorisé l\'accès aux contacts. Veuillez réessayer ou l\'importation des contacts ne pourra aboutir !</string>
     <string name="missing_permission_contacts_forever">Birday n\'a pas pu importer vos contacts ni pu vous en demander l\'autorisation. Si vous avez cliquer sur "Refuser et ne plus demander", il faut autoriser l\'accès manuellement.</string>
     <string name="birday_import_title">Importer une sauvegarde d\'anniversaires</string>
     <string name="birday_import_description">Veuillez choisir une sauvegarde valide pour restaurer manuellement vos anniversaires. Toutes vos données existantes seront écrasées !</string>
@@ -200,8 +200,8 @@
     <string name="slide_one_description">Birday est une application simple et légère pour gérer vos anniversaires ! Vous pouvez l\'utiliser pour sauvegarder et vous rappeler des anniversaires des personnes qui vous sont chères.</string>
     <string name="slide_two_title">Gratuit, simple et personnalisable</string>
     <string name="slide_two_description">Birday est gratuit, sans publicités et open source. L\'application vous fournit des statistiques à propos de vos anniversaires, un système de favoris et une interface personnalisable. Sans oublier un support et des mises à jour garanties !</string>
-    <string name="slide_three_title">Importer depuis Google Contacts</string>
-    <string name="slide_three_description">Il est aussi possible d\'importer les anniversaires déjà sauvegardés dans vos contacts Google. Birday peut le faire pour vous, si vous autorisez l\'accès aux contacts ! Profitez-en !</string>
+    <string name="slide_three_title">Importer depuis contacts</string>
+    <string name="slide_three_description">Il est aussi possible d\'importer les anniversaires déjà sauvegardés dans vos contacts. Birday peut le faire pour vous, si vous autorisez l\'accès aux contacts ! Profitez-en !</string>
 
     <!-- Widget -->
     <string name="appwidget_upcoming">Prochains anniversaires</string>

@@ -66,12 +66,12 @@
     <string name="teal">Turquesa</string>
     <string name="system_theme">Default del sistema</string>
     <string name="import_export">Importación y exportación</string>
-    <string name="import_contacts_title">Importar cumpleaños de Google</string>
+    <string name="import_contacts_title">Importar cumpleaños de contactos</string>
     <string name="import_contacts_description">¡Cambie los eventos con el año faltante para obtener estadísticas precisas!</string>
     <string name="import_success">¡Importación completada con éxito!</string>
     <string name="import_nothing_found">¡No se encontró cumpleaños!</string>
     <string name="import_failed">¡Algo salió mal!</string>
-    <string name="missing_permission_contacts">Se ha denegado el permiso de lectura de contacto. ¡Intente nuevamente o active el permiso manualmente, o la importación desde los contactos de Google no funcionará!</string>
+    <string name="missing_permission_contacts">Se ha denegado el permiso de lectura de contacto. ¡Intente nuevamente o active el permiso manualmente, o la importación desde los contactos no funcionará!</string>
     <string name="missing_permission_contacts_forever">Birday no pudo importar sus contactos o pedir permiso, porque lo negó seleccionando no pidas más. ¡Habilítelo manualmente!</string>
     <string name="birday_import_title">Importar un backup de Birday</string>
     <string name="birday_import_description">Elija un archivo de backup de Birday para restaurar manualmente sus cumpleaños. ¡Los datos actualmente presentes se sobrescribirán!</string>
@@ -169,8 +169,8 @@
     <string name="slide_one_description">¡Birday es una aplicación simple y ligera para gestionar eventos importantes! Puede usarlo para recordar y recolectar los cumpleaños de las personas que ama, de manera confiable y rápida.</string>
     <string name="slide_two_title">Gratis, simple y personalizable</string>
     <string name="slide_two_description">Birday es gratis, sin publicidad y de código abierto. Proporciona un conjunto de estadísticas, un sistema de favoritos y una interfaz personalizable. ¡Con soporte y actualizaciones garantizadas!</string>
-    <string name="slide_three_title">Importar desde contactos de Google</string>
-    <string name="slide_three_description">También puede importar cumpleaños que ya haya guardado de sus contactos de Google. Birday puede hacerlo por usted, solo tiene que dar permiso de lectura al contacto. ¡Buena diversión!</string>
+    <string name="slide_three_title">Importar desde los contactos</string>
+    <string name="slide_three_description">También puede importar cumpleaños que ya haya guardado de sus contactos. Birday puede hacerlo por usted, solo tiene que dar permiso de lectura al contacto. ¡Buena diversión!</string>
     <string name="appwidget_upcoming">Cumpleaños que vienen pronto</string>
     <string name="add_widget">Birday - próximamente</string>
     <string name="event_details">Detalles</string>

@@ -11,7 +11,7 @@ Well, i'll tell you 3 main reasons:
     <li> It's beautiful, full of animations and simple to use! </li>
 </ul>
 
-Birday allow you to import the birthdays directly from your Google Contacts, with a simple favorite system and a set of stats to discover!
+Birday allow you to import the birthdays directly from your contacts, with a simple favorite system and a set of stats to discover!
 if you're starting to develop apps and you need an app to look at, to find some inspiration and tricks: click on the Github link, and the Birday source code is served!
   
 
@@ -19,7 +19,7 @@ if you're starting to develop apps and you need an app to look at, to find some 
 <ul>
     <li> Simple birthday timeline, with the next date and the name of each person </li>
     <li> Favorite system, to aggregate your favorite birthdays and see more information </li>
-    <li> Google Contacts import with basic duplicate detection </li>
+    <li> Import birthdays from contacts with basic duplicate detection </li>
     <li> Easily delete or modify every birthday </li>
     <li> Customizable notification the day of the birthday! </li>
     <li> Light and dark themes (Android 10 automatic dark mode supported) </li>

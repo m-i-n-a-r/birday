@@ -72,13 +72,13 @@
     <string name="shimmer_description_on">A shiny animation here and there in the app</string>
     <string name="shimmer_description_off">No additional graphic effects</string>
     <string name="import_export">Import and Export</string>
-    <string name="import_contacts_title">Import birthdays from Google</string>
+    <string name="import_contacts_title">Import birthdays from contacts</string>
     <string name="import_contacts_description">Make sure to modify the events with the missing year to always have accurate statistics!</string>
     <string name="import_success">Import completed successfully!</string>
     <string name="import_nothing_found">No birthday found!</string>
     <string name="import_failed">Something went wrong!</string>
     <string name="missing_permission_contacts">The contact permission was denied. Try again or activate the permission manually,
-    or the contacts import from Google won\'t work!</string>
+    or the contacts import won\'t work!</string>
     <string name="missing_permission_contacts_forever">Birday could not import your contacts nor ask the permission,
     since you checked "never ask again". Enable it manually!</string>
     <string name="birday_import_title">Import a Birday backup</string>
@@ -200,7 +200,7 @@
     <string name="born_in">born in</string>
     <string name="and">and</string>
     <string name="unknown_age" translatable="false">\??</string>
-    <string name="exclamation" translatable="false">! ! !</string>
+    <string name="exclamation" translatable="false">! !</string>
 
     <!-- Notifications -->
     <string name="events_notification_channel">Event Reminder</string>
@@ -220,9 +220,9 @@
     stats about your birthdays, a favorite system and a customizable interface. And guaranteed
     support and updates!
     </string>
-    <string name="slide_three_title">Import from Google Contacts</string>
+    <string name="slide_three_title">Import from contacts</string>
     <string name="slide_three_description">It\'s also possible to import the birthdays you\'ve already saved
-    from your Google Contacts. Birday can do it for you, just grant the contacts permission. Enjoy!
+    from your contacts. Birday can do it for you, just grant the contacts permission. Enjoy!
     </string>
 
     <!-- Widget -->

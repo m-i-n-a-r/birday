@@ -71,13 +71,13 @@
     <string name="shimmer_description_on">Af en toe een glinsterende animatie in de app</string>
     <string name="shimmer_description_off">Geen aanvullende animaties</string>
     <string name="import_export">Importeren en Exporteren</string>
-    <string name="import_contacts_title">Importeer verjaardagen vanuit Google</string>
+    <string name="import_contacts_title">Importeer verjaardagen vanuit contacten</string>
     <string name="import_contacts_description">Zorg er dus voor dat je het jaar aanpast om de meest accurate statistieken te krijgen!</string>
     <string name="import_success">Het importeren is gelukt!</string>
     <string name="import_nothing_found">Geen verjaardagen gevonden!</string>
     <string name="import_failed">Er ging iets mis!</string>
     <string name="missing_permission_contacts">Toestemming tot contacten is geweigerd. Probeer het opnieuw of geef handmatig toestemming,
-    anders kunnen de contacten niet van Google worden geïmporteerd!</string>
+        anders werkt het importeren vanuit contacten niet!</string>
     <string name="missing_permission_contacts_forever">Birday kan je contacten niet importeren en ook niet opnieuw om toestemming vragen,
     aangezien "Niet meer vragen" is aangevinkt. Geef handmatig toestemming!</string>
     <string name="birday_import_title">Importeer een Birday backup</string>
@@ -208,9 +208,9 @@
     statistieken over jouw verjaardagen, een favorieten systeem en een aanpasbaar interface. Updates en
     ondersteuning zijn gegarandeerd!
     </string>
-    <string name="slide_three_title">Importeren vanuit Google Contacten</string>
-    <string name="slide_three_description">Het is ook mogelijk om verjaardagen over te zetten vanuit Google
-    Contacten. Birday doet het voor je als je toestemming geeft tot je contacten. Niemand houdt immers van dubbel werk!</string>
+    <string name="slide_three_title">Importeren vanuit contacten</string>
+    <string name="slide_three_description">Het is ook mogelijk om verjaardagen over te zetten vanuit contacten.
+        Birday doet het voor je als je toestemming geeft tot je contacten. Veel plezier!</string>
 
     <!-- Widget -->
     <string name="appwidget_upcoming">Aankomende verjaardagen</string>
