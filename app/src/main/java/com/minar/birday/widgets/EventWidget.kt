@@ -6,11 +6,12 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
+import androidx.preference.PreferenceManager
 import com.minar.birday.R
+import com.minar.birday.activities.SplashActivity
+import com.minar.birday.model.EventResult
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
-import com.minar.birday.model.EventResult
-import com.minar.birday.activities.SplashActivity
 import com.minar.birday.utilities.nextDateFormatted
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -72,7 +73,12 @@ internal fun updateAppWidget(
         }
 
         // Set the texts and the intent
-        val views = RemoteViews(context.packageName, R.layout.event_widget)
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context)
+        val views = if (sharedPrefs.getBoolean("dark_widget", false)) RemoteViews(
+            context.packageName,
+            R.layout.event_widget_dark
+        )
+        else RemoteViews(context.packageName, R.layout.event_widget_light)
         val intent = Intent(context, SplashActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
         views.setOnClickPendingIntent(R.id.event_widget_main, pendingIntent)

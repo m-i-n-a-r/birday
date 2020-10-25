@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/event_widget_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,30 +12,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textAlignment="center"
         android:contentDescription="@string/appwidget_upcoming"
+        android:drawableStart="@drawable/ic_party_white_24dp"
+        android:drawablePadding="@dimen/widget_padding"
+        android:drawableTint="@color/textColorPrimary"
         android:paddingHorizontal="@dimen/widget_padding"
         android:text="@string/appwidget_upcoming"
+        android:textAlignment="center"
         android:textAllCaps="true"
-        android:drawablePadding="@dimen/widget_padding"
-        android:shadowColor="@color/deepGray"
-        android:shadowRadius="@dimen/widget_shadow_radius"
-        android:drawableStart="@drawable/ic_party_white_24dp"
-        android:textColor="@color/widgetTextPrimary"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-        android:textStyle="bold" />
+        android:textColor="@color/textColorPrimary"
+        android:textStyle="bold"
+        tools:ignore="UseCompatTextViewDrawableXml" />
+    <!-- TODO the suggested drawable start compat doesn't work -->
 
     <TextView
         android:id="@+id/event_widget_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textAlignment="center"
-        android:shadowColor="@color/deepGray"
-        android:shadowRadius="@dimen/widget_shadow_radius"
         android:contentDescription="@string/appwidget_upcoming"
         android:paddingHorizontal="@dimen/widget_padding"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-        android:textColor="@color/widgetTextSecondary" />
+        android:textColor="@color/textColorPrimary" />
 
 </LinearLayout>

@@ -77,6 +77,14 @@
             android:summaryOn="@string/shimmer_description_on"
             android:title="@string/shimmer_name"
             app:iconSpaceReserved="false" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="dark_widget"
+            android:summaryOff="@string/dark_widget_description_off"
+            android:summaryOn="@string/dark_widget_description_on"
+            android:title="@string/dark_widget_name"
+            app:iconSpaceReserved="false" />
     </PreferenceCategory>
 
     <PreferenceCategory

@@ -1,6 +1,9 @@
 package com.minar.birday.fragments
 
 import android.app.Activity
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.Bundle
@@ -8,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceFragmentCompat
 import com.minar.birday.R
 import com.minar.birday.viewmodels.HomeViewModel
+import com.minar.birday.widgets.EventWidget
 
 
 class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeListener {
@@ -40,6 +44,16 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                 "accent_color" -> activity.recreate()
                 "shimmer" -> activity.recreate()
                 "notification_hour" -> homeViewModel.checkEvents()
+                "dark_widget" -> {
+                    // Update every existing widget with a broadcast
+                    val intent = Intent(context, EventWidget::class.java)
+                    intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+                    val ids = AppWidgetManager.getInstance(context).getAppWidgetIds(
+                        ComponentName(requireContext(), EventWidget::class.java)
+                    )
+                    intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+                    requireContext().sendBroadcast(intent)
+                }
             }
         }
     }

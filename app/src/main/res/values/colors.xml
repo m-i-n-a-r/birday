@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- basic colors -->
+    <!-- Basic colors -->
     <color name="colorAccent">@color/brownAccent</color>
     <color name="almostWhite">#fbfbfb</color>
     <color name="goodGray">#959595</color>
@@ -11,19 +11,19 @@
     <color name="transparent">#00ffffff</color>
     <color name="redError">#70df5252</color>
 
-    <!-- light theme colors -->
+    <!-- Light theme colors -->
     <color name="colorBackground">#fefefe</color>
     <color name="colorPrimary">#fefefe</color>
     <color name="textColorPrimary">#1f1f1f</color>
-    <color name="textColorSecondary">#0f0f0f</color>
+    <color name="textColorSecondary">#252525</color>
 
-    <!-- dark theme colors -->
+    <!-- Dark theme colors -->
     <color name="colorBackgroundInverse">#1f1f1f</color>
     <color name="colorPrimaryInverse">#1f1f1f</color>
-    <color name="textColorPrimaryInverse">#ffffff</color>
-    <color name="textColorSecondaryInverse">#f0f0f0</color>
+    <color name="textColorPrimaryInverse">#f0f0f0</color>
+    <color name="textColorSecondaryInverse">#e5e5e5</color>
 
-    <!-- accents -->
+    <!-- Accents -->
     <color name="brownAccent">#c55a2c</color>
     <color name="blueAccent">#4285f4</color>
     <color name="greenAccent">#3ddc84</color>
@@ -37,13 +37,9 @@
     <color name="limeAccent">#c5de00</color>
     <color name="crimsonAccent">#dc143c</color>
 
-    <!-- slides -->
+    <!-- Slides -->
     <color name="slideOne">#4285f4</color>
     <color name="slideTwo">#222222</color>
     <color name="slideThree">#53a360</color>
-
-    <!-- widget -->
-    <color name="widgetTextPrimary">#ffffff</color>
-    <color name="widgetTextSecondary">#f0f0f0</color>
 
 </resources>

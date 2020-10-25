@@ -73,6 +73,9 @@
     <string name="shimmer_name">Shimmer effect</string>
     <string name="shimmer_description_on">A shiny animation here and there in the app</string>
     <string name="shimmer_description_off">No additional graphic effects</string>
+    <string name="dark_widget_name">Dark widget</string>
+    <string name="dark_widget_description_on">The widget uses the dark theme</string>
+    <string name="dark_widget_description_off">The widget uses the light theme</string>
     <string name="import_export">Import and Export</string>
     <string name="import_contacts_title">Import birthdays from contacts</string>
     <string name="import_contacts_description">Make sure to modify the events with the missing year to always have accurate statistics!</string>

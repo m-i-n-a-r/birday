@@ -374,10 +374,11 @@ class HomeFragment : Fragment() {
     // Update the existing widgets with the newest data and the onclick action
     private fun updateWidget(events: List<EventResult>) {
         val appWidgetManager = AppWidgetManager.getInstance(context)
-        val remoteViews = RemoteViews(
-            context?.packageName,
-            R.layout.event_widget
+        val remoteViews = if (sharedPrefs.getBoolean("dark_widget", false)) RemoteViews(
+            requireContext().packageName,
+            R.layout.event_widget_dark
         )
+        else RemoteViews(requireContext().packageName, R.layout.event_widget_light)
         val thisWidget = context?.let { ComponentName(it, EventWidget::class.java) }
         val intent = Intent(context, SplashActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
