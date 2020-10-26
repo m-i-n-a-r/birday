@@ -37,9 +37,13 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             val anticipated = mutableListOf<EventResult>()
             val actual = mutableListOf<EventResult>()
             for (event in allEvents) {
-                if (additionalNotification != 0 && ChronoUnit.DAYS.between(LocalDate.now(), event.nextDate).toInt() == additionalNotification)
-                   anticipated.add(event)
-                if(event.nextDate!!.isEqual(LocalDate.now()))
+                if (additionalNotification != 0 && ChronoUnit.DAYS.between(
+                        LocalDate.now(),
+                        event.nextDate
+                    ).toInt() == additionalNotification
+                )
+                    anticipated.add(event)
+                if (event.nextDate!!.isEqual(LocalDate.now()))
                     actual.add(event)
             }
             if (anticipated.isNotEmpty()) sendNotification(anticipated, 1, true)
@@ -55,8 +59,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                 .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)
                 .build()
             WorkManager.getInstance(applicationContext).enqueue(dailyWorkRequest)
-        }
-        catch (e: Exception) {
+        } catch (e: Exception) {
             return Result.retry()
         }
 
@@ -64,11 +67,16 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
     }
 
     // Send notification if there's one or more birthdays today
-    private fun sendNotification(nextEvents: List<EventResult>, id: Int, upcoming: Boolean = false) {
+    private fun sendNotification(
+        nextEvents: List<EventResult>,
+        id: Int,
+        upcoming: Boolean = false
+    ) {
         val intent = Intent(applicationContext, SplashActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(applicationContext, 0, intent, 0)
+        val pendingIntent: PendingIntent =
+            PendingIntent.getActivity(applicationContext, 0, intent, 0)
 
         // Distinguish between normal notification and upcoming birthday notification
         val notificationText = if (!upcoming) formulateNotificationText(nextEvents)
@@ -78,8 +86,10 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             .setSmallIcon(R.drawable.animated_notification_icon)
             .setContentTitle(applicationContext.getString(R.string.notification_title))
             .setContentText(notificationText)
-            .setStyle(NotificationCompat.BigTextStyle()
-                .bigText(notificationText))
+            .setStyle(
+                NotificationCompat.BigTextStyle()
+                    .bigText(notificationText)
+            )
             // Intent that will fire when the user taps the notification
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
@@ -87,33 +97,40 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         with(NotificationManagerCompat.from(applicationContext)) { notify(id, builder.build()) }
     }
 
-    private fun formulateAdditionalNotificationText(nextEvents: List<EventResult>): String {
-        var response = applicationContext.getString(R.string.additional_notification_text) + " "
-        nextEvents.forEach {
+    // Notification for upcoming events, also considering
+    private fun formulateAdditionalNotificationText(nextEvents: List<EventResult>) =
+        applicationContext.getString(R.string.additional_notification_text) + " " + formatEventList(
+            nextEvents
+        ) + ". "
+
+    // Notification for actual events
+    private fun formulateNotificationText(nextEvents: List<EventResult>) =
+        applicationContext.getString(R.string.notification_description_part_1) + ": " + formatEventList(
+            nextEvents
+        ) + ". " + applicationContext.getString(R.string.notification_description_part_2)
+
+    // Given a series of events, format them considering the yearMatters parameter and the number
+    private fun formatEventList(events: List<EventResult>): String {
+        var formattedEventList = ""
+        events.forEach {
+            // Years. They're not used in the string if the year doesn't matter
             val years = it.nextDate?.year?.minus(it.originalDate.year)!!
-            if (nextEvents.indexOf(it) == 0) response += it.name + ", " +
-                    applicationContext.resources.getQuantityString(R.plurals.years, years, years)
-            if (nextEvents.indexOf(it) in 1..2) response += ", " + it.name + ", " +
-                    applicationContext.resources.getQuantityString(R.plurals.years, years, years)
-            if (nextEvents.indexOf(it) == 3) response += ", " + applicationContext.getString(R.string.event_others)
+            // Only the data of the first 3 events are displayed
+            if (events.indexOf(it) in 0..2) {
+                // If the event is not the first, add an extra comma
+                if (events.indexOf(it) != 0) formattedEventList += ", "
+                formattedEventList += it.name
+                // If the year is considered, display it. Else only display the name
+                if (it.yearMatter!!) formattedEventList += ", " +
+                        applicationContext.resources.getQuantityString(
+                            R.plurals.years,
+                            years,
+                            years
+                        )
+            }
+            // If more thant 3 events, just let the user know other events are in the list
+            if (events.indexOf(it) == 3) ", " + applicationContext.getString(R.string.event_others)
         }
-        response += ". "
-
-        return response
-    }
-
-    private fun formulateNotificationText(nextEvents: List<EventResult>): String {
-        var response = applicationContext.getString(R.string.notification_description_part_1) + ": "
-        nextEvents.forEach {
-            val years = it.nextDate?.year?.minus(it.originalDate.year)!!
-            if (nextEvents.indexOf(it) == 0) response += it.name + ", " +
-                    applicationContext.resources.getQuantityString(R.plurals.years, years, years)
-            if (nextEvents.indexOf(it) in 1..2) response += ", " + it.name + ", " +
-                    applicationContext.resources.getQuantityString(R.plurals.years, years, years)
-            if (nextEvents.indexOf(it) == 3) response += ", " + applicationContext.getString(R.string.event_others)
-        }
-        response += ". " + applicationContext.getString(R.string.notification_description_part_2)
-
-        return response
+        return formattedEventList
     }
 }
