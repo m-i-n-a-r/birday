@@ -76,6 +76,9 @@
     <string name="shimmer_name">Эффект отблесков</string>
     <string name="shimmer_description_on">Блестящая анимация кое-где в приложении</string>
     <string name="shimmer_description_off">Без дополнительных графических эффектов</string>
+    <string name="dark_widget_name">Темный виджет</string>
+    <string name="dark_widget_description_on">Виджет использует темную тему</string>
+    <string name="dark_widget_description_off">Виджет использует четкую тему</string>
     <string name="import_export">Импорт и экспорт</string>
     <string name="import_contacts_title">Импортировать дни рождения из контактов</string>
     <string name="import_contacts_description">Дополните события, в которых не указан год, чтобы улучшить статистику!</string>

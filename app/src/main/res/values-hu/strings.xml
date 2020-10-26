@@ -72,6 +72,9 @@
     <string name="shimmer_name">Csillámló hatás</string>
     <string name="shimmer_description_on">Fényes animáció itt-ott az alkalmazásban</string>
     <string name="shimmer_description_off">Nincs további grafikai hatás</string>
+    <string name="dark_widget_name">Sötét kütyü</string>
+    <string name="dark_widget_description_on">A widget sötét témát használ</string>
+    <string name="dark_widget_description_off">A widget világos témát használ</string>
     <string name="import_export">Import és export</string>
     <string name="import_contacts_title">Születésnapok importálása a névjegyekből</string>
     <string name="import_contacts_description">Ügyelj arra, hogy módosítsd az eseményeket a hiányzó évvel, hogy mindig pontos statisztikák legyenek!</string>

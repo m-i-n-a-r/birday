@@ -72,6 +72,9 @@
     <string name="shimmer_name">Effets de scintillements</string>
     <string name="shimmer_description_on">Affichage d\'une animation scintillante par-ci par-là dans l\'application</string>
     <string name="shimmer_description_off">Pas d\'effets graphiques supplémentaires</string>
+    <string name="dark_widget_name">Widget sombre</string>
+    <string name="dark_widget_description_on">Le widget utilise un thème clair</string>
+    <string name="dark_widget_description_off">Le widget utilise un thème sombre</string>
     <string name="import_export">Importation et exportation</string>
     <string name="import_contacts_title">Importer des anniversaires de votre contacts</string>
     <string name="import_contacts_description">Veuillez modifier les événements dont les années manquent pour avoir des statistiques plus précises !</string>

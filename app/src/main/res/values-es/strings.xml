@@ -186,6 +186,9 @@
     <string name="shimmer_name">Efecto de brillo</string>
     <string name="shimmer_description_on">Una animación brillante aquí y allá en la aplicación</string>
     <string name="shimmer_description_off">Sin efectos gráficos adicionales</string>
+    <string name="dark_widget_name">Widget oscuro</string>
+    <string name="dark_widget_description_on">El widget usa un tema oscuro</string>
+    <string name="dark_widget_description_off">El widget usa un tema claro</string>
     <string name="search_event">Busca…</string>
     <string name="search_no_result_title">No hay resultados</string>
     <string name="search_no_result_description">¡Su cadena de búsqueda no coincide con ningún evento en la base de datos de Birday!</string>

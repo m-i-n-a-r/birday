@@ -71,6 +71,9 @@
     <string name="shimmer_name">Hiệu ứng lung linh</string>
     <string name="shimmer_description_on">Một hình ảnh động sáng bóng trong ứng dụng</string>
     <string name="shimmer_description_off">Không có hiệu ứng đồ họa bổ sung</string>
+    <string name="dark_widget_name">Tiện ích tối</string>
+    <string name="dark_widget_description_on">Tiện ích sử dụng chủ đề tối</string>
+    <string name="dark_widget_description_off">Tiện ích sử dụng chủ đề rõ ràng</string>
     <string name="import_export">Nhập khẩu và xuất khẩu</string>
     <string name="import_contacts_title">Nhập sinh nhật từ danh bạ</string>
     <string name="import_contacts_description">Hãy chắc chắn sửa đổi các sự kiện với đúng năm để luôn có số liệu thống kê chính xác!</string>

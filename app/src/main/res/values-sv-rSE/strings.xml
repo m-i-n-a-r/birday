@@ -71,6 +71,9 @@
     <string name="shimmer_description_on">En skinande animation här och där i appen</string>
     <string name="import_contacts_title">Importera födelsedagar från kontakter</string>
     <string name="shimmer_description_off">Inga ytterligare grafiska effekter</string>
+    <string name="dark_widget_name">Mörk widget</string>
+    <string name="dark_widget_description_on">Widgeten använder ett mörkt tema</string>
+    <string name="dark_widget_description_off">Widgeten använder ett tydligt tema</string>
     <string name="import_export">Importera och Exportera</string>
     <string name="import_contacts_description">Se till att rätta till åren på de händelserna där det fattas så det statistiken blir exakt!</string>
     <string name="import_success">Importen lyckades!</string>

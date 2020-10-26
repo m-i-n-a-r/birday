@@ -72,6 +72,9 @@
     <string name="shimmer_name">Schimmereffekt</string>
     <string name="shimmer_description_on">Eine glänzende Animation hier und da in der App</string>
     <string name="shimmer_description_off">Keine zusätzlichen graphischen Effekte</string>
+    <string name="dark_widget_name">Dunkle widget</string>
+    <string name="dark_widget_description_on">Das Widget verwendet das dunkle Thema</string>
+    <string name="dark_widget_description_off">Das Widget verwendet ein klares Thema</string>
     <string name="import_export">Import und Export</string>
     <string name="import_contacts_title">Importiere Geburtstage von Kontakte</string>
     <string name="import_contacts_description">Achte darauf, die Ereignisse mit fehlendem Jahr zu ändern, um immer genaue Statistiken zu haben!</string>

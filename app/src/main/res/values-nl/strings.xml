@@ -72,6 +72,9 @@
     <string name="shimmer_name">Glimmend effect</string>
     <string name="shimmer_description_on">Af en toe een glinsterende animatie in de app</string>
     <string name="shimmer_description_off">Geen aanvullende animaties</string>
+    <string name="dark_widget_name">Donkere widget</string>
+    <string name="dark_widget_description_on">De widget gebruikt een donker thema</string>
+    <string name="dark_widget_description_off">De widget maakt gebruik van een duidelijk thema</string>
     <string name="import_export">Importeren en Exporteren</string>
     <string name="import_contacts_title">Importeer verjaardagen vanuit contacten</string>
     <string name="import_contacts_description">Zorg er dus voor dat je het jaar aanpast om de meest accurate statistieken te krijgen!</string>
