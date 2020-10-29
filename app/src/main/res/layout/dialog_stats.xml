@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/text_field_horizontal_margin">
+
+        <TextView
+            android:id="@+id/fullStats"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/eventCounterBackground"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0.1"
+            android:contentDescription="@string/event_details"
+            android:padding="@dimen/dialog_details_text_horizontal_margin"
+            android:src="@drawable/animated_from_favorite"
+            app:layout_constraintBottom_toBottomOf="@id/eventCounter"
+            app:layout_constraintEnd_toEndOf="@id/eventCounter"
+            app:layout_constraintStart_toStartOf="@id/eventCounter"
+            app:layout_constraintTop_toTopOf="@id/eventCounter" />
+
+        <TextView
+            android:id="@+id/eventCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:padding="@dimen/linear_vertical_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+            android:textColor="?colorAccent"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fullStats" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

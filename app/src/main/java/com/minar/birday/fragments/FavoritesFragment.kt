@@ -1,5 +1,6 @@
 package com.minar.birday.fragments
 
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.SpannableStringBuilder
@@ -11,7 +12,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +21,8 @@ import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
+import com.afollestad.materialdialogs.customview.customView
+import com.afollestad.materialdialogs.customview.getCustomView
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.R
@@ -28,7 +30,9 @@ import com.minar.birday.adapters.FavoritesAdapter
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.StatsGenerator
 import com.minar.birday.viewmodels.FavoritesViewModel
+import kotlinx.android.synthetic.main.dialog_stats.view.*
 import kotlinx.android.synthetic.main.fragment_favorites.view.*
+import kotlin.math.min
 
 class FavoritesFragment : Fragment() {
     private lateinit var rootView: View
@@ -44,12 +48,17 @@ class FavoritesFragment : Fragment() {
         act = activity as MainActivity
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val v: View = inflater.inflate(R.layout.fragment_favorites, container, false)
         val statsImage = v.findViewById<ImageView>(R.id.statsImage)
         val shimmer = v.findViewById<ShimmerFrameLayout>(R.id.favoritesCardShimmer)
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
+        var totalEvents = 0
         val favoritesCard = v.favoritesCard
         if (shimmerEnabled) shimmer.startShimmer()
         statsImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_candle)
@@ -57,12 +66,22 @@ class FavoritesFragment : Fragment() {
         // Show full stats in a bottom sheet
         favoritesCard.setOnClickListener {
             act.vibrate()
-            MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
-                cornerRadius(res = R.dimen.rounded_corners)
-                title(R.string.stats_summary)
-                icon(R.drawable.ic_stats_24dp)
-                message(text = fullStats)
-            }
+            val dialog =
+                MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
+                    cornerRadius(res = R.dimen.rounded_corners)
+                    title(R.string.stats_summary)
+                    icon(R.drawable.ic_stats_24dp)
+                    // Don't use scrollable here, instead use a nestedScrollView in the layout
+                    customView(R.layout.dialog_stats)
+                }
+            val customView = dialog.getCustomView()
+            customView.fullStats.text = fullStats
+            // Display the total number of birthdays, start the animated drawable
+            customView.eventCounter.text = totalEvents.toString()
+            val backgroundDrawable = customView.eventCounterBackground
+            // Link the opacity of the background to the number of events (min = 0.05 / max = 100)
+            backgroundDrawable.alpha = min(0.01F * totalEvents + 0.05F, 1.0F)
+            (backgroundDrawable.drawable as AnimatedVectorDrawable).start()
         }
         rootView = v
 
@@ -80,9 +99,12 @@ class FavoritesFragment : Fragment() {
         favoritesViewModel.allEvents.observe(viewLifecycleOwner, { eventList ->
             // Under a minimum size, no stats will be shown (at least 5 events containing a year)
             if (eventList.filter { it.yearMatter == true }.size > 4) generateStat(eventList)
-            else fullStats = SpannableStringBuilder(requireActivity().applicationContext.getString(
-                R.string.no_stats_description
-            ))
+            else fullStats = SpannableStringBuilder(
+                requireActivity().applicationContext.getString(
+                    R.string.no_stats_description
+                )
+            )
+            totalEvents = eventList.size
         })
 
         return v

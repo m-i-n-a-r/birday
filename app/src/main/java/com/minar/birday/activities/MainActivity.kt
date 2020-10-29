@@ -135,6 +135,7 @@ class MainActivity : AppCompatActivity() {
                 title(R.string.new_event)
                 icon(R.drawable.ic_party_24dp)
                 message(R.string.new_event_description)
+                // Don't use scrollable here, instead use a nestedScrollView in the layout
                 customView(R.layout.dialog_insert_event)
                 positiveButton(R.string.insert_event) {
                     // Use the data to create a event object and insert it in the db
