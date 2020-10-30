@@ -81,7 +81,7 @@ class FavoritesFragment : Fragment() {
             val backgroundDrawable = customView.eventCounterBackground
             // Link the opacity of the background to the number of events (min = 0.05 / max = 100)
             backgroundDrawable.alpha = min(0.01F * totalEvents + 0.05F, 1.0F)
-            (backgroundDrawable.drawable as AnimatedVectorDrawable).start()
+            backgroundDrawable.applyLoopingAnimatedVectorDrawable(R.drawable.animated_counter_background)
         }
         rootView = v
 

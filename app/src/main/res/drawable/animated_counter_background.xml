@@ -1,0 +1,114 @@
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+            android:name="vector"
+            android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="24"
+            android:viewportHeight="24">
+            <group
+                android:name="center"
+                android:pivotX="12"
+                android:pivotY="12"
+                android:scaleX="0.2"
+                android:scaleY="0.2">
+                <path
+                    android:name="circle"
+                    android:pathData="M 12 2 C 13.755 2 15.48 2.462 17 3.34 C 18.52 4.217 19.783 5.48 20.66 7 C 21.538 8.52 22 10.245 22 12 C 22 13.755 21.538 15.48 20.66 17 C 19.783 18.52 18.52 19.783 17 20.66 C 15.48 21.538 13.755 22 12 22 C 9.349 22 6.804 20.946 4.929 19.071 C 3.054 17.196 2 14.651 2 12 C 2 9.349 3.054 6.804 4.929 4.929 C 6.804 3.054 9.349 2 12 2 Z"
+                    android:fillColor="@color/goodGray"
+                    android:strokeColor="?colorAccent"/>
+            </group>
+            <group
+                android:name="ring_one"
+                android:pivotX="12"
+                android:pivotY="12"
+                android:scaleX="0.4"
+                android:scaleY="0.4">
+                <path
+                    android:name="ring"
+                    android:pathData="M 13 2.05 L 13 5.08 C 16.39 5.57 19 8.47 19 12 C 19 12.9 18.82 13.75 18.5 14.54 L 21.12 16.07 C 21.68 14.83 22 13.45 22 12 C 22 6.82 18.05 2.55 13 2.05 M 12 19 C 10.144 19 8.363 18.262 7.05 16.95 C 5.738 15.637 5 13.856 5 12 C 5 8.47 7.61 5.57 11 5.08 L 11 2.05 C 5.94 2.55 2 6.81 2 12 C 2 14.651 3.054 17.196 4.929 19.071 C 6.804 20.946 9.349 22 12 22 C 15.3 22 18.23 20.39 20.05 17.91 L 17.45 16.38 C 16.17 18 14.21 19 12 19 Z"
+                    android:fillColor="@color/goodGray"/>
+            </group>
+            <group
+                android:name="ring_two"
+                android:pivotX="12"
+                android:pivotY="12"
+                android:scaleX="0.7"
+                android:scaleY="0.7"
+                android:rotation="180">
+                <path
+                    android:name="ring_1"
+                    android:pathData="M 13 2.05 L 13 5.08 C 16.39 5.57 19 8.47 19 12 C 19 12.9 18.82 13.75 18.5 14.54 L 21.12 16.07 C 21.68 14.83 22 13.45 22 12 C 22 6.82 18.05 2.55 13 2.05 M 12 19 C 10.144 19 8.363 18.262 7.05 16.95 C 5.738 15.637 5 13.856 5 12 C 5 8.47 7.61 5.57 11 5.08 L 11 2.05 C 5.94 2.55 2 6.81 2 12 C 2 14.651 3.054 17.196 4.929 19.071 C 6.804 20.946 9.349 22 12 22 C 15.3 22 18.23 20.39 20.05 17.91 L 17.45 16.38 C 16.17 18 14.21 19 12 19 Z"
+                    android:fillColor="@color/goodGray"/>
+            </group>
+            <group
+                android:name="ring_three"
+                android:pivotX="12"
+                android:pivotY="12"
+                android:scaleX="1.15"
+                android:scaleY="1.15"
+                android:rotation="245">
+                <path
+                    android:name="ring_2"
+                    android:pathData="M 13 2.05 L 13 5.08 C 16.39 5.57 19 8.47 19 12 C 19 12.9 18.82 13.75 18.5 14.54 L 21.12 16.07 C 21.68 14.83 22 13.45 22 12 C 22 6.82 18.05 2.55 13 2.05 M 12 19 C 10.144 19 8.363 18.262 7.05 16.95 C 5.738 15.637 5 13.856 5 12 C 5 8.47 7.61 5.57 11 5.08 L 11 2.05 C 5.94 2.55 2 6.81 2 12 C 2 14.651 3.054 17.196 4.929 19.071 C 6.804 20.946 9.349 22 12 22 C 15.3 22 18.23 20.39 20.05 17.91 L 17.45 16.38 C 16.17 18 14.21 19 12 19 Z"
+                    android:fillColor="@color/goodGray"/>
+            </group>
+        </vector>
+    </aapt:attr>
+    <target android:name="ring_one">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:propertyName="rotation"
+                android:duration="2000"
+                android:valueFrom="0"
+                android:valueTo="360"
+                android:valueType="floatType"
+                android:interpolator="@android:anim/linear_interpolator"/>
+        </aapt:attr>
+    </target>
+    <target android:name="ring_two">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:propertyName="rotation"
+                android:duration="2000"
+                android:valueFrom="180"
+                android:valueTo="-180"
+                android:valueType="floatType"
+                android:interpolator="@android:anim/linear_interpolator"/>
+        </aapt:attr>
+    </target>
+    <target android:name="ring_three">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:propertyName="rotation"
+                android:duration="2000"
+                android:valueFrom="245"
+                android:valueTo="605"
+                android:valueType="floatType"
+                android:interpolator="@android:anim/linear_interpolator"/>
+        </aapt:attr>
+    </target>
+    <target android:name="circle">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:propertyName="strokeWidth"
+                    android:duration="1000"
+                    android:valueFrom="0"
+                    android:valueTo="90"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+                <objectAnimator
+                    android:propertyName="strokeWidth"
+                    android:startOffset="1000"
+                    android:duration="1000"
+                    android:valueFrom="90"
+                    android:valueTo="0"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

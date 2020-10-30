@@ -26,7 +26,7 @@
             android:alpha="0.1"
             android:contentDescription="@string/event_details"
             android:padding="@dimen/dialog_details_text_horizontal_margin"
-            android:src="@drawable/animated_from_favorite"
+            android:src="@drawable/animated_counter_background"
             app:layout_constraintBottom_toBottomOf="@id/eventCounter"
             app:layout_constraintEnd_toEndOf="@id/eventCounter"
             app:layout_constraintStart_toStartOf="@id/eventCounter"
