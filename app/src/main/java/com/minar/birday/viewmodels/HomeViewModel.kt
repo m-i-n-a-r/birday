@@ -40,6 +40,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         eventDao.insertEvent(event)
     }
 
+    fun insertAll(events: List<Event>) = viewModelScope.launch(Dispatchers.IO) {
+        eventDao.insertAllEvent(events)
+    }
+
     fun delete(event: Event) = viewModelScope.launch(Dispatchers.IO) {
         eventDao.deleteEvent(event)
     }

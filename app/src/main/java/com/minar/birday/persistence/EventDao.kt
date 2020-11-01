@@ -12,6 +12,9 @@ interface EventDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertEvent(event: Event)
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertAllEvent(events: List<Event>)
+
     @Update
     fun updateEvent(event: Event)
 

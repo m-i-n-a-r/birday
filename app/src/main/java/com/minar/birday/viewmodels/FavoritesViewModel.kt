@@ -25,14 +25,6 @@ class FavoritesViewModel(application: Application) : AndroidViewModel(applicatio
 
     // Launching new coroutines to insert the data in a non-blocking way
 
-    fun insert(event: Event) = viewModelScope.launch(Dispatchers.IO) {
-        eventDao.insertEvent(event)
-    }
-
-    fun delete(event: Event) = viewModelScope.launch(Dispatchers.IO) {
-        eventDao.deleteEvent(event)
-    }
-
     fun update(event: Event) = viewModelScope.launch(Dispatchers.IO) {
         eventDao.updateEvent(event)
     }
