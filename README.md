@@ -26,6 +26,7 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 | **German**         | complete | pizzapastamix  | WrstFngr, AlexanderRitter02 |
 | **Vietnamese**     | complete | Lee Huynh      |                             |
 | **Russian**        | complete | koterpillar    |                             |
+| **Czech**          | complete | Miloš Koliáš   |                             |
 | Portuguese         | unknown  |                |                             |
 
 ## Features
