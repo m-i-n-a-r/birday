@@ -14,12 +14,10 @@ import kotlinx.coroutines.launch
 class FavoritesViewModel(application: Application) : AndroidViewModel(application) {
     val allFavoriteEvents: LiveData<List<EventResult>>
     val allEvents: LiveData<List<EventResult>>
-    val anyFavoriteEvent: LiveData<List<EventResult>>
     private val eventDao: EventDao = EventDatabase.getBirdayDatabase(application)!!.eventDao()
 
     init {
         allEvents = eventDao.getOrderedEvents()
-        anyFavoriteEvent = eventDao.getAnyFavoriteEvent()
         allFavoriteEvents = eventDao.getOrderedFavoriteEvents()
     }
 

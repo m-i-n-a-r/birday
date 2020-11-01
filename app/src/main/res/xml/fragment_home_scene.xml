@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="500">
+        <KeyFrameSet>
+
+        </KeyFrameSet>
+        <OnClick motion:targetId="@+id/homeMiniFab" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <!-- This fixes the placeholder always visible bug, caused by how motion layout works -->
+        <Constraint
+            android:id="@id/noEvents"
+            app:visibilityMode="ignore" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/homeMiniFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="@dimen/mini_fab_opacity"
+            android:rotation="180"
+            android:scaleX="1.1"
+            android:scaleY="1.1"
+            motion:layout_constraintBottom_toTopOf="@id/homeCard"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/homeCard" />
+
+        <Constraint
+            android:id="@+id/homeCard"
+            motion:layout_constraintStart_toStartOf="@id/homeMiniFab"
+            app:layout_constraintEnd_toEndOf="@id/homeMiniFab"
+            android:layout_height="0dp"/>
+    </ConstraintSet>
+</MotionScene>

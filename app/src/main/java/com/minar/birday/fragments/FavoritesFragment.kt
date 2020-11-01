@@ -99,10 +99,10 @@ class FavoritesFragment : Fragment() {
         favoritesViewModel = ViewModelProvider(this).get(FavoritesViewModel::class.java)
         favoritesViewModel.allFavoriteEvents.observe(viewLifecycleOwner, { events ->
             // Update the cached copy of the words in the adapter
-            events?.let { adapter.submitList(it) }
-        })
-        favoritesViewModel.anyFavoriteEvent.observe(viewLifecycleOwner, { eventList ->
-            if (eventList.isNotEmpty()) removePlaceholder()
+            if (events != null && events.isNotEmpty()) {
+                removePlaceholder()
+                adapter.submitList(events)
+            }
         })
         favoritesViewModel.allEvents.observe(viewLifecycleOwner, { eventList ->
             // Under a minimum size, no stats will be shown (at least 5 events containing a year)
