@@ -178,28 +178,28 @@
     <string name="add_widget">Narozeniny - nadcházející</string>
     <string name="search_event">Vyhledávání…</string>
     <plurals name="leap_year_total">
-        <item quantity="one">The number of persons born in a leap year is %d</item>
-        <item quantity="few">The number of persons born in a leap year is %d</item>
-        <item quantity="other">The number of persons born in a leap year is %d</item>
+        <item quantity="one">Počet osob narozených v přestupném roce je %d</item>
+        <item quantity="few">Počet osob narozených v přestupném roce je %d</item>
+        <item quantity="other">Počet osob narozených v přestupném roce je %d</item>
     </plurals>
     <plurals name="months">
-        <item quantity="one">%d month</item>
-        <item quantity="few">%d months</item>
-        <item quantity="other">%d months</item>
+        <item quantity="one">%d měsíc</item>
+        <item quantity="few">%d měsíců</item>
+        <item quantity="other">%d měsíců</item>
     </plurals>
     <plurals name="years">
-        <item quantity="one">%d year</item>
-        <item quantity="few">%d years</item>
-        <item quantity="other">%d years</item>
+        <item quantity="one">%d rok</item>
+        <item quantity="few">%d let</item>
+        <item quantity="other">%d let</item>
     </plurals>
     <plurals name="stats_total">
-        <item quantity="one">Birday is helping you to remember a total of %d birthday</item>
-        <item quantity="few">Birday is helping you to remember a total of %d birthdays</item>
-        <item quantity="other">Birday is helping you to remember a total of %d birthdays</item>
+        <item quantity="one">Birday vám pomáhají zapamatovat si celkem %d narozenin.</item>
+        <item quantity="few">Birday vám pomáhají zapamatovat si celkem %d narozenin.</item>
+        <item quantity="other">Birday vám pomáhají zapamatovat si celkem %d narozenin.</item>
     </plurals>
     <plurals name="days_left">
-        <item quantity="one">%d day left</item>
-        <item quantity="few">%d days left</item>
-        <item quantity="other">%d days left</item>
+        <item quantity="one">%d zbývá den</item>
+        <item quantity="few">%d zbývá dnů</item>
+        <item quantity="other">%d zbývá dnů</item>
     </plurals>
 </resources>
