@@ -8,9 +8,9 @@
     <dimen name="bottom_navbar_elevation">0.1dp</dimen>
     <dimen name="cradle_margin">8dp</dimen>
     <dimen name="cradle_corners">12dp</dimen>
-    <dimen name="placeholders_vertical_padding">96dp</dimen>
-    <dimen name="placeholders_horizontal_padding">48dp</dimen>
+    <dimen name="placeholders_padding">48dp</dimen>
     <dimen name="card_margin">8dp</dimen>
+    <dimen name="card_padding">8dp</dimen>
     <dimen name="card_stroke">2dp</dimen>
     <dimen name="rounded_corners">16dp</dimen>
     <dimen name="card_image_height">72dp</dimen>
@@ -28,6 +28,7 @@
     <dimen name="fast_scroll_corners">32dp</dimen>
     <dimen name="card_margin_big">16dp</dimen>
     <dimen name="text_switch_padding">24dp</dimen>
+    <dimen name="mini_fab_opacity">1.0</dimen>
 
     <!-- Unchanged dimensions -->
     <dimen name="minar_banner_height">84dp</dimen>
@@ -53,5 +54,4 @@
     <dimen name="shimmer_highlight_alpha">0.15</dimen>
     <dimen name="shimmer_base_alpha">1</dimen>
     <dimen name="shimmer_dropoff">50</dimen>
-
 </resources>

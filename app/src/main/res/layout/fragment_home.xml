@@ -1,31 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?><!-- Focusable in touch mode removes the default focus from the search bar when focused for the first time -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/homeMain"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:focusableInTouchMode="true"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/homeMiniFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="@dimen/mini_fab_opacity"
+        android:contentDescription="@string/cancel"
+        android:padding="@dimen/between_row_padding"
+        app:backgroundTint="@color/goodGray"
+        app:elevation="@dimen/bottom_navbar_elevation"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@id/homeCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeCard"
+        app:rippleColor="?colorAccent"
+        app:srcCompat="@drawable/ic_arrow_up_24dp"
+        app:tint="?colorAccent" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/homeCard"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/card_margin"
-        android:layout_marginTop="@dimen/card_margin"
-        android:layout_marginRight="@dimen/card_margin"
+        android:layout_marginHorizontal="@dimen/card_margin"
+        android:layout_marginTop="@dimen/linear_vertical_margin"
         android:clickable="true"
         android:focusable="true"
         app:cardCornerRadius="@dimen/rounded_corners"
         app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:rippleColor="?colorAccent"
         app:strokeColor="@color/goodGrayTranslucent"
         app:strokeWidth="@dimen/card_stroke">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/card_padding">
 
             <!-- Duration and repeat delay must be hardcoded -->
             <com.facebook.shimmer.ShimmerFrameLayout
@@ -48,7 +67,6 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:padding="@dimen/card_margin_big">
 
                     <TextView
@@ -152,25 +170,27 @@
 
     <TextView
         android:id="@+id/noEvents"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:maxLines="3"
-        android:paddingLeft="@dimen/placeholders_horizontal_padding"
-        android:paddingTop="@dimen/placeholders_vertical_padding"
-        android:paddingRight="@dimen/placeholders_horizontal_padding"
-        android:paddingBottom="@dimen/placeholders_horizontal_padding"
+        android:paddingHorizontal="@dimen/placeholders_padding"
+        android:paddingVertical="@dimen/placeholders_padding"
         android:scrollbarSize="0dp"
         android:text="@string/no_events"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         android:textColor="@color/goodGraySemiTranslucent"
         app:drawableTint="@color/goodGraySemiTranslucent"
-        app:drawableTopCompat="@drawable/ic_sad_72dp" />
+        app:drawableTopCompat="@drawable/ic_sad_72dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeCard" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/eventRecycler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:clipToPadding="false"
         android:overScrollMode="never"
         android:paddingVertical="@dimen/recycler_padding"
@@ -180,6 +200,10 @@
         app:fastScrollHorizontalThumbDrawable="@drawable/scroll_thumb_drawable"
         app:fastScrollHorizontalTrackDrawable="@drawable/scroll_line_drawable"
         app:fastScrollVerticalThumbDrawable="@drawable/scroll_thumb_drawable"
-        app:fastScrollVerticalTrackDrawable="@drawable/scroll_line_drawable" />
+        app:fastScrollVerticalTrackDrawable="@drawable/scroll_line_drawable"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeCard" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

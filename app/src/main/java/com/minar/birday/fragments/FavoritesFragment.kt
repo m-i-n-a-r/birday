@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.DrawableRes
@@ -24,8 +23,8 @@ import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
 import com.facebook.shimmer.ShimmerFrameLayout
-import com.minar.birday.activities.MainActivity
 import com.minar.birday.R
+import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.FavoritesAdapter
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.StatsGenerator
@@ -84,6 +83,7 @@ class FavoritesFragment : Fragment() {
             backgroundDrawable.applyLoopingAnimatedVectorDrawable(R.drawable.animated_counter_background)
             // Show an explanation for the counter, even if it's quite obvious
             backgroundDrawable.setOnClickListener {
+                act.vibrate()
                 Toast.makeText(
                     requireContext(),
                     resources.getQuantityString(R.plurals.stats_total, totalEvents, totalEvents),
@@ -127,9 +127,8 @@ class FavoritesFragment : Fragment() {
 
     // Remove the placeholder or return if the placeholder was already removed before
     private fun removePlaceholder() {
-        val favoritesMain: LinearLayout = requireView().findViewById(R.id.favoritesMain)
         val placeholder: TextView = requireView().findViewById(R.id.noFavorites) ?: return
-        favoritesMain.removeView(placeholder)
+        placeholder.visibility = View.GONE
     }
 
     // Use the generator to generate a random stat and display it
