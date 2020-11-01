@@ -85,13 +85,24 @@ class HomeFragment : Fragment() {
         val upcomingImage = v.findViewById<ImageView>(R.id.upcomingImage)
         val shimmer = v.findViewById<ShimmerFrameLayout>(R.id.homeCardShimmer)
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
+        val homeMotionLayout = v.homeMain
         val homeCard = v.homeCard
+        val homeMiniFab = v.homeMiniFab
         if (shimmerEnabled) shimmer.startShimmer()
         upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
 
         // Setup the search bar
         v.findViewById<EditText>(R.id.homeSearch).addTextChangedListener { text ->
             homeViewModel.searchNameChanged(text.toString())
+        }
+
+        // Vibration on the mini fab (with manual managing of the transition)
+        homeMiniFab.setOnClickListener {
+            act.vibrate()
+            when (homeMotionLayout.progress) {
+                0.0F -> homeMotionLayout.transitionToEnd()
+                1.0F -> homeMotionLayout.transitionToStart()
+            }
         }
 
         // Open a micro app launcher

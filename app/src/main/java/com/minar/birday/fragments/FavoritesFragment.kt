@@ -58,9 +58,20 @@ class FavoritesFragment : Fragment() {
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
         var totalEvents = 0
+        val favoriteMotionLayout = v.favoritesMain
         val favoritesCard = v.favoritesCard
+        val favoritesMiniFab = v.favoritesMiniFab
         if (shimmerEnabled) shimmer.startShimmer()
         statsImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_candle)
+
+        // Vibration on the mini fab (with manual managing of the transition)
+        favoritesMiniFab.setOnClickListener {
+            act.vibrate()
+            when (favoriteMotionLayout.progress) {
+                0.0F -> favoriteMotionLayout.transitionToEnd()
+                1.0F -> favoriteMotionLayout.transitionToStart()
+            }
+        }
 
         // Show full stats in a bottom sheet
         favoritesCard.setOnClickListener {
