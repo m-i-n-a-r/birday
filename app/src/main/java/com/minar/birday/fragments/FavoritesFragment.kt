@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -81,6 +82,14 @@ class FavoritesFragment : Fragment() {
             // Link the opacity of the background to the number of events (min = 0.05 / max = 100)
             backgroundDrawable.alpha = min(0.01F * totalEvents + 0.05F, 1.0F)
             backgroundDrawable.applyLoopingAnimatedVectorDrawable(R.drawable.animated_counter_background)
+            // Show an explanation for the counter, even if it's quite obvious
+            backgroundDrawable.setOnClickListener {
+                Toast.makeText(
+                    requireContext(),
+                    resources.getQuantityString(R.plurals.stats_total, totalEvents, totalEvents),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
         rootView = v
 
