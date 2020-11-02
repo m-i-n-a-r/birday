@@ -1,19 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Duration and repeat delay must be hardcoded -->
+<?xml version="1.0" encoding="utf-8"?><!-- Duration and repeat delay must be hardcoded -->
 <com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/importContacts"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:shimmer_auto_start="false"
-    app:shimmer_tilt="@dimen/shimmer_tilt"
-    app:shimmer_repeat_mode="reverse"
     app:shimmer_base_alpha="@dimen/shimmer_base_alpha"
-    app:shimmer_intensity="@dimen/shimmer_intensity"
-    app:shimmer_highlight_alpha="@dimen/shimmer_highlight_alpha"
+    app:shimmer_dropoff="@dimen/shimmer_dropoff"
     app:shimmer_duration="200"
+    app:shimmer_highlight_alpha="@dimen/shimmer_highlight_alpha"
+    app:shimmer_intensity="@dimen/shimmer_intensity"
     app:shimmer_repeat_delay="1000"
-    app:shimmer_dropoff="@dimen/shimmer_dropoff">
+    app:shimmer_repeat_mode="reverse"
+    app:shimmer_tilt="@dimen/shimmer_tilt">
 
     <LinearLayout
         android:id="@+id/importContactsLinear"
@@ -22,10 +21,8 @@
         android:background="?attr/selectableItemBackground"
         android:hapticFeedbackEnabled="false"
         android:orientation="vertical"
-        android:paddingLeft="@dimen/settings_row_padding"
-        android:paddingTop="@dimen/settings_row_padding"
-        android:paddingRight="@dimen/settings_row_padding"
-        android:paddingBottom="@dimen/settings_row_padding">
+        android:paddingHorizontal="@dimen/settings_row_padding"
+        android:paddingVertical="@dimen/settings_row_padding">
 
         <TextView
             android:id="@+id/importContactsTitle"

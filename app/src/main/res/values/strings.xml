@@ -242,4 +242,8 @@
     <string name="search_no_result_title">No results found</string>
     <string name="search_no_result_description">Your search string doesn\'t match any event in the Birday database!</string>
 
+    <!-- Notes -->
+    <string name="notes">Notes</string>
+    <string name="write_something">Write something…</string>
+
 </resources>

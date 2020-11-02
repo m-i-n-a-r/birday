@@ -41,6 +41,7 @@
     <dimen name="splash_image_size">192dp</dimen>
     <dimen name="splash_image_padding">24dp</dimen>
     <dimen name="cursor_size">2.5dp</dimen>
+    <dimen name="notes_minimum_height">200dp</dimen>
 
     <!-- Widgets -->
     <dimen name="widget_margin">8dp</dimen>

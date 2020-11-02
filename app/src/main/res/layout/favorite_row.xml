@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_weight="0.95"
+    android:background="?attr/selectableItemBackground"
     android:orientation="vertical"
     android:paddingHorizontal="@dimen/recycler_padding"
-    android:paddingTop="@dimen/between_row_padding"
-    android:paddingBottom="@dimen/between_row_padding">
+    android:paddingVertical="@dimen/between_row_padding">
 
     <TextView
         android:id="@+id/eventPerson"
@@ -32,9 +32,9 @@
         android:id="@+id/eventYears"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/goodGray"
         android:padding="@dimen/in_row_padding"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        android:textColor="@color/goodGray"
         app:layout_constraintEnd_toStartOf="@id/eventCountdown"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/eventDate" />
@@ -45,11 +45,11 @@
         android:layout_height="wrap_content"
         android:alpha="0.3"
         android:padding="@dimen/card_margin"
-        android:textStyle="bold"
-        android:textAlignment="center"
         android:text="@string/unknown_age"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
         android:textColor="?colorAccent"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

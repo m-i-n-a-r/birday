@@ -3,14 +3,12 @@
     android:shape="rectangle">
 
     <corners
-        android:topLeftRadius="@dimen/fast_scroll_corners"
-        android:topRightRadius="@dimen/fast_scroll_corners"
         android:bottomLeftRadius="@dimen/fast_scroll_corners"
-        android:bottomRightRadius="@dimen/fast_scroll_corners"/>
+        android:bottomRightRadius="@dimen/fast_scroll_corners"
+        android:topLeftRadius="@dimen/fast_scroll_corners"
+        android:topRightRadius="@dimen/fast_scroll_corners" />
 
-    <padding
-        android:paddingLeft="22dp"
-        android:paddingRight="22dp" />
+    <padding android:paddingHorizontal="@dimen/linear_vertical_margin" />
 
     <solid android:color="?colorAccent" />
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/dialog_details_padding">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/favoritesNotesLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/activity_vertical_margin"
+        android:minHeight="@dimen/notes_minimum_height"
+        app:boxBackgroundColor="@color/transparent"
+        app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
+        app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
+        app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
+        app:boxCornerRadiusTopStart="@dimen/text_field_corner"
+        app:counterEnabled="true"
+        app:counterMaxLength="500"
+        app:helperText="@string/write_something"
+        app:helperTextEnabled="true"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/favoritesNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:inputType="textMultiLine"
+            android:maxLength="500"
+            android:padding="0dp"
+            android:textCursorDrawable="@drawable/custom_cursor"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
