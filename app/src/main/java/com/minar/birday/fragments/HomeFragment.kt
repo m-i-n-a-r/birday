@@ -101,7 +101,6 @@ class HomeFragment : Fragment() {
 
         // Vibration on the mini fab (with manual managing of the transition)
         homeMiniFab.setOnClickListener {
-            act.vibrate()
             when (homeMotionLayout.progress) {
                 0.0F -> {
                     act.vibrate()
