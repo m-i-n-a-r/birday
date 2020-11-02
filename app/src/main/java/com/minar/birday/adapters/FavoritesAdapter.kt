@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
+import com.minar.birday.listeners.OnItemClickListener
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getAge
@@ -22,6 +23,7 @@ import java.time.format.FormatStyle
 
 class FavoritesAdapter internal constructor() : ListAdapter<EventResult, FavoritesAdapter.FavoriteViewHolder>(FavoritesDiffCallback()) {
     private lateinit var context: Context
+    var itemClickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         context = parent.context
@@ -37,11 +39,16 @@ class FavoritesAdapter internal constructor() : ListAdapter<EventResult, Favorit
         return super.getItem(position)
     }
 
-    inner class FavoriteViewHolder (view: View) : RecyclerView.ViewHolder(view) {
+    inner class FavoriteViewHolder (view: View) : RecyclerView.ViewHolder(view), View.OnClickListener, View.OnLongClickListener {
         private val eventPerson = view.eventPerson
         private val eventDate = view.eventDate
         private val eventYears = view.eventYears
         private val eventCountdown = view.eventCountdown
+
+        init {
+            view.setOnClickListener(this)
+            view.setOnLongClickListener(this)
+        }
 
         // Set every necessary text and click action in each row
         fun bind(event: EventResult) {
@@ -67,6 +74,19 @@ class FavoritesAdapter internal constructor() : ListAdapter<EventResult, Favorit
             }
             else eventYears.visibility = View.GONE
         }
+
+        override fun onClick(v: View?) {
+            itemClickListener?.onItemClick(adapterPosition, v)
+        }
+
+        override fun onLongClick(v: View?): Boolean {
+            itemClickListener?.onItemLongClick(adapterPosition, v)
+            return true
+        }
+    }
+
+    fun setOnItemClickListener(onItemClickListener: OnItemClickListener) {
+        this.itemClickListener = onItemClickListener
     }
 }
 

@@ -26,6 +26,7 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.FavoritesAdapter
+import com.minar.birday.listeners.OnItemClickListener
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.StatsGenerator
 import com.minar.birday.viewmodels.FavoritesViewModel
@@ -116,6 +117,7 @@ class FavoritesFragment : Fragment() {
 
         // Setup the recycler view
         initializeRecyclerView()
+        setUpAdapter()
 
         favoritesViewModel = ViewModelProvider(this).get(FavoritesViewModel::class.java)
         favoritesViewModel.allFavoriteEvents.observe(viewLifecycleOwner, { events ->
@@ -144,6 +146,21 @@ class FavoritesFragment : Fragment() {
         recyclerView = rootView.findViewById(R.id.favoritesRecycler)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = adapter
+    }
+
+    // Manage the onclick actions, or the long click (unused atm)
+    private fun setUpAdapter() {
+        adapter.setOnItemClickListener(onItemClickListener = object: OnItemClickListener{
+            override fun onItemClick(position: Int, view: View?) {
+                act.vibrate()
+            }
+
+            // TODO reassign an action to the long press
+            override fun onItemLongClick(position: Int, view: View?): Boolean {
+                return true
+            }
+
+        })
     }
 
     // Remove the placeholder or return if the placeholder was already removed before

@@ -109,7 +109,6 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapte
     fun setOnItemClickListener(onItemClickListener: OnItemClickListener) {
         this.itemClickListener = onItemClickListener
     }
-
 }
 
 class EventsDiffCallback : DiffUtil.ItemCallback<EventResult>() {

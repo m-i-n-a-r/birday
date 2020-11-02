@@ -231,6 +231,7 @@ class HomeFragment : Fragment() {
         recyclerView.adapter = adapter
     }
 
+    // Manage the onclick actions, or the long click (unused atm)
     @ExperimentalStdlibApi
     private fun setUpAdapter() {
         adapter.setOnItemClickListener(onItemClickListener = object : OnItemClickListener {
