@@ -64,12 +64,22 @@ class FavoritesFragment : Fragment() {
         if (shimmerEnabled) shimmer.startShimmer()
         statsImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_candle)
 
+        // Set motion layout state, since it's saved
+        favoriteMotionLayout.progress = sharedPrefs.getFloat("favorite_motion_state", 0.0F)
+
         // Vibration on the mini fab (with manual managing of the transition)
         favoritesMiniFab.setOnClickListener {
-            act.vibrate()
             when (favoriteMotionLayout.progress) {
-                0.0F -> favoriteMotionLayout.transitionToEnd()
-                1.0F -> favoriteMotionLayout.transitionToStart()
+                0.0F -> {
+                    act.vibrate()
+                    favoriteMotionLayout.transitionToEnd()
+                    sharedPrefs.edit().putFloat("favorite_motion_state", 1.0F).apply()
+                }
+                1.0F -> {
+                    act.vibrate()
+                    favoriteMotionLayout.transitionToStart()
+                    sharedPrefs.edit().putFloat("favorite_motion_state", 0.0F).apply()
+                }
             }
         }
 
