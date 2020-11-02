@@ -31,7 +31,6 @@
             android:scaleX="1.1"
             android:scaleY="1.1"
             app:transitionEasing="decelerate"
-            motion:layout_constraintBottom_toTopOf="@id/favoritesCard"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toTopOf="@id/favoritesCard" />
@@ -41,6 +40,7 @@
             android:layout_height="0dp"
             android:scaleX="1.2"
             android:scaleY="0.0"
+            app:layout_constraintTop_toTopOf="parent"
             app:transitionEasing="decelerate"
             motion:layout_constraintEnd_toEndOf="@id/favoritesMiniFab"
             motion:layout_constraintStart_toStartOf="@id/favoritesMiniFab" />
