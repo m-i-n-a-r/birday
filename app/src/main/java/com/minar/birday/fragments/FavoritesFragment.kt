@@ -6,6 +6,7 @@ import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -27,6 +28,7 @@ import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.FavoritesAdapter
 import com.minar.birday.listeners.OnItemClickListener
+import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.StatsGenerator
 import com.minar.birday.viewmodels.FavoritesViewModel
@@ -150,9 +152,37 @@ class FavoritesFragment : Fragment() {
 
     // Manage the onclick actions, or the long click (unused atm)
     private fun setUpAdapter() {
-        adapter.setOnItemClickListener(onItemClickListener = object: OnItemClickListener{
+        adapter.setOnItemClickListener(onItemClickListener = object : OnItemClickListener {
             override fun onItemClick(position: Int, view: View?) {
                 act.vibrate()
+                val event = adapter.getItem(position)
+                val title = getString(R.string.notes) + " - " + event.name
+                MaterialDialog(act).show {
+                    title(text = title)
+                    icon(R.drawable.ic_note_24dp)
+                    cornerRadius(res = R.dimen.rounded_corners)
+                    customView(R.layout.dialog_notes, scrollable = true)
+                    val noteTextField = getCustomView().findViewById<EditText>(R.id.favoritesNotes)
+                    noteTextField.setText(event.notes)
+                    negativeButton(R.string.cancel) {
+                        dismiss()
+                    }
+                    positiveButton {
+                        val note = noteTextField.text.toString().trim()
+                        val tuple = Event(
+                            id = event.id,
+                            originalDate = event.originalDate,
+                            name = event.name,
+                            yearMatter = event.yearMatter,
+                            surname = event.surname,
+                            favorite = event.favorite,
+                            notes = note,
+                            image = event.image
+                        )
+                        favoritesViewModel.update(tuple)
+                        dismiss()
+                    }
+                }
             }
 
             // TODO reassign an action to the long press

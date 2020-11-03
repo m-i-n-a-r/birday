@@ -15,7 +15,6 @@
     <!-- Splash screen theme -->
     <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:windowLightNavigationBar">false</item>
         <item name="android:statusBarColor">@color/colorBackgroundInverse</item>
         <item name="android:colorBackground">@color/colorBackgroundInverse</item>
         <item name="android:navigationBarColor">@color/colorBackgroundInverse</item>

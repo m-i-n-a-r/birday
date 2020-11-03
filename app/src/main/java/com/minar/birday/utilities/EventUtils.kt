@@ -2,6 +2,7 @@ package com.minar.birday.utilities
 
 import android.content.Context
 import com.minar.birday.R
+import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
 import java.time.LocalDate
 import java.time.Period
@@ -9,6 +10,19 @@ import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.time.temporal.ChronoUnit
 import java.util.*
+
+
+// Transform an event result in a simple event
+fun resultToEvent(eventResult: EventResult) = Event(
+    id = eventResult.id,
+    name = eventResult.name,
+    surname = eventResult.surname,
+    favorite = eventResult.favorite,
+    originalDate = eventResult.originalDate,
+    yearMatter = eventResult.yearMatter,
+    notes = eventResult.notes,
+    image = eventResult.image
+)
 
 // Properly format the next date for widget and next event card
 fun nextDateFormatted(event: EventResult, formatter: DateTimeFormatter, context: Context): String {

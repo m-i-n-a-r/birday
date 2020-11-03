@@ -490,18 +490,9 @@ class HomeFragment : Fragment() {
     }
 
     // Functions to update, delete and create an Event object to pass instead of the returning object passed
-    fun updateFavorite(eventResult: EventResult) = homeViewModel.update(toEvent(eventResult))
+    fun updateFavorite(eventResult: EventResult) = homeViewModel.update(resultToEvent(eventResult))
 
-    fun deleteEvent(eventResult: EventResult) = homeViewModel.delete(toEvent(eventResult))
-
-    private fun toEvent(eventResult: EventResult) = Event(
-        id = eventResult.id,
-        name = eventResult.name,
-        surname = eventResult.surname,
-        favorite = eventResult.favorite,
-        originalDate = eventResult.originalDate,
-        yearMatter = eventResult.yearMatter
-    )
+    fun deleteEvent(eventResult: EventResult) = homeViewModel.delete(resultToEvent(eventResult))
 
     @ExperimentalStdlibApi
     private fun editEvent(eventResult: EventResult) {
@@ -522,7 +513,9 @@ class HomeFragment : Fragment() {
                     name = nameValue.smartCapitalize(),
                     yearMatter = countYearValue,
                     surname = surnameValue?.smartCapitalize(),
-                    favorite = eventResult.favorite
+                    favorite = eventResult.favorite,
+                    notes = eventResult.notes,
+                    image = eventResult.image
                 )
                 homeViewModel.update(tuple)
                 dismiss()

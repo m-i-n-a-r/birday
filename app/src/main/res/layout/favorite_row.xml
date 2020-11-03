@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_weight="0.95"
     android:background="?attr/selectableItemBackground"
+    android:hapticFeedbackEnabled="false"
     android:orientation="vertical"
     android:paddingHorizontal="@dimen/recycler_padding"
     android:paddingVertical="@dimen/between_row_padding">
