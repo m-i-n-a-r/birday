@@ -1,0 +1,10 @@
+- Option to enable the dark theme for the widget
+- Czech translation, thanks Miloš Koliáš
+- Easily hide and show the top cards with a beautiful animation, to fully support multiwindows
+- Every favorite event has now an handy note field, just tap on it!*
+- Animated event counter in the stats dialog
+- App size shrinked even more!
+- New and updated splashscreen animation
+- A lot of under the hood improvements and fixes
+
+* Despite this new field, the previous backups will still work and restore without any problem!
