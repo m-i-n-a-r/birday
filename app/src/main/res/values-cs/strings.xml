@@ -177,6 +177,8 @@
     <string name="appwidget_upcoming">Nadcházející narozeniny</string>
     <string name="add_widget">Narozeniny - nadcházející</string>
     <string name="search_event">Vyhledávání…</string>
+    <string name="notes">Poznámky</string>
+    <string name="write_something">Něco napsat…</string>
     <plurals name="leap_year_total">
         <item quantity="one">Počet osob narozených v přestupném roce je %d</item>
         <item quantity="few">Počet osob narozených v přestupném roce je %d</item>

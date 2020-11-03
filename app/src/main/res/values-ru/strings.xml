@@ -202,7 +202,7 @@
         <item quantity="one">%d год</item>
         <item quantity="few">%d года</item>
         <item quantity="many">%d лет</item>
-      <item quantity="other">%d лет</item>
+        <item quantity="other">%d лет</item>
     </plurals>
     <string name="born_in">родился/лась в</string>
     <string name="and">и</string>
@@ -238,5 +238,9 @@
     <string name="search_event">Поиск…</string>
     <string name="search_no_result_title">Ничего не найдено</string>
     <string name="search_no_result_description">К вашему запросу не подходит ни одно событие в базе Birday!</string>
+
+    <!-- Notes -->
+    <string name="notes">Примечания</string>
+    <string name="write_something">Напиши что-нибудь…</string>
 
 </resources>

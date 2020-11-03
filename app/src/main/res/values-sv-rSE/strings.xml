@@ -196,5 +196,7 @@
     <string name="surname_first">Efternamn för första</string>
     <string name="surname_first_description_on">Visa efternamnet före namnet</string>
     <string name="surname_first_description_off">Visa namnet före efternamnet</string>
+    <string name="notes">Anteckningar</string>
+    <string name="write_something">Skriva något…</string>
 
 </resources>

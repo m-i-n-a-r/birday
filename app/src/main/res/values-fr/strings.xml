@@ -221,4 +221,8 @@
     <string name="search_no_result_description">Votre requête ne correspond à aucun événement de la base de données Birday !</string>
     <string name="consider_year">Considérez l\'année</string>
 
+    <!-- Notes -->
+    <string name="notes">Remarques</string>
+    <string name="write_something">Écris quelque chose…</string>
+
 </resources>

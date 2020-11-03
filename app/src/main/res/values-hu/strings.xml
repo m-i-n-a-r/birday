@@ -224,4 +224,8 @@
     <string name="search_no_result_description">A keresési karakterlánc nem felel meg a Birday adatbázis egyetlen eseményének sem!</string>
     <string name="consider_year">Számolja az évet</string>
 
+    <!-- Notes -->
+    <string name="notes">Megjegyzések</string>
+    <string name="write_something">Írjon valamit…</string>
+
 </resources>

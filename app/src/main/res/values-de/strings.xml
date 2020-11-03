@@ -221,4 +221,8 @@
     <string name="search_no_result_description">Dein Suchbegriff stimmt mit keinem Ereignis in der Birday-Datenbank überein!</string>
     <string name="consider_year">Inklusive Jahr</string>
 
+    <!-- Notes -->
+    <string name="notes">Anmerkungen</string>
+    <string name="write_something">Schreibe etwas…</string>
+
 </resources>

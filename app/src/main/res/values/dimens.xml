@@ -22,7 +22,7 @@
     <dimen name="between_row_padding">8dp</dimen>
     <dimen name="recycler_padding">24dp</dimen>
     <dimen name="dialog_actions_padding">40dp</dimen>
-    <dimen name="dialog_details_padding">24dp</dimen>
+    <dimen name="dialog_horizontal_padding">24dp</dimen>
     <dimen name="dialog_details_max_width">160dp</dimen>
     <dimen name="settings_row_padding">16dp</dimen>
     <dimen name="fast_scroll_corners">32dp</dimen>
@@ -42,6 +42,7 @@
     <dimen name="splash_image_padding">24dp</dimen>
     <dimen name="cursor_size">2.5dp</dimen>
     <dimen name="notes_minimum_height">200dp</dimen>
+    <dimen name="notes_maximum_height">300dp</dimen>
 
     <!-- Widgets -->
     <dimen name="widget_margin">8dp</dimen>

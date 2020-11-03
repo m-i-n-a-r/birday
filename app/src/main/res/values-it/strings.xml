@@ -196,5 +196,7 @@
     <string name="surname_first">Prima il cognome</string>
     <string name="surname_first_description_on">Mostra il cognome prima del nome</string>
     <string name="surname_first_description_off">Mostra il nome prima del cognome</string>
+    <string name="notes">Note</string>
+    <string name="write_something">Scrivi qualcosa…</string>
 
 </resources>

@@ -230,4 +230,8 @@
     <string name="search_no_result_description">Je zoekopdracht komt niet overeen met een gebeurtenis uit de Birday database!</string>
     <string name="consider_year">Overweeg het jaar</string>
 
+    <!-- Notes -->
+    <string name="notes">Opmerkingen</string>
+    <string name="write_something">Schrijf iets…</string>
+
 </resources>

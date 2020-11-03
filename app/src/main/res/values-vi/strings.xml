@@ -221,4 +221,8 @@
     <string name="search_no_result_description">Chuỗi tìm kiếm của bạn không khớp với bất kỳ sự kiện nào trong cơ sở dữ liệu của Birday!</string>
     <string name="consider_year">Xem xét năm</string>
 
+    <!-- Notes -->
+    <string name="notes">Ghi chú</string>
+    <string name="write_something">Viết vài thứ…</string>
+
 </resources>

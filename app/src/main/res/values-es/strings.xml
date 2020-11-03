@@ -196,4 +196,6 @@
     <string name="surname_first">Primer apellido</string>
     <string name="surname_first_description_on">Muestra el apellido antes del nombre</string>
     <string name="surname_first_description_off">Muestra el numbre antes del apellido</string>
+    <string name="notes">Notas</string>
+    <string name="write_something">Escribe algo…</string>
 </resources>
