@@ -7,7 +7,7 @@ The app contains some basic personalization options and an introduction, plus so
 Well, i'll tell you 3 main reasons:
 <ul>
     <li> It can help you to remember every birthday in the moment you prefer! </li>
-    <li> It will cost just 5MB of storage! </li>
+    <li> It will cost just a few MB of storage! </li>
     <li> It's beautiful, full of animations and simple to use! </li>
 </ul>
 

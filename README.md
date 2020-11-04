@@ -57,13 +57,14 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 
 ## Screenshots
 <p align='center'>
-  <img src='https://i.imgur.com/zFTGvRF.png' width='22%'/>
-  <img src='https://i.imgur.com/vNZgUOz.png' width='22%'/>
-  <img src='https://i.imgur.com/BuESkw3.png' width='22%'/>
-  <img src='https://i.imgur.com/Wmv99BC.png' width='22%'/>
+  <img src='https://i.imgur.com/cRjuC6K.png' width='22%'/>
+  <img src='https://i.imgur.com/DLtbatf.png' width='22%'/>
+  <img src='https://i.imgur.com/JzxlGt1.png' width='22%'/>
+  <img src='https://i.imgur.com/Cxr467r.png' width='22%'/>
+
+  <img src='https://i.imgur.com/gF7NJF8.png' width='22%'/>
+  <img src='https://i.imgur.com/KJtaMHx.png' width='22%'/>
   <img src='https://i.imgur.com/rTz4ULx.png' width='22%'/>
-  <img src='https://i.imgur.com/IaGtG5X.png' width='22%'/>
-  <img src='https://i.imgur.com/Bmf20RQ.png' width='22%'/>
   <img src='https://i.imgur.com/RW4fTiD.png' width='22%'/>
 </p>
 
