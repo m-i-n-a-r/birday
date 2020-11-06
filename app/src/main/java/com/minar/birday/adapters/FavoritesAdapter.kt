@@ -41,6 +41,7 @@ class FavoritesAdapter internal constructor() : ListAdapter<EventResult, Favorit
 
     inner class FavoriteViewHolder (view: View) : RecyclerView.ViewHolder(view), View.OnClickListener, View.OnLongClickListener {
         private val eventPerson = view.eventPerson
+        private val eventNote = view.eventNote
         private val eventDate = view.eventDate
         private val eventYears = view.eventYears
         private val eventCountdown = view.eventCountdown
@@ -65,6 +66,9 @@ class FavoritesAdapter internal constructor() : ListAdapter<EventResult, Favorit
             val actualAge = context.getString(R.string.next_age_years) + ": " + age.toString() +
                     ", " + context.getString(R.string.born_in) + " " + event.originalDate.year
             eventPerson.text = formattedPersonName
+            // Show an icon if there's a note
+            if (!event.notes.isNullOrEmpty()) eventNote.visibility = View.VISIBLE
+            else eventNote.visibility = View.GONE
             eventDate.text = nextDate
             eventCountdown.text = daysCountdown
             // Age -2 means that the year is not considered and the age is meaningless

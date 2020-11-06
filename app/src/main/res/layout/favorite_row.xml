@@ -11,13 +11,31 @@
 
     <TextView
         android:id="@+id/eventPerson"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/in_row_padding"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-        app:layout_constraintEnd_toStartOf="@id/eventCountdown"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@id/eventNote"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/eventNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:contentDescription="@string/notes"
+        android:padding="@dimen/in_row_padding"
+        android:src="@drawable/ic_note_24dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/eventPerson"
+        app:layout_constraintEnd_toStartOf="@id/eventCountdown"
+        app:layout_constraintStart_toEndOf="@id/eventPerson"
+        app:layout_constraintTop_toTopOf="@id/eventPerson"
+        app:tint="@color/goodGray" />
 
     <TextView
         android:id="@+id/eventDate"

@@ -115,6 +115,11 @@ class HomeFragment : Fragment() {
             }
         }
 
+        // Show quick apps on long press too
+        homeMiniFab.setOnLongClickListener {
+            true
+        }
+
         // Open a micro app launcher
         homeCard.setOnClickListener {
             act.vibrate()
@@ -506,7 +511,7 @@ class HomeFragment : Fragment() {
             icon(R.drawable.ic_edit_24dp)
             customView(R.layout.dialog_insert_event)
             positiveButton(R.string.update_event) {
-                // Use the data to create a event object and update the db
+                // Use the data to create an event object and update the db
                 val tuple = Event(
                     id = eventResult.id,
                     originalDate = eventDateValue,

@@ -86,6 +86,11 @@ class FavoritesFragment : Fragment() {
             }
         }
 
+        // Show full stats on long press too
+        favoritesMiniFab.setOnLongClickListener {
+            true
+        }
+
         // Show full stats in a bottom sheet
         favoritesCard.setOnClickListener {
             act.vibrate()

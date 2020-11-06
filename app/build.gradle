@@ -11,8 +11,8 @@ android {
         applicationId "com.minar.birday"
         minSdkVersion 26
         targetSdkVersion 30
-        versionCode 11
-        versionName "1.9.0"
+        versionCode 13
+        versionName "1.10.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
