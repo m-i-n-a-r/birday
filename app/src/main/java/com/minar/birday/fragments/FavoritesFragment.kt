@@ -43,6 +43,7 @@ class FavoritesFragment : Fragment() {
     private lateinit var adapter: FavoritesAdapter
     private lateinit var fullStats: SpannableStringBuilder
     private lateinit var act: MainActivity
+    private var totalEvents = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +61,6 @@ class FavoritesFragment : Fragment() {
         val shimmer = v.findViewById<ShimmerFrameLayout>(R.id.favoritesCardShimmer)
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
-        var totalEvents = 0
         val favoriteMotionLayout = v.favoritesMain
         val favoritesCard = v.favoritesCard
         val favoritesMiniFab = v.favoritesMiniFab
@@ -88,37 +88,13 @@ class FavoritesFragment : Fragment() {
 
         // Show full stats on long press too
         favoritesMiniFab.setOnLongClickListener {
+            if (favoriteMotionLayout.progress == 1.0F) showStatsSheet()
             true
         }
 
         // Show full stats in a bottom sheet
         favoritesCard.setOnClickListener {
-            act.vibrate()
-            val dialog =
-                MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
-                    cornerRadius(res = R.dimen.rounded_corners)
-                    title(R.string.stats_summary)
-                    icon(R.drawable.ic_stats_24dp)
-                    // Don't use scrollable here, instead use a nestedScrollView in the layout
-                    customView(R.layout.dialog_stats)
-                }
-            val customView = dialog.getCustomView()
-            customView.fullStats.text = fullStats
-            // Display the total number of birthdays, start the animated drawable
-            customView.eventCounter.text = totalEvents.toString()
-            val backgroundDrawable = customView.eventCounterBackground
-            // Link the opacity of the background to the number of events (min = 0.05 / max = 100)
-            backgroundDrawable.alpha = min(0.01F * totalEvents + 0.05F, 1.0F)
-            backgroundDrawable.applyLoopingAnimatedVectorDrawable(R.drawable.animated_counter_background)
-            // Show an explanation for the counter, even if it's quite obvious
-            backgroundDrawable.setOnClickListener {
-                act.vibrate()
-                Toast.makeText(
-                    requireContext(),
-                    resources.getQuantityString(R.plurals.stats_total, totalEvents, totalEvents),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+            showStatsSheet()
         }
         rootView = v
 
@@ -202,6 +178,36 @@ class FavoritesFragment : Fragment() {
     private fun removePlaceholder() {
         val placeholder: TextView = requireView().findViewById(R.id.noFavorites) ?: return
         placeholder.visibility = View.GONE
+    }
+
+    // Show a bottom sheet containing the stats
+    private fun showStatsSheet() {
+        act.vibrate()
+        val dialog =
+            MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
+                cornerRadius(res = R.dimen.rounded_corners)
+                title(R.string.stats_summary)
+                icon(R.drawable.ic_stats_24dp)
+                // Don't use scrollable here, instead use a nestedScrollView in the layout
+                customView(R.layout.dialog_stats)
+            }
+        val customView = dialog.getCustomView()
+        customView.fullStats.text = fullStats
+        // Display the total number of birthdays, start the animated drawable
+        customView.eventCounter.text = totalEvents.toString()
+        val backgroundDrawable = customView.eventCounterBackground
+        // Link the opacity of the background to the number of events (min = 0.05 / max = 100)
+        backgroundDrawable.alpha = min(0.01F * totalEvents + 0.05F, 1.0F)
+        backgroundDrawable.applyLoopingAnimatedVectorDrawable(R.drawable.animated_counter_background)
+        // Show an explanation for the counter, even if it's quite obvious
+        backgroundDrawable.setOnClickListener {
+            act.vibrate()
+            Toast.makeText(
+                requireContext(),
+                resources.getQuantityString(R.plurals.stats_total, totalEvents, totalEvents),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     // Use the generator to generate a random stat and display it

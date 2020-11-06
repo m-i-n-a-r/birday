@@ -117,91 +117,13 @@ class HomeFragment : Fragment() {
 
         // Show quick apps on long press too
         homeMiniFab.setOnLongClickListener {
+            if (homeMotionLayout.progress == 1.0F) showQuickAppsSheet()
             true
         }
 
         // Open a micro app launcher
         homeCard.setOnClickListener {
-            act.vibrate()
-            val dialog =
-                MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
-                    cornerRadius(res = R.dimen.rounded_corners)
-                    title(R.string.event_apps)
-                    icon(R.drawable.ic_apps_24dp)
-                    message(R.string.event_apps_description)
-                    customView(R.layout.dialog_apps_event, scrollable = true)
-                }
-
-            val customView = dialog.getCustomView()
-            // Using viewbinding to fetch the buttons
-            val whatsappButton = customView.whatsappButton
-            val dialerButton = customView.dialerButton
-            val messagesButton = customView.messagesButton
-            val telegramButton = customView.telegramButton
-            val ctx: Context = requireContext()
-
-            whatsappButton.setOnClickListener {
-                act.vibrate()
-                try {
-                    val whatsIntent: Intent? =
-                        ctx.packageManager.getLaunchIntentForPackage("com.whatsapp")
-                    ctx.startActivity(whatsIntent)
-                } catch (e: Exception) {
-                    startActivity(
-                        Intent(
-                            Intent.ACTION_VIEW,
-                            Uri.parse("https://play.google.com/store/apps/details?id=com.whatsapp")
-                        )
-                    )
-                }
-                dialog.dismiss()
-            }
-
-            dialerButton.setOnClickListener {
-                act.vibrate()
-                try {
-                    val dialIntent = Intent(Intent.ACTION_DIAL)
-                    ctx.startActivity(dialIntent)
-                } catch (e: Exception) {
-                    Toast.makeText(
-                        ctx,
-                        ctx.getString(R.string.no_default_dialer),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                dialog.dismiss()
-            }
-
-            messagesButton.setOnClickListener {
-                act.vibrate()
-                try {
-                    val defaultSmsPackage = Telephony.Sms.getDefaultSmsPackage(requireContext())
-                    val smsIntent: Intent? =
-                        ctx.packageManager.getLaunchIntentForPackage(defaultSmsPackage)
-                    ctx.startActivity(smsIntent)
-                } catch (e: Exception) {
-                    Toast.makeText(ctx, ctx.getString(R.string.no_default_sms), Toast.LENGTH_SHORT)
-                        .show()
-                }
-                dialog.dismiss()
-            }
-
-            telegramButton.setOnClickListener {
-                act.vibrate()
-                try {
-                    val telegramIntent: Intent? =
-                        ctx.packageManager.getLaunchIntentForPackage("org.telegram.messenger")
-                    ctx.startActivity(telegramIntent)
-                } catch (e: Exception) {
-                    startActivity(
-                        Intent(
-                            Intent.ACTION_VIEW,
-                            Uri.parse("https://play.google.com/store/apps/details?id=org.telegram.messenger")
-                        )
-                    )
-                }
-                dialog.dismiss()
-            }
+            showQuickAppsSheet()
         }
         rootView = v
 
@@ -617,6 +539,90 @@ class HomeFragment : Fragment() {
         name.addTextChangedListener(watcher)
         surname.addTextChangedListener(watcher)
         eventDate.addTextChangedListener(watcher)
+    }
+
+    // Show a bottom sheet containing some quick apps
+    fun showQuickAppsSheet() {
+        act.vibrate()
+        val dialog =
+            MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
+                cornerRadius(res = R.dimen.rounded_corners)
+                title(R.string.event_apps)
+                icon(R.drawable.ic_apps_24dp)
+                message(R.string.event_apps_description)
+                customView(R.layout.dialog_apps_event, scrollable = true)
+            }
+
+        val customView = dialog.getCustomView()
+        // Using viewbinding to fetch the buttons
+        val whatsappButton = customView.whatsappButton
+        val dialerButton = customView.dialerButton
+        val messagesButton = customView.messagesButton
+        val telegramButton = customView.telegramButton
+        val ctx: Context = requireContext()
+
+        whatsappButton.setOnClickListener {
+            act.vibrate()
+            try {
+                val whatsIntent: Intent? =
+                    ctx.packageManager.getLaunchIntentForPackage("com.whatsapp")
+                ctx.startActivity(whatsIntent)
+            } catch (e: Exception) {
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("https://play.google.com/store/apps/details?id=com.whatsapp")
+                    )
+                )
+            }
+            dialog.dismiss()
+        }
+
+        dialerButton.setOnClickListener {
+            act.vibrate()
+            try {
+                val dialIntent = Intent(Intent.ACTION_DIAL)
+                ctx.startActivity(dialIntent)
+            } catch (e: Exception) {
+                Toast.makeText(
+                    ctx,
+                    ctx.getString(R.string.no_default_dialer),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            dialog.dismiss()
+        }
+
+        messagesButton.setOnClickListener {
+            act.vibrate()
+            try {
+                val defaultSmsPackage = Telephony.Sms.getDefaultSmsPackage(requireContext())
+                val smsIntent: Intent? =
+                    ctx.packageManager.getLaunchIntentForPackage(defaultSmsPackage)
+                ctx.startActivity(smsIntent)
+            } catch (e: Exception) {
+                Toast.makeText(ctx, ctx.getString(R.string.no_default_sms), Toast.LENGTH_SHORT)
+                    .show()
+            }
+            dialog.dismiss()
+        }
+
+        telegramButton.setOnClickListener {
+            act.vibrate()
+            try {
+                val telegramIntent: Intent? =
+                    ctx.packageManager.getLaunchIntentForPackage("org.telegram.messenger")
+                ctx.startActivity(telegramIntent)
+            } catch (e: Exception) {
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("https://play.google.com/store/apps/details?id=org.telegram.messenger")
+                    )
+                )
+            }
+            dialog.dismiss()
+        }
     }
 
     // Share an event as a plain string (plus some explanatory emotes) on every supported app
