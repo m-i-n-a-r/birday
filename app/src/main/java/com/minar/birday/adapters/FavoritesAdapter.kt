@@ -99,7 +99,8 @@ class FavoritesDiffCallback : DiffUtil.ItemCallback<EventResult>() {
         return oldItem.id == newItem.id
     }
 
+    // Consider the notes, which is not in the equals method but is important to trigger the icon
     override fun areContentsTheSame(oldItem: EventResult, newItem: EventResult): Boolean {
-        return oldItem == newItem
+        return oldItem == newItem  && oldItem.notes == newItem.notes
     }
 }
