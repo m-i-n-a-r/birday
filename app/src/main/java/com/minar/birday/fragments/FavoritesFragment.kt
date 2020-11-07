@@ -31,7 +31,7 @@ import com.minar.birday.listeners.OnItemClickListener
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.StatsGenerator
-import com.minar.birday.viewmodels.FavoritesViewModel
+import com.minar.birday.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.dialog_stats.view.*
 import kotlinx.android.synthetic.main.fragment_favorites.view.*
 import kotlin.math.min
@@ -39,7 +39,7 @@ import kotlin.math.min
 class FavoritesFragment : Fragment() {
     private lateinit var rootView: View
     private lateinit var recyclerView: RecyclerView
-    private lateinit var favoritesViewModel: FavoritesViewModel
+    private lateinit var mainViewModel: MainViewModel
     private lateinit var adapter: FavoritesAdapter
     private lateinit var fullStats: SpannableStringBuilder
     private lateinit var act: MainActivity
@@ -102,15 +102,16 @@ class FavoritesFragment : Fragment() {
         initializeRecyclerView()
         setUpAdapter()
 
-        favoritesViewModel = ViewModelProvider(this).get(FavoritesViewModel::class.java)
-        favoritesViewModel.allFavoriteEvents.observe(viewLifecycleOwner, { events ->
+        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        mainViewModel.allFavoriteEvents.observe(viewLifecycleOwner, { events ->
             // Update the cached copy of the words in the adapter
             if (events != null && events.isNotEmpty()) {
                 removePlaceholder()
                 adapter.submitList(events)
             }
         })
-        favoritesViewModel.allEvents.observe(viewLifecycleOwner, { eventList ->
+        // AllEvents contains everything, since the query string is reset when the fragment changes
+        mainViewModel.allEvents.observe(viewLifecycleOwner, { eventList ->
             // Under a minimum size, no stats will be shown (at least 5 events containing a year)
             if (eventList.filter { it.yearMatter == true }.size > 4) generateStat(eventList)
             else fullStats = SpannableStringBuilder(
@@ -160,7 +161,7 @@ class FavoritesFragment : Fragment() {
                             notes = note,
                             image = event.image
                         )
-                        favoritesViewModel.update(tuple)
+                        mainViewModel.update(tuple)
                         dismiss()
                     }
                 }

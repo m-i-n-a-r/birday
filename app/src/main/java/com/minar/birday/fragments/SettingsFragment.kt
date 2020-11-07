@@ -10,16 +10,16 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceFragmentCompat
 import com.minar.birday.R
-import com.minar.birday.viewmodels.HomeViewModel
+import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidget
 
 
 class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeListener {
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var mainViewModel: MainViewModel
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
-        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
     }
 
     override fun onResume() {
@@ -43,7 +43,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                 "theme_color" -> activity.recreate()
                 "accent_color" -> activity.recreate()
                 "shimmer" -> activity.recreate()
-                "notification_hour" -> homeViewModel.checkEvents()
+                "notification_hour" -> mainViewModel.checkEvents()
                 "dark_widget" -> {
                     // Update every existing widget with a broadcast
                     val intent = Intent(context, EventWidget::class.java)

@@ -47,7 +47,7 @@ import com.minar.birday.listeners.OnItemClickListener
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.*
-import com.minar.birday.viewmodels.HomeViewModel
+import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidget
 import kotlinx.android.synthetic.main.dialog_apps_event.view.*
 import kotlinx.android.synthetic.main.dialog_details_event.view.*
@@ -63,7 +63,7 @@ import java.util.*
 class HomeFragment : Fragment() {
     private lateinit var rootView: View
     private lateinit var recyclerView: RecyclerView
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var mainViewModel: MainViewModel
     lateinit var adapter: EventAdapter
     lateinit var act: MainActivity
     lateinit var sharedPrefs: SharedPreferences
@@ -93,7 +93,7 @@ class HomeFragment : Fragment() {
 
         // Setup the search bar
         v.findViewById<EditText>(R.id.homeSearch).addTextChangedListener { text ->
-            homeViewModel.searchNameChanged(text.toString())
+            mainViewModel.searchNameChanged(text.toString())
         }
 
         // Set motion layout state, since it's saved
@@ -131,8 +131,8 @@ class HomeFragment : Fragment() {
         initializeRecyclerView()
         setUpAdapter()
 
-        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        homeViewModel.allEvents.observe(viewLifecycleOwner, { events ->
+        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        mainViewModel.allEvents.observe(viewLifecycleOwner, { events ->
             // Manage placeholders, search results and the main list
             events?.let { adapter.submitList(it) }
             if (events.isNotEmpty()) {
@@ -140,10 +140,10 @@ class HomeFragment : Fragment() {
                 removePlaceholder()
             }
             if (events.isEmpty()) restorePlaceholders()
-            if (events.isEmpty() && homeViewModel.searchStringLiveData.value!!.isNotBlank())
+            if (events.isEmpty() && mainViewModel.searchStringLiveData.value!!.isNotBlank())
                 restorePlaceholders(true)
         })
-        homeViewModel.nextEvents.observe(viewLifecycleOwner, { nextEvents ->
+        mainViewModel.nextEvents.observe(viewLifecycleOwner, { nextEvents ->
             // Update the widgets using the next events, to avoid strange behaviors when searching
             updateWidget(nextEvents)
         })
@@ -417,9 +417,9 @@ class HomeFragment : Fragment() {
     }
 
     // Functions to update, delete and create an Event object to pass instead of the returning object passed
-    fun updateFavorite(eventResult: EventResult) = homeViewModel.update(resultToEvent(eventResult))
+    fun updateFavorite(eventResult: EventResult) = mainViewModel.update(resultToEvent(eventResult))
 
-    fun deleteEvent(eventResult: EventResult) = homeViewModel.delete(resultToEvent(eventResult))
+    fun deleteEvent(eventResult: EventResult) = mainViewModel.delete(resultToEvent(eventResult))
 
     @ExperimentalStdlibApi
     private fun editEvent(eventResult: EventResult) {
@@ -444,7 +444,7 @@ class HomeFragment : Fragment() {
                     notes = eventResult.notes,
                     image = eventResult.image
                 )
-                homeViewModel.update(tuple)
+                mainViewModel.update(tuple)
                 dismiss()
             }
             negativeButton(R.string.cancel) {
@@ -542,7 +542,7 @@ class HomeFragment : Fragment() {
     }
 
     // Show a bottom sheet containing some quick apps
-    fun showQuickAppsSheet() {
+    private fun showQuickAppsSheet() {
         act.vibrate()
         val dialog =
             MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {

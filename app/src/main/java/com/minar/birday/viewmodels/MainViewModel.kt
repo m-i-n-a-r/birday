@@ -15,10 +15,12 @@ import kotlinx.coroutines.launch
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-class HomeViewModel(application: Application) : AndroidViewModel(application) {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val workManager = WorkManager.getInstance(application)
     private val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(application)
     val allEvents: LiveData<List<EventResult>>
+    val eventsCount: LiveData<Int>
+    val allFavoriteEvents: LiveData<List<EventResult>>
     val nextEvents: LiveData<List<EventResult>>
     val searchStringLiveData = MutableLiveData<String>()
     private val eventDao: EventDao = EventDatabase.getBirdayDatabase(application)!!.eventDao()
@@ -31,6 +33,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         }
         // Only the upcoming events not considering the search
         nextEvents = eventDao.getOrderedNextEvents()
+        allFavoriteEvents = eventDao.getOrderedFavoriteEvents()
+        eventsCount = eventDao.getEventsCount()
         checkEvents()
     }
 

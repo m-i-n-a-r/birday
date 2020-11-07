@@ -112,7 +112,7 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
             })
             true
         } else {
-            act.homeViewModel.insertAll(events)
+            act.mainViewModel.insertAll(events)
             context.runOnUiThread(Runnable {
                 Toast.makeText(
                     context,

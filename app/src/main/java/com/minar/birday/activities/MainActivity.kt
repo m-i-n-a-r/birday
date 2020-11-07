@@ -46,7 +46,7 @@ import com.minar.birday.model.Event
 import com.minar.birday.utilities.AppRater
 import com.minar.birday.utilities.checkString
 import com.minar.birday.utilities.smartCapitalize
-import com.minar.birday.viewmodels.HomeViewModel
+import com.minar.birday.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.dialog_insert_event.view.*
 import java.io.IOException
 import java.time.LocalDate
@@ -55,13 +55,13 @@ import java.time.format.FormatStyle
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-    lateinit var homeViewModel: HomeViewModel
+    lateinit var mainViewModel: MainViewModel
     private lateinit var adapter: EventAdapter
     private lateinit var sharedPrefs: SharedPreferences
 
     @ExperimentalStdlibApi
     override fun onCreate(savedInstanceState: Bundle?) {
-        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
         adapter = EventAdapter(null)
 
@@ -144,7 +144,7 @@ class MainActivity : AppCompatActivity() {
                         surname = surnameValue.smartCapitalize(), yearMatter = countYearValue
                     )
                     // Insert using another thread
-                    val thread = Thread { homeViewModel.insert(tuple) }
+                    val thread = Thread { mainViewModel.insert(tuple) }
                     thread.start()
                     dismiss()
                 }
