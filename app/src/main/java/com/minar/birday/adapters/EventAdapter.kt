@@ -76,6 +76,12 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapte
             val hideImages = sharedPrefs.getBoolean("hide_images", false)
             if (hideImages) eventImage.visibility = View.GONE
             else {
+                // Set a small margin programmatically
+                val param = eventPerson.layoutParams as ViewGroup.MarginLayoutParams
+                param.setMargins(8,0,0,0)
+                eventPerson.layoutParams = param
+
+                // Show and load the image, if available, or keep the placeholder
                 eventImage.visibility = View.VISIBLE
                 if (event.image != null && event.image.isNotEmpty()) {
                     eventImage.setImageBitmap(byteArrayToBitmap(event.image))
