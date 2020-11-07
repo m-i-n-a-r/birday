@@ -20,7 +20,7 @@
     <dimen name="in_row_image">52dp</dimen>
     <dimen name="in_row_button_padding">6dp</dimen>
     <dimen name="between_row_padding">8dp</dimen>
-    <dimen name="recycler_padding">24dp</dimen>
+    <dimen name="recycler_padding">20dp</dimen>
     <dimen name="dialog_actions_padding">40dp</dimen>
     <dimen name="dialog_horizontal_padding">24dp</dimen>
     <dimen name="dialog_details_max_width">160dp</dimen>

@@ -1,46 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
     android:hapticFeedbackEnabled="false"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:paddingHorizontal="@dimen/recycler_padding"
     android:paddingVertical="@dimen/between_row_padding">
 
-    <LinearLayout
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/eventImage"
+        android:layout_width="@dimen/in_row_image"
+        android:layout_height="@dimen/in_row_image"
+        android:background="@color/goodGrayTranslucent"
+        android:contentDescription="@string/event_details"
+        android:padding="@dimen/in_row_padding"
+        android:src="@drawable/placeholder_event_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
+        app:strokeColor="?colorAccent"
+        app:strokeWidth="@dimen/card_stroke" />
+
+    <TextView
+        android:id="@+id/eventPerson"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.95"
-        android:orientation="vertical">
+        android:layout_marginStart="@dimen/in_row_padding"
+        android:paddingHorizontal="@dimen/in_row_button_padding"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        app:layout_constraintEnd_toStartOf="@id/favoriteButton"
+        app:layout_constraintStart_toEndOf="@id/eventImage"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/eventPerson"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/in_row_padding"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
-
-        <TextView
-            android:id="@+id/eventDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/in_row_padding"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2" />
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/eventDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/in_row_padding"
+        android:layout_marginStart="@dimen/in_row_padding"
+        android:paddingHorizontal="@dimen/in_row_button_padding"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        app:layout_constraintEnd_toStartOf="@id/favoriteButton"
+        app:layout_constraintStart_toStartOf="@id/eventPerson"
+        app:layout_constraintTop_toBottomOf="@id/eventPerson" />
 
     <ImageView
         android:id="@+id/favoriteButton"
         android:layout_width="@dimen/in_row_image"
         android:layout_height="@dimen/in_row_image"
         android:layout_gravity="center"
-        android:layout_weight="0.05"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:contentDescription="@string/add_favorite"
         android:focusable="true"
         android:paddingVertical="@dimen/in_row_button_padding"
-        android:src="@drawable/animated_to_favorite" />
+        android:src="@drawable/animated_to_favorite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
