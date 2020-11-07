@@ -29,6 +29,8 @@
     <dimen name="card_margin_big">16dp</dimen>
     <dimen name="text_switch_padding">24dp</dimen>
     <dimen name="mini_fab_opacity">0.9</dimen>
+    <dimen name="note_icon_opacity">0.6</dimen>
+    <dimen name="event_countdown_opacity">0.3</dimen>
 
     <!-- Unchanged dimensions -->
     <dimen name="minar_banner_height">84dp</dimen>

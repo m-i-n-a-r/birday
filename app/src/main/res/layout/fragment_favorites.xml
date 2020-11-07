@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:alpha="@dimen/mini_fab_opacity"
         android:contentDescription="@string/cancel"
+        android:hapticFeedbackEnabled="false"
         app:backgroundTint="?android:textColorPrimary"
         app:elevation="@dimen/bottom_navbar_elevation"
         app:fabSize="mini"
