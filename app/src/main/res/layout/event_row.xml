@@ -17,9 +17,10 @@
         android:contentDescription="@string/event_details"
         android:padding="@dimen/in_row_padding"
         android:src="@drawable/placeholder_event_image"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="@id/eventDate"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/eventPerson"
         app:shapeAppearanceOverlay="@style/roundedImageView"
         app:strokeColor="?colorAccent"
         app:strokeWidth="@dimen/card_stroke" />
@@ -28,7 +29,7 @@
         android:id="@+id/eventPerson"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/in_row_padding"
+        android:layout_marginStart="@dimen/between_row_padding"
         android:paddingHorizontal="@dimen/in_row_button_padding"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
         app:layout_constraintEnd_toStartOf="@id/favoriteButton"
@@ -40,7 +41,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/in_row_padding"
-        android:layout_marginStart="@dimen/in_row_padding"
         android:paddingHorizontal="@dimen/in_row_button_padding"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
         app:layout_constraintEnd_toStartOf="@id/favoriteButton"
@@ -58,8 +58,8 @@
         android:focusable="true"
         android:paddingVertical="@dimen/in_row_button_padding"
         android:src="@drawable/animated_to_favorite"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/eventDate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/eventPerson" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
