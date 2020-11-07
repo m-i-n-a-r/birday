@@ -101,6 +101,9 @@
     <string name="surname_first">Surname first</string>
     <string name="surname_first_description_on">Show the surname before the name</string>
     <string name="surname_first_description_off">Show the name before the surname</string>
+    <string name="hide_images">Hide images</string>
+    <string name="hide_images_description_on">Event images hidden</string>
+    <string name="hide_images_description_off">Event images visible</string>
 
     <!-- Developer -->
     <string name="dev_name" translatable="false">m.i.n.a.r.</string>

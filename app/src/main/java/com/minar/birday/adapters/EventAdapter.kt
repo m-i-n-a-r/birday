@@ -15,6 +15,7 @@ import com.minar.birday.fragments.HomeFragment
 import com.minar.birday.R
 import com.minar.birday.model.EventResult
 import com.minar.birday.listeners.OnItemClickListener
+import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getReducedDate
 import kotlinx.android.synthetic.main.event_row.view.*
@@ -52,6 +53,7 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapte
         private val favoriteButton: ImageView = view.favoriteButton
         private val eventPerson: TextView = view.eventPerson
         private val eventDate: TextView = view.eventDate
+        private val eventImage: ImageView = view.eventImage
 
         init {
             view.setOnClickListener(this)
@@ -69,6 +71,19 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapte
             else getReducedDate(event.originalDate).capitalize(Locale.getDefault())
             eventPerson.text = formattedPersonName
             eventDate.text = originalDate
+
+            // Manage the image
+            val hideImages = sharedPrefs.getBoolean("hide_images", false)
+            if (hideImages) eventImage.visibility = View.GONE
+            else {
+                eventImage.visibility = View.VISIBLE
+                if (event.image != null && event.image.isNotEmpty()) {
+                    eventImage.setImageBitmap(byteArrayToBitmap(event.image))
+                    eventImage.setOnClickListener {
+                        println("clicked") // TODO remove
+                    }
+                }
+            }
 
             // Manage the favorite logic
             if(event.favorite == false) favoriteButton.setImageResource(R.drawable.animated_to_favorite)

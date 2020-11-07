@@ -195,7 +195,7 @@
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:overScrollMode="never"
-        android:paddingVertical="@dimen/recycler_padding"
+        android:paddingVertical="@dimen/recycler_extra_space_vertical"
         android:scrollbarSize="0dp"
         android:scrollbarStyle="outsideOverlay"
         app:fastScrollEnabled="true"

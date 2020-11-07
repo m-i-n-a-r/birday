@@ -31,6 +31,14 @@
 
         <SwitchPreference
             android:defaultValue="false"
+            android:key="hide_images"
+            android:summaryOff="@string/hide_images_description_off"
+            android:summaryOn="@string/hide_images_description_on"
+            android:title="@string/hide_images"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreference
+            android:defaultValue="false"
             android:key="surname_first"
             android:summaryOff="@string/surname_first_description_off"
             android:summaryOn="@string/surname_first_description_on"
