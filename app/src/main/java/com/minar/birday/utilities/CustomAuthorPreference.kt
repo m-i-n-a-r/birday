@@ -38,7 +38,7 @@ class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
         // Make the icons clickable
         val logo = v.findViewById<ImageView>(R.id.imageMinar)
         val l1 = v.findViewById<ImageView>(R.id.minarig)
-        val l2 = v.findViewById<ImageView>(R.id.minarpp)
+        val l2 = v.findViewById<ImageView>(R.id.minartt)
         val l3 = v.findViewById<ImageView>(R.id.minarps)
         val l4 = v.findViewById<ImageView>(R.id.minargit)
         val l5 = v.findViewById<ImageView>(R.id.minarsite)
@@ -71,9 +71,9 @@ class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
                 val intent1 = Intent(Intent.ACTION_VIEW, uri)
                 context.startActivity(intent1)
             }
-            R.id.minarpp -> {
+            R.id.minartt -> {
                 if (act is MainActivity) act.vibrate()
-                uri = Uri.parse(context.getString(R.string.dev_paypal))
+                uri = Uri.parse(context.getString(R.string.dev_twitter))
                 val intent2 = Intent(Intent.ACTION_VIEW, uri)
                 context.startActivity(intent2)
             }
