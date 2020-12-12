@@ -36,6 +36,7 @@ import kotlinx.android.synthetic.main.dialog_stats.view.*
 import kotlinx.android.synthetic.main.fragment_favorites.view.*
 import kotlin.math.min
 
+
 class FavoritesFragment : Fragment() {
     private lateinit var rootView: View
     private lateinit var recyclerView: RecyclerView
@@ -55,7 +56,7 @@ class FavoritesFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val v: View = inflater.inflate(R.layout.fragment_favorites, container, false)
         val statsImage = v.findViewById<ImageView>(R.id.statsImage)
         val shimmer = v.findViewById<ShimmerFrameLayout>(R.id.favoritesCardShimmer)
@@ -72,14 +73,13 @@ class FavoritesFragment : Fragment() {
 
         // Vibration on the mini fab (with manual managing of the transition)
         favoritesMiniFab.setOnClickListener {
+            act.vibrate()
             when (favoriteMotionLayout.progress) {
                 0.0F -> {
-                    act.vibrate()
                     favoriteMotionLayout.transitionToEnd()
                     sharedPrefs.edit().putFloat("favorite_motion_state", 1.0F).apply()
                 }
                 1.0F -> {
-                    act.vibrate()
                     favoriteMotionLayout.transitionToStart()
                     sharedPrefs.edit().putFloat("favorite_motion_state", 0.0F).apply()
                 }
