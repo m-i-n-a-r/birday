@@ -84,7 +84,7 @@
     <string name="import_failed">Something went wrong!</string>
     <string name="missing_permission_contacts">The contact permission was denied. Try again or activate the permission manually,
     or the contacts import won\'t work!</string>
-    <string name="missing_permission_contacts_forever">Birday can't ask for permission to import contacts,
+    <string name="missing_permission_contacts_forever">Birday can\'t ask for permission to import contacts,
     since you checked "never ask again". Enable it manually!</string>
     <string name="birday_import_title">Import a Birday backup</string>
     <string name="birday_import_description">Choose a valid Birday backup to restore your birthdays. All existing data
@@ -107,7 +107,7 @@
 
     <!-- Developer -->
     <string name="dev_name" translatable="false">m.i.n.a.r.</string>
-    <string name="dev_description">I\'m a polite guy and I like beautiful things; like animations, icons, sport cars and 3D printing. I work as a designer and computer engineer.</string>
+    <string name="dev_description">I\'m a polite guy and I like beautiful things, like animations, icons, sport cars and 3D printing. I work as a designer and computer engineer.</string>
     <string name="dev_email" translatable="false">minar.tastic@gmail.com</string>
     <string name="dev_personal_site" translatable="false">https://minar.ml</string>
     <string name="dev_instagram" translatable="false">https://www.instagram.com/minar.tastic/</string>

@@ -198,5 +198,8 @@
     <string name="surname_first_description_off">Mostra il nome prima del cognome</string>
     <string name="notes">Note</string>
     <string name="write_something">Scrivi qualcosa…</string>
+    <string name="hide_images">Nascondi immagini</string>
+    <string name="hide_images_description_on">Immagini evento nascoste</string>
+    <string name="hide_images_description_off">Immagini evento visibili</string>
 
 </resources>

@@ -198,4 +198,7 @@
     <string name="surname_first_description_off">Muestra el numbre antes del apellido</string>
     <string name="notes">Notas</string>
     <string name="write_something">Escribe algo…</string>
+    <string name="hide_images">Ocultar imágenes</string>
+    <string name="hide_images_description_on">Imágenes de eventos ocultas</string>
+    <string name="hide_images_description_off">Imágenes de eventos visibles</string>
 </resources>

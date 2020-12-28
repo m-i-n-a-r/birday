@@ -96,6 +96,9 @@
     <string name="surname_first">Nom pour le premier</string>
     <string name="surname_first_description_on">Afficher le nom avant le prénom</string>
     <string name="surname_first_description_off">Afficher le prénom avant le nom</string>
+    <string name="hide_images">Masquer les images</string>
+    <string name="hide_images_description_on">Images d\'événements masquées</string>
+    <string name="hide_images_description_off">Images d\'événements visibles</string>
 
     <!-- Developer -->
     <string name="dev_description">Je suis un gentil garçon et j\'aime les belles choses, comme l\'animation, les icônes, les voitures de sport et l\'impression 3D. Je travaille comme designer et ingénieur informatique.</string>

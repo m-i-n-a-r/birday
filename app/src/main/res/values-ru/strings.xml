@@ -101,6 +101,9 @@
     <string name="surname_first">Фамилия впереди</string>
     <string name="surname_first_description_on">Показывать фамилию перед именем</string>
     <string name="surname_first_description_off">Показывать имя перед фамилией</string>
+    <string name="hide_images">Скрыть изображения</string>
+    <string name="hide_images_description_on">Скрытые изображения событий</string>
+    <string name="hide_images_description_off">Фотографии событий видны</string>
 
     <!-- Developer -->
     <string name="dev_description">Я вежливый парень и люблю красивые вещи - анимации, иконки, спортивные машины и 3D-печать. Я работаю дизайнером и компьютерным инженером.</string>

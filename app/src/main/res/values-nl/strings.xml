@@ -100,6 +100,9 @@
     <string name="surname_first">Achternaam voor eerst</string>
     <string name="surname_first_description_on">Laat de achternaam voor de naam zien</string>
     <string name="surname_first_description_off">Laat de naam voor de achternaam zien</string>
+    <string name="hide_images">Verberg afbeeldingen</string>
+    <string name="hide_images_description_on">Verborgen Evenementafbeeldingen</string>
+    <string name="hide_images_description_off">Evenementafbeeldingen zichtbaar</string>
 
     <!-- Developer -->
     <string name="dev_description">Ik ben een beleefde kerel en ik hou van mooie dingen, zoals animaties, icoontjes, sportauto\'s en 3d printen. Ik werk als een ontwerper en computer ingenieur.</string>

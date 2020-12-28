@@ -95,6 +95,9 @@
     <string name="surname_first">Họ cho đầu tiên</string>
     <string name="surname_first_description_on">Hiển thị họ trước tên</string>
     <string name="surname_first_description_off">Hiển thị tên trước họ</string>
+    <string name="hide_images">Ẩn hình ảnh</string>
+    <string name="hide_images_description_on">Hình ảnh sự kiện ẩn</string>
+    <string name="hide_images_description_off">Hình ảnh sự kiện hiển thị</string>
 
     <!-- Developer -->
     <string name="dev_description">Tôi là một chàng trai lịch sự và thích những thứ đẹp đẽ, như hoạt hình, biểu tượng, xe thể thao và in 3d. Tôi làm việc như một nhà thiết kế và kỹ sư máy tính.</string>

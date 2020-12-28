@@ -96,6 +96,9 @@
     <string name="surname_first">Vezetéknév először</string>
     <string name="surname_first_description_on">Mutassa meg a vezetéknevet a név előtt</string>
     <string name="surname_first_description_off">Mutassa meg a nevet a vezetéknév előtt</string>
+    <string name="hide_images">Képek elrejtése</string>
+    <string name="hide_images_description_on">Rejtett esemény képek</string>
+    <string name="hide_images_description_off">Esemény képek látható</string>
 
     <!-- Developer -->
     <string name="dev_description">Udvarias srác vagyok, és szeretem a szép dolgokat, mint animációk, ikonok, sportkocsik és 3D nyomtatás. Tervezőként és számítógépes mérnökként dolgozom.</string>

@@ -179,6 +179,9 @@
     <string name="search_event">Vyhledávání…</string>
     <string name="notes">Poznámky</string>
     <string name="write_something">Něco napsat…</string>
+    <string name="hide_images">Skrýt obrázky</string>
+    <string name="hide_images_description_on">Skryté obrázky událostí</string>
+    <string name="hide_images_description_off">Viditelné obrázky událostí</string>
     <plurals name="leap_year_total">
         <item quantity="one">Počet osob narozených v přestupném roce je %d</item>
         <item quantity="few">Počet osob narozených v přestupném roce je %d</item>

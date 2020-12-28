@@ -198,5 +198,8 @@
     <string name="surname_first_description_off">Visa namnet före efternamnet</string>
     <string name="notes">Anteckningar</string>
     <string name="write_something">Skriva något…</string>
+    <string name="hide_images">Dölj bilder</string>
+    <string name="hide_images_description_on">Dolda händelsebilder</string>
+    <string name="hide_images_description_off">Händelsebilder syns</string>
 
 </resources>
