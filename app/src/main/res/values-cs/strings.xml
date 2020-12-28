@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Birday</string>
     <string name="app_welcome">Vítejte v Birday</string>
     <string name="app_name_extended">Birday - Správce narozenin</string>
     <string name="leave_review_title">Recenze Birday</string>
