@@ -16,7 +16,7 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 
 | LANGUAGE           | STATUS   | SPECIAL THANKS | IMPROVED BY                 |
 |:-------------------|:--------:|:---------------|:----------------------------|
-| **English**        | complete | myself         | ar-maged                    |
+| **English**        | complete | myself         | ar-maged, Commenter25       |
 | **Spanish**        | complete | myself         | myself                      |
 | **Svedish**        | complete | SlowNicoFish   |                             |
 | **Dutch**          | complete | stefanvi       |                             |
