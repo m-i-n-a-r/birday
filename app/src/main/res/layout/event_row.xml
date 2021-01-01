@@ -24,7 +24,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/eventPerson"
         app:shapeAppearanceOverlay="@style/roundedImageView"
-        app:strokeColor="?colorAccent"
+        app:strokeColor="@color/goodGray"
         app:strokeWidth="@dimen/card_stroke" />
 
     <TextView
@@ -32,6 +32,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/in_row_button_padding"
+        android:paddingVertical="@dimen/in_row_padding"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
         app:layout_constraintEnd_toStartOf="@id/favoriteButton"
         app:layout_constraintStart_toEndOf="@id/eventImage"
@@ -41,8 +42,8 @@
         android:id="@+id/eventDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/in_row_padding"
         android:paddingHorizontal="@dimen/in_row_button_padding"
+        android:paddingVertical="@dimen/in_row_padding"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
         app:layout_constraintEnd_toStartOf="@id/favoriteButton"
         app:layout_constraintStart_toStartOf="@id/eventPerson"

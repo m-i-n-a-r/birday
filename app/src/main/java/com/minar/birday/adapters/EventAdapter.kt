@@ -72,8 +72,9 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapte
             eventPerson.text = formattedPersonName
             eventDate.text = originalDate
 
-            // Manage the image
-            val hideImages = sharedPrefs.getBoolean("hide_images", false)
+            // Manage the image TODO still wip, always hidden
+            //val hideImages = sharedPrefs.getBoolean("hide_images", false)
+            val hideImages = true
             if (hideImages) eventImage.visibility = View.GONE
             else {
                 // Set a small margin programmatically
@@ -85,9 +86,7 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapte
                 eventImage.visibility = View.VISIBLE
                 if (event.image != null && event.image.isNotEmpty()) {
                     eventImage.setImageBitmap(byteArrayToBitmap(event.image))
-                    eventImage.setOnClickListener {
-                        println("clicked") // TODO remove
-                    }
+                    //eventImage.setOnClickListener {}
                 }
             }
 
