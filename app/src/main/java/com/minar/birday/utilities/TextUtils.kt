@@ -20,6 +20,7 @@ fun checkString(submission: String): Boolean {
     if (submission.contains("-\'")) return false
     loop@ for (s in submission.replace("\\s".toRegex(), "")) {
         when {
+            s.isSurrogate() -> continue@loop
             s.isLetter() -> continue@loop
             s == '-' && !hyphenFound -> hyphenFound = true
             s == '\'' && !apostropheFound -> apostropheFound = true
