@@ -11,17 +11,17 @@ fun String.smartCapitalize(): String {
         .split("-").joinToString("-") { it.capitalize(Locale.ROOT) }
 }
 
-// Simply checks if the string is written using only letters and at most one apostrophe and one hypen
+// Simply checks if the string is written using only letters, emoticons and at most one apostrophe and one hyphen
 fun checkString(submission: String): Boolean {
     var apostropheFound = false
-    var hypenFound = false
+    var hyphenFound = false
     if (submission == "\'") return false
     if (submission.startsWith('-')) return false
     if (submission.contains("-\'")) return false
     loop@ for (s in submission.replace("\\s".toRegex(), "")) {
         when {
             s.isLetter() -> continue@loop
-            s == '-' && !hypenFound -> hypenFound = true
+            s == '-' && !hyphenFound -> hyphenFound = true
             s == '\'' && !apostropheFound -> apostropheFound = true
             else -> return false
         }

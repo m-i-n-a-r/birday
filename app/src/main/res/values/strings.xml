@@ -243,7 +243,7 @@
     <!-- Search -->
     <string name="search_event">Search…</string>
     <string name="search_no_result_title">No results found</string>
-    <string name="search_no_result_description">Your search string doesn\'t match any event that you've added!</string>
+    <string name="search_no_result_description">Your search string doesn\'t match any event that you\'ve added!</string>
 
     <!-- Notes -->
     <string name="notes">Notes</string>
