@@ -6,6 +6,6 @@
     android:minHeight="@dimen/widget_min_height"
     android:previewImage="@drawable/birday_widget_preview"
     android:resizeMode="horizontal|vertical"
-    android:updatePeriodMillis="21600000"
+    android:updatePeriodMillis="10800000"
     android:widgetCategory="home_screen" />
-    <!-- Updated every 6 hours, minimum size is 3 * 1 -->
+    <!-- Updated every 3 hours, minimum size is 3 * 1 -->
