@@ -59,4 +59,6 @@
     <dimen name="shimmer_highlight_alpha">0.15</dimen>
     <dimen name="shimmer_base_alpha">1</dimen>
     <dimen name="shimmer_dropoff">50</dimen>
+    <dimen name="widget_min_width">160dp</dimen>
+    <dimen name="widget_min_height">40dp</dimen>
 </resources>
