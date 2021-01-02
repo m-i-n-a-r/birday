@@ -1,0 +1,7 @@
+- Fixed an important bug involving leap years
+- Notes improved, an icon is shown if the event has a note
+- Decreased widget minimum size, improved update behavior
+- Emoji allowed in name and last name fields
+- Long press on the round buttons when the card is hidden to open the corresponding menu
+- Portuguese translation, typos fixed
+- Other fixes and improvements
