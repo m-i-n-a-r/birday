@@ -121,8 +121,8 @@
     <string name="new_event_description">Enter a person you care about, and Birday will help you to remember their birthday!</string>
     <string name="insert_event">Insert birthday</string>
     <string name="cancel">Cancel</string>
-    <string name="insert_name_hint">Insert name</string>
-    <string name="insert_surname_hint">Insert surname</string>
+    <string name="insert_name_hint">Insert First Name</string>
+    <string name="insert_surname_hint">Insert Last Name</string>
     <string name="insert_date_hint">Select a date</string>
     <string name="invalid_value_name">Invalid name. Numbers and symbols aren\'t allowed!</string>
     <string name="consider_year">Consider the year</string>
