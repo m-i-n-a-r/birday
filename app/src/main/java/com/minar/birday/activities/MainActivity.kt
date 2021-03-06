@@ -24,8 +24,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
-import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
 import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
@@ -113,7 +113,26 @@ class MainActivity : AppCompatActivity() {
         val navController: NavController = Navigation.findNavController(this,
             R.id.navHostFragment
         )
-        navigation.setupWithNavController(navController)
+        // Only way to use custom animations with the bottom navigation bar
+        val options = NavOptions.Builder()
+            .setLaunchSingleTop(true)
+            .setEnterAnim(R.anim.nav_enter_anim)
+            .setExitAnim(R.anim.nav_exit_anim)
+            .setPopEnterAnim(R.anim.nav_pop_enter_anim)
+            .setPopExitAnim(R.anim.nav_pop_exit_anim)
+            .setPopUpTo(navController.graph.startDestination, false)
+            .build()
+        navigation.setOnNavigationItemSelectedListener { item ->
+            when(item.itemId) {
+                R.id.navigationMain ->
+                    navController.navigate(R.id.navigationMain,null,options)
+                R.id.navigationFavorites ->
+                    navController.navigate(R.id.navigationFavorites,null,options)
+                R.id.navigationSettings ->
+                    navController.navigate(R.id.navigationSettings,null,options)
+            }
+            true
+        }
         navigation.setOnNavigationItemReselectedListener {
             // Just ignore the reselection of the same item
         }
