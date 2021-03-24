@@ -1,55 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_welcome">Bienvenido a Birday</string>
-    <string name="app_name_extended">Birday - Gerente de cumpleaños</string>
-    <string name="leave_review_title">Reseña Birday</string>
-    <string name="leave_review_subtitle">Deja un comentario para ayudarme con la aplicación. ¡Recuerde que, aparte de las donaciones, esta aplicación es completamente gratuita y sin publicidad!</string>
-    <string name="yes_review">¡Revisión!</string>
-    <string name="later">Luego, lo juro</string>
-    <string name="no_thanks">No!</string>
-    <string name="title_home">Home</string>
+
+    <string name="app_welcome">Bienvenido/a a Birday</string>
+    <string name="app_name_extended">Birday - Gestor de cumpleaños</string>
+    <string name="leave_review_title">Valora Birday</string>
+    <string name="leave_review_subtitle">Apoya la aplicación dejando una valoración. Ten en cuenta que, aparte de las donaciones, esta aplicación es completamente gratuita y no contiene anuncios.</string>
+    <string name="yes_review">¡Claro!</string>
+    <string name="later">Más tarde</string>
+    <string name="no_thanks">No, gracias</string>
+    <string name="title_home">Inicio</string>
     <string name="title_favorites">Favoritos</string>
-    <string name="title_settings">Opciones</string>
-    <string name="no_events">¡No cumpleaños! ¡Comience agregando uno usando el botón de abajo!</string>
-    <string name="no_favorites">¡No hay favoritos! ¡Presiona la estrella para salvar a una persona en tus favoritos!</string>
-    <string name="add_favorite">Agregar a favoritos</string>
+    <string name="title_settings">Ajustes</string>
+    <string name="no_events">¡No hay cumpleaños! Añade uno usando el botón de abajo</string>
+    <string name="no_favorites">¡Nadie en favoritos! Pulsa la estrella para añadir a una persona a favoritos</string>
+    <string name="add_favorite">Añadir a favoritos</string>
     <string name="stats">Estadísticas</string>
-    <string name="no_stats">¡No hay estadísticas para mostrar!</string>
-    <string name="stats_summary">Resumen de estadísticas</string>
-    <string name="no_stats_description">No tienes suficientes cumpleaños para mostrar las estadísticas. ¡Agregue un poco y regrese más tarde!</string>
+    <string name="no_stats">¡No hay estadísticas que mostrar!</string>
+    <string name="stats_summary">Resumen de las estadísticas</string>
+    <string name="no_stats_description">No hay suficientes cumpleaños para generar estadísticas. Añade algunos y vuelve más tarde.</string>
     <plurals name="stats_total">
-        <item quantity="one">Birday te està ayudando a recordar un total de %d cumpleaños</item>
-        <item quantity="other">Birday te està ayudando a recordar un total de %d cumpleaños</item>
+        <item quantity="one">Birday te está ayudando a recordar %d cumpleaños en total</item>
+        <item quantity="other">Birday te está ayudando a recordar %d cumpleaños en total</item>
     </plurals>
     <string name="next_event">Próximo evento</string>
-    <string name="no_next_event">¡No hay cumpleaños para mostrar!</string>
-    <string name="no_next_event_description">No ha ingresado ni importado ningún cumpleaños. ¡Agregue uno y deje que Birday lo ayude!</string>
+    <string name="no_next_event">¡No hay cumpleaños que mostrar!</string>
+    <string name="no_next_event_description">No has apuntado ningún cumpleaños aún, ¡añade uno y deja que Birday te ayude!</string>
     <string name="next_age_years">Años</string>
-    <string name="event_others">y otros</string>
+    <string name="event_others">y más</string>
     <plurals name="days_left">
-        <item quantity="one">%d día restante</item>
-        <item quantity="other">%d días restantes</item>
+        <item quantity="one">Falta %d día</item>
+        <item quantity="other">Faltan %d días</item>
     </plurals>
+
+    <!-- Settings -->
     <string name="customization">Personalización</string>
-    <string name="app_behavior">Comportamiento de la app</string>
-    <string name="additional_notification_name">Notificación adicional</string>
-    <string name="additional_notification_description">Envíe una notificación adicional unos días antes del evento. %s</string>
-    <string name="no_additional_notification">Sin notificación adicional</string>
-    <string name="five_days_before">Cinco días antes</string>
-    <string name="one_day_before">Un día antes</string>
-    <string name="two_days_before">Dos días antes</string>
-    <string name="three_days_before">Tres días antes</string>
-    <string name="four_days_before">Cuatro días antes</string>
-    <string name="six_days_before">Seis días antes</string>
-    <string name="seven_days_before">Siete días antes</string>
+    <string name="app_behavior">Ajustes generales</string>
+    <string name="additional_notification_name">Notificación previa</string>
+    <string name="additional_notification_description">Envía una notificación adificional antes del evento. %s</string>
+    <string name="no_additional_notification">Sin notificación previa</string>
+    <string name="one_day_before">1 día antes</string>
+    <string name="two_days_before">2 días antes</string>
+    <string name="three_days_before">3 días antes</string>
+    <string name="four_days_before">4 días antes</string>
+    <string name="five_days_before">5 días antes</string>
+    <string name="six_days_before">6 días antes</string>
+    <string name="seven_days_before">7 días antes</string>
     <string name="vibration_name">Vibración</string>
-    <string name="vibration_description_on">Vibra a la presión de algunos botones</string>
-    <string name="vibration_description_off">Sin vibraciones por presión</string>
-    <string name="date_format_name">Formato de fecha</string>
-    <string name="notification_hour_name">Hora de envio de la notificación</string>
-    <string name="notification_hour_description">%s \n\nTenga en cuenta que la notificación podría no funcionar cuando el sistema mata la aplicación en algunos dispositivos Huawei, Xiaomi y OnePlus. Consulte dontkillmyapp.com para obtener más información.</string>
-    <string name="accent_description">Cambiar el color de acento predeterminado</string>
-    <string name="accent_name">Color de acento</string>
+    <string name="vibration_description_on">Se producen vibraciones al pulsar un botón</string>
+    <string name="vibration_description_off">No se producen vibraciones al pulsar un botón</string>
+    <string name="date_format_name">Formato de la fecha</string>
+    <string name="notification_hour_name">Hora de notificación</string>
+    <string name="notification_hour_description">%s \n\nTen en cuenta que la notificación puede no aparecer en algunos dispositivos Huawei, Xiaomi o OnePlus si el sistema cierra la aplicación. Puedes saber más en la web dontkillmyapp.com</string>
+    <string name="accent_description">Cambia el color principal</string>
+    <string name="accent_name">Color principal</string>
     <string name="theme_description">Usa un tema oscuro, claro o automático</string>
     <string name="theme_name">Tema de la aplicación</string>
     <string name="brown">Marrón</string>
@@ -57,93 +59,123 @@
     <string name="green">Verde</string>
     <string name="orange">Naranja</string>
     <string name="yellow">Amarillo</string>
+    <string name="teal">Turquesa</string>
     <string name="violet">Violeta</string>
     <string name="pink">Rosa</string>
-    <string name="light_blue">Azul claro</string>
+    <string name="light_blue">Celeste</string>
     <string name="red">Rojo</string>
-    <string name="lime">Lime</string>
-    <string name="crimson">Carmesí</string>
-    <string name="dark_theme">Scuro</string>
+    <string name="lime">Verde limón</string>
+    <string name="crimson">Granate</string>
+    <string name="system_theme">Predeterminado</string>
+    <string name="dark_theme">Oscuro</string>
     <string name="light_theme">Claro</string>
-    <string name="teal">Turquesa</string>
-    <string name="system_theme">Default del sistema</string>
-    <string name="import_export">Importación y exportación</string>
-    <string name="import_contacts_title">Importar cumpleaños de contactos</string>
-    <string name="import_contacts_description">¡Cambie los eventos con el año faltante para obtener estadísticas precisas!</string>
-    <string name="import_success">¡Importación completada con éxito!</string>
-    <string name="import_nothing_found">¡No se encontró cumpleaños!</string>
-    <string name="import_failed">¡Algo salió mal!</string>
-    <string name="missing_permission_contacts">Se ha denegado el permiso de lectura de contacto. ¡Intente nuevamente o active el permiso manualmente, o la importación desde los contactos no funcionará!</string>
-    <string name="missing_permission_contacts_forever">Birday no pudo importar sus contactos o pedir permiso, porque lo negó seleccionando no pidas más. ¡Habilítelo manualmente!</string>
-    <string name="birday_import_title">Importar un backup de Birday</string>
-    <string name="birday_import_description">Elija un archivo de backup de Birday para restaurar manualmente sus cumpleaños. ¡Los datos actualmente presentes se sobrescribirán!</string>
+    <string name="shimmer_name">Efectos de brillo</string>
+    <string name="shimmer_description_on">Brilli brilli por aquí y por allá</string>
+    <string name="shimmer_description_off">Nada de brilli brilli</string>
+    <string name="dark_widget_name">¿Widget oscuro?</string>
+    <string name="dark_widget_description_on">El widget usa un tema oscuro</string>
+    <string name="dark_widget_description_off">El widget usa un tema claro</string>
+    <string name="import_export">Importar y exportar</string>
+    <string name="import_contacts_title">Importar cumpleaños desde contactos</string>
+    <string name="import_contacts_description">No olvides modificar los eventos con los años que falten para tener estadísticas más precisas</string>
+    <string name="import_success">¡Importado correctamente!</string>
+    <string name="import_nothing_found">¡No se han encontrado cumpleaños!</string>
+    <string name="import_failed">¡Algo ha salido mal!</string>
+    <string name="missing_permission_contacts">No se ha permitido el acceso a contactos. Inténtalo de nuevo o permítelo manualmente si quieres importar desde contactos</string>
+    <string name="missing_permission_contacts_forever">Birday no puede acceder a contactos. Debes permitirlo manualmente</string>
+    <string name="birday_import_title">Importar copia de Birday</string>
+    <string name="birday_import_description">Elige una copia de seguridad de Birday para restaurarla. ¡Todos los datos existentes se sobrescribirán!</string>
     <string name="birday_export_title">Exportar y compartir cumpleaños</string>
-    <string name="birday_export_description">Exporte los cumpleaños disponibles y comparta el backup si lo desea. El archivo se encuentra en Android/data/com.minar.birday/files</string>
+    <string name="birday_export_description">Exporta los cumpleaños disponibles, y compártelos si quieres. El archivo se guardará en la ruta: Android/data/com.minar.birday/files</string>
     <string name="birday_import_success">¡Importación completada!</string>
-    <string name="birday_import_failure">Importación fallida. ¿Elegiste el archivo correcto?</string>
-    <string name="birday_import_invalid_file">Importación fallida. ¡El archivo elegido no es un backup de Birday!</string>
-    <string name="birday_export_success">¡Exportación completada!</string>
-    <string name="birday_export_failure">Exportación fallida. ¡Ooops!</string>
+    <string name="birday_import_failure">Importación fallida ¿Has elegido el archivo correcto?</string>
+    <string name="birday_import_invalid_file">Importación fallida. ¡El archivo elegido no es de Birday!</string>
+    <string name="birday_export_success">Exportación completada!</string>
+    <string name="birday_export_failure">Exportación fallida. ¡Oops!</string>
     <string name="birday_export_nothing_found">¡Nada que exportar!</string>
-    <string name="dev_description">Soy un niño educado y me gustan las cosas bellas, como animaciones, íconos, autos deportivos e impresión 3D. Trabajo como diseñador e ingeniero informático.</string>
+    <string name="surname_first">¿Apellido primero?</string>
+    <string name="surname_first_description_on">Muestra el apellido antes que el nombre</string>
+    <string name="surname_first_description_off">Muestra el nombre antes que el apellido</string>
+    <string name="hide_images">¿Ocultar imágenes?</string>
+    <string name="hide_images_description_on">Imágenes de eventos ocultas</string>
+    <string name="hide_images_description_off">Imágenes de eventos visibles</string>
+
+    <!-- Developer -->
+    <string name="dev_description">Soy un tipo amable al que le gustan las animaciones, los iconos, los coches deportivos y la impresión 3D. Trabajo como diseñador e ingeniero informático.</string>
     <string name="easter_egg">Bonito logo, ¿eh? ;D</string>
+
+    <!-- New event -->
     <string name="new_event">Nuevo cumpleaños</string>
-    <string name="new_event_description">¡Ingrese un nuevo ser querido y Birday lo ayudará a recordar su cumpleaños!</string>
-    <string name="insert_event">Introduce cumpleaños</string>
+    <string name="new_event_description">Escribe la persona que quieras añadir y Birday te ayudará a recordar su cumpleaños</string>
+    <string name="insert_event">Añadir cumpleaños</string>
     <string name="cancel">Cancelar</string>
-    <string name="insert_name_hint">Ingrese nombre</string>
-    <string name="insert_surname_hint">Ingrese apellido</string>
-    <string name="insert_date_hint">Seleccione una fecha</string>
-    <string name="invalid_value_name">Nombre inválido. ¡No se permiten números ni símbolos!</string>
-    <string name="event_actions">Acciónes</string>
-    <string name="event_actions_description">¡aquí puedes eliminar este evento o editarlo fácilmente!</string>
+    <string name="insert_name_hint">Nombre</string>
+    <string name="insert_surname_hint">Apellido</string>
+    <string name="insert_date_hint">Fecha</string>
+    <string name="invalid_value_name">Los números y los símbolos no están permitidos.</string>
+    <string name="consider_year">¿Tener en cuenta el año?</string>
+
+    <!-- Event actions -->
+    <string name="event_actions">Acciones</string>
+    <string name="event_actions_description">Aquí podrás cambiar o eliminar este evento</string>
     <string name="edit_event">Editar evento</string>
     <string name="delete_event">Eliminar evento</string>
-    <string name="share_event">Compartir evento</string>
     <string name="update_event">Actualizar evento</string>
-    <string name="event_apps">App rápidas</string>
-    <string name="event_apps_description">¡Aplicaciones para hacer feliz cumpleaños a los cumpleañeros!</string>
+    <string name="share_event">Compartir evento</string>
+
+    <!-- Event details -->
+    <string name="event_details">Detalles</string>
+    <string name="birth_date">Fecha de nacimiento</string>
+    <string name="next_age">Próximamente cumplirá:</string>
+    <string name="zodiac_sign">Signo del zodiaco:</string>
+    <string name="chinese_zodiac_sign">Signo del zodiaco chino:</string>
+
+    <!-- Quick apps -->
+    <string name="event_apps">Aplicaciones</string>
+    <string name="event_apps_description">Algunas aplicaciones con las que poder felicitar los cumpleaños</string>
     <string name="whatsapp">Whatsapp</string>
     <string name="telegram">Telegram</string>
-    <string name="textMessage">Mensaje sms</string>
+    <string name="textMessage">Mensaje SMS</string>
     <string name="dialer">Teléfono</string>
-    <string name="wishes">¡Los mejores deseos!</string>
-    <string name="no_default_dialer">¡No se encontró ninguna aplicación de teléfono predeterminada!</string>
-    <string name="no_default_sms">¡No se encontró ninguna aplicación de mensaje predeterminada!</string>
-    <string name="did_you_know">¿Sabía usted?</string>
-    <string name="age_average">La edad promedio es</string>
-    <string name="oldest_person">La persona mayor es</string>
+    <string name="wishes">¡Feliz cumpleaños!</string>
+    <string name="no_default_dialer">¡No se ha encontrado la aplicación Teléfono!</string>
+    <string name="no_default_sms">¡No se ha encontrado la aplicación Mensajes!</string>
+
+    <!-- Statistics -->
+    <string name="did_you_know">¿Sabías que…?</string>
+    <string name="age_average">La edad media es de</string>
+    <string name="oldest_person">La persona más mayor es</string>
     <string name="youngest_person">La persona más joven es</string>
-    <string name="most_common_month">El mes de nacimiento más común es</string>
-    <string name="most_common_decade">La década de nacimiento más común es</string>
-    <string name="most_common_age_range">El grupo de edad más común es</string>
-    <string name="special_ages">Se acerca un cumpleaños importante</string>
-    <string name="random_zodiac_sign">Signo del zodiaco de</string>
+    <string name="most_common_month">El mes en el que más cumplen es</string>
+    <string name="most_common_decade">La década en la que más cumplen es</string>
+    <string name="most_common_age_range">El rango de edad más común es de</string>
+    <string name="special_ages">Un cumpleaños importante es el de</string>
+    <string name="random_zodiac_sign">Signo zodiacal de</string>
     <string name="most_common_zodiac_sign">El signo zodiacal más común es</string>
-    <string name="random_day_of_week">nació en</string>
-    <string name="most_common_day_of_week">El día de la semana de nacimiento más común es</string>
+    <string name="random_day_of_week">nació el</string>
+    <string name="most_common_day_of_week">El día en el que más cumplen es el</string>
     <plurals name="leap_year_total">
-        <item quantity="one">El número de personas nacidas en un año bisiesto es %d</item>
-        <item quantity="other">El número de personas nacidas en un año bisiesto es %d</item>
+        <item quantity="one">Hay %d persona nacida en año bisiesto</item>
+        <item quantity="other">Hay %d personas nacidas en año bisiesto</item>
     </plurals>
-    <string name="random_chinese_year">Signo del zodiaco chino de</string>
-    <string name="chinese_zodiac_rat">ratón</string>
-    <string name="chinese_zodiac_ox">buey</string>
-    <string name="chinese_zodiac_tiger">tigre</string>
-    <string name="chinese_zodiac_rabbit">conejo</string>
-    <string name="chinese_zodiac_dragon">dragón</string>
-    <string name="chinese_zodiac_snake">serpiente</string>
-    <string name="chinese_zodiac_horse">caballo</string>
-    <string name="chinese_zodiac_goat">cabra</string>
-    <string name="chinese_zodiac_monkey">mono</string>
-    <string name="chinese_zodiac_rooster">gallo</string>
-    <string name="chinese_zodiac_dog">perro</string>
-    <string name="chinese_zodiac_pig">cerdo</string>
+    <string name="random_chinese_year">Signo zodiacal chino de</string>
+    <string name="chinese_zodiac_rat">la rata</string>
+    <string name="chinese_zodiac_ox">el buey</string>
+    <string name="chinese_zodiac_tiger">el tigre</string>
+    <string name="chinese_zodiac_rabbit">el conejo</string>
+    <string name="chinese_zodiac_dragon">el dragón</string>
+    <string name="chinese_zodiac_snake">la serpiente</string>
+    <string name="chinese_zodiac_horse">el caballo</string>
+    <string name="chinese_zodiac_goat">la cabra</string>
+    <string name="chinese_zodiac_monkey">el mono</string>
+    <string name="chinese_zodiac_rooster">el gallo</string>
+    <string name="chinese_zodiac_dog">el perro</string>
+    <string name="chinese_zodiac_pig">el cerdo</string>
     <string name="zodiac_sagittarius">sagitario</string>
     <string name="zodiac_capricorn">capricornio</string>
+    <string name="zodiac_aquarius">acuario</string>
     <string name="zodiac_pisces">piscis</string>
     <string name="zodiac_aries">aries</string>
-    <string name="zodiac_aquarius">acuario</string>
     <string name="zodiac_taurus">tauro</string>
     <string name="zodiac_gemini">géminis</string>
     <string name="zodiac_cancer">cáncer</string>
@@ -151,54 +183,49 @@
     <string name="zodiac_virgo">virgo</string>
     <string name="zodiac_libra">libra</string>
     <string name="zodiac_scorpio">escorpio</string>
+
+    <!-- Common words -->
     <plurals name="months">
         <item quantity="one">%d mes</item>
         <item quantity="other">%d meses</item>
     </plurals>
-    <string name="tomorrow">¡Mañana!</string>
     <string name="today">¡Hoy!</string>
     <string name="yesterday">¡Ayer!</string>
+    <string name="tomorrow">¡Mañana!</string>
     <plurals name="years">
         <item quantity="one">%d año</item>
         <item quantity="other">%d años</item>
     </plurals>
     <string name="born_in">nacido en</string>
     <string name="and">y</string>
-    <string name="events_notification_channel">Recordatorios de Eventos</string>
+
+    <!-- Notifications -->
+    <string name="events_notification_channel">Recordatorio de evento</string>
     <string name="events_channel_description">Recordatorio de los próximos cumpleaños de Birday</string>
-    <string name="notification_title">Recordatorio Birday</string>
+    <string name="notification_title">Recordatorio de Birday</string>
     <string name="notification_description_part_1">Hola, los cumpleaños de hoy son</string>
     <string name="notification_description_part_2">¡Que tengas un buen día!</string>
-    <string name="additional_notification_text">¡Cumpleaños llegarán pronto!</string>
-    <string name="slide_one_title">¡Bienvenido a Birday!</string>
-    <string name="slide_one_description">¡Birday es una aplicación simple y ligera para gestionar eventos importantes! Puede usarlo para recordar y recolectar los cumpleaños de las personas que ama, de manera confiable y rápida.</string>
-    <string name="slide_two_title">Gratis, simple y personalizable</string>
-    <string name="slide_two_description">Birday es gratis, sin publicidad y de código abierto. Proporciona un conjunto de estadísticas, un sistema de favoritos y una interfaz personalizable. ¡Con soporte y actualizaciones garantizadas!</string>
-    <string name="slide_three_title">Importar desde los contactos</string>
-    <string name="slide_three_description">También puede importar cumpleaños que ya haya guardado de sus contactos. Birday puede hacerlo por usted, solo tiene que dar permiso de lectura al contacto. ¡Buena diversión!</string>
-    <string name="appwidget_upcoming">Cumpleaños que vienen pronto</string>
-    <string name="add_widget">Birday - próximamente</string>
-    <string name="event_details">Detalles</string>
-    <string name="next_age">Próxima edad:</string>
-    <string name="birth_date">Fecha de nacimiento</string>
-    <string name="zodiac_sign">Signo del zodiaco:</string>
-    <string name="chinese_zodiac_sign">Signo del zodiaco chino:</string>
-    <string name="shimmer_name">Efecto de brillo</string>
-    <string name="shimmer_description_on">Una animación brillante aquí y allá en la aplicación</string>
-    <string name="shimmer_description_off">Sin efectos gráficos adicionales</string>
-    <string name="dark_widget_name">Widget oscuro</string>
-    <string name="dark_widget_description_on">El widget usa un tema oscuro</string>
-    <string name="dark_widget_description_off">El widget usa un tema claro</string>
-    <string name="search_event">Busca…</string>
-    <string name="search_no_result_title">No hay resultados</string>
-    <string name="search_no_result_description">¡Su cadena de búsqueda no coincide con ningún evento en la base de datos de Birday!</string>
-    <string name="consider_year">Considere el año</string>
-    <string name="surname_first">Primer apellido</string>
-    <string name="surname_first_description_on">Muestra el apellido antes del nombre</string>
-    <string name="surname_first_description_off">Muestra el numbre antes del apellido</string>
+    <string name="additional_notification_text">¡Próximos cumpleaños!</string>
+
+    <!-- Introduction slides -->
+    <string name="slide_one_title">¡Bienvenido/a a Birday!</string>
+    <string name="slide_one_description">Birday es una aplicación sencilla y ligera que permite gestionar eventos importantes. Puedes utilizarla para registrar y recordar los cumpleaños de tus allegados, de forma rápida y segura.</string>
+    <string name="slide_two_title">Gratis, fácil y personalizable</string>
+    <string name="slide_two_description">Birday es gratuita, de código abierto y no tiene publicidad. Cuenta con estadísticas, sistema de favoritos y una interfaz personalizable. ¡Y con soporte y actualizaciones garantizadas!</string>
+    <string name="slide_three_title">Importar desde contactos</string>
+    <string name="slide_three_description">También puedes importar los cumpleaños que ya tengas guardados en tus contactos. Birday puede hacerlo por ti, solo tienes que permitir el acceso a tus contactos. ¡Que lo disfrutes!</string>
+
+    <!-- Widget -->
+    <string name="appwidget_upcoming">Próximos cumpleaños</string>
+    <string name="add_widget">Birday - Cumpleaños</string>
+
+    <!-- Search -->
+    <string name="search_event">Buscar…</string>
+    <string name="search_no_result_title">Sin resultados</string>
+    <string name="search_no_result_description">El texto introducido no coincide con ningún evento que hayas añadido</string>
+
+    <!-- Notes -->
     <string name="notes">Notas</string>
-    <string name="write_something">Escribe algo…</string>
-    <string name="hide_images">Ocultar imágenes</string>
-    <string name="hide_images_description_on">Imágenes de eventos ocultas</string>
-    <string name="hide_images_description_off">Imágenes de eventos visibles</string>
+    <string name="write_something">Escribe alguna nota…</string>
+
 </resources>
