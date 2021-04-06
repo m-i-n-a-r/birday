@@ -4,7 +4,7 @@ An open source app to remember birthdays and events without having to open Faceb
 
 <p align='center'>
   <a href='https://github.com/m-i-n-a-r/birday/blob/master/LICENSE.md'><img src='https://img.shields.io/cocoapods/l/AFNetworking.svg'/></a>
-  <img src='https://img.shields.io/badge/version-1.10.X-blue'/>
+  <img src='https://img.shields.io/badge/version-1.11.X-blue'/>
 	<img src='https://img.shields.io/badge/status-released-success'/>
 	<img src='https://img.shields.io/badge/-translations%20needed!-yellow'/>
 </p>
@@ -14,20 +14,21 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 
 ## Translations
 
-| LANGUAGE           | STATUS   | SPECIAL THANKS | IMPROVED BY                 |
-|:-------------------|:--------:|:---------------|:----------------------------|
-| **English**        | complete | myself         | ar-maged, Commenter25       |
-| **Spanish**        | complete | myself         | Joseahfer                   |
-| **Svedish**        | complete | SlowNicoFish   |                             |
-| **Dutch**          | complete | stefanvi       |                             |
-| **Italian**        | complete | myself         | myself                      |
-| **French**         | complete | Mattis Biton   |                             |
-| **Hungarian**      | complete | Obi            |                             |
-| **German**         | complete | pizzapastamix  | WrstFngr, AlexanderRitter02 |
-| **Vietnamese**     | complete | Lee Huynh      |                             |
-| **Russian**        | complete | koterpillar    |                             |
-| **Czech**          | complete | Miloš Koliáš   |                             |
-| **Portuguese**     | complete | BadJuice67     |                             |
+| LANGUAGE           | STATUS       | SPECIAL THANKS | UPDATED BY                  |
+|:-------------------|:------------:|:---------------|:----------------------------|
+| **English**        | complete     | myself         | ar-maged, Commenter25       |
+| **Spanish**        | complete     | myself         | Joseahfer                   |
+| **Svedish**        | needs update | SlowNicoFish   |                             |
+| **Dutch**          | needs update | stefanvi       |                             |
+| **Italian**        | complete     | myself         | myself                      |
+| **French**         | needs update | Mattis Biton   |                             |
+| **Hungarian**      | needs update | Obi            |                             |
+| **German**         | needs update | pizzapastamix  | WrstFngr, AlexanderRitter02 |
+| **Vietnamese**     | needs update | Lee Huynh      |                             |
+| **Russian**        | needs update | koterpillar    |                             |
+| **Czech**          | needs update | Miloš Koliáš   |                             |
+| **Portuguese**     | needs update | smarquespt     |                             |
+| **Brazilian**      | needs update | BadJuice67     |                             |
 
 ## Features
 - Notification the day of the event, in a customizable time range
