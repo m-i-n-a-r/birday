@@ -15,6 +15,7 @@ import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.model.EventResult
 import com.minar.birday.activities.SplashActivity
+import com.minar.birday.utilities.formatName
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 import java.util.*
@@ -31,6 +32,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(applicationContext)
         val workHour = sharedPrefs.getString("notification_hour", "8")!!.toInt()
         val additionalNotification = sharedPrefs.getString("additional_notification", "0")!!.toInt()
+        val surnameFirst = sharedPrefs.getBoolean("surname_first", false)
 
         try {
             // Check for upcoming and actual birthdays and send notification
@@ -46,8 +48,17 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                 if (event.nextDate!!.isEqual(LocalDate.now()))
                     actual.add(event)
             }
-            if (anticipated.isNotEmpty()) sendNotification(anticipated, 1, true)
-            if (actual.isNotEmpty()) sendNotification(actual, 2)
+            if (anticipated.isNotEmpty()) sendNotification(
+                anticipated,
+                1,
+                surnameFirst,
+                true,
+            )
+            if (actual.isNotEmpty()) sendNotification(
+                actual,
+                2,
+                surnameFirst,
+            )
 
             // Set Execution at the time specified + 15 seconds to avoid midnight problems
             dueDate.set(Calendar.HOUR_OF_DAY, workHour)
@@ -70,7 +81,8 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
     private fun sendNotification(
         nextEvents: List<EventResult>,
         id: Int,
-        upcoming: Boolean = false
+        surnameFirst: Boolean,
+        upcoming: Boolean = false,
     ) {
         val intent = Intent(applicationContext, SplashActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -79,8 +91,8 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             PendingIntent.getActivity(applicationContext, 0, intent, 0)
 
         // Distinguish between normal notification and upcoming birthday notification
-        val notificationText = if (!upcoming) formulateNotificationText(nextEvents)
-        else formulateAdditionalNotificationText(nextEvents)
+        val notificationText = if (!upcoming) formulateNotificationText(nextEvents, surnameFirst)
+        else formulateAdditionalNotificationText(nextEvents, surnameFirst)
 
         val builder = NotificationCompat.Builder(applicationContext, "events_channel")
             .setSmallIcon(R.drawable.animated_notification_icon)
@@ -98,19 +110,22 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
     }
 
     // Notification for upcoming events, also considering
-    private fun formulateAdditionalNotificationText(nextEvents: List<EventResult>) =
+    private fun formulateAdditionalNotificationText(
+        nextEvents: List<EventResult>,
+        surnameFirst: Boolean
+    ) =
         applicationContext.getString(R.string.additional_notification_text) + " " + formatEventList(
-            nextEvents
+            nextEvents, surnameFirst
         ) + ". "
 
     // Notification for actual events
-    private fun formulateNotificationText(nextEvents: List<EventResult>) =
+    private fun formulateNotificationText(nextEvents: List<EventResult>, surnameFirst: Boolean) =
         applicationContext.getString(R.string.notification_description_part_1) + ": " + formatEventList(
-            nextEvents
+            nextEvents, surnameFirst
         ) + ". " + applicationContext.getString(R.string.notification_description_part_2)
 
     // Given a series of events, format them considering the yearMatters parameter and the number
-    private fun formatEventList(events: List<EventResult>): String {
+    private fun formatEventList(events: List<EventResult>, surnameFirst: Boolean): String {
         var formattedEventList = ""
         events.forEach {
             // Years. They're not used in the string if the year doesn't matter
@@ -119,10 +134,10 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             if (events.indexOf(it) in 0..2) {
                 // If the event is not the first, add an extra comma
                 if (events.indexOf(it) != 0) formattedEventList += ", "
-                formattedEventList += it.name
-                // Show the last name if there's only one event and the last name exists
-                if (events.indexOf(it) == 0 && events.size == 1 && !it.surname.isNullOrEmpty())
-                    formattedEventList += " ${it.surname}"
+                // Show the last name, if any, if there's only one event
+                formattedEventList += if (events.size == 1)
+                    formatName(it, surnameFirst)
+                else it.name
                 // If the year is considered, display it. Else only display the name
                 if (it.yearMatter!!) formattedEventList += ", " +
                         applicationContext.resources.getQuantityString(
@@ -131,7 +146,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                             years
                         )
             }
-            // If more thant 3 events, just let the user know other events are in the list
+            // If more than 3 events, just let the user know other events are in the list
             if (events.indexOf(it) == 3) ", " + applicationContext.getString(R.string.event_others)
         }
         return formattedEventList
