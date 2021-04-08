@@ -120,6 +120,9 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                 // If the event is not the first, add an extra comma
                 if (events.indexOf(it) != 0) formattedEventList += ", "
                 formattedEventList += it.name
+                // Show the last name if there's only one event and the last name exists
+                if (events.indexOf(it) == 0 && events.size == 1 && !it.surname.isNullOrEmpty())
+                    formattedEventList += " ${it.surname}"
                 // If the year is considered, display it. Else only display the name
                 if (it.yearMatter!!) formattedEventList += ", " +
                         applicationContext.resources.getQuantityString(
