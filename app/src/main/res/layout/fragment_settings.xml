@@ -43,6 +43,7 @@
         android:layout_weight="0.21"
         android:paddingHorizontal="@dimen/minar_description_padding"
         android:text="@string/dev_description"
+        android:scrollbars="none"
         android:textAlignment="center" />
 
     <LinearLayout
