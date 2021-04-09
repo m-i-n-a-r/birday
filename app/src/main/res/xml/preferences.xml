@@ -29,7 +29,7 @@
             android:title="@string/additional_notification_name"
             app:iconSpaceReserved="false" />
 
-        <!-- TODO missing translations and setting logic
+        <!-- TODO missing setting logic
         <SwitchPreference
             android:defaultValue="false"
             android:key="hide_images"
@@ -37,6 +37,14 @@
             android:summaryOn="@string/hide_images_description_on"
             android:title="@string/hide_images"
             app:iconSpaceReserved="false" />-->
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="notification_only_favorites"
+            android:summaryOff="@string/notification_only_favorites_description_off"
+            android:summaryOn="@string/notification_only_favorites_description_on"
+            android:title="@string/notification_only_favorites"
+            app:iconSpaceReserved="false" />
 
         <SwitchPreference
             android:defaultValue="false"

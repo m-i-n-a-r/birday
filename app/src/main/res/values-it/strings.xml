@@ -201,5 +201,8 @@
     <string name="hide_images">Nascondi immagini</string>
     <string name="hide_images_description_on">Immagini evento nascoste</string>
     <string name="hide_images_description_off">Immagini evento visibili</string>
+    <string name="notification_only_favorites">Solo preferiti</string>
+    <string name="notification_only_favorites_description_on">Manda una notifica solo per gli eventi preferiti</string>
+    <string name="notification_only_favorites_description_off">Manda una notifica per tutti gli eventi inseriti</string>
 
 </resources>

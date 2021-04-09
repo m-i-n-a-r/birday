@@ -33,12 +33,15 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         val workHour = sharedPrefs.getString("notification_hour", "8")!!.toInt()
         val additionalNotification = sharedPrefs.getString("additional_notification", "0")!!.toInt()
         val surnameFirst = sharedPrefs.getBoolean("surname_first", false)
+        val onlyFavorites = sharedPrefs.getBoolean("notification_only_favorites", false)
 
         try {
             // Check for upcoming and actual birthdays and send notification
             val anticipated = mutableListOf<EventResult>()
             val actual = mutableListOf<EventResult>()
             for (event in allEvents) {
+                // Send a notification considering the only favorites option
+                if (onlyFavorites && event.favorite == false) continue
                 if (additionalNotification != 0 && ChronoUnit.DAYS.between(
                         LocalDate.now(),
                         event.nextDate
