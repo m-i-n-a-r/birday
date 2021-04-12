@@ -11,8 +11,6 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/activity_vertical_margin"
-        android:clipChildren="false"
         app:boxBackgroundColor="?android:colorBackground"
         app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
         app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
@@ -37,8 +35,10 @@
             android:maxHeight="@dimen/notes_maximum_height"
             android:maxLength="300"
             android:minHeight="@dimen/notes_minimum_height"
+            android:nestedScrollingEnabled="true"
             android:paddingHorizontal="0dp"
-            android:paddingVertical="@dimen/card_margin"
+            android:paddingVertical="4dp"
+            android:requiresFadingEdge="vertical"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
             android:textCursorDrawable="@drawable/custom_cursor" />
 
