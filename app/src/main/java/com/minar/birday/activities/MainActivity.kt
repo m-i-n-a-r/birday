@@ -32,7 +32,9 @@ import com.afollestad.materialdialogs.WhichButton
 import com.afollestad.materialdialogs.actions.getActionButton
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
-import com.afollestad.materialdialogs.datetime.datePicker
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointBackward
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.minar.birday.R
 import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.backup.BirdayImporter
@@ -109,7 +111,8 @@ class MainActivity : AppCompatActivity() {
 
         // Get the bottom navigation bar and configure it for the navigation plugin
         val navigation = binding.navigation
-        val navController: NavController = Navigation.findNavController(this,
+        val navController: NavController = Navigation.findNavController(
+            this,
             R.id.navHostFragment
         )
         // Only way to use custom animations with the bottom navigation bar
@@ -122,13 +125,13 @@ class MainActivity : AppCompatActivity() {
             .setPopUpTo(navController.graph.startDestination, false)
             .build()
         navigation.setOnNavigationItemSelectedListener { item ->
-            when(item.itemId) {
+            when (item.itemId) {
                 R.id.navigationMain ->
-                    navController.navigate(R.id.navigationMain,null,options)
+                    navController.navigate(R.id.navigationMain, null, options)
                 R.id.navigationFavorites ->
-                    navController.navigate(R.id.navigationFavorites,null,options)
+                    navController.navigate(R.id.navigationFavorites, null, options)
                 R.id.navigationSettings ->
-                    navController.navigate(R.id.navigationSettings,null,options)
+                    navController.navigate(R.id.navigationSettings, null, options)
             }
             true
         }
@@ -145,9 +148,9 @@ class MainActivity : AppCompatActivity() {
             vibrate()
             val dialogBinding = DialogInsertEventBinding.inflate(layoutInflater)
             // Show a bottom sheet containing the form to insert a new event
-            var nameValue  = "error"
+            var nameValue = "error"
             var surnameValue = ""
-            var eventDateValue: LocalDate = LocalDate.of(1970,1,1)
+            var eventDateValue: LocalDate = LocalDate.of(1970, 1, 1)
             var countYearValue = true
             val dialog = MaterialDialog(this, BottomSheet(LayoutMode.WRAP_CONTENT)).show {
                 cornerRadius(res = R.dimen.rounded_corners)
@@ -180,8 +183,10 @@ class MainActivity : AppCompatActivity() {
             val eventDate = dialogBinding.dateEvent
             val countYear = dialogBinding.countYearSwitch
             val endDate = Calendar.getInstance()
+            val startDate = Calendar.getInstance()
+            startDate.set(1500, 1, 1)
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
-            var dateDialog: MaterialDialog? = null
+            var dateDialog: MaterialDatePicker<Long>? = null
 
             // To automatically show the last selected date, parse it to another Calendar object
             val lastDate = Calendar.getInstance()
@@ -193,20 +198,41 @@ class MainActivity : AppCompatActivity() {
 
             eventDate.setOnClickListener {
                 // Prevent double dialogs on fast click
-                if(dateDialog == null) {
-                    dateDialog = MaterialDialog(this).show {
-                        cancelable(false)
-                        cancelOnTouchOutside(false)
-                        datePicker(maxDate = endDate, currentDate = lastDate) { _, date ->
+                if (dateDialog == null) {
+                    // Build constraints
+                    val constraints =
+                        CalendarConstraints.Builder()
+                            .setStart(startDate.timeInMillis)
+                            .setEnd(endDate.timeInMillis)
+                            .setValidator(DateValidatorPointBackward.now())
+                            .build()
+
+                    // Build the dialog itself
+                    dateDialog =
+                        MaterialDatePicker.Builder.datePicker()
+                            .setTitleText(R.string.insert_date_hint)
+                            .setSelection(lastDate.timeInMillis)
+                            .setCalendarConstraints(constraints)
+                            .build()
+
+                    // The user pressed ok
+                    dateDialog!!.addOnPositiveButtonClickListener {
+                        val selection = it
+                        if (selection != null) {
+                            val date = Calendar.getInstance()
+                            date.timeInMillis = selection
                             val year = date.get(Calendar.YEAR)
                             val month = date.get(Calendar.MONTH) + 1
                             val day = date.get(Calendar.DAY_OF_MONTH)
                             eventDateValue = LocalDate.of(year, month, day)
                             eventDate.setText(eventDateValue.format(formatter))
-                            // If ok is pressed, the last selected date is saved if the dialog is reopened
+                            // The last selected date is saved if the dialog is reopened
                             lastDate.set(year, month - 1, day)
                         }
+
                     }
+                    // Show the picker and wait to reset the variable
+                    dateDialog!!.show(supportFragmentManager, "main_act_picker")
                     Handler(Looper.getMainLooper()).postDelayed({ dateDialog = null }, 750)
                 }
             }
@@ -215,20 +241,34 @@ class MainActivity : AppCompatActivity() {
             var nameCorrect = false
             var surnameCorrect = true // Surname is not mandatory
             var eventDateCorrect = false
-            val watcher = object: TextWatcher {
-                override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
-                override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+            val watcher = object : TextWatcher {
+                override fun beforeTextChanged(
+                    charSequence: CharSequence,
+                    i: Int,
+                    i1: Int,
+                    i2: Int
+                ) {
+                }
+
+                override fun onTextChanged(
+                    charSequence: CharSequence,
+                    i: Int,
+                    i1: Int,
+                    i2: Int
+                ) {
+                }
+
                 override fun afterTextChanged(editable: Editable) {
                     when {
                         editable === name.editableText -> {
                             val nameText = name.text.toString()
                             if (nameText.isBlank() || !checkString(nameText)) {
                                 // Setting the error on the layout is important to make the properties work. Kotlin synthetics are being used here
-                                dialogBinding.nameEventLayout.error = getString(R.string.invalid_value_name)
+                                dialogBinding.nameEventLayout.error =
+                                    getString(R.string.invalid_value_name)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                                 nameCorrect = false
-                            }
-                            else {
+                            } else {
                                 nameValue = nameText
                                 dialogBinding.nameEventLayout.error = null
                                 nameCorrect = true
@@ -238,11 +278,11 @@ class MainActivity : AppCompatActivity() {
                             val surnameText = surname.text.toString()
                             if (!checkString(surnameText)) {
                                 // Setting the error on the layout is important to make the properties work. Kotlin synthetics are being used here
-                                dialogBinding.surnameEventLayout.error = getString(R.string.invalid_value_name)
+                                dialogBinding.surnameEventLayout.error =
+                                    getString(R.string.invalid_value_name)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                                 surnameCorrect = false
-                            }
-                            else {
+                            } else {
                                 surnameValue = surnameText
                                 dialogBinding.surnameEventLayout.error = null
                                 surnameCorrect = true
@@ -251,7 +291,9 @@ class MainActivity : AppCompatActivity() {
                         // Once selected, the date can't be blank anymore
                         editable === eventDate.editableText -> eventDateCorrect = true
                     }
-                    if(eventDateCorrect && nameCorrect && surnameCorrect) dialog.getActionButton(WhichButton.POSITIVE).isEnabled = true
+                    if (eventDateCorrect && nameCorrect && surnameCorrect) dialog.getActionButton(
+                        WhichButton.POSITIVE
+                    ).isEnabled = true
                 }
             }
 
@@ -263,34 +305,38 @@ class MainActivity : AppCompatActivity() {
 
     // Create the NotificationChannel. When created the first time, this code does nothing
     private fun createNotificationChannel() {
-        val soundUri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + applicationContext.packageName + "/" + R.raw.birday_notification)
+        val soundUri =
+            Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + applicationContext.packageName + "/" + R.raw.birday_notification)
         val attributes: AudioAttributes = Builder()
             .setUsage(AudioAttributes.USAGE_NOTIFICATION)
             .build()
         val name = getString(R.string.events_notification_channel)
         val descriptionText = getString(R.string.events_channel_description)
         val importance = NotificationManager.IMPORTANCE_HIGH
-        val channel = NotificationChannel("events_channel", name, importance).apply { description = descriptionText }
+        val channel = NotificationChannel("events_channel", name, importance).apply {
+            description = descriptionText
+        }
         // Additional tuning over sound, vibration and notification light
         channel.setSound(soundUri, attributes)
         channel.enableLights(true)
         channel.lightColor = Color.GREEN
         channel.enableVibration(true)
         // Register the channel with the system
-        val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager: NotificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannel(channel)
     }
 
     // Choose a backup registering a callback and following the latest guidelines
-    val selectBackup = registerForActivityResult(ActivityResultContracts.GetContent())  { fileUri: Uri? ->
-        try {
-            val birdayImporter = BirdayImporter(this, null)
-            if (fileUri != null) birdayImporter.importBirthdays(this, fileUri)
+    val selectBackup =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { fileUri: Uri? ->
+            try {
+                val birdayImporter = BirdayImporter(this, null)
+                if (fileUri != null) birdayImporter.importBirthdays(this, fileUri)
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
         }
-        catch (e: IOException) {
-            e.printStackTrace()
-        }
-    }
 
 
     // Some utility functions, used from every fragment connected to this activity
@@ -298,38 +344,67 @@ class MainActivity : AppCompatActivity() {
     // Vibrate using a standard vibration pattern
     fun vibrate() {
         val vib = this.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        if (sharedPrefs.getBoolean("vibration", true)) // Vibrate if the vibration in options is set to on
+        if (sharedPrefs.getBoolean(
+                "vibration",
+                true
+            )
+        ) // Vibrate if the vibration in options is set to on
             vib.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
     }
 
     // Ask contacts permission
     fun askContactsPermission(code: Int = 101): Boolean {
-        return if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_CONTACTS), code)
-                ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED
-            }
-        else true
+        return if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_CONTACTS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.READ_CONTACTS),
+                code
+            )
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_CONTACTS
+            ) == PackageManager.PERMISSION_GRANTED
+        } else true
     }
 
     // Manage user response to permission requests
-    override fun onRequestPermissionsResult(requestCode : Int, permissions: Array<String>, grantResults: IntArray){
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             // Contacts at startup, show a toast only for permission denied (don't ask again not selected)
             101 -> {
                 if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS))
-                        Toast.makeText(this, getString(R.string.missing_permission_contacts), Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this,
+                            getString(R.string.missing_permission_contacts),
+                            Toast.LENGTH_LONG
+                        ).show()
                 }
             }
             // Contacts while trying to import from contacts
             102 -> {
                 if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS))
-                        Toast.makeText(this, getString(R.string.missing_permission_contacts), Toast.LENGTH_LONG).show()
-                    else Toast.makeText(this, getString(R.string.missing_permission_contacts_forever), Toast.LENGTH_LONG).show()
-                }
-                else {
+                        Toast.makeText(
+                            this,
+                            getString(R.string.missing_permission_contacts),
+                            Toast.LENGTH_LONG
+                        ).show()
+                    else Toast.makeText(
+                        this,
+                        getString(R.string.missing_permission_contacts_forever),
+                        Toast.LENGTH_LONG
+                    ).show()
+                } else {
                     val contactImporter = ContactsImporter(this, null)
                     contactImporter.importContacts(this)
                 }

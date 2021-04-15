@@ -10,6 +10,7 @@
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
         <item name="android:navigationBarColor">@color/deepGray</item>
+        <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
     </style>
 
     <!-- Splash screen theme -->
@@ -19,6 +20,20 @@
         <item name="android:colorBackground">@color/colorBackground</item>
         <item name="android:navigationBarColor">@color/goodGray</item>
         <item name="colorAccent">@color/brownAccent</item>
+    </style>
+
+    <!-- Date picker theme -->
+    <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent</item>
+    </style>
+
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+    </style>
+
+    <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerSize">@dimen/rounded_corners</item>
     </style>
 
     <!-- Accent styles for splash screen -->

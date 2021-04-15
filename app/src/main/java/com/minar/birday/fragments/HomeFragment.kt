@@ -36,6 +36,9 @@ import com.afollestad.materialdialogs.actions.getActionButton
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.datetime.datePicker
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointBackward
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.activities.SplashActivity
@@ -483,7 +486,9 @@ class HomeFragment : Fragment() {
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
         eventDate.setText(eventDateValue.format(formatter))
         val endDate = Calendar.getInstance()
-        var dateDialog: MaterialDialog? = null
+        val startDate = Calendar.getInstance()
+        startDate.set(1500, 1, 1)
+        var dateDialog: MaterialDatePicker<Long>? = null
 
         // To automatically show the last selected date, parse it to another Calendar object
         val lastDate = Calendar.getInstance()
@@ -497,19 +502,40 @@ class HomeFragment : Fragment() {
         eventDate.setOnClickListener {
             // Prevent double dialogs on fast click
             if (dateDialog == null) {
-                dateDialog = MaterialDialog(act).show {
-                    cancelable(false)
-                    cancelOnTouchOutside(false)
-                    datePicker(maxDate = endDate, currentDate = lastDate) { _, date ->
+// Build constraints
+                val constraints =
+                    CalendarConstraints.Builder()
+                        .setStart(startDate.timeInMillis)
+                        .setEnd(endDate.timeInMillis)
+                        .setValidator(DateValidatorPointBackward.now())
+                        .build()
+
+                // Build the dialog itself
+                dateDialog =
+                    MaterialDatePicker.Builder.datePicker()
+                        .setTitleText(R.string.insert_date_hint)
+                        .setSelection(lastDate.timeInMillis)
+                        .setCalendarConstraints(constraints)
+                        .build()
+
+                // The user pressed ok
+                dateDialog!!.addOnPositiveButtonClickListener {
+                    val selection = it
+                    if (selection != null) {
+                        val date = Calendar.getInstance()
+                        date.timeInMillis = selection
                         val year = date.get(Calendar.YEAR)
                         val month = date.get(Calendar.MONTH) + 1
                         val day = date.get(Calendar.DAY_OF_MONTH)
                         eventDateValue = LocalDate.of(year, month, day)
                         eventDate.setText(eventDateValue.format(formatter))
-                        // If ok is pressed, the last selected date is saved if the dialog is reopened
+                        // The last selected date is saved if the dialog is reopened
                         lastDate.set(year, month - 1, day)
                     }
+
                 }
+                // Show the picker and wait to reset the variable
+                dateDialog!!.show(parentFragmentManager, "home_picker")
                 Handler(Looper.getMainLooper()).postDelayed({ dateDialog = null }, 750)
             }
         }

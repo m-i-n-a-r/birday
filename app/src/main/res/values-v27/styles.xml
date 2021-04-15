@@ -9,6 +9,7 @@
         <item name="android:colorBackground">@color/colorBackground</item>
         <item name="android:navigationBarColor">@color/colorBackground</item>
         <item name="colorAccent">@color/brownAccent</item>
+        <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
     </style>
 
 </resources>
