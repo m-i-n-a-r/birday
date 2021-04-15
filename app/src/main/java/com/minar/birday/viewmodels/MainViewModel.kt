@@ -19,7 +19,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val workManager = WorkManager.getInstance(application)
     private val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(application)
     val allEvents: LiveData<List<EventResult>>
-    val eventsCount: LiveData<Int>
+    private val eventsCount: LiveData<Int>
     val allFavoriteEvents: LiveData<List<EventResult>>
     val nextEvents: LiveData<List<EventResult>>
     val searchStringLiveData = MutableLiveData<String>()

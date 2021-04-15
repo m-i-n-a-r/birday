@@ -13,12 +13,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.fragments.HomeFragment
 import com.minar.birday.R
+import com.minar.birday.databinding.EventRowBinding
 import com.minar.birday.model.EventResult
 import com.minar.birday.listeners.OnItemClickListener
 import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getReducedDate
-import kotlinx.android.synthetic.main.event_row.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -28,7 +28,8 @@ import java.time.format.FormatStyle
 import java.util.*
 
 
-class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapter<EventResult, EventAdapter.EventViewHolder>(EventsDiffCallback()) {
+class EventAdapter internal constructor(homeFragment: HomeFragment?) :
+    ListAdapter<EventResult, EventAdapter.EventViewHolder>(EventsDiffCallback()) {
     private lateinit var context: Context
     private val fragment = homeFragment
     private val activityScope = CoroutineScope(Dispatchers.Main)
@@ -36,7 +37,9 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapte
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         context = parent.context
-        return EventViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.event_row, parent, false))
+        val binding = EventRowBinding
+            .inflate(LayoutInflater.from(context), parent, false)
+        return EventViewHolder(binding)
     }
 
     @ExperimentalStdlibApi
@@ -49,22 +52,24 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapte
         return super.getItem(position)
     }
 
-    inner class EventViewHolder (view: View) : RecyclerView.ViewHolder(view), View.OnClickListener, View.OnLongClickListener {
-        private val favoriteButton: ImageView = view.favoriteButton
-        private val eventPerson: TextView = view.eventPerson
-        private val eventDate: TextView = view.eventDate
-        private val eventImage: ImageView = view.eventImage
+    inner class EventViewHolder(binding: EventRowBinding) : RecyclerView.ViewHolder(binding.root),
+        View.OnClickListener, View.OnLongClickListener {
+        private val favoriteButton: ImageView = binding.favoriteButton
+        private val eventPerson: TextView = binding.eventPerson
+        private val eventDate: TextView = binding.eventDate
+        private val eventImage: ImageView = binding.eventImage
 
         init {
-            view.setOnClickListener(this)
-            view.setOnLongClickListener(this)
+            binding.root.setOnClickListener(this)
+            binding.root.setOnLongClickListener(this)
         }
 
         // Set every necessary text and click action in each row
         @ExperimentalStdlibApi
         fun bind(event: EventResult) {
             val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context)
-            val formattedPersonName = formatName(event, sharedPrefs.getBoolean("surname_first", false))
+            val formattedPersonName =
+                formatName(event, sharedPrefs.getBoolean("surname_first", false))
             // If the year isn't considered, show only the day and the month
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
             val originalDate = if (event.yearMatter!!) event.originalDate.format(formatter)
@@ -79,7 +84,7 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapte
             else {
                 // Set a small margin programmatically
                 val param = eventPerson.layoutParams as ViewGroup.MarginLayoutParams
-                param.setMargins(8,0,0,0)
+                param.setMargins(8, 0, 0, 0)
                 eventPerson.layoutParams = param
 
                 // Show and load the image, if available, or keep the placeholder
@@ -91,10 +96,10 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapte
             }
 
             // Manage the favorite logic
-            if(event.favorite == false) favoriteButton.setImageResource(R.drawable.animated_to_favorite)
+            if (event.favorite == false) favoriteButton.setImageResource(R.drawable.animated_to_favorite)
             else favoriteButton.setImageResource(R.drawable.animated_from_favorite)
             favoriteButton.setOnClickListener {
-                if(event.favorite == true) {
+                if (event.favorite == true) {
                     event.favorite = false
                     activityScope.launch {
                         delay(800)
@@ -102,8 +107,7 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?): ListAdapte
                         fragment?.updateFavorite(event)
                     }
                     (favoriteButton.drawable as AnimatedVectorDrawable).start()
-                }
-                else {
+                } else {
                     event.favorite = true
                     activityScope.launch {
                         delay(800)

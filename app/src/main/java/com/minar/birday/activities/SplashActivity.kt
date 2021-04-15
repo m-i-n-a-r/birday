@@ -8,10 +8,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import com.minar.birday.R
+import com.minar.birday.databinding.ActivitySplashBinding
 import kotlinx.coroutines.*
 
 
 class SplashActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySplashBinding
 
     private val activityScope = CoroutineScope(Dispatchers.Main)
 
@@ -42,10 +44,12 @@ class SplashActivity : AppCompatActivity() {
         }
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         // Launch the animated splashscreen with a delay to avoid cutting a part of the animation
-        val splash: ImageView = findViewById(R.id.splashImage)
+        val splash: ImageView = binding.splashImage
         splash.setImageResource(R.drawable.animated_birday)
         activityScope.launch {
             delay(150)

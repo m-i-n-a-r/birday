@@ -35,24 +35,21 @@ import com.afollestad.materialdialogs.WhichButton
 import com.afollestad.materialdialogs.actions.getActionButton
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
-import com.afollestad.materialdialogs.customview.getCustomView
 import com.afollestad.materialdialogs.datetime.datePicker
-import com.facebook.shimmer.ShimmerFrameLayout
-import com.google.android.material.switchmaterial.SwitchMaterial
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.activities.SplashActivity
 import com.minar.birday.adapters.EventAdapter
+import com.minar.birday.databinding.DialogAppsEventBinding
+import com.minar.birday.databinding.DialogDetailsEventBinding
+import com.minar.birday.databinding.DialogInsertEventBinding
+import com.minar.birday.databinding.FragmentHomeBinding
 import com.minar.birday.listeners.OnItemClickListener
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidget
-import kotlinx.android.synthetic.main.dialog_apps_event.view.*
-import kotlinx.android.synthetic.main.dialog_details_event.view.*
-import kotlinx.android.synthetic.main.dialog_insert_event.view.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -67,6 +64,14 @@ class HomeFragment : Fragment() {
     lateinit var adapter: EventAdapter
     lateinit var act: MainActivity
     lateinit var sharedPrefs: SharedPreferences
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+    private var _dialogDetailsBinding: DialogDetailsEventBinding? = null
+    private val dialogDetailsBinding get() = _dialogDetailsBinding!!
+    private var _dialogInsertEventBinding: DialogInsertEventBinding? = null
+    private val dialogInsertEventBinding get() = _dialogInsertEventBinding!!
+    private var _dialogAppsEventBinding: DialogAppsEventBinding? = null
+    private val dialogAppsEventBinding get() = _dialogAppsEventBinding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,18 +86,19 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val v: View = inflater.inflate(R.layout.fragment_home, container, false)
-        val upcomingImage = v.findViewById<ImageView>(R.id.upcomingImage)
-        val shimmer = v.findViewById<ShimmerFrameLayout>(R.id.homeCardShimmer)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        val v = binding.root
+        val upcomingImage = binding.upcomingImage
+        val shimmer = binding.homeCardShimmer
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
-        val homeMotionLayout = v.homeMain
-        val homeCard = v.homeCard
-        val homeMiniFab = v.homeMiniFab
+        val homeMotionLayout = binding.homeMain
+        val homeCard = binding.homeCard
+        val homeMiniFab = binding.homeMiniFab
         if (shimmerEnabled) shimmer.startShimmer()
         upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
 
         // Setup the search bar
-        v.findViewById<EditText>(R.id.homeSearch).addTextChangedListener { text ->
+        binding.homeSearch.addTextChangedListener { text ->
             mainViewModel.searchNameChanged(text.toString())
         }
 
@@ -150,9 +156,18 @@ class HomeFragment : Fragment() {
         return v
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        // Reset each binding to null to follow the best practice
+        _binding = null
+        _dialogAppsEventBinding = null
+        _dialogDetailsBinding = null
+        _dialogInsertEventBinding = null
+    }
+
     // Initialize the necessary parts of the recycler view
     private fun initializeRecyclerView() {
-        recyclerView = rootView.findViewById(R.id.eventRecycler)
+        recyclerView = binding.eventRecycler
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = adapter
     }
@@ -164,22 +179,23 @@ class HomeFragment : Fragment() {
             // Show a dialog with the details of the selected contact
             override fun onItemClick(position: Int, view: View?) {
                 act.vibrate()
+                _dialogDetailsBinding =
+                    DialogDetailsEventBinding.inflate(LayoutInflater.from(context))
                 val event = adapter.getItem(position)
                 val title = getString(R.string.event_details) + " - " + event.name
                 val dialog = MaterialDialog(act).show {
                     title(text = title)
                     icon(R.drawable.ic_balloon_24dp)
                     cornerRadius(res = R.dimen.rounded_corners)
-                    customView(R.layout.dialog_details_event, scrollable = true)
+                    customView(view = dialogDetailsBinding.root, scrollable = true)
                     negativeButton(R.string.cancel) {
                         dismiss()
                     }
                 }
                 // Setup listeners and texts
-                val customView = dialog.getCustomView()
-                val deleteButton = customView.detailsDeleteButton
-                val editButton = customView.detailsEditButton
-                val shareButton = customView.detailsShareButton
+                val deleteButton = dialogDetailsBinding.detailsDeleteButton
+                val editButton = dialogDetailsBinding.detailsEditButton
+                val shareButton = dialogDetailsBinding.detailsShareButton
 
                 deleteButton.setOnClickListener {
                     act.vibrate()
@@ -206,80 +222,83 @@ class HomeFragment : Fragment() {
                 val statsGenerator = StatsGenerator(subject, context)
                 val daysCountdown =
                     daysRemaining(getRemainingDays(event.nextDate!!), requireContext())
-                customView.detailsZodiacSignValue.text = statsGenerator.getZodiacSign(event)
-                customView.detailsCountdown.text = daysCountdown
+                dialogDetailsBinding.detailsZodiacSignValue.text =
+                    statsGenerator.getZodiacSign(event)
+                dialogDetailsBinding.detailsCountdown.text = daysCountdown
 
                 // Hide the age and the chinese sign and use a shorter birth date if the year is unknown
                 if (!event.yearMatter!!) {
-                    customView.detailsNextAge.visibility = View.GONE
-                    customView.detailsNextAgeValue.visibility = View.GONE
-                    customView.detailsChineseSign.visibility = View.GONE
-                    customView.detailsChineseSignValue.visibility = View.GONE
+                    dialogDetailsBinding.detailsNextAge.visibility = View.GONE
+                    dialogDetailsBinding.detailsNextAgeValue.visibility = View.GONE
+                    dialogDetailsBinding.detailsChineseSign.visibility = View.GONE
+                    dialogDetailsBinding.detailsChineseSignValue.visibility = View.GONE
                     val reducedBirthDate = getReducedDate(event.originalDate)
-                    customView.detailsBirthDateValue.text = reducedBirthDate
+                    dialogDetailsBinding.detailsBirthDateValue.text = reducedBirthDate
                 } else {
-                    customView.detailsNextAgeValue.text = getNextAge(event).toString()
-                    customView.detailsBirthDateValue.text = event.originalDate.format(formatter)
-                    customView.detailsChineseSignValue.text = statsGenerator.getChineseSign(event)
+                    dialogDetailsBinding.detailsNextAgeValue.text = getNextAge(event).toString()
+                    dialogDetailsBinding.detailsBirthDateValue.text =
+                        event.originalDate.format(formatter)
+                    dialogDetailsBinding.detailsChineseSignValue.text =
+                        statsGenerator.getChineseSign(event)
                 }
                 // Set the drawable of the zodiac sign
                 when (statsGenerator.getZodiacSignNumber(event)) {
-                    0 -> customView.detailsZodiacImage.setImageDrawable(
+                    0 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
                         ContextCompat.getDrawable(
                             requireContext(), R.drawable.ic_zodiac_sagittarius
                         )
                     )
-                    1 -> customView.detailsZodiacImage.setImageDrawable(
+                    1 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
                         ContextCompat.getDrawable(
                             requireContext(), R.drawable.ic_zodiac_capricorn
                         )
                     )
-                    2 -> customView.detailsZodiacImage.setImageDrawable(
+                    2 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
                         ContextCompat.getDrawable(
                             requireContext(), R.drawable.ic_zodiac_aquarius
                         )
                     )
-                    3 -> customView.detailsZodiacImage.setImageDrawable(
+                    3 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
                         ContextCompat.getDrawable(
                             requireContext(), R.drawable.ic_zodiac_pisces
                         )
                     )
-                    4 -> customView.detailsZodiacImage.setImageDrawable(
+                    4 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
                         ContextCompat.getDrawable(
                             requireContext(), R.drawable.ic_zodiac_aries
                         )
                     )
-                    5 -> customView.detailsZodiacImage.setImageDrawable(
+                    5 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
                         ContextCompat.getDrawable(
                             requireContext(), R.drawable.ic_zodiac_taurus
                         )
                     )
-                    6 -> customView.detailsZodiacImage.setImageDrawable(
+                    6 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
                         ContextCompat.getDrawable(
                             requireContext(), R.drawable.ic_zodiac_gemini
                         )
                     )
-                    7 -> customView.detailsZodiacImage.setImageDrawable(
+                    7 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
                         ContextCompat.getDrawable(
                             requireContext(), R.drawable.ic_zodiac_cancer
                         )
                     )
-                    8 -> customView.detailsZodiacImage.setImageDrawable(
+                    8 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
                         ContextCompat.getDrawable(
                             requireContext(), R.drawable.ic_zodiac_leo
                         )
                     )
-                    9 -> customView.detailsZodiacImage.setImageDrawable(
+                    9 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
                         ContextCompat.getDrawable(
                             requireContext(), R.drawable.ic_zodiac_virgo
                         )
                     )
-                    10 -> customView.detailsZodiacImage.setImageDrawable(
+                    10 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
                         ContextCompat.getDrawable(
                             requireContext(), R.drawable.ic_zodiac_libra
                         )
                     )
-                    11 -> customView.detailsZodiacImage.setImageDrawable(
+                    11 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
                         ContextCompat.getDrawable(
                             requireContext(), R.drawable.ic_zodiac_scorpio
                         )
@@ -296,16 +315,16 @@ class HomeFragment : Fragment() {
 
     // Remove the placeholder or return if the placeholder was already removed before
     private fun removePlaceholder() {
-        val placeholder: TextView = requireView().findViewById(R.id.noEvents) ?: return
+        val placeholder = binding.noEvents
         placeholder.visibility = View.GONE
     }
 
     // Restore the placeholder and texts when there are no events. If search is true, show the "no result" placeholder
     private fun restorePlaceholders(search: Boolean = false) {
-        val cardTitle: TextView = requireView().findViewById(R.id.upcomingTitle)
-        val cardSubtitle: TextView = requireView().findViewById(R.id.upcomingSubtitle)
-        val cardDescription: TextView = requireView().findViewById(R.id.upcomingDescription)
-        val placeholder: TextView = requireView().findViewById(R.id.noEvents)
+        val cardTitle: TextView = binding.upcomingTitle
+        val cardSubtitle: TextView = binding.upcomingSubtitle
+        val cardDescription: TextView = binding.upcomingDescription
+        val placeholder: TextView = binding.noEvents
         if (!search) {
             cardTitle.text = getString(R.string.next_event)
             cardSubtitle.text = getString(R.string.no_next_event)
@@ -372,9 +391,9 @@ class HomeFragment : Fragment() {
 
     // Insert the necessary information in the upcoming event cardview
     private fun insertUpcomingEvents(events: List<EventResult>) {
-        val cardTitle: TextView = requireView().upcomingTitle
-        val cardSubtitle: TextView = requireView().upcomingSubtitle
-        val cardDescription: TextView = requireView().upcomingDescription
+        val cardTitle: TextView = binding.upcomingTitle
+        val cardSubtitle: TextView = binding.upcomingSubtitle
+        val cardDescription: TextView = binding.upcomingDescription
         var personName = ""
         var nextDateText = ""
         var nextAge = ""
@@ -422,6 +441,7 @@ class HomeFragment : Fragment() {
 
     @ExperimentalStdlibApi
     private fun editEvent(eventResult: EventResult) {
+        _dialogInsertEventBinding = DialogInsertEventBinding.inflate(LayoutInflater.from(context))
         var nameValue = eventResult.name
         var surnameValue = eventResult.surname
         var countYearValue = eventResult.yearMatter
@@ -430,7 +450,7 @@ class HomeFragment : Fragment() {
             cornerRadius(res = R.dimen.rounded_corners)
             title(R.string.edit_event)
             icon(R.drawable.ic_edit_24dp)
-            customView(R.layout.dialog_insert_event)
+            customView(view = dialogInsertEventBinding.root)
             positiveButton(R.string.update_event) {
                 // Use the data to create an event object and update the db
                 val tuple = Event(
@@ -453,16 +473,15 @@ class HomeFragment : Fragment() {
 
         // Setup listeners and checks on the fields
         dialog.getActionButton(WhichButton.POSITIVE).isEnabled = true
-        val customView = dialog.getCustomView()
-        val name = customView.findViewById<TextView>(R.id.nameEvent)
-        val surname = customView.findViewById<TextView>(R.id.surnameEvent)
-        val eventDate = customView.findViewById<TextView>(R.id.dateEvent)
-        val countYear = customView.findViewById<SwitchMaterial>(R.id.countYearSwitch)
-        name.text = nameValue
-        surname.text = surnameValue
+        val name = dialogInsertEventBinding.nameEvent
+        val surname = dialogInsertEventBinding.surnameEvent
+        val eventDate = dialogInsertEventBinding.dateEvent
+        val countYear = dialogInsertEventBinding.countYearSwitch
+        name.setText(nameValue)
+        surname.setText(surnameValue)
         countYear.isChecked = countYearValue!!
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
-        eventDate.text = eventDateValue.format(formatter)
+        eventDate.setText(eventDateValue.format(formatter))
         val endDate = Calendar.getInstance()
         var dateDialog: MaterialDialog? = null
 
@@ -486,7 +505,7 @@ class HomeFragment : Fragment() {
                         val month = date.get(Calendar.MONTH) + 1
                         val day = date.get(Calendar.DAY_OF_MONTH)
                         eventDateValue = LocalDate.of(year, month, day)
-                        eventDate.text = eventDateValue.format(formatter)
+                        eventDate.setText(eventDateValue.format(formatter))
                         // If ok is pressed, the last selected date is saved if the dialog is reopened
                         lastDate.set(year, month - 1, day)
                     }
@@ -506,26 +525,26 @@ class HomeFragment : Fragment() {
                     editable === name.editableText -> {
                         val nameText = name.text.toString()
                         if (nameText.isBlank() || !checkString(nameText)) {
-                            customView.nameEventLayout.error =
+                            dialogInsertEventBinding.nameEventLayout.error =
                                 getString(R.string.invalid_value_name)
                             dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                             nameCorrect = false
                         } else {
                             nameValue = nameText
-                            customView.nameEventLayout.error = null
+                            dialogInsertEventBinding.nameEventLayout.error = null
                             nameCorrect = true
                         }
                     }
                     editable === surname.editableText -> {
                         val surnameText = surname.text.toString()
                         if (!checkString(surnameText)) {
-                            customView.surnameEventLayout.error =
+                            dialogInsertEventBinding.surnameEventLayout.error =
                                 getString(R.string.invalid_value_name)
                             dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                             surnameCorrect = false
                         } else {
                             surnameValue = surnameText
-                            customView.surnameEventLayout.error = null
+                            dialogInsertEventBinding.surnameEventLayout.error = null
                             surnameCorrect = true
                         }
                     }
@@ -543,24 +562,23 @@ class HomeFragment : Fragment() {
     // Show a bottom sheet containing some quick apps
     private fun showQuickAppsSheet() {
         act.vibrate()
+        _dialogAppsEventBinding = DialogAppsEventBinding.inflate(LayoutInflater.from(context))
         val dialog =
             MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
                 cornerRadius(res = R.dimen.rounded_corners)
                 title(R.string.event_apps)
                 icon(R.drawable.ic_apps_24dp)
                 message(R.string.event_apps_description)
-                customView(R.layout.dialog_apps_event, scrollable = true)
+                customView(view = dialogAppsEventBinding.root, scrollable = true)
             }
-
-        val customView = dialog.getCustomView()
-        // Using viewbinding to fetch the buttons
-        val whatsappButton = customView.whatsappButton
-        val dialerButton = customView.dialerButton
-        val messagesButton = customView.messagesButton
-        val telegramButton = customView.telegramButton
+        // Using view binding to fetch the buttons
+        val whatsAppButton = dialogAppsEventBinding.whatsappButton
+        val dialerButton = dialogAppsEventBinding.dialerButton
+        val messagesButton = dialogAppsEventBinding.messagesButton
+        val telegramButton = dialogAppsEventBinding.telegramButton
         val ctx: Context = requireContext()
 
-        whatsappButton.setOnClickListener {
+        whatsAppButton.setOnClickListener {
             act.vibrate()
             try {
                 val whatsIntent: Intent? =

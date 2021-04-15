@@ -7,14 +7,13 @@ import android.graphics.drawable.AnimatedVectorDrawable
 import android.net.Uri
 import android.util.AttributeSet
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.preference.Preference
 import androidx.preference.PreferenceManager
 import androidx.preference.PreferenceViewHolder
-import com.facebook.shimmer.ShimmerFrameLayout
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
+import com.minar.birday.databinding.FragmentSettingsBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -23,25 +22,27 @@ import kotlinx.coroutines.launch
 class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
     Preference(context, attrs), View.OnClickListener {
     private val activityScope = CoroutineScope(Dispatchers.Main)
+
     // Easter egg stuff, why not
     private var easterEgg = 0
+
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
-        val v = holder.itemView
+        val binding = FragmentSettingsBinding.bind(holder.itemView)
 
         // Manage the shimmer
-        val shimmer = v.findViewById<ShimmerFrameLayout>(R.id.settingsShimmer)
+        val shimmer = binding.settingsShimmer
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context)
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
         if (shimmerEnabled) shimmer.startShimmer()
 
         // Make the icons clickable
-        val logo = v.findViewById<ImageView>(R.id.imageMinar)
-        val l1 = v.findViewById<ImageView>(R.id.minarig)
-        val l2 = v.findViewById<ImageView>(R.id.minartt)
-        val l3 = v.findViewById<ImageView>(R.id.minarps)
-        val l4 = v.findViewById<ImageView>(R.id.minargit)
-        val l5 = v.findViewById<ImageView>(R.id.minarsite)
+        val logo = binding.imageMinar
+        val l1 = binding.minarig
+        val l2 = binding.minartt
+        val l3 = binding.minarps
+        val l4 = binding.minargit
+        val l5 = binding.minarsite
 
         // Spawn the logo with a little delay
         activityScope.launch {
@@ -62,7 +63,8 @@ class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
         val uri: Uri
         when (v.id) {
             R.id.imageMinar -> if (easterEgg == 5) {
-                Toast.makeText(context, context.getString(R.string.easter_egg), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, context.getString(R.string.easter_egg), Toast.LENGTH_SHORT)
+                    .show()
                 easterEgg = 0
             } else easterEgg++
             R.id.minarig -> {

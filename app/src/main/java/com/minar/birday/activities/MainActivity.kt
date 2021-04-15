@@ -15,7 +15,6 @@ import android.net.Uri
 import android.os.*
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -33,21 +32,18 @@ import com.afollestad.materialdialogs.WhichButton
 import com.afollestad.materialdialogs.actions.getActionButton
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
-import com.afollestad.materialdialogs.customview.getCustomView
 import com.afollestad.materialdialogs.datetime.datePicker
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.switchmaterial.SwitchMaterial
 import com.minar.birday.R
 import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.backup.BirdayImporter
 import com.minar.birday.backup.ContactsImporter
+import com.minar.birday.databinding.ActivityMainBinding
+import com.minar.birday.databinding.DialogInsertEventBinding
 import com.minar.birday.model.Event
 import com.minar.birday.utilities.AppRater
 import com.minar.birday.utilities.checkString
 import com.minar.birday.utilities.smartCapitalize
 import com.minar.birday.viewmodels.MainViewModel
-import kotlinx.android.synthetic.main.dialog_insert_event.view.*
 import java.io.IOException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -58,6 +54,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var mainViewModel: MainViewModel
     private lateinit var adapter: EventAdapter
     private lateinit var sharedPrefs: SharedPreferences
+    private lateinit var binding: ActivityMainBinding
 
     @ExperimentalStdlibApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -106,10 +103,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         // Get the bottom navigation bar and configure it for the navigation plugin
-        val navigation = findViewById<BottomNavigationView>(R.id.navigation)
+        val navigation = binding.navigation
         val navController: NavController = Navigation.findNavController(this,
             R.id.navHostFragment
         )
@@ -141,9 +140,10 @@ class MainActivity : AppCompatActivity() {
         AppRater.appLaunched(this)
 
         // Manage the fab
-        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        val fab = binding.fab
         fab.setOnClickListener {
             vibrate()
+            val dialogBinding = DialogInsertEventBinding.inflate(layoutInflater)
             // Show a bottom sheet containing the form to insert a new event
             var nameValue  = "error"
             var surnameValue = ""
@@ -155,7 +155,7 @@ class MainActivity : AppCompatActivity() {
                 icon(R.drawable.ic_party_24dp)
                 message(R.string.new_event_description)
                 // Don't use scrollable here, instead use a nestedScrollView in the layout
-                customView(R.layout.dialog_insert_event)
+                customView(view = dialogBinding.root)
                 positiveButton(R.string.insert_event) {
                     // Use the data to create a event object and insert it in the db
                     val tuple = Event(
@@ -175,11 +175,10 @@ class MainActivity : AppCompatActivity() {
 
             // Setup listeners and checks on the fields
             dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
-            val customView = dialog.getCustomView()
-            val name = customView.findViewById<TextView>(R.id.nameEvent)
-            val surname = customView.findViewById<TextView>(R.id.surnameEvent)
-            val eventDate = customView.findViewById<TextView>(R.id.dateEvent)
-            val countYear = customView.findViewById<SwitchMaterial>(R.id.countYearSwitch)
+            val name = dialogBinding.nameEvent
+            val surname = dialogBinding.surnameEvent
+            val eventDate = dialogBinding.dateEvent
+            val countYear = dialogBinding.countYearSwitch
             val endDate = Calendar.getInstance()
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
             var dateDialog: MaterialDialog? = null
@@ -203,7 +202,7 @@ class MainActivity : AppCompatActivity() {
                             val month = date.get(Calendar.MONTH) + 1
                             val day = date.get(Calendar.DAY_OF_MONTH)
                             eventDateValue = LocalDate.of(year, month, day)
-                            eventDate.text = eventDateValue.format(formatter)
+                            eventDate.setText(eventDateValue.format(formatter))
                             // If ok is pressed, the last selected date is saved if the dialog is reopened
                             lastDate.set(year, month - 1, day)
                         }
@@ -225,13 +224,13 @@ class MainActivity : AppCompatActivity() {
                             val nameText = name.text.toString()
                             if (nameText.isBlank() || !checkString(nameText)) {
                                 // Setting the error on the layout is important to make the properties work. Kotlin synthetics are being used here
-                                customView.nameEventLayout.error = getString(R.string.invalid_value_name)
+                                dialogBinding.nameEventLayout.error = getString(R.string.invalid_value_name)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                                 nameCorrect = false
                             }
                             else {
                                 nameValue = nameText
-                                customView.nameEventLayout.error = null
+                                dialogBinding.nameEventLayout.error = null
                                 nameCorrect = true
                             }
                         }
@@ -239,13 +238,13 @@ class MainActivity : AppCompatActivity() {
                             val surnameText = surname.text.toString()
                             if (!checkString(surnameText)) {
                                 // Setting the error on the layout is important to make the properties work. Kotlin synthetics are being used here
-                                customView.surnameEventLayout.error = getString(R.string.invalid_value_name)
+                                dialogBinding.surnameEventLayout.error = getString(R.string.invalid_value_name)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                                 surnameCorrect = false
                             }
                             else {
                                 surnameValue = surnameText
-                                customView.surnameEventLayout.error = null
+                                dialogBinding.surnameEventLayout.error = null
                                 surnameCorrect = true
                             }
                         }

@@ -6,7 +6,6 @@ import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -22,18 +21,17 @@ import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
-import com.afollestad.materialdialogs.customview.getCustomView
-import com.facebook.shimmer.ShimmerFrameLayout
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.FavoritesAdapter
+import com.minar.birday.databinding.DialogNotesBinding
+import com.minar.birday.databinding.DialogStatsBinding
+import com.minar.birday.databinding.FragmentFavoritesBinding
 import com.minar.birday.listeners.OnItemClickListener
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.StatsGenerator
 import com.minar.birday.viewmodels.MainViewModel
-import kotlinx.android.synthetic.main.dialog_stats.view.*
-import kotlinx.android.synthetic.main.fragment_favorites.view.*
 import kotlin.math.min
 
 
@@ -44,6 +42,12 @@ class FavoritesFragment : Fragment() {
     private lateinit var adapter: FavoritesAdapter
     private lateinit var fullStats: SpannableStringBuilder
     private lateinit var act: MainActivity
+    private var _binding: FragmentFavoritesBinding? = null
+    private val binding get() = _binding!!
+    private var _dialogStatsBinding: DialogStatsBinding? = null
+    private val dialogStatsBinding get() = _dialogStatsBinding!!
+    private var _dialogNotesBinding: DialogNotesBinding? = null
+    private val dialogNotesBinding get() = _dialogNotesBinding!!
     private var totalEvents = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,14 +61,15 @@ class FavoritesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val v: View = inflater.inflate(R.layout.fragment_favorites, container, false)
-        val statsImage = v.findViewById<ImageView>(R.id.statsImage)
-        val shimmer = v.findViewById<ShimmerFrameLayout>(R.id.favoritesCardShimmer)
+        _binding = FragmentFavoritesBinding.inflate(inflater, container, false)
+        val v = binding.root
+        val statsImage = binding.statsImage
+        val shimmer = binding.favoritesCardShimmer
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
-        val favoriteMotionLayout = v.favoritesMain
-        val favoritesCard = v.favoritesCard
-        val favoritesMiniFab = v.favoritesMiniFab
+        val favoriteMotionLayout = binding.favoritesMain
+        val favoritesCard = binding.favoritesCard
+        val favoritesMiniFab = binding.favoritesMiniFab
         if (shimmerEnabled) shimmer.startShimmer()
         statsImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_candle)
 
@@ -125,9 +130,17 @@ class FavoritesFragment : Fragment() {
         return v
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        // Reset each binding to null to follow the best practice
+        _binding = null
+        _dialogStatsBinding = null
+        _dialogNotesBinding = null
+    }
+
     // Initialize the necessary parts of the recycler view
     private fun initializeRecyclerView() {
-        recyclerView = rootView.findViewById(R.id.favoritesRecycler)
+        recyclerView = binding.favoritesRecycler
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = adapter
     }
@@ -143,8 +156,10 @@ class FavoritesFragment : Fragment() {
                     title(text = title)
                     icon(R.drawable.ic_note_24dp)
                     cornerRadius(res = R.dimen.rounded_corners)
-                    customView(R.layout.dialog_notes, scrollable = true)
-                    val noteTextField = getCustomView().findViewById<EditText>(R.id.favoritesNotes)
+                    // Get the text field and set the view using the binding
+                    _dialogNotesBinding = DialogNotesBinding.inflate(LayoutInflater.from(context))
+                    customView(view = dialogNotesBinding.root, scrollable = true)
+                    val noteTextField = dialogNotesBinding.favoritesNotes
                     noteTextField.setText(event.notes)
                     negativeButton(R.string.cancel) {
                         dismiss()
@@ -177,26 +192,25 @@ class FavoritesFragment : Fragment() {
 
     // Remove the placeholder or return if the placeholder was already removed before
     private fun removePlaceholder() {
-        val placeholder: TextView = requireView().findViewById(R.id.noFavorites) ?: return
+        val placeholder = binding.noFavorites
         placeholder.visibility = View.GONE
     }
 
     // Show a bottom sheet containing the stats
     private fun showStatsSheet() {
         act.vibrate()
-        val dialog =
-            MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
-                cornerRadius(res = R.dimen.rounded_corners)
-                title(R.string.stats_summary)
-                icon(R.drawable.ic_stats_24dp)
-                // Don't use scrollable here, instead use a nestedScrollView in the layout
-                customView(R.layout.dialog_stats)
-            }
-        val customView = dialog.getCustomView()
-        customView.fullStats.text = fullStats
+        _dialogStatsBinding = DialogStatsBinding.inflate(LayoutInflater.from(context))
+        MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
+            cornerRadius(res = R.dimen.rounded_corners)
+            title(R.string.stats_summary)
+            icon(R.drawable.ic_stats_24dp)
+            // Don't use scrollable here, instead use a nestedScrollView in the layout
+            customView(view = dialogStatsBinding.root)
+        }
+        dialogStatsBinding.fullStats.text = fullStats
         // Display the total number of birthdays, start the animated drawable
-        customView.eventCounter.text = totalEvents.toString()
-        val backgroundDrawable = customView.eventCounterBackground
+        dialogStatsBinding.eventCounter.text = totalEvents.toString()
+        val backgroundDrawable = dialogStatsBinding.eventCounterBackground
         // Link the opacity of the background to the number of events (min = 0.05 / max = 100)
         backgroundDrawable.alpha = min(0.01F * totalEvents + 0.05F, 1.0F)
         backgroundDrawable.applyLoopingAnimatedVectorDrawable(R.drawable.animated_counter_background)
@@ -213,8 +227,8 @@ class FavoritesFragment : Fragment() {
 
     // Use the generator to generate a random stat and display it
     private fun generateStat(events: List<EventResult>) {
-        val cardSubtitle: TextView = requireView().findViewById(R.id.statsSubtitle)
-        val cardDescription: TextView = requireView().findViewById(R.id.statsDescription)
+        val cardSubtitle: TextView = binding.statsSubtitle
+        val cardDescription: TextView = binding.statsDescription
         val generator = StatsGenerator(events, context)
         cardSubtitle.text = generator.generateRandomStat()
         fullStats = generator.generateFullStats()
