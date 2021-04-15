@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_welcome">Välkommen till Birday</string>
     <string name="app_name_extended">Birday – Födelsedagshanterare</string>
     <string name="leave_review_title">Betygsätt Birday</string>
@@ -11,7 +12,7 @@
     <string name="title_favorites">Favoriter</string>
     <string name="title_settings">Inställningar</string>
     <string name="no_events">Inga födelsedagar! Lägg till en med knappen nedan!</string>
-    <string name="no_favorites">Inga favoriter! Klicka på stjärnan för att spara en person i dina favoriter!</string>
+    <string name="no_favorites">Inga favoriter! Klicka på stjärnan för att spara en händelse i dina favoriter!</string>
     <string name="add_favorite">Lägg till i favoriter</string>
     <string name="stats">Statistik</string>
     <string name="no_stats">Ingen statistik att visa!</string>

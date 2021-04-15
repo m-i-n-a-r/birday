@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_welcome">Welkom bij Birday</string>
@@ -11,7 +12,7 @@
     <string name="title_favorites">Favorieten</string>
     <string name="title_settings">Instellingen</string>
     <string name="no_events">Geen verjaardagen! Voeg er eentje toe met de knop hieronder!</string>
-    <string name="no_favorites">Geen favorieten! Druk op de ster om een persoon aan je favorieten toe te voegen!</string>
+    <string name="no_favorites">Geen favorieten! Druk op de ster om een gebeurtenis aan je favorieten toe te voegen!</string>
     <string name="add_favorite">Toevoegen aan favorieten</string>
     <string name="stats">Statistieken</string>
     <string name="no_stats">Geen statistieken beschikbaar!</string>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_welcome">Vítejte v Birday</string>
     <string name="app_name_extended">Birday - Správce narozenin</string>
     <string name="leave_review_title">Recenze Birday</string>
@@ -11,7 +12,7 @@
     <string name="title_favorites">Oblíbené</string>
     <string name="title_settings">Nastavení</string>
     <string name="no_events">Žádné narozeniny! Začněte přidávat jeden pomocí tlačítka níže!</string>
-    <string name="no_favorites">Žádné oblíbené! Stisknutím hvězdičky uložíte osobu do oblíbených položek!</string>
+    <string name="no_favorites">Žádné oblíbené! Stisknutím hvězdičky vložit událost do oblíbených položek!</string>
     <string name="add_favorite">Přidat do oblíbených</string>
     <string name="stats">Statistika</string>
     <string name="no_stats">Žádné statistiky k zobrazení!</string>
@@ -206,4 +207,5 @@
         <item quantity="few">%d zbývá dnů</item>
         <item quantity="other">%d zbývá dnů</item>
     </plurals>
+
 </resources>

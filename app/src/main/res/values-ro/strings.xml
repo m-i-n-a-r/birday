@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_welcome">Bine aţi venit la Birday</string>
     <string name="app_name_extended">Birday - Gestionare aniversări</string>
     <string name="leave_review_title">Lăsaţi o recenzie despre Birday</string>
@@ -11,7 +12,7 @@
     <string name="title_favorites">Favorite</string>
     <string name="title_settings">Setări</string>
     <string name="no_events">Fără zile de naștere! Începeți să adăugați una folosind butonul de mai jos!</string>
-    <string name="no_favorites">Nici o persoană favorită! Apasă pe stea pentru a salva o persoană în favorite!</string>
+    <string name="no_favorites">Niciun favorit! Apasă pe stea pentru a salva o eveniment în favorite!</string>
     <string name="add_favorite">Adăugați la favorite</string>
     <string name="stats">Statistici</string>
     <string name="no_stats">Nu există statistici de afișat!</string>
@@ -32,6 +33,7 @@
         <item quantity="few">%d zile rămase</item>
         <item quantity="other">%d zile rămase</item>
     </plurals>
+
     <!-- Settings -->
     <string name="customization">Personalizare</string>
     <string name="app_behavior">Comportamentul aplicației</string>
@@ -230,4 +232,5 @@
     <!-- Notes -->
     <string name="notes">Note</string>
     <string name="write_something">Scrieţi ceva…</string>
+
 </resources>

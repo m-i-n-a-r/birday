@@ -1,4 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_welcome">Bem-vindo ao Birday</string>
     <string name="app_name_extended">Birday - Gerente de Aniversário</string>
     <string name="leave_review_title">Avalie o Birday</string>
@@ -10,7 +12,7 @@
     <string name="title_favorites">Favoritos</string>
     <string name="title_settings">Definições</string>
     <string name="no_events">Sem aniversários! Comece a adicionar um usando o botão abaixo!</string>
-    <string name="no_favorites">Sem favoritos! Pressione a estrela para salvar uma pessoa em seus favoritos!</string>
+    <string name="no_favorites">Sem favoritos! Pressione a estrela para salvar um evento em seus favoritos!</string>
     <string name="add_favorite">Adicionar aos favoritos</string>
     <string name="stats">Estatisticas</string>
     <string name="no_stats">Sem estatísticas para mostrar!</string>
@@ -229,4 +231,5 @@
     <!-- Notes -->
     <string name="notes">Notas</string>
     <string name="write_something">Escreva algo…</string>
+
 </resources>

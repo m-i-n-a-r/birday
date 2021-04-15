@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_welcome">Benvenuto in Birday</string>
     <string name="app_name_extended">Birday - Gestore di Compleanni</string>
     <string name="leave_review_title">Recensisci Birday</string>
@@ -46,7 +47,7 @@
     <string name="date_format_name">Formato data</string>
     <string name="app_behavior">Comportamento dell\'app</string>
     <string name="no_events">Nessun compleanno! Comincia aggiungendone uno usando il bottone sotto!</string>
-    <string name="no_favorites">Nessun preferito! Premi la stella per salvare una persona nei preferiti!</string>
+    <string name="no_favorites">Nessun preferito! Premi la stella per salvare un evento nei preferiti!</string>
     <string name="notification_hour_name">Ora di invio notifica</string>
     <string name="notification_hour_description">%s \n\nLa notifica potrebbe non funzionare se l\'applicazione viene terminata dal sistema in alcuni dispositivi Huawei, Xiaomi e OnePlus. Ulteriori informazioni su dontkillmyapp.com</string>
     <string name="stats">Statistiche</string>

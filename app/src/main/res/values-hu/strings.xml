@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_welcome">Üdvözlünk a Birday-ben</string>
@@ -11,7 +12,7 @@
     <string name="title_favorites">Kedvencek</string>
     <string name="title_settings">Beállítások</string>
     <string name="no_events">Nincsenek születésnapok! Adj hozzá egyet az alábbi gomb segítségével!</string>
-    <string name="no_favorites">Nincsenek kedvencek! Ha hozzá akarsz adni egy személyt a kedvenceidhez, nyomd meg a csillagot!</string>
+    <string name="no_favorites">Nincsenek kedvencek! Ha hozzá akarsz adni egy eseményt a kedvenceidhez, nyomd meg a csillagot!</string>
     <string name="add_favorite">Hozzáadás a kedvencekhez</string>
     <string name="stats">Statisztika</string>
     <string name="no_stats">Nincs megjeleníthető statisztika!</string>

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_name" translatable="false">Birday</string>
@@ -12,7 +13,7 @@
     <string name="title_favorites">Favorites</string>
     <string name="title_settings">Settings</string>
     <string name="no_events">No birthdays! Start adding one using the button below!</string>
-    <string name="no_favorites">No favorites! Press the star to save a person in your favorites!</string>
+    <string name="no_favorites">No favorites! Press the star to save an event in your favorites!</string>
     <string name="add_favorite">Add to favorites</string>
     <string name="stats">Statistics</string>
     <string name="no_stats">No stats to show!</string>

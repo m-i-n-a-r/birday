@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- Vietnamese doesn't need plurals -->
@@ -12,7 +13,7 @@
     <string name="title_favorites">Yêu Thích</string>
     <string name="title_settings">Cài Đặt</string>
     <string name="no_events">Không có sinh nhật! Sử dụng nút ở dưới để bắt đầu lưu sinh nhật!</string>
-    <string name="no_favorites">Không có mục yêu thích! Sử dụng nút ngôi sao để lưu sinh nhật lại trong đây</string>
+    <string name="no_favorites">Không có mục yêu thích! Nhấn dấu sao để lưu một sự kiện làm mục yêu thích!</string>
     <string name="add_favorite">Thêm vào mục yêu thích</string>
     <string name="stats">Số liệu</string>
     <string name="no_stats">Chưa có số liệu!</string>

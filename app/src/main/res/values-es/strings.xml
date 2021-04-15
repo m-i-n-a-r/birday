@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_welcome">Bienvenido/a a Birday</string>
@@ -11,7 +12,7 @@
     <string name="title_favorites">Favoritos</string>
     <string name="title_settings">Ajustes</string>
     <string name="no_events">¡No hay cumpleaños! Añade uno usando el botón de abajo</string>
-    <string name="no_favorites">¡Nadie en favoritos! Pulsa la estrella para añadir a una persona a favoritos</string>
+    <string name="no_favorites">¡Nadie en favoritos! Pulsa la estrella para añadir a un evento a favoritos</string>
     <string name="add_favorite">Añadir a favoritos</string>
     <string name="stats">Estadísticas</string>
     <string name="no_stats">¡No hay estadísticas que mostrar!</string>
