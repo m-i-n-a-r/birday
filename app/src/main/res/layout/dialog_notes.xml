@@ -11,7 +11,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:boxBackgroundColor="?android:colorBackground"
+        app:boxBackgroundColor="@color/transparent"
         app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
         app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
         app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
@@ -39,7 +39,6 @@
             android:paddingHorizontal="0dp"
             android:paddingVertical="@dimen/list_vertical_padding"
             android:requiresFadingEdge="vertical"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
             android:textCursorDrawable="@drawable/custom_cursor" />
 
     </com.google.android.material.textfield.TextInputLayout>

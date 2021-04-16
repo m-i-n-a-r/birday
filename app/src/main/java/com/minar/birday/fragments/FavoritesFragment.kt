@@ -150,15 +150,14 @@ class FavoritesFragment : Fragment() {
         adapter.setOnItemClickListener(onItemClickListener = object : OnItemClickListener {
             override fun onItemClick(position: Int, view: View?) {
                 act.vibrate()
+                _dialogNotesBinding = DialogNotesBinding.inflate(LayoutInflater.from(context))
                 val event = adapter.getItem(position)
                 val title = getString(R.string.notes) + " - " + event.name
                 MaterialDialog(act).show {
                     title(text = title)
                     icon(R.drawable.ic_note_24dp)
                     cornerRadius(res = R.dimen.rounded_corners)
-                    // Get the text field and set the view using the binding
-                    _dialogNotesBinding = DialogNotesBinding.inflate(LayoutInflater.from(context))
-                    customView(view = dialogNotesBinding.root, scrollable = true)
+                    customView(view = dialogNotesBinding.root)
                     val noteTextField = dialogNotesBinding.favoritesNotes
                     noteTextField.setText(event.notes)
                     negativeButton(R.string.cancel) {
