@@ -1,8 +1,10 @@
 package com.minar.birday.backup
 
 import android.content.ContentResolver
+import android.content.ContentUris
 import android.content.Context
 import android.database.Cursor
+import android.graphics.BitmapFactory
 import android.provider.ContactsContract
 import android.util.AttributeSet
 import android.view.View
@@ -11,11 +13,14 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceManager
 import androidx.preference.PreferenceViewHolder
 import com.facebook.shimmer.ShimmerFrameLayout
-import com.minar.birday.activities.MainActivity
 import com.minar.birday.R
+import com.minar.birday.activities.MainActivity
 import com.minar.birday.model.Event
+import com.minar.birday.model.ImportedContact
+import com.minar.birday.utilities.bitmapToByteArray
 import java.time.LocalDate
 import kotlin.concurrent.thread
+
 
 class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(context, attrs),
     View.OnClickListener {
@@ -65,26 +70,26 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
         val events = mutableListOf<Event>()
         loop@ for (contact in contacts) {
             // Take the name and split it to separate name and surname
-            val splitterName = contact.value[0].split(",")
+            val splitName = contact.completeName.split(",")
             var name: String
             var surname = ""
             var date: LocalDate
             var countYear = true
-            when (splitterName.size) {
+            when (splitName.size) {
                 // Not considering surname only contacts, but considering name only
-                1 -> name = splitterName[0].trim()
+                1 -> name = splitName[0].trim()
                 2 -> {
-                    name = splitterName[1].trim()
-                    surname = splitterName[0].trim()
+                    name = splitName[1].trim()
+                    surname = splitName[0].trim()
                 }
                 else -> continue@loop
             }
 
             try {
                 // Missing year, simply don't consider the year exactly like the contacts app does
-                var parseDate = contact.value[1]
-                if (contact.value[1].length < 8) {
-                    parseDate = contact.value[1].replaceFirst("-", "1970")
+                var parseDate = contact.birthday
+                if (parseDate.length < 8) {
+                    parseDate = contact.birthday.replaceFirst("-", "1970")
                     countYear = false
                 }
                 date = LocalDate.parse(parseDate)
@@ -96,7 +101,8 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
                 name = name,
                 surname = surname,
                 originalDate = date,
-                yearMatter = countYear
+                yearMatter = countYear,
+                image = contact.image,
             )
             events.add(event)
         }
@@ -125,8 +131,8 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
     }
 
     // Get the contacts and save them in a map
-    private fun getContacts(): Map<String, List<String>> {
-        val nameBirth = mutableMapOf<String, List<String>>()
+    private fun getContacts(): List<ImportedContact> {
+        val contactInfo = mutableListOf<ImportedContact>()
 
         // Retrieve name and id
         val resolver: ContentResolver = context.contentResolver
@@ -137,6 +143,17 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
                     val id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
                     val name =
                         cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME_ALTERNATIVE))
+                    // Get the image, if any, and convert it to byte array
+                    val imageStream = ContactsContract.Contacts.openContactPhotoInputStream(
+                        resolver,
+                        ContentUris.withAppendedId(
+                            ContactsContract.Contacts.CONTENT_URI,
+                            id.toLong()
+                        )
+                    )
+                    val bitmap = BitmapFactory.decodeStream(imageStream)
+                    val image = bitmapToByteArray(bitmap)
+
                     // Retrieve the birthday
                     val bd = context.contentResolver
                     val bdc: Cursor? = bd.query(
@@ -149,14 +166,12 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
                         ContactsContract.Data.DISPLAY_NAME
                     )
 
-                    if (bdc != null) {
-                        if (bdc.count > 0) {
-                            while (bdc.moveToNext()) {
-                                // Using a list as key will prevent collisions on same name
-                                val birthday: String = bdc.getString(0)
-                                val person = listOf<String>(name, birthday)
-                                nameBirth[id] = person
-                            }
+                    if (bdc != null && bdc.count > 0) {
+                        while (bdc.moveToNext()) {
+                            // Using an object model to store the information
+                            val birthday: String = bdc.getString(0)
+                            val importedContact = ImportedContact(id, name, birthday, image)
+                            contactInfo.add(importedContact)
                         }
                         bdc.close()
                     }
@@ -164,7 +179,7 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
             }
         }
         cursor?.close()
-        return nameBirth
+        return contactInfo
     }
 
 }

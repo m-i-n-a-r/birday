@@ -77,9 +77,8 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?) :
             eventPerson.text = formattedPersonName
             eventDate.text = originalDate
 
-            // Manage the image TODO still wip, always hidden
-            //val hideImages = sharedPrefs.getBoolean("hide_images", false)
-            val hideImages = true
+            // Manage the image
+            val hideImages = sharedPrefs.getBoolean("hide_images", false)
             if (hideImages) eventImage.visibility = View.GONE
             else {
                 // Set a small margin programmatically
