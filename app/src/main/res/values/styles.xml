@@ -26,10 +26,23 @@
     <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar">
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent</item>
+        <item name="errorIconDrawable">@drawable/ic_alert_black_24dp</item>
+        <item name="errorIconTint">?colorAccent</item>
+        <item name="boxStrokeErrorColor">@color/redError</item>
+        <item name="errorTextColor">?colorAccent</item>
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/text_field_corner</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/text_field_corner</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/text_field_corner</item>
+        <item name="boxCornerRadiusTopStart">@dimen/text_field_corner</item>
+        <item name="android:textCursorDrawable">@drawable/custom_cursor</item>
+        <item name="startIconDrawable">@drawable/ic_date_black_24dp</item>
+        <item name="errorEnabled">true</item>
+        <item name="startIconTint">@color/goodGray</item>
     </style>
 
     <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
-        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">@dimen/rounded_corners</item>
     </style>
 
     <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
