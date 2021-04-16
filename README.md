@@ -29,6 +29,7 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 | **Czech**          | needs update | Miloš Koliáš   |                             |
 | **Portuguese**     | needs update | smarquespt     |                             |
 | **Brazilian**      | needs update | BadJuice67     |                             |
+| **Romanian**       | needs update | ygorigor       | ygorigor                    |
 
 ## Features
 - Notification the day of the event, in a customizable time range
