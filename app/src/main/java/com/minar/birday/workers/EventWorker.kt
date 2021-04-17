@@ -3,6 +3,7 @@ package com.minar.birday.workers
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.preference.PreferenceManager
@@ -15,6 +16,7 @@ import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.model.EventResult
 import com.minar.birday.activities.SplashActivity
+import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.formatName
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
@@ -33,6 +35,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         val workHour = sharedPrefs.getString("notification_hour", "8")!!.toInt()
         val additionalNotification = sharedPrefs.getString("additional_notification", "0")!!.toInt()
         val surnameFirst = sharedPrefs.getBoolean("surname_first", false)
+        val hideImage = sharedPrefs.getBoolean("hide_images", false)
         val onlyFavorites = sharedPrefs.getBoolean("notification_only_favorites", false)
 
         try {
@@ -60,6 +63,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             if (actual.isNotEmpty()) sendNotification(
                 actual,
                 2,
+                hideImage,
                 surnameFirst,
             )
 
@@ -85,6 +89,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         nextEvents: List<EventResult>,
         id: Int,
         surnameFirst: Boolean,
+        hideImage: Boolean,
         upcoming: Boolean = false,
     ) {
         val intent = Intent(applicationContext, SplashActivity::class.java).apply {
@@ -108,6 +113,25 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             // Intent that will fire when the user taps the notification
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
+
+        // If the images are shown, show the first image available in two ways
+        if (!hideImage) {
+            var bitmap: Bitmap? = null
+            // Check if any event has an image
+            for (event in nextEvents) {
+                if (event.image != null)
+                    bitmap = byteArrayToBitmap(event.image)
+                if (bitmap != null) break
+            }
+            // If an image was found, set the appropriate style
+            if (bitmap != null)
+                builder.setStyle(
+                    NotificationCompat.BigPictureStyle()
+                        .bigPicture(bitmap)
+                        .bigLargeIcon(null)
+                )
+                    .setLargeIcon(bitmap)
+        }
 
         with(NotificationManagerCompat.from(applicationContext)) { notify(id, builder.build()) }
     }

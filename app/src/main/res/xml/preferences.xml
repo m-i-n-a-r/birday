@@ -29,7 +29,6 @@
             android:title="@string/additional_notification_name"
             app:iconSpaceReserved="false" />
 
-        <!-- TODO missing setting logic -->
         <SwitchPreference
             android:defaultValue="false"
             android:key="hide_images"
