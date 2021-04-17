@@ -10,7 +10,7 @@ An open source app to remember birthdays and events without having to open Faceb
 </p>
 
 ## Introduction
-This is an open source app to remember **birthdays** in a fast, light and beautiful way. No less, no more. I had this idea considering that Google Calendar doesn't display an automatic notification the day of the birthday, and sometimes i need to remember a birthday for a person who is not in my Google Contacts. Also, adding too much birthdays to the calendar makes it messy and i prefer to manage them separately. The main focus of this app is being easy to use, clean and lightweight. I'm always glad to add features, but only important and really useful features!
+This is an open source app to remember **birthdays** in a fast, light and beautiful way. No less, no more. I had this idea considering that Google Calendar doesn't display an automatic notification the day of the birthday, and sometimes i need to remember a birthday for a person who is not in my Contacts. Also, adding too much birthdays to the calendar makes it messy and i prefer to manage them separately. The main focus of this app is being easy to use, clean and lightweight. I'm always glad to add features, but only important and really useful features!
 
 ## Translations
 
@@ -27,16 +27,16 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 | **Vietnamese**     | needs update | Lee Huynh      |                             |
 | **Russian**        | needs update | koterpillar    |                             |
 | **Czech**          | needs update | Miloš Koliáš   |                             |
-| **Portuguese**     | needs update | smarquespt     |                             |
+| **Portuguese**     | needs update | smarquespt     | smarquespt                  |
 | **Brazilian**      | needs update | BadJuice67     |                             |
-| **Romanian**       | needs update | ygorigor       | ygorigor                    |
+| **Romanian**       | complete     | ygorigor       | ygorigor                    |
 
 ## Features
 - Notification the day of the event, in a customizable time range
 - Additional notification up to 7 days before the event
-- Sync the existing birthdays from the contacts app
+- Fetch the existing birthdays from the contacts app, images included!
 - Easily backup and restore your saved events!
-- insert an event manually, just specifying a name, an optional surname and a date (with optional year)
+- insert an event manually, just specifying a name, an optional surnamen an image and a date (with optional year)
 - Choose your favorite events to see detailed information about them and a countdown for each one
 - Tap on an event to see every possible detail and the available actions
 - The birthdays are also automagically backed up in cloud by Google Play Services when the app is installed from Play Store
@@ -50,12 +50,14 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 - Selectable accent (no app restart needed, 12 choices)
 - Shimmer effect, because why not
 - Name first or surname first choice
+- Notification only for favorite events
+- Hide and show images
 - Dark and light minimal widget
 - Beautiful animations (and animated notification icon)
 - Multiwindow / freeform full support
 - Animated splashscreen and app intro, dynamic layouts and more
 - Small and optimized apk size
-- 12 languages available!
+- 14 languages available!
 
 ## Screenshots
 <p align='center'>
@@ -81,6 +83,6 @@ The app is available through Google Play and F-Droid\
      height="80">](https://play.google.com/store/apps/details?id=com.minar.birday)
 
 ## Credits and contributions
-Currently, Birday supports the languages in the above table. If you want to translate the app in any other language, just contact me: you'll be quoted both on Github and in the Play Store description.
+Currently, Birday supports the languages in the above table. If you want to translate the app in any other language or update an existing translation, just contact me or send a pull request: you'll be quoted both on Github and in the Play Store description.
 
-This app was written during my free time as a training. Many good devs have helped me understanding the best practices and they taught me a lot of useful tricks. A special thank to every contributor here and on Reddit.
+This app was written during my free time as a training. Many good devs helped me understanding the best practices and they taught me a lot of useful tricks. A special thank to every contributor here and on Reddit. and God bless Stack Overflow.
