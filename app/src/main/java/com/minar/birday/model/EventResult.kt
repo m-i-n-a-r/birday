@@ -25,6 +25,7 @@ data class EventResult (
         if (name != other.name) return false
         if (surname != other.surname) return false
         if (originalDate != other.originalDate) return false
+        if (!image.contentEquals(other.image)) return false
 
         return true
     }

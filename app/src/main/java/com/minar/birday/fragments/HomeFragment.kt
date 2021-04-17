@@ -18,9 +18,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.DrawableRes
 import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -74,12 +77,19 @@ class HomeFragment : Fragment() {
     private val dialogInsertEventBinding get() = _dialogInsertEventBinding!!
     private var _dialogAppsEventBinding: DialogAppsEventBinding? = null
     private val dialogAppsEventBinding get() = _dialogAppsEventBinding!!
+    private lateinit var resultLauncher: ActivityResultLauncher<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adapter = EventAdapter(this)
         act = activity as MainActivity
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        // Initialize the result launcher to pick the image
+        resultLauncher =
+            registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+                // Handle the returned Uri
+                setImage(uri)
+            }
     }
 
     @ExperimentalStdlibApi
@@ -448,12 +458,16 @@ class HomeFragment : Fragment() {
         var surnameValue = eventResult.surname
         var countYearValue = eventResult.yearMatter
         var eventDateValue: LocalDate = eventResult.originalDate
+        val imageValue: ByteArray? = eventResult.image
         val dialog = MaterialDialog(act, BottomSheet(LayoutMode.WRAP_CONTENT)).show {
             cornerRadius(res = R.dimen.rounded_corners)
             title(R.string.edit_event)
             icon(R.drawable.ic_edit_24dp)
             customView(view = dialogInsertEventBinding.root)
             positiveButton(R.string.update_event) {
+                val image = if (dialogInsertEventBinding.imageEvent.drawable != null)
+                    bitmapToByteArray(dialogInsertEventBinding.imageEvent.drawable.toBitmap())
+                else eventResult.image
                 // Use the data to create an event object and update the db
                 val tuple = Event(
                     id = eventResult.id,
@@ -463,7 +477,7 @@ class HomeFragment : Fragment() {
                     surname = surnameValue?.smartCapitalize(),
                     favorite = eventResult.favorite,
                     notes = eventResult.notes,
-                    image = eventResult.image
+                    image = image
                 )
                 mainViewModel.update(tuple)
                 dismiss()
@@ -479,11 +493,15 @@ class HomeFragment : Fragment() {
         val surname = dialogInsertEventBinding.surnameEvent
         val eventDate = dialogInsertEventBinding.dateEvent
         val countYear = dialogInsertEventBinding.countYearSwitch
+        val eventImage = dialogInsertEventBinding.imageEvent
         name.setText(nameValue)
         surname.setText(surnameValue)
         countYear.isChecked = countYearValue!!
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
         eventDate.setText(eventDateValue.format(formatter))
+        if (imageValue != null)
+            eventImage.setImageBitmap(byteArrayToBitmap(imageValue))
+
         val endDate = Calendar.getInstance()
         val startDate = Calendar.getInstance()
         startDate.set(1500, 1, 1)
@@ -498,10 +516,14 @@ class HomeFragment : Fragment() {
             countYearValue = isChecked
         }
 
+        eventImage.setOnClickListener {
+            resultLauncher.launch("image/*")
+        }
+
         eventDate.setOnClickListener {
             // Prevent double dialogs on fast click
             if (dateDialog == null) {
-// Build constraints
+                // Build constraints
                 val constraints =
                     CalendarConstraints.Builder()
                         .setStart(startDate.timeInMillis)
@@ -665,6 +687,12 @@ class HomeFragment : Fragment() {
             }
             dialog.dismiss()
         }
+    }
+
+    // Set the chosen image in the circular image
+    private fun setImage(data: Uri?) {
+        val image = dialogInsertEventBinding.imageEvent
+        image.setImageURI(data)
     }
 
     // Share an event as a plain string (plus some explanatory emotes) on every supported app

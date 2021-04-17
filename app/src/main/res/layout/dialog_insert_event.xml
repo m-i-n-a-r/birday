@@ -10,14 +10,29 @@
         android:orientation="vertical"
         android:paddingHorizontal="@dimen/text_field_horizontal_margin">
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageEvent"
+            android:layout_width="@dimen/card_image_height"
+            android:layout_height="@dimen/card_image_height"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="@string/event_details"
+            android:focusable="true"
+            android:padding="@dimen/in_row_padding"
+            android:src="@drawable/placeholder_event_image"
+            app:shapeAppearanceOverlay="@style/roundedImageView"
+            app:strokeColor="@color/goodGray"
+            app:strokeWidth="@dimen/card_stroke" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/nameEventLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginBottom="@dimen/form_vertical_margin"
+            android:layout_marginTop="@dimen/between_row_padding"
             android:hint="@string/insert_name_hint"
             app:boxBackgroundColor="@color/transparent"
             app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
@@ -53,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-            android:layout_marginVertical="@dimen/form_vertical_margin"
+            android:layout_marginTop="@dimen/form_vertical_margin"
             android:hint="@string/insert_surname_hint"
             app:boxBackgroundColor="@color/transparent"
             app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"

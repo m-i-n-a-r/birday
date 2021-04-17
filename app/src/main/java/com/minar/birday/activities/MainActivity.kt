@@ -16,11 +16,13 @@ import android.os.*
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
@@ -43,6 +45,7 @@ import com.minar.birday.databinding.ActivityMainBinding
 import com.minar.birday.databinding.DialogInsertEventBinding
 import com.minar.birday.model.Event
 import com.minar.birday.utilities.AppRater
+import com.minar.birday.utilities.bitmapToByteArray
 import com.minar.birday.utilities.checkString
 import com.minar.birday.utilities.smartCapitalize
 import com.minar.birday.viewmodels.MainViewModel
@@ -57,12 +60,21 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: EventAdapter
     private lateinit var sharedPrefs: SharedPreferences
     private lateinit var binding: ActivityMainBinding
+    private var _dialogInsertEventBinding: DialogInsertEventBinding? = null
+    private val dialogInsertEventBinding get() = _dialogInsertEventBinding!!
+    private lateinit var resultLauncher: ActivityResultLauncher<String>
 
     @ExperimentalStdlibApi
     override fun onCreate(savedInstanceState: Bundle?) {
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
         adapter = EventAdapter(null)
+        // Initialize the result launcher to pick the image
+        resultLauncher =
+            registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+                // Handle the returned Uri
+                setImage(uri)
+            }
 
         // Create the notification channel and check the permission (note: appIntro 6.0 is still buggy, better avoid to use it for asking permissions)
         askContactsPermission()
@@ -146,7 +158,7 @@ class MainActivity : AppCompatActivity() {
         val fab = binding.fab
         fab.setOnClickListener {
             vibrate()
-            val dialogBinding = DialogInsertEventBinding.inflate(layoutInflater)
+            _dialogInsertEventBinding = DialogInsertEventBinding.inflate(layoutInflater)
             // Show a bottom sheet containing the form to insert a new event
             var nameValue = "error"
             var surnameValue = ""
@@ -158,12 +170,20 @@ class MainActivity : AppCompatActivity() {
                 icon(R.drawable.ic_party_24dp)
                 message(R.string.new_event_description)
                 // Don't use scrollable here, instead use a nestedScrollView in the layout
-                customView(view = dialogBinding.root)
+                customView(view = dialogInsertEventBinding.root)
                 positiveButton(R.string.insert_event) {
+                    var image: ByteArray? = null
+                    if (dialogInsertEventBinding.imageEvent.drawable != null)
+                        image =
+                            bitmapToByteArray(dialogInsertEventBinding.imageEvent.drawable.toBitmap())
                     // Use the data to create a event object and insert it in the db
                     val tuple = Event(
-                        id = 0, originalDate = eventDateValue, name = nameValue.smartCapitalize(),
-                        surname = surnameValue.smartCapitalize(), yearMatter = countYearValue
+                        id = 0,
+                        originalDate = eventDateValue,
+                        name = nameValue.smartCapitalize(),
+                        surname = surnameValue.smartCapitalize(),
+                        yearMatter = countYearValue,
+                        image = image,
                     )
                     // Insert using another thread
                     val thread = Thread { mainViewModel.insert(tuple) }
@@ -178,10 +198,12 @@ class MainActivity : AppCompatActivity() {
 
             // Setup listeners and checks on the fields
             dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
-            val name = dialogBinding.nameEvent
-            val surname = dialogBinding.surnameEvent
-            val eventDate = dialogBinding.dateEvent
-            val countYear = dialogBinding.countYearSwitch
+            val name = dialogInsertEventBinding.nameEvent
+            val surname = dialogInsertEventBinding.surnameEvent
+            val eventDate = dialogInsertEventBinding.dateEvent
+            val countYear = dialogInsertEventBinding.countYearSwitch
+            val eventImage = dialogInsertEventBinding.imageEvent
+
             val endDate = Calendar.getInstance()
             val startDate = Calendar.getInstance()
             startDate.set(1500, 1, 1)
@@ -194,6 +216,10 @@ class MainActivity : AppCompatActivity() {
             // Update the boolean value on each click
             countYear.setOnCheckedChangeListener { _, isChecked ->
                 countYearValue = isChecked
+            }
+
+            eventImage.setOnClickListener {
+                resultLauncher.launch("image/*")
             }
 
             eventDate.setOnClickListener {
@@ -264,13 +290,13 @@ class MainActivity : AppCompatActivity() {
                             val nameText = name.text.toString()
                             if (nameText.isBlank() || !checkString(nameText)) {
                                 // Setting the error on the layout is important to make the properties work. Kotlin synthetics are being used here
-                                dialogBinding.nameEventLayout.error =
+                                dialogInsertEventBinding.nameEventLayout.error =
                                     getString(R.string.invalid_value_name)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                                 nameCorrect = false
                             } else {
                                 nameValue = nameText
-                                dialogBinding.nameEventLayout.error = null
+                                dialogInsertEventBinding.nameEventLayout.error = null
                                 nameCorrect = true
                             }
                         }
@@ -278,13 +304,13 @@ class MainActivity : AppCompatActivity() {
                             val surnameText = surname.text.toString()
                             if (!checkString(surnameText)) {
                                 // Setting the error on the layout is important to make the properties work. Kotlin synthetics are being used here
-                                dialogBinding.surnameEventLayout.error =
+                                dialogInsertEventBinding.surnameEventLayout.error =
                                     getString(R.string.invalid_value_name)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
                                 surnameCorrect = false
                             } else {
                                 surnameValue = surnameText
-                                dialogBinding.surnameEventLayout.error = null
+                                dialogInsertEventBinding.surnameEventLayout.error = null
                                 surnameCorrect = true
                             }
                         }
@@ -301,6 +327,12 @@ class MainActivity : AppCompatActivity() {
             surname.addTextChangedListener(watcher)
             eventDate.addTextChangedListener(watcher)
         }
+    }
+
+    // Set the chosen image in the circular image
+    private fun setImage(data: Uri?) {
+        val image = dialogInsertEventBinding.imageEvent
+        image.setImageURI(data)
     }
 
     // Create the NotificationChannel. When created the first time, this code does nothing

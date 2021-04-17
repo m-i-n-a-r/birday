@@ -30,7 +30,7 @@ abstract class EventDatabase : RoomDatabase() {
                 )
             }
         }
-        fun getBirdayDatabase(context: Context): EventDatabase? {
+        fun getBirdayDatabase(context: Context): EventDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
