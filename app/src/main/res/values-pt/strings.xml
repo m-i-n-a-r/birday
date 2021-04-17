@@ -13,7 +13,7 @@
     <string name="title_favorites">Favoritos</string>
     <string name="title_settings">Definições</string>
     <string name="no_events">Não existem aniversários! Pode adicionar aniversários com o botão abaixo!</string>
-    <string name="no_favorites">Não existem favoritos! Toque na estrela para salvar um evento como favorito!</string>
+    <string name="no_favorites">Não existem favoritos! Toque na estrela para guardar um evento como favorito!</string>
     <string name="add_favorite">Adicionar favoritos</string>
     <string name="stats">Estatísticas</string>
     <string name="no_stats">Não existem estatísticas para mostrar!</string>
