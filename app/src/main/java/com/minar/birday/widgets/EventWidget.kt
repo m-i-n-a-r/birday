@@ -35,7 +35,7 @@ internal fun updateAppWidget(
 ) {
     val thread = Thread {
         // Get the next events and the proper formatter
-        val eventDao: EventDao = EventDatabase.getBirdayDatabase(context)!!.eventDao()
+        val eventDao: EventDao = EventDatabase.getBirdayDatabase(context).eventDao()
         val nextEvents: List<EventResult> = eventDao.getOrderedNextEventsStatic()
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
 

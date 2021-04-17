@@ -39,7 +39,7 @@ class BirdayExporter(context: Context?, attrs: AttributeSet?) : Preference(conte
     // Export the room database to a file in Android/data/com.minar.birday/files
     private fun exportBirthdays(context: Context): String {
         // Perform a checkpoint to empty the write ahead logging temporary files and avoid closing the entire db
-        val eventDao = EventDatabase.getBirdayDatabase(context)!!.eventDao()
+        val eventDao = EventDatabase.getBirdayDatabase(context).eventDao()
         eventDao.checkpoint(SimpleSQLiteQuery("pragma wal_checkpoint(full)"))
 
         val dbFile = context.getDatabasePath("BirdayDB").absoluteFile

@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit
 class EventWorker(context: Context, params: WorkerParameters) : Worker(context, params) {
     override fun doWork(): Result {
         val appContext = applicationContext
-        val eventDao: EventDao = EventDatabase.getBirdayDatabase(appContext)!!.eventDao()
+        val eventDao: EventDao = EventDatabase.getBirdayDatabase(appContext).eventDao()
         val allEvents: List<EventResult> = eventDao.getOrderedEventsStatic()
         val currentDate = Calendar.getInstance()
         val dueDate = Calendar.getInstance()

@@ -23,7 +23,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val allFavoriteEvents: LiveData<List<EventResult>>
     val nextEvents: LiveData<List<EventResult>>
     val searchStringLiveData = MutableLiveData<String>()
-    private val eventDao: EventDao = EventDatabase.getBirdayDatabase(application)!!.eventDao()
+    private val eventDao: EventDao = EventDatabase.getBirdayDatabase(application).eventDao()
 
     init {
         searchStringLiveData.value = ""
