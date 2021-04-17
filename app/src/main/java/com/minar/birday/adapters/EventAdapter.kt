@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -90,8 +91,14 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?) :
                 eventImage.visibility = View.VISIBLE
                 if (event.image != null && event.image.isNotEmpty()) {
                     eventImage.setImageBitmap(byteArrayToBitmap(event.image))
+                    // TODO Evaluate an onclick action for the image (motion layout?)
                     //eventImage.setOnClickListener {}
-                }
+                } else eventImage.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        context,
+                        R.drawable.placeholder_event_image
+                    )
+                )
             }
 
             // Manage the favorite logic
