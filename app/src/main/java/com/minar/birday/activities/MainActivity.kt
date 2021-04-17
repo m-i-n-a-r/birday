@@ -122,7 +122,7 @@ class MainActivity : AppCompatActivity() {
             .setExitAnim(R.anim.nav_exit_anim)
             .setPopEnterAnim(R.anim.nav_pop_enter_anim)
             .setPopExitAnim(R.anim.nav_pop_exit_anim)
-            .setPopUpTo(navController.graph.startDestination, false)
+            .setPopUpTo(R.id.nav_graph, true)
             .build()
         navigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
