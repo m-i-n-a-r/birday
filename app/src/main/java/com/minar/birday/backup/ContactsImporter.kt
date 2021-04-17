@@ -152,7 +152,9 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
                         )
                     )
                     val bitmap = BitmapFactory.decodeStream(imageStream)
-                    val image = bitmapToByteArray(bitmap)
+                    var image: ByteArray? = null
+                    if (bitmap != null)
+                        image = bitmapToByteArray(bitmap)
 
                     // Retrieve the birthday
                     val bd = context.contentResolver
