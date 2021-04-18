@@ -90,9 +90,8 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?) :
                 // Show and load the image, if available, or keep the placeholder
                 eventImage.visibility = View.VISIBLE
                 if (event.image != null && event.image.isNotEmpty()) {
+                    // The click is handled via motion layout
                     eventImage.setImageBitmap(byteArrayToBitmap(event.image))
-                    // TODO Evaluate an onclick action for the image (motion layout?)
-                    //eventImage.setOnClickListener {}
                 } else eventImage.setImageDrawable(
                     ContextCompat.getDrawable(
                         context,

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="500">
+        <KeyFrameSet>
+
+        </KeyFrameSet>
+        <OnClick motion:targetId="@+id/eventImage" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/eventImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:rotationY="360"
+            app:transitionEasing="decelerate"
+            app:layout_constraintTop_toTopOf="@+id/eventPerson"
+            app:layout_constraintBottom_toBottomOf="@+id/eventDate" />
+    </ConstraintSet>
+</MotionScene>
