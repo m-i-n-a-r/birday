@@ -58,13 +58,14 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                 anticipated,
                 1,
                 surnameFirst,
+                hideImage,
                 true,
             )
             if (actual.isNotEmpty()) sendNotification(
                 actual,
                 2,
-                hideImage,
                 surnameFirst,
+                hideImage,
             )
 
             // Set Execution at the time specified + 15 seconds to avoid midnight problems

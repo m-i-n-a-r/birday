@@ -6,11 +6,16 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Bitmap
+import android.graphics.ImageDecoder
 import android.graphics.drawable.Drawable
+import android.media.ThumbnailUtils
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.provider.MediaStore
 import android.provider.Telephony
 import android.text.Editable
 import android.text.TextWatcher
@@ -55,6 +60,7 @@ import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidget
+import java.io.IOException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -691,8 +697,25 @@ class HomeFragment : Fragment() {
 
     // Set the chosen image in the circular image
     private fun setImage(data: Uri?) {
+        if (data == null) return
+        var bitmap: Bitmap? = null
+        try {
+            if (Build.VERSION.SDK_INT < 29) {
+                @Suppress("DEPRECATION")
+                bitmap = MediaStore.Images.Media.getBitmap(act.contentResolver, data)
+            } else {
+                val source = ImageDecoder.createSource(act.contentResolver, data)
+                bitmap = ImageDecoder.decodeBitmap(source)
+            }
+        } catch (e: IOException) {}
+        if (bitmap == null) return
+
+        // Bitmap ready. Avoid images larger than 1000*1000
+        var dimension: Int = getBitmapSquareSize(bitmap)
+        if (dimension > 1000) dimension = 1000
+        val resizedBitmap = ThumbnailUtils.extractThumbnail(bitmap, dimension, dimension)
         val image = dialogInsertEventBinding.imageEvent
-        image.setImageURI(data)
+        image.setImageBitmap(resizedBitmap)
     }
 
     // Share an event as a plain string (plus some explanatory emotes) on every supported app

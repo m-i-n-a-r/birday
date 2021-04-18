@@ -26,3 +26,8 @@ fun byteArrayToBitmap(byteImg: ByteArray): Bitmap {
     return BitmapFactory.decodeStream(stream)
 }
 
+// Get the smallest dimension in a non-square image to crop and resize it
+fun getBitmapSquareSize(bitmap: Bitmap): Int {
+    return bitmap.width.coerceAtMost(bitmap.height)
+}
+

@@ -8,11 +8,15 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.ImageDecoder
 import android.media.AudioAttributes
 import android.media.AudioAttributes.Builder
+import android.media.ThumbnailUtils
 import android.net.Uri
 import android.os.*
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
@@ -44,16 +48,14 @@ import com.minar.birday.backup.ContactsImporter
 import com.minar.birday.databinding.ActivityMainBinding
 import com.minar.birday.databinding.DialogInsertEventBinding
 import com.minar.birday.model.Event
-import com.minar.birday.utilities.AppRater
-import com.minar.birday.utilities.bitmapToByteArray
-import com.minar.birday.utilities.checkString
-import com.minar.birday.utilities.smartCapitalize
+import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
 import java.io.IOException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var mainViewModel: MainViewModel
@@ -331,11 +333,29 @@ class MainActivity : AppCompatActivity() {
 
     // Set the chosen image in the circular image
     private fun setImage(data: Uri?) {
+        if (data == null) return
+        var bitmap: Bitmap? = null
+        try {
+            if (Build.VERSION.SDK_INT < 29) {
+                @Suppress("DEPRECATION")
+                bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, data)
+            } else {
+                val source = ImageDecoder.createSource(this.contentResolver, data)
+                bitmap = ImageDecoder.decodeBitmap(source)
+            }
+        } catch (e: IOException) {}
+        if (bitmap == null) return
+
+        // Bitmap ready. Avoid images larger than 1000*1000
+        var dimension: Int = getBitmapSquareSize(bitmap)
+        if (dimension > 1000) dimension = 1000
+
+        val resizedBitmap = ThumbnailUtils.extractThumbnail(bitmap, dimension, dimension)
         val image = dialogInsertEventBinding.imageEvent
-        image.setImageURI(data)
+        image.setImageBitmap(resizedBitmap)
     }
 
-    // Create the NotificationChannel. When created the first time, this code does nothing
+    // Create the NotificationChannel. This code does nothing when it already exists
     private fun createNotificationChannel() {
         val soundUri =
             Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + applicationContext.packageName + "/" + R.raw.birday_notification)
