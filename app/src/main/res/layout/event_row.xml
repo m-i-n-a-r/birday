@@ -21,8 +21,10 @@
         android:src="@drawable/placeholder_event_image"
         app:layout_constraintBottom_toBottomOf="@id/eventDate"
         app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHeight_max="@dimen/in_row_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/eventPerson"
+        app:layout_constraintWidth_max="@dimen/in_row_image"
         app:shapeAppearanceOverlay="@style/roundedImageView"
         app:strokeColor="@color/goodGray"
         app:strokeWidth="@dimen/card_stroke" />
