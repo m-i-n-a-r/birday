@@ -3,7 +3,7 @@
 An open source app to remember birthdays and events without having to open Facebook, set alarms or rely on Google Calendar.
 
 <p align='center'>
-  <a href='https://github.com/m-i-n-a-r/birday/blob/master/LICENSE.md'><img src='https://img.shields.io/cocoapods/l/AFNetworking.svg'/></a>
+  <a href='https://github.com/m-i-n-a-r/birday/blob/master/LICENSE.md'><img src='https://img.shields.io/badge/license-GPL 3-333333'/></a>
   <img src='https://img.shields.io/badge/version-1.11.X-blue'/>
 	<img src='https://img.shields.io/badge/status-released-success'/>
 	<img src='https://img.shields.io/badge/-translations%20needed!-yellow'/>
@@ -40,7 +40,7 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 - Choose your favorite events to see detailed information about them and a countdown for each one
 - Tap on an event to see every possible detail and the available actions
 - The birthdays are also automagically backed up in cloud by Google Play Services when the app is installed from Play Store
-- A huge set of randomly generated stats (zodiac, average age and a lot more) when more than 5 events are inserted, plus an animated counter
+- A set of stats (zodiac, average age and much more) when more than 5 events are inserted, plus an animated counter
 - Easily delete, modify and share the saved events!
 - Each favorite event has a note field
 - Easily hide the top cards to display the list in fullscreen
@@ -48,7 +48,7 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 - Quick apps launcher
 - Light and dark themes (Android 10 dark mode supported)
 - Selectable accent (no app restart needed, 12 choices)
-- Shimmer effect, because why not
+- Shimmer effect (it can be disabled) and confetti, because why not
 - Name first or surname first choice
 - Notification only for favorite events
 - Hide and show images
@@ -83,6 +83,12 @@ The app is available through Google Play and F-Droid\
      height="80">](https://play.google.com/store/apps/details?id=com.minar.birday)
 
 ## Credits and contributions
+Birday uses some open source libraries, just a few:
+- [Material Dialogs](https://github.com/afollestad/material-dialogs)
+- [Konfetti](https://github.com/DanielMartinus/Konfetti)
+- [App Intro](https://github.com/AppIntro/AppIntro)
+- [Shimmer](https://github.com/facebook/shimmer-android)
+
 Currently, Birday supports the languages in the above table. If you want to translate the app in any other language or update an existing translation, just contact me or send a pull request: you'll be quoted both on Github and in the Play Store description.
 
 This app was written during my free time as a training. Many good devs helped me understanding the best practices and they taught me a lot of useful tricks. A special thank to every contributor here and on Reddit. and God bless Stack Overflow.
