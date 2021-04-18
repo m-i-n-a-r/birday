@@ -343,14 +343,20 @@ class MainActivity : AppCompatActivity() {
                 val source = ImageDecoder.createSource(this.contentResolver, data)
                 bitmap = ImageDecoder.decodeBitmap(source)
             }
-        } catch (e: IOException) {}
+        } catch (e: IOException) {
+        }
         if (bitmap == null) return
 
         // Bitmap ready. Avoid images larger than 1000*1000
         var dimension: Int = getBitmapSquareSize(bitmap)
         if (dimension > 1000) dimension = 1000
 
-        val resizedBitmap = ThumbnailUtils.extractThumbnail(bitmap, dimension, dimension)
+        val resizedBitmap = ThumbnailUtils.extractThumbnail(
+            bitmap,
+            dimension,
+            dimension,
+            ThumbnailUtils.OPTIONS_RECYCLE_INPUT,
+        )
         val image = dialogInsertEventBinding.imageEvent
         image.setImageBitmap(resizedBitmap)
     }

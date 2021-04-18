@@ -1,10 +1,10 @@
 package com.minar.birday.utilities
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+import android.graphics.*
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
+
 
 // Given a bitmap, convert it to a byte array
 fun bitmapToByteArray(bitmap: Bitmap): ByteArray {
@@ -29,5 +29,26 @@ fun byteArrayToBitmap(byteImg: ByteArray): Bitmap {
 // Get the smallest dimension in a non-square image to crop and resize it
 fun getBitmapSquareSize(bitmap: Bitmap): Int {
     return bitmap.width.coerceAtMost(bitmap.height)
+}
+
+// Transform a square bitmap in a circular bitmap, useful for notification
+fun getCircularBitmap(bitmap: Bitmap): Bitmap {
+    val output = Bitmap.createBitmap(
+        bitmap.width,
+        bitmap.height,
+        Bitmap.Config.ARGB_8888,
+    )
+    val canvas = Canvas(output)
+    val color: Int = Color.GRAY
+    val paint = Paint()
+    val rect = Rect(0, 0, bitmap.width, bitmap.height)
+    val rectF = RectF(rect)
+    paint.isAntiAlias = true
+    canvas.drawARGB(0, 0, 0, 0)
+    paint.color = color
+    canvas.drawOval(rectF, paint)
+    paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
+    canvas.drawBitmap(bitmap, rect, rect, paint)
+    return output
 }
 

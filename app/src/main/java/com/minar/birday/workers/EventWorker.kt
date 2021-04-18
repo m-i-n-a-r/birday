@@ -18,6 +18,7 @@ import com.minar.birday.model.EventResult
 import com.minar.birday.activities.SplashActivity
 import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.formatName
+import com.minar.birday.utilities.getCircularBitmap
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 import java.util.*
@@ -131,7 +132,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                         .bigPicture(bitmap)
                         .bigLargeIcon(null)
                 )
-                    .setLargeIcon(bitmap)
+                    .setLargeIcon(getCircularBitmap(bitmap))
         }
 
         with(NotificationManagerCompat.from(applicationContext)) { notify(id, builder.build()) }
