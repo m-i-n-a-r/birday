@@ -61,6 +61,8 @@ import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidget
+import nl.dionsegijn.konfetti.models.Shape
+import nl.dionsegijn.konfetti.models.Size
 import java.io.IOException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -155,7 +157,7 @@ class HomeFragment : Fragment() {
         initializeRecyclerView()
         setUpAdapter()
 
-        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        mainViewModel = ViewModelProvider(act).get(MainViewModel::class.java)
         mainViewModel.allEvents.observe(viewLifecycleOwner, { events ->
             // Manage placeholders, search results and the main list
             events?.let { adapter.submitList(it) }
@@ -411,17 +413,22 @@ class HomeFragment : Fragment() {
         appWidgetManager.updateAppWidget(thisWidget, remoteViews)
     }
 
-    // Insert the necessary information in the upcoming event cardview
+    // Insert the necessary information in the upcoming event cardview (and confetti)
     private fun insertUpcomingEvents(events: List<EventResult>) {
-        val cardTitle: TextView = binding.upcomingTitle
-        val cardSubtitle: TextView = binding.upcomingSubtitle
-        val cardDescription: TextView = binding.upcomingDescription
+        val cardTitle = binding.upcomingTitle
+        val cardSubtitle = binding.upcomingSubtitle
+        val cardDescription = binding.upcomingDescription
         var personName = ""
         var nextDateText = ""
         var nextAge = ""
         val upcomingDate = events[0].nextDate
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
 
+        // Trigger confetti if there's an event today
+        if (getRemainingDays(upcomingDate!!) == 0 && !mainViewModel.confettiDone) {
+            triggerConfetti()
+            mainViewModel.confettiDone = true
+        }
         // Manage multiple events in the same day considering first case, middle cases and last case if more than 3
         for (event in events) {
             if (event.nextDate!!.isEqual(upcomingDate)) {
@@ -448,7 +455,6 @@ class HomeFragment : Fragment() {
                 }
             }
             if (ChronoUnit.DAYS.between(event.nextDate, upcomingDate) < 0) break
-
         }
 
         cardTitle.text = personName
@@ -744,6 +750,26 @@ class HomeFragment : Fragment() {
             .setType("text/plain")
             .setChooserTitle(getString(R.string.share_event))
             .startChooser()
+    }
+
+    // Activate the confetti effect
+    private fun triggerConfetti() {
+        val view = binding.confettiView
+        view.build()
+            .addColors(act.getThemeColor(android.R.attr.colorAccent))
+            .setDirection(0.0, 359.0)
+            .setSpeed(1f, 5f)
+            .setRotationEnabled(true)
+            .setFadeOutEnabled(true)
+            .setTimeToLive(2000L)
+            .addShapes(
+                Shape.Square,
+                Shape.Circle,
+                Shape.DrawableShape(ContextCompat.getDrawable(act, R.drawable.ic_favorites_24dp)!!)
+            )
+            .addSizes(Size(8))
+            .setPosition(-50f, view.width + 50f, -50f, -50f)
+            .streamFor(50, 3000L)
     }
 
     // Loop the animated vector drawable

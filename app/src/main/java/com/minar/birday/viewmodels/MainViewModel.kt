@@ -24,6 +24,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val nextEvents: LiveData<List<EventResult>>
     val searchStringLiveData = MutableLiveData<String>()
     private val eventDao: EventDao = EventDatabase.getBirdayDatabase(application).eventDao()
+    var confettiDone: Boolean = false
 
     init {
         searchStringLiveData.value = ""

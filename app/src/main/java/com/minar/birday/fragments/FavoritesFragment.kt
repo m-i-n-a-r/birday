@@ -107,7 +107,7 @@ class FavoritesFragment : Fragment() {
         initializeRecyclerView()
         setUpAdapter()
 
-        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        mainViewModel = ViewModelProvider(act).get(MainViewModel::class.java)
         mainViewModel.allFavoriteEvents.observe(viewLifecycleOwner, { events ->
             // Update the cached copy of the words in the adapter
             if (events != null && events.isNotEmpty()) {
