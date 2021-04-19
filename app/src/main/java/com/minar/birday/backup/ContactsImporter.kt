@@ -5,6 +5,7 @@ import android.content.ContentUris
 import android.content.Context
 import android.database.Cursor
 import android.graphics.BitmapFactory
+import android.media.ThumbnailUtils
 import android.provider.ContactsContract
 import android.util.AttributeSet
 import android.view.View
@@ -18,6 +19,7 @@ import com.minar.birday.activities.MainActivity
 import com.minar.birday.model.Event
 import com.minar.birday.model.ImportedContact
 import com.minar.birday.utilities.bitmapToByteArray
+import com.minar.birday.utilities.getBitmapSquareSize
 import java.time.LocalDate
 import kotlin.concurrent.thread
 
@@ -153,9 +155,18 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
                     )
                     val bitmap = BitmapFactory.decodeStream(imageStream)
                     var image: ByteArray? = null
-                    if (bitmap != null)
-                        image = bitmapToByteArray(bitmap)
-
+                    if (bitmap != null) {
+                        // Check if the image is too big and resize it to a square if needed
+                        var dimension = getBitmapSquareSize(bitmap)
+                        if (dimension > 1000) dimension = 1000
+                        val resizedBitmap = ThumbnailUtils.extractThumbnail(
+                            bitmap,
+                            dimension,
+                            dimension,
+                            ThumbnailUtils.OPTIONS_RECYCLE_INPUT,
+                        )
+                        image = bitmapToByteArray(resizedBitmap)
+                    }
                     // Retrieve the birthday
                     val bd = context.contentResolver
                     val bdc: Cursor? = bd.query(
