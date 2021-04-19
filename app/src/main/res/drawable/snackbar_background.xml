@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <stroke
+        android:width="@dimen/card_stroke"
+        android:color="@color/goodGrayTranslucent" />
+    <solid android:color="?android:colorBackground" />
+    <corners android:radius="@dimen/rounded_corners" />
+    <padding
+        android:bottom="@dimen/card_stroke"
+        android:left="@dimen/card_stroke"
+        android:right="@dimen/card_stroke"
+        android:top="@dimen/card_stroke" />
+</shape>

@@ -46,7 +46,6 @@ import com.afollestad.materialdialogs.customview.customView
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.activities.SplashActivity
@@ -331,7 +330,7 @@ class HomeFragment : Fragment() {
             override fun onItemLongClick(position: Int, view: View?): Boolean {
                 val event = adapter.getItem(position)
                 val nextAge = "${getString(R.string.next_age)} ${getNextAge(event)}"
-                Snackbar.make(binding.root, nextAge, Snackbar.LENGTH_LONG).show()
+                act.showSnackbar(nextAge)
                 return true
             }
         })

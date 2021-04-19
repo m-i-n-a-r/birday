@@ -8,7 +8,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
-import android.content.res.TypedArray
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.ImageDecoder
@@ -44,6 +43,7 @@ import com.afollestad.materialdialogs.customview.customView
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
 import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.backup.BirdayImporter
@@ -418,6 +418,14 @@ class MainActivity : AppCompatActivity() {
         val typedValue = TypedValue()
         theme.resolveAttribute (attrRes, typedValue, true)
         return typedValue.data
+    }
+
+    // Show a snackbar containing a given text
+    fun showSnackbar(content: String) {
+        val snackbar = Snackbar.make(binding.root, content, Snackbar.LENGTH_LONG)
+        snackbar.isGestureInsetBottomIgnored = true
+        snackbar.anchorView = binding.bottomBar
+        snackbar.show()
     }
 
     // Ask contacts permission

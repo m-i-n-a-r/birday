@@ -11,6 +11,8 @@
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
         <item name="android:navigationBarColor">@color/deepGray</item>
         <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
+        <item name="snackbarStyle">@style/Widget.App.Snackbar</item>
+        <item name="snackbarTextViewStyle">@style/MaterialSnackbarTextViewTheme</item>
     </style>
 
     <!-- Splash screen theme -->
@@ -20,6 +22,15 @@
         <item name="android:colorBackground">@color/colorBackground</item>
         <item name="android:navigationBarColor">@color/goodGray</item>
         <item name="colorAccent">@color/brownAccent</item>
+    </style>
+
+    <!-- Snackbar style -->
+    <style name="Widget.App.Snackbar" parent="Widget.MaterialComponents.Snackbar">
+        <item name="android:background">@drawable/snackbar_background</item>
+    </style>
+
+    <style name="MaterialSnackbarTextViewTheme" parent="@style/Widget.MaterialComponents.Snackbar.TextView">
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <!-- Date picker theme -->
