@@ -1,13 +1,12 @@
 package com.minar.birday.utilities
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.net.Uri
 import android.util.AttributeSet
 import android.view.View
-import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.preference.Preference
 import androidx.preference.PreferenceManager
 import androidx.preference.PreferenceViewHolder
@@ -18,6 +17,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import nl.dionsegijn.konfetti.KonfettiView
+import nl.dionsegijn.konfetti.models.Shape
+import nl.dionsegijn.konfetti.models.Size
 
 class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
     Preference(context, attrs), View.OnClickListener {
@@ -25,6 +27,7 @@ class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
 
     // Easter egg stuff, why not
     private var easterEgg = 0
+    private lateinit var confetti: KonfettiView
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
@@ -35,6 +38,9 @@ class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context)
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
         if (shimmerEnabled) shimmer.startShimmer()
+
+        // Manage confetti
+        confetti = binding.confettiEasterEggView
 
         // Make the icons clickable
         val logo = binding.imageMinar
@@ -59,40 +65,80 @@ class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
 
     override fun onClick(v: View) {
         // Vibrate using the common method in MainActivity
-        val act = context as Activity
+        val act = context as MainActivity
         val uri: Uri
         when (v.id) {
             R.id.imageMinar -> if (easterEgg == 5) {
-                Toast.makeText(context, context.getString(R.string.easter_egg), Toast.LENGTH_SHORT)
-                    .show()
                 easterEgg = 0
+                // Trigger a snackbar and confetti
+                confetti.build()
+                    .addColors(
+                        act.getThemeColor(android.R.attr.colorAccent),
+                        act.getThemeColor(android.R.attr.textColorPrimary),
+                        ContextCompat.getColor(context, R.color.goodGray),
+                    )
+                    .setDirection(0.0, 359.0)
+                    .setSpeed(1f, 5f)
+                    .setRotationEnabled(true)
+                    .setFadeOutEnabled(true)
+                    .setTimeToLive(2000L)
+                    .addShapes(
+                        Shape.DrawableShape(
+                            ContextCompat.getDrawable(
+                                act,
+                                R.drawable.ic_triangle_24dp
+                            )!!
+                        ),
+                        Shape.DrawableShape(
+                            ContextCompat.getDrawable(
+                                act,
+                                R.drawable.ic_favorites_24dp
+                            )!!
+                        ),
+                        Shape.DrawableShape(
+                            ContextCompat.getDrawable(
+                                act,
+                                R.drawable.ic_star_24dp
+                            )!!
+                        ),
+                        Shape.DrawableShape(
+                            ContextCompat.getDrawable(
+                                act,
+                                R.drawable.ic_octagram_24dp
+                            )!!
+                        )
+                    )
+                    .addSizes(Size(8), Size(12), Size(16))
+                    .setPosition(confetti.x + confetti.width / 2, confetti.y + confetti.height / 2)
+                    .burst(300)
+                act.showSnackbar(context.getString(R.string.easter_egg))
             } else easterEgg++
             R.id.minarig -> {
-                if (act is MainActivity) act.vibrate()
+                act.vibrate()
                 uri = Uri.parse(context.getString(R.string.dev_instagram))
                 val intent1 = Intent(Intent.ACTION_VIEW, uri)
                 context.startActivity(intent1)
             }
             R.id.minartt -> {
-                if (act is MainActivity) act.vibrate()
+                act.vibrate()
                 uri = Uri.parse(context.getString(R.string.dev_twitter))
                 val intent2 = Intent(Intent.ACTION_VIEW, uri)
                 context.startActivity(intent2)
             }
             R.id.minarps -> {
-                if (act is MainActivity) act.vibrate()
+                act.vibrate()
                 uri = Uri.parse(context.getString(R.string.dev_other_apps))
                 val intent3 = Intent(Intent.ACTION_VIEW, uri)
                 context.startActivity(intent3)
             }
             R.id.minargit -> {
-                if (act is MainActivity) act.vibrate()
+                act.vibrate()
                 uri = Uri.parse(context.getString(R.string.dev_github))
                 val intent4 = Intent(Intent.ACTION_VIEW, uri)
                 context.startActivity(intent4)
             }
             R.id.minarsite -> {
-                if (act is MainActivity) act.vibrate()
+                act.vibrate()
                 uri = Uri.parse(context.getString(R.string.dev_personal_site))
                 val intent5 = Intent(Intent.ACTION_VIEW, uri)
                 context.startActivity(intent5)

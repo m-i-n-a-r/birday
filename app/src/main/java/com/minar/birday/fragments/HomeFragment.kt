@@ -751,24 +751,49 @@ class HomeFragment : Fragment() {
             .startChooser()
     }
 
-    // Activate the confetti effect
+    // Activate the confetti effect (stream, 3 colors, 4 shapes)
     private fun triggerConfetti() {
-        val view = binding.confettiView
-        view.build()
-            .addColors(act.getThemeColor(android.R.attr.colorAccent))
+        val confetti = binding.confettiView
+        confetti.build()
+            .addColors(
+                act.getThemeColor(android.R.attr.colorAccent),
+                act.getThemeColor(android.R.attr.textColorPrimary),
+                ContextCompat.getColor(requireContext(), R.color.goodGray),
+            )
             .setDirection(0.0, 359.0)
             .setSpeed(1f, 5f)
             .setRotationEnabled(true)
             .setFadeOutEnabled(true)
             .setTimeToLive(2000L)
             .addShapes(
-                Shape.Square,
-                Shape.Circle,
-                Shape.DrawableShape(ContextCompat.getDrawable(act, R.drawable.ic_favorites_24dp)!!)
+                Shape.DrawableShape(
+                    ContextCompat.getDrawable(
+                        act,
+                        R.drawable.ic_triangle_24dp
+                    )!!
+                ),
+                Shape.DrawableShape(
+                    ContextCompat.getDrawable(
+                        act,
+                        R.drawable.ic_favorites_24dp
+                    )!!
+                ),
+                Shape.DrawableShape(
+                    ContextCompat.getDrawable(
+                        act,
+                        R.drawable.ic_star_24dp
+                    )!!
+                ),
+                Shape.DrawableShape(
+                    ContextCompat.getDrawable(
+                        act,
+                        R.drawable.ic_octagram_24dp
+                    )!!
+                )
             )
-            .addSizes(Size(8))
-            .setPosition(-50f, view.width + 50f, -50f, -50f)
-            .streamFor(50, 3000L)
+            .addSizes(Size(8), Size(12), Size(16))
+            .setPosition(-50f, confetti.width + 50f, -50f, -50f)
+            .streamFor(300, 3000L)
     }
 
     // Loop the animated vector drawable
