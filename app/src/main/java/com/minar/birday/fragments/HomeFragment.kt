@@ -241,7 +241,7 @@ class HomeFragment : Fragment() {
                 subject.add(event)
                 val statsGenerator = StatsGenerator(subject, context)
                 val daysCountdown =
-                    daysRemaining(getRemainingDays(event.nextDate!!), requireContext())
+                    formatDaysRemaining(getRemainingDays(event.nextDate!!), requireContext())
                 dialogDetailsBinding.detailsZodiacSignValue.text =
                     statsGenerator.getZodiacSign(event)
                 dialogDetailsBinding.detailsCountdown.text = daysCountdown
@@ -326,11 +326,16 @@ class HomeFragment : Fragment() {
                 }
             }
 
-            // Show the next age on long press
+            // Show the next age and countdown on long press (only the latter for no year events)
             override fun onItemLongClick(position: Int, view: View?): Boolean {
                 val event = adapter.getItem(position)
-                val nextAge = "${getString(R.string.next_age)} ${getNextAge(event)}"
-                act.showSnackbar(nextAge)
+                val quickStat = if (event.yearMatter == false) formatDaysRemaining(
+                    getRemainingDays(event.nextDate!!),
+                    requireContext()
+                )
+                else "${getString(R.string.next_age)} ${getNextAge(event)}, " +
+                        formatDaysRemaining(getRemainingDays(event.nextDate!!), requireContext())
+                act.showSnackbar(quickStat)
                 return true
             }
         })

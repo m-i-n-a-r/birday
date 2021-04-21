@@ -27,11 +27,11 @@ fun resultToEvent(eventResult: EventResult) = Event(
 // Properly format the next date for widget and next event card
 fun nextDateFormatted(event: EventResult, formatter: DateTimeFormatter, context: Context): String {
     val daysRemaining = getRemainingDays(event.nextDate!!)
-    return event.nextDate.format(formatter) + ". " + daysRemaining(daysRemaining, context)
+    return event.nextDate.format(formatter) + ". " + formatDaysRemaining(daysRemaining, context)
 }
 
 // Return the remaining days or a string
-fun daysRemaining(daysRemaining: Int, context: Context): String {
+fun formatDaysRemaining(daysRemaining: Int, context: Context): String {
     return when (daysRemaining) {
         // The -1 case should never happen
         -1 -> context.getString(R.string.yesterday)
