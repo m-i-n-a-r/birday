@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/devStuff"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="top"
-    android:orientation="vertical">
+    android:layout_gravity="top">
 
     <!-- Duration and repeat delay must be hardcoded -->
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/settingsShimmer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:shimmer_auto_start="false"
         app:shimmer_base_alpha="@dimen/shimmer_base_alpha"
         app:shimmer_dropoff="@dimen/shimmer_dropoff"
@@ -27,7 +29,6 @@
             android:id="@+id/imageMinar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/minar_banner_height"
-            android:layout_weight="0.21"
             android:clickable="true"
             android:contentDescription="@string/dev_name"
             android:focusable="true"
@@ -36,81 +37,110 @@
             app:tint="?colorAccent" />
     </com.facebook.shimmer.ShimmerFrameLayout>
 
+    <nl.dionsegijn.konfetti.KonfettiView
+        android:id="@+id/confettiEasterEggView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/settingsShimmer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/settingsShimmer" />
+
     <TextView
         android:id="@+id/descriptionMinar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.21"
-        android:paddingHorizontal="@dimen/minar_description_padding"
-        android:text="@string/dev_description"
-        android:scrollbars="none"
-        android:textAlignment="center" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/activity_vertical_margin">
-
-        <ImageView
-            android:id="@+id/minarig"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:contentDescription="@string/dev_instagram"
-            android:focusable="true"
-            android:src="@drawable/ic_instagram_black_24dp"
-            app:tint="?colorAccent" />
-
-        <ImageView
-            android:id="@+id/minartt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:contentDescription="@string/dev_twitter"
-            android:focusable="true"
-            android:src="@drawable/ic_twitter_black_24dp"
-            app:tint="?colorAccent" />
-
-        <ImageView
-            android:id="@+id/minarps"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:contentDescription="@string/dev_other_apps"
-            android:focusable="true"
-            android:src="@drawable/ic_play_store_black_24dp"
-            app:tint="?colorAccent" />
-
-        <ImageView
-            android:id="@+id/minargit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:contentDescription="@string/dev_github"
-            android:focusable="true"
-            android:src="@drawable/ic_github_black_24dp"
-            app:tint="?colorAccent" />
-
-        <ImageView
-            android:id="@+id/minarsite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:contentDescription="@string/dev_personal_site"
-            android:focusable="true"
-            android:src="@drawable/ic_minar_logo_24dp"
-            app:tint="?colorAccent" />
-    </LinearLayout>
+        android:paddingHorizontal="@dimen/minar_description_padding"
+        android:scrollbars="none"
+        android:text="@string/dev_description"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@id/settingsShimmer" />
 
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/minarig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="@string/dev_instagram"
+        android:focusable="true"
+        android:paddingVertical="@dimen/activity_vertical_margin"
+        android:src="@drawable/ic_instagram_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/minartt"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descriptionMinar"
+        app:tint="?colorAccent" />
+
+    <ImageView
+        android:id="@+id/minartt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="@string/dev_twitter"
+        android:focusable="true"
+        android:paddingVertical="@dimen/activity_vertical_margin"
+        android:src="@drawable/ic_twitter_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@id/minarig"
+        app:layout_constraintEnd_toStartOf="@id/minarps"
+        app:layout_constraintStart_toEndOf="@id/minarig"
+        app:layout_constraintTop_toTopOf="@id/minarig"
+        app:tint="?colorAccent" />
+
+    <ImageView
+        android:id="@+id/minarps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="@string/dev_other_apps"
+        android:focusable="true"
+        android:paddingVertical="@dimen/activity_vertical_margin"
+        android:src="@drawable/ic_play_store_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@id/minarig"
+        app:layout_constraintEnd_toStartOf="@id/minargit"
+        app:layout_constraintStart_toEndOf="@id/minartt"
+        app:layout_constraintTop_toTopOf="@id/minarig"
+        app:tint="?colorAccent" />
+
+    <ImageView
+        android:id="@+id/minargit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="@string/dev_github"
+        android:focusable="true"
+        android:paddingVertical="@dimen/activity_vertical_margin"
+        android:src="@drawable/ic_github_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@id/minarig"
+        app:layout_constraintEnd_toStartOf="@id/minarsite"
+        app:layout_constraintStart_toEndOf="@id/minarps"
+        app:layout_constraintTop_toTopOf="@id/minarig"
+        app:tint="?colorAccent" />
+
+    <ImageView
+        android:id="@+id/minarsite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="@string/dev_personal_site"
+        android:focusable="true"
+        android:paddingVertical="@dimen/activity_vertical_margin"
+        android:src="@drawable/ic_minar_logo_24dp"
+        app:layout_constraintBottom_toBottomOf="@id/minarig"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/minargit"
+        app:layout_constraintTop_toTopOf="@id/minarig"
+        app:tint="?colorAccent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
