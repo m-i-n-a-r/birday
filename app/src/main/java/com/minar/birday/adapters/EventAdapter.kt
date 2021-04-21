@@ -5,18 +5,16 @@ import android.graphics.drawable.AnimatedVectorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.minar.birday.fragments.HomeFragment
 import com.minar.birday.R
 import com.minar.birday.databinding.EventRowBinding
-import com.minar.birday.model.EventResult
+import com.minar.birday.fragments.HomeFragment
 import com.minar.birday.listeners.OnItemClickListener
+import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getReducedDate
@@ -55,10 +53,10 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?) :
 
     inner class EventViewHolder(binding: EventRowBinding) : RecyclerView.ViewHolder(binding.root),
         View.OnClickListener, View.OnLongClickListener {
-        private val favoriteButton: ImageView = binding.favoriteButton
-        private val eventPerson: TextView = binding.eventPerson
-        private val eventDate: TextView = binding.eventDate
-        private val eventImage: ImageView = binding.eventImage
+        private val favoriteButton = binding.favoriteButton
+        private val eventPerson = binding.eventPerson
+        private val eventDate = binding.eventDate
+        private val eventImage = binding.eventImage
 
         init {
             binding.root.setOnClickListener(this)
@@ -107,21 +105,20 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?) :
                 if (event.favorite == true) {
                     event.favorite = false
                     activityScope.launch {
+                        fragment?.updateFavorite(event)
                         delay(800)
                         favoriteButton.setImageResource(R.drawable.animated_to_favorite)
-                        fragment?.updateFavorite(event)
                     }
                     (favoriteButton.drawable as AnimatedVectorDrawable).start()
                 } else {
                     event.favorite = true
                     activityScope.launch {
+                        fragment?.updateFavorite(event)
                         delay(800)
                         favoriteButton.setImageResource(R.drawable.animated_from_favorite)
-                        fragment?.updateFavorite(event)
                     }
                     (favoriteButton.drawable as AnimatedVectorDrawable).start()
                 }
-
             }
         }
 

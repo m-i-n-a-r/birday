@@ -328,6 +328,7 @@ class HomeFragment : Fragment() {
 
             // Show the next age and countdown on long press (only the latter for no year events)
             override fun onItemLongClick(position: Int, view: View?): Boolean {
+                act.vibrate()
                 val event = adapter.getItem(position)
                 val quickStat = if (event.yearMatter == false) formatDaysRemaining(
                     getRemainingDays(event.nextDate!!),
@@ -460,14 +461,15 @@ class HomeFragment : Fragment() {
             }
             if (ChronoUnit.DAYS.between(event.nextDate, upcomingDate) < 0) break
         }
-
         cardTitle.text = personName
         cardSubtitle.text = nextDateText
         cardDescription.text = nextAge
     }
 
     // Functions to update, delete and create an Event object to pass instead of the returning object passed
-    fun updateFavorite(eventResult: EventResult) = mainViewModel.update(resultToEvent(eventResult))
+    fun updateFavorite(eventResult: EventResult) {
+        mainViewModel.update(resultToEvent(eventResult))
+    }
 
     fun deleteEvent(eventResult: EventResult) = mainViewModel.delete(resultToEvent(eventResult))
 

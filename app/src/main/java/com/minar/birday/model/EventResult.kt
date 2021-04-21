@@ -24,6 +24,7 @@ data class EventResult (
         if (type != other.type) return false
         if (name != other.name) return false
         if (surname != other.surname) return false
+        if (favorite != other.favorite) return false // Not completely true
         if (originalDate != other.originalDate) return false
         if (!image.contentEquals(other.image)) return false
 
@@ -35,7 +36,12 @@ data class EventResult (
         result = 31 * result + (type?.hashCode() ?: 0)
         result = 31 * result + name.hashCode()
         result = 31 * result + (surname?.hashCode() ?: 0)
+        result = 31 * result + (favorite?.hashCode() ?: 0)
+        result = 31 * result + (yearMatter?.hashCode() ?: 0)
         result = 31 * result + originalDate.hashCode()
+        result = 31 * result + (nextDate?.hashCode() ?: 0)
+        result = 31 * result + (notes?.hashCode() ?: 0)
+        result = 31 * result + (image?.contentHashCode() ?: 0)
         return result
     }
 }

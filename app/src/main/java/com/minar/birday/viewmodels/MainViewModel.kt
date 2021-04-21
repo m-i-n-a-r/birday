@@ -20,7 +20,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(application)
     val allEvents: LiveData<List<EventResult>>
     private val eventsCount: LiveData<Int>
-    val allFavoriteEvents: LiveData<List<EventResult>>
     val nextEvents: LiveData<List<EventResult>>
     val searchStringLiveData = MutableLiveData<String>()
     private val eventDao: EventDao = EventDatabase.getBirdayDatabase(application).eventDao()
@@ -34,12 +33,15 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
         // Only the upcoming events not considering the search
         nextEvents = eventDao.getOrderedNextEvents()
-        allFavoriteEvents = eventDao.getOrderedFavoriteEvents()
         eventsCount = eventDao.getEventsCount()
         checkEvents()
     }
 
     // Launching new coroutines to insert the data in a non-blocking way
+
+    fun getFavorites(): LiveData<List<EventResult>> {
+        return eventDao.getOrderedFavoriteEvents()
+    }
 
     fun insert(event: Event) = viewModelScope.launch(Dispatchers.IO) {
         eventDao.insertEvent(event)
