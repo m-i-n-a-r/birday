@@ -9,13 +9,15 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
-import com.minar.birday.activities.MainActivity
 import com.minar.birday.R
+import com.minar.birday.activities.MainActivity
 import com.minar.birday.persistence.EventDatabase
 import java.io.FileOutputStream
+import java.io.InputStreamReader
 
 
-class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(context, attrs), View.OnClickListener {
+class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(context, attrs),
+    View.OnClickListener {
     private val act = context as MainActivity
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
@@ -42,25 +44,44 @@ class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(conte
         try {
             fileStream.copyTo(FileOutputStream(dbFile))
             (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_success))
-        }
-        catch (e: Exception) {
+        } catch (e: Exception) {
             (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_failure))
             e.printStackTrace()
             return false
         }
         // Completely restart the application with a slight delay to be extra-safe
-        val intent: Intent = act.baseContext.packageManager.getLaunchIntentForPackage(act.baseContext.packageName)!!
+        val intent: Intent =
+            act.baseContext.packageManager.getLaunchIntentForPackage(act.baseContext.packageName)!!
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         Handler(Looper.getMainLooper()).postDelayed({ act.startActivity(intent) }, 400)
         return true
     }
 
-        // Check if a backup file is valid, only with a naive approach atm. A wrong import would result in a crash or empty db
-        private fun isBackupValid(fileUri: Uri): Boolean {
-            val uri = fileUri.toString()
-            return ((uri.contains("birdaybackup", true) && !uri.contains(".")) ||
-                    uri.contains("document", true))
-        }
+    // Check if a backup file is valid. A wrong import would result in a crash or empty db
+    private fun isBackupValid(fileUri: Uri): Boolean {
+        val uri = fileUri.path ?: ""
 
+        // An initial, naive validation
+        if (!(uri.contains("birdaybackup", true) ||
+                    uri.contains("document", true))
+        )
+            return false
+
+        // Read the first bytes of the file: every SQLite DB starts with the same string
+        val fileStream = context.contentResolver.openInputStream(fileUri)!!
+        try {
+            val fr = InputStreamReader(fileStream)
+            val buffer = CharArray(16)
+            fr.read(buffer, 0, 16)
+            val str = String(buffer)
+            fr.close()
+            if (str == "SQLite format 3\u0000") return true
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+            return false
+        }
+        return false
     }
+
+}
