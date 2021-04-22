@@ -9,10 +9,11 @@ import com.minar.birday.model.EventResult
 
 @Dao
 interface EventDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    // Replace on conflict. This means that contacts will have priority over Birday data
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertEvent(event: Event)
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllEvent(events: List<Event>)
 
     @Update

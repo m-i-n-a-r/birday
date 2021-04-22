@@ -7,6 +7,15 @@
     android:layout_height="wrap_content"
     android:layout_gravity="top">
 
+    <nl.dionsegijn.konfetti.KonfettiView
+        android:id="@+id/confettiEasterEggView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/settingsShimmer" />
+
     <!-- Duration and repeat delay must be hardcoded -->
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/settingsShimmer"
@@ -36,15 +45,6 @@
             android:src="@drawable/animated_logo"
             app:tint="?colorAccent" />
     </com.facebook.shimmer.ShimmerFrameLayout>
-
-    <nl.dionsegijn.konfetti.KonfettiView
-        android:id="@+id/confettiEasterEggView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/settingsShimmer" />
 
     <TextView
         android:id="@+id/descriptionMinar"

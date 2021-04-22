@@ -68,6 +68,7 @@ class MainActivity : AppCompatActivity() {
     private var _dialogInsertEventBinding: DialogInsertEventBinding? = null
     private val dialogInsertEventBinding get() = _dialogInsertEventBinding!!
     private lateinit var resultLauncher: ActivityResultLauncher<String>
+    private var imageChosen = false
 
     @ExperimentalStdlibApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,6 +79,7 @@ class MainActivity : AppCompatActivity() {
         resultLauncher =
             registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
                 // Handle the returned Uri
+                imageChosen = true
                 setImage(uri)
             }
 
@@ -179,10 +181,10 @@ class MainActivity : AppCompatActivity() {
                 customView(view = dialogInsertEventBinding.root)
                 positiveButton(R.string.insert_event) {
                     var image: ByteArray? = null
-                    if (dialogInsertEventBinding.imageEvent.drawable != null)
+                    if (imageChosen)
                         image =
                             bitmapToByteArray(dialogInsertEventBinding.imageEvent.drawable.toBitmap())
-                    // Use the data to create a event object and insert it in the db
+                    // Use the data to create an event object and insert it in the db
                     val tuple = Event(
                         id = 0,
                         originalDate = eventDateValue,

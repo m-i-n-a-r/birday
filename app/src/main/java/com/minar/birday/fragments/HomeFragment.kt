@@ -86,6 +86,7 @@ class HomeFragment : Fragment() {
     private var _dialogAppsEventBinding: DialogAppsEventBinding? = null
     private val dialogAppsEventBinding get() = _dialogAppsEventBinding!!
     private lateinit var resultLauncher: ActivityResultLauncher<String>
+    private var imageChosen = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,6 +97,7 @@ class HomeFragment : Fragment() {
         resultLauncher =
             registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
                 // Handle the returned Uri
+                imageChosen = true
                 setImage(uri)
             }
     }
@@ -487,7 +489,7 @@ class HomeFragment : Fragment() {
             icon(R.drawable.ic_edit_24dp)
             customView(view = dialogInsertEventBinding.root)
             positiveButton(R.string.update_event) {
-                val image = if (dialogInsertEventBinding.imageEvent.drawable != null)
+                val image = if (imageChosen)
                     bitmapToByteArray(dialogInsertEventBinding.imageEvent.drawable.toBitmap())
                 else eventResult.image
                 // Use the data to create an event object and update the db
