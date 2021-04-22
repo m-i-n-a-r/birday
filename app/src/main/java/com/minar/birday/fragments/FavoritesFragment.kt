@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -216,11 +215,14 @@ class FavoritesFragment : Fragment() {
         // Show an explanation for the counter, even if it's quite obvious
         backgroundDrawable.setOnClickListener {
             act.vibrate()
-            Toast.makeText(
-                requireContext(),
-                resources.getQuantityString(R.plurals.stats_total, totalEvents, totalEvents),
-                Toast.LENGTH_SHORT
-            ).show()
+            act.showSnackbar(
+                resources.getQuantityString(
+                    R.plurals.stats_total,
+                    totalEvents,
+                    totalEvents
+                ),
+                dialogStatsBinding.eventCounter,
+            )
         }
     }
 

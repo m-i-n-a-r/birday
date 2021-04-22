@@ -31,6 +31,7 @@
 
     <style name="MaterialSnackbarTextViewTheme" parent="@style/Widget.MaterialComponents.Snackbar.TextView">
         <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:maxLines">20</item>
     </style>
 
     <!-- Date picker theme -->

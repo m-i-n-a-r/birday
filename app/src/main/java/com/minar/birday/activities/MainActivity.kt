@@ -20,7 +20,7 @@ import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.TypedValue
-import android.widget.Toast
+import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.AttrRes
@@ -416,15 +416,18 @@ class MainActivity : AppCompatActivity() {
     // Return the accent color to use it programmatically
     fun getThemeColor(@AttrRes attrRes: Int): Int {
         val typedValue = TypedValue()
-        theme.resolveAttribute (attrRes, typedValue, true)
+        theme.resolveAttribute(attrRes, typedValue, true)
         return typedValue.data
     }
 
     // Show a snackbar containing a given text
-    fun showSnackbar(content: String) {
+    fun showSnackbar(content: String, attachView: View? = null) {
         val snackbar = Snackbar.make(binding.root, content, Snackbar.LENGTH_LONG)
         snackbar.isGestureInsetBottomIgnored = true
-        snackbar.anchorView = binding.bottomBar
+        if (attachView != null)
+            snackbar.anchorView = attachView
+        else
+            snackbar.anchorView = binding.bottomBar
         snackbar.show()
     }
 
@@ -455,31 +458,19 @@ class MainActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
-            // Contacts at startup, show a toast only for permission denied (don't ask again not selected)
+            // Contacts at startup, show a snackbar only for permission denied (don't ask again not selected)
             101 -> {
                 if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS))
-                        Toast.makeText(
-                            this,
-                            getString(R.string.missing_permission_contacts),
-                            Toast.LENGTH_LONG
-                        ).show()
+                        showSnackbar(getString(R.string.missing_permission_contacts))
                 }
             }
             // Contacts while trying to import from contacts
             102 -> {
                 if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS))
-                        Toast.makeText(
-                            this,
-                            getString(R.string.missing_permission_contacts),
-                            Toast.LENGTH_LONG
-                        ).show()
-                    else Toast.makeText(
-                        this,
-                        getString(R.string.missing_permission_contacts_forever),
-                        Toast.LENGTH_LONG
-                    ).show()
+                        showSnackbar(getString(R.string.missing_permission_contacts))
+                    else showSnackbar(getString(R.string.missing_permission_contacts_forever))
                 } else {
                     val contactImporter = ContactsImporter(this, null)
                     contactImporter.importContacts(this)

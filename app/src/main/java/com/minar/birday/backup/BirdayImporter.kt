@@ -7,7 +7,6 @@ import android.os.Handler
 import android.os.Looper
 import android.util.AttributeSet
 import android.view.View
-import android.widget.Toast
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import com.minar.birday.activities.MainActivity
@@ -34,7 +33,7 @@ class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(conte
     // Import a backup overwriting any existing data and checking if the file is valid
     fun importBirthdays(context: Context, fileUri: Uri): Boolean {
         if (!isBackupValid(fileUri)) {
-            Toast.makeText(context, context.getString(R.string.birday_import_invalid_file), Toast.LENGTH_SHORT).show()
+            (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_invalid_file))
             return false
         }
         EventDatabase.destroyInstance()
@@ -42,10 +41,10 @@ class BirdayImporter(context: Context?, attrs: AttributeSet?) : Preference(conte
         val dbFile = context.getDatabasePath("BirdayDB").absoluteFile
         try {
             fileStream.copyTo(FileOutputStream(dbFile))
-            Toast.makeText(context, context.getString(R.string.birday_import_success), Toast.LENGTH_SHORT).show()
+            (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_success))
         }
         catch (e: Exception) {
-            Toast.makeText(context, context.getString(R.string.birday_import_failure), Toast.LENGTH_SHORT).show()
+            (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_failure))
             e.printStackTrace()
             return false
         }

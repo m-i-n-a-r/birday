@@ -670,11 +670,7 @@ class HomeFragment : Fragment() {
                 val dialIntent = Intent(Intent.ACTION_DIAL)
                 ctx.startActivity(dialIntent)
             } catch (e: Exception) {
-                Toast.makeText(
-                    ctx,
-                    ctx.getString(R.string.no_default_dialer),
-                    Toast.LENGTH_SHORT
-                ).show()
+                act.showSnackbar(ctx.getString(R.string.no_default_dialer))
             }
             dialog.dismiss()
         }
@@ -687,8 +683,7 @@ class HomeFragment : Fragment() {
                     ctx.packageManager.getLaunchIntentForPackage(defaultSmsPackage)
                 ctx.startActivity(smsIntent)
             } catch (e: Exception) {
-                Toast.makeText(ctx, ctx.getString(R.string.no_default_sms), Toast.LENGTH_SHORT)
-                    .show()
+                act.showSnackbar(ctx.getString(R.string.no_default_sms))
             }
             dialog.dismiss()
         }

@@ -9,7 +9,6 @@ import android.media.ThumbnailUtils
 import android.provider.ContactsContract
 import android.util.AttributeSet
 import android.view.View
-import android.widget.Toast
 import androidx.preference.Preference
 import androidx.preference.PreferenceManager
 import androidx.preference.PreferenceViewHolder
@@ -112,21 +111,13 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
         // Phase 3: insert the remaining events in the db and update the recycler
         return if (events.size == 0) {
             context.runOnUiThread(Runnable {
-                Toast.makeText(
-                    context,
-                    context.getString(R.string.import_nothing_found),
-                    Toast.LENGTH_SHORT
-                ).show()
+                context.showSnackbar(context.getString(R.string.import_nothing_found))
             })
             true
         } else {
             act.mainViewModel.insertAll(events)
             context.runOnUiThread(Runnable {
-                Toast.makeText(
-                    context,
-                    context.getString(R.string.import_success),
-                    Toast.LENGTH_SHORT
-                ).show()
+                context.showSnackbar(context.getString(R.string.import_success))
             })
             true
         }

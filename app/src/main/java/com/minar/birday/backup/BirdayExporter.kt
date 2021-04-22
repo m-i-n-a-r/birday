@@ -5,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import android.util.AttributeSet
 import android.view.View
-import android.widget.Toast
 import androidx.core.content.FileProvider.getUriForFile
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
@@ -17,7 +16,8 @@ import java.io.File
 import java.time.LocalDate
 
 
-class BirdayExporter(context: Context?, attrs: AttributeSet?) : Preference(context, attrs), View.OnClickListener {
+class BirdayExporter(context: Context?, attrs: AttributeSet?) : Preference(context, attrs),
+    View.OnClickListener {
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
@@ -46,13 +46,14 @@ class BirdayExporter(context: Context?, attrs: AttributeSet?) : Preference(conte
         val appDirectory = File(context.getExternalFilesDir(null)!!.absolutePath)
         val fileName: String = "BirdayBackup_" + LocalDate.now()
         val fileFullPath: String = appDirectory.path + File.separator.toString() + fileName
-        // Toasts need the ui thread to work, so they must be forced on that thread
+        // Snackbar need the ui thread to work, so they must be forced on that thread
         try {
             dbFile.copyTo(File(fileFullPath), true)
-            (context as MainActivity).runOnUiThread { Toast.makeText(context, context.getString(R.string.birday_export_success), Toast.LENGTH_SHORT).show() }
-        }
-        catch (e: Exception) {
-            (context as MainActivity).runOnUiThread { Toast.makeText(context, context.getString(R.string.birday_export_failure), Toast.LENGTH_SHORT).show() }
+            (context as MainActivity).runOnUiThread { context.showSnackbar(context.getString(R.string.birday_export_success)) }
+        } catch (e: Exception) {
+            (context as MainActivity).runOnUiThread {
+                context.showSnackbar(context.getString(R.string.birday_export_failure))
+            }
             e.printStackTrace()
             return ""
         }
