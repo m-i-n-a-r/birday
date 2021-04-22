@@ -55,6 +55,7 @@
     <string name="accent_name">Couleur d\'accentuation</string>
     <string name="theme_description">Utiliser un thème sombre, clair ou automatique</string>
     <string name="theme_name">Thème</string>
+    <string name="aqua">Aqua</string>
     <string name="brown">Marron</string>
     <string name="blue">Bleu</string>
     <string name="green">Vert</string>

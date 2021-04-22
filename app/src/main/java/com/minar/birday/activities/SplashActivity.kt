@@ -20,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
         val theme = sharedPrefs.getString("theme_color", "system")
-        val accent = sharedPrefs.getString("accent_color", "brown")
+        val accent = sharedPrefs.getString("accent_color", "aqua")
 
         // Set the base theme and the accent
         when (theme) {
@@ -30,6 +30,7 @@ class SplashActivity : AppCompatActivity() {
         }
 
         when (accent) {
+            "brown" -> setTheme(R.style.Splash_Brown)
             "blue" -> setTheme(R.style.Splash_Blue)
             "green" -> setTheme(R.style.Splash_Green)
             "orange" -> setTheme(R.style.Splash_Orange)

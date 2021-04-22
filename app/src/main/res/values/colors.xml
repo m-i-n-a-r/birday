@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Basic colors -->
-    <color name="colorAccent">@color/brownAccent</color>
+    <color name="colorAccent">@color/aquaAccent</color>
     <color name="almostWhite">#fbfbfb</color>
     <color name="goodGray">#959595</color>
     <color name="goodGraySemiTranslucent">#c5959595</color>
@@ -25,12 +25,13 @@
     <color name="textColorSecondaryInverse">#e5e5e5</color>
 
     <!-- Accents -->
+    <color name="aquaAccent">#5abf95</color>
     <color name="brownAccent">#c55a2c</color>
     <color name="blueAccent">#4285f4</color>
     <color name="greenAccent">#3ddc84</color>
     <color name="yellowAccent">#f4b400</color>
     <color name="orangeAccent">#ff7522</color>
-    <color name="tealAccent">#009688</color>
+    <color name="tealAccent">#008080</color>
     <color name="violetAccent">#ab47bc</color>
     <color name="pinkAccent">#ff66cc</color>
     <color name="lightBlueAccent">#29b6f6</color>

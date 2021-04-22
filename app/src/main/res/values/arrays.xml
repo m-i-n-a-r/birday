@@ -14,6 +14,7 @@
     </string-array>
 
     <string-array name="accents">
+        <item>@string/aqua</item>
         <item>@string/brown</item>
         <item>@string/blue</item>
         <item>@string/green</item>
@@ -29,6 +30,7 @@
     </string-array>
 
     <string-array name="accentValues">
+        <item>aqua</item>
         <item>brown</item>
         <item>blue</item>
         <item>green</item>

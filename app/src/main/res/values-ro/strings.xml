@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_welcome">Bine aţi venit la Birday</string>
     <string name="app_name_extended">Birday - Gestionare aniversări</string>
     <string name="leave_review_title">Lăsaţi o recenzie despre Birday</string>
@@ -55,6 +56,7 @@
     <string name="accent_name">Culoare accent</string>
     <string name="theme_description">Folosiţi o temă întunecată, luminoasă sau automată a aplicației</string>
     <string name="theme_name">Tema aplicației</string>
+    <string name="aqua">Aqua albastru</string>
     <string name="brown">Maro</string>
     <string name="blue">Albastru</string>
     <string name="green">Verde</string>
@@ -233,4 +235,5 @@
     <!-- Notes -->
     <string name="notes">Note</string>
     <string name="write_something">Scrieţi ceva…</string>
+
 </resources>

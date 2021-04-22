@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
         // Retrieve the shared preferences
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
         val theme = sharedPrefs.getString("theme_color", "system")
-        val accent = sharedPrefs.getString("accent_color", "brown")
+        val accent = sharedPrefs.getString("accent_color", "aqua")
 
         // Show the introduction for the first launch
         if (sharedPrefs.getBoolean("first", true)) {
@@ -108,6 +108,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         when (accent) {
+            "brown" -> setTheme(R.style.AppTheme_Brown)
             "blue" -> setTheme(R.style.AppTheme_Blue)
             "green" -> setTheme(R.style.AppTheme_Green)
             "orange" -> setTheme(R.style.AppTheme_Orange)

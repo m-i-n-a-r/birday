@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name" translatable="false">Birday</string>
     <string name="app_welcome">Bem-vindo a Birday</string>
     <string name="app_name_extended">Birday - Gestor de aniversários</string>
     <string name="leave_review_title">Avaliar Birday</string>
@@ -56,6 +55,7 @@
     <string name="accent_name">Cor de destaque</string>
     <string name="theme_description">Utilizar um tema escuro, claro ou um tema da aplicação</string>
     <string name="theme_name">Tema da aplicação</string>
+    <string name="aqua">Água</string>
     <string name="brown">Castanho</string>
     <string name="blue">Azul</string>
     <string name="green">Verde</string>

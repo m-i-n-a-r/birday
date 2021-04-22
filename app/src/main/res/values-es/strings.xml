@@ -55,6 +55,7 @@
     <string name="accent_name">Color principal</string>
     <string name="theme_description">Usa un tema oscuro, claro o automático</string>
     <string name="theme_name">Tema de la aplicación</string>
+    <string name="aqua">Agua</string>
     <string name="brown">Marrón</string>
     <string name="blue">Azul</string>
     <string name="green">Verde</string>
