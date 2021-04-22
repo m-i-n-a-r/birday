@@ -78,7 +78,7 @@ class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
                         ContextCompat.getColor(context, R.color.goodGray),
                     )
                     .setDirection(0.0, 359.0)
-                    .setSpeed(1f, 5f)
+                    .setSpeed(0.5f, 4f)
                     .setRotationEnabled(true)
                     .setFadeOutEnabled(true)
                     .setTimeToLive(2000L)
@@ -109,7 +109,8 @@ class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
                         )
                     )
                     .addSizes(Size(8), Size(12), Size(16))
-                    .setPosition(confetti.x + confetti.width / 2, confetti.y + confetti.height / 2)
+                    // It should approximately start from the logo
+                    .setPosition(confetti.x + confetti.width / 2, confetti.y + confetti.height / 3)
                     .burst(300)
                 act.showSnackbar(context.getString(R.string.easter_egg))
             } else easterEgg++

@@ -763,7 +763,7 @@ class HomeFragment : Fragment() {
                 ContextCompat.getColor(requireContext(), R.color.goodGray),
             )
             .setDirection(0.0, 359.0)
-            .setSpeed(1f, 5f)
+            .setSpeed(0.5f, 4f)
             .setRotationEnabled(true)
             .setFadeOutEnabled(true)
             .setTimeToLive(2000L)
@@ -795,7 +795,7 @@ class HomeFragment : Fragment() {
             )
             .addSizes(Size(8), Size(12), Size(16))
             .setPosition(-50f, confetti.width + 50f, -50f, -50f)
-            .streamFor(300, 3000L)
+            .streamFor(200, 3000L)
     }
 
     // Loop the animated vector drawable
