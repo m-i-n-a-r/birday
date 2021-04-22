@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -206,6 +207,8 @@ class FavoritesFragment : Fragment() {
             customView(view = dialogStatsBinding.root)
         }
         dialogStatsBinding.fullStats.text = fullStats
+        // Prepare the toast
+        var toast: Toast? = null
         // Display the total number of birthdays, start the animated drawable
         dialogStatsBinding.eventCounter.text = totalEvents.toString()
         val backgroundDrawable = dialogStatsBinding.eventCounterBackground
@@ -215,14 +218,15 @@ class FavoritesFragment : Fragment() {
         // Show an explanation for the counter, even if it's quite obvious
         backgroundDrawable.setOnClickListener {
             act.vibrate()
-            act.showSnackbar(
-                resources.getQuantityString(
+            toast?.cancel()
+            toast = Toast.makeText(
+                context, resources.getQuantityString(
                     R.plurals.stats_total,
                     totalEvents,
                     totalEvents
-                ),
-                dialogStatsBinding.eventCounter,
+                ), Toast.LENGTH_LONG
             )
+            toast!!.show()
         }
     }
 
