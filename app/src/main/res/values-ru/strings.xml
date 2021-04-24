@@ -129,6 +129,7 @@
     <string name="delete_event">Удалить событие</string>
     <string name="update_event">Обновить событие</string>
     <string name="share_event">Поделиться событием</string>
+    <string name="deleted">Удалено!</string>
 
     <!-- Event details -->
     <string name="event_details">Подробности</string>

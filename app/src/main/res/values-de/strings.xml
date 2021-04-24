@@ -123,6 +123,7 @@
     <string name="delete_event">Ereignis löschen</string>
     <string name="update_event">Ereignis aktualisieren</string>
     <string name="share_event">Ereignis teilen</string>
+    <string name="deleted">Gelöscht!</string>
 
     <!-- Event details -->
     <string name="event_details">Details</string>

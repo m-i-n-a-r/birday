@@ -224,7 +224,7 @@ class DetailsFragment : Fragment() {
     private fun deleteEvent(eventResult: EventResult) {
         mainViewModel.delete(resultToEvent(eventResult))
         act.showSnackbar(
-            requireContext().getString(R.string.delete_event),
+            requireContext().getString(R.string.deleted),
             actionText = requireContext().getString(R.string.cancel),
             action = fun() = insertBack(eventResult),
         )

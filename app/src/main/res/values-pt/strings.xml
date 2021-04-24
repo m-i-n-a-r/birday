@@ -133,6 +133,7 @@
     <string name="delete_event">Remover evento</string>
     <string name="update_event">Atualizar evento</string>
     <string name="share_event">Partilhar evento</string>
+    <string name="deleted">Removido!</string>
 
     <!-- Event details -->
     <string name="event_details">Detalhes</string>

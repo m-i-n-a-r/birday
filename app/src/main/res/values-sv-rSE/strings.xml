@@ -109,6 +109,7 @@
     <string name="delete_event">Radera händelse</string>
     <string name="update_event">Uppdatera händelse</string>
     <string name="share_event">Dela händelse</string>
+    <string name="deleted">Raderade!</string>
     <string name="event_details">Detaljer</string>
     <string name="birth_date">Födelsedatum</string>
     <string name="next_age">Nästa ålder:</string>

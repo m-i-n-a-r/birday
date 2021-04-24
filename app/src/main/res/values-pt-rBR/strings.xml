@@ -124,6 +124,7 @@
     <string name="delete_event">Apagar evento</string>
     <string name="update_event">Atualizar evento</string>
     <string name="share_event">Compartilhar evento</string>
+    <string name="deleted">Apagado!</string>
 
     <!-- Event details -->
     <string name="event_details">Detalhes</string>

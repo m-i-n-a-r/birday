@@ -131,6 +131,7 @@
     <string name="delete_event">Smazat událost</string>
     <string name="update_event">Aktualizovat událost</string>
     <string name="share_event">Sdílet událost</string>
+    <string name="deleted">Smazáno!</string>
     <string name="event_details">Detaily</string>
     <string name="birth_date">Datum narození</string>
     <string name="next_age">Příští věk:</string>
