@@ -101,6 +101,9 @@
     <string name="hide_images">Masquer les images</string>
     <string name="hide_images_description_on">Images d\'événements masquées</string>
     <string name="hide_images_description_off">Images d\'événements visibles</string>
+    <string name="notification_only_favorites">Favoris uniquement</string>
+    <string name="notification_only_favorites_description_on">Envoie une notification uniquement pour les événements favoris</string>
+    <string name="notification_only_favorites_description_off">Envoie une notification pour chaque événement saisi</string>
 
     <!-- Developer -->
     <string name="dev_description">Je suis un gentil garçon et j\'aime les belles choses, comme l\'animation, les icônes, les voitures de sport et l\'impression 3D. Je travaille comme designer et ingénieur informatique.</string>

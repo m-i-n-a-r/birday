@@ -4,7 +4,7 @@ An open source app to remember birthdays and events without having to open Faceb
 
 <p align='center'>
   <a href='https://github.com/m-i-n-a-r/birday/blob/master/LICENSE.md'><img src='https://img.shields.io/badge/license-GPL 3-333333'/></a>
-  <img src='https://img.shields.io/badge/version-1.11.X-blue'/>
+  <img src='https://img.shields.io/badge/version-2.0.X-blue'/>
 	<img src='https://img.shields.io/badge/status-released-success'/>
 	<img src='https://img.shields.io/badge/-translations%20needed!-yellow'/>
 </p>
@@ -21,13 +21,13 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 | **Svedish**        | needs update | SlowNicoFish   |                             |
 | **Dutch**          | needs update | stefanvi       |                             |
 | **Italian**        | complete     | myself         | myself                      |
-| **French**         | needs update | Mattis Biton   |                             |
+| **French**         | complete     | Mattis Biton   |                             |
 | **Hungarian**      | needs update | Obi            |                             |
-| **German**         | needs update | pizzapastamix  | WrstFngr, AlexanderRitter02 |
+| **German**         | complete     | pizzapastamix  | WrstFngr, AlexanderRitter02 |
 | **Vietnamese**     | needs update | Lee Huynh      |                             |
 | **Russian**        | needs update | koterpillar    |                             |
 | **Czech**          | needs update | Miloš Koliáš   |                             |
-| **Portuguese**     | needs update | smarquespt     | smarquespt                  |
+| **Portuguese**     | complete     | smarquespt     | smarquespt                  |
 | **Brazilian**      | needs update | BadJuice67     |                             |
 | **Romanian**       | complete     | ygorigor       | ygorigor                    |
 
@@ -91,4 +91,4 @@ Birday uses some open source libraries, just a few:
 
 Currently, Birday supports the languages in the above table. If you want to translate the app in any other language or update an existing translation, just contact me or send a pull request: you'll be quoted both on Github and in the Play Store description.
 
-This app was written during my free time as a training. Many good devs helped me understanding the best practices and they taught me a lot of useful tricks. A special thank to every contributor here and on Reddit. and God bless Stack Overflow.
+This app was written during my free time as a training. It was first published on May 1, 2020. Many good devs helped me understanding the best practices and they taught me a lot of useful tricks. A special thank to every contributor here and on Reddit. and God bless Stack Overflow.

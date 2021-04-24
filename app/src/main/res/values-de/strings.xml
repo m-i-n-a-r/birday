@@ -101,6 +101,9 @@
     <string name="hide_images">Bilder ausblenden</string>
     <string name="hide_images_description_on">Versteckte Eventbilder</string>
     <string name="hide_images_description_off">Ereignisbilder sichtbar</string>
+    <string name="notification_only_favorites">Nur Favoriten</string>
+    <string name="notification_only_favorites_description_on">Sendet Sie Benachrichtigungen nur für Lieblingsereignisse</string>
+    <string name="notification_only_favorites_description_off">Sendet eine Benachrichtigung für jedes eingegebene Ereignis</string>
 
     <!-- Developer -->
     <string name="dev_description">Ich bin ein netter Mensch und ich mag schöne Dinge wie Animationen, Icons, Sportwagen und 3D-Druck. Ich arbeite als Designer und Computeringenieur.</string>

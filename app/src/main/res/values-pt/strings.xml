@@ -103,16 +103,12 @@
     <string name="hide_images">Ocultar imagens</string>
     <string name="hide_images_description_on">Imagem ocultadas</string>
     <string name="hide_images_description_off">Imagens visíveis</string>
+    <string name="notification_only_favorites">Apenas favoritos</string>
+    <string name="notification_only_favorites_description_on">Envia uma notificação apenas para eventos favoritos</string>
+    <string name="notification_only_favorites_description_off">Envia uma notificação para cada evento inserido</string>
 
     <!-- Developer -->
-    <string name="dev_name" translatable="false">m.i.n.a.r.</string>
     <string name="dev_description">Sou uma pessoa simples que gosta de coisas bonitas tais como animações, ícones, carros desportivos e impressões 3D. Trabalho como designer e como engenheiro computacional.</string>
-    <string name="dev_email" translatable="false">minar.tastic@gmail.com</string>
-    <string name="dev_personal_site" translatable="false">https://minar.ml</string>
-    <string name="dev_instagram" translatable="false">https://www.instagram.com/minar.tastic/</string>
-    <string name="dev_twitter" translatable="false">https://twitter.com/MinarTastic</string>
-    <string name="dev_github" translatable="false">https://github.com/m-i-n-a-r</string>
-    <string name="dev_other_apps" translatable="false">https://play.google.com/store/apps/dev?id=7720251761301594831</string>
     <string name="easter_egg">Belo logotipo não? ;D</string>
 
     <!-- New event -->
@@ -210,8 +206,6 @@
     </plurals>
     <string name="born_in">nasceu em</string>
     <string name="and">e</string>
-    <string name="unknown_age" translatable="false">\??</string>
-    <string name="exclamation" translatable="false">! !</string>
 
     <!-- Notifications -->
     <string name="events_notification_channel">Lembrete de eventos</string>
