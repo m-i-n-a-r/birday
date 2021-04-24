@@ -50,9 +50,9 @@ import java.util.*
 
 
 class DetailsFragment : Fragment() {
-    lateinit var act: MainActivity
+    private lateinit var act: MainActivity
     private lateinit var mainViewModel: MainViewModel
-    lateinit var sharedPrefs: SharedPreferences
+    private lateinit var sharedPrefs: SharedPreferences
     private val args: DetailsFragmentArgs by navArgs()
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
@@ -69,8 +69,10 @@ class DetailsFragment : Fragment() {
         resultLauncher =
             registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
                 // Handle the returned Uri
-                imageChosen = true
-                setImage(uri)
+                if (uri != null) {
+                    imageChosen = true
+                    setImage(uri)
+                }
             }
     }
 
@@ -117,7 +119,6 @@ class DetailsFragment : Fragment() {
         editButton.setOnClickListener {
             act.vibrate()
             editEvent(event)
-            v.findNavController().popBackStack()
         }
 
         shareButton.setOnClickListener {
@@ -251,6 +252,8 @@ class DetailsFragment : Fragment() {
                 )
                 mainViewModel.update(tuple)
                 dismiss()
+                // Go back to the first screen to avoid updating the displayed details
+                requireView().findNavController().popBackStack()
             }
             negativeButton(R.string.cancel) {
                 dismiss()
@@ -396,8 +399,7 @@ class DetailsFragment : Fragment() {
     }
 
     // Set the chosen image in the circular image
-    private fun setImage(data: Uri?) {
-        if (data == null) return
+    private fun setImage(data: Uri) {
         var bitmap: Bitmap? = null
         try {
             if (Build.VERSION.SDK_INT < 29) {

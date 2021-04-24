@@ -79,8 +79,10 @@ class MainActivity : AppCompatActivity() {
         resultLauncher =
             registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
                 // Handle the returned Uri
-                imageChosen = true
-                setImage(uri)
+                if (uri != null) {
+                    imageChosen = true
+                    setImage(uri)
+                }
             }
 
         // Create the notification channel and check the permission (note: appIntro 6.0 is still buggy, better avoid to use it for asking permissions)
@@ -338,8 +340,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Set the chosen image in the circular image
-    private fun setImage(data: Uri?) {
-        if (data == null) return
+    private fun setImage(data: Uri) {
         var bitmap: Bitmap? = null
         try {
             if (Build.VERSION.SDK_INT < 29) {
