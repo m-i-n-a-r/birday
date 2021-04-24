@@ -424,14 +424,24 @@ class MainActivity : AppCompatActivity() {
         return typedValue.data
     }
 
-    // Show a snackbar containing a given text, with a 5 seconds duration
-    fun showSnackbar(content: String, attachView: View? = null) {
+    // Show a snackbar containing a given text and an optional action, with a 5 seconds duration
+    fun showSnackbar(
+        content: String,
+        attachView: View? = null,
+        action: (() -> Unit)? = null,
+        actionText: String? = null,
+    ) {
         val snackbar = Snackbar.make(binding.root, content, 5000)
         snackbar.isGestureInsetBottomIgnored = true
         if (attachView != null)
             snackbar.anchorView = attachView
         else
             snackbar.anchorView = binding.bottomBar
+        if (action != null) {
+            snackbar.setAction(actionText) {
+                action()
+            }
+        }
         snackbar.show()
     }
 

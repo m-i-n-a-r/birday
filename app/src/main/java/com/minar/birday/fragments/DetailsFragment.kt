@@ -80,6 +80,7 @@ class DetailsFragment : Fragment() {
         super.onDestroyView()
         // Reset the binding to null to follow the best practice
         _binding = null
+        _dialogInsertEventBinding = null
     }
 
     @ExperimentalStdlibApi
@@ -219,8 +220,20 @@ class DetailsFragment : Fragment() {
         return v
     }
 
-    private fun deleteEvent(eventResult: EventResult) =
+    // Delete an existing event and show a snackbar
+    private fun deleteEvent(eventResult: EventResult) {
         mainViewModel.delete(resultToEvent(eventResult))
+        act.showSnackbar(
+            requireContext().getString(R.string.delete_event),
+            actionText = requireContext().getString(R.string.cancel),
+            action = fun() = insertBack(eventResult),
+        )
+    }
+
+    // Insert a previously deleted event back in the database
+    private fun insertBack(eventResult: EventResult) {
+        mainViewModel.insert(resultToEvent(eventResult))
+    }
 
     @ExperimentalStdlibApi
     private fun editEvent(eventResult: EventResult) {
