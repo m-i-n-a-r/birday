@@ -66,6 +66,7 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
 
         // Phase 1: get every contact having at least a name and a birthday
         val contacts = getContacts()
+        if (contacts.isEmpty()) return true
 
         // Phase 2: convert the extracted data in an Event List, verify duplicates
         val events = mutableListOf<Event>()

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fadingEdgeLength="@dimen/linear_vertical_margin"
+    android:requiresFadingEdge="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/linear_vertical_margin"
+        android:paddingBottom="@dimen/linear_vertical_margin">
+
+        <TextView
+            android:id="@+id/detailsEventName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/form_vertical_margin"
+            android:drawablePadding="@dimen/activity_vertical_margin"
+            android:gravity="center"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:drawableLeftCompat="@drawable/ic_balloon_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/detailsEventImage"
+            android:layout_width="@dimen/details_image_size"
+            android:layout_height="@dimen/details_image_size"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:contentDescription="@string/event_details"
+            android:padding="@dimen/in_row_padding"
+            android:src="@drawable/placeholder_event_image"
+            app:layout_constraintBottom_toTopOf="@id/detailsZodiacImage"
+            app:layout_constraintDimensionRatio="1.0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsEventName"
+            app:shapeAppearanceOverlay="@style/roundedImageView"
+            app:strokeColor="@color/goodGray"
+            app:strokeWidth="@dimen/card_stroke" />
+
+        <ImageView
+            android:id="@+id/detailsZodiacImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0.1"
+            android:contentDescription="@string/zodiac_sign"
+            app:layout_constraintBottom_toBottomOf="@id/detailsChineseSignValue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsEventImage"
+            app:srcCompat="@drawable/ic_favorites_24dp"
+            app:tint="@color/goodGray" />
+
+        <TextView
+            android:id="@+id/detailsBirthDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:gravity="center"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/birth_date"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textColor="@color/goodGray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsEventImage" />
+
+        <TextView
+            android:id="@+id/detailsBirthDateValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailsBirthDate" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailsBirthDateValue" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="detailsZodiacSign,detailsChineseSign,detailsNextAge" />
+
+        <TextView
+            android:id="@+id/detailsCountdown"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:alpha="0.8"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:text=""
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="?colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+        <TextView
+            android:id="@+id/detailsNextAge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/linear_vertical_margin"
+            android:maxWidth="@dimen/details_max_width"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/next_age"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textColor="@color/goodGray"
+            app:layout_constraintBaseline_toBaselineOf="@+id/detailsNextAgeValue"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/detailsNextAgeValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/linear_vertical_margin"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/barrier"
+            app:layout_constraintTop_toBottomOf="@+id/detailsCountdown" />
+
+        <TextView
+            android:id="@+id/detailsZodiacSign"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/linear_vertical_margin"
+            android:maxWidth="@dimen/details_max_width"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/zodiac_sign"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textColor="@color/goodGray"
+            app:layout_constraintBaseline_toBaselineOf="@+id/detailsZodiacSignValue"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/detailsZodiacSignValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/linear_vertical_margin"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/barrier"
+            app:layout_constraintTop_toBottomOf="@+id/detailsNextAge" />
+
+        <TextView
+            android:id="@+id/detailsChineseSign"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/linear_vertical_margin"
+            android:maxWidth="@dimen/details_max_width"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/chinese_zodiac_sign"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textColor="@color/goodGray"
+            app:layout_constraintBaseline_toBaselineOf="@+id/detailsChineseSignValue"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/detailsChineseSignValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/linear_vertical_margin"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/barrier"
+            app:layout_constraintTop_toBottomOf="@+id/detailsZodiacSignValue" />
+
+        <Button
+            android:id="@+id/detailsEditButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/linear_vertical_margin"
+            android:layout_marginTop="@dimen/linear_vertical_margin"
+            android:contentDescription="@string/edit_event"
+            android:paddingVertical="@dimen/in_row_button_padding"
+            android:text="@string/edit_event"
+            android:textColor="?colorAccent"
+            android:tint="?colorAccent"
+            app:icon="@drawable/ic_edit_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsChineseSignValue"
+            app:rippleColor="?colorAccent" />
+
+        <Button
+            android:id="@+id/detailsDeleteButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/linear_vertical_margin"
+            android:contentDescription="@string/delete_event"
+            android:paddingVertical="@dimen/in_row_button_padding"
+            android:text="@string/delete_event"
+            android:textColor="?colorAccent"
+            android:tint="?colorAccent"
+            app:icon="@drawable/ic_delete_black_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsEditButton"
+            app:rippleColor="?colorAccent" />
+
+        <Button
+            android:id="@+id/detailsShareButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/linear_vertical_margin"
+            android:contentDescription="@string/share_event"
+            android:paddingVertical="@dimen/in_row_button_padding"
+            android:text="@string/share_event"
+            android:textColor="?colorAccent"
+            android:tint="?colorAccent"
+            app:icon="@drawable/ic_share_black_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsDeleteButton"
+            app:rippleColor="?colorAccent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

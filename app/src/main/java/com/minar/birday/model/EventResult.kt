@@ -1,5 +1,6 @@
 package com.minar.birday.model
 
+import java.io.Serializable
 import java.time.LocalDate
 
 data class EventResult (
@@ -13,7 +14,7 @@ data class EventResult (
     val nextDate: LocalDate? = null,
     val notes: String? = "",
     val image: ByteArray? = null,
-) {
+): Serializable {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

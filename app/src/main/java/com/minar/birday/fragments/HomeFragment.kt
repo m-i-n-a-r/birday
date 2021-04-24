@@ -6,32 +6,20 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Bitmap
-import android.graphics.ImageDecoder
 import android.graphics.drawable.Drawable
-import android.media.ThumbnailUtils
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.provider.MediaStore
 import android.provider.Telephony
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.DrawableRes
-import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toBitmap
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -39,31 +27,21 @@ import androidx.vectordrawable.graphics.drawable.Animatable2Compat
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.WhichButton
-import com.afollestad.materialdialogs.actions.getActionButton
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
-import com.google.android.material.datepicker.CalendarConstraints
-import com.google.android.material.datepicker.DateValidatorPointBackward
-import com.google.android.material.datepicker.MaterialDatePicker
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.activities.SplashActivity
 import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.databinding.DialogAppsEventBinding
-import com.minar.birday.databinding.DialogDetailsEventBinding
-import com.minar.birday.databinding.DialogInsertEventBinding
 import com.minar.birday.databinding.FragmentHomeBinding
 import com.minar.birday.listeners.OnItemClickListener
-import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidget
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
-import java.io.IOException
-import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.time.temporal.ChronoUnit
@@ -79,27 +57,15 @@ class HomeFragment : Fragment() {
     lateinit var sharedPrefs: SharedPreferences
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private var _dialogDetailsBinding: DialogDetailsEventBinding? = null
-    private val dialogDetailsBinding get() = _dialogDetailsBinding!!
-    private var _dialogInsertEventBinding: DialogInsertEventBinding? = null
-    private val dialogInsertEventBinding get() = _dialogInsertEventBinding!!
     private var _dialogAppsEventBinding: DialogAppsEventBinding? = null
     private val dialogAppsEventBinding get() = _dialogAppsEventBinding!!
-    private lateinit var resultLauncher: ActivityResultLauncher<String>
-    private var imageChosen = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adapter = EventAdapter(this)
         act = activity as MainActivity
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        // Initialize the result launcher to pick the image
-        resultLauncher =
-            registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-                // Handle the returned Uri
-                imageChosen = true
-                setImage(uri)
-            }
     }
 
     @ExperimentalStdlibApi
@@ -183,8 +149,11 @@ class HomeFragment : Fragment() {
         // Reset each binding to null to follow the best practice
         _binding = null
         _dialogAppsEventBinding = null
-        _dialogDetailsBinding = null
-        _dialogInsertEventBinding = null
+    }
+
+    // Functions to update, delete and create an Event object to pass instead of the returning object passed
+    fun updateFavorite(eventResult: EventResult) {
+        mainViewModel.update(resultToEvent(eventResult))
     }
 
     // Initialize the necessary parts of the recycler view
@@ -201,131 +170,10 @@ class HomeFragment : Fragment() {
             // Show a dialog with the details of the selected contact
             override fun onItemClick(position: Int, view: View?) {
                 act.vibrate()
-                _dialogDetailsBinding =
-                    DialogDetailsEventBinding.inflate(LayoutInflater.from(context))
                 val event = adapter.getItem(position)
-                val title = getString(R.string.event_details) + " - " + event.name
-                val dialog = MaterialDialog(act).show {
-                    title(text = title)
-                    icon(R.drawable.ic_balloon_24dp)
-                    cornerRadius(res = R.dimen.rounded_corners)
-                    customView(view = dialogDetailsBinding.root, scrollable = true)
-                    negativeButton(R.string.cancel) {
-                        dismiss()
-                    }
-                }
-                // Setup listeners and texts
-                val deleteButton = dialogDetailsBinding.detailsDeleteButton
-                val editButton = dialogDetailsBinding.detailsEditButton
-                val shareButton = dialogDetailsBinding.detailsShareButton
-
-                deleteButton.setOnClickListener {
-                    act.vibrate()
-                    deleteEvent(adapter.getItem(position))
-                    dialog.dismiss()
-                }
-
-                editButton.setOnClickListener {
-                    act.vibrate()
-                    editEvent(adapter.getItem(position))
-                    dialog.dismiss()
-                }
-
-                shareButton.setOnClickListener {
-                    act.vibrate()
-                    shareEvent(adapter.getItem(position))
-                    dialog.dismiss()
-                }
-
-                val formatter: DateTimeFormatter =
-                    DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
-                val subject: MutableList<EventResult> = mutableListOf()
-                subject.add(event)
-                val statsGenerator = StatsGenerator(subject, context)
-                val daysCountdown =
-                    formatDaysRemaining(getRemainingDays(event.nextDate!!), requireContext())
-                dialogDetailsBinding.detailsZodiacSignValue.text =
-                    statsGenerator.getZodiacSign(event)
-                dialogDetailsBinding.detailsCountdown.text = daysCountdown
-
-                // Hide the age and the chinese sign and use a shorter birth date if the year is unknown
-                if (!event.yearMatter!!) {
-                    dialogDetailsBinding.detailsNextAge.visibility = View.GONE
-                    dialogDetailsBinding.detailsNextAgeValue.visibility = View.GONE
-                    dialogDetailsBinding.detailsChineseSign.visibility = View.GONE
-                    dialogDetailsBinding.detailsChineseSignValue.visibility = View.GONE
-                    val reducedBirthDate = getReducedDate(event.originalDate)
-                    dialogDetailsBinding.detailsBirthDateValue.text = reducedBirthDate
-                } else {
-                    dialogDetailsBinding.detailsNextAgeValue.text = getNextAge(event).toString()
-                    dialogDetailsBinding.detailsBirthDateValue.text =
-                        event.originalDate.format(formatter)
-                    dialogDetailsBinding.detailsChineseSignValue.text =
-                        statsGenerator.getChineseSign(event)
-                }
-                // Set the drawable of the zodiac sign
-                when (statsGenerator.getZodiacSignNumber(event)) {
-                    0 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            requireContext(), R.drawable.ic_zodiac_sagittarius
-                        )
-                    )
-                    1 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            requireContext(), R.drawable.ic_zodiac_capricorn
-                        )
-                    )
-                    2 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            requireContext(), R.drawable.ic_zodiac_aquarius
-                        )
-                    )
-                    3 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            requireContext(), R.drawable.ic_zodiac_pisces
-                        )
-                    )
-                    4 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            requireContext(), R.drawable.ic_zodiac_aries
-                        )
-                    )
-                    5 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            requireContext(), R.drawable.ic_zodiac_taurus
-                        )
-                    )
-                    6 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            requireContext(), R.drawable.ic_zodiac_gemini
-                        )
-                    )
-                    7 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            requireContext(), R.drawable.ic_zodiac_cancer
-                        )
-                    )
-                    8 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            requireContext(), R.drawable.ic_zodiac_leo
-                        )
-                    )
-                    9 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            requireContext(), R.drawable.ic_zodiac_virgo
-                        )
-                    )
-                    10 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            requireContext(), R.drawable.ic_zodiac_libra
-                        )
-                    )
-                    11 -> dialogDetailsBinding.detailsZodiacImage.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            requireContext(), R.drawable.ic_zodiac_scorpio
-                        )
-                    )
-                }
+                // Navigate to the new fragment passing in the event with safe args
+                val action = HomeFragmentDirections.actionNavigationMainToDetailsFragment(event)
+                requireView().findNavController().navigate(action)
             }
 
             // Show the next age and countdown on long press (only the latter for no year events)
@@ -468,168 +316,6 @@ class HomeFragment : Fragment() {
         cardDescription.text = nextAge
     }
 
-    // Functions to update, delete and create an Event object to pass instead of the returning object passed
-    fun updateFavorite(eventResult: EventResult) {
-        mainViewModel.update(resultToEvent(eventResult))
-    }
-
-    fun deleteEvent(eventResult: EventResult) = mainViewModel.delete(resultToEvent(eventResult))
-
-    @ExperimentalStdlibApi
-    private fun editEvent(eventResult: EventResult) {
-        _dialogInsertEventBinding = DialogInsertEventBinding.inflate(LayoutInflater.from(context))
-        var nameValue = eventResult.name
-        var surnameValue = eventResult.surname
-        var countYearValue = eventResult.yearMatter
-        var eventDateValue: LocalDate = eventResult.originalDate
-        val imageValue: ByteArray? = eventResult.image
-        val dialog = MaterialDialog(act, BottomSheet(LayoutMode.WRAP_CONTENT)).show {
-            cornerRadius(res = R.dimen.rounded_corners)
-            title(R.string.edit_event)
-            icon(R.drawable.ic_edit_24dp)
-            customView(view = dialogInsertEventBinding.root)
-            positiveButton(R.string.update_event) {
-                val image = if (imageChosen)
-                    bitmapToByteArray(dialogInsertEventBinding.imageEvent.drawable.toBitmap())
-                else eventResult.image
-                // Use the data to create an event object and update the db
-                val tuple = Event(
-                    id = eventResult.id,
-                    originalDate = eventDateValue,
-                    name = nameValue.smartCapitalize(),
-                    yearMatter = countYearValue,
-                    surname = surnameValue?.smartCapitalize(),
-                    favorite = eventResult.favorite,
-                    notes = eventResult.notes,
-                    image = image
-                )
-                mainViewModel.update(tuple)
-                dismiss()
-            }
-            negativeButton(R.string.cancel) {
-                dismiss()
-            }
-        }
-
-        // Setup listeners and checks on the fields
-        dialog.getActionButton(WhichButton.POSITIVE).isEnabled = true
-        val name = dialogInsertEventBinding.nameEvent
-        val surname = dialogInsertEventBinding.surnameEvent
-        val eventDate = dialogInsertEventBinding.dateEvent
-        val countYear = dialogInsertEventBinding.countYearSwitch
-        val eventImage = dialogInsertEventBinding.imageEvent
-        name.setText(nameValue)
-        surname.setText(surnameValue)
-        countYear.isChecked = countYearValue!!
-        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
-        eventDate.setText(eventDateValue.format(formatter))
-        if (imageValue != null)
-            eventImage.setImageBitmap(byteArrayToBitmap(imageValue))
-
-        val endDate = Calendar.getInstance()
-        val startDate = Calendar.getInstance()
-        startDate.set(1500, 1, 1)
-        var dateDialog: MaterialDatePicker<Long>? = null
-
-        // To automatically show the last selected date, parse it to another Calendar object
-        val lastDate = Calendar.getInstance()
-        lastDate.set(eventDateValue.year, eventDateValue.monthValue - 1, eventDateValue.dayOfMonth)
-
-        // Update the boolean value on each click
-        countYear.setOnCheckedChangeListener { _, isChecked ->
-            countYearValue = isChecked
-        }
-
-        eventImage.setOnClickListener {
-            resultLauncher.launch("image/*")
-        }
-
-        eventDate.setOnClickListener {
-            // Prevent double dialogs on fast click
-            if (dateDialog == null) {
-                // Build constraints
-                val constraints =
-                    CalendarConstraints.Builder()
-                        .setStart(startDate.timeInMillis)
-                        .setEnd(endDate.timeInMillis)
-                        .setValidator(DateValidatorPointBackward.now())
-                        .build()
-
-                // Build the dialog itself
-                dateDialog =
-                    MaterialDatePicker.Builder.datePicker()
-                        .setTitleText(R.string.insert_date_hint)
-                        .setSelection(lastDate.timeInMillis)
-                        .setCalendarConstraints(constraints)
-                        .build()
-
-                // The user pressed ok
-                dateDialog!!.addOnPositiveButtonClickListener {
-                    val selection = it
-                    if (selection != null) {
-                        val date = Calendar.getInstance()
-                        date.timeInMillis = selection
-                        val year = date.get(Calendar.YEAR)
-                        val month = date.get(Calendar.MONTH) + 1
-                        val day = date.get(Calendar.DAY_OF_MONTH)
-                        eventDateValue = LocalDate.of(year, month, day)
-                        eventDate.setText(eventDateValue.format(formatter))
-                        // The last selected date is saved if the dialog is reopened
-                        lastDate.set(year, month - 1, day)
-                    }
-
-                }
-                // Show the picker and wait to reset the variable
-                dateDialog!!.show(parentFragmentManager, "home_picker")
-                Handler(Looper.getMainLooper()).postDelayed({ dateDialog = null }, 750)
-            }
-        }
-
-        // Validate each field in the form with the same watcher
-        var nameCorrect = true
-        var surnameCorrect = true
-        val watcher = object : TextWatcher {
-            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
-            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
-            override fun afterTextChanged(editable: Editable) {
-                when {
-                    editable === name.editableText -> {
-                        val nameText = name.text.toString()
-                        if (nameText.isBlank() || !checkString(nameText)) {
-                            dialogInsertEventBinding.nameEventLayout.error =
-                                getString(R.string.invalid_value_name)
-                            dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
-                            nameCorrect = false
-                        } else {
-                            nameValue = nameText
-                            dialogInsertEventBinding.nameEventLayout.error = null
-                            nameCorrect = true
-                        }
-                    }
-                    editable === surname.editableText -> {
-                        val surnameText = surname.text.toString()
-                        if (!checkString(surnameText)) {
-                            dialogInsertEventBinding.surnameEventLayout.error =
-                                getString(R.string.invalid_value_name)
-                            dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
-                            surnameCorrect = false
-                        } else {
-                            surnameValue = surnameText
-                            dialogInsertEventBinding.surnameEventLayout.error = null
-                            surnameCorrect = true
-                        }
-                    }
-                }
-                if (nameCorrect && surnameCorrect) dialog.getActionButton(WhichButton.POSITIVE).isEnabled =
-                    true
-            }
-        }
-
-        name.addTextChangedListener(watcher)
-        surname.addTextChangedListener(watcher)
-        eventDate.addTextChangedListener(watcher)
-    }
-
     // Show a bottom sheet containing some quick apps
     private fun showQuickAppsSheet() {
         act.vibrate()
@@ -706,53 +392,6 @@ class HomeFragment : Fragment() {
             }
             dialog.dismiss()
         }
-    }
-
-    // Set the chosen image in the circular image
-    private fun setImage(data: Uri?) {
-        if (data == null) return
-        var bitmap: Bitmap? = null
-        try {
-            if (Build.VERSION.SDK_INT < 29) {
-                @Suppress("DEPRECATION")
-                bitmap = MediaStore.Images.Media.getBitmap(act.contentResolver, data)
-            } else {
-                val source = ImageDecoder.createSource(act.contentResolver, data)
-                bitmap = ImageDecoder.decodeBitmap(source)
-            }
-        } catch (e: IOException) {
-        }
-        if (bitmap == null) return
-
-        // Bitmap ready. Avoid images larger than 1000*1000
-        var dimension: Int = getBitmapSquareSize(bitmap)
-        if (dimension > 1000) dimension = 1000
-        val resizedBitmap = ThumbnailUtils.extractThumbnail(
-            bitmap,
-            dimension,
-            dimension,
-            ThumbnailUtils.OPTIONS_RECYCLE_INPUT,
-        )
-        val image = dialogInsertEventBinding.imageEvent
-        image.setImageBitmap(resizedBitmap)
-    }
-
-    // Share an event as a plain string (plus some explanatory emotes) on every supported app
-    private fun shareEvent(event: EventResult) {
-        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
-        val eventInformation =
-            String(Character.toChars(0x1F388)) + "  " +
-                    getString(R.string.notification_title) +
-                    "\n" + String(Character.toChars(0x1F973)) + "  " +
-                    formatName(event, sharedPrefs.getBoolean("surname_first", false)) +
-                    "\n" + String(Character.toChars(0x1F4C5)) + "  " +
-                    event.nextDate!!.format(formatter)
-        ShareCompat.IntentBuilder
-            .from(requireActivity())
-            .setText(eventInformation)
-            .setType("text/plain")
-            .setChooserTitle(getString(R.string.share_event))
-            .startChooser()
     }
 
     // Activate the confetti effect (stream, 3 colors, 4 shapes)
