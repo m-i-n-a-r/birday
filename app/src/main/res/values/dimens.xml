@@ -24,7 +24,8 @@
     <dimen name="recycler_extra_space_vertical">34dp</dimen>
     <dimen name="dialog_actions_padding">40dp</dimen>
     <dimen name="dialog_horizontal_padding">24dp</dimen>
-    <dimen name="details_max_width">160dp</dimen>
+    <dimen name="details_text_max_width">160dp</dimen>
+    <dimen name="details_button_max_width">320dp</dimen>
     <dimen name="settings_row_padding">16dp</dimen>
     <dimen name="fast_scroll_corners">32dp</dimen>
     <dimen name="card_margin_big">16dp</dimen>
@@ -46,7 +47,7 @@
     <dimen name="cursor_size">2.5dp</dimen>
     <dimen name="notes_minimum_height">150dp</dimen>
     <dimen name="notes_maximum_height">220dp</dimen>
-    <dimen name="details_image_size">120dp</dimen>
+    <dimen name="details_image_size">112dp</dimen>
 
     <!-- Widgets -->
     <dimen name="widget_margin">8dp</dimen>

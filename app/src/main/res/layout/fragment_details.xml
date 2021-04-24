@@ -1,30 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:fadingEdgeLength="@dimen/linear_vertical_margin"
+    android:fillViewport="true"
     android:requiresFadingEdge="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <!-- The empty view is useful to make the screen large as the screen or more (with scrolling) -->
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/linear_vertical_margin"
         android:paddingBottom="@dimen/linear_vertical_margin">
 
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="22dp" />
+
+        <ImageView
+            android:id="@+id/detailsEventNameImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/event_details"
+            app:layout_constraintBottom_toBottomOf="@id/detailsEventName"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@id/detailsEventName"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/detailsEventName"
+            app:srcCompat="@drawable/ic_balloon_24dp" />
+
         <TextView
             android:id="@+id/detailsEventName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/form_vertical_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:drawablePadding="@dimen/activity_vertical_margin"
-            android:gravity="center"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:padding="@dimen/in_row_padding"
             android:text="@string/app_name"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-            app:drawableLeftCompat="@drawable/ic_balloon_24dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/detailsEventNameImage"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -95,13 +118,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detailsBirthDateValue" />
 
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/barrier"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="end"
-            app:constraint_referenced_ids="detailsZodiacSign,detailsChineseSign,detailsNextAge" />
-
         <TextView
             android:id="@+id/detailsCountdown"
             android:layout_width="0dp"
@@ -119,86 +135,92 @@
 
         <TextView
             android:id="@+id/detailsNextAge"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/linear_vertical_margin"
-            android:maxWidth="@dimen/details_max_width"
+            android:maxWidth="@dimen/details_text_max_width"
             android:padding="@dimen/in_row_padding"
+            android:layout_margin="@dimen/in_row_padding"
             android:text="@string/next_age"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
             android:textColor="@color/goodGray"
             app:layout_constraintBaseline_toBaselineOf="@+id/detailsNextAgeValue"
+            app:layout_constraintEnd_toStartOf="@id/detailsNextAgeValue"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/detailsNextAgeValue"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/linear_vertical_margin"
+            android:layout_margin="@dimen/in_row_padding"
+            android:layout_marginEnd="@dimen/linear_vertical_margin"
             android:padding="@dimen/in_row_padding"
             android:text="@string/app_name"
-            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/barrier"
+            app:layout_constraintStart_toEndOf="@+id/detailsNextAge"
             app:layout_constraintTop_toBottomOf="@+id/detailsCountdown" />
 
         <TextView
             android:id="@+id/detailsZodiacSign"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/linear_vertical_margin"
-            android:maxWidth="@dimen/details_max_width"
+            android:layout_margin="@dimen/in_row_padding"
+            android:maxWidth="@dimen/details_text_max_width"
             android:padding="@dimen/in_row_padding"
             android:text="@string/zodiac_sign"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
             android:textColor="@color/goodGray"
             app:layout_constraintBaseline_toBaselineOf="@+id/detailsZodiacSignValue"
+            app:layout_constraintEnd_toStartOf="@+id/detailsZodiacSignValue"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/detailsZodiacSignValue"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/linear_vertical_margin"
             android:padding="@dimen/in_row_padding"
+            android:layout_margin="@dimen/in_row_padding"
             android:text="@string/app_name"
-            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/barrier"
+            app:layout_constraintStart_toEndOf="@id/detailsZodiacSign"
             app:layout_constraintTop_toBottomOf="@+id/detailsNextAge" />
 
         <TextView
             android:id="@+id/detailsChineseSign"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/linear_vertical_margin"
-            android:maxWidth="@dimen/details_max_width"
+            android:maxWidth="@dimen/details_text_max_width"
             android:padding="@dimen/in_row_padding"
             android:text="@string/chinese_zodiac_sign"
+            android:layout_margin="@dimen/in_row_padding"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
             android:textColor="@color/goodGray"
             app:layout_constraintBaseline_toBaselineOf="@+id/detailsChineseSignValue"
+            app:layout_constraintEnd_toStartOf="@+id/detailsChineseSignValue"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/detailsChineseSignValue"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/linear_vertical_margin"
             android:padding="@dimen/in_row_padding"
             android:text="@string/app_name"
-            android:textAlignment="center"
+            android:layout_margin="@dimen/in_row_padding"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/barrier"
-            app:layout_constraintTop_toBottomOf="@+id/detailsZodiacSignValue" />
+            app:layout_constraintStart_toEndOf="@id/detailsChineseSign"
+            app:layout_constraintTop_toBottomOf="@+id/detailsZodiacSign"
+            tools:layout_editor_absoluteY="390dp" />
 
         <Button
             android:id="@+id/detailsEditButton"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/linear_vertical_margin"
@@ -209,15 +231,19 @@
             android:textColor="?colorAccent"
             android:tint="?colorAccent"
             app:icon="@drawable/ic_edit_24dp"
+            app:layout_constraintBottom_toTopOf="@id/detailsDeleteButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsChineseSignValue"
+            app:layout_constraintVertical_bias="1"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintWidth_max="@dimen/details_button_max_width"
             app:rippleColor="?colorAccent" />
 
         <Button
             android:id="@+id/detailsDeleteButton"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/linear_vertical_margin"
@@ -227,15 +253,18 @@
             android:textColor="?colorAccent"
             android:tint="?colorAccent"
             app:icon="@drawable/ic_delete_black_24dp"
+            app:layout_constraintBottom_toTopOf="@id/detailsShareButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsEditButton"
+            app:layout_constraintVertical_bias="1"
+            app:layout_constraintWidth_max="@dimen/details_button_max_width"
             app:rippleColor="?colorAccent" />
 
         <Button
             android:id="@+id/detailsShareButton"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/linear_vertical_margin"
@@ -245,9 +274,12 @@
             android:textColor="?colorAccent"
             android:tint="?colorAccent"
             app:icon="@drawable/ic_share_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsDeleteButton"
+            app:layout_constraintVertical_bias="1"
+            app:layout_constraintWidth_max="@dimen/details_button_max_width"
             app:rippleColor="?colorAccent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
