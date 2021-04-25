@@ -355,9 +355,9 @@ class MainActivity : AppCompatActivity() {
         }
         if (bitmap == null) return
 
-        // Bitmap ready. Avoid images larger than 1000*1000
+        // Bitmap ready. Avoid images larger than 480*480
         var dimension: Int = getBitmapSquareSize(bitmap)
-        if (dimension > 1000) dimension = 1000
+        if (dimension > 480) dimension = 480
 
         val resizedBitmap = ThumbnailUtils.extractThumbnail(
             bitmap,

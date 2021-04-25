@@ -54,7 +54,7 @@
     <dimen name="widget_padding">6dp</dimen>
     <dimen name="widget_shadow_radius">4.5</dimen>
 
-    <!-- Shimmer -->
+    <!-- Shimmer and miscellaneous -->
     <dimen name="shimmer_intensity">0.1</dimen>
     <dimen name="shimmer_tilt">0</dimen>
     <dimen name="shimmer_highlight_alpha">0.15</dimen>
