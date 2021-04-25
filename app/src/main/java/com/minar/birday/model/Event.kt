@@ -30,7 +30,6 @@ data class Event(
         if (type != other.type) return false
         if (name != other.name) return false
         if (surname != other.surname) return false
-        if (favorite != other.favorite) return false // Not completely true
         if (originalDate != other.originalDate) return false
         if (!image.contentEquals(other.image)) return false
 

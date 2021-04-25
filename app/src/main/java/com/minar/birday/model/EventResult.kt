@@ -26,6 +26,7 @@ data class EventResult (
         if (name != other.name) return false
         if (surname != other.surname) return false
         if (favorite != other.favorite) return false // Not completely true
+        if (yearMatter != other.yearMatter) return false
         if (originalDate != other.originalDate) return false
         if (!image.contentEquals(other.image)) return false
 

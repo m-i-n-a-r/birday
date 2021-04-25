@@ -159,7 +159,10 @@ class MainActivity : AppCompatActivity() {
         }
         navigation.setOnNavigationItemReselectedListener {
             // Only do something if there's something in the back stack (only in event details)
-            if (navController.currentBackStackEntry != null) navController.popBackStack()
+            if (navController.currentBackStackEntry != null &&
+                navController.currentDestination?.label == "fragment_details"
+            )
+                navController.popBackStack()
         }
 
         // Rating stuff

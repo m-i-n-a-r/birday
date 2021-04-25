@@ -169,6 +169,10 @@ class HomeFragment : Fragment() {
         adapter.setOnItemClickListener(onItemClickListener = object : OnItemClickListener {
             // Show a dialog with the details of the selected contact
             override fun onItemClick(position: Int, view: View?) {
+                // Return if there was a navigation, useful to avoid double tap on two events
+                if (requireView().findNavController().currentDestination?.label != "fragment_home")
+                    return
+
                 act.vibrate()
                 val event = adapter.getItem(position)
                 // Navigate to the new fragment passing in the event with safe args
