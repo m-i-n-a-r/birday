@@ -13,6 +13,7 @@
         <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
         <item name="snackbarStyle">@style/Widget.App.Snackbar</item>
         <item name="snackbarTextViewStyle">@style/MaterialSnackbarTextViewTheme</item>
+        <item name="alertDialogTheme">@style/DialogTheme</item>
     </style>
 
     <!-- Splash screen theme -->
@@ -22,6 +23,11 @@
         <item name="android:colorBackground">@color/colorBackground</item>
         <item name="android:navigationBarColor">@color/goodGray</item>
         <item name="colorAccent">@color/aquaAccent</item>
+    </style>
+
+    <!-- Preference dialog theme -->
+    <style name="DialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="dialogCornerRadius">@dimen/rounded_corners</item>
     </style>
 
     <!-- Snackbar style -->
