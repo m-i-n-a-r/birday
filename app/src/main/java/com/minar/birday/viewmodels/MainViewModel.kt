@@ -39,9 +39,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     // Launching new coroutines to insert the data in a non-blocking way
 
-    fun getFavorites(): LiveData<List<EventResult>> {
-        return eventDao.getOrderedFavoriteEvents()
-    }
+    fun getFavorites(): LiveData<List<EventResult>> =
+        eventDao.getOrderedFavoriteEvents()
 
     fun insert(event: Event) = viewModelScope.launch(Dispatchers.IO) {
         eventDao.insertEvent(event)

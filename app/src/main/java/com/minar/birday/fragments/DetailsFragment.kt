@@ -94,12 +94,20 @@ class DetailsFragment : Fragment() {
         val event = args.event ?: return v
         mainViewModel = ViewModelProvider(act).get(MainViewModel::class.java)
 
+        val shimmer = binding.detailsCountdownShimmer
+        val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
         val titleText = getString(R.string.event_details) + " - " + event.name
         val title = binding.detailsEventName
         val image = binding.detailsEventImage
         val deleteButton = binding.detailsDeleteButton
         val editButton = binding.detailsEditButton
         val shareButton = binding.detailsShareButton
+
+        // Manage the shimmer
+        if (shimmerEnabled) {
+            shimmer.startShimmer()
+            shimmer.showShimmer(true)
+        }
 
         // Bind the data on the views
         title.text = titleText
