@@ -95,7 +95,7 @@
             android:id="@+id/detailsBirthDate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/form_vertical_margin"
             android:gravity="center"
             android:padding="@dimen/in_row_padding"
             android:text="@string/birth_date"
