@@ -34,7 +34,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         // Only the upcoming events not considering the search
         nextEvents = eventDao.getOrderedNextEvents()
         eventsCount = eventDao.getEventsCount()
-        checkEvents()
+        scheduleNextCheck()
     }
 
     // Launching new coroutines to insert the data in a non-blocking way
@@ -58,8 +58,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         eventDao.updateEvent(event)
     }
 
-    // Check if there's a birthday today, using the hour range specified in shared preferences
-    fun checkEvents() {
+    // Schedule the next work for the specified hour, nothing will happen if there's no event
+    fun scheduleNextCheck() {
         val workHour = sharedPrefs.getString("notification_hour", "8")!!.toInt()
         // Cancel every previous scheduled work
         workManager.cancelAllWork()
@@ -71,10 +71,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         dueDate.set(Calendar.MINUTE, 0)
         dueDate.set(Calendar.SECOND, 15)
         if (dueDate.before(currentDate)) dueDate.add(Calendar.HOUR_OF_DAY, 24)
+        // Setup the work request using the difference between now and the next check as delay
         val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis
         val dailyWorkRequest = OneTimeWorkRequestBuilder<EventWorker>()
             .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)
             .build()
+        // Enqueue the request
         workManager.enqueue(dailyWorkRequest)
     }
 

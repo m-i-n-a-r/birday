@@ -43,7 +43,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                 "theme_color" -> activity.recreate()
                 "accent_color" -> activity.recreate()
                 "shimmer" -> activity.recreate()
-                "notification_hour" -> mainViewModel.checkEvents()
+                "notification_hour" -> mainViewModel.scheduleNextCheck()
                 "dark_widget" -> {
                     // Update every existing widget with a broadcast
                     val intent = Intent(context, EventWidget::class.java)
