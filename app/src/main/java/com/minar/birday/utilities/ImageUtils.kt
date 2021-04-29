@@ -1,6 +1,11 @@
 package com.minar.birday.utilities
 
 import android.graphics.*
+import android.graphics.drawable.Drawable
+import android.widget.ImageView
+import androidx.annotation.DrawableRes
+import androidx.vectordrawable.graphics.drawable.Animatable2Compat
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
@@ -52,3 +57,14 @@ fun getCircularBitmap(bitmap: Bitmap): Bitmap {
     return output
 }
 
+// Loop an animated vector drawable indefinitely
+fun ImageView.applyLoopingAnimatedVectorDrawable(@DrawableRes animatedVector: Int) {
+    val animated = AnimatedVectorDrawableCompat.create(context, animatedVector)
+    animated?.registerAnimationCallback(object : Animatable2Compat.AnimationCallback() {
+        override fun onAnimationEnd(drawable: Drawable?) {
+            this@applyLoopingAnimatedVectorDrawable.post { animated.start() }
+        }
+    })
+    this.setImageDrawable(animated)
+    animated?.start()
+}

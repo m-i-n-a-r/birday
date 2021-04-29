@@ -99,6 +99,7 @@ class DetailsFragment : Fragment() {
         val titleText = getString(R.string.event_details) + " - " + event.name
         val title = binding.detailsEventName
         val image = binding.detailsEventImage
+        val imageBg = binding.detailsEventImageBackground
         val deleteButton = binding.detailsDeleteButton
         val editButton = binding.detailsEditButton
         val shareButton = binding.detailsShareButton
@@ -112,11 +113,14 @@ class DetailsFragment : Fragment() {
         // Bind the data on the views
         title.text = titleText
         val hideImage = sharedPrefs.getBoolean("hide_images", false)
-        if (hideImage)
+        if (hideImage) {
             image.visibility = View.GONE
-        else
+            imageBg.visibility = View.GONE
+        } else {
             if (event.image != null)
                 image.setImageBitmap(byteArrayToBitmap(event.image))
+            imageBg.applyLoopingAnimatedVectorDrawable(R.drawable.animated_ripple_circle)
+        }
 
         // Setup quick actions and corresponding navigation
         deleteButton.setOnClickListener {

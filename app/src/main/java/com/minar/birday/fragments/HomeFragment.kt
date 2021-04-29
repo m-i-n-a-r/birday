@@ -6,15 +6,14 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Telephony
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import androidx.annotation.DrawableRes
+import android.widget.RemoteViews
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -23,8 +22,6 @@ import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.vectordrawable.graphics.drawable.Animatable2Compat
-import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
@@ -45,7 +42,6 @@ import nl.dionsegijn.konfetti.models.Size
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.time.temporal.ChronoUnit
-import java.util.*
 
 
 class HomeFragment : Fragment() {
@@ -441,18 +437,6 @@ class HomeFragment : Fragment() {
             .addSizes(Size(8), Size(12), Size(16))
             .setPosition(-50f, confetti.width + 50f, -50f, -50f)
             .streamFor(200, 3000L)
-    }
-
-    // Loop the animated vector drawable
-    internal fun ImageView.applyLoopingAnimatedVectorDrawable(@DrawableRes animatedVector: Int) {
-        val animated = AnimatedVectorDrawableCompat.create(context, animatedVector)
-        animated?.registerAnimationCallback(object : Animatable2Compat.AnimationCallback() {
-            override fun onAnimationEnd(drawable: Drawable?) {
-                this@applyLoopingAnimatedVectorDrawable.post { animated.start() }
-            }
-        })
-        this.setImageDrawable(animated)
-        animated?.start()
     }
 }
 
