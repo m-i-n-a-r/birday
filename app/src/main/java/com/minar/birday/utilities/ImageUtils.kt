@@ -13,9 +13,7 @@ import java.io.ByteArrayOutputStream
 fun bitmapToByteArray(bitmap: Bitmap): ByteArray {
     val imgConverted: ByteArray = byteArrayOf()
     return try {
-        val stream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream)
-        stream.toByteArray()
+        bitmap.toByteArray()
     } catch (e: Exception) {
         imgConverted
     }
@@ -64,4 +62,12 @@ fun ImageView.applyLoopingAnimatedVectorDrawable(@DrawableRes animatedVector: In
     })
     this.setImageDrawable(animated)
     animated?.start()
+}
+
+// Extension function to convert bitmap to byte array
+fun Bitmap.toByteArray(): ByteArray {
+    ByteArrayOutputStream().apply {
+        compress(Bitmap.CompressFormat.JPEG, 100, this)
+        return toByteArray()
+    }
 }
