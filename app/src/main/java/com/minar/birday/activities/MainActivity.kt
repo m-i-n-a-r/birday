@@ -343,12 +343,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-        try {
-            super.onSaveInstanceState(outState, outPersistentState)
-        } catch (e: Exception) {
-            // Avoid saving the state to avoid crashes with TransactionTooLargeException
-        }
+    override fun onSaveInstanceState(outState: Bundle) {
+        // Dirty, dirty fix to avoid TransactionTooBigException
+        super.onSaveInstanceState(Bundle())
     }
 
     // Set the chosen image in the circular image
