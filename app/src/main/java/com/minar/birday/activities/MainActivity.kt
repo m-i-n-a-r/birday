@@ -343,6 +343,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        try {
+            super.onSaveInstanceState(outState, outPersistentState)
+        } catch (e: Exception) {
+            // Avoid saving the state to avoid crashes with TransactionTooLargeException
+        }
+    }
+
     // Set the chosen image in the circular image
     private fun setImage(data: Uri) {
         var bitmap: Bitmap? = null
@@ -358,9 +366,9 @@ class MainActivity : AppCompatActivity() {
         }
         if (bitmap == null) return
 
-        // Bitmap ready. Avoid images larger than 480*480
+        // Bitmap ready. Avoid images larger than 450*450
         var dimension: Int = getBitmapSquareSize(bitmap)
-        if (dimension > 480) dimension = 480
+        if (dimension > 450) dimension = 450
 
         val resizedBitmap = ThumbnailUtils.extractThumbnail(
             bitmap,

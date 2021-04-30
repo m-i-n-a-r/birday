@@ -1,0 +1,14 @@
+- Images are now fully supported in notifications, details and events
+- Option to disable the Images
+- Option to send the notification only for favorite events
+- Show last name in notification
+- New details screen, new animations
+- New and smarter datepicker (supports years from 1500 and keyboard)
+- Confetti effect the day of the event
+- New (now default) aqua accent
+- Better navigation (animations, flow)
+- Better backup validation
+- Easily revert an event deletion
+- A lot (i mean, seriously) of visual improvements
+- Many crashes and performance issues were fixed
+- Romanian, portuguese and brazilian translations, english, french, german and spanish updated

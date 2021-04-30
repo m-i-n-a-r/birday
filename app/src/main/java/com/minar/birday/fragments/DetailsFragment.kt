@@ -438,9 +438,9 @@ class DetailsFragment : Fragment() {
         }
         if (bitmap == null) return
 
-        // Bitmap ready. Avoid images larger than 480*480
+        // Bitmap ready. Avoid images larger than 450*450
         var dimension: Int = getBitmapSquareSize(bitmap)
-        if (dimension > 480) dimension = 480
+        if (dimension > 450) dimension = 450
         val resizedBitmap = ThumbnailUtils.extractThumbnail(
             bitmap,
             dimension,

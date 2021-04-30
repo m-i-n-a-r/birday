@@ -150,7 +150,7 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
                     if (bitmap != null) {
                         // Check if the image is too big and resize it to a square if needed
                         var dimension = getBitmapSquareSize(bitmap)
-                        if (dimension > 480) dimension = 480
+                        if (dimension > 450) dimension = 450
                         val resizedBitmap = ThumbnailUtils.extractThumbnail(
                             bitmap,
                             dimension,
