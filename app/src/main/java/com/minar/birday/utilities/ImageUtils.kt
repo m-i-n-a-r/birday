@@ -6,9 +6,7 @@ import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
-import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
-import java.io.InputStream
 
 
 // Given a bitmap, convert it to a byte array
@@ -27,8 +25,7 @@ fun bitmapToByteArray(bitmap: Bitmap): ByteArray {
 fun byteArrayToBitmap(byteImg: ByteArray): Bitmap {
     // If the string is empty, just return an empty white bitmap
     if (byteImg.isEmpty()) return Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
-    val stream: InputStream = ByteArrayInputStream(byteImg)
-    return BitmapFactory.decodeStream(stream)
+    return BitmapFactory.decodeByteArray(byteImg, 0, byteImg.size)
 }
 
 // Get the smallest dimension in a non-square image to crop and resize it
