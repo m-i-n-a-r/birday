@@ -1,6 +1,7 @@
 package com.minar.birday.activities
 
 import android.Manifest
+import android.app.ActivityManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.ContentResolver
@@ -126,7 +127,27 @@ class MainActivity : AppCompatActivity() {
             "crimson" -> setTheme(R.style.AppTheme_Crimson)
         }
 
+        // Set the task appearance in recent apps
+        @Suppress("DEPRECATION")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            setTaskDescription(
+                ActivityManager.TaskDescription(
+                    getString(R.string.app_name),
+                    R.mipmap.ic_launcher,
+                    ContextCompat.getColor(this, R.color.deepGray)
+                ))
+        }
+        else setTaskDescription(
+            ActivityManager.TaskDescription(
+                getString(R.string.app_name),
+                ContextCompat.getDrawable(this, R.mipmap.ic_launcher)?.toBitmap(),
+                ContextCompat.getColor(this, R.color.deepGray)
+            )
+        )
+
         super.onCreate(savedInstanceState)
+
+        // Initialize the binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)

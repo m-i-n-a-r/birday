@@ -8,6 +8,7 @@ import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.preference.PreferenceFragmentCompat
 import com.minar.birday.R
 import com.minar.birday.viewmodels.MainViewModel
@@ -37,25 +38,30 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
-        val activity: Activity? = activity
-        if (activity != null) {
-            when (key) {
-                "theme_color" -> activity.recreate()
-                "accent_color" -> activity.recreate()
-                "shimmer" -> activity.recreate()
-                "notification_hour" -> mainViewModel.scheduleNextCheck()
-                "dark_widget" -> {
-                    // Update every existing widget with a broadcast
-                    val intent = Intent(context, EventWidget::class.java)
-                    intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-                    val ids = AppWidgetManager.getInstance(context).getAppWidgetIds(
-                        ComponentName(requireContext(), EventWidget::class.java)
-                    )
-                    intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
-                    requireContext().sendBroadcast(intent)
-                }
+        when (key) {
+            "theme_color" -> hotReloadActivity(activity)
+            "accent_color" -> hotReloadActivity(activity)
+            "shimmer" -> hotReloadActivity(activity)
+            "notification_hour" -> mainViewModel.scheduleNextCheck()
+            "dark_widget" -> {
+                // Update every existing widget with a broadcast
+                val intent = Intent(context, EventWidget::class.java)
+                intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+                val ids = AppWidgetManager.getInstance(context).getAppWidgetIds(
+                    ComponentName(requireContext(), EventWidget::class.java)
+                )
+                intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+                requireContext().sendBroadcast(intent)
             }
+
         }
+    }
+
+    // Reload the activity and make sure to stay in the settings
+    private fun hotReloadActivity(activity: Activity?) {
+        if (activity == null) return
+        activity.recreate()
+        requireView().findNavController().navigate(R.id.navigationSettings)
     }
 
 }
