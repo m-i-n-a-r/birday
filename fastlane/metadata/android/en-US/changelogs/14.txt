@@ -11,4 +11,4 @@
 - Easily revert an event deletion
 - A lot (i mean, seriously) of visual improvements
 - Many crashes and performance issues were fixed
-- Romanian, portuguese and brazilian translations, english, french, german and spanish updated
+- Romanian and brazilian translations, portuguese, english, french, german and spanish updated
