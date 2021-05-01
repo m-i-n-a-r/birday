@@ -365,8 +365,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        // Dirty, dirty fix to avoid TransactionTooBigException
-        super.onSaveInstanceState(Bundle())
+        // Manage refresh from settings, since there's a bug where the refresh doesn't work properly
+        val refreshed = sharedPrefs.getBoolean("refreshed", false)
+        if (refreshed) {
+            sharedPrefs.edit().putBoolean("refreshed", false).apply()
+            super.onSaveInstanceState(outState)
+        }
+        else {
+            // Dirty, dirty fix to avoid TransactionTooBigException:
+            // it will restore the home fragment when the theme is changed from system for example,
+            // and the app is in recent apps. No issues for screen rotations, keyboard and so on
+            super.onSaveInstanceState(Bundle())
+        }
     }
 
     // Set the chosen image in the circular image

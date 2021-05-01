@@ -8,8 +8,8 @@ import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceManager
 import com.minar.birday.R
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidget
@@ -60,8 +60,9 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
     // Reload the activity and make sure to stay in the settings
     private fun hotReloadActivity(activity: Activity?) {
         if (activity == null) return
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(activity)
+        sharedPrefs.edit().putBoolean("refreshed", true).apply()
         activity.recreate()
-        requireView().findNavController().navigate(R.id.navigationSettings)
     }
 
 }
