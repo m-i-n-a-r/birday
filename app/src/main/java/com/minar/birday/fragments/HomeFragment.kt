@@ -82,7 +82,8 @@ class HomeFragment : Fragment() {
         upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
 
         // Setup the search bar
-        binding.homeSearch.addTextChangedListener { text ->
+        val searchBar = binding.homeSearch
+        searchBar.addTextChangedListener { text ->
             mainViewModel.searchNameChanged(text.toString())
         }
 
@@ -136,6 +137,10 @@ class HomeFragment : Fragment() {
             // Update the widgets using the next events, to avoid strange behaviors when searching
             updateWidget(nextEvents)
         })
+
+        // Restore search string in the search bar
+        if (mainViewModel.searchStringLiveData.value!!.isNotBlank())
+            searchBar.setText(mainViewModel.searchStringLiveData.value)
 
         return v
     }
