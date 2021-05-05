@@ -12,7 +12,7 @@
     <string name="title_favorites">Favoritos</string>
     <string name="title_settings">Ajustes</string>
     <string name="no_events">¡No hay cumpleaños! Añade uno usando el botón de abajo</string>
-    <string name="no_favorites">¡Nadie en favoritos! Pulsa la estrella para añadir a un evento a favoritos</string>
+    <string name="no_favorites">¡Nadie en favoritos! Pulsa la estrella para añadir un evento a favoritos</string>
     <string name="add_favorite">Añadir a favoritos</string>
     <string name="stats">Estadísticas</string>
     <string name="no_stats">¡No hay estadísticas que mostrar!</string>
@@ -36,7 +36,7 @@
     <string name="customization">Personalización</string>
     <string name="app_behavior">Ajustes generales</string>
     <string name="additional_notification_name">Notificación previa</string>
-    <string name="additional_notification_description">Envía una notificación adificional antes del evento. %s</string>
+    <string name="additional_notification_description">Envía una notificación adificional antes del evento: %s</string>
     <string name="no_additional_notification">Sin notificación previa</string>
     <string name="one_day_before">1 día antes</string>
     <string name="two_days_before">2 días antes</string>
@@ -55,7 +55,7 @@
     <string name="accent_name">Color principal</string>
     <string name="theme_description">Usa un tema oscuro, claro o automático</string>
     <string name="theme_name">Tema de la aplicación</string>
-    <string name="aqua">Agua</string>
+    <string name="aqua">Aguamarina</string>
     <string name="brown">Marrón</string>
     <string name="blue">Azul</string>
     <string name="green">Verde</string>
@@ -101,9 +101,9 @@
     <string name="hide_images">¿Ocultar imágenes?</string>
     <string name="hide_images_description_on">Imágenes de eventos ocultas</string>
     <string name="hide_images_description_off">Imágenes de eventos visibles</string>
-    <string name="notification_only_favorites">Favoritos solamente</string>
-    <string name="notification_only_favorites_description_on">Envía una notificación solo para eventos favoritos</string>
-    <string name="notification_only_favorites_description_off">Envía una notificación por cada evento ingresado</string>
+    <string name="notification_only_favorites">¿Notificar solo favoritos?</string>
+    <string name="notification_only_favorites_description_on">Solo notifica los eventos favoritos</string>
+    <string name="notification_only_favorites_description_off">Notifica todos los eventos</string>
 
     <!-- Developer -->
     <string name="dev_description">Soy un tipo amable al que le gustan las animaciones, los iconos, los coches deportivos y la impresión 3D. Trabajo como diseñador e ingeniero informático.</string>
@@ -202,7 +202,7 @@
         <item quantity="one">%d año</item>
         <item quantity="other">%d años</item>
     </plurals>
-    <string name="born_in">nacido en</string>
+    <string name="born_in">nacido/a en</string>
     <string name="and">y</string>
 
     <!-- Notifications -->
@@ -232,6 +232,6 @@
 
     <!-- Notes -->
     <string name="notes">Notas</string>
-    <string name="write_something">Escribe alguna nota…</string>
+    <string name="write_something">Escribe alguna anotación…</string>
 
 </resources>
