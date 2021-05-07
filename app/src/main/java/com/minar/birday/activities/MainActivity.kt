@@ -281,6 +281,8 @@ class MainActivity : AppCompatActivity() {
                         val selection = it
                         if (selection != null) {
                             val date = Calendar.getInstance()
+                            // Use a standard timezone to avoid wrong date on different time zones
+                            date.timeZone = TimeZone.getTimeZone("UTC")
                             date.timeInMillis = selection
                             val year = date.get(Calendar.YEAR)
                             val month = date.get(Calendar.MONTH) + 1

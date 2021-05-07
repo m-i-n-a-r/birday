@@ -118,7 +118,7 @@ class DetailsFragment : Fragment() {
             imageBg.visibility = View.GONE
         } else {
             if (event.image != null)
-                image.setImageBitmap(byteArrayToBitmap(event.image))
+                image.setImageBitmap(byteArrayToBitmap(event.image!!))
             imageBg.applyLoopingAnimatedVectorDrawable(R.drawable.animated_ripple_circle)
         }
 
@@ -342,6 +342,8 @@ class DetailsFragment : Fragment() {
                     val selection = it
                     if (selection != null) {
                         val date = Calendar.getInstance()
+                        // Use a standard timezone to avoid wrong date on different time zones
+                        date.timeZone = TimeZone.getTimeZone("UTC")
                         date.timeInMillis = selection
                         val year = date.get(Calendar.YEAR)
                         val month = date.get(Calendar.MONTH) + 1
