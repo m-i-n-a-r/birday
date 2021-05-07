@@ -56,15 +56,17 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         stats.add(mostCommonZodiacSign())
         stats.add(leapYearTotal())
         stats.removeIf { it.isBlank() }
-        sb.appendBulletSpans(stats, 20, applicationContext!!.getColor(R.color.goodGray))
+        sb.appendBulletSpans(stats, 16, applicationContext!!.getColor(R.color.goodGray))
         return sb
     }
 
     // The average age
     private fun ageAverage(): String {
         val average = truncate(getAges().values.average()).toInt()
-        return applicationContext?.getString(R.string.age_average) + " " +
-                applicationContext?.resources?.getQuantityString(R.plurals.years, average, average).toString()
+        return String.format(
+            applicationContext?.getString(R.string.age_average)!!,
+            applicationContext.resources?.getQuantityString(R.plurals.years, average, average),
+        )
     }
 
     // The oldest person, taking into account months and days
@@ -79,13 +81,19 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
                 oldestAge = getAge(it)
             }
         }
-        return applicationContext?.getString(R.string.oldest_person) + " " + oldestName + ", " +
-                applicationContext?.resources?.getQuantityString(R.plurals.years, oldestAge, oldestAge).toString()
+        return String.format(
+            applicationContext?.getString(R.string.oldest_person)!!,
+            oldestName,
+        ) + ", " + applicationContext.resources?.getQuantityString(
+            R.plurals.years,
+            oldestAge,
+            oldestAge
+        ).toString()
     }
 
     // The youngest person, taking into account months and days
     private fun youngestPerson(): String {
-        var youngestDate = LocalDate.of(1900,1,1)
+        var youngestDate = LocalDate.of(1500, 1, 1)
         var youngestName = ""
         var youngestAge = 0
         events.forEach {
@@ -95,66 +103,87 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
                 youngestAge = getAge(it)
             }
         }
+        val commonPart = String.format(
+            applicationContext?.getString(R.string.youngest_person)!!,
+            youngestName,
+        )
         // If the youngest person is a baby, return the age in months
         return if (youngestAge == 0) {
             val months = getAgeMonths(youngestDate)
-            applicationContext?.getString(R.string.youngest_person) + " " + youngestName + ", " +
-                    applicationContext?.resources?.getQuantityString(R.plurals.months, months, months)
+            "$commonPart, " + applicationContext.resources?.getQuantityString(
+                R.plurals.months,
+                months,
+                months
+            )
         } else {
-            applicationContext?.getString(R.string.youngest_person) + " " + youngestName + ", " +
-                    applicationContext?.resources?.getQuantityString(R.plurals.years, youngestAge, youngestAge)
+            "$commonPart, " + applicationContext.resources?.getQuantityString(
+                R.plurals.years,
+                youngestAge,
+                youngestAge
+            )
         }
     }
 
     // The most common month. When there's no common month, return a blank string
     private fun mostCommonMonth(): String {
         val months = mutableMapOf<String, Int>()
-        val commonMonth: String
         events.forEach {
             val month = it.originalDate.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
-            if(months[month] == null) months[month] = 1
+            if (months[month] == null) months[month] = 1
             else months[month] = months[month]!!.plus(1)
         }
-        commonMonth = evaluateResult(months)
+        val commonMonth: String = evaluateResult(months)
         if (commonMonth.isBlank()) return commonMonth
-        return applicationContext?.getString(R.string.most_common_month) + " " + commonMonth
+        return String.format(
+            applicationContext?.getString(R.string.most_common_month)!!,
+            commonMonth,
+        )
     }
 
     // The most common age range (decade). When there's no common range, return a blank string
     private fun mostCommonAgeRange(): String {
         val ageRanges = mutableMapOf<String, Int>()
-        val commonRange: String
         events.forEach {
             // Quite unnecessary both here and in other functions, but it's for extra safety
             if (it.yearMatter!!) {
-                if (ageRanges[getAgeRange(it.originalDate)] == null) ageRanges[getAgeRange(it.originalDate)] = 1
-                else ageRanges[getAgeRange(it.originalDate)] = ageRanges[getAgeRange(it.originalDate)]!!.plus(1)
+                if (ageRanges[getAgeRange(it.originalDate)] == null) ageRanges[getAgeRange(it.originalDate)] =
+                    1
+                else ageRanges[getAgeRange(it.originalDate)] =
+                    ageRanges[getAgeRange(it.originalDate)]!!.plus(1)
             }
         }
-        commonRange = evaluateResult(ageRanges)
+        val commonRange: String = evaluateResult(ageRanges)
         if (commonRange.isBlank()) return commonRange
-        return applicationContext?.getString(R.string.most_common_age_range) + " " + commonRange + "-" + (commonRange.toInt() + 10)
+        return String.format(
+            applicationContext?.getString(R.string.most_common_age_range)!!,
+            commonRange,
+            commonRange.toInt() + 10,
+        )
     }
 
     // The most common decade (80s, 90s..). When there's no common decade, return a blank string
     private fun mostCommonDecade(): String {
         val decades = mutableMapOf<String, Int>()
-        val commonDecade: String
         events.forEach {
             // Quite unnecessary both here and in other functions, but it's for extra safety
             if (it.yearMatter!!) {
-                if (decades[getDecade(it.originalDate)] == null) decades[getDecade(it.originalDate)] = 1
-                else decades[getDecade(it.originalDate)] = decades[getDecade(it.originalDate)]!!.plus(1)
+                if (decades[getDecade(it.originalDate)] == null) decades[getDecade(it.originalDate)] =
+                    1
+                else decades[getDecade(it.originalDate)] =
+                    decades[getDecade(it.originalDate)]!!.plus(1)
             }
         }
-        commonDecade = evaluateResult(decades)
+        val commonDecade: String = evaluateResult(decades)
         if (commonDecade.isBlank()) return commonDecade
-        return applicationContext?.getString(R.string.most_common_decade) + " " + commonDecade
+        return String.format(
+            applicationContext?.getString(R.string.most_common_decade)!!,
+            commonDecade,
+        )
     }
 
-    // Get a random "special age" person. Special age means 10, 18, 20, 30, 40, and so on
+    // Get a random "special age" person. Special age means 1, 10, 18, 20, 30, 40, and so on
     private fun specialAges(): String {
-        val specialAges = arrayOf(10,18,20,30,40,50,60,70,80,90,100,110,120,130)
+        val specialAges = arrayOf(1, 10, 18, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130)
         val specialPersons = mutableMapOf<String, Int>()
         events.forEach {
             // Quite unnecessary both here and in other functions, but it's for extra safety
@@ -167,50 +196,69 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         else {
             val chosen = specialPersons.keys.random()
             val years = specialPersons[chosen]!!
-            applicationContext?.getString(R.string.special_ages) + " " + chosen + ", " +
-                    applicationContext?.resources?.getQuantityString(R.plurals.years, years, years).toString()
+            // Format the first half of the sentence
+            return String.format(
+                applicationContext?.getString(R.string.special_ages)!!,
+                chosen,
+            ) + ", " + applicationContext.resources?.getQuantityString(
+                R.plurals.years,
+                years,
+                years
+            ).toString()
         }
     }
 
     // Get the zodiac sign for a random person
     private fun zodiacSign(person: EventResult): String {
-        return applicationContext?.getString(R.string.random_zodiac_sign) + " " + person.name + ": " + getZodiacSign(person)
+        return String.format(
+            applicationContext?.getString(R.string.random_zodiac_sign)!!,
+            person.name,
+            getZodiacSign(person),
+        )
     }
 
     // The most common zodiac sign. When there's no common zodiac sign, return a blank string
     private fun mostCommonZodiacSign(): String {
         val zodiacSigns = mutableMapOf<String, Int>()
-        val commonZodiacSign: String
         events.forEach {
-            if(zodiacSigns[getZodiacSign(it)] == null) zodiacSigns[getZodiacSign(it)] = 1
+            if (zodiacSigns[getZodiacSign(it)] == null) zodiacSigns[getZodiacSign(it)] = 1
             else zodiacSigns[getZodiacSign(it)] = zodiacSigns[getZodiacSign(it)]!!.plus(1)
         }
-        commonZodiacSign = evaluateResult(zodiacSigns)
+        val commonZodiacSign: String = evaluateResult(zodiacSigns)
         if (commonZodiacSign.isBlank()) return commonZodiacSign
-        return applicationContext?.getString(R.string.most_common_zodiac_sign) + " " + commonZodiacSign
+        return String.format(
+            applicationContext?.getString(R.string.most_common_zodiac_sign)!!,
+            commonZodiacSign,
+        )
     }
 
     // Get the day of the week of birth for a random person
     private fun dayOfWeek(person: EventResult): String {
         return if (!person.yearMatter!!) ""
-        else person.name + " " + applicationContext?.getString(R.string.random_day_of_week) + " " +
-                person.originalDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault())
+        else String.format(
+            applicationContext?.getString(R.string.random_day_of_week)!!,
+            person.name,
+            person.originalDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault()),
+        )
     }
 
     // The most common day of the week of birth. When there's no common day of the week, return a blank string
     private fun mostCommonDayOfWeek(): String {
         val weekDays = mutableMapOf<String, Int>()
-        val commonWeekDay: String
         events.forEach {
             if (it.yearMatter!!) {
-                val weekDay = it.originalDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault())
+                val weekDay =
+                    it.originalDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault())
                 if (weekDays[weekDay] == null) weekDays[weekDay] = 1
                 else weekDays[weekDay] = weekDays[weekDay]!!.plus(1)
             }
         }
-        commonWeekDay = evaluateResult(weekDays)
+        val commonWeekDay: String = evaluateResult(weekDays)
         if (commonWeekDay.isBlank()) return commonWeekDay
-        return applicationContext?.getString(R.string.most_common_day_of_week) + " " + commonWeekDay
+        return String.format(
+            applicationContext?.getString(R.string.most_common_day_of_week)!!,
+            commonWeekDay
+        )
     }
 
     // Get the number of persons born in a leap year. Even 0 is an acceptable result
@@ -219,14 +267,21 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         events.forEach {
             if (it.yearMatter!!) if (it.originalDate.isLeapYear) leapTotal++
         }
-        return applicationContext?.resources?.getQuantityString(R.plurals.leap_year_total, leapTotal, leapTotal).toString()
+        return applicationContext?.resources?.getQuantityString(
+            R.plurals.leap_year_total,
+            leapTotal,
+            leapTotal
+        ).toString()
     }
 
     // Get the chinese year of a random person
     private fun chineseSign(person: EventResult): String {
         return if (!person.yearMatter!!) ""
-        else applicationContext?.getString(R.string.random_chinese_year) + " " +
-                person.name + ": " + getChineseSign(person)
+        else String.format(
+            applicationContext?.getString(R.string.random_chinese_year)!!,
+            person.name,
+            getChineseSign(person),
+        )
     }
 
     // Get a list containing the names and an int containing the age
@@ -328,12 +383,16 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
                 result = it.key
             }
         }
-        return if(map.values.count { it == maxValue } > 1) ""
+        return if (map.values.count { it == maxValue } > 1) ""
         else result
     }
 
     // Functions to build the statistics in a bullet list
-    private fun SpannableStringBuilder.appendBulletSpans(paragraphs: List<String>, margin: Int, @ColorInt color: Int): SpannableStringBuilder {
+    private fun SpannableStringBuilder.appendBulletSpans(
+        paragraphs: List<String>,
+        margin: Int,
+        @ColorInt color: Int
+    ): SpannableStringBuilder {
         for (paragraph in paragraphs) {
             if (paragraphs.indexOf(paragraph) == 0) appendBulletSpan(paragraph, margin, color, true)
             else appendBulletSpan(paragraph, margin, color)
@@ -341,10 +400,16 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         return this
     }
 
-    private fun SpannableStringBuilder.appendBulletSpan(paragraph: String, margin: Int, @ColorInt color: Int, first: Boolean = false): SpannableStringBuilder {
+    private fun SpannableStringBuilder.appendBulletSpan(
+        paragraph: String,
+        margin: Int,
+        @ColorInt color: Int,
+        first: Boolean = false
+    ): SpannableStringBuilder {
         if (!first) append("\n")
-        val bulletSpan = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) BulletSpan(margin, color, 10)
-        else BulletSpan(margin, color)
+        val bulletSpan =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) BulletSpan(margin, color, 10)
+            else BulletSpan(margin, color)
         val spaceBefore = length
         append(paragraph)
         val spaceAfter = length

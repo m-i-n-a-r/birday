@@ -151,22 +151,22 @@
 
     <!-- Statistics -->
     <string name="did_you_know">Sabia que?</string>
-    <string name="age_average">A idade média é</string>
-    <string name="oldest_person">A pessoa mais velha é</string>
-    <string name="youngest_person">A pessoa mais nova é</string>
-    <string name="most_common_month">O mês de aniversário mais comum é</string>
-    <string name="most_common_decade">A década de nascimento mais comum  é</string>
-    <string name="most_common_age_range">O intervalo de idade mais comum é</string>
-    <string name="special_ages">Um aniversário importante para breve é</string>
-    <string name="random_zodiac_sign">Signo de zodíaco de</string>
-    <string name="most_common_zodiac_sign">O signo de zodíaco mais comum é</string>
-    <string name="random_day_of_week">nasceu em</string>
-    <string name="most_common_day_of_week">O dia de semana de nascimento mais comum é</string>
+    <string name="age_average">A idade média é %s</string>
+    <string name="oldest_person">A pessoa mais velha é %s</string>
+    <string name="youngest_person">A pessoa mais nova é %s</string>
+    <string name="most_common_month">O mês de aniversário mais comum é %s</string>
+    <string name="most_common_decade">A década de nascimento mais comum é %s</string>
+    <string name="most_common_age_range">O intervalo de idade mais comum é %1$s-%2$s</string>
+    <string name="special_ages">Um aniversário importante para breve é %s</string>
+    <string name="random_zodiac_sign">Signo de zodíaco de %1$s: %2$s</string>
+    <string name="most_common_zodiac_sign">O signo de zodíaco mais comum é %s</string>
+    <string name="random_day_of_week">%1$s nasceu em %2$s</string>
+    <string name="most_common_day_of_week">O dia de semana de nascimento mais comum é %s</string>
     <plurals name="leap_year_total">
         <item quantity="one">O número de pessoas nascidas em ano bissexto é %d</item>
         <item quantity="other">O número de pessoas nascidas em ano bissexto é %d</item>
     </plurals>
-    <string name="random_chinese_year">Signo chinês de</string>
+    <string name="random_chinese_year">Signo chinês de %1$s: %2$s</string>
     <string name="chinese_zodiac_rat">rato</string>
     <string name="chinese_zodiac_ox">boi</string>
     <string name="chinese_zodiac_tiger">tigre</string>

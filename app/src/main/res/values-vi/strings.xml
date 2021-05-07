@@ -144,21 +144,21 @@
 
     <!-- Statistics -->
     <string name="did_you_know">Bạn có biết không?</string>
-    <string name="age_average">Tuổi trung bình là</string>
-    <string name="oldest_person">Người già nhất là</string>
-    <string name="youngest_person">Người trẻ nhất là</string>
-    <string name="most_common_month">Tháng sinh phổ biến nhất là</string>
-    <string name="most_common_decade">Thập kỷ phổ biến nhất của sinh là</string>
-    <string name="most_common_age_range">Tuổi phổ biến nhất là</string>
-    <string name="special_ages">Một sinh nhật quan trọng sắp tới là</string>
-    <string name="random_zodiac_sign">Dấu hiệu hoàng đạo của</string>
-    <string name="most_common_zodiac_sign">Dấu hiệu hoàng đạo phổ biến nhất là</string>
-    <string name="random_day_of_week">sinh vào</string>
-    <string name="most_common_day_of_week">Ngày phổ biến nhất trong tuần sinh là</string>
+    <string name="age_average">Tuổi trung bình là %s</string>
+    <string name="oldest_person">Người già nhất là %s</string>
+    <string name="youngest_person">Người trẻ nhất là %s</string>
+    <string name="most_common_month">Tháng sinh phổ biến nhất là %s</string>
+    <string name="most_common_decade">Thập kỷ phổ biến nhất của sinh là %s</string>
+    <string name="most_common_age_range">Tuổi phổ biến nhất là %1$s-%2$s</string>
+    <string name="special_ages">Một sinh nhật quan trọng sắp tới là %s</string>
+    <string name="random_zodiac_sign">Dấu hiệu hoàng đạo của %1$s: %2$s</string>
+    <string name="most_common_zodiac_sign">Dấu hiệu hoàng đạo phổ biến nhất là %s</string>
+    <string name="random_day_of_week">%1$s sinh vào %2$s</string>
+    <string name="most_common_day_of_week">Ngày phổ biến nhất trong tuần sinh là %s</string>
     <plurals name="leap_year_total">
         <item quantity="other">Số người sinh ra trong một năm nhuận là %d</item>
     </plurals>
-    <string name="random_chinese_year">Cung hoàng đạo Việt Nam của</string>
+    <string name="random_chinese_year">Cung hoàng đạo Việt Nam của %1$s: %2$s</string>
     <string name="chinese_zodiac_rat">chuột</string>
     <string name="chinese_zodiac_ox">châu</string>
     <string name="chinese_zodiac_tiger">cợp</string>

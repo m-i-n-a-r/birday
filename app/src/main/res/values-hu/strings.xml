@@ -145,22 +145,22 @@
 
     <!-- Statistics -->
     <string name="did_you_know">Tudtad?</string>
-    <string name="age_average">Az átlagos életkor</string>
-    <string name="oldest_person">A legidősebb ember</string>
-    <string name="youngest_person">A legfiatalabb ember</string>
-    <string name="most_common_month">A leggyakoribb születési hónap a(z)</string>
-    <string name="most_common_decade">A leggyakoribb születési évtized a(z)</string>
-    <string name="most_common_age_range">A leggyakoribb korcsoport a</string>
-    <string name="special_ages">Egy fontos közelgő születésnap:</string>
-    <string name="random_zodiac_sign">Az ő csillagjegye:</string>
-    <string name="most_common_zodiac_sign">A leggyakoribb csillagjegy a(z)</string>
-    <string name="random_day_of_week">ekkor született:</string>
-    <string name="most_common_day_of_week">A leggyakoribb születési nap a</string>
+    <string name="age_average">Az átlagos életkor %s</string>
+    <string name="oldest_person">A legidősebb ember %s</string>
+    <string name="youngest_person">A legfiatalabb ember %s</string>
+    <string name="most_common_month">A leggyakoribb születési hónap a(z) %s</string>
+    <string name="most_common_decade">A leggyakoribb születési évtized a(z) %s</string>
+    <string name="most_common_age_range">A leggyakoribb korcsoport a %1$s-%2$s</string>
+    <string name="special_ages">Egy fontos közelgő születésnap: %s</string>
+    <string name="random_zodiac_sign">Az ő csillagjegye %1$s: %2$s</string>
+    <string name="most_common_zodiac_sign">A leggyakoribb csillagjegy a(z) %s</string>
+    <string name="random_day_of_week">%1$s ekkor született: %2$s</string>
+    <string name="most_common_day_of_week">A leggyakoribb születési nap a %s</string>
     <plurals name="leap_year_total">
         <item quantity="one">A szökőévben születettek száma %d</item>
         <item quantity="other">A szökőévben születettek száma %d</item>
     </plurals>
-    <string name="random_chinese_year">Kínai csillagjegye neki:</string>
+    <string name="random_chinese_year">Kínai csillagjegye neki %1$s: %2$s</string>
     <string name="chinese_zodiac_rat">patkány</string>
     <string name="chinese_zodiac_ox">bivaly</string>
     <string name="chinese_zodiac_tiger">tigris</string>

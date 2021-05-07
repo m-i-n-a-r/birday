@@ -1,6 +1,6 @@
 <resources>
 
-    <!-- Base application theme -->
+    <!-- Style for the light theme -->
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:colorBackground">@color/colorBackground</item>

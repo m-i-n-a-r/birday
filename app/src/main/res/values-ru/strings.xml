@@ -151,24 +151,24 @@
 
     <!-- Statistics -->
     <string name="did_you_know">Знаете ли вы?</string>
-    <string name="age_average">Средний возраст</string>
-    <string name="oldest_person">Самый старший -</string>
-    <string name="youngest_person">Самый младший</string>
-    <string name="most_common_month">Самый частый месяц рождения -</string>
-    <string name="most_common_decade">Самая частая декада рождения</string>
-    <string name="most_common_age_range">Самый частый возрастной период -</string>
-    <string name="special_ages">Приближается юбилей у:</string>
-    <string name="random_zodiac_sign">Знак зодиака</string>
-    <string name="most_common_zodiac_sign">Самый частый знак зодиака - </string>
-    <string name="random_day_of_week">родился/лась в</string>
-    <string name="most_common_day_of_week">Самый частый день недели среди дней рождения - </string>
+    <string name="age_average">Средний возраст %s</string>
+    <string name="oldest_person">Самый старший - %s</string>
+    <string name="youngest_person">Самый младший %s</string>
+    <string name="most_common_month">Самый частый месяц рождения - %s</string>
+    <string name="most_common_decade">Самая частая декада рождения %s</string>
+    <string name="most_common_age_range">Самый частый возрастной период - %1$s-%2$s</string>
+    <string name="special_ages">Приближается юбилей у: %s</string>
+    <string name="random_zodiac_sign">Знак зодиака %1$s: %2$s</string>
+    <string name="most_common_zodiac_sign">Самый частый знак зодиака - %s</string>
+    <string name="random_day_of_week">%1$s родился/лась в %2$s</string>
+    <string name="most_common_day_of_week">Самый частый день недели среди дней рождения - %s</string>
     <plurals name="leap_year_total">
         <item quantity="one">В високосный год родился %d человек</item>
         <item quantity="few">В високосный год родились %d человека</item>
         <item quantity="many">В високосный год родилось %d людей</item>
         <item quantity="other">В високосный год родилось %d людей</item>
     </plurals>
-    <string name="random_chinese_year">По китайскому календарю</string>
+    <string name="random_chinese_year">По китайскому календарю %1$s: %2$s</string>
     <string name="chinese_zodiac_rat">крыса/мышь</string>
     <string name="chinese_zodiac_ox">бык</string>
     <string name="chinese_zodiac_tiger">тигр</string>

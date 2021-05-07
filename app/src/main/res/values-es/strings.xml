@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <string name="app_welcome">Bienvenido/a a Birday</string>
     <string name="app_name_extended">Birday - Gestor de cumpleaños</string>
@@ -73,7 +73,7 @@
     <string name="light_theme">Claro</string>
     <string name="shimmer_name">Efectos de brillo</string>
     <string name="shimmer_description_on">Brilli brilli por aquí y por allá</string>
-    <string name="shimmer_description_off">Nada de brilli brilli</string>
+    <string name="shimmer_description_off" tools:ignore="Typos">Nada de brilli brilli</string>
     <string name="dark_widget_name">¿Widget oscuro?</string>
     <string name="dark_widget_description_on">El widget usa un tema oscuro</string>
     <string name="dark_widget_description_off">El widget usa un tema claro</string>
@@ -149,22 +149,22 @@
 
     <!-- Statistics -->
     <string name="did_you_know">¿Sabías que…?</string>
-    <string name="age_average">La edad media es de</string>
-    <string name="oldest_person">La persona más mayor es</string>
-    <string name="youngest_person">La persona más joven es</string>
-    <string name="most_common_month">El mes en el que más cumplen es</string>
-    <string name="most_common_decade">La década en la que más cumplen es</string>
-    <string name="most_common_age_range">El rango de edad más común es de</string>
-    <string name="special_ages">Un cumpleaños importante es el de</string>
-    <string name="random_zodiac_sign">Signo zodiacal de</string>
-    <string name="most_common_zodiac_sign">El signo zodiacal más común es</string>
-    <string name="random_day_of_week">nació el</string>
-    <string name="most_common_day_of_week">El día en el que más cumplen es el</string>
+    <string name="age_average">La edad media es de %s</string>
+    <string name="oldest_person">La persona más mayor es %s</string>
+    <string name="youngest_person">La persona más joven es %s</string>
+    <string name="most_common_month">El mes en el que más cumplen es %s</string>
+    <string name="most_common_decade">La década en la que más cumplen es %s</string>
+    <string name="most_common_age_range">El rango de edad más común es de %1$s-%2$s</string>
+    <string name="special_ages">Un cumpleaños importante es el de %s</string>
+    <string name="random_zodiac_sign">Signo zodiacal de %1$s: %2$s</string>
+    <string name="most_common_zodiac_sign">El signo zodiacal más común es %s</string>
+    <string name="random_day_of_week">%1$s nació el %2$s</string>
+    <string name="most_common_day_of_week">El día en el que más cumplen es el %s</string>
     <plurals name="leap_year_total">
         <item quantity="one">Hay %d persona nacida en año bisiesto</item>
         <item quantity="other">Hay %d personas nacidas en año bisiesto</item>
     </plurals>
-    <string name="random_chinese_year">Signo zodiacal chino de</string>
+    <string name="random_chinese_year">Signo zodiacal chino de %1$s: %2$s</string>
     <string name="chinese_zodiac_rat">la rata</string>
     <string name="chinese_zodiac_ox">el buey</string>
     <string name="chinese_zodiac_tiger">el tigre</string>

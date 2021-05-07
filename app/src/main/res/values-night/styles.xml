@@ -1,6 +1,6 @@
 <resources>
 
-    <!-- Values for the dark theme -->
+    <!-- Style for the dark theme -->
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">false</item>
         <item name="colorPrimary">@color/colorAccent</item>

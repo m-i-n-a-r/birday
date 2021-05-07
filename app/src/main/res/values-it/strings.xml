@@ -82,22 +82,22 @@
     </plurals>
     <string name="and">e</string>
     <string name="did_you_know">Lo sapevi?</string>
-    <string name="age_average">L\'età media è</string>
-    <string name="oldest_person">La persona più anziana è</string>
-    <string name="youngest_person">La persona più giovane è</string>
-    <string name="most_common_month">Il mese di nascita più comune è</string>
-    <string name="most_common_decade">La decade di nascita più comune è</string>
-    <string name="most_common_age_range">La fascia d\'età più comune è</string>
-    <string name="special_ages">Un importante compleanno in arrivo è</string>
-    <string name="random_zodiac_sign">Segno zodiacale di</string>
-    <string name="most_common_zodiac_sign">Il segno zodiacale più comune è</string>
-    <string name="random_day_of_week">è nato/a di</string>
-    <string name="most_common_day_of_week">Il giorno di settimana di nascita più comune è</string>
+    <string name="age_average">L\'età media è %s</string>
+    <string name="oldest_person">La persona più anziana è %s</string>
+    <string name="youngest_person">La persona più giovane è %s</string>
+    <string name="most_common_month">Il mese di nascita più comune è %s</string>
+    <string name="most_common_decade">La decade di nascita più comune è %s</string>
+    <string name="most_common_age_range">La fascia d\'età più comune è %1$s-%2$s</string>
+    <string name="special_ages">Un importante compleanno in arrivo è %s</string>
+    <string name="random_zodiac_sign">Segno zodiacale di %1$s: %2$s</string>
+    <string name="most_common_zodiac_sign">Il segno zodiacale più comune è %s</string>
+    <string name="random_day_of_week">%1$s è nato/a di %2$s</string>
+    <string name="most_common_day_of_week">Il giorno di settimana di nascita più comune è %s</string>
     <plurals name="leap_year_total">
         <item quantity="one">Il numero di persone nate in un anno bisestile è %d</item>
         <item quantity="other">Il numero di persone nate in un anno bisestile è %d</item>
     </plurals>
-    <string name="random_chinese_year">Segno zodiacale cinese di</string>
+    <string name="random_chinese_year">Segno zodiacale cinese di %1$s: %2$s</string>
     <string name="chinese_zodiac_rat">topo</string>
     <string name="chinese_zodiac_ox">bue</string>
     <string name="chinese_zodiac_tiger">tigre</string>

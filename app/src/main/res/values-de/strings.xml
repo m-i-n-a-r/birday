@@ -148,22 +148,22 @@
 
     <!-- Statistics -->
     <string name="did_you_know">Wusstest du das?</string>
-    <string name="age_average">Das Durchschnittsalter ist</string>
-    <string name="oldest_person">Die älteste Person ist</string>
-    <string name="youngest_person">Die jüngste Person ist</string>
-    <string name="most_common_month">Der häufigste Geburtsmonat ist</string>
-    <string name="most_common_decade">Das häufigste Geburtsjahrzehnt ist</string>
-    <string name="most_common_age_range">Die häufigste Altersgruppe ist</string>
-    <string name="special_ages">Ein wichtiger bevorstehender Geburtstag ist</string>
-    <string name="random_zodiac_sign">Sternzeichen von</string>
-    <string name="most_common_zodiac_sign">Das häufigste Sternzeichen ist</string>
-    <string name="random_day_of_week">ist geboren am</string>
-    <string name="most_common_day_of_week">Der häufigste Geburtswochentag ist</string>
+    <string name="age_average">Das Durchschnittsalter ist %s</string>
+    <string name="oldest_person">Die älteste Person ist %s</string>
+    <string name="youngest_person">Die jüngste Person ist %s</string>
+    <string name="most_common_month">Der häufigste Geburtsmonat ist %s</string>
+    <string name="most_common_decade">Das häufigste Geburtsjahrzehnt ist %s</string>
+    <string name="most_common_age_range">Die häufigste Altersgruppe ist %1$s-%2$s</string>
+    <string name="special_ages">Ein wichtiger bevorstehender Geburtstag ist %s</string>
+    <string name="random_zodiac_sign">Sternzeichen von %1$s: %2$s</string>
+    <string name="most_common_zodiac_sign">Das häufigste Sternzeichen ist %s</string>
+    <string name="random_day_of_week">%1$s ist geboren am %2$s</string>
+    <string name="most_common_day_of_week">Der häufigste Geburtswochentag ist %s</string>
     <plurals name="leap_year_total">
         <item quantity="one">Die Zahl der in einem Schaltjahr geborenen Personen ist %d</item>
         <item quantity="other">Die Zahl der in einem Schaltjahr geborenen Personen ist %d</item>
     </plurals>
-    <string name="random_chinese_year">Chinesisches Sternzeichen von</string>
+    <string name="random_chinese_year">Chinesisches Sternzeichen von %1$s: %2$s</string>
     <string name="chinese_zodiac_rat">Ratte</string>
     <string name="chinese_zodiac_ox">Ochse</string>
     <string name="chinese_zodiac_tiger">Tiger</string>

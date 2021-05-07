@@ -148,22 +148,22 @@
 
     <!-- Statistics -->
     <string name="did_you_know">Le saviez-vous ?</string>
-    <string name="age_average">L\'âge moyen est</string>
-    <string name="oldest_person">La personne la plus âgée est</string>
-    <string name="youngest_person">La personnne la plus jeune est</string>
-    <string name="most_common_month">Le mois de naissance le plus répandu est</string>
-    <string name="most_common_decade">La décennie de naissance la plus répandue est</string>
-    <string name="most_common_age_range">La tranche d\'âge la plus répandue est</string>
-    <string name="special_ages">Un anniversaire important approche :</string>
-    <string name="random_zodiac_sign">Signe astrologique de</string>
-    <string name="most_common_zodiac_sign">Le signe astrologique le plus répandu est</string>
-    <string name="random_day_of_week">est né(e) le </string>
-    <string name="most_common_day_of_week">Le jour de naissance le plus répandu est</string>
+    <string name="age_average">L\'âge moyen est %s</string>
+    <string name="oldest_person">La personne la plus âgée est %s</string>
+    <string name="youngest_person">La personnne la plus jeune est %s</string>
+    <string name="most_common_month">Le mois de naissance le plus répandu est %s</string>
+    <string name="most_common_decade">La décennie de naissance la plus répandue est %s</string>
+    <string name="most_common_age_range">La tranche d\'âge la plus répandue est %1$s-%2$s</string>
+    <string name="special_ages">Un anniversaire important approche est %s</string>
+    <string name="random_zodiac_sign">Signe astrologique de %1$s : %2$s</string>
+    <string name="most_common_zodiac_sign">Le signe astrologique le plus répandu est %s</string>
+    <string name="random_day_of_week">%1$s est né(e) le %2$s</string>
+    <string name="most_common_day_of_week">Le jour de naissance le plus répandu est %s</string>
     <plurals name="leap_year_total">
         <item quantity="one">Le nombre de personnes nées dans une année bissextiles est de %d</item>
         <item quantity="other">Le nombre de personnes nées dans une année bissextiles est de %d</item>
     </plurals>
-    <string name="random_chinese_year">Signe chinois de</string>
+    <string name="random_chinese_year">Signe chinois de %1$s : %2$s</string>
     <string name="chinese_zodiac_rat">rat</string>
     <string name="chinese_zodiac_ox">buffle</string>
     <string name="chinese_zodiac_tiger">tigre</string>

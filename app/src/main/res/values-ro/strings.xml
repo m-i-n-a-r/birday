@@ -155,23 +155,23 @@
 
     <!-- Statistics -->
     <string name="did_you_know">Ştiaţi că?</string>
-    <string name="age_average">Vârsta medie este</string>
-    <string name="oldest_person">Cea mai în vârstă persoană este</string>
-    <string name="youngest_person">Cea mai tânără persoană este</string>
-    <string name="most_common_month">Cea mai frecventă lună de naștere este</string>
-    <string name="most_common_decade">Cel mai frecvent deceniu de naștere este</string>
-    <string name="most_common_age_range">Cel mai frecvent interval de vârstă este</string>
-    <string name="special_ages">O importantă aniversare viitoare este</string>
-    <string name="random_zodiac_sign">Semn zodiac al</string>
-    <string name="most_common_zodiac_sign">Cel mai frecvent semn zodiacal este</string>
-    <string name="random_day_of_week">a fost născut la</string>
-    <string name="most_common_day_of_week">Cea mai frecventă zi de naştere a săptămânii este</string>
+    <string name="age_average">Vârsta medie este %s</string>
+    <string name="oldest_person">Cea mai în vârstă persoană este %s</string>
+    <string name="youngest_person">Cea mai tânără persoană este %s</string>
+    <string name="most_common_month">Cea mai frecventă lună de naștere este %s</string>
+    <string name="most_common_decade">Cel mai frecvent deceniu de naștere este %s</string>
+    <string name="most_common_age_range">Cel mai frecvent interval de vârstă este %1$s-%2$s</string>
+    <string name="special_ages">O importantă aniversare viitoare este %s</string>
+    <string name="random_zodiac_sign">Semn zodiac al %1$s: %2$s</string>
+    <string name="most_common_zodiac_sign">Cel mai frecvent semn zodiacal este %s</string>
+    <string name="random_day_of_week">%1$s a fost născut la %2$s</string>
+    <string name="most_common_day_of_week">Cea mai frecventă zi de naştere a săptămânii este %s</string>
     <plurals name="leap_year_total">
         <item quantity="one">Numărul de persoane născute într-un an bisect: %d</item>
         <item quantity="few">Numărul de persoane născute într-un an bisect: %d</item>
         <item quantity="other">Numărul de persoane născute într-un an bisect: %d</item>
     </plurals>
-    <string name="random_chinese_year">Semnul zodiacal chinezesc al</string>
+    <string name="random_chinese_year">Semnul zodiacal chinezesc al %1$s: %2$s</string>
     <string name="chinese_zodiac_rat">șobolan</string>
     <string name="chinese_zodiac_ox">taur</string>
     <string name="chinese_zodiac_tiger">tigru</string>
