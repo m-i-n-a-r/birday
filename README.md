@@ -14,22 +14,23 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 
 ## Translations
 
-| LANGUAGE           | STATUS       | SPECIAL THANKS | UPDATED BY                  |
-|:-------------------|:------------:|:---------------|:----------------------------|
-| **English**        | complete     | myself         | ar-maged, Commenter25       |
-| **Spanish**        | complete     | myself         | Joseahfer                   |
-| **Svedish**        | needs update | SlowNicoFish   |                             |
-| **Dutch**          | needs update | stefanvi       |                             |
-| **Italian**        | complete     | myself         | myself                      |
-| **French**         | complete     | Mattis Biton   |                             |
-| **Hungarian**      | needs update | Obi            |                             |
-| **German**         | complete     | pizzapastamix  | WrstFngr, AlexanderRitter02 |
-| **Vietnamese**     | needs update | Lee Huynh      |                             |
-| **Russian**        | needs update | koterpillar    |                             |
-| **Czech**          | needs update | Miloš Koliáš   |                             |
-| **Portuguese**     | complete     | smarquespt     | smarquespt                  |
-| **Brazilian**      | needs update | BadJuice67     |                             |
-| **Romanian**       | complete     | ygorigor       | ygorigor                    |
+| LANGUAGE                | STATUS       | SPECIAL THANKS | UPDATED BY                  |
+|:------------------------|:------------:|:---------------|:----------------------------|
+| **English**             | complete     | myself         | ar-maged, Commenter25       |
+| **Spanish**             | complete     | myself         | Joseahfer                   |
+| **Svedish**             | needs update | SlowNicoFish   |                             |
+| **Dutch**               | needs update | stefanvi       |                             |
+| **Italian**             | complete     | myself         | myself                      |
+| **French**              | complete     | Mattis Biton   |                             |
+| **Hungarian**           | needs update | Obi            |                             |
+| **German**              | complete     | pizzapastamix  | WrstFngr, AlexanderRitter02 |
+| **Vietnamese**          | needs update | Lee Huynh      |                             |
+| **Russian**             | needs update | koterpillar    |                             |
+| **Czech**               | needs update | Miloš Koliáš   |                             |
+| **Portuguese**          | complete     | smarquespt     | smarquespt                  |
+| **Brazilian**           | needs update | BadJuice67     |                             |
+| **Romanian**            | complete     | ygorigor       | ygorigor                    |
+| **Traditional Chinese** | complete     | Still34        |                             |
 
 ## Features
 - Notification the day of the event, in a customizable time range

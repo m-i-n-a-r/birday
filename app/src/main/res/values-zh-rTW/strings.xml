@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">Birday</string>
     <string name="app_welcome">歡迎使用 Birday</string>
     <string name="app_name_extended">Birday - 生日管理員</string>
@@ -188,6 +189,6 @@
     <string name="notification_only_favorites_description_on">僅提醒我的最愛中的生日</string>
     <string name="notification_only_favorites_description_off">提醒所有生日</string>
     <string name="notification_hour_description">%s \n\n請注意，某些裝置 (如華為、小米、OnePlus 等) 可能會在背景中把此 Birday 殺掉，導致生日通知無法正常運作。詳情請參閱 dontkillmyapp.com。</string>
-
     <string name="slide_three_description">如果你的聯絡人資料中含有生日相關資訊，Birday 也可以從聯絡人中匯入此資訊！</string>
+
 </resources>
