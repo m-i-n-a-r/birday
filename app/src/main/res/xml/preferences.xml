@@ -11,6 +11,10 @@
         android:title="@string/app_behavior"
         app:icon="@drawable/ic_app_behavior_24dp">
 
+        <!--<com.minar.birday.utilities.TimePickerPreference
+            android:layout="@layout/time_picker_row"
+            android:selectable="true" />-->
+
         <ListPreference
             android:defaultValue="8"
             android:entries="@array/notificationHours"

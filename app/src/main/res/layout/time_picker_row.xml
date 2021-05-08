@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/birdayExport"
+    android:id="@+id/birdayImport"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -10,17 +10,17 @@
     android:background="?attr/selectableItemBackground">
 
         <TextView
-            android:id="@+id/birdayExportTitle"
+            android:id="@+id/timePickerTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/birday_export_title"
+            android:text="@string/notification_hour_name"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
 
         <TextView
-            android:id="@+id/birdayExportDescription"
+            android:id="@+id/timePickerDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/birday_export_description"
+            android:text="@string/notification_hour_description"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
             android:textSize="@dimen/custom_preference_text_size"/>
 
