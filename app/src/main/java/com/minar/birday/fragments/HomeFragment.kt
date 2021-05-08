@@ -441,7 +441,7 @@ class HomeFragment : Fragment() {
             )
             .addSizes(Size(8), Size(12), Size(16))
             .setPosition(-50f, confetti.width + 50f, -50f, -50f)
-            .streamFor(200, 3000L)
+            .streamFor(200, 2000L)
     }
 }
 
