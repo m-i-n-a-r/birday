@@ -11,6 +11,7 @@
         <item name="android:textColorPrimary">@color/textColorPrimaryInverse</item>
         <item name="android:textColorSecondary">@color/textColorSecondaryInverse</item>
         <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
+        <item name="materialTimePickerTheme">@style/ThemeOverlay.App.TimePicker</item>
         <item name="snackbarStyle">@style/Widget.App.Snackbar</item>
         <item name="snackbarTextViewStyle">@style/MaterialSnackbarTextViewTheme</item>
         <item name="alertDialogTheme">@style/DialogTheme</item>

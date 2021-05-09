@@ -45,30 +45,6 @@
         <item>crimson</item>
     </string-array>
 
-    <string-array name="notificationHours">
-        <item>0:00 – 0:10</item>
-        <item>1:00 – 1:10</item>
-        <item>6:00 – 6:10</item>
-        <item>7:00 – 7:10</item>
-        <item>8:00 – 8:10</item>
-        <item>9:00 – 9:10</item>
-        <item>10:00 – 10:10</item>
-        <item>11:00 – 11:10</item>
-        <item>12:00 – 12:10</item>
-    </string-array>
-
-    <string-array name="notificationHourValues">
-        <item>0</item>
-        <item>1</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-    </string-array>
-
     <string-array name="additionalNotification">
         <item>@string/no_additional_notification</item>
         <item>@string/one_day_before</item>
@@ -90,4 +66,5 @@
         <item>6</item>
         <item>7</item>
     </string-array>
+
 </resources>

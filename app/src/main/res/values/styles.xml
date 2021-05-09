@@ -11,6 +11,7 @@
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
         <item name="android:navigationBarColor">@color/deepGray</item>
         <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
+        <item name="materialTimePickerTheme">@style/ThemeOverlay.App.TimePicker</item>
         <item name="snackbarStyle">@style/Widget.App.Snackbar</item>
         <item name="snackbarTextViewStyle">@style/MaterialSnackbarTextViewTheme</item>
         <item name="alertDialogTheme">@style/DialogTheme</item>
@@ -57,6 +58,17 @@
         <item name="startIconDrawable">@drawable/ic_date_black_24dp</item>
         <item name="errorEnabled">true</item>
         <item name="startIconTint">@color/goodGray</item>
+    </style>
+
+    <!-- Time picker theme -->
+    <style name="ThemeOverlay.App.TimePicker" parent="@style/ThemeOverlay.MaterialComponents.TimePicker">
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/text_field_corner</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/text_field_corner</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/text_field_corner</item>
+        <item name="boxCornerRadiusTopStart">@dimen/text_field_corner</item>
+        <item name="android:textCursorDrawable">@drawable/custom_cursor</item>
     </style>
 
     <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
