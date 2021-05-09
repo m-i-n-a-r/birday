@@ -34,6 +34,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         val dueDate = Calendar.getInstance()
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(applicationContext)
         val workHour = sharedPrefs.getString("notification_hour", "8")!!.toInt()
+        val workMinute = sharedPrefs.getString("notification_minute", "0")!!.toInt()
         val additionalNotification = sharedPrefs.getString("additional_notification", "0")!!.toInt()
         val surnameFirst = sharedPrefs.getBoolean("surname_first", false)
         val hideImage = sharedPrefs.getBoolean("hide_images", false)
@@ -71,7 +72,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
 
             // Set Execution at the time specified + 15 seconds to avoid midnight problems
             dueDate.set(Calendar.HOUR_OF_DAY, workHour)
-            dueDate.set(Calendar.MINUTE, 0)
+            dueDate.set(Calendar.MINUTE, workMinute)
             dueDate.set(Calendar.SECOND, 15)
             if (dueDate.before(currentDate)) dueDate.add(Calendar.HOUR_OF_DAY, 24)
             val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis

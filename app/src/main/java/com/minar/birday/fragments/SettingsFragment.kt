@@ -43,6 +43,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
             "accent_color" -> hotReloadActivity(activity)
             "shimmer" -> hotReloadActivity(activity)
             "notification_hour" -> mainViewModel.scheduleNextCheck()
+            "notification_minute" -> mainViewModel.scheduleNextCheck()
             "dark_widget" -> {
                 // Update every existing widget with a broadcast
                 val intent = Intent(context, EventWidget::class.java)

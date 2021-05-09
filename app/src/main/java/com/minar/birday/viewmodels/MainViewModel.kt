@@ -61,6 +61,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     // Schedule the next work for the specified hour, nothing will happen if there's no event
     fun scheduleNextCheck() {
         val workHour = sharedPrefs.getString("notification_hour", "8")!!.toInt()
+        val workMinute = sharedPrefs.getString("notification_minute", "0")!!.toInt()
         // Cancel every previous scheduled work
         workManager.cancelAllWork()
         workManager.pruneWork()
@@ -68,7 +69,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         val dueDate = Calendar.getInstance()
         // Set Execution at the time specified + 15 seconds to avoid midnight problems
         dueDate.set(Calendar.HOUR_OF_DAY, workHour)
-        dueDate.set(Calendar.MINUTE, 0)
+        dueDate.set(Calendar.MINUTE, workMinute)
         dueDate.set(Calendar.SECOND, 15)
         if (dueDate.before(currentDate)) dueDate.add(Calendar.HOUR_OF_DAY, 24)
         // Setup the work request using the difference between now and the next check as delay

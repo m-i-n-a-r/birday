@@ -15,15 +15,6 @@
             android:layout="@layout/time_picker_row"
             android:selectable="true" />
 
-        <!--<ListPreference
-            android:defaultValue="8"
-            android:entries="@array/notificationHours"
-            android:entryValues="@array/notificationHourValues"
-            android:key="notification_hour"
-            android:summary="@string/notification_hour_description"
-            android:title="@string/notification_hour_name"
-            app:iconSpaceReserved="false" />-->
-
         <ListPreference
             android:defaultValue="0"
             android:entries="@array/additionalNotification"
