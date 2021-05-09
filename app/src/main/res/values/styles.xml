@@ -62,13 +62,13 @@
 
     <!-- Time picker theme -->
     <style name="ThemeOverlay.App.TimePicker" parent="@style/ThemeOverlay.MaterialComponents.TimePicker">
-        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent</item>
         <item name="boxCornerRadiusBottomEnd">@dimen/text_field_corner</item>
         <item name="boxCornerRadiusTopEnd">@dimen/text_field_corner</item>
         <item name="boxCornerRadiusBottomStart">@dimen/text_field_corner</item>
         <item name="boxCornerRadiusTopStart">@dimen/text_field_corner</item>
         <item name="android:textCursorDrawable">@drawable/custom_cursor</item>
+        <item name="colorSurface">?android:colorBackgroundFloating</item>
     </style>
 
     <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
