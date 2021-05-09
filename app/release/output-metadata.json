@@ -5,13 +5,13 @@
     "kind": "Directory"
   },
   "applicationId": "com.minar.birday",
-  "variantName": "processReleaseResources",
+  "variantName": "release",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 14,
-      "versionName": "2.0.0",
+      "versionCode": 15,
+      "versionName": "2.1.0",
       "outputFile": "app-release.apk"
     }
   ]
