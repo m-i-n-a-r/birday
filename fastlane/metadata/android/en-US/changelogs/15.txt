@@ -1,0 +1,4 @@
+- Choose any notification time you want, thanks to the new timepicker!
+- Fixed an important time zone related bug
+- Some UI improvements 
+- Traditional chinese translation, updated other languages
