@@ -33,7 +33,7 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 | **Traditional Chinese** | complete     | Still34        |                             |
 
 ## Features
-- Notification the day of the event, in a customizable time range
+- Notification the day of the event (with selectable time)
 - Additional notification up to 7 days before the event
 - Fetch the existing birthdays from the contacts app, images included!
 - Easily backup and restore your saved events!
@@ -58,7 +58,7 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 - Multiwindow / freeform full support
 - Animated splashscreen and app intro, dynamic layouts and more
 - Small and optimized apk size
-- 14 languages available!
+- 15 languages available!
 
 ## Screenshots
 <p align='center'>
@@ -68,7 +68,7 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
   <img src='https://i.imgur.com/FHTriHF.png' width='18%'/>
   <img src='https://i.imgur.com/QCAAbfA.png' width='18%'/>
 
-  <img src='https://i.imgur.com/DJXQYyS.png' width='18%'/>
+  <img src='https://i.imgur.com/HLWL68m.png' width='18%'/>
   <img src='https://i.imgur.com/DpKmkVl.png' width='18%'/>
   <img src='https://i.imgur.com/TdFaWJc.png' width='18%'/>
   <img src='https://i.imgur.com/PuEyDD1.png' width='18%'/>
