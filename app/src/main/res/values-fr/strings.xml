@@ -138,8 +138,6 @@
     <!-- Quick apps -->
     <string name="event_apps">Applications</string>
     <string name="event_apps_description">Vos applications pour rapidement souhaiter un bon anniversaire à vos proches !</string>
-    <string name="whatsapp">Whatsapp</string>
-    <string name="telegram">Telegram</string>
     <string name="textMessage">SMS</string>
     <string name="dialer">Appel</string>
     <string name="wishes">Joyeux anniversaire !</string>

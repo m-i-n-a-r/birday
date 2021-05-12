@@ -134,8 +134,6 @@
     <!-- Quick apps -->
     <string name="event_apps">Ứng dụng nhanh</string>
     <string name="event_apps_description">Ứng dụng để chúc mọi điều tốt đẹp cho nhanh!</string>
-    <string name="whatsapp">Whatsapp</string>
-    <string name="telegram">Telegram</string>
     <string name="textMessage">Tin nhắn</string>
     <string name="dialer">Quay số</string>
     <string name="wishes">Chúc mừng sinh nhật!</string>

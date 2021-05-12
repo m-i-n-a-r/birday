@@ -338,6 +338,7 @@ class HomeFragment : Fragment() {
         val dialerButton = dialogAppsEventBinding.dialerButton
         val messagesButton = dialogAppsEventBinding.messagesButton
         val telegramButton = dialogAppsEventBinding.telegramButton
+        val signalButton = dialogAppsEventBinding.signalButton
         val ctx: Context = requireContext()
 
         whatsAppButton.setOnClickListener {
@@ -392,6 +393,23 @@ class HomeFragment : Fragment() {
                     Intent(
                         Intent.ACTION_VIEW,
                         Uri.parse("https://play.google.com/store/apps/details?id=org.telegram.messenger")
+                    )
+                )
+            }
+            dialog.dismiss()
+        }
+
+        signalButton.setOnClickListener {
+            act.vibrate()
+            try {
+                val telegramIntent: Intent? =
+                    ctx.packageManager.getLaunchIntentForPackage("org.thoughtcrime.securesms")
+                ctx.startActivity(telegramIntent)
+            } catch (e: Exception) {
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("https://play.google.com/store/apps/details?id=org.thoughtcrime.securesms")
                     )
                 )
             }

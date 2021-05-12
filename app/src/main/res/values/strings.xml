@@ -151,8 +151,9 @@
     <!-- Quick apps -->
     <string name="event_apps">Quick apps</string>
     <string name="event_apps_description">Apps to wish all the best rapidly!</string>
-    <string name="whatsapp">Whatsapp</string>
-    <string name="telegram">Telegram</string>
+    <string name="whatsapp" translatable="false">Whatsapp</string>
+    <string name="signal" translatable="false">Signal</string>
+    <string name="telegram" translatable="false">Telegram</string>
     <string name="textMessage">Text message</string>
     <string name="dialer">Dialer</string>
     <string name="wishes">Happy birthday!</string>

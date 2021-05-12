@@ -138,8 +138,6 @@
     <!-- Quick apps -->
     <string name="event_apps">Schnell-Apps</string>
     <string name="event_apps_description">Apps, um schnell alles Gute zu wünschen!</string>
-    <string name="whatsapp">Whatsapp</string>
-    <string name="telegram">Telegram</string>
     <string name="textMessage">Textnachricht</string>
     <string name="dialer">Telefon</string>
     <string name="wishes">Alles Gute zum Geburtstag!</string>

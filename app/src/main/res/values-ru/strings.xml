@@ -141,8 +141,6 @@
     <!-- Quick apps -->
     <string name="event_apps">Быстрые приложения</string>
     <string name="event_apps_description">Приложения, где можно быстро поздравить!</string>
-    <string name="whatsapp">Whatsapp</string>
-    <string name="telegram">Telegram</string>
     <string name="textMessage">СМС</string>
     <string name="dialer">Телефон</string>
     <string name="wishes">С днем рождения!</string>

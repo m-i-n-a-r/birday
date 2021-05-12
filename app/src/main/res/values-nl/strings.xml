@@ -139,8 +139,6 @@
     <!-- Quick apps -->
     <string name="event_apps">Snelkoppelingen</string>
     <string name="event_apps_description">Apps om je verjaardagswensen direct te versturen!</string>
-    <string name="whatsapp">Whatsapp</string>
-    <string name="telegram">Telegram</string>
     <string name="textMessage">Sms-bericht</string>
     <string name="dialer">Telefoon</string>
     <string name="wishes">Fijne verjaardag!</string>

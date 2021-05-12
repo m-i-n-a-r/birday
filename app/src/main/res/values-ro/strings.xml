@@ -145,8 +145,6 @@
     <!-- Quick apps -->
     <string name="event_apps">Aplicații rapide</string>
     <string name="event_apps_description">Aplicații pentru a ura tot binele rapid!</string>
-    <string name="whatsapp">WhatsApp</string>
-    <string name="telegram">Telegram</string>
     <string name="textMessage">Mesaj text</string>
     <string name="dialer">Telefon</string>
     <string name="wishes">La mulți ani!</string>

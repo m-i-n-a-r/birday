@@ -135,8 +135,6 @@
     <!-- Quick apps -->
     <string name="event_apps">Gyors alkalmazások</string>
     <string name="event_apps_description">Az alkalmazások arra, hogy gyorsan kívánd a legjobbakat!</string>
-    <string name="whatsapp">Whatsapp</string>
-    <string name="telegram">Telegram</string>
     <string name="textMessage">Szöveges üzenet</string>
     <string name="dialer">Tárcsázó</string>
     <string name="wishes">Boldog születésnapot!</string>
