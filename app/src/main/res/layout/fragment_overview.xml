@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fadingEdgeLength="@dimen/linear_vertical_margin"
+    android:fillViewport="true"
+    android:requiresFadingEdge="vertical">
+
+    <!-- The empty view is useful to make the screen large as the screen or more (with scrolling) -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/linear_vertical_margin"
+        android:paddingBottom="@dimen/linear_vertical_margin">
+
+        <View
+            android:id="@+id/expanderView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/detailsEventNameImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/event_details"
+            app:layout_constraintBottom_toBottomOf="@id/detailsEventName"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@id/detailsEventName"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/detailsEventName"
+            app:srcCompat="@drawable/ic_balloon_24dp" />
+
+        <TextView
+            android:id="@+id/detailsEventName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:drawablePadding="@dimen/activity_vertical_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/detailsEventNameImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

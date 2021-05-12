@@ -21,7 +21,15 @@
         android:id="@+id/navigationFavorites"
         android:name="com.minar.birday.fragments.FavoritesFragment"
         android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_navigationFavorites_to_overviewFragment"
+            app:destination="@id/overviewFragment"
+            app:enterAnim="@anim/nav_enter_anim"
+            app:exitAnim="@anim/nav_exit_anim"
+            app:popEnterAnim="@anim/nav_pop_enter_anim"
+            app:popExitAnim="@anim/nav_pop_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/navigationSettings"
         android:name="com.minar.birday.fragments.SettingsFragment"
@@ -38,4 +46,8 @@
             app:nullable="true"
             app:argType="com.minar.birday.model.EventResult" />
     </fragment>
+    <fragment
+        android:id="@+id/overviewFragment"
+        android:name="com.minar.birday.fragments.OverviewFragment"
+        android:label="fragment_overview" />
 </navigation>
