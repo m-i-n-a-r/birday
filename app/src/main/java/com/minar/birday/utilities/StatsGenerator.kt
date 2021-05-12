@@ -408,7 +408,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     ): SpannableStringBuilder {
         if (!first) append("\n")
         val bulletSpan =
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) BulletSpan(margin, color, 10)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) BulletSpan(margin, color, 12)
             else BulletSpan(margin, color)
         val spaceBefore = length
         append(paragraph)
