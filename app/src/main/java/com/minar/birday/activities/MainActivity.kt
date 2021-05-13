@@ -192,6 +192,13 @@ class MainActivity : AppCompatActivity() {
 
         // Manage the fab
         val fab = binding.fab
+        // Show a quick description of the action
+        fab.setOnLongClickListener {
+            vibrate()
+            showSnackbar(getString(R.string.new_event_description))
+            return@setOnLongClickListener true
+        }
+        // Open the bottom sheet to insert a new event
         fab.setOnClickListener {
             vibrate()
             _dialogInsertEventBinding = DialogInsertEventBinding.inflate(layoutInflater)
@@ -204,7 +211,6 @@ class MainActivity : AppCompatActivity() {
                 cornerRadius(res = R.dimen.rounded_corners)
                 title(R.string.new_event)
                 icon(R.drawable.ic_party_24dp)
-                message(R.string.new_event_description)
                 // Don't use scrollable here, instead use a nestedScrollView in the layout
                 customView(view = dialogInsertEventBinding.root)
                 positiveButton(R.string.insert_event) {
