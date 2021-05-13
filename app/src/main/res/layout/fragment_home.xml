@@ -74,7 +74,8 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/card_margin_big">
+                    android:paddingHorizontal="@dimen/card_margin_big"
+                    android:paddingVertical="@dimen/text_field_horizontal_margin">
 
                     <TextView
                         android:id="@+id/upcomingTitle"
@@ -104,7 +105,7 @@
                         android:id="@+id/upcomingDescription"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/card_margin_big"
+                        android:layout_marginTop="@dimen/card_margin"
                         android:layout_marginEnd="@dimen/card_image_padding"
                         android:text="@string/no_next_event_description"
                         android:textAppearance="?attr/textAppearanceBody2"
@@ -131,7 +132,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.8" />
+                        app:layout_constraintGuide_percent=".8" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.facebook.shimmer.ShimmerFrameLayout>

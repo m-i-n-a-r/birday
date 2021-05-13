@@ -135,9 +135,9 @@ class MainActivity : AppCompatActivity() {
                     getString(R.string.app_name),
                     R.mipmap.ic_launcher,
                     ContextCompat.getColor(this, R.color.deepGray)
-                ))
-        }
-        else setTaskDescription(
+                )
+            )
+        } else setTaskDescription(
             ActivityManager.TaskDescription(
                 getString(R.string.app_name),
                 ContextCompat.getDrawable(this, R.mipmap.ic_launcher)?.toBitmap(),
@@ -181,7 +181,8 @@ class MainActivity : AppCompatActivity() {
         navigation.setOnNavigationItemReselectedListener {
             // Only do something if there's something in the back stack (only in event details)
             if (navController.currentBackStackEntry != null &&
-                navController.currentDestination?.label == "fragment_details"
+                (navController.currentDestination?.label == "fragment_details" ||
+                        navController.currentDestination?.label == "fragment_overview")
             )
                 navController.popBackStack()
         }
@@ -372,8 +373,7 @@ class MainActivity : AppCompatActivity() {
         if (refreshed) {
             sharedPrefs.edit().putBoolean("refreshed", false).apply()
             super.onSaveInstanceState(outState)
-        }
-        else {
+        } else {
             // Dirty, dirty fix to avoid TransactionTooBigException:
             // it will restore the home fragment when the theme is changed from system for example,
             // and the app is in recent apps. No issues for screen rotations, keyboard and so on

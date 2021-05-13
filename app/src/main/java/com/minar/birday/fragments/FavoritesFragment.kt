@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -66,11 +67,18 @@ class FavoritesFragment : Fragment() {
         val favoriteMotionLayout = binding.favoritesMain
         val favoritesCard = binding.favoritesCard
         val favoritesMiniFab = binding.favoritesMiniFab
+        val overviewButton = binding.overviewButton
         if (shimmerEnabled) shimmer.startShimmer()
         statsImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_candle)
 
         // Set motion layout state, since it's saved
         favoriteMotionLayout.progress = sharedPrefs.getFloat("favorite_motion_state", 0.0F)
+
+        // Set the overview button
+        overviewButton.setOnClickListener {
+            // Navigate to the overview screen
+            requireView().findNavController().navigate(R.id.action_navigationFavorites_to_overviewFragment)
+        }
 
         // Vibration on the mini fab (with manual managing of the transition)
         favoritesMiniFab.setOnClickListener {

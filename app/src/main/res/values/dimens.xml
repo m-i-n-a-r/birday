@@ -14,7 +14,7 @@
     <dimen name="card_stroke">2dp</dimen>
     <dimen name="rounded_corners">16dp</dimen>
     <dimen name="card_image_height">72dp</dimen>
-    <dimen name="card_image_padding">16dp</dimen>
+    <dimen name="card_image_padding">8dp</dimen>
     <dimen name="list_vertical_padding">4dp</dimen>
     <dimen name="in_row_padding">3dp</dimen>
     <dimen name="in_row_image">52dp</dimen>
