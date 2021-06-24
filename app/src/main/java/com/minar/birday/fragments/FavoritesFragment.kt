@@ -1,5 +1,6 @@
 package com.minar.birday.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
@@ -223,6 +224,7 @@ class FavoritesFragment : Fragment() {
         backgroundDrawable.setOnClickListener {
             act.vibrate()
             toast?.cancel()
+            @SuppressLint("ShowToast") // The toast is shown, stupid lint
             toast = Toast.makeText(
                 context, resources.getQuantityString(
                     R.plurals.stats_total,

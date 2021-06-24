@@ -167,7 +167,7 @@ class MainActivity : AppCompatActivity() {
             .setPopExitAnim(R.anim.nav_pop_exit_anim)
             .setPopUpTo(R.id.nav_graph, true)
             .build()
-        navigation.setOnNavigationItemSelectedListener { item ->
+        navigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigationMain ->
                     navController.navigate(R.id.navigationMain, null, options)
@@ -178,7 +178,7 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-        navigation.setOnNavigationItemReselectedListener {
+        navigation.setOnItemReselectedListener {
             // Only do something if there's something in the back stack (only in event details)
             if (navController.currentBackStackEntry != null &&
                 (navController.currentDestination?.label == "fragment_details" ||

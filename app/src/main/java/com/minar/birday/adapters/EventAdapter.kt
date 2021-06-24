@@ -72,7 +72,11 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?) :
             // If the year isn't considered, show only the day and the month
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
             val originalDate = if (event.yearMatter!!) event.originalDate.format(formatter)
-            else getReducedDate(event.originalDate).capitalize(Locale.getDefault())
+            else getReducedDate(event.originalDate).replaceFirstChar {
+                if (it.isLowerCase()) it.titlecase(
+                    Locale.getDefault()
+                ) else it.toString()
+            }
             eventPerson.text = formattedPersonName
             eventDate.text = originalDate
 

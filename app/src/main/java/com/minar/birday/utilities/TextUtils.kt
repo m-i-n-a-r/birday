@@ -6,9 +6,23 @@ import java.util.*
 @ExperimentalStdlibApi
 fun String.smartCapitalize(): String {
     return trim().split(" ")
-        .joinToString(" ") { it.toLowerCase(Locale.ROOT).capitalize(Locale.ROOT) }
-        .split("'").joinToString("'") { it.capitalize(Locale.ROOT) }
-        .split("-").joinToString("-") { it.capitalize(Locale.ROOT) }
+        .joinToString(" ") { it ->
+            it.lowercase(Locale.ROOT)
+                .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() }
+        }
+        .split("'").joinToString("'") { it ->
+            it.replaceFirstChar {
+                if (it.isLowerCase()) it.titlecase(
+                    Locale.ROOT
+                ) else it.toString()
+            }
+        }
+        .split("-").joinToString("-") { it ->
+            it.replaceFirstChar {
+            if (it.isLowerCase()) it.titlecase(
+                Locale.ROOT
+            ) else it.toString()
+        } }
 }
 
 // Simply checks if the string is written using only letters, emoticons and at most one apostrophe and one hyphen
