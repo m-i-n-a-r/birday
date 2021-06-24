@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Birday</string>
     <string name="app_welcome">歡迎使用 Birday</string>
     <string name="app_name_extended">Birday - 生日管理員</string>
     <string name="leave_review_title">替 Birday 評分</string>
