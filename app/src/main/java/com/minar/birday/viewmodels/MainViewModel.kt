@@ -6,9 +6,9 @@ import androidx.preference.PreferenceManager
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.minar.birday.model.Event
+import com.minar.birday.model.EventResult
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
-import com.minar.birday.model.EventResult
 import com.minar.birday.workers.EventWorker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,14 +21,14 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val allEvents: LiveData<List<EventResult>>
     private val eventsCount: LiveData<Int>
     val nextEvents: LiveData<List<EventResult>>
-    val searchStringLiveData = MutableLiveData<String>()
+    val searchString = MutableLiveData<String>()
     private val eventDao: EventDao = EventDatabase.getBirdayDatabase(application).eventDao()
     var confettiDone: Boolean = false
 
     init {
-        searchStringLiveData.value = ""
+        searchString.value = ""
         // All the events, filtered by search string
-        allEvents = Transformations.switchMap(searchStringLiveData) { string ->
+        allEvents = Transformations.switchMap(searchString) { string ->
             eventDao.getOrderedEventsByName(string)
         }
         // Only the upcoming events not considering the search
@@ -82,7 +82,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     // Update the name searched in the search bar
-    fun searchNameChanged(name: String) {
-        searchStringLiveData.value = name
+    fun searchStringChanged(newSearchString: String) {
+        searchString.value = newSearchString
     }
 }

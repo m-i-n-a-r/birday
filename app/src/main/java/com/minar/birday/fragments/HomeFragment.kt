@@ -84,7 +84,7 @@ class HomeFragment : Fragment() {
         // Setup the search bar
         val searchBar = binding.homeSearch
         searchBar.addTextChangedListener { text ->
-            mainViewModel.searchNameChanged(text.toString())
+            mainViewModel.searchStringChanged(text.toString())
         }
 
         // Set motion layout state, since it's saved
@@ -130,7 +130,7 @@ class HomeFragment : Fragment() {
                 removePlaceholder()
             }
             if (events.isEmpty()) restorePlaceholders()
-            if (events.isEmpty() && mainViewModel.searchStringLiveData.value!!.isNotBlank())
+            if (events.isEmpty() && mainViewModel.searchString.value!!.isNotBlank())
                 restorePlaceholders(true)
         })
         mainViewModel.nextEvents.observe(viewLifecycleOwner, { nextEvents ->
@@ -139,8 +139,8 @@ class HomeFragment : Fragment() {
         })
 
         // Restore search string in the search bar
-        if (mainViewModel.searchStringLiveData.value!!.isNotBlank())
-            searchBar.setText(mainViewModel.searchStringLiveData.value)
+        if (mainViewModel.searchString.value!!.isNotBlank())
+            searchBar.setText(mainViewModel.searchString.value)
 
         return v
     }
