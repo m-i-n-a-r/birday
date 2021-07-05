@@ -111,26 +111,28 @@ class FavoritesFragment : Fragment() {
         // Setup the recycler view
         initializeRecyclerView()
         setUpAdapter()
-
         mainViewModel = ViewModelProvider(act).get(MainViewModel::class.java)
-        mainViewModel.getFavorites().observe(viewLifecycleOwner, { events ->
-            // Update the cached copy in the adapter
-            if (events != null && events.isNotEmpty()) {
-                removePlaceholder()
-                adapter.submitList(events)
-            }
-        })
-        // AllEvents contains everything, since the query string is reset when the fragment changes
-        mainViewModel.allEvents.observe(viewLifecycleOwner, { eventList ->
-            // Under a minimum size, no stats will be shown (at least 5 events containing a year)
-            if (eventList.filter { it.yearMatter == true }.size > 4) generateStat(eventList)
-            else fullStats = SpannableStringBuilder(
-                requireActivity().applicationContext.getString(
-                    R.string.no_stats_description
+        with(mainViewModel) {
+            getFavorites().observe(viewLifecycleOwner, { events ->
+                // Update the cached copy in the adapter
+                if (events != null && events.isNotEmpty()) {
+                    removePlaceholder()
+                    adapter.submitList(events)
+                }
+            })
+            // AllEvents contains everything, since the query string is reset when the fragment changes
+            allEvents.observe(viewLifecycleOwner, { eventList ->
+                // Under a minimum size, no stats will be shown (at least 5 events containing a year)
+                if (eventList.filter { it.yearMatter == true }.size > 4) generateStat(eventList)
+                else fullStats = SpannableStringBuilder(
+                    requireActivity().applicationContext.getString(
+                        R.string.no_stats_description
+                    )
                 )
-            )
-            totalEvents = eventList.size
-        })
+                totalEvents = eventList.size
+            })
+        }
+
 
         return v
     }
