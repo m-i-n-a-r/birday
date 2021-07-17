@@ -18,7 +18,7 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 |:------------------------|:------------:|:---------------|:----------------------------|
 | **English**             | complete     | myself         | ar-maged, Commenter25       |
 | **Spanish**             | complete     | myself         | Joseahfer                   |
-| **Svedish**             | needs update | SlowNicoFish   |                             |
+| **Swedish**             | needs update | SlowNicoFish   |                             |
 | **Dutch**               | needs update | stefanvi       |                             |
 | **Italian**             | complete     | myself         | myself                      |
 | **French**              | complete     | Mattis Biton   |                             |
