@@ -22,7 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/SplashTheme">
 
-        <receiver android:name=".widgets.EventWidget">
+        <receiver
+            android:name=".widgets.EventWidget"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -43,6 +45,7 @@
 
         <activity
             android:name=".activities.SplashActivity"
+            android:exported="true"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

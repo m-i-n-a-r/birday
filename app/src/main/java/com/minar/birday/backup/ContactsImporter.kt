@@ -134,9 +134,14 @@ class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(con
         if (cursor != null) {
             if (cursor.count > 0) {
                 while (cursor.moveToNext()) {
-                    val id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
-                    val name =
-                        cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME_ALTERNATIVE))
+                    val idValue = cursor.getColumnIndex(ContactsContract.Contacts._ID)
+                    val nameValue =
+                        cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME_ALTERNATIVE)
+                    // Control the values, even if they should always exist
+                    if (idValue < 0 || nameValue < 0) continue
+
+                    val id = cursor.getString(idValue)
+                    val name = cursor.getString(nameValue)
                     // Get the image, if any, and convert it to byte array
                     val imageStream = ContactsContract.Contacts.openContactPhotoInputStream(
                         resolver,

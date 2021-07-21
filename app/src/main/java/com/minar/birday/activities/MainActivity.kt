@@ -456,6 +456,7 @@ class MainActivity : AppCompatActivity() {
 
     // Vibrate using a standard vibration pattern
     fun vibrate() {
+        // Deprecated for no reason
         val vib = this.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         if (sharedPrefs.getBoolean(
                 "vibration",

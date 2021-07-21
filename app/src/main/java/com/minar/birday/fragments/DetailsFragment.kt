@@ -118,7 +118,7 @@ class DetailsFragment : Fragment() {
             imageBg.visibility = View.GONE
         } else {
             if (event.image != null)
-                image.setImageBitmap(byteArrayToBitmap(event.image!!))
+                image.setImageBitmap(byteArrayToBitmap(event.image))
             imageBg.applyLoopingAnimatedVectorDrawable(R.drawable.animated_ripple_circle)
         }
 
@@ -417,8 +417,7 @@ class DetailsFragment : Fragment() {
                     formatName(event, sharedPrefs.getBoolean("surname_first", false)) +
                     "\n" + String(Character.toChars(0x1F4C5)) + "  " +
                     event.nextDate!!.format(formatter)
-        ShareCompat.IntentBuilder
-            .from(requireActivity())
+        ShareCompat.IntentBuilder(requireActivity())
             .setText(eventInformation)
             .setType("text/plain")
             .setChooserTitle(getString(R.string.share_event))
