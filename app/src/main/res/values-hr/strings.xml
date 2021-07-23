@@ -202,15 +202,17 @@
 
     <!-- Common words -->
     <plurals name="months">
-        <item quantity="one">%d mj.</item>
-        <item quantity="other">%d mj.</item>
+        <item quantity="one">%d mjesec</item>
+        <item quantity="few">%d mjeseca</item>
+        <item quantity="other">%d mjeseci</item>
     </plurals>
     <string name="today">Danas!</string>
     <string name="yesterday">Jučer!</string>
     <string name="tomorrow">Sutra!</string>
     <plurals name="years">
-        <item quantity="one">%d god.</item>
-        <item quantity="other">%d god.</item>
+        <item quantity="one">%d godina</item>
+        <item quantity="few">%d godine</item>
+        <item quantity="other">%d godina</item>
     </plurals>
     <string name="born_in">rođen/a u</string>
     <string name="and">i</string>
