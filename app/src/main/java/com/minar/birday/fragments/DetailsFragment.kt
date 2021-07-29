@@ -60,6 +60,7 @@ class DetailsFragment : Fragment() {
     private val dialogInsertEventBinding get() = _dialogInsertEventBinding!!
     private lateinit var resultLauncher: ActivityResultLauncher<String>
     private var imageChosen = false
+    private var easterEggCounter = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -120,6 +121,16 @@ class DetailsFragment : Fragment() {
             if (event.image != null)
                 image.setImageBitmap(byteArrayToBitmap(event.image))
             imageBg.applyLoopingAnimatedVectorDrawable(R.drawable.animated_ripple_circle)
+        }
+
+        // Small and useless easter egg/motion on the image
+        image.setOnClickListener {
+            easterEggCounter++
+            if (easterEggCounter == 5) {
+                easterEggCounter = 0
+                binding.detailsMotionLayout.progress = 0F
+                binding.detailsMotionLayout.transitionToEnd()
+            }
         }
 
         // Setup quick actions and corresponding navigation

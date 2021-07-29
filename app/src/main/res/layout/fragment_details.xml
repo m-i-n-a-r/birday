@@ -9,11 +9,13 @@
     android:requiresFadingEdge="vertical">
 
     <!-- The empty view is useful to make the screen large as the screen or more (with scrolling) -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/detailsMotionLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/linear_vertical_margin"
-        android:paddingBottom="@dimen/linear_vertical_margin">
+        android:paddingBottom="@dimen/linear_vertical_margin"
+        app:layoutDescription="@xml/fragment_details_scene">
 
         <View
             android:id="@+id/expanderView"
@@ -54,7 +56,9 @@
             android:id="@+id/detailsEventImageBackground"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:clickable="true"
             android:contentDescription="@string/event_details"
+            android:focusable="true"
             app:layout_constraintBottom_toBottomOf="@id/detailsEventImage"
             app:layout_constraintEnd_toEndOf="@id/detailsEventImage"
             app:layout_constraintStart_toStartOf="@id/detailsEventImage"
@@ -314,5 +318,5 @@
             app:layout_constraintWidth_max="@dimen/details_button_max_width"
             app:rippleColor="?colorAccent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </ScrollView>
