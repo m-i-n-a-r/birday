@@ -13,8 +13,8 @@
         android:id="@+id/detailsMotionLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clipChildren="false"
         android:paddingHorizontal="@dimen/linear_vertical_margin"
-        android:paddingBottom="@dimen/linear_vertical_margin"
         app:layoutDescription="@xml/fragment_details_scene">
 
         <View
@@ -304,6 +304,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/linear_vertical_margin"
+            android:layout_marginBottom="@dimen/linear_vertical_margin"
             android:contentDescription="@string/share_event"
             android:paddingVertical="@dimen/in_row_button_padding"
             android:text="@string/share_event"
