@@ -12,7 +12,7 @@ An open source app to remember birthdays and events without having to open Faceb
 ## Introduction
 This is an open source app to remember **birthdays** in a fast, light and beautiful way. No less, no more. I had this idea considering that Google Calendar doesn't display an automatic notification the day of the birthday, and sometimes i need to remember a birthday for a person who is not in my Contacts. Also, adding too much birthdays to the calendar makes it messy and i prefer to manage them separately. The main focus of this app is being easy to use, clean and lightweight. I'm always glad to add features, but only important and really useful features!
 
-## Translations
+## Translations (guide and info below)
 
 | LANGUAGE                | STATUS       | SPECIAL THANKS | UPDATED BY                  |
 |:------------------------|:------------:|:---------------|:----------------------------|
@@ -27,6 +27,8 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 | **Vietnamese**          | needs update | Lee Huynh      |                             |
 | **Russian**             | needs update | koterpillar    |                             |
 | **Czech**               | needs update | Miloš Koliáš   |                             |
+| **Polish**              | complete     | mateusz-bak    |                             |
+| **Croatian**            | complete     | DominikNovosel | DominikNovosel              |
 | **Portuguese**          | complete     | smarquespt     | smarquespt                  |
 | **Brazilian**           | needs update | BadJuice67     |                             |
 | **Romanian**            | complete     | ygorigor       | ygorigor                    |
@@ -58,7 +60,7 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 - Multiwindow / freeform full support
 - Animated splashscreen and app intro, dynamic layouts and more
 - Small and optimized apk size
-- 15 languages available!
+- Many languages available!
 
 ## Screenshots
 <p align='center'>
@@ -92,6 +94,6 @@ Birday uses some open source libraries, just a few:
 - [App Intro](https://github.com/AppIntro/AppIntro)
 - [Shimmer](https://github.com/facebook/shimmer-android)
 
-Currently, Birday supports the languages in the above table. If you want to translate the app in any other language or update an existing translation, just contact me or send a pull request: you'll be quoted both on Github and in the Play Store description.
+Currently, Birday supports the languages in the above table. If you want to translate the app in any other language or update an existing translation, just contact me or send a pull request: you'll be quoted both on Github and in the Play Store description. For a detailed guide on how to translate the app, refer to the [Wiki](https://github.com/m-i-n-a-r/birday/wiki/Translate-the-app)
 
 This app was written during my free time as a training. It was first published on May 1, 2020. Many good devs helped me understanding the best practices and they taught me a lot of useful tricks. A special thank to every contributor here and on Reddit. and God bless Stack Overflow.
