@@ -30,9 +30,10 @@ import java.util.*
 class EventAdapter internal constructor(homeFragment: HomeFragment?) :
     ListAdapter<EventResult, EventAdapter.EventViewHolder>(EventsDiffCallback()) {
     private lateinit var context: Context
+    private lateinit var itemClickListener: OnItemClickListener
     private val fragment = homeFragment
     private val activityScope = CoroutineScope(Dispatchers.Main)
-    var itemClickListener: OnItemClickListener? = null
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         context = parent.context
@@ -127,11 +128,11 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?) :
         }
 
         override fun onClick(v: View?) {
-            itemClickListener?.onItemClick(adapterPosition, v)
+            itemClickListener.onItemClick(adapterPosition, v)
         }
 
         override fun onLongClick(v: View?): Boolean {
-            itemClickListener?.onItemLongClick(adapterPosition, v)
+            itemClickListener.onItemLongClick(adapterPosition, v)
             return true
         }
     }
