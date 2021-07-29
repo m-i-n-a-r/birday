@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/navHostFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
@@ -48,6 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/new_event"
+        android:hapticFeedbackEnabled="false"
         app:backgroundTint="?colorAccent"
         app:elevation="@dimen/bottom_navbar_elevation"
         app:layout_anchor="@id/bottomBar"

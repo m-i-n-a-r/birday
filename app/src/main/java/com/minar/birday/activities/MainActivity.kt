@@ -31,9 +31,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
 import androidx.navigation.NavOptions
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import androidx.preference.PreferenceManager
 import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
@@ -153,11 +152,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         // Get the bottom navigation bar and configure it for the navigation plugin
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.navHostFragment) as NavHostFragment
+        val navController = navHostFragment.navController
         val navigation = binding.navigation
-        val navController: NavController = Navigation.findNavController(
-            this,
-            R.id.navHostFragment
-        )
+
         // Only way to use custom animations with the bottom navigation bar
         val options = NavOptions.Builder()
             .setLaunchSingleTop(true)
