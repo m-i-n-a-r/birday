@@ -26,7 +26,7 @@ class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
     private val activityScope = CoroutineScope(Dispatchers.Main)
 
     // Easter egg stuff, why not
-    private var easterEgg = 0
+    private var easterEggCounter = 0
     private lateinit var confetti: KonfettiView
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
@@ -68,8 +68,8 @@ class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
         val act = context as MainActivity
         val uri: Uri
         when (v.id) {
-            R.id.imageMinar -> if (easterEgg == 5) {
-                easterEgg = 0
+            R.id.imageMinar -> if (easterEggCounter == 5) {
+                easterEggCounter = 0
                 // Trigger a snackbar and confetti
                 confetti.build()
                     .addColors(
@@ -113,7 +113,7 @@ class CustomAuthorPreference(context: Context?, attrs: AttributeSet?) :
                     .setPosition(confetti.x + confetti.width / 2, confetti.y + confetti.height / 3)
                     .burst(300)
                 act.showSnackbar(context.getString(R.string.easter_egg))
-            } else easterEgg++
+            } else easterEggCounter++
             R.id.minarig -> {
                 act.vibrate()
                 uri = Uri.parse(context.getString(R.string.dev_instagram))

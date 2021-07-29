@@ -28,7 +28,7 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 | **Russian**             | needs update | koterpillar    |                             |
 | **Czech**               | needs update | Miloš Koliáš   |                             |
 | **Polish**              | complete     | mateusz-bak    |                             |
-| **Croatian**            | complete     | Dominik Novosel | Dominik Novosel              |
+| **Croatian**            | complete     | Dominik Novosel| Dominik Novosel             |
 | **Portuguese**          | complete     | smarquespt     | smarquespt                  |
 | **Brazilian**           | needs update | BadJuice67     |                             |
 | **Romanian**            | complete     | ygorigor       | ygorigor                    |

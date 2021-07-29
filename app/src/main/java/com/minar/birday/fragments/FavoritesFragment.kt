@@ -77,8 +77,10 @@ class FavoritesFragment : Fragment() {
 
         // Set the overview button
         overviewButton.setOnClickListener {
-            // Navigate to the overview screen
-            requireView().findNavController().navigate(R.id.action_navigationFavorites_to_overviewFragment)
+            // Vibrate and navigate to the overview screen
+            act.vibrate()
+            requireView().findNavController()
+                .navigate(R.id.action_navigationFavorites_to_overviewFragment)
         }
 
         // Vibration on the mini fab (with manual managing of the transition)
