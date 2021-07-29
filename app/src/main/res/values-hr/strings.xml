@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name" translatable="false">Birday</string>
     <string name="app_welcome">Dobro došli u Birday</string>
     <string name="app_name_extended">Birday - Upravitelj Rođendanima</string>
     <string name="leave_review_title">Ocijenite Birday</string>
@@ -21,6 +20,7 @@
     <string name="no_stats_description">Nemate dovoljno rođendana za generiranje statistike. Dodajte ih nekoliko i vratite se kasnije!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday vam pomaže da se sjetite ukupno %d rođendana</item>
+        <item quantity="few">Birday vam pomaže da se sjetite ukupno %d rođendana</item>
         <item quantity="other">Birday vam pomaže da se sjetite ukupno %d rođendana</item>
     </plurals>
     <string name="next_event">Sljedeći događaj</string>
@@ -30,6 +30,7 @@
     <string name="event_others">i ostali</string>
     <plurals name="days_left">
         <item quantity="one">za %d dan</item>
+        <item quantity="few">za %d dana</item>
         <item quantity="other">za %d dana</item>
     </plurals>
 
@@ -108,14 +109,7 @@
     <string name="notification_only_favorites_description_off">Prikaži obavijest za svaki uneseni događaj</string>
 
     <!-- Developer -->
-    <string name="dev_name" translatable="false">m.i.n.a.r.</string>
     <string name="dev_description">Ja sam pristojan momak i volim lijepe stvari, poput animacija, ikona, sportskih automobila i 3D printanja. Radim kao dizajner i računalni inženjer.</string>
-    <string name="dev_email" translatable="false">minar.tastic@gmail.com</string>
-    <string name="dev_personal_site" translatable="false">https://minar.ml</string>
-    <string name="dev_instagram" translatable="false">https://www.instagram.com/minar.tastic/</string>
-    <string name="dev_twitter" translatable="false">https://twitter.com/MinarTastic</string>
-    <string name="dev_github" translatable="false">https://github.com/m-i-n-a-r</string>
-    <string name="dev_other_apps" translatable="false">https://play.google.com/store/apps/dev?id=7720251761301594831</string>
     <string name="easter_egg">Lijep logo, zar ne? ;D</string>
 
     <!-- New event -->
@@ -148,9 +142,6 @@
     <!-- Quick apps -->
     <string name="event_apps">Brze aplikacije</string>
     <string name="event_apps_description">Aplikacije za brzo poželjeti sve najbolje!</string>
-    <string name="whatsapp" translatable="false">Whatsapp</string>
-    <string name="signal" translatable="false">Signal</string>
-    <string name="telegram" translatable="false">Telegram</string>
     <string name="textMessage">SMS poruka</string>
     <string name="dialer">Telefon</string>
     <string name="wishes">Sretan rođendan!</string>
@@ -172,6 +163,7 @@
     <string name="most_common_day_of_week">Najčešći dan u tjednu rođenja je %s</string>
     <plurals name="leap_year_total">
         <item quantity="one">Broj osoba rođenih u prijestupnoj godini je %d</item>
+        <item quantity="few">Broj osoba rođenih u prijestupnoj godini je %d</item>
         <item quantity="other">Broj osoba rođenih u prijestupnoj godini je %d</item>
     </plurals>
     <string name="random_chinese_year">Kineski horoskopski znak %1$s: %2$s</string>
@@ -216,8 +208,6 @@
     </plurals>
     <string name="born_in">rođen/a u</string>
     <string name="and">i</string>
-    <string name="unknown_age" translatable="false">\??</string>
-    <string name="exclamation" translatable="false">! !</string>
 
     <!-- Notifications -->
     <string name="events_notification_channel">Podsjetnik</string>
