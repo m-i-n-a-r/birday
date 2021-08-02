@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,6 +31,7 @@ import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.StatsGenerator
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 import com.minar.birday.viewmodels.MainViewModel
+import java.time.LocalDate
 import kotlin.math.min
 
 
@@ -74,14 +76,6 @@ class FavoritesFragment : Fragment() {
 
         // Set motion layout state, since it's saved
         favoriteMotionLayout.progress = sharedPrefs.getFloat("favorite_motion_state", 0.0F)
-
-        // Set the overview button
-        overviewButton.setOnClickListener {
-            // Vibrate and navigate to the overview screen
-            act.vibrate()
-            requireView().findNavController()
-                .navigate(R.id.action_navigationFavorites_to_overviewFragment)
-        }
 
         // Vibration on the mini fab (with manual managing of the transition)
         favoritesMiniFab.setOnClickListener {
@@ -135,6 +129,53 @@ class FavoritesFragment : Fragment() {
             })
         }
 
+        // Set the overview button
+        overviewButton.setOnClickListener {
+            // Vibrate and navigate to the overview screen
+            act.vibrate()
+            requireView().findNavController()
+                .navigate(R.id.action_navigationFavorites_to_overviewFragment)
+        }
+
+        // Set the overview dots with the next events
+        with(binding) {
+            mainViewModel.allEventsUnfiltered.observe(viewLifecycleOwner, { events ->
+                // Grey for no events, .3 for 1 event, .6 for 2 events, 1 for 3+ events
+                if (events != null) {
+                    val accent = act.getThemeColor(R.attr.colorAccent)
+                    if (events.any { eventResult ->
+                            eventResult.nextDate!!.isBefore(
+                                LocalDate.now().plusDays(10)
+                            )
+                        }) {
+                        overviewDot1.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                        overviewDot1.alpha = .1F
+                        overviewDot2.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                        overviewDot2.alpha = .2F
+                        overviewDot3.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                        overviewDot3.alpha = .3F
+                        overviewDot4.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                        overviewDot4.alpha = .4F
+                        overviewDot5.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                        overviewDot5.alpha = .5F
+                        overviewDot6.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                        overviewDot6.alpha = .6F
+                        overviewDot7.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                        overviewDot7.alpha = .7F
+                        overviewDot8.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                        overviewDot8.alpha = .8F
+                        overviewDot9.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                        overviewDot9.alpha = .9F
+                        overviewDot10.setColorFilter(
+                            accent,
+                            android.graphics.PorterDuff.Mode.SRC_IN
+                        )
+                        overviewDot10.alpha = 1F
+                    }
+                }
+            })
+
+        }
 
         return v
     }

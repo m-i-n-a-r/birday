@@ -256,4 +256,7 @@
     <string name="notes">Notes</string>
     <string name="write_something">Write something…</string>
 
+    <!-- Overview -->
+    <string name="overview">Overview</string>
+
 </resources>

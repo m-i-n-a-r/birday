@@ -143,32 +143,287 @@
                 app:strokeColor="@color/goodGraySemiTranslucent"
                 app:strokeWidth="@dimen/card_stroke">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     android:orientation="horizontal">
 
-                    <!-- TODO Use a real content description -->
                     <ImageView
+                        android:id="@+id/overviewDotsImage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/text_field_horizontal_margin"
-                        android:contentDescription="@string/app_name"
+                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
+                        android:layout_marginEnd="@dimen/text_field_horizontal_margin"
+                        android:contentDescription="@string/overview"
                         android:src="@drawable/ic_date_black_24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:tint="?colorAccent" />
 
-                    <TextView
-                        android:id="@+id/overviewText"
-                        android:layout_width="match_parent"
+                    <androidx.constraintlayout.helper.widget.Flow
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/card_margin_big"
-                        android:layout_marginEnd="@dimen/card_image_padding"
-                        android:text="@string/app_name_extended"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary" />
+                        app:constraint_referenced_ids="overviewDot1, overviewDot2, overviewDot3, overviewDot4, overviewDot5, overviewDot6, overviewDot7, overviewDot8, overviewDot9, overviewDot10"
+                        app:flow_wrapMode="none"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/overviewDotsImage"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                </LinearLayout>
+                    <ImageView
+                        android:id="@+id/overviewDot1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
+                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
+                        android:contentDescription="@string/overview"
+                        android:src="@drawable/ic_dot_black_24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/goodGraySemiTranslucent" />
+
+                    <TextView
+                        android:id="@+id/overviewText1"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@string/exclamation"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                        app:layout_constraintBottom_toBottomOf="@id/overviewDot1"
+                        app:layout_constraintEnd_toEndOf="@id/overviewDot1"
+                        app:layout_constraintStart_toStartOf="@id/overviewDot1"
+                        app:layout_constraintTop_toTopOf="@id/overviewDot1" />
+
+                    <ImageView
+                        android:id="@+id/overviewDot2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
+                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
+                        android:contentDescription="@string/overview"
+                        android:src="@drawable/ic_dot_black_24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/goodGraySemiTranslucent" />
+
+                    <TextView
+                        android:id="@+id/overviewText2"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@string/exclamation"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                        app:layout_constraintBottom_toBottomOf="@id/overviewDot2"
+                        app:layout_constraintEnd_toEndOf="@id/overviewDot2"
+                        app:layout_constraintStart_toStartOf="@id/overviewDot2"
+                        app:layout_constraintTop_toTopOf="@id/overviewDot2" />
+
+                    <ImageView
+                        android:id="@+id/overviewDot3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
+                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
+                        android:contentDescription="@string/overview"
+                        android:src="@drawable/ic_dot_black_24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/goodGraySemiTranslucent" />
+
+                    <TextView
+                        android:id="@+id/overviewText3"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@string/exclamation"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                        app:layout_constraintBottom_toBottomOf="@id/overviewDot3"
+                        app:layout_constraintEnd_toEndOf="@id/overviewDot3"
+                        app:layout_constraintStart_toStartOf="@id/overviewDot3"
+                        app:layout_constraintTop_toTopOf="@id/overviewDot3" />
+
+                    <ImageView
+                        android:id="@+id/overviewDot4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
+                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
+                        android:contentDescription="@string/overview"
+                        android:src="@drawable/ic_dot_black_24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/goodGraySemiTranslucent" />
+
+                    <TextView
+                        android:id="@+id/overviewText4"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@string/exclamation"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                        app:layout_constraintBottom_toBottomOf="@id/overviewDot4"
+                        app:layout_constraintEnd_toEndOf="@id/overviewDot4"
+                        app:layout_constraintStart_toStartOf="@id/overviewDot4"
+                        app:layout_constraintTop_toTopOf="@id/overviewDot4" />
+
+                    <ImageView
+                        android:id="@+id/overviewDot5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
+                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
+                        android:contentDescription="@string/overview"
+                        android:src="@drawable/ic_dot_black_24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/goodGraySemiTranslucent" />
+
+                    <TextView
+                        android:id="@+id/overviewText5"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@string/exclamation"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                        app:layout_constraintBottom_toBottomOf="@id/overviewDot5"
+                        app:layout_constraintEnd_toEndOf="@id/overviewDot5"
+                        app:layout_constraintStart_toStartOf="@id/overviewDot5"
+                        app:layout_constraintTop_toTopOf="@id/overviewDot5" />
+
+                    <ImageView
+                        android:id="@+id/overviewDot6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
+                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
+                        android:contentDescription="@string/overview"
+                        android:src="@drawable/ic_dot_black_24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/goodGraySemiTranslucent" />
+
+                    <TextView
+                        android:id="@+id/overviewText6"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@string/exclamation"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                        app:layout_constraintBottom_toBottomOf="@id/overviewDot6"
+                        app:layout_constraintEnd_toEndOf="@id/overviewDot6"
+                        app:layout_constraintStart_toStartOf="@id/overviewDot6"
+                        app:layout_constraintTop_toTopOf="@id/overviewDot6" />
+
+                    <ImageView
+                        android:id="@+id/overviewDot7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
+                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
+                        android:contentDescription="@string/overview"
+                        android:src="@drawable/ic_dot_black_24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/goodGraySemiTranslucent" />
+
+                    <TextView
+                        android:id="@+id/overviewText7"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@string/exclamation"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                        app:layout_constraintBottom_toBottomOf="@id/overviewDot7"
+                        app:layout_constraintEnd_toEndOf="@id/overviewDot7"
+                        app:layout_constraintStart_toStartOf="@id/overviewDot7"
+                        app:layout_constraintTop_toTopOf="@id/overviewDot7" />
+
+                    <ImageView
+                        android:id="@+id/overviewDot8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
+                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
+                        android:contentDescription="@string/overview"
+                        android:src="@drawable/ic_dot_black_24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/goodGraySemiTranslucent" />
+
+                    <TextView
+                        android:id="@+id/overviewText8"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@string/exclamation"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                        app:layout_constraintBottom_toBottomOf="@id/overviewDot8"
+                        app:layout_constraintEnd_toEndOf="@id/overviewDot8"
+                        app:layout_constraintStart_toStartOf="@id/overviewDot8"
+                        app:layout_constraintTop_toTopOf="@id/overviewDot8" />
+
+                    <ImageView
+                        android:id="@+id/overviewDot9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
+                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
+                        android:contentDescription="@string/overview"
+                        android:src="@drawable/ic_dot_black_24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/goodGraySemiTranslucent" />
+
+                    <TextView
+                        android:id="@+id/overviewText9"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@string/exclamation"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                        app:layout_constraintBottom_toBottomOf="@id/overviewDot9"
+                        app:layout_constraintEnd_toEndOf="@id/overviewDot9"
+                        app:layout_constraintStart_toStartOf="@id/overviewDot9"
+                        app:layout_constraintTop_toTopOf="@id/overviewDot9" />
+
+                    <ImageView
+                        android:id="@+id/overviewDot10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
+                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
+                        android:contentDescription="@string/overview"
+                        android:src="@drawable/ic_dot_black_24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/goodGraySemiTranslucent" />
+
+                    <TextView
+                        android:id="@+id/overviewText10"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@string/exclamation"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                        app:layout_constraintBottom_toBottomOf="@id/overviewDot10"
+                        app:layout_constraintEnd_toEndOf="@id/overviewDot10"
+                        app:layout_constraintStart_toStartOf="@id/overviewDot10"
+                        app:layout_constraintTop_toTopOf="@id/overviewDot10" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
 

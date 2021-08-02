@@ -19,6 +19,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val workManager = WorkManager.getInstance(application)
     private val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(application)
     val allEvents: LiveData<List<EventResult>>
+    val allEventsUnfiltered: LiveData<List<EventResult>>
     private val eventsCount: LiveData<Int>
     val nextEvents: LiveData<List<EventResult>>
     val searchString = MutableLiveData<String>()
@@ -27,6 +28,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         searchString.value = ""
+        // All the events, unfiltered
+        allEventsUnfiltered = eventDao.getOrderedEvents()
         // All the events, filtered by search string
         allEvents = Transformations.switchMap(searchString) { string ->
             eventDao.getOrderedEventsByName(string)

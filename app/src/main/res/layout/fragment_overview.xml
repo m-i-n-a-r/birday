@@ -11,7 +11,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="@dimen/linear_vertical_margin"
         android:paddingBottom="@dimen/linear_vertical_margin">
 
         <View
@@ -20,33 +19,128 @@
             android:layout_height="match_parent" />
 
         <ImageView
-            android:id="@+id/detailsEventNameImage"
+            android:id="@+id/overviewTitleImage"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginStart="@dimen/linear_vertical_margin"
             android:contentDescription="@string/event_details"
-            app:layout_constraintBottom_toBottomOf="@id/detailsEventName"
+            app:layout_constraintBottom_toBottomOf="@id/overviewTitle"
             app:layout_constraintDimensionRatio="1"
-            app:layout_constraintEnd_toStartOf="@id/detailsEventName"
+            app:layout_constraintEnd_toStartOf="@id/overviewTitle"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/detailsEventName"
+            app:layout_constraintTop_toTopOf="@id/overviewTitle"
             app:srcCompat="@drawable/ic_balloon_24dp" />
 
         <TextView
-            android:id="@+id/detailsEventName"
+            android:id="@+id/overviewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginEnd="@dimen/linear_vertical_margin"
             android:drawablePadding="@dimen/activity_vertical_margin"
             android:ellipsize="end"
             android:maxLines="1"
             android:padding="@dimen/in_row_padding"
-            android:text="@string/app_name"
+            android:text="@string/overview"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/detailsEventNameImage"
+            app:layout_constraintStart_toEndOf="@id/overviewTitleImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="OverviewCalendarJan, OverviewCalendarFeb, OverviewCalendarMar, OverviewCalendarApr, OverviewCalendarMay, OverviewCalendarJun, OverviewCalendarJul, OverviewCalendarAug, OverviewCalendarSep, OverviewCalendarOct, OverviewCalendarNov, OverviewCalendarDec"
+            app:flow_wrapMode="aligned"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/overviewTitle" />
+
+        <CalendarView
+            android:id="@+id/OverviewCalendarJan"
+            android:layout_width="180dp"
+            android:layout_height="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CalendarView
+            android:id="@+id/OverviewCalendarFeb"
+            android:layout_width="180dp"
+            android:layout_height="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CalendarView
+            android:id="@+id/OverviewCalendarMar"
+            android:layout_width="180dp"
+            android:layout_height="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CalendarView
+            android:id="@+id/OverviewCalendarApr"
+            android:layout_width="180dp"
+            android:layout_height="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CalendarView
+            android:id="@+id/OverviewCalendarMay"
+            android:layout_width="180dp"
+            android:layout_height="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CalendarView
+            android:id="@+id/OverviewCalendarJun"
+            android:layout_width="180dp"
+            android:layout_height="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CalendarView
+            android:id="@+id/OverviewCalendarJul"
+            android:layout_width="180dp"
+            android:layout_height="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CalendarView
+            android:id="@+id/OverviewCalendarAug"
+            android:layout_width="180dp"
+            android:layout_height="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CalendarView
+            android:id="@+id/OverviewCalendarSep"
+            android:layout_width="180dp"
+            android:layout_height="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CalendarView
+            android:id="@+id/OverviewCalendarOct"
+            android:layout_width="180dp"
+            android:layout_height="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CalendarView
+            android:id="@+id/OverviewCalendarNov"
+            android:layout_width="180dp"
+            android:layout_height="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CalendarView
+            android:id="@+id/OverviewCalendarDec"
+            android:layout_width="180dp"
+            android:layout_height="200dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
