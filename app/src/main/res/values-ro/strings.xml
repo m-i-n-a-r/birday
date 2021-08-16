@@ -152,7 +152,7 @@
     <string name="most_common_decade">Cel mai frecvent deceniu de naștere este %s</string>
     <string name="most_common_age_range">Cel mai frecvent interval de vârstă este %1$s-%2$s</string>
     <string name="special_ages">O importantă aniversare viitoare este %s</string>
-    <string name="random_zodiac_sign">Semnul Zodiac al lui %1$s: %2$s</string>
+    <string name="random_zodiac_sign">Semnul zodiacal al lui %1$s: %2$s</string>
     <string name="most_common_zodiac_sign">Cel mai frecvent semn zodiacal este %s</string>
     <string name="random_day_of_week">%1$s s-a născut la %2$s</string>
     <string name="most_common_day_of_week">Cea mai frecventă zi de naștere a săptămânii este %s</string>
