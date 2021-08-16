@@ -134,7 +134,7 @@
     <string name="birth_date">Data nașterii</string>
     <string name="next_age">Următoarea vârstă:</string>
     <string name="zodiac_sign">Semn zodiacal:</string>
-    <string name="chinese_zodiac_sign">Semn chinezesc:</string>
+    <string name="chinese_zodiac_sign">Semn zodiacal chinezesc:</string>
     <!-- Quick apps -->
     <string name="event_apps">Aplicații rapide</string>
     <string name="event_apps_description">Aplicații pentru a ura tot binele rapid!</string>
@@ -161,7 +161,7 @@
         <item quantity="few">Numărul de persoane născute într-un an bisect: %d</item>
         <item quantity="other">Numărul de persoane născute într-un an bisect: %d</item>
     </plurals>
-    <string name="random_chinese_year">Semnul zodiacal al lui %1$s: %2$s</string>
+    <string name="random_chinese_year">Semnul zodiacal chinezesc al lui %1$s: %2$s</string>
     <string name="chinese_zodiac_rat">șobolan</string>
     <string name="chinese_zodiac_ox">taur</string>
     <string name="chinese_zodiac_tiger">tigru</string>
