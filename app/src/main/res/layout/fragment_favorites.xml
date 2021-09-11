@@ -433,12 +433,12 @@
 
     <TextView
         android:id="@+id/noFavorites"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:gravity="center"
         android:maxLines="3"
+        android:autoSizeTextType="uniform"
         android:paddingHorizontal="@dimen/placeholders_padding"
-        android:paddingVertical="@dimen/placeholders_padding"
         android:scrollbarSize="0dp"
         android:text="@string/no_favorites"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
