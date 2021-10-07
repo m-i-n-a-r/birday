@@ -99,7 +99,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
         val pendingIntent: PendingIntent =
-            PendingIntent.getActivity(applicationContext, 0, intent, 0)
+            PendingIntent.getActivity(applicationContext, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         // Distinguish between normal notification and upcoming birthday notification
         val notificationText = if (!upcoming) formulateNotificationText(nextEvents, surnameFirst)

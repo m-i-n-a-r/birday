@@ -80,7 +80,7 @@ internal fun updateAppWidget(
         )
         else RemoteViews(context.packageName, R.layout.event_widget_light)
         val intent = Intent(context, SplashActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
+        val pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
         views.setOnClickPendingIntent(R.id.event_widget_main, pendingIntent)
         views.setTextViewText(R.id.event_widget_text, widgetUpcoming)
 
