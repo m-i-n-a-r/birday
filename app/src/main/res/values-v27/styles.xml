@@ -4,7 +4,7 @@
     <!-- The only theme to override, since it contains the light navigation bar, unsupported before api 27 -->
     <style name="SplashTheme" parent="SplashTheme.V27" />
 
-    <style name="SplashTheme.V27" parent="SplashTheme.Base">
+    <style name="SplashTheme.V27" parent="SplashTheme.Base.Legacy">
         <item name="android:windowLightNavigationBar">true</item>
         <item name="android:navigationBarColor">@color/colorBackground</item>
     </style>

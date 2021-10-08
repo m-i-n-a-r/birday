@@ -28,7 +28,6 @@ import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
-import com.minar.birday.activities.SplashActivity
 import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.databinding.DialogAppsEventBinding
 import com.minar.birday.databinding.FragmentHomeBinding
@@ -231,7 +230,7 @@ class HomeFragment : Fragment() {
         )
         else RemoteViews(requireContext().packageName, R.layout.event_widget_light)
         val thisWidget = context?.let { ComponentName(it, EventWidget::class.java) }
-        val intent = Intent(context, SplashActivity::class.java)
+        val intent = Intent(context, MainActivity::class.java)
         val pendingIntent =
             PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)

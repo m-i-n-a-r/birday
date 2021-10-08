@@ -13,13 +13,17 @@
     </style>
 
     <!-- Splash screen theme -->
-    <style name="SplashTheme" parent="SplashTheme.Night" />
+    <style name="SplashTheme" parent="SplashTheme.Night.Legacy" />
 
     <style name="SplashTheme.Night" parent="SplashTheme.Base">
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:statusBarColor">@color/colorBackgroundInverse</item>
         <item name="android:colorBackground">@color/colorBackgroundInverse</item>
         <item name="android:navigationBarColor">@color/colorBackgroundInverse</item>
+    </style>
+
+    <style name="SplashTheme.Night.Legacy">
+        <item name="android:windowBackground">@drawable/splash_bird</item>
     </style>
 
 </resources>

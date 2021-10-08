@@ -20,7 +20,7 @@
     </style>
 
     <!-- Splash screen theme -->
-    <style name="SplashTheme" parent="SplashTheme.Base" />
+    <style name="SplashTheme" parent="SplashTheme.Base.Legacy" />
 
     <style name="SplashTheme.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">true</item>
@@ -28,6 +28,10 @@
         <item name="android:colorBackground">@color/colorBackground</item>
         <item name="android:navigationBarColor">@color/goodGray</item>
         <item name="colorAccent">@color/aquaAccent</item>
+    </style>
+
+    <style name="SplashTheme.Base.Legacy">
+        <item name="android:windowBackground">@drawable/splash_bird</item>
     </style>
 
     <!-- Preference dialog theme -->

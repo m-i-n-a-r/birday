@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Splash screen theme -->
+    <style name="SplashTheme" parent="SplashTheme.Night.V31" />
+
+    <style name="SplashTheme.Night.V31" parent="SplashTheme.Night">
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/animated_birday</item>
+        <item name="android:windowSplashScreenAnimationDuration">500</item>
+        <item name="android:windowSplashScreenBrandingImage">@drawable/ic_zodiac_aquarius</item>
+    </style>
+</resources>
