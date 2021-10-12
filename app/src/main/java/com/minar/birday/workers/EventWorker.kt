@@ -12,10 +12,10 @@ import androidx.work.WorkManager
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.minar.birday.R
+import com.minar.birday.activities.MainActivity
+import com.minar.birday.model.EventResult
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
-import com.minar.birday.model.EventResult
-import com.minar.birday.activities.SplashActivity
 import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getCircularBitmap
@@ -95,11 +95,11 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         hideImage: Boolean,
         upcoming: Boolean = false,
     ) {
-        val intent = Intent(applicationContext, SplashActivity::class.java).apply {
+        val intent = Intent(applicationContext, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
         val pendingIntent: PendingIntent =
-            PendingIntent.getActivity(applicationContext, 0, intent, 0)
+            PendingIntent.getActivity(applicationContext, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         // Distinguish between normal notification and upcoming birthday notification
         val notificationText = if (!upcoming) formulateNotificationText(nextEvents, surnameFirst)

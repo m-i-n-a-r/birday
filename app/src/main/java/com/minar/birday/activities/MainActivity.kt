@@ -90,7 +90,6 @@ class MainActivity : AppCompatActivity() {
         createNotificationChannel()
 
         // Retrieve the shared preferences
-        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
         val theme = sharedPrefs.getString("theme_color", "system")
         val accent = sharedPrefs.getString("accent_color", "aqua")
 
@@ -124,6 +123,7 @@ class MainActivity : AppCompatActivity() {
             "red" -> setTheme(R.style.AppTheme_Red)
             "lime" -> setTheme(R.style.AppTheme_Lime)
             "crimson" -> setTheme(R.style.AppTheme_Crimson)
+            else -> setTheme(R.style.AppTheme)
         }
 
         // Set the task appearance in recent apps
