@@ -16,8 +16,9 @@ import com.minar.birday.utilities.nextDateFormatted
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
-
+@ExperimentalStdlibApi
 class EventWidget : AppWidgetProvider() {
+
     override fun onUpdate(
         context: Context,
         appWidgetManager: AppWidgetManager,
@@ -28,6 +29,7 @@ class EventWidget : AppWidgetProvider() {
     }
 }
 
+@ExperimentalStdlibApi
 internal fun updateAppWidget(
     context: Context,
     appWidgetManager: AppWidgetManager,
@@ -80,7 +82,8 @@ internal fun updateAppWidget(
         )
         else RemoteViews(context.packageName, R.layout.event_widget_light)
         val intent = Intent(context, MainActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+        val pendingIntent =
+            PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
         views.setOnClickPendingIntent(R.id.event_widget_main, pendingIntent)
         views.setTextViewText(R.id.event_widget_text, widgetUpcoming)
 

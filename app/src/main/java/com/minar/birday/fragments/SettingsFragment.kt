@@ -15,12 +15,13 @@ import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidget
 
 
+@ExperimentalStdlibApi
 class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeListener {
     private lateinit var mainViewModel: MainViewModel
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
-        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
     }
 
     override fun onResume() {

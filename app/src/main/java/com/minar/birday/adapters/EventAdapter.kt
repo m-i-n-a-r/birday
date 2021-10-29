@@ -27,6 +27,7 @@ import java.time.format.FormatStyle
 import java.util.*
 
 
+@ExperimentalStdlibApi
 class EventAdapter internal constructor(homeFragment: HomeFragment?) :
     ListAdapter<EventResult, EventAdapter.EventViewHolder>(EventsDiffCallback()) {
     private lateinit var context: Context
@@ -42,7 +43,6 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?) :
         return EventViewHolder(binding)
     }
 
-    @ExperimentalStdlibApi
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         holder.bind(getItem(position))
     }

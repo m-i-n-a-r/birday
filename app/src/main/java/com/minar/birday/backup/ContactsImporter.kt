@@ -23,6 +23,7 @@ import java.time.LocalDate
 import kotlin.concurrent.thread
 
 
+@ExperimentalStdlibApi
 class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(context, attrs),
     View.OnClickListener {
 

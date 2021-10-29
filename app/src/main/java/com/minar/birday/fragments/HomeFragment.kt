@@ -43,6 +43,7 @@ import java.time.format.FormatStyle
 import java.time.temporal.ChronoUnit
 
 
+@ExperimentalStdlibApi
 class HomeFragment : Fragment() {
     private lateinit var rootView: View
     private lateinit var recyclerView: RecyclerView
@@ -63,7 +64,6 @@ class HomeFragment : Fragment() {
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
     }
 
-    @ExperimentalStdlibApi
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -120,7 +120,7 @@ class HomeFragment : Fragment() {
         initializeRecyclerView()
         setUpAdapter()
 
-        mainViewModel = ViewModelProvider(act).get(MainViewModel::class.java)
+        mainViewModel = ViewModelProvider(act)[MainViewModel::class.java]
         mainViewModel.allEvents.observe(viewLifecycleOwner, { events ->
             // Manage placeholders, search results and the main list
             events?.let { adapter.submitList(it) }

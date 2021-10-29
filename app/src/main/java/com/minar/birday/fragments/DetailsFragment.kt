@@ -49,6 +49,7 @@ import java.time.format.FormatStyle
 import java.util.*
 
 
+@ExperimentalStdlibApi
 class DetailsFragment : Fragment() {
     private lateinit var act: MainActivity
     private lateinit var mainViewModel: MainViewModel
@@ -84,7 +85,6 @@ class DetailsFragment : Fragment() {
         _dialogInsertEventBinding = null
     }
 
-    @ExperimentalStdlibApi
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -93,7 +93,7 @@ class DetailsFragment : Fragment() {
         _binding = FragmentDetailsBinding.inflate(inflater, container, false)
         val v = binding.root
         val event = args.event ?: return v
-        mainViewModel = ViewModelProvider(act).get(MainViewModel::class.java)
+        mainViewModel = ViewModelProvider(act)[MainViewModel::class.java]
 
         val shimmer = binding.detailsCountdownShimmer
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)

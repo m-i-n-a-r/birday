@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -35,6 +34,7 @@ import java.time.LocalDate
 import kotlin.math.min
 
 
+@ExperimentalStdlibApi
 class FavoritesFragment : Fragment() {
     private lateinit var rootView: View
     private lateinit var recyclerView: RecyclerView
@@ -107,7 +107,7 @@ class FavoritesFragment : Fragment() {
         // Setup the recycler view
         initializeRecyclerView()
         setUpAdapter()
-        mainViewModel = ViewModelProvider(act).get(MainViewModel::class.java)
+        mainViewModel = ViewModelProvider(act)[MainViewModel::class.java]
         with(mainViewModel) {
             getFavorites().observe(viewLifecycleOwner, { events ->
                 // Update the cached copy in the adapter
@@ -142,6 +142,7 @@ class FavoritesFragment : Fragment() {
             mainViewModel.allEventsUnfiltered.observe(viewLifecycleOwner, { events ->
                 // Grey for no events, .3 for 1 event, .6 for 2 events, 1 for 3+ events
                 if (events != null) {
+                    val today = LocalDate.now()
                     val accent = act.getThemeColor(R.attr.colorAccent)
                     if (events.any { eventResult ->
                             eventResult.nextDate!!.isBefore(
@@ -149,27 +150,37 @@ class FavoritesFragment : Fragment() {
                             )
                         }) {
                         overviewDot1.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                        overviewText1.text = today.dayOfMonth.toString()
                         overviewDot1.alpha = .1F
                         overviewDot2.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                        overviewText2.text = today.dayOfMonth.toString()
                         overviewDot2.alpha = .2F
                         overviewDot3.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                        overviewText3.text = today.dayOfMonth.toString()
                         overviewDot3.alpha = .3F
                         overviewDot4.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                        overviewText4.text = today.dayOfMonth.toString()
                         overviewDot4.alpha = .4F
                         overviewDot5.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                        overviewText5.text = today.dayOfMonth.toString()
                         overviewDot5.alpha = .5F
                         overviewDot6.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                        overviewText6.text = today.dayOfMonth.toString()
                         overviewDot6.alpha = .6F
                         overviewDot7.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                        overviewText7.text = today.dayOfMonth.toString()
                         overviewDot7.alpha = .7F
                         overviewDot8.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                        overviewText8.text = today.dayOfMonth.toString()
                         overviewDot8.alpha = .8F
                         overviewDot9.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                        overviewText9.text = today.dayOfMonth.toString()
                         overviewDot9.alpha = .9F
                         overviewDot10.setColorFilter(
                             accent,
                             android.graphics.PorterDuff.Mode.SRC_IN
                         )
+                        overviewText10.text = today.dayOfMonth.toString()
                         overviewDot10.alpha = 1F
                     }
                 }

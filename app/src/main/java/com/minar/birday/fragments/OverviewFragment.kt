@@ -13,6 +13,7 @@ import com.minar.birday.databinding.FragmentOverviewBinding
 import com.minar.birday.viewmodels.MainViewModel
 
 
+@ExperimentalStdlibApi
 class OverviewFragment : Fragment() {
     private lateinit var act: MainActivity
     private lateinit var mainViewModel: MainViewModel
@@ -32,7 +33,6 @@ class OverviewFragment : Fragment() {
         _binding = null
     }
 
-    @ExperimentalStdlibApi
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,7 +40,7 @@ class OverviewFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentOverviewBinding.inflate(inflater, container, false)
         val v = binding.root
-        mainViewModel = ViewModelProvider(act).get(MainViewModel::class.java)
+        mainViewModel = ViewModelProvider(act)[MainViewModel::class.java]
         return v
     }
 }

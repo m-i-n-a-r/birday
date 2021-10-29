@@ -60,6 +60,7 @@ import java.time.format.FormatStyle
 import java.util.*
 
 
+@ExperimentalStdlibApi
 class MainActivity : AppCompatActivity() {
     lateinit var mainViewModel: MainViewModel
     private lateinit var adapter: EventAdapter
@@ -70,9 +71,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var resultLauncher: ActivityResultLauncher<String>
     private var imageChosen = false
 
-    @ExperimentalStdlibApi
     override fun onCreate(savedInstanceState: Bundle?) {
-        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
         adapter = EventAdapter(null)
         // Initialize the result launcher to pick the image
@@ -456,7 +456,13 @@ class MainActivity : AppCompatActivity() {
     // Vibrate using a standard vibration pattern
     fun vibrate() {
         // Deprecated for no reason
-        val vib = this.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        val vib  = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val vibratorManager =  this.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+            vibratorManager.defaultVibrator
+        } else {
+            @Suppress("DEPRECATION")
+            getSystemService(VIBRATOR_SERVICE) as Vibrator
+        }
         if (sharedPrefs.getBoolean(
                 "vibration",
                 true
