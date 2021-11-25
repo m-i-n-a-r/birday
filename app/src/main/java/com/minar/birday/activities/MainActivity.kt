@@ -24,6 +24,7 @@ import android.text.TextWatcher
 import android.util.TypedValue
 import android.view.View
 import android.view.animation.AnticipateInterpolator
+import android.view.animation.DecelerateInterpolator
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.AttrRes
@@ -57,8 +58,6 @@ import com.minar.birday.model.Event
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
 import java.io.IOException
-import java.time.Duration
-import java.time.Instant
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -93,33 +92,41 @@ class MainActivity : AppCompatActivity() {
         // Add a callback that's called when the animation stops
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             splashScreen.setOnExitAnimationListener { splashScreenView ->
-                // Get the duration of the animated vector drawable
-                val animationDuration = splashScreenView.iconAnimationDuration
-                // Get the start time of the animation
-                val animationStart = splashScreenView.iconAnimationStart
-                // Calculate the remaining duration of the animation
-                val remainingDuration = if (animationDuration != null && animationStart != null) {
-                    (animationDuration - Duration.between(animationStart, Instant.now()))
-                        .toMillis()
-                        .coerceAtLeast(0L)
-                } else {
-                    0L
-                }
-                val slideUp = ObjectAnimator.ofFloat(
+                val fadeOut = ObjectAnimator.ofFloat(
                     splashScreenView,
-                    View.TRANSLATION_Y,
-                    0f,
-                    -splashScreenView.height.toFloat()
+                    View.ALPHA,
+                    1f,
+                    0f
                 )
-                slideUp.interpolator = AnticipateInterpolator()
-                slideUp.duration = 200L
+                val scaleXUp = ObjectAnimator.ofFloat(
+                    splashScreenView,
+                    View.SCALE_X,
+                    1f,
+                    1.4f
+                )
+                val scaleYUp = ObjectAnimator.ofFloat(
+                    splashScreenView,
+                    View.SCALE_Y,
+                    1f,
+                    1.4f
+                )
+
+                // Set durations and interpolator
+                fadeOut.interpolator = DecelerateInterpolator()
+                scaleXUp.interpolator = AnticipateInterpolator()
+                scaleYUp.interpolator = AnticipateInterpolator()
+                fadeOut.duration = 300L
+                scaleXUp.duration = 300L
+                scaleYUp.duration = 300L
 
                 // Remove the view when the animation ends
-                slideUp.doOnEnd {
+                fadeOut.doOnEnd {
                     splashScreenView.remove()
                 }
                 // Run the animation
-                slideUp.start()
+                fadeOut.start()
+                scaleXUp.start()
+                scaleYUp.start()
             }
         }
 
