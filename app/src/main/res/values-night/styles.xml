@@ -23,7 +23,7 @@
     </style>
 
     <style name="SplashTheme.Night.Legacy">
-        <item name="android:windowBackground">@drawable/splash_bird</item>
+        <item name="android:windowBackground">@drawable/static_birday_dark</item>
     </style>
 
 </resources>

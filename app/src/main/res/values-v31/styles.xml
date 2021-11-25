@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Splash screen theme -->
     <style name="SplashTheme" parent="SplashTheme.V31" />
 
     <style name="SplashTheme.V31" parent="SplashTheme.V27">
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/animated_birday</item>
-        <item name="android:windowSplashScreenAnimationDuration">500</item>
-        <item name="android:windowSplashScreenBrandingImage">@drawable/ic_zodiac_aquarius</item>
+        <item name="android:windowSplashScreenAnimationDuration">1200</item>
+        <item name="android:windowSplashScreenBrandingImage">@drawable/static_branding_image</item>
     </style>
+
 </resources>

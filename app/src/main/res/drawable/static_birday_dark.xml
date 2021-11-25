@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/colorBackgroundInverse" />
+    <item
+        android:width="160dp"
+        android:height="160dp"
+        android:bottom="24dp"
+        android:drawable="@drawable/birday_logo"
+        android:end="24dp"
+        android:gravity="center"
+        android:start="24dp"
+        android:top="24dp" />
+
+    <item
+        android:bottom="96dp"
+        android:drawable="@drawable/static_branding_image"
+        android:end="48dp"
+        android:gravity="bottom"
+        android:start="48dp"
+        android:top="24dp" />
+</layer-list>

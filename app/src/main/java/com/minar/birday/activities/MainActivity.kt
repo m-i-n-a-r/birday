@@ -1,6 +1,7 @@
 package com.minar.birday.activities
 
 import android.Manifest
+import android.animation.ObjectAnimator
 import android.app.ActivityManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -22,11 +23,13 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.TypedValue
 import android.view.View
+import android.view.animation.AnticipateInterpolator
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.AttrRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.animation.doOnEnd
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -54,6 +57,8 @@ import com.minar.birday.model.Event
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
 import java.io.IOException
+import java.time.Duration
+import java.time.Instant
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -84,6 +89,39 @@ class MainActivity : AppCompatActivity() {
                     setImage(uri)
                 }
             }
+
+        // Add a callback that's called when the animation stops
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            splashScreen.setOnExitAnimationListener { splashScreenView ->
+                // Get the duration of the animated vector drawable
+                val animationDuration = splashScreenView.iconAnimationDuration
+                // Get the start time of the animation
+                val animationStart = splashScreenView.iconAnimationStart
+                // Calculate the remaining duration of the animation
+                val remainingDuration = if (animationDuration != null && animationStart != null) {
+                    (animationDuration - Duration.between(animationStart, Instant.now()))
+                        .toMillis()
+                        .coerceAtLeast(0L)
+                } else {
+                    0L
+                }
+                val slideUp = ObjectAnimator.ofFloat(
+                    splashScreenView,
+                    View.TRANSLATION_Y,
+                    0f,
+                    -splashScreenView.height.toFloat()
+                )
+                slideUp.interpolator = AnticipateInterpolator()
+                slideUp.duration = 200L
+
+                // Remove the view when the animation ends
+                slideUp.doOnEnd {
+                    splashScreenView.remove()
+                }
+                // Run the animation
+                slideUp.start()
+            }
+        }
 
         // Create the notification channel and check the permission (note: appIntro 6.0 is still buggy, better avoid to use it for asking permissions)
         askContactsPermission()
@@ -456,8 +494,9 @@ class MainActivity : AppCompatActivity() {
     // Vibrate using a standard vibration pattern
     fun vibrate() {
         // Deprecated for no reason
-        val vib  = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            val vibratorManager =  this.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+        val vib = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val vibratorManager =
+                this.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
             vibratorManager.defaultVibrator
         } else {
             @Suppress("DEPRECATION")
