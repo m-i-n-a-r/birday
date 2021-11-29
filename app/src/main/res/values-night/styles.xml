@@ -1,15 +1,25 @@
 <resources>
 
     <!-- Style for the dark theme -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
+    <style name="AppTheme" parent="AppTheme.Night" />
 
-    <style name="AppTheme.Night" parent="AppTheme.Base">
+    <style name="AppTheme.Night" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:navigationBarColor">@color/deepGray</item>
         <item name="android:statusBarColor">@color/colorBackgroundInverse</item>
         <item name="android:colorBackground">@color/colorBackgroundInverse</item>
         <item name="android:textColorPrimary">@color/textColorPrimaryInverse</item>
         <item name="android:textColorSecondary">@color/textColorSecondaryInverse</item>
+        <item name="colorSurface">@color/colorSurfaceInverse</item>
+        <item name="colorPrimary">@color/colorAccent</item>
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="colorSecondaryContainer">@color/goodGrayTranslucent</item> <!-- Navbar item halo -->
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
+        <item name="materialTimePickerTheme">@style/ThemeOverlay.App.TimePicker</item>
+        <item name="snackbarStyle">@style/Widget.App.Snackbar</item>
+        <item name="snackbarTextViewStyle">@style/MaterialSnackbarTextViewTheme</item>
+        <item name="alertDialogTheme">@style/DialogTheme</item>
     </style>
 
     <!-- Splash screen theme -->

@@ -46,7 +46,7 @@
             app:tint="?colorAccent" />
     </com.facebook.shimmer.ShimmerFrameLayout>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/descriptionMinar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

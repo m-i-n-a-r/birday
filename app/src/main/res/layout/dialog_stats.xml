@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/text_field_horizontal_margin">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/fullStats"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
             app:layout_constraintStart_toStartOf="@id/eventCounter"
             app:layout_constraintTop_toTopOf="@id/eventCounter" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/eventCounter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

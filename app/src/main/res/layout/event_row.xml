@@ -25,7 +25,7 @@
         app:strokeColor="@color/goodGray"
         app:strokeWidth="@dimen/card_stroke" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/eventPerson"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
         app:layout_constraintStart_toEndOf="@id/eventImage"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/eventDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

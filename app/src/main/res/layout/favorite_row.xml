@@ -8,7 +8,7 @@
     android:paddingHorizontal="@dimen/recycler_padding"
     android:paddingVertical="@dimen/between_row_padding">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/eventPerson"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toTopOf="@id/eventPerson"
         app:tint="@color/goodGray" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/eventDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/eventPerson" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/eventYears"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/eventDate" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/eventCountdown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

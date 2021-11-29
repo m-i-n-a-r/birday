@@ -38,7 +38,7 @@
     <dimen name="minar_banner_height">84dp</dimen>
     <dimen name="minar_banner_padding">12dp</dimen>
     <dimen name="minar_description_padding">16dp</dimen>
-    <dimen name="bottom_navbar_height">52dp</dimen>
+    <dimen name="bottom_navbar_height">62dp</dimen>
     <dimen name="result_text_margin">42dp</dimen>
     <dimen name="text_field_corner">12dp</dimen>
     <dimen name="text_field_horizontal_margin">12dp</dimen>

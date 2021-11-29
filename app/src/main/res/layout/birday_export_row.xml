@@ -9,14 +9,14 @@
     android:hapticFeedbackEnabled="false"
     android:background="?attr/selectableItemBackground">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/birdayExportTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/birday_export_title"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/birdayExportDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

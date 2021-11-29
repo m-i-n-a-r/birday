@@ -3,10 +3,12 @@
     <!-- Style for the light theme -->
     <style name="AppTheme" parent="AppTheme.Base" />
 
-    <style name="AppTheme.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="AppTheme.Base" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:colorBackground">@color/colorBackground</item>
         <item name="colorPrimary">@color/colorAccent</item>
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="colorSecondaryContainer">@color/goodGrayTranslucent</item> <!-- Navbar item halo -->
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:statusBarColor">@color/colorBackground</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
@@ -17,12 +19,13 @@
         <item name="snackbarStyle">@style/Widget.App.Snackbar</item>
         <item name="snackbarTextViewStyle">@style/MaterialSnackbarTextViewTheme</item>
         <item name="alertDialogTheme">@style/DialogTheme</item>
+        <item name="colorSurface">@color/colorSurface</item>
     </style>
 
     <!-- Splash screen theme -->
     <style name="SplashTheme" parent="SplashTheme.Base.Legacy" />
 
-    <style name="SplashTheme.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="SplashTheme.Base" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">@color/colorBackground</item>
         <item name="android:colorBackground">@color/colorBackground</item>
@@ -57,7 +60,7 @@
         <item name="errorIconTint">?colorAccent</item>
         <item name="boxStrokeErrorColor">@color/redError</item>
         <item name="errorTextColor">?colorAccent</item>
-        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+        <item name="textInputStyle">@style/Widget.Material3.TextInputLayout.OutlinedBox</item>
         <item name="boxCornerRadiusBottomEnd">@dimen/text_field_corner</item>
         <item name="boxCornerRadiusTopEnd">@dimen/text_field_corner</item>
         <item name="boxCornerRadiusBottomStart">@dimen/text_field_corner</item>

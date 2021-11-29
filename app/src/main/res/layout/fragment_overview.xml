@@ -32,7 +32,7 @@
             app:layout_constraintTop_toTopOf="@id/overviewTitle"
             app:srcCompat="@drawable/ic_balloon_24dp" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/overviewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

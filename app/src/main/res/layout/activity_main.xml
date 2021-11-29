@@ -24,7 +24,7 @@
         app:contentInsetStart="0dp"
         app:elevation="@dimen/bottom_navbar_elevation"
         app:fabAlignmentMode="end"
-        app:fabAnimationMode="scale"
+        app:fabAnimationMode="slide"
         app:fabCradleMargin="@dimen/cradle_margin"
         app:fabCradleRoundedCornerRadius="@dimen/cradle_corners"
         app:title="@string/app_name">

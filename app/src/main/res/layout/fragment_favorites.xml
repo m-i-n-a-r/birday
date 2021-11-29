@@ -67,7 +67,7 @@
                     android:paddingHorizontal="@dimen/card_margin_big"
                     android:paddingVertical="@dimen/text_field_horizontal_margin">
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/statsTitle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/statsSubtitle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/statsTitle" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/statsDescription"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -186,7 +186,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/overviewText1"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -211,7 +211,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/overviewText2"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -236,7 +236,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/overviewText3"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -261,7 +261,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/overviewText4"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -286,7 +286,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/overviewText5"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -311,7 +311,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/overviewText6"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -336,7 +336,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/overviewText7"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -361,7 +361,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/overviewText8"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -386,7 +386,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/overviewText9"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -411,7 +411,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/overviewText10"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -431,7 +431,7 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/noFavorites"
         android:layout_width="wrap_content"
         android:layout_height="0dp"

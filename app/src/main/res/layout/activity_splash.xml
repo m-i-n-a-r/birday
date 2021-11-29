@@ -19,7 +19,7 @@
             android:contentDescription="@string/app_name"
             android:src="@drawable/animated_birday" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/splashText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
