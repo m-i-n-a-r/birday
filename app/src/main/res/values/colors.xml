@@ -3,6 +3,7 @@
 
     <!-- Basic colors -->
     <color name="colorAccent">@color/aquaAccent</color>
+    <color name="colorAccentTranslucent">@color/aquaAccentTranslucent</color>
     <color name="almostWhite">#fbfbfb</color>
     <color name="goodGray">#959595</color>
     <color name="goodGraySemiTranslucent">#c5959595</color>
@@ -28,18 +29,31 @@
 
     <!-- Accents -->
     <color name="aquaAccent">#5abf95</color>
+    <color name="aquaAccentTranslucent">#665abf95</color>
     <color name="brownAccent">#c55a2c</color>
+    <color name="brownAccentTranslucent">#66c55a2c</color>
     <color name="blueAccent">#4285f4</color>
+    <color name="blueAccentTranslucent">#664285f4</color>
     <color name="greenAccent">#3ddc84</color>
+    <color name="greenAccentTranslucent">#663ddc84</color>
     <color name="yellowAccent">#f4b400</color>
+    <color name="yellowAccentTranslucent">#66f4b400</color>
     <color name="orangeAccent">#ff7522</color>
+    <color name="orangeAccentTranslucent">#66ff7522</color>
     <color name="tealAccent">#008080</color>
+    <color name="tealAccentTranslucent">#66008080</color>
     <color name="violetAccent">#ab47bc</color>
+    <color name="violetAccentTranslucent">#66ab47bc</color>
     <color name="pinkAccent">#ff66cc</color>
+    <color name="pinkAccentTranslucent">#66ff66cc</color>
     <color name="lightBlueAccent">#29b6f6</color>
+    <color name="lightBlueAccentTranslucent">#6629b6f6</color>
     <color name="redAccent">#ff5252</color>
+    <color name="redAccentTranslucent">#66ff5252</color>
     <color name="limeAccent">#c5de00</color>
+    <color name="limeAccentTranslucent">#66c5de00</color>
     <color name="crimsonAccent">#dc143c</color>
+    <color name="crimsonAccentTranslucent">#66dc143c</color>
 
     <!-- Slides -->
     <color name="slideOne">#4285f4</color>

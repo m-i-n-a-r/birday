@@ -7,8 +7,9 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:colorBackground">@color/colorBackground</item>
         <item name="colorPrimary">@color/colorAccent</item>
+        <item name="colorPrimaryContainer">@color/colorAccentTranslucent</item>
         <item name="colorSecondary">@color/colorAccent</item>
-        <item name="colorSecondaryContainer">@color/goodGrayTranslucent</item> <!-- Navbar item halo -->
+        <item name="colorSecondaryContainer">@color/colorAccentTranslucent</item> <!-- Navbar item halo -->
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:statusBarColor">@color/colorBackground</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
@@ -94,61 +95,97 @@
     <style name="AppTheme.Brown" parent="AppTheme">
         <item name="colorAccent">@color/brownAccent</item>
         <item name="colorPrimary">@color/brownAccent</item>
+        <item name="colorSecondary">@color/brownAccent</item>
+        <item name="colorPrimaryContainer">@color/brownAccentTranslucent</item>
+        <item name="colorSecondaryContainer">@color/brownAccentTranslucent</item>
     </style>
 
     <style name="AppTheme.Blue" parent="AppTheme">
         <item name="colorAccent">@color/blueAccent</item>
         <item name="colorPrimary">@color/blueAccent</item>
+        <item name="colorSecondary">@color/blueAccent</item>
+        <item name="colorPrimaryContainer">@color/blueAccentTranslucent</item>
+        <item name="colorSecondaryContainer">@color/blueAccentTranslucent</item>
     </style>
 
     <style name="AppTheme.Green" parent="AppTheme">
         <item name="colorAccent">@color/greenAccent</item>
         <item name="colorPrimary">@color/greenAccent</item>
+        <item name="colorSecondary">@color/greenAccent</item>
+        <item name="colorPrimaryContainer">@color/greenAccentTranslucent</item>
+        <item name="colorSecondaryContainer">@color/greenAccentTranslucent</item>
     </style>
 
     <style name="AppTheme.Orange" parent="AppTheme">
         <item name="colorAccent">@color/orangeAccent</item>
         <item name="colorPrimary">@color/orangeAccent</item>
+        <item name="colorSecondary">@color/orangeAccent</item>
+        <item name="colorPrimaryContainer">@color/orangeAccentTranslucent</item>
+        <item name="colorSecondaryContainer">@color/orangeAccentTranslucent</item>
     </style>
 
     <style name="AppTheme.Yellow" parent="AppTheme">
         <item name="colorAccent">@color/yellowAccent</item>
         <item name="colorPrimary">@color/yellowAccent</item>
+        <item name="colorSecondary">@color/yellowAccent</item>
+        <item name="colorPrimaryContainer">@color/yellowAccentTranslucent</item>
+        <item name="colorSecondaryContainer">@color/yellowAccentTranslucent</item>
     </style>
 
     <style name="AppTheme.Teal" parent="AppTheme">
         <item name="colorAccent">@color/tealAccent</item>
         <item name="colorPrimary">@color/tealAccent</item>
+        <item name="colorSecondary">@color/tealAccent</item>
+        <item name="colorPrimaryContainer">@color/tealAccentTranslucent</item>
+        <item name="colorSecondaryContainer">@color/tealAccentTranslucent</item>
     </style>
 
     <style name="AppTheme.Violet" parent="AppTheme">
         <item name="colorAccent">@color/violetAccent</item>
         <item name="colorPrimary">@color/violetAccent</item>
+        <item name="colorSecondary">@color/violetAccent</item>
+        <item name="colorPrimaryContainer">@color/violetAccentTranslucent</item>
+        <item name="colorSecondaryContainer">@color/violetAccentTranslucent</item>
     </style>
 
     <style name="AppTheme.Pink" parent="AppTheme">
         <item name="colorAccent">@color/pinkAccent</item>
         <item name="colorPrimary">@color/pinkAccent</item>
+        <item name="colorSecondary">@color/pinkAccent</item>
+        <item name="colorPrimaryContainer">@color/pinkAccentTranslucent</item>
+        <item name="colorSecondaryContainer">@color/pinkAccentTranslucent</item>
     </style>
 
     <style name="AppTheme.LightBlue" parent="AppTheme">
         <item name="colorAccent">@color/lightBlueAccent</item>
         <item name="colorPrimary">@color/lightBlueAccent</item>
+        <item name="colorSecondary">@color/lightBlueAccent</item>
+        <item name="colorPrimaryContainer">@color/lightBlueAccentTranslucent</item>
+        <item name="colorSecondaryContainer">@color/lightBlueAccentTranslucent</item>
     </style>
 
     <style name="AppTheme.Red" parent="AppTheme">
         <item name="colorAccent">@color/redAccent</item>
         <item name="colorPrimary">@color/redAccent</item>
+        <item name="colorSecondary">@color/redAccent</item>
+        <item name="colorPrimaryContainer">@color/redAccentTranslucent</item>
+        <item name="colorSecondaryContainer">@color/redAccentTranslucent</item>
     </style>
 
     <style name="AppTheme.Lime" parent="AppTheme">
         <item name="colorAccent">@color/limeAccent</item>
         <item name="colorPrimary">@color/limeAccent</item>
+        <item name="colorSecondary">@color/limeAccent</item>
+        <item name="colorPrimaryContainer">@color/limeAccentTranslucent</item>
+        <item name="colorSecondaryContainer">@color/limeAccentTranslucent</item>
     </style>
 
     <style name="AppTheme.Crimson" parent="AppTheme">
         <item name="colorAccent">@color/crimsonAccent</item>
         <item name="colorPrimary">@color/crimsonAccent</item>
+        <item name="colorSecondary">@color/crimsonAccent</item>
+        <item name="colorPrimaryContainer">@color/crimsonAccentTranslucent</item>
+        <item name="colorSecondaryContainer">@color/crimsonAccentTranslucent</item>
     </style>
 
     <!-- Circular images -->

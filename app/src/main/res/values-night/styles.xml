@@ -12,8 +12,9 @@
         <item name="android:textColorSecondary">@color/textColorSecondaryInverse</item>
         <item name="colorSurface">@color/colorSurfaceInverse</item>
         <item name="colorPrimary">@color/colorAccent</item>
+        <item name="colorPrimaryContainer">@color/colorAccentTranslucent</item>
         <item name="colorSecondary">@color/colorAccent</item>
-        <item name="colorSecondaryContainer">@color/goodGrayTranslucent</item> <!-- Navbar item halo -->
+        <item name="colorSecondaryContainer">@color/colorAccentTranslucent</item> <!-- Navbar item halo -->
         <item name="colorAccent">@color/colorAccent</item>
         <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
         <item name="materialTimePickerTheme">@style/ThemeOverlay.App.TimePicker</item>

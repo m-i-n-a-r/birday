@@ -255,7 +255,7 @@
 
         <Button
             android:id="@+id/detailsEditButton"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            style="@style/Widget.Material3.Button.ElevatedButton.Icon"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -278,7 +278,7 @@
 
         <Button
             android:id="@+id/detailsDeleteButton"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            style="@style/Widget.Material3.Button.ElevatedButton.Icon"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -299,7 +299,7 @@
 
         <Button
             android:id="@+id/detailsShareButton"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            style="@style/Widget.Material3.Button.ElevatedButton.Icon"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
