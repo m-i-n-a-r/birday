@@ -181,7 +181,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:maxLines="2"
+        android:maxLines="3"
         android:autoSizeTextType="uniform"
         android:paddingHorizontal="@dimen/placeholders_padding"
         android:scrollbarSize="0dp"

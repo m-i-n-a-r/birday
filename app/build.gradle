@@ -59,7 +59,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
 
     // Material Components
-    implementation 'com.google.android.material:material:1.5.0-beta01'
+    implementation 'com.google.android.material:material:1.6.0-alpha01'
 
     // WorkManager
     implementation 'androidx.work:work-runtime-ktx:2.7.1'
