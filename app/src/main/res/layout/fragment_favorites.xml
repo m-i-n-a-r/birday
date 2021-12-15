@@ -127,14 +127,14 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.facebook.shimmer.ShimmerFrameLayout>
 
+            <!-- TODO Re-enable click -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/overviewButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:visibility="gone"
+                android:clickable="false"
+                android:focusable="false"
                 app:cardCornerRadius="@dimen/rounded_corners"
                 app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"

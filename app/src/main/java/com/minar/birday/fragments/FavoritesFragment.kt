@@ -143,44 +143,48 @@ class FavoritesFragment : Fragment() {
                 // Grey for no events, .3 for 1 event, .6 for 2 events, 1 for 3+ events
                 if (events != null) {
                     val today = LocalDate.now()
+                    val nextDays = buildList {
+                        for (i in 0..9L) this.add(today.plusDays(i).dayOfMonth)
+                    }
+
+                    // Prepare the dots
                     val accent = act.getThemeColor(R.attr.colorAccent)
+                    overviewDot1.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    overviewText1.text = nextDays[0].toString()
+                    overviewDot2.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    overviewText2.text = nextDays[1].toString()
+                    overviewDot3.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    overviewText3.text = nextDays[2].toString()
+                    overviewDot4.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    overviewText4.text = nextDays[3].toString()
+                    overviewDot5.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    overviewText5.text = nextDays[4].toString()
+                    overviewDot6.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    overviewText6.text = nextDays[5].toString()
+                    overviewDot7.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    overviewText7.text = nextDays[6].toString()
+                    overviewDot8.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    overviewText8.text = nextDays[7].toString()
+                    overviewDot9.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    overviewText9.text = nextDays[8].toString()
+                    overviewDot10.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    overviewText10.text = nextDays[9].toString()
+
+                    // Set the opacities
                     if (events.any { eventResult ->
                             eventResult.nextDate!!.isBefore(
                                 LocalDate.now().plusDays(10)
                             )
                         }) {
-                        overviewDot1.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
-                        overviewText1.text = today.dayOfMonth.toString()
                         overviewDot1.alpha = .1F
-                        overviewDot2.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
-                        overviewText2.text = today.dayOfMonth.toString()
                         overviewDot2.alpha = .2F
-                        overviewDot3.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
-                        overviewText3.text = today.dayOfMonth.toString()
                         overviewDot3.alpha = .3F
-                        overviewDot4.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
-                        overviewText4.text = today.dayOfMonth.toString()
                         overviewDot4.alpha = .4F
-                        overviewDot5.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
-                        overviewText5.text = today.dayOfMonth.toString()
                         overviewDot5.alpha = .5F
-                        overviewDot6.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
-                        overviewText6.text = today.dayOfMonth.toString()
                         overviewDot6.alpha = .6F
-                        overviewDot7.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
-                        overviewText7.text = today.dayOfMonth.toString()
                         overviewDot7.alpha = .7F
-                        overviewDot8.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
-                        overviewText8.text = today.dayOfMonth.toString()
                         overviewDot8.alpha = .8F
-                        overviewDot9.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
-                        overviewText9.text = today.dayOfMonth.toString()
                         overviewDot9.alpha = .9F
-                        overviewDot10.setColorFilter(
-                            accent,
-                            android.graphics.PorterDuff.Mode.SRC_IN
-                        )
-                        overviewText10.text = today.dayOfMonth.toString()
                         overviewDot10.alpha = 1F
                     }
                 }
