@@ -37,6 +37,7 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.DialogInsertEventBinding
+import com.minar.birday.databinding.DialogNotesBinding
 import com.minar.birday.databinding.FragmentDetailsBinding
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
@@ -104,6 +105,7 @@ class DetailsFragment : Fragment() {
         val deleteButton = binding.detailsDeleteButton
         val editButton = binding.detailsEditButton
         val shareButton = binding.detailsShareButton
+        val notesButton = binding.detailsNotesButton
 
         // Manage the shimmer
         if (shimmerEnabled) {
@@ -149,6 +151,41 @@ class DetailsFragment : Fragment() {
             act.vibrate()
             shareEvent(event)
             v.findNavController().popBackStack()
+        }
+
+        notesButton.setOnClickListener {
+            act.vibrate()
+            val dialogNotesBinding = DialogNotesBinding.inflate(LayoutInflater.from(context))
+            val notesTitle = getString(R.string.notes) + " - " + event.name
+            MaterialDialog(act).show {
+                title(text = notesTitle)
+                icon(R.drawable.ic_note_24dp)
+                cornerRadius(res = R.dimen.rounded_corners)
+                customView(view = dialogNotesBinding.root)
+                val noteTextField = dialogNotesBinding.favoritesNotes
+                noteTextField.setText(event.notes)
+                negativeButton(R.string.cancel) {
+                    dismiss()
+                }
+                positiveButton {
+                    val note = noteTextField.text.toString().trim()
+                    val tuple = Event(
+                        id = event.id,
+                        originalDate = event.originalDate,
+                        name = event.name,
+                        yearMatter = event.yearMatter,
+                        surname = event.surname,
+                        favorite = event.favorite,
+                        notes = note,
+                        image = event.image
+                    )
+                    mainViewModel.update(tuple)
+                    // Update locally (no livedata here)
+                    event.notes = note
+                    dismiss()
+                }
+            }
+
         }
 
         val formatter: DateTimeFormatter =

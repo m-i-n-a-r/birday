@@ -12,7 +12,7 @@ data class EventResult (
     val yearMatter: Boolean? = true,
     var originalDate: LocalDate,
     val nextDate: LocalDate? = null,
-    val notes: String? = "",
+    var notes: String? = "",
     val image: ByteArray? = null,
 ): Serializable {
     override fun equals(other: Any?): Boolean {
