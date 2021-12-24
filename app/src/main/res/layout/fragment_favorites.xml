@@ -127,14 +127,13 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.facebook.shimmer.ShimmerFrameLayout>
 
-            <!-- TODO Re-enable click -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/overviewButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
-                android:clickable="false"
-                android:focusable="false"
+                android:clickable="true"
+                android:focusable="true"
                 app:cardCornerRadius="@dimen/rounded_corners"
                 app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -176,8 +175,8 @@
 
                     <ImageView
                         android:id="@+id/overviewDot1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/preview_dot_size"
+                        android:layout_height="@dimen/preview_dot_size"
                         android:layout_marginHorizontal="@dimen/in_row_button_padding"
                         android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
@@ -191,6 +190,7 @@
                         android:id="@+id/overviewText1"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:gravity="center"
                         android:text="@string/exclamation"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
@@ -201,8 +201,8 @@
 
                     <ImageView
                         android:id="@+id/overviewDot2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/preview_dot_size"
+                        android:layout_height="@dimen/preview_dot_size"
                         android:layout_marginHorizontal="@dimen/in_row_button_padding"
                         android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
@@ -216,6 +216,7 @@
                         android:id="@+id/overviewText2"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:gravity="center"
                         android:text="@string/exclamation"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
@@ -226,8 +227,8 @@
 
                     <ImageView
                         android:id="@+id/overviewDot3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/preview_dot_size"
+                        android:layout_height="@dimen/preview_dot_size"
                         android:layout_marginHorizontal="@dimen/in_row_button_padding"
                         android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
@@ -241,6 +242,7 @@
                         android:id="@+id/overviewText3"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:gravity="center"
                         android:text="@string/exclamation"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
@@ -251,8 +253,8 @@
 
                     <ImageView
                         android:id="@+id/overviewDot4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/preview_dot_size"
+                        android:layout_height="@dimen/preview_dot_size"
                         android:layout_marginHorizontal="@dimen/in_row_button_padding"
                         android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
@@ -266,6 +268,7 @@
                         android:id="@+id/overviewText4"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:gravity="center"
                         android:text="@string/exclamation"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
@@ -276,8 +279,8 @@
 
                     <ImageView
                         android:id="@+id/overviewDot5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/preview_dot_size"
+                        android:layout_height="@dimen/preview_dot_size"
                         android:layout_marginHorizontal="@dimen/in_row_button_padding"
                         android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
@@ -291,6 +294,7 @@
                         android:id="@+id/overviewText5"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:gravity="center"
                         android:text="@string/exclamation"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
@@ -301,8 +305,8 @@
 
                     <ImageView
                         android:id="@+id/overviewDot6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/preview_dot_size"
+                        android:layout_height="@dimen/preview_dot_size"
                         android:layout_marginHorizontal="@dimen/in_row_button_padding"
                         android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
@@ -316,6 +320,7 @@
                         android:id="@+id/overviewText6"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:gravity="center"
                         android:text="@string/exclamation"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
@@ -326,8 +331,8 @@
 
                     <ImageView
                         android:id="@+id/overviewDot7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/preview_dot_size"
+                        android:layout_height="@dimen/preview_dot_size"
                         android:layout_marginHorizontal="@dimen/in_row_button_padding"
                         android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
@@ -341,6 +346,7 @@
                         android:id="@+id/overviewText7"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:gravity="center"
                         android:text="@string/exclamation"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
@@ -351,8 +357,8 @@
 
                     <ImageView
                         android:id="@+id/overviewDot8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/preview_dot_size"
+                        android:layout_height="@dimen/preview_dot_size"
                         android:layout_marginHorizontal="@dimen/in_row_button_padding"
                         android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
@@ -366,6 +372,7 @@
                         android:id="@+id/overviewText8"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:gravity="center"
                         android:text="@string/exclamation"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
@@ -376,8 +383,8 @@
 
                     <ImageView
                         android:id="@+id/overviewDot9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/preview_dot_size"
+                        android:layout_height="@dimen/preview_dot_size"
                         android:layout_marginHorizontal="@dimen/in_row_button_padding"
                         android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
@@ -391,6 +398,7 @@
                         android:id="@+id/overviewText9"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:gravity="center"
                         android:text="@string/exclamation"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
@@ -401,8 +409,8 @@
 
                     <ImageView
                         android:id="@+id/overviewDot10"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/preview_dot_size"
+                        android:layout_height="@dimen/preview_dot_size"
                         android:layout_marginHorizontal="@dimen/in_row_button_padding"
                         android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
@@ -416,6 +424,8 @@
                         android:id="@+id/overviewText10"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
                         android:text="@string/exclamation"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"

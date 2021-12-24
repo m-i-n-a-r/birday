@@ -29,8 +29,10 @@ import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.StatsGenerator
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
+import com.minar.birday.utilities.getRemainingDays
 import com.minar.birday.viewmodels.MainViewModel
 import java.time.LocalDate
+import java.time.temporal.ChronoUnit
 import kotlin.math.min
 
 
@@ -116,31 +118,29 @@ class FavoritesFragment : Fragment() {
                     adapter.submitList(events)
                 }
             })
-            // AllEvents contains everything, since the query string is reset when the fragment changes
-            allEvents.observe(viewLifecycleOwner, { eventList ->
-                // Under a minimum size, no stats will be shown (at least 5 events containing a year)
-                if (eventList.filter { it.yearMatter == true }.size > 4) generateStat(eventList)
+        }
+
+        // Set the overview button TODO Temporary disabled
+        //overviewButton.setOnClickListener {
+        //    // Vibrate and navigate to the overview screen
+        //    act.vibrate()
+        //    requireView().findNavController()
+        //        .navigate(R.id.action_navigationFavorites_to_overviewFragment)
+        //}
+
+        // Set the data which requires the complete and unfiltered event list
+        with(binding) {
+            mainViewModel.allEventsUnfiltered.observe(viewLifecycleOwner, { events ->
+                // Stats - Under a minimum size, no stats will be shown (at least 5 events containing a year)
+                if (events.filter { it.yearMatter == true }.size > 4) generateStat(events)
                 else fullStats = SpannableStringBuilder(
                     requireActivity().applicationContext.getString(
                         R.string.no_stats_description
                     )
                 )
-                totalEvents = eventList.size
-            })
-        }
+                totalEvents = events.size
 
-        // Set the overview button
-        overviewButton.setOnClickListener {
-            // Vibrate and navigate to the overview screen
-            act.vibrate()
-            requireView().findNavController()
-                .navigate(R.id.action_navigationFavorites_to_overviewFragment)
-        }
-
-        // Set the overview dots with the next events
-        with(binding) {
-            mainViewModel.allEventsUnfiltered.observe(viewLifecycleOwner, { events ->
-                // Grey for no events, .3 for 1 event, .6 for 2 events, 1 for 3+ events
+                // Quick glance - alpha set to .3 for 1 event, .6 for 2 events, 1 for 3+ events
                 if (events != null) {
                     val today = LocalDate.now()
                     val nextDays = buildList {
@@ -171,25 +171,33 @@ class FavoritesFragment : Fragment() {
                     overviewText10.text = nextDays[9].toString()
 
                     // Set the opacities
-                    if (events.any { eventResult ->
-                            eventResult.nextDate!!.isBefore(
-                                LocalDate.now().plusDays(10)
-                            )
-                        }) {
-                        overviewDot1.alpha = .1F
-                        overviewDot2.alpha = .2F
-                        overviewDot3.alpha = .3F
-                        overviewDot4.alpha = .4F
-                        overviewDot5.alpha = .5F
-                        overviewDot6.alpha = .6F
-                        overviewDot7.alpha = .7F
-                        overviewDot8.alpha = .8F
-                        overviewDot9.alpha = .9F
-                        overviewDot10.alpha = 1F
+                    overviewDot1.alpha = .0F
+                    overviewDot2.alpha = .0F
+                    overviewDot3.alpha = .0F
+                    overviewDot4.alpha = .0F
+                    overviewDot5.alpha = .0F
+                    overviewDot6.alpha = .0F
+                    overviewDot7.alpha = .0F
+                    overviewDot8.alpha = .0F
+                    overviewDot9.alpha = .0F
+                    overviewDot10.alpha = .0F
+                    for (event in events) {
+                        when (getRemainingDays(event.nextDate!!)) {
+                            0 -> overviewDot1.alpha += .30F
+                            1 -> overviewDot2.alpha += .30F
+                            2 -> overviewDot3.alpha += .30F
+                            3 -> overviewDot4.alpha += .30F
+                            4 -> overviewDot5.alpha += .30F
+                            5 -> overviewDot6.alpha += .30F
+                            6 -> overviewDot7.alpha += .30F
+                            7 -> overviewDot8.alpha += .30F
+                            8 -> overviewDot9.alpha += .30F
+                            9 -> overviewDot10.alpha += .30F
+                            else -> continue
+                        }
                     }
                 }
             })
-
         }
 
         return v
