@@ -8,6 +8,7 @@ import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.minar.birday.R
+import com.minar.birday.activities.MainActivity
 
 object AppRater {
 
@@ -15,12 +16,11 @@ object AppRater {
     private const val APP_RATING = "app_rating"
     private const val LAUNCH_COUNT = "launch_count"
     private const val DATE_FIRST_LAUNCH = "date_first_launch"
-
     private const val DAYS_UNTIL_PROMPT = 2 // Min number of days
     private const val LAUNCHES_UNTIL_PROMPT = 3 // Min number of launches
-
     private const val DIALOG_CORNER = 16.toFloat()
 
+    @ExperimentalStdlibApi
     @JvmStatic
     fun appLaunched(context: Context) {
         val prefs = context.getSharedPreferences(APP_RATING, 0)
@@ -47,6 +47,7 @@ object AppRater {
         editor.apply()
     }
 
+    @ExperimentalStdlibApi
     private fun showRateDialog(context: Context, editor: SharedPreferences.Editor) {
         MaterialDialog(context, BottomSheet(LayoutMode.WRAP_CONTENT))
             .show {
@@ -72,6 +73,10 @@ object AppRater {
                 neutralButton(R.string.no_thanks) {
                     editor.putBoolean(DO_NOT_SHOW_AGAIN, true)
                     editor.commit()
+                    try {
+                        (context as MainActivity).showSnackbar(":'(")
+                    } catch (e: Exception) {
+                    }
                     dismiss()
                 }
             }

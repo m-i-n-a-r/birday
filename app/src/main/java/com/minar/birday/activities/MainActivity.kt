@@ -538,6 +538,7 @@ class MainActivity : AppCompatActivity() {
         else
             snackbar.anchorView = binding.bottomBar
         if (action != null) {
+            snackbar.setActionTextColor(getThemeColor(android.R.attr.colorAccent))
             snackbar.setAction(actionText) {
                 action()
             }

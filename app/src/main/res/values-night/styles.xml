@@ -9,6 +9,7 @@
         <item name="android:statusBarColor">@color/colorBackgroundInverse</item>
         <item name="android:colorBackground">@color/colorBackgroundInverse</item>
         <item name="android:textColorPrimary">@color/textColorPrimaryInverse</item>
+        <item name="colorOnPrimary">@color/colorBackground</item>
         <item name="android:textColorSecondary">@color/textColorSecondaryInverse</item>
         <item name="colorSurface">@color/colorSurfaceInverse</item>
         <item name="colorPrimary">@color/colorAccent</item>
