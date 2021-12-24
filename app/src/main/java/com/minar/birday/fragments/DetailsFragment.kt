@@ -17,6 +17,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -31,6 +32,7 @@ import com.afollestad.materialdialogs.WhichButton
 import com.afollestad.materialdialogs.actions.getActionButton
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -153,6 +155,11 @@ class DetailsFragment : Fragment() {
             v.findNavController().popBackStack()
         }
 
+        // Manage the icon of the notes button (no notes / notes)
+        if (event.notes.isNullOrBlank())
+            (notesButton as MaterialButton).icon =
+                AppCompatResources.getDrawable(act, R.drawable.ic_note_missing_24dp)
+
         notesButton.setOnClickListener {
             act.vibrate()
             val dialogNotesBinding = DialogNotesBinding.inflate(LayoutInflater.from(context))
@@ -182,6 +189,12 @@ class DetailsFragment : Fragment() {
                     mainViewModel.update(tuple)
                     // Update locally (no livedata here)
                     event.notes = note
+                    if (note.isBlank())
+                        (notesButton as MaterialButton).icon =
+                            AppCompatResources.getDrawable(act, R.drawable.ic_note_missing_24dp)
+                    else
+                        (notesButton as MaterialButton).icon =
+                            AppCompatResources.getDrawable(act, R.drawable.ic_note_24dp)
                     dismiss()
                 }
             }
