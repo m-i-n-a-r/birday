@@ -4,10 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:paddingHorizontal="@dimen/text_field_horizontal_margin">
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -22,9 +21,45 @@
             android:focusable="true"
             android:padding="@dimen/in_row_padding"
             android:src="@drawable/placeholder_event_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/roundedImageView"
             app:strokeColor="@color/goodGray"
             app:strokeWidth="@dimen/card_stroke" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/typeEventLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/between_row_padding"
+            android:hint="@string/insert_name_hint"
+            android:labelFor="@+id/typeEvent"
+            app:boxBackgroundColor="@color/transparent"
+            app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
+            app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
+            app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
+            app:boxCornerRadiusTopStart="@dimen/text_field_corner"
+            app:hintAnimationEnabled="true"
+            app:hintTextColor="?colorAccent"
+            app:layout_constraintBottom_toBottomOf="@id/imageEvent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageEvent"
+            app:layout_constraintTop_toTopOf="@id/imageEvent"
+            app:startIconDrawable="@drawable/ic_date_question_black_24dp"
+            app:startIconTint="@color/goodGray">
+
+            <AutoCompleteTextView
+                android:id="@+id/typeEvent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:inputType="none"
+                android:padding="0dp"
+                android:textCursorDrawable="@drawable/custom_cursor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/nameEventLayout"
@@ -32,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/between_row_padding"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:hint="@string/insert_name_hint"
             app:boxBackgroundColor="@color/transparent"
             app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
@@ -47,6 +82,9 @@
             app:errorTextColor="?colorAccent"
             app:hintAnimationEnabled="true"
             app:hintTextColor="?colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageEvent"
             app:startIconDrawable="@drawable/ic_cool_black_24dp"
             app:startIconTint="@color/goodGray">
 
@@ -83,6 +121,9 @@
             app:errorTextColor="?colorAccent"
             app:hintAnimationEnabled="true"
             app:hintTextColor="?colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameEventLayout"
             app:startIconDrawable="@drawable/ic_smile_24dp"
             app:startIconTint="@color/goodGray">
 
@@ -119,6 +160,9 @@
             app:errorTextColor="?colorAccent"
             app:hintAnimationEnabled="true"
             app:hintTextColor="?colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/surnameEventLayout"
             app:startIconDrawable="@drawable/ic_date_black_24dp"
             app:startIconTint="@color/goodGray">
 
@@ -147,8 +191,11 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             android:textColor="@color/goodGray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dateEventLayout"
             app:switchPadding="@dimen/text_switch_padding" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

@@ -131,6 +131,12 @@
     <string name="insert_date_hint">Select a date</string>
     <string name="invalid_value_name">Invalid name. Numbers and symbols aren\'t allowed!</string>
     <string name="consider_year">Consider the year</string>
+    <string name="birthday">Birthday</string>
+    <string name="anniversary">Anniversary</string>
+    <string name="death_anniversary">Death anniversary</string>
+    <string name="festivity">Festivity</string>
+    <string name="name_day">Name day</string>
+    <string name="other">Other</string>
 
     <!-- Event actions -->
     <string name="event_actions">Actions</string>
