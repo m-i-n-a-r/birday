@@ -3,7 +3,7 @@
 
     <string name="app_name" translatable="false">Birday</string>
     <string name="app_welcome">Welcome to Birday</string>
-    <string name="app_name_extended">Birday - Birthday Manager</string>
+    <string name="app_name_extended">Birday - Event Manager</string>
     <string name="leave_review_title">Review Birday</string>
     <string name="leave_review_subtitle">Leave a review to help me with the app. Keep in mind that, donations aside, this app is completely free and ad-free!</string>
     <string name="yes_review">Review!</string>
@@ -12,20 +12,20 @@
     <string name="title_home">Home</string>
     <string name="title_favorites">Favorites</string>
     <string name="title_settings">Settings</string>
-    <string name="no_events">No birthdays! Start adding one using the button below!</string>
+    <string name="no_events">No events! Start adding one using the button below!</string>
     <string name="no_favorites">No favorites! Press the star to save an event in your favorites!</string>
     <string name="add_favorite">Add to favorites</string>
     <string name="stats">Statistics</string>
     <string name="no_stats">No stats to show!</string>
     <string name="stats_summary">Stats summary</string>
-    <string name="no_stats_description">You don\'t have enough birthdays to generate stats. Add some and come back later!</string>
+    <string name="no_stats_description">You don\'t have enough events to generate stats. Add some and come back later!</string>
     <plurals name="stats_total">
-        <item quantity="one">Birday is helping you to remember a total of %d birthday</item>
-        <item quantity="other">Birday is helping you to remember a total of %d birthdays</item>
+        <item quantity="one">Birday is helping you to remember a total of %d event</item>
+        <item quantity="other">Birday is helping you to remember a total of %d events</item>
     </plurals>
     <string name="next_event">Next event</string>
-    <string name="no_next_event">No birthdays to show!</string>
-    <string name="no_next_event_description">You haven\'t entered or imported a birthday yet. Add one and let Birday help you!</string>
+    <string name="no_next_event">No events to show!</string>
+    <string name="no_next_event_description">You haven\'t entered or imported an event yet. Add one and let Birday help you!</string>
     <string name="next_age_years">Years</string>
     <string name="event_others">and others</string>
     <plurals name="days_left">
@@ -79,20 +79,20 @@
     <string name="dark_widget_description_on">The widget uses the dark theme</string>
     <string name="dark_widget_description_off">The widget uses the light theme</string>
     <string name="import_export">Import and Export</string>
-    <string name="import_contacts_title">Import birthdays from contacts</string>
+    <string name="import_contacts_title">Import events from contacts</string>
     <string name="import_contacts_description">Make sure to modify the events with missing years to always have accurate statistics!</string>
     <string name="import_success">Import completed successfully!</string>
-    <string name="import_nothing_found">No birthday found!</string>
+    <string name="import_nothing_found">No event found!</string>
     <string name="import_failed">Something went wrong!</string>
     <string name="missing_permission_contacts">The contact permission was denied. Try again or activate the permission manually,
     or the contacts import won\'t work!</string>
     <string name="missing_permission_contacts_forever">Birday can\'t ask for permission to import contacts,
     since you checked "never ask again". Enable it manually!</string>
     <string name="birday_import_title">Import a Birday backup</string>
-    <string name="birday_import_description">Choose a valid Birday backup to restore your birthdays. All existing data
+    <string name="birday_import_description">Choose a valid Birday backup to restore your events. All existing data
     will be overwritten!</string>
-    <string name="birday_export_title">Export and share birthdays</string>
-    <string name="birday_export_description">Export the available birthdays to a backup, and share them if you want. The file is in
+    <string name="birday_export_title">Export and share events</string>
+    <string name="birday_export_description">Export the available events to a backup, and share them if you want. The file is in
     Android/data/com.minar.birday/files</string>
     <string name="birday_import_success">Import completed!</string>
     <string name="birday_import_failure">Import failed. Did you choose the file correctly?</string>
@@ -122,9 +122,9 @@
     <string name="easter_egg">Nice logo, huh? ;D</string>
 
     <!-- New event -->
-    <string name="new_event">New birthday</string>
-    <string name="new_event_description">Enter a person you care about, and Birday will help you to remember their birthday!</string>
-    <string name="insert_event">Insert birthday</string>
+    <string name="new_event">New event</string>
+    <string name="new_event_description">Enter a person you care about, and Birday will help you to remember their birthday or other events!</string>
+    <string name="insert_event">Insert event</string>
     <string name="cancel">Cancel</string>
     <string name="insert_name_hint">Insert First Name</string>
     <string name="insert_surname_hint">Insert Last Name</string>
@@ -162,7 +162,7 @@
     <string name="telegram" translatable="false">Telegram</string>
     <string name="textMessage">Text message</string>
     <string name="dialer">Dialer</string>
-    <string name="wishes">Happy birthday!</string>
+    <string name="wishes_birthday">Happy birthday!</string>
     <string name="no_default_dialer">No default dialer app found!</string>
     <string name="no_default_sms">No default SMS app found!</string>
 
@@ -228,29 +228,29 @@
 
     <!-- Notifications -->
     <string name="events_notification_channel">Event Reminder</string>
-    <string name="events_channel_description">Reminders about the upcoming birthdays from Birday</string>
+    <string name="events_channel_description">Reminders about the upcoming events from Birday</string>
     <string name="notification_title">Birday Reminder</string>
-    <string name="notification_description_part_1">Hi there, today\'s birthdays are</string>
+    <string name="notification_description_part_1">Hi there, today\'s events are</string>
     <string name="notification_description_part_2">Have a great day!</string>
-    <string name="additional_notification_text">Upcoming birthdays!</string>
+    <string name="additional_notification_text">Upcoming events!</string>
 
     <!-- Introduction slides -->
     <string name="slide_one_title">Welcome to Birday!</string>
     <string name="slide_one_description">Birday is a simple and lightweight app to manage important events!
-    You can use it to remember and store the birthdays of the people you love, in a reliable and fast way.
+    You can use it to remember and store the birthdays of the people you love and more, in a reliable and fast way.
     </string>
     <string name="slide_two_title">Free, simple, customizable</string>
     <string name="slide_two_description">Birday is free, ad-free and open source. It provides a set of
-    stats about your birthdays, a favorite system and a customizable interface. And guaranteed
+    stats about your events, a favorite system and a customizable interface. And guaranteed
     support and updates!
     </string>
     <string name="slide_three_title">Import from contacts</string>
-    <string name="slide_three_description">It\'s also possible to import the birthdays you\'ve already saved
+    <string name="slide_three_description">It\'s also possible to import the events you\'ve already saved
     from your contacts. Birday can do it for you, just grant the contacts permission. Enjoy!
     </string>
 
     <!-- Widget -->
-    <string name="appwidget_upcoming">Upcoming birthdays</string>
+    <string name="appwidget_upcoming">Upcoming events</string>
     <string name="add_widget">Birday - Upcoming</string>
 
     <!-- Search -->
@@ -264,5 +264,6 @@
 
     <!-- Overview -->
     <string name="overview">Overview</string>
+    <string name="overview_description">A yearly overview of every saved event</string>
 
 </resources>

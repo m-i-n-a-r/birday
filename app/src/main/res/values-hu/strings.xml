@@ -137,7 +137,7 @@
     <string name="event_apps_description">Az alkalmazások arra, hogy gyorsan kívánd a legjobbakat!</string>
     <string name="textMessage">Szöveges üzenet</string>
     <string name="dialer">Tárcsázó</string>
-    <string name="wishes">Boldog születésnapot!</string>
+    <string name="wishes_birthday">Boldog születésnapot!</string>
     <string name="no_default_dialer">Nem található alapértelmezett tárcsázó alkalmazás!</string>
     <string name="no_default_sms">Nem található alapértelmezett sms alkalmazás!</string>
 

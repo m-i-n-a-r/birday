@@ -143,7 +143,7 @@
     <string name="event_apps_description">Aplicações para desejar um bom aniversário!</string>
     <string name="textMessage">Mensagem de texto</string>
     <string name="dialer">Chamada</string>
-    <string name="wishes">Feliz aniversário!</string>
+    <string name="wishes_birthday">Feliz aniversário!</string>
     <string name="no_default_dialer">Não existe uma aplicação para fazer a chamada!</string>
     <string name="no_default_sms">Não existe uma aplicação para enviar a SMS!</string>
 

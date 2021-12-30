@@ -136,7 +136,7 @@
     <string name="event_apps_description">Ứng dụng để chúc mọi điều tốt đẹp cho nhanh!</string>
     <string name="textMessage">Tin nhắn</string>
     <string name="dialer">Quay số</string>
-    <string name="wishes">Chúc mừng sinh nhật!</string>
+    <string name="wishes_birthday">Chúc mừng sinh nhật!</string>
     <string name="no_default_dialer">Không tìm được ứng dụng quay số mặc định!</string>
     <string name="no_default_sms">Không tìm được ứng dụng sms mặc định!</string>
 

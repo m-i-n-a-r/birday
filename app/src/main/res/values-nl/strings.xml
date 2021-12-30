@@ -141,7 +141,7 @@
     <string name="event_apps_description">Apps om je verjaardagswensen direct te versturen!</string>
     <string name="textMessage">Sms-bericht</string>
     <string name="dialer">Telefoon</string>
-    <string name="wishes">Fijne verjaardag!</string>
+    <string name="wishes_birthday">Fijne verjaardag!</string>
     <string name="no_default_dialer">Geen standaard telefoon app gevonden!</string>
     <string name="no_default_sms">Geen standaard sms app gevonden!</string>
 

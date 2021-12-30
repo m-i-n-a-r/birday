@@ -138,7 +138,7 @@
     <string name="event_apps_description">Apps para desejar tudo de bom rapidamente!</string>
     <string name="textMessage">Mensagem de texto</string>
     <string name="dialer">Discador</string>
-    <string name="wishes">Feliz Aniversário!</string>
+    <string name="wishes_birthday">Feliz Aniversário!</string>
     <string name="no_default_dialer">Nenhum aplicativo discador padrão encontrado!</string>
     <string name="no_default_sms">Nenhum aplicativo SMS padrão encontrado!</string>
 

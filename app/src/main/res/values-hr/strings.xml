@@ -144,7 +144,7 @@
     <string name="event_apps_description">Aplikacije za brzo poželjeti sve najbolje!</string>
     <string name="textMessage">SMS poruka</string>
     <string name="dialer">Telefon</string>
-    <string name="wishes">Sretan rođendan!</string>
+    <string name="wishes_birthday">Sretan rođendan!</string>
     <string name="no_default_dialer">Nije pronađena zadana aplikacija za biranje brojeva!</string>
     <string name="no_default_sms">Nije pronađena zadana aplikacija za SMS!</string>
 

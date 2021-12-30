@@ -123,7 +123,7 @@
     <string name="chinese_zodiac_sign">生肖：</string>
     <string name="textMessage">簡訊</string>
     <string name="dialer">電話</string>
-    <string name="wishes">生日快樂！</string>
+    <string name="wishes_birthday">生日快樂！</string>
     <string name="no_default_dialer">找不到預設撥號器！</string>
     <string name="no_default_sms">找不到預設簡訊 App！</string>
     <string name="did_you_know">你知道嗎？</string>
