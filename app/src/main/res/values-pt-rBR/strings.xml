@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_welcome">Bem-vindo ao Birday</string>
-    <string name="app_name_extended">Birday - Gerente de Aniversário</string>
+    <string name="app_name_extended">Birday - Gerenciador de Aniversário</string>
     <string name="leave_review_title">Avalie o Birday</string>
     <string name="leave_review_subtitle">Deixe um comentário para me ajudar com o aplicativo. Tenha em mente que, doações à parte, este aplicativo é totalmente gratuito e sem anúncios!</string>
     <string name="yes_review">Avaliar!</string>
@@ -14,7 +14,7 @@
     <string name="no_events">Sem aniversários! Comece a adicionar um usando o botão abaixo!</string>
     <string name="no_favorites">Sem favoritos! Pressione a estrela para salvar um evento em seus favoritos!</string>
     <string name="add_favorite">Adicionar aos favoritos</string>
-    <string name="stats">Estatisticas</string>
+    <string name="stats">Estatísticas</string>
     <string name="no_stats">Sem estatísticas para mostrar!</string>
     <string name="stats_summary">Resumo estatístico</string>
     <string name="no_stats_description">Você não tem aniversários suficientes para exibir as estatísticas. Adicione alguns e volte mais tarde!</string>
@@ -101,13 +101,16 @@
     <string name="hide_images">Esconder imagens</string>
     <string name="hide_images_description_on">Imagens de eventos ocultas</string>
     <string name="hide_images_description_off">Imagens do evento visíveis</string>
+    <string name="notification_only_favorites">Apenas favoritos</string>
+    <string name="notification_only_favorites_description_on">Envie uma notificação apenas para eventos favoritos</string>
+    <string name="notification_only_favorites_description_off">Envia uma notificação para todos os eventos inseridos</string>
 
     <!-- Developer -->
     <string name="dev_description">Sou um cara educado e gosto de coisas bonitas, como animações, ícones, carros esporte e impressão 3D. Trabalho como designer e engenheiro de computação.</string>
     <string name="easter_egg">Belo logotipo, hein? ;D</string>
 
     <!-- New event -->
-    <string name="new_event">Novo aniversario</string>
+    <string name="new_event">Novo aniversário</string>
     <string name="new_event_description">Insira uma nova pessoa de quem você gosta e Birday o ajudará a lembrar o aniversário dele/dela!</string>
     <string name="insert_event">Inserir aniversário</string>
     <string name="cancel">Cancelar</string>
@@ -202,7 +205,7 @@
 
     <!-- Notifications -->
     <string name="events_notification_channel">Lembrete de Evento</string>
-    <string name="events_channel_description">Lembretes sobre os próximos aniversários de aniversário</string>
+    <string name="events_channel_description">Lembretes sobre os próximos aniversários no Birday</string>
     <string name="notification_title">Lembrete do Birday</string>
     <string name="notification_description_part_1">Olá, os aniversários de hoje são</string>
     <string name="notification_description_part_2">Tenha um ótimo dia!</string>
@@ -213,7 +216,7 @@
     <string name="slide_one_description">Birday é um aplicativo simples e leve para gerenciar eventos importantes! Você pode usá-lo para lembrar e armazenar os aniversários das pessoas que você ama, de maneira confiável e rápida.
     </string>
     <string name="slide_two_title">Gratuito, simples, personalizável</string>
-    <string name="slide_two_description">O Birday é gratuito, sem anúncios e de código aberto. Ele fornece um conjunto de estatísticas sobre seus aniversários, um sistema favorito e uma interface personalizável. E além disso suporte e atualizações garantidos!
+    <string name="slide_two_description">O Birday é gratuito, sem anúncios e de código aberto. Ele fornece um conjunto de estatísticas sobre seus aniversários, um sistema de favoritos e uma interface personalizável. E além disso suporte e atualizações garantidos!
     </string>
     <string name="slide_three_title">Importar de contatos</string>
     <string name="slide_three_description">Também é possível importar os aniversários que você já salvou de seus contatos. Birday pode fazer isso por você, basta conceder permissão aos contatos. Aproveite!
@@ -221,15 +224,18 @@
 
     <!-- Widget -->
     <string name="appwidget_upcoming">Próximos aniversários</string>
-    <string name="add_widget">Aniversário - próximo</string>
+    <string name="add_widget">Birday - Próximos</string>
 
     <!-- Search -->
     <string name="search_event">Pesquisa…</string>
     <string name="search_no_result_title">Nenhum resultado encontrado</string>
-    <string name="search_no_result_description">Sua string de pesquisa não corresponde a nenhum evento no banco de dados do Birday!</string>
+    <string name="search_no_result_description">Sua pesquisa não corresponde a nenhum evento que você adicionou!</string>
 
     <!-- Notes -->
     <string name="notes">Notas</string>
     <string name="write_something">Escreva algo…</string>
+
+    <!-- Overview -->
+    <string name="overview">Visão Geral</string>
 
 </resources>
