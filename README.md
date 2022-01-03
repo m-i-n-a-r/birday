@@ -86,6 +86,7 @@ The app is available through Google Play and F-Droid\
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
      alt="Get it on Google Play"
      height="80">](https://play.google.com/store/apps/details?id=com.minar.birday)
+\
 There is also a long term support version available, ready to be compiled and used when this repo is messed up by my partial updates. I'm planning to create a separate branch for development and keep the master branch clean and working, but that's a good solution too. Huge thanks to @DominikNovosel for the constant help in the maintainance of this project :) https://github.com/DominikNovosel/Birday-LTS
 
 ## Credits and contributions
