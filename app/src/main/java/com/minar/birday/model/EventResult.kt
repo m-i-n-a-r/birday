@@ -5,7 +5,7 @@ import java.time.LocalDate
 
 data class EventResult (
     val id: Int,
-    val type: String? = EventType.BIRTHDAY.name,
+    val type: String? = EventCode.BIRTHDAY.name,
     var name: String,
     var surname: String? = "",
     var favorite: Boolean? = false,

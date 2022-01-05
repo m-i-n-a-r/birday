@@ -57,7 +57,7 @@ import com.minar.birday.backup.ContactsImporter
 import com.minar.birday.databinding.ActivityMainBinding
 import com.minar.birday.databinding.DialogInsertEventBinding
 import com.minar.birday.model.Event
-import com.minar.birday.model.EventType
+import com.minar.birday.model.EventCode
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
 import java.io.IOException
@@ -250,7 +250,7 @@ class MainActivity : AppCompatActivity() {
             vibrate()
             _dialogInsertEventBinding = DialogInsertEventBinding.inflate(layoutInflater)
             // Show a bottom sheet containing the form to insert a new event
-            var eventType = EventType.BIRTHDAY.name
+            var eventType = EventCode.BIRTHDAY
             var nameValue = "error"
             var surnameValue = ""
             var eventDateValue: LocalDate = LocalDate.of(1970, 1, 1)
@@ -273,7 +273,7 @@ class MainActivity : AppCompatActivity() {
                         name = nameValue.smartCapitalize(),
                         surname = surnameValue.smartCapitalize(),
                         yearMatter = countYearValue,
-                        type = eventType,
+                        type = eventType.name,
                         image = image,
                     )
                     // Insert using another thread
@@ -297,14 +297,14 @@ class MainActivity : AppCompatActivity() {
             val eventImage = dialogInsertEventBinding.imageEvent
 
             // Set the dropdown to show the available event types
-            val items = EventType.getNames(this)
+            val items = getAvailableTypes(this)
             val adapter = ArrayAdapter(this, R.layout.event_type_list_item, items)
             with(type) {
                 setAdapter(adapter)
-                setText(items.first())
+                setText(items.first().toString(), false)
                 onItemClickListener =
                     AdapterView.OnItemClickListener { _, _, position, _ ->
-                        eventType = items[position]
+                        eventType = items[position].codeName
                     }
             }
 

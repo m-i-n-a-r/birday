@@ -207,6 +207,7 @@
     <string name="notification_only_favorites_description_off">Manda una notifica per tutti gli eventi inseriti</string>
     <string name="overview">Panoramica</string>
     <string name="overview_description">Una panoramica annuale degli eventi salvati</string>
+    <string name="event_type_hint">Tipo di evento</string>
     <string name="birthday">Compleanno</string>
     <string name="anniversary">Anniversario</string>
     <string name="death_anniversary">Anniversario di morte</string>

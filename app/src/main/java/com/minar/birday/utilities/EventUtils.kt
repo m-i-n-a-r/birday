@@ -3,7 +3,9 @@ package com.minar.birday.utilities
 import android.content.Context
 import com.minar.birday.R
 import com.minar.birday.model.Event
+import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
+import com.minar.birday.model.EventType
 import java.time.LocalDate
 import java.time.Period
 import java.time.format.DateTimeFormatter
@@ -37,7 +39,11 @@ fun formatDaysRemaining(daysRemaining: Int, context: Context): String {
         -1 -> context.getString(R.string.yesterday)
         0 -> context.getString(R.string.today)
         1 -> context.getString(R.string.tomorrow)
-        else -> context.resources.getQuantityString(R.plurals.days_left, daysRemaining, daysRemaining)
+        else -> context.resources.getQuantityString(
+            R.plurals.days_left,
+            daysRemaining,
+            daysRemaining
+        )
     }
 }
 
@@ -58,7 +64,8 @@ fun getReducedDate(date: LocalDate) =
 // Get the age also considering the possible corner cases
 fun getAge(eventResult: EventResult): Int {
     var age = -2
-    if (eventResult.yearMatter!!) age = eventResult.nextDate!!.year - eventResult.originalDate.year - 1
+    if (eventResult.yearMatter!!) age =
+        eventResult.nextDate!!.year - eventResult.originalDate.year - 1
     return if (age == -1) 0 else age
 }
 
@@ -69,10 +76,41 @@ fun getAgeMonths(date: LocalDate) = Period.between(date, LocalDate.now()).months
 fun getNextAge(eventResult: EventResult) = getAge(eventResult) + 1
 
 // Get the decade of birth
-fun getDecade(originalDate: LocalDate) = ((originalDate.year.toDouble() / 10).toInt() * 10).toString()
+fun getDecade(originalDate: LocalDate) =
+    ((originalDate.year.toDouble() / 10).toInt() * 10).toString()
 
 // Get the age range, in decades
-fun getAgeRange(originalDate: LocalDate) = (((LocalDate.now().year - originalDate.year).toDouble() / 10).toInt() * 10).toString()
+fun getAgeRange(originalDate: LocalDate) =
+    (((LocalDate.now().year - originalDate.year).toDouble() / 10).toInt() * 10).toString()
 
 // Get the days remaining before an event from today
-fun getRemainingDays(nextDate: LocalDate) = ChronoUnit.DAYS.between(LocalDate.now(), nextDate).toInt()
+fun getRemainingDays(nextDate: LocalDate) =
+    ChronoUnit.DAYS.between(LocalDate.now(), nextDate).toInt()
+
+// Return the resolved representation of each event type
+fun getAvailableTypes(context: Context): List<EventType> {
+    return listOf(
+        EventType(EventCode.BIRTHDAY, context.getString(R.string.birthday)),
+        EventType(EventCode.ANNIVERSARY, context.getString(R.string.anniversary)),
+        EventType(EventCode.DEATH, context.getString(R.string.death_anniversary)),
+        EventType(EventCode.NAME_DAY, context.getString(R.string.name_day)),
+        EventType(EventCode.FESTIVITY, context.getString(R.string.festivity)),
+        EventType(EventCode.OTHER, context.getString(R.string.other)),
+    )
+}
+
+// Given a string, returns the corresponding translated event type, if any
+fun getStringForTypeCodename(context: Context, codename: String): String {
+    return try {
+        when (EventCode.valueOf(codename.uppercase())) {
+            EventCode.BIRTHDAY -> context.getString(R.string.birthday)
+            EventCode.ANNIVERSARY -> context.getString(R.string.anniversary)
+            EventCode.DEATH -> context.getString(R.string.death_anniversary)
+            EventCode.NAME_DAY -> context.getString(R.string.name_day)
+            EventCode.FESTIVITY -> context.getString(R.string.festivity)
+            EventCode.OTHER -> context.getString(R.string.other)
+        }
+    } catch (e: Exception) {
+        context.getString(R.string.unknown)
+    }
+}

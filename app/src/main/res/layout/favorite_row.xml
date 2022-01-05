@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:alpha="@dimen/event_countdown_opacity"
         android:padding="@dimen/card_margin"
-        android:text="@string/unknown_age"
+        android:text="@string/unknown"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
         android:textColor="?colorAccent"

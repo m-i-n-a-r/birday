@@ -297,7 +297,7 @@ class HomeFragment : Fragment() {
                     formatName(event, sharedPrefs.getBoolean("surname_first", false))
                 val age = if (event.yearMatter!!) event.nextDate.year.minus(event.originalDate.year)
                     .toString()
-                else getString(R.string.unknown_age)
+                else getString(R.string.unknown)
                 when (events.indexOf(event)) {
                     0 -> {
                         personName = formattedPersonName

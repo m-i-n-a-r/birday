@@ -10,7 +10,7 @@ import java.time.LocalDate
 data class Event(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    val type: String? = EventType.BIRTHDAY.name,
+    val type: String? = EventCode.BIRTHDAY.name,
     val name: String,
     val surname: String? = "",
     val favorite: Boolean? = false,

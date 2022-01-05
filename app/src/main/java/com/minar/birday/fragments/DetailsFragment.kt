@@ -15,6 +15,8 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.content.res.AppCompatResources
@@ -311,6 +313,7 @@ class DetailsFragment : Fragment() {
     @ExperimentalStdlibApi
     private fun editEvent(eventResult: EventResult) {
         _dialogInsertEventBinding = DialogInsertEventBinding.inflate(LayoutInflater.from(context))
+        var typeValue = getStringForTypeCodename(act, eventResult.type!!)
         var nameValue = eventResult.name
         var surnameValue = eventResult.surname
         var countYearValue = eventResult.yearMatter
@@ -328,6 +331,7 @@ class DetailsFragment : Fragment() {
                 // Use the data to create an event object and update the db
                 val tuple = Event(
                     id = eventResult.id,
+                    type = typeValue,
                     originalDate = eventDateValue,
                     name = nameValue.smartCapitalize(),
                     yearMatter = countYearValue,
@@ -348,11 +352,13 @@ class DetailsFragment : Fragment() {
 
         // Setup listeners and checks on the fields
         dialog.getActionButton(WhichButton.POSITIVE).isEnabled = true
+        val type = dialogInsertEventBinding.typeEvent
         val name = dialogInsertEventBinding.nameEvent
         val surname = dialogInsertEventBinding.surnameEvent
         val eventDate = dialogInsertEventBinding.dateEvent
         val countYear = dialogInsertEventBinding.countYearSwitch
         val eventImage = dialogInsertEventBinding.imageEvent
+        type.setText(typeValue, false)
         name.setText(nameValue)
         surname.setText(surnameValue)
         countYear.isChecked = countYearValue!!
@@ -420,6 +426,17 @@ class DetailsFragment : Fragment() {
                 dateDialog!!.show(parentFragmentManager, "home_picker")
                 Handler(Looper.getMainLooper()).postDelayed({ dateDialog = null }, 750)
             }
+        }
+
+        // Set the dropdown to show the available event types
+        val items = getAvailableTypes(requireContext())
+        val adapter = ArrayAdapter(requireContext(), R.layout.event_type_list_item, items)
+        with(type) {
+            setAdapter(adapter)
+            onItemClickListener =
+                AdapterView.OnItemClickListener { _, _, position, _ ->
+                    typeValue = items[position].codeName.name
+                }
         }
 
         // Validate each field in the form with the same watcher

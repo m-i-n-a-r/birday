@@ -131,6 +131,7 @@
     <string name="insert_date_hint">Select a date</string>
     <string name="invalid_value_name">Invalid name. Numbers and symbols aren\'t allowed!</string>
     <string name="consider_year">Consider the year</string>
+    <string name="event_type_hint">Event type</string>
     <string name="birthday">Birthday</string>
     <string name="anniversary">Anniversary</string>
     <string name="death_anniversary">Death anniversary</string>
@@ -223,7 +224,7 @@
     </plurals>
     <string name="born_in">born in</string>
     <string name="and">and</string>
-    <string name="unknown_age" translatable="false">\??</string>
+    <string name="unknown" translatable="false">\??</string>
     <string name="exclamation" translatable="false">! !</string>
 
     <!-- Notifications -->
