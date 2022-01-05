@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:padding="@dimen/widget_margin">
 
-    <com.google.android.material.textview.MaterialTextView
+    <TextView
         android:id="@+id/event_widget_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
         tools:ignore="UseCompatTextViewDrawableXml" />
     <!-- TODO the suggested drawable start compat doesn't work -->
 
-    <com.google.android.material.textview.MaterialTextView
+    <TextView
         android:id="@+id/event_widget_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

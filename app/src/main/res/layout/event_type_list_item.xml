@@ -2,8 +2,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:drawablePadding="@dimen/text_field_horizontal_margin"
     android:ellipsize="end"
     android:maxLines="1"
-    android:padding="16dp"
+    android:padding="@dimen/form_vertical_margin"
     android:textAppearance="?attr/textAppearanceSubtitle1"
-    app:drawableStartCompat="@drawable/ic_settings_24dp" />
+    app:drawableStartCompat="@drawable/ic_dot_black_24dp"
+    app:drawableTint="?colorAccent" />
