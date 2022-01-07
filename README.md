@@ -30,7 +30,7 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 | **Polish**              | complete     | mateusz-bak    |                             |
 | **Croatian**            | complete     | Dominik Novosel| Dominik Novosel             |
 | **Portuguese**          | complete     | smarquespt     | smarquespt                  |
-| **Brazilian**           | complete     | BadJuice67     | André Paiusco               |
+| **Brazilian**           | complete     | BadJuice67     | Paiusco                     |
 | **Romanian**            | complete     | ygorigor       | ygorigor                    |
 | **Traditional Chinese** | complete     | Still34        |                             |
 
@@ -39,7 +39,7 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 - Additional notification up to 7 days before the event
 - Fetch the existing birthdays from the contacts app, images included!
 - Easily backup and restore your saved events!
-- insert an event manually, just specifying a name, an optional surnamen an image and a date (with optional year)
+- insert an event manually, just specifying a name, an optional surname an image and a date (with optional year)
 - Choose your favorite events to see detailed information about them and a countdown for each one
 - Tap on an event to see every possible detail and the available actions
 - The birthdays are also automagically backed up in cloud by Google Play Services when the app is installed from Play Store
@@ -87,7 +87,7 @@ The app is available through Google Play and F-Droid\
      alt="Get it on Google Play"
      height="80">](https://play.google.com/store/apps/details?id=com.minar.birday)
 \
-There is also a long term support version available, ready to be compiled and used when this repo is messed up by my partial updates. I'm planning to create a separate branch for development and keep the master branch clean and working, but that's a good solution too. Huge thanks to @DominikNovosel for the constant help in the maintainance of this project :) https://github.com/DominikNovosel/Birday-LTS
+There is also a long term support version available, ready to be compiled and used when this repo is messed up by my partial updates. I'm planning to create a separate branch for development and keep the master branch clean and working, but that's a good solution too. Huge thanks to @DominikNovosel for the constant help in the maintenance of this project :) https://github.com/DominikNovosel/Birday-LTS
 
 ## Credits and contributions
 Birday uses some open source libraries, just a few:
