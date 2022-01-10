@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_welcome">Bine aţi venit la Birday</string>
-    <string name="app_name_extended">Birday - Gestionare aniversări</string>
-    <string name="leave_review_title">Lăsaţi o recenzie despre Birday</string>
-    <string name="leave_review_subtitle">Lăsați o recenzie pentru a mă ajuta cu aplicația. Rețineți că, lăsând la o parte donațiile, această aplicație este complet gratuită și fără publicitate!</string>
+    <string name="app_welcome">Bine ai venit la Birday</string>
+    <string name="app_name_extended">Birday - Manager Evenimente</string>
+    <string name="leave_review_title">Lasă o recenzie despre Birday</string>
+    <string name="leave_review_subtitle">Lasă o recenzie pentru a mă ajuta cu aplicația. Reține că, lăsând la o parte donațiile, această aplicație este complet gratuită și fără publicitate!</string>
     <string name="yes_review">Recenzie!</string>
     <string name="later">Mai târziu</string>
     <string name="no_thanks">În nici un caz!</string>
     <string name="title_home">Acasă</string>
     <string name="title_favorites">Favorite</string>
     <string name="title_settings">Setări</string>
-    <string name="no_events">Fără zile de naștere! Începeți să adăugați una folosind butonul de mai jos!</string>
-    <string name="no_favorites">Niciun favorit! Apăsați pe stea pentru a salva un eveniment în favorite!</string>
-    <string name="add_favorite">Adăugați la favorite</string>
+    <string name="no_events">Niciun eveniment! Începe să adaugi unul folosind butonul de mai jos!</string>
+    <string name="no_favorites">Niciun favorit! Apasă pe stea pentru a salva un eveniment în favorite!</string>
+    <string name="add_favorite">Adaugă la favorite</string>
     <string name="stats">Statistici</string>
     <string name="no_stats">Nu există statistici de afișat!</string>
     <string name="stats_summary">Sumar statistici</string>
-    <string name="no_stats_description">Nu aveţi suficiente zile de naștere pentru a genera statistici. Adăugaţi câteva și întoarceţi-vă mai târziu!</string>
+    <string name="no_stats_description">Nu ai destule evenimente pentru a genera statistici. Adaugă unele și întoarce-te mai târziu!</string>
     <plurals name="stats_total">
-        <item quantity="one">Birday vă ajută să vă amintiți de %d zi de naştere</item>
-        <item quantity="few">Birday vă ajută să vă amintiți de %d zile de naştere</item>
-        <item quantity="other">Birday vă ajută să vă amintiți de %d zile de naştere</item>
+        <item quantity="one">Birday te ajută să îți amintești un total de %d eveniment</item>
+        <item quantity="few">Birday te ajută să îți amintești un total de %d evenimente</item>
+        <item quantity="other">Birday te ajută să îți amintești un total de %d evenimente</item>
     </plurals>
     <string name="next_event">Următorul eveniment</string>
-    <string name="no_next_event">Nicio zi de naştere de afișat!</string>
-    <string name="no_next_event_description">Încă nu ați introdus sau importat o zi de naștere. Adăugați una și lăsați Birday să vă ajute!</string>
+    <string name="no_next_event">Niciun eveniment de afișat!</string>
+    <string name="no_next_event_description">Nu ai introdus sau importat niciun eveniment. Adaugă unul și lasă Birday să te ajute!</string>
     <string name="next_age_years">Ani</string>
     <string name="event_others">și altele</string>
     <plurals name="days_left">
@@ -47,13 +47,13 @@
     <string name="seven_days_before">Cu şapte zile înainte</string>
     <string name="vibration_name">Vibrare</string>
     <string name="vibration_description_on">Vibrează când este apăsat un buton</string>
-    <string name="vibration_description_off">Fără vibraţii atunci când este apăsat un buton</string>
+    <string name="vibration_description_off">Fără vibrații atunci când este apăsat un buton</string>
     <string name="date_format_name">Format dată</string>
     <string name="notification_hour_name">Ora notificării</string>
-    <string name="notification_hour_description">%s \n\nRețineți că notificarea ar putea să nu funcționeze atunci când aplicația este oprită de sistem în câteva dispozitive Huawei, Xiaomi și OnePlus. Consultați dontkillmyapp.com pentru mai multe informații</string>
-    <string name="accent_description">Schimbaţi culoarea de accent implicită</string>
+    <string name="notification_hour_description">%s \n\nReține că notificarea ar putea să nu funcționeze atunci când aplicația este oprită de sistem în câteva dispozitive Huawei, Xiaomi și OnePlus. Consultă dontkillmyapp.com pentru mai multe informații</string>
+    <string name="accent_description">Schimbă culoarea de accent implicită</string>
     <string name="accent_name">Culoare accent</string>
-    <string name="theme_description">Folosiţi o temă întunecată, luminoasă sau automată a aplicației</string>
+    <string name="theme_description">Folosește o temă întunecată, luminoasă sau automată a aplicației</string>
     <string name="theme_name">Tema aplicației</string>
     <string name="aqua">Turcoaz</string>
     <string name="brown">Maro</string>
@@ -78,30 +78,30 @@
     <string name="dark_widget_description_on">Widget-ul utilizează tema întunecată</string>
     <string name="dark_widget_description_off">Widget-ul utilizează tema luminoasă</string>
     <string name="import_export">Import și export</string>
-    <string name="import_contacts_title">Importaţi zilele de naştere din Agendă</string>
-    <string name="import_contacts_description">Asigurați-vă că modificați evenimentele cu anii lipsă pentru a avea întotdeauna statistici corecte!</string>
+    <string name="import_contacts_title">Importă evenimente din Agendă</string>
+    <string name="import_contacts_description">Asigură-te că modifici evenimentele cu ani lipsă pentru a avea întotdeauna statistici exacte!</string>
     <string name="import_success">Import efectuat cu succes!</string>
-    <string name="import_nothing_found">Nicio zi de nastere găsită!</string>
+    <string name="import_nothing_found">Niciun eveniment găsit!</string>
     <string name="import_failed">Ceva nu a mers bine!</string>
-    <string name="missing_permission_contacts">Permisiunea de citire a contactelor a fost refuzată. Încercați din nou sau activați manual permisiunea,
+    <string name="missing_permission_contacts">Permisiunea de citire a contactelor a fost refuzată. Încearcă din nou sau activează manual permisiunea,
     sau importul contactelor nu va funcționa!</string>
     <string name="missing_permission_contacts_forever">Birday nu poate cere permisiunea de a importa contactele,
-    deoarece aţi bifat \"nu mai solicita din nou\". Activaţi-o manual!</string>
-    <string name="birday_import_title">Importaţi o copie de rezervă</string>
-    <string name="birday_import_description">Alegeţi un backup valid Birday pentru a restabili zilele de naștere. Toate datele existente
+    deoarece aţi bifat \"nu mai solicita din nou\". Activeaz-o manual!</string>
+    <string name="birday_import_title">Importă o copie de rezervă</string>
+    <string name="birday_import_description">Alege o copie de rezervă validă pentru Birday pentru a restabili evenimentele. Toate datele existente
     vor fi suprascrise!</string>
-    <string name="birday_export_title">Exportare și distribuire a zilelor de naștere</string>
-    <string name="birday_export_description">Exportați zilele de naștere disponibile într-o copie de rezervă și partajați-le dacă doriți. Fișierul este în
-    Android/data/com.minar.birday/files</string>
+    <string name="birday_export_title">Exportă și distribuie evenimentele</string>
+    <string name="birday_export_description">Exportă evenimentele disponibile într-o copie de rezervă și partajează-le dacă dorești. Fișierul este în
+    Android/data/com.minar.birday/file</string>
     <string name="birday_import_success">Import finalizat!</string>
-    <string name="birday_import_failure">Importarea a eșuat. Ați ales fișierul corect?</string>
+    <string name="birday_import_failure">Importarea a eșuat. Ai ales fișierul corect?</string>
     <string name="birday_import_invalid_file">Importarea a eșuat. Fișierul ales nu este o copie de rezervă a Birday!</string>
     <string name="birday_export_success">Export finalizat!</string>
     <string name="birday_export_failure">Exportul a eșuat. Hopa!</string>
     <string name="birday_export_nothing_found">Nimic de exportat!</string>
     <string name="surname_first">Numele mai întâi</string>
-    <string name="surname_first_description_on">Se afişează numele înainte de prenume</string>
-    <string name="surname_first_description_off">Se afişează prenumele înainte de nume</string>
+    <string name="surname_first_description_on">Se afișează numele înainte de prenume</string>
+    <string name="surname_first_description_off">Se afișează prenumele înainte de nume</string>
     <string name="hide_images">Se ascund imaginile</string>
     <string name="hide_images_description_on">Imaginile evenimentului ascunse</string>
     <string name="hide_images_description_off">Imaginile evenimentului vizibile</string>
@@ -109,21 +109,28 @@
     <string name="notification_only_favorites_description_on">Trimite o notificare doar pentru evenimentele favorite</string>
     <string name="notification_only_favorites_description_off">Trimite o notificare pentru fiecare eveniment inserat</string>
     <!-- Developer -->
-    <string name="dev_description">Sunt un tip politicos şi îmi plac lucruri frumoase, precum animaţii, icoane, maşini sportive şi imprimare 3D. Eu lucrez ca designer şi inginer de calculatoare.</string>
+    <string name="dev_description">Sunt un tip politicos și îmi plac lucruri frumoase, precum animații, pictograme, mașini sportive și imprimare 3D. Eu lucrez ca designer și inginer de calculatoare.</string>
     <string name="easter_egg">Frumoasă siglă, nu? ;D</string>
     <!-- New event -->
-    <string name="new_event">Zi de naștere nouă</string>
-    <string name="new_event_description">Introduceți o persoană de care vă pasă, iar Birday vă va ajuta să vă amintiți de ziua ei!</string>
-    <string name="insert_event">Introduceţi ziua de naștere</string>
+    <string name="new_event">Eveniment nou</string>
+    <string name="new_event_description">Introdu o persoană de care îți pasă, iar Birday te va ajuta să îți amintești de ziua ei de naștere sau alte evenimente!</string>
+    <string name="insert_event">Inserare eveniment</string>
     <string name="cancel">Anulați</string>
     <string name="insert_name_hint">Introduceți prenumele</string>
     <string name="insert_surname_hint">Introduceți numele</string>
     <string name="insert_date_hint">Selectați o dată</string>
     <string name="invalid_value_name">Nume nevalid. Numerele și simbolurile nu sunt permise!</string>
     <string name="consider_year">Consideră anul</string>
+    <string name="event_type_hint">Tipul evenimentului</string>
+    <string name="birthday">Zi de naștere</string>
+    <string name="anniversary">Aniversare</string>
+    <string name="death_anniversary">Aniversarea morții</string>
+    <string name="festivity">Festivitate</string>
+    <string name="name_day">Ziua numelui</string>
+    <string name="other">Altele</string>
     <!-- Event actions -->
     <string name="event_actions">Acțiuni</string>
-    <string name="event_actions_description">Aici puteţi schimba sau elimina acest eveniment!</string>
+    <string name="event_actions_description">Aici poți schimba sau elimina acest eveniment!</string>
     <string name="edit_event">Editare eveniment</string>
     <string name="delete_event">Ștergere eveniment</string>
     <string name="update_event">Actualizare eveniment</string>
@@ -144,7 +151,7 @@
     <string name="no_default_dialer">Nu a fost găsită nicio aplicație de apelare implicită!</string>
     <string name="no_default_sms">Nu a fost găsită nicio aplicație prestabilită pentru SMS!</string>
     <!-- Statistics -->
-    <string name="did_you_know">Ştiaţi că?</string>
+    <string name="did_you_know">Știai că?</string>
     <string name="age_average">Vârsta medie este %s</string>
     <string name="oldest_person">Cea mai în vârstă persoană este %s</string>
     <string name="youngest_person">Cea mai tânără persoană este %s</string>
@@ -152,7 +159,7 @@
     <string name="most_common_decade">Cel mai frecvent deceniu de naștere este %s</string>
     <string name="most_common_age_range">Cel mai frecvent interval de vârstă este %1$s-%2$s</string>
     <string name="special_ages">O importantă aniversare viitoare este %s</string>
-    <string name="random_zodiac_sign">Semnul zodiacal al lui %1$s: %2$s</string>
+    <string name="random_zodiac_sign">Semnul Zodiac al lui %1$s: %2$s</string>
     <string name="most_common_zodiac_sign">Cel mai frecvent semn zodiacal este %s</string>
     <string name="random_day_of_week">%1$s s-a născut la %2$s</string>
     <string name="most_common_day_of_week">Cea mai frecventă zi de naștere a săptămânii este %s</string>
@@ -204,35 +211,36 @@
     <string name="and">și</string>
     <!-- Notifications -->
     <string name="events_notification_channel">Memento eveniment</string>
-    <string name="events_channel_description">Mementouri despre zilele de naştere viitoare din Birday</string>
+    <string name="events_channel_description">Memento-uri despre evenimentele viitoare din Birday</string>
     <string name="notification_title">Memento Birday</string>
-    <string name="notification_description_part_1">Salut, astăzi îşi serbează zilele de naştere</string>
+    <string name="notification_description_part_1">Bună, evenimentele de astăzi sunt</string>
     <string name="notification_description_part_2">O zi grozavă!</string>
-    <string name="additional_notification_text">Următoarele zile de naștere!</string>
+    <string name="additional_notification_text">Evenimente viitoare!</string>
     <!-- Introduction slides -->
-    <string name="slide_one_title">Bine aţi venit la Birday!</string>
+    <string name="slide_one_title">Bine ai venit la Birday!</string>
     <string name="slide_one_description">Birday este o aplicație simplă și ușoară pentru gestionarea evenimentelor importante!
-    O puteţi folosi pentru a reține și păstra zilele de naștere ale persoanelor pe care le iubiţi, într-un mod fiabil şi rapid.
+    O poți folosi pentru a reține și păstra zilele de naștere ale persoanelor pe care le iubești etc, într-un mod fiabil şi rapid.
     </string>
     <string name="slide_two_title">Gratuit, simplu și personalizat</string>
-    <string name="slide_two_description">Birday este gratuit, fără publicitate și cu cod sursă deschis. Oferă un set de
-    statistici despre zilele de naștere, un sistem de favorite și o interfață personalizabilă. Și garantat
+    <string name="slide_two_description">Birday este gratuit, fără publicitate și cu sursă deschisă. Oferă un set de
+    statistici despre evenimentele tale, un sistem preferat și o interfață personalizabilă. Și garantează
     suport și actualizări!
     </string>
-    <string name="slide_three_title">Importaţi din Agendă</string>
-    <string name="slide_three_description">De asemenea, este posibil să imporți zilele de naștere pe care le-aţi salvat deja
-    din contacte. Birday poate face acest lucru, doar acordaţi permisiunea!
+    <string name="slide_three_title">Importă din Agendă</string>
+    <string name="slide_three_description">De asemenea, este posibil să imporți evenimentele pe care le-ai salvat deja
+    din contacte. Birday poate face acest lucru pentru tine, doar acordă permisiunea contactelor. Bucură-te de ele!
     </string>
     <!-- Widget -->
-    <string name="appwidget_upcoming">Următoarele zile de naștere</string>
+    <string name="appwidget_upcoming">Evenimente viitoare</string>
     <string name="add_widget">Birday - Urmează</string>
     <!-- Search -->
     <string name="search_event">Căutare…</string>
     <string name="search_no_result_title">Niciun rezultat găsit</string>
-    <string name="search_no_result_description">Șirul de căutare nu corespunde niciunui eveniment pe care l-ați adăugat!</string>
+    <string name="search_no_result_description">Șirul de căutare nu corespunde niciunui eveniment pe care l-ai adăugat!</string>
     <!-- Notes -->
     <string name="notes">Note</string>
-    <string name="write_something">Scrieţi ceva…</string>
+    <string name="write_something">Scrie ceva…</string>
     <!-- Overview -->
     <string name="overview">Sumar</string>
+    <string name="overview_description">Prezentare anuală a fiecărui eveniment salvat</string>
 </resources>
