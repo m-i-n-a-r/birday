@@ -20,7 +20,8 @@
         <item name="materialTimePickerTheme">@style/ThemeOverlay.App.TimePicker</item>
         <item name="snackbarStyle">@style/Widget.App.Snackbar</item>
         <item name="snackbarTextViewStyle">@style/MaterialSnackbarTextViewTheme</item>
-        <item name="alertDialogTheme">@style/DialogTheme</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
         <item name="colorSurface">@color/colorSurface</item>
     </style>
 
@@ -40,8 +41,18 @@
     </style>
 
     <!-- Preference dialog theme -->
-    <style name="DialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
         <item name="dialogCornerRadius">@dimen/rounded_corners</item>
+        <!-- Remove the accent-ish tint -->
+        <item name="backgroundTint">?colorBackgroundFloating</item>
+        <item name="android:background">?colorBackgroundFloating</item>
+    </style>
+
+    <!-- Note: shape appearance doesn't work with the preference dialogs (they're not material) -->
+    <style name="MaterialAlertDialog.App" parent="MaterialAlertDialog.Material3">
+        <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
+        <item name="shapeAppearanceOverlay">@null</item>
     </style>
 
     <!-- Snackbar style -->
@@ -93,7 +104,19 @@
         <item name="cornerSize">@dimen/rounded_corners</item>
     </style>
 
-    <!-- Accent styles for main activity and fragments -->
+    <style name="ShapeAppearance.App.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerSize">@dimen/rounded_corners</item>
+    </style>
+
+    <!-- Accent styles -->
+    <style name="AppTheme.System" parent="AppTheme">
+        <item name="colorAccent">@color/aquaAccent</item>
+        <item name="colorPrimary">@color/aquaAccent</item>
+        <item name="colorSecondary">@color/aquaAccent</item>
+        <item name="colorPrimaryContainer">@color/aquaAccentTranslucent</item>
+        <item name="colorSecondaryContainer">@color/aquaAccentTranslucent</item>
+    </style>
+
     <style name="AppTheme.Brown" parent="AppTheme">
         <item name="colorAccent">@color/brownAccent</item>
         <item name="colorPrimary">@color/brownAccent</item>

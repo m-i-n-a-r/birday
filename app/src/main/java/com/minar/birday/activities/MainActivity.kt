@@ -139,7 +139,7 @@ class MainActivity : AppCompatActivity() {
 
         // Retrieve the shared preferences
         val theme = sharedPrefs.getString("theme_color", "system")
-        val accent = sharedPrefs.getString("accent_color", "aqua")
+        val accent = sharedPrefs.getString("accent_color", "system")
 
         // Show the introduction for the first launch
         if (sharedPrefs.getBoolean("first", true)) {
@@ -153,12 +153,13 @@ class MainActivity : AppCompatActivity() {
 
         // Set the base theme and the accent
         when (theme) {
+            "system" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
             "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            "system" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         }
 
         when (accent) {
+            "system" -> setTheme(R.style.AppTheme_System)
             "brown" -> setTheme(R.style.AppTheme_Brown)
             "blue" -> setTheme(R.style.AppTheme_Blue)
             "green" -> setTheme(R.style.AppTheme_Green)
@@ -171,7 +172,7 @@ class MainActivity : AppCompatActivity() {
             "red" -> setTheme(R.style.AppTheme_Red)
             "lime" -> setTheme(R.style.AppTheme_Lime)
             "crimson" -> setTheme(R.style.AppTheme_Crimson)
-            else -> setTheme(R.style.AppTheme)
+            else -> setTheme(R.style.AppTheme) // Default (aqua)
         }
 
         // Set the task appearance in recent apps
