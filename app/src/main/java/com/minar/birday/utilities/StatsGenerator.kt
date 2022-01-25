@@ -321,18 +321,18 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         var sign = ""
         var signNumber = 0
         when (month) {
-            12 -> signNumber = if (day < 22) 0 else 1
-            1 -> signNumber = if (day < 20) 1 else 2
-            2 -> signNumber = if (day < 19) 2 else 3
-            3 -> signNumber = if (day < 21) 3 else 4
-            4 -> signNumber = if (day < 20) 4 else 5
-            5 -> signNumber = if (day < 21) 5 else 6
-            6 -> signNumber = if (day < 21) 6 else 7
-            7 -> signNumber = if (day < 23) 7 else 8
-            8 -> signNumber = if (day < 23) 8 else 9
-            9 -> signNumber = if (day < 23) 9 else 10
-            10 -> signNumber = if (day < 23) 10 else 11
-            11 -> signNumber = if (day < 22) 11 else 0
+            12 -> signNumber = if (day <= 21) 0 else 1
+            1 -> signNumber = if (day <= 20) 1 else 2
+            2 -> signNumber = if (day <= 19) 2 else 3
+            3 -> signNumber = if (day <= 20) 3 else 4
+            4 -> signNumber = if (day <= 20) 4 else 5
+            5 -> signNumber = if (day <= 20) 5 else 6
+            6 -> signNumber = if (day <= 21) 6 else 7
+            7 -> signNumber = if (day <= 22) 7 else 8
+            8 -> signNumber = if (day <= 23) 8 else 9
+            9 -> signNumber = if (day <= 22) 9 else 10
+            10 -> signNumber = if (day <= 22) 10 else 11
+            11 -> signNumber = if (day <= 22) 11 else 0
         }
         when (signNumber) {
             0 -> sign = applicationContext?.getString(R.string.zodiac_sagittarius).toString()
@@ -357,18 +357,18 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         val month = person.originalDate.month.value
         var signNumber = 0
         when (month) {
-            12 -> signNumber = if (day < 22) 0 else 1
-            1 -> signNumber = if (day < 20) 1 else 2
-            2 -> signNumber = if (day < 19) 2 else 3
-            3 -> signNumber = if (day < 21) 3 else 4
-            4 -> signNumber = if (day < 20) 4 else 5
-            5 -> signNumber = if (day < 21) 5 else 6
-            6 -> signNumber = if (day < 21) 6 else 7
-            7 -> signNumber = if (day < 23) 7 else 8
-            8 -> signNumber = if (day < 23) 8 else 9
-            9 -> signNumber = if (day < 23) 9 else 10
-            10 -> signNumber = if (day < 23) 10 else 11
-            11 -> signNumber = if (day < 22) 11 else 0
+            12 -> signNumber = if (day <= 21) 0 else 1
+            1 -> signNumber = if (day <= 20) 1 else 2
+            2 -> signNumber = if (day <= 19) 2 else 3
+            3 -> signNumber = if (day <= 20) 3 else 4
+            4 -> signNumber = if (day <= 20) 4 else 5
+            5 -> signNumber = if (day <= 20) 5 else 6
+            6 -> signNumber = if (day <= 21) 6 else 7
+            7 -> signNumber = if (day <= 22) 7 else 8
+            8 -> signNumber = if (day <= 23) 8 else 9
+            9 -> signNumber = if (day <= 22) 9 else 10
+            10 -> signNumber = if (day <= 22) 10 else 11
+            11 -> signNumber = if (day <= 22) 11 else 0
         }
         return signNumber
     }
