@@ -17,7 +17,7 @@ import java.time.LocalDate
 
 
 @ExperimentalStdlibApi
-class BirdayExporter(context: Context?, attrs: AttributeSet?) : Preference(context, attrs),
+class BirdayExporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
     View.OnClickListener {
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
@@ -30,11 +30,16 @@ class BirdayExporter(context: Context?, attrs: AttributeSet?) : Preference(conte
     override fun onClick(v: View) {
         val act = context as MainActivity
         act.vibrate()
-        val thread = Thread {
-            val exported = exportBirthdays(context)
-            if (exported.isNotBlank()) shareBackup(exported)
+        // Only export if there's at least one event
+        if (act.mainViewModel.allEventsUnfiltered.value.isNullOrEmpty())
+            act.showSnackbar(context.getString(R.string.no_events))
+        else {
+            val thread = Thread {
+                val exported = exportBirthdays(context)
+                if (exported.isNotBlank()) shareBackup(exported)
+            }
+            thread.start()
         }
-        thread.start()
     }
 
     // Export the room database to a file in Android/data/com.minar.birday/files
@@ -47,7 +52,7 @@ class BirdayExporter(context: Context?, attrs: AttributeSet?) : Preference(conte
         val appDirectory = File(context.getExternalFilesDir(null)!!.absolutePath)
         val fileName: String = "BirdayBackup_" + LocalDate.now()
         val fileFullPath: String = appDirectory.path + File.separator.toString() + fileName
-        // Snackbar need the ui thread to work, so they must be forced on that thread
+        // Snackbar need the UI thread to work, so they must be forced on that thread
         try {
             dbFile.copyTo(File(fileFullPath), true)
             (context as MainActivity).runOnUiThread { context.showSnackbar(context.getString(R.string.birday_export_success)) }

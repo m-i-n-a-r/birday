@@ -32,18 +32,20 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
     packagingOptions {
-        exclude 'META-INF/atomicfu.kotlin_module'
+        resources {
+            excludes += ['META-INF/atomicfu.kotlin_module']
+        }
     }
+
 
     buildFeatures{
         viewBinding true
     }
-
-    lintOptions{
+    lint {
         disable 'MissingTranslation'
     }
+
 
 }
 
@@ -54,23 +56,23 @@ dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.preference:preference-ktx:1.1.1'
+    implementation 'androidx.preference:preference-ktx:1.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.activity:activity-ktx:1.4.0'
-    implementation 'androidx.fragment:fragment-ktx:1.4.0'
+    implementation 'androidx.fragment:fragment-ktx:1.4.1'
 
     // Constraint / motion layout
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
 
     // Material Components
-    implementation 'com.google.android.material:material:1.6.0-alpha01'
+    implementation 'com.google.android.material:material:1.6.0-alpha02'
 
     // WorkManager
     implementation 'androidx.work:work-runtime-ktx:2.7.1'
 
     // Navigation component
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.0-rc01'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.4.0-rc01'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.0-alpha01'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.0-alpha01'
 
     // Lifecycle and ViewModel
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'

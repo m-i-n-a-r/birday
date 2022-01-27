@@ -28,14 +28,14 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
         super.onResume()
         // Set up a listener whenever a key changes
         preferenceScreen.sharedPreferences
-            .registerOnSharedPreferenceChangeListener(this)
+            ?.registerOnSharedPreferenceChangeListener(this)
     }
 
     override fun onPause() {
         super.onPause()
         // Unregister the listener whenever a key changes
         preferenceScreen.sharedPreferences
-            .unregisterOnSharedPreferenceChangeListener(this)
+            ?.unregisterOnSharedPreferenceChangeListener(this)
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {

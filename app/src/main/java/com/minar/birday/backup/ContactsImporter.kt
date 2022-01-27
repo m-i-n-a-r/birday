@@ -24,7 +24,7 @@ import kotlin.concurrent.thread
 
 
 @ExperimentalStdlibApi
-class ContactsImporter(context: Context?, attrs: AttributeSet?) : Preference(context, attrs),
+class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
     View.OnClickListener {
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
