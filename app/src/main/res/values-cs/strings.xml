@@ -185,26 +185,31 @@
     <plurals name="leap_year_total">
         <item quantity="one">Počet osob narozených v přestupném roce je %d</item>
         <item quantity="few">Počet osob narozených v přestupném roce je %d</item>
+        <item quantity="many">Počet osob narozených v přestupném roce je %d</item>
         <item quantity="other">Počet osob narozených v přestupném roce je %d</item>
     </plurals>
     <plurals name="months">
         <item quantity="one">%d měsíc</item>
         <item quantity="few">%d měsíců</item>
+        <item quantity="many">%d měsíců</item>
         <item quantity="other">%d měsíců</item>
     </plurals>
     <plurals name="years">
         <item quantity="one">%d rok</item>
         <item quantity="few">%d let</item>
+        <item quantity="many">%d let</item>
         <item quantity="other">%d let</item>
     </plurals>
     <plurals name="stats_total">
         <item quantity="one">Birday vám pomáhají zapamatovat si celkem %d narozenin.</item>
         <item quantity="few">Birday vám pomáhají zapamatovat si celkem %d narozenin.</item>
+        <item quantity="many">Birday vám pomáhají zapamatovat si celkem %d narozenin.</item>
         <item quantity="other">Birday vám pomáhají zapamatovat si celkem %d narozenin.</item>
     </plurals>
     <plurals name="days_left">
         <item quantity="one">%d zbývá den</item>
         <item quantity="few">%d zbývá dnů</item>
+        <item quantity="many">%d zbývá dnů</item>
         <item quantity="other">%d zbývá dnů</item>
     </plurals>
 
