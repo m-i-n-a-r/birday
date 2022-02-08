@@ -9,8 +9,8 @@ import androidx.core.content.FileProvider.getUriForFile
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import androidx.sqlite.db.SimpleSQLiteQuery
-import com.minar.birday.activities.MainActivity
 import com.minar.birday.R
+import com.minar.birday.activities.MainActivity
 import com.minar.birday.persistence.EventDatabase
 import java.io.File
 import java.time.LocalDate
@@ -51,7 +51,7 @@ class BirdayExporter(context: Context, attrs: AttributeSet?) : Preference(contex
         val dbFile = context.getDatabasePath("BirdayDB").absoluteFile
         val appDirectory = File(context.getExternalFilesDir(null)!!.absolutePath)
         val fileName: String = "BirdayBackup_" + LocalDate.now()
-        val fileFullPath: String = appDirectory.path + File.separator.toString() + fileName
+        val fileFullPath: String = appDirectory.path + File.separator + fileName
         // Snackbar need the UI thread to work, so they must be forced on that thread
         try {
             dbFile.copyTo(File(fileFullPath), true)
