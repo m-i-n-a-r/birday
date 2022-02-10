@@ -239,7 +239,7 @@
     <string name="write_something">Escribe alguna anotación…</string>
 
     <!-- Overview -->
-    <string name="overview">Panoramica</string>
+    <string name="overview">Resumen</string>
     <string name="overview_description">Una visión general anual de los eventos guardados</string>
 
 </resources>
