@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_welcome">Welkom bij Birday</string>
-    <string name="app_name_extended">Birday - Verjaardag Beheerder</string>
+    <string name="app_name_extended">Birday - Evenement Beheerder</string>
     <string name="leave_review_title">Beordeel Birday</string>
     <string name="leave_review_subtitle">Laat een review achter om mij te helpen met Birday. Deze app is, naast de donaties, geheel gratis en reclamevrij!</string>
     <string name="yes_review">Beoordelen</string>
@@ -11,20 +11,20 @@
     <string name="title_home">Startpagina</string>
     <string name="title_favorites">Favorieten</string>
     <string name="title_settings">Instellingen</string>
-    <string name="no_events">Geen verjaardagen! Voeg er eentje toe met de knop hieronder!</string>
+    <string name="no_events">Geen evenementen! Voeg er eentje toe met de knop hieronder!</string>
     <string name="no_favorites">Geen favorieten! Druk op de ster om een gebeurtenis aan je favorieten toe te voegen!</string>
     <string name="add_favorite">Toevoegen aan favorieten</string>
     <string name="stats">Statistieken</string>
     <string name="no_stats">Geen statistieken beschikbaar!</string>
     <string name="stats_summary">Overzicht statistieken</string>
-    <string name="no_stats_description">Je hebt te weinig verjaardagen om statistieken te laten zien. Voeg er een aantal toe en kom dan terug!</string>
+    <string name="no_stats_description">Je hebt te weinig evenementen om statistieken te laten zien. Voeg er een aantal toe en kom dan terug!</string>
     <plurals name="stats_total">
-        <item quantity="one">Birday herinnert je aan %d verjaardag</item>
-        <item quantity="other">Birday herinnert je aan %d verjaardagen</item>
+        <item quantity="one">Birday herinnert je aan %d evenement</item>
+        <item quantity="other">Birday herinnert je aan %d evenementen</item>
     </plurals>
     <string name="next_event">Volgende gebeurtenis</string>
-    <string name="no_next_event">Geen verjaardagen om weer te geven!</string>
-    <string name="no_next_event_description">Je hebt nog geen verjaardagen opgegeven of geïmporteerd. Voeg er eentje toe en laat Birday je helpen!</string>
+    <string name="no_next_event">Geen evenementen om weer te geven!</string>
+    <string name="no_next_event_description">Je hebt nog geen evenementen opgegeven of geïmporteerd. Voeg er eentje toe en laat Birday je helpen!</string>
     <string name="next_age_years">jaar</string>
     <string name="event_others">en anderen</string>
     <plurals name="days_left">
@@ -78,20 +78,20 @@
     <string name="dark_widget_description_on">De widget gebruikt een donker thema</string>
     <string name="dark_widget_description_off">De widget maakt gebruik van een duidelijk thema</string>
     <string name="import_export">Importeren en Exporteren</string>
-    <string name="import_contacts_title">Importeer verjaardagen vanuit contacten</string>
+    <string name="import_contacts_title">Importeer evenementen vanuit contacten</string>
     <string name="import_contacts_description">Zorg er dus voor dat je het jaar aanpast om de meest accurate statistieken te krijgen!</string>
     <string name="import_success">Het importeren is gelukt!</string>
-    <string name="import_nothing_found">Geen verjaardagen gevonden!</string>
+    <string name="import_nothing_found">Geen evenementen gevonden!</string>
     <string name="import_failed">Er ging iets mis!</string>
     <string name="missing_permission_contacts">Toestemming tot contacten is geweigerd. Probeer het opnieuw of geef handmatig toestemming,
         anders werkt het importeren vanuit contacten niet!</string>
     <string name="missing_permission_contacts_forever">Birday kan je contacten niet importeren en ook niet opnieuw om toestemming vragen,
     aangezien "Niet meer vragen" is aangevinkt. Geef handmatig toestemming!</string>
     <string name="birday_import_title">Importeer een Birday backup</string>
-    <string name="birday_import_description">Kies een geldige Birday backup om handmatig je verjaardagen te herstellen. Bestaande
+    <string name="birday_import_description">Kies een geldige Birday backup om handmatig je evenementen te herstellen. Bestaande
     data zal worden overschreven!</string>
-    <string name="birday_export_title">Exporteer en deel verjaardagen</string>
-    <string name="birday_export_description">Exporteer de beschikbare verjaardagen en deel ze, als je wilt. Het bestand staat in
+    <string name="birday_export_title">Exporteer en deel evenementen</string>
+    <string name="birday_export_description">Exporteer de beschikbare evenementen en deel ze, als je wilt. Het bestand staat in
     Android/data/com.minar.birday/files</string>
     <string name="birday_import_success">Importeren voltooid!</string>
     <string name="birday_import_failure">Importeren mislukt. Heb je het juiste bestand gekozen?</string>
@@ -111,14 +111,20 @@
     <string name="easter_egg">Puik logootje, hè? ;D</string>
 
     <!-- New event -->
-    <string name="new_event">Nieuwe verjaardag</string>
-    <string name="new_event_description">Voeg een nieuw persoon toe en Birday helpt je om zijn/haar verjaardag niet te vergeten!</string>
-    <string name="insert_event">Verjaardag toevoegen</string>
+    <string name="new_event">Nieuwe evenement</string>
+    <string name="new_event_description">Voeg een nieuw persoon toe en Birday helpt je om zijn/haar evenement niet te vergeten!</string>
+    <string name="insert_event">Evenement toevoegen</string>
     <string name="cancel">Annuleren</string>
     <string name="insert_name_hint">Naam</string>
     <string name="insert_surname_hint">Achternaam</string>
     <string name="insert_date_hint">Selecteer een datum</string>
     <string name="invalid_value_name">Ongeldige naam. Getallen en symbolen zijn niet toegestaan.</string>
+    <string name="birthday">Verjaardag</string>
+    <string name="anniversary">Verjaardag</string>
+    <string name="death_anniversary">Sterfdag</string>
+    <string name="festivity">Feestelijk</string>
+    <string name="name_day">Naamdag</string>
+    <string name="other">Ander</string>
 
     <!-- Event actions -->
     <string name="event_actions">Acties</string>
@@ -205,27 +211,27 @@
 
     <!-- Notifications -->
     <string name="events_notification_channel">Gebeurtenis Reminder</string>
-    <string name="events_channel_description">Reminders over de aankomende verjaardagen van Birday</string>
+    <string name="events_channel_description">Reminders over de aankomende evenementen van Birday</string>
     <string name="notification_title">Birday Reminder</string>
-    <string name="notification_description_part_1">De verjaardagen van vandaag zijn</string>
+    <string name="notification_description_part_1">De evenementen van vandaag zijn</string>
     <string name="notification_description_part_2">Fijne dag nog!</string>
-    <string name="additional_notification_text">Aankomende verjaardagen!</string>
+    <string name="additional_notification_text">Aankomende evenementen!</string>
 
     <!-- Introduction slides -->
     <string name="slide_one_title">Welkom bij Birday!</string>
     <string name="slide_one_description">Birday is een simpele, lichtgewicht app waarmee je belangrijke gebeurtenissen kunt bijhouden!
-    Verjaardagen van dierbaren sla je snel en eenvoudig op, zodat je er nooit meer een vergeet!</string>
+    Bewaar verjaardagen van dierbaren en sneller en gemakkelijker, zodat u er nooit meer een vergeet!</string>
     <string name="slide_two_title">Gratis, eenvoudig, aanpasbaar</string>
     <string name="slide_two_description">Birday is gratis, reclamevrij en open source. De app heeft 
     statistieken over jouw verjaardagen, een favorieten systeem en een aanpasbaar interface. Updates en
     ondersteuning zijn gegarandeerd!
     </string>
     <string name="slide_three_title">Importeren vanuit contacten</string>
-    <string name="slide_three_description">Het is ook mogelijk om verjaardagen over te zetten vanuit contacten.
+    <string name="slide_three_description">Het is ook mogelijk om evenementen over te zetten vanuit contacten.
         Birday doet het voor je als je toestemming geeft tot je contacten. Veel plezier!</string>
 
     <!-- Widget -->
-    <string name="appwidget_upcoming">Aankomende verjaardagen</string>
+    <string name="appwidget_upcoming">Aankomende evenementen</string>
     <string name="add_widget">Birday - aankomend</string>
 
     <!-- Search -->
@@ -237,5 +243,9 @@
     <!-- Notes -->
     <string name="notes">Opmerkingen</string>
     <string name="write_something">Schrijf iets…</string>
+
+    <!-- Overview -->
+    <string name="overview">Overzicht</string>
+    <string name="overview_description">Een jaarlijks overzicht van opgeslagen evenementen</string>
 
 </resources>
