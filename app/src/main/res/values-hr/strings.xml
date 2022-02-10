@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_welcome">Dobro došli u Birday</string>
-    <string name="app_name_extended">Birday - Upravitelj Rođendanima</string>
+    <string name="app_name_extended">Birday - Obrađivač Događaja</string>
     <string name="leave_review_title">Ocijenite Birday</string>
     <string name="leave_review_subtitle">Ostavite recenziju kako biste mi pomogli s aplikacijom. Imajte na umu da je, osim donacija, ova aplikacija potpuno besplatna i bez oglasa!</string>
     <string name="yes_review">Ocijeni!</string>
@@ -11,21 +11,21 @@
     <string name="title_home">Početno</string>
     <string name="title_favorites">Favoriti</string>
     <string name="title_settings">Postavke</string>
-    <string name="no_events">Nema rođendana! Dodajte jedan pomoću gumba ispod!</string>
+    <string name="no_events">Nema događaja! Dodajte jedan pomoću gumba ispod!</string>
     <string name="no_favorites">Nema favorita! Pritisnite zvjezdicu kako biste spremili događaj u svoje favorite!</string>
     <string name="add_favorite">Dodaj u favorite</string>
     <string name="stats">Statistika</string>
     <string name="no_stats">Nema statistike za prikazati!</string>
     <string name="stats_summary">Sažetak statistike</string>
-    <string name="no_stats_description">Nemate dovoljno rođendana za generiranje statistike. Dodajte ih nekoliko i vratite se kasnije!</string>
+    <string name="no_stats_description">Nemate dovoljno događaja za generiranje statistike. Dodajte ih nekoliko i vratite se kasnije!</string>
     <plurals name="stats_total">
-        <item quantity="one">Birday vam pomaže da se sjetite ukupno %d rođendana</item>
-        <item quantity="few">Birday vam pomaže da se sjetite ukupno %d rođendana</item>
-        <item quantity="other">Birday vam pomaže da se sjetite ukupno %d rođendana</item>
+        <item quantity="one">Birday vam pomaže da se sjetite ukupno %d događaja</item>
+        <item quantity="few">Birday vam pomaže da se sjetite ukupno %d događaja</item>
+        <item quantity="other">Birday vam pomaže da se sjetite ukupno %d događaja</item>
     </plurals>
     <string name="next_event">Sljedeći događaj</string>
-    <string name="no_next_event">Nema rođendana za prikazati!</string>
-    <string name="no_next_event_description">Još niste unijeli ili uvezli rođendan. Dodajte jedan i neka vam Birday pomogne!</string>
+    <string name="no_next_event">Nema događaja za prikazati!</string>
+    <string name="no_next_event_description">Još niste unijeli ili uvezli događaj. Dodajte jedan i neka vam Birday pomogne!</string>
     <string name="next_age_years">Godina</string>
     <string name="event_others">i ostali</string>
     <plurals name="days_left">
@@ -80,18 +80,18 @@
     <string name="dark_widget_description_on">Widget koristi tamnu temu</string>
     <string name="dark_widget_description_off">Widget koristi svijetlu temu</string>
     <string name="import_export">Uvoz i Izvoz</string>
-    <string name="import_contacts_title">Uvezite rođendane iz kontakata</string>
+    <string name="import_contacts_title">Uvezite događaji iz kontakata</string>
     <string name="import_contacts_description">Obavezno izmijenite događaje s godinama koje nedostaju kako biste uvijek imali točne statistike!</string>
     <string name="import_success">Uvoz je uspješno završen!</string>
-    <string name="import_nothing_found">Nema pronađenih rođendana!</string>
+    <string name="import_nothing_found">Nema pronađenih događaja!</string>
     <string name="import_failed">Uvoz neuspješan!</string>
     <string name="missing_permission_contacts">Dozvola za pristup kontaktima je odbijena. Pokušajte ponovo ili aktivirajte dozvolu ručno, ili uvoz kontakata neće uspjeti!</string>
     <string name="missing_permission_contacts_forever">Birday ne može tražiti dopuštenje za uvoz kontakata,
     budući da ste označili "nikad više ne pitaj". Omogućite ga ručno!</string>
     <string name="birday_import_title">Uvezite sigurnosnu kopiju za Birday</string>
-    <string name="birday_import_description">Odaberite valjanu sigurnosnu kopiju za Birday kako biste uvezli rođendane. Svi postojeći podaci će biti izbrisani!</string>
-    <string name="birday_export_title">Izvezite i podijelite rođendane</string>
-    <string name="birday_export_description">Izvezite dostupne rođendane u sigurnosnu kopiju i podijelite ih ako želite. Datoteka se nalazi u Android/data/com.minar.birday/files</string>
+    <string name="birday_import_description">Odaberite valjanu sigurnosnu kopiju za Birday kako biste uvezli događaji. Svi postojeći podaci će biti izbrisani!</string>
+    <string name="birday_export_title">Izvezite i podijelite događaji</string>
+    <string name="birday_export_description">Izvezite dostupne događaji u sigurnosnu kopiju i podijelite ih ako želite. Datoteka se nalazi u Android/data/com.minar.birday/files</string>
     <string name="birday_import_success">Uvoz je završen!</string>
     <string name="birday_import_failure">Uvoz nije uspio. Jeste li ispravno odabrali datoteku?</string>
     <string name="birday_import_invalid_file">Uvoz nije uspio. Odabrana datoteka nije Birday sigurnosna kopija!</string>
@@ -113,15 +113,21 @@
     <string name="easter_egg">Lijep logo, zar ne? ;D</string>
 
     <!-- New event -->
-    <string name="new_event">Novi rođendan</string>
-    <string name="new_event_description">Unesite osobu do koje vam je stalo, a Birday će vam pomoći da se sjetite njihovog rođendana!</string>
-    <string name="insert_event">Unesi rođendan</string>
+    <string name="new_event">Novi događaj</string>
+    <string name="new_event_description">Unesite osobu do koje vam je stalo, a Birday će vam pomoći da zapamtite njihov rođendan ili bilo što drugo!!</string>
+    <string name="insert_event">Unesi događaj</string>
     <string name="cancel">Odustani</string>
     <string name="insert_name_hint">Unesite ime</string>
     <string name="insert_surname_hint">Unesite prezime</string>
     <string name="insert_date_hint">Izaberite datum</string>
     <string name="invalid_value_name">Nevažeće ime. Brojevi i simboli nisu podržani!</string>
     <string name="consider_year">Uzmi godinu u obzir</string>
+    <string name="birthday">Rođendan</string>
+    <string name="anniversary">Obljetnica</string>
+    <string name="death_anniversary">Godišnjica smrti</string>
+    <string name="festivity">Svečanost</string>
+    <string name="name_day">Imendan</string>
+    <string name="other">Ostalo</string>
 
     <!-- Event actions -->
     <string name="event_actions">Radnje</string>
@@ -211,16 +217,16 @@
 
     <!-- Notifications -->
     <string name="events_notification_channel">Podsjetnik</string>
-    <string name="events_channel_description">Podsjetnici na predstojeće rođendane od Birday-a</string>
+    <string name="events_channel_description">Podsjetnici na predstojeće događaji od Birday-a</string>
     <string name="notification_title">Birday Podsjetnik</string>
-    <string name="notification_description_part_1">Zdravo, današnji su rođendani</string>
+    <string name="notification_description_part_1">Zdravo, današnji su događaji</string>
     <string name="notification_description_part_2">Ugodan dan!</string>
-    <string name="additional_notification_text">Nadolazeći rođendani!</string>
+    <string name="additional_notification_text">Nadolazeći događaji!</string>
 
     <!-- Introduction slides -->
     <string name="slide_one_title">Dobrodošli u Birday!</string>
     <string name="slide_one_description">Birday je jednostavna i lagana aplikacija za upravljanje važnim događajima!
-    Pomoću nje možete se sjetiti i pohraniti rođendane ljudi koje volite na brz i pouzdan način.
+    Pomoću njega možete brže i pouzdanije zapamtiti i arhivirati rođendane ljudi koje volite.
     </string>
     <string name="slide_two_title">Besplatan, jednostavan, prilagodljiv</string>
     <string name="slide_two_description">Birday je besplatan, otvorenog koda i bez oglasa. Pruža
@@ -228,12 +234,12 @@
     podršku i ažuriranja!
     </string>
     <string name="slide_three_title">Uvoz iz kontakata</string>
-    <string name="slide_three_description">Također je moguće uvesti rođendane koje ste već spremili
+    <string name="slide_three_description">Također je moguće uvesti događaji koje ste već spremili
     iz vaših kontakata. Birday to može učiniti umjesto vas, samo dopustite pristup kontaktima. Uživajte!
     </string>
 
     <!-- Widget -->
-    <string name="appwidget_upcoming">Nadolazeći rođendani</string>
+    <string name="appwidget_upcoming">Nadolazeći događaji</string>
     <string name="add_widget">Birday - Nadolazeće</string>
 
     <!-- Search -->
@@ -244,5 +250,9 @@
     <!-- Notes -->
     <string name="notes">Bilješke</string>
     <string name="write_something">Napišite nešto…</string>
+
+    <!-- Overview -->
+    <string name="overview">Pregled</string>
+    <string name="overview_description">Godišnji pregled spremljenih događaja</string>
 
 </resources>
