@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_welcome">Üdvözlünk a Birday-ben</string>
-    <string name="app_name_extended">Birday - Születésnap Kezelő</string>
+    <string name="app_name_extended">Birday - Esemény Kezelő</string>
     <string name="leave_review_title">Birday Véleményezése</string>
     <string name="leave_review_subtitle">Írj egy véleményt, hogy segíts nekem az alkalmazással. Vedd figyelembe, hogy az adományoktól eltekintve ez az alkalmazás teljesen ingyenes és hirdetésmentes!</string>
     <string name="yes_review">Véleményezés!</string>
@@ -11,20 +11,20 @@
     <string name="title_home">Kezdőlap</string>
     <string name="title_favorites">Kedvencek</string>
     <string name="title_settings">Beállítások</string>
-    <string name="no_events">Nincsenek születésnapok! Adj hozzá egyet az alábbi gomb segítségével!</string>
+    <string name="no_events">Nincsenek eseményeket! Adj hozzá egyet az alábbi gomb segítségével!</string>
     <string name="no_favorites">Nincsenek kedvencek! Ha hozzá akarsz adni egy eseményt a kedvenceidhez, nyomd meg a csillagot!</string>
     <string name="add_favorite">Hozzáadás a kedvencekhez</string>
     <string name="stats">Statisztika</string>
     <string name="no_stats">Nincs megjeleníthető statisztika!</string>
     <string name="stats_summary">Statisztika összefoglaló</string>
-    <string name="no_stats_description">Nincs elég születésnap a statisztikák megjelenítéséhez. Adj hozzá néhányat, és gyere vissza később!</string>
+    <string name="no_stats_description">Nincs elég esemény a statisztikák megjelenítéséhez. Adj hozzá néhányat, és gyere vissza később!</string>
     <plurals name="stats_total">
-        <item quantity="one">A Birday segít, hogy összesen emlékezz %d születésnap</item>
-        <item quantity="other">A Birday segít, hogy összesen emlékezz %d születésnapok</item>
+        <item quantity="one">A Birday segít, hogy összesen emlékezz %d esemény</item>
+        <item quantity="other">A Birday segít, hogy összesen emlékezz %d eseményeket</item>
     </plurals>
     <string name="next_event">Következő esemény</string>
-    <string name="no_next_event">Nincs megjeleníthető születésnap!</string>
-    <string name="no_next_event_description">Még nem írtál be vagy importáltál születésnapot. Adj hozzá egyet, és hagyd, hogy a Birday segítsen!</string>
+    <string name="no_next_event">Nincs megjeleníthető esemény!</string>
+    <string name="no_next_event_description">Még nem írtál be vagy importált eseményeket. Adj hozzá egyet, és hagyd, hogy a Birday segítsen!</string>
     <string name="next_age_years">Évek</string>
     <string name="event_others">és mások</string>
     <plurals name="days_left">
@@ -78,17 +78,17 @@
     <string name="dark_widget_description_on">A widget sötét témát használ</string>
     <string name="dark_widget_description_off">A widget világos témát használ</string>
     <string name="import_export">Import és export</string>
-    <string name="import_contacts_title">Születésnapok importálása a névjegyekből</string>
+    <string name="import_contacts_title">Eseményeket importálása a névjegyekből</string>
     <string name="import_contacts_description">Ügyelj arra, hogy módosítsd az eseményeket a hiányzó évvel, hogy mindig pontos statisztikák legyenek!</string>
     <string name="import_success">Az importálás sikeresen befejeződött!</string>
-    <string name="import_nothing_found">Nem található születésnap!</string>
+    <string name="import_nothing_found">Nem található esemény!</string>
     <string name="import_failed">Hiba történt!</string>
     <string name="missing_permission_contacts">A kapcsolattartási engedély meg lett tagadva. Próbálkozz újra, vagy aktiváld az engedélyt manuálisan, vagy a névjegyek importálása nem fog működni!</string>
     <string name="missing_permission_contacts_forever">A Birday nem tudta importálni a kapcsolatait, és nem kérhető engedély, mivel bejelölted a "soha ne kérdezzen újra" lehetőséget. Manuálisan engedélyezd!</string>
     <string name="birday_import_title">Importálj egy Birday biztonsági másolatot</string>
-    <string name="birday_import_description">Válasszon egy érvényes Birday biztonsági másolatot a születésnapjainak manuális visszaállításához. Minden létező adat felül lesz írva!</string>
-    <string name="birday_export_title">Születésnapok exportálása és megosztása</string>
-    <string name="birday_export_description">Exportáld a rendelkezésre álló születésnapokat, és oszd meg őket, ha szeretnéd. A fájl az Android/data/com.minar.birday/files helyen található.</string>
+    <string name="birday_import_description">Válasszon egy érvényes Birday biztonsági másolatot a eseményjainak manuális visszaállításához. Minden létező adat felül lesz írva!</string>
+    <string name="birday_export_title">Eseményeket exportálása és megosztása</string>
+    <string name="birday_export_description">Exportáld a rendelkezésre álló eseményeketat, és oszd meg őket, ha szeretnéd. A fájl az Android/data/com.minar.birday/files helyen található.</string>
     <string name="birday_import_success">Az importálás befejeződött!</string>
     <string name="birday_import_failure">Az importálás sikertelen. Helyes fájlt választottál?</string>
     <string name="birday_import_invalid_file">Az importálás sikertelen. A kiválasztott fájl nem Birday biztonsági másolat!</string>
@@ -107,14 +107,20 @@
     <string name="easter_egg">Szép logó, mi? ;D</string>
 
     <!-- New event -->
-    <string name="new_event">Új születésnap</string>
-    <string name="new_event_description">Írj be egy új embert, akivel törődsz, és Birday segít emlékeztetni születésnapjára!</string>
-    <string name="insert_event">Születésnap beírása</string>
+    <string name="new_event">Új esemény</string>
+    <string name="new_event_description">Írj be egy új embert, akivel törődsz, és Birday segít emlékeztetni születésnapjára vagy valami másra!</string>
+    <string name="insert_event">Esemény beírása</string>
     <string name="cancel">Mégsem</string>
     <string name="insert_name_hint">Név beírása</string>
     <string name="insert_surname_hint">Vezetéknév beírása</string>
     <string name="insert_date_hint">Dátum kiválasztása</string>
     <string name="invalid_value_name">Érvénytelen név. A számok és szimbólumok nem engedélyezettek!</string>
+    <string name="birthday">Születésnap</string>
+    <string name="anniversary">Évforduló</string>
+    <string name="death_anniversary">Halál évfordulója</string>
+    <string name="festivity">Ünnepség</string>
+    <string name="name_day">Névnap</string>
+    <string name="other">Egyéb</string>
 
     <!-- Event actions -->
     <string name="event_actions">Tevékenységek</string>
@@ -201,25 +207,25 @@
 
     <!-- Notifications -->
     <string name="events_notification_channel">Esemény Emlékeztető</string>
-    <string name="events_channel_description">Emlékeztetők a közelgő születésnapokra a Birday-től</string>
+    <string name="events_channel_description">Emlékeztetők a közelgő eseményeketra a Birday-től</string>
     <string name="notification_title">Birday Emlékeztető</string>
-    <string name="notification_description_part_1">Üdvözlet, a mai születésnapok:</string>
+    <string name="notification_description_part_1">Üdvözlet, a mai eseményeket:</string>
     <string name="notification_description_part_2">Szép napot!</string>
-    <string name="additional_notification_text">Közelgő születésnapok!</string>
+    <string name="additional_notification_text">Közelgő eseményeket!</string>
 
     <!-- Introduction slides -->
     <string name="slide_one_title">Üdvözlünk a Birday-ben!</string>
-    <string name="slide_one_description">A Birday egy egyszerű és könnyű alkalmazás a fontos események kezelésére! Arra használhatod, hogy megbízhatóan és gyorsan mentsd és tárold a szeretett emberek születésnapjait.
+    <string name="slide_one_description">A Birday egy egyszerű és könnyű alkalmazás a fontos események kezelésére! Segítségével megbízhatóan és gyorsan elmentheti és archiválhatja szerettei születésnapját vagy más eseményeket.
 	</string>
     <string name="slide_two_title">Ingyenes, egyszerű, testreszabható</string>
     <string name="slide_two_description">A Birday ingyenes, hirdetésmentes és nyílt forráskódú. Statisztikát biztosít a születésnapokról, kedvenc rendszert és a testreszabható felületet biztosít. És garantált támogatást és frissítéseket!
     </string>
     <string name="slide_three_title">Importálás a névjegyekből</string>
-    <string name="slide_three_description">A már elmentett születésnapokat is importálhatod a névjegyekből. A Birday meg tudja csinálni számodra, csak adja meg a névjegyek engedélyt. Élvezd!
+    <string name="slide_three_description">A már elmentett eseményeketat is importálhatod a névjegyekből. A Birday meg tudja csinálni számodra, csak adja meg a névjegyek engedélyt. Élvezd!
     </string>
 
     <!-- Widget -->
-    <string name="appwidget_upcoming">Közelgő születésnapok</string>
+    <string name="appwidget_upcoming">Közelgő eseményeket</string>
     <string name="add_widget">Birday - közelgő</string>
 
     <!-- Search -->
@@ -231,5 +237,9 @@
     <!-- Notes -->
     <string name="notes">Megjegyzések</string>
     <string name="write_something">Írjon valamit…</string>
+
+    <!-- Overview -->
+    <string name="overview">Áttekintés</string>
+    <string name="overview_description">Éves áttekintés a mentett eseményekről</string>
 
 </resources>
