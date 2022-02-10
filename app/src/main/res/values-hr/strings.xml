@@ -163,7 +163,7 @@
     <string name="most_common_decade">Najčešće desetljeće rođenja je %s</string>
     <string name="most_common_age_range">Najčešći dobni raspon je %1$s-%2$s</string>
     <string name="special_ages">Važan predstojeći rođendan je %s</string>
-    <string name="random_zodiac_sign">Horoskopski znak %1$s: %2$s</string>
+    <string name="random_zodiac_sign">Horoskopski znak osobe "%1$s": %2$s</string>
     <string name="most_common_zodiac_sign">Najčešći horoskopski znak je %s</string>
     <string name="random_day_of_week">%1$s je rođen/a u %2$s</string>
     <string name="most_common_day_of_week">Najčešći dan u tjednu rođenja je %s</string>
@@ -172,7 +172,7 @@
         <item quantity="few">Broj osoba rođenih u prijestupnoj godini je %d</item>
         <item quantity="other">Broj osoba rođenih u prijestupnoj godini je %d</item>
     </plurals>
-    <string name="random_chinese_year">Kineski horoskopski znak %1$s: %2$s</string>
+    <string name="random_chinese_year">Kineski horoskopski znak osobe "%1$s": %2$s</string>
     <string name="chinese_zodiac_rat">štakor</string>
     <string name="chinese_zodiac_ox">vol</string>
     <string name="chinese_zodiac_tiger">tigar</string>
@@ -184,7 +184,7 @@
     <string name="chinese_zodiac_monkey">majmun</string>
     <string name="chinese_zodiac_rooster">pijetao</string>
     <string name="chinese_zodiac_dog">pas</string>
-    <string name="chinese_zodiac_pig">prase</string>
+    <string name="chinese_zodiac_pig">svinja</string>
     <string name="zodiac_sagittarius">strijelac</string>
     <string name="zodiac_capricorn">jarac</string>
     <string name="zodiac_aquarius">vodenjak</string>
