@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_welcome">Dobro došli u Birday</string>
-    <string name="app_name_extended">Birday - Obrađivač Događaja</string>
+    <string name="app_name_extended">Birday - Upravitelj Događajima</string>
     <string name="leave_review_title">Ocijenite Birday</string>
     <string name="leave_review_subtitle">Ostavite recenziju kako biste mi pomogli s aplikacijom. Imajte na umu da je, osim donacija, ova aplikacija potpuno besplatna i bez oglasa!</string>
     <string name="yes_review">Ocijeni!</string>
@@ -80,7 +80,7 @@
     <string name="dark_widget_description_on">Widget koristi tamnu temu</string>
     <string name="dark_widget_description_off">Widget koristi svijetlu temu</string>
     <string name="import_export">Uvoz i Izvoz</string>
-    <string name="import_contacts_title">Uvezite događaji iz kontakata</string>
+    <string name="import_contacts_title">Uvezite događaje iz kontakata</string>
     <string name="import_contacts_description">Obavezno izmijenite događaje s godinama koje nedostaju kako biste uvijek imali točne statistike!</string>
     <string name="import_success">Uvoz je uspješno završen!</string>
     <string name="import_nothing_found">Nema pronađenih događaja!</string>
@@ -89,9 +89,9 @@
     <string name="missing_permission_contacts_forever">Birday ne može tražiti dopuštenje za uvoz kontakata,
     budući da ste označili "nikad više ne pitaj". Omogućite ga ručno!</string>
     <string name="birday_import_title">Uvezite sigurnosnu kopiju za Birday</string>
-    <string name="birday_import_description">Odaberite valjanu sigurnosnu kopiju za Birday kako biste uvezli događaji. Svi postojeći podaci će biti izbrisani!</string>
-    <string name="birday_export_title">Izvezite i podijelite događaji</string>
-    <string name="birday_export_description">Izvezite dostupne događaji u sigurnosnu kopiju i podijelite ih ako želite. Datoteka se nalazi u Android/data/com.minar.birday/files</string>
+    <string name="birday_import_description">Odaberite valjanu sigurnosnu kopiju za Birday kako biste uvezli događaje. Svi postojeći podaci će biti izbrisani!</string>
+    <string name="birday_export_title">Izvezite i podijelite događaje</string>
+    <string name="birday_export_description">Izvezite dostupne događaje u sigurnosnu kopiju i podijelite ih ako želite. Datoteka se nalazi u Android/data/com.minar.birday/files</string>
     <string name="birday_import_success">Uvoz je završen!</string>
     <string name="birday_import_failure">Uvoz nije uspio. Jeste li ispravno odabrali datoteku?</string>
     <string name="birday_import_invalid_file">Uvoz nije uspio. Odabrana datoteka nije Birday sigurnosna kopija!</string>
@@ -123,7 +123,7 @@
     <string name="invalid_value_name">Nevažeće ime. Brojevi i simboli nisu podržani!</string>
     <string name="consider_year">Uzmi godinu u obzir</string>
     <string name="birthday">Rođendan</string>
-    <string name="anniversary">Obljetnica</string>
+    <string name="anniversary">Godišnjica</string>
     <string name="death_anniversary">Godišnjica smrti</string>
     <string name="festivity">Svečanost</string>
     <string name="name_day">Imendan</string>
@@ -163,7 +163,7 @@
     <string name="most_common_decade">Najčešće desetljeće rođenja je %s</string>
     <string name="most_common_age_range">Najčešći dobni raspon je %1$s-%2$s</string>
     <string name="special_ages">Važan predstojeći rođendan je %s</string>
-    <string name="random_zodiac_sign">Horoskopski znak %1$s: %2$s</string>
+    <string name="random_zodiac_sign">Horoskopski znak osobe "%1$s": %2$s</string>
     <string name="most_common_zodiac_sign">Najčešći horoskopski znak je %s</string>
     <string name="random_day_of_week">%1$s je rođen/a u %2$s</string>
     <string name="most_common_day_of_week">Najčešći dan u tjednu rođenja je %s</string>
@@ -172,7 +172,7 @@
         <item quantity="few">Broj osoba rođenih u prijestupnoj godini je %d</item>
         <item quantity="other">Broj osoba rođenih u prijestupnoj godini je %d</item>
     </plurals>
-    <string name="random_chinese_year">Kineski horoskopski znak %1$s: %2$s</string>
+    <string name="random_chinese_year">Kineski horoskopski znak osobe "%1$s": %2$s</string>
     <string name="chinese_zodiac_rat">štakor</string>
     <string name="chinese_zodiac_ox">vol</string>
     <string name="chinese_zodiac_tiger">tigar</string>
@@ -184,7 +184,7 @@
     <string name="chinese_zodiac_monkey">majmun</string>
     <string name="chinese_zodiac_rooster">pijetao</string>
     <string name="chinese_zodiac_dog">pas</string>
-    <string name="chinese_zodiac_pig">prase</string>
+    <string name="chinese_zodiac_pig">svinja</string>
     <string name="zodiac_sagittarius">strijelac</string>
     <string name="zodiac_capricorn">jarac</string>
     <string name="zodiac_aquarius">vodenjak</string>
@@ -226,7 +226,7 @@
     <!-- Introduction slides -->
     <string name="slide_one_title">Dobrodošli u Birday!</string>
     <string name="slide_one_description">Birday je jednostavna i lagana aplikacija za upravljanje važnim događajima!
-    Pomoću njega možete brže i pouzdanije zapamtiti i arhivirati rođendane ljudi koje volite.
+    Pomoću nje možete brže i pouzdanije spremiti i zapamtiti događaje i rođendane ljudi koje volite.
     </string>
     <string name="slide_two_title">Besplatan, jednostavan, prilagodljiv</string>
     <string name="slide_two_description">Birday je besplatan, otvorenog koda i bez oglasa. Pruža
@@ -234,7 +234,7 @@
     podršku i ažuriranja!
     </string>
     <string name="slide_three_title">Uvoz iz kontakata</string>
-    <string name="slide_three_description">Također je moguće uvesti događaji koje ste već spremili
+    <string name="slide_three_description">Također je moguće uvesti već spremljene događaje 
     iz vaših kontakata. Birday to može učiniti umjesto vas, samo dopustite pristup kontaktima. Uživajte!
     </string>
 
