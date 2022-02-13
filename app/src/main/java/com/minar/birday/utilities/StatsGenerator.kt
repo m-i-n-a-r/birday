@@ -46,6 +46,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     fun generateFullStats(): SpannableStringBuilder {
         val sb = SpannableStringBuilder()
         val stats = mutableListOf<String>()
+        stats.add(eventTypesNumbers())
         stats.add(ageAverage())
         stats.add(oldestPerson())
         stats.add(youngestPerson())
@@ -58,6 +59,11 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         stats.removeIf { it.isBlank() }
         sb.appendBulletSpans(stats, 16, applicationContext!!.getColor(R.color.goodGray))
         return sb
+    }
+
+    // The number of events for each type
+    private fun eventTypesNumbers(): String {
+        return ""
     }
 
     // The average age
@@ -398,6 +404,31 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
             else appendBulletSpan(paragraph, margin, color)
         }
         return this
+    }
+
+    // Return the list filtering the birthdays
+    private fun filterBirthdays(): List<EventResult> {
+        return events.filter { isBirthday(it) }
+    }
+
+    // Return the list filtering the anniversary
+    private fun filterAnniversaries(): List<EventResult> {
+        return events.filter { isAnniversary(it) }
+    }
+
+    // Return the list filtering the death anniversaries
+    private fun filterDeathAnniversary(): List<EventResult> {
+        return events.filter { isDeathAnniversary(it) }
+    }
+
+    // Return the list filtering the name days
+    private fun filterNameDays(): List<EventResult> {
+        return events.filter { isNameDay(it) }
+    }
+
+    // Return the list filtering the "others"
+    private fun filterOthers(): List<EventResult> {
+        return events.filter { isOther(it) }
     }
 
     private fun SpannableStringBuilder.appendBulletSpan(

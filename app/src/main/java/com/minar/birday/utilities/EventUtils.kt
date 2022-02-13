@@ -26,6 +26,26 @@ fun resultToEvent(eventResult: EventResult) = Event(
     image = eventResult.image
 )
 
+// Check if an event is a birthday
+fun isBirthday(event: EventResult): Boolean =
+    event.type == EventCode.BIRTHDAY.toString()
+
+// Check if an event is a anniversary
+fun isAnniversary(event: EventResult): Boolean =
+    event.type == EventCode.ANNIVERSARY.toString()
+
+// Check if an event is a death anniversary
+fun isDeathAnniversary(event: EventResult): Boolean =
+    event.type == EventCode.DEATH.toString()
+
+// Check if an event is a name day
+fun isNameDay(event: EventResult): Boolean =
+    event.type == EventCode.NAME_DAY.toString()
+
+// Check if an event is "other"
+fun isOther(event: EventResult): Boolean =
+    event.type == EventCode.OTHER.toString()
+
 // Properly format the next date for widget and next event card
 fun nextDateFormatted(event: EventResult, formatter: DateTimeFormatter, context: Context): String {
     val daysRemaining = getRemainingDays(event.nextDate!!)
@@ -94,7 +114,6 @@ fun getAvailableTypes(context: Context): List<EventType> {
         EventType(EventCode.ANNIVERSARY, context.getString(R.string.anniversary)),
         EventType(EventCode.DEATH, context.getString(R.string.death_anniversary)),
         EventType(EventCode.NAME_DAY, context.getString(R.string.name_day)),
-        EventType(EventCode.FESTIVITY, context.getString(R.string.festivity)),
         EventType(EventCode.OTHER, context.getString(R.string.other)),
     )
 }
@@ -107,7 +126,6 @@ fun getStringForTypeCodename(context: Context, codename: String): String {
             EventCode.ANNIVERSARY -> context.getString(R.string.anniversary)
             EventCode.DEATH -> context.getString(R.string.death_anniversary)
             EventCode.NAME_DAY -> context.getString(R.string.name_day)
-            EventCode.FESTIVITY -> context.getString(R.string.festivity)
             EventCode.OTHER -> context.getString(R.string.other)
         }
     } catch (e: Exception) {

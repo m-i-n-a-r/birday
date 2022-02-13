@@ -4,7 +4,6 @@ enum class EventCode {
     BIRTHDAY,
     ANNIVERSARY,
     DEATH,
-    FESTIVITY,
     NAME_DAY,
     OTHER
 }
