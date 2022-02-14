@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_welcome">Witam w Birday</string>
-    <string name="app_name_extended">Birday - Menedżer urodzin</string>
+    <string name="app_name_extended">Birday - Menedżer wydarzenie</string>
     <string name="leave_review_title">Oceń Birday</string>
     <string name="leave_review_subtitle">Zostaw ocenę, aby pomóc mi z aplikacją. Pamiętaj, że pomijając donacje ta aplikacja jest całkowicie darmowa i bez reklam!</string>
     <string name="yes_review">Oceń!</string>
@@ -10,16 +11,16 @@
     <string name="title_home">Strona główna</string>
     <string name="title_favorites">Ulubione</string>
     <string name="title_settings">Ustawienia</string>
-    <string name="no_events">Brak urodzin! Zacznij dodawać używając przycisku poniżej!</string>
+    <string name="no_events">Brak wydarzenie! Zacznij dodawać używając przycisku poniżej!</string>
     <string name="no_favorites">Brak ulubionych! Naciśnij gwiazkę, żeby dodać wydarzenie do ulubionych!</string>
     <string name="add_favorite">Dodaj do ulubionych</string>
     <string name="stats">Statystyki</string>
     <string name="no_stats">Brak statystyk do pokazania!</string>
     <string name="stats_summary">Podsumowanie statystyk</string>
-    <string name="no_stats_description">Nie masz wystarczającej liczby urodzin żeby wygenerować statystyki. Dodaj nowe i wróć później!</string>
+    <string name="no_stats_description">Nie masz wystarczającej liczby wydarzenie żeby wygenerować statystyki. Dodaj nowe i wróć później!</string>
     <string name="next_event">Następne wydarzenie</string>
-    <string name="no_next_event">Brak urodzin do pokazania</string>
-    <string name="no_next_event_description">Jeszcze nie dodałeś, ani nie zimportowałeś żadnych urodzin. Dodaj jakieś i pozwól, by Birday Ci pomógł!</string>
+    <string name="no_next_event">Brak wydarzenie do pokazania</string>
+    <string name="no_next_event_description">Jeszcze nie dodałeś, ani nie zimportowałeś żadnych wydarzenie. Dodaj jakieś i pozwól, by Birday Ci pomógł!</string>
     <string name="next_age_years">Lata</string>
     <string name="event_others">i inne</string>
     <string name="customization">Personalizacja</string>
@@ -67,17 +68,17 @@
     <string name="dark_widget_description_on">Widżet używa ciemnego motywu</string>
     <string name="dark_widget_description_off">Widżet używa jasnego motywu</string>
     <string name="import_export">Importuj i Eksportuj</string>
-    <string name="import_contacts_title">Importuj urodziny z kontaktów</string>
+    <string name="import_contacts_title">Importuj wydarzenia z kontaktów</string>
     <string name="import_contacts_description">Upewnij się, że wydarzenia mają uzupełnione lata, żeby zawsze pokazywać poprawne statystyki!</string>
     <string name="import_success">Import zakończony pomyślnie!</string>
-    <string name="import_nothing_found">Nie znaleziono urodzin!</string>
+    <string name="import_nothing_found">Nie znaleziono wydarzenie!</string>
     <string name="import_failed">Coś poszło nie tak!</string>
     <string name="missing_permission_contacts">Nie przyznano dostępu do kontaktów. Spróbuj jeszcze raz, lub aktywuj dostęp ręcznie, w przeciwnym wypadku import kontaktów nie zadziała!</string>
     <string name="missing_permission_contacts_forever">Birday nie może uzyskać dostępu do kontaktów, ponieważ została wybrana opcja \"Nigdy nie pytaj\". Przyznaj dostęp ręcznie!</string>
     <string name="birday_import_title">Importuj kopię zapasową Birday</string>
-    <string name="birday_import_description">Wybierz poprawną kopię zapasową Birday w celu przywrócenia urodzin. Istniejące dane zostaną nadpisane!</string>
-    <string name="birday_export_title">Eksportuj i udostępnij urodziny</string>
-    <string name="birday_export_description">Eksportuj dostępne urodziny do kopii zapasowej i udostępnij je, jeżeli chcesz. Plik zostanie zapisany w     Android/data/com.minar.birday/files</string>
+    <string name="birday_import_description">Wybierz poprawną kopię zapasową Birday w celu przywrócenia wydarzenia. Istniejące dane zostaną nadpisane!</string>
+    <string name="birday_export_title">Eksportuj i udostępnij wydarzenia</string>
+    <string name="birday_export_description">Eksportuj dostępne wydarzenia do kopii zapasowej i udostępnij je, jeżeli chcesz. Plik zostanie zapisany w     Android/data/com.minar.birday/files</string>
     <string name="birday_import_success">Import zakończony!</string>
     <string name="birday_import_failure">Import nie powiódł się. Czy wybrany został poprawny plik?</string>
     <string name="birday_import_invalid_file">Import nie powiódł się. Wybrany plik to nie kopia zapasowa Birday!</string>
@@ -95,9 +96,9 @@
     <string name="notification_only_favorites_description_off">Wyślij powiadomienia dla wszystkich wydarzeń</string>
     <string name="dev_description">Jestem miłym gościem i lubię piękne rzeczy takie jak: animacje, ikony, sportowe samochody, druk 3D. Pracuję jako designer i informatyk.</string>
     <string name="easter_egg">Fajne logo, co? ;D</string>
-    <string name="new_event">Nowe urodziny</string>
-    <string name="new_event_description">Wprowadź osobę, na której Ci zależy, a Birday pomoże Ci zapamiętać ich urodziny!</string>
-    <string name="insert_event">Wprowadź urodziny</string>
+    <string name="new_event">Nowe wydarzenie</string>
+    <string name="new_event_description">Wprowadź osobę, na której Ci zależy, a Birday pomoże Ci zapamiętać ich urodziny lub inne wydarzenia!</string>
+    <string name="insert_event">Wprowadź wydarzenie</string>
     <string name="cancel">Anuluj</string>
     <string name="insert_name_hint">Wprowadź imię</string>
     <string name="insert_surname_hint">Wprowadź nazwisko</string>
@@ -166,22 +167,56 @@
     <string name="born_in">urodzony/a w</string>
     <string name="and">i</string>
     <string name="events_notification_channel">Przypomnienia wydarzeń</string>
-    <string name="events_channel_description">Przypomnienia o nadchodzących urodzinach z Birday</string>
+    <string name="events_channel_description">Przypomnienia o nadchodzących wydarzeniach z Birday</string>
     <string name="notification_title">Przypomnienia Birday</string>
-    <string name="notification_description_part_1">Witaj, dzisiejsze urodziny to</string>
+    <string name="notification_description_part_1">Witaj, dzisiejsze wydarzenia to</string>
     <string name="notification_description_part_2">Miłego dnia!</string>
-    <string name="additional_notification_text">Nadchodzące urodziny!</string>
+    <string name="additional_notification_text">Nadchodzące wydarzenia!</string>
     <string name="slide_one_title">Witaj w Birday!</string>
-    <string name="slide_one_description">Birday to prosta i lekka aplikacja do zarządzania ważnymi wydarzeniami!     Możesz używać jej by zapamiętać urodziny ludzi, których kochasz w niezawodny i szybki sposób.</string>
+    <string name="slide_one_description">Birday to prosta i lekka aplikacja do zarządzania ważnymi wydarzeniami! Możesz go używać do bardziej niezawodnego i szybkiego zapamiętywania urodzin osób, które kochasz.</string>
     <string name="slide_two_title">Darmowa, prosta i spersonalizowana</string>
     <string name="slide_two_description">Birday jest darmowy, bez reklam i open source. Umożliwia przegląd statystyk urodzin, ubsługuje ulubione urodziny i ma konfigurowalny interfejs. Gwarantujemy wsparcie techniczne i aktualizacje!</string>
     <string name="slide_three_title">Importuj z kontaktów</string>
-    <string name="slide_three_description">Możliwe jest także importowanie urodzin które już posiadasz z Twoich kontaktów. Birday może to zrobić dla Ciebie, musisz tylko przyznać dostęp do kontaktów. Miłego używania!</string>
-    <string name="appwidget_upcoming">Nadchodzące urodziny</string>
+    <string name="slide_three_description">Możliwe jest także importowanie wydarzenia które już posiadasz z Twoich kontaktów. Birday może to zrobić dla Ciebie, musisz tylko przyznać dostęp do kontaktów. Miłego używania!</string>
+    <string name="appwidget_upcoming">Nadchodzące wydarzenia</string>
     <string name="add_widget">Birday - Nadchodzące</string>
     <string name="search_event">Szukaj…</string>
     <string name="search_no_result_title">Nic nie znaleziono</string>
     <string name="search_no_result_description">Wyszukiwana fraza nie pasuje do żadnych wydarzeń!</string>
     <string name="notes">Notatki</string>
     <string name="write_something">Napisz coś…</string>
+    <string name="overview">Przegląd</string>
+    <string name="overview_description">Roczny przegląd zapisanych zdarzeń</string>
+    <string name="birthday">Urodziny</string>
+    <string name="anniversary">Rocznica</string>
+    <string name="death_anniversary">Rocznica śmierci</string>
+    <string name="festivity">Święto</string>
+    <string name="name_day">Imieniny</string>
+    <string name="other">Inny</string>
+    <plurals name="stats_total">
+        <item quantity="one">Birday pomaga zapamiętać w sumie %d urodziny</item>
+        <item quantity="few">Birday pomaga zapamiętać łącznie %d urodzin</item>
+        <item quantity="many">Birday pomaga zapamiętać łącznie %d urodzin</item>
+    </plurals>
+    <plurals name="days_left">
+        <item quantity="one">zostały %d dzień</item>
+        <item quantity="few">zostały %d dni</item>
+        <item quantity="many">zostały %d dni</item>
+    </plurals>
+    <plurals name="leap_year_total">
+        <item quantity="one">Liczba osób urodzonych w roku przestępnym to %d</item>
+        <item quantity="few">Liczba osób urodzonych w roku przestępnym to %d</item>
+        <item quantity="many">Liczba osób urodzonych w roku przestępnym to %d</item>
+    </plurals>
+    <plurals name="months">
+        <item quantity="one">%d miesiąc</item>
+        <item quantity="few">%d miesiące</item>
+        <item quantity="many">%d miesiące</item>
+    </plurals>
+    <plurals name="years">
+        <item quantity="one">%d rok</item>
+        <item quantity="few">%d lat</item>
+        <item quantity="many">%d lat</item>
+    </plurals>
+
 </resources>
