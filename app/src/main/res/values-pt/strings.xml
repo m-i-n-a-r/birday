@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_welcome">Bem-vindo a Birday</string>
-    <string name="app_name_extended">Birday - Gestor de eventos</string>
+    <string name="app_name_extended">Birday - Gestor de Eventos</string>
     <string name="leave_review_title">Avaliar Birday</string>
     <string name="leave_review_subtitle">Indique-nos a sua avaliação para nos ajudar com a aplicação. Lembre-se que, sem ser os donativos, esta aplicação é gratuita e não tem anúncios!</string>
     <string name="yes_review">Avaliar!</string>

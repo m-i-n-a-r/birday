@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_welcome">Witam w Birday</string>
-    <string name="app_name_extended">Birday - Menedżer wydarzenie</string>
+    <string name="app_name_extended">Birday - Menedżer Wydarzenie</string>
     <string name="leave_review_title">Oceń Birday</string>
     <string name="leave_review_subtitle">Zostaw ocenę, aby pomóc mi z aplikacją. Pamiętaj, że pomijając donacje ta aplikacja jest całkowicie darmowa i bez reklam!</string>
     <string name="yes_review">Oceń!</string>
