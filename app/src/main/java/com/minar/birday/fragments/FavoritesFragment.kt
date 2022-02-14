@@ -10,7 +10,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,9 +29,9 @@ import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.StatsGenerator
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 import com.minar.birday.utilities.getRemainingDays
+import com.minar.birday.utilities.isBirthday
 import com.minar.birday.viewmodels.MainViewModel
 import java.time.LocalDate
-import java.time.temporal.ChronoUnit
 import kotlin.math.min
 
 
@@ -111,16 +110,16 @@ class FavoritesFragment : Fragment() {
         setUpAdapter()
         mainViewModel = ViewModelProvider(act)[MainViewModel::class.java]
         with(mainViewModel) {
-            getFavorites().observe(viewLifecycleOwner, { events ->
+            getFavorites().observe(viewLifecycleOwner) { events ->
                 // Update the cached copy in the adapter
                 if (events != null && events.isNotEmpty()) {
                     removePlaceholder()
                     adapter.submitList(events)
                 }
-            })
+            }
         }
 
-        // Set the overview button TODO Temporary disabled
+        // Set the overview button TODO Temporarily disabled
         //overviewButton.setOnClickListener {
         //    // Vibrate and navigate to the overview screen
         //    act.vibrate()
@@ -130,9 +129,11 @@ class FavoritesFragment : Fragment() {
 
         // Set the data which requires the complete and unfiltered event list
         with(binding) {
-            mainViewModel.allEventsUnfiltered.observe(viewLifecycleOwner, { events ->
-                // Stats - Under a minimum size, no stats will be shown (at least 5 events containing a year)
-                if (events.filter { it.yearMatter == true }.size > 4) generateStat(events)
+            mainViewModel.allEventsUnfiltered.observe(viewLifecycleOwner) { events ->
+                // Stats - Under a minimum size, no stats will be shown (at least 5 birthdays containing a year)
+                if (events.filter { it.yearMatter == true && isBirthday(it) }.size > 4) generateStat(
+                    events
+                )
                 else fullStats = SpannableStringBuilder(
                     requireActivity().applicationContext.getString(
                         R.string.no_stats_description
@@ -197,7 +198,7 @@ class FavoritesFragment : Fragment() {
                         }
                     }
                 }
-            })
+            }
         }
 
         return v
