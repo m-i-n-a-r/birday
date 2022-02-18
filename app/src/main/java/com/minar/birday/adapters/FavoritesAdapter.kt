@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
 import com.minar.birday.databinding.FavoriteRowBinding
-import com.minar.birday.listeners.OnItemClickListener
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getAge
@@ -19,10 +18,10 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
 
-class FavoritesAdapter internal constructor() :
-    ListAdapter<EventResult, FavoritesAdapter.FavoriteViewHolder>(FavoritesDiffCallback()) {
+class FavoritesAdapter(
+    private val onItemClick: (position: Int) -> Unit
+) : ListAdapter<EventResult, FavoritesAdapter.FavoriteViewHolder>(FavoritesDiffCallback()) {
     private lateinit var context: Context
-    var itemClickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         context = parent.context
@@ -41,7 +40,7 @@ class FavoritesAdapter internal constructor() :
     }
 
     inner class FavoriteViewHolder(binding: FavoriteRowBinding) :
-        RecyclerView.ViewHolder(binding.root), View.OnClickListener, View.OnLongClickListener {
+        RecyclerView.ViewHolder(binding.root) {
         private val eventPerson = binding.eventPerson
         private val eventNote = binding.eventNote
         private val eventDate = binding.eventDate
@@ -49,8 +48,9 @@ class FavoritesAdapter internal constructor() :
         private val eventCountdown = binding.eventCountdown
 
         init {
-            binding.root.setOnClickListener(this)
-            binding.root.setOnLongClickListener(this)
+            binding.root.setOnClickListener {
+                onItemClick(adapterPosition)
+            }
         }
 
         // Set every necessary text and click action in each row
@@ -80,19 +80,6 @@ class FavoritesAdapter internal constructor() :
                 eventYears.text = actualAge
             } else eventYears.visibility = View.GONE
         }
-
-        override fun onClick(v: View?) {
-            itemClickListener?.onItemClick(adapterPosition, v)
-        }
-
-        override fun onLongClick(v: View?): Boolean {
-            itemClickListener?.onItemLongClick(adapterPosition, v)
-            return true
-        }
-    }
-
-    fun setOnItemClickListener(onItemClickListener: OnItemClickListener) {
-        this.itemClickListener = onItemClickListener
     }
 }
 

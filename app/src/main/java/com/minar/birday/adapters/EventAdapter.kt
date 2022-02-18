@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
 import com.minar.birday.databinding.EventRowBinding
-import com.minar.birday.fragments.HomeFragment
-import com.minar.birday.listeners.OnItemClickListener
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.formatName
@@ -28,13 +26,13 @@ import java.util.*
 
 
 @ExperimentalStdlibApi
-class EventAdapter internal constructor(homeFragment: HomeFragment?) :
-    ListAdapter<EventResult, EventAdapter.EventViewHolder>(EventsDiffCallback()) {
+class EventAdapter(
+    private val updateFavorite: (value: EventResult) -> Unit,
+    private val onItemClick: (position: Int) -> Unit,
+    private val onItemLongClick: (position: Int) -> Unit
+) : ListAdapter<EventResult, EventAdapter.EventViewHolder>(EventsDiffCallback()) {
     private lateinit var context: Context
-    private lateinit var itemClickListener: OnItemClickListener
-    private val fragment = homeFragment
     private val activityScope = CoroutineScope(Dispatchers.Main)
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         context = parent.context
@@ -52,16 +50,18 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?) :
         return super.getItem(position)
     }
 
-    inner class EventViewHolder(binding: EventRowBinding) : RecyclerView.ViewHolder(binding.root),
-        View.OnClickListener, View.OnLongClickListener {
+    inner class EventViewHolder(binding: EventRowBinding) : RecyclerView.ViewHolder(binding.root) {
         private val favoriteButton = binding.favoriteButton
         private val eventPerson = binding.eventPerson
         private val eventDate = binding.eventDate
         private val eventImage = binding.eventImage
 
         init {
-            binding.root.setOnClickListener(this)
-            binding.root.setOnLongClickListener(this)
+            binding.root.setOnClickListener { onItemClick(adapterPosition) }
+            binding.root.setOnLongClickListener {
+                onItemLongClick(adapterPosition)
+                true
+            }
         }
 
         // Set every necessary text and click action in each row
@@ -110,7 +110,7 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?) :
                 if (event.favorite == true) {
                     event.favorite = false
                     activityScope.launch {
-                        fragment?.updateFavorite(event)
+                        updateFavorite(event)
                         delay(800)
                         favoriteButton.setImageResource(R.drawable.animated_to_favorite)
                     }
@@ -118,7 +118,7 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?) :
                 } else {
                     event.favorite = true
                     activityScope.launch {
-                        fragment?.updateFavorite(event)
+                        updateFavorite(event)
                         delay(800)
                         favoriteButton.setImageResource(R.drawable.animated_from_favorite)
                     }
@@ -126,19 +126,6 @@ class EventAdapter internal constructor(homeFragment: HomeFragment?) :
                 }
             }
         }
-
-        override fun onClick(v: View?) {
-            itemClickListener.onItemClick(adapterPosition, v)
-        }
-
-        override fun onLongClick(v: View?): Boolean {
-            itemClickListener.onItemLongClick(adapterPosition, v)
-            return true
-        }
-    }
-
-    fun setOnItemClickListener(onItemClickListener: OnItemClickListener) {
-        this.itemClickListener = onItemClickListener
     }
 }
 

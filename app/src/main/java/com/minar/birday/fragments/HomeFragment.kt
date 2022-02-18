@@ -31,7 +31,6 @@ import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.databinding.DialogAppsEventBinding
 import com.minar.birday.databinding.FragmentHomeBinding
-import com.minar.birday.listeners.OnItemClickListener
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
@@ -59,7 +58,11 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = EventAdapter(this)
+        adapter = EventAdapter(
+            updateFavorite = { eventResult -> updateFavorite(eventResult) },
+            onItemClick = { position -> onItemClick(position) },
+            onItemLongClick = { position -> onItemLongClick(position) }
+        )
         act = activity as MainActivity
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
     }
@@ -118,7 +121,6 @@ class HomeFragment : Fragment() {
 
         // Setup the recycler view
         initializeRecyclerView()
-        setUpAdapter()
 
         mainViewModel = ViewModelProvider(act)[MainViewModel::class.java]
         mainViewModel.allEvents.observe(viewLifecycleOwner, { events ->
@@ -152,7 +154,7 @@ class HomeFragment : Fragment() {
     }
 
     // Functions to update, delete and create an Event object to pass instead of the returning object passed
-    fun updateFavorite(eventResult: EventResult) {
+    private fun updateFavorite(eventResult: EventResult) {
         mainViewModel.update(resultToEvent(eventResult))
     }
 
@@ -163,37 +165,30 @@ class HomeFragment : Fragment() {
         recyclerView.adapter = adapter
     }
 
-    // Manage the onclick actions, or the long click (unused atm)
-    @ExperimentalStdlibApi
-    private fun setUpAdapter() {
-        adapter.setOnItemClickListener(onItemClickListener = object : OnItemClickListener {
-            // Show a dialog with the details of the selected contact
-            override fun onItemClick(position: Int, view: View?) {
-                // Return if there was a navigation, useful to avoid double tap on two events
-                if (requireView().findNavController().currentDestination?.label != "fragment_home")
-                    return
+    // Show a dialog with the details of the selected contact
+    private fun onItemClick(position: Int) {
+        // Return if there was a navigation, useful to avoid double tap on two events
+        if (requireView().findNavController().currentDestination?.label != "fragment_home")
+            return
 
-                act.vibrate()
-                val event = adapter.getItem(position)
-                // Navigate to the new fragment passing in the event with safe args
-                val action = HomeFragmentDirections.actionNavigationMainToDetailsFragment(event)
-                requireView().findNavController().navigate(action)
-            }
+        act.vibrate()
+        val event = adapter.getItem(position)
+        // Navigate to the new fragment passing in the event with safe args
+        val action = HomeFragmentDirections.actionNavigationMainToDetailsFragment(event)
+        requireView().findNavController().navigate(action)
+    }
 
-            // Show the next age and countdown on long press (only the latter for no year events)
-            override fun onItemLongClick(position: Int, view: View?): Boolean {
-                act.vibrate()
-                val event = adapter.getItem(position)
-                val quickStat = if (event.yearMatter == false) formatDaysRemaining(
-                    getRemainingDays(event.nextDate!!),
-                    requireContext()
-                )
-                else "${getString(R.string.next_age)} ${getNextAge(event)}, " +
-                        formatDaysRemaining(getRemainingDays(event.nextDate!!), requireContext())
-                act.showSnackbar(quickStat)
-                return true
-            }
-        })
+    // Show the next age and countdown on long press (only the latter for no year events)
+    private fun onItemLongClick(position: Int) {
+        act.vibrate()
+        val event = adapter.getItem(position)
+        val quickStat = if (event.yearMatter == false) formatDaysRemaining(
+            getRemainingDays(event.nextDate!!),
+            requireContext()
+        )
+        else "${getString(R.string.next_age)} ${getNextAge(event)}, " +
+                formatDaysRemaining(getRemainingDays(event.nextDate!!), requireContext())
+        act.showSnackbar(quickStat)
     }
 
     // Remove the placeholder or return if the placeholder was already removed before

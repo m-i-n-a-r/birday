@@ -51,7 +51,6 @@ import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
-import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.backup.BirdayImporter
 import com.minar.birday.backup.ContactsImporter
 import com.minar.birday.databinding.ActivityMainBinding
@@ -70,7 +69,6 @@ import java.util.*
 @ExperimentalStdlibApi
 class MainActivity : AppCompatActivity() {
     lateinit var mainViewModel: MainViewModel
-    private lateinit var adapter: EventAdapter
     private lateinit var sharedPrefs: SharedPreferences
     private lateinit var binding: ActivityMainBinding
     private var _dialogInsertEventBinding: DialogInsertEventBinding? = null
@@ -81,7 +79,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
-        adapter = EventAdapter(null)
         // Initialize the result launcher to pick the image
         resultLauncher =
             registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
