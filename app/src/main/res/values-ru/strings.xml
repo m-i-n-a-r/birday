@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_welcome">Добро пожаловать в Birday</string>
-    <string name="app_name_extended">Birday - Менеджер мероприятий</string>
+    <string name="app_name_extended">Birday - Менеджер событий</string>
     <string name="leave_review_title">Оставить отзыв о Birday</string>
     <string name="leave_review_subtitle">Оставьте отзыв, чтобы помочь мне с приложением. Имейте в виду, что, не считая пожертвований, это приложение бесплатно и не содержит рекламы!</string>
     <string name="yes_review">Оставить отзыв!</string>
@@ -11,13 +11,13 @@
     <string name="title_home">Главная</string>
     <string name="title_favorites">Избранное</string>
     <string name="title_settings">Настройки</string>
-    <string name="no_events">Нет события! Добавьте, нажав на кнопку внизу!</string>
-    <string name="no_favorites">Нет избранных! Нажмите на звездочку, чтобы добавить мероприятие в избранное!</string>
+    <string name="no_events">Нет событий! Добавьте, нажав на кнопку внизу!</string>
+    <string name="no_favorites">Нет избранных! Нажмите на звездочку, чтобы добавить событие в избранное!</string>
     <string name="add_favorite">Добавить в избранное</string>
     <string name="stats">Статистика</string>
     <string name="no_stats">Нет статистики для просмотра!</string>
     <string name="stats_summary">Обзор статистики</string>
-    <string name="no_stats_description">Недостаточно события, чтобы показать статистику. Добавьте несколько и заходите еще!</string>
+    <string name="no_stats_description">Недостаточно событий, чтобы показать статистику. Добавьте несколько и заходите еще!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday помогает вам запомнить %d событие</item>
         <item quantity="few">Birday помогает вам запомнить %d события</item>
@@ -25,8 +25,8 @@
         <item quantity="other">Birday помогает вам запомнить %d событий</item>
     </plurals>
     <string name="next_event">Следующее событие</string>
-    <string name="no_next_event">Нет событие для просмотра!</string>
-    <string name="no_next_event_description">Вы не ввели и не импортировали ни одного событие. Добавьте их и позвольте Birday вам помочь!</string>
+    <string name="no_next_event">Нет событий для просмотра!</string>
+    <string name="no_next_event_description">Вы не ввели и не импортировали ни одного события. Добавьте их и позвольте Birday вам помочь!</string>
     <string name="next_age_years">Лет</string>
     <string name="event_others">и другие</string>
     <plurals name="days_left">
@@ -112,9 +112,9 @@
     <string name="easter_egg">Прикольный логотип, не? ;D</string>
 
     <!-- New event -->
-    <string name="new_event">Новый события</string>
+    <string name="new_event">Новое событие</string>
     <string name="new_event_description">Запишите человека, который вам дорог, и Birday напомнит вам о его/ее дне рождения!</string>
-    <string name="insert_event">Добавить события</string>
+    <string name="insert_event">Добавить событие</string>
     <string name="cancel">Отмена</string>
     <string name="insert_name_hint">Введите имя</string>
     <string name="insert_surname_hint">Введите фамилию</string>
@@ -124,7 +124,7 @@
     <string name="birthday">День рождения</string>
     <string name="anniversary">Годовщина</string>
     <string name="death_anniversary">Годовщина смерти</string>
-    <string name="festivity">праздник</string>
+    <string name="festivity">Праздник</string>
     <string name="name_day">Именины</string>
     <string name="other">Другой</string>
 
