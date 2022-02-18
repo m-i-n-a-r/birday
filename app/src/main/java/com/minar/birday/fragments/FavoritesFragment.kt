@@ -37,7 +37,6 @@ import kotlin.math.min
 
 @ExperimentalStdlibApi
 class FavoritesFragment : Fragment() {
-    private lateinit var rootView: View
     private lateinit var recyclerView: RecyclerView
     private lateinit var mainViewModel: MainViewModel
     private lateinit var adapter: FavoritesAdapter
@@ -63,7 +62,11 @@ class FavoritesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFavoritesBinding.inflate(inflater, container, false)
-        val v = binding.root
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val statsImage = binding.statsImage
         val shimmer = binding.favoritesCardShimmer
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
@@ -103,7 +106,6 @@ class FavoritesFragment : Fragment() {
         favoritesCard.setOnClickListener {
             showStatsSheet()
         }
-        rootView = v
 
         // Setup the recycler view
         initializeRecyclerView()
@@ -200,8 +202,6 @@ class FavoritesFragment : Fragment() {
                 }
             }
         }
-
-        return v
     }
 
     override fun onDestroyView() {
