@@ -343,18 +343,7 @@ class HomeFragment : Fragment() {
 
         whatsAppButton.setOnClickListener {
             act.vibrate()
-            try {
-                val whatsIntent: Intent? =
-                    ctx.packageManager.getLaunchIntentForPackage("com.whatsapp")
-                ctx.startActivity(whatsIntent)
-            } catch (e: Exception) {
-                startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=com.whatsapp")
-                    )
-                )
-            }
+            launchOrOpenAppStore("com.whatsapp")
             dialog.dismiss()
         }
 
@@ -384,36 +373,28 @@ class HomeFragment : Fragment() {
 
         telegramButton.setOnClickListener {
             act.vibrate()
-            try {
-                val telegramIntent: Intent? =
-                    ctx.packageManager.getLaunchIntentForPackage("org.telegram.messenger")
-                ctx.startActivity(telegramIntent)
-            } catch (e: Exception) {
-                startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=org.telegram.messenger")
-                    )
-                )
-            }
+            launchOrOpenAppStore("org.telegram.messenger")
             dialog.dismiss()
         }
 
         signalButton.setOnClickListener {
             act.vibrate()
-            try {
-                val telegramIntent: Intent? =
-                    ctx.packageManager.getLaunchIntentForPackage("org.thoughtcrime.securesms")
-                ctx.startActivity(telegramIntent)
-            } catch (e: Exception) {
-                startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=org.thoughtcrime.securesms")
-                    )
-                )
-            }
+            launchOrOpenAppStore("org.thoughtcrime.securesms")
             dialog.dismiss()
+        }
+    }
+
+    private fun launchOrOpenAppStore(packageName: String) {
+        try {
+            val intent = requireContext().packageManager.getLaunchIntentForPackage(packageName)
+            requireContext().startActivity(intent)
+        } catch (e: Exception) {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=${packageName}")
+                )
+            )
         }
     }
 
