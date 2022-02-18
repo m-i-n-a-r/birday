@@ -17,7 +17,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -45,7 +45,7 @@ import java.time.temporal.ChronoUnit
 @ExperimentalStdlibApi
 class HomeFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var mainViewModel: MainViewModel
+    private val mainViewModel: MainViewModel by activityViewModels()
     lateinit var adapter: EventAdapter
     lateinit var act: MainActivity
     lateinit var sharedPrefs: SharedPreferences
@@ -124,7 +124,6 @@ class HomeFragment : Fragment() {
         // Setup the recycler view
         initializeRecyclerView()
 
-        mainViewModel = ViewModelProvider(act)[MainViewModel::class.java]
         mainViewModel.allEvents.observe(viewLifecycleOwner, { events ->
             // Manage placeholders, search results and the main list
             events?.let { adapter.submitList(it) }
