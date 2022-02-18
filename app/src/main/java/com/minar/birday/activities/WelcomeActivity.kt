@@ -2,7 +2,9 @@ package com.minar.birday.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import com.github.appintro.AppIntro
 import com.github.appintro.AppIntroFragment
@@ -14,11 +16,15 @@ import com.minar.birday.R
 class WelcomeActivity : AppIntro() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // TODO wait for a non-deprecated universal solution (insets controller is for API 30 only)
-        @Suppress("DEPRECATION")
-        window.decorView.systemUiVisibility =
-            View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+        hideSystemUi()
         showIntroSlides()
+    }
+
+    private fun hideSystemUi() {
+        val insetsController = ViewCompat.getWindowInsetsController(window.decorView) ?: return
+        val navBars = WindowInsetsCompat.Type.navigationBars()
+        insetsController.hide(navBars)
+        insetsController.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
     }
 
     override fun onDonePressed(currentFragment: Fragment?) {
