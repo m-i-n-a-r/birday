@@ -71,23 +71,25 @@ dependencies {
     implementation 'androidx.work:work-runtime-ktx:2.7.1'
 
     // Navigation component
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.0-alpha01'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.0-alpha01'
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
 
     // Lifecycle and ViewModel
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
 
     // Room
-    implementation 'androidx.room:room-runtime:2.4.1'
-    kapt 'androidx.room:room-compiler:2.4.1'
+    def room_version = '2.4.1'
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 
     // App Intro
     implementation 'com.github.AppIntro:AppIntro:6.0.0'
 
     // Material dialogs
-    implementation 'com.afollestad.material-dialogs:core:3.3.0'
-    implementation 'com.afollestad.material-dialogs:bottomsheets:3.3.0'
+    def material_dialogs_version = '3.3.0'
+    implementation "com.afollestad.material-dialogs:core:$material_dialogs_version"
+    implementation "com.afollestad.material-dialogs:bottomsheets:$material_dialogs_version"
 
     // Facebook shimmer effect
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
