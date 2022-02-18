@@ -18,7 +18,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -167,14 +167,14 @@ class HomeFragment : Fragment() {
     // Show a dialog with the details of the selected contact
     private fun onItemClick(position: Int) {
         // Return if there was a navigation, useful to avoid double tap on two events
-        if (requireView().findNavController().currentDestination?.label != "fragment_home")
+        if (findNavController().currentDestination?.label != "fragment_home")
             return
 
         act.vibrate()
         val event = adapter.getItem(position)
         // Navigate to the new fragment passing in the event with safe args
         val action = HomeFragmentDirections.actionNavigationMainToDetailsFragment(event)
-        requireView().findNavController().navigate(action)
+        findNavController().navigate(action)
     }
 
     // Show the next age and countdown on long press (only the latter for no year events)

@@ -25,7 +25,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
 import com.afollestad.materialdialogs.LayoutMode
@@ -146,7 +146,7 @@ class DetailsFragment : Fragment() {
         deleteButton.setOnClickListener {
             act.vibrate()
             deleteEvent(event)
-            requireView().findNavController().popBackStack()
+            findNavController().popBackStack()
         }
 
         editButton.setOnClickListener {
@@ -157,7 +157,7 @@ class DetailsFragment : Fragment() {
         shareButton.setOnClickListener {
             act.vibrate()
             shareEvent(event)
-            requireView().findNavController().popBackStack()
+            findNavController().popBackStack()
         }
 
         // Manage the icon of the notes button (no notes / notes)
@@ -345,7 +345,7 @@ class DetailsFragment : Fragment() {
                 mainViewModel.update(tuple)
                 dismiss()
                 // Go back to the first screen to avoid updating the displayed details
-                requireView().findNavController().popBackStack()
+                findNavController().popBackStack()
             }
             negativeButton(R.string.cancel) {
                 dismiss()
