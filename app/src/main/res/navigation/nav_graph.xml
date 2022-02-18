@@ -42,8 +42,6 @@
         tools:layout="@layout/fragment_details">
         <argument
             android:name="event"
-            android:defaultValue="@null"
-            app:nullable="true"
             app:argType="com.minar.birday.model.EventResult" />
     </fragment>
     <fragment
