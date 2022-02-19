@@ -45,7 +45,6 @@ import java.time.temporal.ChronoUnit
 
 @ExperimentalStdlibApi
 class HomeFragment : Fragment() {
-    private lateinit var rootView: View
     private lateinit var recyclerView: RecyclerView
     private lateinit var mainViewModel: MainViewModel
     lateinit var adapter: EventAdapter
@@ -70,7 +69,11 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val v = binding.root
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val upcomingImage = binding.upcomingImage
         val shimmer = binding.homeCardShimmer
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
@@ -114,7 +117,6 @@ class HomeFragment : Fragment() {
         homeCard.setOnClickListener {
             showQuickAppsSheet()
         }
-        rootView = v
 
         // Setup the recycler view
         initializeRecyclerView()
@@ -140,8 +142,6 @@ class HomeFragment : Fragment() {
         // Restore search string in the search bar
         if (mainViewModel.searchString.value!!.isNotBlank())
             searchBar.setText(mainViewModel.searchString.value)
-
-        return v
     }
 
     override fun onDestroyView() {

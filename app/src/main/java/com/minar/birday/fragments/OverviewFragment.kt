@@ -39,8 +39,11 @@ class OverviewFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentOverviewBinding.inflate(inflater, container, false)
-        val v = binding.root
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         mainViewModel = ViewModelProvider(act)[MainViewModel::class.java]
-        return v
     }
 }

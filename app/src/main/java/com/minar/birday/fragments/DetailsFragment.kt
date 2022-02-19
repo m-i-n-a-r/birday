@@ -96,8 +96,12 @@ class DetailsFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentDetailsBinding.inflate(inflater, container, false)
-        val v = binding.root
-        val event = args.event ?: return v
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val event = args.event ?: return
         mainViewModel = ViewModelProvider(act)[MainViewModel::class.java]
 
         val shimmer = binding.detailsCountdownShimmer
@@ -143,7 +147,7 @@ class DetailsFragment : Fragment() {
         deleteButton.setOnClickListener {
             act.vibrate()
             deleteEvent(event)
-            v.findNavController().popBackStack()
+            requireView().findNavController().popBackStack()
         }
 
         editButton.setOnClickListener {
@@ -154,7 +158,7 @@ class DetailsFragment : Fragment() {
         shareButton.setOnClickListener {
             act.vibrate()
             shareEvent(event)
-            v.findNavController().popBackStack()
+            requireView().findNavController().popBackStack()
         }
 
         // Manage the icon of the notes button (no notes / notes)
@@ -292,7 +296,6 @@ class DetailsFragment : Fragment() {
                 )
             )
         }
-        return v
     }
 
     // Delete an existing event and show a snackbar
