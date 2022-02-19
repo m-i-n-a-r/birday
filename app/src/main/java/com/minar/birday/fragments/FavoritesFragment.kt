@@ -23,7 +23,6 @@ import com.minar.birday.adapters.FavoritesAdapter
 import com.minar.birday.databinding.DialogNotesBinding
 import com.minar.birday.databinding.DialogStatsBinding
 import com.minar.birday.databinding.FragmentFavoritesBinding
-import com.minar.birday.listeners.OnItemClickListener
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.StatsGenerator
@@ -52,7 +51,7 @@ class FavoritesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = FavoritesAdapter()
+        adapter = FavoritesAdapter { item -> onItemClick(item) }
         act = activity as MainActivity
     }
 
@@ -109,7 +108,6 @@ class FavoritesFragment : Fragment() {
 
         // Setup the recycler view
         initializeRecyclerView()
-        setUpAdapter()
         mainViewModel = ViewModelProvider(act)[MainViewModel::class.java]
         with(mainViewModel) {
             getFavorites().observe(viewLifecycleOwner) { events ->
@@ -219,48 +217,37 @@ class FavoritesFragment : Fragment() {
         recyclerView.adapter = adapter
     }
 
-    // Manage the onclick actions, or the long click (unused atm)
-    private fun setUpAdapter() {
-        adapter.setOnItemClickListener(onItemClickListener = object : OnItemClickListener {
-            override fun onItemClick(position: Int, view: View?) {
-                act.vibrate()
-                _dialogNotesBinding = DialogNotesBinding.inflate(LayoutInflater.from(context))
-                val event = adapter.getItem(position)
-                val title = getString(R.string.notes) + " - " + event.name
-                MaterialDialog(act).show {
-                    title(text = title)
-                    icon(R.drawable.ic_note_24dp)
-                    cornerRadius(res = R.dimen.rounded_corners)
-                    customView(view = dialogNotesBinding.root)
-                    val noteTextField = dialogNotesBinding.favoritesNotes
-                    noteTextField.setText(event.notes)
-                    negativeButton(R.string.cancel) {
-                        dismiss()
-                    }
-                    positiveButton {
-                        val note = noteTextField.text.toString().trim()
-                        val tuple = Event(
-                            id = event.id,
-                            originalDate = event.originalDate,
-                            name = event.name,
-                            yearMatter = event.yearMatter,
-                            surname = event.surname,
-                            favorite = event.favorite,
-                            notes = note,
-                            image = event.image
-                        )
-                        mainViewModel.update(tuple)
-                        dismiss()
-                    }
-                }
+    private fun onItemClick(position: Int) {
+        act.vibrate()
+        _dialogNotesBinding = DialogNotesBinding.inflate(LayoutInflater.from(context))
+        val event = adapter.getItem(position)
+        val title = getString(R.string.notes) + " - " + event.name
+        MaterialDialog(act).show {
+            title(text = title)
+            icon(R.drawable.ic_note_24dp)
+            cornerRadius(res = R.dimen.rounded_corners)
+            customView(view = dialogNotesBinding.root)
+            val noteTextField = dialogNotesBinding.favoritesNotes
+            noteTextField.setText(event.notes)
+            negativeButton(R.string.cancel) {
+                dismiss()
             }
-
-            // TODO reassign an action to the long press
-            override fun onItemLongClick(position: Int, view: View?): Boolean {
-                return true
+            positiveButton {
+                val note = noteTextField.text.toString().trim()
+                val tuple = Event(
+                    id = event.id,
+                    originalDate = event.originalDate,
+                    name = event.name,
+                    yearMatter = event.yearMatter,
+                    surname = event.surname,
+                    favorite = event.favorite,
+                    notes = note,
+                    image = event.image
+                )
+                mainViewModel.update(tuple)
+                dismiss()
             }
-
-        })
+        }
     }
 
     // Remove the placeholder or return if the placeholder was already removed before
