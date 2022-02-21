@@ -96,6 +96,10 @@ Birday uses some open source libraries, just a few:
 - [App Intro](https://github.com/AppIntro/AppIntro)
 - [Shimmer](https://github.com/facebook/shimmer-android)
 
+Top contributors (special thanks to them!):
+- [Alberto Pedron](https://github.com/Alberto97) for the precious advices and for contributing with many useful pull requests
+- [Dominik Novosel](https://github.com/DominikNovosel) for the suggestions, for supporting the project and for the LTS version
+
 Currently, Birday supports the languages in the above table. If you want to translate the app in any other language or update an existing translation, just contact me or send a pull request: you'll be quoted both on Github and in the Play Store description. For a detailed guide on how to translate the app, refer to the [Wiki](https://github.com/m-i-n-a-r/birday/wiki/Translate-the-app)
 
 This app was written during my free time as a training. It was first published on May 1, 2020. Many good devs helped me understanding the best practices and they taught me a lot of useful tricks. A special thank to every contributor here and on Reddit. and God bless Stack Overflow.
