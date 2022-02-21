@@ -124,7 +124,7 @@ class HomeFragment : Fragment() {
         // Setup the recycler view
         initializeRecyclerView()
 
-        mainViewModel.allEvents.observe(viewLifecycleOwner, { events ->
+        mainViewModel.allEvents.observe(viewLifecycleOwner) { events ->
             // Manage placeholders, search results and the main list
             events?.let { adapter.submitList(it) }
             if (events.isNotEmpty()) {
@@ -134,11 +134,11 @@ class HomeFragment : Fragment() {
             if (events.isEmpty()) restorePlaceholders()
             if (events.isEmpty() && mainViewModel.searchString.value!!.isNotBlank())
                 restorePlaceholders(true)
-        })
-        mainViewModel.nextEvents.observe(viewLifecycleOwner, { nextEvents ->
+        }
+        mainViewModel.nextEvents.observe(viewLifecycleOwner) { nextEvents ->
             // Update the widgets using the next events, to avoid strange behaviors when searching
             updateWidget(nextEvents)
-        })
+        }
 
         // Restore search string in the search bar
         if (mainViewModel.searchString.value!!.isNotBlank())
