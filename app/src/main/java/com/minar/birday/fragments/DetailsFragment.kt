@@ -101,7 +101,7 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val event = args.event ?: return
+        val event = args.event
 
         val shimmer = binding.detailsCountdownShimmer
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
