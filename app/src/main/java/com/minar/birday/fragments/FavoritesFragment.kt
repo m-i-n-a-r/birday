@@ -11,8 +11,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.preference.PreferenceManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
@@ -36,7 +34,6 @@ import kotlin.math.min
 
 @ExperimentalStdlibApi
 class FavoritesFragment : Fragment() {
-    private lateinit var recyclerView: RecyclerView
     private val mainViewModel: MainViewModel by activityViewModels()
     private lateinit var adapter: FavoritesAdapter
     private lateinit var fullStats: SpannableStringBuilder
@@ -107,7 +104,7 @@ class FavoritesFragment : Fragment() {
         }
 
         // Setup the recycler view
-        initializeRecyclerView()
+        binding.favoritesRecycler.adapter = adapter
         with(mainViewModel) {
             getFavorites().observe(viewLifecycleOwner) { events ->
                 // Update the cached copy in the adapter
@@ -207,13 +204,6 @@ class FavoritesFragment : Fragment() {
         _binding = null
         _dialogStatsBinding = null
         _dialogNotesBinding = null
-    }
-
-    // Initialize the necessary parts of the recycler view
-    private fun initializeRecyclerView() {
-        recyclerView = binding.favoritesRecycler
-        recyclerView.layoutManager = LinearLayoutManager(activity)
-        recyclerView.adapter = adapter
     }
 
     private fun onItemClick(position: Int) {

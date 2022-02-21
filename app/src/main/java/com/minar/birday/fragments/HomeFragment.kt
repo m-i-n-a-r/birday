@@ -20,8 +20,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
@@ -44,7 +42,6 @@ import java.time.temporal.ChronoUnit
 
 @ExperimentalStdlibApi
 class HomeFragment : Fragment() {
-    private lateinit var recyclerView: RecyclerView
     private val mainViewModel: MainViewModel by activityViewModels()
     lateinit var adapter: EventAdapter
     lateinit var act: MainActivity
@@ -122,7 +119,7 @@ class HomeFragment : Fragment() {
         }
 
         // Setup the recycler view
-        initializeRecyclerView()
+        binding.eventRecycler.adapter = adapter
 
         mainViewModel.allEvents.observe(viewLifecycleOwner) { events ->
             // Manage placeholders, search results and the main list
@@ -155,13 +152,6 @@ class HomeFragment : Fragment() {
     // Functions to update, delete and create an Event object to pass instead of the returning object passed
     private fun updateFavorite(eventResult: EventResult) {
         mainViewModel.update(resultToEvent(eventResult))
-    }
-
-    // Initialize the necessary parts of the recycler view
-    private fun initializeRecyclerView() {
-        recyclerView = binding.eventRecycler
-        recyclerView.layoutManager = LinearLayoutManager(activity)
-        recyclerView.adapter = adapter
     }
 
     // Show a dialog with the details of the selected contact
