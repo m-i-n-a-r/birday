@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.preference.PreferenceManager
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.FragmentOverviewBinding
@@ -16,7 +16,7 @@ import com.minar.birday.viewmodels.MainViewModel
 @ExperimentalStdlibApi
 class OverviewFragment : Fragment() {
     private lateinit var act: MainActivity
-    private lateinit var mainViewModel: MainViewModel
+    private val mainViewModel: MainViewModel by activityViewModels()
     private lateinit var sharedPrefs: SharedPreferences
     private var _binding: FragmentOverviewBinding? = null
     private val binding get() = _binding!!
@@ -40,10 +40,5 @@ class OverviewFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentOverviewBinding.inflate(inflater, container, false)
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        mainViewModel = ViewModelProvider(act)[MainViewModel::class.java]
     }
 }

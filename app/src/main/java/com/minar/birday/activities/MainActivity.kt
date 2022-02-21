@@ -29,6 +29,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.annotation.AttrRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -36,7 +37,6 @@ import androidx.core.animation.doOnEnd
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.preference.PreferenceManager
@@ -68,7 +68,7 @@ import java.util.*
 
 @ExperimentalStdlibApi
 class MainActivity : AppCompatActivity() {
-    lateinit var mainViewModel: MainViewModel
+    val mainViewModel: MainViewModel by viewModels()
     private lateinit var sharedPrefs: SharedPreferences
     private lateinit var binding: ActivityMainBinding
     private var _dialogInsertEventBinding: DialogInsertEventBinding? = null
@@ -77,7 +77,6 @@ class MainActivity : AppCompatActivity() {
     private var imageChosen = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
         // Initialize the result launcher to pick the image
         resultLauncher =
