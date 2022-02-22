@@ -3,7 +3,7 @@
 
     <!-- Vietnamese doesn't need plurals -->
     <string name="app_welcome">Birday Chào bạn</string>
-    <string name="app_name_extended">Birday - Quản Lý Sinh Nhật</string>
+    <string name="app_name_extended">Birday - Người quản lý sự kiện</string>
     <string name="leave_review_title">Đánh giá cho Birday</string>
     <string name="leave_review_subtitle">Xin mời bạn đánh giá để giúp tôi với các ứng dụng. Hãy nhớ rằng, đóng góp sang một bên, ứng dụng này là miễn phí và không có quảng cáo!</string>
     <string name="yes_review">Đánh giá!</string>
@@ -12,19 +12,19 @@
     <string name="title_home">Trang Chủ</string>
     <string name="title_favorites">Yêu Thích</string>
     <string name="title_settings">Cài Đặt</string>
-    <string name="no_events">Không có sinh nhật! Sử dụng nút ở dưới để bắt đầu lưu sinh nhật!</string>
+    <string name="no_events">Không có sự kiện! Sử dụng nút ở dưới để bắt đầu lưu sinh nhật!</string>
     <string name="no_favorites">Không có mục yêu thích! Nhấn dấu sao để lưu một sự kiện làm mục yêu thích!</string>
     <string name="add_favorite">Thêm vào mục yêu thích</string>
     <string name="stats">Số liệu</string>
     <string name="no_stats">Chưa có số liệu!</string>
     <string name="stats_summary">Tóm tắt số liệu</string>
-    <string name="no_stats_description">Bạn chưa có lưu đủ sinh nhật đệ xem số liệu thống kê. Mời bạn lưu thêm sinh nhật và quay lại sau!</string>
+    <string name="no_stats_description">Bạn chưa có lưu đủ sự kiện đệ xem số liệu thống kê. Mời bạn lưu thêm sinh nhật và quay lại sau!</string>
     <plurals name="stats_total">
-        <item quantity="other">Birday giúp bạn nhớ sinh nhật tổng cộng %d sinh nhật</item>
+        <item quantity="other">Birday giúp bạn nhớ sinh nhật tổng cộng %d sự kiện</item>
     </plurals>
     <string name="next_event">Sự kiện tiếp theo</string>
-    <string name="no_next_event">Không có sinh nhật!</string>
-    <string name="no_next_event_description">Bạn chưa nhập ngày sinh nhật. Lưu thêm sinh nhât để Birday giúp bạn!</string>
+    <string name="no_next_event">Không có sự kiện!</string>
+    <string name="no_next_event_description">Bạn chưa nhập ngày sự kiện. Lưu thêm sinh nhât để Birday giúp bạn!</string>
     <string name="next_age_years">tuổi</string>
     <string name="event_others">và những thứ khác</string>
     <plurals name="days_left">
@@ -77,17 +77,17 @@
     <string name="dark_widget_description_on">Tiện ích sử dụng chủ đề tối</string>
     <string name="dark_widget_description_off">Tiện ích sử dụng chủ đề rõ ràng</string>
     <string name="import_export">Nhập khẩu và xuất khẩu</string>
-    <string name="import_contacts_title">Nhập sinh nhật từ danh bạ</string>
+    <string name="import_contacts_title">Nhập sự kiện từ danh bạ</string>
     <string name="import_contacts_description">Hãy chắc chắn sửa đổi các sự kiện với đúng năm để luôn có số liệu thống kê chính xác!</string>
     <string name="import_success">Nhập hoàn tất thành công!</string>
-    <string name="import_nothing_found">Không tìm thấy sinh nhật!</string>
+    <string name="import_nothing_found">Không tìm thấy sự kiện!</string>
     <string name="import_failed">Đã bị lỗi!</string>
     <string name="missing_permission_contacts">Sự cho phép liên lạc đã bị từ chối. Thử lại hoặc kích hoạt quyền theo cách thủ công, Nếu không, nhập danh bạ sẽ không hoạt động!</string>
     <string name="missing_permission_contacts_forever">Birday không thể nhập danh bạ của bạn và không xin phép được. Lý do khi bạn bấm "không bao giờ hỏi lại". Kích hoạt thủ công!</string>
     <string name="birday_import_title">Nhập bản sao lưu Birday</string>
-    <string name="birday_import_description">Chọn một bản sao lưu Birday hợp lệ để tự khôi phục ngày sinh nhật của bạn. Mọi dữ liệu hiện có sẽ bị ghi đè!</string>
-    <string name="birday_export_title">Xuất khẩu và chia sẻ ngày sinh nhật</string>
-    <string name="birday_export_description">Xuất các ngày sinh nhật có sẵn và chia sẻ chúng, nếu bạn muốn. Các tập tin là trong Android / data / com.minar.birday / tệp</string>
+    <string name="birday_import_description">Chọn một bản sao lưu Birday hợp lệ để tự khôi phục ngày sự kiện của bạn. Mọi dữ liệu hiện có sẽ bị ghi đè!</string>
+    <string name="birday_export_title">Xuất khẩu và chia sẻ ngày sự kiện</string>
+    <string name="birday_export_description">Xuất các ngày sự kiện có sẵn và chia sẻ chúng, nếu bạn muốn. Các tập tin là trong Android / data / com.minar.birday / tệp</string>
     <string name="birday_import_success">Nhập xong!</string>
     <string name="birday_import_failure">Nhập thất bại. Bạn kiểm tra lại có chọn đúng tập tin không?</string>
     <string name="birday_import_invalid_file">Nhập thất bại. Các tập tin được chọn không phải là một bản sao lưu của Birday!</string>
@@ -106,14 +106,20 @@
     <string name="easter_egg">Logo đẹp, ha? ;D</string>
 
     <!-- New event -->
-    <string name="new_event">Sinh nhật mới</string>
-    <string name="new_event_description">Thêm một người mới mà bạn quan tâm rồi Birday sẽ giúp bạn nhắc nhở sinh nhật của anh ấy / cô ấy!</string>
-    <string name="insert_event">Thêm sinh nhật</string>
+    <string name="new_event">Sự kiện mới</string>
+    <string name="new_event_description">Thêm một người mới mà bạn quan tâm rồi Birday sẽ giúp bạn tổ chức sinh nhật hoặc các sự kiện khác của họ!</string>
+    <string name="insert_event">Thêm sự kiện</string>
     <string name="cancel">Hủy</string>
     <string name="insert_name_hint">Thêm tên</string>
     <string name="insert_surname_hint">Thêm họ tên</string>
     <string name="insert_date_hint">Chọn ngày</string>
     <string name="invalid_value_name">Tên không hợp lệ. Số và ký hiệu không được phép!</string>
+    <string name="birthday">Ngày sinh nhật</string>
+    <string name="anniversary">Dịp kỉ niệm</string>
+    <string name="death_anniversary">Ngày giỗ</string>
+    <string name="festivity">Lễ hội</string>
+    <string name="name_day">Tên ngày</string>
+    <string name="other">Khác</string>
 
     <!-- Event actions -->
     <string name="event_actions">Hành động</string>
@@ -197,11 +203,11 @@
 
     <!-- Notifications -->
     <string name="events_notification_channel">Nhắc nhở sự kiện</string>
-    <string name="events_channel_description">Nhắc nhở về những ngày sinh nhật sắp tới trên Birday</string>
+    <string name="events_channel_description">Nhắc nhở về những ngày sự kiện sắp tới trên Birday</string>
     <string name="notification_title">Nhắc nhớ Birday</string>
-    <string name="notification_description_part_1">Chào bàn, hôm nay là sinh nhật của</string>
+    <string name="notification_description_part_1">Chào bàn, hôm nay là sự kiện của</string>
     <string name="notification_description_part_2">Chúc bạn một ngày tuyệt vời!</string>
-    <string name="additional_notification_text">Sinh nhật sắp tới!</string>
+    <string name="additional_notification_text">Sự kiện sắp tới!</string>
 
     <!-- Introduction slides -->
     <string name="slide_one_title">Birday Chào bạn!</string>
@@ -212,11 +218,11 @@
     <string name="slide_two_description">Birday là miễn phí, không có quảng cáo và nguồn mở. Birday cung cấp một bộ số liệu thống kê về ngày sinh nhật của bạn, một hệ thống yêu thích và giao diện tùy biến. Và đảm bảo hỗ trợ và cập nhật!
     </string>
     <string name="slide_three_title">Nhập từ Danh bạ</string>
-    <string name="slide_three_description">Bạn cũng có thể nhập ngày sinh nhật mà bạn đã lưu từ Danh bạ của bạn. Birday có thể làm điều đó cho bạn, chỉ cần cấp quyền liên hệ. Thưởng thức!
+    <string name="slide_three_description">Bạn cũng có thể nhập ngày sự kiện mà bạn đã lưu từ Danh bạ của bạn. Birday có thể làm điều đó cho bạn, chỉ cần cấp quyền liên hệ. Thưởng thức!
     </string>
 
     <!-- Widget -->
-    <string name="appwidget_upcoming">Sinh nhật sắp tới</string>
+    <string name="appwidget_upcoming">Sự kiện sắp tới</string>
     <string name="add_widget">Birday - sắp tới</string>
 
     <!-- Search -->
@@ -228,5 +234,9 @@
     <!-- Notes -->
     <string name="notes">Ghi chú</string>
     <string name="write_something">Viết vài thứ…</string>
+
+    <!-- Overview -->
+    <string name="overview">Tổng quat</string>
+    <string name="overview_description">Tổng quan hàng năm về các sự kiện đã lưu</string>
 
 </resources>
