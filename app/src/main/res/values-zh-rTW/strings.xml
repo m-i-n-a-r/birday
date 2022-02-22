@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_welcome">歡迎使用 Birday</string>
-    <string name="app_name_extended">Birday - 生日管理員</string>
+    <string name="app_name_extended">Birday - 事件处理程序</string>
     <string name="leave_review_title">替 Birday 評分</string>
     <string name="leave_review_subtitle">幫我留個評價吧！記得，除非你選擇贊助，否則這個程式是完全免費且無廣告的！</string>
     <string name="yes_review">評價！</string>
@@ -11,16 +11,16 @@
     <string name="title_home">首頁</string>
     <string name="title_favorites">我的最愛</string>
     <string name="title_settings">設定</string>
-    <string name="no_events">尚未添加任何生日！透過下面的按鈕來新增一個吧！</string>
+    <string name="no_events">尚未添加任何事件！透過下面的按鈕來新增一個吧！</string>
     <string name="no_favorites">尚有任何最愛！透過生日旁的星星將重要的日子加到最愛中吧！</string>
     <string name="add_favorite">新增至我的最愛中</string>
     <string name="stats">統計</string>
     <string name="no_stats">沒有數據可顯示！</string>
     <string name="stats_summary">統計摘要</string>
-    <string name="no_stats_description">您目前沒有足夠的生日來生成統計。新增一些項目再回來吧！</string>
+    <string name="no_stats_description">您目前沒有足夠的事件來生成統計。新增一些項目再回來吧！</string>
     <string name="next_event">下個活動</string>
-    <string name="no_next_event">沒有可顯示的生日！</string>
-    <string name="no_next_event_description">您尚未輸入或匯入任何生日。趕快新增一個讓 Birday 幫你替未來慶生吧！</string>
+    <string name="no_next_event">沒有可顯示的事件！</string>
+    <string name="no_next_event_description">您尚未輸入或匯入任何事件。趕快新增一個讓 Birday 幫你替未來慶生吧！</string>
     <string name="next_age_years">年齡</string>
     <string name="event_others">及其他</string>
     <string name="customization">自訂</string>
@@ -104,9 +104,9 @@
     <string name="and">及</string>
     <string name="events_notification_channel">活動提醒</string>
     <string name="notification_title">Birday 提醒</string>
-    <string name="notification_description_part_1">嗨，今天有生日的人是</string>
+    <string name="notification_description_part_1">嗨，今天有事件的人是</string>
     <string name="notification_description_part_2">祝你有美好的一天！</string>
-    <string name="additional_notification_text">即將到來的生日！</string>
+    <string name="additional_notification_text">即將到來的事件！</string>
     <string name="slide_one_title">歡迎使用 Birday！</string>
     <string name="slide_one_description">Birday 是一個簡單輕巧並用於管理重要事件的 App！
     你可以透過它來以快速可靠的方式記住任何你所喜歡的人的生日。</string>
@@ -130,28 +130,28 @@
     <string name="age_average">大家的平均年齡是 %s</string>
     <string name="oldest_person">年齡最大的人是 %s</string>
     <string name="youngest_person">年齡最小的人是 %s</string>
-    <string name="appwidget_upcoming">即將到來的生日</string>
+    <string name="appwidget_upcoming">即將到來的事件</string>
     <string name="add_widget">Birday - 即將到來的生日</string>
     <string name="birday_import_title">匯入 Birday 備份</string>
-    <string name="birday_export_title">匯出及分享生日</string>
+    <string name="birday_export_title">匯出及分享事件</string>
     <string name="dark_widget_name">深色小工具</string>
     <string name="import_export">匯入及匯出</string>
-    <string name="import_contacts_title">自聯絡人中匯入生日</string>
+    <string name="import_contacts_title">自聯絡人中匯入事件</string>
     <string name="import_success">已成功匯入！</string>
-    <string name="import_nothing_found">找不到任何可匯入的生日！</string>
+    <string name="import_nothing_found">找不到任何可匯入的事件！</string>
     <string name="import_failed">出事了！</string>
     <string name="missing_permission_contacts">聯絡人存取權限被拒。請再試一次或手動允許該權限，否則無法匯入聯絡人生日！</string>
     <string name="easter_egg">扛棒很棒吧，嘻嘻！</string>
     <string name="dark_widget_description_on">桌面小工具使用深色主題</string>
     <string name="dark_widget_description_off">桌面小工具使用淺色主題</string>
-    <string name="new_event">新增生日</string>
+    <string name="new_event">新事件</string>
     <string name="new_event_description">輸入你喜歡的人的生日，Birday 將幫你把它們記起來！</string>
     <string name="insert_date_hint">選擇日期</string>
     <string name="insert_name_hint">輸入姓氏</string>
     <string name="insert_surname_hint">輸入名稱</string>
     <string name="consider_year">算入年分</string>
     <string name="cancel">取消</string>
-    <string name="insert_event">插入生日</string>
+    <string name="insert_event">进入活动</string>
     <string name="edit_event">編輯活動</string>
     <string name="delete_event">刪除活動</string>
     <string name="update_event">更新活動</string>
@@ -172,13 +172,13 @@
     <string name="random_zodiac_sign">%1$s 的星座是: %2$s</string>
     <string name="random_chinese_year">%1$s 的生肖是: %2$s</string>
     <string name="search_no_result_description">找不到任何相符的生日！</string>
-    <string name="events_channel_description">透過 Birday 提醒即將到來的生日</string>
+    <string name="events_channel_description">透過 Birday 提醒即將到來的事件</string>
     <string name="most_common_age_range">最常見的年齡範圍是 %1$s-%2$s</string>
     <string name="dev_description">我是一個有禮貌、喜歡漂亮東西的人，像動畫製作、圖案設計、跑車、跟3D列印。我目前擔任的職務是設計師及電腦工程師。</string>
-    <string name="birday_export_description">匯出現有的生日作為備份或分享用。匯出後的檔案位於 Android/data/com.minar.birday/files。</string>
+    <string name="birday_export_description">匯出現有的事件作為備份或分享用。匯出後的檔案位於 Android/data/com.minar.birday/files。</string>
     <string name="birday_import_description">選擇任何可用的 Birday 備份進行還原。請注意，所有現有資料將被覆寫！</string>
     <string name="missing_permission_contacts_forever">因為你初次拒絕了聯絡人存取權限，Birday 無法再次要求該權限。請進入設定，並手動允許聯絡人權限。</string>
-    <string name="import_contacts_description">請確保各個聯絡人的生日有出生年份設好，否則統計數據可能會不準！</string>
+    <string name="import_contacts_description">請確保各個聯絡人的事件有出生年份設好，否則統計數據可能會不準！</string>
     <string name="shimmer_description_on">使用閃閃亮亮的動畫</string>
     <string name="shimmer_description_off">不使用任何附加動畫</string>
     <string name="event_actions">動作</string>
@@ -186,6 +186,14 @@
     <string name="notification_only_favorites_description_on">僅提醒我的最愛中的生日</string>
     <string name="notification_only_favorites_description_off">提醒所有生日</string>
     <string name="notification_hour_description">%s \n\n請注意，某些裝置 (如華為、小米、OnePlus 等) 可能會在背景中把此 Birday 殺掉，導致生日通知無法正常運作。詳情請參閱 dontkillmyapp.com。</string>
-    <string name="slide_three_description">如果你的聯絡人資料中含有生日相關資訊，Birday 也可以從聯絡人中匯入此資訊！</string>
+    <string name="slide_three_description">如果你的聯絡人資料中含有事件相關資訊，Birday 也可以從聯絡人中匯入此資訊！</string>
+    <string name="overview">概述</string>
+    <string name="overview_description">已保存事件的年度概覽</string>
+    <string name="birthday">生日</string>
+    <string name="anniversary">週年紀念日</string>
+    <string name="death_anniversary">逝世週年紀念</string>
+    <string name="festivity">節日</string>
+    <string name="name_day">命名日</string>
+    <string name="other">其他</string>
 
 </resources>
