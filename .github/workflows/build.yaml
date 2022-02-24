@@ -6,6 +6,8 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
       - name: Build the app
         uses: burrunan/gradle-cache-action@v1
         with:
