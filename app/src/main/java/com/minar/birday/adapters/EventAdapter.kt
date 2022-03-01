@@ -28,6 +28,7 @@ import java.util.*
 @ExperimentalStdlibApi
 class EventAdapter(
     private val updateFavorite: (value: EventResult) -> Unit,
+    private val showFavoriteHint: () -> Unit,
     private val onItemClick: (position: Int) -> Unit,
     private val onItemLongClick: (position: Int) -> Unit
 ) : ListAdapter<EventResult, EventAdapter.EventViewHolder>(EventsDiffCallback()) {
@@ -124,6 +125,10 @@ class EventAdapter(
                     }
                     (favoriteButton.drawable as AnimatedVectorDrawable).start()
                 }
+            }
+            favoriteButton.setOnLongClickListener {
+                showFavoriteHint()
+                true
             }
         }
     }

@@ -43,7 +43,7 @@ import java.time.temporal.ChronoUnit
 @ExperimentalStdlibApi
 class HomeFragment : Fragment() {
     private val mainViewModel: MainViewModel by activityViewModels()
-    lateinit var adapter: EventAdapter
+    private lateinit var adapter: EventAdapter
     lateinit var act: MainActivity
     lateinit var sharedPrefs: SharedPreferences
     private var _binding: FragmentHomeBinding? = null
@@ -56,6 +56,7 @@ class HomeFragment : Fragment() {
         super.onCreate(savedInstanceState)
         adapter = EventAdapter(
             updateFavorite = { eventResult -> updateFavorite(eventResult) },
+            showFavoriteHint = { showFavoriteHint() },
             onItemClick = { position -> onItemClick(position) },
             onItemLongClick = { position -> onItemLongClick(position) }
         )
@@ -153,6 +154,9 @@ class HomeFragment : Fragment() {
     private fun updateFavorite(eventResult: EventResult) {
         mainViewModel.update(resultToEvent(eventResult))
     }
+
+    // Show an hint when the star is long pressed
+    private fun showFavoriteHint() = act.showSnackbar(getString(R.string.add_favorite))
 
     // Show a dialog with the details of the selected contact
     private fun onItemClick(position: Int) {
