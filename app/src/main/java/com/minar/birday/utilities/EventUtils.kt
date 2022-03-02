@@ -81,25 +81,25 @@ fun getReducedDate(date: LocalDate) =
     date.month.getDisplayName(TextStyle.FULL, Locale.getDefault()) +
             ", " + date.dayOfMonth.toString()
 
-// Get the age also considering the possible corner cases
-fun getAge(eventResult: EventResult): Int {
-    var age = -2
-    if (eventResult.yearMatter!!) age =
+// Get the years also considering the possible corner cases
+fun getYears(eventResult: EventResult): Int {
+    var years = -2
+    if (eventResult.yearMatter!!) years =
         eventResult.nextDate!!.year - eventResult.originalDate.year - 1
-    return if (age == -1) 0 else age
+    return if (years == -1) 0 else years
 }
 
-// Get the months of the age. Useful for babies
-fun getAgeMonths(date: LocalDate) = Period.between(date, LocalDate.now()).months
+// Get the months of the years. Useful for babies
+fun getYearsMonths(date: LocalDate) = Period.between(date, LocalDate.now()).months
 
-// Get the next age also considering the possible corner cases
-fun getNextAge(eventResult: EventResult) = getAge(eventResult) + 1
+// Get the next years also considering the possible corner cases
+fun getNextYears(eventResult: EventResult) = getYears(eventResult) + 1
 
 // Get the decade of birth
 fun getDecade(originalDate: LocalDate) =
     ((originalDate.year.toDouble() / 10).toInt() * 10).toString()
 
-// Get the age range, in decades
+// Get the age range, in decades, should be used only for birthdays
 fun getAgeRange(originalDate: LocalDate) =
     (((LocalDate.now().year - originalDate.year).toDouble() / 10).toInt() * 10).toString()
 
