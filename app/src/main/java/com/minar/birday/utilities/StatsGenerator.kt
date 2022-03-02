@@ -16,13 +16,18 @@ import kotlin.random.Random
 
 class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     private val events: List<EventResult> = eventList
+    private val birthdays = filterBirthdays()
+    private val anniversaries = filterAnniversaries()
+    private val deathAnniversaries = filterDeathAnniversaries()
+    private val nameDays = filterNameDays()
+    private val others = filterOthers()
     private val applicationContext = context
 
     // Generate a random stat choosing randomly between one of the available functions
     fun generateRandomStat(): String {
         // Use a response string to re-execute the stats calculation if a stat cannot be computed correctly
         var response: String? = null
-        val randomPerson = events.random()
+        val randomPerson = birthdays.random()
         while (response.isNullOrBlank()) {
             response = when (Random.nextInt(0, 12)) {
                 1 -> ageAverage()
@@ -42,7 +47,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         return response
     }
 
-    // Generate a summary of the stats
+    // Generate a summary of the cumulative stats
     fun generateFullStats(): SpannableStringBuilder {
         val sb = SpannableStringBuilder()
         val stats = mutableListOf<String>()
@@ -56,14 +61,19 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         stats.add(mostCommonMonth())
         stats.add(mostCommonZodiacSign())
         stats.add(leapYearTotal())
+        stats.add(eventTypesNumbers()) // TODO Better wait for the plurals?
         stats.removeIf { it.isBlank() }
         sb.appendBulletSpans(stats, 16, applicationContext!!.getColor(R.color.goodGray))
         return sb
     }
 
-    // The number of events for each type
+    // The number of events for each type TODO Missing plurals for event types and the word 'event'
     private fun eventTypesNumbers(): String {
-        return ""
+        return applicationContext?.getString(R.string.birthday) + ": " + birthdays.size + ", " +
+                applicationContext?.getString(R.string.anniversary) + ": " + anniversaries.size + ", " +
+                applicationContext?.getString(R.string.death_anniversary) + ": " + deathAnniversaries.size + ", " +
+                applicationContext?.getString(R.string.name_day) + ": " + nameDays.size + ", " +
+                applicationContext?.getString(R.string.other) + ": " + others.size + ", "
     }
 
     // The average age
@@ -80,7 +90,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         var oldestDate = LocalDate.now()
         var oldestName = ""
         var oldestAge = 0
-        events.forEach {
+        birthdays.forEach {
             if (oldestDate.isAfter(it.originalDate) && it.yearMatter!!) {
                 oldestName = it.name
                 oldestDate = it.originalDate
@@ -102,7 +112,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         var youngestDate = LocalDate.of(1500, 1, 1)
         var youngestName = ""
         var youngestAge = 0
-        events.forEach {
+        birthdays.forEach {
             if (youngestDate.isBefore(it.originalDate) && it.yearMatter!!) {
                 youngestName = it.name
                 youngestDate = it.originalDate
@@ -133,7 +143,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     // The most common month. When there's no common month, return a blank string
     private fun mostCommonMonth(): String {
         val months = mutableMapOf<String, Int>()
-        events.forEach {
+        birthdays.forEach {
             val month = it.originalDate.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
             if (months[month] == null) months[month] = 1
             else months[month] = months[month]!!.plus(1)
@@ -149,7 +159,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     // The most common age range (decade). When there's no common range, return a blank string
     private fun mostCommonAgeRange(): String {
         val ageRanges = mutableMapOf<String, Int>()
-        events.forEach {
+        birthdays.forEach {
             // Quite unnecessary both here and in other functions, but it's for extra safety
             if (it.yearMatter!!) {
                 if (ageRanges[getAgeRange(it.originalDate)] == null) ageRanges[getAgeRange(it.originalDate)] =
@@ -170,7 +180,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     // The most common decade (80s, 90s..). When there's no common decade, return a blank string
     private fun mostCommonDecade(): String {
         val decades = mutableMapOf<String, Int>()
-        events.forEach {
+        birthdays.forEach {
             // Quite unnecessary both here and in other functions, but it's for extra safety
             if (it.yearMatter!!) {
                 if (decades[getDecade(it.originalDate)] == null) decades[getDecade(it.originalDate)] =
@@ -191,7 +201,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     private fun specialAges(): String {
         val specialAges = arrayOf(1, 10, 18, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130)
         val specialPersons = mutableMapOf<String, Int>()
-        events.forEach {
+        birthdays.forEach {
             // Quite unnecessary both here and in other functions, but it's for extra safety
             if (it.yearMatter!!) {
                 val nextAge = getNextYears(it)
@@ -226,7 +236,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     // The most common zodiac sign. When there's no common zodiac sign, return a blank string
     private fun mostCommonZodiacSign(): String {
         val zodiacSigns = mutableMapOf<String, Int>()
-        events.forEach {
+        birthdays.forEach {
             if (zodiacSigns[getZodiacSign(it)] == null) zodiacSigns[getZodiacSign(it)] = 1
             else zodiacSigns[getZodiacSign(it)] = zodiacSigns[getZodiacSign(it)]!!.plus(1)
         }
@@ -251,7 +261,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     // The most common day of the week of birth. When there's no common day of the week, return a blank string
     private fun mostCommonDayOfWeek(): String {
         val weekDays = mutableMapOf<String, Int>()
-        events.forEach {
+        birthdays.forEach {
             if (it.yearMatter!!) {
                 val weekDay =
                     it.originalDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault())
@@ -270,7 +280,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     // Get the number of persons born in a leap year. Even 0 is an acceptable result
     private fun leapYearTotal(): String {
         var leapTotal = 0
-        events.forEach {
+        birthdays.forEach {
             if (it.yearMatter!!) if (it.originalDate.isLeapYear) leapTotal++
         }
         return applicationContext?.resources?.getQuantityString(
@@ -293,7 +303,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     // Get a list containing the names and an int containing the age
     private fun getAges(): Map<String, Int> {
         val ages = mutableMapOf<String, Int>()
-        events.forEach {
+        birthdays.forEach {
             if (it.yearMatter!!) {
                 val age = getYears(it)
                 ages[it.name] = age
@@ -417,7 +427,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     }
 
     // Return the list filtering the death anniversaries
-    private fun filterDeathAnniversary(): List<EventResult> {
+    private fun filterDeathAnniversaries(): List<EventResult> {
         return events.filter { isDeathAnniversary(it) }
     }
 
@@ -431,6 +441,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         return events.filter { isOther(it) }
     }
 
+    // Prepare the bulletted list
     private fun SpannableStringBuilder.appendBulletSpan(
         paragraph: String,
         margin: Int,

@@ -70,7 +70,7 @@ class FavoritesFragment : Fragment() {
         val favoriteMotionLayout = binding.favoritesMain
         val favoritesCard = binding.favoritesCard
         val favoritesMiniFab = binding.favoritesMiniFab
-        val overviewButton = binding.overviewButton
+        // val overviewButton = binding.overviewButton TODO Temporarily disabled
         if (shimmerEnabled) shimmer.startShimmer()
         statsImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_candle)
 
