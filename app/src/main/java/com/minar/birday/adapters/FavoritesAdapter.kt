@@ -12,7 +12,7 @@ import com.minar.birday.R
 import com.minar.birday.databinding.FavoriteRowBinding
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.formatName
-import com.minar.birday.utilities.getAge
+import com.minar.birday.utilities.getYears
 import com.minar.birday.utilities.getRemainingDays
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -59,7 +59,7 @@ class FavoritesAdapter(
             val formattedPersonName =
                 formatName(event, sharedPrefs.getBoolean("surname_first", false))
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
-            val age = getAge(event)
+            val age = getYears(event)
             val daysRemaining = getRemainingDays(event.nextDate!!)
             val daysCountdown = if (daysRemaining > 0) "-$daysRemaining"
             else context.getString(R.string.exclamation)

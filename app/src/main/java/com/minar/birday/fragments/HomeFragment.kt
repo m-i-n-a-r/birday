@@ -179,7 +179,7 @@ class HomeFragment : Fragment() {
             getRemainingDays(event.nextDate!!),
             requireContext()
         )
-        else "${getString(R.string.next_age)} ${getNextAge(event)}, " +
+        else "${getString(R.string.next_age)} ${getNextYears(event)}, " +
                 formatDaysRemaining(getRemainingDays(event.nextDate!!), requireContext())
         act.showSnackbar(quickStat)
     }

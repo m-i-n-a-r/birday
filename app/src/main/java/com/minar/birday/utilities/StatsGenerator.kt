@@ -84,7 +84,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
             if (oldestDate.isAfter(it.originalDate) && it.yearMatter!!) {
                 oldestName = it.name
                 oldestDate = it.originalDate
-                oldestAge = getAge(it)
+                oldestAge = getYears(it)
             }
         }
         return String.format(
@@ -106,7 +106,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
             if (youngestDate.isBefore(it.originalDate) && it.yearMatter!!) {
                 youngestName = it.name
                 youngestDate = it.originalDate
-                youngestAge = getAge(it)
+                youngestAge = getYears(it)
             }
         }
         val commonPart = String.format(
@@ -115,7 +115,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         )
         // If the youngest person is a baby, return the age in months
         return if (youngestAge == 0) {
-            val months = getAgeMonths(youngestDate)
+            val months = getYearsMonths(youngestDate)
             "$commonPart, " + applicationContext.resources?.getQuantityString(
                 R.plurals.months,
                 months,
@@ -194,7 +194,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         events.forEach {
             // Quite unnecessary both here and in other functions, but it's for extra safety
             if (it.yearMatter!!) {
-                val nextAge = getNextAge(it)
+                val nextAge = getNextYears(it)
                 if (nextAge in specialAges) specialPersons[it.name] = nextAge
             }
         }
@@ -295,7 +295,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         val ages = mutableMapOf<String, Int>()
         events.forEach {
             if (it.yearMatter!!) {
-                val age = getAge(it)
+                val age = getYears(it)
                 ages[it.name] = age
             }
         }

@@ -44,6 +44,7 @@ import com.minar.birday.databinding.DialogInsertEventBinding
 import com.minar.birday.databinding.DialogNotesBinding
 import com.minar.birday.databinding.FragmentDetailsBinding
 import com.minar.birday.model.Event
+import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
@@ -217,83 +218,122 @@ class DetailsFragment : Fragment() {
             statsGenerator.getZodiacSign(event)
         binding.detailsCountdown.text = daysCountdown
 
-        // Hide the age and the chinese sign and use a shorter birth date if the year is unknown
-        if (!event.yearMatter!!) {
-            binding.detailsNextAge.visibility = View.GONE
+        // Manage the different event types
+        if (event.type == (EventCode.BIRTHDAY.name)) {
+            // Hide the age and the chinese sign and use a shorter birth date if the year is unknown
+            if (!event.yearMatter!!) {
+                binding.detailsNextAge.visibility = View.GONE
+                binding.detailsNextAgeValue.visibility = View.GONE
+                binding.detailsChineseSign.visibility = View.GONE
+                binding.detailsChineseSignValue.visibility = View.GONE
+                val reducedBirthDate = getReducedDate(event.originalDate)
+                binding.detailsBirthDateValue.text = reducedBirthDate
+            } else {
+                binding.detailsNextAgeValue.text = getNextYears(event).toString()
+                binding.detailsBirthDateValue.text =
+                    event.originalDate.format(formatter)
+                binding.detailsChineseSignValue.text =
+                    statsGenerator.getChineseSign(event)
+            }
+
+            // Set the drawable of the zodiac sign
+            when (statsGenerator.getZodiacSignNumber(event)) {
+                0 -> binding.detailsZodiacImage.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_sagittarius
+                    )
+                )
+                1 -> binding.detailsZodiacImage.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_capricorn
+                    )
+                )
+                2 -> binding.detailsZodiacImage.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_aquarius
+                    )
+                )
+                3 -> binding.detailsZodiacImage.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_pisces
+                    )
+                )
+                4 -> binding.detailsZodiacImage.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_aries
+                    )
+                )
+                5 -> binding.detailsZodiacImage.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_taurus
+                    )
+                )
+                6 -> binding.detailsZodiacImage.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_gemini
+                    )
+                )
+                7 -> binding.detailsZodiacImage.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_cancer
+                    )
+                )
+                8 -> binding.detailsZodiacImage.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_leo
+                    )
+                )
+                9 -> binding.detailsZodiacImage.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_virgo
+                    )
+                )
+                10 -> binding.detailsZodiacImage.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_libra
+                    )
+                )
+                11 -> binding.detailsZodiacImage.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_zodiac_scorpio
+                    )
+                )
+            }
+        } else {
+            // Set the drawable of the event type
+            when (event.type) {
+                EventCode.ANNIVERSARY.name -> binding.detailsZodiacImage.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_anniversary
+                    )
+                )
+                EventCode.DEATH.name -> binding.detailsZodiacImage.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_death_anniversary
+                    )
+                )
+                EventCode.NAME_DAY.name -> binding.detailsZodiacImage.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_name_day
+                    )
+                )
+                EventCode.OTHER.name -> binding.detailsZodiacImage.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(), R.drawable.ic_other
+                    )
+                )
+            }
+            binding.detailsNextAge.text = String.format(
+                resources.getQuantityString(R.plurals.years, getNextYears(event)),
+                getNextYears(event)
+            )
+            binding.detailsBirthDate.visibility = View.GONE
             binding.detailsNextAgeValue.visibility = View.GONE
+            binding.detailsZodiacSign.visibility = View.GONE
+            binding.detailsZodiacSignValue.visibility = View.GONE
+            binding.detailsZodiacImage.visibility = View.GONE
             binding.detailsChineseSign.visibility = View.GONE
             binding.detailsChineseSignValue.visibility = View.GONE
-            val reducedBirthDate = getReducedDate(event.originalDate)
-            binding.detailsBirthDateValue.text = reducedBirthDate
-        } else {
-            binding.detailsNextAgeValue.text = getNextAge(event).toString()
-            binding.detailsBirthDateValue.text =
-                event.originalDate.format(formatter)
-            binding.detailsChineseSignValue.text =
-                statsGenerator.getChineseSign(event)
-        }
-        // Set the drawable of the zodiac sign
-        when (statsGenerator.getZodiacSignNumber(event)) {
-            0 -> binding.detailsZodiacImage.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(), R.drawable.ic_zodiac_sagittarius
-                )
-            )
-            1 -> binding.detailsZodiacImage.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(), R.drawable.ic_zodiac_capricorn
-                )
-            )
-            2 -> binding.detailsZodiacImage.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(), R.drawable.ic_zodiac_aquarius
-                )
-            )
-            3 -> binding.detailsZodiacImage.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(), R.drawable.ic_zodiac_pisces
-                )
-            )
-            4 -> binding.detailsZodiacImage.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(), R.drawable.ic_zodiac_aries
-                )
-            )
-            5 -> binding.detailsZodiacImage.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(), R.drawable.ic_zodiac_taurus
-                )
-            )
-            6 -> binding.detailsZodiacImage.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(), R.drawable.ic_zodiac_gemini
-                )
-            )
-            7 -> binding.detailsZodiacImage.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(), R.drawable.ic_zodiac_cancer
-                )
-            )
-            8 -> binding.detailsZodiacImage.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(), R.drawable.ic_zodiac_leo
-                )
-            )
-            9 -> binding.detailsZodiacImage.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(), R.drawable.ic_zodiac_virgo
-                )
-            )
-            10 -> binding.detailsZodiacImage.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(), R.drawable.ic_zodiac_libra
-                )
-            )
-            11 -> binding.detailsZodiacImage.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(), R.drawable.ic_zodiac_scorpio
-                )
-            )
         }
     }
 
@@ -490,10 +530,17 @@ class DetailsFragment : Fragment() {
     // Share an event as a plain string (plus some explanatory emotes) on every supported app
     private fun shareEvent(event: EventResult) {
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
+        var typeEmoji = String(Character.toChars(0x1F973))
+        when (event.type) {
+            EventCode.ANNIVERSARY.name -> typeEmoji = String(Character.toChars(0x1F495))
+            EventCode.DEATH.name -> typeEmoji = String(Character.toChars(0x1FAA6))
+            EventCode.NAME_DAY.name -> typeEmoji = String(Character.toChars(0x1F464))
+            EventCode.OTHER.name -> typeEmoji = String(Character.toChars(0x12753))
+        }
         val eventInformation =
             String(Character.toChars(0x1F388)) + "  " +
                     getString(R.string.notification_title) +
-                    "\n" + String(Character.toChars(0x1F973)) + "  " +
+                    "\n" + typeEmoji + "  " +
                     formatName(event, sharedPrefs.getBoolean("surname_first", false)) +
                     "\n" + String(Character.toChars(0x1F4C5)) + "  " +
                     event.nextDate!!.format(formatter)
