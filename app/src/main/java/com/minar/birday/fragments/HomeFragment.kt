@@ -29,6 +29,7 @@ import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.databinding.DialogAppsEventBinding
 import com.minar.birday.databinding.FragmentHomeBinding
+import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
@@ -136,6 +137,9 @@ class HomeFragment : Fragment() {
         mainViewModel.nextEvents.observe(viewLifecycleOwner) { nextEvents ->
             // Update the widgets using the next events, to avoid strange behaviors when searching
             updateWidget(nextEvents)
+            // Use a different animated vector drawable for death anniversaries
+            if (nextEvents.all { it.type == EventCode.DEATH.name })
+                upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_death_anniversary)
         }
 
         // Restore search string in the search bar
@@ -175,12 +179,13 @@ class HomeFragment : Fragment() {
     private fun onItemLongClick(position: Int) {
         act.vibrate()
         val event = adapter.getItem(position)
-        val quickStat = if (event.yearMatter == false) formatDaysRemaining(
-            getRemainingDays(event.nextDate!!),
-            requireContext()
-        )
-        else "${getString(R.string.next_age)} ${getNextYears(event)}, " +
-                formatDaysRemaining(getRemainingDays(event.nextDate!!), requireContext())
+        val quickStat =
+            if (event.yearMatter == false || event.type != EventCode.BIRTHDAY.name) formatDaysRemaining(
+                getRemainingDays(event.nextDate!!),
+                requireContext()
+            )
+            else "${getString(R.string.next_age)} ${getNextYears(event)}, " +
+                    formatDaysRemaining(getRemainingDays(event.nextDate!!), requireContext())
         act.showSnackbar(quickStat)
     }
 

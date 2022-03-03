@@ -247,6 +247,7 @@ class MainActivity : AppCompatActivity() {
             vibrate()
             _dialogInsertEventBinding = DialogInsertEventBinding.inflate(layoutInflater)
             // Show a bottom sheet containing the form to insert a new event
+            imageChosen = false
             var eventType = EventCode.BIRTHDAY
             var nameValue = "error"
             var surnameValue = ""
@@ -278,7 +279,6 @@ class MainActivity : AppCompatActivity() {
                     thread.start()
                     dismiss()
                 }
-
                 negativeButton(R.string.cancel) {
                     dismiss()
                 }
@@ -302,6 +302,20 @@ class MainActivity : AppCompatActivity() {
                 onItemClickListener =
                     AdapterView.OnItemClickListener { _, _, position, _ ->
                         eventType = items[position].codeName
+                        if (!imageChosen)
+                        eventImage.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                context,
+                                // Set the image depending on the event type
+                                when (eventType.name) {
+                                    EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
+                                    EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
+                                    EventCode.DEATH.name -> R.drawable.placeholder_death_image
+                                    EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
+                                    else -> R.drawable.placeholder_other_image
+                                }
+                            )
+                        )
                     }
             }
 

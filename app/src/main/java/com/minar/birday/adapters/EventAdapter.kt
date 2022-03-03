@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
 import com.minar.birday.databinding.EventRowBinding
+import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.formatName
@@ -99,7 +100,14 @@ class EventAdapter(
                 } else eventImage.setImageDrawable(
                     ContextCompat.getDrawable(
                         context,
-                        R.drawable.placeholder_event_image
+                        // Set the image depending on the event type
+                        when (event.type) {
+                            EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
+                            EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
+                            EventCode.DEATH.name -> R.drawable.placeholder_death_image
+                            EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
+                            else -> R.drawable.placeholder_other_image
+                        }
                     )
                 )
             }

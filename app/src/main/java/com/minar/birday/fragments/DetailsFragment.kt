@@ -130,6 +130,21 @@ class DetailsFragment : Fragment() {
         } else {
             if (event.image != null)
                 image.setImageBitmap(byteArrayToBitmap(event.image))
+            else {
+                image.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        // Set the image depending on the event type
+                        when (event.type) {
+                            EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
+                            EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
+                            EventCode.DEATH.name -> R.drawable.placeholder_death_image
+                            EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
+                            else -> R.drawable.placeholder_other_image
+                        }
+                    )
+                )
+            }
             imageBg.applyLoopingAnimatedVectorDrawable(R.drawable.animated_ripple_circle)
         }
 
@@ -304,29 +319,33 @@ class DetailsFragment : Fragment() {
             when (event.type) {
                 EventCode.ANNIVERSARY.name -> binding.detailsZodiacImage.setImageDrawable(
                     ContextCompat.getDrawable(
-                        requireContext(), R.drawable.ic_anniversary
+                        requireContext(), R.drawable.ic_anniversary_24dp
                     )
                 )
                 EventCode.DEATH.name -> binding.detailsZodiacImage.setImageDrawable(
                     ContextCompat.getDrawable(
-                        requireContext(), R.drawable.ic_death_anniversary
+                        requireContext(), R.drawable.ic_death_anniversary_24dp
                     )
                 )
                 EventCode.NAME_DAY.name -> binding.detailsZodiacImage.setImageDrawable(
                     ContextCompat.getDrawable(
-                        requireContext(), R.drawable.ic_name_day
+                        requireContext(), R.drawable.ic_name_day_24dp
                     )
                 )
                 EventCode.OTHER.name -> binding.detailsZodiacImage.setImageDrawable(
                     ContextCompat.getDrawable(
-                        requireContext(), R.drawable.ic_other
+                        requireContext(), R.drawable.ic_other_24dp
                     )
                 )
             }
-            binding.detailsNextAge.text = String.format(
-                resources.getQuantityString(R.plurals.years, getNextYears(event)),
-                getNextYears(event)
-            )
+            if (event.yearMatter!!) {
+                binding.detailsNextAge.text = String.format(
+                    resources.getQuantityString(R.plurals.years, getNextYears(event)),
+                    getNextYears(event)
+                )
+            } else binding.detailsNextAge.visibility = View.GONE
+            binding.detailsBirthDateValue.text =
+                getStringForTypeCodename(requireContext(), event.type!!)
             binding.detailsBirthDate.visibility = View.GONE
             binding.detailsNextAgeValue.visibility = View.GONE
             binding.detailsZodiacSign.visibility = View.GONE
@@ -355,6 +374,7 @@ class DetailsFragment : Fragment() {
     @ExperimentalStdlibApi
     private fun editEvent(eventResult: EventResult) {
         _dialogInsertEventBinding = DialogInsertEventBinding.inflate(LayoutInflater.from(context))
+        imageChosen = false
         var typeValue = getStringForTypeCodename(act, eventResult.type!!)
         var nameValue = eventResult.name
         var surnameValue = eventResult.surname
@@ -408,6 +428,21 @@ class DetailsFragment : Fragment() {
         eventDate.setText(eventDateValue.format(formatter))
         if (imageValue != null)
             eventImage.setImageBitmap(byteArrayToBitmap(imageValue))
+        else {
+            eventImage.setImageDrawable(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    // Set the image depending on the event type
+                    when (eventResult.type) {
+                        EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
+                        EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
+                        EventCode.DEATH.name -> R.drawable.placeholder_death_image
+                        EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
+                        else -> R.drawable.placeholder_other_image
+                    }
+                )
+            )
+        }
 
         val endDate = Calendar.getInstance()
         val startDate = Calendar.getInstance()
@@ -478,6 +513,20 @@ class DetailsFragment : Fragment() {
             onItemClickListener =
                 AdapterView.OnItemClickListener { _, _, position, _ ->
                     typeValue = items[position].codeName.name
+                    if (!imageChosen)
+                    eventImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            context,
+                            // Set the image depending on the event type
+                            when (typeValue) {
+                                EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
+                                EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
+                                EventCode.DEATH.name -> R.drawable.placeholder_death_image
+                                EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
+                                else -> R.drawable.placeholder_other_image
+                            }
+                        )
+                    )
                 }
         }
 
@@ -520,12 +569,10 @@ class DetailsFragment : Fragment() {
                     true
             }
         }
-
         name.addTextChangedListener(watcher)
         surname.addTextChangedListener(watcher)
         eventDate.addTextChangedListener(watcher)
     }
-
 
     // Share an event as a plain string (plus some explanatory emotes) on every supported app
     private fun shareEvent(event: EventResult) {
@@ -542,6 +589,7 @@ class DetailsFragment : Fragment() {
                     getString(R.string.notification_title) +
                     "\n" + typeEmoji + "  " +
                     formatName(event, sharedPrefs.getBoolean("surname_first", false)) +
+                    ", " + getStringForTypeCodename(requireContext(), event.type!!) +
                     "\n" + String(Character.toChars(0x1F4C5)) + "  " +
                     event.nextDate!!.format(formatter)
         ShareCompat.IntentBuilder(requireActivity())

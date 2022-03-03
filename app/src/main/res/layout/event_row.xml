@@ -14,7 +14,7 @@
         android:layout_height="0dp"
         android:contentDescription="@string/event_details"
         android:padding="@dimen/in_row_padding"
-        android:src="@drawable/placeholder_event_image"
+        android:src="@drawable/placeholder_birthday_image"
         app:layout_constraintBottom_toBottomOf="@id/eventDate"
         app:layout_constraintDimensionRatio="1.0"
         app:layout_constraintHeight_max="@dimen/in_row_image"

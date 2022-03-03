@@ -65,4 +65,5 @@
     <dimen name="widget_min_height">40dp</dimen>
     <dimen name="custom_preference_text_size">13.6sp</dimen>
     <dimen name="preview_dot_size">30dp</dimen>
+    <dimen name="bottom_sheet_peek_height">1000dp</dimen>
 </resources>

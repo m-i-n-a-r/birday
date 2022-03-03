@@ -72,7 +72,7 @@
             android:layout_marginTop="@dimen/form_vertical_margin"
             android:contentDescription="@string/event_details"
             android:padding="@dimen/details_image_padding"
-            android:src="@drawable/placeholder_event_image"
+            android:src="@drawable/placeholder_birthday_image"
             app:layout_constraintBottom_toTopOf="@id/detailsZodiacImage"
             app:layout_constraintDimensionRatio="1.0"
             app:layout_constraintEnd_toEndOf="parent"

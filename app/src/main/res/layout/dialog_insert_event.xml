@@ -20,7 +20,7 @@
             android:contentDescription="@string/event_details"
             android:focusable="true"
             android:padding="@dimen/in_row_padding"
-            android:src="@drawable/placeholder_event_image"
+            android:src="@drawable/placeholder_birthday_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/roundedImageView"
