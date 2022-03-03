@@ -31,7 +31,7 @@ class BirdayExporter(context: Context, attrs: AttributeSet?) : Preference(contex
         val act = context as MainActivity
         act.vibrate()
         // Only export if there's at least one event
-        if (act.mainViewModel.allEventsUnfiltered.value.isNullOrEmpty())
+        if (act.mainViewModel.nextEvents.value.isNullOrEmpty())
             act.showSnackbar(context.getString(R.string.no_events))
         else {
             val thread = Thread {
