@@ -513,20 +513,20 @@ class DetailsFragment : Fragment() {
             onItemClickListener =
                 AdapterView.OnItemClickListener { _, _, position, _ ->
                     typeValue = items[position].codeName.name
-                    if (!imageChosen)
-                    eventImage.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            context,
-                            // Set the image depending on the event type
-                            when (typeValue) {
-                                EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
-                                EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
-                                EventCode.DEATH.name -> R.drawable.placeholder_death_image
-                                EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
-                                else -> R.drawable.placeholder_other_image
-                            }
+                    if (!imageChosen && (eventResult.image == null || eventResult.image.isEmpty()))
+                        eventImage.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                context,
+                                // Set the image depending on the event type
+                                when (typeValue) {
+                                    EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
+                                    EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
+                                    EventCode.DEATH.name -> R.drawable.placeholder_death_image
+                                    EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
+                                    else -> R.drawable.placeholder_other_image
+                                }
+                            )
                         )
-                    )
                 }
         }
 

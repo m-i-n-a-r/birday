@@ -225,6 +225,7 @@ class FavoritesFragment : Fragment() {
                 val note = noteTextField.text.toString().trim()
                 val tuple = Event(
                     id = event.id,
+                    type = event.type,
                     originalDate = event.originalDate,
                     name = event.name,
                     yearMatter = event.yearMatter,

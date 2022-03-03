@@ -83,7 +83,6 @@ class HomeFragment : Fragment() {
         val homeCard = binding.homeCard
         val homeMiniFab = binding.homeMiniFab
         if (shimmerEnabled) shimmer.startShimmer()
-        upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
 
         // Setup the search bar
         val searchBar = binding.homeSearch
@@ -138,8 +137,9 @@ class HomeFragment : Fragment() {
             // Update the widgets using the next events, to avoid strange behaviors when searching
             updateWidget(nextEvents)
             // Use a different animated vector drawable for death anniversaries
-            if (nextEvents.all { it.type == EventCode.DEATH.name })
+            if (nextEvents.isNotEmpty() && nextEvents.all { it.type == EventCode.DEATH.name })
                 upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_death_anniversary)
+            else upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
         }
 
         // Restore search string in the search bar
@@ -160,14 +160,16 @@ class HomeFragment : Fragment() {
     }
 
     // Show an hint when the star is long pressed
-    private fun showFavoriteHint() = act.showSnackbar(getString(R.string.add_favorite))
+    private fun showFavoriteHint() {
+        act.vibrate()
+        act.showSnackbar(getString(R.string.add_favorite))
+    }
 
     // Show a dialog with the details of the selected contact
     private fun onItemClick(position: Int) {
         // Return if there was a navigation, useful to avoid double tap on two events
         if (findNavController().currentDestination?.label != "fragment_home")
             return
-
         act.vibrate()
         val event = adapter.getItem(position)
         // Navigate to the new fragment passing in the event with safe args
@@ -277,8 +279,12 @@ class HomeFragment : Fragment() {
         val upcomingDate = events[0].nextDate
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
 
-        // Trigger confetti if there's an event today
-        if (getRemainingDays(upcomingDate!!) == 0 && !mainViewModel.confettiDone) {
+        // Trigger confetti if there's an event today, except for "only death anniversaries" days
+        if (
+            getRemainingDays(upcomingDate!!) == 0 &&
+            !mainViewModel.confettiDone &&
+            !events.all { it.type == EventCode.DEATH.name }
+        ) {
             triggerConfetti()
             mainViewModel.confettiDone = true
         }

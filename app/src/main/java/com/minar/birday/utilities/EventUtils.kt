@@ -17,6 +17,7 @@ import java.util.*
 // Transform an event result in a simple event
 fun resultToEvent(eventResult: EventResult) = Event(
     id = eventResult.id,
+    type = eventResult.type,
     name = eventResult.name,
     surname = eventResult.surname,
     favorite = eventResult.favorite,
@@ -28,23 +29,23 @@ fun resultToEvent(eventResult: EventResult) = Event(
 
 // Check if an event is a birthday
 fun isBirthday(event: EventResult): Boolean =
-    event.type == EventCode.BIRTHDAY.toString()
+    event.type == EventCode.BIRTHDAY.name
 
 // Check if an event is a anniversary
 fun isAnniversary(event: EventResult): Boolean =
-    event.type == EventCode.ANNIVERSARY.toString()
+    event.type == EventCode.ANNIVERSARY.name
 
 // Check if an event is a death anniversary
 fun isDeathAnniversary(event: EventResult): Boolean =
-    event.type == EventCode.DEATH.toString()
+    event.type == EventCode.DEATH.name
 
 // Check if an event is a name day
 fun isNameDay(event: EventResult): Boolean =
-    event.type == EventCode.NAME_DAY.toString()
+    event.type == EventCode.NAME_DAY.name
 
 // Check if an event is "other"
 fun isOther(event: EventResult): Boolean =
-    event.type == EventCode.OTHER.toString()
+    event.type == EventCode.OTHER.name
 
 // Properly format the next date for widget and next event card
 fun nextDateFormatted(event: EventResult, formatter: DateTimeFormatter, context: Context): String {

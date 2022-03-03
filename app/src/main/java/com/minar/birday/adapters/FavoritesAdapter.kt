@@ -10,10 +10,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
 import com.minar.birday.databinding.FavoriteRowBinding
+import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.formatName
-import com.minar.birday.utilities.getYears
 import com.minar.birday.utilities.getRemainingDays
+import com.minar.birday.utilities.getYears
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
@@ -66,8 +67,10 @@ class FavoritesAdapter(
             var nextDate = event.nextDate.format(formatter)
 
             if (event.yearMatter == false) nextDate = event.nextDate.format(formatter)
-            val actualAge = context.getString(R.string.next_age_years) + ": " + age.toString() +
-                    ", " + context.getString(R.string.born_in) + " " + event.originalDate.year
+            val actualAge = if (event.type == EventCode.BIRTHDAY.name)
+                context.getString(R.string.next_age_years) + ": " + age.toString() +
+                        ", " + context.getString(R.string.born_in) + " " + event.originalDate.year
+            else context.getString(R.string.next_age_years) + ": " + age.toString()
             eventPerson.text = formattedPersonName
             // Show an icon if there's a note
             if (!event.notes.isNullOrEmpty()) eventNote.visibility = View.VISIBLE
