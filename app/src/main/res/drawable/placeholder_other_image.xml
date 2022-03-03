@@ -1,0 +1,19 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:name="image_placeholder"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:name="background"
+        android:fillColor="@color/goodGrayTranslucent"
+        android:pathData="M -0.28 -0.35 L 24.28 -0.35 L 24.28 24.35 L -0.28 24.35 Z" />
+    <path
+        android:name="person"
+        android:fillColor="?android:textColorPrimary"
+        android:pathData="M 6.822,20.908 C 6.113,20.779 5.521,20.218 5.336,19.5 5.274,19.257 5.275,17.679 5.338,17.454 c 0.476,-1.705 3.527,-3.187 6.561,-3.187 3.269,0 6.485,1.568 6.788,3.31 0.044,0.251 0.019,1.798 -0.032,1.974 -0.185,0.64 -0.67,1.125 -1.327,1.328 l -0.176,0.054 z m 4.779,-7.344 C 8.99,13.235 7.92,10.08 9.8,8.254 c 0.926135,-0.7680116 2.40101,-1.6932657 4.352,0.062 2.007,2.101 0.302,5.609 -2.551,5.248 z" />
+    <path
+        android:name="dots"
+        android:fillColor="?colorAccent"
+        android:pathData="m 16,4.3848797 a 2,2 0 0 1 2,-2 2,2 0 0 1 2,2 2,2 0 0 1 -2,2 2,2 0 0 1 -2,-2 m -6,0 a 2,2 0 0 1 2,-2 2,2 0 0 1 2,2 2,2 0 0 1 -2,2 2,2 0 0 1 -2,-2 m -6,0 a 2,2 0 0 1 2,-2 2,2 0 0 1 2,2 2,2 0 0 1 -2,2 2,2 0 0 1 -2,-2 z" />
+</vector>

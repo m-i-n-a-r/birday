@@ -1,0 +1,19 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:name="image_placeholder"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:name="background"
+        android:fillColor="@color/goodGrayTranslucent"
+        android:pathData="M -0.28 -0.35 L 24.28 -0.35 L 24.28 24.35 L -0.28 24.35 Z" />
+    <path
+        android:name="grave"
+        android:fillColor="?colorAccent"
+        android:pathData="M 17.776 3.187 L 18.789 3.187 C 19.628 3.187 20.056 3.868 20.056 4.707 L 20.056 7.409 C 19.519 7.148 19.06 6.988 18.282 6.988 C 17.504 6.988 17.046 7.148 16.508 7.409 L 16.508 4.707 C 16.508 3.868 16.937 3.187 17.776 3.187 M 17.269 4.707 L 17.269 5.087 L 19.296 5.087 L 19.296 4.707 L 17.269 4.707 M 17.522 5.721 L 17.522 6.101 L 19.043 6.101 L 19.043 5.721 L 17.522 5.721 M 16.002 8.255 L 16.002 8.08 C 16.676 7.652 18.594 6.694 20.563 8.065 L 20.563 8.255 Z" />
+    <path
+        android:name="person"
+        android:fillColor="?android:textColorPrimary"
+        android:pathData="M 6.822,20.908 C 6.113,20.779 5.521,20.218 5.336,19.5 5.274,19.257 5.275,17.679 5.338,17.454 c 0.476,-1.705 3.527,-3.187 6.561,-3.187 3.269,0 6.485,1.568 6.788,3.31 0.044,0.251 0.019,1.798 -0.032,1.974 -0.185,0.64 -0.67,1.125 -1.327,1.328 l -0.176,0.054 z m 4.779,-7.344 C 8.99,13.235 7.92,10.08 9.8,8.254 c 0.926135,-0.7680116 2.40101,-1.6932657 4.352,0.062 2.007,2.101 0.302,5.609 -2.551,5.248 z" />
+</vector>
