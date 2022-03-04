@@ -5,7 +5,6 @@
     android:drawablePadding="@dimen/text_field_horizontal_margin"
     android:ellipsize="end"
     android:maxLines="1"
-    android:padding="@dimen/form_vertical_margin"
+    android:padding="@dimen/list_vertical_padding"
     android:textAppearance="?attr/textAppearanceSubtitle1"
-    app:drawableStartCompat="@drawable/ic_dot_black_24dp"
-    app:drawableTint="?colorAccent" />
+    app:drawableStartCompat="@drawable/ic_dot_small_24dp" />

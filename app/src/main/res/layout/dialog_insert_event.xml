@@ -46,7 +46,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/imageEvent"
             app:layout_constraintTop_toTopOf="@id/imageEvent"
-            app:startIconDrawable="@drawable/ic_date_question_black_24dp"
+            app:startIconDrawable="@drawable/ic_event_type_black_24dp"
             app:startIconTint="@color/goodGray">
 
             <AutoCompleteTextView
