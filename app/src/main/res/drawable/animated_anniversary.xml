@@ -1,0 +1,192 @@
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+            android:name="vector"
+            android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="24"
+            android:viewportHeight="24">
+            <group
+                android:name="up"
+                android:pivotX="12"
+                android:pivotY="12">
+                <path
+                    android:name="up_heart"
+                    android:fillColor="@color/goodGray"
+                    android:pathData="M 6.696 11.618 L 6.015 10.998 C 3.597 8.805 2 7.354 2 5.583 C 2 4.132 3.137 3 4.583 3 C 5.4 3 6.185 3.38 6.696 3.977 C 7.208 3.38 7.993 3 8.81 3 C 10.256 3 11.393 4.132 11.393 5.583 C 11.393 7.354 9.796 8.805 7.377 10.998 Z" />
+            </group>
+            <group
+                android:name="down"
+                android:pivotX="12"
+                android:pivotY="12">
+                <path
+                    android:name="low_heart"
+                    android:fillColor="@color/goodGray"
+                    android:pathData="M 16.935 21.876 L 16.254 21.256 C 13.835 19.063 12.238 17.612 12.238 15.841 C 12.238 14.39 13.375 13.258 14.821 13.258 C 15.638 13.258 16.423 13.638 16.935 14.235 C 17.447 13.638 18.231 13.258 19.048 13.258 C 20.495 13.258 21.631 14.39 21.631 15.841 C 21.631 17.612 20.034 19.063 17.616 21.256 Z" />
+            </group>
+        </vector>
+    </aapt:attr>
+    <target android:name="up">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:duration="1000"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="translateX"
+                    android:valueFrom="0"
+                    android:valueTo="5.3"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="1000"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="5"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="700"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="translateX"
+                    android:startOffset="2300"
+                    android:valueFrom="5.3"
+                    android:valueTo="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="800"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="translateY"
+                    android:startOffset="2200"
+                    android:valueFrom="5"
+                    android:valueTo="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="down">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:duration="1000"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="translateX"
+                    android:valueFrom="0"
+                    android:valueTo="-4.9"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="1000"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="-5.2"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="700"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="translateX"
+                    android:startOffset="2300"
+                    android:valueFrom="-4.9"
+                    android:valueTo="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="800"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="translateY"
+                    android:startOffset="2200"
+                    android:valueFrom="-5.2"
+                    android:valueTo="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="up_heart">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:duration="1000"
+                    android:interpolator="@android:anim/overshoot_interpolator"
+                    android:propertyName="strokeWidth"
+                    android:startOffset="500"
+                    android:valueFrom="0"
+                    android:valueTo="3"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="1000"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="strokeColor"
+                    android:startOffset="500"
+                    android:valueFrom="@color/goodGray"
+                    android:valueTo="?colorAccent"
+                    android:valueType="colorType" />
+                <objectAnimator
+                    android:duration="1000"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="strokeWidth"
+                    android:startOffset="1500"
+                    android:valueFrom="0"
+                    android:valueTo="10"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="1000"
+                    android:interpolator="@android:interpolator/linear_out_slow_in"
+                    android:propertyName="strokeAlpha"
+                    android:startOffset="1500"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="low_heart">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:duration="1000"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="strokeColor"
+                    android:startOffset="500"
+                    android:valueFrom="@color/goodGray"
+                    android:valueTo="?colorAccent"
+                    android:valueType="colorType" />
+                <objectAnimator
+                    android:duration="1000"
+                    android:interpolator="@android:anim/overshoot_interpolator"
+                    android:propertyName="strokeWidth"
+                    android:startOffset="500"
+                    android:valueFrom="0"
+                    android:valueTo="3.5"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="1000"
+                    android:interpolator="@android:anim/overshoot_interpolator"
+                    android:propertyName="fillColor"
+                    android:startOffset="500"
+                    android:valueFrom="@color/goodGray"
+                    android:valueTo="?colorAccent" />
+                <objectAnimator
+                    android:duration="1000"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="strokeColor"
+                    android:startOffset="2000"
+                    android:valueFrom="?colorAccent"
+                    android:valueTo="@color/goodGray"
+                    android:valueType="colorType" />
+                <objectAnimator
+                    android:duration="1000"
+                    android:interpolator="@android:anim/overshoot_interpolator"
+                    android:propertyName="fillColor"
+                    android:startOffset="2000"
+                    android:valueFrom="?colorAccent"
+                    android:valueTo="@color/goodGray" />
+                <objectAnimator
+                    android:duration="1000"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="strokeWidth"
+                    android:startOffset="2000"
+                    android:valueFrom="3.5"
+                    android:valueTo="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

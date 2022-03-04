@@ -137,9 +137,17 @@ class HomeFragment : Fragment() {
             // Update the widgets using the next events, to avoid strange behaviors when searching
             updateWidget(nextEvents)
             // Use a different animated vector drawable for death anniversaries
-            if (nextEvents.isNotEmpty() && nextEvents.all { it.type == EventCode.DEATH.name })
-                upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_death_anniversary)
-            else upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
+            if (!nextEvents.isNullOrEmpty()) {
+                when {
+                    nextEvents.all { it.type == EventCode.DEATH.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+                        R.drawable.animated_death_anniversary
+                    )
+                    nextEvents.all { it.type == EventCode.ANNIVERSARY.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+                        R.drawable.animated_anniversary
+                    )
+                    else -> upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
+                }
+            } else upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
         }
 
         // Restore search string in the search bar
