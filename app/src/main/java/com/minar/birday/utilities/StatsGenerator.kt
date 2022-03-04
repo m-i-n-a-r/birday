@@ -51,7 +51,6 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
     fun generateFullStats(): SpannableStringBuilder {
         val sb = SpannableStringBuilder()
         val stats = mutableListOf<String>()
-        stats.add(eventTypesNumbers())
         stats.add(ageAverage())
         stats.add(oldestPerson())
         stats.add(youngestPerson())
@@ -61,7 +60,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         stats.add(mostCommonMonth())
         stats.add(mostCommonZodiacSign())
         stats.add(leapYearTotal())
-        stats.add(eventTypesNumbers()) // TODO Better wait for the plurals?
+        stats.add(eventTypesNumbers())
         stats.removeIf { it.isBlank() }
         sb.appendBulletSpans(stats, 16, applicationContext!!.getColor(R.color.goodGray))
         return sb
@@ -69,11 +68,17 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
 
     // The number of events for each type TODO Missing plurals for event types and the word 'event'
     private fun eventTypesNumbers(): String {
-        return applicationContext?.getString(R.string.birthday) + ": " + birthdays.size + ", " +
-                applicationContext?.getString(R.string.anniversary) + ": " + anniversaries.size + ", " +
-                applicationContext?.getString(R.string.death_anniversary) + ": " + deathAnniversaries.size + ", " +
-                applicationContext?.getString(R.string.name_day) + ": " + nameDays.size + ", " +
-                applicationContext?.getString(R.string.other) + ": " + others.size + ", "
+        val typesSummary = SpannableStringBuilder()
+        typesSummary.append("${applicationContext?.getString(R.string.birthday)}: ${birthdays.size}")
+        if (anniversaries.isNotEmpty())
+            typesSummary.append(", ${applicationContext?.getString(R.string.anniversary)}: ${anniversaries.size}")
+        if (deathAnniversaries.isNotEmpty())
+            typesSummary.append(", ${applicationContext?.getString(R.string.death_anniversary)}: ${deathAnniversaries.size}")
+        if (nameDays.isNotEmpty())
+            typesSummary.append(", ${applicationContext?.getString(R.string.name_day)}: ${nameDays.size}")
+        if (others.isNotEmpty())
+            typesSummary.append(", ${applicationContext?.getString(R.string.other)}: ${others.size}")
+        return typesSummary.toString()
     }
 
     // The average age
