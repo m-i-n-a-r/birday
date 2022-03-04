@@ -13,12 +13,14 @@ import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
+import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getCircularBitmap
+import com.minar.birday.utilities.getStringForTypeCodename
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 import java.util.*
@@ -149,11 +151,15 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             nextEvents, surnameFirst
         ) + ". "
 
-    // Notification for actual events
+    // Notification for actual events, extended if there's one event only
     private fun formulateNotificationText(nextEvents: List<EventResult>, surnameFirst: Boolean) =
-        applicationContext.getString(R.string.notification_description_part_1) + ": " + formatEventList(
+        if (nextEvents.size == 1)
+            applicationContext.getString(R.string.notification_description_part_1) + ": " + formatEventList(
+                nextEvents, surnameFirst
+            ) + ". " + applicationContext.getString(R.string.notification_description_part_2)
+        else applicationContext.getString(R.string.notification_description_part_1) + ": " + formatEventList(
             nextEvents, surnameFirst
-        ) + ". " + applicationContext.getString(R.string.notification_description_part_2)
+        ) + ". "
 
     // Given a series of events, format them considering the yearMatters parameter and the number
     private fun formatEventList(events: List<EventResult>, surnameFirst: Boolean): String {
@@ -169,6 +175,9 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                 formattedEventList += if (events.size == 1)
                     formatName(it, surnameFirst)
                 else it.name
+                // Show event type if different from birthday
+                if (it.type != EventCode.BIRTHDAY.name)
+                    formattedEventList += " (${getStringForTypeCodename(applicationContext, it.type!!)})"
                 // If the year is considered, display it. Else only display the name
                 if (it.yearMatter!!) formattedEventList += ", " +
                         applicationContext.resources.getQuantityString(
