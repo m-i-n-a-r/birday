@@ -23,6 +23,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
+import java.time.format.TextStyle
 import java.util.*
 
 
@@ -57,6 +58,7 @@ class EventAdapter(
         private val eventPerson = binding.eventPerson
         private val eventDate = binding.eventDate
         private val eventImage = binding.eventImage
+        private val eventDateHeader = binding.eventDateHeader
 
         init {
             binding.root.setOnClickListener { onItemClick(adapterPosition) }
@@ -80,6 +82,7 @@ class EventAdapter(
                     Locale.getDefault()
                 ) else it.toString()
             }
+            eventDateHeader.visibility = View.GONE
             eventPerson.text = formattedPersonName
             eventDate.text = originalDate
 
@@ -110,6 +113,21 @@ class EventAdapter(
                         }
                     )
                 )
+            }
+
+            // Manage the month header logic with a tricky yet effective logic
+            try {
+                getItem(adapterPosition - 1)
+                if (getItem(adapterPosition - 1).nextDate!!.monthValue != event.nextDate!!.month.value) {
+                    eventDateHeader.text =
+                        event.nextDate.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
+                    eventDateHeader.visibility = View.VISIBLE
+                }
+            } catch (e: Exception) {
+                // Also set the header for the first element
+                eventDateHeader.text =
+                    event.nextDate!!.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
+                eventDateHeader.visibility = View.VISIBLE
             }
 
             // Manage the favorite logic
