@@ -239,37 +239,13 @@ class HomeFragment : Fragment() {
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
 
         // Make sure to show if there's more than one event
-        val widgetUpcoming = when {
-            // No events
-            events.isEmpty() -> requireContext().getString(R.string.no_next_event)
-            // Two events
-            events.size == 2 && events[0].nextDate!!.isEqual(events[1].nextDate) ->
-                events[0].name + " " + requireContext().getString(R.string.and) +
-                        " " + events[1].name + ", " + nextDateFormatted(
-                    events[0],
-                    formatter,
-                    requireContext()
-                )
-            events.size > 2 && events[0].nextDate!!.isEqual(events[1].nextDate) &&
-                    !events[1].nextDate!!.isEqual(events[2].nextDate) ->
-                events[0].name + " " + requireContext().getString(R.string.and) +
-                        " " + events[1].name + ", " + nextDateFormatted(
-                    events[0],
-                    formatter,
-                    requireContext()
-                )
-            // More than two events
-            events.size > 2 && events[0].nextDate!!.isEqual(events[1].nextDate) &&
-                    events[1].nextDate!!.isEqual(events[2].nextDate) ->
-                events[0].name + " " + requireContext().getString(R.string.event_others) +
-                        ", " + nextDateFormatted(events[0], formatter, requireContext())
-            // One event
-            else -> events[0].name + ", " + nextDateFormatted(
+        val widgetUpcoming = "${formatEventList(events, true, requireContext(), false)} \n ${
+            nextDateFormatted(
                 events[0],
                 formatter,
                 requireContext()
             )
-        }
+        }"
 
         remoteViews.setOnClickPendingIntent(R.id.event_widget_main, pendingIntent)
         remoteViews.setTextViewText(R.id.event_widget_text, widgetUpcoming)

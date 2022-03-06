@@ -13,14 +13,12 @@ import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
-import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.byteArrayToBitmap
-import com.minar.birday.utilities.formatName
+import com.minar.birday.utilities.formatEventList
 import com.minar.birday.utilities.getCircularBitmap
-import com.minar.birday.utilities.getStringForTypeCodename
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 import java.util.*
@@ -142,7 +140,6 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                     setLargeIcon(getCircularBitmap(bitmap))
                 }
         }
-
         with(NotificationManagerCompat.from(applicationContext)) { notify(id, builder.build()) }
     }
 
@@ -152,52 +149,17 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         surnameFirst: Boolean
     ) =
         applicationContext.getString(R.string.additional_notification_text) + " " + formatEventList(
-            nextEvents, surnameFirst
+            nextEvents, surnameFirst, applicationContext
         ) + ". "
 
     // Notification for actual events, extended if there's one event only
     private fun formulateNotificationText(nextEvents: List<EventResult>, surnameFirst: Boolean) =
         if (nextEvents.size == 1)
             applicationContext.getString(R.string.notification_description_part_1) + ": " + formatEventList(
-                nextEvents, surnameFirst
+                nextEvents, surnameFirst, applicationContext
             ) + ". " + applicationContext.getString(R.string.notification_description_part_2)
         else applicationContext.getString(R.string.notification_description_part_1) + ": " + formatEventList(
-            nextEvents, surnameFirst
+            nextEvents, surnameFirst, applicationContext
         ) + ". "
 
-    // Given a series of events, format them considering the yearMatters parameter and the number
-    private fun formatEventList(events: List<EventResult>, surnameFirst: Boolean): String {
-        var formattedEventList = ""
-        events.forEach {
-            // Years. They're not used in the string if the year doesn't matter
-            val years = it.nextDate?.year?.minus(it.originalDate.year)!!
-            // Only the data of the first 3 events are displayed
-            if (events.indexOf(it) in 0..2) {
-                // If the event is not the first, add an extra comma
-                if (events.indexOf(it) != 0) formattedEventList += ", "
-                // Show the last name, if any, if there's only one event
-                formattedEventList += if (events.size == 1)
-                    formatName(it, surnameFirst)
-                else it.name
-                // Show event type if different from birthday
-                if (it.type != EventCode.BIRTHDAY.name)
-                    formattedEventList += " (${
-                        getStringForTypeCodename(
-                            applicationContext,
-                            it.type!!
-                        )
-                    })"
-                // If the year is considered, display it. Else only display the name
-                if (it.yearMatter!!) formattedEventList += ", " +
-                        applicationContext.resources.getQuantityString(
-                            R.plurals.years,
-                            years,
-                            years
-                        )
-            }
-            // If more than 3 events, just let the user know other events are in the list
-            if (events.indexOf(it) == 3) ", " + applicationContext.getString(R.string.event_others)
-        }
-        return formattedEventList
-    }
 }

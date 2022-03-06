@@ -68,12 +68,58 @@ fun formatDaysRemaining(daysRemaining: Int, context: Context): String {
     }
 }
 
+// Given a series of events, format them considering the yearMatters parameter and the number
+fun formatEventList(
+    events: List<EventResult>,
+    surnameFirst: Boolean,
+    context: Context,
+    showSurnames: Boolean = true
+): String {
+    var formattedEventList = ""
+    if (events.isEmpty()) formattedEventList = context.getString(R.string.no_next_event)
+    else events.forEach {
+        // Years. They're not used in the string if the year doesn't matter
+        val years = it.nextDate?.year?.minus(it.originalDate.year)!!
+        // Only the data of the first 3 events are displayed
+        if (events.indexOf(it) in 0..2) {
+            // If the event is not the first, add an extra comma
+            if (events.indexOf(it) != 0)
+                formattedEventList += ", "
+
+            // Show the last name, if any, if there's only one event
+            formattedEventList +=
+                if (events.size == 1 && showSurnames)
+                    formatName(it, surnameFirst)
+                else it.name
+
+            // Show event type if different from birthday
+            if (it.type != EventCode.BIRTHDAY.name)
+                formattedEventList += " (${
+                    getStringForTypeCodename(
+                        context,
+                        it.type!!
+                    )
+                })"
+            // If the year is considered, display it. Else only display the name
+            if (it.yearMatter!!) formattedEventList += ", " +
+                    context.resources.getQuantityString(
+                        R.plurals.years,
+                        years,
+                        years
+                    )
+        }
+        // If more than 3 events, just let the user know other events are in the list
+        if (events.indexOf(it) == 3) ", ${context.getString(R.string.event_others)}"
+    }
+    return formattedEventList
+}
+
 // Format the name considering the preference and the surname (which could be empty)
 fun formatName(event: EventResult, surnameFirst: Boolean): String {
     return if (event.surname.isNullOrBlank()) event.name
     else {
-        if (!surnameFirst) event.name + " " + event.surname
-        else event.surname + " " + event.name
+        if (!surnameFirst) "${event.name} ${event.surname}"
+        else "${event.surname} ${event.name}"
     }
 }
 

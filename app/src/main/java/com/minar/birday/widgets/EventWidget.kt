@@ -12,6 +12,7 @@ import com.minar.birday.activities.MainActivity
 import com.minar.birday.model.EventResult
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
+import com.minar.birday.utilities.formatEventList
 import com.minar.birday.utilities.nextDateFormatted
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -33,7 +34,7 @@ class EventWidget : AppWidgetProvider() {
 internal fun updateAppWidget(
     context: Context,
     appWidgetManager: AppWidgetManager,
-    appWidgetId: Int
+    appWidgetId: Int,
 ) {
     val thread = Thread {
         // Get the next events and the proper formatter
@@ -42,37 +43,13 @@ internal fun updateAppWidget(
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
 
         // Make sure to show if there's more than one event
-        val widgetUpcoming = when {
-            // No events
-            nextEvents.isEmpty() -> context.getString(R.string.no_next_event)
-            // Two events
-            nextEvents.size == 2 && nextEvents[0].nextDate!!.isEqual(nextEvents[1].nextDate) ->
-                nextEvents[0].name + " " + context.getString(R.string.and) +
-                        " " + nextEvents[1].name + ", " + nextDateFormatted(
-                    nextEvents[0],
-                    formatter,
-                    context
-                )
-            nextEvents.size > 2 && nextEvents[0].nextDate!!.isEqual(nextEvents[1].nextDate) &&
-                    !nextEvents[1].nextDate!!.isEqual(nextEvents[2].nextDate) ->
-                nextEvents[0].name + " " + context.getString(R.string.and) +
-                        " " + nextEvents[1].name + ", " + nextDateFormatted(
-                    nextEvents[0],
-                    formatter,
-                    context
-                )
-            // More than two events
-            nextEvents.size > 2 && nextEvents[0].nextDate!!.isEqual(nextEvents[1].nextDate) &&
-                    nextEvents[1].nextDate!!.isEqual(nextEvents[2].nextDate) ->
-                nextEvents[0].name + " " + context.getString(R.string.event_others) +
-                        ", " + nextDateFormatted(nextEvents[0], formatter, context)
-            // One event
-            else -> nextEvents[0].name + ", " + nextDateFormatted(
+        val widgetUpcoming = "${formatEventList(nextEvents, true, context, false)} \n ${
+            nextDateFormatted(
                 nextEvents[0],
                 formatter,
                 context
             )
-        }
+        }"
 
         // Set the texts and the intent
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context)
