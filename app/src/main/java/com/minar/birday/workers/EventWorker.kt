@@ -131,12 +131,16 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             }
             // If an image was found, set the appropriate style
             if (bitmap != null)
-                builder.setStyle(
-                    NotificationCompat.BigPictureStyle()
-                        .bigPicture(bitmap)
-                        .bigLargeIcon(null)
-                )
-                    .setLargeIcon(getCircularBitmap(bitmap))
+                with(builder) {
+                    // Show the bigger picture only if the text is (presumably) short
+                    if (nextEvents.size == 1)
+                        setStyle(
+                            NotificationCompat.BigPictureStyle()
+                                .bigPicture(bitmap)
+                                .bigLargeIcon(null)
+                        )
+                    setLargeIcon(getCircularBitmap(bitmap))
+                }
         }
 
         with(NotificationManagerCompat.from(applicationContext)) { notify(id, builder.build()) }
@@ -177,7 +181,12 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                 else it.name
                 // Show event type if different from birthday
                 if (it.type != EventCode.BIRTHDAY.name)
-                    formattedEventList += " (${getStringForTypeCodename(applicationContext, it.type!!)})"
+                    formattedEventList += " (${
+                        getStringForTypeCodename(
+                            applicationContext,
+                            it.type!!
+                        )
+                    })"
                 // If the year is considered, display it. Else only display the name
                 if (it.yearMatter!!) formattedEventList += ", " +
                         applicationContext.resources.getQuantityString(
