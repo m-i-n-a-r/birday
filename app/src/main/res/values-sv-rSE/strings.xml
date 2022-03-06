@@ -179,7 +179,7 @@
     <string name="events_notification_channel">Händelsepåminnelse</string>
     <string name="events_channel_description">Påminnelser om de kommande händelserna från Birday</string>
     <string name="notification_title">Birday påminnelse</string>
-    <string name="notification_description_part_1">Hejsan, dagens händelser är</string>
+    <string name="notification_description_part_1">Dagens händelser är</string>
     <string name="notification_description_part_2">Ha en bra dag!</string>
     <string name="additional_notification_text">Kommande händelser!</string>
     <string name="slide_one_title">Välkommen till Birday!</string>

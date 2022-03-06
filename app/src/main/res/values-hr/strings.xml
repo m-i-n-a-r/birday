@@ -219,7 +219,7 @@
     <string name="events_notification_channel">Podsjetnik</string>
     <string name="events_channel_description">Podsjetnici na predstojeće događaji od Birday-a</string>
     <string name="notification_title">Birday Podsjetnik</string>
-    <string name="notification_description_part_1">Zdravo, današnji su događaji</string>
+    <string name="notification_description_part_1">Današnji su događaji</string>
     <string name="notification_description_part_2">Ugodan dan!</string>
     <string name="additional_notification_text">Nadolazeći događaji!</string>
 

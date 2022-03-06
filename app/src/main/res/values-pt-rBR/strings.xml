@@ -213,7 +213,7 @@
     <string name="events_notification_channel">Lembrete de Evento</string>
     <string name="events_channel_description">Lembretes sobre os próximos eventos no Birday</string>
     <string name="notification_title">Lembrete do Birday</string>
-    <string name="notification_description_part_1">Olá, os eventos de hoje são</string>
+    <string name="notification_description_part_1">Os eventos de hoje são</string>
     <string name="notification_description_part_2">Tenha um ótimo dia!</string>
     <string name="additional_notification_text">Próximos eventos!</string>
 

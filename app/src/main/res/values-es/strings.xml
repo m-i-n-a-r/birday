@@ -213,7 +213,7 @@
     <string name="events_notification_channel">Recordatorio de evento</string>
     <string name="events_channel_description">Recordatorio de los próximos eventos de Birday</string>
     <string name="notification_title">Recordatorio de Birday</string>
-    <string name="notification_description_part_1">Hola, los eventos de hoy son</string>
+    <string name="notification_description_part_1">Los eventos de hoy son</string>
     <string name="notification_description_part_2">¡Que tengas un buen día!</string>
     <string name="additional_notification_text">¡Próximos eventos!</string>
 

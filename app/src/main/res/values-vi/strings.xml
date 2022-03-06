@@ -205,7 +205,7 @@
     <string name="events_notification_channel">Nhắc nhở sự kiện</string>
     <string name="events_channel_description">Nhắc nhở về những ngày sự kiện sắp tới trên Birday</string>
     <string name="notification_title">Nhắc nhớ Birday</string>
-    <string name="notification_description_part_1">Chào bàn, hôm nay là sự kiện của</string>
+    <string name="notification_description_part_1">Hôm nay là sự kiện của</string>
     <string name="notification_description_part_2">Chúc bạn một ngày tuyệt vời!</string>
     <string name="additional_notification_text">Sự kiện sắp tới!</string>
 

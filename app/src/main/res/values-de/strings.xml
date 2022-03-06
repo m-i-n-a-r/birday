@@ -212,7 +212,7 @@
     <string name="events_notification_channel">Erinnerung an Ereignis</string>
     <string name="events_channel_description">Erinnerungen an die bevorstehenden Ereignisse von Birday</string>
     <string name="notification_title">Birday Erinnerung</string>
-    <string name="notification_description_part_1">Hallo, die heutigen Ereignisse sind</string>
+    <string name="notification_description_part_1">Die heutigen Ereignisse sind</string>
     <string name="notification_description_part_2">Einen schönen Tag noch!</string>
     <string name="additional_notification_text">Bevorstehende Ereignisse!</string>
 

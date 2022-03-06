@@ -217,7 +217,7 @@
     <string name="events_notification_channel">Rappel d\'événement</string>
     <string name="events_channel_description">Rappels de vos prochains événements sur Birday</string>
     <string name="notification_title">Rappel de Birday</string>
-    <string name="notification_description_part_1">Bonjour, les événements du jours sont</string>
+    <string name="notification_description_part_1">Les événements du jours sont</string>
     <string name="notification_description_part_2">Passez une bonne journée !</string>
     <string name="additional_notification_text">Vos prochains événements !</string>
 

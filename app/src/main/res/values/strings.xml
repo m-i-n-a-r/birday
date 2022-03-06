@@ -231,7 +231,7 @@
     <string name="events_notification_channel">Event Reminder</string>
     <string name="events_channel_description">Reminders about the upcoming events from Birday</string>
     <string name="notification_title">Birday Reminder</string>
-    <string name="notification_description_part_1">Hi there, today\'s events are</string>
+    <string name="notification_description_part_1">Today\'s events are</string>
     <string name="notification_description_part_2">Have a great day!</string>
     <string name="additional_notification_text">Upcoming events!</string>
 

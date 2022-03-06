@@ -213,7 +213,7 @@
     <string name="events_notification_channel">Memento eveniment</string>
     <string name="events_channel_description">Memento-uri despre evenimentele viitoare din Birday</string>
     <string name="notification_title">Memento Birday</string>
-    <string name="notification_description_part_1">Bună, evenimentele de astăzi sunt</string>
+    <string name="notification_description_part_1">Evenimentele de astăzi sunt</string>
     <string name="notification_description_part_2">O zi grozavă!</string>
     <string name="additional_notification_text">Evenimente viitoare!</string>
     <!-- Introduction slides -->

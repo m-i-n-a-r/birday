@@ -221,7 +221,7 @@
     <string name="events_notification_channel">Напоминания о событиях</string>
     <string name="events_channel_description">Напоминание о предстоящих событиях от Birday</string>
     <string name="notification_title">Напоминание Birday</string>
-    <string name="notification_description_part_1">Привет, сегодня события у</string>
+    <string name="notification_description_part_1">Сегодня события у</string>
     <string name="notification_description_part_2">Хорошего дня!</string>
     <string name="additional_notification_text">Приближаются события!</string>
 

@@ -209,7 +209,7 @@
     <string name="events_notification_channel">Esemény Emlékeztető</string>
     <string name="events_channel_description">Emlékeztetők a közelgő eseményeketra a Birday-től</string>
     <string name="notification_title">Birday Emlékeztető</string>
-    <string name="notification_description_part_1">Üdvözlet, a mai eseményeket:</string>
+    <string name="notification_description_part_1">A mai eseményeket:</string>
     <string name="notification_description_part_2">Szép napot!</string>
     <string name="additional_notification_text">Közelgő eseményeket!</string>
 

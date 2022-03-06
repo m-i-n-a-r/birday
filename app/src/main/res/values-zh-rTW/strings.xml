@@ -104,7 +104,7 @@
     <string name="and">及</string>
     <string name="events_notification_channel">活動提醒</string>
     <string name="notification_title">Birday 提醒</string>
-    <string name="notification_description_part_1">嗨，今天有特殊紀念日的人是</string>
+    <string name="notification_description_part_1">今天有特殊紀念日的人是</string>
     <string name="notification_description_part_2">祝你有美好的一天！</string>
     <string name="additional_notification_text">即將到來的紀念日！</string>
     <string name="slide_one_title">歡迎使用 Birday！</string>

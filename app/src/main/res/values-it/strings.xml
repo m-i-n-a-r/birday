@@ -126,7 +126,7 @@
     <string name="events_notification_channel">Promemoria Eventi</string>
     <string name="events_channel_description">Promemoria sugli eventi in arrivo di Birday</string>
     <string name="notification_title">Promemoria Birday</string>
-    <string name="notification_description_part_1">Ciao, gli eventi di oggi sono</string>
+    <string name="notification_description_part_1">Gli eventi di oggi sono</string>
     <string name="notification_description_part_2">Ti auguro una buona giornata!</string>
     <string name="event_actions">Azioni</string>
     <string name="event_actions_description">qui puoi eliminare questo evento o modificarlo al volo!</string>

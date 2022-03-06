@@ -95,7 +95,7 @@
     <string name="consider_year">Zvažte rok</string>
     <string name="event_actions">Akce</string>
     <string name="events_notification_channel">Připomenutí události</string>
-    <string name="notification_description_part_1">Ahoj, dnešní událost jsou</string>
+    <string name="notification_description_part_1">Dnešní událost jsou</string>
     <string name="notification_description_part_2">Měj krásný zbytek dne!</string>
     <string name="additional_notification_text">Nadcházející událost!</string>
     <string name="slide_one_title">Vítejte v Birday!</string>

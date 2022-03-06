@@ -169,7 +169,7 @@
     <string name="events_notification_channel">Przypomnienia wydarzeń</string>
     <string name="events_channel_description">Przypomnienia o nadchodzących wydarzeniach z Birday</string>
     <string name="notification_title">Przypomnienia Birday</string>
-    <string name="notification_description_part_1">Witaj, dzisiejsze wydarzenia to</string>
+    <string name="notification_description_part_1">Dzisiejsze wydarzenia to</string>
     <string name="notification_description_part_2">Miłego dnia!</string>
     <string name="additional_notification_text">Nadchodzące wydarzenia!</string>
     <string name="slide_one_title">Witaj w Birday!</string>
