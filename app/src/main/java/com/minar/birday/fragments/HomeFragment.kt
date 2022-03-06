@@ -239,7 +239,8 @@ class HomeFragment : Fragment() {
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
 
         // Make sure to show if there's more than one event
-        val widgetUpcoming = "${formatEventList(events, true, requireContext(), false)} \n ${
+        var widgetUpcoming = "${formatEventList(events, true, requireContext(), false)} "
+        if (events.isNotEmpty()) widgetUpcoming += "\n ${
             nextDateFormatted(
                 events[0],
                 formatter,

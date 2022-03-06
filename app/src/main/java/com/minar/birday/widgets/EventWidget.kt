@@ -43,7 +43,8 @@ internal fun updateAppWidget(
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
 
         // Make sure to show if there's more than one event
-        val widgetUpcoming = "${formatEventList(nextEvents, true, context, false)} \n ${
+        var widgetUpcoming = "${formatEventList(nextEvents, true, context, false)} "
+        if (nextEvents.isNotEmpty()) widgetUpcoming += "\n ${
             nextDateFormatted(
                 nextEvents[0],
                 formatter,
