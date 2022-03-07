@@ -323,11 +323,19 @@ class DetailsFragment : Fragment() {
                         requireContext(), R.drawable.ic_anniversary_24dp
                     )
                 )
-                EventCode.DEATH.name -> binding.detailsClearBackground.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(), R.drawable.ic_death_anniversary_24dp
+                EventCode.DEATH.name -> {
+                    binding.detailsClearBackground.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(), R.drawable.ic_death_anniversary_24dp
+                        )
                     )
-                )
+                    binding.detailsEventNameImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(),
+                            R.drawable.ic_candle_24dp
+                        )
+                    )
+                }
                 EventCode.NAME_DAY.name -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_name_day_24dp
