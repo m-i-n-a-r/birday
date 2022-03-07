@@ -36,6 +36,20 @@
         app:layout_constraintTop_toTopOf="@id/eventPerson"
         app:tint="@color/goodGray" />
 
+    <ImageView
+        android:id="@+id/eventTypeImage"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:contentDescription="@string/event_type_hint"
+        android:maxHeight="@dimen/text_switch_padding"
+        android:padding="@dimen/in_row_padding"
+        android:src="@drawable/ic_anniversary_24dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/eventDate"
+        app:layout_constraintEnd_toStartOf="@id/eventDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/eventDate" />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/eventDate"
         android:layout_width="0dp"
@@ -43,7 +57,7 @@
         android:padding="@dimen/in_row_padding"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
         app:layout_constraintEnd_toStartOf="@id/eventCountdown"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/eventTypeImage"
         app:layout_constraintTop_toBottomOf="@id/eventPerson" />
 
     <com.google.android.material.textview.MaterialTextView

@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -46,6 +47,7 @@ class FavoritesAdapter(
         private val eventNote = binding.eventNote
         private val eventDate = binding.eventDate
         private val eventYears = binding.eventYears
+        private val eventTypeImage = binding.eventTypeImage
         private val eventCountdown = binding.eventCountdown
 
         init {
@@ -68,9 +70,8 @@ class FavoritesAdapter(
 
             if (event.yearMatter == false) nextDate = event.nextDate.format(formatter)
             val actualAge = if (event.type == EventCode.BIRTHDAY.name)
-                context.getString(R.string.next_age_years) + ": " + age.toString() +
-                        ", " + context.getString(R.string.born_in) + " " + event.originalDate.year
-            else context.getString(R.string.next_age_years) + ": " + age.toString()
+                "${context.getString(R.string.next_age_years)}: $age, ${context.getString(R.string.born_in)} ${event.originalDate.year}"
+            else "${context.getString(R.string.next_age_years)}: $age"
             eventPerson.text = formattedPersonName
             // Show an icon if there's a note
             if (!event.notes.isNullOrEmpty()) eventNote.visibility = View.VISIBLE
@@ -82,6 +83,33 @@ class FavoritesAdapter(
                 eventYears.visibility = View.VISIBLE
                 eventYears.text = actualAge
             } else eventYears.visibility = View.GONE
+
+            // Manage the event type icon
+            if (event.type != EventCode.BIRTHDAY.name) {
+                eventTypeImage.visibility = View.VISIBLE
+                when (event.type) {
+                    EventCode.ANNIVERSARY.name -> eventTypeImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            context, R.drawable.ic_anniversary_24dp
+                        )
+                    )
+                    EventCode.DEATH.name -> eventTypeImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            context, R.drawable.ic_death_anniversary_24dp
+                        )
+                    )
+                    EventCode.NAME_DAY.name -> eventTypeImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            context, R.drawable.ic_name_day_24dp
+                        )
+                    )
+                    EventCode.OTHER.name -> eventTypeImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            context, R.drawable.ic_other_24dp
+                        )
+                    )
+                }
+            } else eventTypeImage.visibility = View.GONE
         }
     }
 }
