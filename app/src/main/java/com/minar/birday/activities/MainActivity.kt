@@ -47,7 +47,6 @@ import com.afollestad.materialdialogs.actions.getActionButton
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
 import com.google.android.material.datepicker.CalendarConstraints
-import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
@@ -303,25 +302,26 @@ class MainActivity : AppCompatActivity() {
                     AdapterView.OnItemClickListener { _, _, position, _ ->
                         eventType = items[position].codeName
                         if (!imageChosen)
-                        eventImage.setImageDrawable(
-                            ContextCompat.getDrawable(
-                                context,
-                                // Set the image depending on the event type
-                                when (eventType.name) {
-                                    EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
-                                    EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
-                                    EventCode.DEATH.name -> R.drawable.placeholder_death_image
-                                    EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
-                                    else -> R.drawable.placeholder_other_image
-                                }
+                            eventImage.setImageDrawable(
+                                ContextCompat.getDrawable(
+                                    context,
+                                    // Set the image depending on the event type
+                                    when (eventType.name) {
+                                        EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
+                                        EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
+                                        EventCode.DEATH.name -> R.drawable.placeholder_death_image
+                                        EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
+                                        else -> R.drawable.placeholder_other_image
+                                    }
+                                )
                             )
-                        )
                     }
             }
 
-            // Calendar setup
-            val endDate = Calendar.getInstance()
+            // Calendar setup. The end date is the last day in the year (dumb users)
             val startDate = Calendar.getInstance()
+            val endDate = Calendar.getInstance()
+            endDate.set(Calendar.DAY_OF_YEAR, endDate.getActualMaximum(Calendar.DAY_OF_YEAR))
             startDate.set(1500, 1, 1)
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
             var dateDialog: MaterialDatePicker<Long>? = null
@@ -346,7 +346,6 @@ class MainActivity : AppCompatActivity() {
                         CalendarConstraints.Builder()
                             .setStart(startDate.timeInMillis)
                             .setEnd(endDate.timeInMillis)
-                            .setValidator(DateValidatorPointBackward.now())
                             .build()
 
                     // Build the dialog itself
@@ -369,9 +368,19 @@ class MainActivity : AppCompatActivity() {
                             val month = date.get(Calendar.MONTH) + 1
                             val day = date.get(Calendar.DAY_OF_MONTH)
                             eventDateValue = LocalDate.of(year, month, day)
+                            val todayDate = LocalDate.now()
+
+                            // Force the date to be before today programmatically
+                            if (eventDateValue.isAfter(todayDate)) {
+                                eventDateValue = LocalDate.of(
+                                    if (eventDateValue.monthValue > todayDate.monthValue) todayDate.year - 1 else todayDate.year,
+                                    eventDateValue.monthValue,
+                                    eventDateValue.dayOfMonth
+                                )
+                            }
                             eventDate.setText(eventDateValue.format(formatter))
                             // The last selected date is saved if the dialog is reopened
-                            lastDate.set(year, month - 1, day)
+                            lastDate.set(eventDateValue.year, month - 1, day)
                         }
 
                     }

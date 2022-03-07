@@ -36,7 +36,6 @@ import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.datepicker.CalendarConstraints
-import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
@@ -454,8 +453,10 @@ class DetailsFragment : Fragment() {
             )
         }
 
-        val endDate = Calendar.getInstance()
+        // Calendar setup. The end date is the last day in the year (dumb users)
         val startDate = Calendar.getInstance()
+        val endDate = Calendar.getInstance()
+        endDate.set(Calendar.DAY_OF_YEAR, endDate.getActualMaximum(Calendar.DAY_OF_YEAR))
         startDate.set(1500, 1, 1)
         var dateDialog: MaterialDatePicker<Long>? = null
 
@@ -480,7 +481,6 @@ class DetailsFragment : Fragment() {
                     CalendarConstraints.Builder()
                         .setStart(startDate.timeInMillis)
                         .setEnd(endDate.timeInMillis)
-                        .setValidator(DateValidatorPointBackward.now())
                         .build()
 
                 // Build the dialog itself
@@ -503,9 +503,19 @@ class DetailsFragment : Fragment() {
                         val month = date.get(Calendar.MONTH) + 1
                         val day = date.get(Calendar.DAY_OF_MONTH)
                         eventDateValue = LocalDate.of(year, month, day)
+                        val todayDate = LocalDate.now()
+
+                        // Force the date to be before today programmatically
+                        if (eventDateValue.isAfter(todayDate)) {
+                            eventDateValue = LocalDate.of(
+                                if (eventDateValue.monthValue > todayDate.monthValue) todayDate.year - 1 else todayDate.year,
+                                eventDateValue.monthValue,
+                                eventDateValue.dayOfMonth
+                            )
+                        }
                         eventDate.setText(eventDateValue.format(formatter))
                         // The last selected date is saved if the dialog is reopened
-                        lastDate.set(year, month - 1, day)
+                        lastDate.set(eventDateValue.year, month - 1, day)
                     }
 
                 }

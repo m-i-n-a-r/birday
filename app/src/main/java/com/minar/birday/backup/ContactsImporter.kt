@@ -192,8 +192,7 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                     }
 
                     // Retrieve the anniversaries
-                    val bd2 = context.contentResolver
-                    val bdc2: Cursor? = bd2.query(
+                    val bdc2: Cursor? = bd.query(
                         ContactsContract.Data.CONTENT_URI,
                         arrayOf(ContactsContract.CommonDataKinds.Event.DATA),
                         ContactsContract.Data.CONTACT_ID + " = " + id + " AND " + ContactsContract.Data.MIMETYPE + " = '" +
@@ -220,8 +219,7 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                     }
 
                     // Retrieve other events
-                    val bd3 = context.contentResolver
-                    val bdc3: Cursor? = bd3.query(
+                    val bdc3: Cursor? = bd.query(
                         ContactsContract.Data.CONTENT_URI,
                         arrayOf(ContactsContract.CommonDataKinds.Event.DATA),
                         ContactsContract.Data.CONTACT_ID + " = " + id + " AND " + ContactsContract.Data.MIMETYPE + " = '" +
