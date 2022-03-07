@@ -4,8 +4,9 @@ package com.minar.birday.model
 data class ImportedContact(
     val id: String,
     val completeName: String,
-    val birthday: String,
+    val eventDate: String,
     val image: ByteArray? = null,
+    val eventType: String = EventCode.BIRTHDAY.name
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -14,7 +15,7 @@ data class ImportedContact(
         other as ImportedContact
 
         if (completeName != other.completeName) return false
-        if (birthday != other.birthday) return false
+        if (eventDate != other.eventDate) return false
         if (!image.contentEquals(other.image)) return false
 
         return true
@@ -22,7 +23,7 @@ data class ImportedContact(
 
     override fun hashCode(): Int {
         var result = completeName.hashCode()
-        result = 31 * result + birthday.hashCode()
+        result = 31 * result + eventDate.hashCode()
         result = 31 * result + image.contentHashCode()
         return result
     }

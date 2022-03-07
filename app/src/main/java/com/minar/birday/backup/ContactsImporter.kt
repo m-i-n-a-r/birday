@@ -16,6 +16,7 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.model.Event
+import com.minar.birday.model.EventCode
 import com.minar.birday.model.ImportedContact
 import com.minar.birday.utilities.bitmapToByteArray
 import com.minar.birday.utilities.getBitmapSquareSize
@@ -90,9 +91,9 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
 
             try {
                 // Missing year, simply don't consider the year exactly like the contacts app does
-                var parseDate = contact.birthday
+                var parseDate = contact.eventDate
                 if (parseDate.length < 8) {
-                    parseDate = contact.birthday.replaceFirst("-", "1970")
+                    parseDate = contact.eventDate.replaceFirst("-", "1970")
                     countYear = false
                 }
                 date = LocalDate.parse(parseDate)
@@ -105,6 +106,7 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                 surname = surname,
                 originalDate = date,
                 yearMatter = countYear,
+                type = contact.eventType,
                 image = contact.image,
             )
             events.add(event)
@@ -165,6 +167,8 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                         )
                         image = bitmapToByteArray(resizedBitmap)
                     }
+
+                    // TODO The following could be heavily optimized, probably
                     // Retrieve the birthday
                     val bd = context.contentResolver
                     val bdc: Cursor? = bd.query(
@@ -185,6 +189,62 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                             contactInfo.add(importedContact)
                         }
                         bdc.close()
+                    }
+
+                    // Retrieve the anniversaries
+                    val bd2 = context.contentResolver
+                    val bdc2: Cursor? = bd2.query(
+                        ContactsContract.Data.CONTENT_URI,
+                        arrayOf(ContactsContract.CommonDataKinds.Event.DATA),
+                        ContactsContract.Data.CONTACT_ID + " = " + id + " AND " + ContactsContract.Data.MIMETYPE + " = '" +
+                                ContactsContract.CommonDataKinds.Event.CONTENT_ITEM_TYPE + "' AND " + ContactsContract.CommonDataKinds.Event.TYPE +
+                                " = " + ContactsContract.CommonDataKinds.Event.TYPE_ANNIVERSARY,
+                        null,
+                        ContactsContract.Data.DISPLAY_NAME
+                    )
+
+                    if (bdc2 != null && bdc2.count > 0) {
+                        while (bdc2.moveToNext()) {
+                            // Using an object model to store the information
+                            val anniversary: String = bdc2.getString(0)
+                            val importedContact = ImportedContact(
+                                id,
+                                name,
+                                anniversary,
+                                image,
+                                EventCode.ANNIVERSARY.name
+                            )
+                            contactInfo.add(importedContact)
+                        }
+                        bdc2.close()
+                    }
+
+                    // Retrieve other events
+                    val bd3 = context.contentResolver
+                    val bdc3: Cursor? = bd3.query(
+                        ContactsContract.Data.CONTENT_URI,
+                        arrayOf(ContactsContract.CommonDataKinds.Event.DATA),
+                        ContactsContract.Data.CONTACT_ID + " = " + id + " AND " + ContactsContract.Data.MIMETYPE + " = '" +
+                                ContactsContract.CommonDataKinds.Event.CONTENT_ITEM_TYPE + "' AND " + ContactsContract.CommonDataKinds.Event.TYPE +
+                                " = " + ContactsContract.CommonDataKinds.Event.TYPE_OTHER,
+                        null,
+                        ContactsContract.Data.DISPLAY_NAME
+                    )
+
+                    if (bdc3 != null && bdc3.count > 0) {
+                        while (bdc3.moveToNext()) {
+                            // Using an object model to store the information
+                            val other: String = bdc3.getString(0)
+                            val importedContact = ImportedContact(
+                                id,
+                                name,
+                                other,
+                                image,
+                                EventCode.OTHER.name
+                            )
+                            contactInfo.add(importedContact)
+                        }
+                        bdc3.close()
                     }
                 }
             }
