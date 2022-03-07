@@ -57,6 +57,23 @@
         app:layout_constraintStart_toEndOf="@id/eventImage"
         app:layout_constraintTop_toBottomOf="@id/eventDateHeader" />
 
+    <ImageView
+        android:id="@+id/eventTypeImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="H,1"
+        android:contentDescription="@string/event_type_hint"
+        android:maxHeight="@dimen/activity_vertical_margin"
+        android:padding="@dimen/in_row_button_padding"
+        android:src="@drawable/ic_anniversary_24dp"
+        android:visibility="gone"
+        android:background="@drawable/ic_dot_black_24dp"
+        android:backgroundTint="@color/goodGrayTranslucent"
+        app:layout_constraintBottom_toBottomOf="@id/eventDate"
+        app:layout_constraintStart_toEndOf="@id/eventImage"
+        app:layout_constraintTop_toTopOf="@id/eventDate"
+        tools:visibility="visible" />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/eventDate"
         android:layout_width="0dp"
@@ -65,7 +82,7 @@
         android:paddingVertical="@dimen/in_row_padding"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
         app:layout_constraintEnd_toStartOf="@id/favoriteButton"
-        app:layout_constraintStart_toStartOf="@id/eventPerson"
+        app:layout_constraintStart_toEndOf="@id/eventTypeImage"
         app:layout_constraintTop_toBottomOf="@id/eventPerson" />
 
     <ImageView

@@ -59,6 +59,7 @@ class EventAdapter(
         private val eventDate = binding.eventDate
         private val eventImage = binding.eventImage
         private val eventDateHeader = binding.eventDateHeader
+        private val eventTypeImage = binding.eventTypeImage
 
         init {
             binding.root.setOnClickListener { onItemClick(adapterPosition) }
@@ -114,6 +115,33 @@ class EventAdapter(
                     )
                 )
             }
+
+            // Manage the event type icon
+            if (event.type != EventCode.BIRTHDAY.name) {
+                eventTypeImage.visibility = View.VISIBLE
+                when (event.type) {
+                    EventCode.ANNIVERSARY.name -> eventTypeImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            context, R.drawable.ic_anniversary_24dp
+                        )
+                    )
+                    EventCode.DEATH.name -> eventTypeImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            context, R.drawable.ic_death_anniversary_24dp
+                        )
+                    )
+                    EventCode.NAME_DAY.name -> eventTypeImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            context, R.drawable.ic_name_day_24dp
+                        )
+                    )
+                    EventCode.OTHER.name -> eventTypeImage.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            context, R.drawable.ic_other_24dp
+                        )
+                    )
+                }
+            } else eventTypeImage.visibility = View.GONE
 
             // Manage the month header logic with a tricky yet effective logic
             try {
