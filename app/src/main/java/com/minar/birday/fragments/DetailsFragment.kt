@@ -348,15 +348,15 @@ class DetailsFragment : Fragment() {
                 )
             }
             if (event.yearMatter!!) {
-                binding.detailsNextAge.text = String.format(
+                binding.detailsNextAgeValue.text = String.format(
                     resources.getQuantityString(R.plurals.years, getNextYears(event)),
                     getNextYears(event)
                 )
-            } else binding.detailsNextAge.visibility = View.GONE
+            } else binding.detailsNextAgeValue.visibility = View.GONE
             binding.detailsBirthDateValue.text =
                 getStringForTypeCodename(requireContext(), event.type!!)
-            binding.detailsBirthDate.visibility = View.GONE
-            binding.detailsNextAgeValue.visibility = View.GONE
+            binding.detailsBirthDate.visibility = View.INVISIBLE
+            binding.detailsNextAge.visibility = View.GONE
             binding.detailsZodiacSign.visibility = View.GONE
             binding.detailsZodiacSignValue.visibility = View.GONE
             binding.detailsClearBackground.visibility = View.GONE
@@ -384,7 +384,8 @@ class DetailsFragment : Fragment() {
     private fun editEvent(eventResult: EventResult) {
         _dialogInsertEventBinding = DialogInsertEventBinding.inflate(LayoutInflater.from(context))
         imageChosen = false
-        var typeValue = getStringForTypeCodename(act, eventResult.type!!)
+        val typeLabel = getStringForTypeCodename(act, eventResult.type!!)
+        var typeValue = eventResult.type
         var nameValue = eventResult.name
         var surnameValue = eventResult.surname
         var countYearValue = eventResult.yearMatter
@@ -429,7 +430,7 @@ class DetailsFragment : Fragment() {
         val eventDate = dialogInsertEventBinding.dateEvent
         val countYear = dialogInsertEventBinding.countYearSwitch
         val eventImage = dialogInsertEventBinding.imageEvent
-        type.setText(typeValue, false)
+        type.setText(typeLabel, false)
         name.setText(nameValue)
         surname.setText(surnameValue)
         countYear.isChecked = countYearValue!!
