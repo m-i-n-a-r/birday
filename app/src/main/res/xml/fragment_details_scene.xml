@@ -77,5 +77,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsEventName"
             app:transitionEasing="decelerate" />
+        <Constraint android:id="@id/detailsNextAge">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
     </ConstraintSet>
 </MotionScene>
