@@ -73,7 +73,7 @@
             android:contentDescription="@string/event_details"
             android:padding="@dimen/details_image_padding"
             android:src="@drawable/placeholder_birthday_image"
-            app:layout_constraintBottom_toTopOf="@id/detailsZodiacImage"
+            app:layout_constraintBottom_toTopOf="@id/detailsClearBackground"
             app:layout_constraintDimensionRatio="1.0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -83,12 +83,12 @@
             app:strokeWidth="@dimen/card_stroke" />
 
         <ImageView
-            android:id="@+id/detailsZodiacImage"
+            android:id="@+id/detailsClearBackground"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:alpha="0.1"
-            android:contentDescription="@string/zodiac_sign"
-            app:layout_constraintBottom_toBottomOf="@id/detailsChineseSignValue"
+            android:contentDescription="@string/event_type_hint"
+            app:layout_constraintBottom_toTopOf="@id/detailsEditButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsEventImage"

@@ -92,7 +92,8 @@ class DetailsFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
@@ -106,7 +107,7 @@ class DetailsFragment : Fragment() {
 
         val shimmer = binding.detailsCountdownShimmer
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
-        val titleText = getString(R.string.event_details) + " - " + event.name
+        val titleText = "${getString(R.string.event_details)} - ${event.name}"
         val title = binding.detailsEventName
         val image = binding.detailsEventImage
         val imageBg = binding.detailsEventImageBackground
@@ -253,62 +254,62 @@ class DetailsFragment : Fragment() {
 
             // Set the drawable of the zodiac sign
             when (statsGenerator.getZodiacSignNumber(event)) {
-                0 -> binding.detailsZodiacImage.setImageDrawable(
+                0 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_sagittarius
                     )
                 )
-                1 -> binding.detailsZodiacImage.setImageDrawable(
+                1 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_capricorn
                     )
                 )
-                2 -> binding.detailsZodiacImage.setImageDrawable(
+                2 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_aquarius
                     )
                 )
-                3 -> binding.detailsZodiacImage.setImageDrawable(
+                3 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_pisces
                     )
                 )
-                4 -> binding.detailsZodiacImage.setImageDrawable(
+                4 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_aries
                     )
                 )
-                5 -> binding.detailsZodiacImage.setImageDrawable(
+                5 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_taurus
                     )
                 )
-                6 -> binding.detailsZodiacImage.setImageDrawable(
+                6 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_gemini
                     )
                 )
-                7 -> binding.detailsZodiacImage.setImageDrawable(
+                7 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_cancer
                     )
                 )
-                8 -> binding.detailsZodiacImage.setImageDrawable(
+                8 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_leo
                     )
                 )
-                9 -> binding.detailsZodiacImage.setImageDrawable(
+                9 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_virgo
                     )
                 )
-                10 -> binding.detailsZodiacImage.setImageDrawable(
+                10 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_libra
                     )
                 )
-                11 -> binding.detailsZodiacImage.setImageDrawable(
+                11 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_scorpio
                     )
@@ -317,22 +318,22 @@ class DetailsFragment : Fragment() {
         } else {
             // Set the drawable of the event type
             when (event.type) {
-                EventCode.ANNIVERSARY.name -> binding.detailsZodiacImage.setImageDrawable(
+                EventCode.ANNIVERSARY.name -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_anniversary_24dp
                     )
                 )
-                EventCode.DEATH.name -> binding.detailsZodiacImage.setImageDrawable(
+                EventCode.DEATH.name -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_death_anniversary_24dp
                     )
                 )
-                EventCode.NAME_DAY.name -> binding.detailsZodiacImage.setImageDrawable(
+                EventCode.NAME_DAY.name -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_name_day_24dp
                     )
                 )
-                EventCode.OTHER.name -> binding.detailsZodiacImage.setImageDrawable(
+                EventCode.OTHER.name -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_other_24dp
                     )
@@ -350,7 +351,7 @@ class DetailsFragment : Fragment() {
             binding.detailsNextAgeValue.visibility = View.GONE
             binding.detailsZodiacSign.visibility = View.GONE
             binding.detailsZodiacSignValue.visibility = View.GONE
-            binding.detailsZodiacImage.visibility = View.GONE
+            binding.detailsClearBackground.visibility = View.GONE
             binding.detailsChineseSign.visibility = View.GONE
             binding.detailsChineseSignValue.visibility = View.GONE
         }

@@ -10,7 +10,57 @@
         <KeyFrameSet />
     </Transition>
 
-    <ConstraintSet android:id="@+id/start" />
+    <!-- Don't involve in the motion the elements whose visibility could change -->
+    <ConstraintSet android:id="@+id/start">
+        <Constraint android:id="@id/detailsEventNameImage">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsEventImage">
+            <PropertySet app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsBirthDate">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsBirthDateValue">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsNextAge">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsNextAgeValue">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsZodiacSign">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsZodiacSignValue">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsChineseSign">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsChineseSignValue">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+    </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
         <Constraint
@@ -21,7 +71,7 @@
             android:contentDescription="@string/event_details"
             android:padding="@dimen/details_image_padding"
             android:rotationY="360"
-            app:layout_constraintBottom_toTopOf="@id/detailsZodiacImage"
+            app:layout_constraintBottom_toTopOf="@id/detailsClearBackground"
             app:layout_constraintDimensionRatio="1.0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
