@@ -32,7 +32,7 @@
     <string name="birday_import_invalid_file">Import se nezdařil. Zvolený soubor není záloha Birday!</string>
     <string name="dev_description">Jsem zdvořilý člověk a mám rád krásné věci, jako jsou animace, ikony, sportovní automobily a 3D tisk. Pracuji jako designér a počítačový inženýr.</string>
     <string name="new_event_description">Zadejte novou osobu, na které vám záleží, a Birday vám pomůže připomenout její narozeniny nebo jinou událost!</string>
-    <string name="invalid_value_name">Neplatné jméno. Čísla a symboly nejsou povoleny!</string>
+    <string name="invalid_value_name">Neplatné jméno!</string>
     <string name="event_actions_description">zde můžete tuto událost smazat nebo snadno upravit!</string>
     <string name="events_channel_description">Připomenutí nadcházejících událostí z Birday</string>
     <string name="slide_one_description">Birday je jednoduchá a lehká aplikace pro správu důležitých událostí! Můžete jej použít ke spolehlivému a rychlému zapamatování a uložení narozenin lidí a dalších věcí, které máte rádi.</string>

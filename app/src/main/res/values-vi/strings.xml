@@ -113,7 +113,7 @@
     <string name="insert_name_hint">Thêm tên</string>
     <string name="insert_surname_hint">Thêm họ tên</string>
     <string name="insert_date_hint">Chọn ngày</string>
-    <string name="invalid_value_name">Tên không hợp lệ. Số và ký hiệu không được phép!</string>
+    <string name="invalid_value_name">Tên không hợp lệ!</string>
     <string name="birthday">Ngày sinh nhật</string>
     <string name="anniversary">Dịp kỉ niệm</string>
     <string name="death_anniversary">Ngày giỗ</string>

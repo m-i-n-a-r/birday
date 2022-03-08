@@ -129,7 +129,7 @@
     <string name="insert_name_hint">Insert First Name</string>
     <string name="insert_surname_hint">Insert Last Name</string>
     <string name="insert_date_hint">Select a date</string>
-    <string name="invalid_value_name">Invalid name. Numbers and symbols aren\'t allowed!</string>
+    <string name="invalid_value_name">Invalid name!</string>
     <string name="consider_year">Consider the year</string>
     <string name="event_type_hint">Event type</string>
     <string name="birthday">Birthday</string>

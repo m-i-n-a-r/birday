@@ -119,7 +119,7 @@
     <string name="insert_name_hint">Введите имя</string>
     <string name="insert_surname_hint">Введите фамилию</string>
     <string name="insert_date_hint">Выберите дату</string>
-    <string name="invalid_value_name">Неверное имя. Цифры и символы не допускаются!</string>
+    <string name="invalid_value_name">Неверное имя!</string>
     <string name="consider_year">Учитывать год</string>
     <string name="birthday">День рождения</string>
     <string name="anniversary">Годовщина</string>

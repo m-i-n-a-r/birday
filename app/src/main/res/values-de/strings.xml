@@ -117,7 +117,7 @@
     <string name="insert_name_hint">Vornamen eingeben</string>
     <string name="insert_surname_hint">Nachnamen eingeben</string>
     <string name="insert_date_hint">Wähle ein Datum</string>
-    <string name="invalid_value_name">Ungültiger Name. Zahlen und Symbole sind nicht erlaubt!</string>
+    <string name="invalid_value_name">Ungültiger Name!</string>
     <string name="birthday">Geburtstag</string>
     <string name="anniversary">Jubiläum</string>
     <string name="death_anniversary">Todestag</string>

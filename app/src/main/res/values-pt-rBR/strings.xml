@@ -117,7 +117,7 @@
     <string name="insert_name_hint">Insira o nome</string>
     <string name="insert_surname_hint">Insira o sobrenome</string>
     <string name="insert_date_hint">Selecione uma data</string>
-    <string name="invalid_value_name">Nome inválido. Números e símbolos não são permitidos!</string>
+    <string name="invalid_value_name">Nome inválido!</string>
     <string name="consider_year">Considere o ano</string>
     <string name="birthday">Aniversário</string>
     <string name="anniversary">Aniversário</string>

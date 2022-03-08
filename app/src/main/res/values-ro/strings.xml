@@ -119,7 +119,7 @@
     <string name="insert_name_hint">Introduceți prenumele</string>
     <string name="insert_surname_hint">Introduceți numele</string>
     <string name="insert_date_hint">Selectați o dată</string>
-    <string name="invalid_value_name">Nume nevalid. Numerele și simbolurile nu sunt permise!</string>
+    <string name="invalid_value_name">Nume nevalid!</string>
     <string name="consider_year">Consideră anul</string>
     <string name="event_type_hint">Tipul evenimentului</string>
     <string name="birthday">Zi de naștere</string>

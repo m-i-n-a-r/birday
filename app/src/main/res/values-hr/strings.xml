@@ -120,7 +120,7 @@
     <string name="insert_name_hint">Unesite ime</string>
     <string name="insert_surname_hint">Unesite prezime</string>
     <string name="insert_date_hint">Izaberite datum</string>
-    <string name="invalid_value_name">Nevažeće ime. Brojevi i simboli nisu podržani!</string>
+    <string name="invalid_value_name">Nevažeće ime!</string>
     <string name="consider_year">Uzmi godinu u obzir</string>
     <string name="birthday">Rođendan</string>
     <string name="anniversary">Godišnjica</string>

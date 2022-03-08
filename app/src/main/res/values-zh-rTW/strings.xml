@@ -160,7 +160,7 @@
     <string name="event_details">細節</string>
     <string name="birth_date">出生年月日</string>
     <string name="event_actions_description">你可以在這裡編輯或刪除此節日！</string>
-    <string name="invalid_value_name">名稱無效。不允許使用數字和符號！</string>
+    <string name="invalid_value_name">名稱無效！</string>
     <string name="event_apps">應用程式捷徑</string>
     <string name="event_apps_description">用下面這些 App 來祝他們生日快樂吧！</string>
     <string name="most_common_month">最多人出生的月份是 %s</string>

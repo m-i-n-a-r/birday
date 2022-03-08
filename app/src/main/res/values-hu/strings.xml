@@ -114,7 +114,7 @@
     <string name="insert_name_hint">Név beírása</string>
     <string name="insert_surname_hint">Vezetéknév beírása</string>
     <string name="insert_date_hint">Dátum kiválasztása</string>
-    <string name="invalid_value_name">Érvénytelen név. A számok és szimbólumok nem engedélyezettek!</string>
+    <string name="invalid_value_name">Érvénytelen név!</string>
     <string name="birthday">Születésnap</string>
     <string name="anniversary">Évforduló</string>
     <string name="death_anniversary">Halál évfordulója</string>

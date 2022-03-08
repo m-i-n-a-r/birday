@@ -103,7 +103,7 @@
     <string name="insert_name_hint">Wprowadź imię</string>
     <string name="insert_surname_hint">Wprowadź nazwisko</string>
     <string name="insert_date_hint">Wybierz datę</string>
-    <string name="invalid_value_name">Niepoprawne imię. Liczby i symbole są niedozwolone!</string>
+    <string name="invalid_value_name">Niepoprawne imię!</string>
     <string name="consider_year">Uwzględnij rok</string>
     <string name="event_actions">Akcje</string>
     <string name="event_actions_description">Tutaj możesz zmienić, lub usunąć wydarzenie!</string>

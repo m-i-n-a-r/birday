@@ -102,7 +102,7 @@
     <string name="insert_name_hint">Mata in namn</string>
     <string name="insert_surname_hint">Mata in efternamn</string>
     <string name="insert_date_hint">Välj ett datum</string>
-    <string name="invalid_value_name">Ogiltigt namn. Siffror och symboler är inte tillåtna!</string>
+    <string name="invalid_value_name">Ogiltigt namn!</string>
     <string name="event_actions">Handlingar</string>
     <string name="event_actions_description">här kan du ta bort eller enkelt ändra händelsen!</string>
     <string name="edit_event">Ändra händelse</string>
