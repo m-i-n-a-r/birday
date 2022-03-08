@@ -404,9 +404,9 @@ class DetailsFragment : Fragment() {
                     id = eventResult.id,
                     type = typeValue,
                     originalDate = eventDateValue,
-                    name = nameValue.smartCapitalize(),
+                    name = nameValue.smartFixName(),
                     yearMatter = countYearValue,
-                    surname = surnameValue?.smartCapitalize(),
+                    surname = surnameValue?.smartFixName(),
                     favorite = eventResult.favorite,
                     notes = eventResult.notes,
                     image = image

@@ -267,8 +267,8 @@ class MainActivity : AppCompatActivity() {
                     val tuple = Event(
                         id = 0,
                         originalDate = eventDateValue,
-                        name = nameValue.smartCapitalize(),
-                        surname = surnameValue.smartCapitalize(),
+                        name = nameValue.smartFixName(),
+                        surname = surnameValue.smartFixName(),
                         yearMatter = countYearValue,
                         type = eventType.name,
                         image = image,

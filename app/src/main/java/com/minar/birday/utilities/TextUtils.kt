@@ -2,27 +2,41 @@ package com.minar.birday.utilities
 
 import java.util.*
 
-// Extension function to quickly capitalize a name, also considering other uppercase letter, multiple words and the apostrophe
+// Format a name, considering other uppercase letter, multiple words, the apostrophe and inner spaces
 @ExperimentalStdlibApi
-fun String.smartCapitalize(): String {
-    return trim().split(" ")
-        .joinToString(" ") { it ->
-            it.lowercase(Locale.ROOT)
-                .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() }
+fun String.smartFixName(forceCapitalize: Boolean = false): String {
+    return replace(Regex("(\\s)+"), " ")
+        .trim()
+        .split(" ").joinToString(" ") { it ->
+            if (forceCapitalize) {
+                it.lowercase(Locale.ROOT)
+                it.replaceFirstChar {
+                    if (it.isLowerCase())
+                        it.titlecase(Locale.ROOT)
+                    else it.toString()
+                }
+            } else it
         }
         .split("'").joinToString("'") { it ->
-            it.replaceFirstChar {
-                if (it.isLowerCase()) it.titlecase(
-                    Locale.ROOT
-                ) else it.toString()
-            }
+            if (forceCapitalize) {
+                it.lowercase(Locale.ROOT)
+                it.replaceFirstChar {
+                    if (it.isLowerCase())
+                        it.titlecase(Locale.ROOT)
+                    else it.toString()
+                }
+            } else it
         }
         .split("-").joinToString("-") { it ->
-            it.replaceFirstChar {
-            if (it.isLowerCase()) it.titlecase(
-                Locale.ROOT
-            ) else it.toString()
-        } }
+            if (forceCapitalize) {
+                it.lowercase(Locale.ROOT)
+                it.replaceFirstChar {
+                    if (it.isLowerCase())
+                        it.titlecase(Locale.ROOT)
+                    else it.toString()
+                }
+            } else it
+        }
 }
 
 // Simply checks if the string is written using only letters, numbers, emoticons and at most one apostrophe and one hyphen
