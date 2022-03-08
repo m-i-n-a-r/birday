@@ -1,7 +1,6 @@
 package com.minar.birday.activities
 
 import android.Manifest
-import android.animation.ObjectAnimator
 import android.app.ActivityManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -23,8 +22,6 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.TypedValue
 import android.view.View
-import android.view.animation.AnticipateInterpolator
-import android.view.animation.DecelerateInterpolator
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.result.ActivityResultLauncher
@@ -33,7 +30,6 @@ import androidx.activity.viewModels
 import androidx.annotation.AttrRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.animation.doOnEnd
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -86,47 +82,6 @@ class MainActivity : AppCompatActivity() {
                     setImage(uri)
                 }
             }
-
-        // Add a callback that's called when the animation stops
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            splashScreen.setOnExitAnimationListener { splashScreenView ->
-                val fadeOut = ObjectAnimator.ofFloat(
-                    splashScreenView,
-                    View.ALPHA,
-                    1f,
-                    0f
-                )
-                val scaleXUp = ObjectAnimator.ofFloat(
-                    splashScreenView,
-                    View.SCALE_X,
-                    1f,
-                    1.4f
-                )
-                val scaleYUp = ObjectAnimator.ofFloat(
-                    splashScreenView,
-                    View.SCALE_Y,
-                    1f,
-                    1.4f
-                )
-
-                // Set durations and interpolator
-                fadeOut.interpolator = DecelerateInterpolator()
-                scaleXUp.interpolator = AnticipateInterpolator()
-                scaleYUp.interpolator = AnticipateInterpolator()
-                fadeOut.duration = 300L
-                scaleXUp.duration = 300L
-                scaleYUp.duration = 300L
-
-                // Remove the view when the animation ends
-                fadeOut.doOnEnd {
-                    splashScreenView.remove()
-                }
-                // Run the animation
-                fadeOut.start()
-                scaleXUp.start()
-                scaleYUp.start()
-            }
-        }
 
         // Create the notification channel and check the permission (note: appIntro 6.0 is still buggy, better avoid to use it for asking permissions)
         askContactsPermission()
