@@ -561,7 +561,7 @@ class DetailsFragment : Fragment() {
                 when {
                     editable === name.editableText -> {
                         val nameText = name.text.toString()
-                        if (nameText.isBlank() || !checkString(nameText)) {
+                        if (nameText.isBlank() || !checkName(nameText)) {
                             dialogInsertEventBinding.nameEventLayout.error =
                                 getString(R.string.invalid_value_name)
                             dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
@@ -574,7 +574,7 @@ class DetailsFragment : Fragment() {
                     }
                     editable === surname.editableText -> {
                         val surnameText = surname.text.toString()
-                        if (!checkString(surnameText)) {
+                        if (!checkName(surnameText)) {
                             dialogInsertEventBinding.surnameEventLayout.error =
                                 getString(R.string.invalid_value_name)
                             dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false

@@ -416,8 +416,8 @@ class MainActivity : AppCompatActivity() {
                     when {
                         editable === name.editableText -> {
                             val nameText = name.text.toString()
-                            if (nameText.isBlank() || !checkString(nameText)) {
-                                // Setting the error on the layout is important to make the properties work. Kotlin synthetics are being used here
+                            if (nameText.isBlank() || !checkName(nameText)) {
+                                // Setting the error on the layout is important to make the properties work
                                 dialogInsertEventBinding.nameEventLayout.error =
                                     getString(R.string.invalid_value_name)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
@@ -430,8 +430,8 @@ class MainActivity : AppCompatActivity() {
                         }
                         editable === surname.editableText -> {
                             val surnameText = surname.text.toString()
-                            if (!checkString(surnameText)) {
-                                // Setting the error on the layout is important to make the properties work. Kotlin synthetics are being used here
+                            if (!checkName(surnameText)) {
+                                // Setting the error on the layout is important to make the properties work
                                 dialogInsertEventBinding.surnameEventLayout.error =
                                     getString(R.string.invalid_value_name)
                                 dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
