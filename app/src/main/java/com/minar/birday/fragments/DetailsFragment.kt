@@ -602,7 +602,7 @@ class DetailsFragment : Fragment() {
             EventCode.ANNIVERSARY.name -> typeEmoji = String(Character.toChars(0x1F495))
             EventCode.DEATH.name -> typeEmoji = String(Character.toChars(0x1FAA6))
             EventCode.NAME_DAY.name -> typeEmoji = String(Character.toChars(0x1F464))
-            EventCode.OTHER.name -> typeEmoji = String(Character.toChars(0x12753))
+            EventCode.OTHER.name -> typeEmoji = String(Character.toChars(0x1F7E2))
         }
         val eventInformation =
             String(Character.toChars(0x1F388)) + "  " +

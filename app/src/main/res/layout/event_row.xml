@@ -50,12 +50,12 @@
         android:id="@+id/eventPerson"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="@dimen/in_row_padding"
+        android:paddingHorizontal="@dimen/in_row_button_padding"
         android:paddingVertical="@dimen/in_row_padding"
         android:text="@string/insert_name_hint"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
         app:layout_constraintEnd_toStartOf="@id/favoriteButton"
-        app:layout_constraintStart_toEndOf="@id/eventImage"
+        app:layout_constraintStart_toStartOf="@id/eventTypeImage"
         app:layout_constraintTop_toBottomOf="@id/eventDateHeader" />
 
     <!-- The "H" in the ratio means that the width is computed after the height and is based on it-->
