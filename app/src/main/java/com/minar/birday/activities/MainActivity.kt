@@ -318,9 +318,10 @@ class MainActivity : AppCompatActivity() {
                     }
             }
 
-            // Calendar setup. The end date is the last day in the year (dumb users)
+            // Calendar setup. The end date is the last day in the following year (dumb users)
             val startDate = Calendar.getInstance()
             val endDate = Calendar.getInstance()
+            endDate.set(Calendar.YEAR, endDate.get(Calendar.YEAR) + 1)
             endDate.set(Calendar.DAY_OF_YEAR, endDate.getActualMaximum(Calendar.DAY_OF_YEAR))
             startDate.set(1500, 1, 1)
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
