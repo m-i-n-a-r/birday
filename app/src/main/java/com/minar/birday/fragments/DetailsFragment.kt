@@ -184,7 +184,7 @@ class DetailsFragment : Fragment() {
         notesButton.setOnClickListener {
             act.vibrate()
             val dialogNotesBinding = DialogNotesBinding.inflate(LayoutInflater.from(context))
-            val notesTitle = getString(R.string.notes) + " - " + event.name
+            val notesTitle = "${getString(R.string.notes)} - ${event.name}"
             MaterialDialog(act).show {
                 title(text = notesTitle)
                 icon(R.drawable.ic_note_24dp)
@@ -610,8 +610,8 @@ class DetailsFragment : Fragment() {
                     getString(R.string.notification_title) +
                     "\n" + typeEmoji + "  " +
                     formatName(event, sharedPrefs.getBoolean("surname_first", false)) +
-                    ", " + getStringForTypeCodename(requireContext(), event.type!!) +
-                    "\n" + String(Character.toChars(0x1F4C5)) + "  " +
+                    " (" + getStringForTypeCodename(requireContext(), event.type!!) +
+                    ")\n" + String(Character.toChars(0x1F4C5)) + "  " +
                     event.nextDate!!.format(formatter)
         ShareCompat.IntentBuilder(requireActivity())
             .setText(eventInformation)

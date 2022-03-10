@@ -125,25 +125,33 @@ class HomeFragment : Fragment() {
         mainViewModel.allEvents.observe(viewLifecycleOwner) { events ->
             // Manage placeholders, search results and the main list
             events?.let { adapter.submitList(it) }
-            if (events.isNotEmpty()) {
-                insertUpcomingEvents(events)
-                removePlaceholder()
-            }
-            if (events.isEmpty()) restorePlaceholders()
-            if (events.isEmpty() && mainViewModel.searchString.value!!.isNotBlank())
-                restorePlaceholders(true)
+            if (events.isNotEmpty()) removePlaceholder()
+            else
+                when {
+                    mainViewModel.searchString.value.isNullOrBlank() -> restorePlaceholders()
+                    mainViewModel.searchString.value!!.isNotBlank() -> restorePlaceholders(true)
+                    else -> removePlaceholder()
+                }
         }
         mainViewModel.nextEvents.observe(viewLifecycleOwner) { nextEvents ->
             // Update the widgets using the next events, to avoid strange behaviors when searching
             updateWidget(nextEvents)
             // Use a different animated vector drawable for death anniversaries
             if (!nextEvents.isNullOrEmpty()) {
+                // Insert the events in the upper card, if any
+                insertUpcomingEvents(nextEvents)
                 when {
                     nextEvents.all { it.type == EventCode.DEATH.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
                         R.drawable.animated_death_anniversary
                     )
                     nextEvents.all { it.type == EventCode.ANNIVERSARY.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
                         R.drawable.animated_anniversary
+                    )
+                    nextEvents.all { it.type == EventCode.DEATH.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+                        R.drawable.animated_party_popper
+                    )
+                    nextEvents.all { it.type == EventCode.OTHER.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+                        R.drawable.animated_party_popper
                     )
                     else -> upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
                 }
@@ -254,48 +262,46 @@ class HomeFragment : Fragment() {
     }
 
     // Insert the necessary information in the upcoming event cardview (and confetti)
-    private fun insertUpcomingEvents(events: List<EventResult>) {
+    private fun insertUpcomingEvents(nextEvents: List<EventResult>) {
         val cardTitle = binding.upcomingTitle
         val cardSubtitle = binding.upcomingSubtitle
         val cardDescription = binding.upcomingDescription
         var personName = ""
         var nextDateText = ""
         var nextAge = ""
-        val upcomingDate = events[0].nextDate
+        val upcomingDate = nextEvents[0].nextDate
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
 
         // Trigger confetti if there's an event today, except for "only death anniversaries" days
         if (
             getRemainingDays(upcomingDate!!) == 0 &&
             !mainViewModel.confettiDone &&
-            !events.all { it.type == EventCode.DEATH.name }
+            !nextEvents.all { it.type == EventCode.DEATH.name }
         ) {
             triggerConfetti()
             mainViewModel.confettiDone = true
         }
         // Manage multiple events in the same day considering first case, middle cases and last case if more than 3
-        for (event in events) {
-            if (event.nextDate!!.isEqual(upcomingDate)) {
-                // Consider the case of null surname and the case of unknown age
-                val formattedPersonName =
-                    formatName(event, sharedPrefs.getBoolean("surname_first", false))
-                val age = if (event.yearMatter!!) event.nextDate.year.minus(event.originalDate.year)
-                    .toString()
-                else getString(R.string.unknown)
-                when (events.indexOf(event)) {
-                    0 -> {
-                        personName = formattedPersonName
-                        nextDateText = nextDateFormatted(event, formatter, requireContext())
-                        nextAge = getString(R.string.next_age_years) + ": $age"
-                    }
-                    1, 2 -> {
-                        personName += ", $formattedPersonName"
-                        nextAge += ", $age"
-                    }
-                    3 -> {
-                        personName += " " + getString(R.string.event_others)
-                        nextAge += "..."
-                    }
+        for (event in nextEvents) {
+            // Consider the case of null surname and the case of unknown age
+            val formattedPersonName =
+                formatName(event, sharedPrefs.getBoolean("surname_first", false))
+            val age = if (event.yearMatter!!) upcomingDate.year.minus(event.originalDate.year)
+                .toString()
+            else getString(R.string.unknown)
+            when (nextEvents.indexOf(event)) {
+                0 -> {
+                    personName = formattedPersonName
+                    nextDateText = nextDateFormatted(event, formatter, requireContext())
+                    nextAge = getString(R.string.next_age_years) + ": $age"
+                }
+                1, 2 -> {
+                    personName += ", $formattedPersonName"
+                    nextAge += ", $age"
+                }
+                3 -> {
+                    personName += " " + getString(R.string.event_others)
+                    nextAge += "..."
                 }
             }
             if (ChronoUnit.DAYS.between(event.nextDate, upcomingDate) < 0) break
