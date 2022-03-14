@@ -507,9 +507,9 @@ class DetailsFragment : Fragment() {
                         val todayDate = LocalDate.now()
 
                         // Force the date to be before today programmatically
-                        if (eventDateValue.isAfter(todayDate)) {
+                        while (eventDateValue.isAfter(todayDate)) {
                             eventDateValue = LocalDate.of(
-                                if (eventDateValue.monthValue > todayDate.monthValue) todayDate.year - 1 else todayDate.year,
+                                todayDate.year - 1,
                                 eventDateValue.monthValue,
                                 eventDateValue.dayOfMonth
                             )
