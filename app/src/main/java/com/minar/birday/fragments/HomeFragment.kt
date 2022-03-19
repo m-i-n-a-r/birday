@@ -147,11 +147,11 @@ class HomeFragment : Fragment() {
                     nextEvents.all { it.type == EventCode.ANNIVERSARY.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
                         R.drawable.animated_anniversary
                     )
-                    nextEvents.all { it.type == EventCode.DEATH.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
-                        R.drawable.animated_party_popper
+                    nextEvents.all { it.type == EventCode.NAME_DAY.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+                        R.drawable.animated_name_day
                     )
                     nextEvents.all { it.type == EventCode.OTHER.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
-                        R.drawable.animated_party_popper
+                        R.drawable.animated_other
                     )
                     else -> upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
                 }
