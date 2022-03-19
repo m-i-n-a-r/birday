@@ -204,6 +204,10 @@
     </plurals>
     <string name="born_in">született</string>
     <string name="and">és</string>
+    <plurals name="event">
+        <item quantity="one">esemény</item>
+        <item quantity="other">eseményeket</item>
+    </plurals>
 
     <!-- Notifications -->
     <string name="events_notification_channel">Esemény Emlékeztető</string>

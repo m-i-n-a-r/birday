@@ -198,6 +198,11 @@
         <item quantity="few">Birday pomaga zapamiętać łącznie %d urodzin</item>
         <item quantity="many">Birday pomaga zapamiętać łącznie %d urodzin</item>
     </plurals>
+    <plurals name="event">
+        <item quantity="one">urodziny</item>
+        <item quantity="few">urodzin</item>
+        <item quantity="many">urodzin</item>
+    </plurals>
     <plurals name="days_left">
         <item quantity="one">zostały %d dzień</item>
         <item quantity="few">zostały %d dni</item>

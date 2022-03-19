@@ -226,6 +226,10 @@
     <string name="and">and</string>
     <string name="unknown" translatable="false">\??</string>
     <string name="exclamation" translatable="false">! !</string>
+    <plurals name="event">
+        <item quantity="one">event</item>
+        <item quantity="other">events</item>
+    </plurals>
 
     <!-- Notifications -->
     <string name="events_notification_channel">Event Reminder</string>

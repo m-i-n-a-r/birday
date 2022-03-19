@@ -207,6 +207,10 @@
     </plurals>
     <string name="born_in">geboren in</string>
     <string name="and">und</string>
+    <plurals name="event">
+        <item quantity="one">ereignis</item>
+        <item quantity="other">ereignisse</item>
+    </plurals>
 
     <!-- Notifications -->
     <string name="events_notification_channel">Erinnerung an Ereignis</string>

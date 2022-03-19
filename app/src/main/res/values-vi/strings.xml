@@ -200,6 +200,9 @@
     </plurals>
     <string name="born_in">sinh ra</string>
     <string name="and">và</string>
+    <plurals name="event">
+        <item quantity="other">sự kiện</item>
+    </plurals>
 
     <!-- Notifications -->
     <string name="events_notification_channel">Nhắc nhở sự kiện</string>

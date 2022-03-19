@@ -208,6 +208,10 @@
     </plurals>
     <string name="born_in">nacido/a en</string>
     <string name="and">y</string>
+    <plurals name="event">
+        <item quantity="one">evento</item>
+        <item quantity="other">eventos</item>
+    </plurals>
 
     <!-- Notifications -->
     <string name="events_notification_channel">Recordatorio de evento</string>

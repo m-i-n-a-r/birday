@@ -208,6 +208,10 @@
     </plurals>
     <string name="born_in">geboren in</string>
     <string name="and">en</string>
+    <plurals name="event">
+        <item quantity="one">evenement</item>
+        <item quantity="other">evenementen</item>
+    </plurals>
 
     <!-- Notifications -->
     <string name="events_notification_channel">Gebeurtenis Reminder</string>

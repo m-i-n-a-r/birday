@@ -80,6 +80,10 @@
         <item quantity="one">%d anno</item>
         <item quantity="other">%d anni</item>
     </plurals>
+    <plurals name="event">
+        <item quantity="one">evento</item>
+        <item quantity="other">eventi</item>
+    </plurals>
     <string name="and">e</string>
     <string name="did_you_know">Lo sapevi?</string>
     <string name="age_average">L\'età media è %s</string>

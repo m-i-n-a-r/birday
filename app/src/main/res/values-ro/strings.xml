@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_welcome">Bine ai venit la Birday</string>
     <string name="app_name_extended">Birday - Manager Evenimente</string>
     <string name="leave_review_title">Lasă o recenzie despre Birday</string>
@@ -32,6 +33,7 @@
         <item quantity="few">%d zile rămase</item>
         <item quantity="other">%d zile rămase</item>
     </plurals>
+
     <!-- Settings -->
     <string name="customization">Personalizare</string>
     <string name="app_behavior">Comportamentul aplicației</string>
@@ -108,9 +110,11 @@
     <string name="notification_only_favorites">Doar Favorite</string>
     <string name="notification_only_favorites_description_on">Trimite o notificare doar pentru evenimentele favorite</string>
     <string name="notification_only_favorites_description_off">Trimite o notificare pentru fiecare eveniment inserat</string>
+
     <!-- Developer -->
     <string name="dev_description">Sunt un tip politicos și îmi plac lucruri frumoase, precum animații, pictograme, mașini sportive și imprimare 3D. Eu lucrez ca designer și inginer de calculatoare.</string>
     <string name="easter_egg">Frumoasă siglă, nu? ;D</string>
+
     <!-- New event -->
     <string name="new_event">Eveniment nou</string>
     <string name="new_event_description">Introdu o persoană de care îți pasă, iar Birday te va ajuta să îți amintești de ziua ei de naștere sau alte evenimente!</string>
@@ -128,6 +132,7 @@
     <string name="festivity">Festivitate</string>
     <string name="name_day">Ziua numelui</string>
     <string name="other">Altele</string>
+
     <!-- Event actions -->
     <string name="event_actions">Acțiuni</string>
     <string name="event_actions_description">Aici poți schimba sau elimina acest eveniment!</string>
@@ -136,12 +141,14 @@
     <string name="update_event">Actualizare eveniment</string>
     <string name="share_event">Distribuire eveniment</string>
     <string name="deleted">Șters!</string>
+
     <!-- Event details -->
     <string name="event_details">Detalii</string>
     <string name="birth_date">Data nașterii</string>
     <string name="next_age">Următoarea vârstă:</string>
     <string name="zodiac_sign">Semn zodiacal:</string>
     <string name="chinese_zodiac_sign">Semn zodiacal chinezesc:</string>
+
     <!-- Quick apps -->
     <string name="event_apps">Aplicații rapide</string>
     <string name="event_apps_description">Aplicații pentru a ura tot binele rapid!</string>
@@ -150,6 +157,7 @@
     <string name="wishes_birthday">La mulți ani!</string>
     <string name="no_default_dialer">Nu a fost găsită nicio aplicație de apelare implicită!</string>
     <string name="no_default_sms">Nu a fost găsită nicio aplicație prestabilită pentru SMS!</string>
+
     <!-- Statistics -->
     <string name="did_you_know">Știai că?</string>
     <string name="age_average">Vârsta medie este %s</string>
@@ -193,6 +201,7 @@
     <string name="zodiac_virgo">fecioară</string>
     <string name="zodiac_libra">balanță</string>
     <string name="zodiac_scorpio">scorpion</string>
+
     <!-- Common words -->
     <plurals name="months">
         <item quantity="one">%d lună</item>
@@ -209,6 +218,12 @@
     </plurals>
     <string name="born_in">născut în</string>
     <string name="and">și</string>
+    <plurals name="event">
+        <item quantity="one">eveniment</item>
+        <item quantity="few">evenimente</item>
+        <item quantity="other">evenimente</item>
+    </plurals>
+
     <!-- Notifications -->
     <string name="events_notification_channel">Memento eveniment</string>
     <string name="events_channel_description">Memento-uri despre evenimentele viitoare din Birday</string>
@@ -216,6 +231,7 @@
     <string name="notification_description_part_1">Evenimentele de astăzi sunt</string>
     <string name="notification_description_part_2">O zi grozavă!</string>
     <string name="additional_notification_text">Evenimente viitoare!</string>
+
     <!-- Introduction slides -->
     <string name="slide_one_title">Bine ai venit la Birday!</string>
     <string name="slide_one_description">Birday este o aplicație simplă și ușoară pentru gestionarea evenimentelor importante!
@@ -230,17 +246,22 @@
     <string name="slide_three_description">De asemenea, este posibil să imporți evenimentele pe care le-ai salvat deja
     din contacte. Birday poate face acest lucru pentru tine, doar acordă permisiunea contactelor. Bucură-te de ele!
     </string>
+
     <!-- Widget -->
     <string name="appwidget_upcoming">Evenimente viitoare</string>
     <string name="add_widget">Birday - Urmează</string>
+
     <!-- Search -->
     <string name="search_event">Căutare…</string>
     <string name="search_no_result_title">Niciun rezultat găsit</string>
     <string name="search_no_result_description">Șirul de căutare nu corespunde niciunui eveniment pe care l-ai adăugat!</string>
+
     <!-- Notes -->
     <string name="notes">Note</string>
     <string name="write_something">Scrie ceva…</string>
+
     <!-- Overview -->
     <string name="overview">Sumar</string>
     <string name="overview_description">Prezentare anuală a fiecărui eveniment salvat</string>
+
 </resources>

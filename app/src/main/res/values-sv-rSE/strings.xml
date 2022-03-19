@@ -22,6 +22,10 @@
         <item quantity="one">Birday hjälper dig att komma ihåg totalt %d händelse</item>
         <item quantity="other">Birday hjälper dig att komma ihåg totalt %d händelser</item>
     </plurals>
+    <plurals name="event">
+        <item quantity="one">händelse</item>
+        <item quantity="other">händelser</item>
+    </plurals>
     <string name="next_event">Nästa händelse</string>
     <string name="no_next_event">Inga händelser att visa!</string>
     <string name="no_next_event_description">Du har inte lagt till eller importerat en händelse än. Lägg till en och låt Birday hjälpa dig!</string>

@@ -212,6 +212,12 @@
         <item quantity="many">%d zbývá dnů</item>
         <item quantity="other">%d zbývá dnů</item>
     </plurals>
+    <plurals name="event">
+        <item quantity="one">událost</item>
+        <item quantity="few">události</item>
+        <item quantity="many">události</item>
+        <item quantity="other">události</item>
+    </plurals>
     <string name="overview">Přehled</string>
     <string name="overview_description">Roční přehled uložených událostí</string>
     <string name="birthday">Narozeniny</string>

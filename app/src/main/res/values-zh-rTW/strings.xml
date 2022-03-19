@@ -17,6 +17,9 @@
     <string name="stats">統計</string>
     <string name="no_stats">沒有數據可顯示！</string>
     <string name="stats_summary">統計摘要</string>
+    <plurals name="event">
+        <item quantity="other">事件</item>
+    </plurals>
     <string name="no_stats_description">您目前沒有足夠的節日來生成統計。新增一些項目再回來吧！</string>
     <string name="next_event">下個活動</string>
     <string name="no_next_event">沒有可顯示的紀念日！</string>
