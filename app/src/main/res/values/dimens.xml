@@ -17,7 +17,7 @@
     <dimen name="card_image_padding">8dp</dimen>
     <dimen name="list_vertical_padding">4dp</dimen>
     <dimen name="in_row_padding">3dp</dimen>
-    <dimen name="in_row_image">52dp</dimen>
+    <dimen name="in_row_image">48dp</dimen>
     <dimen name="in_row_button_padding">6dp</dimen>
     <dimen name="between_row_padding">8dp</dimen>
     <dimen name="recycler_padding">18dp</dimen>

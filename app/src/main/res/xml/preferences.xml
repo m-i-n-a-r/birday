@@ -73,7 +73,7 @@
             app:iconSpaceReserved="false" />
 
         <ListPreference
-            android:defaultValue="aqua"
+            android:defaultValue="system"
             android:entries="@array/accents"
             android:entryValues="@array/accentValues"
             android:key="accent_color"
