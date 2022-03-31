@@ -1,26 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<!-- Header containing the month, to separate events in different months in the list -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:id="@+id/eventDateHeader"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:hapticFeedbackEnabled="false"
-    android:paddingHorizontal="@dimen/recycler_padding"
-    android:paddingVertical="@dimen/between_row_padding">
-
-    <!-- Header containing the month, to separate events in different months in the list -->
-    <TextView
-        android:id="@+id/eventDateHeader"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:gravity="center_vertical"
-        android:text="@string/insert_date_hint"
-        android:textAllCaps="true"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-        android:textColor="@color/goodGray"
-        app:drawableLeftCompat="@drawable/ic_dot_small_24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    android:layout_marginHorizontal="@dimen/preview_dot_size"
+    android:layout_marginVertical="@dimen/between_row_padding"
+    android:background="@drawable/custom_cursor"
+    android:backgroundTint="@color/goodGrayTotalTranslucent"
+    android:drawablePadding="@dimen/in_row_padding"
+    android:gravity="center_vertical"
+    android:paddingStart="@dimen/in_row_padding"
+    android:paddingEnd="@dimen/text_field_horizontal_margin"
+    android:text="@string/insert_date_hint"
+    android:textAllCaps="true"
+    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+    android:textColor="@color/goodGray"
+    app:drawableLeftCompat="@drawable/ic_dot_small_24dp" />
