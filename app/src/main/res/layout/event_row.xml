@@ -9,25 +9,6 @@
     android:paddingHorizontal="@dimen/recycler_padding"
     android:paddingVertical="@dimen/between_row_padding">
 
-    <!-- Header containing the month, to separate events in different months in the list -->
-    <TextView
-        android:id="@+id/eventDateHeader"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:gravity="center_vertical"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:text="@string/birth_date"
-        android:textAllCaps="true"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-        android:textColor="@color/goodGray"
-        android:visibility="gone"
-        app:drawableLeftCompat="@drawable/ic_dot_small_24dp"
-        app:layout_constraintBottom_toTopOf="@id/eventPerson"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/eventImage"
@@ -50,13 +31,13 @@
         android:id="@+id/eventPerson"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="@dimen/in_row_button_padding"
+        android:paddingHorizontal="@dimen/in_row_padding"
         android:paddingVertical="@dimen/in_row_padding"
         android:text="@string/insert_name_hint"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
         app:layout_constraintEnd_toStartOf="@id/favoriteButton"
         app:layout_constraintStart_toStartOf="@id/eventTypeImage"
-        app:layout_constraintTop_toBottomOf="@id/eventDateHeader" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- The "H" in the ratio means that the width is computed after the height and is based on it-->
     <ImageView

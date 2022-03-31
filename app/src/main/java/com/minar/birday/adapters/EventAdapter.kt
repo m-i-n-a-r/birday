@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
 import com.minar.birday.databinding.EventRowBinding
+import com.minar.birday.databinding.MonthHeaderRowBinding
 import com.minar.birday.model.EventCode
+import com.minar.birday.model.EventDataItem
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.formatName
@@ -26,6 +28,8 @@ import java.time.format.FormatStyle
 import java.time.format.TextStyle
 import java.util.*
 
+private const val ITEM_VIEW_TYPE_HEADER = 0
+private const val ITEM_VIEW_TYPE_EVENT = 1
 
 @ExperimentalStdlibApi
 class EventAdapter(
@@ -33,24 +37,83 @@ class EventAdapter(
     private val showFavoriteHint: () -> Unit,
     private val onItemClick: (position: Int) -> Unit,
     private val onItemLongClick: (position: Int) -> Unit
-) : ListAdapter<EventResult, EventAdapter.EventViewHolder>(EventsDiffCallback()) {
+) : ListAdapter<EventDataItem, RecyclerView.ViewHolder>(EventsDiffCallback()) {
     private lateinit var context: Context
     private val activityScope = CoroutineScope(Dispatchers.Main)
+    private val adapterScope = CoroutineScope(Dispatchers.Default)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
-        context = parent.context
-        val binding = EventRowBinding
-            .inflate(LayoutInflater.from(context), parent, false)
-        return EventViewHolder(binding)
+    // Return the right view type for the object, to inflate the right view holder
+    override fun getItemViewType(position: Int): Int {
+        return when (getItem(position)) {
+            is EventDataItem.MonthHeader -> ITEM_VIEW_TYPE_HEADER
+            is EventDataItem.EventItem -> ITEM_VIEW_TYPE_EVENT
+        }
     }
 
-    override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-        holder.bind(getItem(position))
+    // Take the original list and divide it in months, thus adding the header
+    fun addHeadersAndSubmitList(list: List<EventResult>?) {
+        if (list.isNullOrEmpty()) return
+        adapterScope.launch {
+            val organizedEvents = mutableListOf<EventDataItem>()
+            // Base case: insert the header for the first element and initialize the last date
+            var lastDate = list[0].nextDate
+            organizedEvents.add(EventDataItem.MonthHeader(lastDate!!))
+            for (event in list) {
+                if (event.nextDate!!.monthValue != lastDate!!.monthValue) {
+                    lastDate = event.nextDate
+                    organizedEvents.add(EventDataItem.MonthHeader(lastDate))
+                }
+                organizedEvents.add(EventDataItem.EventItem(event))
+            }
+            activityScope.launch {
+                submitList(organizedEvents)
+            }
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        context = parent.context
+        // Depending on the view type, return the correct view holder
+        return when (viewType) {
+            ITEM_VIEW_TYPE_EVENT -> {
+                val binding = EventRowBinding
+                    .inflate(LayoutInflater.from(context), parent, false)
+                EventViewHolder(binding)
+            }
+            ITEM_VIEW_TYPE_HEADER -> {
+                val binding = MonthHeaderRowBinding
+                    .inflate(LayoutInflater.from(context), parent, false)
+                MonthHeaderViewHolder(binding)
+            }
+            else -> throw ClassCastException("Unknown viewType $viewType")
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is MonthHeaderViewHolder -> holder.bind(getItem(position) as EventDataItem.MonthHeader)
+            is EventViewHolder -> holder.bind(getItem(position) as EventDataItem.EventItem)
+        }
     }
 
     // Can't use elsewhere without overriding as a public function
-    public override fun getItem(position: Int): EventResult {
+    public override fun getItem(position: Int): EventDataItem {
         return super.getItem(position)
+    }
+
+    inner class MonthHeaderViewHolder(binding: MonthHeaderRowBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        private val monthHeaderText = binding.eventDateHeader
+
+        fun bind(monthHeader: EventDataItem.MonthHeader) {
+            val headerText = "${
+                monthHeader.startDate.month.getDisplayName(
+                    TextStyle.FULL,
+                    Locale.getDefault()
+                )
+            } - ${monthHeader.startDate.year}"
+            monthHeaderText.text = headerText
+        }
     }
 
     inner class EventViewHolder(binding: EventRowBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -58,7 +121,6 @@ class EventAdapter(
         private val eventPerson = binding.eventPerson
         private val eventDate = binding.eventDate
         private val eventImage = binding.eventImage
-        private val eventDateHeader = binding.eventDateHeader
         private val eventTypeImage = binding.eventTypeImage
 
         init {
@@ -71,7 +133,8 @@ class EventAdapter(
 
         // Set every necessary text and click action in each row
         @ExperimentalStdlibApi
-        fun bind(event: EventResult) {
+        fun bind(eventItem: EventDataItem.EventItem) {
+            val event = eventItem.eventResult
             val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context)
             val formattedPersonName =
                 formatName(event, sharedPrefs.getBoolean("surname_first", false))
@@ -83,7 +146,6 @@ class EventAdapter(
                     Locale.getDefault()
                 ) else it.toString()
             }
-            eventDateHeader.visibility = View.GONE
             eventPerson.text = formattedPersonName
             eventDate.text = originalDate
 
@@ -143,21 +205,6 @@ class EventAdapter(
                 }
             } else eventTypeImage.visibility = View.GONE
 
-            // Manage the month header logic with a tricky yet effective logic
-            try {
-                getItem(adapterPosition - 1)
-                if (getItem(adapterPosition - 1).nextDate!!.monthValue != event.nextDate!!.month.value) {
-                    eventDateHeader.text =
-                        event.nextDate.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
-                    eventDateHeader.visibility = View.VISIBLE
-                }
-            } catch (e: Exception) {
-                // Also set the header for the first element
-                eventDateHeader.text =
-                    event.nextDate!!.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
-                eventDateHeader.visibility = View.VISIBLE
-            }
-
             // Manage the favorite logic
             if (event.favorite == false) favoriteButton.setImageResource(R.drawable.animated_to_favorite)
             else favoriteButton.setImageResource(R.drawable.animated_from_favorite)
@@ -188,12 +235,12 @@ class EventAdapter(
     }
 }
 
-class EventsDiffCallback : DiffUtil.ItemCallback<EventResult>() {
-    override fun areItemsTheSame(oldItem: EventResult, newItem: EventResult): Boolean {
+class EventsDiffCallback : DiffUtil.ItemCallback<EventDataItem>() {
+    override fun areItemsTheSame(oldItem: EventDataItem, newItem: EventDataItem): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: EventResult, newItem: EventResult): Boolean {
+    override fun areContentsTheSame(oldItem: EventDataItem, newItem: EventDataItem): Boolean {
         return oldItem == newItem
     }
 }

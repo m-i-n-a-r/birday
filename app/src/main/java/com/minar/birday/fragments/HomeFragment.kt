@@ -30,6 +30,7 @@ import com.minar.birday.adapters.EventAdapter
 import com.minar.birday.databinding.DialogAppsEventBinding
 import com.minar.birday.databinding.FragmentHomeBinding
 import com.minar.birday.model.EventCode
+import com.minar.birday.model.EventDataItem
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
@@ -124,7 +125,7 @@ class HomeFragment : Fragment() {
 
         mainViewModel.allEvents.observe(viewLifecycleOwner) { events ->
             // Manage placeholders, search results and the main list
-            events?.let { adapter.submitList(it) }
+            events?.let { adapter.addHeadersAndSubmitList(it) }
             if (events.isNotEmpty()) removePlaceholder()
             else
                 when {
@@ -187,7 +188,8 @@ class HomeFragment : Fragment() {
         if (findNavController().currentDestination?.label != "fragment_home")
             return
         act.vibrate()
-        val event = adapter.getItem(position)
+        // Cast required to obtain the original event result from the event item wrapper
+        val event = (adapter.getItem(position) as EventDataItem.EventItem).eventResult
         // Navigate to the new fragment passing in the event with safe args
         val action = HomeFragmentDirections.actionNavigationMainToDetailsFragment(event)
         findNavController().navigate(action)
@@ -196,7 +198,7 @@ class HomeFragment : Fragment() {
     // Show the next age and countdown on long press (only the latter for no year events)
     private fun onItemLongClick(position: Int) {
         act.vibrate()
-        val event = adapter.getItem(position)
+        val event = (adapter.getItem(position) as EventDataItem.EventItem).eventResult
         val quickStat =
             if (event.yearMatter == false || event.type != EventCode.BIRTHDAY.name) formatDaysRemaining(
                 getRemainingDays(event.nextDate!!),
