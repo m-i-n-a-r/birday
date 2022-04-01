@@ -5,7 +5,6 @@ apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
     compileSdkVersion 32
-    buildToolsVersion "33.0.0-rc1"
 
     defaultConfig {
         applicationId "com.minar.birday"
