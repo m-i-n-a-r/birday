@@ -10,7 +10,7 @@ An open source app to remember birthdays and events without having to open Faceb
 </p>
 
 ## Introduction
-This is an open source app to remember **birthdays** in a fast, light and beautiful way. No less, no more. I had this idea considering that Google Calendar doesn't display an automatic notification the day of the birthday, and sometimes i need to remember a birthday for a person who is not in my Contacts. Also, adding too much birthdays to the calendar makes it messy and i prefer to manage them separately. The main focus of this app is being easy to use, clean and lightweight. I'm always glad to add features, but only important and really useful features!
+This is an open source app to remember **birthdays** and other events in a fast, light and beautiful way. No less, no more. I had this idea considering that Google Calendar doesn't display an automatic notification the day of the birthday, and sometimes i need to remember a birthday for a person who is not in my Contacts. Also, adding too much events to the calendar makes it messy and i prefer to manage them separately. The main focus of this app is being easy to use, clean and lightweight. I'm always glad to add features, but only important and really useful features!
 
 ## Translations (guide and info below)
 
@@ -39,23 +39,26 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 - Additional notification up to 7 days before the event
 - Fetch the existing birthdays from the contacts app, images included!
 - Easily backup and restore your saved events!
-- insert an event manually, just specifying a name, an optional surname an image and a date (with optional year)
+- insert an event manually, just specifying a name, an optional surname, an image and a date (with optional year)
 - Choose your favorite events to see detailed information about them and a countdown for each one
 - Tap on an event to see every possible detail and the available actions
 - The birthdays are also automagically backed up in cloud by Google Play Services when the app is installed from Play Store
 - A set of stats (zodiac, average age and much more) when more than 5 events are inserted, plus an animated counter
 - Easily delete, modify and share the saved events!
-- Each favorite event has a note field
+- Each event has a note field
 - Easily hide the top cards to display the list in fullscreen
+- Main list organized by months
+- Quick glance row, to visualize the events in the next 10 days
 - A nice searchbar, to quickly search a person in the saved events
 - Quick apps launcher
-- Light and dark themes (Android 10 dark mode supported)
-- Selectable accent (no app restart needed, 12 choices)
+- Light, dark, and system default theme
+- Selectable accent (no app restart needed, 12 choices + system default)
 - Shimmer effect (it can be disabled) and confetti, because why not
 - Name first or surname first choice
 - Notification only for favorite events
 - Hide and show images
 - Dark and light minimal widget
+- Material You guidelines
 - Beautiful animations (and animated notification icon)
 - Multiwindow / freeform full support
 - Animated splashscreen and app intro, dynamic layouts and more
@@ -64,17 +67,17 @@ This is an open source app to remember **birthdays** in a fast, light and beauti
 
 ## Screenshots
 <p align='center'>
-  <img src='https://i.imgur.com/nvZgkQl.png' width='18%'/>
-  <img src='https://i.imgur.com/xmMf3YY.png' width='18%'/>
-  <img src='https://i.imgur.com/czl7pse.png' width='18%'/>
-  <img src='https://i.imgur.com/FHTriHF.png' width='18%'/>
-  <img src='https://i.imgur.com/QCAAbfA.png' width='18%'/>
+  <img src='https://i.imgur.com/Zm8HWr6.png' width='18%'/>
+  <img src='https://i.imgur.com/MI0kCnn.png' width='18%'/>
+  <img src='https://i.imgur.com/DVGatDY.png' width='18%'/>
+  <img src='https://i.imgur.com/kaAMT3k.png' width='18%'/>
+  <img src='https://i.imgur.com/lLj6KS7.png' width='18%'/>
 
-  <img src='https://i.imgur.com/HLWL68m.png' width='18%'/>
-  <img src='https://i.imgur.com/DpKmkVl.png' width='18%'/>
-  <img src='https://i.imgur.com/TdFaWJc.png' width='18%'/>
-  <img src='https://i.imgur.com/PuEyDD1.png' width='18%'/>
-  <img src='https://i.imgur.com/ghiz4Ap.png' width='18%'/>
+  <img src='https://i.imgur.com/C6OUdTL.png' width='18%'/>
+  <img src='https://i.imgur.com/iQBLjH5.png' width='18%'/>
+  <img src='https://i.imgur.com/Vm1OOcQ.png' width='18%'/>
+  <img src='https://i.imgur.com/mWEuuSl.png' width='18%'/>
+  <img src='https://i.imgur.com/cVd4xFu.png' width='18%'/>
 </p>
 
 ## Download
@@ -86,8 +89,6 @@ The app is available through Google Play and F-Droid\
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
      alt="Get it on Google Play"
      height="80">](https://play.google.com/store/apps/details?id=com.minar.birday)
-\
-There is also a long term support version available, ready to be compiled and used when this repo is messed up by my partial updates. I'm planning to create a separate branch for development and keep the master branch clean and working, but that's a good solution too. Huge thanks to @DominikNovosel for the constant help in the maintenance of this project :) https://github.com/DominikNovosel/Birday-LTS
 
 ## Credits and contributions
 Birday uses some open source libraries, just a few:
