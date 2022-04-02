@@ -1,0 +1,9 @@
+- Material You! Now Birday uses the latest design guidelines
+- Support for anniversaries, death anniversaries and more
+- Quick glance 10 days view in the stats card
+- Edit the notes from the details page
+- System accent color (Android 12+)
+- New splashscreen
+- New translations, previous translations updated
+- Many fixes
+- Various UI improvements
