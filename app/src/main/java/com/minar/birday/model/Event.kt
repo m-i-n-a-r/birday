@@ -6,7 +6,12 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import java.time.LocalDate
 
-@Entity(indices = [Index(value = arrayOf("name", "surname", "originalDate"), unique = true)])
+@Entity(
+    indices = [Index(
+        value = arrayOf("name", "surname", "originalDate"),
+        unique = true
+    )]
+)
 data class Event(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
