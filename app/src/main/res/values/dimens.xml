@@ -19,6 +19,7 @@
     <dimen name="in_row_padding">3dp</dimen>
     <dimen name="in_row_image">48dp</dimen>
     <dimen name="in_row_button_padding">6dp</dimen>
+    <dimen name="event_type_badge_padding">5dp</dimen>
     <dimen name="between_row_padding">8dp</dimen>
     <dimen name="recycler_padding">18dp</dimen>
     <dimen name="recycler_extra_space_vertical">34dp</dimen>

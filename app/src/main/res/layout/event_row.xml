@@ -48,7 +48,7 @@
         android:backgroundTint="@color/goodGrayTotalTranslucent"
         android:contentDescription="@string/event_type_hint"
         android:maxHeight="@dimen/activity_vertical_margin"
-        android:padding="@dimen/in_row_button_padding"
+        android:padding="@dimen/event_type_badge_padding"
         android:src="@drawable/ic_anniversary_24dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/eventDate"
