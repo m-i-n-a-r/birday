@@ -116,4 +116,19 @@
             android:selectable="true" />
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="troubleshoot"
+        android:title="@string/troubleshoot"
+        app:icon="@drawable/ic_troubleshoot_24dp">
+
+        <com.minar.birday.utilities.DisableOptimizationsPreference
+            android:layout="@layout/disable_optimizations_row"
+            android:selectable="true" />
+
+        <com.minar.birday.utilities.NotificationSoundPreference
+            android:layout="@layout/notification_sound_row"
+            android:selectable="true" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
