@@ -82,14 +82,14 @@
                     android:startOffset="300"
                     android:duration="1200"
                     android:valueFrom="0"
-                    android:valueTo="3"
+                    android:valueTo="2.5"
                     android:valueType="floatType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
                 <objectAnimator
                     android:propertyName="strokeWidth"
                     android:startOffset="1700"
                     android:duration="900"
-                    android:valueFrom="3"
+                    android:valueFrom="2.5"
                     android:valueTo="0"
                     android:valueType="floatType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
