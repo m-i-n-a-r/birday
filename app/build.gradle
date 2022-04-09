@@ -45,8 +45,6 @@ android {
     lint {
         disable 'MissingTranslation'
     }
-
-
 }
 
 dependencies {

@@ -66,8 +66,13 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         return sb
     }
 
-    // The number of events for each type TODO Missing plurals for event types and the word 'event'
+    // The number of events for each type, or nothing if there are only birthdays
     private fun eventTypesNumbers(): String {
+        if (anniversaries.isEmpty() &&
+            deathAnniversaries.isEmpty() &&
+            nameDays.isEmpty() &&
+            others.isEmpty()
+        ) return ""
         val typesSummary = SpannableStringBuilder()
         typesSummary.append("${applicationContext?.getString(R.string.birthday)}: ${birthdays.size}")
         if (anniversaries.isNotEmpty())
@@ -446,7 +451,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         return events.filter { isOther(it) }
     }
 
-    // Prepare the bulletted list
+    // Prepare the bulleted list
     private fun SpannableStringBuilder.appendBulletSpan(
         paragraph: String,
         margin: Int,
