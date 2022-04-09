@@ -1,0 +1,6 @@
+- Shortcut to disable battery optimizations
+- Shortcut to change notification sound
+- New animation and icon for name days
+- Search improved and fixed
+- Optimizations for small screens/ big text sizes
+- Other important fixes and improvements

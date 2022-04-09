@@ -8,7 +8,7 @@
     <color name="goodGray">#959595</color>
     <color name="goodGraySemiTranslucent">#c5959595</color>
     <color name="goodGrayTranslucent">#66959595</color>
-    <color name="goodGrayTotalTranslucent">#33959595</color>
+    <color name="goodGrayTotalTranslucent">#3f959595</color>
     <color name="deepGray">#0f0f0f</color>
     <color name="shadowGray">#a00f0f0f</color>
     <color name="transparent">#00ffffff</color>

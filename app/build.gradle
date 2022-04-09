@@ -10,8 +10,8 @@ android {
         applicationId "com.minar.birday"
         minSdkVersion 26
         targetSdkVersion 32
-        versionCode 19
-        versionName "3.0.3"
+        versionCode 20
+        versionName "3.1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -45,8 +45,6 @@ android {
     lint {
         disable 'MissingTranslation'
     }
-
-
 }
 
 dependencies {

@@ -123,40 +123,29 @@ class HomeFragment : Fragment() {
         // Setup the recycler view
         binding.eventRecycler.adapter = adapter
 
+        // The events, ordered and filtered by the eventual search
         mainViewModel.allEvents.observe(viewLifecycleOwner) { events ->
             // Manage placeholders, search results and the main list
-            events?.let { adapter.addHeadersAndSubmitList(it) }
-            if (events.isNotEmpty()) removePlaceholder()
-            else
+            adapter.addHeadersAndSubmitList(events)
+            if (events.isNotEmpty()) {
+                // Insert the events in the upper card and remove the placeholders
+                insertUpcomingEvents(events)
+                removePlaceholder()
+            } else {
+                // Avd for empty card (same avd for no results or no events atm)
+                upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_no_results)
                 when {
                     mainViewModel.searchString.value.isNullOrBlank() -> restorePlaceholders()
                     mainViewModel.searchString.value!!.isNotBlank() -> restorePlaceholders(true)
                     else -> removePlaceholder()
                 }
+            }
         }
+
+        // Only the next events, without considering the search string, ordered
         mainViewModel.nextEvents.observe(viewLifecycleOwner) { nextEvents ->
-            // Update the widgets using the next events, to avoid strange behaviors when searching
+            // Update the widgets using this livedata, to avoid strange behaviors when searching
             updateWidget(nextEvents)
-            // Use a different animated vector drawable for death anniversaries
-            if (!nextEvents.isNullOrEmpty()) {
-                // Insert the events in the upper card, if any
-                insertUpcomingEvents(nextEvents)
-                when {
-                    nextEvents.all { it.type == EventCode.DEATH.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
-                        R.drawable.animated_death_anniversary
-                    )
-                    nextEvents.all { it.type == EventCode.ANNIVERSARY.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
-                        R.drawable.animated_anniversary
-                    )
-                    nextEvents.all { it.type == EventCode.NAME_DAY.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
-                        R.drawable.animated_name_day
-                    )
-                    nextEvents.all { it.type == EventCode.OTHER.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
-                        R.drawable.animated_other
-                    )
-                    else -> upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
-                }
-            } else upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
         }
 
         // Restore search string in the search bar
@@ -264,16 +253,38 @@ class HomeFragment : Fragment() {
     }
 
     // Insert the necessary information in the upcoming event cardview (and confetti)
-    private fun insertUpcomingEvents(nextEvents: List<EventResult>) {
+    private fun insertUpcomingEvents(events: List<EventResult>) {
+        // First thing first, get the next events
+        val nextEvents: List<EventResult> =
+            if (events.indexOfFirst { it.nextDate != events[0].nextDate } == -1) events else
+                events.subList(0, events.indexOfFirst { it.nextDate != events[0].nextDate })
+
         val cardTitle = binding.upcomingTitle
         val cardSubtitle = binding.upcomingSubtitle
         val cardDescription = binding.upcomingDescription
+        val upcomingImage = binding.upcomingImage
         var personName = ""
         var nextDateText = ""
         var nextAge = ""
         val upcomingDate = nextEvents[0].nextDate
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
 
+        // Set the correct avd
+        when {
+            nextEvents.all { it.type == EventCode.DEATH.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+                R.drawable.animated_death_anniversary
+            )
+            nextEvents.all { it.type == EventCode.ANNIVERSARY.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+                R.drawable.animated_anniversary
+            )
+            nextEvents.all { it.type == EventCode.NAME_DAY.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+                R.drawable.animated_name_day
+            )
+            nextEvents.all { it.type == EventCode.OTHER.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+                R.drawable.animated_other
+            )
+            else -> upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
+        }
         // Trigger confetti if there's an event today, except for "only death anniversaries" days
         if (
             getRemainingDays(upcomingDate!!) == 0 &&

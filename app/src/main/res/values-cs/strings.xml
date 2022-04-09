@@ -213,10 +213,10 @@
         <item quantity="other">%d zbývá dnů</item>
     </plurals>
     <plurals name="event">
-        <item quantity="one">událost</item>
-        <item quantity="few">události</item>
-        <item quantity="many">události</item>
-        <item quantity="other">události</item>
+        <item quantity="one">událost: %s</item>
+        <item quantity="few">události: %s</item>
+        <item quantity="many">události: %s</item>
+        <item quantity="other">události: %s</item>
     </plurals>
     <string name="overview">Přehled</string>
     <string name="overview_description">Roční přehled uložených událostí</string>
@@ -226,5 +226,10 @@
     <string name="festivity">Oslavování</string>
     <string name="name_day">Svátek</string>
     <string name="other">Jiný</string>
+    <string name="troubleshoot">Odstraňte problémy</string>
+    <string name="battery_optimization_title">Zakázat optimalizaci baterie</string>
+    <string name="battery_optimization_description">Otevřete nastavení a deaktivujte jakoukoli optimalizaci pro Birday</string>
+    <string name="notification_sound_title">Zvuk upozornění</string>
+    <string name="notification_sound_description">Zkratka k nastavení zvuku upozornění, pokud se vám nelíbí výchozí zvuk ptáků</string>
 
 </resources>

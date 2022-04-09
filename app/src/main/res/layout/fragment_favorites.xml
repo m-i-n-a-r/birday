@@ -64,7 +64,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="@dimen/card_margin_big"
+                    android:paddingHorizontal="@dimen/text_field_horizontal_margin"
                     android:paddingVertical="@dimen/text_field_horizontal_margin">
 
                     <com.google.android.material.textview.MaterialTextView
@@ -122,7 +122,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent=".8" />
+                        app:layout_constraintGuide_percent=".78" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.facebook.shimmer.ShimmerFrameLayout>
@@ -147,43 +147,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginHorizontal="@dimen/text_field_horizontal_margin"
-                    android:orientation="horizontal">
+                    android:layout_marginHorizontal="@dimen/between_row_padding">
 
                     <ImageView
                         android:id="@+id/overviewDotsImage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
-                        android:layout_marginEnd="@dimen/text_field_horizontal_margin"
+                        android:layout_width="@dimen/preview_dot_size"
+                        android:layout_height="@dimen/preview_dot_size"
                         android:contentDescription="@string/overview"
                         android:src="@drawable/ic_date_black_24dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:tint="?colorAccent" />
-
-                    <androidx.constraintlayout.helper.widget.Flow
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        app:constraint_referenced_ids="overviewDot1, overviewDot2, overviewDot3, overviewDot4, overviewDot5, overviewDot6, overviewDot7, overviewDot8, overviewDot9, overviewDot10"
-                        app:flow_wrapMode="none"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/overviewDotsImage"
-                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/overviewDot1"
                         android:layout_width="@dimen/preview_dot_size"
                         android:layout_height="@dimen/preview_dot_size"
-                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
-                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
                         android:src="@drawable/ic_dot_black_24dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -203,13 +182,8 @@
                         android:id="@+id/overviewDot2"
                         android:layout_width="@dimen/preview_dot_size"
                         android:layout_height="@dimen/preview_dot_size"
-                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
-                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
                         android:src="@drawable/ic_dot_black_24dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -229,13 +203,8 @@
                         android:id="@+id/overviewDot3"
                         android:layout_width="@dimen/preview_dot_size"
                         android:layout_height="@dimen/preview_dot_size"
-                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
-                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
                         android:src="@drawable/ic_dot_black_24dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -255,13 +224,8 @@
                         android:id="@+id/overviewDot4"
                         android:layout_width="@dimen/preview_dot_size"
                         android:layout_height="@dimen/preview_dot_size"
-                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
-                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
                         android:src="@drawable/ic_dot_black_24dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -281,13 +245,8 @@
                         android:id="@+id/overviewDot5"
                         android:layout_width="@dimen/preview_dot_size"
                         android:layout_height="@dimen/preview_dot_size"
-                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
-                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
                         android:src="@drawable/ic_dot_black_24dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -307,13 +266,8 @@
                         android:id="@+id/overviewDot6"
                         android:layout_width="@dimen/preview_dot_size"
                         android:layout_height="@dimen/preview_dot_size"
-                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
-                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
                         android:src="@drawable/ic_dot_black_24dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -333,13 +287,8 @@
                         android:id="@+id/overviewDot7"
                         android:layout_width="@dimen/preview_dot_size"
                         android:layout_height="@dimen/preview_dot_size"
-                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
-                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
                         android:src="@drawable/ic_dot_black_24dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -359,13 +308,8 @@
                         android:id="@+id/overviewDot8"
                         android:layout_width="@dimen/preview_dot_size"
                         android:layout_height="@dimen/preview_dot_size"
-                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
-                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
                         android:src="@drawable/ic_dot_black_24dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -385,13 +329,8 @@
                         android:id="@+id/overviewDot9"
                         android:layout_width="@dimen/preview_dot_size"
                         android:layout_height="@dimen/preview_dot_size"
-                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
-                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
                         android:src="@drawable/ic_dot_black_24dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -411,13 +350,8 @@
                         android:id="@+id/overviewDot10"
                         android:layout_width="@dimen/preview_dot_size"
                         android:layout_height="@dimen/preview_dot_size"
-                        android:layout_marginHorizontal="@dimen/in_row_button_padding"
-                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
                         android:contentDescription="@string/overview"
                         android:src="@drawable/ic_dot_black_24dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/goodGraySemiTranslucent" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -425,7 +359,6 @@
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:gravity="center"
-                        android:includeFontPadding="false"
                         android:text="@string/exclamation"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
@@ -433,6 +366,21 @@
                         app:layout_constraintEnd_toEndOf="@id/overviewDot10"
                         app:layout_constraintStart_toStartOf="@id/overviewDot10"
                         app:layout_constraintTop_toTopOf="@id/overviewDot10" />
+
+                    <androidx.constraintlayout.helper.widget.Flow
+                        android:id="@+id/quickGlanceRow"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
+                        app:constraint_referenced_ids="overviewDotsImage,overviewDot1,overviewDot2,overviewDot3,overviewDot4,overviewDot5,overviewDot6,overviewDot7,overviewDot8,overviewDot9,overviewDot10"
+                        app:flow_horizontalAlign="start"
+                        app:flow_horizontalStyle="spread_inside"
+                        app:flow_maxElementsWrap="11"
+                        app:flow_wrapMode="none"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -475,10 +423,10 @@
         app:fastScrollHorizontalTrackDrawable="@drawable/scroll_line_drawable"
         app:fastScrollVerticalThumbDrawable="@drawable/scroll_thumb_drawable"
         app:fastScrollVerticalTrackDrawable="@drawable/scroll_line_drawable"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/favoritesCard"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        app:layout_constraintTop_toBottomOf="@id/favoritesCard" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

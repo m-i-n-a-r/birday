@@ -105,6 +105,11 @@
     <string name="hide_images">Verberg afbeeldingen</string>
     <string name="hide_images_description_on">Verborgen Evenementafbeeldingen</string>
     <string name="hide_images_description_off">Evenementafbeeldingen zichtbaar</string>
+    <string name="troubleshoot">Problemen oplossen</string>
+    <string name="battery_optimization_title">Batterij-optimalisatie uitschakelen</string>
+    <string name="battery_optimization_description">Open de instellingen om optimalisatie voor Birday uit te schakelen. Handig als meldingen niet werken</string>
+    <string name="notification_sound_title">Notificatie geluid</string>
+    <string name="notification_sound_description">Snelkoppeling naar de instellingen voor meldingsgeluiden, als je niet van het standaard vogelgeluid houdt</string>
 
     <!-- Developer -->
     <string name="dev_description">Ik ben een beleefde kerel en ik hou van mooie dingen, zoals animaties, icoontjes, sportauto\'s en 3d printen. Ik werk als een ontwerper en computer ingenieur.</string>
@@ -209,8 +214,8 @@
     <string name="born_in">geboren in</string>
     <string name="and">en</string>
     <plurals name="event">
-        <item quantity="one">evenement</item>
-        <item quantity="other">evenementen</item>
+        <item quantity="one">evenement: %s</item>
+        <item quantity="other">evenementen: %s</item>
     </plurals>
 
     <!-- Notifications -->

@@ -29,6 +29,7 @@ import com.minar.birday.utilities.getRemainingDays
 import com.minar.birday.utilities.isBirthday
 import com.minar.birday.viewmodels.MainViewModel
 import java.time.LocalDate
+import java.util.*
 import kotlin.math.min
 
 
@@ -289,7 +290,8 @@ class FavoritesFragment : Fragment() {
         val generator = StatsGenerator(events, context)
         cardSubtitle.text = generator.generateRandomStat()
         fullStats = generator.generateFullStats()
-        val summary = resources.getQuantityString(R.plurals.stats_total, events.size, events.size)
+        val summary = resources.getQuantityString(R.plurals.event, events.size, events.size)
+            .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
         cardDescription.text = summary
     }
 }

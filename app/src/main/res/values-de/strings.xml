@@ -104,6 +104,11 @@
     <string name="notification_only_favorites">Nur Favoriten</string>
     <string name="notification_only_favorites_description_on">Sendet Sie Benachrichtigungen nur für Lieblingsereignisse</string>
     <string name="notification_only_favorites_description_off">Sendet eine Benachrichtigung für jedes eingegebene Ereignis</string>
+    <string name="troubleshoot">Fehlerbehebung</string>
+    <string name="battery_optimization_title">Batterieoptimierung deaktivieren</string>
+    <string name="battery_optimization_description">Öffnen Sie die Einstellungen, um jegliche Optimierung für Birday zu deaktivieren. Nützlich, wenn Benachrichtigungen nicht funktionieren</string>
+    <string name="notification_sound_title">Benachrichtigungston</string>
+    <string name="notification_sound_description">Verknüpfung zu den Benachrichtigungstoneinstellungen, wenn Ihnen der Standard-Vogelton nicht gefällt</string>
 
     <!-- Developer -->
     <string name="dev_description">Ich bin ein netter Mensch und ich mag schöne Dinge wie Animationen, Icons, Sportwagen und 3D-Druck. Ich arbeite als Designer und Computeringenieur.</string>
@@ -208,8 +213,8 @@
     <string name="born_in">geboren in</string>
     <string name="and">und</string>
     <plurals name="event">
-        <item quantity="one">ereignis</item>
-        <item quantity="other">ereignisse</item>
+        <item quantity="one">ereignis: %s</item>
+        <item quantity="other">ereignisse: %s</item>
     </plurals>
 
     <!-- Notifications -->

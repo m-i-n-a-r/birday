@@ -14,7 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/birday_import_title"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textSize="@dimen/custom_preference_title_text_size" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/birdayImportDescription"
@@ -22,6 +23,6 @@
             android:layout_height="wrap_content"
             android:text="@string/birday_import_description"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-            android:textSize="@dimen/custom_preference_text_size"/>
+            android:textSize="@dimen/custom_preference_subtitle_text_size"/>
 
 </LinearLayout>

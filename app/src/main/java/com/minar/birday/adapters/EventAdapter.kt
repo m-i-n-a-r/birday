@@ -52,23 +52,24 @@ class EventAdapter(
 
     // Take the original list and divide it in months, thus adding the header
     fun addHeadersAndSubmitList(list: List<EventResult>?) {
-        if (list.isNullOrEmpty()) return
-        adapterScope.launch {
-            val organizedEvents = mutableListOf<EventDataItem>()
-            // Base case: insert the header for the first element and initialize the last date
-            var lastDate = list[0].nextDate
-            organizedEvents.add(EventDataItem.MonthHeader(lastDate!!))
-            for (event in list) {
-                if (event.nextDate!!.monthValue != lastDate!!.monthValue) {
-                    lastDate = event.nextDate
-                    organizedEvents.add(EventDataItem.MonthHeader(lastDate))
+        if (list.isNullOrEmpty()) submitList(listOf())
+        else
+            adapterScope.launch {
+                val organizedEvents = mutableListOf<EventDataItem>()
+                // Base case: insert the header for the first element and initialize the last date
+                var lastDate = list[0].nextDate
+                organizedEvents.add(EventDataItem.MonthHeader(lastDate!!))
+                for (event in list) {
+                    if (event.nextDate!!.monthValue != lastDate!!.monthValue) {
+                        lastDate = event.nextDate
+                        organizedEvents.add(EventDataItem.MonthHeader(lastDate))
+                    }
+                    organizedEvents.add(EventDataItem.EventItem(event))
                 }
-                organizedEvents.add(EventDataItem.EventItem(event))
+                activityScope.launch {
+                    submitList(organizedEvents)
+                }
             }
-            activityScope.launch {
-                submitList(organizedEvents)
-            }
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

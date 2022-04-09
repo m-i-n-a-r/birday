@@ -104,6 +104,11 @@
     <string name="notification_only_favorites">¿Notificar solo favoritos?</string>
     <string name="notification_only_favorites_description_on">Solo notifica los eventos favoritos</string>
     <string name="notification_only_favorites_description_off">Notifica todos los eventos</string>
+    <string name="troubleshoot">Solucionar problemas</string>
+    <string name="battery_optimization_title">Deshabilitar la optimización de la batería</string>
+    <string name="battery_optimization_description">Abra la configuración para deshabilitar cualquier optimización para Birday. Útil si las notificaciones no funcionan</string>
+    <string name="notification_sound_title">Sonido de notificación</string>
+    <string name="notification_sound_description">Acceso directo a la configuración de sonido de notificación, si no te gusta el sonido de pájaro predeterminado</string>
 
     <!-- Developer -->
     <string name="dev_description">Soy un tipo amable al que le gustan las animaciones, los iconos, los coches deportivos y la impresión 3D. Trabajo como diseñador e ingeniero informático.</string>
@@ -209,8 +214,8 @@
     <string name="born_in">nacido/a en</string>
     <string name="and">y</string>
     <plurals name="event">
-        <item quantity="one">evento</item>
-        <item quantity="other">eventos</item>
+        <item quantity="one">evento: %s</item>
+        <item quantity="other">eventos: %s</item>
     </plurals>
 
     <!-- Notifications -->

@@ -109,6 +109,11 @@
     <string name="notification_only_favorites">Favorites only</string>
     <string name="notification_only_favorites_description_on">Send a notification for favorite events only</string>
     <string name="notification_only_favorites_description_off">Send a notification for every event inserted</string>
+    <string name="troubleshoot">Troubleshoot and extra</string>
+    <string name="battery_optimization_title">Disable battery optimization</string>
+    <string name="battery_optimization_description">Open the settings to disable any optimization for Birday. Useful if notifications aren\'t working</string>
+    <string name="notification_sound_title">Notification sound</string>
+    <string name="notification_sound_description">Shortcut to the notification sound settings, if you don\'t like the default bird sound</string>
 
     <!-- Developer -->
     <string name="dev_name" translatable="false">m.i.n.a.r.</string>
@@ -120,6 +125,7 @@
     <string name="dev_github" translatable="false">https://github.com/m-i-n-a-r</string>
     <string name="dev_other_apps" translatable="false">https://play.google.com/store/apps/dev?id=7720251761301594831</string>
     <string name="easter_egg">Nice logo, huh? ;D</string>
+    <string name="wtf" translatable="false">WTF?!</string>
 
     <!-- New event -->
     <string name="new_event">New event</string>

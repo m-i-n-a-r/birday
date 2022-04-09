@@ -9,16 +9,17 @@
     <dimen name="cradle_margin">8dp</dimen>
     <dimen name="cradle_corners">12dp</dimen>
     <dimen name="placeholders_padding">48dp</dimen>
-    <dimen name="card_margin">8dp</dimen>
+    <dimen name="card_margin">6dp</dimen>
     <dimen name="card_padding">8dp</dimen>
     <dimen name="card_stroke">2dp</dimen>
     <dimen name="rounded_corners">16dp</dimen>
-    <dimen name="card_image_height">72dp</dimen>
+    <dimen name="card_image_height">66dp</dimen>
     <dimen name="card_image_padding">8dp</dimen>
     <dimen name="list_vertical_padding">4dp</dimen>
     <dimen name="in_row_padding">3dp</dimen>
     <dimen name="in_row_image">48dp</dimen>
     <dimen name="in_row_button_padding">6dp</dimen>
+    <dimen name="event_type_badge_padding">5dp</dimen>
     <dimen name="between_row_padding">8dp</dimen>
     <dimen name="recycler_padding">18dp</dimen>
     <dimen name="recycler_extra_space_vertical">34dp</dimen>
@@ -63,7 +64,8 @@
     <dimen name="shimmer_dropoff">50</dimen>
     <dimen name="widget_min_width">160dp</dimen>
     <dimen name="widget_min_height">40dp</dimen>
-    <dimen name="custom_preference_text_size">13.6sp</dimen>
-    <dimen name="preview_dot_size">30dp</dimen>
+    <dimen name="custom_preference_title_text_size">16sp</dimen>
+    <dimen name="custom_preference_subtitle_text_size">13.6sp</dimen>
+    <dimen name="preview_dot_size">24dp</dimen>
     <dimen name="bottom_sheet_peek_height">1000dp</dimen>
 </resources>
