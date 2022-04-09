@@ -74,7 +74,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="@dimen/card_margin_big"
+                    android:paddingHorizontal="@dimen/text_field_horizontal_margin"
                     android:paddingVertical="@dimen/text_field_horizontal_margin">
 
                     <com.google.android.material.textview.MaterialTextView
@@ -132,7 +132,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent=".8" />
+                        app:layout_constraintGuide_percent=".78" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.facebook.shimmer.ShimmerFrameLayout>
