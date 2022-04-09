@@ -58,6 +58,11 @@
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />
         </Constraint>
+        <Constraint android:id="@id/detailsCountdownShimmer">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -80,17 +85,50 @@
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />
         </Constraint>
-        <Constraint
-            android:id="@id/detailsClearBackground"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:alpha=".15"
-            android:contentDescription="@string/event_type_hint"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-            app:layout_constraintBottom_toTopOf="@id/detailsEditButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detailsEventImage">
+        <Constraint android:id="@id/detailsChineseSignValue">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsZodiacSignValue">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsNextAgeValue">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsNextAge">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsBirthDate">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsZodiacSign">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsChineseSign">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsBirthDateValue">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsCountdownShimmer">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
         </Constraint>
     </ConstraintSet>
 </MotionScene>

@@ -151,8 +151,8 @@
 
                     <ImageView
                         android:id="@+id/overviewDotsImage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/preview_dot_size"
+                        android:layout_height="@dimen/preview_dot_size"
                         android:contentDescription="@string/overview"
                         android:src="@drawable/ic_date_black_24dp"
                         app:tint="?colorAccent" />
