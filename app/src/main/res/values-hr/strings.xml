@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <string name="app_welcome">Dobro došli u Birday</string>
     <string name="app_name_extended">Birday - Upravitelj Događajima</string>
@@ -107,6 +107,11 @@
     <string name="notification_only_favorites">Samo favoriti</string>
     <string name="notification_only_favorites_description_on">Prikaži obavijest samo za omiljene događaje</string>
     <string name="notification_only_favorites_description_off">Prikaži obavijest za svaki uneseni događaj</string>
+    <string name="troubleshoot">Rješavanje problema</string>
+    <string name="battery_optimization_title">Onemogućite optimizaciju baterije</string>
+    <string name="battery_optimization_description">Otvorite postavke da biste onemogućili bilo kakvu optimizaciju za Birday</string>
+    <string name="notification_sound_title">Zvuk obavijesti</string>
+    <string name="notification_sound_description">Prečac do postavki zvuka obavijesti, ako vam se ne sviđa zadani zvuk ptica</string>
 
     <!-- Developer -->
     <string name="dev_description">Ja sam pristojan momak i volim lijepe stvari, poput animacija, ikona, sportskih automobila i 3D printanja. Radim kao dizajner i računalni inženjer.</string>
@@ -215,9 +220,9 @@
     <string name="born_in">rođen/a u</string>
     <string name="and">i</string>
     <plurals name="event">
-        <item quantity="one" tools:ignore="ImpliedQuantity">događaja</item>
-        <item quantity="few">događaja</item>
-        <item quantity="other">događaja</item>
+        <item quantity="one">događaja: %s</item>
+        <item quantity="few">događaja: %s</item>
+        <item quantity="other">događaja: %s</item>
     </plurals>
 
     <!-- Notifications -->

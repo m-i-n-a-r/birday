@@ -101,6 +101,11 @@
     <string name="hide_images">Képek elrejtése</string>
     <string name="hide_images_description_on">Rejtett esemény képek</string>
     <string name="hide_images_description_off">Esemény képek látható</string>
+    <string name="troubleshoot">Hibaelhárítás</string>
+    <string name="battery_optimization_title">Az akkumulátor optimalizálás letiltása</string>
+    <string name="battery_optimization_description">Nyissa meg a beállításokat a Birday optimalizálásának letiltásához</string>
+    <string name="notification_sound_title">Értesítési hang</string>
+    <string name="notification_sound_description">Parancsikon az értesítési hangbeállításokhoz, ha nem tetszik az alapértelmezett madárhang</string>
 
     <!-- Developer -->
     <string name="dev_description">Udvarias srác vagyok, és szeretem a szép dolgokat, mint animációk, ikonok, sportkocsik és 3D nyomtatás. Tervezőként és számítógépes mérnökként dolgozom.</string>
@@ -205,8 +210,8 @@
     <string name="born_in">született</string>
     <string name="and">és</string>
     <plurals name="event">
-        <item quantity="one">esemény</item>
-        <item quantity="other">eseményeket</item>
+        <item quantity="one">esemény: %s</item>
+        <item quantity="other">eseményeket: %s</item>
     </plurals>
 
     <!-- Notifications -->

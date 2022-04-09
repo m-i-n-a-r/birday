@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <string name="app_welcome">Добро пожаловать в Birday</string>
     <string name="app_name_extended">Birday - Менеджер событий</string>
@@ -106,6 +106,11 @@
     <string name="hide_images">Скрыть изображения</string>
     <string name="hide_images_description_on">Скрытые изображения событий</string>
     <string name="hide_images_description_off">Фотографии событий видны</string>
+    <string name="troubleshoot">Устранение неполадок</string>
+    <string name="battery_optimization_title">Отключить оптимизацию батареи</string>
+    <string name="battery_optimization_description">Откройте настройки, чтобы отключить любую оптимизацию для Birday. Полезно, если уведомления не работают</string>
+    <string name="notification_sound_title">Звук уведомления</string>
+    <string name="notification_sound_description">Ярлык для настройки звука уведомления, если вам не нравится звук птицы по умолчанию</string>
 
     <!-- Developer -->
     <string name="dev_description">Я вежливый парень и люблю красивые вещи - анимации, иконки, спортивные машины и 3D-печать. Я работаю дизайнером и компьютерным инженером.</string>
@@ -217,10 +222,10 @@
     <string name="born_in">родился/лась в</string>
     <string name="and">и</string>
     <plurals name="event">
-        <item quantity="one" tools:ignore="ImpliedQuantity">событие</item>
-        <item quantity="few">события</item>
-        <item quantity="many">событий</item>
-        <item quantity="other">событий</item>
+        <item quantity="one">событие: %s</item>
+        <item quantity="few">события: %s</item>
+        <item quantity="many">событий: %s</item>
+        <item quantity="other">событий: %s</item>
     </plurals>
 
     <!-- Notifications -->

@@ -100,6 +100,12 @@
     <string name="hide_images">Ẩn hình ảnh</string>
     <string name="hide_images_description_on">Hình ảnh sự kiện ẩn</string>
     <string name="hide_images_description_off">Hình ảnh sự kiện hiển thị</string>
+    <string name="troubleshoot">Khắc phục sự cố</string>
+    <string name="battery_optimization_title">Tắt tối ưu hóa pin</string>
+    <string name="battery_optimization_description">Mở cài đặt để tắt mọi tối ưu hóa cho Birday. Hữu ích nếu thông báo không hoạt động</string>
+    <string name="notification_sound_title">Âm thanh thông báo</string>
+    <string name="notification_sound_description">Phím tắt đến cài đặt âm thanh thông báo, nếu bạn không thích tiếng chim mặc định</string>
+
 
     <!-- Developer -->
     <string name="dev_description">Tôi là một chàng trai lịch sự và thích những thứ đẹp đẽ, như hoạt hình, biểu tượng, xe thể thao và in 3d. Tôi làm việc như một nhà thiết kế và kỹ sư máy tính.</string>
@@ -201,7 +207,7 @@
     <string name="born_in">sinh ra</string>
     <string name="and">và</string>
     <plurals name="event">
-        <item quantity="other">sự kiện</item>
+        <item quantity="other">sự kiện: %s</item>
     </plurals>
 
     <!-- Notifications -->

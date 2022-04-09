@@ -110,6 +110,11 @@
     <string name="notification_only_favorites">Doar Favorite</string>
     <string name="notification_only_favorites_description_on">Trimite o notificare doar pentru evenimentele favorite</string>
     <string name="notification_only_favorites_description_off">Trimite o notificare pentru fiecare eveniment inserat</string>
+    <string name="troubleshoot">Depanați</string>
+    <string name="battery_optimization_title">Dezactivați optimizarea bateriei</string>
+    <string name="battery_optimization_description">Deschideți setările pentru a dezactiva orice optimizare pentru Birday. Util dacă notificările nu funcționează</string>
+    <string name="notification_sound_title">Sunet de notificare</string>
+    <string name="notification_sound_description">Comandă rapidă la setările sunetului de notificare, dacă nu vă place sunetul implicit al păsărilor</string>
 
     <!-- Developer -->
     <string name="dev_description">Sunt un tip politicos și îmi plac lucruri frumoase, precum animații, pictograme, mașini sportive și imprimare 3D. Eu lucrez ca designer și inginer de calculatoare.</string>
@@ -219,9 +224,9 @@
     <string name="born_in">născut în</string>
     <string name="and">și</string>
     <plurals name="event">
-        <item quantity="one">eveniment</item>
-        <item quantity="few">evenimente</item>
-        <item quantity="other">evenimente</item>
+        <item quantity="one">eveniment: %s</item>
+        <item quantity="few">evenimente: %s</item>
+        <item quantity="other">evenimente: %s</item>
     </plurals>
 
     <!-- Notifications -->

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <string name="app_welcome">Bem-vindo a Birday</string>
     <string name="app_name_extended">Birday - Gestor de Eventos</string>
@@ -106,6 +106,11 @@
     <string name="notification_only_favorites">Apenas favoritos</string>
     <string name="notification_only_favorites_description_on">Envia uma notificação apenas para eventos favoritos</string>
     <string name="notification_only_favorites_description_off">Envia uma notificação para cada evento inserido</string>
+    <string name="troubleshoot">Solucionar problemas</string>
+    <string name="battery_optimization_title">Desative a otimização da bateria</string>
+    <string name="battery_optimization_description">Abra as configurações para desativar qualquer otimização para Birday. Útil se as notificações não estiverem funcionando</string>
+    <string name="notification_sound_title">Som de notificação</string>
+    <string name="notification_sound_description">Atalho para as configurações de som de notificação, se você não gostar do som padrão do pássaro</string>
 
     <!-- Developer -->
     <string name="dev_description">Sou uma pessoa simples que gosta de coisas bonitas tais como animações, ícones, carros desportivos e impressões 3D. Trabalho como designer e como engenheiro computacional.</string>
@@ -211,8 +216,8 @@
     <string name="born_in">nasceu em</string>
     <string name="and">e</string>
     <plurals name="event">
-        <item quantity="one" tools:ignore="ImpliedQuantity">evento</item>
-        <item quantity="other">eventos</item>
+        <item quantity="one">evento: %s</item>
+        <item quantity="other">eventos: %s</item>
     </plurals>
 
     <!-- Notifications -->

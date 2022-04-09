@@ -81,8 +81,8 @@
         <item quantity="other">%d anni</item>
     </plurals>
     <plurals name="event">
-        <item quantity="one">evento</item>
-        <item quantity="other">eventi</item>
+        <item quantity="one">evento: %s</item>
+        <item quantity="other">eventi: %s</item>
     </plurals>
     <string name="and">e</string>
     <string name="did_you_know">Lo sapevi?</string>
@@ -218,5 +218,10 @@
     <string name="festivity">Festività</string>
     <string name="name_day">Onomastico</string>
     <string name="other">Altro</string>
+    <string name="troubleshoot">Risoluzione dei problemi</string>
+    <string name="battery_optimization_title">Disabilita ottimizzazione batteria</string>
+    <string name="battery_optimization_description">Apri le impostazioni per disabilitare le ottimizzazioni per Birday. Utile se le notifiche non funzionano</string>
+    <string name="notification_sound_title">Suono di notifica</string>
+    <string name="notification_sound_description">Scorciatoia per le impostazioni del suono di notifica, se non ti piace il suono dell\'uccellino di default</string>
 
 </resources>

@@ -18,7 +18,7 @@
     <string name="no_stats">沒有數據可顯示！</string>
     <string name="stats_summary">統計摘要</string>
     <plurals name="event">
-        <item quantity="other">事件</item>
+        <item quantity="other">事件: %s</item>
     </plurals>
     <string name="no_stats_description">您目前沒有足夠的節日來生成統計。新增一些項目再回來吧！</string>
     <string name="next_event">下個活動</string>
@@ -199,5 +199,10 @@
     <string name="name_day">命名日</string>
     <string name="other">其他</string>
     <string name="event_type_hint">紀念日類別</string>
+    <string name="troubleshoot">疑难解答</string>
+    <string name="battery_optimization_title">禁用电池优化</string>
+    <string name="battery_optimization_description">打开设置以禁用 Birday 的任何优化。 如果通知不起作用，则很有用</string>
+    <string name="notification_sound_title">通知声音</string>
+    <string name="notification_sound_description">通知声音设置的快捷方式，如果您不喜欢默认的鸟声</string>
 
 </resources>

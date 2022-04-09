@@ -106,7 +106,7 @@
     <string name="notification_only_favorites_description_off">Sendet eine Benachrichtigung für jedes eingegebene Ereignis</string>
     <string name="troubleshoot">Fehlerbehebung</string>
     <string name="battery_optimization_title">Batterieoptimierung deaktivieren</string>
-    <string name="battery_optimization_description">Öffnen Sie die Einstellungen, um jegliche Optimierung für Birday zu deaktivieren</string>
+    <string name="battery_optimization_description">Öffnen Sie die Einstellungen, um jegliche Optimierung für Birday zu deaktivieren. Nützlich, wenn Benachrichtigungen nicht funktionieren</string>
     <string name="notification_sound_title">Benachrichtigungston</string>
     <string name="notification_sound_description">Verknüpfung zu den Benachrichtigungstoneinstellungen, wenn Ihnen der Standard-Vogelton nicht gefällt</string>
 

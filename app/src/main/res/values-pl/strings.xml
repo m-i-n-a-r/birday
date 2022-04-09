@@ -199,9 +199,9 @@
         <item quantity="many">Birday pomaga zapamiętać łącznie %d urodzin</item>
     </plurals>
     <plurals name="event">
-        <item quantity="one">urodziny</item>
-        <item quantity="few">urodzin</item>
-        <item quantity="many">urodzin</item>
+        <item quantity="one">urodziny: %s</item>
+        <item quantity="few">urodzin: %s</item>
+        <item quantity="many">urodzin: %s</item>
     </plurals>
     <plurals name="days_left">
         <item quantity="one">zostały %d dzień</item>
@@ -223,5 +223,10 @@
         <item quantity="few">%d lat</item>
         <item quantity="many">%d lat</item>
     </plurals>
+    <string name="troubleshoot">Rozwiązywanie problemów</string>
+    <string name="battery_optimization_title">Wyłącz optymalizację baterii</string>
+    <string name="battery_optimization_description">Otwórz ustawienia, aby wyłączyć optymalizację dla Birday. Przydatne, jeśli powiadomienia nie działają</string>
+    <string name="notification_sound_title">Dźwięk powiadomienia</string>
+    <string name="notification_sound_description">Skrót do ustawień dźwięku powiadomień, jeśli nie podoba ci się domyślny dźwięk ptaka</string>
 
 </resources>
