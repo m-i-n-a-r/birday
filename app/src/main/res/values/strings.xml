@@ -125,6 +125,7 @@
     <string name="dev_github" translatable="false">https://github.com/m-i-n-a-r</string>
     <string name="dev_other_apps" translatable="false">https://play.google.com/store/apps/dev?id=7720251761301594831</string>
     <string name="easter_egg">Nice logo, huh? ;D</string>
+    <string name="wtf" translatable="false">WTF?!</string>
 
     <!-- New event -->
     <string name="new_event">New event</string>

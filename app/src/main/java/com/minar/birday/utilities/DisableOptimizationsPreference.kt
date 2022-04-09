@@ -5,8 +5,10 @@ import android.content.Intent
 import android.provider.Settings
 import android.util.AttributeSet
 import android.view.View
+import android.widget.Toast
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
+import com.minar.birday.R
 import com.minar.birday.databinding.DisableOptimizationsRowBinding
 
 
@@ -24,8 +26,14 @@ class DisableOptimizationsPreference(context: Context, attrs: AttributeSet?) :
     }
 
     override fun onClick(v: View) {
-        val intent = Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
-        context.startActivity(intent)
+        try {
+            val intent = Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
+            context.startActivity(intent)
+        } catch (e: Exception) {
+            Toast.makeText(
+                context, context.getString(R.string.wtf), Toast.LENGTH_LONG
+            ).show()
+        }
     }
 
 }
