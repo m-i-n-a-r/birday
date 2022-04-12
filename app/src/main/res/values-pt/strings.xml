@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+																
     <string name="app_welcome">Bem-vindo a Birday</string>
-    <string name="app_name_extended">Birday - Gestor de Eventos</string>
+    <string name="app_name_extended">Birday - Gestor de eventos</string>
     <string name="leave_review_title">Avaliar Birday</string>
     <string name="leave_review_subtitle">Indique-nos a sua avaliação para nos ajudar com a aplicação. Lembre-se que, sem ser os donativos, esta aplicação é gratuita e não tem anúncios!</string>
     <string name="yes_review">Avaliar!</string>
@@ -13,7 +14,7 @@
     <string name="title_settings">Definições</string>
     <string name="no_events">Não existem eventos! Pode adicionar eventos com o botão abaixo!</string>
     <string name="no_favorites">Não existem favoritos! Toque na estrela para guardar um evento como favorito!</string>
-    <string name="add_favorite">Adicionar favoritos</string>
+    <string name="add_favorite">Adicionar aos favoritos</string>
     <string name="stats">Estatísticas</string>
     <string name="no_stats">Não existem estatísticas para mostrar!</string>
     <string name="stats_summary">Resumo de estatísticas</string>
@@ -49,11 +50,11 @@
     <string name="vibration_description_on">Vibrar ao tocar num botão</string>
     <string name="vibration_description_off">Não vibrar ao tocar num botão</string>
     <string name="date_format_name">Formato de data</string>
-    <string name="notification_hour_name">Horário da notificação</string>
-    <string name="notification_hour_description">%s \n\nTenha em atenção que, em alguns dispositivos Huawei, Xiaomi e OnePlus, a notificação pode não funcionar se a aplicação for terminada pelo sistema. Consulte dontkillmyapp.com para mais informações.</string>
-    <string name="accent_description">Alterar cor de destaque padrãor</string>
+    <string name="notification_hour_name">Horas da notificação</string>
+    <string name="notification_hour_description">%s \n\nTenha em atenção de que, em alguns dispositivos Huawei, Xiaomi e OnePlus, a notificação pode não funcionar se a aplicação for terminada pelo sistema. Consulte dontkillmyapp.com para mais informações.</string>
+    <string name="accent_description">Alterar cor de destaque padrão</string>
     <string name="accent_name">Cor de destaque</string>
-    <string name="theme_description">Utilizar um tema escuro, claro ou um tema da aplicação</string>
+    <string name="theme_description">Utilizar um tema escuro, claro ou automático</string>
     <string name="theme_name">Tema da aplicação</string>
     <string name="aqua">Água</string>
     <string name="brown">Castanho</string>
@@ -76,18 +77,20 @@
     <string name="shimmer_description_off">Não utilizar efeitos</string>
     <string name="dark_widget_name">Widget escuro</string>
     <string name="dark_widget_description_on">O widget utiliza um tema escuro</string>
-    <string name="dark_widget_description_off">O widget utiliza um tema escuro</string>
+    <string name="dark_widget_description_off">O widget utiliza um tema claro</string>
     <string name="import_export">Importar e exportar</string>
     <string name="import_contacts_title">Importar eventos dos contactos</string>
     <string name="import_contacts_description">Certifique-se de que edita corretamente os eventos que não têm indicação do ano para que as estatísticas sejam corretas!</string>
     <string name="import_success">Importação terminada!</string>
     <string name="import_nothing_found">Não existem eventos!</string>
-    <string name="import_failed">ocorreu also errado!</string>
+    <string name="import_failed">Ocorreu um erro!</string>
     <string name="missing_permission_contacts">Não permitiu o acesso aos contactos. Tente novamente ou ative manualmente a permissão para que a importação de contactos funcione corretamente!</string>
+												
     <string name="missing_permission_contacts_forever">Birday não consegue pedir a permissão necessária porque escolheu a opção "Não perguntar novamente".
     Tem que ativar manualmente a permissão!</string>
     <string name="birday_import_title">Importar um backup de Birday</string>
     <string name="birday_import_description">Escolha um ficheiro válido para restaurar os seus eventos. Todos os dados existentes serão removidos!</string>
+								 
     <string name="birday_export_title">Exportar e partilhar eventos</string>
     <string name="birday_export_description">Exporte os eventos para um backup e partilhe-os com quem quiser. O ficheiro foi colocado em
     Android/data/com.minar.birday/files</string>
@@ -101,20 +104,28 @@
     <string name="surname_first_description_on">Mostrar apelido antes do nome</string>
     <string name="surname_first_description_off">Mostrar nome antes do apelido</string>
     <string name="hide_images">Ocultar imagens</string>
-    <string name="hide_images_description_on">Imagem ocultadas</string>
+    <string name="hide_images_description_on">Imagens ocultadas</string>
     <string name="hide_images_description_off">Imagens visíveis</string>
     <string name="notification_only_favorites">Apenas favoritos</string>
-    <string name="notification_only_favorites_description_on">Envia uma notificação apenas para eventos favoritos</string>
-    <string name="notification_only_favorites_description_off">Envia uma notificação para cada evento inserido</string>
-    <string name="troubleshoot">Solucionar problemas</string>
+    <string name="notification_only_favorites_description_on">Enviar notificação apenas para eventos favoritos</string>
+    <string name="notification_only_favorites_description_off">Enviar notificação para cada evento inserido</string>
+    <string name="troubleshoot">Resolução de problemas</string>
     <string name="battery_optimization_title">Desative a otimização da bateria</string>
-    <string name="battery_optimization_description">Abra as configurações para desativar qualquer otimização para Birday. Útil se as notificações não estiverem funcionando</string>
+    <string name="battery_optimization_description">Abra as definições e desative quaisquer otimizações para Birday. Útil se as notificações não estiverem a funcionar</string>
     <string name="notification_sound_title">Som de notificação</string>
-    <string name="notification_sound_description">Atalho para as configurações de som de notificação, se você não gostar do som padrão do pássaro</string>
+    <string name="notification_sound_description">Atalho para as definições de som das notificações, se você não gostar do som padrão</string>
 
     <!-- Developer -->
-    <string name="dev_description">Sou uma pessoa simples que gosta de coisas bonitas tais como animações, ícones, carros desportivos e impressões 3D. Trabalho como designer e como engenheiro computacional.</string>
+    
+	<string name="dev_description">Sou uma pessoa simples que gosta de coisas bonitas tais como animações, ícones, carros desportivos e impressões 3D. Trabalho como designer e como engenheiro computacional.</string>
+																				 
+																				   
+																									  
+																							
+																						
+																															 
     <string name="easter_egg">Belo logotipo não? ;D</string>
+														  
 
     <!-- New event -->
     <string name="new_event">Novo evento</string>
@@ -126,11 +137,12 @@
     <string name="insert_date_hint">Escolha uma data</string>
     <string name="invalid_value_name">Nome inválido!</string>
     <string name="consider_year">Considerar ano</string>
-    <string name="birthday">Aniversário</string>
+   <string name="event_type_hint">Tipo de evento</string>													  
+    <string name="birthday">Data de nascimento</string>
     <string name="anniversary">Aniversário</string>
     <string name="death_anniversary">Aniversário de morte</string>
     <string name="festivity">Festividade</string>
-    <string name="name_day">Nome-dia</string>
+    <string name="name_day">Nome dia</string>
     <string name="other">Outro</string>
 
     <!-- Event actions -->
@@ -152,6 +164,9 @@
     <!-- Quick apps -->
     <string name="event_apps">Aplicações</string>
     <string name="event_apps_description">Aplicações para desejar um bom aniversário!</string>
+
+
+
     <string name="textMessage">Mensagem de texto</string>
     <string name="dialer">Chamada</string>
     <string name="wishes_birthday">Feliz aniversário!</string>
@@ -163,7 +178,7 @@
     <string name="age_average">A idade média é %s</string>
     <string name="oldest_person">A pessoa mais velha é %s</string>
     <string name="youngest_person">A pessoa mais nova é %s</string>
-    <string name="most_common_month">O mês de aniversário mais comum é %s</string>
+    <string name="most_common_month">O mês de nascimento mais comum é %s</string>
     <string name="most_common_decade">A década de nascimento mais comum é %s</string>
     <string name="most_common_age_range">O intervalo de idade mais comum é %1$s-%2$s</string>
     <string name="special_ages">Um aniversário importante para breve é %s</string>
@@ -215,9 +230,11 @@
     </plurals>
     <string name="born_in">nasceu em</string>
     <string name="and">e</string>
+															
+																
     <plurals name="event">
-        <item quantity="one">evento: %s</item>
-        <item quantity="other">eventos: %s</item>
+        <item quantity="one">evento</item>
+        <item quantity="other">eventos</item>
     </plurals>
 
     <!-- Notifications -->
@@ -230,15 +247,17 @@
 
     <!-- Introduction slides -->
     <string name="slide_one_title">Bem-vindo a Birday!</string>
-    <string name="slide_one_description">Birday é uma aplicação simples para gerir eventos importantes e outro!
+    <string name="slide_one_description">Birday é uma aplicação simples para gerir eventos!
     Pode utilizar esta aplicação para se lembrar e guardar os aniversários das pessoas de quem você gosta.
     </string>
     <string name="slide_two_title">Gratuito, simples e cheio de personalizações</string>
     <string name="slide_two_description">Birday é gratuito, open source e não tem anúncios. Disponibiliza diversas
     estatísticas acerca dos seus aniversários, um sistema de favoritos e uma interface personalizável. Também garante ajuda e atualizações!
+						
     </string>
     <string name="slide_three_title">Importar dos contactos</string>
     <string name="slide_three_description">Pode importar os eventos dos seus contactos. Birday pode automatizar esta tarefa, bastando conceder acesso aos contactos. Desfrute!
+																							
     </string>
 
     <!-- Widget -->
@@ -252,10 +271,11 @@
 
     <!-- Notes -->
     <string name="notes">Notas</string>
-    <string name="write_something">Escreva algo para se lembrar…</string>
+    <string name="write_something">Escreva algo…</string>
 
     <!-- Overview -->
     <string name="overview">Visão geral</string>
-    <string name="overview_description">Uma visão geral anual dos eventos salvos</string>
+    <string name="overview_description">Uma visão geral anual dos eventos guardados</string>
 
 </resources>
+
