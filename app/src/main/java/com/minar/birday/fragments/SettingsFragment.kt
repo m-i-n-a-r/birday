@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceFragmentCompat
 import com.minar.birday.R
+import com.minar.birday.activities.MainActivity
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidget
 
@@ -45,7 +46,6 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                 // so there's no point in using a custom approach
                 sharedPreferences.edit().putBoolean("refreshed", true).apply()
                 when (sharedPreferences.getString("theme_color", "")) {
-                    "system" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                     "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                     "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                     else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
@@ -71,7 +71,9 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
     // Reload the activity and make sure to stay in the settings
     private fun hotReloadActivity(activity: Activity?, sharedPreferences: SharedPreferences) {
         if (activity == null) return
+        else activity as MainActivity
         sharedPreferences.edit().putBoolean("refreshed", true).apply()
+        // Recreate doesn't support an animation, but any workaround is buggy
         activity.recreate()
     }
 

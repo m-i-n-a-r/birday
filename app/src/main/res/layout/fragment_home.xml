@@ -180,9 +180,9 @@
         android:id="@+id/noEvents"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:autoSizeTextType="uniform"
         android:gravity="center"
         android:maxLines="3"
-        android:autoSizeTextType="uniform"
         android:paddingHorizontal="@dimen/placeholders_padding"
         android:scrollbarSize="0dp"
         android:text="@string/no_events"
@@ -195,6 +195,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/homeCard" />
 
+    <!-- The effect of overScrollMode = ifContentScrolls is bad on Android < 12 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/eventRecycler"
         android:layout_width="0dp"
@@ -209,10 +210,10 @@
         app:fastScrollHorizontalTrackDrawable="@drawable/scroll_line_drawable"
         app:fastScrollVerticalThumbDrawable="@drawable/scroll_thumb_drawable"
         app:fastScrollVerticalTrackDrawable="@drawable/scroll_line_drawable"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/homeCard"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        app:layout_constraintTop_toBottomOf="@id/homeCard" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

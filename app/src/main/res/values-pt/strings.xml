@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-																
     <string name="app_welcome">Bem-vindo a Birday</string>
     <string name="app_name_extended">Birday - Gestor de eventos</string>
     <string name="leave_review_title">Avaliar Birday</string>
@@ -85,12 +84,10 @@
     <string name="import_nothing_found">Não existem eventos!</string>
     <string name="import_failed">Ocorreu um erro!</string>
     <string name="missing_permission_contacts">Não permitiu o acesso aos contactos. Tente novamente ou ative manualmente a permissão para que a importação de contactos funcione corretamente!</string>
-												
     <string name="missing_permission_contacts_forever">Birday não consegue pedir a permissão necessária porque escolheu a opção "Não perguntar novamente".
     Tem que ativar manualmente a permissão!</string>
     <string name="birday_import_title">Importar um backup de Birday</string>
     <string name="birday_import_description">Escolha um ficheiro válido para restaurar os seus eventos. Todos os dados existentes serão removidos!</string>
-								 
     <string name="birday_export_title">Exportar e partilhar eventos</string>
     <string name="birday_export_description">Exporte os eventos para um backup e partilhe-os com quem quiser. O ficheiro foi colocado em
     Android/data/com.minar.birday/files</string>
@@ -116,16 +113,8 @@
     <string name="notification_sound_description">Atalho para as definições de som das notificações, se você não gostar do som padrão</string>
 
     <!-- Developer -->
-    
 	<string name="dev_description">Sou uma pessoa simples que gosta de coisas bonitas tais como animações, ícones, carros desportivos e impressões 3D. Trabalho como designer e como engenheiro computacional.</string>
-																				 
-																				   
-																									  
-																							
-																						
-																															 
     <string name="easter_egg">Belo logotipo não? ;D</string>
-														  
 
     <!-- New event -->
     <string name="new_event">Novo evento</string>
@@ -164,9 +153,6 @@
     <!-- Quick apps -->
     <string name="event_apps">Aplicações</string>
     <string name="event_apps_description">Aplicações para desejar um bom aniversário!</string>
-
-
-
     <string name="textMessage">Mensagem de texto</string>
     <string name="dialer">Chamada</string>
     <string name="wishes_birthday">Feliz aniversário!</string>
@@ -230,11 +216,9 @@
     </plurals>
     <string name="born_in">nasceu em</string>
     <string name="and">e</string>
-															
-																
     <plurals name="event">
-        <item quantity="one">evento</item>
-        <item quantity="other">eventos</item>
+        <item quantity="one">evento: %s</item>
+        <item quantity="other">eventos: %s</item>
     </plurals>
 
     <!-- Notifications -->
@@ -253,7 +237,6 @@
     <string name="slide_two_title">Gratuito, simples e cheio de personalizações</string>
     <string name="slide_two_description">Birday é gratuito, open source e não tem anúncios. Disponibiliza diversas
     estatísticas acerca dos seus aniversários, um sistema de favoritos e uma interface personalizável. Também garante ajuda e atualizações!
-						
     </string>
     <string name="slide_three_title">Importar dos contactos</string>
     <string name="slide_three_description">Pode importar os eventos dos seus contactos. Birday pode automatizar esta tarefa, bastando conceder acesso aos contactos. Desfrute!
