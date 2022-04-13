@@ -109,7 +109,7 @@
     <string name="notification_only_favorites_description_off">Prikaži obavijest za svaki uneseni događaj</string>
     <string name="troubleshoot">Rješavanje problema</string>
     <string name="battery_optimization_title">Onemogućite optimizaciju baterije</string>
-    <string name="battery_optimization_description">Prečac do postavki za onemogućivanje uštede baterije za Birday. Korisno ako obavijesti ne funkcioniraju</string>
+    <string name="battery_optimization_description">Prečac do postavki za onemogućavanje uštede baterije za Birday. Korisno ako obavijesti ne funkcioniraju</string>
     <string name="notification_sound_title">Zvuk obavijesti</string>
     <string name="notification_sound_description">Prečac do postavki zvuka obavijesti, ako vam se ne sviđa zadani zvuk ptica</string>
 
