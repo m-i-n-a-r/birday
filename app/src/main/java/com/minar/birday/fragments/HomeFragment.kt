@@ -12,12 +12,16 @@ import android.provider.Telephony
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.RemoteViews
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import com.afollestad.materialdialogs.LayoutMode
@@ -179,9 +183,26 @@ class HomeFragment : Fragment() {
         act.vibrate()
         // Cast required to obtain the original event result from the event item wrapper
         val event = (adapter.getItem(position) as EventDataItem.EventItem).eventResult
+        val viewHolder: EventAdapter.EventViewHolder =
+            binding.eventRecycler.findViewHolderForAdapterPosition(position) as EventAdapter.EventViewHolder
+        // If the view is null or doesn't exist, nothing will happen
+        val fullView = viewHolder.itemView
+        val view = fullView.findViewById<ImageView>(R.id.eventImage)
+
         // Navigate to the new fragment passing in the event with safe args
-        val action = HomeFragmentDirections.actionNavigationMainToDetailsFragment(event)
-        findNavController().navigate(action)
+        val action = HomeFragmentDirections.actionNavigationMainToDetailsFragment(event, position)
+        val extras: FragmentNavigator.Extras
+
+        // Play a different transition depending on the presence of the images
+        if (sharedPrefs.getBoolean("hide_images", false)) {
+            extras = FragmentNavigatorExtras(fullView to "shared_full_view$position")
+            ViewCompat.setTransitionName(fullView, "shared_full_view$position")
+        }
+        else {
+            extras = FragmentNavigatorExtras(view to "shared_image$position")
+            ViewCompat.setTransitionName(view, "shared_image$position")
+        }
+        findNavController().navigate(action, extras)
     }
 
     // Show the next age and countdown on long press (only the latter for no year events)
