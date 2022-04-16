@@ -2,14 +2,12 @@
 <resources>
 
     <!-- Splash screen theme -->
-    <style name="SplashTheme" parent="SplashTheme.V31" />
-
-    <style name="SplashTheme.V31" parent="SplashTheme.V27">
+    <style name="SplashTheme" parent="Theme.SplashScreen">
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/animated_birday</item>
-        <item name="android:windowSplashScreenBackground">@color/colorBackground</item>
         <item name="android:windowSplashScreenAnimationDuration">1200</item>
         <item name="android:windowSplashScreenBrandingImage">@drawable/static_branding_image</item>
         <item name="android:windowSplashScreenIconBackgroundColor">@color/goodGrayTotalTranslucent</item>
+        <item name="postSplashScreenTheme">@style/AppTheme</item>
     </style>
 
     <!-- System accent theme, only supported on API 31+ -->
