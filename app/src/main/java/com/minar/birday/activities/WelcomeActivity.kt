@@ -2,7 +2,7 @@ package com.minar.birday.activities
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
@@ -21,7 +21,7 @@ class WelcomeActivity : AppIntro() {
     }
 
     private fun hideSystemUi() {
-        val insetsController = ViewCompat.getWindowInsetsController(window.decorView) ?: return
+        val insetsController = WindowCompat.getInsetsController(window, window.decorView) ?: return
         val navBars = WindowInsetsCompat.Type.navigationBars()
         insetsController.hide(navBars)
         insetsController.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
