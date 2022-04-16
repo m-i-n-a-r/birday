@@ -20,6 +20,11 @@
         <Constraint android:id="@id/detailsEventImage">
             <PropertySet app:visibilityMode="ignore" />
         </Constraint>
+        <Constraint android:id="@id/detailsEventImageBackground">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
         <Constraint android:id="@id/detailsBirthDate">
             <PropertySet
                 app:applyMotionScene="false"
@@ -67,19 +72,24 @@
 
     <ConstraintSet android:id="@+id/end">
         <Constraint
-            android:id="@+id/detailsEventImage"
-            android:layout_width="@dimen/details_image_size"
-            android:layout_height="@dimen/details_image_size"
-            android:layout_marginTop="@dimen/form_vertical_margin"
+            android:id="@id/detailsEventImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:contentDescription="@string/event_details"
-            android:padding="@dimen/details_image_padding"
+            android:padding="@dimen/in_row_padding"
             android:rotationY="360"
-            app:layout_constraintBottom_toTopOf="@id/detailsClearBackground"
+            app:layout_constraintBottom_toBottomOf="@id/detailsEventImageBackground"
             app:layout_constraintDimensionRatio="1.0"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detailsEventName"
+            app:layout_constraintEnd_toEndOf="@id/detailsEventImageBackground"
+            app:layout_constraintStart_toStartOf="@id/detailsEventImageBackground"
+            app:layout_constraintTop_toTopOf="@id/detailsEventImageBackground"
+            app:shapeAppearanceOverlay="@style/roundedImageView"
             app:transitionEasing="decelerate" />
+        <Constraint android:id="@id/detailsEventImageBackground">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
         <Constraint android:id="@id/detailsNextAge">
             <PropertySet
                 app:applyMotionScene="false"

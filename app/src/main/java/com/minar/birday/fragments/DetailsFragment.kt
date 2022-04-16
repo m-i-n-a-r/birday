@@ -115,6 +115,7 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        postponeEnterTransition()
         val event = args.event
         val position = args.position
 
@@ -145,6 +146,7 @@ class DetailsFragment : Fragment() {
             ViewCompat.setTransitionName(fullView, "shared_full_view$position")
         } else {
             ViewCompat.setTransitionName(image, "shared_image$position")
+            ViewCompat.setTransitionName(title, "shared_title$position")
             if (event.image != null)
                 image.setImageBitmap(byteArrayToBitmap(event.image))
             else {
@@ -165,13 +167,14 @@ class DetailsFragment : Fragment() {
             imageBg.applyLoopingAnimatedVectorDrawable(R.drawable.animated_ripple_circle)
         }
 
-        // Small and useless easter egg/motion on the image
+        // Small easter egg/motion on the image (with a slight zoom)
         image.setOnClickListener {
             easterEggCounter++
-            if (easterEggCounter == 5) {
+            if (easterEggCounter == 3) {
                 easterEggCounter = 0
-                binding.detailsMotionLayout.progress = 0F
-                binding.detailsMotionLayout.transitionToEnd()
+                if (binding.detailsMotionLayout.progress == 0F)
+                    binding.detailsMotionLayout.transitionToEnd()
+                else binding.detailsMotionLayout.transitionToStart()
             }
         }
 
@@ -236,7 +239,6 @@ class DetailsFragment : Fragment() {
                     dismiss()
                 }
             }
-
         }
 
         val formatter: DateTimeFormatter =
@@ -379,6 +381,7 @@ class DetailsFragment : Fragment() {
             binding.detailsChineseSign.visibility = View.GONE
             binding.detailsChineseSignValue.visibility = View.GONE
         }
+        startPostponedEnterTransition()
     }
 
     // Delete an existing event and show a snackbar

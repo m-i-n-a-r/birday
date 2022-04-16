@@ -48,7 +48,7 @@
     <dimen name="cursor_size">2.5dp</dimen>
     <dimen name="notes_minimum_height">150dp</dimen>
     <dimen name="notes_maximum_height">220dp</dimen>
-    <dimen name="details_image_size">156dp</dimen>
+    <dimen name="details_image_size">172dp</dimen>
     <dimen name="details_image_padding">26dp</dimen>
 
     <!-- Widgets -->

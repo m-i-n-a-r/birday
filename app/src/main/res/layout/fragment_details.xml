@@ -73,6 +73,7 @@
             android:layout_height="0dp"
             android:layout_margin="@dimen/details_image_padding"
             android:contentDescription="@string/event_details"
+            android:padding="@dimen/in_row_padding"
             android:src="@drawable/placeholder_birthday_image"
             app:layout_constraintBottom_toBottomOf="@id/detailsEventImageBackground"
             app:layout_constraintDimensionRatio="1.0"
@@ -93,7 +94,7 @@
             app:layout_constraintBottom_toTopOf="@id/detailsEditButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detailsEventImage"
+            app:layout_constraintTop_toBottomOf="@id/detailsEventImageBackground"
             app:srcCompat="@drawable/ic_favorites_24dp"
             app:tint="@color/goodGray" />
 
@@ -110,7 +111,7 @@
             android:textColor="@color/goodGray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detailsEventImage" />
+            app:layout_constraintTop_toBottomOf="@id/detailsEventImageBackground" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detailsBirthDateValue"
