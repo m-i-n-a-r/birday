@@ -409,6 +409,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/favoritesCard" />
 
+    <!-- The effect of overScrollMode = ifContentScrolls is bad on Android < 12 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favoritesRecycler"
         android:layout_width="0dp"

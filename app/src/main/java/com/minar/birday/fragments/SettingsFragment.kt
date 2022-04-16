@@ -1,15 +1,15 @@
 package com.minar.birday.fragments
 
-import android.app.Activity
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.PreferenceManager
 import com.minar.birday.R
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidget
@@ -40,9 +40,18 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when (key) {
-            "theme_color" -> hotReloadActivity(activity)
-            "accent_color" -> hotReloadActivity(activity)
-            "shimmer" -> hotReloadActivity(activity)
+            "theme_color" -> {
+                // The activity should be refreshed automatically when the main theme changes,
+                // so there's no point in using a custom approach
+                sharedPreferences.edit().putBoolean("refreshed", true).apply()
+                when (sharedPreferences.getString("theme_color", "")) {
+                    "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                }
+            }
+            "accent_color" -> hotReloadActivity(sharedPreferences)
+            "shimmer" -> hotReloadActivity(sharedPreferences)
             "notification_hour" -> mainViewModel.scheduleNextCheck()
             "notification_minute" -> mainViewModel.scheduleNextCheck()
             "dark_widget" -> {
@@ -55,16 +64,14 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                 intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
                 requireContext().sendBroadcast(intent)
             }
-
         }
     }
 
     // Reload the activity and make sure to stay in the settings
-    private fun hotReloadActivity(activity: Activity?) {
-        if (activity == null) return
-        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(activity)
-        sharedPrefs.edit().putBoolean("refreshed", true).apply()
-        activity.recreate()
+    private fun hotReloadActivity(sharedPreferences: SharedPreferences) {
+        sharedPreferences.edit().putBoolean("refreshed", true).apply()
+        // Recreate doesn't support an animation, but any workaround is buggy
+        ActivityCompat.recreate(requireActivity())
     }
 
 }

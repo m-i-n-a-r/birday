@@ -9,7 +9,6 @@
     android:paddingHorizontal="@dimen/recycler_padding"
     android:paddingVertical="@dimen/between_row_padding">
 
-
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/eventImage"
         android:layout_width="0dp"

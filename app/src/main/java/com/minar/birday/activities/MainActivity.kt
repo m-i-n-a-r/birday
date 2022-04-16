@@ -33,6 +33,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.preference.PreferenceManager
@@ -72,6 +73,14 @@ class MainActivity : AppCompatActivity() {
     private var imageChosen = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Handle the splash screen transition.
+        val splashScreen = installSplashScreen()
+        // Keep the splashscreen until the data are ready
+        splashScreen.setKeepOnScreenCondition {
+            mainViewModel.allEvents.value == null
+        }
+        super.onCreate(savedInstanceState)
+
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
         // Initialize the result launcher to pick the image
         resultLauncher =
@@ -142,8 +151,6 @@ class MainActivity : AppCompatActivity() {
                 ContextCompat.getColor(this, R.color.deepGray)
             )
         )
-
-        super.onCreate(savedInstanceState)
 
         // Initialize the binding
         binding = ActivityMainBinding.inflate(layoutInflater)

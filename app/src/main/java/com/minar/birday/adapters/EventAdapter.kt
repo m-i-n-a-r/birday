@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -119,6 +120,7 @@ class EventAdapter(
 
     inner class EventViewHolder(binding: EventRowBinding) : RecyclerView.ViewHolder(binding.root) {
         private val favoriteButton = binding.favoriteButton
+        private val fullRow = binding.root
         private val eventPerson = binding.eventPerson
         private val eventDate = binding.eventDate
         private val eventImage = binding.eventImage
@@ -152,8 +154,14 @@ class EventAdapter(
 
             // Manage the image
             val hideImages = sharedPrefs.getBoolean("hide_images", false)
-            if (hideImages) eventImage.visibility = View.GONE
+            if (hideImages) {
+                // Set the animated element name
+                ViewCompat.setTransitionName(fullRow, "shared_full_view$adapterPosition")
+                eventImage.visibility = View.GONE
+            }
             else {
+                // Set the animated element name
+                ViewCompat.setTransitionName(eventImage, "shared_image$adapterPosition")
                 // Set a small margin programmatically
                 val param = eventPerson.layoutParams as ViewGroup.MarginLayoutParams
                 param.setMargins(8, 0, 0, 0)

@@ -233,8 +233,8 @@
     <string name="unknown" translatable="false">\??</string>
     <string name="exclamation" translatable="false">! !</string>
     <plurals name="event">
-        <item quantity="one">event</item>
-        <item quantity="other">events</item>
+        <item quantity="one">event: %s</item>
+        <item quantity="other">events: %s</item>
     </plurals>
 
     <!-- Notifications -->

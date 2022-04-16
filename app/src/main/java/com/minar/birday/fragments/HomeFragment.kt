@@ -12,12 +12,16 @@ import android.provider.Telephony
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.RemoteViews
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.view.doOnPreDraw
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import com.afollestad.materialdialogs.LayoutMode
@@ -77,6 +81,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        postponeEnterTransition()
+
         val upcomingImage = binding.upcomingImage
         val shimmer = binding.homeCardShimmer
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
@@ -124,9 +130,11 @@ class HomeFragment : Fragment() {
         binding.eventRecycler.adapter = adapter
 
         // The events, ordered and filtered by the eventual search
-        mainViewModel.allEvents.observe(viewLifecycleOwner) { events ->
+        mainViewModel.allEvents.observe(viewLifecycleOwner)
+        { events ->
             // Manage placeholders, search results and the main list
             adapter.addHeadersAndSubmitList(events)
+
             if (events.isNotEmpty()) {
                 // Insert the events in the upper card and remove the placeholders
                 insertUpcomingEvents(events)
@@ -140,10 +148,12 @@ class HomeFragment : Fragment() {
                     else -> removePlaceholder()
                 }
             }
+            (view.parent as? ViewGroup)?.doOnPreDraw { startPostponedEnterTransition() }
         }
 
         // Only the next events, without considering the search string, ordered
-        mainViewModel.nextEvents.observe(viewLifecycleOwner) { nextEvents ->
+        mainViewModel.nextEvents.observe(viewLifecycleOwner)
+        { nextEvents ->
             // Update the widgets using this livedata, to avoid strange behaviors when searching
             updateWidget(nextEvents)
         }
@@ -179,9 +189,25 @@ class HomeFragment : Fragment() {
         act.vibrate()
         // Cast required to obtain the original event result from the event item wrapper
         val event = (adapter.getItem(position) as EventDataItem.EventItem).eventResult
+        val viewHolder: EventAdapter.EventViewHolder =
+            binding.eventRecycler.findViewHolderForAdapterPosition(position) as EventAdapter.EventViewHolder
+        // If the view is null or doesn't exist, nothing will happen
+        val fullView = viewHolder.itemView
+        val image = fullView.findViewById<ImageView>(R.id.eventImage)
+
         // Navigate to the new fragment passing in the event with safe args
-        val action = HomeFragmentDirections.actionNavigationMainToDetailsFragment(event)
-        findNavController().navigate(action)
+        val action = HomeFragmentDirections.actionNavigationMainToDetailsFragment(event, position)
+
+        // Play a different transition depending on the presence of the images
+        val extras: FragmentNavigator.Extras = if (sharedPrefs.getBoolean("hide_images", false)) {
+            FragmentNavigatorExtras(fullView to "shared_full_view$position")
+        } else {
+            FragmentNavigatorExtras(
+                image to "shared_image$position",
+
+            )
+        }
+        findNavController().navigate(action, extras)
     }
 
     // Show the next age and countdown on long press (only the latter for no year events)

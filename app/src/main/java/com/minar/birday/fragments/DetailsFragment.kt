@@ -23,6 +23,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -37,6 +38,7 @@ import com.afollestad.materialdialogs.customview.customView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.transition.MaterialContainerTransform
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.DialogInsertEventBinding
@@ -70,6 +72,17 @@ class DetailsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Recognize the image from the row of the recycler and animate the transition accordingly
+        val animation = MaterialContainerTransform()
+        animation.duration = 400
+        animation.fadeMode = MaterialContainerTransform.FADE_MODE_THROUGH
+        animation.startElevation = 0f
+        animation.endElevation = 0f
+        animation.setAllContainerColors((activity as MainActivity).getThemeColor(R.attr.backgroundColor))
+        animation.scrimColor = (activity as MainActivity).getThemeColor(R.attr.backgroundColor)
+        animation.isElevationShadowEnabled = false
+        sharedElementEnterTransition = animation
+
         act = activity as MainActivity
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         // Initialize the result launcher to pick the image
@@ -102,8 +115,11 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        postponeEnterTransition()
         val event = args.event
+        val position = args.position
 
+        val fullView = binding.detailsMotionLayout
         val shimmer = binding.detailsCountdownShimmer
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
         val titleText = "${getString(R.string.event_details)} - ${event.name}"
@@ -121,13 +137,16 @@ class DetailsFragment : Fragment() {
             shimmer.showShimmer(true)
         }
 
-        // Bind the data on the views
+        // Bind the data on the views and set the transition name, to play it in reverse
         title.text = titleText
         val hideImage = sharedPrefs.getBoolean("hide_images", false)
         if (hideImage) {
             image.visibility = View.GONE
             imageBg.visibility = View.GONE
+            ViewCompat.setTransitionName(fullView, "shared_full_view$position")
         } else {
+            ViewCompat.setTransitionName(image, "shared_image$position")
+            ViewCompat.setTransitionName(title, "shared_title$position")
             if (event.image != null)
                 image.setImageBitmap(byteArrayToBitmap(event.image))
             else {
@@ -148,13 +167,14 @@ class DetailsFragment : Fragment() {
             imageBg.applyLoopingAnimatedVectorDrawable(R.drawable.animated_ripple_circle)
         }
 
-        // Small and useless easter egg/motion on the image
+        // Small easter egg/motion on the image (with a slight zoom)
         image.setOnClickListener {
             easterEggCounter++
-            if (easterEggCounter == 5) {
+            if (easterEggCounter == 3) {
                 easterEggCounter = 0
-                binding.detailsMotionLayout.progress = 0F
-                binding.detailsMotionLayout.transitionToEnd()
+                if (binding.detailsMotionLayout.progress == 0F)
+                    binding.detailsMotionLayout.transitionToEnd()
+                else binding.detailsMotionLayout.transitionToStart()
             }
         }
 
@@ -219,7 +239,6 @@ class DetailsFragment : Fragment() {
                     dismiss()
                 }
             }
-
         }
 
         val formatter: DateTimeFormatter =
@@ -362,6 +381,7 @@ class DetailsFragment : Fragment() {
             binding.detailsChineseSign.visibility = View.GONE
             binding.detailsChineseSignValue.visibility = View.GONE
         }
+        startPostponedEnterTransition()
     }
 
     // Delete an existing event and show a snackbar

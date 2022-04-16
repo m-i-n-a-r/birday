@@ -21,7 +21,7 @@
         android:id="@+id/navigationFavorites"
         android:name="com.minar.birday.fragments.FavoritesFragment"
         android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" >
+        tools:layout="@layout/fragment_favorites">
         <action
             android:id="@+id/action_navigationFavorites_to_overviewFragment"
             app:destination="@id/overviewFragment"
@@ -43,6 +43,9 @@
         <argument
             android:name="event"
             app:argType="com.minar.birday.model.EventResult" />
+        <argument
+            android:name="position"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/overviewFragment"

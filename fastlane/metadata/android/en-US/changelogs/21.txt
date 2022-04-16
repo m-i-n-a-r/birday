@@ -1,0 +1,4 @@
+- New list to detail transition
+- Splashscreen improved
+- Important fixes
+- Translations updated

@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:fadingEdgeLength="@dimen/linear_vertical_margin"
     android:fillViewport="true"
-    android:requiresFadingEdge="vertical">
+    android:requiresFadingEdge="vertical"
+    android:transitionGroup="true">
 
     <!-- The empty view is useful to make the screen large as the screen or more (with scrolling) -->
     <androidx.constraintlayout.motion.widget.MotionLayout
@@ -54,30 +55,31 @@
 
         <ImageView
             android:id="@+id/detailsEventImageBackground"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/details_image_size"
+            android:layout_height="@dimen/details_image_size"
+            android:layout_marginTop="@dimen/form_vertical_margin"
             android:clickable="true"
             android:contentDescription="@string/event_details"
             android:focusable="true"
-            app:layout_constraintBottom_toBottomOf="@id/detailsEventImage"
-            app:layout_constraintEnd_toEndOf="@id/detailsEventImage"
-            app:layout_constraintStart_toStartOf="@id/detailsEventImage"
-            app:layout_constraintTop_toTopOf="@id/detailsEventImage"
+            app:layout_constraintBottom_toTopOf="@id/detailsClearBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsEventName"
             app:srcCompat="@drawable/animated_ripple_circle" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/detailsEventImage"
-            android:layout_width="@dimen/details_image_size"
-            android:layout_height="@dimen/details_image_size"
-            android:layout_marginTop="@dimen/form_vertical_margin"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/details_image_padding"
             android:contentDescription="@string/event_details"
-            android:padding="@dimen/details_image_padding"
+            android:padding="@dimen/in_row_padding"
             android:src="@drawable/placeholder_birthday_image"
-            app:layout_constraintBottom_toTopOf="@id/detailsClearBackground"
+            app:layout_constraintBottom_toBottomOf="@id/detailsEventImageBackground"
             app:layout_constraintDimensionRatio="1.0"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detailsEventName"
+            app:layout_constraintEnd_toEndOf="@id/detailsEventImageBackground"
+            app:layout_constraintStart_toStartOf="@id/detailsEventImageBackground"
+            app:layout_constraintTop_toTopOf="@id/detailsEventImageBackground"
             app:shapeAppearanceOverlay="@style/roundedImageView"
             app:strokeColor="@color/goodGray"
             app:strokeWidth="@dimen/card_stroke" />
@@ -92,7 +94,7 @@
             app:layout_constraintBottom_toTopOf="@id/detailsEditButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detailsEventImage"
+            app:layout_constraintTop_toBottomOf="@id/detailsEventImageBackground"
             app:srcCompat="@drawable/ic_favorites_24dp"
             app:tint="@color/goodGray" />
 
@@ -109,7 +111,7 @@
             android:textColor="@color/goodGray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detailsEventImage" />
+            app:layout_constraintTop_toBottomOf="@id/detailsEventImageBackground" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detailsBirthDateValue"
