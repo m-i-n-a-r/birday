@@ -622,7 +622,7 @@ class DetailsFragment : Fragment() {
         when (event.type) {
             EventCode.ANNIVERSARY.name -> typeEmoji = String(Character.toChars(0x1F495))
             EventCode.DEATH.name -> typeEmoji = String(Character.toChars(0x1FAA6))
-            EventCode.NAME_DAY.name -> typeEmoji = String(Character.toChars(0x1F464))
+            EventCode.NAME_DAY.name -> typeEmoji = String(Character.toChars(0x1F607))
             EventCode.OTHER.name -> typeEmoji = String(Character.toChars(0x1F7E2))
         }
         val eventInformation =
@@ -631,8 +631,13 @@ class DetailsFragment : Fragment() {
                     "\n" + typeEmoji + "  " +
                     formatName(event, sharedPrefs.getBoolean("surname_first", false)) +
                     " (" + getStringForTypeCodename(requireContext(), event.type!!) +
-                    ")\n" + String(Character.toChars(0x1F4C5)) + "  " +
-                    event.nextDate!!.format(formatter)
+                    ")\n" + String(Character.toChars(0x1F56F)) + "  " +
+                    event.nextDate!!.format(formatter) +
+                    // Add a fourth line with the original date, if the year matters
+                    if (event.yearMatter!!)
+                        "\n" + String(Character.toChars(0x1F4C5)) + "  " +
+                                event.originalDate.format(formatter)
+                    else ""
         ShareCompat.IntentBuilder(requireActivity())
             .setText(eventInformation)
             .setType("text/plain")
