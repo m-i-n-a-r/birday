@@ -1,6 +1,5 @@
 package com.minar.birday.fragments
 
-import android.app.Activity
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Intent
@@ -8,10 +7,10 @@ import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceFragmentCompat
 import com.minar.birday.R
-import com.minar.birday.activities.MainActivity
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidget
 
@@ -51,8 +50,8 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                     else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                 }
             }
-            "accent_color" -> hotReloadActivity(activity, sharedPreferences)
-            "shimmer" -> hotReloadActivity(activity, sharedPreferences)
+            "accent_color" -> hotReloadActivity(sharedPreferences)
+            "shimmer" -> hotReloadActivity(sharedPreferences)
             "notification_hour" -> mainViewModel.scheduleNextCheck()
             "notification_minute" -> mainViewModel.scheduleNextCheck()
             "dark_widget" -> {
@@ -69,12 +68,10 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
     }
 
     // Reload the activity and make sure to stay in the settings
-    private fun hotReloadActivity(activity: Activity?, sharedPreferences: SharedPreferences) {
-        if (activity == null) return
-        else activity as MainActivity
+    private fun hotReloadActivity(sharedPreferences: SharedPreferences) {
         sharedPreferences.edit().putBoolean("refreshed", true).apply()
         // Recreate doesn't support an animation, but any workaround is buggy
-        activity.recreate()
+        ActivityCompat.recreate(requireActivity())
     }
 
 }
