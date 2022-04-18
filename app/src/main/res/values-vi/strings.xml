@@ -100,6 +100,9 @@
     <string name="hide_images">Ẩn hình ảnh</string>
     <string name="hide_images_description_on">Hình ảnh sự kiện ẩn</string>
     <string name="hide_images_description_off">Hình ảnh sự kiện hiển thị</string>
+    <string name="notification_only_favorites">Chỉ sự kiện yêu thích</string>
+    <string name="notification_only_favorites_description_on">Chỉ gửi thông báo cho sự kiện yêu thích</string>
+    <string name="notification_only_favorites_description_off">Gửi thông báo cho mọi sự kiện</string>
     <string name="troubleshoot">Khắc phục sự cố</string>
     <string name="battery_optimization_title">Tắt tối ưu hóa pin</string>
     <string name="battery_optimization_description">Mở cài đặt để tắt mọi tối ưu hóa cho Birday. Hữu ích nếu thông báo không hoạt động</string>
@@ -120,6 +123,7 @@
     <string name="insert_surname_hint">Thêm họ tên</string>
     <string name="insert_date_hint">Chọn ngày</string>
     <string name="invalid_value_name">Tên không hợp lệ!</string>
+    <string name="event_type_hint">Thể loại của sự kiện</string>
     <string name="birthday">Ngày sinh nhật</string>
     <string name="anniversary">Dịp kỉ niệm</string>
     <string name="death_anniversary">Ngày giỗ</string>
