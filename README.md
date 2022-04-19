@@ -33,6 +33,7 @@ This is an open source app to remember **birthdays** and other events in a fast,
 | **Brazilian**           | complete     | BadJuice67     | Paiusco                     |
 | **Romanian**            | complete     | ygorigor       | ygorigor                    |
 | **Traditional Chinese** | complete     | Still34        |                             |
+| **Catalan**             | needs update | retiolus       |                             |
 
 ## Features
 - Notification the day of the event (with selectable time)
