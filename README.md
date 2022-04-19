@@ -24,7 +24,7 @@ This is an open source app to remember **birthdays** and other events in a fast,
 | **French**              | complete     | Mattis Biton   |                             |
 | **Hungarian**           | needs update | Obi            |                             |
 | **German**              | complete     | pizzapastamix  | WrstFngr, AlexanderRitter02 |
-| **Vietnamese**          | needs update | Lee Huynh      |                             |
+| **Vietnamese**          | needs update | Lee Huynh      | dmtrilc                     |
 | **Russian**             | needs update | koterpillar    |                             |
 | **Czech**               | needs update | Miloš Koliáš   |                             |
 | **Polish**              | complete     | mateusz-bak    |                             |
