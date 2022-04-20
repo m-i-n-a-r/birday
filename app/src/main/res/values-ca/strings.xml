@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name" translatable="false">Birday</string>
     <string name="app_welcome">Benvingut a Birday</string>
-    <string name="app_name_extended">Birday - Gestor d'esdeveniments</string>
+    <string name="app_name_extended">Birday - Gestor d\'esdeveniments</string>
     <string name="leave_review_title">Ressenya Birday</string>
-    <string name="leave_review_subtitle">Deixa una ressenya per ajudar-me amb l'aplicació. Tingues en compte que, a banda de les donacions, aquesta aplicació és totalment gratuïta i sense anuncis!</string>
+    <string name="leave_review_subtitle">Deixa una ressenya per ajudar-me amb l\'aplicació. Tingues en compte que, a banda de les donacions, aquesta aplicació és totalment gratuïta i sense anuncis!</string>
     <string name="yes_review">Ressenya!</string>
     <string name="later">Més tard, ho prometo</string>
     <string name="no_thanks">De cap manera!</string>
@@ -13,15 +12,15 @@
     <string name="title_favorites">Preferits</string>
     <string name="title_settings">Paràmetres </string>
     <string name="no_events">Sense esdeveniments! Comença a afegir-ne un amb el botó següent!</string>
-    <string name="no_favorites">Sense preferits! Prem l'estrella per desar un esdeveniment als teus preferits!</string>
+    <string name="no_favorites">Sense preferits! Prem l\'estrella per desar un esdeveniment als teus preferits!</string>
     <string name="add_favorite">Afegir als preferits</string>
     <string name="stats">Estadístiques</string>
     <string name="no_stats">No hi ha estadístiques per mostrar!</string>
-    <string name="stats_summary">Resum d'estadístiques</string>
+    <string name="stats_summary">Resum d\'estadístiques</string>
     <string name="no_stats_description">No tens prou esdeveniments per generar estadístiques. Afegeix-ne alguns i torna més tard!</string>
     <plurals name="stats_total">
-        <item quantity="one">Birday t'ajuda a recordar un total de %d esdeveniment</item>
-        <item quantity="other">Birday t'ajuda a recordar un total de %d esdeveniments</item>
+        <item quantity="one">Birday t\'ajuda a recordar un total de %d esdeveniment</item>
+        <item quantity="other">Birday t\'ajuda a recordar un total de %d esdeveniments</item>
     </plurals>
     <string name="next_event">Pròxim esdeveniment</string>
     <string name="no_next_event">No hi ha esdeveniments per mostrar!</string>
@@ -52,8 +51,8 @@
     <string name="date_format_name">Format de data</string>
     <string name="notification_hour_name">Hora de notificació</string>
     <string name="notification_hour_description">%s \n\nTingues en compte que la notificació pot no funcionar quan el sistema elimina l\'aplicació en alguns dispositius Huawei, Xiaomi i OnePlus. Consulta dontkillmyapp.com per obtenir més informació</string>
-    <string name="accent_description">Canviar el color d'accent predeterminat</string>
-    <string name="accent_name">Color d'accentuació</string>
+    <string name="accent_description">Canviar el color d\'accent predeterminat</string>
+    <string name="accent_name">Color d\'accentuació</string>
     <string name="theme_description">Utilitzar un tema d\'aplicació fosc, clar o automàtic</string>
     <string name="theme_name">Tema de l\'aplicació</string>
     <string name="aqua">Aqua</string>
@@ -87,7 +86,7 @@
     <string name="missing_permission_contacts">S\'ha denegat el permís de contacte. Torna-ho a provar o activa el permís manualment,
     o la importació de contactes no funcionarà!</string>
     <string name="missing_permission_contacts_forever">Birday no pot demanar permís per importar contactes,
-    ja que has marcat "mai més preguntar". Activa-ho manualment!</string>
+    ja que has marcat \"mai més preguntar\". Activa-ho manualment!</string>
     <string name="birday_import_title">Importa una còpia de seguretat de Birday</string>
     <string name="birday_import_description">Tria una còpia de seguretat de Birday vàlida per restaurar els teus esdeveniments. Totes les dades existents
     se sobreescriuran!</string>
@@ -113,19 +112,11 @@
     <string name="battery_optimization_title">Desactivar l\'optimització de la bateria</string>
     <string name="battery_optimization_description">Obra la configuració per desactivar qualsevol optimització per a Birday. Útil si les notificacions no funcionen</string>
     <string name="notification_sound_title">So de notificació</string>
-    <string name="notification_sound_description">Drecera a la configuració del so de notificació, si t'agrada el so predeterminat dels ocells</string>
+    <string name="notification_sound_description">Drecera a la configuració del so de notificació, si t\'agrada el so predeterminat dels ocells</string>
 
     <!-- Developer -->
-    <string name="dev_name" translatable="false">m.i.n.a.r.</string>
     <string name="dev_description">I\'m a polite guy and I like beautiful things, like animations, icons, sport cars and 3D printing. I work as a designer and computer engineer.</string>
-    <string name="dev_email" translatable="false">minar.tastic@gmail.com</string>
-    <string name="dev_personal_site" translatable="false">https://minar.ml</string>
-    <string name="dev_instagram" translatable="false">https://www.instagram.com/minar.tastic/</string>
-    <string name="dev_twitter" translatable="false">https://twitter.com/MinarTastic</string>
-    <string name="dev_github" translatable="false">https://github.com/m-i-n-a-r</string>
-    <string name="dev_other_apps" translatable="false">https://play.google.com/store/apps/dev?id=7720251761301594831</string>
     <string name="easter_egg">Nice logo, huh? ;D</string>
-    <string name="wtf" translatable="false">WTF?!</string>
 
     <!-- New event -->
     <string name="new_event">New event</string>
@@ -164,9 +155,6 @@
     <!-- Quick apps -->
     <string name="event_apps">Quick apps</string>
     <string name="event_apps_description">Apps to wish all the best rapidly!</string>
-    <string name="whatsapp" translatable="false">Whatsapp</string>
-    <string name="signal" translatable="false">Signal</string>
-    <string name="telegram" translatable="false">Telegram</string>
     <string name="textMessage">Text message</string>
     <string name="dialer">Dialer</string>
     <string name="wishes_birthday">Happy birthday!</string>
@@ -230,8 +218,6 @@
     </plurals>
     <string name="born_in">born in</string>
     <string name="and">and</string>
-    <string name="unknown" translatable="false">\??</string>
-    <string name="exclamation" translatable="false">! !</string>
     <plurals name="event">
         <item quantity="one">event: %s</item>
         <item quantity="other">events: %s</item>
