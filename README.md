@@ -18,15 +18,15 @@ This is an open source app to remember **birthdays** and other events in a fast,
 |:------------------------|:------------:|:---------------|:----------------------------|
 | **English**             | complete     | myself         | ar-maged, Commenter25       |
 | **Spanish**             | complete     | myself         | Joseahfer                   |
-| **Swedish**             | needs update | SlowNicoFish   |                             |
-| **Dutch**               | needs update | stefanvi       |                             |
+| **Swedish**             | needs review | SlowNicoFish   |                             |
+| **Dutch**               | complete     | stefanvi       |                             |
 | **Italian**             | complete     | myself         | myself                      |
 | **French**              | complete     | Mattis Biton   |                             |
-| **Hungarian**           | needs update | Obi            |                             |
+| **Hungarian**           | needs review | Obi            |                             |
 | **German**              | complete     | pizzapastamix  | WrstFngr, AlexanderRitter02 |
-| **Vietnamese**          | needs update | Lee Huynh      | dmtrilc                     |
-| **Russian**             | needs update | koterpillar    |                             |
-| **Czech**               | needs update | Miloš Koliáš   |                             |
+| **Vietnamese**          | complee      | Lee Huynh      | dmtrilc                     |
+| **Russian**             | needs review | koterpillar    |                             |
+| **Czech**               | needs review | Miloš Koliáš   |                             |
 | **Polish**              | complete     | mateusz-bak    |                             |
 | **Croatian**            | complete     | Dominik Novosel| Dominik Novosel             |
 | **Portuguese**          | complete     | smarquespt     | smarquespt                  |
@@ -34,6 +34,7 @@ This is an open source app to remember **birthdays** and other events in a fast,
 | **Romanian**            | complete     | ygorigor       | ygorigor                    |
 | **Traditional Chinese** | complete     | Still34        |                             |
 | **Catalan**             | needs update | retiolus       |                             |
+| **Serbian**             | complete     | Th3Unkn0wn0n3  |                             |
 
 ## Features
 - Notification the day of the event (with selectable time)
