@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<string name="app_name" translatable="false">Birday</string>
 	<string name="app_welcome">Добро дошли у Birday</string>
 	<string name="app_name_extended">Birday - Менаџер Догађаја</string>
 	<string name="leave_review_title">Оцените Birday</string>
@@ -21,6 +20,7 @@
 	<string name="no_stats_description">Немате довољно догађаја за генерисање статистике. Додајте их неколико и вратите се касније!</string>
 	<plurals name="stats_total">
 		<item quantity="one">Birday вам помаже да се сетите укупно %d догађаја</item>
+		<item quantity="few">Birday вам помаже да се сетите укупно %d догађаја</item>
 		<item quantity="other">Birday вам помаже да се сетите укупно %d догађаја</item>
 	</plurals>
 	<string name="next_event">Следећи догађај</string>
@@ -30,6 +30,7 @@
 	<string name="event_others">и остали</string>
 	<plurals name="days_left">
 		<item quantity="one">за %d дан</item>
+		<item quantity="few">за %d дана</item>
 		<item quantity="other">за %d дана</item>
 	</plurals>
 
@@ -124,16 +125,8 @@
 	<string name="notification_sound_description">Пречица до подешавања звука обавештења, ако вам се не свиђа подразумевани звук птице</string>
 
 	<!-- Developer -->
-	<string name="dev_name" translatable="false">m.i.n.a.r.</string>
 	<string name="dev_description">Ја сам учтив момак и волим лепе ствари, као што су анимације, иконе, спортска аута и 3D штампање. Радим као дизајнер и рачунарски инжењер.</string>
-	<string name="dev_email" translatable="false">minar.tastic@gmail.com</string>
-	<string name="dev_personal_site" translatable="false">https://minar.ml</string>
-	<string name="dev_instagram" translatable="false">https://www.instagram.com/minar.tastic/</string>
-	<string name="dev_twitter" translatable="false">https://twitter.com/MinarTastic</string>
-	<string name="dev_github" translatable="false">https://github.com/m-i-n-a-r</string>
-	<string name="dev_other_apps" translatable="false">https://play.google.com/store/apps/dev?id=7720251761301594831</string>
 	<string name="easter_egg">Леп лого, зар не? ;D</string>
-	<string name="wtf" translatable="false">WTF?!</string>
 
 	<!-- New event -->
 	<string name="new_event">Нови догађај</string>
@@ -172,9 +165,6 @@
 	<!-- Quick apps -->
 	<string name="event_apps">Брзе апликације</string>
 	<string name="event_apps_description">Апликације да брзо пожелите све најбоље!</string>
-	<string name="whatsapp" translatable="false">Whatsapp</string>
-	<string name="signal" translatable="false">Signal</string>
-	<string name="telegram" translatable="false">Telegram</string>
 	<string name="textMessage">СМС порука</string>
 	<string name="dialer">Телефон</string>
 	<string name="wishes_birthday">Срећан рођендан!</string>
@@ -196,6 +186,7 @@
 	<string name="most_common_day_of_week">Најчешћи дан рођења је %s</string>
 	<plurals name="leap_year_total">
 		<item quantity="one">Број особа рођених у преступној години је %d</item>
+		<item quantity="few">Број особа рођених у преступној години је %d</item>
 		<item quantity="other">Број особа рођених у преступној години је %d</item>
 	</plurals>
 	<string name="random_chinese_year">Конески хороскопски знак %1$s: %2$s</string>
@@ -227,6 +218,7 @@
 	<!-- Common words -->
 	<plurals name="months">
 		<item quantity="one">%d месец</item>
+		<item quantity="few">%d месеца/и</item>
 		<item quantity="other">%d месеца/и</item>
 	</plurals>
 	<string name="today">Данас!</string>
@@ -234,14 +226,14 @@
 	<string name="tomorrow">Сутра!</string>
 	<plurals name="years">
 		<item quantity="one">%d година</item>
+		<item quantity="few">%d година/е</item>
 		<item quantity="other">%d година/е</item>
 	</plurals>
 	<string name="born_in">рођен/а у</string>
 	<string name="and">и</string>
-	<string name="unknown" translatable="false">\??</string>
-	<string name="exclamation" translatable="false">! !</string>
 	<plurals name="event">
 		<item quantity="one">догађај: %s</item>
+		<item quantity="few">догађаја: %s</item>
 		<item quantity="other">догађаја: %s</item>
 	</plurals>
 
