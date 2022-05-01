@@ -41,18 +41,10 @@
     </style>
 
     <!-- Widget theme -->
-    <style name="Theme.AppWidget.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
+    <style name="WidgetTheme" parent="Theme.Material3.DayNight">
         <item name="appWidgetRadius">@dimen/rounded_corners</item>
-        <item name="appWidgetInnerRadius">8dp</item>
-    </style>
-
-    <style name="Theme.AppWidget.AppWidgetContainer" parent="Theme.AppWidget.AppWidgetContainerParent">
-        <item name="appWidgetPadding">16dp</item>
-    </style>
-
-    <style name="Widget.AppWidget.AppWidget.Container" parent="android:Widget">
-        <item name="android:id">@android:id/background</item>
-        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="appWidgetInnerRadius">@dimen/rounded_corners_inner</item>
+        <item name="appWidgetPadding">@dimen/activity_horizontal_margin</item>
     </style>
 
     <!-- Preference dialog theme -->

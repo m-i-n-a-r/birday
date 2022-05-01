@@ -1,9 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/background"
-    style="@style/Widget.AppWidget.AppWidget.Container"
+    android:theme="@style/WidgetTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:alpha=".9"
+    android:background="?android:attr/colorBackground"
     android:orientation="vertical"
     android:padding="@dimen/widget_padding">
 
@@ -71,12 +72,12 @@
         android:id="@+id/event_widget_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="end"
         android:contentDescription="@string/appwidget_upcoming"
         android:paddingHorizontal="@dimen/widget_padding"
         android:paddingTop="@dimen/widget_padding"
         android:text="@string/appwidget_upcoming"
-        android:textAlignment="center"
+        android:textAlignment="viewEnd"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
         android:textColor="?android:attr/textColorPrimary" />
 

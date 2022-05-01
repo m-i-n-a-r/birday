@@ -11,12 +11,6 @@
         <item name="postSplashScreenTheme">@style/AppTheme</item>
     </style>
 
-    <!-- Widget theme -->
-    <style name="Theme.AppWidget.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault.DayNight">
-        <item name="appWidgetRadius">@android:dimen/system_app_widget_background_radius</item>
-        <item name="appWidgetInnerRadius">@android:dimen/system_app_widget_inner_radius</item>
-    </style>
-
     <!-- System accent theme, only supported on API 31+ -->
     <style name="AppTheme.System" parent="AppTheme">
         <item name="colorAccent">@android:color/system_accent1_400</item>

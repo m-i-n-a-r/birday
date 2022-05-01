@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:description="@string/next_event"
+    android:description="@string/appwidget_upcoming"
     android:initialKeyguardLayout="@layout/event_widget"
     android:initialLayout="@layout/event_widget"
     android:minWidth="@dimen/widget_min_width"
