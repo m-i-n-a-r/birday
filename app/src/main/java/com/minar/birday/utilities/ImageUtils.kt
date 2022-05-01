@@ -4,8 +4,12 @@ import android.graphics.*
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
+import com.minar.birday.R
+import com.minar.birday.model.EventCode
+import com.minar.birday.model.EventResult
 import java.io.ByteArrayOutputStream
 
 
@@ -50,6 +54,26 @@ fun getCircularBitmap(bitmap: Bitmap): Bitmap {
     paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
     canvas.drawBitmap(bitmap, rect, rect, paint)
     return output
+}
+
+// Return the event image converted in bitmap or the placeholder
+fun setEventImageOrPlaceholder(event: EventResult, eventImage: ImageView) {
+    if (event.image != null && event.image.isNotEmpty()) {
+        // The click is not implemented atm
+        eventImage.setImageBitmap(byteArrayToBitmap(event.image))
+    } else eventImage.setImageDrawable(
+        ContextCompat.getDrawable(
+            eventImage.context,
+            // Set the image depending on the event type
+            when (event.type) {
+                EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
+                EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
+                EventCode.DEATH.name -> R.drawable.placeholder_death_image
+                EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
+                else -> R.drawable.placeholder_other_image
+            }
+        )
+    )
 }
 
 // Loop an animated vector drawable indefinitely
