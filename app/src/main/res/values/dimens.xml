@@ -56,7 +56,8 @@
     <dimen name="widget_margin">8dp</dimen>
     <dimen name="widget_padding">16dp</dimen>
     <dimen name="widget_shadow_radius">4.5</dimen>
-    <dimen name="widget_image_size">64dp</dimen>
+    <dimen name="widget_image_size">52dp</dimen>
+    <dimen name="widget_image_horizontal_margin">2dp</dimen>
 
     <!-- Shimmer and miscellaneous -->
     <dimen name="shimmer_intensity">0.1</dimen>

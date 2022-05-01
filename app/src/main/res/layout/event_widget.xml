@@ -12,12 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingHorizontal="@dimen/widget_margin">
+        android:paddingStart="@dimen/widget_image_horizontal_margin"
+        android:paddingEnd="@dimen/widget_margin">
 
         <ImageView
             android:id="@+id/event_widget_image"
-            android:layout_width="@dimen/widget_image_size"
             android:layout_height="@dimen/widget_image_size"
+            android:layout_width="@dimen/widget_image_size"
             android:layout_gravity="start"
             android:contentDescription="@string/app_intro_image_content_description"
             android:foreground="@drawable/ic_inverted_circle_foreground_black_24dp"
@@ -74,8 +75,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:contentDescription="@string/appwidget_upcoming"
-        android:paddingHorizontal="@dimen/widget_padding"
-        android:paddingTop="@dimen/widget_padding"
+        android:paddingHorizontal="@dimen/widget_margin"
+        android:layout_marginTop="@dimen/widget_margin"
         android:text="@string/appwidget_upcoming"
         android:textAlignment="viewEnd"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
@@ -86,9 +87,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="bottom"
-        android:layout_marginTop="@dimen/linear_vertical_margin"
+        android:layout_marginTop="@dimen/widget_margin"
         android:layout_weight="1"
-        android:background="@drawable/custom_cursor"
+        android:background="@drawable/widget_inner_rounded_container"
         android:backgroundTint="@color/goodGrayTotalTranslucent"
         android:minHeight="0dp" />
 
