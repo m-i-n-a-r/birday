@@ -3,6 +3,8 @@
     android:theme="@style/WidgetTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+    android:gravity="center_vertical"
     android:alpha=".9"
     android:background="?android:attr/colorBackground"
     android:orientation="vertical"
@@ -52,7 +54,7 @@
                 android:contentDescription="@string/appwidget_upcoming"
                 android:text="@string/insert_date_hint"
                 android:textAlignment="viewEnd"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 android:textColor="?android:attr/textColorPrimary" />
 
             <!-- Use an Imageview to create a divider -->

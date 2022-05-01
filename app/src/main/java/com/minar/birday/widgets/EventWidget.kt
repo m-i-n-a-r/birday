@@ -5,6 +5,7 @@ import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
+import android.view.View
 import android.widget.RemoteViews
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
@@ -45,7 +46,7 @@ internal fun updateAppWidget(
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
 
         // Make sure to show if there's more than one event
-        var widgetUpcoming = "${formatEventList(nextEvents, true, context, false)} "
+        var widgetUpcoming = formatEventList(nextEvents, true, context, false)
         if (nextEvents.isNotEmpty()) widgetUpcoming += "\n ${
             nextDateFormatted(
                 nextEvents[0],
@@ -62,6 +63,7 @@ internal fun updateAppWidget(
         views.setOnClickPendingIntent(R.id.background, pendingIntent)
         views.setTextViewText(R.id.event_widget_text, widgetUpcoming)
         views.setTextViewText(R.id.event_widget_date, formatter.format(LocalDate.now()))
+        views.setViewVisibility(R.id.event_widget_list, View.GONE)
         if (nextEvents[0].image != null && nextEvents[0].image!!.isNotEmpty()) {
             views.setImageViewBitmap(
                 R.id.event_widget_image,

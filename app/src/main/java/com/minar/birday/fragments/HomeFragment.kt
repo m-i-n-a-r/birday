@@ -262,7 +262,7 @@ class HomeFragment : Fragment() {
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
 
         // Make sure to show if there's more than one event
-        var widgetUpcoming = "${formatEventList(events, true, requireContext(), false)} "
+        var widgetUpcoming = formatEventList(events, true, requireContext(), false)
         if (events.isNotEmpty()) widgetUpcoming += "\n ${
             nextDateFormatted(
                 events[0],
@@ -274,6 +274,7 @@ class HomeFragment : Fragment() {
         remoteViews.setOnClickPendingIntent(R.id.background, pendingIntent)
         remoteViews.setTextViewText(R.id.event_widget_text, widgetUpcoming)
         remoteViews.setTextViewText(R.id.event_widget_date, formatter.format(LocalDate.now()))
+        remoteViews.setViewVisibility(R.id.event_widget_list, View.GONE)
         if (events[0].image != null && events[0].image!!.isNotEmpty()) {
             remoteViews.setImageViewBitmap(
                 R.id.event_widget_image,
