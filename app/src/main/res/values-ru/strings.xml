@@ -126,6 +126,7 @@
     <string name="insert_date_hint">Выберите дату</string>
     <string name="invalid_value_name">Неверное имя!</string>
     <string name="consider_year">Учитывать год</string>
+    <string name="event_type_hint">Тип события</string>
     <string name="birthday">День рождения</string>
     <string name="anniversary">Годовщина</string>
     <string name="death_anniversary">Годовщина смерти</string>

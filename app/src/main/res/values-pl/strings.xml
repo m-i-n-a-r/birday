@@ -187,6 +187,7 @@
     <string name="write_something">Napisz coś…</string>
     <string name="overview">Przegląd</string>
     <string name="overview_description">Roczny przegląd zapisanych zdarzeń</string>
+    <string name="event_type_hint">Typ wydarzenia</string>
     <string name="birthday">Urodziny</string>
     <string name="anniversary">Rocznica</string>
     <string name="death_anniversary">Rocznica śmierci</string>

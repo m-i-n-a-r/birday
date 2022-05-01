@@ -127,6 +127,7 @@
     <string name="insert_date_hint">Izaberite datum</string>
     <string name="invalid_value_name">Nevažeće ime!</string>
     <string name="consider_year">Uzmi godinu u obzir</string>
+    <string name="event_type_hint">Vrsta događaja</string>
     <string name="birthday">Rođendan</string>
     <string name="anniversary">Godišnjica</string>
     <string name="death_anniversary">Godišnjica smrti</string>

@@ -208,6 +208,7 @@
     <string name="hide_images_description_off">Händelsebilder syns</string>
     <string name="overview">Översikt</string>
     <string name="overview_description">En årlig översikt över sparade händelser</string>
+    <string name="event_type_hint">Händelsetyp</string>
     <string name="birthday">Födelsedag</string>
     <string name="anniversary">Årsdag</string>
     <string name="death_anniversary">Dödsdag</string>

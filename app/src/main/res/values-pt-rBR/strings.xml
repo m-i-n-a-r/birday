@@ -124,6 +124,7 @@
     <string name="insert_date_hint">Selecione uma data</string>
     <string name="invalid_value_name">Nome inválido!</string>
     <string name="consider_year">Considere o ano</string>
+    <string name="event_type_hint">Tipo de evento</string>
     <string name="birthday">Data de nascimento</string>
     <string name="anniversary">Aniversário</string>
     <string name="death_anniversary">Aniversário de morte</string>

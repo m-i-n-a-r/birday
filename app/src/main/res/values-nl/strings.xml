@@ -124,6 +124,7 @@
     <string name="insert_surname_hint">Achternaam</string>
     <string name="insert_date_hint">Selecteer een datum</string>
     <string name="invalid_value_name">Ongeldige naam!</string>
+    <string name="event_type_hint">Gebeurtenistype</string>
     <string name="birthday">Verjaardag</string>
     <string name="anniversary">Huwelijk</string>
     <string name="death_anniversary">Sterfdag</string>
