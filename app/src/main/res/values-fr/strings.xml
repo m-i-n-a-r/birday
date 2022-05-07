@@ -125,6 +125,7 @@
     <string name="insert_surname_hint">Nom</string>
     <string name="insert_date_hint">Date de naissance</string>
     <string name="invalid_value_name">Le nom est incorrect !</string>
+    <string name="event_type_hint">Type d\'événement</string>
     <string name="birthday">Anniversaire</string>
     <string name="anniversary">Mariage</string>
     <string name="death_anniversary">Anniversaire de la mort</string>

@@ -17,9 +17,9 @@ import com.minar.birday.databinding.MonthHeaderRowBinding
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventDataItem
 import com.minar.birday.model.EventResult
-import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getReducedDate
+import com.minar.birday.utilities.setEventImageOrPlaceholder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -158,8 +158,7 @@ class EventAdapter(
                 // Set the animated element name
                 ViewCompat.setTransitionName(fullRow, "shared_full_view$adapterPosition")
                 eventImage.visibility = View.GONE
-            }
-            else {
+            } else {
                 // Set the animated element name
                 ViewCompat.setTransitionName(eventImage, "shared_image$adapterPosition")
                 // Set a small margin programmatically
@@ -169,22 +168,7 @@ class EventAdapter(
 
                 // Show and load the image, if available, or keep the placeholder
                 eventImage.visibility = View.VISIBLE
-                if (event.image != null && event.image.isNotEmpty()) {
-                    // The click is not implemented atm
-                    eventImage.setImageBitmap(byteArrayToBitmap(event.image))
-                } else eventImage.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        context,
-                        // Set the image depending on the event type
-                        when (event.type) {
-                            EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
-                            EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
-                            EventCode.DEATH.name -> R.drawable.placeholder_death_image
-                            EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
-                            else -> R.drawable.placeholder_other_image
-                        }
-                    )
-                )
+                setEventImageOrPlaceholder(event, eventImage)
             }
 
             // Manage the event type icon

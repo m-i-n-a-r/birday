@@ -55,14 +55,6 @@
         android:title="@string/customization"
         app:icon="@drawable/ic_customization_24dp">
 
-        <SwitchPreference
-            android:defaultValue="true"
-            android:key="vibration"
-            android:summaryOff="@string/vibration_description_off"
-            android:summaryOn="@string/vibration_description_on"
-            android:title="@string/vibration_name"
-            app:iconSpaceReserved="false" />
-
         <ListPreference
             android:defaultValue="system"
             android:entries="@array/themes"
@@ -89,12 +81,20 @@
             android:title="@string/shimmer_name"
             app:iconSpaceReserved="false" />
 
+        <!--        <SwitchPreference-->
+        <!--            android:defaultValue="false"-->
+        <!--            android:key="dark_widget"-->
+        <!--            android:summaryOff="@string/dark_widget_description_off"-->
+        <!--            android:summaryOn="@string/dark_widget_description_on"-->
+        <!--            android:title="@string/dark_widget_name"-->
+        <!--            app:iconSpaceReserved="false" />-->
+
         <SwitchPreference
-            android:defaultValue="false"
-            android:key="dark_widget"
-            android:summaryOff="@string/dark_widget_description_off"
-            android:summaryOn="@string/dark_widget_description_on"
-            android:title="@string/dark_widget_name"
+            android:defaultValue="true"
+            android:key="vibration"
+            android:summaryOff="@string/vibration_description_off"
+            android:summaryOn="@string/vibration_description_on"
+            android:title="@string/vibration_name"
             app:iconSpaceReserved="false" />
     </PreferenceCategory>
 
@@ -114,6 +114,7 @@
         <com.minar.birday.backup.BirdayImporter
             android:layout="@layout/birday_import_row"
             android:selectable="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

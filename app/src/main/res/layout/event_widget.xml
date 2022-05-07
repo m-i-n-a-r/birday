@@ -1,0 +1,97 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/background"
+    android:theme="@style/WidgetTheme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+    android:gravity="center_vertical"
+    android:alpha=".9"
+    android:background="?android:attr/colorBackground"
+    android:orientation="vertical"
+    android:padding="@dimen/widget_padding">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/widget_image_horizontal_margin"
+        android:paddingEnd="@dimen/widget_margin">
+
+        <ImageView
+            android:id="@+id/event_widget_image"
+            android:layout_height="@dimen/widget_image_size"
+            android:layout_width="@dimen/widget_image_size"
+            android:layout_gravity="start"
+            android:contentDescription="@string/app_intro_image_content_description"
+            android:foreground="@drawable/ic_inverted_circle_foreground_black_24dp"
+            android:foregroundTint="?android:attr/colorBackground"
+            android:src="@drawable/placeholder_anniversary_image" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/event_widget_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end"
+                android:contentDescription="@string/appwidget_upcoming"
+                android:text="@string/appwidget_upcoming"
+                android:textAlignment="viewEnd"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:textColor="?android:attr/colorAccent"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/event_widget_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end"
+                android:contentDescription="@string/appwidget_upcoming"
+                android:text="@string/insert_date_hint"
+                android:textAlignment="viewEnd"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <!-- Use an Imageview to create a divider -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/card_stroke"
+                android:layout_marginStart="@dimen/linear_vertical_margin"
+                android:layout_marginTop="@dimen/widget_margin"
+                android:background="@drawable/custom_cursor"
+                android:backgroundTint="?android:attr/colorAccent"
+                android:contentDescription="@string/appwidget_upcoming" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/event_widget_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:contentDescription="@string/appwidget_upcoming"
+        android:paddingHorizontal="@dimen/widget_margin"
+        android:layout_marginTop="@dimen/widget_margin"
+        android:text="@string/appwidget_upcoming"
+        android:textAlignment="viewEnd"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        android:textColor="?android:attr/textColorPrimary" />
+
+    <ListView
+        android:id="@+id/event_widget_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="@dimen/widget_padding"
+        android:layout_weight="1"
+        android:background="@drawable/widget_inner_rounded_container"
+        android:backgroundTint="@color/goodGrayTotalTranslucent"
+        android:minHeight="0dp" />
+
+</LinearLayout>
