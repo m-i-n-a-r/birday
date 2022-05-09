@@ -64,7 +64,7 @@ class FavoritesAdapter(
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
             val age = getYears(event)
             val daysRemaining = getRemainingDays(event.nextDate!!)
-            val daysCountdown = if (daysRemaining > 0) "-$daysRemaining"
+            val daysCountdown = if (daysRemaining > 1){ "$daysRemaining days to go"} else if (daysRemaining ==1)  "$daysRemaining day to go"
             else context.getString(R.string.exclamation)
             var nextDate = event.nextDate.format(formatter)
 
