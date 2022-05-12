@@ -45,6 +45,7 @@ android {
     lint {
         disable 'MissingTranslation'
     }
+    namespace 'com.minar.birday'
 }
 
 dependencies {
