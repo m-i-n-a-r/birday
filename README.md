@@ -35,6 +35,7 @@ This is an open source app to remember **birthdays** and other events in a fast,
 | **Traditional Chinese** | complete     | Still34        |                             |
 | **Catalan**             | needs update | retiolus       |                             |
 | **Serbian**             | complete     | Th3Unkn0wn0n3  |                             |
+| **Ukrainian**           | complete     | taras          |                             |
 | **Marathi**             | complete     | Ramesh Kumar   |                             |
 
 ## Features
