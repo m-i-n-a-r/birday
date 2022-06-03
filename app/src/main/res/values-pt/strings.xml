@@ -113,7 +113,7 @@
     <string name="notification_sound_description">Atalho para as definições de som das notificações, se você não gostar do som padrão</string>
 
     <!-- Developer -->
-	<string name="dev_description">Sou uma pessoa simples que gosta de coisas bonitas tais como animações, ícones, carros desportivos e impressões 3D. Trabalho como designer e como engenheiro computacional.</string>
+    <string name="dev_description">Sou uma pessoa simples que gosta de coisas bonitas tais como animações, ícones, carros desportivos e impressões 3D. Trabalho como designer e como engenheiro computacional.</string>
     <string name="easter_egg">Belo logotipo não? ;D</string>
 
     <!-- New event -->
@@ -126,7 +126,7 @@
     <string name="insert_date_hint">Escolha uma data</string>
     <string name="invalid_value_name">Nome inválido!</string>
     <string name="consider_year">Considerar ano</string>
-   <string name="event_type_hint">Tipo de evento</string>													  
+    <string name="event_type_hint">Tipo de evento</string>
     <string name="birthday">Data de nascimento</string>
     <string name="anniversary">Aniversário</string>
     <string name="death_anniversary">Aniversário de morte</string>

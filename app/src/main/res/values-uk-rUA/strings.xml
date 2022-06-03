@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name" translatable="false">Birday</string>
     <string name="app_welcome">Ласкаво просимо до Birday</string>
     <string name="app_name_extended">Birday - Менеджер подій</string>
     <string name="leave_review_title">Залишити відгук для Birday</string>
@@ -22,6 +21,7 @@
     <plurals name="stats_total">
         <item quantity="one">Birday допомагає вам запам\'ятати %d подію</item>
         <item quantity="few">Birday допомагає вам запам\'ятати %d події</item>
+        <item quantity="many">Birday допомагає вам запам\'ятати %d подій</item>
         <item quantity="other">Birday допомагає вам запам\'ятати %d подій</item>
     </plurals>
     <string name="next_event">Наступна подія</string>
@@ -32,6 +32,7 @@
     <plurals name="days_left">
         <item quantity="one">Залишився %d день</item>
         <item quantity="few">Залишилося %d дні</item>
+        <item quantity="many">Залишилося %d днів</item>
         <item quantity="other">Залишилося %d днів</item>
     </plurals>
 
@@ -114,16 +115,8 @@
     <string name="notification_sound_description">Ярлик до налаштувань звуку сповіщень, якщо вам не подобається звук пташки за замовчуванням</string>
 
     <!-- Developer -->
-    <string name="dev_name" translatable="false">m.i.n.a.r.</string>
     <string name="dev_description">Я ввічливий хлопець і люблю красиві речі, як-от анімацію, іконки, спортивні автомобілі та 3D-друк. Працюю дизайнером та комп\’ютерним інженером.</string>
-    <string name="dev_email" translatable="false">minar.tastic@gmail.com</string>
-    <string name="dev_personal_site" translatable="false">https://minar.ml</string>
-    <string name="dev_instagram" translatable="false">https://www.instagram.com/minar.tastic/</string>
-    <string name="dev_twitter" translatable="false">https://twitter.com/MinarTastic</string>
-    <string name="dev_github" translatable="false">https://github.com/m-i-n-a-r</string>
-    <string name="dev_other_apps" translatable="false">https://play.google.com/store/apps/dev?id=7720251761301594831</string>
     <string name="easter_egg">Файний логотип, га? ;D</string>
-    <string name="wtf" translatable="false">WTF?!</string>
 
     <!-- New event -->
     <string name="new_event">Нова подія</string>
@@ -162,9 +155,6 @@
     <!-- Quick apps -->
     <string name="event_apps">Швидкі додатки</string>
     <string name="event_apps_description">Додатки де можна швидко поздоровити!</string>
-    <string name="whatsapp" translatable="false">Whatsapp</string>
-    <string name="signal" translatable="false">Signal</string>
-    <string name="telegram" translatable="false">Telegram</string>
     <string name="textMessage">СМС</string>
     <string name="dialer">Телефон</string>
     <string name="wishes_birthday">З днем народження!</string>
@@ -186,6 +176,8 @@
     <string name="most_common_day_of_week">Найпоширенішим днем тижня народження є %s</string>
     <plurals name="leap_year_total">
         <item quantity="one">Кількість народжених у високосний рік: %d</item>
+        <item quantity="few">Кількість народжених у високосний рік: %d</item>
+        <item quantity="many">Кількість народжених у високосний рік: %d</item>
         <item quantity="other">Кількість народжених у високосний рік: %d</item>
     </plurals>
     <string name="random_chinese_year">По китайському календарю %1$s: %2$s</string>
@@ -217,7 +209,8 @@
     <!-- Common words -->
     <plurals name="months">
         <item quantity="one">%d місяць</item>
-        item quantity="few">%d месяці</item>
+        <item quantity="few">%d месяці</item>
+        <item quantity="many">%d місяців</item>
         <item quantity="other">%d місяців</item>
     </plurals>
     <string name="today">Сьогодні!</string>
@@ -226,15 +219,15 @@
     <plurals name="years">
         <item quantity="one">%d рік</item>
         <item quantity="few">%d роки</item>
+        <item quantity="many">%d років</item>
         <item quantity="other">%d років</item>
     </plurals>
     <string name="born_in">народжений/народжена in</string>
     <string name="and">та</string>
-    <string name="unknown" translatable="false">\??</string>
-    <string name="exclamation" translatable="false">! !</string>
     <plurals name="event">
         <item quantity="one">подія: %s</item>
         <item quantity="few">події: %s</item>
+        <item quantity="many">подій: %s</item>
         <item quantity="other">подій: %s</item>
     </plurals>
 
@@ -276,6 +269,5 @@
     <!-- Overview -->
     <string name="overview">Огляд</string>
     <string name="overview_description">Річний огляд збережених подій</string>
-
 </resources>
 

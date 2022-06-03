@@ -123,6 +123,7 @@
     <string name="insert_surname_hint">Nachnamen eingeben</string>
     <string name="insert_date_hint">Wähle ein Datum</string>
     <string name="invalid_value_name">Ungültiger Name!</string>
+    <string name="event_type_hint">Ereignistyp</string>
     <string name="birthday">Geburtstag</string>
     <string name="anniversary">Jubiläum</string>
     <string name="death_anniversary">Todestag</string>

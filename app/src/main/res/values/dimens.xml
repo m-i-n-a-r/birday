@@ -13,6 +13,7 @@
     <dimen name="card_padding">8dp</dimen>
     <dimen name="card_stroke">2dp</dimen>
     <dimen name="rounded_corners">16dp</dimen>
+    <dimen name="rounded_corners_inner">8dp</dimen>
     <dimen name="card_image_height">66dp</dimen>
     <dimen name="card_image_padding">8dp</dimen>
     <dimen name="list_vertical_padding">4dp</dimen>
@@ -53,8 +54,10 @@
 
     <!-- Widgets -->
     <dimen name="widget_margin">8dp</dimen>
-    <dimen name="widget_padding">6dp</dimen>
+    <dimen name="widget_padding">16dp</dimen>
     <dimen name="widget_shadow_radius">4.5</dimen>
+    <dimen name="widget_image_size">52dp</dimen>
+    <dimen name="widget_image_horizontal_margin">2dp</dimen>
 
     <!-- Shimmer and miscellaneous -->
     <dimen name="shimmer_intensity">0.1</dimen>
@@ -62,8 +65,8 @@
     <dimen name="shimmer_highlight_alpha">0.15</dimen>
     <dimen name="shimmer_base_alpha">1</dimen>
     <dimen name="shimmer_dropoff">50</dimen>
-    <dimen name="widget_min_width">160dp</dimen>
-    <dimen name="widget_min_height">40dp</dimen>
+    <dimen name="widget_min_width">200dp</dimen>
+    <dimen name="widget_min_height">48dp</dimen>
     <dimen name="custom_preference_title_text_size">16sp</dimen>
     <dimen name="custom_preference_subtitle_text_size">13.6sp</dimen>
     <dimen name="preview_dot_size">24dp</dimen>

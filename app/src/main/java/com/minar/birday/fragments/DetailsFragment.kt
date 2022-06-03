@@ -409,7 +409,6 @@ class DetailsFragment : Fragment() {
         var surnameValue = eventResult.surname
         var countYearValue = eventResult.yearMatter
         var eventDateValue: LocalDate = eventResult.originalDate
-        val imageValue: ByteArray? = eventResult.image
         val dialog = MaterialDialog(act, BottomSheet(LayoutMode.WRAP_CONTENT)).show {
             cornerRadius(res = R.dimen.rounded_corners)
             title(R.string.edit_event)
@@ -455,23 +454,7 @@ class DetailsFragment : Fragment() {
         countYear.isChecked = countYearValue!!
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
         eventDate.setText(eventDateValue.format(formatter))
-        if (imageValue != null)
-            eventImage.setImageBitmap(byteArrayToBitmap(imageValue))
-        else {
-            eventImage.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    // Set the image depending on the event type
-                    when (eventResult.type) {
-                        EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
-                        EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
-                        EventCode.DEATH.name -> R.drawable.placeholder_death_image
-                        EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
-                        else -> R.drawable.placeholder_other_image
-                    }
-                )
-            )
-        }
+        setEventImageOrPlaceholder(eventResult, eventImage)
 
         // Calendar setup. The end date is the last day in the following year (dumb users)
         val startDate = Calendar.getInstance()

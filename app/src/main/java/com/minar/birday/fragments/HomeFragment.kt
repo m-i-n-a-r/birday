@@ -41,6 +41,7 @@ import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidget
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
+import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.time.temporal.ChronoUnit
@@ -205,7 +206,7 @@ class HomeFragment : Fragment() {
             FragmentNavigatorExtras(
                 image to "shared_image$position",
 
-            )
+                )
         }
         findNavController().navigate(action, extras)
     }
@@ -252,11 +253,8 @@ class HomeFragment : Fragment() {
     // Update the existing widgets with the newest data and the onclick action
     private fun updateWidget(events: List<EventResult>) {
         val appWidgetManager = AppWidgetManager.getInstance(context)
-        val remoteViews = if (sharedPrefs.getBoolean("dark_widget", false)) RemoteViews(
-            requireContext().packageName,
-            R.layout.event_widget_dark
-        )
-        else RemoteViews(requireContext().packageName, R.layout.event_widget_light)
+        // The dark/light widget is now automatic
+        val remoteViews = RemoteViews(requireContext().packageName, R.layout.event_widget)
         val thisWidget = context?.let { ComponentName(it, EventWidget::class.java) }
         val intent = Intent(context, MainActivity::class.java)
         val pendingIntent =
@@ -264,7 +262,7 @@ class HomeFragment : Fragment() {
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
 
         // Make sure to show if there's more than one event
-        var widgetUpcoming = "${formatEventList(events, true, requireContext(), false)} "
+        var widgetUpcoming = formatEventList(events, true, requireContext(), false)
         if (events.isNotEmpty()) widgetUpcoming += "\n ${
             nextDateFormatted(
                 events[0],
@@ -273,8 +271,27 @@ class HomeFragment : Fragment() {
             )
         }"
 
-        remoteViews.setOnClickPendingIntent(R.id.event_widget_main, pendingIntent)
+        remoteViews.setOnClickPendingIntent(R.id.background, pendingIntent)
         remoteViews.setTextViewText(R.id.event_widget_text, widgetUpcoming)
+        remoteViews.setTextViewText(R.id.event_widget_date, formatter.format(LocalDate.now()))
+        remoteViews.setViewVisibility(R.id.event_widget_list, View.GONE)
+        if (events[0].image != null && events[0].image!!.isNotEmpty()) {
+            remoteViews.setImageViewBitmap(
+                R.id.event_widget_image,
+                byteArrayToBitmap(events[0].image!!)
+            )
+        } else remoteViews.setImageViewResource(
+            R.id.event_widget_image,
+            // Set the image depending on the event type
+            when (events[0].type) {
+                EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
+                EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
+                EventCode.DEATH.name -> R.drawable.placeholder_death_image
+                EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
+                else -> R.drawable.placeholder_other_image
+            }
+        )
+        // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(thisWidget, remoteViews)
     }
 

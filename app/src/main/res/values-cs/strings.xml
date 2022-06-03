@@ -220,6 +220,7 @@
     </plurals>
     <string name="overview">Přehled</string>
     <string name="overview_description">Roční přehled uložených událostí</string>
+    <string name="event_type_hint">Typ události</string>
     <string name="birthday">Narozeniny</string>
     <string name="anniversary">Manželství</string>
     <string name="death_anniversary">Výročí úmrtí</string>

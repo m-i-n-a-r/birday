@@ -10,7 +10,7 @@
         <item name="colorPrimary">@color/colorAccent</item>
         <item name="colorPrimaryContainer">@color/colorAccentTranslucent</item>
         <item name="colorSecondary">@color/colorAccent</item>
-        <item name="colorSecondaryContainer">@color/colorAccentTranslucent</item> <!-- Navbar item halo -->
+        <item name="colorSecondaryContainer">@color/colorAccentTranslucent</item> <!-- Navbar halo -->
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:statusBarColor">@color/colorBackground</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
@@ -38,6 +38,13 @@
 
     <style name="SplashTheme.Base.Legacy">
         <item name="android:windowBackground">@drawable/static_birday_light</item>
+    </style>
+
+    <!-- Widget theme -->
+    <style name="WidgetTheme" parent="Theme.Material3.DayNight">
+        <item name="appWidgetRadius">@dimen/rounded_corners</item>
+        <item name="appWidgetInnerRadius">@dimen/rounded_corners_inner</item>
+        <item name="appWidgetPadding">@dimen/activity_horizontal_margin</item>
     </style>
 
     <!-- Preference dialog theme -->
@@ -68,7 +75,8 @@
     <!-- Date picker theme -->
     <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar">
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
-        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
+        </item>
         <item name="errorIconDrawable">@drawable/ic_alert_black_24dp</item>
         <item name="errorIconTint">?colorAccent</item>
         <item name="boxStrokeErrorColor">@color/redError</item>
