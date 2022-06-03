@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name" translatable="false">Birday</string>
     <string name="app_welcome">Ласкаво просимо до Birday</string>
     <string name="app_name_extended">Birday - Менеджер подій</string>
     <string name="leave_review_title">Залишити відгук для Birday</string>
@@ -156,9 +155,6 @@
     <!-- Quick apps -->
     <string name="event_apps">Швидкі додатки</string>
     <string name="event_apps_description">Додатки де можна швидко поздоровити!</string>
-    <string name="whatsapp" translatable="false">Whatsapp</string>
-    <string name="signal" translatable="false">Signal</string>
-    <string name="telegram" translatable="false">Telegram</string>
     <string name="textMessage">СМС</string>
     <string name="dialer">Телефон</string>
     <string name="wishes_birthday">З днем народження!</string>
