@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <resources> 
- 
-    <string name="app_name" translatable="false">Birday</string> 
+
     <string name="app_welcome">बर्डे में आपका स्वागत है</string> 
     <string name="app_name_extended">बर्डे - इवेंट मैनेजर</string> 
     <string name="leave_review_title">जन्मदिन की समीक्षा करें</string> 
@@ -111,17 +110,9 @@
     <string name="notification_sound_title">नोटिफिकेशन ध्वनि</string> 
     <string name="notification_sound_description">नोटिफिकेशन ध्वनि सेटिंग का शॉर्टकट, यदि आपको डिफ़ॉल्ट पक्षी ध्वनि पसंद नहीं है</string> 
  
-    <!-- Developer --> 
-    <string name="dev_name" translatable="false">m.i.n.a.r.</string> 
-    <string name="dev_description">मैं एक विनम्र व्यक्ति हूं और मुझे सुंदर चीजें पसंद हैं, जैसे एनिमेशन, आइकन, स्पोर्ट कार और 3डी प्रिंटिंग। मैं एक डिजाइनर और कंप्यूटर इंजीनियर के रूप में काम करता हूं।</string> 
-    <string name="dev_email" translatable="false">minar.tastic@gmail.com</string> 
-    <string name="dev_personal_site" translatable="false">https://minar.ml</string> 
-    <string name="dev_instagram" translatable="false">https://www.instagram.com/minar.tastic/</string> 
-    <string name="dev_twitter" translatable="false">https://twitter.com/MinarTastic</string> 
-    <string name="dev_github" translatable="false">https://github.com/m-i-n-a-r</string> 
-    <string name="dev_other_apps" translatable="false">https://play.google.com/store/apps/dev?id=7720251761301594831</string> 
-    <string name="easter_egg">अच्छा लोगो, हुह? ;D</string> 
-    <string name="wtf" translatable="false">WTF?!</string> 
+    <!-- Developer -->
+    <string name="dev_description">मैं एक विनम्र व्यक्ति हूं और मुझे सुंदर चीजें पसंद हैं, जैसे एनिमेशन, आइकन, स्पोर्ट कार और 3डी प्रिंटिंग। मैं एक डिजाइनर और कंप्यूटर इंजीनियर के रूप में काम करता हूं।</string>
+    <string name="easter_egg">अच्छा लोगो, हुह? ;D</string>
  
     <!-- New event --> 
     <string name="new_event">नया इवेंट</string> 
@@ -159,10 +150,7 @@
  
     <!-- Quick apps --> 
     <string name="event_apps">त्वरित ऐप्स</string> 
-    <string name="event_apps_description">ऐप्स तेजी से शुभकामनाएं देने के लिए!</string> 
-    <string name="whatsapp" translatable="false">Whatsapp</string> 
-    <string name="signal" translatable="false">Signal</string> 
-    <string name="telegram" translatable="false">Telegram</string> 
+    <string name="event_apps_description">ऐप्स तेजी से शुभकामनाएं देने के लिए!</string>
     <string name="textMessage">टेक्स्ट संदेश</string> 
     <string name="dialer">डायलर</string> 
     <string name="wishes_birthday">जन्मदिन की शुभकामनाएं!</string> 
@@ -187,30 +175,30 @@
         <item quantity="other">एक लीप वर्ष में पैदा हुए व्यक्तियों की संख्या %d है</item> 
     </plurals> 
     <string name="random_chinese_year">%1$s का चीनी राशि चिन्ह: %2$s</string> 
-    <string name="chinese_zodiac_चूहा">चूहा</string> 
-    <string name="chinese_zodiac_बैल">बैल</string> 
-    <string name="chinese_zodiac_बाघ">बाघ</string> 
-    <string name="chinese_zodiac_खरगोश">खरगोश</string> 
-    <string name="chinese_zodiac_अजगर">अजगर</string> 
-    <string name="chinese_zodiac_साँप">साँप</string> 
-    <string name="chinese_zodiac_घोड़ा">घोड़ा</string> 
-    <string name="chinese_zodiac_बकरी">बकरी</string> 
-    <string name="chinese_zodiac_बंदर">बंदर</string> 
-    <string name="chinese_zodiac_मुरग़ा">मुरग़ा</string> 
-    <string name="chinese_zodiac_कुत्ता">कुत्ता</string> 
-    <string name="chinese_zodiac_सुअर">सुअर</string> 
-    <string name="zodiac_धनु">धनु</string> 
-    <string name="zodiac_मकर">मकर</string> 
-    <string name="zodiac_कुंभ">कुंभ</string> 
-    <string name="zodiac_मीन">मीन</string> 
-    <string name="zodiac_मेष">मेष</string> 
-    <string name="zodiac_वृषभ">वृषभ</string> 
-    <string name="zodiac_मिथुन">मिथुन</string> 
-    <string name="zodiac_कैंसर">कैंसर</string> 
-    <string name="zodiac_लियो">लियो</string> 
-    <string name="zodiac_कन्या">कन्या</string> 
-    <string name="zodiac_तुला">तुला</string> 
-    <string name="zodiac_वृश्चिक">वृश्चिक</string> 
+    <string name="chinese_zodiac_rat">चूहा</string>
+    <string name="chinese_zodiac_ox">बैल</string>
+    <string name="chinese_zodiac_tiger">बाघ</string>
+    <string name="chinese_zodiac_rabbit">खरगोश</string>
+    <string name="chinese_zodiac_dragon">अजगर</string>
+    <string name="chinese_zodiac_snake">साँप</string>
+    <string name="chinese_zodiac_horse">घोड़ा</string>
+    <string name="chinese_zodiac_goat">बकरी</string>
+    <string name="chinese_zodiac_monkey">बंदर</string>
+    <string name="chinese_zodiac_rooster">मुरग़ा</string>
+    <string name="chinese_zodiac_dog">कुत्ता</string>
+    <string name="chinese_zodiac_pig">सुअर</string>
+    <string name="zodiac_sagittarius">धनु</string>
+    <string name="zodiac_capricorn">मकर</string>
+    <string name="zodiac_aquarius">कुंभ</string>
+    <string name="zodiac_pisces">मीन</string>
+    <string name="zodiac_aries">मेष</string>
+    <string name="zodiac_taurus">वृषभ</string>
+    <string name="zodiac_gemini">मिथुन</string>
+    <string name="zodiac_cancer">कैंसर</string>
+    <string name="zodiac_leo">लियो</string>
+    <string name="zodiac_virgo">कन्या</string>
+    <string name="zodiac_libra">तुला</string>
+    <string name="zodiac_scorpio">वृश्चिक</string>
  
     <!-- Common words --> 
     <plurals name="months"> 
@@ -225,9 +213,7 @@
         <item quantity="other">%d वर्षों</item> 
     </plurals> 
     <string name="born_in">जन्म</string> 
-    <string name="and">तथा</string> 
-    <string name="unknown" translatable="false">\??</string> 
-    <string name="exclamation" translatable="false">! !</string> 
+    <string name="and">तथा</string>
     <plurals name="event"> 
         <item quantity="one">इवेंट: %s</item> 
         <item quantity="other">इवेंट्स: %s</item> 

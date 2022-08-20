@@ -37,6 +37,8 @@ This is an open source app to remember **birthdays** and other events in a fast,
 | **Serbian**             | complete     | Th3Unkn0wn0n3  |                             |
 | **Ukrainian**           | complete     | taras          |                             |
 | **Marathi**             | complete     | Ramesh Kumar   |                             |
+| **Malayalam**           | complete     | Lavin-tom      |                             |
+| **Hindi**               | complete     | assembleDebug  |                             |
 
 ## Features
 - Notification the day of the event (with selectable time)
