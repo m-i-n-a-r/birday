@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
-import androidx.sqlite.db.SimpleSQLiteQuery
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.persistence.EventDatabase
@@ -15,7 +14,7 @@ import java.time.LocalDate
 
 
 @ExperimentalStdlibApi
-class BirdayExporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
+class CsvExporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
     View.OnClickListener {
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
@@ -33,26 +32,32 @@ class BirdayExporter(context: Context, attrs: AttributeSet?) : Preference(contex
             act.showSnackbar(context.getString(R.string.no_events))
         else {
             val thread = Thread {
-                val exported = exportEvents(context)
+                val exported = exportEventsCsv(context)
                 if (exported.isNotBlank()) shareFile(context, exported)
             }
             thread.start()
         }
     }
 
-    // Export the room database to a file in Android/data/com.minar.birday/files
-    private fun exportEvents(context: Context): String {
-        // Perform a checkpoint to empty the write ahead logging temporary files and avoid closing the entire db
+    // Convert the data in a CSV file and save it in Android/data/com.minar.birday/files
+    private fun exportEventsCsv(context: Context): String {
+        // Take the list of events
         val eventDao = EventDatabase.getBirdayDatabase(context).eventDao()
-        eventDao.checkpoint(SimpleSQLiteQuery("pragma wal_checkpoint(full)"))
+        val events = eventDao.getOrderedEventsStatic()
+        val sb = StringBuilder()
+        // Prepare the first row, for the column names
+        sb.append("id, type, name, surname, favorite, yearMatter, originalDate, nextDate, notes\n")
+        for (event in events) {
+            sb.append("${event.id},${event.type},${event.name},${event.surname},${event.favorite}," +
+                    "${event.yearMatter},${event.originalDate},${event.nextDate},${event.notes}\n")
+        }
 
-        val dbFile = context.getDatabasePath("BirdayDB").absoluteFile
         val appDirectory = File(context.getExternalFilesDir(null)!!.absolutePath)
-        val fileName = "BirdayBackup_${LocalDate.now()}"
+        val fileName = "BirdayCsv_${LocalDate.now()}.csv"
         val fileFullPath: String = appDirectory.path + File.separator + fileName
         // Snackbar need the UI thread to work, so they must be forced on that thread
         try {
-            dbFile.copyTo(File(fileFullPath), true)
+            File(fileFullPath).writeText(sb.toString())
             (context as MainActivity).runOnUiThread { context.showSnackbar(context.getString(R.string.birday_export_success)) }
         } catch (e: Exception) {
             (context as MainActivity).runOnUiThread {

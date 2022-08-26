@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/experimentalDisclaimer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_vertical_margin">
+
+    <ImageView
+        android:id="@+id/animated_danger"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/minar_banner_height"
+        android:contentDescription="@strings/experimental_settings_title"
+        android:src="@drawable/animated_experimental_danger" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:gravity="center"
+        android:text="@string/experimental_disclaimer"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        android:textColor="?colorAccent" />
+
+    <Button
+        android:id="@+id/checkGithubButton"
+        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/linear_vertical_margin"
+        android:contentDescription="@string/check_github"
+        android:paddingVertical="@dimen/in_row_button_padding"
+        android:text="@string/check_github"
+        android:textColor="?colorAccent"
+        android:tint="?colorAccent"
+        app:icon="@drawable/ic_github_black_24dp"
+        app:rippleColor="?colorAccent" />
+
+</LinearLayout>

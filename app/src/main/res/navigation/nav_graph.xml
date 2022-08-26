@@ -34,7 +34,20 @@
         android:id="@+id/navigationSettings"
         android:name="com.minar.birday.fragments.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/author_preference_row">
+        <action
+            android:id="@+id/action_navigationSettings_to_experimentalSettingsFragment"
+            app:destination="@id/experimentalSettingsFragment"
+            app:enterAnim="@anim/nav_enter_anim"
+            app:exitAnim="@anim/nav_exit_anim"
+            app:popEnterAnim="@anim/nav_pop_enter_anim"
+            app:popExitAnim="@anim/nav_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/experimentalSettingsFragment"
+        android:name="com.minar.birday.fragments.ExperimentalSettingsFragment"
+        android:label="fragment_experimental_settings"
+        tools:layout="@layout/experimental_disclaimer_row" />
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.minar.birday.fragments.DetailsFragment"

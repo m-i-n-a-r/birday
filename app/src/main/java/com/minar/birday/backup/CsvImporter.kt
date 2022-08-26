@@ -13,11 +13,10 @@ import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.persistence.EventDatabase
 import java.io.FileOutputStream
-import java.io.InputStreamReader
 
 
 @ExperimentalStdlibApi
-class BirdayImporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
+class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
     View.OnClickListener {
     private val act = context as MainActivity
 
@@ -30,20 +29,19 @@ class BirdayImporter(context: Context, attrs: AttributeSet?) : Preference(contex
     // Vibrate and import the backup if possible
     override fun onClick(v: View) {
         act.vibrate()
-        act.selectBackup.launch("*/*")
+        act.selectBackup.launch("text/comma-separated-values")
     }
 
     // Import a backup overwriting any existing data and checking if the file is valid
-    fun importEvents(context: Context, fileUri: Uri): Boolean {
-        if (!isBackupValid(fileUri)) {
-            (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_invalid_file))
-            return false
-        }
+    fun importEventsCsv(context: Context, fileUri: Uri): Boolean {
         EventDatabase.destroyInstance()
         val fileStream = context.contentResolver.openInputStream(fileUri)!!
-        val dbFile = context.getDatabasePath("BirdayDB").absoluteFile
+        //val dbFile = context.getDatabasePath("BirdayDB").absoluteFile
         try {
-            fileStream.copyTo(FileOutputStream(dbFile))
+            // Read the file as text
+            // Find the date (or the oldest date, if more than one). If there's no date, skip the line
+            // Check if the column names are in the file, in the smartest way possible
+            // Create an entity for each valid line, with the columns in the correct position
             (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_success))
         } catch (e: Exception) {
             (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_failure))
@@ -57,32 +55,6 @@ class BirdayImporter(context: Context, attrs: AttributeSet?) : Preference(contex
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         Handler(Looper.getMainLooper()).postDelayed({ act.startActivity(intent) }, 400)
         return true
-    }
-
-    // Check if a backup file is valid. A wrong import would result in a crash or empty db
-    private fun isBackupValid(fileUri: Uri): Boolean {
-        val uri = fileUri.path ?: ""
-
-        // An initial, naive validation
-        if (!(uri.contains("birdaybackup", true) ||
-                    uri.contains("document", true))
-        )
-            return false
-
-        // Read the first bytes of the file: every SQLite DB starts with the same string
-        val fileStream = context.contentResolver.openInputStream(fileUri)!!
-        try {
-            val fr = InputStreamReader(fileStream)
-            val buffer = CharArray(16)
-            fr.read(buffer, 0, 16)
-            val str = String(buffer)
-            fr.close()
-            if (str == "SQLite format 3\u0000") return true
-        } catch (e: java.lang.Exception) {
-            e.printStackTrace()
-            return false
-        }
-        return false
     }
 
 }
