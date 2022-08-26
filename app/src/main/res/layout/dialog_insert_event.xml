@@ -76,7 +76,7 @@
             app:boxStrokeErrorColor="@color/redError"
             app:errorContentDescription="@string/insert_name_hint"
             app:errorEnabled="true"
-            app:errorIconDrawable="@drawable/ic_alert_black_24dp"
+            app:errorIconDrawable="@drawable/ic_alert_24dp"
             app:errorIconTint="?colorAccent"
             app:errorTextColor="?colorAccent"
             app:hintAnimationEnabled="true"
@@ -87,13 +87,14 @@
             app:startIconDrawable="@drawable/ic_cool_black_24dp"
             app:startIconTint="@color/goodGray">
 
+            <!-- Someone uses 2 names for anniversaries in this fiels -->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nameEvent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionNext"
                 android:inputType="textCapWords|textPersonName"
-                android:maxLength="25"
+                android:maxLength="30"
                 android:padding="0dp"
                 android:textCursorDrawable="@drawable/custom_cursor" />
 
@@ -115,7 +116,7 @@
             app:boxStrokeErrorColor="@color/redError"
             app:errorContentDescription="@string/insert_surname_hint"
             app:errorEnabled="true"
-            app:errorIconDrawable="@drawable/ic_alert_black_24dp"
+            app:errorIconDrawable="@drawable/ic_alert_24dp"
             app:errorIconTint="?colorAccent"
             app:errorTextColor="?colorAccent"
             app:hintAnimationEnabled="true"
@@ -154,7 +155,7 @@
             app:boxStrokeErrorColor="@color/redError"
             app:errorContentDescription="@string/insert_date_hint"
             app:errorEnabled="true"
-            app:errorIconDrawable="@drawable/ic_alert_black_24dp"
+            app:errorIconDrawable="@drawable/ic_alert_24dp"
             app:errorIconTint="?colorAccent"
             app:errorTextColor="?colorAccent"
             app:hintAnimationEnabled="true"

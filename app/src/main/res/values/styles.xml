@@ -77,7 +77,7 @@
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
         </item>
-        <item name="errorIconDrawable">@drawable/ic_alert_black_24dp</item>
+        <item name="errorIconDrawable">@drawable/ic_alert_24dp</item>
         <item name="errorIconTint">?colorAccent</item>
         <item name="boxStrokeErrorColor">@color/redError</item>
         <item name="errorTextColor">?colorAccent</item>

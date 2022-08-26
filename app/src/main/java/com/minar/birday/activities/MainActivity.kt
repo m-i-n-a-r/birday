@@ -9,6 +9,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.ImageDecoder
@@ -18,6 +19,7 @@ import android.media.ThumbnailUtils
 import android.net.Uri
 import android.os.*
 import android.provider.MediaStore
+import android.provider.OpenableColumns
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.TypedValue
@@ -49,6 +51,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
 import com.minar.birday.backup.BirdayImporter
 import com.minar.birday.backup.ContactsImporter
+import com.minar.birday.backup.CsvImporter
+import com.minar.birday.backup.JsonImporter
 import com.minar.birday.databinding.ActivityMainBinding
 import com.minar.birday.databinding.DialogInsertEventBinding
 import com.minar.birday.model.Event
@@ -60,6 +64,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.*
+import kotlin.concurrent.thread
 
 
 @ExperimentalStdlibApi
@@ -187,7 +192,8 @@ class MainActivity : AppCompatActivity() {
             // Only do something if there's something in the back stack (only in event details)
             if (navController.currentBackStackEntry != null &&
                 (navController.currentDestination?.label == "fragment_details" ||
-                        navController.currentDestination?.label == "fragment_overview")
+                        navController.currentDestination?.label == "fragment_overview" ||
+                        navController.currentDestination?.label == "fragment_experimental_settings")
             )
                 navController.popBackStack()
         }
@@ -416,6 +422,13 @@ class MainActivity : AppCompatActivity() {
             surname.addTextChangedListener(watcher)
             eventDate.addTextChangedListener(watcher)
         }
+
+        // Auto import on launch TODO Only available in experimental settings
+        if (sharedPrefs.getBoolean("auto_import", false)) {
+            thread {
+                ContactsImporter(this, null).importContacts(this)
+            }
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -489,15 +502,53 @@ class MainActivity : AppCompatActivity() {
     val selectBackup =
         registerForActivityResult(ActivityResultContracts.GetContent()) { fileUri: Uri? ->
             try {
-                val birdayImporter = BirdayImporter(this, null)
-                if (fileUri != null) birdayImporter.importBirthdays(this, fileUri)
+                if (fileUri == null) return@registerForActivityResult
+                // Select the correct importer. Always use native import, except for JSON and csv
+                when (getFileName(fileUri).split(".").last()) {
+                    "json" -> {
+                        val jsonImporter = JsonImporter(this, null)
+                        jsonImporter.importEventsJson(this, fileUri)
+                    }
+                    "csv" -> {
+                        val csvImporter = CsvImporter(this, null)
+                        csvImporter.importEventsCsv(this, fileUri)
+                    }
+                    else -> {
+                        val birdayImporter = BirdayImporter(this, null)
+                        birdayImporter.importEvents(this, fileUri)
+                    }
+                }
             } catch (e: IOException) {
+                // Invalid file, other errors, can't even try to import
                 e.printStackTrace()
+                showSnackbar(getString(R.string.birday_import_failure))
             }
         }
 
 
     // Some utility functions, used from every fragment connected to this activity
+
+    // Given an uri, find the file name
+    private fun getFileName(uri: Uri): String {
+        var result = ""
+        if (uri.scheme == "content") {
+            val cursor: Cursor? = contentResolver.query(
+                uri,
+                arrayOf(OpenableColumns.DISPLAY_NAME),
+                null,
+                null,
+                null
+            )
+            cursor.use {
+                if (cursor != null && cursor.moveToFirst()) {
+                    val columnIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                    if (columnIndex == -1) return@use
+                    result = cursor.getString(columnIndex)
+                }
+            }
+        }
+        return result
+    }
 
     // Vibrate using a standard vibration pattern
     fun vibrate() {

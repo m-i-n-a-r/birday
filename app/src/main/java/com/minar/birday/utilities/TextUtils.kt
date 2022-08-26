@@ -39,10 +39,12 @@ fun String.smartFixName(forceCapitalize: Boolean = false): String {
         }
 }
 
-// Simply checks if the string is written using only letters, numbers, emoticons and at most one apostrophe and one hyphen
+// Check if the string is written using letters, numbers, emoticons and only particular symbols
 fun checkName(submission: String): Boolean {
     var apostropheFound = false
     var hyphenFound = false
+    var ampersandFound = false
+
     if (submission == "\'") return false
     if (submission.startsWith('-')) return false
     if (submission.contains("-\'")) return false
@@ -54,6 +56,7 @@ fun checkName(submission: String): Boolean {
             s.isLetter() -> continue@loop
             s == '-' && !hyphenFound -> hyphenFound = true
             s == '\'' && !apostropheFound -> apostropheFound = true
+            s == '&' && !ampersandFound -> ampersandFound = true
             else -> return false
         }
     }

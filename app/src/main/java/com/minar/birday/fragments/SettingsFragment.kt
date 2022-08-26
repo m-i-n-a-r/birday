@@ -9,6 +9,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.minar.birday.R
 import com.minar.birday.viewmodels.MainViewModel
@@ -22,6 +25,14 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
         mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
+
+        val experimentalPreference : Preference? =  findPreference("experimental")
+        experimentalPreference?.setOnPreferenceClickListener {
+            val navController: NavController =
+                findNavController()
+            navController.navigate(R.id.action_navigationSettings_to_experimentalSettingsFragment)
+            true
+        }
     }
 
     override fun onResume() {
@@ -54,6 +65,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
             "shimmer" -> hotReloadActivity(sharedPreferences)
             "notification_hour" -> mainViewModel.scheduleNextCheck()
             "notification_minute" -> mainViewModel.scheduleNextCheck()
+            // TODO The following option has been removed
             "dark_widget" -> {
                 // Update every existing widget with a broadcast
                 val intent = Intent(context, EventWidget::class.java)

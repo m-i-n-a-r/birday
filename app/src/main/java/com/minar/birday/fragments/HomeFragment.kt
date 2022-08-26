@@ -261,9 +261,12 @@ class HomeFragment : Fragment() {
             PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
 
+        // If there are no events, leave the widget as is
+        if (events.isEmpty()) return
+
         // Make sure to show if there's more than one event
         var widgetUpcoming = formatEventList(events, true, requireContext(), false)
-        if (events.isNotEmpty()) widgetUpcoming += "\n ${
+        widgetUpcoming += "\n ${
             nextDateFormatted(
                 events[0],
                 formatter,

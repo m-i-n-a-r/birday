@@ -64,6 +64,10 @@ internal fun updateAppWidget(
         views.setTextViewText(R.id.event_widget_text, widgetUpcoming)
         views.setTextViewText(R.id.event_widget_date, formatter.format(LocalDate.now()))
         views.setViewVisibility(R.id.event_widget_list, View.GONE)
+
+        // If there are no events, leave the widget as is
+        if (nextEvents.isEmpty()) return@Thread
+
         if (nextEvents[0].image != null && nextEvents[0].image!!.isNotEmpty()) {
             views.setImageViewBitmap(
                 R.id.event_widget_image,

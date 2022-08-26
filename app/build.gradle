@@ -4,14 +4,14 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "com.minar.birday"
         minSdkVersion 26
-        targetSdkVersion 32
-        versionCode 21
-        versionName "3.1.1"
+        targetSdkVersion 33
+        versionCode 22
+        versionName "3.2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -53,21 +53,21 @@ dependencies {
     // Default dependencies
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'androidx.appcompat:appcompat:1.5.0'
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.preference:preference-ktx:1.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.activity:activity-ktx:1.5.0'
-    implementation 'androidx.fragment:fragment-ktx:1.5.0'
+    implementation 'androidx.activity:activity-ktx:1.5.1'
+    implementation 'androidx.fragment:fragment-ktx:1.5.2'
 
     // Constraint / motion layout
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     // Splashscreen
-    implementation 'androidx.core:core-splashscreen:1.0.0-rc01'
+    implementation 'androidx.core:core-splashscreen:1.0.0'
 
     // Material Components
-    implementation 'com.google.android.material:material:1.7.0-alpha03'
+    implementation 'com.google.android.material:material:1.6.1'
 
     // WorkManager
     implementation 'androidx.work:work-runtime-ktx:2.7.1'
@@ -78,12 +78,15 @@ dependencies {
 
     // Lifecycle and ViewModel
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
 
     // Room
-    def room_version = '2.4.2'
+    def room_version = '2.4.3'
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+
+    // Gson
+    implementation 'com.google.code.gson:gson:2.9.1'
 
     // App Intro
     implementation 'com.github.AppIntro:AppIntro:6.0.0'

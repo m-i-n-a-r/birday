@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
@@ -71,7 +72,7 @@ class FavoritesFragment : Fragment() {
         val favoriteMotionLayout = binding.favoritesMain
         val favoritesCard = binding.favoritesCard
         val favoritesMiniFab = binding.favoritesMiniFab
-        // val overviewButton = binding.overviewButton TODO Temporarily disabled
+        val overviewButton = binding.overviewButton
         if (shimmerEnabled) shimmer.startShimmer()
         statsImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_candle)
 
@@ -116,13 +117,14 @@ class FavoritesFragment : Fragment() {
             }
         }
 
-        // Set the overview button TODO Temporarily disabled
-        //overviewButton.setOnClickListener {
-        //    // Vibrate and navigate to the overview screen
-        //    act.vibrate()
-        //    requireView().findNavController()
-        //        .navigate(R.id.action_navigationFavorites_to_overviewFragment)
-        //}
+        // Set the overview button TODO Only available in experimental settings
+        if (sharedPrefs.getBoolean("feature_preview", false))
+            overviewButton.setOnClickListener {
+                // Vibrate and navigate to the overview screen
+                act.vibrate()
+                requireView().findNavController()
+                    .navigate(R.id.action_navigationFavorites_to_overviewFragment)
+            }
 
         // Set the data which requires the complete and unfiltered event list
         with(binding) {
