@@ -12,7 +12,8 @@ android {
         targetSdkVersion 33
         versionCode 22
         versionName "3.2.0"
-
+        resConfigs("en", "ca", "cs", "de", "es", "fr", "hi", "hr", "hu", "it", "ml", "mr", "nl",
+                "pl", "pt", "pt-rBR", "ro", "ru", "sr", "sv-rSE", "uk-rUA", "vi", "zh-rTW")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
