@@ -1,27 +1,17 @@
 package com.minar.birday.model
 
-import com.google.gson.annotations.Expose
 import java.io.Serializable
 import java.time.LocalDate
 
 data class EventResult (
-    @Expose
     val id: Int,
-    @Expose
     val type: String? = EventCode.BIRTHDAY.name,
-    @Expose
     var name: String,
-    @Expose
     var surname: String? = "",
-    @Expose
     var favorite: Boolean? = false,
-    @Expose
     val yearMatter: Boolean? = true,
-    @Expose
     var originalDate: LocalDate,
-    @Expose
     val nextDate: LocalDate? = null,
-    @Expose
     var notes: String? = "",
     val image: ByteArray? = null,
 ): Serializable {

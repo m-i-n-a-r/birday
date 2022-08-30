@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.Expose
 import java.time.LocalDate
 
 @Entity(
@@ -15,12 +16,18 @@ import java.time.LocalDate
 data class Event(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
+    @Expose
     val type: String? = EventCode.BIRTHDAY.name,
+    @Expose
     val name: String,
+    @Expose
     val surname: String? = "",
     val favorite: Boolean? = false,
+    @Expose
     val yearMatter: Boolean? = true,
+    @Expose
     val originalDate: LocalDate,
+    @Expose
     val notes: String? = "",
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     val image: ByteArray? = null,

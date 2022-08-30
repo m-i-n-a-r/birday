@@ -50,6 +50,8 @@ class BirdayImporter(context: Context, attrs: AttributeSet?) : Preference(contex
             e.printStackTrace()
             return false
         }
+        fileStream.close()
+
         // Completely restart the application with a slight delay to be extra-safe
         val intent: Intent =
             act.baseContext.packageManager.getLaunchIntentForPackage(act.baseContext.packageName)!!

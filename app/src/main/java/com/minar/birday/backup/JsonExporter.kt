@@ -8,8 +8,10 @@ import androidx.preference.PreferenceViewHolder
 import com.google.gson.GsonBuilder
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
+import com.minar.birday.model.Event
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.LocalDateJsonSerializer
+import com.minar.birday.utilities.resultToEvent
 import com.minar.birday.utilities.shareFile
 import java.io.File
 import java.time.LocalDate
@@ -45,8 +47,13 @@ class JsonExporter(context: Context, attrs: AttributeSet?) : Preference(context,
     private fun exportEventsJson(context: Context): String {
         // Take the list of events
         val eventDao = EventDatabase.getBirdayDatabase(context).eventDao()
-        val events = eventDao.getOrderedEventsStatic()
-        val sb = StringBuilder()
+        val eventResults = eventDao.getOrderedEventsStatic()
+
+        // Transform the list in a list of simple events
+        val events = mutableListOf<Event>()
+        eventResults.forEach { events.add(resultToEvent(it)) }
+
+        // Transform the entire list in a JSON string
         val builder = GsonBuilder().registerTypeAdapter(
             LocalDate::class.java,
             LocalDateJsonSerializer().nullSafe()
@@ -54,14 +61,14 @@ class JsonExporter(context: Context, attrs: AttributeSet?) : Preference(context,
             .excludeFieldsWithoutExposeAnnotation()
             .setPrettyPrinting()
             .create()
-        sb.append(builder.toJson(events))
+        val json = builder.toJson(events)
 
         val appDirectory = File(context.getExternalFilesDir(null)!!.absolutePath)
         val fileName = "BirdayJson_${LocalDate.now()}.json"
         val fileFullPath: String = appDirectory.path + File.separator + fileName
         // Snackbar need the UI thread to work, so they must be forced on that thread
         try {
-            File(fileFullPath).writeText(sb.toString())
+            File(fileFullPath).writeText(json)
             (context as MainActivity).runOnUiThread { context.showSnackbar(context.getString(R.string.birday_export_success)) }
         } catch (e: Exception) {
             (context as MainActivity).runOnUiThread {
