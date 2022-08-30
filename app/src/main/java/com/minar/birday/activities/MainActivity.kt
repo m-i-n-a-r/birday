@@ -291,7 +291,7 @@ class MainActivity : AppCompatActivity() {
             val endDate = Calendar.getInstance()
             endDate.set(Calendar.YEAR, endDate.get(Calendar.YEAR) + 1)
             endDate.set(Calendar.DAY_OF_YEAR, endDate.getActualMaximum(Calendar.DAY_OF_YEAR))
-            startDate.set(1500, 1, 1)
+            startDate.set(START_YEAR, 1, 1)
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
             var dateDialog: MaterialDatePicker<Long>? = null
 
@@ -456,7 +456,7 @@ class MainActivity : AppCompatActivity() {
                 val source = ImageDecoder.createSource(this.contentResolver, data)
                 bitmap = ImageDecoder.decodeBitmap(source)
             }
-        } catch (e: IOException) {
+        } catch (_: IOException) {
         }
         if (bitmap == null) return
 

@@ -462,7 +462,7 @@ class DetailsFragment : Fragment() {
         val endDate = Calendar.getInstance()
         endDate.set(Calendar.YEAR, endDate.get(Calendar.YEAR) + 1)
         endDate.set(Calendar.DAY_OF_YEAR, endDate.getActualMaximum(Calendar.DAY_OF_YEAR))
-        startDate.set(1500, 1, 1)
+        startDate.set(START_YEAR, 1, 1)
         var dateDialog: MaterialDatePicker<Long>? = null
 
         // To automatically show the last selected date, parse it to another Calendar object

@@ -119,7 +119,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
 
     // The youngest person, taking into account months and days
     private fun youngestPerson(): String {
-        var youngestDate = LocalDate.of(1500, 1, 1)
+        var youngestDate = LocalDate.of(START_YEAR, 1, 1)
         var youngestName = ""
         var youngestAge = 0
         birthdays.forEach {
