@@ -7,10 +7,12 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.Telephony
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OVER_SCROLL_ALWAYS
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RemoteViews
@@ -114,6 +116,11 @@ class HomeFragment : Fragment() {
                     sharedPrefs.edit().putFloat("home_motion_state", 0.0F).apply()
                 }
             }
+        }
+
+        // Activate the overscroll effect on Android 12 and above
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            binding.eventRecycler.overScrollMode = OVER_SCROLL_ALWAYS
         }
 
         // Show quick apps on long press too

@@ -1,6 +1,7 @@
 package com.minar.birday.fragments
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
@@ -92,6 +93,11 @@ class FavoritesFragment : Fragment() {
                     sharedPrefs.edit().putFloat("favorite_motion_state", 0.0F).apply()
                 }
             }
+        }
+
+        // Activate the overscroll effect on Android 12 and above
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            binding.favoritesRecycler.overScrollMode = View.OVER_SCROLL_ALWAYS
         }
 
         // Show full stats on long press too
