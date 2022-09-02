@@ -46,10 +46,13 @@ class CsvExporter(context: Context, attrs: AttributeSet?) : Preference(context, 
         val events = eventDao.getOrderedEventsStatic()
         val sb = StringBuilder()
         // Prepare the first row, for the column names
-        sb.append("id, type, name, surname, favorite, yearMatter, originalDate, nextDate, notes\n")
+        sb.append("type, name, surname, yearMatter, date, notes\n")
         for (event in events) {
-            sb.append("${event.id},${event.type},${event.name},${event.surname},${event.favorite}," +
-                    "${event.yearMatter},${event.originalDate},${event.nextDate},${event.notes}\n")
+            sb.append(
+                "${event.type},${event.name.replace(',', ' ')}," +
+                        "${event.surname?.replace(',', ' ')},${event.yearMatter}," +
+                        "${event.originalDate},${event.notes?.replace(',', ' ')}\n"
+            )
         }
 
         val appDirectory = File(context.getExternalFilesDir(null)!!.absolutePath)

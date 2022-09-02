@@ -43,8 +43,7 @@ class JsonImporter(context: Context, attrs: AttributeSet?) : Preference(context,
         val gsonBuilder = GsonBuilder().registerTypeAdapter(
             LocalDate::class.java,
             LocalDateJsonSerializer().nullSafe()
-        )
-            .create()
+        ).create()
         try {
             val importedEvents = gsonBuilder.fromJson(jsonString, Array<Event>::class.java).toList()
             // Normalize the events and add them to another list
