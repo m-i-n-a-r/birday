@@ -100,6 +100,7 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
                 eventDao.insertAllEvent(eventList)
             }
             // Done. There's no need to restart the app
+            fileStream.close()
             (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_success))
         } catch (e: Exception) {
             (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_failure))
@@ -162,7 +163,7 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
                 try {
                     date = LocalDate.parse(rowItem)
                     return@forEach // Acts like continue, i.e. skip to the next iteration
-                } catch (e: Exception) {
+                } catch (_: Exception) {
                 }
             // Boolean (yearMatter) detection
             if (rowItem.toBooleanStrictOrNull() != null) {
