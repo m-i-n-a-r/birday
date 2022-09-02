@@ -269,6 +269,14 @@ class MainActivity : AppCompatActivity() {
                 onItemClickListener =
                     AdapterView.OnItemClickListener { _, _, position, _ ->
                         eventType = items[position].codeName
+                        // Automatically uncheck "the year matters" for name days
+                        if (eventType.name == EventCode.NAME_DAY.name) {
+                            countYear.isChecked = false
+                            countYearValue = false
+                        } else {
+                            countYear.isChecked = true
+                            countYearValue = true
+                        }
                         if (!imageChosen)
                             eventImage.setImageDrawable(
                                 ContextCompat.getDrawable(
