@@ -4,7 +4,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground"
+    android:background="?attr/colorSurface"
     tools:context=".activities.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
@@ -18,12 +18,11 @@
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomBar"
+        style="@style/Widget.Material3.BottomAppBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_navbar_height"
         android:layout_gravity="bottom"
-        app:backgroundTint="@color/deepGray"
         app:contentInsetStart="0dp"
-        app:elevation="@dimen/bottom_navbar_elevation"
         app:fabAlignmentMode="end"
         app:fabAnimationMode="slide"
         app:fabCradleMargin="@dimen/cradle_margin"
@@ -35,11 +34,14 @@
             android:id="@+id/navigation"
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottom_navbar_height"
-            android:background="#00ffffff"
+            android:background="@android:color/transparent"
+            app:backgroundTint="@android:color/transparent"
             app:elevation="0dp"
+            app:itemPaddingTop="@dimen/bottom_navbar_item_padding"
+            app:itemPaddingBottom="@dimen/bottom_navbar_item_padding"
             app:itemIconTint="@drawable/bottom_navbar_item"
             app:itemRippleColor="?colorAccent"
-            app:labelVisibilityMode="unlabeled"
+            app:labelVisibilityMode="selected"
             app:menu="@menu/navigation_bottomappbar" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>
@@ -50,11 +52,11 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/new_event"
         android:hapticFeedbackEnabled="false"
-        app:backgroundTint="?colorAccent"
+        app:backgroundTint="?attr/colorPrimary"
         app:elevation="@dimen/bottom_navbar_elevation"
         app:layout_anchor="@id/bottomBar"
-        app:rippleColor="@color/deepGray"
+        app:rippleColor="?attr/colorOnSurface"
         app:srcCompat="@drawable/ic_party_24dp"
-        app:tint="@color/deepGray" />
+        app:tint="?attr/colorOnPrimary" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

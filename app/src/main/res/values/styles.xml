@@ -25,6 +25,21 @@
         <item name="colorSurface">@color/colorSurface</item>
     </style>
 
+    <style name="AppTheme.Monet" parent="AppTheme.Monet.Base" />
+
+    <style name="AppTheme.Monet.Base" parent="Theme.Material3.DynamicColors.DayNight">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
+        <item name="materialTimePickerTheme">@style/ThemeOverlay.App.TimePicker</item>
+        <item name="snackbarStyle">@style/Widget.App.Snackbar</item>
+        <item name="snackbarTextViewStyle">@style/MaterialSnackbarTextViewTheme</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog.Monet</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <!-- Splash screen theme -->
     <style name="SplashTheme" parent="SplashTheme.Base.Legacy" />
 
@@ -56,6 +71,12 @@
         <item name="android:background">?colorBackgroundFloating</item>
     </style>
 
+    <!-- Preference dialog Monet theme -->
+    <style name="ThemeOverlay.App.MaterialAlertDialog.Monet" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
+        <item name="dialogCornerRadius">@dimen/rounded_corners</item>
+    </style>
+
     <!-- Note: shape appearance doesn't work with the preference dialogs (they're not material) -->
     <style name="MaterialAlertDialog.App" parent="MaterialAlertDialog.Material3">
         <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
@@ -75,8 +96,7 @@
     <!-- Date picker theme -->
     <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar">
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
-        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
-        </item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent</item>
         <item name="errorIconDrawable">@drawable/ic_alert_24dp</item>
         <item name="errorIconTint">?colorAccent</item>
         <item name="boxStrokeErrorColor">@color/redError</item>
@@ -94,14 +114,23 @@
 
     <!-- Time picker theme -->
     <style name="ThemeOverlay.App.TimePicker" parent="@style/ThemeOverlay.MaterialComponents.TimePicker">
-        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
-        </item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent</item>
         <item name="boxCornerRadiusBottomEnd">@dimen/text_field_corner</item>
         <item name="boxCornerRadiusTopEnd">@dimen/text_field_corner</item>
         <item name="boxCornerRadiusBottomStart">@dimen/text_field_corner</item>
         <item name="boxCornerRadiusTopStart">@dimen/text_field_corner</item>
         <item name="android:textCursorDrawable">@drawable/custom_cursor</item>
         <item name="colorSurface">?android:colorBackgroundFloating</item>
+    </style>
+
+    <!-- Monet time picker theme -->
+    <style name="ThemeOverlay.App.TimePicker.Monet" parent="@style/ThemeOverlay.MaterialComponents.TimePicker">
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/text_field_corner</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/text_field_corner</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/text_field_corner</item>
+        <item name="boxCornerRadiusTopStart">@dimen/text_field_corner</item>
+        <item name="android:textCursorDrawable">@drawable/custom_cursor</item>
     </style>
 
     <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">

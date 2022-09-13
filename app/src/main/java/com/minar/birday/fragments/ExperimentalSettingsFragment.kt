@@ -11,5 +11,4 @@ class ExperimentalSettingsFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.experimental_preferences, rootKey)
     }
-
 }

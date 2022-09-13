@@ -45,8 +45,10 @@ import com.afollestad.materialdialogs.WhichButton
 import com.afollestad.materialdialogs.actions.getActionButton
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
+import com.google.android.material.color.DynamicColors
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.elevation.SurfaceColors
 import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
 import com.minar.birday.backup.BirdayImporter
@@ -109,6 +111,12 @@ class MainActivity : AppCompatActivity() {
         if (sharedPrefs.getBoolean("first", true)) {
             val editor = sharedPrefs.edit()
             editor.putBoolean("first", false)
+            // Set default accent based on the Android version
+            when (Build.VERSION.SDK_INT) {
+                23, 24, 25, 26, 27, 28, 29 -> editor.putString("accent_color", "blue")
+                31 -> editor.putString("accent_color", "system")
+                else -> editor.putString("accent_color", "monet")
+            }
             editor.apply()
             val intent = Intent(this, WelcomeActivity::class.java)
             startActivity(intent)
@@ -121,8 +129,8 @@ class MainActivity : AppCompatActivity() {
             "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
-
         when (accent) {
+            "monet" -> setTheme(R.style.AppTheme_Monet)
             "system" -> setTheme(R.style.AppTheme_System)
             "brown" -> setTheme(R.style.AppTheme_Brown)
             "blue" -> setTheme(R.style.AppTheme_Blue)
@@ -429,6 +437,12 @@ class MainActivity : AppCompatActivity() {
             name.addTextChangedListener(watcher)
             surname.addTextChangedListener(watcher)
             eventDate.addTextChangedListener(watcher)
+        }
+
+        // Navigation bar color management (if executed before, it doesn't work)
+        if (accent == "monet") {
+            DynamicColors.applyToActivityIfAvailable(this)
+            window.navigationBarColor = SurfaceColors.SURFACE_2.getColor(this)
         }
 
         // Auto import on launch TODO Only available in experimental settings
