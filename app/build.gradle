@@ -12,8 +12,7 @@ android {
         targetSdkVersion 33
         versionCode 22
         versionName "3.2.0"
-        resConfigs("en", "ca", "cs", "de", "es", "fr", "hi", "hr", "hu", "it", "ml", "mr", "nl",
-                "pl", "pt", "pt-rBR", "ro", "ru", "sr", "sv-rSE", "uk-rUA", "vi", "zh-rTW")
+        resConfigs 'en', 'ca', 'cs', 'de', 'es', 'fr', 'hi', 'hr', 'hu', 'it', 'ml', 'mr', 'nl', 'pl', 'pt', 'pt-rBR', 'ro', 'ru', 'sr', 'sv-rSE', 'uk-rUA', 'vi', 'zh-rTW'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -54,8 +53,8 @@ dependencies {
     // Default dependencies
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-    implementation 'androidx.appcompat:appcompat:1.5.0'
-    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.preference:preference-ktx:1.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.activity:activity-ktx:1.5.1'
