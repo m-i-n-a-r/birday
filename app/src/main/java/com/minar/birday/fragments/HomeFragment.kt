@@ -352,8 +352,10 @@ class HomeFragment : Fragment() {
             // Consider the case of null surname and the case of unknown age
             val formattedPersonName =
                 formatName(event, sharedPrefs.getBoolean("surname_first", false))
-            val age = if (event.yearMatter!!) upcomingDate.year.minus(event.originalDate.year)
-                .toString()
+
+            val age = if (event.yearMatter!! && event.type != EventCode.NAME_DAY.name)
+                upcomingDate.year.minus(event.originalDate.year).toString()
+            else if (event.type == EventCode.NAME_DAY.name) getString(R.string.name_day)
             else getString(R.string.unknown)
             when (nextEvents.indexOf(event)) {
                 0 -> {
