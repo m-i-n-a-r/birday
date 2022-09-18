@@ -30,6 +30,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.AttrRes
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
@@ -99,8 +100,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-        // Create the notification channel and check the permission (note: appIntro 6.0 is still buggy, better avoid to use it for asking permissions)
+        // Create the notification channel and check the permission on Tiramisu
         askContactsPermission()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            askNotificationPermission()
+        }
         createNotificationChannel()
 
         // Retrieve the shared preferences
@@ -639,6 +643,26 @@ class MainActivity : AppCompatActivity() {
         } else true
     }
 
+    // Ask notification permission
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    fun askNotificationPermission(code: Int = 201): Boolean {
+        return if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                code
+            )
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED
+        } else true
+    }
+
     // Manage user response to permission requests
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -663,6 +687,14 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     val contactImporter = ContactsImporter(this, null)
                     contactImporter.importContacts(this)
+                }
+            }
+            // Notifications request at startup
+            201 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS))
+                        showSnackbar(getString(R.string.missing_permission_notifications))
+                    else showSnackbar(getString(R.string.missing_permission_notifications_forever))
                 }
             }
         }
