@@ -20,6 +20,7 @@ import android.net.Uri
 import android.os.*
 import android.provider.MediaStore
 import android.provider.OpenableColumns
+import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.TypedValue
@@ -104,7 +105,7 @@ class MainActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             // Contacts permission is asked after the response to this permission on tiramisu
             if (askNotificationPermission())
-                // Ask for contacts permission, if the first permission is already granted
+            // Ask for contacts permission, if the first permission is already granted
                 askContactsPermission()
         } else {
             askContactsPermission()
@@ -686,8 +687,19 @@ class MainActivity : AppCompatActivity() {
             102 -> {
                 if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS))
-                        showSnackbar(getString(R.string.missing_permission_contacts))
-                    else showSnackbar(getString(R.string.missing_permission_contacts_forever))
+                        showSnackbar(
+                            getString(R.string.missing_permission_contacts),
+                            actionText = getString(R.string.cancel),
+                            action = fun() {
+                                askContactsPermission()
+                            })
+                    else showSnackbar(getString(R.string.missing_permission_contacts_forever),
+                        actionText = getString(R.string.title_settings),
+                        action = fun() {
+                            startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                                data = Uri.fromParts("package", packageName, null)
+                            })
+                        })
                 } else {
                     val contactImporter = ContactsImporter(this, null)
                     contactImporter.importContacts(this)
@@ -697,8 +709,20 @@ class MainActivity : AppCompatActivity() {
             201 -> {
                 if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS))
-                        showSnackbar(getString(R.string.missing_permission_notifications))
-                    else showSnackbar(getString(R.string.missing_permission_notifications_forever))
+                        showSnackbar(
+                            getString(R.string.missing_permission_notifications),
+                            actionText = getString(R.string.cancel),
+                            action = fun() {
+                                askContactsPermission()
+                            })
+                    else showSnackbar(
+                        getString(R.string.missing_permission_notifications_forever),
+                        actionText = getString(R.string.title_settings),
+                        action = fun() {
+                            startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                                data = Uri.fromParts("package", packageName, null)
+                            })
+                        })
                 }
                 // Request contacts permission in every case
                 askContactsPermission()
