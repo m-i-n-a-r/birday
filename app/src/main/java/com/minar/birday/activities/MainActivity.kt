@@ -101,9 +101,13 @@ class MainActivity : AppCompatActivity() {
             }
 
         // Create the notification channel and check the permission on Tiramisu
-        askContactsPermission()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            askNotificationPermission()
+            // Contacts permission is asked after the response to this permission on tiramisu
+            if (askNotificationPermission())
+                // Ask for contacts permission, if the first permission is already granted
+                askContactsPermission()
+        } else {
+            askContactsPermission()
         }
         createNotificationChannel()
 
@@ -689,13 +693,15 @@ class MainActivity : AppCompatActivity() {
                     contactImporter.importContacts(this)
                 }
             }
-            // Notifications request at startup
+            // Notifications request at startup, plus contacts after
             201 -> {
                 if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS))
                         showSnackbar(getString(R.string.missing_permission_notifications))
                     else showSnackbar(getString(R.string.missing_permission_notifications_forever))
                 }
+                // Request contacts permission in every case
+                askContactsPermission()
             }
         }
     }
