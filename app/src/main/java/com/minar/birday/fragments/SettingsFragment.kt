@@ -15,7 +15,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.minar.birday.R
 import com.minar.birday.viewmodels.MainViewModel
-import com.minar.birday.widgets.EventWidget
+import com.minar.birday.widgets.EventWidgetProvider
 
 
 @ExperimentalStdlibApi
@@ -68,10 +68,10 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
             // TODO The following option has been removed
             "dark_widget" -> {
                 // Update every existing widget with a broadcast
-                val intent = Intent(context, EventWidget::class.java)
+                val intent = Intent(context, EventWidgetProvider::class.java)
                 intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
                 val ids = AppWidgetManager.getInstance(context).getAppWidgetIds(
-                    ComponentName(requireContext(), EventWidget::class.java)
+                    ComponentName(requireContext(), EventWidgetProvider::class.java)
                 )
                 intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
                 requireContext().sendBroadcast(intent)

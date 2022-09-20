@@ -1,6 +1,5 @@
 package com.minar.birday.fragments
 
-import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
@@ -15,7 +14,6 @@ import android.view.View
 import android.view.View.OVER_SCROLL_ALWAYS
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.RemoteViews
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.doOnPreDraw
@@ -40,10 +38,9 @@ import com.minar.birday.model.EventDataItem
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
-import com.minar.birday.widgets.EventWidget
+import com.minar.birday.widgets.EventWidgetProvider
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
-import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.time.temporal.ChronoUnit
@@ -160,10 +157,10 @@ class HomeFragment : Fragment() {
         }
 
         // Only the next events, without considering the search string, ordered
-        mainViewModel.nextEvents.observe(viewLifecycleOwner)
-        { nextEvents ->
+        mainViewModel.allEventsUnfiltered.observe(viewLifecycleOwner)
+        {
             // Update the widgets using this livedata, to avoid strange behaviors when searching
-            updateWidget(nextEvents)
+            updateWidget()
         }
 
         // Restore search string in the search bar
@@ -258,54 +255,13 @@ class HomeFragment : Fragment() {
     }
 
     // Update the existing widgets with the newest data and the onclick action
-    private fun updateWidget(events: List<EventResult>) {
-        val appWidgetManager = AppWidgetManager.getInstance(context)
-        // The dark/light widget is now automatic
-        val remoteViews = RemoteViews(requireContext().packageName, R.layout.event_widget)
-        val thisWidget = context?.let { ComponentName(it, EventWidget::class.java) }
-        val intent = Intent(context, MainActivity::class.java)
-        val pendingIntent =
-            PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
-        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
-
-        // If there are no events, leave the widget as is
-        if (events.isEmpty()) return
-
-        // Make sure to show if there's more than one event
-        var widgetUpcoming = formatEventList(events, true, requireContext(), false)
-        widgetUpcoming += "\n ${
-            nextDateFormatted(
-                events[0],
-                formatter,
-                requireContext()
-            )
-        }"
-
-        remoteViews.setOnClickPendingIntent(R.id.background, pendingIntent)
-        remoteViews.setTextViewText(R.id.event_widget_text, widgetUpcoming)
-        remoteViews.setTextViewText(R.id.event_widget_date, formatter.format(LocalDate.now()))
-        remoteViews.setViewVisibility(R.id.event_widget_list, View.GONE)
-        if (events[0].image != null && events[0].image!!.isNotEmpty()) {
-            remoteViews.setImageViewBitmap(
-                R.id.event_widget_image,
-                byteArrayToBitmap(events[0].image!!)
-            )
-        } else remoteViews.setImageViewResource(
-            R.id.event_widget_image,
-            // Set the image depending on the event type
-            when (events[0].type) {
-                EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
-                EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
-                EventCode.DEATH.name -> R.drawable.placeholder_death_image
-                EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
-                else -> R.drawable.placeholder_other_image
-            }
-        )
-        // Instruct the widget manager to update the widget
-        appWidgetManager.updateAppWidget(thisWidget, remoteViews)
+    private fun updateWidget() {
+        val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+        intent.component = ComponentName(requireContext(), EventWidgetProvider::class.java)
+        requireContext().sendBroadcast(intent)
     }
 
-    // Insert the necessary information in the upcoming event cardview (and confetti)
+    // Insert the necessary information in the upcoming event card view (and confetti)
     private fun insertUpcomingEvents(events: List<EventResult>) {
         // First thing first, get the next events
         val nextEvents: List<EventResult> =

@@ -24,7 +24,7 @@
             android:title="@string/additional_notification_name"
             app:iconSpaceReserved="false" />
 
-        <SwitchPreference
+        <SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="hide_images"
             android:summaryOff="@string/hide_images_description_off"
@@ -32,7 +32,7 @@
             android:title="@string/hide_images"
             app:iconSpaceReserved="false" />
 
-        <SwitchPreference
+        <SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="notification_only_favorites"
             android:summaryOff="@string/notification_only_favorites_description_off"
@@ -40,7 +40,7 @@
             android:title="@string/notification_only_favorites"
             app:iconSpaceReserved="false" />
 
-        <SwitchPreference
+        <SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="surname_first"
             android:summaryOff="@string/surname_first_description_off"
@@ -73,7 +73,7 @@
             android:title="@string/accent_name"
             app:iconSpaceReserved="false" />
 
-        <SwitchPreference
+        <SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="shimmer"
             android:summaryOff="@string/shimmer_description_off"
@@ -81,7 +81,7 @@
             android:title="@string/shimmer_name"
             app:iconSpaceReserved="false" />
 
-        <SwitchPreference
+        <SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="vibration"
             android:summaryOff="@string/vibration_description_off"

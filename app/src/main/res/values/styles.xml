@@ -10,11 +10,14 @@
         <item name="colorPrimary">@color/colorAccent</item>
         <item name="colorPrimaryContainer">@color/colorAccentTranslucent</item>
         <item name="colorSecondary">@color/colorAccent</item>
-        <item name="colorSecondaryContainer">@color/colorAccentTranslucent</item> <!-- Navbar halo -->
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorSecondaryContainer">@color/colorAccentTranslucent
+        </item> <!-- Navbar halo -->
+        <item name="colorTertiary">@color/colorAccent</item>
+        <item name="colorTertiaryContainer">@color/colorAccentTranslucent</item>
         <item name="android:statusBarColor">@color/colorBackground</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
+        <item name="android:textColorTertiary">@color/textColorSecondary</item>
         <item name="android:navigationBarColor">@color/deepGray</item>
         <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
         <item name="materialTimePickerTheme">@style/ThemeOverlay.App.TimePicker</item>
@@ -23,21 +26,24 @@
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
         <item name="alertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
         <item name="colorSurface">@color/colorSurface</item>
+        <item name="switchStyle">@style/CustomMaterialSwitch</item>
+        <item name="bottomNavigationStyle">@style/CustomBottomNavigation</item>
     </style>
 
-    <style name="AppTheme.Monet" parent="AppTheme.Monet.Base" />
-
-    <style name="AppTheme.Monet.Base" parent="Theme.Material3.DynamicColors.DayNight">
+    <!-- Monet theme -->
+    <style name="AppTheme.Monet" parent="Theme.Material3.DynamicColors.DayNight">
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
         <item name="materialTimePickerTheme">@style/ThemeOverlay.App.TimePicker</item>
         <item name="snackbarStyle">@style/Widget.App.Snackbar</item>
         <item name="snackbarTextViewStyle">@style/MaterialSnackbarTextViewTheme</item>
-        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog.Monet</item>
-        <item name="alertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
-        <item name="windowActionBar">false</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog.Monet
+        </item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog.Monet</item>
         <item name="windowNoTitle">true</item>
+        <item name="switchStyle">@style/Widget.Material3.CompoundButton.MaterialSwitch</item>
+        <item name="android:navigationBarColor">?attr/colorSurface</item>
     </style>
 
     <!-- Splash screen theme -->
@@ -75,6 +81,7 @@
     <style name="ThemeOverlay.App.MaterialAlertDialog.Monet" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
         <item name="dialogCornerRadius">@dimen/rounded_corners</item>
+        <item name="android:background">@drawable/dialog_bg_monet</item>
     </style>
 
     <!-- Note: shape appearance doesn't work with the preference dialogs (they're not material) -->
@@ -96,7 +103,8 @@
     <!-- Date picker theme -->
     <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar">
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
-        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
+        </item>
         <item name="errorIconDrawable">@drawable/ic_alert_24dp</item>
         <item name="errorIconTint">?colorAccent</item>
         <item name="boxStrokeErrorColor">@color/redError</item>
@@ -114,7 +122,8 @@
 
     <!-- Time picker theme -->
     <style name="ThemeOverlay.App.TimePicker" parent="@style/ThemeOverlay.MaterialComponents.TimePicker">
-        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
+        </item>
         <item name="boxCornerRadiusBottomEnd">@dimen/text_field_corner</item>
         <item name="boxCornerRadiusTopEnd">@dimen/text_field_corner</item>
         <item name="boxCornerRadiusBottomStart">@dimen/text_field_corner</item>
@@ -125,7 +134,8 @@
 
     <!-- Monet time picker theme -->
     <style name="ThemeOverlay.App.TimePicker.Monet" parent="@style/ThemeOverlay.MaterialComponents.TimePicker">
-        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
+        </item>
         <item name="boxCornerRadiusBottomEnd">@dimen/text_field_corner</item>
         <item name="boxCornerRadiusTopEnd">@dimen/text_field_corner</item>
         <item name="boxCornerRadiusBottomStart">@dimen/text_field_corner</item>
@@ -143,6 +153,20 @@
 
     <style name="ShapeAppearance.App.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
         <item name="cornerSize">@dimen/rounded_corners</item>
+    </style>
+
+    <!-- Bottom navigation for non-monet accents -->
+    <style name="CustomBottomNavigation" parent="Widget.Material3.BottomNavigationView">
+        <item name="backgroundTint">?android:statusBarColor</item>
+        <item name="itemTextColor">@drawable/bottom_navbar_item</item>
+    </style>
+
+    <!-- Switch for non-monet accents -->
+    <style name="CustomMaterialSwitch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="thumbTint">?attr/colorPrimary</item>
+        <item name="thumbIconTint">?colorSurface</item>
+        <item name="trackTint">@color/goodGrayTranslucent</item>
+        <item name="trackDecorationTint">?attr/colorPrimary</item>
     </style>
 
     <!-- Accent styles -->

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/eventWidgetRowItem"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:hapticFeedbackEnabled="false"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/recycler_padding"
+    android:paddingVertical="@dimen/between_row_padding">
+
+    <TextView
+        android:id="@+id/eventWidgetRowPerson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/in_row_padding"
+        android:paddingVertical="@dimen/in_row_padding"
+        android:text="@string/insert_name_hint"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/eventWidgetRowTypeImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_dot_black_24dp"
+            android:backgroundTint="@color/goodGrayTotalTranslucent"
+            android:contentDescription="@string/event_type_hint"
+            android:maxWidth="@dimen/preview_dot_size"
+            android:maxHeight="@dimen/preview_dot_size"
+            android:padding="@dimen/event_type_badge_padding"
+            android:src="@drawable/ic_anniversary_24dp"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/eventWidgetRowDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/in_row_button_padding"
+            android:paddingVertical="@dimen/in_row_padding"
+            android:text="@string/birth_date"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2" />
+
+    </LinearLayout>
+
+</LinearLayout>

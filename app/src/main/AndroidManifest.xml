@@ -27,7 +27,7 @@
         tools:ignore="UnusedAttribute">
 
         <receiver
-            android:name=".widgets.EventWidget"
+            android:name=".widgets.EventWidgetProvider"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -64,6 +64,9 @@
             android:label="@string/app_welcome"
             android:noHistory="true"
             android:theme="@style/AppTheme" />
+
+        <service android:name=".widgets.EventWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
     </application>
 

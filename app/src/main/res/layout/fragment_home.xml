@@ -15,6 +15,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/homeMiniFab"
+        style="?attr/floatingActionButtonSmallStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:alpha="@dimen/mini_fab_opacity"
@@ -23,7 +24,6 @@
         android:padding="@dimen/between_row_padding"
         app:backgroundTint="?android:textColorPrimary"
         app:elevation="@dimen/bottom_navbar_elevation"
-        app:fabSize="mini"
         app:layout_constraintBottom_toTopOf="@id/homeCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,8 +45,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:rippleColor="?colorAccent"
-        app:strokeColor="@color/goodGrayTranslucent"
+        app:rippleColor="?attr/colorSecondary"
+        app:strokeColor="?attr/colorOutline"
         app:strokeWidth="@dimen/card_stroke">
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -6,7 +6,7 @@
     android:layout_gravity="center_vertical"
     android:gravity="center_vertical"
     android:alpha=".9"
-    android:background="?android:attr/colorBackground"
+    android:background="?attr/colorSurface"
     android:orientation="vertical"
     android:padding="@dimen/widget_padding">
 
@@ -18,14 +18,14 @@
         android:paddingEnd="@dimen/widget_margin">
 
         <ImageView
-            android:id="@+id/event_widget_image"
+            android:id="@+id/eventWidgetImage"
             android:layout_height="@dimen/widget_image_size"
             android:layout_width="@dimen/widget_image_size"
             android:layout_gravity="start"
             android:contentDescription="@string/app_intro_image_content_description"
             android:foreground="@drawable/ic_inverted_circle_foreground_black_24dp"
-            android:foregroundTint="?android:attr/colorBackground"
-            android:src="@drawable/placeholder_anniversary_image" />
+            android:foregroundTint="?attr/colorSurface"
+            android:src="@drawable/placeholder_other_image" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -34,7 +34,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/event_widget_title"
+                android:id="@+id/eventWidgetTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|end"
@@ -42,20 +42,20 @@
                 android:text="@string/appwidget_upcoming"
                 android:textAlignment="viewEnd"
                 android:textAllCaps="true"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-                android:textColor="?android:attr/colorAccent"
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                android:textColor="?attr/colorPrimary"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/event_widget_date"
+                android:id="@+id/eventWidgetDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|end"
                 android:contentDescription="@string/appwidget_upcoming"
-                android:text="@string/insert_date_hint"
+                android:text="@string/unknown"
                 android:textAlignment="viewEnd"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                android:textColor="?android:attr/textColorPrimary" />
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                android:textColor="?attr/colorOnBackground" />
 
             <!-- Use an Imageview to create a divider -->
             <ImageView
@@ -64,14 +64,14 @@
                 android:layout_marginStart="@dimen/linear_vertical_margin"
                 android:layout_marginTop="@dimen/widget_margin"
                 android:background="@drawable/custom_cursor"
-                android:backgroundTint="?android:attr/colorAccent"
+                android:backgroundTint="?attr/colorPrimary"
                 android:contentDescription="@string/appwidget_upcoming" />
 
         </LinearLayout>
     </LinearLayout>
 
     <TextView
-        android:id="@+id/event_widget_text"
+        android:id="@+id/eventWidgetText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
@@ -80,11 +80,11 @@
         android:layout_marginTop="@dimen/widget_margin"
         android:text="@string/appwidget_upcoming"
         android:textAlignment="viewEnd"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-        android:textColor="?android:attr/textColorPrimary" />
+        android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+        android:textColor="?attr/colorOnBackground" />
 
     <ListView
-        android:id="@+id/event_widget_list"
+        android:id="@+id/eventWidgetList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="bottom"

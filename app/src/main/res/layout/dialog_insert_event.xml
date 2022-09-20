@@ -87,7 +87,7 @@
             app:startIconDrawable="@drawable/ic_cool_black_24dp"
             app:startIconTint="@color/goodGray">
 
-            <!-- Someone uses 2 names for anniversaries in this fiels -->
+            <!-- Someone uses 2 names for anniversaries in this fields -->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nameEvent"
                 android:layout_width="match_parent"
@@ -178,7 +178,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/countYearSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -194,7 +194,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dateEventLayout"
-            app:switchPadding="@dimen/text_switch_padding" />
+            app:switchPadding="@dimen/text_switch_padding"
+            app:switchTextAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

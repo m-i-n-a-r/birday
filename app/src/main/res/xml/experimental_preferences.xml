@@ -7,14 +7,14 @@
         android:selectable="false" />
 
     <!-- Auto import on each start -->
-    <SwitchPreference
+    <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="auto_import"
         android:title="@string/launch_auto_import"
         app:iconSpaceReserved="false" />
 
     <!-- Feature preview (currently overview screen) -->
-    <SwitchPreference
+    <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="feature_preview"
         android:title="@string/feature_preview"

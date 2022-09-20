@@ -49,7 +49,6 @@ fun checkName(submission: String): Boolean {
     if (submission.startsWith('-')) return false
     if (submission.contains("-\'")) return false
     loop@ for (s in submission.replace("\\s".toRegex(), "")) {
-        println("Scanning character $s")
         // Stop when the first invalid character is found
         when {
             // A surely improvable way to support non the red heart and more "ancient" emojis

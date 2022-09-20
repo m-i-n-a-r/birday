@@ -4,7 +4,6 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorSurface"
     tools:context=".activities.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
@@ -40,7 +39,6 @@
             app:itemPaddingTop="@dimen/bottom_navbar_item_padding"
             app:itemPaddingBottom="@dimen/bottom_navbar_item_padding"
             app:itemIconTint="@drawable/bottom_navbar_item"
-            app:itemRippleColor="?colorAccent"
             app:labelVisibilityMode="selected"
             app:menu="@menu/navigation_bottomappbar" />
 

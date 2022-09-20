@@ -3,8 +3,10 @@ package com.minar.birday.widgets
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.view.View
 import android.widget.RemoteViews
 import com.minar.birday.R
@@ -20,16 +22,44 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
+
 @ExperimentalStdlibApi
-class EventWidget : AppWidgetProvider() {
+class EventWidgetProvider : AppWidgetProvider() {
+
+    override fun onDeleted(context: Context?, appWidgetIds: IntArray?) {
+        super.onDeleted(context, appWidgetIds)
+    }
+
+    override fun onDisabled(context: Context?) {
+        super.onDisabled(context)
+    }
+
+    override fun onEnabled(context: Context?) {
+        super.onEnabled(context)
+    }
+
+    override fun onReceive(context: Context, intent: Intent) {
+        val action = intent.action
+        if (action.equals(AppWidgetManager.ACTION_APPWIDGET_UPDATE)) {
+            val mgr = AppWidgetManager.getInstance(context)
+            val cn = ComponentName(context, EventWidgetProvider::class.java)
+            mgr.getAppWidgetIds(cn).forEach { appWidgetId ->
+                updateAppWidget(context, mgr, appWidgetId)
+            }
+        }
+        super.onReceive(context, intent)
+    }
 
     override fun onUpdate(
         context: Context,
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray
     ) {
-        // There may be multiple widgets active, so update all of them
-        for (appWidgetId in appWidgetIds) updateAppWidget(context, appWidgetManager, appWidgetId)
+        // Update each of the widgets with the remote adapter
+        appWidgetIds.forEach { appWidgetId ->
+            updateAppWidget(context, appWidgetManager, appWidgetId)
+        }
+        super.onUpdate(context, appWidgetManager, appWidgetIds)
     }
 }
 
@@ -55,26 +85,36 @@ internal fun updateAppWidget(
             )
         }"
 
+        println("UPDATING, LIST IS ${nextEvents.size} LONG aaand $widgetUpcoming")
+
         // Set the texts and the intent (the dark/light option has been deleted)
         val views = RemoteViews(context.packageName, R.layout.event_widget)
         val intent = Intent(context, MainActivity::class.java)
+        // TODO Another instance of the app is launched, creating a stack of home screens
         val pendingIntent =
             PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
         views.setOnClickPendingIntent(R.id.background, pendingIntent)
-        views.setTextViewText(R.id.event_widget_text, widgetUpcoming)
-        views.setTextViewText(R.id.event_widget_date, formatter.format(LocalDate.now()))
-        views.setViewVisibility(R.id.event_widget_list, View.GONE)
+        views.setTextViewText(R.id.eventWidgetText, widgetUpcoming)
+        views.setTextViewText(R.id.eventWidgetDate, formatter.format(LocalDate.now()))
+
+        // If there are zero events, hide the list
+        if (nextEvents.isEmpty()) {
+            views.setViewVisibility(R.id.eventWidgetList, View.GONE)
+        } else {
+            views.setViewVisibility(R.id.eventWidgetList, View.VISIBLE)
+        }
 
         // If there are no events, leave the widget as is
         if (nextEvents.isEmpty()) return@Thread
 
+        // Else proceed to fill the data for the next event
         if (nextEvents[0].image != null && nextEvents[0].image!!.isNotEmpty()) {
             views.setImageViewBitmap(
-                R.id.event_widget_image,
+                R.id.eventWidgetImage,
                 byteArrayToBitmap(nextEvents[0].image!!)
             )
         } else views.setImageViewResource(
-            R.id.event_widget_image,
+            R.id.eventWidgetImage,
             // Set the image depending on the event type, the drawable are a b&w version
             when (nextEvents[0].type) {
                 EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
@@ -85,8 +125,28 @@ internal fun updateAppWidget(
             }
         )
 
+        // Set up the intent that starts the EventViewService, which will provide the views
+        Intent(context, EventWidgetService::class.java).apply {
+            // Add the widget ID to the intent extras.
+            putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+            data = Uri.parse(toUri(Intent.URI_INTENT_SCHEME))
+        }
+        // Instantiate the RemoteViews object for the widget layout
+        RemoteViews(context.packageName, R.layout.event_widget).apply {
+            // Set up the RemoteViews object to use a RemoteViews adapter and populate the data
+            setRemoteAdapter(R.id.eventWidgetList, intent)
+
+            // The empty view is displayed when the collection has no items
+            setEmptyView(R.id.eventWidgetList, R.id.eventWidgetDate)
+        }
+
+        // Fill the list with the next events
+        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.eventWidgetList)
+
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views)
     }
     thread.start()
 }
+
+
