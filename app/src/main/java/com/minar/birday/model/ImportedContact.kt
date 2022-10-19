@@ -6,7 +6,8 @@ data class ImportedContact(
     val completeName: String,
     val eventDate: String,
     val image: ByteArray? = null,
-    val eventType: String = EventCode.BIRTHDAY.name
+    val eventType: String = EventCode.BIRTHDAY.name,
+    val customLabel: String? = null
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
