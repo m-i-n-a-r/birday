@@ -82,12 +82,6 @@ class MainActivity : AppCompatActivity() {
     private var imageChosen = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Handle the splash screen transition.
-        val splashScreen = installSplashScreen()
-        // Keep the splashscreen until the data are ready
-        splashScreen.setKeepOnScreenCondition {
-            mainViewModel.allEvents.value == null
-        }
         super.onCreate(savedInstanceState)
 
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
