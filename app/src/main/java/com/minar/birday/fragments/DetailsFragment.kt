@@ -38,6 +38,7 @@ import com.afollestad.materialdialogs.customview.customView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.transition.MaterialContainerTransform
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
@@ -205,17 +206,14 @@ class DetailsFragment : Fragment() {
             act.vibrate()
             val dialogNotesBinding = DialogNotesBinding.inflate(LayoutInflater.from(context))
             val notesTitle = "${getString(R.string.notes)} - ${event.name}"
-            MaterialDialog(act).show {
-                title(text = notesTitle)
-                icon(R.drawable.ic_note_24dp)
-                cornerRadius(res = R.dimen.rounded_corners)
-                customView(view = dialogNotesBinding.root)
-                val noteTextField = dialogNotesBinding.favoritesNotes
-                noteTextField.setText(event.notes)
-                negativeButton(R.string.cancel) {
-                    dismiss()
-                }
-                positiveButton {
+            val noteTextField = dialogNotesBinding.favoritesNotes
+            noteTextField.setText(event.notes)
+
+            // Native dialog
+            MaterialAlertDialogBuilder(act)
+                .setTitle(notesTitle)
+                .setIcon(R.drawable.ic_note_24dp)
+                .setPositiveButton(resources.getString(android.R.string.ok)) { dialog, _ ->
                     val note = noteTextField.text.toString().trim()
                     val tuple = Event(
                         id = event.id,
@@ -237,9 +235,13 @@ class DetailsFragment : Fragment() {
                     else
                         (notesButton as MaterialButton).icon =
                             AppCompatResources.getDrawable(act, R.drawable.ic_note_24dp)
-                    dismiss()
+                    dialog.dismiss()
                 }
-            }
+                .setNegativeButton(resources.getString(android.R.string.cancel)) { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .setView(dialogNotesBinding.root)
+                .show()
         }
 
         val formatter: DateTimeFormatter =
@@ -640,7 +642,7 @@ class DetailsFragment : Fragment() {
                 val source = ImageDecoder.createSource(act.contentResolver, data)
                 bitmap = ImageDecoder.decodeBitmap(source)
             }
-        } catch (e: IOException) {
+        } catch (_: IOException) {
         }
         if (bitmap == null) return
 

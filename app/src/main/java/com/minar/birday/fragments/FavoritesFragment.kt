@@ -17,6 +17,7 @@ import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.FavoritesAdapter
@@ -219,18 +220,15 @@ class FavoritesFragment : Fragment() {
         act.vibrate()
         _dialogNotesBinding = DialogNotesBinding.inflate(LayoutInflater.from(context))
         val event = adapter.getItem(position)
-        val title = getString(R.string.notes) + " - " + event.name
-        MaterialDialog(act).show {
-            title(text = title)
-            icon(R.drawable.ic_note_24dp)
-            cornerRadius(res = R.dimen.rounded_corners)
-            customView(view = dialogNotesBinding.root)
-            val noteTextField = dialogNotesBinding.favoritesNotes
-            noteTextField.setText(event.notes)
-            negativeButton(R.string.cancel) {
-                dismiss()
-            }
-            positiveButton {
+        val notesTitle = "${getString(R.string.notes)} - ${event.name}"
+        val noteTextField = dialogNotesBinding.favoritesNotes
+        noteTextField.setText(event.notes)
+
+        // Native dialog
+        MaterialAlertDialogBuilder(act)
+            .setTitle(notesTitle)
+            .setIcon(R.drawable.ic_note_24dp)
+            .setPositiveButton(resources.getString(android.R.string.ok)) { dialog, _ ->
                 val note = noteTextField.text.toString().trim()
                 val tuple = Event(
                     id = event.id,
@@ -244,9 +242,13 @@ class FavoritesFragment : Fragment() {
                     image = event.image
                 )
                 mainViewModel.update(tuple)
-                dismiss()
+                dialog.dismiss()
             }
-        }
+            .setNegativeButton(resources.getString(android.R.string.cancel)) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setView(dialogNotesBinding.root)
+            .show()
     }
 
     // Remove the placeholder or return if the placeholder was already removed before
