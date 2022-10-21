@@ -75,7 +75,7 @@ object AppRater {
                     editor.commit()
                     try {
                         (context as MainActivity).showSnackbar(":'(")
-                    } catch (e: Exception) {
+                    } catch (_: Exception) {
                     }
                     dismiss()
                 }
