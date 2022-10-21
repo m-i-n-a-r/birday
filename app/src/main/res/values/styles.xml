@@ -61,7 +61,7 @@
     </style>
 
     <!-- Widget theme -->
-    <style name="WidgetTheme" parent="Theme.Material3.DayNight">
+    <style name="WidgetTheme" parent="Theme.Material3.DynamicColors.DayNight">
         <item name="appWidgetRadius">@dimen/rounded_corners</item>
         <item name="appWidgetInnerRadius">@dimen/rounded_corners_inner</item>
         <item name="appWidgetPadding">@dimen/activity_horizontal_margin</item>
