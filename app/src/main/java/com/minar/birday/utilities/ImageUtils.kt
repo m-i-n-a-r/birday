@@ -2,6 +2,8 @@ package com.minar.birday.utilities
 
 import android.graphics.*
 import android.graphics.drawable.Drawable
+import android.os.Handler
+import android.os.Looper
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
@@ -10,7 +12,9 @@ import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.minar.birday.R
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
+import kotlinx.coroutines.delay
 import java.io.ByteArrayOutputStream
+import kotlin.time.Duration
 
 
 // Given a bitmap, convert it to a byte array
@@ -77,11 +81,13 @@ fun setEventImageOrPlaceholder(event: EventResult, eventImage: ImageView) {
 }
 
 // Loop an animated vector drawable indefinitely
-fun ImageView.applyLoopingAnimatedVectorDrawable(@DrawableRes animatedVector: Int) {
+fun ImageView.applyLoopingAnimatedVectorDrawable(@DrawableRes animatedVector: Int, endDelay: Long = 0) {
     val animated = AnimatedVectorDrawableCompat.create(context, animatedVector)
     animated?.registerAnimationCallback(object : Animatable2Compat.AnimationCallback() {
         override fun onAnimationEnd(drawable: Drawable?) {
-            this@applyLoopingAnimatedVectorDrawable.post { animated.start() }
+            Handler(Looper.getMainLooper()).postDelayed({
+                this@applyLoopingAnimatedVectorDrawable.post { animated.start() }
+            }, endDelay)
         }
     })
     this.setImageDrawable(animated)

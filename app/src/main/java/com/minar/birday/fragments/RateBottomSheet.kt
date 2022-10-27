@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalStdlibApi::class)
-
 package com.minar.birday.fragments
 
 import android.content.Intent
@@ -16,6 +14,7 @@ import com.minar.birday.databinding.BottomSheetRateBinding
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 
 
+@ExperimentalStdlibApi
 class RateBottomSheet(activity: MainActivity, editor: SharedPreferences.Editor) :
     BottomSheetDialogFragment() {
     private val activity: MainActivity
@@ -41,7 +40,7 @@ class RateBottomSheet(activity: MainActivity, editor: SharedPreferences.Editor) 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // Animate the drawable in loop
         val noRecentImage = binding.rateImage
-       noRecentImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_review_star)
+       noRecentImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_review_star, 1500L)
         val positiveButton = binding.positiveButton
         val negativeButton = binding.negativeButton
         val neutralButton = binding.neutralButton

@@ -2,13 +2,10 @@ package com.minar.birday.fragments
 
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.provider.Telephony
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OVER_SCROLL_ALWAYS
@@ -24,14 +21,9 @@ import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
-import com.afollestad.materialdialogs.LayoutMode
-import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.bottomsheets.BottomSheet
-import com.afollestad.materialdialogs.customview.customView
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.EventAdapter
-import com.minar.birday.databinding.DialogAppsEventBinding
 import com.minar.birday.databinding.FragmentHomeBinding
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventDataItem
@@ -54,8 +46,6 @@ class HomeFragment : Fragment() {
     lateinit var sharedPrefs: SharedPreferences
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private var _dialogAppsEventBinding: DialogAppsEventBinding? = null
-    private val dialogAppsEventBinding get() = _dialogAppsEventBinding!!
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -172,7 +162,6 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         // Reset each binding to null to follow the best practice
         _binding = null
-        _dialogAppsEventBinding = null
     }
 
     // Functions to update, delete and create an Event object to pass instead of the returning object passed
@@ -338,78 +327,9 @@ class HomeFragment : Fragment() {
     // Show a bottom sheet containing some quick apps
     private fun showQuickAppsSheet() {
         act.vibrate()
-        _dialogAppsEventBinding = DialogAppsEventBinding.inflate(LayoutInflater.from(context))
-        val dialog =
-            MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
-                cornerRadius(res = R.dimen.rounded_corners)
-                title(R.string.event_apps)
-                icon(R.drawable.ic_apps_24dp)
-                message(R.string.event_apps_description)
-                customView(view = dialogAppsEventBinding.root, scrollable = true)
-            }
-        // Using view binding to fetch the buttons
-        val whatsAppButton = dialogAppsEventBinding.whatsappButton
-        val dialerButton = dialogAppsEventBinding.dialerButton
-        val messagesButton = dialogAppsEventBinding.messagesButton
-        val telegramButton = dialogAppsEventBinding.telegramButton
-        val signalButton = dialogAppsEventBinding.signalButton
-        val ctx: Context = requireContext()
-
-        whatsAppButton.setOnClickListener {
-            act.vibrate()
-            launchOrOpenAppStore("com.whatsapp")
-            dialog.dismiss()
-        }
-
-        dialerButton.setOnClickListener {
-            act.vibrate()
-            try {
-                val dialIntent = Intent(Intent.ACTION_DIAL)
-                ctx.startActivity(dialIntent)
-            } catch (e: Exception) {
-                act.showSnackbar(ctx.getString(R.string.no_default_dialer))
-            }
-            dialog.dismiss()
-        }
-
-        messagesButton.setOnClickListener {
-            act.vibrate()
-            try {
-                val defaultSmsPackage = Telephony.Sms.getDefaultSmsPackage(requireContext())
-                val smsIntent: Intent? =
-                    ctx.packageManager.getLaunchIntentForPackage(defaultSmsPackage)
-                ctx.startActivity(smsIntent)
-            } catch (e: Exception) {
-                act.showSnackbar(ctx.getString(R.string.no_default_sms))
-            }
-            dialog.dismiss()
-        }
-
-        telegramButton.setOnClickListener {
-            act.vibrate()
-            launchOrOpenAppStore("org.telegram.messenger")
-            dialog.dismiss()
-        }
-
-        signalButton.setOnClickListener {
-            act.vibrate()
-            launchOrOpenAppStore("org.thoughtcrime.securesms")
-            dialog.dismiss()
-        }
-    }
-
-    private fun launchOrOpenAppStore(packageName: String) {
-        try {
-            val intent = requireContext().packageManager.getLaunchIntentForPackage(packageName)
-            requireContext().startActivity(intent)
-        } catch (e: Exception) {
-            startActivity(
-                Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("https://play.google.com/store/apps/details?id=${packageName}")
-                )
-            )
-        }
+        val bottomSheet = QuickAppsBottomSheet(act)
+        if (bottomSheet.isAdded) return
+        bottomSheet.show(act.supportFragmentManager, "quick_apps_bottom_sheet")
     }
 
     // Activate the confetti effect (stream, 3 colors, 4 shapes)
