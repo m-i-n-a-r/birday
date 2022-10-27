@@ -72,5 +72,6 @@
     <dimen name="custom_preference_subtitle_text_size">13.6sp</dimen>
     <dimen name="preview_dot_size">24dp</dimen>
     <dimen name="bottom_sheet_peek_height">1000dp</dimen>
+    <dimen name="bottom_sheet_icon_size">36dp</dimen>
 
 </resources>
