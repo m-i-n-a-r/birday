@@ -46,7 +46,7 @@
                     android:name="person"
                     android:pathData="M 12 2 C 14.209 2 16 3.791 16 6 C 16 8.209 14.209 10 12 10 C 9.791 10 8 8.209 8 6 C 8 3.791 9.791 2 12 2 M 12 12 C 16.42 12 20 13.79 20 16 L 20 18 L 4 18 L 4 16 C 4 13.79 7.58 12 12 12"
                     android:fillColor="@color/goodGray"
-                    android:strokeColor="?colorAccent"
+                    android:strokeColor="?attr/colorPrimary"
                     android:strokeAlpha="0.7"/>
             </group>
         </vector>
@@ -124,14 +124,14 @@
                     android:startOffset="600"
                     android:duration="1000"
                     android:valueFrom="@color/goodGray"
-                    android:valueTo="?colorAccent"
+                    android:valueTo="?attr/colorPrimary"
                     android:valueType="colorType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
                 <objectAnimator
                     android:propertyName="fillColor"
                     android:startOffset="2000"
                     android:duration="500"
-                    android:valueFrom="?colorAccent"
+                    android:valueFrom="?attr/colorPrimary"
                     android:valueTo="@color/goodGray"
                     android:valueType="colorType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
@@ -146,14 +146,14 @@
                     android:startOffset="300"
                     android:duration="1000"
                     android:valueFrom="@color/goodGray"
-                    android:valueTo="?colorAccent"
+                    android:valueTo="?attr/colorPrimary"
                     android:valueType="colorType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
                 <objectAnimator
                     android:propertyName="fillColor"
                     android:startOffset="2000"
                     android:duration="500"
-                    android:valueFrom="?colorAccent"
+                    android:valueFrom="?attr/colorPrimary"
                     android:valueTo="@color/goodGray"
                     android:valueType="colorType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
@@ -167,14 +167,14 @@
                     android:propertyName="fillColor"
                     android:duration="1000"
                     android:valueFrom="@color/goodGray"
-                    android:valueTo="?colorAccent"
+                    android:valueTo="?attr/colorPrimary"
                     android:valueType="colorType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
                 <objectAnimator
                     android:propertyName="fillColor"
                     android:startOffset="2000"
                     android:duration="500"
-                    android:valueFrom="?colorAccent"
+                    android:valueFrom="?attr/colorPrimary"
                     android:valueTo="@color/goodGray"
                     android:valueType="colorType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>

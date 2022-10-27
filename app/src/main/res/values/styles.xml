@@ -105,9 +105,9 @@
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
         </item>
         <item name="errorIconDrawable">@drawable/ic_alert_24dp</item>
-        <item name="errorIconTint">?colorAccent</item>
+        <item name="errorIconTint">?attr/colorPrimary</item>
         <item name="boxStrokeErrorColor">@color/redError</item>
-        <item name="errorTextColor">?colorAccent</item>
+        <item name="errorTextColor">?attr/colorPrimary</item>
         <item name="textInputStyle">@style/Widget.Material3.TextInputLayout.OutlinedBox</item>
         <item name="boxCornerRadiusBottomEnd">@dimen/text_field_corner</item>
         <item name="boxCornerRadiusTopEnd">@dimen/text_field_corner</item>

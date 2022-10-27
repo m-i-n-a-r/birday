@@ -83,7 +83,7 @@
         android:text="@string/unknown"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-        android:textColor="?colorAccent"
+        android:textColor="?attr/colorPrimary"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

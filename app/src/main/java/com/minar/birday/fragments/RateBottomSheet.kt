@@ -39,8 +39,8 @@ class RateBottomSheet(activity: MainActivity, editor: SharedPreferences.Editor) 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // Animate the drawable in loop
-        val noRecentImage = binding.rateImage
-       noRecentImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_review_star, 1500L)
+        val titleIcon = binding.rateImage
+        titleIcon.applyLoopingAnimatedVectorDrawable(R.drawable.animated_review_star, 1500L)
         val positiveButton = binding.positiveButton
         val negativeButton = binding.negativeButton
         val neutralButton = binding.neutralButton

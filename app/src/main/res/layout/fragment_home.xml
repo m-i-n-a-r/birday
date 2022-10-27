@@ -28,9 +28,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/homeCard"
-        app:rippleColor="?colorAccent"
+        app:rippleColor="?attr/colorPrimary"
         app:srcCompat="@drawable/ic_arrow_up_24dp"
-        app:tint="?colorAccent" />
+        app:tint="?attr/colorPrimary" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/homeCard"
@@ -152,14 +152,14 @@
                 app:boxStrokeWidth="@dimen/card_stroke"
                 app:endIconContentDescription="@string/cancel"
                 app:endIconMode="clear_text"
-                app:endIconTint="?colorAccent"
+                app:endIconTint="?attr/colorPrimary"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/homeCardShimmer"
                 app:startIconContentDescription="@string/search_event"
                 app:startIconDrawable="@drawable/ic_person_search_24dp"
-                app:startIconTint="?colorAccent">
+                app:startIconTint="?attr/colorPrimary">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/homeSearch"

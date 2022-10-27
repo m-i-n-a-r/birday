@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalStdlibApi::class)
-
 package com.minar.birday.fragments
 
 import android.content.Intent
@@ -16,6 +14,7 @@ import com.minar.birday.databinding.BottomSheetQuickAppsBinding
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 
 
+@ExperimentalStdlibApi
 class QuickAppsBottomSheet(activity: MainActivity) :
     BottomSheetDialogFragment() {
     private var _binding: BottomSheetQuickAppsBinding? = null
@@ -34,14 +33,14 @@ class QuickAppsBottomSheet(activity: MainActivity) :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // Animate the drawable in loop
-        val noRecentImage = binding.quickAppsImage
+        val titleIcon = binding.quickAppsImage
         val whatsAppButton = binding.whatsappButton
         val messagesButton = binding.messagesButton
         val dialerButton = binding.dialerButton
         val telegramButton = binding.telegramButton
         val signalButton = binding.signalButton
 
-       noRecentImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_quick_apps, 1500L)
+        titleIcon.applyLoopingAnimatedVectorDrawable(R.drawable.animated_quick_apps, 1500L)
         whatsAppButton.setOnClickListener {
             act.vibrate()
             launchOrOpenAppStore("com.whatsapp")

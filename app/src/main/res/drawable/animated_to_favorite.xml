@@ -45,7 +45,7 @@ xmlns:aapt="http://schemas.android.com/aapt">
                 android:startOffset="250"
                 android:duration="250"
                 android:valueFrom="@color/goodGray"
-                android:valueTo="?colorAccent"
+                android:valueTo="?attr/colorPrimary"
                 android:valueType="colorType"
                 android:interpolator="@android:interpolator/fast_out_slow_in"/>
             <objectAnimator
@@ -68,7 +68,7 @@ xmlns:aapt="http://schemas.android.com/aapt">
                 android:propertyName="strokeColor"
                 android:startOffset="500"
                 android:duration="250"
-                android:valueFrom="?colorAccent"
+                android:valueFrom="?attr/colorPrimary"
                 android:valueTo="@color/goodGray"
                 android:valueType="colorType"
                 android:interpolator="@android:interpolator/fast_out_slow_in"/>

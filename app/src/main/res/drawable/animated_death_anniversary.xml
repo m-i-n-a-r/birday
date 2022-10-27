@@ -12,7 +12,7 @@
                 android:fillColor="@color/goodGray"
                 android:pathData="M 10 2 L 14 2 C 17.31 2 19 4.69 19 8 L 19 18.66 C 16.88 17.63 15.07 17 12 17 C 8.93 17 7.12 17.63 5 18.66 L 5 8 C 5 4.69 6.69 2 10 2 M 8 8 L 8 9.5 L 16 9.5 L 16 8 L 8 8 M 9 12 L 9 13.5 L 15 13.5 L 15 12 L 9 12 M 3 22 L 3 21.31 C 5.66 19.62 13.23 15.84 21 21.25 L 21 22 Z"
                 android:strokeWidth="0"
-                android:strokeColor="?colorAccent" />
+                android:strokeColor="?attr/colorPrimary" />
         </vector>
     </aapt:attr>
     <target android:name="grave">

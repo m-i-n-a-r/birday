@@ -9,9 +9,9 @@
             android:viewportHeight="24">
             <path
                 android:name="halo"
-                android:fillColor="?colorAccent"
+                android:fillColor="?attr/colorPrimary"
                 android:pathData="M 12 15.985 C 7.718 15.985 4.247 11.969 4.247 8.79 C 4.247 5.611 7.718 3.393 12 3.393 C 16.282 3.393 19.753 5.611 19.753 8.79 C 19.753 11.969 16.282 15.985 12 15.985 M 12 1.595 C 6.648 1.595 2.309 4.817 2.309 8.79 C 2.309 12.764 6.648 15.985 12 15.985 C 17.352 15.985 21.691 12.764 21.691 8.79 C 21.691 4.817 17.352 1.595 12 1.595 Z"
-                android:strokeColor="?colorAccent" />
+                android:strokeColor="?attr/colorPrimary" />
             <group
                 android:name="group"
                 android:pivotX="12"

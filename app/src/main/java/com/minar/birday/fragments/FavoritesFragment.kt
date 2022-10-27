@@ -1,6 +1,5 @@
 package com.minar.birday.fragments
 
-import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.text.SpannableStringBuilder
@@ -8,21 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
-import com.afollestad.materialdialogs.LayoutMode
-import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.bottomsheets.BottomSheet
-import com.afollestad.materialdialogs.customview.customView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.FavoritesAdapter
 import com.minar.birday.databinding.DialogNotesBinding
-import com.minar.birday.databinding.DialogStatsBinding
 import com.minar.birday.databinding.FragmentFavoritesBinding
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
@@ -33,7 +26,6 @@ import com.minar.birday.utilities.isBirthday
 import com.minar.birday.viewmodels.MainViewModel
 import java.time.LocalDate
 import java.util.*
-import kotlin.math.min
 
 
 @ExperimentalStdlibApi
@@ -44,8 +36,6 @@ class FavoritesFragment : Fragment() {
     private lateinit var act: MainActivity
     private var _binding: FragmentFavoritesBinding? = null
     private val binding get() = _binding!!
-    private var _dialogStatsBinding: DialogStatsBinding? = null
-    private val dialogStatsBinding get() = _dialogStatsBinding!!
     private var _dialogNotesBinding: DialogNotesBinding? = null
     private val dialogNotesBinding get() = _dialogNotesBinding!!
     private var totalEvents = 0
@@ -212,7 +202,6 @@ class FavoritesFragment : Fragment() {
         super.onDestroyView()
         // Reset each binding to null to follow the best practice
         _binding = null
-        _dialogStatsBinding = null
         _dialogNotesBinding = null
     }
 
@@ -260,37 +249,9 @@ class FavoritesFragment : Fragment() {
     // Show a bottom sheet containing the stats
     private fun showStatsSheet() {
         act.vibrate()
-        _dialogStatsBinding = DialogStatsBinding.inflate(LayoutInflater.from(context))
-        MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
-            cornerRadius(res = R.dimen.rounded_corners)
-            title(R.string.stats_summary)
-            icon(R.drawable.ic_stats_24dp)
-            // Don't use scrollable here, instead use a nestedScrollView in the layout
-            customView(view = dialogStatsBinding.root)
-        }
-        dialogStatsBinding.fullStats.text = fullStats
-        // Prepare the toast
-        var toast: Toast? = null
-        // Display the total number of birthdays, start the animated drawable
-        dialogStatsBinding.eventCounter.text = totalEvents.toString()
-        val backgroundDrawable = dialogStatsBinding.eventCounterBackground
-        // Link the opacity of the background to the number of events (min = 0.05 / max = 100)
-        backgroundDrawable.alpha = min(0.01F * totalEvents + 0.05F, 1.0F)
-        backgroundDrawable.applyLoopingAnimatedVectorDrawable(R.drawable.animated_counter_background)
-        // Show an explanation for the counter, even if it's quite obvious
-        backgroundDrawable.setOnClickListener {
-            act.vibrate()
-            toast?.cancel()
-            @SuppressLint("ShowToast") // The toast is shown, stupid lint
-            toast = Toast.makeText(
-                context, resources.getQuantityString(
-                    R.plurals.stats_total,
-                    totalEvents,
-                    totalEvents
-                ), Toast.LENGTH_LONG
-            )
-            toast!!.show()
-        }
+        val bottomSheet = StatsBottomSheet(act, totalEvents, fullStats)
+        if (bottomSheet.isAdded) return
+        bottomSheet.show(act.supportFragmentManager, "stats_bottom_sheet")
     }
 
     // Use the generator to generate a random stat and display it

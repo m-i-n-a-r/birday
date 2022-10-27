@@ -14,7 +14,7 @@
         android:id="@+id/animated_danger"
         android:layout_width="match_parent"
         android:layout_height="@dimen/minar_banner_height"
-        android:contentDescription="@strings/experimental_settings_title"
+        android:contentDescription="@string/experimental_settings_title"
         android:src="@drawable/animated_experimental_danger" />
 
     <TextView
@@ -24,7 +24,7 @@
         android:gravity="center"
         android:text="@string/experimental_disclaimer"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-        android:textColor="?colorAccent" />
+        android:textColor="?attr/colorPrimary" />
 
     <Button
         android:id="@+id/checkGithubButton"
@@ -35,9 +35,9 @@
         android:contentDescription="@string/check_github"
         android:paddingVertical="@dimen/in_row_button_padding"
         android:text="@string/check_github"
-        android:textColor="?colorAccent"
-        android:tint="?colorAccent"
+        android:textColor="?attr/colorPrimary"
+        android:tint="?attr/colorPrimary"
         app:icon="@drawable/ic_github_black_24dp"
-        app:rippleColor="?colorAccent" />
+        app:rippleColor="?attr/colorPrimary" />
 
 </LinearLayout>

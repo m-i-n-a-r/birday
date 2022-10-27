@@ -116,7 +116,7 @@
                     android:propertyName="strokeColor"
                     android:startOffset="500"
                     android:valueFrom="@color/goodGray"
-                    android:valueTo="?colorAccent"
+                    android:valueTo="?attr/colorPrimary"
                     android:valueType="colorType" />
                 <objectAnimator
                     android:duration="1000"
@@ -146,7 +146,7 @@
                     android:propertyName="strokeColor"
                     android:startOffset="500"
                     android:valueFrom="@color/goodGray"
-                    android:valueTo="?colorAccent"
+                    android:valueTo="?attr/colorPrimary"
                     android:valueType="colorType" />
                 <objectAnimator
                     android:duration="1000"
@@ -162,13 +162,13 @@
                     android:propertyName="fillColor"
                     android:startOffset="500"
                     android:valueFrom="@color/goodGray"
-                    android:valueTo="?colorAccent" />
+                    android:valueTo="?attr/colorPrimary" />
                 <objectAnimator
                     android:duration="1000"
                     android:interpolator="@android:interpolator/fast_out_slow_in"
                     android:propertyName="strokeColor"
                     android:startOffset="2000"
-                    android:valueFrom="?colorAccent"
+                    android:valueFrom="?attr/colorPrimary"
                     android:valueTo="@color/goodGray"
                     android:valueType="colorType" />
                 <objectAnimator
@@ -176,7 +176,7 @@
                     android:interpolator="@android:anim/overshoot_interpolator"
                     android:propertyName="fillColor"
                     android:startOffset="2000"
-                    android:valueFrom="?colorAccent"
+                    android:valueFrom="?attr/colorPrimary"
                     android:valueTo="@color/goodGray" />
                 <objectAnimator
                     android:duration="1000"
