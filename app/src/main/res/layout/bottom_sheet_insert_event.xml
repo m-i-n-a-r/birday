@@ -65,7 +65,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/insertEventTitle"
                 app:shapeAppearanceOverlay="@style/roundedImageView"
-                app:strokeColor="@color/goodGray"
+                app:strokeColor="?attr/colorOutline"
                 app:strokeWidth="@dimen/card_stroke" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -88,7 +88,7 @@
                 app:layout_constraintStart_toEndOf="@id/imageEvent"
                 app:layout_constraintTop_toTopOf="@id/imageEvent"
                 app:startIconDrawable="@drawable/ic_event_type_black_24dp"
-                app:startIconTint="@color/goodGray">
+                app:startIconTint="?attr/colorOutline">
 
                 <AutoCompleteTextView
                     android:id="@+id/typeEvent"
@@ -126,7 +126,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageEvent"
                 app:startIconDrawable="@drawable/ic_cool_black_24dp"
-                app:startIconTint="@color/goodGray">
+                app:startIconTint="?attr/colorOutline">
 
                 <!-- Someone uses 2 names for anniversaries in this fields -->
                 <com.google.android.material.textfield.TextInputEditText
@@ -166,7 +166,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/nameEventLayout"
                 app:startIconDrawable="@drawable/ic_smile_24dp"
-                app:startIconTint="@color/goodGray">
+                app:startIconTint="?attr/colorOutline">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/surnameEvent"
@@ -205,7 +205,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/surnameEventLayout"
                 app:startIconDrawable="@drawable/ic_date_black_24dp"
-                app:startIconTint="@color/goodGray">
+                app:startIconTint="?attr/colorOutline">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/dateEvent"
@@ -227,11 +227,11 @@
                 android:checked="true"
                 android:drawableStart="@drawable/ic_date_question_black_24dp"
                 android:drawablePadding="@dimen/text_field_horizontal_margin"
-                android:drawableTint="@color/goodGray"
+                android:drawableTint="?attr/colorOutline"
                 android:text="@string/consider_year"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:textColor="@color/goodGray"
+                android:textColor="?attr/colorOutline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/dateEventLayout"

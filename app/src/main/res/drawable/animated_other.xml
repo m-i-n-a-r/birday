@@ -15,7 +15,7 @@
                 <path
                     android:name="dots"
                     android:pathData="M 12 2 C 13.755 2 15.48 2.462 17 3.34 C 18.52 4.217 19.783 5.48 20.66 7 C 21.538 8.52 22 10.245 22 12 C 22 13.755 21.538 15.48 20.66 17 C 19.783 18.52 18.52 19.783 17 20.66 C 15.48 21.538 13.755 22 12 22 C 9.349 22 6.804 20.946 4.929 19.071 C 3.054 17.196 2 14.651 2 12 C 2 9.349 3.054 6.804 4.929 4.929 C 6.804 3.054 9.349 2 12 2 M 12 4 C 9.879 4 7.843 4.843 6.343 6.343 C 4.843 7.843 4 9.879 4 12 C 4 14.121 4.843 16.157 6.343 17.657 C 7.843 19.157 9.879 20 12 20 C 14.121 20 16.157 19.157 17.657 17.657 C 19.157 16.157 20 14.121 20 12 C 20 9.879 19.157 7.843 17.657 6.343 C 16.157 4.843 14.121 4 12 4 M 12 10.5 C 12.398 10.5 12.779 10.658 13.061 10.939 C 13.342 11.221 13.5 11.602 13.5 12 C 13.5 12.398 13.342 12.779 13.061 13.061 C 12.779 13.342 12.398 13.5 12 13.5 C 11.602 13.5 11.221 13.342 10.939 13.061 C 10.658 12.779 10.5 12.398 10.5 12 C 10.5 11.602 10.658 11.221 10.939 10.939 C 11.221 10.658 11.602 10.5 12 10.5 M 7.5 10.5 C 7.898 10.5 8.279 10.658 8.561 10.939 C 8.842 11.221 9 11.602 9 12 C 9 12.398 8.842 12.779 8.561 13.061 C 8.279 13.342 7.898 13.5 7.5 13.5 C 7.102 13.5 6.721 13.342 6.439 13.061 C 6.158 12.779 6 12.398 6 12 C 6 11.602 6.158 11.221 6.439 10.939 C 6.721 10.658 7.102 10.5 7.5 10.5 M 16.5 10.5 C 16.898 10.5 17.279 10.658 17.561 10.939 C 17.842 11.221 18 11.602 18 12 C 18 12.398 17.842 12.779 17.561 13.061 C 17.279 13.342 16.898 13.5 16.5 13.5 C 16.102 13.5 15.721 13.342 15.439 13.061 C 15.158 12.779 15 12.398 15 12 C 15 11.602 15.158 11.221 15.439 10.939 C 15.721 10.658 16.102 10.5 16.5 10.5 Z"
-                    android:fillColor="@color/goodGray"
+                    android:fillColor="?attr/colorOutline"
                     android:strokeWidth="1"/>
             </group>
             <group
@@ -27,8 +27,8 @@
                 <path
                     android:name="ring"
                     android:pathData="M 12 20 C 9.879 20 7.843 19.157 6.343 17.657 C 4.843 16.157 4 14.121 4 12 C 4 9.879 4.843 7.843 6.343 6.343 C 7.843 4.843 9.879 4 12 4 C 14.121 4 16.157 4.843 17.657 6.343 C 19.157 7.843 20 9.879 20 12 C 20 14.121 19.157 16.157 17.657 17.657 C 16.157 19.157 14.121 20 12 20 M 12 2 C 9.349 2 6.804 3.054 4.929 4.929 C 3.054 6.804 2 9.349 2 12 C 2 14.651 3.054 17.196 4.929 19.071 C 6.804 20.946 9.349 22 12 22 C 13.755 22 15.48 21.538 17 20.66 C 18.52 19.783 19.783 18.52 20.66 17 C 21.538 15.48 22 13.755 22 12 C 22 10.245 21.538 8.52 20.66 7 C 19.783 5.48 18.52 4.217 17 3.34 C 15.48 2.462 13.755 2 12 2 Z"
-                    android:fillColor="@color/goodGray"
-                    android:strokeColor="@color/goodGray"
+                    android:fillColor="?attr/colorOutline"
+                    android:strokeColor="?attr/colorOutline"
                     android:strokeAlpha="0.7"/>
             </group>
         </vector>
@@ -103,7 +103,7 @@
                     android:propertyName="fillColor"
                     android:startOffset="300"
                     android:duration="1700"
-                    android:valueFrom="@color/goodGray"
+                    android:valueFrom="?attr/colorOutline"
                     android:valueTo="?attr/colorPrimary"
                     android:valueType="colorType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
@@ -112,7 +112,7 @@
                     android:startOffset="2000"
                     android:duration="600"
                     android:valueFrom="?attr/colorPrimary"
-                    android:valueTo="@color/goodGray"
+                    android:valueTo="?attr/colorOutline"
                     android:valueType="colorType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
             </set>

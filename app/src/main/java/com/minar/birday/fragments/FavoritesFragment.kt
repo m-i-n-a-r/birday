@@ -145,26 +145,27 @@ class FavoritesFragment : Fragment() {
                     }
 
                     // Prepare the dots
-                    val accent = act.getThemeColor(R.attr.colorAccent)
-                    overviewDot1.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    val primary = act.getThemeColor(R.attr.colorPrimary)
+                    val onPrimary = act.getThemeColor(R.attr.colorOnPrimary)
+                    overviewDot1.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText1.text = nextDays[0].toString()
-                    overviewDot2.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    overviewDot2.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText2.text = nextDays[1].toString()
-                    overviewDot3.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    overviewDot3.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText3.text = nextDays[2].toString()
-                    overviewDot4.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    overviewDot4.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText4.text = nextDays[3].toString()
-                    overviewDot5.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    overviewDot5.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText5.text = nextDays[4].toString()
-                    overviewDot6.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    overviewDot6.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText6.text = nextDays[5].toString()
-                    overviewDot7.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    overviewDot7.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText7.text = nextDays[6].toString()
-                    overviewDot8.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    overviewDot8.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText8.text = nextDays[7].toString()
-                    overviewDot9.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    overviewDot9.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText9.text = nextDays[8].toString()
-                    overviewDot10.setColorFilter(accent, android.graphics.PorterDuff.Mode.SRC_IN)
+                    overviewDot10.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText10.text = nextDays[9].toString()
 
                     // Set the opacities
@@ -193,6 +194,18 @@ class FavoritesFragment : Fragment() {
                             else -> continue
                         }
                     }
+
+                    // Make sure the text is readable
+                    if (overviewDot1.alpha > .7) overviewText1.setTextColor(onPrimary)
+                    if (overviewDot2.alpha > .7) overviewText2.setTextColor(onPrimary)
+                    if (overviewDot3.alpha > .7) overviewText3.setTextColor(onPrimary)
+                    if (overviewDot4.alpha > .7) overviewText4.setTextColor(onPrimary)
+                    if (overviewDot5.alpha > .7) overviewText5.setTextColor(onPrimary)
+                    if (overviewDot6.alpha > .7) overviewText6.setTextColor(onPrimary)
+                    if (overviewDot7.alpha > .7) overviewText7.setTextColor(onPrimary)
+                    if (overviewDot8.alpha > .7) overviewText8.setTextColor(onPrimary)
+                    if (overviewDot9.alpha > .7) overviewText9.setTextColor(onPrimary)
+                    if (overviewDot10.alpha > .7) overviewText10.setTextColor(onPrimary)
                 }
             }
         }

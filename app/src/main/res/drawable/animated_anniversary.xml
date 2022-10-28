@@ -13,7 +13,7 @@
                 android:pivotY="12">
                 <path
                     android:name="up_heart"
-                    android:fillColor="@color/goodGray"
+                    android:fillColor="?attr/colorOutline"
                     android:pathData="M 6.696 11.618 L 6.015 10.998 C 3.597 8.805 2 7.354 2 5.583 C 2 4.132 3.137 3 4.583 3 C 5.4 3 6.185 3.38 6.696 3.977 C 7.208 3.38 7.993 3 8.81 3 C 10.256 3 11.393 4.132 11.393 5.583 C 11.393 7.354 9.796 8.805 7.377 10.998 Z" />
             </group>
             <group
@@ -22,7 +22,7 @@
                 android:pivotY="12">
                 <path
                     android:name="low_heart"
-                    android:fillColor="@color/goodGray"
+                    android:fillColor="?attr/colorOutline"
                     android:pathData="M 16.935 21.876 L 16.254 21.256 C 13.835 19.063 12.238 17.612 12.238 15.841 C 12.238 14.39 13.375 13.258 14.821 13.258 C 15.638 13.258 16.423 13.638 16.935 14.235 C 17.447 13.638 18.231 13.258 19.048 13.258 C 20.495 13.258 21.631 14.39 21.631 15.841 C 21.631 17.612 20.034 19.063 17.616 21.256 Z" />
             </group>
         </vector>
@@ -115,7 +115,7 @@
                     android:interpolator="@android:interpolator/fast_out_slow_in"
                     android:propertyName="strokeColor"
                     android:startOffset="500"
-                    android:valueFrom="@color/goodGray"
+                    android:valueFrom="?attr/colorOutline"
                     android:valueTo="?attr/colorPrimary"
                     android:valueType="colorType" />
                 <objectAnimator
@@ -145,7 +145,7 @@
                     android:interpolator="@android:interpolator/fast_out_slow_in"
                     android:propertyName="strokeColor"
                     android:startOffset="500"
-                    android:valueFrom="@color/goodGray"
+                    android:valueFrom="?attr/colorOutline"
                     android:valueTo="?attr/colorPrimary"
                     android:valueType="colorType" />
                 <objectAnimator
@@ -161,7 +161,7 @@
                     android:interpolator="@android:anim/overshoot_interpolator"
                     android:propertyName="fillColor"
                     android:startOffset="500"
-                    android:valueFrom="@color/goodGray"
+                    android:valueFrom="?attr/colorOutline"
                     android:valueTo="?attr/colorPrimary" />
                 <objectAnimator
                     android:duration="1000"
@@ -169,7 +169,7 @@
                     android:propertyName="strokeColor"
                     android:startOffset="2000"
                     android:valueFrom="?attr/colorPrimary"
-                    android:valueTo="@color/goodGray"
+                    android:valueTo="?attr/colorOutline"
                     android:valueType="colorType" />
                 <objectAnimator
                     android:duration="1000"
@@ -177,7 +177,7 @@
                     android:propertyName="fillColor"
                     android:startOffset="2000"
                     android:valueFrom="?attr/colorPrimary"
-                    android:valueTo="@color/goodGray" />
+                    android:valueTo="?attr/colorOutline" />
                 <objectAnimator
                     android:duration="1000"
                     android:interpolator="@android:interpolator/fast_out_slow_in"

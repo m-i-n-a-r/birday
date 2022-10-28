@@ -22,7 +22,7 @@
         android:contentDescription="@string/cancel"
         android:hapticFeedbackEnabled="false"
         android:padding="@dimen/between_row_padding"
-        app:backgroundTint="?android:textColorPrimary"
+        app:backgroundTint="?attr/colorOnSurface"
         app:elevation="@dimen/bottom_navbar_elevation"
         app:layout_constraintBottom_toTopOf="@id/homeCard"
         app:layout_constraintEnd_toEndOf="parent"
@@ -138,6 +138,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.facebook.shimmer.ShimmerFrameLayout>
 
+            <!-- TODO Buggy box stroke color, is the higher width when focused a good choice? -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/homeSearchLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -149,6 +150,7 @@
                 app:boxCornerRadiusBottomStart="@dimen/rounded_corners"
                 app:boxCornerRadiusTopEnd="@dimen/rounded_corners"
                 app:boxCornerRadiusTopStart="@dimen/rounded_corners"
+                app:boxStrokeWidthFocused="3dp"
                 app:boxStrokeWidth="@dimen/card_stroke"
                 app:endIconContentDescription="@string/cancel"
                 app:endIconMode="clear_text"
@@ -188,8 +190,8 @@
         android:scrollbarSize="0dp"
         android:text="@string/no_events"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-        android:textColor="@color/goodGraySemiTranslucent"
-        app:drawableTint="@color/goodGraySemiTranslucent"
+        android:textColor="?attr/colorOutline"
+        app:drawableTint="?attr/colorOutline"
         app:drawableTopCompat="@drawable/ic_sad_72dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

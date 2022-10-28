@@ -14,7 +14,7 @@
     <path
         android:pathData="M8.8307,9.8405m-1.6342,0a1.6342,1.6342 0,1 1,3.2685 0a1.6342,1.6342 0,1 1,-3.2685 0"
         android:strokeWidth="1"
-        android:strokeColor="#c5959595">
+        android:strokeColor="@color/goodGraySemiTranslucent">
         <aapt:attr name="android:fillColor">
             <gradient
                 android:endX="12"

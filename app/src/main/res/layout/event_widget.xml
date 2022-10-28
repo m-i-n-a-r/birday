@@ -91,7 +91,7 @@
         android:layout_marginTop="@dimen/widget_padding"
         android:layout_weight="1"
         android:background="@drawable/widget_inner_rounded_container"
-        android:backgroundTint="@color/goodGrayTotalTranslucent"
+        android:backgroundTint="?attr/colorSurfaceVariant"
         android:minHeight="0dp" />
 
 </LinearLayout>

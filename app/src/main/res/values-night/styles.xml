@@ -23,6 +23,8 @@
         <item name="snackbarStyle">@style/Widget.App.Snackbar</item>
         <item name="snackbarTextViewStyle">@style/MaterialSnackbarTextViewTheme</item>
         <item name="alertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
+        <item name="colorOutline">@color/goodGray</item>
+        <item name="colorSurfaceVariant">@color/goodGrayTranslucent</item>
     </style>
 
     <!-- Monet theme -->
@@ -30,7 +32,7 @@
         <item name="android:windowLightStatusBar">false</item>
         <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="materialTimePickerTheme">@style/ThemeOverlay.App.TimePicker.Monet</item>
+        <item name="materialTimePickerTheme">@style/ThemeOverlay.App.TimePicker</item>
         <item name="snackbarStyle">@style/Widget.App.Snackbar</item>
         <item name="snackbarTextViewStyle">@style/MaterialSnackbarTextViewTheme</item>
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog.Monet

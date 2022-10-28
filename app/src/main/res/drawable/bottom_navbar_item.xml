@@ -2,5 +2,5 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- change the following colors to use the colored bottom navigation bar -->
     <item android:state_checked="true" android:color="?attr/colorPrimary" />
-    <item android:color="@color/goodGray"  />
+    <item android:color="?attr/colorOutline"  />
 </selector>

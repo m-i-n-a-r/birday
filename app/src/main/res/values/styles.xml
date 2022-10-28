@@ -28,6 +28,8 @@
         <item name="colorSurface">@color/colorSurface</item>
         <item name="switchStyle">@style/CustomMaterialSwitch</item>
         <item name="bottomNavigationStyle">@style/CustomBottomNavigation</item>
+        <item name="colorOutline">@color/goodGray</item>
+        <item name="colorSurfaceVariant">@color/goodGrayTranslucent</item>
     </style>
 
     <!-- Monet theme -->
@@ -53,7 +55,7 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">@color/colorBackground</item>
         <item name="android:colorBackground">@color/colorBackground</item>
-        <item name="android:navigationBarColor">@color/goodGray</item>
+        <item name="android:navigationBarColor">?attr/colorOutline</item>
     </style>
 
     <style name="SplashTheme.Base.Legacy">
@@ -71,9 +73,10 @@
     <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
         <item name="dialogCornerRadius">@dimen/rounded_corners</item>
-        <!-- Remove the accent-ish tint -->
+        <item name="android:background">@drawable/dialog_bg_monet</item>
+        <!-- Remove the accent-ish tint TODO Useless since every dialog has this tint now
         <item name="backgroundTint">?colorBackgroundFloating</item>
-        <item name="android:background">?colorBackgroundFloating</item>
+        <item name="android:background">?colorBackgroundFloating</item> -->
     </style>
 
     <!-- Preference dialog Monet theme -->
@@ -100,7 +103,7 @@
     </style>
 
     <!-- Date picker theme -->
-    <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar">
+    <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.Material3.MaterialCalendar">
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
         </item>
@@ -116,23 +119,11 @@
         <item name="android:textCursorDrawable">@drawable/custom_cursor</item>
         <item name="startIconDrawable">@drawable/ic_date_black_24dp</item>
         <item name="errorEnabled">true</item>
-        <item name="startIconTint">@color/goodGray</item>
-    </style>
-
-    <!-- Time picker theme -->
-    <style name="ThemeOverlay.App.TimePicker" parent="@style/ThemeOverlay.MaterialComponents.TimePicker">
-        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
-        </item>
-        <item name="boxCornerRadiusBottomEnd">@dimen/text_field_corner</item>
-        <item name="boxCornerRadiusTopEnd">@dimen/text_field_corner</item>
-        <item name="boxCornerRadiusBottomStart">@dimen/text_field_corner</item>
-        <item name="boxCornerRadiusTopStart">@dimen/text_field_corner</item>
-        <item name="android:textCursorDrawable">@drawable/custom_cursor</item>
-        <item name="colorSurface">?android:colorBackgroundFloating</item>
+        <item name="startIconTint">?attr/colorOutline</item>
     </style>
 
     <!-- Monet time picker theme -->
-    <style name="ThemeOverlay.App.TimePicker.Monet" parent="@style/ThemeOverlay.MaterialComponents.TimePicker">
+    <style name="ThemeOverlay.App.TimePicker" parent="@style/ThemeOverlay.Material3.MaterialTimePicker">
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
         </item>
         <item name="boxCornerRadiusBottomEnd">@dimen/text_field_corner</item>
@@ -164,7 +155,7 @@
     <style name="CustomMaterialSwitch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
         <item name="thumbTint">?attr/colorPrimary</item>
         <item name="thumbIconTint">?colorSurface</item>
-        <item name="trackTint">@color/goodGrayTranslucent</item>
+        <item name="trackTint">?attr/colorSurfaceVariant</item>
         <item name="trackDecorationTint">?attr/colorPrimary</item>
     </style>
 

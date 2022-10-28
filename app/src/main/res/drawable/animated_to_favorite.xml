@@ -11,7 +11,7 @@ xmlns:aapt="http://schemas.android.com/aapt">
         <path
             android:name="path"
             android:pathData="M 12 6.7 L 13.45 10.55 L 17.3 12 L 13.45 13.45 L 12 17.3 L 10.55 13.45 L 6.7 12 L 10.55 10.55 L 12 6.7 M 12 1 L 9 9 L 1 12 L 9 15 L 12 23 L 15 15 L 23 12 L 15 9 L 12 1 Z"
-            android:fillColor="@color/goodGray"/>
+            android:fillColor="?attr/colorOutline"/>
     </vector>
 </aapt:attr>
 <target android:name="path">
@@ -44,7 +44,7 @@ xmlns:aapt="http://schemas.android.com/aapt">
                 android:propertyName="strokeColor"
                 android:startOffset="250"
                 android:duration="250"
-                android:valueFrom="@color/goodGray"
+                android:valueFrom="?attr/colorOutline"
                 android:valueTo="?attr/colorPrimary"
                 android:valueType="colorType"
                 android:interpolator="@android:interpolator/fast_out_slow_in"/>
@@ -69,7 +69,7 @@ xmlns:aapt="http://schemas.android.com/aapt">
                 android:startOffset="500"
                 android:duration="250"
                 android:valueFrom="?attr/colorPrimary"
-                android:valueTo="@color/goodGray"
+                android:valueTo="?attr/colorOutline"
                 android:valueType="colorType"
                 android:interpolator="@android:interpolator/fast_out_slow_in"/>
         </set>

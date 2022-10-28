@@ -6,11 +6,11 @@
     android:viewportHeight="24">
     <path
         android:name="background"
-        android:fillColor="@color/goodGrayTranslucent"
+        android:fillColor="?attr/colorSurfaceVariant"
         android:pathData="M -0.28 -0.35 L 24.28 -0.35 L 24.28 24.35 L -0.28 24.35 Z" />
     <path
         android:name="hearths_bw"
-        android:fillColor="@color/goodGray"
+        android:fillColor="?attr/colorOutline"
         android:pathData="M 18.152 8.313 L 17.734 7.932 C 16.247 6.584 15.265 5.692 15.265 4.604 C 15.265 3.712 15.964 3.016 16.853 3.016 C 17.355 3.016 17.837 3.25 18.152 3.617 C 18.467 3.25 18.949 3.016 19.451 3.016 C 20.34 3.016 21.039 3.712 21.039 4.604 C 21.039 5.692 20.057 6.584 18.571 7.932 Z M 5.346 10.254 L 4.975 9.917 C 3.66 8.724 2.792 7.935 2.792 6.972 C 2.792 6.183 3.41 5.568 4.196 5.568 C 4.641 5.568 5.067 5.775 5.346 6.099 C 5.624 5.775 6.05 5.568 6.495 5.568 C 7.281 5.568 7.899 6.183 7.899 6.972 C 7.899 7.935 7.031 8.724 5.716 9.917 Z" />
     <path
         android:name="hearths"

@@ -84,7 +84,7 @@
                 <objectAnimator
                     android:propertyName="strokeColor"
                     android:duration="800"
-                    android:valueFrom="@color/goodGray"
+                    android:valueFrom="?attr/colorOutline"
                     android:valueTo="?attr/colorPrimary"
                     android:valueType="colorType"
                     android:interpolator="@android:anim/linear_interpolator"/>
@@ -146,7 +146,7 @@
                     android:propertyName="strokeColor"
                     android:startOffset="400"
                     android:duration="800"
-                    android:valueFrom="@color/goodGray"
+                    android:valueFrom="?attr/colorOutline"
                     android:valueTo="?attr/colorPrimary"
                     android:valueType="colorType"
                     android:interpolator="@android:anim/linear_interpolator"/>
@@ -208,7 +208,7 @@
                     android:propertyName="strokeColor"
                     android:startOffset="800"
                     android:duration="800"
-                    android:valueFrom="@color/goodGray"
+                    android:valueFrom="?attr/colorOutline"
                     android:valueTo="?attr/colorPrimary"
                     android:valueType="colorType"
                     android:interpolator="@android:anim/linear_interpolator"/>

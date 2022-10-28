@@ -81,7 +81,7 @@
             app:layout_constraintStart_toStartOf="@id/detailsEventImageBackground"
             app:layout_constraintTop_toTopOf="@id/detailsEventImageBackground"
             app:shapeAppearanceOverlay="@style/roundedImageView"
-            app:strokeColor="@color/goodGray"
+            app:strokeColor="?attr/colorOutline"
             app:strokeWidth="@dimen/card_stroke" />
 
         <ImageView
@@ -96,7 +96,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsEventImageBackground"
             app:srcCompat="@drawable/ic_favorites_24dp"
-            app:tint="@color/goodGray" />
+            app:tint="?attr/colorOutline" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detailsBirthDate"
@@ -108,7 +108,7 @@
             android:text="@string/birth_date"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-            android:textColor="@color/goodGray"
+            android:textColor="?attr/colorOutline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsEventImageBackground" />
@@ -180,7 +180,7 @@
             android:text="@string/next_age"
             android:textAlignment="viewEnd"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-            android:textColor="@color/goodGray"
+            android:textColor="?attr/colorOutline"
             app:layout_constraintBaseline_toBaselineOf="@+id/detailsNextAgeValue"
             app:layout_constraintEnd_toStartOf="@id/detailsNextAgeValue"
             app:layout_constraintHorizontal_chainStyle="packed"
@@ -209,7 +209,7 @@
             android:text="@string/zodiac_sign"
             android:textAlignment="viewEnd"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-            android:textColor="@color/goodGray"
+            android:textColor="?attr/colorOutline"
             app:layout_constraintBaseline_toBaselineOf="@+id/detailsZodiacSignValue"
             app:layout_constraintEnd_toStartOf="@+id/detailsZodiacSignValue"
             app:layout_constraintHorizontal_chainStyle="packed"
@@ -237,7 +237,7 @@
             android:text="@string/chinese_zodiac_sign"
             android:textAlignment="viewEnd"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-            android:textColor="@color/goodGray"
+            android:textColor="?attr/colorOutline"
             app:layout_constraintBaseline_toBaselineOf="@+id/detailsChineseSignValue"
             app:layout_constraintEnd_toStartOf="@+id/detailsChineseSignValue"
             app:layout_constraintHorizontal_chainStyle="packed"

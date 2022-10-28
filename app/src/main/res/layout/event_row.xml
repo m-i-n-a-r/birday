@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="@id/eventPerson"
         app:layout_constraintWidth_max="@dimen/in_row_image"
         app:shapeAppearanceOverlay="@style/roundedImageView"
-        app:strokeColor="@color/goodGray"
+        app:strokeColor="?attr/colorOutline"
         app:strokeWidth="@dimen/card_stroke" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -44,7 +44,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_dot_black_24dp"
-        android:backgroundTint="@color/goodGrayTotalTranslucent"
+        android:backgroundTint="?attr/colorSurfaceVariant"
         android:contentDescription="@string/event_type_hint"
         android:maxWidth="@dimen/preview_dot_size"
         android:maxHeight="@dimen/preview_dot_size"

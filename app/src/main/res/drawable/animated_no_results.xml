@@ -16,7 +16,7 @@
                 <path
                     android:name="dot1"
                     android:pathData="M 7 20 L 9 20 L 9 22 L 7 22 L 7 20"
-                    android:fillColor="@color/goodGray" />
+                    android:fillColor="?attr/colorOutline" />
             </group>
             <group
                 android:name="name2"
@@ -26,7 +26,7 @@
                 <path
                     android:name="dot2"
                     android:pathData="M 11 20 L 13 20 L 13 22 L 11 22 L 11 20"
-                    android:fillColor="@color/goodGray" />
+                    android:fillColor="?attr/colorOutline" />
             </group>
             <group
                 android:name="name3"
@@ -36,7 +36,7 @@
                 <path
                     android:name="dot3"
                     android:pathData="M 15 20 L 17 20 L 17 22 L 15 22 Z"
-                    android:fillColor="@color/goodGray" />
+                    android:fillColor="?attr/colorOutline" />
             </group>
             <group
                 android:name="person1"
@@ -45,7 +45,7 @@
                 <path
                     android:name="person"
                     android:pathData="M 12 2 C 14.209 2 16 3.791 16 6 C 16 8.209 14.209 10 12 10 C 9.791 10 8 8.209 8 6 C 8 3.791 9.791 2 12 2 M 12 12 C 16.42 12 20 13.79 20 16 L 20 18 L 4 18 L 4 16 C 4 13.79 7.58 12 12 12"
-                    android:fillColor="@color/goodGray"
+                    android:fillColor="?attr/colorOutline"
                     android:strokeColor="?attr/colorPrimary"
                     android:strokeAlpha="0.7"/>
             </group>
@@ -123,7 +123,7 @@
                     android:propertyName="fillColor"
                     android:startOffset="600"
                     android:duration="1000"
-                    android:valueFrom="@color/goodGray"
+                    android:valueFrom="?attr/colorOutline"
                     android:valueTo="?attr/colorPrimary"
                     android:valueType="colorType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
@@ -132,7 +132,7 @@
                     android:startOffset="2000"
                     android:duration="500"
                     android:valueFrom="?attr/colorPrimary"
-                    android:valueTo="@color/goodGray"
+                    android:valueTo="?attr/colorOutline"
                     android:valueType="colorType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
             </set>
@@ -145,7 +145,7 @@
                     android:propertyName="fillColor"
                     android:startOffset="300"
                     android:duration="1000"
-                    android:valueFrom="@color/goodGray"
+                    android:valueFrom="?attr/colorOutline"
                     android:valueTo="?attr/colorPrimary"
                     android:valueType="colorType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
@@ -154,7 +154,7 @@
                     android:startOffset="2000"
                     android:duration="500"
                     android:valueFrom="?attr/colorPrimary"
-                    android:valueTo="@color/goodGray"
+                    android:valueTo="?attr/colorOutline"
                     android:valueType="colorType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
             </set>
@@ -166,7 +166,7 @@
                 <objectAnimator
                     android:propertyName="fillColor"
                     android:duration="1000"
-                    android:valueFrom="@color/goodGray"
+                    android:valueFrom="?attr/colorOutline"
                     android:valueTo="?attr/colorPrimary"
                     android:valueType="colorType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
@@ -175,7 +175,7 @@
                     android:startOffset="2000"
                     android:duration="500"
                     android:valueFrom="?attr/colorPrimary"
-                    android:valueTo="@color/goodGray"
+                    android:valueTo="?attr/colorOutline"
                     android:valueType="colorType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
             </set>
