@@ -3,7 +3,7 @@
 buildscript {
     ext {
         kotlin_version = '1.7.20'
-        navigation_version = '2.5.2'
+        navigation_version = '2.5.3'
     }
     repositories {
         google()
