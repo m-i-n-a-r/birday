@@ -192,6 +192,9 @@ class MainActivity : AppCompatActivity() {
             bottomSheet.show(supportFragmentManager, "insert_event_bottom_sheet")
         }
 
+        // Animate the fab icon
+        fab.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper, 2000L)
+
         // Navigation bar color management (if executed before, it doesn't work)
         if (accent == "monet") {
             DynamicColors.applyToActivityIfAvailable(this)
