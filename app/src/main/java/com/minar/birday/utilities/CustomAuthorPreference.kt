@@ -74,9 +74,10 @@ class CustomAuthorPreference(context: Context, attrs: AttributeSet?) :
                 // Trigger a snackbar and confetti
                 confetti.build()
                     .addColors(
-                        act.getThemeColor(android.R.attr.colorAccent),
-                        act.getThemeColor(android.R.attr.textColorPrimary),
-                        ContextCompat.getColor(context, R.color.goodGray),
+                        act.getThemeColor(R.attr.colorTertiary),
+                        act.getThemeColor(R.attr.colorSecondary),
+                        act.getThemeColor(R.attr.colorPrimary),
+                        act.getThemeColor(R.attr.colorOnSurface),
                     )
                     .setDirection(0.0, 359.0)
                     .setSpeed(0.5f, 4f)

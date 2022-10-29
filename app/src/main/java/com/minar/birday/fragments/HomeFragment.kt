@@ -337,9 +337,10 @@ class HomeFragment : Fragment() {
         val confetti = binding.confettiView
         confetti.build()
             .addColors(
-                act.getThemeColor(android.R.attr.colorPrimary),
-                act.getThemeColor(android.R.attr.textColorPrimary),
-                ContextCompat.getColor(requireContext(), R.color.goodGray),
+                act.getThemeColor(R.attr.colorTertiary),
+                act.getThemeColor(R.attr.colorSecondary),
+                act.getThemeColor(R.attr.colorPrimary),
+                act.getThemeColor(R.attr.colorOnSurface),
             )
             .setDirection(0.0, 359.0)
             .setSpeed(0.5f, 4f)
