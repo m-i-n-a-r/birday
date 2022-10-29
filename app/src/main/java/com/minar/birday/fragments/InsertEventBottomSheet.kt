@@ -74,7 +74,7 @@ class InsertEventBottomSheet(
         // Animate the drawable in loop
         val titleIcon = binding.insertEventImage
         val title = binding.insertEventTitle
-        titleIcon.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper, 1500L)
+        titleIcon.applyLoopingAnimatedVectorDrawable(R.drawable.animated_insert_event, 2500L)
 
         // Show a bottom sheet containing the form to insert a new event
         imageChosen = false
