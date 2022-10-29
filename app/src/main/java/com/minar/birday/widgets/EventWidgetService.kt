@@ -15,11 +15,11 @@ import java.time.format.FormatStyle
 
 class EventWidgetService : RemoteViewsService() {
     override fun onGetViewFactory(intent: Intent): RemoteViewsFactory {
-        return EventWidgetRemoteViewsFactory(this.applicationContext, intent)
+        return EventWidgetRemoteViewsFactory(this.applicationContext)
     }
 }
 
-internal class EventWidgetRemoteViewsFactory(context: Context, intent: Intent) : RemoteViewsFactory {
+internal class EventWidgetRemoteViewsFactory(context: Context) : RemoteViewsFactory {
     private lateinit var events: List<EventResult>
     private val context: Context
 
