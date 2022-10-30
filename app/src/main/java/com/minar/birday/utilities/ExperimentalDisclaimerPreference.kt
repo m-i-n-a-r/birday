@@ -20,7 +20,7 @@ class ExperimentalDisclaimerPreference(context: Context, attrs: AttributeSet?) :
 
         // Animate the vector drawable
         binding.animatedDanger.applyLoopingAnimatedVectorDrawable(
-            R.drawable.animated_experimental_danger
+            R.drawable.animated_experimental_danger, 1500
         )
 
         // Set the "open Github develop branch"

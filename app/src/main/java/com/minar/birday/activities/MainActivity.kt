@@ -193,7 +193,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Animate the fab icon
-        fab.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper, 2000L)
+        fab.applyLoopingAnimatedVectorDrawable(R.drawable.animated_add_event, 5000L)
 
         // Navigation bar color management (if executed before, it doesn't work)
         if (accent == "monet") {

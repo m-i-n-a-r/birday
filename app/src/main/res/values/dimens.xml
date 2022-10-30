@@ -73,5 +73,6 @@
     <dimen name="preview_dot_size">24dp</dimen>
     <dimen name="bottom_sheet_peek_height">1000dp</dimen>
     <dimen name="bottom_sheet_icon_size">42dp</dimen>
+    <dimen name="main_fab_icon_size">40dp</dimen>
 
 </resources>

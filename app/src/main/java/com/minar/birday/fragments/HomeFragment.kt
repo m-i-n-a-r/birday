@@ -270,18 +270,21 @@ class HomeFragment : Fragment() {
         // Set the correct avd
         when {
             nextEvents.all { it.type == EventCode.DEATH.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
-                R.drawable.animated_death_anniversary
+                R.drawable.animated_death_anniversary, 1000
             )
             nextEvents.all { it.type == EventCode.ANNIVERSARY.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
-                R.drawable.animated_anniversary
+                R.drawable.animated_anniversary, 1000
             )
             nextEvents.all { it.type == EventCode.NAME_DAY.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
-                R.drawable.animated_name_day
+                R.drawable.animated_name_day, 1000
             )
             nextEvents.all { it.type == EventCode.OTHER.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
-                R.drawable.animated_other
+                R.drawable.animated_other, 1000
             )
-            else -> upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
+            else -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+                R.drawable.animated_party_popper,
+                1000
+            )
         }
         // Trigger confetti if there's an event today, except for "only death anniversaries" days
         if (

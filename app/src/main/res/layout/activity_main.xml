@@ -6,12 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
+    <!-- TODO Is hide handy? Insert
+        android:layout_marginBottom="@dimen/bottom_navbar_height"
+    if hide on scroll is disabled -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/navHostFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/bottom_navbar_height"
+
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
 
@@ -26,6 +29,7 @@
         app:fabAnimationMode="slide"
         app:fabCradleMargin="@dimen/cradle_margin"
         app:fabCradleRoundedCornerRadius="@dimen/cradle_corners"
+        app:hideOnScroll="true"
         app:title="@string/app_name">
 
         <!-- A transparent background navigation view, with no elevation -->
@@ -36,9 +40,9 @@
             android:background="@android:color/transparent"
             app:backgroundTint="@android:color/transparent"
             app:elevation="0dp"
-            app:itemPaddingTop="@dimen/bottom_navbar_item_padding"
-            app:itemPaddingBottom="@dimen/bottom_navbar_item_padding"
             app:itemIconTint="@drawable/bottom_navbar_item"
+            app:itemPaddingBottom="@dimen/bottom_navbar_item_padding"
+            app:itemPaddingTop="@dimen/bottom_navbar_item_padding"
             app:labelVisibilityMode="selected"
             app:menu="@menu/navigation_bottomappbar" />
 
@@ -46,15 +50,14 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
+        style="@style/Widget.Material3.FloatingActionButton.Secondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/new_event"
+        app:tint="?attr/colorPrimary"
         android:hapticFeedbackEnabled="false"
-        app:backgroundTint="?attr/colorPrimary"
-        app:elevation="@dimen/bottom_navbar_elevation"
         app:layout_anchor="@id/bottomBar"
-        app:rippleColor="?attr/colorOnSurface"
-        app:srcCompat="@drawable/ic_party_24dp"
-        app:tint="?attr/colorOnPrimary" />
+        app:maxImageSize="@dimen/main_fab_icon_size"
+        app:srcCompat="@drawable/ic_party_24dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
