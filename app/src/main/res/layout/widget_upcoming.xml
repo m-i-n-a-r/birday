@@ -17,6 +17,7 @@
         android:paddingStart="@dimen/widget_image_horizontal_margin"
         android:paddingEnd="@dimen/widget_margin">
 
+        <!-- The image for the first upcoming event -->
         <ImageView
             android:id="@+id/eventWidgetImage"
             android:layout_height="@dimen/widget_image_size"
@@ -33,6 +34,7 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
+            <!-- Just a title to help the aesthetics -->
             <TextView
                 android:id="@+id/eventWidgetTitle"
                 android:layout_width="wrap_content"
@@ -46,6 +48,7 @@
                 android:textColor="?attr/colorPrimary"
                 android:textStyle="bold" />
 
+            <!-- The date of the next event(s) -->
             <TextView
                 android:id="@+id/eventWidgetDate"
                 android:layout_width="wrap_content"
@@ -70,19 +73,21 @@
         </LinearLayout>
     </LinearLayout>
 
+    <!-- The proper events and their details -->
     <TextView
         android:id="@+id/eventWidgetText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:contentDescription="@string/appwidget_upcoming"
+        android:contentDescription="@string/no_next_event"
         android:paddingHorizontal="@dimen/widget_margin"
         android:layout_marginTop="@dimen/widget_margin"
-        android:text="@string/appwidget_upcoming"
+        android:text="@string/no_next_event"
         android:textAlignment="viewEnd"
         android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
         android:textColor="?attr/colorOnBackground" />
 
+    <!-- Complete list of the events (not clickable singularly atm) -->
     <ListView
         android:id="@+id/eventWidgetList"
         android:layout_width="match_parent"

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/eventWidgetRowItem"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/eventWidgetRowItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground"
     android:hapticFeedbackEnabled="false"
     android:orientation="vertical"
     android:paddingHorizontal="@dimen/recycler_padding"
@@ -16,27 +15,40 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/in_row_padding"
         android:paddingVertical="@dimen/in_row_padding"
-        android:text="@string/insert_name_hint"
+        android:text="@string/invalid_value_name"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
 
-        <ImageView
-            android:id="@+id/eventWidgetRowTypeImage"
+        <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_dot_black_24dp"
-            android:backgroundTint="?attr/colorSurfaceVariant"
-            android:contentDescription="@string/event_type_hint"
-            android:maxWidth="@dimen/preview_dot_size"
-            android:maxHeight="@dimen/preview_dot_size"
-            android:padding="@dimen/event_type_badge_padding"
-            android:src="@drawable/ic_anniversary_24dp"
-            android:visibility="gone"
-            tools:visibility="visible" />
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/eventWidgetRowTypeBackground"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contentDescription="@string/event_type_hint"
+                android:maxWidth="@dimen/preview_dot_size"
+                android:maxHeight="@dimen/preview_dot_size"
+                android:src="@drawable/ic_dot_black_24dp" />
+
+            <ImageView
+                android:id="@+id/eventWidgetRowTypeImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?attr/colorSurface"
+                android:contentDescription="@string/event_type_hint"
+                android:maxWidth="@dimen/preview_dot_size"
+                android:maxHeight="@dimen/preview_dot_size"
+                android:padding="@dimen/event_type_badge_padding"
+                android:src="@drawable/ic_party_24dp" />
+        </FrameLayout>
 
         <TextView
             android:id="@+id/eventWidgetRowDate"

@@ -6,7 +6,6 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.view.View
 import android.widget.RemoteViews
 import com.minar.birday.R
@@ -69,7 +68,7 @@ internal fun updateAppWidget(
     appWidgetManager: AppWidgetManager,
     appWidgetId: Int,
 ) {
-    val thread = Thread {
+    Thread {
         // Get the next events and the proper formatter
         val eventDao: EventDao = EventDatabase.getBirdayDatabase(context).eventDao()
         val nextEvents: List<EventResult> = eventDao.getOrderedNextEventsStatic()
@@ -85,14 +84,15 @@ internal fun updateAppWidget(
             )
         }"
 
-        println("UPDATING, LIST IS ${nextEvents.size} LONG aaand $widgetUpcoming")
-
-        // Set the texts and the intent (the dark/light option has been deleted)
-        val views = RemoteViews(context.packageName, R.layout.event_widget)
+        val views = RemoteViews(context.packageName, R.layout.widget_upcoming)
         val intent = Intent(context, MainActivity::class.java)
+
         // TODO Another instance of the app is launched, creating a stack of home screens
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         val pendingIntent =
             PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
         views.setOnClickPendingIntent(R.id.background, pendingIntent)
         views.setTextViewText(R.id.eventWidgetText, widgetUpcoming)
         views.setTextViewText(R.id.eventWidgetDate, formatter.format(LocalDate.now()))
@@ -126,27 +126,17 @@ internal fun updateAppWidget(
         )
 
         // Set up the intent that starts the EventViewService, which will provide the views
-        Intent(context, EventWidgetService::class.java).apply {
-            // Add the widget ID to the intent extras.
-            putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
-            data = Uri.parse(toUri(Intent.URI_INTENT_SCHEME))
-        }
-        // Instantiate the RemoteViews object for the widget layout
-        RemoteViews(context.packageName, R.layout.event_widget).apply {
-            // Set up the RemoteViews object to use a RemoteViews adapter and populate the data
-            setRemoteAdapter(R.id.eventWidgetList, intent)
+        val widgetServiceIntent = Intent(context, EventWidgetService::class.java)
 
+        // Set up the RemoteViews object to use a RemoteViews adapter and populate the data
+        views.apply {
+            setRemoteAdapter(R.id.eventWidgetList, widgetServiceIntent)
             // The empty view is displayed when the collection has no items
             setEmptyView(R.id.eventWidgetList, R.id.eventWidgetDate)
         }
-
         // Fill the list with the next events
         appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.eventWidgetList)
-
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views)
-    }
-    thread.start()
+    }.start()
 }
-
-

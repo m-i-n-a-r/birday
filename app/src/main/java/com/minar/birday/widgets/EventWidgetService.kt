@@ -5,10 +5,12 @@ import android.content.Intent
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import android.widget.RemoteViewsService.RemoteViewsFactory
+import androidx.preference.PreferenceManager
 import com.minar.birday.R
 import com.minar.birday.model.EventResult
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
+import com.minar.birday.utilities.formatName
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
@@ -21,6 +23,7 @@ class EventWidgetService : RemoteViewsService() {
 
 internal class EventWidgetRemoteViewsFactory(context: Context) : RemoteViewsFactory {
     private lateinit var events: List<EventResult>
+    private var surnameFirst = false
     private val context: Context
 
     init {
@@ -28,9 +31,9 @@ internal class EventWidgetRemoteViewsFactory(context: Context) : RemoteViewsFact
     }
 
     override fun onCreate() {
-        // In onCreate() you setup any connections / cursors to your data source
-        val eventDao: EventDao = EventDatabase.getBirdayDatabase(context).eventDao()
-        events = eventDao.getOrderedNextEventsStatic()
+        // In onCreate(), setup any connections / cursors to the data source
+        val sp = PreferenceManager.getDefaultSharedPreferences(context)
+        surnameFirst = sp.getBoolean("surname_first", false)
     }
 
     override fun onDestroy() {
@@ -46,7 +49,7 @@ internal class EventWidgetRemoteViewsFactory(context: Context) : RemoteViewsFact
         // Any loading in this part is legitimate
         val rv = RemoteViews(context.packageName, R.layout.widget_row)
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
-        rv.setTextViewText(R.id.eventWidgetRowPerson, events[position].name)
+        rv.setTextViewText(R.id.eventWidgetRowPerson, formatName(events[position], surnameFirst))
         rv.setTextViewText(R.id.eventWidgetRowDate, events[position].originalDate.format(formatter))
         // Return the remote views object
         return rv
@@ -70,8 +73,7 @@ internal class EventWidgetRemoteViewsFactory(context: Context) : RemoteViewsFact
     }
 
     override fun onDataSetChanged() {
-        println("DATASET CHANGEDDDD!!!!!!!!")
         val eventDao: EventDao = EventDatabase.getBirdayDatabase(context).eventDao()
-        events = eventDao.getOrderedNextEventsStatic()
+        events = eventDao.getOrderedEventsStatic()
     }
 }
