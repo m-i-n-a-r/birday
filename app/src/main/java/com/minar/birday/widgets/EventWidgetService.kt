@@ -7,10 +7,12 @@ import android.widget.RemoteViewsService
 import android.widget.RemoteViewsService.RemoteViewsFactory
 import androidx.preference.PreferenceManager
 import com.minar.birday.R
+import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.formatName
+import com.minar.birday.utilities.getRemainingDays
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
@@ -49,8 +51,24 @@ internal class EventWidgetRemoteViewsFactory(context: Context) : RemoteViewsFact
         // Any loading in this part is legitimate
         val rv = RemoteViews(context.packageName, R.layout.widget_row)
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
+        val event = events[position]
         rv.setTextViewText(R.id.eventWidgetRowPerson, formatName(events[position], surnameFirst))
-        rv.setTextViewText(R.id.eventWidgetRowDate, events[position].originalDate.format(formatter))
+        rv.setTextViewText(R.id.eventWidgetRowDate, event.originalDate.format(formatter))
+        rv.setTextViewText(
+            R.id.eventWidgetRowCountdown,
+            "-${getRemainingDays(event.nextDate!!)}"
+        )
+        // Set the image depending on the event type, the drawable are a b&w version
+        rv.setImageViewResource(
+            R.id.eventWidgetRowTypeImage,
+            when (events[position].type) {
+                EventCode.BIRTHDAY.name -> R.drawable.ic_party_24dp
+                EventCode.ANNIVERSARY.name -> R.drawable.ic_anniversary_24dp
+                EventCode.DEATH.name -> R.drawable.ic_death_anniversary_24dp
+                EventCode.NAME_DAY.name -> R.drawable.ic_name_day_24dp
+                else -> R.drawable.ic_other_24dp
+            }
+        )
         // Return the remote views object
         return rv
     }

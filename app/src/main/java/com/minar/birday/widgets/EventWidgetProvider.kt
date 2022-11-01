@@ -132,7 +132,7 @@ internal fun updateAppWidget(
         views.apply {
             setRemoteAdapter(R.id.eventWidgetList, widgetServiceIntent)
             // The empty view is displayed when the collection has no items
-            setEmptyView(R.id.eventWidgetList, R.id.eventWidgetDate)
+            //setEmptyView(R.id.eventWidgetList, R.id.eventWidgetDate)
         }
         // Fill the list with the next events
         appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.eventWidgetList)

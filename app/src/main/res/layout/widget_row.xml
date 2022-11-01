@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:hapticFeedbackEnabled="false"
     android:orientation="vertical"
-    android:paddingHorizontal="@dimen/recycler_padding"
+    android:paddingHorizontal="@dimen/widget_margin"
     android:paddingVertical="@dimen/between_row_padding">
 
     <TextView
@@ -18,47 +18,70 @@
         android:text="@string/invalid_value_name"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
         tools:ignore="UseCompoundDrawables">
 
         <FrameLayout
+            android:id="@+id/eventWidgetRowTypeBadge"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true">
 
             <ImageView
                 android:id="@+id/eventWidgetRowTypeBackground"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/widget_type_icon_background_size"
+                android:layout_height="@dimen/widget_type_icon_background_size"
                 android:layout_gravity="center"
-                android:contentDescription="@string/event_type_hint"
-                android:maxWidth="@dimen/preview_dot_size"
-                android:maxHeight="@dimen/preview_dot_size"
-                android:src="@drawable/ic_dot_black_24dp" />
+                android:background="@drawable/ic_dot_black_24dp"
+                android:backgroundTint="?attr/colorSurface"
+                android:contentDescription="@string/event_type_hint" />
 
             <ImageView
                 android:id="@+id/eventWidgetRowTypeImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/widget_type_icon_size"
+                android:layout_height="@dimen/widget_type_icon_size"
+                android:layout_gravity="center"
                 android:backgroundTint="?attr/colorSurface"
                 android:contentDescription="@string/event_type_hint"
                 android:maxWidth="@dimen/preview_dot_size"
                 android:maxHeight="@dimen/preview_dot_size"
-                android:padding="@dimen/event_type_badge_padding"
+                android:padding="0dp"
                 android:src="@drawable/ic_party_24dp" />
         </FrameLayout>
 
+        <!-- The date of the event -->
         <TextView
             android:id="@+id/eventWidgetRowDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/eventWidgetRowTypeBadge"
             android:paddingHorizontal="@dimen/in_row_button_padding"
-            android:paddingVertical="@dimen/in_row_padding"
+            android:paddingVertical="@dimen/in_row_button_padding"
             android:text="@string/birth_date"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2" />
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
 
-    </LinearLayout>
+        <!-- The date of the event -->
+        <TextView
+            android:id="@+id/eventWidgetRowCountdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/eventWidgetRowDate"
+            android:layout_gravity="end"
+            android:gravity="end"
+            android:paddingHorizontal="@dimen/in_row_button_padding"
+            android:paddingVertical="@dimen/in_row_button_padding"
+            android:text="@string/unknown"
+            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+            android:textColor="?attr/colorSecondary" />
+
+    </RelativeLayout>
 
 </LinearLayout>

@@ -1,32 +1,48 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/background"
-    android:theme="@style/WidgetTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
-    android:gravity="center_vertical"
     android:alpha=".9"
     android:background="?attr/colorSurface"
+    android:gravity="center_vertical"
     android:orientation="vertical"
-    android:padding="@dimen/widget_padding">
+    android:padding="@dimen/widget_padding"
+    android:theme="@style/WidgetTheme">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingStart="@dimen/widget_image_horizontal_margin"
-        android:paddingEnd="@dimen/widget_margin">
+        android:paddingEnd="@dimen/widget_margin"
+        android:baselineAligned="false">
 
-        <!-- The image for the first upcoming event -->
-        <ImageView
-            android:id="@+id/eventWidgetImage"
-            android:layout_height="@dimen/widget_image_size"
-            android:layout_width="@dimen/widget_image_size"
-            android:layout_gravity="start"
-            android:contentDescription="@string/app_intro_image_content_description"
-            android:foreground="@drawable/ic_inverted_circle_foreground_black_24dp"
-            android:foregroundTint="?attr/colorSurface"
-            android:src="@drawable/placeholder_other_image" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start">
+
+            <!-- The image for the first upcoming event -->
+            <ImageView
+                android:id="@+id/eventWidgetImage"
+                android:layout_width="@dimen/widget_image_size"
+                android:layout_height="@dimen/widget_image_size"
+                android:layout_gravity="center"
+                android:contentDescription="@string/next_event"
+                android:foreground="@drawable/ic_inverted_circle_foreground_black_24dp"
+                android:foregroundTint="?attr/colorSurface"
+                android:src="@drawable/placeholder_other_image" />
+
+            <!-- A circular stroke -->
+            <ImageView
+                android:id="@+id/eventWidgetDecorator"
+                android:layout_width="@dimen/widget_image_decoration_size"
+                android:layout_height="@dimen/widget_image_decoration_size"
+                android:layout_gravity="center"
+                android:contentDescription="@string/next_event"
+                android:src="@drawable/ic_ring_24dp" />
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -79,9 +95,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
+        android:layout_marginTop="@dimen/widget_margin"
         android:contentDescription="@string/no_next_event"
         android:paddingHorizontal="@dimen/widget_margin"
-        android:layout_marginTop="@dimen/widget_margin"
         android:text="@string/no_next_event"
         android:textAlignment="viewEnd"
         android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
