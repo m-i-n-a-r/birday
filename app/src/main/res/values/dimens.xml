@@ -65,6 +65,9 @@
     <dimen name="widget_min_width">200dp</dimen>
     <dimen name="widget_min_height">48dp</dimen>
 
+    <!-- Custom yearly calendar -->
+    <dimen name="calendar_month_day_padding">2dp</dimen>
+
     <!-- Shimmer and miscellaneous -->
     <dimen name="shimmer_intensity">0.1</dimen>
     <dimen name="shimmer_tilt">0</dimen>
