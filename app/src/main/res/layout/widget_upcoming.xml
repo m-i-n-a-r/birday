@@ -13,10 +13,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:baselineAligned="false"
         android:orientation="horizontal"
         android:paddingStart="@dimen/widget_image_horizontal_margin"
-        android:paddingEnd="@dimen/widget_margin"
-        android:baselineAligned="false">
+        android:paddingEnd="@dimen/widget_margin">
 
         <FrameLayout
             android:layout_width="wrap_content"
@@ -40,8 +40,9 @@
                 android:layout_width="@dimen/widget_image_decoration_size"
                 android:layout_height="@dimen/widget_image_decoration_size"
                 android:layout_gravity="center"
-                android:contentDescription="@string/next_event"
-                android:src="@drawable/ic_ring_24dp" />
+                android:background="@drawable/ic_ring_24dp"
+                android:backgroundTint="?attr/colorSurfaceVariant"
+                android:contentDescription="@string/next_event" />
         </FrameLayout>
 
         <LinearLayout
@@ -61,8 +62,7 @@
                 android:textAlignment="viewEnd"
                 android:textAllCaps="true"
                 android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-                android:textColor="?attr/colorPrimary"
-                android:textStyle="bold" />
+                android:textColor="?attr/colorPrimary" />
 
             <!-- The date of the next event(s) -->
             <TextView
@@ -73,7 +73,7 @@
                 android:contentDescription="@string/appwidget_upcoming"
                 android:text="@string/unknown"
                 android:textAlignment="viewEnd"
-                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                 android:textColor="?attr/colorOnBackground" />
 
             <!-- Use an Imageview to create a divider -->
@@ -94,13 +94,13 @@
         android:id="@+id/eventWidgetText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
+        android:layout_gravity="start"
         android:layout_marginTop="@dimen/widget_margin"
         android:contentDescription="@string/no_next_event"
         android:paddingHorizontal="@dimen/widget_margin"
         android:text="@string/no_next_event"
-        android:textAlignment="viewEnd"
-        android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         android:textColor="?attr/colorOnBackground" />
 
     <!-- Complete list of the events (not clickable singularly atm) -->
@@ -113,6 +113,8 @@
         android:layout_weight="1"
         android:background="@drawable/widget_inner_rounded_container"
         android:backgroundTint="?attr/colorSurfaceVariant"
-        android:minHeight="0dp" />
+        android:divider="@null"
+        android:minHeight="0dp"
+        android:requiresFadingEdge="vertical" />
 
 </LinearLayout>

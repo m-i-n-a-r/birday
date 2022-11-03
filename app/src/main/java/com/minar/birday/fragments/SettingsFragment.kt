@@ -65,8 +65,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
             "shimmer" -> hotReloadActivity(sharedPreferences)
             "notification_hour" -> mainViewModel.scheduleNextCheck()
             "notification_minute" -> mainViewModel.scheduleNextCheck()
-            // TODO Seems like the widget doesn't update properly
-            "surname_first" -> {
+            "surname_first", "hide_images" -> {
                 // Update every existing widget with a broadcast
                 val intent = Intent(context, EventWidgetProvider::class.java)
                 intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE

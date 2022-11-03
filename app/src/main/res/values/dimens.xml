@@ -57,8 +57,8 @@
     <dimen name="widget_margin">8dp</dimen>
     <dimen name="widget_padding">16dp</dimen>
     <dimen name="widget_shadow_radius">4.5</dimen>
-    <dimen name="widget_image_size">52dp</dimen>
-    <dimen name="widget_image_decoration_size">64dp</dimen>
+    <dimen name="widget_image_size">45dp</dimen>
+    <dimen name="widget_image_decoration_size">58dp</dimen>
     <dimen name="widget_image_horizontal_margin">2dp</dimen>
     <dimen name="widget_type_icon_background_size">28dp</dimen>
     <dimen name="widget_type_icon_size">14dp</dimen>
