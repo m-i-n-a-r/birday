@@ -1,14 +1,11 @@
 package com.minar.birday.fragments
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.preference.PreferenceManager
-import com.google.android.material.resources.TextAppearance
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.FragmentOverviewBinding
@@ -40,6 +37,15 @@ class OverviewFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentOverviewBinding.inflate(inflater, container, false)
+
+        val title: String = getString(R.string.overview) + " - ${LocalDate.now().year}"
+        binding.overviewTitle.text = title
+
+        val august = binding.overviewAug
+        august.highlightDay(
+            15,
+            act.getThemeColor(R.attr.colorPrimary)
+        )
         return binding.root
     }
 }
