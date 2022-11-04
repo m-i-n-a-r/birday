@@ -9,10 +9,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.minar.birday.R
 import com.minar.birday.viewmodels.MainViewModel
-import com.minar.birday.widgets.EventWidget
+import com.minar.birday.widgets.EventWidgetProvider
 
 
 @ExperimentalStdlibApi
@@ -22,6 +25,14 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
         mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
+
+        val experimentalPreference : Preference? =  findPreference("experimental")
+        experimentalPreference?.setOnPreferenceClickListener {
+            val navController: NavController =
+                findNavController()
+            navController.navigate(R.id.action_navigationSettings_to_experimentalSettingsFragment)
+            true
+        }
     }
 
     override fun onResume() {
@@ -54,12 +65,12 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
             "shimmer" -> hotReloadActivity(sharedPreferences)
             "notification_hour" -> mainViewModel.scheduleNextCheck()
             "notification_minute" -> mainViewModel.scheduleNextCheck()
-            "dark_widget" -> {
+            "surname_first", "hide_images" -> {
                 // Update every existing widget with a broadcast
-                val intent = Intent(context, EventWidget::class.java)
+                val intent = Intent(context, EventWidgetProvider::class.java)
                 intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
                 val ids = AppWidgetManager.getInstance(context).getAppWidgetIds(
-                    ComponentName(requireContext(), EventWidget::class.java)
+                    ComponentName(requireContext(), EventWidgetProvider::class.java)
                 )
                 intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
                 requireContext().sendBroadcast(intent)

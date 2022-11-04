@@ -34,7 +34,7 @@ class BirdayImporter(context: Context, attrs: AttributeSet?) : Preference(contex
     }
 
     // Import a backup overwriting any existing data and checking if the file is valid
-    fun importBirthdays(context: Context, fileUri: Uri): Boolean {
+    fun importEvents(context: Context, fileUri: Uri): Boolean {
         if (!isBackupValid(fileUri)) {
             (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_invalid_file))
             return false
@@ -50,6 +50,8 @@ class BirdayImporter(context: Context, attrs: AttributeSet?) : Preference(contex
             e.printStackTrace()
             return false
         }
+        fileStream.close()
+
         // Completely restart the application with a slight delay to be extra-safe
         val intent: Intent =
             act.baseContext.packageManager.getLaunchIntentForPackage(act.baseContext.packageName)!!

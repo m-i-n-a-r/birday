@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="InconsistentArrays">
+
+    <string-array name="accents">
+        <item>@string/monet</item>
+        <item>@string/system_theme</item>
+        <item>@string/aqua</item>
+        <item>@string/brown</item>
+        <item>@string/blue</item>
+        <item>@string/green</item>
+        <item>@string/orange</item>
+        <item>@string/yellow</item>
+        <item>@string/teal</item>
+        <item>@string/violet</item>
+        <item>@string/pink</item>
+        <item>@string/light_blue</item>
+        <item>@string/red</item>
+        <item>@string/lime</item>
+        <item>@string/crimson</item>
+    </string-array>
+
+    <string-array name="accentValues">
+        <item>monet</item>
+        <item>system</item>
+        <item>aqua</item>
+        <item>brown</item>
+        <item>blue</item>
+        <item>green</item>
+        <item>orange</item>
+        <item>yellow</item>
+        <item>teal</item>
+        <item>violet</item>
+        <item>pink</item>
+        <item>lightBlue</item>
+        <item>red</item>
+        <item>lime</item>
+        <item>crimson</item>
+    </string-array>
+
+</resources>

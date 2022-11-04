@@ -4,26 +4,25 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground"
     tools:context=".activities.MainActivity">
 
+    <!-- TODO Is hide handy? Insert app:hideOnScroll="true" as an option -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/navHostFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/bottom_navbar_height"
+        android:paddingBottom="@dimen/bottom_navbar_height"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomBar"
+        style="@style/Widget.Material3.BottomAppBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_navbar_height"
         android:layout_gravity="bottom"
-        app:backgroundTint="@color/deepGray"
         app:contentInsetStart="0dp"
-        app:elevation="@dimen/bottom_navbar_elevation"
         app:fabAlignmentMode="end"
         app:fabAnimationMode="slide"
         app:fabCradleMargin="@dimen/cradle_margin"
@@ -35,26 +34,27 @@
             android:id="@+id/navigation"
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottom_navbar_height"
-            android:background="#00ffffff"
+            android:background="@android:color/transparent"
+            app:backgroundTint="@android:color/transparent"
             app:elevation="0dp"
             app:itemIconTint="@drawable/bottom_navbar_item"
-            app:itemRippleColor="?colorAccent"
-            app:labelVisibilityMode="unlabeled"
+            app:itemPaddingBottom="@dimen/bottom_navbar_item_padding"
+            app:itemPaddingTop="@dimen/bottom_navbar_item_padding"
+            app:labelVisibilityMode="selected"
             app:menu="@menu/navigation_bottomappbar" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
+        style="@style/Widget.Material3.FloatingActionButton.Secondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/new_event"
+        app:tint="?attr/colorPrimary"
         android:hapticFeedbackEnabled="false"
-        app:backgroundTint="?colorAccent"
-        app:elevation="@dimen/bottom_navbar_elevation"
         app:layout_anchor="@id/bottomBar"
-        app:rippleColor="@color/deepGray"
-        app:srcCompat="@drawable/ic_party_24dp"
-        app:tint="@color/deepGray" />
+        app:maxImageSize="@dimen/main_fab_icon_size"
+        app:srcCompat="@drawable/ic_party_24dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

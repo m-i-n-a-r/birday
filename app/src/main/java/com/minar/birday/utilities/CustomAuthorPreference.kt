@@ -12,7 +12,7 @@ import androidx.preference.PreferenceManager
 import androidx.preference.PreferenceViewHolder
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
-import com.minar.birday.databinding.FragmentSettingsBinding
+import com.minar.birday.databinding.AuthorPreferenceRowBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -32,7 +32,7 @@ class CustomAuthorPreference(context: Context, attrs: AttributeSet?) :
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
-        val binding = FragmentSettingsBinding.bind(holder.itemView)
+        val binding = AuthorPreferenceRowBinding.bind(holder.itemView)
 
         // Manage the shimmer
         val shimmer = binding.settingsShimmer
@@ -74,9 +74,10 @@ class CustomAuthorPreference(context: Context, attrs: AttributeSet?) :
                 // Trigger a snackbar and confetti
                 confetti.build()
                     .addColors(
-                        act.getThemeColor(android.R.attr.colorAccent),
-                        act.getThemeColor(android.R.attr.textColorPrimary),
-                        ContextCompat.getColor(context, R.color.goodGray),
+                        act.getThemeColor(R.attr.colorTertiary),
+                        act.getThemeColor(R.attr.colorSecondary),
+                        act.getThemeColor(R.attr.colorPrimary),
+                        act.getThemeColor(R.attr.colorOnSurface),
                     )
                     .setDirection(0.0, 359.0)
                     .setSpeed(0.5f, 4f)

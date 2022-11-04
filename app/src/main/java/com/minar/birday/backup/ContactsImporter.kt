@@ -3,7 +3,6 @@ package com.minar.birday.backup
 import android.content.ContentResolver
 import android.content.ContentUris
 import android.content.Context
-import android.database.Cursor
 import android.graphics.BitmapFactory
 import android.media.ThumbnailUtils
 import android.provider.ContactsContract
@@ -68,7 +67,12 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
 
         // Phase 1: get every contact having at least a name and a birthday
         val contacts = getContacts()
-        if (contacts.isEmpty()) return true
+        if (contacts.isEmpty()) {
+            context.runOnUiThread(Runnable {
+                context.showSnackbar(context.getString(R.string.import_nothing_found))
+            })
+            return true
+        }
 
         // Phase 2: convert the extracted data in an Event List, verify duplicates
         val events = mutableListOf<Event>()
@@ -79,6 +83,7 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
             var surname = ""
             var date: LocalDate
             var countYear = true
+            val notes = contact.customLabel
             when (splitName.size) {
                 // Not considering surname only contacts, but considering name only
                 1 -> name = splitName[0].trim()
@@ -108,6 +113,7 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                 yearMatter = countYear,
                 type = contact.eventType,
                 image = contact.image,
+                notes = notes
             )
             events.add(event)
         }
@@ -134,116 +140,86 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
         // Retrieve name and id
         val resolver: ContentResolver = context.contentResolver
         val cursor = resolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null)
-        if (cursor != null) {
-            if (cursor.count > 0) {
-                while (cursor.moveToNext()) {
-                    val idValue = cursor.getColumnIndex(ContactsContract.Contacts._ID)
-                    val nameValue =
-                        cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME_ALTERNATIVE)
-                    // Control the values, even if they should always exist
-                    if (idValue < 0 || nameValue < 0) continue
+        if (cursor != null && cursor.count > 0) {
+            // For each contact, get the image and the data
+            while (cursor.moveToNext()) {
+                val idValue = cursor.getColumnIndex(ContactsContract.Contacts._ID)
+                val nameValue =
+                    cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME_ALTERNATIVE)
 
-                    val id = cursor.getString(idValue)
-                    val name = cursor.getString(nameValue)
-                    // Get the image, if any, and convert it to byte array
-                    val imageStream = ContactsContract.Contacts.openContactPhotoInputStream(
-                        resolver,
-                        ContentUris.withAppendedId(
-                            ContactsContract.Contacts.CONTENT_URI,
-                            id.toLong()
-                        )
+                // Control the values, even if they should always exist
+                if (idValue < 0 || nameValue < 0) continue
+
+                // Given the column indexes, retrieve the values
+                val id = cursor.getString(idValue)
+                val name = cursor.getString(nameValue)
+
+                // Get the image, if any, and convert it to byte array
+                val imageStream = ContactsContract.Contacts.openContactPhotoInputStream(
+                    resolver,
+                    ContentUris.withAppendedId(
+                        ContactsContract.Contacts.CONTENT_URI,
+                        id.toLong()
                     )
-                    val bitmap = BitmapFactory.decodeStream(imageStream)
-                    var image: ByteArray? = null
-                    if (bitmap != null) {
-                        // Check if the image is too big and resize it to a square if needed
-                        var dimension = getBitmapSquareSize(bitmap)
-                        if (dimension > 450) dimension = 450
-                        val resizedBitmap = ThumbnailUtils.extractThumbnail(
-                            bitmap,
-                            dimension,
-                            dimension,
-                            ThumbnailUtils.OPTIONS_RECYCLE_INPUT,
-                        )
-                        image = bitmapToByteArray(resizedBitmap)
-                    }
-
-                    // TODO The following could be heavily optimized, probably
-                    // Retrieve the birthday
-                    val bd = context.contentResolver
-                    val bdc: Cursor? = bd.query(
-                        ContactsContract.Data.CONTENT_URI,
-                        arrayOf(ContactsContract.CommonDataKinds.Event.DATA),
-                        ContactsContract.Data.CONTACT_ID + " = " + id + " AND " + ContactsContract.Data.MIMETYPE + " = '" +
-                                ContactsContract.CommonDataKinds.Event.CONTENT_ITEM_TYPE + "' AND " + ContactsContract.CommonDataKinds.Event.TYPE +
-                                " = " + ContactsContract.CommonDataKinds.Event.TYPE_BIRTHDAY,
-                        null,
-                        ContactsContract.Data.DISPLAY_NAME
+                )
+                val bitmap = BitmapFactory.decodeStream(imageStream)
+                var image: ByteArray? = null
+                if (bitmap != null) {
+                    // Check if the image is too big and resize it to a square if needed
+                    var dimension = getBitmapSquareSize(bitmap)
+                    if (dimension > 450) dimension = 450
+                    val resizedBitmap = ThumbnailUtils.extractThumbnail(
+                        bitmap,
+                        dimension,
+                        dimension,
+                        ThumbnailUtils.OPTIONS_RECYCLE_INPUT,
                     )
+                    image = bitmapToByteArray(resizedBitmap)
+                }
 
-                    if (bdc != null && bdc.count > 0) {
-                        while (bdc.moveToNext()) {
-                            // Using an object model to store the information
-                            val birthday: String = bdc.getString(0)
-                            val importedContact = ImportedContact(id, name, birthday, image)
-                            contactInfo.add(importedContact)
+                // Retrieve the events for the current contact
+                val eventCursor = resolver.query(
+                    ContactsContract.Data.CONTENT_URI,
+                    arrayOf(
+                        ContactsContract.CommonDataKinds.Event.DATA,
+                        ContactsContract.CommonDataKinds.Event.TYPE,
+                        ContactsContract.CommonDataKinds.Event.LABEL
+                    ),
+                    ContactsContract.Data.CONTACT_ID + " = " + id + " AND " +
+                            ContactsContract.Data.MIMETYPE + " = '" +
+                            ContactsContract.CommonDataKinds.Event.CONTENT_ITEM_TYPE + "'",
+                    null,
+                    null
+                )
+
+                if (eventCursor != null && eventCursor.count > 0) {
+                    while (eventCursor.moveToNext()) {
+                        // Using an object model to store the information:
+                        // 0 is custom event type, 1 is anniversary, 2 is other, 3 is birthday
+                        val birthday: String = eventCursor.getString(0)
+                        val eventTypeNumber = eventCursor.getInt(1)
+                        lateinit var eventType: EventCode
+                        var eventCustomLabel: String? = null
+                        when (eventTypeNumber) {
+                            0 -> {
+                                eventType = EventCode.OTHER
+                                eventCustomLabel = eventCursor.getString(2)
+                            }
+                            1 -> eventType = EventCode.ANNIVERSARY
+                            2 -> eventType = EventCode.OTHER
+                            else -> eventType = EventCode.BIRTHDAY
                         }
-                        bdc.close()
+                        val importedContact = if (eventCustomLabel != null) ImportedContact(
+                            id,
+                            name,
+                            birthday,
+                            image,
+                            eventType.name,
+                            eventCustomLabel
+                        ) else ImportedContact(id, name, birthday, image, eventType.name)
+                        contactInfo.add(importedContact)
                     }
-
-                    // Retrieve the anniversaries
-                    val bdc2: Cursor? = bd.query(
-                        ContactsContract.Data.CONTENT_URI,
-                        arrayOf(ContactsContract.CommonDataKinds.Event.DATA),
-                        ContactsContract.Data.CONTACT_ID + " = " + id + " AND " + ContactsContract.Data.MIMETYPE + " = '" +
-                                ContactsContract.CommonDataKinds.Event.CONTENT_ITEM_TYPE + "' AND " + ContactsContract.CommonDataKinds.Event.TYPE +
-                                " = " + ContactsContract.CommonDataKinds.Event.TYPE_ANNIVERSARY,
-                        null,
-                        ContactsContract.Data.DISPLAY_NAME
-                    )
-
-                    if (bdc2 != null && bdc2.count > 0) {
-                        while (bdc2.moveToNext()) {
-                            // Using an object model to store the information
-                            val anniversary: String = bdc2.getString(0)
-                            val importedContact = ImportedContact(
-                                id,
-                                name,
-                                anniversary,
-                                image,
-                                EventCode.ANNIVERSARY.name
-                            )
-                            contactInfo.add(importedContact)
-                        }
-                        bdc2.close()
-                    }
-
-                    // Retrieve other events
-                    val bdc3: Cursor? = bd.query(
-                        ContactsContract.Data.CONTENT_URI,
-                        arrayOf(ContactsContract.CommonDataKinds.Event.DATA),
-                        ContactsContract.Data.CONTACT_ID + " = " + id + " AND " + ContactsContract.Data.MIMETYPE + " = '" +
-                                ContactsContract.CommonDataKinds.Event.CONTENT_ITEM_TYPE + "' AND " + ContactsContract.CommonDataKinds.Event.TYPE +
-                                " = " + ContactsContract.CommonDataKinds.Event.TYPE_OTHER,
-                        null,
-                        ContactsContract.Data.DISPLAY_NAME
-                    )
-
-                    if (bdc3 != null && bdc3.count > 0) {
-                        while (bdc3.moveToNext()) {
-                            // Using an object model to store the information
-                            val other: String = bdc3.getString(0)
-                            val importedContact = ImportedContact(
-                                id,
-                                name,
-                                other,
-                                image,
-                                EventCode.OTHER.name
-                            )
-                            contactInfo.add(importedContact)
-                        }
-                        bdc3.close()
-                    }
+                    eventCursor.close()
                 }
             }
         }

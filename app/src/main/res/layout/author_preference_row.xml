@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/devStuff"
@@ -43,7 +42,7 @@
             android:focusable="true"
             android:padding="@dimen/minar_banner_padding"
             android:src="@drawable/animated_logo"
-            app:tint="?colorAccent" />
+            app:tint="?attr/colorPrimary" />
     </com.facebook.shimmer.ShimmerFrameLayout>
 
     <com.google.android.material.textview.MaterialTextView
@@ -73,7 +72,7 @@
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/descriptionMinar"
-        app:tint="?colorAccent" />
+        app:tint="?attr/colorPrimary" />
 
     <ImageView
         android:id="@+id/minartt"
@@ -90,7 +89,7 @@
         app:layout_constraintEnd_toStartOf="@id/minarps"
         app:layout_constraintStart_toEndOf="@id/minarig"
         app:layout_constraintTop_toTopOf="@id/minarig"
-        app:tint="?colorAccent" />
+        app:tint="?attr/colorPrimary" />
 
     <ImageView
         android:id="@+id/minarps"
@@ -107,7 +106,7 @@
         app:layout_constraintEnd_toStartOf="@id/minargit"
         app:layout_constraintStart_toEndOf="@id/minartt"
         app:layout_constraintTop_toTopOf="@id/minarig"
-        app:tint="?colorAccent" />
+        app:tint="?attr/colorPrimary" />
 
     <ImageView
         android:id="@+id/minargit"
@@ -124,7 +123,7 @@
         app:layout_constraintEnd_toStartOf="@id/minarsite"
         app:layout_constraintStart_toEndOf="@id/minarps"
         app:layout_constraintTop_toTopOf="@id/minarig"
-        app:tint="?colorAccent" />
+        app:tint="?attr/colorPrimary" />
 
     <ImageView
         android:id="@+id/minarsite"
@@ -141,6 +140,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/minargit"
         app:layout_constraintTop_toTopOf="@id/minarig"
-        app:tint="?colorAccent" />
+        app:tint="?attr/colorPrimary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

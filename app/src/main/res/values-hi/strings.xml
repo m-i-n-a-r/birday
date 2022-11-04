@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<resources> 
+
+    <string name="app_welcome">बर्डे में आपका स्वागत है</string> 
+    <string name="app_name_extended">बर्डे - इवेंट मैनेजर</string> 
+    <string name="leave_review_title">जन्मदिन की समीक्षा करें</string> 
+    <string name="leave_review_subtitle">ऐप के साथ मेरी मदद करने के लिए एक समीक्षा छोड़ें। ध्यान रखें कि, एक तरफ दान, यह ऐप पूरी तरह से मुफ़्त और विज्ञापन-मुक्त है!</string> 
+    <string name="yes_review">समीक्षा!</string> 
+    <string name="later">बाद में, मैं कसम खाता हूँ</string> 
+    <string name="no_thanks">बिल्कुल नहीं!</string> 
+    <string name="title_home">होम</string> 
+    <string name="title_favorites">पसंदीदा</string> 
+    <string name="title_settings">सेटिंग्स</string> 
+    <string name="no_events">कोई इवेंट नहीं! नीचे दिए गए बटन का उपयोग करके एक जोड़ना प्रारंभ करें!</string> 
+    <string name="no_favorites">कोई पसंदीदा नहीं! किसी ईवेंट को अपने पसंदीदा में सहेजने के लिए तारे को दबाएं!</string> 
+    <string name="add_favorite">पसंदीदा में जोड़े</string> 
+    <string name="stats">आंकड़े</string> 
+    <string name="no_stats">दिखाने के लिए कोई आँकड़े नहीं!</string> 
+    <string name="stats_summary">आँकड़े सारांश</string> 
+    <string name="no_stats_description">आपके पास आंकड़े जनरेट करने के लिए काफ़ी इवेंट नहीं हैं. कुछ जोड़ें और बाद में वापस आएं!</string> 
+    <plurals name="stats_total"> 
+        <item quantity="one">बर्डे कुल %d इवेंट को याद रखने में आपकी मदद कर रहा है</item> 
+        <item quantity="other">बर्डे कुल %d इवेंट्स को याद रखने में आपकी मदद कर रहा है</item> 
+    </plurals> 
+    <string name="next_event">अगला इवेंट</string> 
+    <string name="no_next_event">दिखाने के लिए कोई इवेंट नहीं!</string> 
+    <string name="no_next_event_description">आपने अभी तक कोई ईवेंट दर्ज या आयात नहीं किया है। एक जोड़ें और बर्डे को आपकी मदद करने दें!</string> 
+    <string name="next_age_years">वर्षों</string> 
+    <string name="event_others">और दूसरे</string> 
+    <plurals name="days_left"> 
+        <item quantity="one">%d दिन शेष</item> 
+        <item quantity="other">%d दिन शेष</item> 
+    </plurals> 
+ 
+    <!-- Settings --> 
+    <string name="customization">कस्टमाइजेशन</string> 
+    <string name="app_behavior">ऐप व्यवहार</string> 
+    <string name="additional_notification_name">अतिरिक्त नोटिफिकेशन</string> 
+    <string name="additional_notification_description">इवेंट से कुछ दिन पहले एक अतिरिक्त नोटिफिकेशन भेजें। %s </string> 
+    <string name="no_additional_notification">कोई अतिरिक्त नोटिफिकेशन नहीं</string> 
+    <string name="one_day_before">एक दिन पहले</string> 
+    <string name="two_days_before">दो दिन पहले</string> 
+    <string name="three_days_before">तीन दिन पहले</string> 
+    <string name="four_days_before">चार दिन पहले</string> 
+    <string name="five_days_before">पांच दिन पहले</string> 
+    <string name="six_days_before">छह दिन पहले</string> 
+    <string name="seven_days_before">सात दिन पहले</string> 
+    <string name="vibration_name">कंपन</string> 
+    <string name="vibration_description_on">बटन दबाए जाने पर कंपन करें</string> 
+    <string name="vibration_description_off">बटन दबाए जाने पर कोई कंपन नहीं</string> 
+    <string name="date_format_name">तारीख का प्रारूप</string> 
+    <string name="notification_hour_name">नोटिफिकेशन घंटे</string> 
+    <string name="notification_hour_description">%s \n\nकृपया ध्यान दें कि कुछ Huawei, Xiaomi और OnePlus उपकरणों में सिस्टम द्वारा ऐप के समाप्त होने पर नोटिफिकेशन काम नहीं करते है। अधिक जानकारी के लिए dontkillmyapp.com देखें</string> 
+    <string name="accent_description">डिफ़ॉल्ट एक्सेंट रंग बदलें</string> 
+    <string name="accent_name">एक्सेंट रंग</string> 
+    <string name="theme_description">डार्क, लाइट या ऑटोमैटिक ऐप थीम का उपयोग करें</string> 
+    <string name="theme_name">ऐप थीम</string> 
+    <string name="aqua">पानी</string> 
+    <string name="brown">भूरा</string> 
+    <string name="blue">नीला</string> 
+    <string name="green">हरा</string> 
+    <string name="orange">संतरा</string> 
+    <string name="yellow">पीला</string> 
+    <string name="teal">टील</string> 
+    <string name="violet">बैंगनी</string> 
+    <string name="pink">गुलाबी</string> 
+    <string name="light_blue">हल्का नीला रंग</string> 
+    <string name="red">लाल</string> 
+    <string name="lime">नींबू</string> 
+    <string name="crimson">गहरा लाल</string> 
+    <string name="system_theme">सिस्टम द्वारा निर्धारित</string> 
+    <string name="dark_theme">डार्क</string> 
+    <string name="light_theme">लाइट</string> 
+    <string name="shimmer_name">झिलमिलाता प्रभाव</string> 
+    <string name="shimmer_description_on">यहाँ और वहाँ एक चमकदार एनीमेशन</string> 
+    <string name="shimmer_description_off">कोई अतिरिक्त ग्राफिक प्रभाव नहीं</string> 
+    <string name="dark_widget_name">डार्क विजेट</string> 
+    <string name="dark_widget_description_on">विजेट डार्क रंग वाली थीम का उपयोग करता है</string> 
+    <string name="dark_widget_description_off">विजेट लाइट थीम का उपयोग करता है</string> 
+    <string name="import_export">आयात और निर्यात</string> 
+    <string name="import_contacts_title">संपर्कों से ईवेंट आयात करें</string> 
+    <string name="import_contacts_description">हमेशा सटीक आंकड़े रखने के लिए लापता वर्षों वाले इवेंट्स को संशोधित करना सुनिश्चित करें!</string> 
+    <string name="import_success">आयात सफलतापूर्वक पूरा हुआ!</string> 
+    <string name="import_nothing_found">कोई घटना नहीं मिली!</string> 
+    <string name="import_failed">कुछ गलत हो गया!</string> 
+    <string name="missing_permission_contacts">संपर्क अनुमति अस्वीकार कर दी गई थी। पुन: प्रयास करें या मैन्युअल रूप से अनुमति सक्रिय करें, या संपर्क आयात काम नहीं करेगा!</string> 
+    <string name="missing_permission_contacts_forever">बर्डे संपर्कों को आयात करने की अनुमति नहीं मांग सकता, क्योंकि आपने "फिर कभी न पूछें" चेक किया है। इसे मैन्युअल रूप से सक्षम करें!</string> 
+    <string name="birday_import_title">एक बर्डे बैकअप आयात करें</string> 
+    <string name="birday_import_description">अपने ईवेंट को पुनर्स्थापित करने के लिए एक मान्य जन्मदिन बैकअप चुनें। सभी मौजूदा डेटा को अधिलेखित कर दिया जाएगा!</string> 
+    <string name="birday_export_title">इवेंट्स को निर्यात और साझा करें</string> 
+    <string name="birday_export_description">उपलब्ध ईवेंट को बैकअप में निर्यात करें, और यदि आप चाहें तो उन्हें साझा करें। फ़ाइल Android/data/com.minar.birday/files में है</string> 
+    <string name="birday_import_success">आयात पूरा हुआ!</string> 
+    <string name="birday_import_failure">आयात विफल. क्या आपने फ़ाइल को सही ढंग से चुना?</string> 
+    <string name="birday_import_invalid_file">आयात विफल. चुनी गई फ़ाइल बर्डे बैकअप नहीं है!</string> 
+    <string name="birday_export_success">निर्यात पूरा हुआ!</string> 
+    <string name="birday_export_failure">निर्यात विफल। वूप्सी!</string> 
+    <string name="birday_export_nothing_found">निर्यात करने के लिए कुछ भी नहीं!</string> 
+    <string name="surname_first">उपनाम पहले</string> 
+    <string name="surname_first_description_on">नाम से पहले उपनाम दिखाएं</string> 
+    <string name="surname_first_description_off">उपनाम से पहले नाम दिखाएं</string> 
+    <string name="hide_images">चित्र छुपाएं</string> 
+    <string name="hide_images_description_on">इवेंट की छवियां छिपी हुई हैं</string> 
+    <string name="hide_images_description_off">इवेंट के चित्र दिखाई दे रहे हैं</string> 
+    <string name="notification_only_favorites">केवल पसंदीदा</string> 
+    <string name="notification_only_favorites_description_on">केवल पसंदीदा ईवेंट के लिए नोटिफिकेशन भेजें</string> 
+    <string name="notification_only_favorites_description_off">सम्मिलित किए गए प्रत्येक ईवेंट के लिए एक नोटिफिकेशन भेजें</string> 
+    <string name="troubleshoot">समस्या निवारण और अतिरिक्त</string> 
+    <string name="battery_optimization_title">बैटरी अनुकूलन बंद करें</string> 
+    <string name="battery_optimization_description">बर्डे के लिए किसी भी अनुकूलन को बंद करने के लिए सेटिंग्स खोलें। उपयोगी है अगर नोटिफिकेशन काम नहीं कर रहे हैं</string> 
+    <string name="notification_sound_title">नोटिफिकेशन ध्वनि</string> 
+    <string name="notification_sound_description">नोटिफिकेशन ध्वनि सेटिंग का शॉर्टकट, यदि आपको डिफ़ॉल्ट पक्षी ध्वनि पसंद नहीं है</string> 
+ 
+    <!-- Developer -->
+    <string name="dev_description">मैं एक विनम्र व्यक्ति हूं और मुझे सुंदर चीजें पसंद हैं, जैसे एनिमेशन, आइकन, स्पोर्ट कार और 3डी प्रिंटिंग। मैं एक डिजाइनर और कंप्यूटर इंजीनियर के रूप में काम करता हूं।</string>
+    <string name="easter_egg">अच्छा लोगो, हुह? ;D</string>
+ 
+    <!-- New event --> 
+    <string name="new_event">नया इवेंट</string> 
+    <string name="new_event_description">उस व्यक्ति को दर्ज करें जिसकी आप परवाह करते हैं, और बर्डे आपको उनके जन्मदिन या अन्य कार्यक्रमों को याद रखने में मदद करेगा!</string> 
+    <string name="insert_event">इवेंट सम्मिलित करें</string> 
+    <string name="cancel">रद्द करें</string> 
+    <string name="insert_name_hint">पहला नाम डालें</string> 
+    <string name="insert_surname_hint">अंतिम नाम डालें</string> 
+    <string name="insert_date_hint">एक तारीख चुनें</string> 
+    <string name="invalid_value_name">अमान्य नाम!</string> 
+    <string name="consider_year">वर्ष पर विचार करें</string> 
+    <string name="event_type_hint">इवेंट प्रकार</string> 
+    <string name="birthday">जन्मदिन</string> 
+    <string name="anniversary">सालगिरह</string> 
+    <string name="death_anniversary">पुण्यतिथि</string> 
+    <string name="festivity">उत्सव</string> 
+    <string name="name_day">दिन का नाम</string> 
+    <string name="other">अन्य</string> 
+ 
+    <!-- Event actions --> 
+    <string name="event_actions">कार्रवाई</string> 
+    <string name="event_actions_description">यहां आप इस इवेंट को बदल या हटा सकते हैं!</string> 
+    <string name="edit_event">इवेंट संपादित करें</string> 
+    <string name="delete_event">इवेंट हटाएं</string> 
+    <string name="update_event">इवेंट का अद्यतन करें</string> 
+    <string name="share_event">इवेंट साझा करें</string> 
+    <string name="deleted">हटा दिया गया!</string> 
+ 
+    <!-- Event details --> 
+    <string name="event_details">विवरण</string> 
+    <string name="birth_date">जन्म तिथि</string> 
+    <string name="next_age">अगली उम्र:</string> 
+    <string name="zodiac_sign">राशि - चक्र चिन्ह:</string> 
+    <string name="chinese_zodiac_sign">चीनी संज्ञा:</string> 
+ 
+    <!-- Quick apps --> 
+    <string name="event_apps">त्वरित ऐप्स</string> 
+    <string name="event_apps_description">ऐप्स तेजी से शुभकामनाएं देने के लिए!</string>
+    <string name="textMessage">टेक्स्ट संदेश</string> 
+    <string name="dialer">डायलर</string> 
+    <string name="wishes_birthday">जन्मदिन की शुभकामनाएं!</string> 
+    <string name="no_default_dialer">कोई डिफ़ॉल्ट डायलर ऐप नहीं मिला!</string> 
+    <string name="no_default_sms">कोई डिफ़ॉल्ट SMS ऐप नहीं मिला!</string> 
+ 
+    <!-- Statistics --> 
+    <string name="did_you_know">क्या तुम्हें पता था?</string> 
+    <string name="age_average">औसत आयु %s है</string> 
+    <string name="oldest_person">सबसे बड़ा व्यक्ति %s है</string> 
+    <string name="youngest_person">सबसे छोटा व्यक्ति %s है</string> 
+    <string name="most_common_month">जन्म का सबसे आम महीना %s है</string> 
+    <string name="most_common_decade">जन्म का सबसे सामान्य दशक %s है</string> 
+    <string name="most_common_age_range">सबसे आम आयु सीमा %1$s-%2$s है</string> 
+    <string name="special_ages">एक महत्वपूर्ण आगामी जन्मदिन %s है</string> 
+    <string name="random_zodiac_sign">%1$s का राशि चिन्ह: %2$s</string> 
+    <string name="most_common_zodiac_sign">सबसे आम राशि चिन्ह %s है</string> 
+    <string name="random_day_of_week">%1$s का जन्म %2$s को हुआ था</string> 
+    <string name="most_common_day_of_week">जन्म के सप्ताह का सबसे आम दिन %s है</string> 
+    <plurals name="leap_year_total"> 
+        <item quantity="one">एक लीप वर्ष में पैदा हुए व्यक्तियों की संख्या %d है</item> 
+        <item quantity="other">एक लीप वर्ष में पैदा हुए व्यक्तियों की संख्या %d है</item> 
+    </plurals> 
+    <string name="random_chinese_year">%1$s का चीनी राशि चिन्ह: %2$s</string> 
+    <string name="chinese_zodiac_rat">चूहा</string>
+    <string name="chinese_zodiac_ox">बैल</string>
+    <string name="chinese_zodiac_tiger">बाघ</string>
+    <string name="chinese_zodiac_rabbit">खरगोश</string>
+    <string name="chinese_zodiac_dragon">अजगर</string>
+    <string name="chinese_zodiac_snake">साँप</string>
+    <string name="chinese_zodiac_horse">घोड़ा</string>
+    <string name="chinese_zodiac_goat">बकरी</string>
+    <string name="chinese_zodiac_monkey">बंदर</string>
+    <string name="chinese_zodiac_rooster">मुरग़ा</string>
+    <string name="chinese_zodiac_dog">कुत्ता</string>
+    <string name="chinese_zodiac_pig">सुअर</string>
+    <string name="zodiac_sagittarius">धनु</string>
+    <string name="zodiac_capricorn">मकर</string>
+    <string name="zodiac_aquarius">कुंभ</string>
+    <string name="zodiac_pisces">मीन</string>
+    <string name="zodiac_aries">मेष</string>
+    <string name="zodiac_taurus">वृषभ</string>
+    <string name="zodiac_gemini">मिथुन</string>
+    <string name="zodiac_cancer">कैंसर</string>
+    <string name="zodiac_leo">लियो</string>
+    <string name="zodiac_virgo">कन्या</string>
+    <string name="zodiac_libra">तुला</string>
+    <string name="zodiac_scorpio">वृश्चिक</string>
+ 
+    <!-- Common words --> 
+    <plurals name="months"> 
+        <item quantity="one">%d महीना</item> 
+        <item quantity="other">%d महीने</item> 
+    </plurals> 
+    <string name="today">आज!</string> 
+    <string name="yesterday">बीते कल!</string> 
+    <string name="tomorrow">कल का दिन!</string> 
+    <plurals name="years"> 
+        <item quantity="one">%d वर्ष</item> 
+        <item quantity="other">%d वर्षों</item> 
+    </plurals> 
+    <string name="born_in">जन्म</string> 
+    <string name="and">तथा</string>
+    <plurals name="event"> 
+        <item quantity="one">इवेंट: %s</item> 
+        <item quantity="other">इवेंट्स: %s</item> 
+    </plurals> 
+ 
+    <!-- Notifications --> 
+    <string name="events_notification_channel">इवेंट रिमाइंडर</string> 
+    <string name="events_channel_description">बर्डे से आने वाली इवेंट्स के बारे में रिमाइंडर</string> 
+    <string name="notification_title">जन्मदिन रिमाइंडर</string> 
+    <string name="notification_description_part_1">आज के इवेंट्स हैं</string> 
+    <string name="notification_description_part_2">आपका दिन अच्छा रहे!</string> 
+    <string name="additional_notification_text">आगामी इवेंट्स!</string> 
+ 
+    <!-- Introduction slides --> 
+    <string name="slide_one_title">बर्डे में आपका स्वागत है!</string> 
+    <string name="slide_one_description">महत्वपूर्ण इवेंट्स को प्रबंधित करने के लिए बर्डे एक सरल और हल्का ऐप है! आप इसका उपयोग विश्वसनीय और तेज़ तरीके से अपने प्रिय और अन्य लोगों के जन्मदिनों को याद रखने और संग्रहीत करने के लिए कर सकते हैं।</string> 
+    <string name="slide_two_title">मुफ़्त, सरल, अनुकूलन योग्य</string> 
+    <string name="slide_two_description">बर्डे फ्री, एड-फ्री और ओपन सोर्स है। यह आपके ईवेंट, पसंदीदा सिस्टम और अनुकूलन योग्य इंटरफ़ेस के बारे में आँकड़ों का एक सेट प्रदान करता है। और गारंटीकृत समर्थन और अपडेट्स!</string> 
+    <string name="slide_three_title">संपर्कों से आयात करें</string> 
+    <string name="slide_three_description">आपके द्वारा अपने संपर्कों से पहले से सहेजे गए ईवेंट आयात करना भी संभव है। बर्डे आपके लिए यह कर सकता है, बस संपर्कों को अनुमति दें। आनंद लें!</string> 
+ 
+    <!-- Widget --> 
+    <string name="appwidget_upcoming">आगामी इवेंट्स</string> 
+    <string name="add_widget">बर्डे - आगामी</string> 
+ 
+    <!-- Search --> 
+    <string name="search_event">खोजें…</string> 
+    <string name="search_no_result_title">कोई परिणाम नहीं मिला</string> 
+    <string name="search_no_result_description">आपकी खोज स्ट्रिंग आपके द्वारा जोड़े गए किसी भी ईवेंट से मेल नहीं खाती!</string> 
+ 
+    <!-- Notes --> 
+    <string name="notes">टिप्पणियाँ</string> 
+    <string name="write_something">कुछ लिखें…</string> 
+ 
+    <!-- Overview --> 
+    <string name="overview">अवलोकन</string> 
+    <string name="overview_description">सहेजे गए प्रत्येक ईवेंट का वार्षिक अवलोकन</string> 
+ 
+</resources> 
+

@@ -1,19 +1,16 @@
 package com.minar.birday.fragments
 
-import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.net.Uri
+import android.os.Build
 import android.os.Bundle
-import android.provider.Telephony
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OVER_SCROLL_ALWAYS
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.RemoteViews
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.doOnPreDraw
@@ -24,24 +21,18 @@ import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
-import com.afollestad.materialdialogs.LayoutMode
-import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.bottomsheets.BottomSheet
-import com.afollestad.materialdialogs.customview.customView
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.EventAdapter
-import com.minar.birday.databinding.DialogAppsEventBinding
 import com.minar.birday.databinding.FragmentHomeBinding
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventDataItem
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
-import com.minar.birday.widgets.EventWidget
+import com.minar.birday.widgets.EventWidgetProvider
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
-import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.time.temporal.ChronoUnit
@@ -55,8 +46,6 @@ class HomeFragment : Fragment() {
     lateinit var sharedPrefs: SharedPreferences
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private var _dialogAppsEventBinding: DialogAppsEventBinding? = null
-    private val dialogAppsEventBinding get() = _dialogAppsEventBinding!!
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -116,6 +105,11 @@ class HomeFragment : Fragment() {
             }
         }
 
+        // Activate the overscroll effect on Android 12 and above
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            binding.eventRecycler.overScrollMode = OVER_SCROLL_ALWAYS
+        }
+
         // Show quick apps on long press too
         homeMiniFab.setOnLongClickListener {
             if (homeMotionLayout.progress == 1.0F) showQuickAppsSheet()
@@ -153,10 +147,10 @@ class HomeFragment : Fragment() {
         }
 
         // Only the next events, without considering the search string, ordered
-        mainViewModel.nextEvents.observe(viewLifecycleOwner)
-        { nextEvents ->
+        mainViewModel.allEventsUnfiltered.observe(viewLifecycleOwner)
+        {
             // Update the widgets using this livedata, to avoid strange behaviors when searching
-            updateWidget(nextEvents)
+            updateWidget()
         }
 
         // Restore search string in the search bar
@@ -168,7 +162,6 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         // Reset each binding to null to follow the best practice
         _binding = null
-        _dialogAppsEventBinding = null
     }
 
     // Functions to update, delete and create an Event object to pass instead of the returning object passed
@@ -251,51 +244,13 @@ class HomeFragment : Fragment() {
     }
 
     // Update the existing widgets with the newest data and the onclick action
-    private fun updateWidget(events: List<EventResult>) {
-        val appWidgetManager = AppWidgetManager.getInstance(context)
-        // The dark/light widget is now automatic
-        val remoteViews = RemoteViews(requireContext().packageName, R.layout.event_widget)
-        val thisWidget = context?.let { ComponentName(it, EventWidget::class.java) }
-        val intent = Intent(context, MainActivity::class.java)
-        val pendingIntent =
-            PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
-        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
-
-        // Make sure to show if there's more than one event
-        var widgetUpcoming = formatEventList(events, true, requireContext(), false)
-        if (events.isNotEmpty()) widgetUpcoming += "\n ${
-            nextDateFormatted(
-                events[0],
-                formatter,
-                requireContext()
-            )
-        }"
-
-        remoteViews.setOnClickPendingIntent(R.id.background, pendingIntent)
-        remoteViews.setTextViewText(R.id.event_widget_text, widgetUpcoming)
-        remoteViews.setTextViewText(R.id.event_widget_date, formatter.format(LocalDate.now()))
-        remoteViews.setViewVisibility(R.id.event_widget_list, View.GONE)
-        if (events[0].image != null && events[0].image!!.isNotEmpty()) {
-            remoteViews.setImageViewBitmap(
-                R.id.event_widget_image,
-                byteArrayToBitmap(events[0].image!!)
-            )
-        } else remoteViews.setImageViewResource(
-            R.id.event_widget_image,
-            // Set the image depending on the event type
-            when (events[0].type) {
-                EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
-                EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
-                EventCode.DEATH.name -> R.drawable.placeholder_death_image
-                EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
-                else -> R.drawable.placeholder_other_image
-            }
-        )
-        // Instruct the widget manager to update the widget
-        appWidgetManager.updateAppWidget(thisWidget, remoteViews)
+    private fun updateWidget() {
+        val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+        intent.component = ComponentName(requireContext(), EventWidgetProvider::class.java)
+        requireContext().sendBroadcast(intent)
     }
 
-    // Insert the necessary information in the upcoming event cardview (and confetti)
+    // Insert the necessary information in the upcoming event card view (and confetti)
     private fun insertUpcomingEvents(events: List<EventResult>) {
         // First thing first, get the next events
         val nextEvents: List<EventResult> =
@@ -315,18 +270,21 @@ class HomeFragment : Fragment() {
         // Set the correct avd
         when {
             nextEvents.all { it.type == EventCode.DEATH.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
-                R.drawable.animated_death_anniversary
+                R.drawable.animated_death_anniversary, 1000
             )
             nextEvents.all { it.type == EventCode.ANNIVERSARY.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
-                R.drawable.animated_anniversary
+                R.drawable.animated_anniversary, 1000
             )
             nextEvents.all { it.type == EventCode.NAME_DAY.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
-                R.drawable.animated_name_day
+                R.drawable.animated_name_day, 1000
             )
             nextEvents.all { it.type == EventCode.OTHER.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
-                R.drawable.animated_other
+                R.drawable.animated_other, 1000
             )
-            else -> upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_party_popper)
+            else -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+                R.drawable.animated_party_popper,
+                1000
+            )
         }
         // Trigger confetti if there's an event today, except for "only death anniversaries" days
         if (
@@ -342,8 +300,10 @@ class HomeFragment : Fragment() {
             // Consider the case of null surname and the case of unknown age
             val formattedPersonName =
                 formatName(event, sharedPrefs.getBoolean("surname_first", false))
-            val age = if (event.yearMatter!!) upcomingDate.year.minus(event.originalDate.year)
-                .toString()
+
+            val age = if (event.yearMatter!! && event.type != EventCode.NAME_DAY.name)
+                upcomingDate.year.minus(event.originalDate.year).toString()
+            else if (event.type == EventCode.NAME_DAY.name) getString(R.string.name_day)
             else getString(R.string.unknown)
             when (nextEvents.indexOf(event)) {
                 0 -> {
@@ -370,78 +330,9 @@ class HomeFragment : Fragment() {
     // Show a bottom sheet containing some quick apps
     private fun showQuickAppsSheet() {
         act.vibrate()
-        _dialogAppsEventBinding = DialogAppsEventBinding.inflate(LayoutInflater.from(context))
-        val dialog =
-            MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
-                cornerRadius(res = R.dimen.rounded_corners)
-                title(R.string.event_apps)
-                icon(R.drawable.ic_apps_24dp)
-                message(R.string.event_apps_description)
-                customView(view = dialogAppsEventBinding.root, scrollable = true)
-            }
-        // Using view binding to fetch the buttons
-        val whatsAppButton = dialogAppsEventBinding.whatsappButton
-        val dialerButton = dialogAppsEventBinding.dialerButton
-        val messagesButton = dialogAppsEventBinding.messagesButton
-        val telegramButton = dialogAppsEventBinding.telegramButton
-        val signalButton = dialogAppsEventBinding.signalButton
-        val ctx: Context = requireContext()
-
-        whatsAppButton.setOnClickListener {
-            act.vibrate()
-            launchOrOpenAppStore("com.whatsapp")
-            dialog.dismiss()
-        }
-
-        dialerButton.setOnClickListener {
-            act.vibrate()
-            try {
-                val dialIntent = Intent(Intent.ACTION_DIAL)
-                ctx.startActivity(dialIntent)
-            } catch (e: Exception) {
-                act.showSnackbar(ctx.getString(R.string.no_default_dialer))
-            }
-            dialog.dismiss()
-        }
-
-        messagesButton.setOnClickListener {
-            act.vibrate()
-            try {
-                val defaultSmsPackage = Telephony.Sms.getDefaultSmsPackage(requireContext())
-                val smsIntent: Intent? =
-                    ctx.packageManager.getLaunchIntentForPackage(defaultSmsPackage)
-                ctx.startActivity(smsIntent)
-            } catch (e: Exception) {
-                act.showSnackbar(ctx.getString(R.string.no_default_sms))
-            }
-            dialog.dismiss()
-        }
-
-        telegramButton.setOnClickListener {
-            act.vibrate()
-            launchOrOpenAppStore("org.telegram.messenger")
-            dialog.dismiss()
-        }
-
-        signalButton.setOnClickListener {
-            act.vibrate()
-            launchOrOpenAppStore("org.thoughtcrime.securesms")
-            dialog.dismiss()
-        }
-    }
-
-    private fun launchOrOpenAppStore(packageName: String) {
-        try {
-            val intent = requireContext().packageManager.getLaunchIntentForPackage(packageName)
-            requireContext().startActivity(intent)
-        } catch (e: Exception) {
-            startActivity(
-                Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("https://play.google.com/store/apps/details?id=${packageName}")
-                )
-            )
-        }
+        val bottomSheet = QuickAppsBottomSheet(act)
+        if (bottomSheet.isAdded) return
+        bottomSheet.show(act.supportFragmentManager, "quick_apps_bottom_sheet")
     }
 
     // Activate the confetti effect (stream, 3 colors, 4 shapes)
@@ -449,9 +340,10 @@ class HomeFragment : Fragment() {
         val confetti = binding.confettiView
         confetti.build()
             .addColors(
-                act.getThemeColor(android.R.attr.colorAccent),
-                act.getThemeColor(android.R.attr.textColorPrimary),
-                ContextCompat.getColor(requireContext(), R.color.goodGray),
+                act.getThemeColor(R.attr.colorTertiary),
+                act.getThemeColor(R.attr.colorSecondary),
+                act.getThemeColor(R.attr.colorPrimary),
+                act.getThemeColor(R.attr.colorOnSurface),
             )
             .setDirection(0.0, 359.0)
             .setSpeed(0.5f, 4f)

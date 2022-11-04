@@ -127,9 +127,9 @@ class EventAdapter(
         private val eventTypeImage = binding.eventTypeImage
 
         init {
-            binding.root.setOnClickListener { onItemClick(adapterPosition) }
+            binding.root.setOnClickListener { onItemClick(bindingAdapterPosition) }
             binding.root.setOnLongClickListener {
-                onItemLongClick(adapterPosition)
+                onItemLongClick(bindingAdapterPosition)
                 true
             }
         }
@@ -156,11 +156,11 @@ class EventAdapter(
             val hideImages = sharedPrefs.getBoolean("hide_images", false)
             if (hideImages) {
                 // Set the animated element name
-                ViewCompat.setTransitionName(fullRow, "shared_full_view$adapterPosition")
+                ViewCompat.setTransitionName(fullRow, "shared_full_view$bindingAdapterPosition")
                 eventImage.visibility = View.GONE
             } else {
                 // Set the animated element name
-                ViewCompat.setTransitionName(eventImage, "shared_image$adapterPosition")
+                ViewCompat.setTransitionName(eventImage, "shared_image$bindingAdapterPosition")
                 // Set a small margin programmatically
                 val param = eventPerson.layoutParams as ViewGroup.MarginLayoutParams
                 param.setMargins(8, 0, 0, 0)
