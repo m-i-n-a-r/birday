@@ -211,7 +211,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         // Render the month numbers with a leading space for single digit numbers
         for (i in min..max) {
             val dayValue = i - min + 1
-            val dayNumber = dayValue.toString()
+            val dayNumber = if (dayValue <= 9) " $dayValue" else dayValue.toString()
             cellsList[i].text = dayNumber
         }
         // Hide unnecessary cells
@@ -248,7 +248,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
     ) {
         // The textview will be hidden if the day doesn't exist in the current month
         for (cell in cellsList) {
-            if (cell.text == day.toString()) {
+            if (cell.text.trim() == day.toString()) {
                 if (drawable == null) {
                     cell.setTextColor(color)
                 } else {
