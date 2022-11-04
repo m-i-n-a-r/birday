@@ -1,4 +1,4 @@
-package com.minar.birday.utilities
+package com.minar.birday.preferences.standard
 
 import android.content.Context
 import android.content.Intent
@@ -9,6 +9,7 @@ import androidx.preference.PreferenceViewHolder
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.ExperimentalDisclaimerRowBinding
+import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 
 @ExperimentalStdlibApi
 class ExperimentalDisclaimerPreference(context: Context, attrs: AttributeSet?) :

@@ -19,10 +19,7 @@ import com.minar.birday.databinding.DialogNotesBinding
 import com.minar.birday.databinding.FragmentFavoritesBinding
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
-import com.minar.birday.utilities.StatsGenerator
-import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
-import com.minar.birday.utilities.getRemainingDays
-import com.minar.birday.utilities.isBirthday
+import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
 import java.time.LocalDate
 import java.util.*
@@ -145,8 +142,8 @@ class FavoritesFragment : Fragment() {
                     }
 
                     // Prepare the dots
-                    val primary = act.getThemeColor(R.attr.colorPrimary)
-                    val onPrimary = act.getThemeColor(R.attr.colorOnPrimary)
+                    val primary = getThemeColor(R.attr.colorPrimary, act)
+                    val onPrimary = getThemeColor(R.attr.colorOnPrimary, act)
                     overviewDot1.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText1.text = nextDays[0].toString()
                     overviewDot2.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)

@@ -1,4 +1,4 @@
-package com.minar.birday.utilities
+package com.minar.birday.preferences.standard
 
 import android.content.Context
 import android.content.Intent

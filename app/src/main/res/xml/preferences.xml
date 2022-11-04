@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.minar.birday.utilities.CustomAuthorPreference
+    <com.minar.birday.preferences.standard.CustomAuthorPreference
         android:layout="@layout/author_preference_row"
         android:selectable="false" />
 
@@ -11,7 +11,7 @@
         android:title="@string/app_behavior"
         app:icon="@drawable/ic_app_behavior_24dp">
 
-        <com.minar.birday.utilities.TimePickerPreference
+        <com.minar.birday.preferences.standard.TimePickerPreference
             android:layout="@layout/time_picker_row"
             android:selectable="true" />
 
@@ -95,15 +95,15 @@
         android:title="@string/import_export"
         app:icon="@drawable/ic_backup_restore_24dp">
 
-        <com.minar.birday.backup.ContactsImporter
+        <com.minar.birday.preferences.backup.ContactsImporter
             android:layout="@layout/contacts_import_row"
             android:selectable="true" />
 
-        <com.minar.birday.backup.BirdayExporter
+        <com.minar.birday.preferences.backup.BirdayExporter
             android:layout="@layout/birday_export_row"
             android:selectable="true" />
 
-        <com.minar.birday.backup.BirdayImporter
+        <com.minar.birday.preferences.backup.BirdayImporter
             android:layout="@layout/birday_import_row"
             android:selectable="true" />
 
@@ -114,11 +114,11 @@
         android:title="@string/troubleshoot"
         app:icon="@drawable/ic_troubleshoot_24dp">
 
-        <com.minar.birday.utilities.DisableOptimizationsPreference
+        <com.minar.birday.preferences.standard.DisableOptimizationsPreference
             android:layout="@layout/disable_optimizations_row"
             android:selectable="true" />
 
-        <com.minar.birday.utilities.NotificationSoundPreference
+        <com.minar.birday.preferences.standard.NotificationSoundPreference
             android:layout="@layout/notification_sound_row"
             android:selectable="true" />
 

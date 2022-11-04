@@ -1,16 +1,23 @@
 package com.minar.birday.fragments
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.FragmentOverviewBinding
+import com.minar.birday.model.EventResult
+import com.minar.birday.utilities.MinarMonth
+import com.minar.birday.utilities.getThemeColor
 import com.minar.birday.viewmodels.MainViewModel
 import java.time.LocalDate
+import java.time.temporal.WeekFields
+import java.util.*
 
 
 @ExperimentalStdlibApi
@@ -19,10 +26,13 @@ class OverviewFragment : Fragment() {
     private val mainViewModel: MainViewModel by activityViewModels()
     private var _binding: FragmentOverviewBinding? = null
     private val binding get() = _binding!!
+    private lateinit var events: List<EventResult>
+    private lateinit var year: List<MinarMonth>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         act = activity as MainActivity
+        events = mainViewModel.allEventsUnfiltered.value ?: emptyList()
     }
 
     override fun onDestroyView() {
@@ -41,11 +51,79 @@ class OverviewFragment : Fragment() {
         val title: String = getString(R.string.overview) + " - ${LocalDate.now().year}"
         binding.overviewTitle.text = title
 
+        // Take every and each month to a list representing the year
+        val january = binding.overviewJan
+        val february = binding.overviewFeb
+        val march = binding.overviewMar
+        val april = binding.overviewApr
+        val may = binding.overviewMay
+        val june = binding.overviewJun
+        val july = binding.overviewJul
         val august = binding.overviewAug
-        august.highlightDay(
-            15,
-            act.getThemeColor(R.attr.colorPrimary)
+        val september = binding.overviewSep
+        val october = binding.overviewOct
+        val november = binding.overviewNov
+        val december = binding.overviewDec
+        year = listOf(
+            january,
+            february,
+            march,
+            april,
+            may,
+            june,
+            july,
+            august,
+            september,
+            october,
+            november,
+            december
         )
+
+        // If sunday is the first day, apply this
+        if (WeekFields.of(Locale.getDefault()).firstDayOfWeek.name == "SUNDAY") {
+            for (month in year) {
+                month.setSundayFirst(true)
+            }
+        }
+
+        // Highlight the current date
+        highlightDate(
+            LocalDate.now(), getThemeColor(R.attr.colorPrimary, act),
+            null,
+            makeBold = true,
+            autoOpacity = false,
+            inverseTextColorOnDrawable = false
+        )
+        // Highlight the dates
+        for (event in events)
+            highlightDate(
+                event.nextDate, getThemeColor(R.attr.colorPrimary, act),
+                AppCompatResources.getDrawable(act, R.drawable.custom_cursor),
+                makeBold = false,
+                autoOpacity = true,
+                inverseTextColorOnDrawable = true
+            )
+
         return binding.root
+    }
+
+    // Highlight a date in a year, delegating the highlight to the correct month
+    private fun highlightDate(
+        date: LocalDate?,
+        color: Int,
+        drawable: Drawable?,
+        makeBold: Boolean = false,
+        autoOpacity: Boolean = false,
+        inverseTextColorOnDrawable: Boolean = false
+    ) {
+        if (date == null) return
+        year[date.month.value - 1].highlightDay(
+            date.dayOfMonth,
+            color,
+            drawable,
+            makeBold = makeBold,
+            autoOpacity = autoOpacity,
+            inverseTextColorOnDrawable = inverseTextColorOnDrawable
+        )
     }
 }

@@ -1,4 +1,4 @@
-package com.minar.birday.utilities
+package com.minar.birday.preferences.standard
 
 import android.content.Context
 import android.content.Intent
@@ -13,6 +13,7 @@ import androidx.preference.PreferenceViewHolder
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.AuthorPreferenceRowBinding
+import com.minar.birday.utilities.getThemeColor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -74,10 +75,10 @@ class CustomAuthorPreference(context: Context, attrs: AttributeSet?) :
                 // Trigger a snackbar and confetti
                 confetti.build()
                     .addColors(
-                        act.getThemeColor(R.attr.colorTertiary),
-                        act.getThemeColor(R.attr.colorSecondary),
-                        act.getThemeColor(R.attr.colorPrimary),
-                        act.getThemeColor(R.attr.colorOnSurface),
+                        getThemeColor(R.attr.colorTertiary, act),
+                        getThemeColor(R.attr.colorSecondary, act),
+                        getThemeColor(R.attr.colorPrimary, act),
+                        getThemeColor(R.attr.colorOnSurface, act),
                     )
                     .setDirection(0.0, 359.0)
                     .setSpeed(0.5f, 4f)

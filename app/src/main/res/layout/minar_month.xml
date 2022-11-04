@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
             android:textColor="?attr/colorOnSurfaceVariant" />
 
@@ -35,6 +36,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
             android:textColor="?attr/colorOnSurfaceVariant" />
 
@@ -44,6 +46,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
             android:textColor="?attr/colorOnSurfaceVariant" />
 
@@ -53,6 +56,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
             android:textColor="?attr/colorOnSurfaceVariant" />
 
@@ -62,6 +66,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
             android:textColor="?attr/colorOnSurfaceVariant" />
 
@@ -71,6 +76,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
             android:textColor="?attr/colorOnSurfaceVariant" />
 
@@ -80,6 +86,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
             android:textColor="?attr/colorOnSurfaceVariant" />
 
@@ -89,7 +96,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell2"
@@ -97,7 +106,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell3"
@@ -105,7 +116,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell4"
@@ -113,7 +126,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell5"
@@ -121,7 +136,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell6"
@@ -129,7 +146,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell7"
@@ -137,7 +156,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell8"
@@ -145,7 +166,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell9"
@@ -153,7 +176,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell10"
@@ -161,7 +186,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell11"
@@ -169,7 +196,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell12"
@@ -177,7 +206,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell13"
@@ -185,7 +216,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell14"
@@ -193,7 +226,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell15"
@@ -201,7 +236,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell16"
@@ -209,7 +246,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell17"
@@ -217,7 +256,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell18"
@@ -225,7 +266,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell19"
@@ -233,7 +276,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell20"
@@ -241,7 +286,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell21"
@@ -249,7 +296,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell22"
@@ -257,7 +306,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell23"
@@ -265,7 +316,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell24"
@@ -273,7 +326,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell25"
@@ -281,7 +336,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell26"
@@ -289,7 +346,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell27"
@@ -297,7 +356,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell28"
@@ -305,7 +366,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell29"
@@ -313,7 +376,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell30"
@@ -321,7 +386,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell31"
@@ -329,7 +396,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell32"
@@ -337,7 +406,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell33"
@@ -345,7 +416,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell34"
@@ -353,7 +426,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell35"
@@ -361,7 +436,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell36"
@@ -369,7 +446,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/monthCell37"
@@ -377,6 +456,8 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/calendar_month_day_padding"
             android:text="@string/unknown"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorOnSurface" />
     </GridLayout>
 </LinearLayout>

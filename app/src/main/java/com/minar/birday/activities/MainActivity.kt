@@ -17,11 +17,9 @@ import android.net.Uri
 import android.os.*
 import android.provider.OpenableColumns
 import android.provider.Settings
-import android.util.TypedValue
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.annotation.AttrRes
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -35,10 +33,10 @@ import com.google.android.material.color.DynamicColors
 import com.google.android.material.elevation.SurfaceColors
 import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
-import com.minar.birday.backup.BirdayImporter
-import com.minar.birday.backup.ContactsImporter
-import com.minar.birday.backup.CsvImporter
-import com.minar.birday.backup.JsonImporter
+import com.minar.birday.preferences.backup.BirdayImporter
+import com.minar.birday.preferences.backup.ContactsImporter
+import com.minar.birday.preferences.backup.CsvImporter
+import com.minar.birday.preferences.backup.JsonImporter
 import com.minar.birday.databinding.ActivityMainBinding
 import com.minar.birday.fragments.InsertEventBottomSheet
 import com.minar.birday.utilities.*
@@ -319,13 +317,6 @@ class MainActivity : AppCompatActivity() {
             vib.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
     }
 
-    // Return the accent color to use it programmatically
-    fun getThemeColor(@AttrRes attrRes: Int): Int {
-        val typedValue = TypedValue()
-        theme.resolveAttribute(attrRes, typedValue, true)
-        return typedValue.data
-    }
-
     // Show a snackbar containing a given text and an optional action, with a 5 seconds duration
     fun showSnackbar(
         content: String,
@@ -340,7 +331,7 @@ class MainActivity : AppCompatActivity() {
         else
             snackbar.anchorView = binding.bottomBar
         if (action != null) {
-            snackbar.setActionTextColor(getThemeColor(android.R.attr.colorSecondary))
+            snackbar.setActionTextColor(getThemeColor(android.R.attr.colorSecondary, this))
             snackbar.setAction(actionText) {
                 action()
             }

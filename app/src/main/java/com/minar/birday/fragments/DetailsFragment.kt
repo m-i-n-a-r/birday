@@ -48,8 +48,8 @@ class DetailsFragment : Fragment() {
         animation.fadeMode = MaterialContainerTransform.FADE_MODE_THROUGH
         animation.startElevation = 0f
         animation.endElevation = 0f
-        animation.setAllContainerColors((activity as MainActivity).getThemeColor(R.attr.backgroundColor))
-        animation.scrimColor = (activity as MainActivity).getThemeColor(R.attr.backgroundColor)
+        animation.setAllContainerColors(getThemeColor(R.attr.backgroundColor, act))
+        animation.scrimColor = getThemeColor(R.attr.backgroundColor, act)
         animation.isElevationShadowEnabled = false
         sharedElementEnterTransition = animation
 

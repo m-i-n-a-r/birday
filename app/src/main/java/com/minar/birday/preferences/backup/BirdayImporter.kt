@@ -1,4 +1,4 @@
-package com.minar.birday.backup
+package com.minar.birday.preferences.backup
 
 import android.content.Context
 import android.content.Intent

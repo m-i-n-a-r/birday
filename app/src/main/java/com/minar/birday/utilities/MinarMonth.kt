@@ -21,22 +21,19 @@ import java.util.*
 class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
     // Custom attributes
     private var month = 0
-    private var hideWeekDays = false
-    private var sundayFirst = false
-    private var showSnackBars = false
+    private var hideWeekDays: Boolean
+    private var sundayFirst: Boolean
+    private var showSnackBars: Boolean
 
     private var dateWithChosenMonth: LocalDate
     private val cellsList: MutableList<TextView>
 
     init {
-        val binding = MinarMonthBinding.inflate(LayoutInflater.from(context), this, true)
-
         context.theme.obtainStyledAttributes(
             attrs,
             R.styleable.MinarMonth,
             0, 0
         ).apply {
-
             try {
                 month = getInteger(R.styleable.MinarMonth_month, 0)
                 hideWeekDays = getBoolean(R.styleable.MinarMonth_hideWeekDays, false)
@@ -46,6 +43,8 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
                 recycle()
             }
         }
+
+        val binding = MinarMonthBinding.inflate(LayoutInflater.from(context), this, true)
 
         // Week days
         val weekDayOne = binding.weekDayOne
@@ -57,7 +56,6 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         val weekDaySeven = binding.weekDaySeven
 
         // Month cells
-
         val cell1 = binding.monthCell1
         val cell2 = binding.monthCell2
         val cell3 = binding.monthCell3
@@ -210,9 +208,10 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         val min = monthRange.lower
         val max = monthRange.upper
 
-        // Render the month numbers
+        // Render the month numbers with a leading space for single digit numbers
         for (i in min..max) {
-            val dayNumber = (i - min + 1).toString()
+            val dayValue = i - min + 1
+            val dayNumber = dayValue.toString()
             cellsList[i].text = dayNumber
         }
         // Hide unnecessary cells
@@ -239,19 +238,40 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
     }
 
     // Highlight a day in the month using a drawable or a color
-    fun highlightDay(day: Int, color: Int, drawable: Drawable? = null, makeBold: Boolean = false) {
+    fun highlightDay(
+        day: Int,
+        color: Int,
+        drawable: Drawable? = null,
+        makeBold: Boolean = false,
+        autoOpacity: Boolean = false,
+        inverseTextColorOnDrawable: Boolean = false
+    ) {
         // The textview will be hidden if the day doesn't exist in the current month
         for (cell in cellsList) {
             if (cell.text == day.toString()) {
                 if (drawable == null) {
                     cell.setTextColor(color)
-                    if (makeBold) cell.setTypeface(null, Typeface.BOLD)
                 } else {
                     cell.background = drawable
                     cell.backgroundTintList = ColorStateList.valueOf(color)
+                    if (autoOpacity) cell.alpha = 0.3f
+                    if (inverseTextColorOnDrawable) cell.setTextColor(
+                        getThemeColor(
+                            R.attr.colorOnSurfaceInverse,
+                            context
+                        )
+                    )
                 }
+                if (makeBold) cell.setTypeface(null, Typeface.BOLD)
                 break
             }
         }
+    }
+
+    // Dynamically set the first day of the week
+    fun setSundayFirst(enable: Boolean) {
+        sundayFirst = enable
+        invalidate()
+        requestLayout()
     }
 }

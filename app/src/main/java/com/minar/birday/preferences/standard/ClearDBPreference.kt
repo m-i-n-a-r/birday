@@ -1,4 +1,4 @@
-package com.minar.birday.utilities
+package com.minar.birday.preferences.standard
 
 import android.content.Context
 import android.util.AttributeSet
@@ -10,6 +10,7 @@ import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.ClearDbRowBinding
 import com.minar.birday.persistence.EventDatabase
+import com.minar.birday.utilities.smartFixName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
