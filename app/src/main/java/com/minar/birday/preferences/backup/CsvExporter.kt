@@ -28,7 +28,7 @@ class CsvExporter(context: Context, attrs: AttributeSet?) : Preference(context, 
         val act = context as MainActivity
         act.vibrate()
         // Only export if there's at least one event
-        if (act.mainViewModel.nextEvents.value.isNullOrEmpty())
+        if (act.mainViewModel.eventsCount.value == null || act.mainViewModel.eventsCount.value == 0)
             act.showSnackbar(context.getString(R.string.no_events))
         else {
             val thread = Thread {
