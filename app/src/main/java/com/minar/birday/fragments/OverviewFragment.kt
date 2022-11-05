@@ -87,18 +87,14 @@ class OverviewFragment : Fragment() {
         }
 
         // Highlight the current date
-        highlightDate(
-            LocalDate.now(), getThemeColor(R.attr.colorPrimary, act),
-            null,
-            makeBold = true,
-            autoOpacity = false,
-            inverseTextColorOnDrawable = false
-        )
+        highlightCurrentDate()
+
         // Highlight the dates
         for (event in events)
             highlightDate(
-                event.nextDate, getThemeColor(R.attr.colorPrimary, act),
-                AppCompatResources.getDrawable(act, R.drawable.custom_cursor),
+                event.nextDate,
+                getThemeColor(R.attr.colorPrimary, act),
+                AppCompatResources.getDrawable(act, R.drawable.minar_month_circle),
                 makeBold = false,
                 autoOpacity = true,
                 inverseTextColorOnDrawable = true
@@ -114,7 +110,8 @@ class OverviewFragment : Fragment() {
         drawable: Drawable?,
         makeBold: Boolean = false,
         autoOpacity: Boolean = false,
-        inverseTextColorOnDrawable: Boolean = false
+        inverseTextColorOnDrawable: Boolean = false,
+        asForeground: Boolean = false
     ) {
         if (date == null) return
         year[date.month.value - 1].highlightDay(
@@ -123,7 +120,17 @@ class OverviewFragment : Fragment() {
             drawable,
             makeBold = makeBold,
             autoOpacity = autoOpacity,
-            inverseTextColorOnDrawable = inverseTextColorOnDrawable
+            inverseTextColorOnDrawable = inverseTextColorOnDrawable,
+            asForeground = asForeground,
         )
+    }
+
+    // Highlight the current date with a ring
+    private fun highlightCurrentDate(drawable: Drawable? = null, color: Int? = null) {
+        val date = LocalDate.now()
+        val chosenColor = color ?: getThemeColor(R.attr.colorTertiary, act)
+        val chosenDrawable =
+            drawable ?: AppCompatResources.getDrawable(act, R.drawable.minar_month_ring)
+        highlightDate(date, chosenColor, chosenDrawable, asForeground = true)
     }
 }

@@ -15,6 +15,8 @@ import com.minar.birday.databinding.MinarMonthBinding
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.Month
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 import java.time.format.TextStyle
 import java.util.*
 
@@ -174,7 +176,10 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         // Set the number and name for the month (from range 0-11 to 1-12)
         dateWithChosenMonth = LocalDate.now().withMonth(month + 1).withDayOfMonth(1)
         val firstDayOfWeekForChosenMonth = dateWithChosenMonth.dayOfWeek
-        binding.overviewMonthName.text =
+        val monthTitle = binding.overviewMonthName
+        monthTitle.text =
+            dateWithChosenMonth.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
+        monthTitle.contentDescription =
             dateWithChosenMonth.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
 
         if (!sundayFirst)
@@ -213,6 +218,15 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
             val dayValue = i - min + 1
             val dayNumber = if (dayValue <= 9) " $dayValue" else dayValue.toString()
             cellsList[i].text = dayNumber
+            // Accessibility related info
+            try {
+                val correspondingDate =
+                    LocalDate.of(dateWithChosenMonth.year, dateWithChosenMonth.month - 1, dayValue)
+                val formatter: DateTimeFormatter =
+                    DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
+                cellsList[i].contentDescription = correspondingDate.format(formatter)
+            } catch (_: Exception) {
+            }
         }
         // Hide unnecessary cells
         if (min != 0)
@@ -244,7 +258,8 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         drawable: Drawable? = null,
         makeBold: Boolean = false,
         autoOpacity: Boolean = false,
-        inverseTextColorOnDrawable: Boolean = false
+        inverseTextColorOnDrawable: Boolean = false,
+        asForeground: Boolean = false,
     ) {
         // The textview will be hidden if the day doesn't exist in the current month
         for (cell in cellsList) {
@@ -252,8 +267,13 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
                 if (drawable == null) {
                     cell.setTextColor(color)
                 } else {
-                    cell.background = drawable
-                    cell.backgroundTintList = ColorStateList.valueOf(color)
+                    if (asForeground) {
+                        cell.foreground = drawable
+                        cell.foregroundTintList = ColorStateList.valueOf(color)
+                    } else {
+                        cell.background = drawable
+                        cell.backgroundTintList = ColorStateList.valueOf(color)
+                    }
                     if (autoOpacity) cell.alpha = 0.3f
                     if (inverseTextColorOnDrawable) cell.setTextColor(
                         getThemeColor(

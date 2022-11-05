@@ -67,6 +67,7 @@
 
     <!-- Custom yearly calendar -->
     <dimen name="calendar_month_day_padding">2dp</dimen>
+    <dimen name="minar_month_ring_thickness">1dp</dimen>
 
     <!-- Shimmer and miscellaneous -->
     <dimen name="shimmer_intensity">0.1</dimen>
