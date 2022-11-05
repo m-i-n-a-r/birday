@@ -33,12 +33,12 @@ import com.google.android.material.color.DynamicColors
 import com.google.android.material.elevation.SurfaceColors
 import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
+import com.minar.birday.databinding.ActivityMainBinding
+import com.minar.birday.fragments.InsertEventBottomSheet
 import com.minar.birday.preferences.backup.BirdayImporter
 import com.minar.birday.preferences.backup.ContactsImporter
 import com.minar.birday.preferences.backup.CsvImporter
 import com.minar.birday.preferences.backup.JsonImporter
-import com.minar.birday.databinding.ActivityMainBinding
-import com.minar.birday.fragments.InsertEventBottomSheet
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
 import java.io.IOException
@@ -201,8 +201,15 @@ class MainActivity : AppCompatActivity() {
 
         // Auto import on launch TODO Only available in experimental settings
         if (sharedPrefs.getBoolean("auto_import", false)) {
-            thread {
-                ContactsImporter(this, null).importContacts(this)
+            val currentLaunchTime = System.currentTimeMillis()
+            val lastLaunch = sharedPrefs.getLong("last_launch", 0L)
+
+            // Only launch the auto import if 3 minutes are passed
+            if (lastLaunch + (3 * 60 * 1000) < currentLaunchTime) {
+                sharedPrefs.edit().putLong("last_launch", currentLaunchTime).apply()
+                thread {
+                    ContactsImporter(this, null).importContacts(this)
+                }
             }
         }
     }
