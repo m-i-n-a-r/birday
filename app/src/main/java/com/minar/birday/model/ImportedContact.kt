@@ -17,6 +17,7 @@ data class ImportedContact(
 
         if (completeName != other.completeName) return false
         if (eventDate != other.eventDate) return false
+        if (eventType != other.eventType) return false
         if (!image.contentEquals(other.image)) return false
 
         return true
