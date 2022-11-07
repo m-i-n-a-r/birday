@@ -111,28 +111,51 @@ class HomeFragment : Fragment() {
             else searchBarLayout.setEndIconDrawable(R.drawable.ic_clear_24dp)
         }
 
+        // Update the widget unconditionally
+        updateWidget()
+
         // Setup the toggle buttons
         typeSelector.addOnButtonCheckedListener { _, checkedId, isChecked ->
             when (checkedId) {
                 R.id.homeTypeSelectorBirthday -> {
-                    // Only display events of type anniversary
-                    if (!isChecked) typeSelector.clearChecked()
+                    // Only display events of type birthday
+                    if (!isChecked) {
+                        mainViewModel.eventTypeChanged(null)
+                    } else {
+                        mainViewModel.eventTypeChanged(EventCode.BIRTHDAY.name)
+                    }
                 }
                 R.id.homeTypeSelectorAnniversary -> {
                     // Only display events of type anniversary
-                    if (!isChecked) typeSelector.clearChecked()
+                    if (!isChecked) {
+                        mainViewModel.eventTypeChanged(null)
+                    } else {
+                        mainViewModel.eventTypeChanged(EventCode.ANNIVERSARY.name)
+                    }
                 }
                 R.id.homeTypeSelectorDeathAnniversary -> {
                     // Only display events of type death anniversary
-                    if (!isChecked) typeSelector.clearChecked()
+                    if (!isChecked) {
+                        mainViewModel.eventTypeChanged(null)
+                    } else {
+                        mainViewModel.eventTypeChanged(EventCode.DEATH.name)
+                    }
                 }
                 R.id.homeTypeSelectorNameDay -> {
                     // Only display events of type name day
-                    if (!isChecked) typeSelector.clearChecked()
+                    if (!isChecked) {
+                        mainViewModel.eventTypeChanged(null)
+                    } else {
+                        mainViewModel.eventTypeChanged(EventCode.NAME_DAY.name)
+                    }
                 }
                 R.id.homeTypeSelectorOther -> {
                     // Only display events of type other
-                    if (!isChecked) typeSelector.clearChecked()
+                    if (!isChecked) {
+                        mainViewModel.eventTypeChanged(null)
+                    } else {
+                        mainViewModel.eventTypeChanged(EventCode.OTHER.name)
+                    }
                 }
                 R.id.homeTypeSelectorClose -> {
                     typeSelector.pivotX = 0F
@@ -144,6 +167,7 @@ class HomeFragment : Fragment() {
                     }.doOnEnd {
                         typeSelector.visibility = View.GONE
                         typeSelector.clearChecked()
+                        mainViewModel.eventTypeChanged("")
                         searchBarLayout.setEndIconOnClickListener(listener)
                     }
                 }
@@ -207,6 +231,7 @@ class HomeFragment : Fragment() {
                 when {
                     mainViewModel.searchString.value.isNullOrBlank() -> restorePlaceholders()
                     mainViewModel.searchString.value!!.isNotBlank() -> restorePlaceholders(true)
+                    mainViewModel.selectedType.value!!.isNotBlank() -> restorePlaceholders(true)
                     else -> removePlaceholder()
                 }
             }

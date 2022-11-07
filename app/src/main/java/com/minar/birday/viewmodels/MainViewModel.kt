@@ -23,16 +23,34 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val allEventsUnfiltered: LiveData<List<EventResult>>
     val eventsCount: LiveData<Int>
     val searchString = MutableLiveData<String>()
+    val selectedType = MutableLiveData<String>()
     private val eventDao: EventDao = EventDatabase.getBirdayDatabase(application).eventDao()
     var confettiDone: Boolean = false
 
     init {
         searchString.value = ""
+        selectedType.value = ""
+        // The Pair values are nullable as getting "liveData.value" can be null
+        val searchValues = MediatorLiveData<Pair<String?, String?>>().apply {
+            addSource(searchString) {
+                value = Pair(it, searchString.value)
+            }
+            addSource(selectedType) {
+                value = Pair(selectedType.value, it)
+            }
+        }
+
         // All the events, unfiltered
         allEventsUnfiltered = eventDao.getOrderedEvents()
         // All the events, filtered by search string
-        allEvents = Transformations.switchMap(searchString) { string ->
-            eventDao.getOrderedEventsByName(string)
+        allEvents = Transformations.switchMap(searchValues) { pair ->
+            val searchString = pair.first
+            val selectedType = pair.second
+            if (!searchString.isNullOrBlank())
+                eventDao.getOrderedEventsByName(searchString)
+            else if (!selectedType.isNullOrBlank())
+                eventDao.getOrderedEventsByType(selectedType)
+            else eventDao.getOrderedEventsByName("")
         }
         // Only the upcoming events not considering the search
         eventsCount = eventDao.getEventsCount()
@@ -86,5 +104,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     // Update the name searched in the search bar
     fun searchStringChanged(newSearchString: String) {
         searchString.value = newSearchString
+    }
+
+    // Update the type searched in the search bar
+    fun eventTypeChanged(newSelectedType: String?) {
+        selectedType.value = newSelectedType ?: ""
     }
 }
