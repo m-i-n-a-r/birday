@@ -1,5 +1,6 @@
 package com.minar.birday.fragments
 
+import android.animation.ObjectAnimator
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Intent
@@ -9,14 +10,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OVER_SCROLL_ALWAYS
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
 import androidx.core.view.doOnPreDraw
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
@@ -80,29 +84,74 @@ class HomeFragment : Fragment() {
         val homeMotionLayout = binding.homeMain
         val homeCard = binding.homeCard
         val homeMiniFab = binding.homeMiniFab
+        val typeSelector = binding.homeTypeSelector
+        val searchBar = binding.homeSearch
+        val searchBarLayout = binding.homeSearchLayout
         if (shimmerEnabled) shimmer.startShimmer()
 
         // Setup the search bar
-        val searchBar = binding.homeSearch
+        typeSelector.scaleX = 0F
+        val listener = OnClickListener {
+            if (searchBar.text.isNullOrBlank()) {
+                typeSelector.visibility = View.VISIBLE
+                typeSelector.pivotX = searchBarLayout.measuredWidth.toFloat()
+                ObjectAnimator.ofFloat(typeSelector, "scaleX", 1.0f).apply {
+                    duration = 400
+                    interpolator = FastOutSlowInInterpolator()
+                    start()
+                }
+            } else {
+                searchBar.setText("")
+            }
+        }
+        searchBarLayout.setEndIconOnClickListener(listener)
         searchBar.addTextChangedListener { text ->
             mainViewModel.searchStringChanged(text.toString())
+            if (text.isNullOrBlank()) searchBarLayout.setEndIconDrawable(R.drawable.ic_arrow_left_24dp)
+            else searchBarLayout.setEndIconDrawable(R.drawable.ic_clear_24dp)
         }
 
         // Setup the toggle buttons
-        val typeSelector = binding.homeTypeSelector
         typeSelector.addOnButtonCheckedListener { _, checkedId, isChecked ->
             when (checkedId) {
                 R.id.homeTypeSelectorBirthday -> {
-                    if (isChecked) println("Birthday checked!")
+                    // Only display events of type anniversary
+                    if (!isChecked) typeSelector.clearChecked()
                 }
-                R.id.homeTypeSelectorAnniversary -> {}
-                R.id.homeTypeSelectorDeathAnniversary -> {}
-                R.id.homeTypeSelectorNameDay -> {}
-                R.id.homeTypeSelectorOther -> {}
+                R.id.homeTypeSelectorAnniversary -> {
+                    // Only display events of type anniversary
+                    if (!isChecked) typeSelector.clearChecked()
+                }
+                R.id.homeTypeSelectorDeathAnniversary -> {
+                    // Only display events of type death anniversary
+                    if (!isChecked) typeSelector.clearChecked()
+                }
+                R.id.homeTypeSelectorNameDay -> {
+                    // Only display events of type name day
+                    if (!isChecked) typeSelector.clearChecked()
+                }
+                R.id.homeTypeSelectorOther -> {
+                    // Only display events of type other
+                    if (!isChecked) typeSelector.clearChecked()
+                }
                 R.id.homeTypeSelectorClose -> {
-                    typeSelector.clearChecked()
+                    typeSelector.pivotX = 0F
+                    searchBarLayout.setEndIconOnClickListener { return@setEndIconOnClickListener }
+                    ObjectAnimator.ofFloat(typeSelector, "scaleX", 0.0f).apply {
+                        duration = 400
+                        interpolator = FastOutSlowInInterpolator()
+                        start()
+                    }.doOnEnd {
+                        typeSelector.visibility = View.GONE
+                        typeSelector.clearChecked()
+                        searchBarLayout.setEndIconOnClickListener(listener)
+                    }
                 }
             }
+        }
+        binding.homeTypeSelectorClose.setOnLongClickListener {
+            typeSelector.clearChecked()
+            true
         }
 
         // Set motion layout state, since it's saved

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
+    <!-- Main card animation -->
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
@@ -44,5 +45,11 @@
             app:transitionEasing="decelerate"
             motion:layout_constraintEnd_toEndOf="@id/homeMiniFab"
             motion:layout_constraintStart_toStartOf="@id/homeMiniFab" />
+
+        <Constraint android:id="@id/noEvents">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
     </ConstraintSet>
 </MotionScene>

@@ -153,7 +153,8 @@
                 app:boxStrokeWidth="@dimen/card_stroke"
                 app:boxStrokeWidthFocused="3dp"
                 app:endIconContentDescription="@string/cancel"
-                app:endIconMode="clear_text"
+                app:endIconDrawable="@drawable/ic_arrow_left_24dp"
+                app:endIconMode="custom"
                 app:endIconTint="?attr/colorPrimary"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -178,11 +179,13 @@
             <com.google.android.material.button.MaterialButtonToggleGroup
                 android:id="@+id/homeTypeSelector"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:background="?attr/colorSurface"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/homeSearchLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/homeCardShimmer"
+                app:layout_constraintTop_toTopOf="@id/homeSearchLayout"
                 app:singleSelection="true">
 
                 <Button
@@ -231,7 +234,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:backgroundTint="?attr/colorSurfaceVariant"
-                    app:icon="@drawable/ic_arrow_up_24dp" />
+                    app:icon="@drawable/ic_arrow_left_24dp" />
             </com.google.android.material.button.MaterialButtonToggleGroup>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

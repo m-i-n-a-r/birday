@@ -164,10 +164,8 @@
         <item name="iconPadding">0dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
-        <item name="android:paddingLeft">14dp</item>
-        <item name="android:paddingRight">12dp</item>
-        <item name="android:minWidth">48dp</item>
-        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">20dp</item>
+        <item name="android:minHeight">20dp</item>
         <item name="iconGravity">textTop</item>
         <item name="strokeWidth">@dimen/card_stroke</item>
         <item name="cornerRadius">@dimen/rounded_corners</item>
