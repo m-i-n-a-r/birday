@@ -42,6 +42,8 @@ class DetailsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        act = activity as MainActivity
+
         // Recognize the image from the row of the recycler and animate the transition accordingly
         val animation = MaterialContainerTransform()
         animation.duration = 400
@@ -53,7 +55,6 @@ class DetailsFragment : Fragment() {
         animation.isElevationShadowEnabled = false
         sharedElementEnterTransition = animation
 
-        act = activity as MainActivity
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
     }
 

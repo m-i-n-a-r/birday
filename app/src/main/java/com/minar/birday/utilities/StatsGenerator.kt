@@ -62,7 +62,11 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         stats.add(leapYearTotal())
         stats.add(eventTypesNumbers())
         stats.removeIf { it.isBlank() }
-        sb.appendBulletSpans(stats, 16, applicationContext!!.getColor(R.color.goodGray))
+        sb.appendBulletSpans(
+            stats,
+            16,
+            getThemeColor(R.attr.colorOnSurfaceVariant, applicationContext!!)
+        )
         return sb
     }
 
