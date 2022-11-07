@@ -1,4 +1,4 @@
-package com.minar.birday.fragments
+package com.minar.birday.fragments.dialogs
 
 import android.content.Intent
 import android.net.Uri

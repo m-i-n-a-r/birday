@@ -34,7 +34,7 @@ import com.google.android.material.elevation.SurfaceColors
 import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
 import com.minar.birday.databinding.ActivityMainBinding
-import com.minar.birday.fragments.InsertEventBottomSheet
+import com.minar.birday.fragments.dialogs.InsertEventBottomSheet
 import com.minar.birday.preferences.backup.BirdayImporter
 import com.minar.birday.preferences.backup.ContactsImporter
 import com.minar.birday.preferences.backup.CsvImporter

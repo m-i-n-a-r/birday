@@ -217,7 +217,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         for (i in min..max) {
             val dayValue = i - min + 1
             // Manage single digit dates differently
-            val dayNumber = if (dayValue <= 9) "$dayValue" else dayValue.toString()
+            val dayNumber = if (dayValue <= 9) " $dayValue" else dayValue.toString()
             cellsList[i].text = dayNumber
             // Accessibility related info
             try {

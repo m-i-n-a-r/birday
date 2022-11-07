@@ -21,6 +21,7 @@ import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.DialogNotesBinding
 import com.minar.birday.databinding.FragmentDetailsBinding
+import com.minar.birday.fragments.dialogs.InsertEventBottomSheet
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult

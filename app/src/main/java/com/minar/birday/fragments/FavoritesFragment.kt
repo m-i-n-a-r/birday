@@ -17,6 +17,7 @@ import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.FavoritesAdapter
 import com.minar.birday.databinding.DialogNotesBinding
 import com.minar.birday.databinding.FragmentFavoritesBinding
+import com.minar.birday.fragments.dialogs.StatsBottomSheet
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.*

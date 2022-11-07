@@ -417,7 +417,6 @@
         android:clipToPadding="false"
         android:overScrollMode="never"
         android:paddingVertical="@dimen/recycler_extra_space_vertical"
-        android:requiresFadingEdge="vertical"
         android:scrollbarSize="0dp"
         android:scrollbarStyle="outsideOverlay"
         app:fastScrollEnabled="true"

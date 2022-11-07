@@ -2,7 +2,7 @@ package com.minar.birday.utilities
 
 import android.content.SharedPreferences
 import com.minar.birday.activities.MainActivity
-import com.minar.birday.fragments.RateBottomSheet
+import com.minar.birday.fragments.dialogs.RateBottomSheet
 
 object AppRater {
 

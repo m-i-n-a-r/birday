@@ -6,14 +6,12 @@
     <dimen name="linear_vertical_margin">22dp</dimen>
     <dimen name="form_vertical_margin">8dp</dimen>
     <dimen name="bottom_navbar_elevation">0.1dp</dimen>
-    <dimen name="cradle_margin">12dp</dimen>
-    <dimen name="cradle_corners">12dp</dimen>
     <dimen name="placeholders_padding">48dp</dimen>
     <dimen name="card_margin">6dp</dimen>
     <dimen name="card_padding">8dp</dimen>
     <dimen name="card_stroke">2dp</dimen>
     <dimen name="rounded_corners">16dp</dimen>
-    <dimen name="rounded_corners_inner">8dp</dimen>
+    <dimen name="rounded_corners_inner">12dp</dimen>
     <dimen name="card_image_height">66dp</dimen>
     <dimen name="card_image_padding">8dp</dimen>
     <dimen name="list_vertical_padding">4dp</dimen>
@@ -43,7 +41,7 @@
     <dimen name="bottom_navbar_height">80dp</dimen>
     <dimen name="bottom_navbar_item_padding">12dp</dimen>
     <dimen name="result_text_margin">42dp</dimen>
-    <dimen name="text_field_corner">12dp</dimen>
+    <dimen name="text_field_corner">14dp</dimen>
     <dimen name="text_field_horizontal_margin">12dp</dimen>
     <dimen name="splash_image_size">192dp</dimen>
     <dimen name="splash_image_padding">24dp</dimen>

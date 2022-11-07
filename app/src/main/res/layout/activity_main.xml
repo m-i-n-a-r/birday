@@ -25,8 +25,6 @@
         app:contentInsetStart="0dp"
         app:fabAlignmentMode="end"
         app:fabAnimationMode="slide"
-        app:fabCradleMargin="@dimen/cradle_margin"
-        app:fabCradleRoundedCornerRadius="@dimen/cradle_corners"
         app:title="@string/app_name">
 
         <!-- A transparent background navigation view, with no elevation -->

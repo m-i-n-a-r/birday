@@ -1,4 +1,4 @@
-package com.minar.birday.fragments
+package com.minar.birday.fragments.dialogs
 
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName

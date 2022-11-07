@@ -54,9 +54,10 @@ internal class EventWidgetRemoteViewsFactory(context: Context) : RemoteViewsFact
         val event = events[position]
         rv.setTextViewText(R.id.eventWidgetRowPerson, formatName(events[position], surnameFirst))
         rv.setTextViewText(R.id.eventWidgetRowDate, event.originalDate.format(formatter))
+        val remainingDays = getRemainingDays(event.nextDate!!)
         rv.setTextViewText(
             R.id.eventWidgetRowCountdown,
-            "-${getRemainingDays(event.nextDate!!)}"
+            if (remainingDays == 0) context.getString(R.string.exclamation) else "-$remainingDays"
         )
         // Set the image depending on the event type, the drawable are a b&w version
         rv.setImageViewResource(
