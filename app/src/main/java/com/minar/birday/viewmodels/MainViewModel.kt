@@ -31,12 +31,26 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         searchString.value = ""
         selectedType.value = ""
         // The Pair values are nullable as getting "liveData.value" can be null
-        val searchValues = MediatorLiveData<Pair<String?, String?>>().apply {
-            addSource(searchString) {
-                value = Pair(it, searchString.value)
+        val searchValues = MediatorLiveData<Pair<String, String>>().apply {
+ /*           addSource(selectedType) {
+                value = Pair(selectedType.value ?: "", it)
             }
+            addSource(searchString) {
+                value = Pair(it, searchString.value ?: "")
+            }*/
             addSource(selectedType) {
-                value = Pair(selectedType.value, it)
+                searchString.value = it
+                val localLastA = searchString.value
+                val localLastB = selectedType.value
+                if (localLastA != null && localLastB != null)
+                    this.value = Pair(localLastA, localLastB)
+            }
+            addSource(searchString) {
+                selectedType.value = it
+                val localLastA = searchString.value
+                val localLastB = selectedType.value
+                if (localLastA != null && localLastB != null)
+                    this.value = Pair(localLastA, localLastB)
             }
         }
 
@@ -46,9 +60,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         allEvents = Transformations.switchMap(searchValues) { pair ->
             val searchString = pair.first
             val selectedType = pair.second
-            if (!searchString.isNullOrBlank())
+            if (searchString.isNotBlank())
                 eventDao.getOrderedEventsByName(searchString)
-            else if (!selectedType.isNullOrBlank())
+            else if (selectedType.isNotBlank())
                 eventDao.getOrderedEventsByType(selectedType)
             else eventDao.getOrderedEventsByName("")
         }
@@ -106,7 +120,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         searchString.value = newSearchString
     }
 
-    // Update the type searched in the search bar
+    // Update the type selected in the search bar
     fun eventTypeChanged(newSelectedType: String?) {
         selectedType.value = newSelectedType ?: ""
     }
