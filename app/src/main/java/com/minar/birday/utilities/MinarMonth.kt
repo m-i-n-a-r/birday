@@ -216,7 +216,8 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         // Render the month numbers with a leading space for single digit numbers
         for (i in min..max) {
             val dayValue = i - min + 1
-            val dayNumber = if (dayValue <= 9) " $dayValue" else dayValue.toString()
+            // Manage single digit dates differently
+            val dayNumber = if (dayValue <= 9) "$dayValue" else dayValue.toString()
             cellsList[i].text = dayNumber
             // Accessibility related info
             try {
