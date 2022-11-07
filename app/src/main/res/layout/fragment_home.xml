@@ -179,16 +179,18 @@
                 android:id="@+id/homeTypeSelector"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:flow_horizontalAlign="center"
+                android:background="?attr/colorSurface"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/homeCardShimmer">
+                app:layout_constraintTop_toBottomOf="@id/homeCardShimmer"
+                app:singleSelection="true">
 
                 <Button
                     android:id="@+id/homeTypeSelectorBirthday"
                     style="@style/Widget.App.Button.OutlinedButton.IconOnly"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     app:icon="@drawable/ic_party_24dp" />
 
                 <Button
@@ -196,6 +198,7 @@
                     style="@style/Widget.App.Button.OutlinedButton.IconOnly"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     app:icon="@drawable/ic_anniversary_24dp" />
 
                 <Button
@@ -203,6 +206,7 @@
                     style="@style/Widget.App.Button.OutlinedButton.IconOnly"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     app:icon="@drawable/ic_death_anniversary_24dp" />
 
                 <Button
@@ -210,6 +214,7 @@
                     style="@style/Widget.App.Button.OutlinedButton.IconOnly"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     app:icon="@drawable/ic_name_day_24dp" />
 
                 <Button
@@ -217,7 +222,16 @@
                     style="@style/Widget.App.Button.OutlinedButton.IconOnly"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     app:icon="@drawable/ic_other_24dp" />
+
+                <Button
+                    android:id="@+id/homeTypeSelectorClose"
+                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:backgroundTint="?attr/colorSurfaceVariant"
+                    app:icon="@drawable/ic_arrow_up_24dp" />
             </com.google.android.material.button.MaterialButtonToggleGroup>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

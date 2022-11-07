@@ -88,6 +88,23 @@ class HomeFragment : Fragment() {
             mainViewModel.searchStringChanged(text.toString())
         }
 
+        // Setup the toggle buttons
+        val typeSelector = binding.homeTypeSelector
+        typeSelector.addOnButtonCheckedListener { _, checkedId, isChecked ->
+            when (checkedId) {
+                R.id.homeTypeSelectorBirthday -> {
+                    if (isChecked) println("Birthday checked!")
+                }
+                R.id.homeTypeSelectorAnniversary -> {}
+                R.id.homeTypeSelectorDeathAnniversary -> {}
+                R.id.homeTypeSelectorNameDay -> {}
+                R.id.homeTypeSelectorOther -> {}
+                R.id.homeTypeSelectorClose -> {
+                    typeSelector.clearChecked()
+                }
+            }
+        }
+
         // Set motion layout state, since it's saved
         homeMotionLayout.progress = sharedPrefs.getFloat("home_motion_state", 0.0F)
 
