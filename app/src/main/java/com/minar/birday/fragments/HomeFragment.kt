@@ -229,9 +229,9 @@ class HomeFragment : Fragment() {
                 // Avd for empty card (same avd for no results or no events atm)
                 upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_no_results)
                 when {
-                    mainViewModel.searchString.value.isNullOrBlank() -> restorePlaceholders()
                     mainViewModel.searchString.value!!.isNotBlank() -> restorePlaceholders(true)
                     mainViewModel.selectedType.value!!.isNotBlank() -> restorePlaceholders(true)
+                    mainViewModel.searchString.value.isNullOrBlank() -> restorePlaceholders()
                     else -> removePlaceholder()
                 }
             }
