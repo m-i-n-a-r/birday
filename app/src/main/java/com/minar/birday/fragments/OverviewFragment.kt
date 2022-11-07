@@ -13,6 +13,7 @@ import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.FragmentOverviewBinding
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.MinarMonth
+import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 import com.minar.birday.utilities.getThemeColor
 import com.minar.birday.viewmodels.MainViewModel
 import java.time.LocalDate
@@ -50,6 +51,10 @@ class OverviewFragment : Fragment() {
 
         val title: String = getString(R.string.overview) + " - ${LocalDate.now().year}"
         binding.overviewTitle.text = title
+        binding.overviewTitleImage.applyLoopingAnimatedVectorDrawable(
+            R.drawable.animated_overview,
+            2500L
+        )
 
         // Take every and each month to a list representing the year
         val january = binding.overviewJan
