@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.minar.birday.R
+import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.MinarMonthBinding
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -20,6 +21,7 @@ import java.time.format.FormatStyle
 import java.time.format.TextStyle
 import java.util.*
 
+@OptIn(ExperimentalStdlibApi::class)
 class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
     // Custom attributes
     private var month = 0
@@ -29,6 +31,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
 
     private var dateWithChosenMonth: LocalDate
     private val cellsList: MutableList<TextView>
+    private var eventCount = 0
 
     init {
         context.theme.obtainStyledAttributes(
@@ -40,7 +43,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
                 month = getInteger(R.styleable.MinarMonth_month, 0)
                 hideWeekDays = getBoolean(R.styleable.MinarMonth_hideWeekDays, false)
                 sundayFirst = getBoolean(R.styleable.MinarMonth_sundayAsFirstDay, false)
-                showSnackBars = getBoolean(R.styleable.MinarMonth_showInfoSnackBars, false)
+                showSnackBars = getBoolean(R.styleable.MinarMonth_showInfoSnackBars, true)
             } finally {
                 recycle()
             }
@@ -206,6 +209,21 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
                 DayOfWeek.SATURDAY -> renderDays(Range(6, 36))
                 else -> {}
             }
+
+        // Show snack bars
+        if (showSnackBars) {
+            monthTitle.setOnClickListener {
+                val content = context.resources.getQuantityString(
+                    R.plurals.event,
+                    eventCount,
+                    eventCount
+                ).replaceFirstChar {
+                    if (it.isLowerCase()) it.titlecase(Locale.getDefault())
+                    else it.toString()
+                }
+                (context as MainActivity).showSnackbar(content)
+            }
+        }
     }
 
     // Render the appropriate numbers and hide any useless text view
@@ -262,26 +280,41 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         inverseTextColorOnDrawable: Boolean = false,
         asForeground: Boolean = false,
     ) {
+        // Update the global event count
+        eventCount += 1
+        var currentAlpha = 0
         // The textview will be hidden if the day doesn't exist in the current month
         for (cell in cellsList) {
             if (cell.text.trim() == day.toString()) {
                 if (drawable == null) {
                     cell.setTextColor(color)
                 } else {
+                    // Use the drawable as background or foreground
                     if (asForeground) {
                         cell.foreground = drawable
                         cell.foregroundTintList = ColorStateList.valueOf(color)
-                    } else {
+                    }
+                    // In case of background, compute the opacity
+                    else {
+                        if (autoOpacity) {
+                            if (cell.background != null)
+                                currentAlpha = cell.background.alpha
+                        }
                         cell.background = drawable
                         cell.backgroundTintList = ColorStateList.valueOf(color)
-                    }
-                    if (autoOpacity) cell.alpha = 0.3f
-                    if (inverseTextColorOnDrawable) cell.setTextColor(
-                        getThemeColor(
-                            R.attr.colorOnSurfaceInverse,
-                            context
+
+                        if (autoOpacity) {
+                            if (currentAlpha > 185)
+                                cell.background.alpha = 255
+                            else cell.background.alpha = currentAlpha + 70
+                        } else cell.background.alpha = 255
+                        if (inverseTextColorOnDrawable) cell.setTextColor(
+                            getThemeColor(
+                                R.attr.colorOnSurfaceInverse,
+                                context
+                            )
                         )
-                    )
+                    }
                 }
                 if (makeBold) cell.setTypeface(null, Typeface.BOLD)
                 break

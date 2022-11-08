@@ -55,6 +55,8 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/activity_vertical_margin"
             app:constraint_referenced_ids="overviewJan, overviewFeb, overviewMar,overviewApr,overviewMay,overviewJun, overviewJul, overviewAug, overviewSep, overviewOct, overviewNov, overviewDec"
+            app:flow_horizontalGap="@dimen/in_row_padding"
+            app:flow_maxElementsWrap="6"
             app:flow_wrapMode="aligned"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

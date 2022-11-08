@@ -194,6 +194,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:contentDescription="@string/birthday"
                     app:icon="@drawable/ic_party_24dp" />
 
                 <Button
@@ -202,6 +203,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:contentDescription="@string/anniversary"
                     app:icon="@drawable/ic_anniversary_24dp" />
 
                 <Button
@@ -210,6 +212,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:contentDescription="@string/death_anniversary"
                     app:icon="@drawable/ic_death_anniversary_24dp" />
 
                 <Button
@@ -218,6 +221,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:contentDescription="@string/name_day"
                     app:icon="@drawable/ic_name_day_24dp" />
 
                 <Button
@@ -226,6 +230,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:contentDescription="@string/other"
                     app:icon="@drawable/ic_other_24dp" />
 
                 <Button
@@ -233,6 +238,8 @@
                     style="@style/Widget.App.Button.OutlinedButton.IconOnly"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@android:string/cancel"
+                    android:focusable="false"
                     app:backgroundTint="?attr/colorSurfaceVariant"
                     app:icon="@drawable/ic_arrow_left_24dp" />
             </com.google.android.material.button.MaterialButtonToggleGroup>
