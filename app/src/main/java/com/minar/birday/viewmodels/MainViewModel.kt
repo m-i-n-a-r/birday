@@ -24,6 +24,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val eventsCount: LiveData<Int>
     val searchString = MutableLiveData<String>()
     val selectedType = MutableLiveData<String>()
+    private val searchValues = MediatorLiveData<Pair<String?, String?>>()
     private val eventDao: EventDao = EventDatabase.getBirdayDatabase(application).eventDao()
     var confettiDone: Boolean = false
 
@@ -31,38 +32,20 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         searchString.value = ""
         selectedType.value = ""
         // The Pair values are nullable as getting "liveData.value" can be null
-        val searchValues = MediatorLiveData<Pair<String, String>>().apply {
- /*           addSource(selectedType) {
-                value = Pair(selectedType.value ?: "", it)
-            }
-            addSource(searchString) {
-                value = Pair(it, searchString.value ?: "")
-            }*/
-            addSource(selectedType) {
-                searchString.value = it
-                val localLastA = searchString.value
-                val localLastB = selectedType.value
-                if (localLastA != null && localLastB != null)
-                    this.value = Pair(localLastA, localLastB)
-            }
-            addSource(searchString) {
-                selectedType.value = it
-                val localLastA = searchString.value
-                val localLastB = selectedType.value
-                if (localLastA != null && localLastB != null)
-                    this.value = Pair(localLastA, localLastB)
-            }
+        searchValues.apply {
+            addSource(searchString) { value = it to selectedType.value }
+            addSource(selectedType) { value = searchString.value to it }
         }
 
         // All the events, unfiltered
         allEventsUnfiltered = eventDao.getOrderedEvents()
-        // All the events, filtered by search string
+        // All the events, filtered by search string and type
         allEvents = Transformations.switchMap(searchValues) { pair ->
             val searchString = pair.first
             val selectedType = pair.second
-            if (searchString.isNotBlank())
+            if (!searchString.isNullOrBlank())
                 eventDao.getOrderedEventsByName(searchString)
-            else if (selectedType.isNotBlank())
+            else if (!selectedType.isNullOrBlank())
                 eventDao.getOrderedEventsByType(selectedType)
             else eventDao.getOrderedEventsByName("")
         }

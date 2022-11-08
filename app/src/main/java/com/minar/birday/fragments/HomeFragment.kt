@@ -20,7 +20,7 @@ import androidx.core.view.doOnPreDraw
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator
+import androidx.interpolator.view.animation.LinearOutSlowInInterpolator
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
@@ -51,7 +51,6 @@ class HomeFragment : Fragment() {
     lateinit var sharedPrefs: SharedPreferences
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,8 +95,8 @@ class HomeFragment : Fragment() {
                 typeSelector.visibility = View.VISIBLE
                 typeSelector.pivotX = searchBarLayout.measuredWidth.toFloat()
                 ObjectAnimator.ofFloat(typeSelector, "scaleX", 1.0f).apply {
-                    duration = 400
-                    interpolator = FastOutSlowInInterpolator()
+                    duration = 300
+                    interpolator = LinearOutSlowInInterpolator()
                     start()
                 }
             } else {
@@ -119,41 +118,31 @@ class HomeFragment : Fragment() {
             when (checkedId) {
                 R.id.homeTypeSelectorBirthday -> {
                     // Only display events of type birthday
-                    if (!isChecked) {
-                        mainViewModel.eventTypeChanged(null)
-                    } else {
+                    if (isChecked) {
                         mainViewModel.eventTypeChanged(EventCode.BIRTHDAY.name)
                     }
                 }
                 R.id.homeTypeSelectorAnniversary -> {
                     // Only display events of type anniversary
-                    if (!isChecked) {
-                        mainViewModel.eventTypeChanged(null)
-                    } else {
+                    if (isChecked) {
                         mainViewModel.eventTypeChanged(EventCode.ANNIVERSARY.name)
                     }
                 }
                 R.id.homeTypeSelectorDeathAnniversary -> {
                     // Only display events of type death anniversary
-                    if (!isChecked) {
-                        mainViewModel.eventTypeChanged(null)
-                    } else {
+                    if (isChecked) {
                         mainViewModel.eventTypeChanged(EventCode.DEATH.name)
                     }
                 }
                 R.id.homeTypeSelectorNameDay -> {
                     // Only display events of type name day
-                    if (!isChecked) {
-                        mainViewModel.eventTypeChanged(null)
-                    } else {
+                    if (isChecked) {
                         mainViewModel.eventTypeChanged(EventCode.NAME_DAY.name)
                     }
                 }
                 R.id.homeTypeSelectorOther -> {
                     // Only display events of type other
-                    if (!isChecked) {
-                        mainViewModel.eventTypeChanged(null)
-                    } else {
+                    if (isChecked) {
                         mainViewModel.eventTypeChanged(EventCode.OTHER.name)
                     }
                 }
@@ -161,8 +150,8 @@ class HomeFragment : Fragment() {
                     typeSelector.pivotX = 0F
                     searchBarLayout.setEndIconOnClickListener { return@setEndIconOnClickListener }
                     ObjectAnimator.ofFloat(typeSelector, "scaleX", 0.0f).apply {
-                        duration = 400
-                        interpolator = FastOutSlowInInterpolator()
+                        duration = 200
+                        interpolator = LinearOutSlowInInterpolator()
                         start()
                     }.doOnEnd {
                         typeSelector.visibility = View.GONE
@@ -180,6 +169,19 @@ class HomeFragment : Fragment() {
 
         // Set motion layout state, since it's saved
         homeMotionLayout.progress = sharedPrefs.getFloat("home_motion_state", 0.0F)
+
+        // Set type selector visibility and selection
+        if (!mainViewModel.selectedType.value.isNullOrBlank()) {
+            typeSelector.scaleX = 1F
+            typeSelector.visibility = View.VISIBLE
+            when (mainViewModel.selectedType.value) {
+                EventCode.BIRTHDAY.name -> typeSelector.check(R.id.homeTypeSelectorBirthday)
+                EventCode.ANNIVERSARY.name -> typeSelector.check(R.id.homeTypeSelectorAnniversary)
+                EventCode.DEATH.name -> typeSelector.check(R.id.homeTypeSelectorDeathAnniversary)
+                EventCode.NAME_DAY.name -> typeSelector.check(R.id.homeTypeSelectorNameDay)
+                EventCode.OTHER.name -> typeSelector.check(R.id.homeTypeSelectorOther)
+            }
+        }
 
         // Vibration on the mini fab (with manual managing of the transition)
         homeMiniFab.setOnClickListener {
