@@ -92,6 +92,7 @@ class HomeFragment : Fragment() {
         typeSelector.scaleX = 0F
         val listener = OnClickListener {
             if (searchBar.text.isNullOrBlank()) {
+                searchBarLayout.setEndIconOnClickListener { return@setEndIconOnClickListener }
                 typeSelector.visibility = View.VISIBLE
                 typeSelector.pivotX = searchBarLayout.measuredWidth.toFloat()
                 ObjectAnimator.ofFloat(typeSelector, "scaleX", 1.0f).apply {
@@ -148,7 +149,6 @@ class HomeFragment : Fragment() {
                 }
                 R.id.homeTypeSelectorClose -> {
                     typeSelector.pivotX = 0F
-                    searchBarLayout.setEndIconOnClickListener { return@setEndIconOnClickListener }
                     ObjectAnimator.ofFloat(typeSelector, "scaleX", 0.0f).apply {
                         duration = 200
                         interpolator = LinearOutSlowInInterpolator()
