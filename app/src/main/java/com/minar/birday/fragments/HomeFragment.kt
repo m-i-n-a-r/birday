@@ -314,6 +314,7 @@ class HomeFragment : Fragment() {
 
     // Restore the placeholder and texts when there are no events. If search is true, show the "no result" placeholder
     private fun restorePlaceholders(search: Boolean = false) {
+        binding.eventRecycler.visibility = View.GONE
         val cardTitle: TextView = binding.upcomingTitle
         val cardSubtitle: TextView = binding.upcomingSubtitle
         val cardDescription: TextView = binding.upcomingDescription
@@ -328,7 +329,6 @@ class HomeFragment : Fragment() {
             cardDescription.text = getString(R.string.search_no_result_description)
             placeholder.text = getString(R.string.search_no_result_title)
         }
-        binding.eventRecycler.visibility = View.GONE
         placeholder.visibility = View.VISIBLE
     }
 

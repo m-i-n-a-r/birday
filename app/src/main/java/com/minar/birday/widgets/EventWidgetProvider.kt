@@ -82,63 +82,72 @@ internal fun updateAppWidget(
             val eventDao: EventDao = EventDatabase.getBirdayDatabase(context).eventDao()
             val nextEvents: List<EventResult> = eventDao.getOrderedNextEventsStatic()
 
-            // Make sure to show if there's more than one event
-            var widgetUpcoming = formatEventList(nextEvents, true, context, false)
-            if (nextEvents.isNotEmpty()) widgetUpcoming += "\n${
-                nextDateFormatted(
-                    nextEvents[0],
-                    formatter,
-                    context
-                )
-            }"
-
-            // In certain cases, another instance of the app is launched, creating a stack of home screens
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            val pendingIntent =
-                PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
-
-            views.setOnClickPendingIntent(R.id.background, pendingIntent)
-            views.setTextViewText(R.id.eventWidgetText, widgetUpcoming)
-
             // If there are zero events, hide the list
             if (nextEvents.isEmpty()) {
                 views.setViewVisibility(R.id.eventWidgetList, View.GONE)
-            } else {
-                views.setViewVisibility(R.id.eventWidgetList, View.VISIBLE)
-            }
-
-            // If there are no events, leave the widget as is
-            if (nextEvents.isEmpty()) return@Thread
-
-            // Else proceed to fill the data for the next event
-            if (nextEvents[0].image != null && nextEvents[0].image!!.isNotEmpty() && !hideImages) {
-                views.setImageViewBitmap(
-                    R.id.eventWidgetImage,
-                    byteArrayToBitmap(nextEvents[0].image!!)
+                // Restore the widget to its default state
+                views.setTextViewText(
+                    R.id.eventWidgetText,
+                    context.getString(R.string.no_next_event)
                 )
-            } else views.setImageViewResource(
-                R.id.eventWidgetImage,
-                // Set the image depending on the event type, the drawable are a b&w version
-                when (nextEvents[0].type) {
-                    EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
-                    EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
-                    EventCode.DEATH.name -> R.drawable.placeholder_death_image
-                    EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
-                    else -> R.drawable.placeholder_other_image
-                }
-            )
-
-            // Set up the intent that starts the EventViewService, which will provide the views
-            val widgetServiceIntent = Intent(context, EventWidgetService::class.java)
-
-            // Set up the RemoteViews object to use a RemoteViews adapter and populate the data
-            views.apply {
-                setRemoteAdapter(R.id.eventWidgetList, widgetServiceIntent)
-                // setEmptyView can be used to choose the view displayed when the collection has no items
+                views.setImageViewResource(
+                    R.id.eventWidgetImage,
+                    R.drawable.placeholder_other_image
+                )
             }
-            // Fill the list with the next events
-            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.eventWidgetList)
+            // If there's one event or more, update the list and the main widget
+            else {
+                views.setViewVisibility(R.id.eventWidgetList, View.VISIBLE)
+
+
+                // Make sure to show if there's more than one event
+                var widgetUpcoming = formatEventList(nextEvents, true, context, false)
+                if (nextEvents.isNotEmpty()) widgetUpcoming += "\n${
+                    nextDateFormatted(
+                        nextEvents[0],
+                        formatter,
+                        context
+                    )
+                }"
+
+                // In certain cases, another instance of the app is launched, creating a stack of home screens
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                val pendingIntent =
+                    PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
+                views.setOnClickPendingIntent(R.id.background, pendingIntent)
+                views.setTextViewText(R.id.eventWidgetText, widgetUpcoming)
+
+                // Else proceed to fill the data for the next event
+                if (nextEvents[0].image != null && nextEvents[0].image!!.isNotEmpty() && !hideImages) {
+                    views.setImageViewBitmap(
+                        R.id.eventWidgetImage,
+                        byteArrayToBitmap(nextEvents[0].image!!)
+                    )
+                } else views.setImageViewResource(
+                    R.id.eventWidgetImage,
+                    // Set the image depending on the event type, the drawable are a b&w version
+                    when (nextEvents[0].type) {
+                        EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
+                        EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
+                        EventCode.DEATH.name -> R.drawable.placeholder_death_image
+                        EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
+                        else -> R.drawable.placeholder_other_image
+                    }
+                )
+
+                // Set up the intent that starts the EventViewService, which will provide the views
+                val widgetServiceIntent = Intent(context, EventWidgetService::class.java)
+
+                // Set up the RemoteViews object to use a RemoteViews adapter and populate the data
+                views.apply {
+                    setRemoteAdapter(R.id.eventWidgetList, widgetServiceIntent)
+                    // setEmptyView can be used to choose the view displayed when the collection has no items
+                }
+                // Fill the list with the next events
+                appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.eventWidgetList)
+            }
             // Instruct the widget manager to update the widget
             appWidgetManager.updateAppWidget(appWidgetId, views)
         }.start()

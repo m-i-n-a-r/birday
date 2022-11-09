@@ -46,12 +46,12 @@
                 android:layout_width="@dimen/widget_type_icon_size"
                 android:layout_height="@dimen/widget_type_icon_size"
                 android:layout_gravity="center"
-                android:tint="?attr/colorPrimary"
                 android:contentDescription="@string/event_type_hint"
                 android:maxWidth="@dimen/preview_dot_size"
                 android:maxHeight="@dimen/preview_dot_size"
                 android:padding="0dp"
                 android:src="@drawable/ic_party_24dp"
+                android:tint="?attr/colorPrimary"
                 tools:ignore="UseAppTint" />
         </FrameLayout>
 
@@ -74,8 +74,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/eventWidgetRowDate"
             android:layout_gravity="end"
+            android:layout_toEndOf="@id/eventWidgetRowDate"
             android:gravity="end"
             android:paddingHorizontal="@dimen/in_row_button_padding"
             android:paddingVertical="@dimen/in_row_button_padding"

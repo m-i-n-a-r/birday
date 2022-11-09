@@ -179,7 +179,7 @@ class MainActivity : AppCompatActivity() {
         fab.setOnLongClickListener {
             vibrate()
             showSnackbar(getString(R.string.new_event_description))
-            return@setOnLongClickListener true
+            true
         }
         // Open the bottom sheet to insert a new event
         fab.setOnClickListener {
