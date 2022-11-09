@@ -4,10 +4,8 @@ import android.Manifest
 import android.app.ActivityManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.content.ContentResolver
-import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
+import android.appwidget.AppWidgetManager
+import android.content.*
 import android.content.pm.PackageManager
 import android.database.Cursor
 import android.graphics.Color
@@ -41,6 +39,7 @@ import com.minar.birday.preferences.backup.CsvImporter
 import com.minar.birday.preferences.backup.JsonImporter
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
+import com.minar.birday.widgets.EventWidgetProvider
 import java.io.IOException
 import java.util.*
 import kotlin.concurrent.thread
@@ -212,6 +211,13 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+        // Only the next events, without considering the search string, ordered
+        mainViewModel.allEventsUnfiltered.observe(this)
+        {
+            // Update the widgets using this livedata, to avoid strange behaviors when searching
+            updateWidget()
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -228,6 +234,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Update the existing widgets with the newest data and the onclick action
+    private fun updateWidget() {
+        val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+        intent.component = ComponentName(this, EventWidgetProvider::class.java)
+        sendBroadcast(intent)
+    }
 
     // Create the NotificationChannel. This code does nothing when it already exists
     private fun createNotificationChannel() {

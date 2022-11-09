@@ -51,6 +51,18 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
+            <!-- The date of the next event(s) -->
+            <TextView
+                android:id="@+id/eventWidgetDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end"
+                android:contentDescription="@string/appwidget_upcoming"
+                android:text="@string/unknown"
+                android:textAlignment="viewEnd"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                android:textColor="?attr/colorPrimary" />
+
             <!-- Just a title to help the aesthetics -->
             <TextView
                 android:id="@+id/eventWidgetTitle"
@@ -62,18 +74,6 @@
                 android:textAlignment="viewEnd"
                 android:textAllCaps="true"
                 android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-                android:textColor="?attr/colorPrimary" />
-
-            <!-- The date of the next event(s) -->
-            <TextView
-                android:id="@+id/eventWidgetDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|end"
-                android:contentDescription="@string/appwidget_upcoming"
-                android:text="@string/unknown"
-                android:textAlignment="viewEnd"
-                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                 android:textColor="?attr/colorOnBackground" />
 
             <!-- Use an Imageview to create a divider -->

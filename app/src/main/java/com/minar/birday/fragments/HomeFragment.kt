@@ -1,9 +1,6 @@
 package com.minar.birday.fragments
 
 import android.animation.ObjectAnimator
-import android.appwidget.AppWidgetManager
-import android.content.ComponentName
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
@@ -35,7 +32,6 @@ import com.minar.birday.model.EventDataItem
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
-import com.minar.birday.widgets.EventWidgetProvider
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
 import java.time.format.DateTimeFormatter
@@ -110,9 +106,6 @@ class HomeFragment : Fragment() {
             if (text.isNullOrBlank()) searchBarLayout.setEndIconDrawable(R.drawable.ic_arrow_right_24dp)
             else searchBarLayout.setEndIconDrawable(R.drawable.ic_clear_24dp)
         }
-
-        // Update the widget unconditionally
-        updateWidget()
 
         // Setup the toggle buttons
         typeSelector.addOnButtonCheckedListener { _, checkedId, isChecked ->
@@ -246,13 +239,6 @@ class HomeFragment : Fragment() {
             (view.parent as? ViewGroup)?.doOnPreDraw { startPostponedEnterTransition() }
         }
 
-        // Only the next events, without considering the search string, ordered
-        mainViewModel.allEventsUnfiltered.observe(viewLifecycleOwner)
-        {
-            // Update the widgets using this livedata, to avoid strange behaviors when searching
-            updateWidget()
-        }
-
         // Restore search string in the search bar
         if (mainViewModel.searchString.value!!.isNotBlank())
             searchBar.setText(mainViewModel.searchString.value)
@@ -321,6 +307,8 @@ class HomeFragment : Fragment() {
     // Remove the placeholder or return if the placeholder was already removed before
     private fun removePlaceholder() {
         val placeholder = binding.noEvents
+        // Also change the visibility of the recycler to avoid inconsistencies
+        binding.eventRecycler.visibility = View.VISIBLE
         placeholder.visibility = View.GONE
     }
 
@@ -340,14 +328,8 @@ class HomeFragment : Fragment() {
             cardDescription.text = getString(R.string.search_no_result_description)
             placeholder.text = getString(R.string.search_no_result_title)
         }
+        binding.eventRecycler.visibility = View.GONE
         placeholder.visibility = View.VISIBLE
-    }
-
-    // Update the existing widgets with the newest data and the onclick action
-    private fun updateWidget() {
-        val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
-        intent.component = ComponentName(requireContext(), EventWidgetProvider::class.java)
-        requireContext().sendBroadcast(intent)
     }
 
     // Insert the necessary information in the upcoming event card view (and confetti)
