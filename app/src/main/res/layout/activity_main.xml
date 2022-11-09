@@ -28,6 +28,7 @@
         app:title="@string/app_name">
 
         <!-- A transparent background navigation view, with no elevation -->
+        <!-- app:itemIconTint="@drawable/bottom_navbar_item" for custom state colors -->
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigation"
             android:layout_width="match_parent"
@@ -35,7 +36,6 @@
             android:background="@android:color/transparent"
             app:backgroundTint="@android:color/transparent"
             app:elevation="0dp"
-            app:itemIconTint="@drawable/bottom_navbar_item"
             app:itemPaddingBottom="@dimen/bottom_navbar_item_padding"
             app:itemPaddingTop="@dimen/bottom_navbar_item_padding"
             app:labelVisibilityMode="selected"
@@ -49,8 +49,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/new_event"
-        app:tint="?attr/colorPrimary"
         android:hapticFeedbackEnabled="false"
+        app:tint="@null"
         app:layout_anchor="@id/bottomBar"
         app:maxImageSize="@dimen/main_fab_icon_size"
         app:srcCompat="@drawable/ic_party_24dp" />

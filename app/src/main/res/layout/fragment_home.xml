@@ -240,6 +240,7 @@
                     android:layout_height="match_parent"
                     android:contentDescription="@android:string/cancel"
                     app:backgroundTint="?attr/colorSurfaceVariant"
+                    app:iconTint="?attr/colorPrimary"
                     app:icon="@drawable/ic_arrow_right_24dp" />
             </com.google.android.material.button.MaterialButtonToggleGroup>
 

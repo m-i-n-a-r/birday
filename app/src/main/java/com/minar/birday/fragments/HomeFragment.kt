@@ -115,35 +115,40 @@ class HomeFragment : Fragment() {
                     if (isChecked) {
                         mainViewModel.eventTypeChanged(EventCode.BIRTHDAY.name)
                     }
-                    if (typeSelector.checkedButtonId == View.NO_ID) typeSelector.check(R.id.homeTypeSelectorBirthday)
+                    if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
+                        mainViewModel.eventTypeChanged("")
                 }
                 R.id.homeTypeSelectorAnniversary -> {
                     // Only display events of type anniversary
                     if (isChecked) {
                         mainViewModel.eventTypeChanged(EventCode.ANNIVERSARY.name)
                     }
-                    if (typeSelector.checkedButtonId == View.NO_ID) typeSelector.check(R.id.homeTypeSelectorAnniversary)
+                    if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
+                        mainViewModel.eventTypeChanged("")
                 }
                 R.id.homeTypeSelectorDeathAnniversary -> {
                     // Only display events of type death anniversary
                     if (isChecked) {
                         mainViewModel.eventTypeChanged(EventCode.DEATH.name)
                     }
-                    if (typeSelector.checkedButtonId == View.NO_ID) typeSelector.check(R.id.homeTypeSelectorDeathAnniversary)
+                    if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
+                        mainViewModel.eventTypeChanged("")
                 }
                 R.id.homeTypeSelectorNameDay -> {
                     // Only display events of type name day
                     if (isChecked) {
                         mainViewModel.eventTypeChanged(EventCode.NAME_DAY.name)
                     }
-                    if (typeSelector.checkedButtonId == View.NO_ID) typeSelector.check(R.id.homeTypeSelectorNameDay)
+                    if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
+                        mainViewModel.eventTypeChanged("")
                 }
                 R.id.homeTypeSelectorOther -> {
                     // Only display events of type other
                     if (isChecked) {
                         mainViewModel.eventTypeChanged(EventCode.OTHER.name)
                     }
-                    if (typeSelector.checkedButtonId == View.NO_ID) typeSelector.check(R.id.homeTypeSelectorOther)
+                    if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
+                        mainViewModel.eventTypeChanged("")
                 }
                 R.id.homeTypeSelectorClose -> {
                     typeSelector.pivotX = searchBarLayout.measuredWidth.toFloat() * 0.95F
