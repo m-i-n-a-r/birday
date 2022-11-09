@@ -166,7 +166,7 @@
         <item name="android:insetBottom">0dp</item>
         <item name="android:minWidth">20dp</item>
         <item name="android:minHeight">20dp</item>
-        <item name="iconGravity">textTop</item>
+        <item name="iconGravity">textStart</item>
         <item name="strokeWidth">@dimen/card_stroke</item>
         <item name="cornerRadius">@dimen/rounded_corners</item>
     </style>

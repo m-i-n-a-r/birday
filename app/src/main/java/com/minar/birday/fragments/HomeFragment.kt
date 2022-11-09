@@ -94,7 +94,7 @@ class HomeFragment : Fragment() {
             if (searchBar.text.isNullOrBlank()) {
                 searchBarLayout.setEndIconOnClickListener { return@setEndIconOnClickListener }
                 typeSelector.visibility = View.VISIBLE
-                typeSelector.pivotX = searchBarLayout.measuredWidth.toFloat()
+                typeSelector.pivotX = searchBarLayout.measuredWidth.toFloat() * 0.95F
                 ObjectAnimator.ofFloat(typeSelector, "scaleX", 1.0f).apply {
                     duration = 300
                     interpolator = LinearOutSlowInInterpolator()
@@ -107,7 +107,7 @@ class HomeFragment : Fragment() {
         searchBarLayout.setEndIconOnClickListener(listener)
         searchBar.addTextChangedListener { text ->
             mainViewModel.searchStringChanged(text.toString())
-            if (text.isNullOrBlank()) searchBarLayout.setEndIconDrawable(R.drawable.ic_arrow_left_24dp)
+            if (text.isNullOrBlank()) searchBarLayout.setEndIconDrawable(R.drawable.ic_arrow_right_24dp)
             else searchBarLayout.setEndIconDrawable(R.drawable.ic_clear_24dp)
         }
 
@@ -122,35 +122,40 @@ class HomeFragment : Fragment() {
                     if (isChecked) {
                         mainViewModel.eventTypeChanged(EventCode.BIRTHDAY.name)
                     }
+                    if (typeSelector.checkedButtonId == View.NO_ID) typeSelector.check(R.id.homeTypeSelectorBirthday)
                 }
                 R.id.homeTypeSelectorAnniversary -> {
                     // Only display events of type anniversary
                     if (isChecked) {
                         mainViewModel.eventTypeChanged(EventCode.ANNIVERSARY.name)
                     }
+                    if (typeSelector.checkedButtonId == View.NO_ID) typeSelector.check(R.id.homeTypeSelectorAnniversary)
                 }
                 R.id.homeTypeSelectorDeathAnniversary -> {
                     // Only display events of type death anniversary
                     if (isChecked) {
                         mainViewModel.eventTypeChanged(EventCode.DEATH.name)
                     }
+                    if (typeSelector.checkedButtonId == View.NO_ID) typeSelector.check(R.id.homeTypeSelectorDeathAnniversary)
                 }
                 R.id.homeTypeSelectorNameDay -> {
                     // Only display events of type name day
                     if (isChecked) {
                         mainViewModel.eventTypeChanged(EventCode.NAME_DAY.name)
                     }
+                    if (typeSelector.checkedButtonId == View.NO_ID) typeSelector.check(R.id.homeTypeSelectorNameDay)
                 }
                 R.id.homeTypeSelectorOther -> {
                     // Only display events of type other
                     if (isChecked) {
                         mainViewModel.eventTypeChanged(EventCode.OTHER.name)
                     }
+                    if (typeSelector.checkedButtonId == View.NO_ID) typeSelector.check(R.id.homeTypeSelectorOther)
                 }
                 R.id.homeTypeSelectorClose -> {
-                    typeSelector.pivotX = 0F
+                    typeSelector.pivotX = searchBarLayout.measuredWidth.toFloat() * 0.95F
                     ObjectAnimator.ofFloat(typeSelector, "scaleX", 0.0f).apply {
-                        duration = 200
+                        duration = 250
                         interpolator = LinearOutSlowInInterpolator()
                         start()
                     }.doOnEnd {
@@ -164,6 +169,7 @@ class HomeFragment : Fragment() {
         }
         binding.homeTypeSelectorClose.setOnLongClickListener {
             typeSelector.clearChecked()
+            mainViewModel.eventTypeChanged("")
             true
         }
 

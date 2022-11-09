@@ -100,11 +100,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     // Update the name searched in the search bar
     fun searchStringChanged(newSearchString: String) {
+        if (searchString.value == newSearchString) return
         searchString.value = newSearchString
     }
 
     // Update the type selected in the search bar
     fun eventTypeChanged(newSelectedType: String?) {
+        if (selectedType.value == newSelectedType) return
         selectedType.value = newSelectedType ?: ""
     }
 }
