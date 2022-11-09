@@ -61,7 +61,7 @@
     <dimen name="widget_type_icon_background_size">28dp</dimen>
     <dimen name="widget_type_icon_size">14dp</dimen>
     <dimen name="widget_min_width">200dp</dimen>
-    <dimen name="widget_min_height">48dp</dimen>
+    <dimen name="widget_min_height">96dp</dimen>
 
     <!-- Custom yearly calendar -->
     <dimen name="calendar_month_day_padding">2dp</dimen>

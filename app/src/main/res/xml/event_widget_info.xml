@@ -10,7 +10,7 @@
     android:previewLayout="@layout/widget_upcoming"
     android:resizeMode="horizontal|vertical"
     android:targetCellWidth="3"
-    android:targetCellHeight="1"
+    android:targetCellHeight="2"
     android:updatePeriodMillis="10800000"
     android:widgetCategory="home_screen"
     tools:targetApi="s" />
