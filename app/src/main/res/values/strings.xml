@@ -287,7 +287,6 @@
     <string name="check_github">Check Github</string>
     <string name="github_repo_develop" translatable="false">https://github.com/m-i-n-a-r/birday/commits/develop</string>
     <string name="launch_auto_import">Auto import on launch</string>
-    <string name="feature_preview">Overview screen (preview)</string>
     <string name="import_json">Import from JSON</string>
     <string name="export_json">Export to JSON</string>
     <string name="import_csv">Import from CSV</string>

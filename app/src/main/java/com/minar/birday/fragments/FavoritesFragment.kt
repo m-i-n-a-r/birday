@@ -112,14 +112,13 @@ class FavoritesFragment : Fragment() {
             }
         }
 
-        // Set the overview button TODO Only available in experimental settings
-        if (sharedPrefs.getBoolean("feature_preview", false))
-            overviewButton.setOnClickListener {
-                // Vibrate and navigate to the overview screen
-                act.vibrate()
-                requireView().findNavController()
-                    .navigate(R.id.action_navigationFavorites_to_overviewFragment)
-            }
+        // Set the overview button
+        overviewButton.setOnClickListener {
+            // Vibrate and navigate to the overview screen
+            act.vibrate()
+            requireView().findNavController()
+                .navigate(R.id.action_navigationFavorites_to_overviewFragment)
+        }
 
         // Set the data which requires the complete and unfiltered event list
         with(binding) {

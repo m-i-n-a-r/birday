@@ -9,6 +9,7 @@
         android:id="@+id/overviewMonthName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:text="@string/insert_date_hint"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.Material3.LabelLarge"

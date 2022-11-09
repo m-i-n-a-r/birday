@@ -29,8 +29,9 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
     private var sundayFirst: Boolean
     private var showSnackBars: Boolean
 
-    private var dateWithChosenMonth: LocalDate
-    private val cellsList: MutableList<TextView>
+    private lateinit var dateWithChosenMonth: LocalDate
+    private lateinit var cellsList: MutableList<TextView>
+    private var binding: MinarMonthBinding
     private var eventCount = 0
 
     init {
@@ -48,9 +49,112 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
                 recycle()
             }
         }
+        binding = MinarMonthBinding.inflate(LayoutInflater.from(context), this, true)
+        initMonth()
+    }
 
-        val binding = MinarMonthBinding.inflate(LayoutInflater.from(context), this, true)
+    // Render the appropriate numbers and hide any useless text view
+    private fun renderDays(monthRange: Range<Int>) {
+        val min = monthRange.lower
+        val max = monthRange.upper
 
+        // Render the month numbers with a leading space for single digit numbers
+        for (i in min..max) {
+            val dayValue = i - min + 1
+            // Manage single digit dates differently
+            val dayNumber = if (dayValue <= 9) " $dayValue" else dayValue.toString()
+            cellsList[i].text = dayNumber
+            cellsList[i].visibility = View.VISIBLE
+            // Accessibility related info
+            try {
+                val correspondingDate =
+                    LocalDate.of(dateWithChosenMonth.year, dateWithChosenMonth.month - 1, dayValue)
+                val formatter: DateTimeFormatter =
+                    DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
+                cellsList[i].contentDescription = correspondingDate.format(formatter)
+            } catch (_: Exception) {
+            }
+        }
+        // Hide unnecessary cells
+        if (min != 0)
+            for (i in 0 until min) {
+                cellsList[i].visibility = View.INVISIBLE
+            }
+        when (dateWithChosenMonth.month) {
+            Month.NOVEMBER, Month.APRIL, Month.JUNE, Month.SEPTEMBER -> {
+                for (i in (30 + min) until cellsList.size)
+                    cellsList[i].visibility = View.INVISIBLE
+            }
+            Month.FEBRUARY -> {
+                val leapIndex = if (dateWithChosenMonth.isLeapYear) 29 else 28
+                for (i in (leapIndex + min) until cellsList.size)
+                    cellsList[i].visibility = View.INVISIBLE
+            }
+            else -> {
+                for (i in (31 + min) until cellsList.size)
+                    cellsList[i].visibility = View.INVISIBLE
+            }
+        }
+
+    }
+
+    // Highlight a day in the month using a drawable or a color
+    fun highlightDay(
+        day: Int,
+        color: Int,
+        drawable: Drawable? = null,
+        makeBold: Boolean = false,
+        autoOpacity: Boolean = false,
+        inverseTextColorOnDrawable: Boolean = false,
+        asForeground: Boolean = false,
+    ) {
+        // Update the global event count
+        eventCount += 1
+        var currentAlpha = 0
+        // The textview will be hidden if the day doesn't exist in the current month
+        for (cell in cellsList) {
+            if (cell.text.trim() == day.toString()) {
+                if (drawable == null) {
+                    cell.setTextColor(color)
+                } else {
+                    // Use the drawable as background or foreground
+                    if (asForeground) {
+                        cell.foreground = drawable
+                        cell.foregroundTintList = ColorStateList.valueOf(color)
+                    }
+                    // In case of background, compute the opacity
+                    else {
+                        if (autoOpacity) {
+                            if (cell.background != null)
+                                currentAlpha = cell.background.alpha
+                        }
+                        cell.background = drawable
+                        cell.backgroundTintList = ColorStateList.valueOf(color)
+
+                        if (autoOpacity) {
+                            if (currentAlpha > 185)
+                                cell.background.alpha = 255
+                            else cell.background.alpha = currentAlpha + 70
+                        } else cell.background.alpha = 255
+                        if (inverseTextColorOnDrawable) cell.setTextColor(
+                            getThemeColor(
+                                R.attr.colorOnSurfaceInverse,
+                                context
+                            )
+                        )
+                    }
+                }
+                // The font will change, and monospace doesn't have a bold style
+                if (makeBold) {
+                    cell.setTypeface(null, Typeface.BOLD)
+                }
+                break
+            }
+        }
+    }
+
+    // Initialize the month
+    private fun initMonth() {
         // Week days
         val weekDayOne = binding.weekDayOne
         val weekDayTwo = binding.weekDayTwo
@@ -182,8 +286,6 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         val monthTitle = binding.overviewMonthName
         monthTitle.text =
             dateWithChosenMonth.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
-        monthTitle.contentDescription =
-            dateWithChosenMonth.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
 
         if (!sundayFirst)
         // Case 1: monday is the first day of the week
@@ -226,106 +328,13 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         }
     }
 
-    // Render the appropriate numbers and hide any useless text view
-    private fun renderDays(monthRange: Range<Int>) {
-        val min = monthRange.lower
-        val max = monthRange.upper
-
-        // Render the month numbers with a leading space for single digit numbers
-        for (i in min..max) {
-            val dayValue = i - min + 1
-            // Manage single digit dates differently
-            val dayNumber = if (dayValue <= 9) " $dayValue" else dayValue.toString()
-            cellsList[i].text = dayNumber
-            // Accessibility related info
-            try {
-                val correspondingDate =
-                    LocalDate.of(dateWithChosenMonth.year, dateWithChosenMonth.month - 1, dayValue)
-                val formatter: DateTimeFormatter =
-                    DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
-                cellsList[i].contentDescription = correspondingDate.format(formatter)
-            } catch (_: Exception) {
-            }
-        }
-        // Hide unnecessary cells
-        if (min != 0)
-            for (i in 0 until min) {
-                cellsList[i].visibility = View.INVISIBLE
-            }
-        when (dateWithChosenMonth.month) {
-            Month.NOVEMBER, Month.APRIL, Month.JUNE, Month.SEPTEMBER -> {
-                for (i in (30 + min) until cellsList.size)
-                    cellsList[i].visibility = View.INVISIBLE
-            }
-            Month.FEBRUARY -> {
-                val leapIndex = if (dateWithChosenMonth.isLeapYear) 28 else 27
-                for (i in (leapIndex + min) until cellsList.size)
-                    cellsList[i].visibility = View.INVISIBLE
-            }
-            else -> {
-                for (i in (31 + min) until cellsList.size)
-                    cellsList[i].visibility = View.INVISIBLE
-            }
-        }
-
-    }
-
-    // Highlight a day in the month using a drawable or a color
-    fun highlightDay(
-        day: Int,
-        color: Int,
-        drawable: Drawable? = null,
-        makeBold: Boolean = false,
-        autoOpacity: Boolean = false,
-        inverseTextColorOnDrawable: Boolean = false,
-        asForeground: Boolean = false,
-    ) {
-        // Update the global event count
-        eventCount += 1
-        var currentAlpha = 0
-        // The textview will be hidden if the day doesn't exist in the current month
-        for (cell in cellsList) {
-            if (cell.text.trim() == day.toString()) {
-                if (drawable == null) {
-                    cell.setTextColor(color)
-                } else {
-                    // Use the drawable as background or foreground
-                    if (asForeground) {
-                        cell.foreground = drawable
-                        cell.foregroundTintList = ColorStateList.valueOf(color)
-                    }
-                    // In case of background, compute the opacity
-                    else {
-                        if (autoOpacity) {
-                            if (cell.background != null)
-                                currentAlpha = cell.background.alpha
-                        }
-                        cell.background = drawable
-                        cell.backgroundTintList = ColorStateList.valueOf(color)
-
-                        if (autoOpacity) {
-                            if (currentAlpha > 185)
-                                cell.background.alpha = 255
-                            else cell.background.alpha = currentAlpha + 70
-                        } else cell.background.alpha = 255
-                        if (inverseTextColorOnDrawable) cell.setTextColor(
-                            getThemeColor(
-                                R.attr.colorOnSurfaceInverse,
-                                context
-                            )
-                        )
-                    }
-                }
-                if (makeBold) cell.setTypeface(null, Typeface.BOLD)
-                break
-            }
-        }
-    }
-
     // Dynamically set the first day of the week
     fun setSundayFirst(enable: Boolean) {
-        sundayFirst = enable
-        invalidate()
-        requestLayout()
+        if (enable != sundayFirst) {
+            sundayFirst = enable
+            initMonth()
+            invalidate()
+            requestLayout()
+        }
     }
 }
