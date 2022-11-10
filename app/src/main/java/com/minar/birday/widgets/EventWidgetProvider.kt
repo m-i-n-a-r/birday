@@ -82,6 +82,14 @@ internal fun updateAppWidget(
             val eventDao: EventDao = EventDatabase.getBirdayDatabase(context).eventDao()
             val nextEvents: List<EventResult> = eventDao.getOrderedNextEventsStatic()
 
+            // Launch the app on click
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            val pendingIntent =
+                PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
+            views.setOnClickPendingIntent(R.id.background, pendingIntent)
+
             // If there are zero events, hide the list
             if (nextEvents.isEmpty()) {
                 views.setViewVisibility(R.id.eventWidgetList, View.GONE)
@@ -98,8 +106,6 @@ internal fun updateAppWidget(
             // If there's one event or more, update the list and the main widget
             else {
                 views.setViewVisibility(R.id.eventWidgetList, View.VISIBLE)
-
-
                 // Make sure to show if there's more than one event
                 var widgetUpcoming = formatEventList(nextEvents, true, context, false)
                 if (nextEvents.isNotEmpty()) widgetUpcoming += "\n${
@@ -109,14 +115,6 @@ internal fun updateAppWidget(
                         context
                     )
                 }"
-
-                // In certain cases, another instance of the app is launched, creating a stack of home screens
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                val pendingIntent =
-                    PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
-
-                views.setOnClickPendingIntent(R.id.background, pendingIntent)
                 views.setTextViewText(R.id.eventWidgetText, widgetUpcoming)
 
                 // Else proceed to fill the data for the next event
