@@ -277,12 +277,16 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
             weekDaySeven.visibility = View.GONE
         }
 
-        // Set the number and name for the month (from range 0-11 to 1-12)
+        // Set the number and name (capitalized) for the month (from range 0-11 to 1-12)
         dateWithChosenMonth = LocalDate.now().withMonth(month + 1).withDayOfMonth(1)
         val firstDayOfWeekForChosenMonth = dateWithChosenMonth.dayOfWeek
         val monthTitle = binding.overviewMonthName
         monthTitle.text =
             dateWithChosenMonth.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
+                .replaceFirstChar {
+                    if (it.isLowerCase()) it.titlecase(Locale.getDefault())
+                    else it.toString()
+                }
 
         if (!sundayFirst)
         // Case 1: monday is the first day of the week
