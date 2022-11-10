@@ -129,6 +129,12 @@ class DetailsFragment : Fragment() {
             imageBg.applyLoopingAnimatedVectorDrawable(R.drawable.animated_ripple_circle)
         }
 
+        // Default animated vector drawable
+        binding.detailsEventNameImage.applyLoopingAnimatedVectorDrawable(
+            R.drawable.animated_balloon,
+            1500
+        )
+
         // Small easter egg/motion on the image (with a slight zoom)
         image.setOnClickListener {
             easterEggCounter++
@@ -298,10 +304,6 @@ class DetailsFragment : Fragment() {
                 )
             }
         } else {
-            binding.detailsEventNameImage.applyLoopingAnimatedVectorDrawable(
-                R.drawable.animated_balloon,
-                1500
-            )
             // Set the drawable of the event type
             when (event.type) {
                 EventCode.ANNIVERSARY.name -> binding.detailsClearBackground.setImageDrawable(
