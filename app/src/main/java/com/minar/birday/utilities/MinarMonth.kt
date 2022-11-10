@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.util.AttributeSet
 import android.util.Range
 import android.view.LayoutInflater
@@ -36,9 +37,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
 
     init {
         context.theme.obtainStyledAttributes(
-            attrs,
-            R.styleable.MinarMonth,
-            0, 0
+            attrs, R.styleable.MinarMonth, 0, 0
         ).apply {
             try {
                 month = getInteger(R.styleable.MinarMonth_month, 0)
@@ -76,26 +75,22 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
             }
         }
         // Hide unnecessary cells
-        if (min != 0)
-            for (i in 0 until min) {
-                cellsList[i].visibility = View.INVISIBLE
-            }
+        if (min != 0) for (i in 0 until min) {
+            cellsList[i].visibility = View.INVISIBLE
+        }
         when (dateWithChosenMonth.month) {
             Month.NOVEMBER, Month.APRIL, Month.JUNE, Month.SEPTEMBER -> {
-                for (i in (30 + min) until cellsList.size)
-                    cellsList[i].visibility = View.INVISIBLE
+                for (i in (30 + min) until cellsList.size) cellsList[i].visibility = View.INVISIBLE
             }
             Month.FEBRUARY -> {
                 val leapIndex = if (dateWithChosenMonth.isLeapYear) 29 else 28
-                for (i in (leapIndex + min) until cellsList.size)
-                    cellsList[i].visibility = View.INVISIBLE
+                for (i in (leapIndex + min) until cellsList.size) cellsList[i].visibility =
+                    View.INVISIBLE
             }
             else -> {
-                for (i in (31 + min) until cellsList.size)
-                    cellsList[i].visibility = View.INVISIBLE
+                for (i in (31 + min) until cellsList.size) cellsList[i].visibility = View.INVISIBLE
             }
         }
-
     }
 
     // Highlight a day in the month using a drawable or a color
@@ -125,15 +120,13 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
                     // In case of background, compute the opacity
                     else {
                         if (autoOpacity) {
-                            if (cell.background != null)
-                                currentAlpha = cell.background.alpha
+                            if (cell.background != null) currentAlpha = cell.background.alpha
                         }
                         cell.background = drawable
                         cell.backgroundTintList = ColorStateList.valueOf(color)
 
                         if (autoOpacity) {
-                            if (currentAlpha > 185)
-                                cell.background.alpha = 255
+                            if (currentAlpha > 185) cell.background.alpha = 255
                             else cell.background.alpha = currentAlpha + 70
                         } else cell.background.alpha = 255
                         if (autoTextColor) {
@@ -142,7 +135,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
                                     color,
                                     context,
                                     cell.background.alpha,
-                                    resources.configuration.isNightModeActive
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) resources.configuration.isNightModeActive else null
                                 )
                             )
                         }
@@ -320,9 +313,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         if (showSnackBars) {
             monthTitle.setOnClickListener {
                 val content = context.resources.getQuantityString(
-                    R.plurals.event,
-                    eventCount,
-                    eventCount
+                    R.plurals.event, eventCount, eventCount
                 ).replaceFirstChar {
                     if (it.isLowerCase()) it.titlecase(Locale.getDefault())
                     else it.toString()
