@@ -105,7 +105,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         drawable: Drawable? = null,
         makeBold: Boolean = false,
         autoOpacity: Boolean = false,
-        inverseTextColorOnDrawable: Boolean = false,
+        autoTextColor: Boolean = false,
         asForeground: Boolean = false,
     ) {
         // Update the global event count
@@ -136,12 +136,16 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
                                 cell.background.alpha = 255
                             else cell.background.alpha = currentAlpha + 70
                         } else cell.background.alpha = 255
-                        if (inverseTextColorOnDrawable) cell.setTextColor(
-                            getThemeColor(
-                                R.attr.colorOnSurfaceInverse,
-                                context
+                        if (autoTextColor) {
+                            cell.setTextColor(
+                                getBestContrast(
+                                    color,
+                                    context,
+                                    cell.background.alpha,
+                                    resources.configuration.isNightModeActive
+                                )
                             )
-                        )
+                        }
                     }
                 }
                 // The font will change, and monospace doesn't have a bold style

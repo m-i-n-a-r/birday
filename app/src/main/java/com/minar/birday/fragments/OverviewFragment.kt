@@ -102,7 +102,7 @@ class OverviewFragment : Fragment() {
                 AppCompatResources.getDrawable(act, R.drawable.minar_month_circle),
                 makeBold = false,
                 autoOpacity = true,
-                inverseTextColorOnDrawable = true
+                autoTextColor = true
             )
 
         return binding.root
@@ -115,7 +115,7 @@ class OverviewFragment : Fragment() {
         drawable: Drawable?,
         makeBold: Boolean = false,
         autoOpacity: Boolean = false,
-        inverseTextColorOnDrawable: Boolean = false,
+        autoTextColor: Boolean = false,
         asForeground: Boolean = false
     ) {
         if (date == null) return
@@ -125,7 +125,7 @@ class OverviewFragment : Fragment() {
             drawable,
             makeBold = makeBold,
             autoOpacity = autoOpacity,
-            inverseTextColorOnDrawable = inverseTextColorOnDrawable,
+            autoTextColor = autoTextColor,
             asForeground = asForeground,
         )
     }
