@@ -85,16 +85,20 @@ fun setEventImageOrPlaceholder(event: EventResult, eventImage: ImageView): Boole
 // Loop an animated vector drawable indefinitely
 fun ImageView.applyLoopingAnimatedVectorDrawable(
     @DrawableRes animatedVector: Int,
-    endDelay: Long = 0
+    endDelay: Long = 0,
+    disableLooping: Boolean = false
 ) {
     val animated = AnimatedVectorDrawableCompat.create(context, animatedVector)
-    animated?.registerAnimationCallback(object : Animatable2Compat.AnimationCallback() {
-        override fun onAnimationEnd(drawable: Drawable?) {
-            Handler(Looper.getMainLooper()).postDelayed({
-                this@applyLoopingAnimatedVectorDrawable.post { animated.start() }
-            }, endDelay)
-        }
-    })
+    // Ability to disable the loop, for a future option
+    if (!disableLooping) {
+        animated?.registerAnimationCallback(object : Animatable2Compat.AnimationCallback() {
+            override fun onAnimationEnd(drawable: Drawable?) {
+                Handler(Looper.getMainLooper()).postDelayed({
+                    this@applyLoopingAnimatedVectorDrawable.post { animated.start() }
+                }, endDelay)
+            }
+        })
+    }
     this.setImageDrawable(animated)
     animated?.start()
 }
