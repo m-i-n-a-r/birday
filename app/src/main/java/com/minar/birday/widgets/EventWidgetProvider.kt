@@ -1,6 +1,7 @@
 package com.minar.birday.widgets
 
 import android.app.PendingIntent
+import android.app.TaskStackBuilder
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
@@ -143,6 +144,14 @@ internal fun updateAppWidget(
                     setRemoteAdapter(R.id.eventWidgetList, widgetServiceIntent)
                     // setEmptyView can be used to choose the view displayed when the collection has no items
                 }
+
+                // Template to handle the click listener for each item
+                val clickIntentTemplate = Intent(context, MainActivity::class.java)
+                val clickPendingIntentTemplate: PendingIntent = TaskStackBuilder.create(context)
+                    .addNextIntentWithParentStack(clickIntentTemplate)
+                    .getPendingIntent(3, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+                views.setPendingIntentTemplate(R.id.eventWidgetList, clickPendingIntentTemplate)
+
                 // Fill the list with the next events
                 appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.eventWidgetList)
             }

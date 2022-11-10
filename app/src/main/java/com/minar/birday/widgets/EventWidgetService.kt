@@ -70,6 +70,11 @@ internal class EventWidgetRemoteViewsFactory(context: Context) : RemoteViewsFact
                 else -> R.drawable.ic_other_24dp
             }
         )
+
+        // Set a generic intent to open the app
+        val fillInIntent = Intent()
+        fillInIntent.putExtra("event", events[position])
+        rv.setOnClickFillInIntent(R.id.eventWidgetRowItem, fillInIntent)
         // Return the remote views object
         return rv
     }
