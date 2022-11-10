@@ -333,8 +333,6 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         if (enable != sundayFirst) {
             sundayFirst = enable
             initMonth()
-            invalidate()
-            requestLayout()
         }
     }
 }

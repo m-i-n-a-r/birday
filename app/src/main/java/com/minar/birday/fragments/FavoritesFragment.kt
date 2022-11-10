@@ -64,7 +64,7 @@ class FavoritesFragment : Fragment() {
         val favoritesMiniFab = binding.favoritesMiniFab
         val overviewButton = binding.overviewButton
         if (shimmerEnabled) shimmer.startShimmer()
-        statsImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_candle)
+        statsImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_candle_new)
 
         // Set motion layout state, since it's saved
         favoriteMotionLayout.progress = sharedPrefs.getFloat("favorite_motion_state", 0.0F)

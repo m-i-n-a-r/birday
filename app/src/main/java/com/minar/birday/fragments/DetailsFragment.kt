@@ -298,6 +298,10 @@ class DetailsFragment : Fragment() {
                 )
             }
         } else {
+            binding.detailsEventNameImage.applyLoopingAnimatedVectorDrawable(
+                R.drawable.animated_balloon,
+                1500
+            )
             // Set the drawable of the event type
             when (event.type) {
                 EventCode.ANNIVERSARY.name -> binding.detailsClearBackground.setImageDrawable(
@@ -311,11 +315,9 @@ class DetailsFragment : Fragment() {
                             requireContext(), R.drawable.ic_death_anniversary_24dp
                         )
                     )
-                    binding.detailsEventNameImage.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            requireContext(),
-                            R.drawable.ic_candle_24dp
-                        )
+                    binding.detailsEventNameImage.applyLoopingAnimatedVectorDrawable(
+                        R.drawable.animated_candle_new,
+                        1500
                     )
                 }
                 EventCode.NAME_DAY.name -> binding.detailsClearBackground.setImageDrawable(
