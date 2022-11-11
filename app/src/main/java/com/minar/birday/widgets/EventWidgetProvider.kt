@@ -117,6 +117,7 @@ internal fun updateAppWidget(
                     )
                 }"
                 views.setTextViewText(R.id.eventWidgetText, widgetUpcoming)
+                views.setTextViewText(R.id.eventWidgetTitle, context.getString(R.string.appwidget_upcoming))
 
                 // Else proceed to fill the data for the next event
                 if (nextEvents[0].image != null && nextEvents[0].image!!.isNotEmpty() && !hideImages) {

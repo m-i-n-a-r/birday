@@ -51,7 +51,7 @@ class CsvExporter(context: Context, attrs: AttributeSet?) : Preference(context, 
             sb.append(
                 "${event.type}," +
                         "${event.name.replace(',', ' ')}," +
-                        "${event.surname?.replace(',', ' ')}," +
+                        "${(event.surname ?: "").replace(',', ' ')}," +
                         "${event.yearMatter}," +
                         "${event.originalDate}," +
                         "${(event.notes ?: "").replace(',', ' ')}\n"
