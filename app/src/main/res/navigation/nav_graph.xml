@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigationSettings"
-        android:name="com.minar.birday.fragments.dialogs.SettingsFragment"
+        android:name="com.minar.birday.fragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/author_preference_row">
         <action

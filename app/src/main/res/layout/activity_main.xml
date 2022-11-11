@@ -50,9 +50,9 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/new_event"
         android:hapticFeedbackEnabled="false"
-        app:tint="@null"
         app:layout_anchor="@id/bottomBar"
         app:maxImageSize="@dimen/main_fab_icon_size"
-        app:srcCompat="@drawable/ic_party_24dp" />
+        app:srcCompat="@drawable/ic_party_24dp"
+        app:tint="@null" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

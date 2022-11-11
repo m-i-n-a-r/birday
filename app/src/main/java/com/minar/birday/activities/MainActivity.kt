@@ -212,6 +212,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        // Hide on scroll, requires restart TODO Only available in experimental settings
+        if (sharedPrefs.getBoolean("hide_scroll", false)) {
+            binding.bottomBar.hideOnScroll = true
+            binding.navHostFragment.setPadding(0, 0, 0, 0)
+        }
+
         // Only the next events, without considering the search string, ordered
         mainViewModel.allEventsUnfiltered.observe(this)
         {
