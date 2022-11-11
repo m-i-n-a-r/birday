@@ -21,7 +21,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(application)
     val allEvents: LiveData<List<EventResult>>
     val allEventsUnfiltered: LiveData<List<EventResult>>
-    val eventsCount: LiveData<Int>
+    private val eventsCount: LiveData<Int> // Unused since it's null sometimes
     val searchString = MutableLiveData<String>()
     val selectedType = MutableLiveData<String>()
     private val searchValues = MediatorLiveData<Pair<String?, String?>>()
