@@ -49,7 +49,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 eventDao.getOrderedEventsByType(selectedType)
             else eventDao.getOrderedEventsByName("")
         }
-        // Only the upcoming events not considering the search
         eventsCount = eventDao.getEventsCount()
         scheduleNextCheck()
     }
