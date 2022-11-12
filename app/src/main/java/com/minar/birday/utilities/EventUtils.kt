@@ -167,7 +167,7 @@ fun getYears(eventResult: EventResult): Int {
     var years = -2
     if (eventResult.yearMatter!!) years =
         eventResult.nextDate!!.year - eventResult.originalDate.year - 1
-    return if (years == -1) 0 else years
+    return if (years <= -1) 0 else years
 }
 
 // Get the months of the years. Useful for babies
