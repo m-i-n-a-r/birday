@@ -8,6 +8,7 @@ import android.media.ThumbnailUtils
 import android.provider.ContactsContract
 import android.util.AttributeSet
 import android.view.View
+import androidx.core.database.getStringOrNull
 import androidx.preference.Preference
 import androidx.preference.PreferenceManager
 import androidx.preference.PreferenceViewHolder
@@ -79,20 +80,12 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
         loop@ for (contact in contacts) {
             // Take the name and split it to separate name and surname
             val splitName = contact.completeName.split(",")
-            var name: String
-            var surname = ""
             var date: LocalDate
             var countYear = true
             val notes = contact.customLabel
-            when (splitName.size) {
-                // Not considering surname only contacts, but considering name only
-                1 -> name = splitName[0].trim()
-                2 -> {
-                    name = splitName[1].trim()
-                    surname = splitName[0].trim()
-                }
-                else -> continue@loop
-            }
+
+            val name: String = splitName[0].trim()
+            val surname = if (splitName.size == 2) splitName[1].trim() else ""
 
             try {
                 // Missing year, simply don't consider the year exactly like the contacts app does
@@ -137,22 +130,51 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
     private fun getContacts(): List<ImportedContact> {
         val contactInfo = mutableListOf<ImportedContact>()
 
-        // Retrieve name and id
+        // Retrieve each part of the name and the ID
         val resolver: ContentResolver = context.contentResolver
-        val cursor = resolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null)
+        val cursor = resolver.query(
+            ContactsContract.Data.CONTENT_URI,
+            arrayOf(
+                ContactsContract.CommonDataKinds.StructuredName.CONTACT_ID,
+                ContactsContract.CommonDataKinds.StructuredName.PREFIX,
+                ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME,
+                ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME,
+                ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME,
+                ContactsContract.CommonDataKinds.StructuredName.SUFFIX
+            ),
+            ContactsContract.Data.MIMETYPE + " = ? AND " + ContactsContract.Data.IN_VISIBLE_GROUP + " = ?",
+            arrayOf(ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE, "1"),
+            null
+        )
         if (cursor != null && cursor.count > 0) {
             // For each contact, get the image and the data
             while (cursor.moveToNext()) {
-                val idValue = cursor.getColumnIndex(ContactsContract.Contacts._ID)
-                val nameValue =
-                    cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME_ALTERNATIVE)
+                val idValue =
+                    cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.CONTACT_ID)
+                val prefixValue =
+                    cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.PREFIX)
+                val firstNameValue =
+                    cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME)
+                val middleNameValue =
+                    cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME)
+                val lastNameValue =
+                    cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME)
+                val suffixValue =
+                    cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.SUFFIX)
 
-                // Control the values, even if they should always exist
-                if (idValue < 0 || nameValue < 0) continue
+                // Control the values, the contact must have at least a name to be imported
+                if (idValue < 0 || firstNameValue < 0) continue
 
                 // Given the column indexes, retrieve the values
                 val id = cursor.getString(idValue)
-                val name = cursor.getString(nameValue)
+                val prefix = cursor.getStringOrNull(prefixValue) ?: ""
+                val firstName = cursor.getString(firstNameValue)
+                val middleName = cursor.getStringOrNull(middleNameValue) ?: ""
+                val lastName = cursor.getStringOrNull(lastNameValue) ?: ""
+                val suffix = cursor.getStringOrNull(suffixValue) ?: ""
+                // The format at this time is first name, last name (+ extra stuff)
+                val birdayName = "$prefix $firstName $middleName, $lastName $suffix"
+                println("birday name iiiiiiiiiiiis: $birdayName")
 
                 // Get the image, if any, and convert it to byte array
                 val imageStream = ContactsContract.Contacts.openContactPhotoInputStream(
@@ -211,12 +233,12 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                         }
                         val importedContact = if (eventCustomLabel != null) ImportedContact(
                             id,
-                            name,
+                            birdayName,
                             birthday,
                             image,
                             eventType.name,
                             eventCustomLabel
-                        ) else ImportedContact(id, name, birthday, image, eventType.name)
+                        ) else ImportedContact(id, birdayName, birthday, image, eventType.name)
                         contactInfo.add(importedContact)
                     }
                     eventCursor.close()
