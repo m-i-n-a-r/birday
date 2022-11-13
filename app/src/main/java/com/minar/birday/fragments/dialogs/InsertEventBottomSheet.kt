@@ -249,7 +249,7 @@ class InsertEventBottomSheet(
                         val todayDate = LocalDate.now()
 
                         // Force the date to be before today programmatically
-                        while (eventDateValue.isAfter(todayDate)) {
+                        while (eventDateValue.isAfter(todayDate.plusDays(1))) {
                             eventDateValue = LocalDate.of(
                                 todayDate.year - 1,
                                 eventDateValue.monthValue,
