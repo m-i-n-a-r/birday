@@ -382,8 +382,13 @@ class HomeFragment : Fragment() {
             triggerConfetti()
             mainViewModel.confettiDone = true
         }
+
+        // Remove events in the future today (eg: now is december 1st 2023, an event has original date = december 1st 2050)
+        val filteredNextEvents = nextEvents.toMutableList()
+        filteredNextEvents.removeIf { getNextYears(it) == 0 }
+
         // Manage multiple events in the same day considering first case, middle cases and last case if more than 3
-        for (event in nextEvents) {
+        for (event in filteredNextEvents) {
             // Consider the case of null surname and the case of unknown age
             val formattedPersonName =
                 formatName(event, sharedPrefs.getBoolean("surname_first", false))

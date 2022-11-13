@@ -174,7 +174,12 @@ fun getYears(eventResult: EventResult): Int {
 fun getYearsMonths(date: LocalDate) = Period.between(date, LocalDate.now()).months
 
 // Get the next years also considering the possible corner cases
-fun getNextYears(eventResult: EventResult) = getYears(eventResult) + 1
+fun getNextYears(eventResult: EventResult): Int {
+    var years = -2
+    if (eventResult.yearMatter!!) years =
+        eventResult.nextDate!!.year - eventResult.originalDate.year
+    return if (years <= -1) 0 else years
+}
 
 // Get the decade of birth
 fun getDecade(originalDate: LocalDate) =
