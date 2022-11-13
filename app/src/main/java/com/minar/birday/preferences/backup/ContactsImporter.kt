@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory
 import android.media.ThumbnailUtils
 import android.provider.ContactsContract
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import androidx.core.database.getStringOrNull
 import androidx.preference.Preference
@@ -172,9 +173,16 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                 val middleName = cursor.getStringOrNull(middleNameValue) ?: ""
                 val lastName = cursor.getStringOrNull(lastNameValue) ?: ""
                 val suffix = cursor.getStringOrNull(suffixValue) ?: ""
+
                 // The format at this time is first name, last name (+ extra stuff)
-                val birdayName = "$prefix $firstName $middleName, $lastName $suffix"
-                println("birday name iiiiiiiiiiiis: $birdayName")
+                val birdayFirstName = "$prefix $firstName $middleName".replace(',', ' ').trim()
+                val birdayLastName = "$lastName $suffix".replace(',', ' ').trim()
+                val birdayName =
+                    if (birdayLastName.isBlank())
+                        birdayFirstName
+                    else
+                        "$birdayFirstName,$birdayLastName".replace("\\s".toRegex(), " ")
+                Log.d("import", "birday name is: $birdayName for id $id")
 
                 // Get the image, if any, and convert it to byte array
                 val imageStream = ContactsContract.Contacts.openContactPhotoInputStream(

@@ -381,7 +381,6 @@ class HomeFragment : Fragment() {
         filteredNextEvents.removeIf { getNextYears(it) == 0 }
         // If the events are all in the future, display them but avoid confetti
         if (filteredNextEvents.isEmpty()) {
-            println("ONLY EVENTS IN THE FUTURE!")
             filteredNextEvents = nextEvents.toMutableList()
             mainViewModel.confettiDone = true
         }

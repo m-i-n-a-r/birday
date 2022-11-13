@@ -7,6 +7,7 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.widget.RemoteViews
 import androidx.preference.PreferenceManager
@@ -160,6 +161,6 @@ internal fun updateAppWidget(
             appWidgetManager.updateAppWidget(appWidgetId, views)
         }.start()
     } catch (e: Exception) {
-        println("${e.message}")
+        Log.d("widget", "${e.message}")
     }
 }
