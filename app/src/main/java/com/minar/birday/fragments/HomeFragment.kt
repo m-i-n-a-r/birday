@@ -318,8 +318,7 @@ class HomeFragment : Fragment() {
     }
 
     // Restore the placeholder and texts when there are no events. If search is true, show the "no result" placeholder
-    private fun restorePlaceholders(search: Boolean = false) {
-        binding.eventRecycler.visibility = View.GONE
+    private fun restorePlaceholders(search: Boolean = false, cardOnly: Boolean = false) {
         val cardTitle: TextView = binding.upcomingTitle
         val cardSubtitle: TextView = binding.upcomingSubtitle
         val cardDescription: TextView = binding.upcomingDescription
@@ -334,7 +333,10 @@ class HomeFragment : Fragment() {
             cardDescription.text = getString(R.string.search_no_result_description)
             placeholder.text = getString(R.string.search_no_result_title)
         }
-        placeholder.visibility = View.VISIBLE
+        if (!cardOnly) {
+            binding.eventRecycler.visibility = View.GONE
+            placeholder.visibility = View.VISIBLE
+        }
     }
 
     // Insert the necessary information in the upcoming event card view (and confetti)
@@ -373,6 +375,17 @@ class HomeFragment : Fragment() {
                 1000
             )
         }
+
+        // Remove events in the future today (eg: now is december 1st 2023, an event has original date = december 1st 2050)
+        var filteredNextEvents = nextEvents.toMutableList()
+        filteredNextEvents.removeIf { getNextYears(it) == 0 }
+        // If the events are all in the future, display them but avoid confetti
+        if (filteredNextEvents.isEmpty()) {
+            println("ONLY EVENTS IN THE FUTURE!")
+            filteredNextEvents = nextEvents.toMutableList()
+            mainViewModel.confettiDone = true
+        }
+
         // Trigger confetti if there's an event today, except for "only death anniversaries" days
         if (
             getRemainingDays(upcomingDate!!) == 0 &&
@@ -382,10 +395,6 @@ class HomeFragment : Fragment() {
             triggerConfetti()
             mainViewModel.confettiDone = true
         }
-
-        // Remove events in the future today (eg: now is december 1st 2023, an event has original date = december 1st 2050)
-        val filteredNextEvents = nextEvents.toMutableList()
-        filteredNextEvents.removeIf { getNextYears(it) == 0 }
 
         // Manage multiple events in the same day considering first case, middle cases and last case if more than 3
         for (event in filteredNextEvents) {
