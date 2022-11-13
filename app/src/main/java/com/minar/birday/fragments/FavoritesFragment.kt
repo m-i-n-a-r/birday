@@ -120,6 +120,13 @@ class FavoritesFragment : Fragment() {
                 .navigate(R.id.action_navigationFavorites_to_overviewFragment)
         }
 
+        // Set a tutorial snack bar on long press
+        overviewButton.setOnLongClickListener {
+            act.vibrate()
+            act.showSnackbar(getString(R.string.overview_description))
+            true
+        }
+
         // Set the data which requires the complete and unfiltered event list
         with(binding) {
             mainViewModel.allEventsUnfiltered.observe(viewLifecycleOwner) { events ->
