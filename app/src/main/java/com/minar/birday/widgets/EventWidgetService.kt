@@ -12,9 +12,11 @@ import com.minar.birday.model.EventResult
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.formatName
+import com.minar.birday.utilities.getReducedDate
 import com.minar.birday.utilities.getRemainingDays
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
+import java.util.*
 
 
 class EventWidgetService : RemoteViewsService() {
@@ -53,7 +55,15 @@ internal class EventWidgetRemoteViewsFactory(context: Context) : RemoteViewsFact
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
         val event = events[position]
         rv.setTextViewText(R.id.eventWidgetRowPerson, formatName(events[position], surnameFirst))
-        rv.setTextViewText(R.id.eventWidgetRowDate, event.originalDate.format(formatter))
+        rv.setTextViewText(
+            R.id.eventWidgetRowDate,
+            if (event.yearMatter!!) event.originalDate.format(formatter)
+            else getReducedDate(event.originalDate).replaceFirstChar {
+                if (it.isLowerCase()) it.titlecase(
+                    Locale.getDefault()
+                ) else it.toString()
+            }
+        )
         val remainingDays = getRemainingDays(event.nextDate!!)
         rv.setTextViewText(
             R.id.eventWidgetRowCountdown,
