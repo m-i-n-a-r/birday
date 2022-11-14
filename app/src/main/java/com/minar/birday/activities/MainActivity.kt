@@ -383,6 +383,25 @@ class MainActivity : AppCompatActivity() {
         } else true
     }
 
+    // Ask calendar permission
+    fun askCalendarPermission(code: Int = 301): Boolean {
+        return if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_CALENDAR
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.READ_CALENDAR),
+                code
+            )
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_CALENDAR
+            ) == PackageManager.PERMISSION_GRANTED
+        } else true
+    }
+
     // Ask notification permission
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     fun askNotificationPermission(code: Int = 201): Boolean {
@@ -461,6 +480,26 @@ class MainActivity : AppCompatActivity() {
                 }
                 // Request contacts permission in every case
                 askContactsPermission()
+            }
+            // Calendar permission when importing from calendar
+            302 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CALENDAR))
+                        showSnackbar(
+                            getString(R.string.missing_permission_calendar),
+                            actionText = getString(R.string.title_settings),
+                            action = fun() {
+                                askCalendarPermission()
+                            })
+                    else showSnackbar(
+                        getString(R.string.missing_permission_calendar_forever),
+                        actionText = getString(R.string.title_settings),
+                        action = fun() {
+                            startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                                data = Uri.fromParts("package", packageName, null)
+                            })
+                        })
+                }
             }
         }
     }
