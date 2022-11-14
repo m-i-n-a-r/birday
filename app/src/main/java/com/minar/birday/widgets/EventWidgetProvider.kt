@@ -19,6 +19,7 @@ import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.formatEventList
+import com.minar.birday.utilities.getNextYears
 import com.minar.birday.utilities.nextDateFormatted
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -108,11 +109,20 @@ internal fun updateAppWidget(
             // If there's one event or more, update the list and the main widget
             else {
                 views.setViewVisibility(R.id.eventWidgetList, View.VISIBLE)
+
+                // Remove events in the future today (eg: now is december 1st 2023, an event has original date = december 1st 2050)
+                var filteredNextEvents = nextEvents.toMutableList()
+                filteredNextEvents.removeIf { getNextYears(it) == 0 }
+                // If the events are all in the future, display them but avoid confetti
+                if (filteredNextEvents.isEmpty()) {
+                    filteredNextEvents = nextEvents.toMutableList()
+                }
+
                 // Make sure to show if there's more than one event
-                var widgetUpcoming = formatEventList(nextEvents, true, context, false)
-                if (nextEvents.isNotEmpty()) widgetUpcoming += "\n${
+                var widgetUpcoming = formatEventList(filteredNextEvents, true, context, false)
+                if (filteredNextEvents.isNotEmpty()) widgetUpcoming += "\n${
                     nextDateFormatted(
-                        nextEvents[0],
+                        filteredNextEvents[0],
                         formatter,
                         context
                     )
@@ -121,15 +131,15 @@ internal fun updateAppWidget(
                 views.setTextViewText(R.id.eventWidgetTitle, context.getString(R.string.appwidget_upcoming))
 
                 // Else proceed to fill the data for the next event
-                if (nextEvents[0].image != null && nextEvents[0].image!!.isNotEmpty() && !hideImages) {
+                if (filteredNextEvents[0].image != null && filteredNextEvents[0].image!!.isNotEmpty() && !hideImages) {
                     views.setImageViewBitmap(
                         R.id.eventWidgetImage,
-                        byteArrayToBitmap(nextEvents[0].image!!)
+                        byteArrayToBitmap(filteredNextEvents[0].image!!)
                     )
                 } else views.setImageViewResource(
                     R.id.eventWidgetImage,
                     // Set the image depending on the event type, the drawable are a b&w version
-                    when (nextEvents[0].type) {
+                    when (filteredNextEvents[0].type) {
                         EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
                         EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
                         EventCode.DEATH.name -> R.drawable.placeholder_death_image

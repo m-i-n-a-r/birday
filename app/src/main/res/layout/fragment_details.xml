@@ -328,7 +328,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/linear_vertical_margin"
-            android:layout_marginBottom="@dimen/linear_vertical_margin"
+            android:layout_marginBottom="@dimen/bottom_navbar_height"
             android:contentDescription="@string/share_event"
             android:paddingVertical="@dimen/in_row_button_padding"
             android:text="@string/notes"

@@ -117,6 +117,8 @@
     <string name="notification_sound_description">Shortcut to the notification sound settings, if you don\'t like the default bird sound</string>
     <string name="missing_permission_notifications">The notification permission was denied, and Birday can\'t send notifications! Activate the permission from settings.</string>
     <string name="missing_permission_notifications_forever">The notification permission was denied and can\'t be asked again, so Birday can\'t send notifications! Activate the permission manually, from settings.</string>
+    <string name="missing_permission_calendar">The calendar permission was denied, and Birday can\'t import from calendar! Activate the permission from settings.</string>
+    <string name="missing_permission_calendar_forever">The calendar permission was denied and can\'t be asked again, so Birday can\'t import from calendar! Activate the permission manually, from settings.</string>
 
     <!-- Developer -->
     <string name="dev_name" translatable="false">m.i.n.a.r.</string>
@@ -292,6 +294,7 @@
     <string name="export_json">Export to JSON</string>
     <string name="import_csv">Import from CSV</string>
     <string name="export_csv">Export to CSV</string>
+    <string name="import_calendar">Import from calendar</string>
     <string name="delete_db">Delete all the events</string>
     <string name="delete_db_dialog_title">Are you sure?</string>
     <string name="delete_db_dialog_description">Make sure to backup your events first, this operation will wipe the DB and should be used for debugging purposes only</string>
