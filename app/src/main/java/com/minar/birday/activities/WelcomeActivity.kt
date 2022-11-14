@@ -21,7 +21,7 @@ class WelcomeActivity : AppIntro() {
     }
 
     private fun hideSystemUi() {
-        val insetsController = WindowCompat.getInsetsController(window, window.decorView) ?: return
+        val insetsController = WindowCompat.getInsetsController(window, window.decorView)
         val navBars = WindowInsetsCompat.Type.navigationBars()
         insetsController.hide(navBars)
         insetsController.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE

@@ -3,7 +3,7 @@
     android:shape="rectangle">
     <stroke
         android:width="@dimen/card_stroke"
-        android:color="@color/goodGrayTranslucent" />
+        android:color="?attr/colorSurfaceVariant" />
     <solid android:color="?android:colorBackground" />
     <corners android:radius="@dimen/rounded_corners" />
     <padding

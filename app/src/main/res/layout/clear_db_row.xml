@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/notificationSound"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:hapticFeedbackEnabled="false"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/settings_row_padding"
+    android:paddingVertical="@dimen/settings_row_padding">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/notificationSoundTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delete_db"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        android:textSize="@dimen/custom_preference_title_text_size"/>
+
+</LinearLayout>

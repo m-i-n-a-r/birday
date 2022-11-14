@@ -9,7 +9,7 @@
     android:layout_marginHorizontal="@dimen/preview_dot_size"
     android:layout_marginVertical="@dimen/between_row_padding"
     android:background="@drawable/custom_cursor"
-    android:backgroundTint="@color/goodGrayTotalTranslucent"
+    android:backgroundTint="?attr/colorSurfaceVariant"
     android:drawablePadding="@dimen/in_row_padding"
     android:gravity="center_vertical"
     android:paddingStart="@dimen/in_row_padding"
@@ -17,5 +17,5 @@
     android:text="@string/insert_date_hint"
     android:textAllCaps="true"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-    android:textColor="@color/goodGray"
+    android:textColor="?attr/colorOutline"
     app:drawableLeftCompat="@drawable/ic_dot_small_24dp" />

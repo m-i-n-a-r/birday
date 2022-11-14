@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.minar.birday.preferences.standard.ExperimentalDisclaimerPreference
+        android:layout="@layout/experimental_disclaimer_row"
+        android:selectable="false" />
+
+    <!-- Auto import on each start -->
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="auto_import"
+        android:title="@string/launch_auto_import"
+        app:iconSpaceReserved="false" />
+
+    <!-- Auto import on each start -->
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="hide_scroll"
+        android:title="@string/hide_on_scroll"
+        app:iconSpaceReserved="false" />
+
+    <!-- Import from CSV -->
+    <com.minar.birday.preferences.backup.CsvImporter android:layout="@layout/csv_import_row" />
+
+    <!-- Export to CSV -->
+    <com.minar.birday.preferences.backup.CsvExporter android:layout="@layout/csv_export_row" />
+
+    <!-- Import from JSON -->
+    <com.minar.birday.preferences.backup.JsonImporter android:layout="@layout/json_import_row" />
+
+    <!-- Export to JSON -->
+    <com.minar.birday.preferences.backup.JsonExporter android:layout="@layout/json_export_row" />
+
+    <!-- Clear DB (with confirmation dialog) -->
+    <com.minar.birday.preferences.standard.ClearDBPreference android:layout="@layout/clear_db_row" />
+
+</PreferenceScreen>

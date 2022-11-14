@@ -15,22 +15,22 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/homeMiniFab"
+        style="?attr/floatingActionButtonSmallStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:alpha="@dimen/mini_fab_opacity"
         android:contentDescription="@string/cancel"
         android:hapticFeedbackEnabled="false"
         android:padding="@dimen/between_row_padding"
-        app:backgroundTint="?android:textColorPrimary"
+        app:backgroundTint="?attr/colorOnSurface"
         app:elevation="@dimen/bottom_navbar_elevation"
-        app:fabSize="mini"
         app:layout_constraintBottom_toTopOf="@id/homeCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/homeCard"
-        app:rippleColor="?colorAccent"
+        app:rippleColor="?attr/colorPrimary"
         app:srcCompat="@drawable/ic_arrow_up_24dp"
-        app:tint="?colorAccent" />
+        app:tint="?attr/colorPrimary" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/homeCard"
@@ -45,8 +45,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:rippleColor="?colorAccent"
-        app:strokeColor="@color/goodGrayTranslucent"
+        app:rippleColor="?attr/colorSecondary"
+        app:strokeColor="?attr/colorOutline"
         app:strokeWidth="@dimen/card_stroke">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -138,6 +138,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.facebook.shimmer.ShimmerFrameLayout>
 
+            <!-- TODO Buggy box stroke color, is the higher width when focused a good choice? -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/homeSearchLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -150,16 +151,18 @@
                 app:boxCornerRadiusTopEnd="@dimen/rounded_corners"
                 app:boxCornerRadiusTopStart="@dimen/rounded_corners"
                 app:boxStrokeWidth="@dimen/card_stroke"
+                app:boxStrokeWidthFocused="3dp"
                 app:endIconContentDescription="@string/cancel"
-                app:endIconMode="clear_text"
-                app:endIconTint="?colorAccent"
+                app:endIconDrawable="@drawable/ic_arrow_left_24dp"
+                app:endIconMode="custom"
+                app:endIconTint="?attr/colorPrimary"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/homeCardShimmer"
                 app:startIconContentDescription="@string/search_event"
                 app:startIconDrawable="@drawable/ic_person_search_24dp"
-                app:startIconTint="?colorAccent">
+                app:startIconTint="?attr/colorPrimary">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/homeSearch"
@@ -172,6 +175,74 @@
                     android:textCursorDrawable="@drawable/custom_cursor" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/homeTypeSelector"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="?attr/colorSurface"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/homeSearchLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/homeSearchLayout"
+                app:singleSelection="true">
+
+                <Button
+                    android:id="@+id/homeTypeSelectorBirthday"
+                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/birthday"
+                    app:icon="@drawable/ic_party_24dp" />
+
+                <Button
+                    android:id="@+id/homeTypeSelectorAnniversary"
+                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/anniversary"
+                    app:icon="@drawable/ic_anniversary_24dp" />
+
+                <Button
+                    android:id="@+id/homeTypeSelectorDeathAnniversary"
+                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/death_anniversary"
+                    app:icon="@drawable/ic_death_anniversary_24dp" />
+
+                <Button
+                    android:id="@+id/homeTypeSelectorNameDay"
+                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/name_day"
+                    app:icon="@drawable/ic_name_day_24dp" />
+
+                <Button
+                    android:id="@+id/homeTypeSelectorOther"
+                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/other"
+                    app:icon="@drawable/ic_other_24dp" />
+
+                <Button
+                    android:id="@+id/homeTypeSelectorClose"
+                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@android:string/cancel"
+                    app:backgroundTint="?attr/colorSurfaceVariant"
+                    app:iconTint="?attr/colorPrimary"
+                    app:icon="@drawable/ic_arrow_right_24dp" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -188,8 +259,8 @@
         android:scrollbarSize="0dp"
         android:text="@string/no_events"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-        android:textColor="@color/goodGraySemiTranslucent"
-        app:drawableTint="@color/goodGraySemiTranslucent"
+        android:textColor="?attr/colorOutline"
+        app:drawableTint="?attr/colorOutline"
         app:drawableTopCompat="@drawable/ic_sad_72dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

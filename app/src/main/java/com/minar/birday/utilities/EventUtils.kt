@@ -13,6 +13,14 @@ import java.time.format.TextStyle
 import java.time.temporal.ChronoUnit
 import java.util.*
 
+// Event related constants
+const val START_YEAR = 0
+const val COLUMN_TYPE = "type"
+const val COLUMN_NAME = "name"
+const val COLUMN_SURNAME = "surname"
+const val COLUMN_DATE = "date"
+const val COLUMN_YEAR_MATTER = "yearMatter"
+const val COLUMN_NOTES = "notes"
 
 // Transform an event result in a simple event
 fun resultToEvent(eventResult: EventResult) = Event(
@@ -26,6 +34,26 @@ fun resultToEvent(eventResult: EventResult) = Event(
     notes = eventResult.notes,
     image = eventResult.image
 )
+
+// Destroy any illegal character and length in the fields, add missing fields if possible
+fun normalizeEvent(event: Event): Event {
+    // The id is automatically fixed in Room
+    var fixedType = event.type
+    if (isUnknownType(event.type?.uppercase()))
+        fixedType = EventCode.OTHER.name
+
+    // No restrictions on special characters for now
+    return Event(
+        id = 0,
+        name = event.name.substring(IntRange(0, 30.coerceAtMost(event.name.length) - 1)),
+        surname = event.surname?.substring(IntRange(0, 30.coerceAtMost(event.surname.length) - 1)),
+        favorite = false,
+        notes = event.notes?.substring(IntRange(0, 300.coerceAtMost(event.notes.length) - 1)),
+        originalDate = event.originalDate,
+        yearMatter = event.yearMatter,
+        type = fixedType
+    )
+}
 
 // Check if an event is a birthday
 fun isBirthday(event: EventResult): Boolean =
@@ -46,6 +74,12 @@ fun isNameDay(event: EventResult): Boolean =
 // Check if an event is "other"
 fun isOther(event: EventResult): Boolean =
     event.type == EventCode.OTHER.name
+
+// Check if a given type, in string form, is unknown
+fun isUnknownType(type: String?): Boolean {
+    if (type.isNullOrBlank()) return true
+    return !EventCode.values().map { it.name }.contains(type)
+}
 
 // Properly format the next date for widget and next event card
 fun nextDateFormatted(event: EventResult, formatter: DateTimeFormatter, context: Context): String {
@@ -133,14 +167,19 @@ fun getYears(eventResult: EventResult): Int {
     var years = -2
     if (eventResult.yearMatter!!) years =
         eventResult.nextDate!!.year - eventResult.originalDate.year - 1
-    return if (years == -1) 0 else years
+    return if (years <= -1) 0 else years
 }
 
 // Get the months of the years. Useful for babies
 fun getYearsMonths(date: LocalDate) = Period.between(date, LocalDate.now()).months
 
 // Get the next years also considering the possible corner cases
-fun getNextYears(eventResult: EventResult) = getYears(eventResult) + 1
+fun getNextYears(eventResult: EventResult): Int {
+    var years = -2
+    if (eventResult.yearMatter!!) years =
+        eventResult.nextDate!!.year - eventResult.originalDate.year
+    return if (years <= -1) 0 else years
+}
 
 // Get the decade of birth
 fun getDecade(originalDate: LocalDate) =

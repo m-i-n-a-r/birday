@@ -1,0 +1,127 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/quickAppsBottomSheetScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/quickAppsBottomSheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:padding="@dimen/linear_vertical_margin"
+            app:behavior_hideable="true"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+            <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+                android:id="@+id/dragHandle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/quickAppsImage"
+                android:layout_width="@dimen/bottom_sheet_icon_size"
+                android:layout_height="@dimen/bottom_sheet_icon_size"
+                android:layout_marginStart="@dimen/activity_vertical_margin"
+                android:contentDescription="@string/event_apps"
+                android:src="@drawable/ic_apps_24dp"
+                app:layout_constraintBottom_toBottomOf="@id/quickAppsTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/quickAppsTitle" />
+
+            <TextView
+                android:id="@+id/quickAppsTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/activity_vertical_margin"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:text="@string/event_apps"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/quickAppsImage"
+                app:layout_constraintTop_toBottomOf="@id/dragHandle" />
+
+            <TextView
+                android:id="@+id/quickAppsDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/activity_horizontal_margin"
+                android:text="@string/event_apps_description"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/quickAppsTitle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/dialog_actions_padding"
+                android:paddingVertical="@dimen/activity_vertical_margin"
+                app:layout_constraintTop_toBottomOf="@id/quickAppsDescription">
+
+                <Button
+                    android:id="@+id/whatsappButton"
+                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/event_actions"
+                    android:paddingVertical="@dimen/in_row_button_padding"
+                    android:text="@string/whatsapp"
+                    app:icon="@drawable/ic_apps_whatsapp_24dp" />
+
+                <Button
+                    android:id="@+id/dialerButton"
+                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/event_actions"
+                    android:paddingVertical="@dimen/in_row_button_padding"
+                    android:text="@string/dialer"
+                    app:icon="@drawable/ic_apps_dialer_24dp" />
+
+                <Button
+                    android:id="@+id/telegramButton"
+                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/event_actions"
+                    android:paddingVertical="@dimen/in_row_button_padding"
+                    android:text="@string/telegram"
+                    app:icon="@drawable/ic_apps_telegram_24dp" />
+
+                <Button
+                    android:id="@+id/messagesButton"
+                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/event_actions"
+                    android:paddingVertical="@dimen/in_row_button_padding"
+                    android:text="@string/textMessage"
+                    app:icon="@drawable/ic_apps_messages_24dp" />
+
+                <Button
+                    android:id="@+id/signalButton"
+                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/event_actions"
+                    android:paddingVertical="@dimen/in_row_button_padding"
+                    android:text="@string/signal"
+                    app:icon="@drawable/ic_apps_signal_24dp" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

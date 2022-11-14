@@ -62,7 +62,11 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         stats.add(leapYearTotal())
         stats.add(eventTypesNumbers())
         stats.removeIf { it.isBlank() }
-        sb.appendBulletSpans(stats, 16, applicationContext!!.getColor(R.color.goodGray))
+        sb.appendBulletSpans(
+            stats,
+            16,
+            getThemeColor(R.attr.colorOnSurfaceVariant, applicationContext!!)
+        )
         return sb
     }
 
@@ -119,7 +123,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
 
     // The youngest person, taking into account months and days
     private fun youngestPerson(): String {
-        var youngestDate = LocalDate.of(1500, 1, 1)
+        var youngestDate = LocalDate.of(START_YEAR, 1, 1)
         var youngestName = ""
         var youngestAge = 0
         birthdays.forEach {
@@ -342,25 +346,8 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
 
     // Get the zodiac sign
     fun getZodiacSign(person: EventResult): String {
-        val day = person.originalDate.dayOfMonth
-        val month = person.originalDate.month.value
         var sign = ""
-        var signNumber = 0
-        when (month) {
-            12 -> signNumber = if (day <= 21) 0 else 1
-            1 -> signNumber = if (day <= 20) 1 else 2
-            2 -> signNumber = if (day <= 19) 2 else 3
-            3 -> signNumber = if (day <= 20) 3 else 4
-            4 -> signNumber = if (day <= 20) 4 else 5
-            5 -> signNumber = if (day <= 20) 5 else 6
-            6 -> signNumber = if (day <= 21) 6 else 7
-            7 -> signNumber = if (day <= 22) 7 else 8
-            8 -> signNumber = if (day <= 23) 8 else 9
-            9 -> signNumber = if (day <= 22) 9 else 10
-            10 -> signNumber = if (day <= 22) 10 else 11
-            11 -> signNumber = if (day <= 22) 11 else 0
-        }
-        when (signNumber) {
+        when (getZodiacSignNumber(person)) {
             0 -> sign = applicationContext?.getString(R.string.zodiac_sagittarius).toString()
             1 -> sign = applicationContext?.getString(R.string.zodiac_capricorn).toString()
             2 -> sign = applicationContext?.getString(R.string.zodiac_aquarius).toString()
@@ -385,7 +372,7 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         when (month) {
             12 -> signNumber = if (day <= 21) 0 else 1
             1 -> signNumber = if (day <= 20) 1 else 2
-            2 -> signNumber = if (day <= 19) 2 else 3
+            2 -> signNumber = if (day <= 18) 2 else 3
             3 -> signNumber = if (day <= 20) 3 else 4
             4 -> signNumber = if (day <= 20) 4 else 5
             5 -> signNumber = if (day <= 20) 5 else 6
