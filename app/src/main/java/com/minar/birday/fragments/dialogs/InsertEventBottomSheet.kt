@@ -248,7 +248,7 @@ class InsertEventBottomSheet(
                         eventDateValue = LocalDate.of(year, month, day)
                         val todayDate = LocalDate.now()
 
-                        // Force the date to be before today programmatically
+                        // Force the date to be max one day after today, to consider different time zones
                         while (eventDateValue.isAfter(todayDate.plusDays(1))) {
                             eventDateValue = LocalDate.of(
                                 todayDate.year - 1,
