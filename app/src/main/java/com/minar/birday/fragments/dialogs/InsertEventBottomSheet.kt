@@ -74,7 +74,10 @@ class InsertEventBottomSheet(
         // Animate the drawable in loop
         val titleIcon = binding.insertEventImage
         val title = binding.insertEventTitle
-        if (event == null) titleIcon.applyLoopingAnimatedVectorDrawable(R.drawable.animated_insert_event, 2500L)
+        if (event == null) titleIcon.applyLoopingAnimatedVectorDrawable(
+            R.drawable.animated_insert_event,
+            2500L
+        )
         else titleIcon.applyLoopingAnimatedVectorDrawable(R.drawable.animated_edit_event, 2500L)
 
         // Show a bottom sheet containing the form to insert a new event
@@ -165,7 +168,7 @@ class InsertEventBottomSheet(
         val adapter = ArrayAdapter(act, R.layout.event_type_list_item, items)
         with(type) {
             setAdapter(adapter)
-            setText(items.first().toString(), false)
+            setText(getStringForTypeCodename(context, typeValue), false)
             onItemClickListener =
                 AdapterView.OnItemClickListener { _, _, position, _ ->
                     typeValue = items[position].codeName.name
