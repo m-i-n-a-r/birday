@@ -18,7 +18,7 @@ import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventCode
-import com.minar.birday.model.ImportedContact
+import com.minar.birday.model.ImportedEvent
 import com.minar.birday.utilities.bitmapToByteArray
 import com.minar.birday.utilities.getBitmapSquareSize
 import java.time.LocalDate
@@ -67,7 +67,7 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
         val permission = act.askContactsPermission(102)
         if (!permission) return false
 
-        // Phase 1: get every contact having at least a name and a birthday
+        // Phase 1: get every contact having at least a name and an event
         val contacts = getContacts()
         if (contacts.isEmpty()) {
             context.runOnUiThread(Runnable {
@@ -128,8 +128,8 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
     }
 
     // Get the contacts and save them in a map
-    private fun getContacts(): List<ImportedContact> {
-        val contactInfo = mutableListOf<ImportedContact>()
+    private fun getContacts(): List<ImportedEvent> {
+        val contactInfo = mutableListOf<ImportedEvent>()
 
         // Retrieve each part of the name and the ID
         val resolver: ContentResolver = context.contentResolver
@@ -143,7 +143,8 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                 ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME,
                 ContactsContract.CommonDataKinds.StructuredName.SUFFIX
             ),
-            ContactsContract.Data.MIMETYPE + " = ? AND " + ContactsContract.Data.IN_VISIBLE_GROUP + " = ?",
+            ContactsContract.Data.MIMETYPE + " = ? AND " +
+                    ContactsContract.Data.IN_VISIBLE_GROUP + " = ?",
             arrayOf(ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE, "1"),
             null
         )
@@ -162,12 +163,13 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                     cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME)
                 val suffixValue =
                     cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.SUFFIX)
-
                 // Control the values, the contact must have at least a name to be imported
                 if (idValue < 0 || firstNameValue < 0) continue
 
-                // Given the column indexes, retrieve the values
+                // Given the column indexes, retrieve the values. Don't process duplicate ids
                 val id = cursor.getString(idValue)
+                if (contactInfo.any { it.id == id }) continue
+
                 val prefix = cursor.getStringOrNull(prefixValue) ?: ""
                 val firstName = cursor.getString(firstNameValue)
                 val middleName = cursor.getStringOrNull(middleNameValue) ?: ""
@@ -239,15 +241,15 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                             2 -> eventType = EventCode.OTHER
                             else -> eventType = EventCode.BIRTHDAY
                         }
-                        val importedContact = if (eventCustomLabel != null) ImportedContact(
+                        val importedEvent = if (eventCustomLabel != null) ImportedEvent(
                             id,
                             birdayName,
                             birthday,
                             image,
                             eventType.name,
                             eventCustomLabel
-                        ) else ImportedContact(id, birdayName, birthday, image, eventType.name)
-                        contactInfo.add(importedContact)
+                        ) else ImportedEvent(id, birdayName, birthday, image, eventType.name)
+                        contactInfo.add(importedEvent)
                     }
                     eventCursor.close()
                 }

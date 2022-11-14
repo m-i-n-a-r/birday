@@ -1,7 +1,7 @@
 package com.minar.birday.model
 
 // Used to hold an imported contact in contacts importer
-data class ImportedContact(
+data class ImportedEvent(
     val id: String,
     val completeName: String,
     val eventDate: String,
@@ -13,7 +13,7 @@ data class ImportedContact(
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as ImportedContact
+        other as ImportedEvent
 
         if (completeName != other.completeName) return false
         if (eventDate != other.eventDate) return false
