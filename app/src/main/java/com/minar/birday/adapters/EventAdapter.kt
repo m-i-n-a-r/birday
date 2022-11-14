@@ -68,7 +68,7 @@ class EventAdapter(
                     organizedEvents.add(EventDataItem.EventItem(event))
                 }
                 activityScope.launch {
-                    submitList(organizedEvents)
+                    submitList(organizedEvents.toList())
                 }
             }
     }

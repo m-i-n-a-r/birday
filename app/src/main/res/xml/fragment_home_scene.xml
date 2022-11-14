@@ -20,6 +20,12 @@
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />
         </Constraint>
+
+        <Constraint android:id="@id/eventRecycler">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -47,6 +53,12 @@
             motion:layout_constraintStart_toStartOf="@id/homeMiniFab" />
 
         <Constraint android:id="@id/noEvents">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+
+        <Constraint android:id="@id/eventRecycler">
             <PropertySet
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />

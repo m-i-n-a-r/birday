@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OVER_SCROLL_ALWAYS
@@ -82,6 +83,7 @@ class HomeFragment : Fragment() {
         val typeSelector = binding.homeTypeSelector
         val searchBar = binding.homeSearch
         val searchBarLayout = binding.homeSearchLayout
+        val recycler = binding.eventRecycler
         if (shimmerEnabled) shimmer.startShimmer()
 
         // Setup the search bar
@@ -204,7 +206,7 @@ class HomeFragment : Fragment() {
 
         // Activate the overscroll effect on Android 12 and above
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            binding.eventRecycler.overScrollMode = OVER_SCROLL_ALWAYS
+            recycler.overScrollMode = OVER_SCROLL_ALWAYS
         }
 
         // Show quick apps on long press too
@@ -219,19 +221,20 @@ class HomeFragment : Fragment() {
         }
 
         // Setup the recycler view
-        binding.eventRecycler.adapter = adapter
+        recycler.adapter = adapter
 
         // The events, ordered and filtered by the eventual search
         mainViewModel.allEvents.observe(viewLifecycleOwner)
         { events ->
             // Manage placeholders, search results and the main list
-            adapter.addHeadersAndSubmitList(events)
-
+            Log.d("events", "Events changed, actual size: ${events.size}")
             if (events.isNotEmpty()) {
+                adapter.addHeadersAndSubmitList(events)
                 // Insert the events in the upper card and remove the placeholders
                 insertUpcomingEvents(events)
                 removePlaceholder()
             } else {
+                adapter.submitList(listOf())
                 // Avd for empty card (same avd for no results or no events atm)
                 upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_no_results)
                 when {
@@ -241,7 +244,12 @@ class HomeFragment : Fragment() {
                     else -> removePlaceholder()
                 }
             }
-            (view.parent as? ViewGroup)?.doOnPreDraw { startPostponedEnterTransition() }
+            recycler.doOnPreDraw {
+                startPostponedEnterTransition()
+            }.also {
+                if (events.isEmpty()) recycler.visibility = View.GONE
+                else recycler.visibility = View.VISIBLE
+            }
         }
 
         // Restore search string in the search bar
@@ -312,8 +320,6 @@ class HomeFragment : Fragment() {
     // Remove the placeholder or return if the placeholder was already removed before
     private fun removePlaceholder() {
         val placeholder = binding.noEvents
-        // Also change the visibility of the recycler to avoid inconsistencies
-        binding.eventRecycler.visibility = View.VISIBLE
         placeholder.visibility = View.GONE
     }
 
@@ -333,10 +339,7 @@ class HomeFragment : Fragment() {
             cardDescription.text = getString(R.string.search_no_result_description)
             placeholder.text = getString(R.string.search_no_result_title)
         }
-        if (!cardOnly) {
-            binding.eventRecycler.visibility = View.GONE
-            placeholder.visibility = View.VISIBLE
-        }
+        if (!cardOnly) placeholder.visibility = View.VISIBLE
     }
 
     // Insert the necessary information in the upcoming event card view (and confetti)
