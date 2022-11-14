@@ -223,5 +223,8 @@
     <string name="battery_optimization_description">Apri le impostazioni per disabilitare le ottimizzazioni per Birday. Utile se le notifiche non funzionano</string>
     <string name="notification_sound_title">Suono di notifica</string>
     <string name="notification_sound_description">Scorciatoia per le impostazioni del suono di notifica, se non ti piace il suono dell\'uccellino di default</string>
-
+    <string name="missing_permission_notifications">Il permesso per le notifiche è stato negato, e Birday non può inviare notifiche! Attivalo dalle impostazioni.</string>
+    <string name="missing_permission_notifications_forever">Il permesso per le notifiche è stato negato e non può essere chiesto nuovamente, quindi Birday non può inviare notifiche! Attivalo manualmente, dalle impostazioni.</string>
+    <string name="missing_permission_calendar">Il permesso calendario è stato negato, e Birday non può importare dal calendario! Attivalo dalle impostazioni.</string>
+    <string name="missing_permission_calendar_forever">Il permesso calendario è stato negato e non può essere chiesto nuovamente, quindi Birday non può importare dal calendario! Attivalo manualmente, dalle impostazioni.</string>
 </resources>
