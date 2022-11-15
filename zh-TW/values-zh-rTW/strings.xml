@@ -1,241 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_welcome">Добро дошли у Birday</string>
-	<string name="app_name_extended">Birday - Менаџер Догађаја</string>
-	<string name="leave_review_title">Оцените Birday</string>
-	<string name="leave_review_subtitle">Оставите рецензију како бисте ми помогли са апликацијом. Имајте на уму да, поред донација, ова апликација је потпуно бесплатна и без реклама!</string>
-	<string name="yes_review">Оцени!</string>
-	<string name="later">Касније, кунем се</string>
-	<string name="no_thanks">Нема шансе!</string>
-	<string name="title_home">Почетна</string>
-	<string name="title_favorites">Омиљени</string>
-	<string name="title_settings">Подешавања</string>
-	<string name="no_events">Нема догађаја! Додајте један користећи дугме испод!</string>
-	<string name="no_favorites">Нема омиљених! Притисните звезду да би сте сачували догађај у омиљене!</string>
-	<string name="add_favorite">Додај у омиљене</string>
-	<string name="stats">Статистике</string>
-	<string name="no_stats">Нема статистика за приказ!</string>
-	<string name="stats_summary">Резиме статистика</string>
-	<string name="no_stats_description">Немате довољно догађаја за генерисање статистике. Додајте их неколико и вратите се касније!</string>
-	<plurals name="stats_total">
-		<item quantity="other">Birday вам помаже да се сетите укупно %d догађаја</item>
-	</plurals>
-	<string name="next_event">Следећи догађај</string>
-	<string name="no_next_event">Нема догађаја за приказ!</string>
-	<string name="no_next_event_description">Још увек нисте додали или увезли догађај. Додајте један и дозволите Birday да вам помогне!</string>
-	<string name="next_age_years">Година</string>
-	<string name="event_others">и остали</string>
-	<plurals name="days_left">
-		<item quantity="other">за %d дана</item>
-	</plurals>
-	<!-- Settings -->
-	<string name="customization">Прилагођавање</string>
-	<string name="app_behavior">Понашање апликације</string>
-	<string name="additional_notification_name">Додатна обавештења</string>
-	<string name="additional_notification_description">Прикажи додатна обавештења у данима пре догађаја. %s</string>
-	<string name="no_additional_notification">Без додатних обавештења</string>
-	<string name="one_day_before">Један дан пре</string>
-	<string name="two_days_before">Два дана пре</string>
-	<string name="three_days_before">Три дана пре</string>
-	<string name="four_days_before">Четири дана пре</string>
-	<string name="five_days_before">Пет дана пре</string>
-	<string name="six_days_before">Шест дана пре</string>
-	<string name="seven_days_before">Седам дана пре</string>
-	<string name="vibration_name">Вибрација</string>
-	<string name="vibration_description_on">Вибрира када се притисне дугме</string>
-	<string name="vibration_description_off">Не вибрира када се притисне дугме</string>
-	<string name="date_format_name">Формат датума</string>
-	<string name="notification_hour_name">Време обавештења</string>
-	<string name="notification_hour_description">%s \n\nИмајте на уму да обавештења можда неће радити када је апликација заустављена од стране система код неких Huawei, Xiaomi и OnePlus уређаја. Погледајте dontkillmyapp.com за више информација</string>
-	<string name="accent_description">Промените подразумевану боју интерфејса</string>
-	<string name="accent_name">Боја интерфејса</string>
-	<string name="theme_description">Користите тамну, светлу или аутоматску тему апликације</string>
-	<string name="theme_name">Тема апликације</string>
-	<string name="aqua">Аква</string>
-	<string name="brown">Браун</string>
-	<string name="blue">Плава</string>
-	<string name="green">Зелена</string>
-	<string name="orange">Наранџаста</string>
-	<string name="yellow">Жута</string>
-	<string name="teal">Тиркизна</string>
-	<string name="violet">Љубичаста</string>
-	<string name="pink">Розе</string>
-	<string name="light_blue">Светло Плава</string>
-	<string name="red">Црвена</string>
-	<string name="lime">Жуто-Зелена</string>
-	<string name="crimson">Гримизна</string>
-	<string name="system_theme">Тема уређаја</string>
-	<string name="dark_theme">Тамна</string>
-	<string name="light_theme">Светла</string>
-	<string name="shimmer_name">Ефекат светлуцања</string>
-	<string name="shimmer_description_on">Светлуцава анимација ту ти тамо</string>
-	<string name="shimmer_description_off">Без додатних графичких ефеката</string>
-	<string name="dark_widget_name">Тамни виџет</string>
-	<string name="dark_widget_description_on">Виџет користи тамну тему</string>
-	<string name="dark_widget_description_off">Виџет користи светлу тему</string>
-	<string name="import_export">Увоз и Извоз</string>
-	<string name="import_contacts_title">Увезите догађаје из контаката</string>
-	<string name="import_contacts_description">Обавезно измените догађаје којима недостају године како бисте увек имали тачне статистике!</string>
-	<string name="import_success">Увоз је успешно завршен!</string>
-	<string name="import_nothing_found">Ниједан догађај није пронађен!</string>
-	<string name="import_failed">Нешта је пошло по злу!</string>
-	<string name="missing_permission_contacts">Дозвола контактима је одбијена. Покушајте поново или дајте дозволу ручно,
-		или увоз из контаката неће радити!</string>
-	<string name="missing_permission_contacts_forever">Birday не може да пита за дозволу да увезе из контаката,
-		јер сте штиклирали \"не питај поново\". Дајте је ручно!</string>
-	<string name="birday_import_title">Увезите Birday backup</string>
-	<string name="birday_import_description">Одаберите валидан Birday backup како бисте увезли догађаје. Сви постојећи подаци
-		ће бити избрисани!</string>
-	<string name="birday_export_title">Извезите и поделите догађаје</string>
-	<string name="birday_export_description">Извези постојеће догађаје у backup, и поделите их ако желите. Датотека се налази у
-		Android/data/com.minar.birday/files</string>
-	<string name="birday_import_success">Увоз је завршен!</string>
-	<string name="birday_import_failure">Увоз није успео. Да нисте изабрали погрешан фајл?</string>
-	<string name="birday_import_invalid_file">Увоз није успео. Изабран фајл није Birday backup!</string>
-	<string name="birday_export_success">Извоз је завршен!</string>
-	<string name="birday_export_failure">Извоз није успео. Упс!</string>
-	<string name="birday_export_nothing_found">Нема ништа за извоз!</string>
-	<string name="surname_first">Презиме прво</string>
-	<string name="surname_first_description_on">Прикажи презиме пре имена</string>
-	<string name="surname_first_description_off">Прикажи име пре презимена</string>
-	<string name="hide_images">Сакриј слике</string>
-	<string name="hide_images_description_on">Слике догађаја скривене</string>
-	<string name="hide_images_description_off">Слике догађаја видљиве</string>
-	<string name="notification_only_favorites">Само омиљени</string>
-	<string name="notification_only_favorites_description_on">Прикажи обавештења само за омиљене догађаје</string>
-	<string name="notification_only_favorites_description_off">Прикажи обавештења за све унете догађаје</string>
-	<string name="troubleshoot">Решавање проблема и додатно</string>
-	<string name="battery_optimization_title">Онемогућите оптимизацију батерије</string>
-	<string name="battery_optimization_description">Пречица до подешавања да бисте онемогућили било коју оптимизацију за Birday. Корисно ако обавештења не раде</string>
-	<string name="notification_sound_title">Звук обавештења</string>
-	<string name="notification_sound_description">Пречица до подешавања звука обавештења, ако вам се не свиђа подразумевани звук птице</string>
-	<!-- Developer -->
-	<string name="dev_description">Ја сам учтив момак и волим лепе ствари, као што су анимације, иконе, спортска аута и 3D штампање. Радим као дизајнер и рачунарски инжењер.</string>
-	<string name="easter_egg">Леп лого, зар не? ;D</string>
-	<!-- New event -->
-	<string name="new_event">Нови догађај</string>
-	<string name="new_event_description">Унесите особу до које вам је стало, и Birday ће вам помоћи да се сетите њеног рођендана или неког другог догађаја!</string>
-	<string name="insert_event">Унесите догађај</string>
-	<string name="cancel">Откажи</string>
-	<string name="insert_name_hint">Унесите Име</string>
-	<string name="insert_surname_hint">Унесите Презиме</string>
-	<string name="insert_date_hint">Изаберите датум</string>
-	<string name="invalid_value_name">Погрешно име!</string>
-	<string name="consider_year">Узми годину у обзир</string>
-	<string name="event_type_hint">Тип догађаја</string>
-	<string name="birthday">Рођендан</string>
-	<string name="anniversary">Годишњица</string>
-	<string name="death_anniversary">Годишњица смрти</string>
-	<string name="festivity">Свечаност</string>
-	<string name="name_day">Имендан</string>
-	<string name="other">Остало</string>
-	<!-- Event actions -->
-	<string name="event_actions">Радње</string>
-	<string name="event_actions_description">Овде можете изменити или избрисати овај догађај!</string>
-	<string name="edit_event">Измени догађај</string>
-	<string name="delete_event">Избриши догађај</string>
-	<string name="update_event">Ажурирај догађај</string>
-	<string name="share_event">Подели догађај</string>
-	<string name="deleted">Избрисан!</string>
-	<!-- Event details -->
-	<string name="event_details">Детаљи</string>
-	<string name="birth_date">Датум рођења</string>
-	<string name="next_age">Следећа доб:</string>
-	<string name="zodiac_sign">Хороскопски знак:</string>
-	<string name="chinese_zodiac_sign">Кинески знак:</string>
-	<!-- Quick apps -->
-	<string name="event_apps">Брзе апликације</string>
-	<string name="event_apps_description">Апликације да брзо пожелите све најбоље!</string>
-	<string name="textMessage">СМС порука</string>
-	<string name="dialer">Телефон</string>
-	<string name="wishes_birthday">Срећан рођендан!</string>
-	<string name="no_default_dialer">Није пронађена подразумевана апликација за позивање!</string>
-	<string name="no_default_sms">Није пронађена подразумевана апликација за СМС!</string>
-	<!-- Statistics -->
-	<string name="did_you_know">Да ли сте знали?</string>
-	<string name="age_average">Просечна старост је %s</string>
-	<string name="oldest_person">Најстарија особа је %s</string>
-	<string name="youngest_person">Најмлађа особа је %s</string>
-	<string name="most_common_month">Најчешћи месец рођења је %s</string>
-	<string name="most_common_decade">Најчешћа деценија рођења је %s</string>
-	<string name="most_common_age_range">Најчешћи узраст је %1$s-%2$s</string>
-	<string name="special_ages">Важан предстојећи рођендан је %s</string>
-	<string name="random_zodiac_sign">Хороскопски знак %1$s: %2$s</string>
-	<string name="most_common_zodiac_sign">Најчешћи хороскопски знак је %s</string>
-	<string name="random_day_of_week">%1$s је рођен/а у %2$s</string>
-	<string name="most_common_day_of_week">Најчешћи дан рођења је %s</string>
-	<plurals name="leap_year_total">
-		<item quantity="other">Број особа рођених у преступној години је %d</item>
-	</plurals>
-	<string name="random_chinese_year">Конески хороскопски знак %1$s: %2$s</string>
-	<string name="chinese_zodiac_rat">пацов</string>
-	<string name="chinese_zodiac_ox">биво</string>
-	<string name="chinese_zodiac_tiger">тигар</string>
-	<string name="chinese_zodiac_rabbit">зец</string>
-	<string name="chinese_zodiac_dragon">змај</string>
-	<string name="chinese_zodiac_snake">змија</string>
-	<string name="chinese_zodiac_horse">коњ</string>
-	<string name="chinese_zodiac_goat">коза</string>
-	<string name="chinese_zodiac_monkey">мајмун</string>
-	<string name="chinese_zodiac_rooster">петао</string>
-	<string name="chinese_zodiac_dog">пас</string>
-	<string name="chinese_zodiac_pig">свиња</string>
-	<string name="zodiac_sagittarius">стрелац</string>
-	<string name="zodiac_capricorn">јарац</string>
-	<string name="zodiac_aquarius">водолија</string>
-	<string name="zodiac_pisces">рибе</string>
-	<string name="zodiac_aries">ован</string>
-	<string name="zodiac_taurus">бик</string>
-	<string name="zodiac_gemini">близанци</string>
-	<string name="zodiac_cancer">рак</string>
-	<string name="zodiac_leo">лав</string>
-	<string name="zodiac_virgo">девица</string>
-	<string name="zodiac_libra">вага</string>
-	<string name="zodiac_scorpio">шкорпија</string>
-	<!-- Common words -->
-	<plurals name="months">
-		<item quantity="other">%d месеца/и</item>
-	</plurals>
-	<string name="today">Данас!</string>
-	<string name="yesterday">Јуче!</string>
-	<string name="tomorrow">Сутра!</string>
-	<plurals name="years">
-		<item quantity="other">%d година/е</item>
-	</plurals>
-	<string name="born_in">рођен/а у</string>
-	<string name="and">и</string>
-	<plurals name="event">
-		<item quantity="other">догађаја: %s</item>
-	</plurals>
-	<!-- Notifications -->
-	<string name="events_notification_channel">Подсетник на догађај</string>
-	<string name="events_channel_description">Подсетници о предстојећим догађајима од Birday</string>
-	<string name="notification_title">Birday Подсетник</string>
-	<string name="notification_description_part_1">Данашњи догађаји су</string>
-	<string name="notification_description_part_2">Пријатан дан!</string>
-	<string name="additional_notification_text">Предстојећи догађаји!</string>
-	<!-- Introduction slides -->
-	<string name="slide_one_title">Добро дошли у Birday!</string>
-	<string name="slide_one_description">Birday је проста и незахтевна апликација за управљање важним догађајима!
-		Можете је користити за памћење и складиштење рођендана, и других догађаја, људи које волите, на поуздан начин.</string>
-	<string name="slide_two_title">Бесплатан, једноставан, прилагодљив</string>
-	<string name="slide_two_description">Birday је бесплатан, без реклама и отвореног кода. Пружа
-		статистику о вашим догађајима, систем омиљених и прилагодљив интерфејс. И гарантовану
-		подршку и ажурирања!</string>
-	<string name="slide_three_title">Увези из контаката</string>
-	<string name="slide_three_description">Такође је могуће увести већ сачуване догађаје
-		из контаката. Birday може то да уради за вас, само дозволите присту контактима. Уживајте!</string>
-	<!-- Widget -->
-	<string name="appwidget_upcoming">Предстојећи догађаји</string>
-	<string name="add_widget">Birday - Предстојећи</string>
-	<!-- Search -->
-	<string name="search_event">Претражите…</string>
-	<string name="search_no_result_title">Нема резултата</string>
-	<string name="search_no_result_description">Ваша претрага се не подудара ни са једним догађајем који сте додали!</string>
-	<!-- Notes -->
-	<string name="notes">Белешке</string>
-	<string name="write_something">Напишите нешта…</string>
-	<!-- Overview -->
-	<string name="overview">Преглед</string>
-	<string name="overview_description">Годишњи преглед сачуваних догађаја</string>
+    <!-- Vietnamese doesn't need plurals -->
+    <string name="app_welcome">Birday Chào bạn</string>
+    <string name="app_name_extended">Birday - Người quản lý sự kiện</string>
+    <string name="leave_review_title">Đánh giá cho Birday</string>
+    <string name="leave_review_subtitle">Xin mời bạn đánh giá để giúp tôi với các ứng dụng. Hãy nhớ rằng, đóng góp sang một bên, ứng dụng này là miễn phí và không có quảng cáo!</string>
+    <string name="yes_review">Đánh giá!</string>
+    <string name="later">Một lát sau</string>
+    <string name="no_thanks">Không!</string>
+    <string name="title_home">Trang Chủ</string>
+    <string name="title_favorites">Yêu Thích</string>
+    <string name="title_settings">Cài Đặt</string>
+    <string name="no_events">Không có sự kiện! Sử dụng nút ở dưới để bắt đầu lưu sinh nhật!</string>
+    <string name="no_favorites">Không có mục yêu thích! Nhấn dấu sao để lưu một sự kiện làm mục yêu thích!</string>
+    <string name="add_favorite">Thêm vào mục yêu thích</string>
+    <string name="stats">Số liệu</string>
+    <string name="no_stats">Chưa có số liệu!</string>
+    <string name="stats_summary">Tóm tắt số liệu</string>
+    <string name="no_stats_description">Bạn chưa có lưu đủ sự kiện đệ xem số liệu thống kê. Mời bạn lưu thêm sinh nhật và quay lại sau!</string>
+    <plurals name="stats_total">
+        <item quantity="other">Birday giúp bạn nhớ sinh nhật tổng cộng %d sự kiện</item>
+    </plurals>
+    <string name="next_event">Sự kiện tiếp theo</string>
+    <string name="no_next_event">Không có sự kiện!</string>
+    <string name="no_next_event_description">Bạn chưa nhập ngày sự kiện. Lưu thêm sinh nhât để Birday giúp bạn!</string>
+    <string name="next_age_years">tuổi</string>
+    <string name="event_others">và những thứ khác</string>
+    <plurals name="days_left">
+        <item quantity="other">%d ngày còn lại</item>
+    </plurals>
+    <!-- Settings -->
+    <string name="customization">Tùy biến</string>
+    <string name="app_behavior">Hành vi ứng dụng</string>
+    <string name="additional_notification_name">Thông báo bổ sung</string>
+    <string name="additional_notification_description">Gửi một ngày thông báo bổ sung trước khi sự kiện. %s</string>
+    <string name="no_additional_notification">Không có thông báo bổ sung</string>
+    <string name="one_day_before">Một ngày trước</string>
+    <string name="two_days_before">Hai ngày trước</string>
+    <string name="three_days_before">Ba ngày trước</string>
+    <string name="four_days_before">Bốn ngày trước</string>
+    <string name="five_days_before">Năm ngày trước</string>
+    <string name="six_days_before">Sáu ngày trước</string>
+    <string name="seven_days_before">Bảy ngày trước</string>
+    <string name="vibration_name">Rung</string>
+    <string name="vibration_description_on">Rung khi nhấn nút</string>
+    <string name="vibration_description_off">Không rung khi nhấn nút</string>
+    <string name="date_format_name">Định dạng ngày tháng</string>
+    <string name="notification_hour_name">Giờ thông báo</string>
+    <string name="notification_hour_description">%s \n\nXin lưu ý rằng thông báo có thể không hoạt động khi ứng dụng bị hệ thống tiêu diệt trong một số thiết bị Huawei, Xiaomi và OnePlus. Tham khảo dontkillmyapp.com để biết thêm thông tin</string>
+    <string name="accent_description">Thay đổi màu nhấn mặc định</string>
+    <string name="accent_name">Màu nhấn</string>
+    <string name="theme_description">Sử dụng chủ đề ứng dụng tối, sáng hoặc tự động</string>
+    <string name="theme_name">Chủ đề ứng dụng</string>
+    <string name="aqua">Thủy màu xanh</string>
+    <string name="brown">Nâu</string>
+    <string name="blue">Xanh dương</string>
+    <string name="green">Xanh lá</string>
+    <string name="orange">Cam</string>
+    <string name="yellow">Vàng</string>
+    <string name="teal">Mòng két</string>
+    <string name="violet">Tím</string>
+    <string name="pink">Hồng</string>
+    <string name="light_blue">Xanh nhạt</string>
+    <string name="red">Đỏ</string>
+    <string name="lime">Chanh</string>
+    <string name="crimson">Đỏ thẫm</string>
+    <string name="system_theme">Mặc định hệ thống</string>
+    <string name="dark_theme">Tối</string>
+    <string name="light_theme">Sáng</string>
+    <string name="shimmer_name">Hiệu ứng lung linh</string>
+    <string name="shimmer_description_on">Một hình ảnh động sáng bóng trong ứng dụng</string>
+    <string name="shimmer_description_off">Không có hiệu ứng đồ họa bổ sung</string>
+    <string name="dark_widget_name">Tiện ích tối</string>
+    <string name="dark_widget_description_on">Tiện ích sử dụng chủ đề tối</string>
+    <string name="dark_widget_description_off">Tiện ích sử dụng chủ đề rõ ràng</string>
+    <string name="import_export">Nhập khẩu và xuất khẩu</string>
+    <string name="import_contacts_title">Nhập sự kiện từ danh bạ</string>
+    <string name="import_contacts_description">Hãy chắc chắn sửa đổi các sự kiện với đúng năm để luôn có số liệu thống kê chính xác!</string>
+    <string name="import_success">Nhập hoàn tất thành công!</string>
+    <string name="import_nothing_found">Không tìm thấy sự kiện!</string>
+    <string name="import_failed">Đã bị lỗi!</string>
+    <string name="missing_permission_contacts">Sự cho phép liên lạc đã bị từ chối. Thử lại hoặc kích hoạt quyền theo cách thủ công, Nếu không, nhập danh bạ sẽ không hoạt động!</string>
+    <string name="missing_permission_contacts_forever">Birday không thể nhập danh bạ của bạn và không xin phép được. Lý do khi bạn bấm \"không bao giờ hỏi lại\". Kích hoạt thủ công!</string>
+    <string name="birday_import_title">Nhập bản sao lưu Birday</string>
+    <string name="birday_import_description">Chọn một bản sao lưu Birday hợp lệ để tự khôi phục ngày sự kiện của bạn. Mọi dữ liệu hiện có sẽ bị ghi đè!</string>
+    <string name="birday_export_title">Xuất khẩu và chia sẻ ngày sự kiện</string>
+    <string name="birday_export_description">Xuất các ngày sự kiện có sẵn và chia sẻ chúng, nếu bạn muốn. Các tập tin là trong Android / data / com.minar.birday / tệp</string>
+    <string name="birday_import_success">Nhập xong!</string>
+    <string name="birday_import_failure">Nhập thất bại. Bạn kiểm tra lại có chọn đúng tập tin không?</string>
+    <string name="birday_import_invalid_file">Nhập thất bại. Các tập tin được chọn không phải là một bản sao lưu của Birday!</string>
+    <string name="birday_export_success">Xuất xong!</string>
+    <string name="birday_export_failure">Xuất khẩu thất bại. Rất tiếc!</string>
+    <string name="birday_export_nothing_found">Không có gì để xuất khẩu!</string>
+    <string name="surname_first">Họ cho đầu tiên</string>
+    <string name="surname_first_description_on">Hiển thị họ trước tên</string>
+    <string name="surname_first_description_off">Hiển thị tên trước họ</string>
+    <string name="hide_images">Ẩn hình ảnh</string>
+    <string name="hide_images_description_on">Hình ảnh sự kiện ẩn</string>
+    <string name="hide_images_description_off">Hình ảnh sự kiện hiển thị</string>
+    <string name="notification_only_favorites">Chỉ sự kiện yêu thích</string>
+    <string name="notification_only_favorites_description_on">Chỉ gửi thông báo cho sự kiện yêu thích</string>
+    <string name="notification_only_favorites_description_off">Gửi thông báo cho mọi sự kiện</string>
+    <string name="troubleshoot">Khắc phục sự cố</string>
+    <string name="battery_optimization_title">Tắt tối ưu hóa pin</string>
+    <string name="battery_optimization_description">Mở cài đặt để tắt mọi tối ưu hóa cho Birday. Hữu ích nếu thông báo không hoạt động</string>
+    <string name="notification_sound_title">Âm thanh thông báo</string>
+    <string name="notification_sound_description">Phím tắt đến cài đặt âm thanh thông báo, nếu bạn không thích tiếng chim mặc định</string>
+    <!-- Developer -->
+    <string name="dev_description">Tôi là một chàng trai lịch sự và thích những thứ đẹp đẽ, như hoạt hình, biểu tượng, xe thể thao và in 3d. Tôi làm việc như một nhà thiết kế và kỹ sư máy tính.</string>
+    <string name="easter_egg">Logo đẹp, ha? ;D</string>
+    <!-- New event -->
+    <string name="new_event">Sự kiện mới</string>
+    <string name="new_event_description">Thêm một người mới mà bạn quan tâm rồi Birday sẽ giúp bạn tổ chức sinh nhật hoặc các sự kiện khác của họ!</string>
+    <string name="insert_event">Thêm sự kiện</string>
+    <string name="cancel">Hủy</string>
+    <string name="insert_name_hint">Thêm tên</string>
+    <string name="insert_surname_hint">Thêm họ tên</string>
+    <string name="insert_date_hint">Chọn ngày</string>
+    <string name="invalid_value_name">Tên không hợp lệ!</string>
+    <string name="event_type_hint">Thể loại của sự kiện</string>
+    <string name="birthday">Ngày sinh nhật</string>
+    <string name="anniversary">Dịp kỉ niệm</string>
+    <string name="death_anniversary">Ngày giỗ</string>
+    <string name="festivity">Lễ hội</string>
+    <string name="name_day">Tên ngày</string>
+    <string name="other">Khác</string>
+    <!-- Event actions -->
+    <string name="event_actions">Hành động</string>
+    <string name="event_actions_description">Tại đây bạn có thể xóa hoặc sửa đổi sự kiện này!</string>
+    <string name="edit_event">Chỉnh sửa sự kiện</string>
+    <string name="delete_event">Xóa sự kiện</string>
+    <string name="update_event">Cập nhật sự kiện</string>
+    <string name="share_event">Chia sẻ sự kiện</string>
+    <string name="deleted">Đã xóa!</string>
+    <!-- Event details -->
+    <string name="event_details">Chi tiết</string>
+    <string name="birth_date">Ngày sinh nhật</string>
+    <string name="next_age">Tuổi tiếp theo:</string>
+    <string name="zodiac_sign">Cung Hoàng Đạ:</string>
+    <string name="chinese_zodiac_sign">Cung Hoàng Đạ Việt Nam:</string>
+    <!-- Quick apps -->
+    <string name="event_apps">Ứng dụng nhanh</string>
+    <string name="event_apps_description">Ứng dụng để chúc mọi điều tốt đẹp cho nhanh!</string>
+    <string name="textMessage">Tin nhắn</string>
+    <string name="dialer">Quay số</string>
+    <string name="wishes_birthday">Chúc mừng sinh nhật!</string>
+    <string name="no_default_dialer">Không tìm được ứng dụng quay số mặc định!</string>
+    <string name="no_default_sms">Không tìm được ứng dụng sms mặc định!</string>
+    <!-- Statistics -->
+    <string name="did_you_know">Bạn có biết không?</string>
+    <string name="age_average">Tuổi trung bình là %s</string>
+    <string name="oldest_person">Người già nhất là %s</string>
+    <string name="youngest_person">Người trẻ nhất là %s</string>
+    <string name="most_common_month">Tháng sinh phổ biến nhất là %s</string>
+    <string name="most_common_decade">Thập kỷ phổ biến nhất của sinh là %s</string>
+    <string name="most_common_age_range">Tuổi phổ biến nhất là %1$s-%2$s</string>
+    <string name="special_ages">Một sinh nhật quan trọng sắp tới là %s</string>
+    <string name="random_zodiac_sign">Dấu hiệu hoàng đạo của %1$s: %2$s</string>
+    <string name="most_common_zodiac_sign">Dấu hiệu hoàng đạo phổ biến nhất là %s</string>
+    <string name="random_day_of_week">%1$s sinh vào %2$s</string>
+    <string name="most_common_day_of_week">Ngày phổ biến nhất trong tuần sinh là %s</string>
+    <plurals name="leap_year_total">
+        <item quantity="other">Số người sinh ra trong một năm nhuận là %d</item>
+    </plurals>
+    <string name="random_chinese_year">Cung hoàng đạo Việt Nam của %1$s: %2$s</string>
+    <string name="chinese_zodiac_rat">chuột</string>
+    <string name="chinese_zodiac_ox">châu</string>
+    <string name="chinese_zodiac_tiger">cợp</string>
+    <string name="chinese_zodiac_rabbit">thỏ</string>
+    <string name="chinese_zodiac_dragon">rồng</string>
+    <string name="chinese_zodiac_snake">rắn</string>
+    <string name="chinese_zodiac_horse">ngựa</string>
+    <string name="chinese_zodiac_goat">dê</string>
+    <string name="chinese_zodiac_monkey">khỉ</string>
+    <string name="chinese_zodiac_rooster">gà</string>
+    <string name="chinese_zodiac_dog">chó</string>
+    <string name="chinese_zodiac_pig">heo</string>
+    <string name="zodiac_sagittarius">nhân mã</string>
+    <string name="zodiac_capricorn">ma kết</string>
+    <string name="zodiac_aquarius">bảo bình</string>
+    <string name="zodiac_pisces">song ngư</string>
+    <string name="zodiac_aries">bạch dương</string>
+    <string name="zodiac_taurus">kim ngưu</string>
+    <string name="zodiac_gemini">song tử</string>
+    <string name="zodiac_cancer">cự giải</string>
+    <string name="zodiac_leo">sư tử</string>
+    <string name="zodiac_virgo">xử nữ</string>
+    <string name="zodiac_libra">thiên bình</string>
+    <string name="zodiac_scorpio">thiên yết</string>
+    <!-- Common words -->
+    <plurals name="months">
+        <item quantity="other">%d tháng</item>
+    </plurals>
+    <string name="today">hôm nay!</string>
+    <string name="yesterday">hôm qua!</string>
+    <string name="tomorrow">ngày mai!</string>
+    <plurals name="years">
+        <item quantity="other">%d năm</item>
+    </plurals>
+    <string name="born_in">sinh ra</string>
+    <string name="and">và</string>
+    <plurals name="event">
+        <item quantity="other">sự kiện: %s</item>
+    </plurals>
+    <!-- Notifications -->
+    <string name="events_notification_channel">Nhắc nhở sự kiện</string>
+    <string name="events_channel_description">Nhắc nhở về những ngày sự kiện sắp tới trên Birday</string>
+    <string name="notification_title">Nhắc nhớ Birday</string>
+    <string name="notification_description_part_1">Hôm nay là sự kiện của</string>
+    <string name="notification_description_part_2">Chúc bạn một ngày tuyệt vời!</string>
+    <string name="additional_notification_text">Sự kiện sắp tới!</string>
+    <!-- Introduction slides -->
+    <string name="slide_one_title">Birday Chào bạn!</string>
+    <string name="slide_one_description">Birday là một ứng dụng đơn giản và nhẹ để quản lý các sự kiện quan trọng! 
+    Bạn có thể sử dụng Birday để ghi nhớ và lưu trữ ngày sinh nhật của những người bạn yêu thương, trong một cách đáng tin cậy và nhanh chóng.
+    </string>
+    <string name="slide_two_title">Miễn phí, đơn giản, tùy biến</string>
+    <string name="slide_two_description">Birday là miễn phí, không có quảng cáo và nguồn mở. Birday cung cấp một bộ số liệu thống kê về ngày sinh nhật của bạn, một hệ thống yêu thích và giao diện tùy biến. Và đảm bảo hỗ trợ và cập nhật!
+    </string>
+    <string name="slide_three_title">Nhập từ Danh bạ</string>
+    <string name="slide_three_description">Bạn cũng có thể nhập ngày sự kiện mà bạn đã lưu từ Danh bạ của bạn. Birday có thể làm điều đó cho bạn, chỉ cần cấp quyền liên hệ. Thưởng thức!
+    </string>
+    <!-- Widget -->
+    <string name="appwidget_upcoming">Sự kiện sắp tới</string>
+    <string name="add_widget">Birday - sắp tới</string>
+    <!-- Search -->
+    <string name="search_event">Tìm kiếm…</string>
+    <string name="search_no_result_title">Không có kết quả</string>
+    <string name="search_no_result_description">Chuỗi tìm kiếm của bạn không khớp với bất kỳ sự kiện nào trong cơ sở dữ liệu của Birday!</string>
+    <string name="consider_year">Xem xét năm</string>
+    <!-- Notes -->
+    <string name="notes">Ghi chú</string>
+    <string name="write_something">Viết vài thứ…</string>
+    <!-- Overview -->
+    <string name="overview">Tổng quat</string>
+    <string name="overview_description">Tổng quan hàng năm về các sự kiện đã lưu</string>
 </resources>
