@@ -17,7 +17,7 @@
     <string name="no_stats">Não existem estatísticas para mostrar!</string>
     <string name="stats_summary">Resumo de estatísticas</string>
     <string name="no_stats_description">Ainda não existem eventos suficientes para gerar estatísticas. Adicione alguns aniversários e tente novamente!</string>
-    <plurals name="stats_total">
+    <plurals name="stats_total" comment="stats_total [one] [many] [other]">
         <item quantity="one">Birday está a registar %d evento</item>
         <item quantity="other">Birday está a registar um total de %d eventos</item>
     </plurals>
