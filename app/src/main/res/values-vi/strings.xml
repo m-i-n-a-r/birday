@@ -17,7 +17,7 @@
     <string name="no_stats">Chưa có số liệu!</string>
     <string name="stats_summary">Tóm tắt số liệu</string>
     <string name="no_stats_description">Bạn chưa có lưu đủ sự kiện đệ xem số liệu thống kê. Mời bạn lưu thêm sinh nhật và quay lại sau!</string>
-    <plurals name="stats_total">
+    <plurals name="stats_total" comment="stats_total [one] [many] [other]">
         <item quantity="other">Birday giúp bạn nhớ sinh nhật tổng cộng %d sự kiện</item>
     </plurals>
     <string name="next_event">Sự kiện tiếp theo</string>
