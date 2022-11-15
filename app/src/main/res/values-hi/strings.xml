@@ -17,7 +17,7 @@
     <string name="no_stats">दिखाने के लिए कोई आँकड़े नहीं!</string>
     <string name="stats_summary">आँकड़े सारांश</string>
     <string name="no_stats_description">आपके पास आंकड़े जनरेट करने के लिए काफ़ी इवेंट नहीं हैं. कुछ जोड़ें और बाद में वापस आएं!</string>
-    <plurals name="stats_total">
+    <plurals name="stats_total" comment="stats_total [one] [many] [other]">
         <item quantity="one">बर्डे कुल %d इवेंट को याद रखने में आपकी मदद कर रहा है</item>
         <item quantity="other">बर्डे कुल %d इवेंट्स को याद रखने में आपकी मदद कर रहा है</item>
     </plurals>
