@@ -17,7 +17,7 @@
     <string name="no_stats">沒有數據可顯示！</string>
     <string name="stats_summary">統計摘要</string>
     <string name="no_stats_description">您目前沒有足夠的節日來生成統計。新增一些項目再回來吧！</string>
-    <plurals name="stats_total">
+    <plurals name="stats_total" comment="stats_total [one] [many] [other]">
         <item quantity="other">Birday is helping you to remember a total of %d events</item>
     </plurals>
     <string name="next_event">下個活動</string>
