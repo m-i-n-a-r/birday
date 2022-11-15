@@ -17,7 +17,7 @@
     <string name="no_stats">Nincs megjeleníthető statisztika!</string>
     <string name="stats_summary">Statisztika összefoglaló</string>
     <string name="no_stats_description">Nincs elég esemény a statisztikák megjelenítéséhez. Adj hozzá néhányat, és gyere vissza később!</string>
-    <plurals name="stats_total">
+    <plurals name="stats_total" comment="stats_total [one] [many] [other]">
         <item quantity="one">A Birday segít, hogy összesen emlékezz %d esemény</item>
         <item quantity="other">A Birday segít, hogy összesen emlékezz %d eseményeket</item>
     </plurals>
