@@ -17,7 +17,7 @@
     <string name="no_stats">Žádné statistiky k zobrazení!</string>
     <string name="stats_summary">Souhrn statistik</string>
     <string name="no_stats_description">Pro zobrazení statistik nemáte dostatek událostí. Přidejte nějaké a vraťte se později!</string>
-    <plurals name="stats_total">
+    <plurals name="stats_total" comment="stats_total [one] [many] [other]">
         <item quantity="one">Birday vám pomáhá zapamatovat si celkem %d událost.</item>
         <item quantity="few">Birday vám pomáhá zapamatovat si celkem %d události.</item>
         <item quantity="many">Birday vám pomáhá zapamatovat si celkem %d událostí.</item>
