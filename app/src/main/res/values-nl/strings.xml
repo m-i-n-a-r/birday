@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_welcome">Welkom bij Birday</string>
     <string name="app_name_extended">Birday - Evenement Beheerder</string>
     <string name="leave_review_title">Beordeel Birday</string>
@@ -31,7 +30,6 @@
         <item quantity="one">%d dag resterend</item>
         <item quantity="other">%d dagen resterend</item>
     </plurals>
-
     <!-- Settings -->
     <string name="customization">Aanpassingen</string>
     <string name="app_behavior">App gedrag</string>
@@ -55,6 +53,7 @@
     <string name="accent_name">Accentkleur</string>
     <string name="theme_description">Gebruik een donker, licht of automatisch app thema</string>
     <string name="theme_name">App thema</string>
+    <!-- Untranslated for now -->
     <string name="aqua">Aqua</string>
     <string name="brown">Bruin</string>
     <string name="blue">Blauw</string>
@@ -86,7 +85,7 @@
     <string name="missing_permission_contacts">Toestemming tot contacten is geweigerd. Probeer het opnieuw of geef handmatig toestemming,
         anders werkt het importeren vanuit contacten niet!</string>
     <string name="missing_permission_contacts_forever">Birday kan je contacten niet importeren en ook niet opnieuw om toestemming vragen,
-    aangezien "Niet meer vragen" is aangevinkt. Geef handmatig toestemming!</string>
+    aangezien \"Niet meer vragen\" is aangevinkt. Geef handmatig toestemming!</string>
     <string name="birday_import_title">Importeer een Birday backup</string>
     <string name="birday_import_description">Kies een geldige Birday backup om handmatig je evenementen te herstellen. Bestaande
     data zal worden overschreven!</string>
@@ -105,16 +104,21 @@
     <string name="hide_images">Verberg afbeeldingen</string>
     <string name="hide_images_description_on">Verborgen Evenementafbeeldingen</string>
     <string name="hide_images_description_off">Evenementafbeeldingen zichtbaar</string>
+    <string name="notification_only_favorites">Favorites only</string>
+    <string name="notification_only_favorites_description_on">Send a notification for favorite events only</string>
+    <string name="notification_only_favorites_description_off">Send a notification for every event inserted</string>
     <string name="troubleshoot">Problemen oplossen</string>
     <string name="battery_optimization_title">Batterij-optimalisatie uitschakelen</string>
     <string name="battery_optimization_description">Open de instellingen om optimalisatie voor Birday uit te schakelen. Handig als meldingen niet werken</string>
     <string name="notification_sound_title">Notificatie geluid</string>
     <string name="notification_sound_description">Snelkoppeling naar de instellingen voor meldingsgeluiden, als je niet van het standaard vogelgeluid houdt</string>
-
+    <string name="missing_permission_notifications">The notification permission was denied, and Birday can\'t send notifications! Activate the permission from settings.</string>
+    <string name="missing_permission_notifications_forever">The notification permission was denied and can\'t be asked again, so Birday can\'t send notifications! Activate the permission manually, from settings.</string>
+    <string name="missing_permission_calendar">The calendar permission was denied, and Birday can\'t import from calendar! Activate the permission from settings.</string>
+    <string name="missing_permission_calendar_forever">The calendar permission was denied and can\'t be asked again, so Birday can\'t import from calendar! Activate the permission manually, from settings.</string>
     <!-- Developer -->
     <string name="dev_description">Ik ben een beleefde kerel en ik hou van mooie dingen, zoals animaties, icoontjes, sportauto\'s en 3d printen. Ik werk als een ontwerper en computer ingenieur.</string>
     <string name="easter_egg">Puik logootje, hè? ;D</string>
-
     <!-- New event -->
     <string name="new_event">Nieuwe evenement</string>
     <string name="new_event_description">Voeg een nieuw persoon toe en Birday helpt je om zijn/haar evenement niet te vergeten!</string>
@@ -124,6 +128,7 @@
     <string name="insert_surname_hint">Achternaam</string>
     <string name="insert_date_hint">Selecteer een datum</string>
     <string name="invalid_value_name">Ongeldige naam!</string>
+    <string name="consider_year">Overweeg het jaar</string>
     <string name="event_type_hint">Gebeurtenistype</string>
     <string name="birthday">Verjaardag</string>
     <string name="anniversary">Huwelijk</string>
@@ -131,7 +136,6 @@
     <string name="festivity">Feestelijk</string>
     <string name="name_day">Naamdag</string>
     <string name="other">Ander</string>
-
     <!-- Event actions -->
     <string name="event_actions">Acties</string>
     <string name="event_actions_description">hier kun je eenvoudig de gebeurtenis veranderen of verwijderen!</string>
@@ -140,14 +144,12 @@
     <string name="update_event">Gebeurtenis bijwerken</string>
     <string name="share_event">Deel gebeurtenis</string>
     <string name="deleted">Verwijderd!</string>
-
     <!-- Event details -->
     <string name="event_details">Details</string>
     <string name="birth_date">Geboortedatum</string>
     <string name="next_age">Volgende leeftijd:</string>
     <string name="zodiac_sign">Sterrenbeeld:</string>
     <string name="chinese_zodiac_sign">Chinees sterrenbeeld:</string>
-
     <!-- Quick apps -->
     <string name="event_apps">Snelkoppelingen</string>
     <string name="event_apps_description">Apps om je verjaardagswensen direct te versturen!</string>
@@ -156,7 +158,6 @@
     <string name="wishes_birthday">Fijne verjaardag!</string>
     <string name="no_default_dialer">Geen standaard telefoon app gevonden!</string>
     <string name="no_default_sms">Geen standaard sms app gevonden!</string>
-
     <!-- Statistics -->
     <string name="did_you_know">Wist je dat?</string>
     <string name="age_average">De gemiddelde leeftijd is %s</string>
@@ -199,7 +200,6 @@
     <string name="zodiac_virgo">maagd</string>
     <string name="zodiac_libra">weegschaal</string>
     <string name="zodiac_scorpio">schorpioen</string>
-
     <!-- Common words -->
     <plurals name="months">
         <item quantity="one">%d maand</item>
@@ -218,7 +218,6 @@
         <item quantity="one">evenement: %s</item>
         <item quantity="other">evenementen: %s</item>
     </plurals>
-
     <!-- Notifications -->
     <string name="events_notification_channel">Gebeurtenis Reminder</string>
     <string name="events_channel_description">Reminders over de aankomende evenementen van Birday</string>
@@ -226,7 +225,6 @@
     <string name="notification_description_part_1">De evenementen van vandaag zijn</string>
     <string name="notification_description_part_2">Fijne dag nog!</string>
     <string name="additional_notification_text">Aankomende evenementen!</string>
-
     <!-- Introduction slides -->
     <string name="slide_one_title">Welkom bij Birday!</string>
     <string name="slide_one_description">Birday is een simpele, lichtgewicht app waarmee je belangrijke gebeurtenissen kunt bijhouden!
@@ -239,23 +237,32 @@
     <string name="slide_three_title">Importeren vanuit contacten</string>
     <string name="slide_three_description">Het is ook mogelijk om evenementen over te zetten vanuit contacten.
         Birday doet het voor je als je toestemming geeft tot je contacten. Veel plezier!</string>
-
     <!-- Widget -->
     <string name="appwidget_upcoming">Aankomende evenementen</string>
     <string name="add_widget">Birday - aankomend</string>
-
     <!-- Search -->
     <string name="search_event">Zoeken…</string>
     <string name="search_no_result_title">Geen resultaten gevonden</string>
     <string name="search_no_result_description">Je zoekopdracht komt niet overeen met een gebeurtenis uit de Birday database!</string>
-    <string name="consider_year">Overweeg het jaar</string>
-
     <!-- Notes -->
     <string name="notes">Opmerkingen</string>
     <string name="write_something">Schrijf iets…</string>
-
     <!-- Overview -->
     <string name="overview">Overzicht</string>
     <string name="overview_description">Een jaarlijks overzicht van opgeslagen evenementen</string>
-
+    <!-- Experimental preferences -->
+    <string name="experimental_settings_title">Experimental</string>
+    <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
+    <string name="check_github">Check Github</string>
+    <string name="launch_auto_import">Auto import on launch</string>
+    <string name="hide_on_scroll">Hide navbar on scroll</string>
+    <string name="import_json">Import from JSON</string>
+    <string name="export_json">Export to JSON</string>
+    <string name="import_csv">Import from CSV</string>
+    <string name="export_csv">Export to CSV</string>
+    <string name="import_calendar">Import from calendar</string>
+    <string name="delete_db">Delete all the events</string>
+    <string name="delete_db_dialog_title">Are you sure?</string>
+    <string name="delete_db_dialog_description">Make sure to backup your events first, this operation will wipe the DB and should be used for debugging purposes only</string>
 </resources>
