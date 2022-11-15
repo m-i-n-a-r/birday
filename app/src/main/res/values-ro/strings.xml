@@ -17,7 +17,7 @@
     <string name="no_stats">Nu există statistici de afișat!</string>
     <string name="stats_summary">Sumar statistici</string>
     <string name="no_stats_description">Nu ai destule evenimente pentru a genera statistici. Adaugă unele și întoarce-te mai târziu!</string>
-    <plurals name="stats_total">
+    <plurals name="stats_total" comment="stats_total [one] [many] [other]">
         <item quantity="one">Birday te ajută să îți amintești un total de %d eveniment</item>
         <item quantity="few">Birday te ajută să îți amintești un total de %d evenimente</item>
         <item quantity="other">Birday te ajută să îți amintești un total de %d evenimente</item>
