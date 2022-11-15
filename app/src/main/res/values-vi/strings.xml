@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Vietnamese doesn't need plurals -->
     <string name="app_welcome">Birday Chào bạn</string>
     <string name="app_name_extended">Birday - Người quản lý sự kiện</string>
     <string name="leave_review_title">Đánh giá cho Birday</string>
@@ -30,7 +28,6 @@
     <plurals name="days_left">
         <item quantity="other">%d ngày còn lại</item>
     </plurals>
-
     <!-- Settings -->
     <string name="customization">Tùy biến</string>
     <string name="app_behavior">Hành vi ứng dụng</string>
@@ -54,6 +51,7 @@
     <string name="accent_name">Màu nhấn</string>
     <string name="theme_description">Sử dụng chủ đề ứng dụng tối, sáng hoặc tự động</string>
     <string name="theme_name">Chủ đề ứng dụng</string>
+    <!-- Untranslated for now -->
     <string name="aqua">Thủy màu xanh</string>
     <string name="brown">Nâu</string>
     <string name="blue">Xanh dương</string>
@@ -83,7 +81,7 @@
     <string name="import_nothing_found">Không tìm thấy sự kiện!</string>
     <string name="import_failed">Đã bị lỗi!</string>
     <string name="missing_permission_contacts">Sự cho phép liên lạc đã bị từ chối. Thử lại hoặc kích hoạt quyền theo cách thủ công, Nếu không, nhập danh bạ sẽ không hoạt động!</string>
-    <string name="missing_permission_contacts_forever">Birday không thể nhập danh bạ của bạn và không xin phép được. Lý do khi bạn bấm "không bao giờ hỏi lại". Kích hoạt thủ công!</string>
+    <string name="missing_permission_contacts_forever">Birday không thể nhập danh bạ của bạn và không xin phép được. Lý do khi bạn bấm \"không bao giờ hỏi lại\". Kích hoạt thủ công!</string>
     <string name="birday_import_title">Nhập bản sao lưu Birday</string>
     <string name="birday_import_description">Chọn một bản sao lưu Birday hợp lệ để tự khôi phục ngày sự kiện của bạn. Mọi dữ liệu hiện có sẽ bị ghi đè!</string>
     <string name="birday_export_title">Xuất khẩu và chia sẻ ngày sự kiện</string>
@@ -108,12 +106,13 @@
     <string name="battery_optimization_description">Mở cài đặt để tắt mọi tối ưu hóa cho Birday. Hữu ích nếu thông báo không hoạt động</string>
     <string name="notification_sound_title">Âm thanh thông báo</string>
     <string name="notification_sound_description">Phím tắt đến cài đặt âm thanh thông báo, nếu bạn không thích tiếng chim mặc định</string>
-
-
+    <string name="missing_permission_notifications">The notification permission was denied, and Birday can\'t send notifications! Activate the permission from settings.</string>
+    <string name="missing_permission_notifications_forever">The notification permission was denied and can\'t be asked again, so Birday can\'t send notifications! Activate the permission manually, from settings.</string>
+    <string name="missing_permission_calendar">The calendar permission was denied, and Birday can\'t import from calendar! Activate the permission from settings.</string>
+    <string name="missing_permission_calendar_forever">The calendar permission was denied and can\'t be asked again, so Birday can\'t import from calendar! Activate the permission manually, from settings.</string>
     <!-- Developer -->
     <string name="dev_description">Tôi là một chàng trai lịch sự và thích những thứ đẹp đẽ, như hoạt hình, biểu tượng, xe thể thao và in 3d. Tôi làm việc như một nhà thiết kế và kỹ sư máy tính.</string>
     <string name="easter_egg">Logo đẹp, ha? ;D</string>
-
     <!-- New event -->
     <string name="new_event">Sự kiện mới</string>
     <string name="new_event_description">Thêm một người mới mà bạn quan tâm rồi Birday sẽ giúp bạn tổ chức sinh nhật hoặc các sự kiện khác của họ!</string>
@@ -123,6 +122,7 @@
     <string name="insert_surname_hint">Thêm họ tên</string>
     <string name="insert_date_hint">Chọn ngày</string>
     <string name="invalid_value_name">Tên không hợp lệ!</string>
+    <string name="consider_year">Xem xét năm</string>
     <string name="event_type_hint">Thể loại của sự kiện</string>
     <string name="birthday">Ngày sinh nhật</string>
     <string name="anniversary">Dịp kỉ niệm</string>
@@ -130,7 +130,6 @@
     <string name="festivity">Lễ hội</string>
     <string name="name_day">Tên ngày</string>
     <string name="other">Khác</string>
-
     <!-- Event actions -->
     <string name="event_actions">Hành động</string>
     <string name="event_actions_description">Tại đây bạn có thể xóa hoặc sửa đổi sự kiện này!</string>
@@ -139,14 +138,12 @@
     <string name="update_event">Cập nhật sự kiện</string>
     <string name="share_event">Chia sẻ sự kiện</string>
     <string name="deleted">Đã xóa!</string>
-
     <!-- Event details -->
     <string name="event_details">Chi tiết</string>
     <string name="birth_date">Ngày sinh nhật</string>
     <string name="next_age">Tuổi tiếp theo:</string>
     <string name="zodiac_sign">Cung Hoàng Đạ:</string>
     <string name="chinese_zodiac_sign">Cung Hoàng Đạ Việt Nam:</string>
-
     <!-- Quick apps -->
     <string name="event_apps">Ứng dụng nhanh</string>
     <string name="event_apps_description">Ứng dụng để chúc mọi điều tốt đẹp cho nhanh!</string>
@@ -155,7 +152,6 @@
     <string name="wishes_birthday">Chúc mừng sinh nhật!</string>
     <string name="no_default_dialer">Không tìm được ứng dụng quay số mặc định!</string>
     <string name="no_default_sms">Không tìm được ứng dụng sms mặc định!</string>
-
     <!-- Statistics -->
     <string name="did_you_know">Bạn có biết không?</string>
     <string name="age_average">Tuổi trung bình là %s</string>
@@ -197,7 +193,6 @@
     <string name="zodiac_virgo">xử nữ</string>
     <string name="zodiac_libra">thiên bình</string>
     <string name="zodiac_scorpio">thiên yết</string>
-
     <!-- Common words -->
     <plurals name="months">
         <item quantity="other">%d tháng</item>
@@ -213,7 +208,6 @@
     <plurals name="event">
         <item quantity="other">sự kiện: %s</item>
     </plurals>
-
     <!-- Notifications -->
     <string name="events_notification_channel">Nhắc nhở sự kiện</string>
     <string name="events_channel_description">Nhắc nhở về những ngày sự kiện sắp tới trên Birday</string>
@@ -221,7 +215,6 @@
     <string name="notification_description_part_1">Hôm nay là sự kiện của</string>
     <string name="notification_description_part_2">Chúc bạn một ngày tuyệt vời!</string>
     <string name="additional_notification_text">Sự kiện sắp tới!</string>
-
     <!-- Introduction slides -->
     <string name="slide_one_title">Birday Chào bạn!</string>
     <string name="slide_one_description">Birday là một ứng dụng đơn giản và nhẹ để quản lý các sự kiện quan trọng! 
@@ -233,23 +226,32 @@
     <string name="slide_three_title">Nhập từ Danh bạ</string>
     <string name="slide_three_description">Bạn cũng có thể nhập ngày sự kiện mà bạn đã lưu từ Danh bạ của bạn. Birday có thể làm điều đó cho bạn, chỉ cần cấp quyền liên hệ. Thưởng thức!
     </string>
-
     <!-- Widget -->
     <string name="appwidget_upcoming">Sự kiện sắp tới</string>
     <string name="add_widget">Birday - sắp tới</string>
-
     <!-- Search -->
     <string name="search_event">Tìm kiếm…</string>
     <string name="search_no_result_title">Không có kết quả</string>
     <string name="search_no_result_description">Chuỗi tìm kiếm của bạn không khớp với bất kỳ sự kiện nào trong cơ sở dữ liệu của Birday!</string>
-    <string name="consider_year">Xem xét năm</string>
-
     <!-- Notes -->
     <string name="notes">Ghi chú</string>
     <string name="write_something">Viết vài thứ…</string>
-
     <!-- Overview -->
     <string name="overview">Tổng quat</string>
     <string name="overview_description">Tổng quan hàng năm về các sự kiện đã lưu</string>
-
+    <!-- Experimental preferences -->
+    <string name="experimental_settings_title">Experimental</string>
+    <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
+    <string name="check_github">Check Github</string>
+    <string name="launch_auto_import">Auto import on launch</string>
+    <string name="hide_on_scroll">Hide navbar on scroll</string>
+    <string name="import_json">Import from JSON</string>
+    <string name="export_json">Export to JSON</string>
+    <string name="import_csv">Import from CSV</string>
+    <string name="export_csv">Export to CSV</string>
+    <string name="import_calendar">Import from calendar</string>
+    <string name="delete_db">Delete all the events</string>
+    <string name="delete_db_dialog_title">Are you sure?</string>
+    <string name="delete_db_dialog_description">Make sure to backup your events first, this operation will wipe the DB and should be used for debugging purposes only</string>
 </resources>
