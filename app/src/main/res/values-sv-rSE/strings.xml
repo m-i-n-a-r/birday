@@ -17,7 +17,7 @@
     <string name="no_stats">Ingen statistik att visa!</string>
     <string name="stats_summary">Statistiköversikt</string>
     <string name="no_stats_description">Du har inte tillräckligt många händelser för att visa statistik. Lägg till några och kom tillbaka senare!</string>
-    <plurals name="stats_total">
+    <plurals name="stats_total" comment="stats_total [one] [many] [other]">
         <item quantity="one">Birday hjälper dig att komma ihåg totalt %d händelse</item>
         <item quantity="other">Birday hjälper dig att komma ihåg totalt %d händelser</item>
     </plurals>
