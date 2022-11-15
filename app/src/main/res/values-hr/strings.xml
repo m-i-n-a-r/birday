@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_welcome">Dobro došli u Birday</string>
     <string name="app_name_extended">Birday - Upravitelj Događajima</string>
     <string name="leave_review_title">Ocijenite Birday</string>
@@ -33,7 +32,6 @@
         <item quantity="few">za %d dana</item>
         <item quantity="other">za %d dana</item>
     </plurals>
-
     <!-- Settings -->
     <string name="customization">Prilagođavanje</string>
     <string name="app_behavior">Ponašanje aplikacije</string>
@@ -57,6 +55,7 @@
     <string name="accent_name">Boja sučelja</string>
     <string name="theme_description">Upotrijebite tamnu, svijetlu ili automatsku temu aplikacije</string>
     <string name="theme_name">Tema aplikacije</string>
+    <!-- Untranslated for now -->
     <string name="aqua">Aqua</string>
     <string name="brown">Smeđa</string>
     <string name="blue">Plava</string>
@@ -87,7 +86,7 @@
     <string name="import_failed">Uvoz neuspješan!</string>
     <string name="missing_permission_contacts">Dozvola za pristup kontaktima je odbijena. Pokušajte ponovo ili aktivirajte dozvolu ručno, ili uvoz kontakata neće uspjeti!</string>
     <string name="missing_permission_contacts_forever">Birday ne može tražiti dopuštenje za uvoz kontakata,
-    budući da ste označili "nikad više ne pitaj". Omogućite ga ručno!</string>
+    budući da ste označili \"nikad više ne pitaj\". Omogućite ga ručno!</string>
     <string name="birday_import_title">Uvezite sigurnosnu kopiju za Birday</string>
     <string name="birday_import_description">Odaberite valjanu sigurnosnu kopiju za Birday kako biste uvezli događaje. Svi postojeći podaci će biti izbrisani!</string>
     <string name="birday_export_title">Izvezite i podijelite događaje</string>
@@ -112,11 +111,13 @@
     <string name="battery_optimization_description">Prečac do postavki za onemogućavanje uštede baterije za Birday. Korisno ako obavijesti ne funkcioniraju</string>
     <string name="notification_sound_title">Zvuk obavijesti</string>
     <string name="notification_sound_description">Prečac do postavki zvuka obavijesti, ako vam se ne sviđa zadani zvuk ptica</string>
-
+    <string name="missing_permission_notifications">The notification permission was denied, and Birday can\'t send notifications! Activate the permission from settings.</string>
+    <string name="missing_permission_notifications_forever">The notification permission was denied and can\'t be asked again, so Birday can\'t send notifications! Activate the permission manually, from settings.</string>
+    <string name="missing_permission_calendar">The calendar permission was denied, and Birday can\'t import from calendar! Activate the permission from settings.</string>
+    <string name="missing_permission_calendar_forever">The calendar permission was denied and can\'t be asked again, so Birday can\'t import from calendar! Activate the permission manually, from settings.</string>
     <!-- Developer -->
     <string name="dev_description">Ja sam pristojan momak i volim lijepe stvari, poput animacija, ikona, sportskih automobila i 3D printanja. Radim kao dizajner i računalni inženjer.</string>
     <string name="easter_egg">Lijep logo, zar ne? ;D</string>
-
     <!-- New event -->
     <string name="new_event">Novi događaj</string>
     <string name="new_event_description">Unesite osobu do koje vam je stalo, a Birday će vam pomoći da zapamtite njihov rođendan ili bilo što drugo!!</string>
@@ -134,7 +135,6 @@
     <string name="festivity">Svečanost</string>
     <string name="name_day">Imendan</string>
     <string name="other">Ostalo</string>
-
     <!-- Event actions -->
     <string name="event_actions">Radnje</string>
     <string name="event_actions_description">Ovdje možete promijeniti ili ukloniti ovaj događaj!</string>
@@ -143,14 +143,12 @@
     <string name="update_event">Ažuriraj događaj</string>
     <string name="share_event">Podijeli događaj</string>
     <string name="deleted">Izbrisano!</string>
-
     <!-- Event details -->
     <string name="event_details">Detalji</string>
     <string name="birth_date">Datum rođenja</string>
     <string name="next_age">Sljedeća dob:</string>
     <string name="zodiac_sign">Horoskopski znak:</string>
     <string name="chinese_zodiac_sign">Kineski znak:</string>
-
     <!-- Quick apps -->
     <string name="event_apps">Brze aplikacije</string>
     <string name="event_apps_description">Aplikacije za brzo poželjeti sve najbolje!</string>
@@ -159,7 +157,6 @@
     <string name="wishes_birthday">Sretan rođendan!</string>
     <string name="no_default_dialer">Nije pronađena zadana aplikacija za biranje brojeva!</string>
     <string name="no_default_sms">Nije pronađena zadana aplikacija za SMS!</string>
-
     <!-- Statistics -->
     <string name="did_you_know">Jeste li znali?</string>
     <string name="age_average">Prosječna dob je: %s</string>
@@ -203,7 +200,6 @@
     <string name="zodiac_virgo">djevica</string>
     <string name="zodiac_libra">vaga</string>
     <string name="zodiac_scorpio">škorpion</string>
-
     <!-- Common words -->
     <plurals name="months">
         <item quantity="one">%d mjesec</item>
@@ -225,7 +221,6 @@
         <item quantity="few">događaja: %s</item>
         <item quantity="other">događaja: %s</item>
     </plurals>
-
     <!-- Notifications -->
     <string name="events_notification_channel">Podsjetnik</string>
     <string name="events_channel_description">Podsjetnici na predstojeće događaji od Birday-a</string>
@@ -233,7 +228,6 @@
     <string name="notification_description_part_1">Današnji su događaji</string>
     <string name="notification_description_part_2">Ugodan dan!</string>
     <string name="additional_notification_text">Nadolazeći događaji!</string>
-
     <!-- Introduction slides -->
     <string name="slide_one_title">Dobrodošli u Birday!</string>
     <string name="slide_one_description">Birday je jednostavna i lagana aplikacija za upravljanje važnim događajima!
@@ -248,22 +242,32 @@
     <string name="slide_three_description">Također je moguće uvesti već spremljene događaje 
     iz vaših kontakata. Birday to može učiniti umjesto vas, samo dopustite pristup kontaktima. Uživajte!
     </string>
-
     <!-- Widget -->
     <string name="appwidget_upcoming">Nadolazeći događaji</string>
     <string name="add_widget">Birday - Nadolazeće</string>
-
     <!-- Search -->
     <string name="search_event">Pretražite…</string>
     <string name="search_no_result_title">Nema rezultata</string>
     <string name="search_no_result_description">Vaš upit ne podudara se ni s jednim događajem koji ste dodali!</string>
-
     <!-- Notes -->
     <string name="notes">Bilješke</string>
     <string name="write_something">Napišite nešto…</string>
-
     <!-- Overview -->
     <string name="overview">Pregled</string>
     <string name="overview_description">Godišnji pregled spremljenih događaja</string>
-
+    <!-- Experimental preferences -->
+    <string name="experimental_settings_title">Experimental</string>
+    <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
+    <string name="check_github">Check Github</string>
+    <string name="launch_auto_import">Auto import on launch</string>
+    <string name="hide_on_scroll">Hide navbar on scroll</string>
+    <string name="import_json">Import from JSON</string>
+    <string name="export_json">Export to JSON</string>
+    <string name="import_csv">Import from CSV</string>
+    <string name="export_csv">Export to CSV</string>
+    <string name="import_calendar">Import from calendar</string>
+    <string name="delete_db">Delete all the events</string>
+    <string name="delete_db_dialog_title">Are you sure?</string>
+    <string name="delete_db_dialog_description">Make sure to backup your events first, this operation will wipe the DB and should be used for debugging purposes only</string>
 </resources>
