@@ -17,7 +17,7 @@
     <string name="no_stats">Geen statistieken beschikbaar!</string>
     <string name="stats_summary">Overzicht statistieken</string>
     <string name="no_stats_description">Je hebt te weinig evenementen om statistieken te laten zien. Voeg er een aantal toe en kom dan terug!</string>
-    <plurals name="stats_total">
+    <plurals name="stats_total" comment="stats_total [one] [many] [other]">
         <item quantity="one">Birday herinnert je aan %d evenement</item>
         <item quantity="other">Birday herinnert je aan %d evenementen</item>
     </plurals>
