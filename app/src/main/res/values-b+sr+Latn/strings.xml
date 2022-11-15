@@ -17,7 +17,7 @@
     <string name="no_stats">Nema statistika za prikaz!</string>
     <string name="stats_summary">Rezime statistika</string>
     <string name="no_stats_description">Nemate dovoljno događaja za generisanje statistike. Dodajte ih nekoliko i vratite se kasnije!</string>
-    <plurals name="stats_total">
+    <plurals name="stats_total" comment="stats_total [one] [many] [other]">
         <item quantity="one">Birday vam pomaže da se setite ukupno %d događaja</item>
         <item quantity="few">Birday vam pomaže da se setite ukupno %d događaja</item>
         <item quantity="other">Birday vam pomaže da se setite ukupno %d događaja</item>
