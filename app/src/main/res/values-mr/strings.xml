@@ -17,7 +17,7 @@
     <string name="no_stats">दाखवण्यासाठी कोणतीही आकडेवारी नाही!</string>
     <string name="stats_summary">आकडेवारीचा सारांश</string>
     <string name="no_stats_description">तुमच्याकडे आकडेवारी व्युत्पन्न करण्यासाठी पुरेसे कार्यक्रम नाहीत. काही जोडा आणि नंतर परत या!</string>
-    <plurals name="stats_total">
+    <plurals name="stats_total" comment="stats_total [one] [many] [other]">
         <item quantity="one">Birday तुम्हाला एकूण %d कार्यक्रम लक्षात ठेवण्यास मदत करत आहे</item>
         <item quantity="other">Birday तुम्हाला एकूण %d कार्यक्रम लक्षात ठेवण्यास मदत करत आहे</item>
     </plurals>
