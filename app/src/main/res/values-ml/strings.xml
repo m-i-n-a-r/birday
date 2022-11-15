@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name" translatable="false">Birday</string>
     <string name="app_welcome">ബെർഡേ -യിലേക്ക്‌ സ്വാഗതം </string>
     <string name="app_name_extended">ബെർഡേ-ഇവന്റ് മനേജർ  </string>
     <string name="leave_review_title">ബെർഡേ -യെ പറ്റിയുള്ള അഭിപ്രായം </string>
@@ -20,8 +18,8 @@
     <string name="stats_summary">സ്ഥിതിവിവര ചുരുക്കം</string>
     <string name="no_stats_description">താങ്കൾക്ക്, സ്ഥിതിവിവരങ്ങൾ തയാറാക്കാൻ ആവിശ്യമായ ഇവന്റുകൾ നിലവിൽ ഇല്ല. ഇവെന്റുകൾ ചേർത്തതിന് ശേഷം വീണ്ടും വരുക!</string>
     <plurals name="stats_total">
-	<item quantity="one">ആകെ %d ഇവന്റ് ഓർത്തെടുക്കാൻ ബെർഡേ താങ്കളെ സഹായിക്കുന്നു</item>
-	<item quantity="other">ആകെ %d ഇവന്റുകൾ ഓർത്തെടുക്കാൻ ബെർഡേ താങ്കളെ സഹായിക്കുന്നു</item>
+        <item quantity="one">ആകെ %d ഇവന്റ് ഓർത്തെടുക്കാൻ ബെർഡേ താങ്കളെ സഹായിക്കുന്നു</item>
+        <item quantity="other">ആകെ %d ഇവന്റുകൾ ഓർത്തെടുക്കാൻ ബെർഡേ താങ്കളെ സഹായിക്കുന്നു</item>
     </plurals>
     <string name="next_event">അടുത്ത ഇവൻറ്</string>
     <string name="no_next_event">കാണിക്കുവാൻ ഇവന്റുകൾ ഒന്നും തന്നെ ഇല്ല!</string>
@@ -32,7 +30,6 @@
         <item quantity="one">%d ദിവസം കൂടെ</item>
         <item quantity="other">%d ദിവസങ്ങൾ കൂടെ</item>
     </plurals>
-
     <!-- Settings -->
     <string name="customization">മാറ്റം വരുത്തുക </string>
     <string name="app_behavior">ആപ്പിന്റെ പെരുമാറ്റം</string>
@@ -56,6 +53,7 @@
     <string name="accent_name">അക്‌സെന്റ് കളർ</string>
     <string name="theme_description">ഡാർക്കോ ലൈറ്റോ ഓട്ടോമാറ്റിക് തീമോ ഉപയോഗിക്കുക</string>
     <string name="theme_name">ആപ്പ് തീം</string>
+    <!-- Untranslated for now -->
     <string name="aqua">അക്വാ</string>
     <string name="brown">ബ്രൗൺ</string>
     <string name="blue">നീല</string>
@@ -85,6 +83,8 @@
     <string name="import_nothing_found">ഇവെന്റുകൾ ഒന്നും തന്നെ ഇല്ല!</string>
     <string name="import_failed">എവിടെയോ എന്തോ തകരാറു ഉള്ളത് പോലെ!</string>
     <string name="missing_permission_contacts">കോൺടാക്ട് അനുമതി നിഷേധിച്ചിരിക്കുന്നു. സ്വയം അനുമതി നൽകുക അല്ലേൽ വീണ്ടും ശ്രമിക്കുക. </string>
+    <string name="missing_permission_contacts_forever">Birday can\'t ask for permission to import contacts,
+    since you checked \"never ask again\". Enable it manually!</string>
     <string name="birday_import_title">ബെർഡേ ബാക്കപ്പ് കൊണ്ടുവരുക</string>
     <string name="birday_import_description">ശെരിയായ ബാക്കപ്പ് തിരഞ്ഞെടുക്കുന്നതിലൂടെ താങ്കളുടെ എല്ലാ ഇവന്റും തിരികെ കൊണ്ടുവരാനാകും. നിലവിൽ ഉള്ള എല്ലാവിവരങ്ങളും പുതുക്കപ്പെടും!</string>
     <string name="birday_export_title">ഇവെന്റുകൾ കൊണ്ടുപോകാനും പങ്കുവയ്ക്കാനും</string>
@@ -104,18 +104,18 @@
     <string name="notification_only_favorites">പ്രിയപ്പെട്ടവ മാത്രം</string>
     <string name="notification_only_favorites_description_on">പ്രിയപ്പെട്ട ഇവന്റസിനു മാത്രം അറിയിപ്പുകൾ കാണിക്കുക</string>
     <string name="notification_only_favorites_description_off">എല്ലാ ഇവന്റസിനും അറിയിപ്പുകൾ കാണിക്കുക</string>
-
+    <string name="troubleshoot">Troubleshoot and extra</string>
+    <string name="battery_optimization_title">Disable battery optimization</string>
+    <string name="battery_optimization_description">Open the settings to disable any optimization for Birday. Useful if notifications aren\'t working</string>
+    <string name="notification_sound_title">Notification sound</string>
+    <string name="notification_sound_description">Shortcut to the notification sound settings, if you don\'t like the default bird sound</string>
+    <string name="missing_permission_notifications">The notification permission was denied, and Birday can\'t send notifications! Activate the permission from settings.</string>
+    <string name="missing_permission_notifications_forever">The notification permission was denied and can\'t be asked again, so Birday can\'t send notifications! Activate the permission manually, from settings.</string>
+    <string name="missing_permission_calendar">The calendar permission was denied, and Birday can\'t import from calendar! Activate the permission from settings.</string>
+    <string name="missing_permission_calendar_forever">The calendar permission was denied and can\'t be asked again, so Birday can\'t import from calendar! Activate the permission manually, from settings.</string>
     <!-- Developer -->
-    <string name="dev_name" translatable="false">m.i.n.a.r.</string>
     <string name="dev_description">ഞാൻ ഒരു സൗമ്യനാണ്. എനിക്ക് സൗദര്യമുള്ള കാര്യങ്ങൾ എല്ലാം ഇഷ്ടമാണ്, ഉദാഹരണത്തിന് അനിമേഷൻ ,ഐക്കൺസ്, സ്പോർട്സ് കാർ , ത്രീ ഡി പ്രിന്റിംഗ്. ഞാൻ ഒരു ഡിസൈനർ ആയും കമ്പ്യൂട്ടർ എഞ്ചിനീയർ ആയും ജോലി ചെയ്യുന്നു.</string>
-    <string name="dev_email" translatable="false">minar.tastic@gmail.com</string>
-    <string name="dev_personal_site" translatable="false">https://minar.ml</string>
-    <string name="dev_instagram" translatable="false">https://www.instagram.com/minar.tastic/</string>
-    <string name="dev_twitter" translatable="false">https://twitter.com/MinarTastic</string>
-    <string name="dev_github" translatable="false">https://github.com/m-i-n-a-r</string>
-    <string name="dev_other_apps" translatable="false">https://play.google.com/store/apps/dev?id=7720251761301594831</string>
     <string name="easter_egg">നല്ല ലോഗോ ആണല്ലേ?</string>
-
     <!-- New event -->
     <string name="new_event">പുതിയ ഇവന്റ്</string>
     <string name="new_event_description">നിങ്ങൾക്ക് പ്രിയപ്പെട്ട വ്യക്തിയുടെ പേര് ചേർക്കുക, ബെർഡേ അവരുടെ ജന്മദിനമോ മറ്റ്   ഇവെന്റുകളോ ഓർത്തെടുക്കാൻ  നിങ്ങളെ സഹായിക്കും!</string>
@@ -133,7 +133,6 @@
     <string name="festivity">ആഘോഷം</string>
     <string name="name_day">വിശേഷ ദിവസം</string>
     <string name="other">മറ്റുള്ളവ</string>
-
     <!-- Event actions -->
     <string name="event_actions">ആക്ഷൻസ്</string>
     <string name="event_actions_description">ഇവിടെ നിങ്ങൾക്ക് ഇവന്ററുകൾ മാറ്റംവരുത്താനും ഒഴിവാക്കാനും കഴിയും!</string>
@@ -142,26 +141,20 @@
     <string name="update_event">ഇവന്റ് പുതുക്കുക</string>
     <string name="share_event">ഇവന്റ് പങ്കുവയ്ക്കുക</string>
     <string name="deleted">ഒഴിവാക്കി!</string>
-
     <!-- Event details -->
     <string name="event_details">വിശദാംശങ്ങൾ</string>
     <string name="birth_date">ജനന തിയതി</string>
     <string name="next_age">അടുത്ത വയസ്സ്:</string>
     <string name="zodiac_sign">രാശിചക്ര  ചിഹ്നം:</string>
     <string name="chinese_zodiac_sign">ചൈനീസ് ചിഹ്നം:</string>
-
     <!-- Quick apps -->
     <string name="event_apps">ക്വിക്ക് ആപ്പ്സ്</string>
     <string name="event_apps_description">ആശംസകൾ പെട്ടെന്ന് അയയ്ക്കാൻവേണ്ടി ആപ്പുകൾ!</string>
-    <string name="whatsapp" translatable="false">Whatsapp</string>
-    <string name="signal" translatable="false">Signal</string>
-    <string name="telegram" translatable="false">Telegram</string>
     <string name="textMessage">ടെക്സ്റ്റ് സന്ദേശം</string>
     <string name="dialer">ഡയലർ</string>
     <string name="wishes_birthday">ജന്മദിനാശംസകൾ!</string>
     <string name="no_default_dialer">സ്ഥിര ഡയലർ ആപ്ലിക്കേഷൻ കണ്ടെത്താൻ കഴിഞ്ഞില്ല!</string>
     <string name="no_default_sms">സ്ഥിര എസ് എം എസ് അപ്ലിക്കേഷൻ കണ്ടെത്താൻ കഴിഞ്ഞില്ല!</string>
-
     <!-- Statistics -->
     <string name="did_you_know">നിങ്ങൾക്ക് അറിയാമോ?</string>
     <string name="age_average">ശരാശരി പ്രായം %s</string>
@@ -204,7 +197,6 @@
     <string name="zodiac_virgo">കന്നിരാശി</string>
     <string name="zodiac_libra">തുലാംരാശി</string>
     <string name="zodiac_scorpio">വൃശ്ചികരാശി</string>
-
     <!-- Common words -->
     <plurals name="months">
         <item quantity="one">%d മാസം </item>
@@ -219,13 +211,10 @@
     </plurals>
     <string name="born_in">ജനിച്ചത്</string>
     <string name="and">-നും</string>
-    <string name="unknown" translatable="false">\??</string>
-    <string name="exclamation" translatable="false">! !</string>
     <plurals name="event">
         <item quantity="one">ഇവന്റ്</item>
         <item quantity="other">ഇവന്റുകൾ</item>
     </plurals>
-
     <!-- Notifications -->
     <string name="events_notification_channel">ഇവന്റ് ഓർമപ്പെടുത്തൽ</string>
     <string name="events_channel_description">ബെർടെയിൽ നിന്ന് വരാനിരിക്കുന്ന ഇവന്റുകളുടെ ഓർമപ്പെടുത്തൽ</string>
@@ -233,7 +222,6 @@
     <string name="notification_description_part_1">ഇന്നത്തെ ഇവന്റുകൾ </string>
     <string name="notification_description_part_2">നല്ലൊരു ദിവസം ആശംസിക്കുന്നു!</string>
     <string name="additional_notification_text">വരാനിരിക്കുന്ന ഇവന്റുകൾ!</string>
-
     <!-- Introduction slides -->
     <string name="slide_one_title">ബെർഡേയിലേക്ക് സ്വാഗതം!</string>
     <string name="slide_one_description">പ്രധാനപ്പെട്ട ഇവെന്റുകൾ നിയന്ത്രിക്കാൻ ഉള്ള ലളിതവും ലഘൂകരവുമായ ഒരു ആപ്പ് ആണ് ബെർഡേ.
@@ -248,22 +236,32 @@
     <string name="slide_three_description">കോണ്ടാക്ടുകളിൽ നിന്ന് ഇവന്റ് കൊണ്ടുവരാനാകും, അതിനു  കോണ്ടാക്ട് അനുമതി ആവിശ്യമാണ്.
 	 അനുമതി നൽകിയാൽ ബെർഡേ നിങ്ങൾക്കുവേണ്ടി അത് ചെയ്യും. ആസ്വദിക്കുക!
     </string>
-
     <!-- Widget -->
     <string name="appwidget_upcoming">വരാൻ ഇരിക്കുന്ന ഇവെന്റുകൾ</string>
     <string name="add_widget">ബെർഡേ - വരാനിരിക്കുന്നത് </string>
-
     <!-- Search -->
     <string name="search_event">തിരയുക …</string>
     <string name="search_no_result_title">ഒന്നും കണ്ടെത്താൻ കഴിഞ്ഞില്ല</string>
     <string name="search_no_result_description">നിങ്ങൾ തിരഞ്ഞത് ,മുൻപ് ചേർത്തിട്ടുള്ള ഇവെന്റുകളിൽ ഒന്നും കണ്ടെത്താൻ ആയില്ല!</string>
-
     <!-- Notes -->
     <string name="notes">കുറിപ്പുകൾ </string>
     <string name="write_something">എന്തെങ്കിലും എഴുതുക …</string>
-
     <!-- Overview -->
     <string name="overview">അവലോകനം</string>
     <string name="overview_description">ഒരു വർഷത്തെ മുഴുവൻ ഇവെന്റുകളുടെയും പൊതുവായ അവലോകനം</string>
-
+    <!-- Experimental preferences -->
+    <string name="experimental_settings_title">Experimental</string>
+    <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
+    <string name="check_github">Check Github</string>
+    <string name="launch_auto_import">Auto import on launch</string>
+    <string name="hide_on_scroll">Hide navbar on scroll</string>
+    <string name="import_json">Import from JSON</string>
+    <string name="export_json">Export to JSON</string>
+    <string name="import_csv">Import from CSV</string>
+    <string name="export_csv">Export to CSV</string>
+    <string name="import_calendar">Import from calendar</string>
+    <string name="delete_db">Delete all the events</string>
+    <string name="delete_db_dialog_title">Are you sure?</string>
+    <string name="delete_db_dialog_description">Make sure to backup your events first, this operation will wipe the DB and should be used for debugging purposes only</string>
 </resources>
