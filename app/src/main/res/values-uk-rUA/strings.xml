@@ -17,7 +17,7 @@
     <string name="no_stats">Жодної статистики!</string>
     <string name="stats_summary">Підсумок статистики</string>
     <string name="no_stats_description">У вас не достатньо подій для генерації статистики. Додайте декілька подій та повертайтеся!</string>
-    <plurals name="stats_total">
+    <plurals name="stats_total" comment="stats_total [one] [many] [other]">
         <item quantity="one">Birday допомагає вам запам\'ятати %d подію</item>
         <item quantity="few">Birday допомагає вам запам\'ятати %d події</item>
         <item quantity="many">Birday допомагає вам запам\'ятати %d подій</item>
