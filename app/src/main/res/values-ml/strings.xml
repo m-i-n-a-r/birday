@@ -17,7 +17,7 @@
     <string name="no_stats">കാണിക്കുവാൻ സ്ഥിതിവിവരങ്ങൾ ഒന്നും തന്നെ ഇല്ല!</string>
     <string name="stats_summary">സ്ഥിതിവിവര ചുരുക്കം</string>
     <string name="no_stats_description">താങ്കൾക്ക്, സ്ഥിതിവിവരങ്ങൾ തയാറാക്കാൻ ആവിശ്യമായ ഇവന്റുകൾ നിലവിൽ ഇല്ല. ഇവെന്റുകൾ ചേർത്തതിന് ശേഷം വീണ്ടും വരുക!</string>
-    <plurals name="stats_total">
+    <plurals name="stats_total" comment="stats_total [one] [many] [other]">
         <item quantity="one">ആകെ %d ഇവന്റ് ഓർത്തെടുക്കാൻ ബെർഡേ താങ്കളെ സഹായിക്കുന്നു</item>
         <item quantity="other">ആകെ %d ഇവന്റുകൾ ഓർത്തെടുക്കാൻ ബെർഡേ താങ്കളെ സഹായിക്കുന്നു</item>
     </plurals>
