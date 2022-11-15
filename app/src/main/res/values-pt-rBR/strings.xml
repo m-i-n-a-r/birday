@@ -17,7 +17,7 @@
     <string name="no_stats">Sem estatísticas para mostrar!</string>
     <string name="stats_summary">Resumo estatístico</string>
     <string name="no_stats_description">Você não tem eventos suficientes para exibir as estatísticas. Adicione alguns e volte mais tarde!</string>
-    <plurals name="stats_total">
+    <plurals name="stats_total" comment="stats_total [one] [many] [other]">
         <item quantity="one">O Birday está ajudando você a se lembrar de um total de %d evento</item>
         <item quantity="other">O Birday está ajudando você a se lembrar de um total de %d eventos</item>
     </plurals>
