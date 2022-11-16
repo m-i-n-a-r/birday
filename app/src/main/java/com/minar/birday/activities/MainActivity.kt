@@ -565,7 +565,7 @@ class MainActivity : AppCompatActivity() {
                     if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CALENDAR))
                         showSnackbar(
                             getString(R.string.missing_permission_calendar),
-                            actionText = getString(R.string.title_settings),
+                            actionText = getString(R.string.cancel),
                             action = fun() {
                                 askCalendarPermission()
                             })

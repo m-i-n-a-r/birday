@@ -45,9 +45,6 @@
     <!-- Export to JSON -->
     <com.minar.birday.preferences.backup.JsonExporter android:layout="@layout/json_export_row" />
 
-    <!-- Import from calendar -->
-    <com.minar.birday.preferences.backup.CalendarImporter android:layout="@layout/calendar_import_row" />
-
     <!-- Clear DB (with confirmation dialog) -->
     <com.minar.birday.preferences.standard.ClearDBPreference android:layout="@layout/clear_db_row" />
 
