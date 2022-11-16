@@ -45,6 +45,9 @@
     <string name="five_days_before">Cu cinci zile înainte</string>
     <string name="six_days_before">Cu şase zile înainte</string>
     <string name="seven_days_before">Cu şapte zile înainte</string>
+    <string name="ten_days_before">Ten days before</string>
+    <string name="fourteen_days_before">Fourteen days before</string>
+    <string name="twentyone_days_before">Twentyone days before</string>
     <string name="vibration_name">Vibrare</string>
     <string name="vibration_description_on">Vibrează când este apăsat un buton</string>
     <string name="vibration_description_off">Fără vibrații atunci când este apăsat un buton</string>
@@ -118,6 +121,8 @@
     <string name="missing_permission_notifications_forever">Permisiunea de notificare a fost refuzată și nu poate fi solicitată din nou, așa că Birday nu poate trimite notificări! Activează permisiunea manual în setări.</string>
     <string name="missing_permission_calendar">Permisiunea pentru calendar a fost refuzată, iar Birday nu poate importa din calendar! Activează permisiunea în Setări.</string>
     <string name="missing_permission_calendar_forever">Permisiunea pentru calendar a fost refuzată și nu poate fi solicitată din nou, așa că Birday nu poate importa din calendar! Activează permisiunea manual în Setări.</string>
+    <string name="import_calendar_title">Import from calendar</string>
+    <string name="import_calendar_description">Import any yearly event from your calendars. Remember to set the event type and year to keep things ordered!</string>
     <!-- Developer -->
     <string name="dev_description">Sunt un tip politicos și îmi plac lucruri frumoase, precum animații, pictograme, mașini sportive și imprimare 3D. Eu lucrez ca designer și inginer de calculatoare.</string>
     <string name="easter_egg">Frumoasă siglă, nu? ;D</string>
@@ -263,6 +268,15 @@
     <string name="experimental_settings_description">Unele setări și funcții experimentale sau cu erori. Folosește-le pe propriul risc</string>
     <string name="experimental_disclaimer">Următoarele caracteristici sunt experimentale și este posibil să nu funcționeze corect. Folosește-le pe propriul risc. Consultă Github pentru orice progres, deoarece unele dintre aceste caracteristici ar putea fi „promovate” și traduse</string>
     <string name="check_github">Verifică Github</string>
+    <string name="launch_auto_import_description_off">Birday won\'t import contacts automatically when launched</string>
+    <string name="launch_auto_import_description_on">Birday will automatically sync with contacts at startup</string>
+    <string name="hide_on_scroll_description_on">Hide the bottom navbar when you scroll</string>
+    <string name="hide_on_scroll_description_off">The bottom navbar will always be visible</string>
+    <string name="import_json_description">Import from a JSON file. Refer to the wiki on Github for the required file structure</string>
+    <string name="export_json_description">Export each event to a JSON file, image excluded</string>
+    <string name="import_csv_description">Import from a CSV file. Refer to the wiki on Github for the required file structure</string>
+    <string name="export_csv_description">Export each event to a CSV file, image excluded</string>
+    <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
     <string name="launch_auto_import_title">Import automat la lansare</string>
     <string name="hide_on_scroll_title">Ascunde bara de navigare la derulare</string>
     <string name="import_json_title">Import din JSON</string>
@@ -271,6 +285,10 @@
     <string name="export_csv_title">Exportare în CSV</string>
     <string name="import_calendar_title">Import din calendar</string>
     <string name="delete_db_title">Șterge toate evenimentele</string>
+
     <string name="delete_db_dialog_title">Ești sigur?</string>
     <string name="delete_db_dialog_description">Asigură-te că faci mai întâi o copie de rezervă a evenimentelor, această operațiune va șterge baza de date și ar trebui să fie utilizată numai în scopuri de depanare</string>
+    <string name="delete_search_title">Delete search selection</string>
+    <string name="delete_search_description_off">It won\'t be possible to delete multiple events at once</string>
+    <string name="delete_search_description_on">Press the trash button when you search one or more events to quickly delete them all from Birday. Use with caution!</string>
 </resources>

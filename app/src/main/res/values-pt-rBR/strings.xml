@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_welcome">Bem-vindo ao Birday</string>
     <string name="app_name_extended">Birday - Gerenciador de Eventos</string>
     <string name="leave_review_title">Avalie o Birday</string>
@@ -31,7 +30,6 @@
         <item quantity="one">%d dia restante</item>
         <item quantity="other">%d dias restantes</item>
     </plurals>
-
     <!-- Settings -->
     <string name="customization">Costumização</string>
     <string name="app_behavior">Comportamento do aplicativo</string>
@@ -45,6 +43,9 @@
     <string name="five_days_before">Cinco dias antes</string>
     <string name="six_days_before">Seis dias antes</string>
     <string name="seven_days_before">Sete dias antes</string>
+    <string name="ten_days_before">Ten days before</string>
+    <string name="fourteen_days_before">Fourteen days before</string>
+    <string name="twentyone_days_before">Twentyone days before</string>
     <string name="vibration_name">Vibração</string>
     <string name="vibration_description_on">Vibrar quando um botão é pressionado</string>
     <string name="vibration_description_off">Sem vibrações quando um botão é pressionado</string>
@@ -55,6 +56,7 @@
     <string name="accent_name">Cor de destaque</string>
     <string name="theme_description">Use um tema de aplicativo escuro, claro ou automático</string>
     <string name="theme_name">Tema do aplicativo</string>
+    <!-- Untranslated for now -->
     <string name="aqua">Água</string>
     <string name="brown">Castanho</string>
     <string name="blue">Azul</string>
@@ -84,7 +86,7 @@
     <string name="import_nothing_found">Nenhum evento encontrado!</string>
     <string name="import_failed">Algo deu errado!</string>
     <string name="missing_permission_contacts">A permissão de contato foi negada. Tente novamente ou ative a permissão manualmente, ou a importação de contatos não funcionará!</string>
-    <string name="missing_permission_contacts_forever">O Birday não pôde importar seus contatos e nem pedir permissão, pois você marcou "nunca perguntar novamente". Habilite-o manualmente!</string>
+    <string name="missing_permission_contacts_forever">O Birday não pôde importar seus contatos e nem pedir permissão, pois você marcou \"nunca perguntar novamente\". Habilite-o manualmente!</string>
     <string name="birday_import_title">Importar um backup do Birday</string>
     <string name="birday_import_description">Escolha um backup Birday válido para restaurar manualmente seus eventos. Todos os dados existentes serão sobrescrito!</string>
     <string name="birday_export_title">Exportar e compartilhar eventos</string>
@@ -109,11 +111,15 @@
     <string name="battery_optimization_description">Abra as configurações para desativar qualquer otimização para Birday. Útil se as notificações não estiverem funcionando</string>
     <string name="notification_sound_title">Som de notificação</string>
     <string name="notification_sound_description">Atalho para as configurações de som de notificação, se você não gostar do som padrão do pássaro</string>
-
+    <string name="missing_permission_notifications">The notification permission was denied, and Birday can\'t send notifications! Activate the permission from settings.</string>
+    <string name="missing_permission_notifications_forever">The notification permission was denied and can\'t be asked again, so Birday can\'t send notifications! Activate the permission manually, from settings.</string>
+    <string name="missing_permission_calendar">The calendar permission was denied, and Birday can\'t import from calendar! Activate the permission from settings.</string>
+    <string name="missing_permission_calendar_forever">The calendar permission was denied and can\'t be asked again, so Birday can\'t import from calendar! Activate the permission manually, from settings.</string>
+    <string name="import_calendar_title">Import from calendar</string>
+    <string name="import_calendar_description">Import any yearly event from your calendars. Remember to set the event type and year to keep things ordered!</string>
     <!-- Developer -->
     <string name="dev_description">Sou um cara educado e gosto de coisas bonitas, como animações, ícones, carros esporte e impressão 3D. Trabalho como designer e engenheiro de computação.</string>
     <string name="easter_egg">Belo logotipo, hein? ;D</string>
-
     <!-- New event -->
     <string name="new_event">Novo evento</string>
     <string name="new_event_description">Insira uma nova pessoa de quem você gosta e Birday o ajudará a lembrar o aniversário dele/dela e outro!</string>
@@ -131,7 +137,6 @@
     <string name="festivity">Festividade</string>
     <string name="name_day">Nome-dia</string>
     <string name="other">Outro</string>
-
     <!-- Event actions -->
     <string name="event_actions">Ações</string>
     <string name="event_actions_description">Aqui você pode deletar ou modificar facilmente este evento!</string>
@@ -140,14 +145,12 @@
     <string name="update_event">Atualizar evento</string>
     <string name="share_event">Compartilhar evento</string>
     <string name="deleted">Apagado!</string>
-
     <!-- Event details -->
     <string name="event_details">Detalhes</string>
     <string name="birth_date">Data de nascimento</string>
     <string name="next_age">Próxima idade:</string>
     <string name="zodiac_sign">Signo do zodíaco:</string>
     <string name="chinese_zodiac_sign">Signo chinês:</string>
-
     <!-- Quick apps -->
     <string name="event_apps">Aplicativos rápidos</string>
     <string name="event_apps_description">Apps para desejar tudo de bom rapidamente!</string>
@@ -156,7 +159,6 @@
     <string name="wishes_birthday">Feliz Aniversário!</string>
     <string name="no_default_dialer">Nenhum aplicativo discador padrão encontrado!</string>
     <string name="no_default_sms">Nenhum aplicativo SMS padrão encontrado!</string>
-
     <!-- Statistics -->
     <string name="did_you_know">Você sabia?</string>
     <string name="age_average">A idade média é %s</string>
@@ -199,7 +201,6 @@
     <string name="zodiac_virgo">virgem</string>
     <string name="zodiac_libra">libra</string>
     <string name="zodiac_scorpio">escorpião</string>
-
     <!-- Common words -->
     <plurals name="months">
         <item quantity="one">%d mês</item>
@@ -218,7 +219,6 @@
         <item quantity="one">evento: %s</item>
         <item quantity="other">eventos: %s</item>
     </plurals>
-
     <!-- Notifications -->
     <string name="events_notification_channel">Lembrete de Evento</string>
     <string name="events_channel_description">Lembretes sobre os próximos eventos no Birday</string>
@@ -226,7 +226,6 @@
     <string name="notification_description_part_1">Os eventos de hoje são</string>
     <string name="notification_description_part_2">Tenha um ótimo dia!</string>
     <string name="additional_notification_text">Próximos eventos!</string>
-
     <!-- Introduction slides -->
     <string name="slide_one_title">Bem-vindo ao Birday!</string>
     <string name="slide_one_description">Birday é um aplicativo simples e leve para gerenciar eventos importantes! Você pode usá-lo para lembrar e armazenar os aniversários das pessoas que você ama e outro, de maneira confiável e rápida.
@@ -237,22 +236,43 @@
     <string name="slide_three_title">Importar de contatos</string>
     <string name="slide_three_description">Também é possível importar os eventos que você já salvou de seus contatos. Birday pode fazer isso por você, basta conceder permissão aos contatos. Aproveite!
     </string>
-
     <!-- Widget -->
     <string name="appwidget_upcoming">Próximos eventos</string>
     <string name="add_widget">Birday - Próximos</string>
-
     <!-- Search -->
     <string name="search_event">Pesquisa…</string>
     <string name="search_no_result_title">Nenhum resultado encontrado</string>
     <string name="search_no_result_description">Sua pesquisa não corresponde a nenhum evento que você adicionou!</string>
-
     <!-- Notes -->
     <string name="notes">Notas</string>
     <string name="write_something">Escreva algo…</string>
-
     <!-- Overview -->
     <string name="overview">Visão geral</string>
     <string name="overview_description">Uma visão geral anual dos eventos salvos</string>
-
+    <!-- Experimental preferences -->
+    <string name="experimental_settings_title">Experimental</string>
+    <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
+    <string name="check_github">Check Github</string>
+    <string name="launch_auto_import_title">Auto import on launch</string>
+    <string name="launch_auto_import_description_off">Birday won\'t import contacts automatically when launched</string>
+    <string name="launch_auto_import_description_on">Birday will automatically sync with contacts at startup</string>
+    <string name="hide_on_scroll_title">Hide navbar on scroll</string>
+    <string name="hide_on_scroll_description_on">Hide the bottom navbar when you scroll</string>
+    <string name="hide_on_scroll_description_off">The bottom navbar will always be visible</string>
+    <string name="import_json_title">Import from JSON</string>
+    <string name="import_json_description">Import from a JSON file. Refer to the wiki on Github for the required file structure</string>
+    <string name="export_json_title">Export to JSON</string>
+    <string name="export_json_description">Export each event to a JSON file, image excluded</string>
+    <string name="import_csv_title">Import from CSV</string>
+    <string name="import_csv_description">Import from a CSV file. Refer to the wiki on Github for the required file structure</string>
+    <string name="export_csv_title">Export to CSV</string>
+    <string name="export_csv_description">Export each event to a CSV file, image excluded</string>
+    <string name="delete_db_title">Delete all the events</string>
+    <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
+    <string name="delete_db_dialog_title">Are you sure?</string>
+    <string name="delete_db_dialog_description">Make sure to backup your events first, this operation will wipe the DB and should be used for debugging purposes only</string>
+    <string name="delete_search_title">Delete search selection</string>
+    <string name="delete_search_description_off">It won\'t be possible to delete multiple events at once</string>
+    <string name="delete_search_description_on">Press the trash button when you search one or more events to quickly delete them all from Birday. Use with caution!</string>
 </resources>
