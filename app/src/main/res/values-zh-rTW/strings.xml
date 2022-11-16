@@ -41,6 +41,9 @@
     <string name="five_days_before">五天前</string>
     <string name="six_days_before">六天前</string>
     <string name="seven_days_before">七天前</string>
+    <string name="ten_days_before">Ten days before</string>
+    <string name="fourteen_days_before">Fourteen days before</string>
+    <string name="twentyone_days_before">Twentyone days before</string>
     <string name="vibration_name">振動</string>
     <string name="vibration_description_on">按下按鈕時振動</string>
     <string name="vibration_description_off">按下按鈕時無振動</string>
