@@ -20,7 +20,6 @@
     <string name="no_stats_description">Vous n\'avez pas enregistré assez d\'événements pour pouvoir afficher des statistiques. Ajoutez-en quelques-uns et revenez plus tard !</string>
     <plurals name="stats_total">
         <item quantity="one">Birday vous aide à retenir un total de %d événement</item>
-        <item quantity="many">Birday vous aide à retenir un total de %d événements</item>
         <item quantity="other">Birday vous aide à retenir un total de %d événements</item>
     </plurals>
     <string name="next_event">Prochain événement</string>
@@ -30,7 +29,6 @@
     <string name="event_others">et d\'autres</string>
     <plurals name="days_left">
         <item quantity="one">%d jour restant</item>
-        <item quantity="many">%d jours restants</item>
         <item quantity="other">%d jours restants</item>
     </plurals>
 
@@ -173,7 +171,6 @@
     <string name="most_common_day_of_week">Le jour de naissance le plus répandu est %s</string>
     <plurals name="leap_year_total">
         <item quantity="one">Le nombre de personnes nées dans une année bissextiles est de %d</item>
-        <item quantity="many">Le nombre de personnes nées dans une année bissextiles est de %d</item>
         <item quantity="other">Le nombre de personnes nées dans une année bissextiles est de %d</item>
     </plurals>
     <string name="random_chinese_year">Signe chinois de %1$s : %2$s</string>
@@ -205,7 +202,6 @@
     <!-- Common words -->
     <plurals name="months">
         <item quantity="one">%d mois</item>
-        <item quantity="many">%d mois</item>
         <item quantity="other">%d mois</item>
     </plurals>
     <string name="today">Aujourd\'hui !</string>
@@ -213,15 +209,13 @@
     <string name="tomorrow">Demain !</string>
     <plurals name="years">
         <item quantity="one">%d année</item>
-        <item quantity="many">%d années</item>
         <item quantity="other">%d années</item>
     </plurals>
     <string name="born_in">né(e) en</string>
     <string name="and">et</string>
     <plurals name="event">
         <item quantity="one">événement : %s</item>
-        <item quantity="many">événements : %s</item>
-        <item quantity="other">événement : %s</item>
+        <item quantity="other">événements : %s</item>
     </plurals>
 
     <!-- Notifications -->
