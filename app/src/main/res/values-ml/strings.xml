@@ -43,6 +43,9 @@
     <string name="five_days_before">അഞ്ച് ദിവസങ്ങൾക്ക് മുമ്പ്</string>
     <string name="six_days_before">ആറ് ദിവസങ്ങൾക്ക് മുമ്പ്</string>
     <string name="seven_days_before">ഏഴ് ദിവസങ്ങൾക്ക് മുമ്പ്</string>
+    <string name="ten_days_before">Ten days before</string>
+    <string name="fourteen_days_before">Fourteen days before</string>
+    <string name="twentyone_days_before">Twentyone days before</string>
     <string name="vibration_name">വൈബ്രേഷൻ</string>
     <string name="vibration_description_on">ബട്ടൺ അമർത്തുമ്പോൾ വൈബ്രേറ്റ് ചെയ്യുക</string>
     <string name="vibration_description_off">ബട്ടൺ അമർത്തുമ്പോൾ വൈബ്രേറ്റ് ചെയ്യേണ്ട</string>
