@@ -43,6 +43,9 @@
     <string name="five_days_before">Vijf dagen van tevoren</string>
     <string name="six_days_before">Zes dagen van tevoren</string>
     <string name="seven_days_before">Zeven dagen van tevoren</string>
+    <string name="ten_days_before">Ten days before</string>
+    <string name="fourteen_days_before">Fourteen days before</string>
+    <string name="twentyone_days_before">Twentyone days before</string>
     <string name="vibration_name">Trilling</string>
     <string name="vibration_description_on">Tril wanneer een knop wordt ingedrukt</string>
     <string name="vibration_description_off">Geen trillingen wanneer een knop wordt ingedrukt</string>
