@@ -45,6 +45,9 @@
     <string name="five_days_before">Пет дана пре</string>
     <string name="six_days_before">Шест дана пре</string>
     <string name="seven_days_before">Седам дана пре</string>
+    <string name="ten_days_before">Ten days before</string>
+    <string name="fourteen_days_before">Fourteen days before</string>
+    <string name="twentyone_days_before">Twentyone days before</string>
     <string name="vibration_name">Вибрација</string>
     <string name="vibration_description_on">Вибрира када се притисне дугме</string>
     <string name="vibration_description_off">Не вибрира када се притисне дугме</string>
