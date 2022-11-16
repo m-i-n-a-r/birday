@@ -43,6 +43,9 @@
     <string name="five_days_before">Cinc dies abans</string>
     <string name="six_days_before">Sis dies abans</string>
     <string name="seven_days_before">Set dies abans</string>
+    <string name="ten_days_before">Ten days before</string>
+    <string name="fourteen_days_before">Fourteen days before</string>
+    <string name="twentyone_days_before">Twentyone days before</string>
     <string name="vibration_name">Vibració</string>
     <string name="vibration_description_on">Vibrar quan es prem un botó</string>
     <string name="vibration_description_off">No vibrar quan es prem un botó</string>
