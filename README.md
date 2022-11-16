@@ -12,7 +12,7 @@ An open source app to remember birthdays and events without having to open Faceb
 ## Introduction
 This is an open source app to remember **birthdays** and other events in a fast, light and beautiful way. No less, no more. I had this idea considering that Google Calendar doesn't display an automatic notification the day of the birthday, and sometimes i need to remember a birthday for a person who is not in my Contacts. Also, adding too much events to the calendar makes it messy and i prefer to manage them separately. The main focus of this app is being easy to use, clean and lightweight. I'm always glad to add features, but only important and really useful features!
 
-## Translations (guide and info below)
+## Translations (guide and info below, refer to [Crowdin](https://crwd.in/birday))
 
 | LANGUAGE                | STATUS       | SPECIAL THANKS | UPDATED BY                  |
 |:------------------------|:------------:|:---------------|:----------------------------|
