@@ -217,7 +217,7 @@
     <string name="and">et</string>
     <plurals name="event">
         <item quantity="one">événement : %s</item>
-        <item quantity="other">événement : %s</item>
+        <item quantity="other">événements : %s</item>
     </plurals>
     <!-- Notifications -->
     <string name="events_notification_channel">Rappel d\'événement</string>

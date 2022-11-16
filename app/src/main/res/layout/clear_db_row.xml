@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/notificationSound"
+    android:id="@+id/clearDb"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
@@ -10,11 +10,19 @@
     android:paddingVertical="@dimen/settings_row_padding">
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/notificationSoundTitle"
+        android:id="@+id/clearDbTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/delete_db"
+        android:text="@string/delete_db_title"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
         android:textSize="@dimen/custom_preference_title_text_size"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/clearDbDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delete_db_description"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        android:textSize="@dimen/custom_preference_subtitle_text_size" />
 
 </LinearLayout>

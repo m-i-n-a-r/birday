@@ -107,6 +107,10 @@
             android:layout="@layout/birday_import_row"
             android:selectable="true" />
 
+        <com.minar.birday.preferences.backup.CalendarImporter
+            android:layout="@layout/calendar_import_row"
+            android:selectable="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -125,9 +129,9 @@
         <Preference
             android:key="experimental"
             android:persistent="false"
-            android:title="@string/experimental_settings_title"
             android:summary="@string/experimental_settings_description"
-            app:iconSpaceReserved="false"/>
+            android:title="@string/experimental_settings_title"
+            app:iconSpaceReserved="false" />
 
     </PreferenceCategory>
 

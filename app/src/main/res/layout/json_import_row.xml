@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/birdayExport"
+    android:id="@+id/jsonImport"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -10,11 +10,19 @@
     android:background="?attr/selectableItemBackground">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/birdayExportTitle"
+            android:id="@+id/jsonImportTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/import_json"
+            android:text="@string/import_json_title"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
             android:textSize="@dimen/custom_preference_title_text_size" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/jsonImportDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/import_json_description"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textSize="@dimen/custom_preference_subtitle_text_size" />
 
 </LinearLayout>

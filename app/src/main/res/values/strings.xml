@@ -46,6 +46,9 @@
     <string name="five_days_before">Five days before</string>
     <string name="six_days_before">Six days before</string>
     <string name="seven_days_before">Seven days before</string>
+    <string name="ten_days_before">Ten days before</string>
+    <string name="fourteen_days_before">Fourteen days before</string>
+    <string name="twentyone_days_before">Twentyone days before</string>
     <string name="vibration_name">Vibration</string>
     <string name="vibration_description_on">Vibrate when a button is pressed</string>
     <string name="vibration_description_off">No vibrations when a button is pressed</string>
@@ -119,6 +122,8 @@
     <string name="missing_permission_notifications_forever">The notification permission was denied and can\'t be asked again, so Birday can\'t send notifications! Activate the permission manually, from settings.</string>
     <string name="missing_permission_calendar">The calendar permission was denied, and Birday can\'t import from calendar! Activate the permission from settings.</string>
     <string name="missing_permission_calendar_forever">The calendar permission was denied and can\'t be asked again, so Birday can\'t import from calendar! Activate the permission manually, from settings.</string>
+    <string name="import_calendar_title">Import from calendar</string>
+    <string name="import_calendar_description">Import any yearly event from your calendars. Remember to set the event type and year to keep things ordered!</string>
 
     <!-- Developer -->
     <string name="dev_name" translatable="false">m.i.n.a.r.</string>
@@ -288,15 +293,26 @@
     <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
     <string name="check_github">Check Github</string>
     <string name="github_repo_develop" translatable="false">https://github.com/m-i-n-a-r/birday/commits/develop</string>
-    <string name="launch_auto_import">Auto import on launch</string>
-    <string name="hide_on_scroll">Hide navbar on scroll</string>
-    <string name="import_json">Import from JSON</string>
-    <string name="export_json">Export to JSON</string>
-    <string name="import_csv">Import from CSV</string>
-    <string name="export_csv">Export to CSV</string>
-    <string name="import_calendar">Import from calendar</string>
-    <string name="delete_db">Delete all the events</string>
+    <string name="launch_auto_import_title">Auto import on launch</string>
+    <string name="launch_auto_import_description_off">Birday won\'t import contacts automatically when launched</string>
+    <string name="launch_auto_import_description_on">Birday will automatically sync with contacts at startup</string>
+    <string name="hide_on_scroll_title">Hide navbar on scroll</string>
+    <string name="hide_on_scroll_description_on">Hide the bottom navbar when you scroll</string>
+    <string name="hide_on_scroll_description_off">The bottom navbar will always be visible</string>
+    <string name="import_json_title">Import from JSON</string>
+    <string name="import_json_description">Import from a JSON file. Refer to the wiki on Github for the required file structure</string>
+    <string name="export_json_title">Export to JSON</string>
+    <string name="export_json_description">Export each event to a JSON file, image excluded</string>
+    <string name="import_csv_title">Import from CSV</string>
+    <string name="import_csv_description">Import from a CSV file. Refer to the wiki on Github for the required file structure</string>
+    <string name="export_csv_title">Export to CSV</string>
+    <string name="export_csv_description">Export each event to a CSV file, image excluded</string>
+    <string name="delete_db_title">Delete all the events</string>
+    <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
     <string name="delete_db_dialog_title">Are you sure?</string>
     <string name="delete_db_dialog_description">Make sure to backup your events first, this operation will wipe the DB and should be used for debugging purposes only</string>
+    <string name="delete_search_title">Delete search selection</string>
+    <string name="delete_search_description_off">It won\'t be possible to delete multiple events at once</string>
+    <string name="delete_search_description_on">Press the trash button when you search one or more events to quickly delete them all from Birday. Use with caution!</string>
 
 </resources>
