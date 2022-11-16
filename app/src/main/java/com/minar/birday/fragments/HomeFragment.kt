@@ -272,6 +272,11 @@ class HomeFragment : Fragment() {
             searchBar.setText(mainViewModel.searchString.value)
     }
 
+    override fun onPause() {
+        super.onPause()
+        act.toggleDeleteFab(false)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         // Reset each binding to null to follow the best practice
