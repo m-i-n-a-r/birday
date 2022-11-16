@@ -46,6 +46,9 @@
     <string name="five_days_before">Five days before</string>
     <string name="six_days_before">Six days before</string>
     <string name="seven_days_before">Seven days before</string>
+    <string name="ten_days_before">Ten days before</string>
+    <string name="fourteen_days_before">Fourteen days before</string>
+    <string name="twentyone_days_before">Twentyone days before</string>
     <string name="vibration_name">Vibration</string>
     <string name="vibration_description_on">Vibrate when a button is pressed</string>
     <string name="vibration_description_off">No vibrations when a button is pressed</string>
