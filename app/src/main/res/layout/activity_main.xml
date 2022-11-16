@@ -55,4 +55,16 @@
         app:srcCompat="@drawable/ic_party_24dp"
         app:tint="@null" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabDelete"
+        style="@style/Widget.Material3.FloatingActionButton.Tertiary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/delete_search_title"
+        android:hapticFeedbackEnabled="false"
+        android:visibility="gone"
+        app:maxImageSize="@dimen/main_fab_icon_size"
+        app:srcCompat="@drawable/ic_delete_black_24dp"
+        app:tint="@null" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

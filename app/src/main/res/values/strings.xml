@@ -291,6 +291,8 @@
     <string name="check_github">Check Github</string>
     <string name="github_repo_develop" translatable="false">https://github.com/m-i-n-a-r/birday/commits/develop</string>
     <string name="launch_auto_import_title">Auto import on launch</string>
+    <string name="launch_auto_import_description_off">Birday won\'t import contacts automatically when launched</string>
+    <string name="launch_auto_import_description_on">Birday will automatically sync with contacts at startup</string>
     <string name="hide_on_scroll_title">Hide navbar on scroll</string>
     <string name="hide_on_scroll_description_on">Hide the bottom navbar when you scroll</string>
     <string name="hide_on_scroll_description_off">The bottom navbar will always be visible</string>
@@ -307,6 +309,7 @@
     <string name="delete_db_dialog_title">Are you sure?</string>
     <string name="delete_db_dialog_description">Make sure to backup your events first, this operation will wipe the DB and should be used for debugging purposes only</string>
     <string name="delete_search_title">Delete search selection</string>
-    <string name="delete_search_description">Press the trash button when you search one or more event to quickly delete them all from Birday. Use with caution!</string>
+    <string name="delete_search_description_off">It won\'t be possible to delete multiple events at once</string>
+    <string name="delete_search_description_on">Press the trash button when you search one or more events to quickly delete them all from Birday. Use with caution!</string>
 
 </resources>

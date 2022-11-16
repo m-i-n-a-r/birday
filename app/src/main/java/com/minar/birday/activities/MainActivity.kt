@@ -21,6 +21,7 @@ import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -174,23 +175,45 @@ class MainActivity : AppCompatActivity() {
         AppRater.appLaunched(this)
 
         // Manage the fab
-        val fab = binding.fab
-        // Show a quick description of the action
-        fab.setOnLongClickListener {
-            vibrate()
-            showSnackbar(getString(R.string.new_event_description))
-            true
-        }
+        val addFab = binding.fab
+        val deleteFab = binding.fabDelete
+
         // Open the bottom sheet to insert a new event
-        fab.setOnClickListener {
+        addFab.setOnClickListener {
             vibrate()
             val bottomSheet = InsertEventBottomSheet(this)
             if (bottomSheet.isAdded) return@setOnClickListener
             bottomSheet.show(supportFragmentManager, "insert_event_bottom_sheet")
         }
+        // Show a quick description of the action
+        addFab.setOnLongClickListener {
+            vibrate()
+            showSnackbar(getString(R.string.new_event_description))
+            true
+        }
 
         // Animate the fab icon
-        fab.applyLoopingAnimatedVectorDrawable(R.drawable.animated_add_event, 5000L)
+        addFab.applyLoopingAnimatedVectorDrawable(R.drawable.animated_add_event, 5000L)
+
+        // Set the delete search action (initially hidden)
+        deleteFab.setOnClickListener {
+            val searchedEvents = mainViewModel.allEvents.value
+            if (searchedEvents != null && searchedEvents.isNotEmpty()) {
+                mainViewModel.deleteAll(searchedEvents.map { resultToEvent(it) })
+                showSnackbar(
+                    getString(R.string.deleted),
+                    actionText = getString(R.string.cancel),
+                    action = fun() {
+                        mainViewModel.insertAll(searchedEvents.map { resultToEvent(it) })
+                    })
+            }
+        }
+        // Show a quick description of the action
+        deleteFab.setOnLongClickListener {
+            vibrate()
+            showSnackbar(getString(R.string.delete_search_title))
+            true
+        }
 
         // Navigation bar color management (if executed before, it doesn't work)
         if (accent == "monet") {
@@ -362,6 +385,61 @@ class MainActivity : AppCompatActivity() {
             }
         }
         snackbar.show()
+    }
+
+    // Change the fab to show a delete icon
+    fun toggleDeleteFab(active: Boolean = false) {
+        val addFab = binding.fab
+        val deleteFab = binding.fabDelete
+        val bottomBarId = binding.bottomBar.id
+        val addParams: CoordinatorLayout.LayoutParams =
+            addFab.layoutParams as CoordinatorLayout.LayoutParams
+        val deleteParams: CoordinatorLayout.LayoutParams =
+            deleteFab.layoutParams as CoordinatorLayout.LayoutParams
+
+        // Case 1: add fab currently hidden, it needs to be active
+        if (!active && addFab.visibility == View.GONE) {
+            // Change anchors to avoid visual problems
+            addParams.anchorId = bottomBarId
+            addFab.layoutParams = addParams
+
+            deleteParams.anchorId = View.NO_ID
+            deleteFab.layoutParams = deleteParams
+
+            addFab.visibility = View.VISIBLE
+            deleteFab.visibility = View.GONE
+            deleteFab.applyLoopingAnimatedVectorDrawable(
+                R.drawable.animated_delete,
+                3000L,
+                true
+            )
+            addFab.applyLoopingAnimatedVectorDrawable(
+                R.drawable.animated_add_event,
+                5000L
+            )
+        }
+
+        // Case 2: delete fab currently hidden, it needs to be active
+        if (active && deleteFab.visibility == View.GONE) {
+            // Change anchors to avoid visual problems
+            addParams.anchorId = View.NO_ID
+            addFab.layoutParams = addParams
+
+            deleteParams.anchorId = bottomBarId
+            deleteFab.layoutParams = deleteParams
+
+            addFab.visibility = View.GONE
+            deleteFab.visibility = View.VISIBLE
+            deleteFab.applyLoopingAnimatedVectorDrawable(
+                R.drawable.animated_delete,
+                3000L
+            )
+            addFab.applyLoopingAnimatedVectorDrawable(
+                R.drawable.animated_add_event,
+                5000L,
+                true
+            )
+        }
     }
 
     // Ask contacts permission

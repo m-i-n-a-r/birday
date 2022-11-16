@@ -22,6 +22,9 @@ interface EventDao {
     @Delete
     fun deleteEvent(event: Event)
 
+    @Delete
+    fun deleteAllEvent(event: List<Event>)
+
     @Query("SELECT * FROM Event")
     fun getEvents(): LiveData<List<Event>>
 
