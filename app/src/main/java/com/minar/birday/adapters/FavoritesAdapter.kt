@@ -78,8 +78,9 @@ class FavoritesAdapter(
             else eventNote.visibility = View.GONE
             eventDate.text = nextDate
             eventCountdown.text = daysCountdown
-            // Age -2 means that the year is not considered and the age is meaningless
-            if (age != -2) {
+
+            // Hide the age row if the year doesn't matter
+            if (event.yearMatter == true) {
                 eventYears.visibility = View.VISIBLE
                 eventYears.text = actualAge
             } else eventYears.visibility = View.GONE
