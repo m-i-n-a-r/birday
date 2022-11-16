@@ -29,6 +29,7 @@ import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.preference.PreferenceManager
 import com.google.android.material.color.DynamicColors
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.elevation.SurfaceColors
 import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
@@ -199,13 +200,25 @@ class MainActivity : AppCompatActivity() {
         deleteFab.setOnClickListener {
             val searchedEvents = mainViewModel.allEvents.value
             if (searchedEvents != null && searchedEvents.isNotEmpty()) {
-                mainViewModel.deleteAll(searchedEvents.map { resultToEvent(it) })
-                showSnackbar(
-                    getString(R.string.deleted),
-                    actionText = getString(R.string.cancel),
-                    action = fun() {
-                        mainViewModel.insertAll(searchedEvents.map { resultToEvent(it) })
-                    })
+                // Native dialog
+                MaterialAlertDialogBuilder(this)
+                    .setTitle(getString(R.string.delete_db_dialog_title))
+                    .setMessage(getString(R.string.delete_search_confirm))
+                    .setIcon(R.drawable.ic_delete_24dp)
+                    .setPositiveButton(resources.getString(android.R.string.ok)) { dialog, _ ->
+                        dialog.dismiss()
+                        mainViewModel.deleteAll(searchedEvents.map { resultToEvent(it) })
+                        showSnackbar(
+                            getString(R.string.deleted),
+                            actionText = getString(R.string.cancel),
+                            action = fun() {
+                                mainViewModel.insertAll(searchedEvents.map { resultToEvent(it) })
+                            })
+                    }
+                    .setNegativeButton(resources.getString(android.R.string.cancel)) { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .show()
             }
         }
         // Show a quick description of the action
