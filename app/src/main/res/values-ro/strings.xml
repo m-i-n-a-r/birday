@@ -45,6 +45,9 @@
     <string name="five_days_before">Cu cinci zile înainte</string>
     <string name="six_days_before">Cu şase zile înainte</string>
     <string name="seven_days_before">Cu şapte zile înainte</string>
+    <string name="ten_days_before">Ten days before</string>
+    <string name="fourteen_days_before">Fourteen days before</string>
+    <string name="twentyone_days_before">Twentyone days before</string>
     <string name="vibration_name">Vibrare</string>
     <string name="vibration_description_on">Vibrează când este apăsat un buton</string>
     <string name="vibration_description_off">Fără vibrații atunci când este apăsat un buton</string>
