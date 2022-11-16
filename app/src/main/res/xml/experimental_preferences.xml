@@ -10,14 +10,14 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="auto_import"
-        android:title="@string/launch_auto_import"
+        android:title="@string/launch_auto_import_title"
         app:iconSpaceReserved="false" />
 
     <!-- Auto import on each start -->
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="hide_scroll"
-        android:title="@string/hide_on_scroll"
+        android:title="@string/hide_on_scroll_title"
         app:iconSpaceReserved="false" />
 
     <!-- Import from CSV -->

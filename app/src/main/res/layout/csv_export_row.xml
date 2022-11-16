@@ -13,7 +13,7 @@
             android:id="@+id/birdayExportTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/export_csv"
+            android:text="@string/export_csv_title"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
             android:textSize="@dimen/custom_preference_title_text_size" />
 

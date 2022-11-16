@@ -13,7 +13,7 @@
         android:id="@+id/notificationSoundTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/delete_db"
+        android:text="@string/delete_db_title"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
         android:textSize="@dimen/custom_preference_title_text_size"/>
 
