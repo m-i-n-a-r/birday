@@ -41,6 +41,9 @@
     <string name="five_days_before">Năm ngày trước</string>
     <string name="six_days_before">Sáu ngày trước</string>
     <string name="seven_days_before">Bảy ngày trước</string>
+    <string name="ten_days_before">Ten days before</string>
+    <string name="fourteen_days_before">Fourteen days before</string>
+    <string name="twentyone_days_before">Twentyone days before</string>
     <string name="vibration_name">Rung</string>
     <string name="vibration_description_on">Rung khi nhấn nút</string>
     <string name="vibration_description_off">Không rung khi nhấn nút</string>
