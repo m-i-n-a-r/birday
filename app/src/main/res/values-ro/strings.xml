@@ -121,7 +121,7 @@
     <string name="missing_permission_notifications_forever">Permisiunea de notificare a fost refuzată și nu poate fi solicitată din nou, așa că Birday nu poate trimite notificări! Activează permisiunea manual în setări.</string>
     <string name="missing_permission_calendar">Permisiunea pentru calendar a fost refuzată, iar Birday nu poate importa din calendar! Activează permisiunea în Setări.</string>
     <string name="missing_permission_calendar_forever">Permisiunea pentru calendar a fost refuzată și nu poate fi solicitată din nou, așa că Birday nu poate importa din calendar! Activează permisiunea manual în Setări.</string>
-    <string name="import_calendar_title">Import from calendar</string>
+    <string name="import_calendar_title">Import din calendar</string>
     <string name="import_calendar_description">Import any yearly event from your calendars. Remember to set the event type and year to keep things ordered!</string>
     <!-- Developer -->
     <string name="dev_description">Sunt un tip politicos și îmi plac lucruri frumoase, precum animații, pictograme, mașini sportive și imprimare 3D. Eu lucrez ca designer și inginer de calculatoare.</string>
@@ -283,7 +283,6 @@
     <string name="export_json_title">Exportare în JSON</string>
     <string name="import_csv_title">Import din CSV</string>
     <string name="export_csv_title">Exportare în CSV</string>
-    <string name="import_calendar_title">Import din calendar</string>
     <string name="delete_db_title">Șterge toate evenimentele</string>
 
     <string name="delete_db_dialog_title">Ești sigur?</string>
