@@ -5,8 +5,7 @@ An open source app to remember birthdays and events without having to open Faceb
 <p align='center'>
   <a href='https://github.com/m-i-n-a-r/birday/blob/master/LICENSE.md'><img src='https://img.shields.io/badge/license-GPL 3-333333'/></a>
   <img src='https://img.shields.io/github/v/release/m-i-n-a-r/birday'>
-	<img src='https://img.shields.io/badge/status-released-success'/>
-	<img src='https://img.shields.io/badge/-translations%20needed!-yellow'/>
+  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/birday"><img src="https://badges.crowdin.net/birday/localized.svg"></a>
 </p>
 
 ## Introduction
