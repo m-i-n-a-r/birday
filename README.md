@@ -20,7 +20,7 @@ This is an open source app to remember **birthdays** and other events in a fast,
 | **Spanish**             | needs review | myself         | Joseahfer                   |
 | **Swedish**             | needs review | SlowNicoFish   |                             |
 | **Dutch**               | needs review | stefanvi       |                             |
-| **Italian**             | needs review | myself         | myself                      |
+| **Italian**             | complete     | myself         | myself                      |
 | **French**              | needs review | Mattis Biton   |                             |
 | **Hungarian**           | needs review | Obi            |                             |
 | **German**              | needs review | pizzapastamix  | WrstFngr, AlexanderRitter02 |
