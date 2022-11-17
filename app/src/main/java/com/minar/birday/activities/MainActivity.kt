@@ -198,6 +198,7 @@ class MainActivity : AppCompatActivity() {
 
         // Set the delete search action (initially hidden)
         deleteFab.setOnClickListener {
+            vibrate()
             val searchedEvents = mainViewModel.allEvents.value
             if (searchedEvents != null && searchedEvents.isNotEmpty()) {
                 // Native dialog
