@@ -272,5 +272,5 @@
     <string name="delete_search_title">Suchauswahl löschen</string>
     <string name="delete_search_description_off">Es ist nicht möglich, mehrere Ereignisse gleichzeitig zu löschen</string>
     <string name="delete_search_description_on">Drücken Sie den Papierkorb-Button, wenn Sie ein oder mehrere Ereignisse suchen, um sie schnell alle vom Geburtstag zu löschen. Mit Vorsicht verwenden!</string>
-    <string name="delete_search_confirm">This will delete all the results of this search. You can undo the process shortly after clicking OK if you change your mind!</string>
+    <string name="delete_search_confirm">Dies löscht alle Ergebnisse dieser Suche. Sie können den Vorgang kurz nach dem Klicken auf OK rückgängig machen, wenn Sie Ihre Meinung ändern!</string>
 </resources>
