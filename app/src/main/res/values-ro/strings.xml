@@ -160,7 +160,7 @@
     <!-- Quick apps -->
     <string name="event_apps">Aplicații rapide</string>
     <string name="event_apps_description">Aplicații pentru a ura tot binele rapid!</string>
-    <string name="textMessage">Mesaj text</string>
+    <string name="text_message">Mesaj text</string>
     <string name="dialer">Telefon</string>
     <string name="wishes_birthday">La mulți ani!</string>
     <string name="no_default_dialer">Nu a fost găsită nicio aplicație de apelare implicită!</string>

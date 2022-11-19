@@ -156,7 +156,7 @@
     <!-- Quick apps -->
     <string name="event_apps">Aplicações</string>
     <string name="event_apps_description">Aplicações para desejar um bom aniversário!</string>
-    <string name="textMessage">Mensagem de texto</string>
+    <string name="text_message">Mensagem de texto</string>
     <string name="dialer">Chamada</string>
     <string name="wishes_birthday">Feliz aniversário!</string>
     <string name="no_default_dialer">Não existe uma aplicação para fazer a chamada!</string>

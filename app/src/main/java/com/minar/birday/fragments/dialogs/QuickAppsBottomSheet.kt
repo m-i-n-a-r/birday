@@ -37,6 +37,7 @@ class QuickAppsBottomSheet(activity: MainActivity) :
         val whatsAppButton = binding.whatsappButton
         val messagesButton = binding.messagesButton
         val dialerButton = binding.dialerButton
+        val emailButton = binding.emailButton
         val telegramButton = binding.telegramButton
         val signalButton = binding.signalButton
 
@@ -69,6 +70,20 @@ class QuickAppsBottomSheet(activity: MainActivity) :
                 act.showSnackbar(act.getString(R.string.no_default_sms))
             }
             dismiss()
+        }
+
+        emailButton.setOnClickListener {
+            act.vibrate()
+            try {
+                val intent = Intent(Intent.ACTION_SENDTO)
+                intent.data = Uri.parse("mailto:")
+                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.wishes_birthday))
+                if (intent.resolveActivity(act.packageManager) != null) {
+                    startActivity(intent)
+                }
+            } catch (e: Exception) {
+                launchOrOpenAppStore("com.google.android.gm")
+            }
         }
 
         telegramButton.setOnClickListener {

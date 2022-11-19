@@ -154,7 +154,7 @@
     <!-- Quick apps -->
     <string name="event_apps">Schnell-Apps</string>
     <string name="event_apps_description">Apps, um schnell alles Gute zu wünschen!</string>
-    <string name="textMessage">Textnachricht</string>
+    <string name="text_message">Textnachricht</string>
     <string name="dialer">Telefon</string>
     <string name="wishes_birthday">Alles Gute zum Geburtstag!</string>
     <string name="no_default_dialer">Keine Standard-Dialer-App gefunden</string>

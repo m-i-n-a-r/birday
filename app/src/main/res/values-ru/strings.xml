@@ -159,7 +159,7 @@
     <!-- Quick apps -->
     <string name="event_apps">Быстрые приложения</string>
     <string name="event_apps_description">Приложения, где можно быстро поздравить!</string>
-    <string name="textMessage">СМС</string>
+    <string name="text_message">СМС</string>
     <string name="dialer">Телефон</string>
     <string name="wishes_birthday">С днем рождения!</string>
     <string name="no_default_dialer">Не найдено приложение по умолчанию для звонков!</string>

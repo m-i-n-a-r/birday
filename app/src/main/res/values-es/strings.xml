@@ -154,7 +154,7 @@
     <!-- Quick apps -->
     <string name="event_apps">Aplicaciones</string>
     <string name="event_apps_description">Algunas aplicaciones con las que poder felicitar los cumpleaños</string>
-    <string name="textMessage">Mensaje SMS</string>
+    <string name="text_message">Mensaje SMS</string>
     <string name="dialer">Teléfono</string>
     <string name="wishes_birthday">¡Feliz cumpleaños!</string>
     <string name="no_default_dialer">¡No se ha encontrado la aplicación Teléfono!</string>
