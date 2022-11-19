@@ -154,7 +154,7 @@
     <!-- Quick apps -->
     <string name="event_apps">त्वरित ऐप्स</string>
     <string name="event_apps_description">ऐप्स तेजी से शुभकामनाएं देने के लिए!</string>
-    <string name="text_message">टेक्स्ट संदेश</string>
+    <string name="text_message">Text message</string>
     <string name="dialer">डायलर</string>
     <string name="wishes_birthday">जन्मदिन की शुभकामनाएं!</string>
     <string name="no_default_dialer">कोई डिफ़ॉल्ट डायलर ऐप नहीं मिला!</string>
