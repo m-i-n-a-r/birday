@@ -154,7 +154,7 @@
     <!-- Quick apps -->
     <string name="event_apps">App rapide</string>
     <string name="event_apps_description">Applicazioni per fare tanti auguri ai festeggiati!</string>
-    <string name="text_message">Text message</string>
+    <string name="text_message">Messaggio SMS</string>
     <string name="dialer">Telefono</string>
     <string name="wishes_birthday">Tanti auguri!</string>
     <string name="no_default_dialer">Nessuna app telefono di default trovata!</string>
@@ -249,7 +249,7 @@
     <!-- Experimental preferences -->
     <string name="experimental_settings_title">Sperimentale</string>
     <string name="experimental_settings_description">Alcune impostazioni e funzioni sperimentali o ancora problematiche. Usale a tuo rischio e pericolo</string>
-    <string name="experimental_disclaimer">Le seguenti funzioni sono sperimentali, e potrebbero no funzionare correttamente. Usale a tuo rischio. Per progressi su queste funzionalità, fare riferimento a Github, dato che alcune di queste funzioni potrebbero essere \"promosse\" e tradotte</string>
+    <string name="experimental_disclaimer">Le seguenti funzioni sono sperimentali, e potrebbero non funzionare correttamente. Usale a tuo rischio. Per progressi su queste funzionalità, fare riferimento a Github, dato che alcune di queste funzioni potrebbero essere \"promosse\" e tradotte</string>
     <string name="check_github">Controlla Github</string>
     <string name="launch_auto_import_title">Importa automaticamente al lancio</string>
     <string name="launch_auto_import_description_off">Birday non importerà i contatti automaticamente al lancio</string>
