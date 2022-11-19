@@ -42,6 +42,7 @@ import com.minar.birday.preferences.backup.JsonImporter
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidgetProvider
+import com.minar.birday.widgets.MinimalWidgetProvider
 import java.io.IOException
 import java.util.*
 import kotlin.concurrent.thread
@@ -279,9 +280,13 @@ class MainActivity : AppCompatActivity() {
 
     // Update the existing widgets with the newest data and the onclick action
     private fun updateWidget() {
-        val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+        val intentUpcoming = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
         intent.component = ComponentName(this, EventWidgetProvider::class.java)
-        sendBroadcast(intent)
+        sendBroadcast(intentUpcoming)
+
+        val intentMinimal = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+        intent.component = ComponentName(this, MinimalWidgetProvider::class.java)
+        sendBroadcast(intentMinimal)
     }
 
     // Create the NotificationChannel. This code does nothing when it already exists

@@ -26,7 +26,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
         setPreferencesFromResource(R.xml.preferences, rootKey)
         mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
-        val experimentalPreference : Preference? =  findPreference("experimental")
+        val experimentalPreference: Preference? = findPreference("experimental")
         experimentalPreference?.setOnPreferenceClickListener {
             val navController: NavController =
                 findNavController()

@@ -28,6 +28,7 @@
         android:theme="@style/SplashTheme"
         tools:ignore="UnusedAttribute">
 
+        <!-- Main, Material 3 and complete widget -->
         <receiver
             android:name=".widgets.EventWidgetProvider"
             android:exported="true">
@@ -37,6 +38,18 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/event_widget_info" />
+        </receiver>
+
+        <!-- Old minimal text only widget -->
+        <receiver
+            android:name=".widgets.MinimalWidgetProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/minimal_widget_info" />
         </receiver>
 
         <provider
