@@ -251,6 +251,7 @@
     <string name="experimental_settings_description">Einige experimentelle oder fehlerhafte Einstellungen und Funktionen, verwenden Sie sie auf eigene Gefahr</string>
     <string name="experimental_disclaimer">Die folgenden Funktionen sind experimentell und funktionieren möglicherweise nicht korrekt. Sie werden auf eigene Gefahr verwendet. Beziehen Sie sich auf Github für jeden Fortschritt, da einige dieser Funktionen \"gefördert\" und übersetzt werden könnten</string>
     <string name="check_github">Überprüfe aus Github</string>
+    <string name="translate_app">Translate the app</string>
     <string name="launch_auto_import_title">Automatischer Import beim Start</string>
     <string name="launch_auto_import_description_off">Birday importiert Kontakte nicht automatisch, wenn gestartet wird</string>
     <string name="launch_auto_import_description_on">Birday wird beim Start automatisch mit Kontakten synchronisieren</string>
