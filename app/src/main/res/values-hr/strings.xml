@@ -157,7 +157,7 @@
     <!-- Quick apps -->
     <string name="event_apps">Brze aplikacije</string>
     <string name="event_apps_description">Aplikacije za brzo poželjeti sve najbolje!</string>
-    <string name="text_message">SMS poruka</string>
+    <string name="text_message">Text message</string>
     <string name="dialer">Telefon</string>
     <string name="wishes_birthday">Sretan rođendan!</string>
     <string name="no_default_dialer">Nije pronađena zadana aplikacija za biranje brojeva!</string>
