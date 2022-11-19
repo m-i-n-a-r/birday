@@ -102,6 +102,15 @@ fun formatDaysRemaining(daysRemaining: Int, context: Context): String {
     }
 }
 
+// Given an ordered series of events, remove the upcoming events
+fun removeUpcomingEvents(events: List<EventResult>): List<EventResult> {
+    val noUpcoming: MutableList<EventResult> = events.toMutableList()
+    noUpcoming.removeIf {
+        it.nextDate!! == events[0].nextDate
+    }
+    return noUpcoming
+}
+
 // Given a series of events, format them considering the yearMatters parameter and the number
 fun formatEventList(
     events: List<EventResult>,

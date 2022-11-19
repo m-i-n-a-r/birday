@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:hapticFeedbackEnabled="false"
     android:orientation="vertical"
-    android:paddingHorizontal="@dimen/widget_margin"
+    android:paddingHorizontal="@dimen/widget_padding"
     android:paddingVertical="@dimen/between_row_padding">
 
     <TextView
