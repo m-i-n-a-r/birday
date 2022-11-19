@@ -160,7 +160,7 @@
     <!-- Quick apps -->
     <string name="event_apps">Aplicații rapide</string>
     <string name="event_apps_description">Aplicații pentru a ura tot binele rapid!</string>
-    <string name="text_message">Mesaj text</string>
+    <string name="text_message">Text message</string>
     <string name="dialer">Telefon</string>
     <string name="wishes_birthday">La mulți ani!</string>
     <string name="no_default_dialer">Nu a fost găsită nicio aplicație de apelare implicită!</string>
@@ -268,6 +268,7 @@
     <string name="experimental_settings_description">Unele setări și funcții experimentale sau cu erori. Folosește-le pe propriul risc</string>
     <string name="experimental_disclaimer">Următoarele caracteristici sunt experimentale și este posibil să nu funcționeze corect. Folosește-le pe propriul risc. Consultă Github pentru orice progres, deoarece unele dintre aceste caracteristici ar putea fi „promovate” și traduse</string>
     <string name="check_github">Verifică Github</string>
+    <string name="translate_app">Translate the app</string>
     <string name="launch_auto_import_title">Auto import on launch</string>
     <string name="launch_auto_import_description_off">Birday won\'t import contacts automatically when launched</string>
     <string name="launch_auto_import_description_on">Birday will automatically sync with contacts at startup</string>

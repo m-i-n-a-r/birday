@@ -160,7 +160,7 @@
     <!-- Quick apps -->
     <string name="event_apps">Брзе апликације</string>
     <string name="event_apps_description">Апликације да брзо пожелите све најбоље!</string>
-    <string name="text_message">СМС порука</string>
+    <string name="text_message">Text message</string>
     <string name="dialer">Телефон</string>
     <string name="wishes_birthday">Срећан рођендан!</string>
     <string name="no_default_dialer">Није пронађена подразумевана апликација за позивање!</string>
@@ -265,6 +265,7 @@
     <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
     <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
     <string name="check_github">Check Github</string>
+    <string name="translate_app">Translate the app</string>
     <string name="launch_auto_import_title">Auto import on launch</string>
     <string name="launch_auto_import_description_off">Birday won\'t import contacts automatically when launched</string>
     <string name="launch_auto_import_description_on">Birday will automatically sync with contacts at startup</string>

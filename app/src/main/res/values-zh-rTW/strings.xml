@@ -152,7 +152,7 @@
     <!-- Quick apps -->
     <string name="event_apps">應用程式捷徑</string>
     <string name="event_apps_description">用下面這些 App 來祝他們生日快樂吧！</string>
-    <string name="text_message">簡訊</string>
+    <string name="text_message">Text message</string>
     <string name="dialer">電話</string>
     <string name="wishes_birthday">生日快樂！</string>
     <string name="no_default_dialer">找不到預設撥號器！</string>
@@ -247,6 +247,7 @@
     <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
     <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
     <string name="check_github">Check Github</string>
+    <string name="translate_app">Translate the app</string>
     <string name="launch_auto_import_title">Auto import on launch</string>
     <string name="launch_auto_import_description_off">Birday won\'t import contacts automatically when launched</string>
     <string name="launch_auto_import_description_on">Birday will automatically sync with contacts at startup</string>
