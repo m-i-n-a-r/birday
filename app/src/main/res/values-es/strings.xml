@@ -106,6 +106,9 @@
     <string name="notification_only_favorites">¿Notificar solo favoritos?</string>
     <string name="notification_only_favorites_description_on">Solo notifica los eventos favoritos</string>
     <string name="notification_only_favorites_description_off">Notifica todos los eventos</string>
+    <string name="additional_notification_only_favorites">Additional notification for favorites</string>
+    <string name="additional_notification_only_favorites_description_on">Send the additional notification for favorite events only</string>
+    <string name="additional_notification_only_favorites_description_off">Send the additional notification for every event inserted</string>
     <string name="troubleshoot">Solucionar problemas</string>
     <string name="battery_optimization_title">Deshabilitar la optimización de la batería</string>
     <string name="battery_optimization_description">Abra la configuración para deshabilitar cualquier optimización para Birday. Útil si las notificaciones no funcionan</string>
@@ -258,6 +261,9 @@
     <string name="hide_on_scroll_title">Ocultar barra de navegación al desplazar</string>
     <string name="hide_on_scroll_description_on">Oculta la barra de navegación inferior cuando se desplaza</string>
     <string name="hide_on_scroll_description_off">La barra de navegación inferior será siempre visible</string>
+    <string name="angry_bird_title">Angry Bird mode</string>
+    <string name="angry_bird_description_on">Un-dismissible notifications, shorter texts and other notification related tweaks</string>
+    <string name="angry_bird_description_off">Notifications will behave normally</string>
     <string name="import_json_title">Importar desde JSON</string>
     <string name="import_json_description">Importar desde un archivo JSON. Consulte la wiki en Github para ver la estructura de archivos requerida</string>
     <string name="export_json_title">Exportar a JSON</string>
