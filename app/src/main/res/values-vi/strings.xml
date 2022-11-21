@@ -152,7 +152,7 @@
     <!-- Quick apps -->
     <string name="event_apps">Ứng dụng nhanh</string>
     <string name="event_apps_description">Ứng dụng để chúc mọi điều tốt đẹp cho nhanh!</string>
-    <string name="text_message">Text message</string>
+    <string name="text_message">Tin nhắn</string>
     <string name="dialer">Quay số</string>
     <string name="wishes_birthday">Chúc mừng sinh nhật!</string>
     <string name="no_default_dialer">Không tìm được ứng dụng quay số mặc định!</string>
