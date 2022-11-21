@@ -132,7 +132,7 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
     ) {
         val sp = PreferenceManager.getDefaultSharedPreferences(context)
         val hideImages = sp.getBoolean("hide_images", false)
-        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
+        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
         val views = RemoteViews(context.packageName, R.layout.widget_upcoming)
         val intent = Intent(context, MainActivity::class.java)
 
@@ -190,23 +190,29 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
                     context.getString(R.string.appwidget_upcoming)
                 )
 
+                // If the image shouldn't be shown, simply hide the view and free up space
+                if (hideImages) views.setViewVisibility(R.id.eventWidgetImageGroup, View.GONE)
                 // Else proceed to fill the data for the next event
-                if (filteredNextEvents[0].image != null && filteredNextEvents[0].image!!.isNotEmpty() && !hideImages) {
-                    views.setImageViewBitmap(
+                else {
+                    views.setViewVisibility(R.id.eventWidgetImageGroup, View.VISIBLE)
+                    if (filteredNextEvents[0].image != null && filteredNextEvents[0].image!!.isNotEmpty()) {
+                        views.setImageViewBitmap(
+                            R.id.eventWidgetImage,
+                            byteArrayToBitmap(filteredNextEvents[0].image!!)
+                        )
+                    } else views.setImageViewResource(
                         R.id.eventWidgetImage,
-                        byteArrayToBitmap(filteredNextEvents[0].image!!)
+                        // Set the image depending on the event type, the drawable are a b&w version
+                        when (filteredNextEvents[0].type) {
+                            EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
+                            EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
+                            EventCode.DEATH.name -> R.drawable.placeholder_death_image
+                            EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
+                            else -> R.drawable.placeholder_other_image
+                        }
                     )
-                } else views.setImageViewResource(
-                    R.id.eventWidgetImage,
-                    // Set the image depending on the event type, the drawable are a b&w version
-                    when (filteredNextEvents[0].type) {
-                        EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
-                        EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
-                        EventCode.DEATH.name -> R.drawable.placeholder_death_image
-                        EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
-                        else -> R.drawable.placeholder_other_image
-                    }
-                )
+                }
+
 
                 // Set up the intent that starts the EventViewService, which will provide the views
                 val widgetServiceIntent = Intent(context, EventWidgetService::class.java)

@@ -18,13 +18,14 @@
         android:drawablePadding="@dimen/in_row_padding"
         android:drawableTint="?attr/colorPrimary"
         android:paddingHorizontal="@dimen/widget_padding"
-        android:shadowColor="?attr/colorOnSurfaceInverse"
+        android:shadowColor="@color/goodGraySemiTranslucent"
+        android:shadowDy="4"
         android:shadowRadius="@dimen/widget_shadow_radius"
         android:text="@string/appwidget_upcoming"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-        android:textColor="?attr/colorOnBackground"
+        android:textColor="@color/almostWhite"
         tools:ignore="UseCompatTextViewDrawableXml" />
     <!-- TODO the suggested drawable start compat doesn't work -->
 
@@ -35,11 +36,13 @@
         android:layout_gravity="center"
         android:contentDescription="@string/appwidget_upcoming"
         android:paddingHorizontal="@dimen/widget_padding"
-        android:shadowColor="?attr/colorOnSurfaceInverse"
+        android:paddingVertical="@dimen/widget_image_horizontal_margin"
+        android:shadowColor="@color/goodGraySemiTranslucent"
+        android:shadowDy="4"
         android:shadowRadius="@dimen/widget_shadow_radius"
         android:text="@string/no_next_event"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-        android:textColor="?attr/colorOnBackground" />
+        android:textColor="@color/almostWhite" />
 
 </LinearLayout>
