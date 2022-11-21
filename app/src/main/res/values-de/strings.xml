@@ -106,6 +106,9 @@
     <string name="notification_only_favorites">Nur Favoriten</string>
     <string name="notification_only_favorites_description_on">Sendet Sie Benachrichtigungen nur für Lieblingsereignisse</string>
     <string name="notification_only_favorites_description_off">Sendet eine Benachrichtigung für jedes eingegebene Ereignis</string>
+    <string name="additional_notification_only_favorites">Zusätzliche Benachrichtigung für Favoriten</string>
+    <string name="additional_notification_only_favorites_description_on">Sende die zusätzliche Benachrichtigung nur für Lieblingsereignisse</string>
+    <string name="additional_notification_only_favorites_description_off">Senden Sie die zusätzliche Benachrichtigung für jedes eingefügte Ereignis</string>
     <string name="troubleshoot">Fehlerbehebung</string>
     <string name="battery_optimization_title">Batterieoptimierung deaktivieren</string>
     <string name="battery_optimization_description">Öffnen Sie die Einstellungen, um jegliche Optimierung für Birday zu deaktivieren. Nützlich, wenn Benachrichtigungen nicht funktionieren</string>
@@ -258,6 +261,9 @@
     <string name="hide_on_scroll_title">Navigationsleiste beim Scrollen ausblenden</string>
     <string name="hide_on_scroll_description_on">Die untere Navigationsleiste beim Scrollen ausblenden</string>
     <string name="hide_on_scroll_description_off">Die untere Leiste dauerhaft Anzeigen</string>
+    <string name="angry_bird_title">Wütender Angry Bird</string>
+    <string name="angry_bird_description_on">Dauerhafte Benachrichtigungen, kürzere Texte und andere Benachrichtigung-bezogene Optimierungen</string>
+    <string name="angry_bird_description_off">Benachrichtigungen werden sich normal verhalten</string>
     <string name="import_json_title">Aus JSON importieren</string>
     <string name="import_json_description">Importieren aus einer CSV-Datei. Konsultieren Sie das Wiki auf Github für die erforderliche Dateistruktur</string>
     <string name="export_json_title">Als JSON exportieren</string>

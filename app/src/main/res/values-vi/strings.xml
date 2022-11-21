@@ -104,6 +104,9 @@
     <string name="notification_only_favorites">Chỉ sự kiện yêu thích</string>
     <string name="notification_only_favorites_description_on">Chỉ gửi thông báo cho sự kiện yêu thích</string>
     <string name="notification_only_favorites_description_off">Gửi thông báo cho mọi sự kiện</string>
+    <string name="additional_notification_only_favorites">Additional notification for favorites</string>
+    <string name="additional_notification_only_favorites_description_on">Send the additional notification for favorite events only</string>
+    <string name="additional_notification_only_favorites_description_off">Send the additional notification for every event inserted</string>
     <string name="troubleshoot">Khắc phục sự cố</string>
     <string name="battery_optimization_title">Tắt tối ưu hóa pin</string>
     <string name="battery_optimization_description">Mở cài đặt để tắt mọi tối ưu hóa cho Birday. Hữu ích nếu thông báo không hoạt động</string>
@@ -256,6 +259,9 @@
     <string name="hide_on_scroll_title">Hide navbar on scroll</string>
     <string name="hide_on_scroll_description_on">Hide the bottom navbar when you scroll</string>
     <string name="hide_on_scroll_description_off">The bottom navbar will always be visible</string>
+    <string name="angry_bird_title">Angry Bird mode</string>
+    <string name="angry_bird_description_on">Persistent notifications, shorter texts and other notification related tweaks</string>
+    <string name="angry_bird_description_off">Notifications will behave normally</string>
     <string name="import_json_title">Import from JSON</string>
     <string name="import_json_description">Import from a JSON file. Refer to the wiki on Github for the required file structure</string>
     <string name="export_json_title">Export to JSON</string>
