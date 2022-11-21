@@ -112,6 +112,9 @@
     <string name="notification_only_favorites">Doar Favorite</string>
     <string name="notification_only_favorites_description_on">Trimite o notificare doar pentru evenimentele favorite</string>
     <string name="notification_only_favorites_description_off">Trimite o notificare pentru fiecare eveniment inserat</string>
+    <string name="additional_notification_only_favorites">Additional notification for favorites</string>
+    <string name="additional_notification_only_favorites_description_on">Send the additional notification for favorite events only</string>
+    <string name="additional_notification_only_favorites_description_off">Send the additional notification for every event inserted</string>
     <string name="troubleshoot">Depanați</string>
     <string name="battery_optimization_title">Dezactivați optimizarea bateriei</string>
     <string name="battery_optimization_description">Deschideți setările pentru a dezactiva orice optimizare pentru Birday. Util dacă notificările nu funcționează</string>
@@ -275,6 +278,9 @@
     <string name="hide_on_scroll_title">Hide navbar on scroll</string>
     <string name="hide_on_scroll_description_on">Hide the bottom navbar when you scroll</string>
     <string name="hide_on_scroll_description_off">The bottom navbar will always be visible</string>
+    <string name="angry_bird_title">Angry Bird mode</string>
+    <string name="angry_bird_description_on">Un-dismissible notifications, shorter texts and other notification related tweaks</string>
+    <string name="angry_bird_description_off">Notifications will behave normally</string>
     <string name="import_json_title">Import from JSON</string>
     <string name="import_json_description">Import from a JSON file. Refer to the wiki on Github for the required file structure</string>
     <string name="export_json_title">Export to JSON</string>
