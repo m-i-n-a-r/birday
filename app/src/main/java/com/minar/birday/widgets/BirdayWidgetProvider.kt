@@ -132,11 +132,12 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
     ) {
         val sp = PreferenceManager.getDefaultSharedPreferences(context)
         val hideImages = sp.getBoolean("hide_images", false)
-        val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
+        val formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
+        val fullFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
         val views = RemoteViews(context.packageName, R.layout.widget_upcoming)
         val intent = Intent(context, MainActivity::class.java)
 
-        views.setTextViewText(R.id.eventWidgetDate, formatter.format(LocalDate.now()))
+        views.setTextViewText(R.id.eventWidgetDate, fullFormatter.format(LocalDate.now()))
         Thread {
             // Get the next events and the proper formatter
             val eventDao: EventDao = EventDatabase.getBirdayDatabase(context).eventDao()
