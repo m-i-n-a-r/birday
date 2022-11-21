@@ -155,7 +155,7 @@
     <!-- Quick apps -->
     <string name="event_apps">ക്വിക്ക് ആപ്പ്സ്</string>
     <string name="event_apps_description">ആശംസകൾ പെട്ടെന്ന് അയയ്ക്കാൻവേണ്ടി ആപ്പുകൾ!</string>
-    <string name="text_message">Text message</string>
+    <string name="text_message">ടെക്സ്റ്റ് സന്ദേശം</string>
     <string name="dialer">ഡയലർ</string>
     <string name="wishes_birthday">ജന്മദിനാശംസകൾ!</string>
     <string name="no_default_dialer">സ്ഥിര ഡയലർ ആപ്ലിക്കേഷൻ കണ്ടെത്താൻ കഴിഞ്ഞില്ല!</string>
