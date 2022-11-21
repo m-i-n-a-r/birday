@@ -40,7 +40,8 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         val additionalNotification = sharedPrefs.getString("additional_notification", "0")!!.toInt()
         val surnameFirst = sharedPrefs.getBoolean("surname_first", false)
         val hideImage = sharedPrefs.getBoolean("hide_images", false)
-        val onlyFavorites = sharedPrefs.getBoolean("notification_only_favorites", false)
+        val onlyFavoritesNotification = sharedPrefs.getBoolean("notification_only_favorites", false)
+        val onlyFavoritesAdditional = sharedPrefs.getBoolean("additional_only_favorites", false)
         val angryBird = sharedPrefs.getBoolean("angry_bird", false)
 
         try {
@@ -48,16 +49,20 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             val anticipated = mutableListOf<EventResult>()
             val actual = mutableListOf<EventResult>()
             for (event in allEvents) {
-                // Send a notification considering the only favorites option
-                if (onlyFavorites && event.favorite == false) continue
-                if (additionalNotification != 0 && ChronoUnit.DAYS.between(
-                        LocalDate.now(),
-                        event.nextDate
-                    ).toInt() == additionalNotification
-                )
+                // Fill the list of upcoming events
+                if (additionalNotification != 0 &&
+                    ChronoUnit.DAYS.between(LocalDate.now(), event.nextDate)
+                        .toInt() == additionalNotification
+                ) {
+                    if (onlyFavoritesAdditional && event.favorite == false) continue
                     anticipated.add(event)
-                if (event.nextDate!!.isEqual(LocalDate.now()))
+                }
+
+                // Fill the list of events happening today
+                if (event.nextDate!!.isEqual(LocalDate.now())) {
+                    if (onlyFavoritesNotification && event.favorite == false) continue
                     actual.add(event)
+                }
             }
             if (anticipated.isNotEmpty()) sendNotification(
                 anticipated,
