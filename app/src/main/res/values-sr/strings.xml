@@ -160,7 +160,7 @@
     <!-- Quick apps -->
     <string name="event_apps">Брзе апликације</string>
     <string name="event_apps_description">Апликације да брзо пожелите све најбоље!</string>
-    <string name="text_message">Text message</string>
+    <string name="text_message">СМС порука</string>
     <string name="dialer">Телефон</string>
     <string name="wishes_birthday">Срећан рођендан!</string>
     <string name="no_default_dialer">Није пронађена подразумевана апликација за позивање!</string>
