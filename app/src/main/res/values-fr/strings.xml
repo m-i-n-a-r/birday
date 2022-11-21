@@ -154,7 +154,7 @@
     <!-- Quick apps -->
     <string name="event_apps">Applications</string>
     <string name="event_apps_description">Vos applications pour rapidement souhaiter un bon anniversaire à vos proches !</string>
-    <string name="text_message">Text message</string>
+    <string name="text_message">SMS</string>
     <string name="dialer">Appel</string>
     <string name="wishes_birthday">Joyeux anniversaire !</string>
     <string name="no_default_dialer">Aucune application téléphone n\'a été trouvée !</string>
