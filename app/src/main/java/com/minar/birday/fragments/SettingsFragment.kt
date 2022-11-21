@@ -82,7 +82,8 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
     private fun hotReloadActivity(sharedPreferences: SharedPreferences) {
         sharedPreferences.edit().putBoolean("refreshed", true).apply()
         // Recreate doesn't support an animation, but any workaround is buggy
-        ActivityCompat.recreate(requireActivity())
+        val activity = requireActivity()
+        ActivityCompat.recreate(activity)
     }
 
 }

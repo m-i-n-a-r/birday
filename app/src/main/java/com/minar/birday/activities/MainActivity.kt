@@ -281,11 +281,11 @@ class MainActivity : AppCompatActivity() {
     // Update the existing widgets with the newest data and the onclick action
     private fun updateWidget() {
         val intentUpcoming = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
-        intent.component = ComponentName(this, EventWidgetProvider::class.java)
+        intentUpcoming.component = ComponentName(this, EventWidgetProvider::class.java)
         sendBroadcast(intentUpcoming)
 
         val intentMinimal = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
-        intent.component = ComponentName(this, MinimalWidgetProvider::class.java)
+        intentUpcoming.component = ComponentName(this, MinimalWidgetProvider::class.java)
         sendBroadcast(intentMinimal)
     }
 

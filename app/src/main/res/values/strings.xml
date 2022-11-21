@@ -113,6 +113,9 @@
     <string name="notification_only_favorites">Favorites only</string>
     <string name="notification_only_favorites_description_on">Send a notification for favorite events only</string>
     <string name="notification_only_favorites_description_off">Send a notification for every event inserted</string>
+    <string name="additional_notification_only_favorites">Additional notification for favorites</string>
+    <string name="additional_notification_only_favorites_description_on">Send the additional notification for favorite events only</string>
+    <string name="additional_notification_only_favorites_description_off">Send the additional notification for every event inserted</string>
     <string name="troubleshoot">Troubleshoot and extra</string>
     <string name="battery_optimization_title">Disable battery optimization</string>
     <string name="battery_optimization_description">Open the settings to disable any optimization for Birday. Useful if notifications aren\'t working</string>
@@ -302,7 +305,7 @@
     <string name="hide_on_scroll_title">Hide navbar on scroll</string>
     <string name="hide_on_scroll_description_on">Hide the bottom navbar when you scroll</string>
     <string name="hide_on_scroll_description_off">The bottom navbar will always be visible</string>
-    <string name="angry_bird_title">Angry Bird Mode</string>
+    <string name="angry_bird_title">Angry Bird mode</string>
     <string name="angry_bird_description_on">Un-dismissible notifications, shorter texts and other notification related tweaks</string>
     <string name="angry_bird_description_off">Notifications will behave normally</string>
     <string name="import_json_title">Import from JSON</string>

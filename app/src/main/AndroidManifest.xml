@@ -37,7 +37,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/event_widget_info" />
+                android:resource="@xml/widget_upcoming_info" />
         </receiver>
 
         <!-- Old minimal text only widget -->
@@ -49,7 +49,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/minimal_widget_info" />
+                android:resource="@xml/widget_minimal_info" />
         </receiver>
 
         <!-- Notification action -->
