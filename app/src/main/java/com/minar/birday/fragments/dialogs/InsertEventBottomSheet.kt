@@ -60,13 +60,12 @@ class InsertEventBottomSheet(
         // Result launcher stuff
         resultLauncher =
             registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-                // Handle the returned Uri
+                // Handle the returned Uri (atm, the image can't be cropped)
                 if (uri != null) {
                     imageChosen = true
                     setImage(uri)
                 }
             }
-
         return binding.root
     }
 
