@@ -152,7 +152,7 @@
     <!-- Quick apps -->
     <string name="event_apps">應用程式捷徑</string>
     <string name="event_apps_description">用下面這些 App 來祝他們生日快樂吧！</string>
-    <string name="text_message">Text message</string>
+    <string name="text_message">簡訊</string>
     <string name="dialer">電話</string>
     <string name="wishes_birthday">生日快樂！</string>
     <string name="no_default_dialer">找不到預設撥號器！</string>
