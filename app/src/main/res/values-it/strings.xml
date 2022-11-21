@@ -106,9 +106,9 @@
     <string name="notification_only_favorites">Solo preferiti</string>
     <string name="notification_only_favorites_description_on">Manda una notifica solo per gli eventi preferiti</string>
     <string name="notification_only_favorites_description_off">Manda una notifica per tutti gli eventi inseriti</string>
-    <string name="additional_notification_only_favorites">Additional notification for favorites</string>
-    <string name="additional_notification_only_favorites_description_on">Send the additional notification for favorite events only</string>
-    <string name="additional_notification_only_favorites_description_off">Send the additional notification for every event inserted</string>
+    <string name="additional_notification_only_favorites">Notifica aggiuntiva per i preferiti</string>
+    <string name="additional_notification_only_favorites_description_on">Invia la notifica aggiuntiva solo per gli eventi preferiti</string>
+    <string name="additional_notification_only_favorites_description_off">Invia la notifica aggiuntiva per ogni evento inserito</string>
     <string name="troubleshoot">Risoluzione dei problemi</string>
     <string name="battery_optimization_title">Disabilita ottimizzazione batteria</string>
     <string name="battery_optimization_description">Apri le impostazioni per disabilitare le ottimizzazioni per Birday. Utile se le notifiche non funzionano</string>
@@ -261,9 +261,9 @@
     <string name="hide_on_scroll_title">Nascondi navbar allo scroll</string>
     <string name="hide_on_scroll_description_on">Nasconde la barra di navigazione quando si esegue uno scroll</string>
     <string name="hide_on_scroll_description_off">La barra di navigazione sarà sempre visibile</string>
-    <string name="angry_bird_title">Angry Bird mode</string>
-    <string name="angry_bird_description_on">Un-dismissible notifications, shorter texts and other notification related tweaks</string>
-    <string name="angry_bird_description_off">Notifications will behave normally</string>
+    <string name="angry_bird_title">Modalità Angry Bird</string>
+    <string name="angry_bird_description_on">Notifiche persistenti, testi più brevi e altre modifiche alle notifiche</string>
+    <string name="angry_bird_description_off">Le notifiche si comporteranno normalmente</string>
     <string name="import_json_title">Importa da JSON</string>
     <string name="import_json_description">Importa da un file JSON. Fare riferimento alla wiki su Github per la struttura dei file richiesta</string>
     <string name="export_json_title">Esporta in JSON</string>
