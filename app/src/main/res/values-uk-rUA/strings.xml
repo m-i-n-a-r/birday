@@ -158,7 +158,7 @@
     <!-- Quick apps -->
     <string name="event_apps">Швидкі додатки</string>
     <string name="event_apps_description">Додатки де можна швидко поздоровити!</string>
-    <string name="text_message">Text message</string>
+    <string name="text_message">СМС</string>
     <string name="dialer">Телефон</string>
     <string name="wishes_birthday">З днем народження!</string>
     <string name="no_default_dialer">Не знайдено додаток за умовчанням для набору номера!</string>
