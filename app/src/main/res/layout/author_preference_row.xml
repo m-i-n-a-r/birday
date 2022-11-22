@@ -55,7 +55,6 @@
         android:textAlignment="center"
         app:layout_constraintTop_toBottomOf="@id/settingsShimmer" />
 
-
     <ImageView
         android:id="@+id/minarig"
         android:layout_width="wrap_content"
@@ -68,23 +67,23 @@
         android:paddingVertical="@dimen/activity_vertical_margin"
         android:src="@drawable/ic_instagram_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/minartt"
+        app:layout_constraintEnd_toStartOf="@id/minartg"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/descriptionMinar"
         app:tint="?attr/colorPrimary" />
 
     <ImageView
-        android:id="@+id/minartt"
+        android:id="@+id/minartg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
-        android:contentDescription="@string/dev_twitter"
+        android:contentDescription="@string/dev_telegram_channel"
         android:focusable="true"
         android:paddingVertical="@dimen/activity_vertical_margin"
-        android:src="@drawable/ic_twitter_black_24dp"
+        android:src="@drawable/ic_apps_telegram_24dp"
         app:layout_constraintBottom_toBottomOf="@id/minarig"
         app:layout_constraintEnd_toStartOf="@id/minarps"
         app:layout_constraintStart_toEndOf="@id/minarig"
@@ -104,7 +103,7 @@
         android:src="@drawable/ic_play_store_black_24dp"
         app:layout_constraintBottom_toBottomOf="@id/minarig"
         app:layout_constraintEnd_toStartOf="@id/minargit"
-        app:layout_constraintStart_toEndOf="@id/minartt"
+        app:layout_constraintStart_toEndOf="@id/minartg"
         app:layout_constraintTop_toTopOf="@id/minarig"
         app:tint="?attr/colorPrimary" />
 

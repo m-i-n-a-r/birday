@@ -47,7 +47,7 @@ class CustomAuthorPreference(context: Context, attrs: AttributeSet?) :
         // Make the icons clickable
         val logo = binding.imageMinar
         val l1 = binding.minarig
-        val l2 = binding.minartt
+        val l2 = binding.minartg
         val l3 = binding.minarps
         val l4 = binding.minargit
         val l5 = binding.minarsite
@@ -123,9 +123,9 @@ class CustomAuthorPreference(context: Context, attrs: AttributeSet?) :
                 val intent1 = Intent(Intent.ACTION_VIEW, uri)
                 context.startActivity(intent1)
             }
-            R.id.minartt -> {
+            R.id.minartg -> {
                 act.vibrate()
-                uri = Uri.parse(context.getString(R.string.dev_twitter))
+                uri = Uri.parse(context.getString(R.string.dev_telegram_channel))
                 val intent2 = Intent(Intent.ACTION_VIEW, uri)
                 context.startActivity(intent2)
             }

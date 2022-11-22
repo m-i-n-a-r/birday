@@ -240,8 +240,8 @@
                     android:layout_height="match_parent"
                     android:contentDescription="@android:string/cancel"
                     app:backgroundTint="?attr/colorSurfaceVariant"
-                    app:iconTint="?attr/colorPrimary"
-                    app:icon="@drawable/ic_arrow_right_24dp" />
+                    app:icon="@drawable/ic_arrow_right_24dp"
+                    app:iconTint="?attr/colorPrimary" />
             </com.google.android.material.button.MaterialButtonToggleGroup>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -258,7 +258,7 @@
         android:paddingHorizontal="@dimen/placeholders_padding"
         android:scrollbarSize="0dp"
         android:text="@string/no_events"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
         android:textColor="?attr/colorOutline"
         app:drawableTint="?attr/colorOutline"
         app:drawableTopCompat="@drawable/ic_sad_72dp"

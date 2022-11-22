@@ -23,7 +23,7 @@
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:gravity="center"
         android:text="@string/experimental_disclaimer"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         android:textColor="?attr/colorPrimary" />
 
     <Button
@@ -38,6 +38,20 @@
         android:textColor="?attr/colorPrimary"
         android:tint="?attr/colorPrimary"
         app:icon="@drawable/ic_github_black_24dp"
+        app:rippleColor="?attr/colorPrimary" />
+
+    <Button
+        android:id="@+id/translateButton"
+        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/in_row_button_padding"
+        android:contentDescription="@string/translate_app"
+        android:paddingVertical="@dimen/in_row_button_padding"
+        android:text="@string/translate_app"
+        android:textColor="?attr/colorPrimary"
+        android:tint="?attr/colorPrimary"
+        app:icon="@drawable/ic_translate_24dp"
         app:rippleColor="?attr/colorPrimary" />
 
 </LinearLayout>

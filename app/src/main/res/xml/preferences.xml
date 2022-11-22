@@ -26,18 +26,26 @@
 
         <SwitchPreferenceCompat
             android:defaultValue="false"
-            android:key="hide_images"
-            android:summaryOff="@string/hide_images_description_off"
-            android:summaryOn="@string/hide_images_description_on"
-            android:title="@string/hide_images"
-            app:iconSpaceReserved="false" />
-
-        <SwitchPreferenceCompat
-            android:defaultValue="false"
             android:key="notification_only_favorites"
             android:summaryOff="@string/notification_only_favorites_description_off"
             android:summaryOn="@string/notification_only_favorites_description_on"
             android:title="@string/notification_only_favorites"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="additional_only_favorites"
+            android:summaryOff="@string/additional_notification_only_favorites_description_off"
+            android:summaryOn="@string/additional_notification_only_favorites_description_on"
+            android:title="@string/additional_notification_only_favorites"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="hide_images"
+            android:summaryOff="@string/hide_images_description_off"
+            android:summaryOn="@string/hide_images_description_on"
+            android:title="@string/hide_images"
             app:iconSpaceReserved="false" />
 
         <SwitchPreferenceCompat
@@ -99,12 +107,16 @@
             android:layout="@layout/contacts_import_row"
             android:selectable="true" />
 
-        <com.minar.birday.preferences.backup.BirdayExporter
-            android:layout="@layout/birday_export_row"
-            android:selectable="true" />
-
         <com.minar.birday.preferences.backup.BirdayImporter
             android:layout="@layout/birday_import_row"
+            android:selectable="true" />
+
+        <com.minar.birday.preferences.backup.CalendarImporter
+            android:layout="@layout/calendar_import_row"
+            android:selectable="true" />
+
+        <com.minar.birday.preferences.backup.BirdayExporter
+            android:layout="@layout/birday_export_row"
             android:selectable="true" />
 
     </PreferenceCategory>
@@ -125,9 +137,9 @@
         <Preference
             android:key="experimental"
             android:persistent="false"
-            android:title="@string/experimental_settings_title"
             android:summary="@string/experimental_settings_description"
-            app:iconSpaceReserved="false"/>
+            android:title="@string/experimental_settings_title"
+            app:iconSpaceReserved="false" />
 
     </PreferenceCategory>
 

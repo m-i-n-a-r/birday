@@ -11,6 +11,7 @@
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <!-- Not sure if enableOnBackInvokedCallback is useful -->
@@ -27,6 +28,7 @@
         android:theme="@style/SplashTheme"
         tools:ignore="UnusedAttribute">
 
+        <!-- Main, Material 3 and complete widget -->
         <receiver
             android:name=".widgets.EventWidgetProvider"
             android:exported="true">
@@ -35,7 +37,29 @@
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/event_widget_info" />
+                android:resource="@xml/widget_upcoming_info" />
+        </receiver>
+
+        <!-- Old minimal text only widget -->
+        <receiver
+            android:name=".widgets.MinimalWidgetProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_minimal_info" />
+        </receiver>
+
+        <!-- Notification action -->
+        <receiver
+            android:name=".receivers.NotificationActionReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
         </receiver>
 
         <provider
@@ -48,6 +72,7 @@
                 android:resource="@xml/filepaths" />
         </provider>
 
+        <!-- Main activity, the core of Birday -->
         <activity
             android:name=".activities.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
@@ -60,11 +85,24 @@
             </intent-filter>
         </activity>
 
+        <!-- First launch introduction activity -->
         <activity
             android:name=".activities.WelcomeActivity"
             android:label="@string/app_welcome"
             android:noHistory="true"
             android:theme="@style/AppTheme" />
+
+        <!-- Activity to configure the minimal widget -->
+        <activity
+            android:name=".activities.MinimalWidgetConfigurationActivity"
+            android:exported="true"
+            android:label="@string/widget_configuration_title"
+            android:noHistory="true"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
 
         <service
             android:name=".widgets.EventWidgetService"

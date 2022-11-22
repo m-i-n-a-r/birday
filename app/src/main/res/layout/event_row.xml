@@ -33,7 +33,7 @@
         android:paddingHorizontal="@dimen/in_row_padding"
         android:paddingVertical="@dimen/in_row_padding"
         android:text="@string/insert_name_hint"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
         app:layout_constraintEnd_toStartOf="@id/favoriteButton"
         app:layout_constraintStart_toStartOf="@id/eventTypeImage"
         app:layout_constraintTop_toTopOf="parent" />
@@ -64,7 +64,7 @@
         android:paddingHorizontal="@dimen/in_row_button_padding"
         android:paddingVertical="@dimen/in_row_padding"
         android:text="@string/birth_date"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         app:layout_constraintEnd_toStartOf="@id/favoriteButton"
         app:layout_constraintStart_toEndOf="@id/eventTypeImage"
         app:layout_constraintTop_toBottomOf="@id/eventPerson" />

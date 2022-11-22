@@ -70,6 +70,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         eventDao.deleteEvent(event)
     }
 
+    fun deleteAll(events: List<Event>) = viewModelScope.launch(Dispatchers.IO) {
+        eventDao.deleteAllEvent(events)
+    }
+
     fun update(event: Event) = viewModelScope.launch(Dispatchers.IO) {
         eventDao.updateEvent(event)
     }

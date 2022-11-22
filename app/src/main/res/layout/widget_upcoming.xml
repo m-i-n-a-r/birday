@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
-    android:alpha=".9"
+    android:alpha=".95"
     android:background="?attr/colorSurface"
     android:gravity="center_vertical"
     android:orientation="vertical"
@@ -14,14 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:baselineAligned="false"
-        android:orientation="horizontal"
-        android:paddingStart="@dimen/widget_image_horizontal_margin"
-        android:paddingEnd="@dimen/widget_margin">
+        android:orientation="horizontal">
 
         <FrameLayout
+            android:id="@+id/eventWidgetImageGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="start">
+            android:layout_gravity="center"
+            android:paddingHorizontal="@dimen/widget_margin">
 
             <!-- The image for the first upcoming event -->
             <ImageView
@@ -51,16 +51,19 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <!-- The date of the next event(s) -->
+            <!-- The date of today -->
             <TextView
                 android:id="@+id/eventWidgetDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|end"
+                android:layout_marginEnd="@dimen/widget_image_horizontal_margin"
                 android:contentDescription="@string/appwidget_upcoming"
+                android:paddingHorizontal="@dimen/widget_margin"
+                android:paddingVertical="@dimen/widget_image_horizontal_margin"
                 android:text="@string/unknown"
                 android:textAlignment="viewEnd"
-                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                 android:textColor="?attr/colorPrimary" />
 
             <!-- Just a title to help the aesthetics -->
@@ -69,19 +72,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|end"
+                android:layout_marginEnd="@dimen/widget_image_horizontal_margin"
                 android:contentDescription="@string/appwidget_upcoming"
+                android:paddingHorizontal="@dimen/widget_margin"
+                android:paddingVertical="@dimen/widget_image_horizontal_margin"
                 android:text="@string/appwidget_upcoming"
                 android:textAlignment="viewEnd"
                 android:textAllCaps="true"
-                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                 android:textColor="?attr/colorOnBackground" />
 
             <!-- Use an Imageview to create a divider -->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/card_stroke"
-                android:layout_marginStart="@dimen/linear_vertical_margin"
-                android:layout_marginTop="@dimen/widget_margin"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginVertical="@dimen/widget_image_horizontal_margin"
+                android:alpha="0.8"
                 android:background="@drawable/custom_cursor"
                 android:backgroundTint="?attr/colorPrimary"
                 android:contentDescription="@string/appwidget_upcoming" />
@@ -95,7 +102,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginTop="@dimen/widget_margin"
+        android:layout_marginStart="@dimen/widget_image_horizontal_margin"
+        android:layout_marginTop="@dimen/widget_image_horizontal_margin"
         android:contentDescription="@string/no_next_event"
         android:paddingHorizontal="@dimen/widget_margin"
         android:text="@string/no_next_event"

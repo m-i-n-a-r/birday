@@ -5,14 +5,13 @@ An open source app to remember birthdays and events without having to open Faceb
 <p align='center'>
   <a href='https://github.com/m-i-n-a-r/birday/blob/master/LICENSE.md'><img src='https://img.shields.io/badge/license-GPL 3-333333'/></a>
   <img src='https://img.shields.io/github/v/release/m-i-n-a-r/birday'>
-	<img src='https://img.shields.io/badge/status-released-success'/>
-	<img src='https://img.shields.io/badge/-translations%20needed!-yellow'/>
+  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/birday"><img src="https://badges.crowdin.net/birday/localized.svg"></a>
 </p>
 
 ## Introduction
 This is an open source app to remember **birthdays** and other events in a fast, light and beautiful way. No less, no more. I had this idea considering that Google Calendar doesn't display an automatic notification the day of the birthday, and sometimes i need to remember a birthday for a person who is not in my Contacts. Also, adding too much events to the calendar makes it messy and i prefer to manage them separately. The main focus of this app is being easy to use, clean and lightweight. I'm always glad to add features, but only important and really useful features!
 
-## Translations (guide and info below)
+## Translations (guide and info below, refer to [Crowdin](https://crwd.in/birday))
 
 | LANGUAGE                | STATUS       | SPECIAL THANKS | UPDATED BY                  |
 |:------------------------|:------------:|:---------------|:----------------------------|
@@ -20,7 +19,7 @@ This is an open source app to remember **birthdays** and other events in a fast,
 | **Spanish**             | needs review | myself         | Joseahfer                   |
 | **Swedish**             | needs review | SlowNicoFish   |                             |
 | **Dutch**               | needs review | stefanvi       |                             |
-| **Italian**             | needs review | myself         | myself                      |
+| **Italian**             | complete     | myself         | myself                      |
 | **French**              | needs review | Mattis Biton   |                             |
 | **Hungarian**           | needs review | Obi            |                             |
 | **German**              | needs review | pizzapastamix  | WrstFngr, AlexanderRitter02 |

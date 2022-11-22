@@ -26,7 +26,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
         setPreferencesFromResource(R.xml.preferences, rootKey)
         mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
-        val experimentalPreference : Preference? =  findPreference("experimental")
+        val experimentalPreference: Preference? = findPreference("experimental")
         experimentalPreference?.setOnPreferenceClickListener {
             val navController: NavController =
                 findNavController()
@@ -82,7 +82,8 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
     private fun hotReloadActivity(sharedPreferences: SharedPreferences) {
         sharedPreferences.edit().putBoolean("refreshed", true).apply()
         // Recreate doesn't support an animation, but any workaround is buggy
-        ActivityCompat.recreate(requireActivity())
+        val activity = requireActivity()
+        ActivityCompat.recreate(activity)
     }
 
 }

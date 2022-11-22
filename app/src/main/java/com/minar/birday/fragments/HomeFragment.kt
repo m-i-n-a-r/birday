@@ -228,6 +228,21 @@ class HomeFragment : Fragment() {
         { events ->
             // Manage placeholders, search results and the main list
             Log.d("events", "Events changed, actual size: ${events.size}")
+
+            // Quickly delete search result TODO Only available in experimental settings
+            if (sharedPrefs.getBoolean("delete_search", false)) {
+                if (events.isNotEmpty() &&
+                    (!mainViewModel.searchString.value.isNullOrBlank() ||
+                            !mainViewModel.selectedType.value.isNullOrBlank())
+                ) {
+                    Log.d("events", "Showing te delete fab")
+                    act.toggleDeleteFab(true)
+                } else {
+                    Log.d("events", "Hiding the delete fab")
+                    act.toggleDeleteFab(false)
+                }
+            }
+
             if (events.isNotEmpty()) {
                 adapter.addHeadersAndSubmitList(events)
                 // Insert the events in the upper card and remove the placeholders
@@ -255,6 +270,11 @@ class HomeFragment : Fragment() {
         // Restore search string in the search bar
         if (mainViewModel.searchString.value!!.isNotBlank())
             searchBar.setText(mainViewModel.searchString.value)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        act.toggleDeleteFab(false)
     }
 
     override fun onDestroyView() {

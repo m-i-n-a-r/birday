@@ -21,6 +21,7 @@ import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -28,6 +29,7 @@ import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.preference.PreferenceManager
 import com.google.android.material.color.DynamicColors
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.elevation.SurfaceColors
 import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
@@ -40,6 +42,7 @@ import com.minar.birday.preferences.backup.JsonImporter
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidgetProvider
+import com.minar.birday.widgets.MinimalWidgetProvider
 import java.io.IOException
 import java.util.*
 import kotlin.concurrent.thread
@@ -174,23 +177,58 @@ class MainActivity : AppCompatActivity() {
         AppRater.appLaunched(this)
 
         // Manage the fab
-        val fab = binding.fab
-        // Show a quick description of the action
-        fab.setOnLongClickListener {
-            vibrate()
-            showSnackbar(getString(R.string.new_event_description))
-            true
-        }
+        val addFab = binding.fab
+        val deleteFab = binding.fabDelete
+
         // Open the bottom sheet to insert a new event
-        fab.setOnClickListener {
+        addFab.setOnClickListener {
             vibrate()
             val bottomSheet = InsertEventBottomSheet(this)
             if (bottomSheet.isAdded) return@setOnClickListener
             bottomSheet.show(supportFragmentManager, "insert_event_bottom_sheet")
         }
+        // Show a quick description of the action
+        addFab.setOnLongClickListener {
+            vibrate()
+            showSnackbar(getString(R.string.new_event_description))
+            true
+        }
 
         // Animate the fab icon
-        fab.applyLoopingAnimatedVectorDrawable(R.drawable.animated_add_event, 5000L)
+        addFab.applyLoopingAnimatedVectorDrawable(R.drawable.animated_add_event, 5000L)
+
+        // Set the delete search action (initially hidden)
+        deleteFab.setOnClickListener {
+            vibrate()
+            val searchedEvents = mainViewModel.allEvents.value
+            if (searchedEvents != null && searchedEvents.isNotEmpty()) {
+                // Native dialog
+                MaterialAlertDialogBuilder(this)
+                    .setTitle(getString(R.string.delete_db_dialog_title))
+                    .setMessage(getString(R.string.delete_search_confirm))
+                    .setIcon(R.drawable.ic_delete_24dp)
+                    .setPositiveButton(resources.getString(android.R.string.ok)) { dialog, _ ->
+                        dialog.dismiss()
+                        mainViewModel.deleteAll(searchedEvents.map { resultToEvent(it) })
+                        showSnackbar(
+                            getString(R.string.deleted),
+                            actionText = getString(R.string.cancel),
+                            action = fun() {
+                                mainViewModel.insertAll(searchedEvents.map { resultToEvent(it) })
+                            })
+                    }
+                    .setNegativeButton(resources.getString(android.R.string.cancel)) { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .show()
+            }
+        }
+        // Show a quick description of the action
+        deleteFab.setOnLongClickListener {
+            vibrate()
+            showSnackbar(getString(R.string.delete_search_title))
+            true
+        }
 
         // Navigation bar color management (if executed before, it doesn't work)
         if (accent == "monet") {
@@ -242,9 +280,13 @@ class MainActivity : AppCompatActivity() {
 
     // Update the existing widgets with the newest data and the onclick action
     private fun updateWidget() {
-        val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
-        intent.component = ComponentName(this, EventWidgetProvider::class.java)
-        sendBroadcast(intent)
+        val intentUpcoming = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+        intentUpcoming.component = ComponentName(this, EventWidgetProvider::class.java)
+        sendBroadcast(intentUpcoming)
+
+        val intentMinimal = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+        intentMinimal.component = ComponentName(this, MinimalWidgetProvider::class.java)
+        sendBroadcast(intentMinimal)
     }
 
     // Create the NotificationChannel. This code does nothing when it already exists
@@ -364,6 +406,61 @@ class MainActivity : AppCompatActivity() {
         snackbar.show()
     }
 
+    // Change the fab to show a delete icon
+    fun toggleDeleteFab(active: Boolean = false) {
+        val addFab = binding.fab
+        val deleteFab = binding.fabDelete
+        val bottomBarId = binding.bottomBar.id
+        val addParams: CoordinatorLayout.LayoutParams =
+            addFab.layoutParams as CoordinatorLayout.LayoutParams
+        val deleteParams: CoordinatorLayout.LayoutParams =
+            deleteFab.layoutParams as CoordinatorLayout.LayoutParams
+
+        // Case 1: add fab currently hidden, it needs to be active
+        if (!active && addFab.visibility == View.GONE) {
+            // Change anchors to avoid visual problems
+            addParams.anchorId = bottomBarId
+            addFab.layoutParams = addParams
+
+            deleteParams.anchorId = View.NO_ID
+            deleteFab.layoutParams = deleteParams
+
+            addFab.visibility = View.VISIBLE
+            deleteFab.visibility = View.GONE
+            deleteFab.applyLoopingAnimatedVectorDrawable(
+                R.drawable.animated_delete,
+                3000L,
+                true
+            )
+            addFab.applyLoopingAnimatedVectorDrawable(
+                R.drawable.animated_add_event,
+                5000L
+            )
+        }
+
+        // Case 2: delete fab currently hidden, it needs to be active
+        if (active && deleteFab.visibility == View.GONE) {
+            // Change anchors to avoid visual problems
+            addParams.anchorId = View.NO_ID
+            addFab.layoutParams = addParams
+
+            deleteParams.anchorId = bottomBarId
+            deleteFab.layoutParams = deleteParams
+
+            addFab.visibility = View.GONE
+            deleteFab.visibility = View.VISIBLE
+            deleteFab.applyLoopingAnimatedVectorDrawable(
+                R.drawable.animated_delete,
+                3000L
+            )
+            addFab.applyLoopingAnimatedVectorDrawable(
+                R.drawable.animated_add_event,
+                5000L,
+                true
+            )
+        }
+    }
+
     // Ask contacts permission
     fun askContactsPermission(code: Int = 101): Boolean {
         return if (ContextCompat.checkSelfPermission(
@@ -379,6 +476,25 @@ class MainActivity : AppCompatActivity() {
             ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.READ_CONTACTS
+            ) == PackageManager.PERMISSION_GRANTED
+        } else true
+    }
+
+    // Ask calendar permission
+    fun askCalendarPermission(code: Int = 301): Boolean {
+        return if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_CALENDAR
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.READ_CALENDAR),
+                code
+            )
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_CALENDAR
             ) == PackageManager.PERMISSION_GRANTED
         } else true
     }
@@ -461,6 +577,26 @@ class MainActivity : AppCompatActivity() {
                 }
                 // Request contacts permission in every case
                 askContactsPermission()
+            }
+            // Calendar permission when importing from calendar
+            302 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CALENDAR))
+                        showSnackbar(
+                            getString(R.string.missing_permission_calendar),
+                            actionText = getString(R.string.cancel),
+                            action = fun() {
+                                askCalendarPermission()
+                            })
+                    else showSnackbar(
+                        getString(R.string.missing_permission_calendar_forever),
+                        actionText = getString(R.string.title_settings),
+                        action = fun() {
+                            startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                                data = Uri.fromParts("package", packageName, null)
+                            })
+                        })
+                }
             }
         }
     }

@@ -10,14 +10,36 @@
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="auto_import"
-        android:title="@string/launch_auto_import"
+        android:summaryOff="@string/launch_auto_import_description_off"
+        android:summaryOn="@string/launch_auto_import_description_on"
+        android:title="@string/launch_auto_import_title"
         app:iconSpaceReserved="false" />
 
-    <!-- Auto import on each start -->
+    <!-- Hide the bottom navbar on scroll (still can cause navigation issues) -->
     <SwitchPreferenceCompat
         android:defaultValue="false"
         android:key="hide_scroll"
-        android:title="@string/hide_on_scroll"
+        android:summaryOff="@string/hide_on_scroll_description_off"
+        android:summaryOn="@string/hide_on_scroll_description_on"
+        android:title="@string/hide_on_scroll_title"
+        app:iconSpaceReserved="false" />
+
+    <!-- Quickly delete searched events -->
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="delete_search"
+        android:summaryOff="@string/delete_search_description_off"
+        android:summaryOn="@string/delete_search_description_on"
+        android:title="@string/delete_search_title"
+        app:iconSpaceReserved="false" />
+
+    <!-- Angry bird mode for notifications -->
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="angry_bird"
+        android:summaryOff="@string/angry_bird_description_off"
+        android:summaryOn="@string/angry_bird_description_on"
+        android:title="@string/angry_bird_title"
         app:iconSpaceReserved="false" />
 
     <!-- Import from CSV -->

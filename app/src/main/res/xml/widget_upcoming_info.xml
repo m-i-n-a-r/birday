@@ -4,14 +4,11 @@
     android:description="@string/appwidget_upcoming"
     android:initialKeyguardLayout="@layout/widget_upcoming"
     android:initialLayout="@layout/widget_upcoming"
-    android:minWidth="@dimen/widget_min_width"
-    android:minHeight="@dimen/widget_min_height"
     android:previewImage="@drawable/birday_widget_preview"
     android:previewLayout="@layout/widget_upcoming"
     android:resizeMode="horizontal|vertical"
     android:targetCellWidth="3"
-    android:targetCellHeight="2"
+    android:targetCellHeight="1"
     android:updatePeriodMillis="10800000"
     android:widgetCategory="home_screen"
-    tools:targetApi="s" />
-    <!-- Updated every 3 hours, minimum size is 3 * 1 -->
+    tools:targetApi="s" /><!-- Updated every 3 hours, minimum size is 3 * 1 -->

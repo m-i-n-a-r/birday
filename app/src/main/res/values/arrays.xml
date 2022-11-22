@@ -54,6 +54,9 @@
         <item>@string/five_days_before</item>
         <item>@string/six_days_before</item>
         <item>@string/seven_days_before</item>
+        <item>@string/ten_days_before</item>
+        <item>@string/fourteen_days_before</item>
+        <item>@string/twentyone_days_before</item>
     </string-array>
 
     <string-array name="additionalNotificationValues">
@@ -65,6 +68,9 @@
         <item>5</item>
         <item>6</item>
         <item>7</item>
+        <item>10</item>
+        <item>14</item>
+        <item>21</item>
     </string-array>
 
 </resources>

@@ -287,6 +287,9 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
                     if (it.isLowerCase()) it.titlecase(Locale.getDefault())
                     else it.toString()
                 }
+        if (dateWithChosenMonth.month == LocalDate.now().month) {
+            monthTitle.setTextColor(getThemeColor(R.attr.colorTertiary, context))
+        }
 
         if (!sundayFirst)
         // Case 1: monday is the first day of the week

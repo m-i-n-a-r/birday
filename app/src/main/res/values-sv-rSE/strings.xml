@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_welcome">Välkommen till Birday</string>
     <string name="app_name_extended">Birday – Händelsehanterare</string>
     <string name="leave_review_title">Betygsätt Birday</string>
@@ -22,10 +21,6 @@
         <item quantity="one">Birday hjälper dig att komma ihåg totalt %d händelse</item>
         <item quantity="other">Birday hjälper dig att komma ihåg totalt %d händelser</item>
     </plurals>
-    <plurals name="event">
-        <item quantity="one">händelse: %s</item>
-        <item quantity="other">händelser: %s</item>
-    </plurals>
     <string name="next_event">Nästa händelse</string>
     <string name="no_next_event">Inga händelser att visa!</string>
     <string name="no_next_event_description">Du har inte lagt till eller importerat en händelse än. Lägg till en och låt Birday hjälpa dig!</string>
@@ -35,6 +30,7 @@
         <item quantity="one">%d dag kvar</item>
         <item quantity="other">%d dagar kvar</item>
     </plurals>
+    <!-- Settings -->
     <string name="customization">Anpassning</string>
     <string name="app_behavior">Appbeteende</string>
     <string name="additional_notification_name">Ytterligare notifikation</string>
@@ -47,6 +43,9 @@
     <string name="five_days_before">Fem dagar innan</string>
     <string name="six_days_before">Sex dagar innan</string>
     <string name="seven_days_before">Sju dagar innan</string>
+    <string name="ten_days_before">Ten days before</string>
+    <string name="fourteen_days_before">Fourteen days before</string>
+    <string name="twentyone_days_before">Twentyone days before</string>
     <string name="vibration_name">Vibration</string>
     <string name="vibration_description_on">Vibrera när en knapp är nedtryckt</string>
     <string name="vibration_description_off">Inga vibrationer när en knapp är nedtryckt</string>
@@ -57,6 +56,7 @@
     <string name="accent_name">Accentfärg</string>
     <string name="theme_description">Använd ett mörkt, ljust eller automatiskt apptema</string>
     <string name="theme_name">Apptema</string>
+    <!-- Untranslated for now -->
     <string name="aqua">Vattenblå</string>
     <string name="brown">Brun</string>
     <string name="blue">Blå</string>
@@ -75,12 +75,9 @@
     <string name="light_theme">Ljus</string>
     <string name="shimmer_name">Skimmereffekt</string>
     <string name="shimmer_description_on">En skinande animation här och där i appen</string>
-    <string name="import_contacts_title">Importera händelser från kontakter</string>
     <string name="shimmer_description_off">Inga ytterligare grafiska effekter</string>
-    <string name="dark_widget_name">Mörk widget</string>
-    <string name="dark_widget_description_on">Widgeten använder ett mörkt tema</string>
-    <string name="dark_widget_description_off">Widgeten använder ett tydligt tema</string>
     <string name="import_export">Importera och Exportera</string>
+    <string name="import_contacts_title">Importera händelser från kontakter</string>
     <string name="import_contacts_description">Se till att rätta till åren på de händelserna där det fattas så det statistiken blir exakt!</string>
     <string name="import_success">Importen lyckades!</string>
     <string name="import_nothing_found">Hittade ingen händelse!</string>
@@ -97,8 +94,33 @@
     <string name="birday_export_success">Exporten är klar!</string>
     <string name="birday_export_failure">Exporten misslyckades. Hoppsan!</string>
     <string name="birday_export_nothing_found">Inget att exportera!</string>
+    <string name="surname_first">Efternamn för första</string>
+    <string name="surname_first_description_on">Visa efternamnet före namnet</string>
+    <string name="surname_first_description_off">Visa namnet före efternamnet</string>
+    <string name="hide_images">Dölj bilder</string>
+    <string name="hide_images_description_on">Dolda händelsebilder</string>
+    <string name="hide_images_description_off">Händelsebilder syns</string>
+    <string name="notification_only_favorites">Favorites only</string>
+    <string name="notification_only_favorites_description_on">Send a notification for favorite events only</string>
+    <string name="notification_only_favorites_description_off">Send a notification for every event inserted</string>
+    <string name="additional_notification_only_favorites">Additional notification for favorites</string>
+    <string name="additional_notification_only_favorites_description_on">Send the additional notification for favorite events only</string>
+    <string name="additional_notification_only_favorites_description_off">Send the additional notification for every event inserted</string>
+    <string name="troubleshoot">Felsökning</string>
+    <string name="battery_optimization_title">Inaktivera batterioptimering</string>
+    <string name="battery_optimization_description">Öppna inställningarna för att inaktivera eventuell optimering för Birday. Användbart om aviseringar inte fungerar</string>
+    <string name="notification_sound_title">Notifikations ljud</string>
+    <string name="notification_sound_description">Genväg till inställningarna för meddelandeljud om du inte gillar standard fågelljud</string>
+    <string name="missing_permission_notifications">The notification permission was denied, and Birday can\'t send notifications! Activate the permission from settings.</string>
+    <string name="missing_permission_notifications_forever">The notification permission was denied and can\'t be asked again, so Birday can\'t send notifications! Activate the permission manually, from settings.</string>
+    <string name="missing_permission_calendar">The calendar permission was denied, and Birday can\'t import from calendar! Activate the permission from settings.</string>
+    <string name="missing_permission_calendar_forever">The calendar permission was denied and can\'t be asked again, so Birday can\'t import from calendar! Activate the permission manually, from settings.</string>
+    <string name="import_calendar_title">Import from calendar</string>
+    <string name="import_calendar_description">Import any yearly event from your calendars. Remember to set the event type and year to keep things ordered!</string>
+    <!-- Developer -->
     <string name="dev_description">Jag är en trevlig grabb som gillar fina saker såsom animationer, ikoner, sportbilar och 3d-utskrivning. Jag jobbar som designer och dataingenjör</string>
     <string name="easter_egg">Snygg logga va? ;D</string>
+    <!-- New event -->
     <string name="new_event">Ny händelse</string>
     <string name="new_event_description">Ange en ny person du bryr dig om och Birday hjälper dig att påminna om hans / hennes födelsedag eller andra händelser!</string>
     <string name="insert_event">Mata in händelse</string>
@@ -107,6 +129,15 @@
     <string name="insert_surname_hint">Mata in efternamn</string>
     <string name="insert_date_hint">Välj ett datum</string>
     <string name="invalid_value_name">Ogiltigt namn!</string>
+    <string name="consider_year">Överväg år</string>
+    <string name="event_type_hint">Händelsetyp</string>
+    <string name="birthday">Födelsedag</string>
+    <string name="anniversary">Årsdag</string>
+    <string name="death_anniversary">Dödsdag</string>
+    <string name="festivity">Fest</string>
+    <string name="name_day">Namnsdag</string>
+    <string name="other">Övrig</string>
+    <!-- Event actions -->
     <string name="event_actions">Handlingar</string>
     <string name="event_actions_description">här kan du ta bort eller enkelt ändra händelsen!</string>
     <string name="edit_event">Ändra händelse</string>
@@ -114,18 +145,21 @@
     <string name="update_event">Uppdatera händelse</string>
     <string name="share_event">Dela händelse</string>
     <string name="deleted">Raderade!</string>
+    <!-- Event details -->
     <string name="event_details">Detaljer</string>
     <string name="birth_date">Födelsedatum</string>
     <string name="next_age">Nästa ålder:</string>
     <string name="zodiac_sign">Stjärntecken:</string>
     <string name="chinese_zodiac_sign">Kinesiskt stjärntecken:</string>
+    <!-- Quick apps -->
     <string name="event_apps">Snabbappar</string>
     <string name="event_apps_description">Appar för att önska grattis snabbt!</string>
-    <string name="textMessage">Textmeddelande</string>
+    <string name="text_message">Textmeddelande</string>
     <string name="dialer">Telefon</string>
     <string name="wishes_birthday">Grattis på födelsedagen!</string>
     <string name="no_default_dialer">Ingen standard-telefonapp hittades!</string>
     <string name="no_default_sms">Ingen standard-smsapp hittades!</string>
+    <!-- Statistics -->
     <string name="did_you_know">Visste du?</string>
     <string name="age_average">Medelåldern är %s</string>
     <string name="oldest_person">Den äldsta personen är %s</string>
@@ -165,8 +199,9 @@
     <string name="zodiac_cancer">kräftan</string>
     <string name="zodiac_leo">lejonet</string>
     <string name="zodiac_virgo">jungfrun</string>
-    <string name="zodiac_scorpio">skorpionen</string>
     <string name="zodiac_libra">vågen</string>
+    <string name="zodiac_scorpio">skorpionen</string>
+    <!-- Common words -->
     <plurals name="months">
         <item quantity="one">%d månad</item>
         <item quantity="other">%d månader</item>
@@ -180,45 +215,75 @@
     </plurals>
     <string name="born_in">född i</string>
     <string name="and">och</string>
+    <plurals name="event">
+        <item quantity="one">händelse: %s</item>
+        <item quantity="other">händelser: %s</item>
+    </plurals>
+    <!-- Notifications -->
     <string name="events_notification_channel">Händelsepåminnelse</string>
     <string name="events_channel_description">Påminnelser om de kommande händelserna från Birday</string>
     <string name="notification_title">Birday påminnelse</string>
     <string name="notification_description_part_1">Dagens händelser är</string>
     <string name="notification_description_part_2">Ha en bra dag!</string>
     <string name="additional_notification_text">Kommande händelser!</string>
+    <!-- Introduction slides -->
     <string name="slide_one_title">Välkommen till Birday!</string>
     <string name="slide_one_description">Birday är en enkel och lätt app för att hantera viktiga händelser! Du kan använda den för att komma ihåg och lagra födelsedagarna på de människor du älskar eller annan, på ett tillförlitligt och snabbt sätt.</string>
     <string name="slide_two_title">Gratis, enkel, anpassningsbar</string>
     <string name="slide_two_description">Birday är gratis, annonsfri och har öppen källkod. Den ger en uppsättning av statistik om dina födelsedagar, ett favoritsystem och ett anpassningsbart gränssnitt. Och garanterat support och uppdateringar!</string>
     <string name="slide_three_title">Importera från kontakter</string>
     <string name="slide_three_description">Det är också möjligt att importera de händelser som du redan har sparat från dina kontakter. Birday kan göra det åt dig, ge bara kontakt-tillstånd. Njut!</string>
+    <!-- Widget -->
     <string name="appwidget_upcoming">Kommande händelser</string>
     <string name="add_widget">Birday - kommande</string>
+    <string name="dark_widget_name">Mörk widget</string>
+    <string name="dark_widget_description_on">Widgeten använder ett mörkt tema</string>
+    <string name="dark_widget_description_off">Widgeten använder ett tydligt tema</string>
+    <string name="widget_configuration_title">Widget configuration</string>
+    <string name="widget_configuration_description">Configure the widget to match your style</string>
+    <string name="widget_background_title">Background</string>
+    <string name="widget_background_description">Show a background for the widget</string>
+    <string name="compact_widget_title">Compact layout</string>
+    <string name="compact_widget_description">Optimize the layout to be extremely compact</string>
+    <!-- Search -->
     <string name="search_event">Sök…</string>
     <string name="search_no_result_title">Inga resultat funna</string>
     <string name="search_no_result_description">Din söksträng matchar inte någon händelse i Birday-databasen!</string>
-    <string name="consider_year">Överväg år</string>
-    <string name="surname_first">Efternamn för första</string>
-    <string name="surname_first_description_on">Visa efternamnet före namnet</string>
-    <string name="surname_first_description_off">Visa namnet före efternamnet</string>
+    <!-- Notes -->
     <string name="notes">Anteckningar</string>
     <string name="write_something">Skriva något…</string>
-    <string name="hide_images">Dölj bilder</string>
-    <string name="hide_images_description_on">Dolda händelsebilder</string>
-    <string name="hide_images_description_off">Händelsebilder syns</string>
+    <!-- Overview -->
     <string name="overview">Översikt</string>
     <string name="overview_description">En årlig översikt över sparade händelser</string>
-    <string name="event_type_hint">Händelsetyp</string>
-    <string name="birthday">Födelsedag</string>
-    <string name="anniversary">Årsdag</string>
-    <string name="death_anniversary">Dödsdag</string>
-    <string name="festivity">Fest</string>
-    <string name="name_day">Namnsdag</string>
-    <string name="other">Övrig</string>
-    <string name="troubleshoot">Felsökning</string>
-    <string name="battery_optimization_title">Inaktivera batterioptimering</string>
-    <string name="battery_optimization_description">Öppna inställningarna för att inaktivera eventuell optimering för Birday. Användbart om aviseringar inte fungerar</string>
-    <string name="notification_sound_title">Notifikations ljud</string>
-    <string name="notification_sound_description">Genväg till inställningarna för meddelandeljud om du inte gillar standard fågelljud</string>
-
+    <!-- Experimental preferences -->
+    <string name="experimental_settings_title">Experimental</string>
+    <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
+    <string name="check_github">Check Github</string>
+    <string name="translate_app">Translate the app</string>
+    <string name="launch_auto_import_title">Auto import on launch</string>
+    <string name="launch_auto_import_description_off">Birday won\'t import contacts automatically when launched</string>
+    <string name="launch_auto_import_description_on">Birday will automatically sync with contacts at startup</string>
+    <string name="hide_on_scroll_title">Hide navbar on scroll</string>
+    <string name="hide_on_scroll_description_on">Hide the bottom navbar when you scroll</string>
+    <string name="hide_on_scroll_description_off">The bottom navbar will always be visible</string>
+    <string name="angry_bird_title">Angry Bird mode</string>
+    <string name="angry_bird_description_on">Persistent notifications, shorter texts and other notification related tweaks</string>
+    <string name="angry_bird_description_off">Notifications will behave normally</string>
+    <string name="import_json_title">Import from JSON</string>
+    <string name="import_json_description">Import from a JSON file. Refer to the wiki on Github for the required file structure</string>
+    <string name="export_json_title">Export to JSON</string>
+    <string name="export_json_description">Export each event to a JSON file, image excluded</string>
+    <string name="import_csv_title">Import from CSV</string>
+    <string name="import_csv_description">Import from a CSV file. Refer to the wiki on Github for the required file structure</string>
+    <string name="export_csv_title">Export to CSV</string>
+    <string name="export_csv_description">Export each event to a CSV file, image excluded</string>
+    <string name="delete_db_title">Delete all the events</string>
+    <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
+    <string name="delete_db_dialog_title">Are you sure?</string>
+    <string name="delete_db_dialog_description">Make sure to backup your events first, this operation will wipe the DB and should be used for debugging purposes only</string>
+    <string name="delete_search_title">Delete search selection</string>
+    <string name="delete_search_description_off">It won\'t be possible to delete multiple events at once</string>
+    <string name="delete_search_description_on">Press the trash button when you search one or more events to quickly delete them all from Birday. Use with caution!</string>
+    <string name="delete_search_confirm">This will delete all the results of this search. You can undo the process shortly after clicking OK if you change your mind!</string>
 </resources>
