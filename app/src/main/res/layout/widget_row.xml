@@ -16,7 +16,7 @@
         android:paddingHorizontal="@dimen/in_row_padding"
         android:paddingVertical="@dimen/in_row_padding"
         android:text="@string/invalid_value_name"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
 
     <RelativeLayout
         android:layout_width="match_parent"

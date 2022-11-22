@@ -230,13 +230,13 @@
                 android:drawableTint="?attr/colorOutline"
                 android:text="@string/consider_year"
                 android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                 android:textColor="?attr/colorOutline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/dateEventLayout"
                 app:switchPadding="@dimen/text_switch_padding"
-                app:switchTextAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+                app:switchTextAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
             <Button
                 android:id="@+id/positiveButton"

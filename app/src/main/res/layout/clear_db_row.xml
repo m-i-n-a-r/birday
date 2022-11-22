@@ -14,15 +14,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/delete_db_title"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-        android:textSize="@dimen/custom_preference_title_text_size"/>
+        android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+        android:textSize="@dimen/custom_preference_title_text_size" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/clearDbDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/delete_db_description"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         android:textSize="@dimen/custom_preference_subtitle_text_size" />
 
 </LinearLayout>

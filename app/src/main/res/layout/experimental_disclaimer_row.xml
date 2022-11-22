@@ -23,7 +23,7 @@
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:gravity="center"
         android:text="@string/experimental_disclaimer"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         android:textColor="?attr/colorPrimary" />
 
     <Button

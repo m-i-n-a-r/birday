@@ -16,6 +16,6 @@
     android:paddingEnd="@dimen/text_field_horizontal_margin"
     android:text="@string/insert_date_hint"
     android:textAllCaps="true"
-    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
     android:textColor="?attr/colorOutline"
     app:drawableLeftCompat="@drawable/ic_dot_small_24dp" />
