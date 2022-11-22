@@ -262,7 +262,7 @@
     <string name="hide_on_scroll_description_on">Die untere Navigationsleiste beim Scrollen ausblenden</string>
     <string name="hide_on_scroll_description_off">Die untere Leiste dauerhaft Anzeigen</string>
     <string name="angry_bird_title">Wütender Angry Bird</string>
-    <string name="angry_bird_description_on">Dauerhafte Benachrichtigungen, kürzere Texte und andere Benachrichtigung-bezogene Optimierungen</string>
+    <string name="angry_bird_description_on">Un-dismissible notifications, shorter texts and other notification related tweaks</string>
     <string name="angry_bird_description_off">Benachrichtigungen werden sich normal verhalten</string>
     <string name="import_json_title">Aus JSON importieren</string>
     <string name="import_json_description">Importieren aus einer CSV-Datei. Konsultieren Sie das Wiki auf Github für die erforderliche Dateistruktur</string>
