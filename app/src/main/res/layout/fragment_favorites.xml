@@ -400,7 +400,7 @@
         android:paddingHorizontal="@dimen/placeholders_padding"
         android:scrollbarSize="0dp"
         android:text="@string/no_favorites"
-        android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
         android:textColor="?attr/colorOutline"
         app:drawableTint="?attr/colorOutline"
         app:drawableTopCompat="@drawable/ic_neutral_72dp"
