@@ -59,6 +59,7 @@
         android:text="@string/dark_widget_name"
         android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
         android:textSize="@dimen/custom_preference_title_text_size"
+        app:layout_constraintEnd_toStartOf="@id/configurationDarkTextSwitch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/configurationDescription" />
 
@@ -68,6 +69,7 @@
         android:layout_height="wrap_content"
         android:text="@string/dark_widget_description_on"
         android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+        app:layout_constraintEnd_toStartOf="@id/configurationDarkTextSwitch"
         app:layout_constraintStart_toStartOf="@id/configurationDarkWidgetTitle"
         app:layout_constraintTop_toBottomOf="@id/configurationDarkWidgetTitle" />
 
@@ -89,6 +91,7 @@
         android:text="@string/widget_background_title"
         android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
         android:textSize="@dimen/custom_preference_title_text_size"
+        app:layout_constraintEnd_toStartOf="@id/configurationBackgroundSwitch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/configurationDarkWidgetDescription" />
 
@@ -98,6 +101,7 @@
         android:layout_height="wrap_content"
         android:text="@string/widget_background_description"
         android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+        app:layout_constraintEnd_toStartOf="@id/configurationBackgroundSwitch"
         app:layout_constraintStart_toStartOf="@id/configurationBackgroundTitle"
         app:layout_constraintTop_toBottomOf="@id/configurationBackgroundTitle" />
 
@@ -119,6 +123,7 @@
         android:text="@string/compact_widget_title"
         android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
         android:textSize="@dimen/custom_preference_title_text_size"
+        app:layout_constraintEnd_toStartOf="@id/configurationCompactSwitch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/configurationBackgroundDescription" />
 
@@ -128,6 +133,7 @@
         android:layout_height="wrap_content"
         android:text="@string/compact_widget_description"
         android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+        app:layout_constraintEnd_toStartOf="@id/configurationCompactSwitch"
         app:layout_constraintStart_toStartOf="@id/configurationCompactTitle"
         app:layout_constraintTop_toBottomOf="@id/configurationCompactTitle" />
 
