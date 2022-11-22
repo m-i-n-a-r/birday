@@ -144,8 +144,22 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             // Add the action to the notification
             builder.addAction(
                 R.drawable.ic_clear_24dp,
-                applicationContext.getString(android.R.string.cancel),
+                applicationContext.getString(android.R.string.ok),
                 actionPendingIntent
+            )
+            // Action to open the dialer
+            val phoneCall = Intent(Intent.ACTION_DIAL)
+            val phonePendingIntent =
+                PendingIntent.getActivity(
+                    applicationContext,
+                    id,
+                    phoneCall,
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                )
+            builder.addAction(
+                R.drawable.ic_apps_dialer_24dp,
+                applicationContext.getString(R.string.dialer),
+                phonePendingIntent
             )
         }
 
