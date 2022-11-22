@@ -260,7 +260,7 @@
     <string name="hide_on_scroll_description_on">Hide the bottom navbar when you scroll</string>
     <string name="hide_on_scroll_description_off">The bottom navbar will always be visible</string>
     <string name="angry_bird_title">Angry Bird mode</string>
-    <string name="angry_bird_description_on">Persistent notifications, shorter texts and other notification related tweaks</string>
+    <string name="angry_bird_description_on">Un-dismissible notifications, shorter texts and other notification related tweaks</string>
     <string name="angry_bird_description_off">Notifications will behave normally</string>
     <string name="import_json_title">Import from JSON</string>
     <string name="import_json_description">Import from a JSON file. Refer to the wiki on Github for the required file structure</string>
