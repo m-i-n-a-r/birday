@@ -98,8 +98,8 @@
     <color name="crimsonTranslucent">#66dc143c</color>
 
     <!-- Slides -->
-    <color name="slideOne">#4285f4</color>
-    <color name="slideTwo">#222222</color>
-    <color name="slideThree">#53a360</color>
+    <color name="slideOne">@color/blueDark</color>
+    <color name="slideTwo">#5c0000</color>
+    <color name="slideThree">@color/greenDark</color>
 
 </resources>

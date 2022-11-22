@@ -1,0 +1,7 @@
+- The old widget is back, and is now customizable
+- New experimental settings (Angry Bird mode, delete search results)
+- Additional notification up to 21 days before
+- Choose to send the additional notification only for favorite contacts
+- Import the events in your calendar
+- More UI improvements, translate the app button
+- Translations updated and many bugs fixed
