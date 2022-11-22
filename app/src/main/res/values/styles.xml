@@ -18,7 +18,6 @@
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
         <item name="android:textColorTertiary">@color/textColorSecondary</item>
-        <item name="android:navigationBarColor">@color/deepGray</item>
         <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
         <item name="materialTimePickerTheme">@style/ThemeOverlay.App.TimePicker</item>
         <item name="snackbarStyle">@style/Widget.App.Snackbar</item>
@@ -28,8 +27,10 @@
         <item name="colorSurface">@color/colorSurface</item>
         <item name="switchStyle">@style/CustomMaterialSwitch</item>
         <item name="bottomNavigationStyle">@style/CustomBottomNavigation</item>
+        <item name="bottomAppBarStyle">@style/CustomBottomAppBar</item>
         <item name="colorOutline">@color/goodGray</item>
         <item name="colorSurfaceVariant">@color/goodGrayTranslucent</item>
+        <item name="android:navigationBarColor">@color/deepGray</item>
     </style>
 
     <!-- Monet theme -->
@@ -147,15 +148,17 @@
 
     <!-- Bottom navigation for non-monet accents -->
     <style name="CustomBottomNavigation" parent="Widget.Material3.BottomNavigationView">
-        <item name="backgroundTint">?android:statusBarColor</item>
         <item name="itemTextColor">@drawable/bottom_navbar_item</item>
+        <item name="itemIconTint">@drawable/bottom_navbar_item</item>
+    </style>
+
+    <style name="CustomBottomAppBar" parent="Widget.Material3.BottomAppBar">
+        <item name="android:backgroundTint">@color/deepGray</item>
     </style>
 
     <!-- Switch for non-monet accents -->
     <style name="CustomMaterialSwitch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
-        <item name="thumbTint">?attr/colorPrimary</item>
-        <item name="thumbIconTint">?colorSurface</item>
-        <item name="trackTint">?attr/colorSurfaceVariant</item>
+        <item name="thumbIconTint">?attr/colorPrimary</item>
         <item name="trackDecorationTint">?attr/colorPrimary</item>
     </style>
 

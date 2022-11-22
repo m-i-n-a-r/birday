@@ -5,7 +5,6 @@
 
     <style name="AppTheme.Base" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:navigationBarColor">@color/deepGray</item>
         <item name="android:statusBarColor">@color/colorBackgroundInverse</item>
         <item name="android:colorBackground">@color/colorBackgroundInverse</item>
         <item name="android:textColorPrimary">@color/textColorPrimaryInverse</item>
@@ -30,6 +29,8 @@
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
         <item name="switchStyle">@style/CustomMaterialSwitch</item>
         <item name="bottomNavigationStyle">@style/CustomBottomNavigation</item>
+        <item name="bottomAppBarStyle">@style/CustomBottomAppBar</item>
+        <item name="android:navigationBarColor">@color/deepGray</item>
     </style>
 
     <!-- Monet theme -->
