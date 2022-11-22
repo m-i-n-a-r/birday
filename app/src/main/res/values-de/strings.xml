@@ -76,9 +76,6 @@
     <string name="shimmer_name">Schimmereffekt</string>
     <string name="shimmer_description_on">Eine glänzende Animation hier und da in der App</string>
     <string name="shimmer_description_off">Keine zusätzlichen graphischen Effekte</string>
-    <string name="dark_widget_name">Dunkle widget</string>
-    <string name="dark_widget_description_on">Das Widget verwendet das dunkle Thema</string>
-    <string name="dark_widget_description_off">Das Widget verwendet ein klares Thema</string>
     <string name="import_export">Import und Export</string>
     <string name="import_contacts_title">Importiere Ereignisse von Kontakte</string>
     <string name="import_contacts_description">Achte darauf, die Ereignisse mit fehlendem Jahr zu ändern, um immer genaue Statistiken zu haben!</string>
@@ -239,6 +236,15 @@
     <!-- Widget -->
     <string name="appwidget_upcoming">Bevorstehende Ereignisse</string>
     <string name="add_widget">Birday - bevorstehend</string>
+    <string name="dark_widget_name">Dunkle widget</string>
+    <string name="dark_widget_description_on">Das Widget verwendet das dunkle Thema</string>
+    <string name="dark_widget_description_off">Das Widget verwendet ein klares Thema</string>
+    <string name="widget_configuration_title">Widget-Konfiguration</string>
+    <string name="widget_configuration_description">Konfigurieren Sie das Widget auf Ihren Stil</string>
+    <string name="widget_background_title">Hintergrund</string>
+    <string name="widget_background_description">Zeige einen Hintergrund für das Widget</string>
+    <string name="compact_widget_title">Kompaktes Layout</string>
+    <string name="compact_widget_description">Optimieren Sie das Layout als extrem kompakt</string>
     <!-- Search -->
     <string name="search_event">Suchen…</string>
     <string name="search_no_result_title">Keine Ergebnisse gefunden</string>
@@ -262,7 +268,7 @@
     <string name="hide_on_scroll_description_on">Die untere Navigationsleiste beim Scrollen ausblenden</string>
     <string name="hide_on_scroll_description_off">Die untere Leiste dauerhaft Anzeigen</string>
     <string name="angry_bird_title">Wütender Angry Bird</string>
-    <string name="angry_bird_description_on">Dauerhafte Benachrichtigungen, kürzere Texte und andere Benachrichtigung-bezogene Optimierungen</string>
+    <string name="angry_bird_description_on">Dauerhafte Benachrichtigungen, kürzere Texte und andere Benachrichtigungs-bezogene Optimierungen</string>
     <string name="angry_bird_description_off">Benachrichtigungen werden sich normal verhalten</string>
     <string name="import_json_title">Aus JSON importieren</string>
     <string name="import_json_description">Importieren aus einer CSV-Datei. Konsultieren Sie das Wiki auf Github für die erforderliche Dateistruktur</string>
