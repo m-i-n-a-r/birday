@@ -11,5 +11,4 @@
     android:targetCellHeight="1"
     android:updatePeriodMillis="10800000"
     android:widgetCategory="home_screen"
-    tools:targetApi="s" />
-    <!-- Updated every 3 hours, minimum size is 3 * 1 -->
+    tools:targetApi="s" /><!-- Updated every 3 hours, minimum size is 3 * 1 -->

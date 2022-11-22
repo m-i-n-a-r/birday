@@ -285,7 +285,7 @@ class MainActivity : AppCompatActivity() {
         sendBroadcast(intentUpcoming)
 
         val intentMinimal = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
-        intentUpcoming.component = ComponentName(this, MinimalWidgetProvider::class.java)
+        intentMinimal.component = ComponentName(this, MinimalWidgetProvider::class.java)
         sendBroadcast(intentMinimal)
     }
 
