@@ -288,7 +288,7 @@
     <string name="hide_on_scroll_description_on">Спрятать кнопку навигационной панели при прокрутке</string>
     <string name="hide_on_scroll_description_off">Нижняя часть навигационной панели будет всегда видна</string>
     <string name="angry_bird_title">Режим злобной птицы</string>
-    <string name="angry_bird_description_on">Un-dismissible notifications, shorter texts and other notification related tweaks</string>
+    <string name="angry_bird_description_on">Persistent notifications, shorter texts and other notification related tweaks</string>
     <string name="angry_bird_description_off">Уведомления станут обычными</string>
     <string name="import_json_title">Импортировать из JSON</string>
     <string name="import_json_description">Импортировать из файла JSON. Обратитесь к Wiki на Github для требуемой структуры файлов</string>
