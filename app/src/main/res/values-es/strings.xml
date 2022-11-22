@@ -262,7 +262,7 @@
     <string name="hide_on_scroll_description_on">Oculta la barra de navegación inferior cuando se desplaza</string>
     <string name="hide_on_scroll_description_off">La barra de navegación inferior será siempre visible</string>
     <string name="angry_bird_title">Modo Angry Bird</string>
-    <string name="angry_bird_description_on">Notificaciones persistentes, textos más cortos y otros ajustes relacionados con notificaciones</string>
+    <string name="angry_bird_description_on">Un-dismissible notifications, shorter texts and other notification related tweaks</string>
     <string name="angry_bird_description_off">Las notificaciones se comportarán normalmente</string>
     <string name="import_json_title">Importar desde JSON</string>
     <string name="import_json_description">Importar desde un archivo JSON. Consulte la wiki en Github para ver la estructura de archivos requerida</string>
