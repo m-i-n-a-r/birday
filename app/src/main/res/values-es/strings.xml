@@ -76,9 +76,6 @@
     <string name="shimmer_name">Efectos de brillo</string>
     <string name="shimmer_description_on">Brilli brilli por aquí y por allá</string>
     <string name="shimmer_description_off">Nada de brilli brilli</string>
-    <string name="dark_widget_name">¿Widget oscuro?</string>
-    <string name="dark_widget_description_on">El widget usa un tema oscuro</string>
-    <string name="dark_widget_description_off">El widget usa un tema claro</string>
     <string name="import_export">Importar y exportar</string>
     <string name="import_contacts_title">Importar eventos desde contactos</string>
     <string name="import_contacts_description">No olvides modificar los eventos con los años que falten para tener estadísticas más precisas</string>
@@ -239,6 +236,15 @@
     <!-- Widget -->
     <string name="appwidget_upcoming">Próximos eventos</string>
     <string name="add_widget">Birday - Eventos</string>
+    <string name="dark_widget_name">¿Widget oscuro?</string>
+    <string name="dark_widget_description_on">El widget usa un tema oscuro</string>
+    <string name="dark_widget_description_off">El widget usa un tema claro</string>
+    <string name="widget_configuration_title">Widget configuration</string>
+    <string name="widget_configuration_description">Configure the widget to match your style</string>
+    <string name="widget_background_title">Background</string>
+    <string name="widget_background_description">Show a background for the widget</string>
+    <string name="compact_widget_title">Compact layout</string>
+    <string name="compact_widget_description">Optimize the layout to be extremely compact</string>
     <!-- Search -->
     <string name="search_event">Buscar…</string>
     <string name="search_no_result_title">Sin resultados</string>
