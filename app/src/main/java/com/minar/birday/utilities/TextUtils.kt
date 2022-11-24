@@ -44,6 +44,8 @@ fun checkName(submission: String): Boolean {
     var apostropheFound = false
     var hyphenFound = false
     var ampersandFound = false
+    var openParFound = false
+    var closedParFound = false
 
     if (submission == "\'") return false
     if (submission.startsWith('-')) return false
@@ -61,6 +63,8 @@ fun checkName(submission: String): Boolean {
             // Seems like numbers are allowed in certain countries!
             s.isDigit() -> continue@loop
             s.isLetter() -> continue@loop
+            s == '(' && !openParFound -> openParFound = true
+            s == ')' && !closedParFound -> closedParFound = true
             s == '-' && !hyphenFound -> hyphenFound = true
             s == '\'' && !apostropheFound -> apostropheFound = true
             s == '&' && !ampersandFound -> ampersandFound = true
