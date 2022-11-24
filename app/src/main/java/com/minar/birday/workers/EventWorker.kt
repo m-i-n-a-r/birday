@@ -118,7 +118,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             else formulateAdditionalNotificationText(nextEvents, surnameFirst)
 
         val builder = NotificationCompat.Builder(applicationContext, "events_channel")
-            .setSmallIcon(R.drawable.animated_notification_icon)
+            .setSmallIcon(if (!angryBird) R.drawable.animated_notification_icon else R.drawable.animated_angry_notification_icon)
             .setContentTitle(applicationContext.getString(R.string.notification_title))
             .setContentText(notificationText)
             .setStyle(
