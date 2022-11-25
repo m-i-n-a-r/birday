@@ -170,6 +170,7 @@
     <string name="special_ages">Un importante compleanno in arrivo è %s</string>
     <string name="random_zodiac_sign">Segno zodiacale di %1$s: %2$s</string>
     <string name="most_common_zodiac_sign">Il segno zodiacale più comune è %s</string>
+    <string name="most_common_chinese_sign">Il segno cinese più comune è %s</string>
     <string name="random_day_of_week">%1$s è nato/a di %2$s</string>
     <string name="most_common_day_of_week">Il giorno di settimana di nascita più comune è %s</string>
     <plurals name="leap_year_total">
@@ -268,8 +269,11 @@
     <string name="hide_on_scroll_description_on">Nasconde la barra di navigazione quando si esegue uno scroll</string>
     <string name="hide_on_scroll_description_off">La barra di navigazione sarà sempre visibile</string>
     <string name="angry_bird_title">Modalità Angry Bird</string>
-    <string name="angry_bird_description_on">Notifiche persistenti, testi più brevi e altre modifiche relative alle notifiche</string>
+    <string name="angry_bird_description_on">Notifiche persistenti, testi più brevi e altre modifiche alle notifiche</string>
     <string name="angry_bird_description_off">Le notifiche si comporteranno normalmente</string>
+    <string name="disable_astrology_title">Disabilita astrologia</string>
+    <string name="disable_astrology_description_on">Segni zodiacali nascosti da dettagli e statistiche</string>
+    <string name="disable_astrology_description_off">Le informazioni zodiacali sono visualizzate normalmente</string>
     <string name="import_json_title">Importa da JSON</string>
     <string name="import_json_description">Importa da un file JSON. Fare riferimento alla wiki su Github per la struttura dei file richiesta</string>
     <string name="export_json_title">Esporta in JSON</string>
