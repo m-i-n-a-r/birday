@@ -235,7 +235,7 @@ class HomeFragment : Fragment() {
                     (!mainViewModel.searchString.value.isNullOrBlank() ||
                             !mainViewModel.selectedType.value.isNullOrBlank())
                 ) {
-                    Log.d("events", "Showing te delete fab")
+                    Log.d("events", "Showing the delete fab")
                     act.toggleDeleteFab(true)
                 } else {
                     Log.d("events", "Hiding the delete fab")

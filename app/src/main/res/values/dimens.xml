@@ -21,7 +21,8 @@
     <dimen name="event_type_badge_padding">5dp</dimen>
     <dimen name="between_row_padding">8dp</dimen>
     <dimen name="recycler_padding">18dp</dimen>
-    <dimen name="recycler_extra_space_vertical">34dp</dimen>
+    <dimen name="recycler_extra_space_top">44dp</dimen>
+    <dimen name="recycler_extra_space_bottom">88dp</dimen>
     <dimen name="dialog_actions_padding">40dp</dimen>
     <dimen name="dialog_horizontal_padding">24dp</dimen>
     <dimen name="details_text_max_width">196dp</dimen>
