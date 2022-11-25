@@ -196,6 +196,7 @@
     <string name="special_ages">An important upcoming birthday is %s</string>
     <string name="random_zodiac_sign">Zodiac sign of %1$s: %2$s</string>
     <string name="most_common_zodiac_sign">The most common zodiac sign is %s</string>
+    <string name="most_common_chinese_sign">The most common chinese sign is %s</string>
     <string name="random_day_of_week">%1$s was born on %2$s</string>
     <string name="most_common_day_of_week">The most common day of the week of birth is %s</string>
     <plurals name="leap_year_total">
@@ -315,6 +316,9 @@
     <string name="angry_bird_title">Angry Bird mode</string>
     <string name="angry_bird_description_on">Un-dismissible notifications, shorter texts and other notification related tweaks</string>
     <string name="angry_bird_description_off">Notifications will behave normally</string>
+    <string name="disable_astrology_title">Disable astrology</string>
+    <string name="disable_astrology_description_on">Zodiac signs hidden from details and stats</string>
+    <string name="disable_astrology_description_off">Zodiac information are displayed normally</string>
     <string name="import_json_title">Import from JSON</string>
     <string name="import_json_description">Import from a JSON file. Refer to the wiki on Github for the required file structure</string>
     <string name="export_json_title">Export to JSON</string>

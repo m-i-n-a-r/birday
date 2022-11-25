@@ -42,6 +42,15 @@
         android:title="@string/angry_bird_title"
         app:iconSpaceReserved="false" />
 
+    <!-- Disable astrology information -->
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="disable_astrology"
+        android:summaryOff="@string/disable_astrology_description_off"
+        android:summaryOn="@string/disable_astrology_description_on"
+        android:title="@string/disable_astrology_title"
+        app:iconSpaceReserved="false" />
+
     <!-- Import from CSV -->
     <com.minar.birday.preferences.backup.CsvImporter android:layout="@layout/csv_import_row" />
 

@@ -59,6 +59,7 @@ class FavoritesFragment : Fragment() {
         val shimmer = binding.favoritesCardShimmer
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
+        val astrologyDisabled = sharedPrefs.getBoolean("disable_astrology", false)
         val favoriteMotionLayout = binding.favoritesMain
         val favoritesCard = binding.favoritesCard
         val favoritesMiniFab = binding.favoritesMiniFab
@@ -132,7 +133,8 @@ class FavoritesFragment : Fragment() {
             mainViewModel.allEventsUnfiltered.observe(viewLifecycleOwner) { events ->
                 // Stats - Under a minimum size, no stats will be shown (at least 5 birthdays containing a year)
                 if (events.filter { it.yearMatter == true && isBirthday(it) }.size > 4) generateStat(
-                    events
+                    events,
+                    astrologyDisabled
                 )
                 else fullStats = SpannableStringBuilder(
                     requireActivity().applicationContext.getString(
@@ -272,10 +274,10 @@ class FavoritesFragment : Fragment() {
     }
 
     // Use the generator to generate a random stat and display it
-    private fun generateStat(events: List<EventResult>) {
+    private fun generateStat(events: List<EventResult>, astrologyDisabled: Boolean = false) {
         val cardSubtitle: TextView = binding.statsSubtitle
         val cardDescription: TextView = binding.statsDescription
-        val generator = StatsGenerator(events, context)
+        val generator = StatsGenerator(events, context, astrologyDisabled)
         cardSubtitle.text = generator.generateRandomStat()
         fullStats = generator.generateFullStats()
         val summary = resources.getQuantityString(R.plurals.event, events.size, events.size)

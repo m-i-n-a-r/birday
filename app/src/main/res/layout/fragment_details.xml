@@ -95,7 +95,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsEventImageBackground"
-            app:srcCompat="@drawable/ic_favorites_24dp"
+            app:srcCompat="@drawable/ic_party_24dp"
             app:tint="?attr/colorOutline" />
 
         <com.google.android.material.textview.MaterialTextView
