@@ -12,10 +12,10 @@
         <action
             android:id="@+id/action_navigationMain_to_detailsFragment"
             app:destination="@id/detailsFragment"
-            app:enterAnim="@anim/nav_enter_anim"
-            app:exitAnim="@anim/nav_exit_anim"
-            app:popEnterAnim="@anim/nav_pop_enter_anim"
-            app:popExitAnim="@anim/nav_pop_exit_anim" />
+            app:enterAnim="@anim/nav_enter_secondary_anim"
+            app:exitAnim="@anim/nav_exit_secondary_anim"
+            app:popEnterAnim="@anim/nav_pop_enter_secondary_anim"
+            app:popExitAnim="@anim/nav_pop_exit_secondary_anim" />
     </fragment>
     <fragment
         android:id="@+id/navigationFavorites"
@@ -25,10 +25,17 @@
         <action
             android:id="@+id/action_navigationFavorites_to_overviewFragment"
             app:destination="@id/overviewFragment"
-            app:enterAnim="@anim/nav_enter_anim"
-            app:exitAnim="@anim/nav_exit_anim"
-            app:popEnterAnim="@anim/nav_pop_enter_anim"
-            app:popExitAnim="@anim/nav_pop_exit_anim" />
+            app:enterAnim="@anim/nav_enter_secondary_anim"
+            app:exitAnim="@anim/nav_exit_secondary_anim"
+            app:popEnterAnim="@anim/nav_pop_enter_secondary_anim"
+            app:popExitAnim="@anim/nav_pop_exit_secondary_anim" />
+        <action
+            android:id="@+id/action_navigationFavorites_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/nav_enter_secondary_anim"
+            app:exitAnim="@anim/nav_exit_secondary_anim"
+            app:popEnterAnim="@anim/nav_pop_enter_secondary_anim"
+            app:popExitAnim="@anim/nav_pop_exit_secondary_anim" />
     </fragment>
     <fragment
         android:id="@+id/navigationSettings"
@@ -38,10 +45,10 @@
         <action
             android:id="@+id/action_navigationSettings_to_experimentalSettingsFragment"
             app:destination="@id/experimentalSettingsFragment"
-            app:enterAnim="@anim/nav_enter_anim"
-            app:exitAnim="@anim/nav_exit_anim"
-            app:popEnterAnim="@anim/nav_pop_enter_anim"
-            app:popExitAnim="@anim/nav_pop_exit_anim" />
+            app:enterAnim="@anim/nav_enter_secondary_anim"
+            app:exitAnim="@anim/nav_exit_secondary_anim"
+            app:popEnterAnim="@anim/nav_pop_enter_secondary_anim"
+            app:popExitAnim="@anim/nav_pop_exit_secondary_anim" />
     </fragment>
     <fragment
         android:id="@+id/experimentalSettingsFragment"
