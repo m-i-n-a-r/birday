@@ -114,7 +114,10 @@ class StatsGenerator(
         var oldestName = ""
         var oldestAge = 0
         birthdays.forEach {
-            if (oldestDate.isAfter(it.originalDate) && it.yearMatter!!) {
+            if (oldestDate.isAfter(it.originalDate) &&
+                it.yearMatter!! &&
+                it.originalDate.isBefore(LocalDate.now())
+            ) {
                 oldestName = it.name
                 oldestDate = it.originalDate
                 oldestAge = getYears(it)
@@ -136,7 +139,10 @@ class StatsGenerator(
         var youngestName = ""
         var youngestAge = 0
         birthdays.forEach {
-            if (youngestDate.isBefore(it.originalDate) && it.yearMatter!!) {
+            if (youngestDate.isBefore(it.originalDate) &&
+                it.yearMatter!! &&
+                it.originalDate.isBefore(LocalDate.now())
+            ) {
                 youngestName = it.name
                 youngestDate = it.originalDate
                 youngestAge = getYears(it)
