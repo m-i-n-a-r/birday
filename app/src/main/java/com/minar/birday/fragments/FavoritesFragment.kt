@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.minar.birday.R
@@ -40,7 +41,10 @@ class FavoritesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = FavoritesAdapter { item -> onItemClick(item) }
+        adapter = FavoritesAdapter(
+            onItemClick = { position -> onItemClick(position) },
+            onItemLongClick = { position -> onItemLongClick(position) }
+        )
         act = activity as MainActivity
     }
 
@@ -257,6 +261,21 @@ class FavoritesFragment : Fragment() {
             }
             .setView(dialogNotesBinding.root)
             .show()
+    }
+
+    // Open the details screen on long press, just another shortcut
+    private fun onItemLongClick(position: Int) {
+        // Return if there was a navigation, useful to avoid double tap on two events
+        if (findNavController().currentDestination?.label != "fragment_favorites")
+            return
+        act.vibrate()
+        // Cast required to obtain the original event result from the event item wrapper
+        val event = adapter.getItem(position)
+
+        // Navigate to the new fragment passing in the event with safe args
+        val action =
+            FavoritesFragmentDirections.actionNavigationFavoritesToDetailsFragment(event, position)
+        findNavController().navigate(action)
     }
 
     // Remove the placeholder or return if the placeholder was already removed before

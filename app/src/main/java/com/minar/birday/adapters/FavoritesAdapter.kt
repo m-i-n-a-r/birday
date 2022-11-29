@@ -21,7 +21,8 @@ import java.time.format.FormatStyle
 
 
 class FavoritesAdapter(
-    private val onItemClick: (position: Int) -> Unit
+    private val onItemClick: (position: Int) -> Unit,
+    private val onItemLongClick: (position: Int) -> Unit
 ) : ListAdapter<EventResult, FavoritesAdapter.FavoriteViewHolder>(FavoritesDiffCallback()) {
     private lateinit var context: Context
 
@@ -51,8 +52,10 @@ class FavoritesAdapter(
         private val eventCountdown = binding.eventCountdown
 
         init {
-            binding.root.setOnClickListener {
-                onItemClick(bindingAdapterPosition)
+            binding.root.setOnClickListener { onItemClick(bindingAdapterPosition) }
+            binding.root.setOnLongClickListener {
+                onItemLongClick(bindingAdapterPosition)
+                true
             }
         }
 
