@@ -170,6 +170,7 @@
     <string name="special_ages">Un anniversaire important approche est %s</string>
     <string name="random_zodiac_sign">Signe astrologique de %1$s : %2$s</string>
     <string name="most_common_zodiac_sign">Le signe astrologique le plus répandu est %s</string>
+    <string name="most_common_chinese_sign">Le signe chinois le plus répandu est %s</string>
     <string name="random_day_of_week">%1$s est né(e) le %2$s</string>
     <string name="most_common_day_of_week">Le jour de naissance le plus répandu est %s</string>
     <plurals name="leap_year_total">
@@ -268,8 +269,11 @@
     <string name="hide_on_scroll_description_on">Masque la barre de navigation du bas lorsque l\'on fait défiler</string>
     <string name="hide_on_scroll_description_off">La barre de navigation du bas sera toujours visible</string>
     <string name="angry_bird_title">Mode Angry Bird</string>
-    <string name="angry_bird_description_on">Notifications persistantes, textes plus courts et autres modifications liées aux notifications</string>
+    <string name="angry_bird_description_on">Notifications persistantes, textes plus courts et autres améliorations liées aux notifications</string>
     <string name="angry_bird_description_off">Les notifications se comporteront normalement</string>
+    <string name="disable_astrology_title">Désactiver l\'astrologie</string>
+    <string name="disable_astrology_description_on">Signes zodiaques cachés dans les détails et les statistiques</string>
+    <string name="disable_astrology_description_off">Les informations du zodiaque sont affichées normalement</string>
     <string name="import_json_title">Importer depuis un JSON</string>
     <string name="import_json_description">Importe depuis un fichier JSON. Consultez le wiki sur GitHub pour la structure de données requise</string>
     <string name="export_json_title">Exporter en JSON</string>

@@ -176,6 +176,7 @@
     <string name="special_ages">O importantă aniversare viitoare este %s</string>
     <string name="random_zodiac_sign">Semnul Zodiac al lui %1$s: %2$s</string>
     <string name="most_common_zodiac_sign">Cel mai frecvent semn zodiacal este %s</string>
+    <string name="most_common_chinese_sign">Cel mai frecvent semn chinezesc este %s</string>
     <string name="random_day_of_week">%1$s s-a născut la %2$s</string>
     <string name="most_common_day_of_week">Cea mai frecventă zi de naștere a săptămânii este %s</string>
     <plurals name="leap_year_total">
@@ -287,6 +288,9 @@
     <string name="angry_bird_title">Mod Pasăre furioasă</string>
     <string name="angry_bird_description_on">Notificări persistente, texte mai scurte și alte modificări legate de notificare</string>
     <string name="angry_bird_description_off">Notificările se vor comporta normal</string>
+    <string name="disable_astrology_title">Dezactivare astrologie</string>
+    <string name="disable_astrology_description_on">Semne zodiacale ascunse în detalii și statistici</string>
+    <string name="disable_astrology_description_off">Informațiile despre Zodiac sunt afișate în mod normal</string>
     <string name="import_json_title">Import din JSON</string>
     <string name="import_json_description">Importați dintr-un fișier JSON. Consultați wiki pe Github pentru structura fișierului necesară</string>
     <string name="export_json_title">Exportare în JSON</string>

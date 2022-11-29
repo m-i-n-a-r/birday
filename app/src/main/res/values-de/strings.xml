@@ -170,6 +170,7 @@
     <string name="special_ages">Ein wichtiger bevorstehender Geburtstag ist %s</string>
     <string name="random_zodiac_sign">Sternzeichen von %1$s: %2$s</string>
     <string name="most_common_zodiac_sign">Das häufigste Sternzeichen ist %s</string>
+    <string name="most_common_chinese_sign">Das häufigste chinesische Zeichen ist %s</string>
     <string name="random_day_of_week">%1$s ist geboren am %2$s</string>
     <string name="most_common_day_of_week">Der häufigste Geburtswochentag ist %s</string>
     <plurals name="leap_year_total">
@@ -270,6 +271,9 @@
     <string name="angry_bird_title">Wütender Angry Bird</string>
     <string name="angry_bird_description_on">Dauerhafte Benachrichtigungen, kürzere Texte und andere Benachrichtigungs-bezogene Optimierungen</string>
     <string name="angry_bird_description_off">Benachrichtigungen werden sich normal verhalten</string>
+    <string name="disable_astrology_title">Astrologie deaktivieren</string>
+    <string name="disable_astrology_description_on">Sternzeichen vor Details und Statistiken versteckt</string>
+    <string name="disable_astrology_description_off">Sternzeichen-Informationen werden normal angezeigt</string>
     <string name="import_json_title">Aus JSON importieren</string>
     <string name="import_json_description">Importieren aus einer CSV-Datei. Konsultieren Sie das Wiki auf Github für die erforderliche Dateistruktur</string>
     <string name="export_json_title">Als JSON exportieren</string>
