@@ -16,6 +16,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.FavoritesAdapter
+import com.minar.birday.animators.RecyclerAnimator
 import com.minar.birday.databinding.DialogNotesBinding
 import com.minar.birday.databinding.FragmentFavoritesBinding
 import com.minar.birday.fragments.dialogs.StatsBottomSheet
@@ -106,13 +107,15 @@ class FavoritesFragment : Fragment() {
         }
 
         // Setup the recycler view
-        binding.favoritesRecycler.adapter = adapter
+        val recycler = binding.favoritesRecycler
+        recycler.adapter = adapter
         with(mainViewModel) {
             getFavorites().observe(viewLifecycleOwner) { events ->
                 // Update the cached copy in the adapter
                 if (events != null && events.isNotEmpty()) {
                     removePlaceholder()
                     adapter.submitList(events)
+                    recycler.itemAnimator = RecyclerAnimator()
                 }
             }
         }
