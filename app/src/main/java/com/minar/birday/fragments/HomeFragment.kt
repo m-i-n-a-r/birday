@@ -26,7 +26,7 @@ import androidx.preference.PreferenceManager
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.EventAdapter
-import com.minar.birday.animators.RecyclerAnimator
+import com.minar.birday.animators.BirdayRecyclerAnimator
 import com.minar.birday.databinding.FragmentHomeBinding
 import com.minar.birday.fragments.dialogs.QuickAppsBottomSheet
 import com.minar.birday.model.EventCode
@@ -266,7 +266,7 @@ class HomeFragment : Fragment() {
                 if (events.isEmpty()) recycler.visibility = View.GONE
                 else {
                     recycler.visibility = View.VISIBLE
-                    recycler.itemAnimator = RecyclerAnimator()
+                    recycler.itemAnimator = BirdayRecyclerAnimator()
                 }
             }
         }

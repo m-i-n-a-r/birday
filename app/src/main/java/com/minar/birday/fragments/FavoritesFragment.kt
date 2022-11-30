@@ -16,7 +16,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.FavoritesAdapter
-import com.minar.birday.animators.RecyclerAnimator
+import com.minar.birday.animators.BirdayRecyclerAnimator
 import com.minar.birday.databinding.DialogNotesBinding
 import com.minar.birday.databinding.FragmentFavoritesBinding
 import com.minar.birday.fragments.dialogs.StatsBottomSheet
@@ -115,7 +115,7 @@ class FavoritesFragment : Fragment() {
                 if (events != null && events.isNotEmpty()) {
                     removePlaceholder()
                     adapter.submitList(events)
-                    recycler.itemAnimator = RecyclerAnimator()
+                    recycler.itemAnimator = BirdayRecyclerAnimator()
                 }
             }
         }
