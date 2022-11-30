@@ -278,7 +278,7 @@ class InsertEventBottomSheet(
         // Validate each field in the form with the same watcher
         var nameCorrect = false
         var surnameCorrect = true // Surname is not mandatory
-        var eventDateCorrect = false
+        var eventDateCorrect = event != null
         val watcher = object : TextWatcher {
             override fun beforeTextChanged(
                 charSequence: CharSequence,
