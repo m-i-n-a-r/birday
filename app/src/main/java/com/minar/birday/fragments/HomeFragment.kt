@@ -2,6 +2,7 @@ package com.minar.birday.fragments
 
 import android.animation.ObjectAnimator
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -60,6 +61,16 @@ class HomeFragment : Fragment() {
         )
         act = activity as MainActivity
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            binding.root.progress = 1F
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            binding.root.progress = sharedPrefs.getFloat("home_motion_state", 0.0F)
+        }
     }
 
     override fun onCreateView(

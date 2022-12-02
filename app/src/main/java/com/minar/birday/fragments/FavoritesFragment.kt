@@ -1,5 +1,7 @@
 package com.minar.birday.fragments
 
+import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.text.SpannableStringBuilder
@@ -34,6 +36,7 @@ class FavoritesFragment : Fragment() {
     private lateinit var adapter: FavoritesAdapter
     private lateinit var fullStats: SpannableStringBuilder
     private lateinit var act: MainActivity
+    private lateinit var sharedPrefs: SharedPreferences
     private var _binding: FragmentFavoritesBinding? = null
     private val binding get() = _binding!!
     private var _dialogNotesBinding: DialogNotesBinding? = null
@@ -49,6 +52,16 @@ class FavoritesFragment : Fragment() {
         act = activity as MainActivity
     }
 
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            binding.root.progress = 1F
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            binding.root.progress = sharedPrefs.getFloat("favorite_motion_state", 0.0F)
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -62,7 +75,7 @@ class FavoritesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val statsImage = binding.statsImage
         val shimmer = binding.favoritesCardShimmer
-        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
         val astrologyDisabled = sharedPrefs.getBoolean("disable_astrology", false)
         val favoriteMotionLayout = binding.favoritesMain
