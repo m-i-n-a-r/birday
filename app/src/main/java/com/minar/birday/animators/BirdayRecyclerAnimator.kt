@@ -16,7 +16,7 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
         viewHolder.itemView.animate()
             .alpha(0F)
             .setInterpolator(FastOutSlowInInterpolator())
-            .setStartDelay(300)
+            .setStartDelay(200)
             .setDuration(300)
             .scaleY(0F)
             .setListener(object : AnimatorListenerAdapter() {
@@ -42,7 +42,7 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
             .alpha(1F)
             .setInterpolator(FastOutSlowInInterpolator())
             .setDuration(400)
-            .setStartDelay(viewHolder.bindingAdapterPosition * 60L)
+            .setStartDelay(viewHolder.bindingAdapterPosition * 50L)
             .setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
                     super.onAnimationEnd(animation)
@@ -62,13 +62,12 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
     ): Boolean {
         val item = viewHolder.itemView
         item.y = fromY.toFloat()
-        val verticalMovement = if ((toY - fromY) >= 0)
-            (toY - fromY).toFloat() - item.measuredHeight
-        else (toY - fromY).toFloat() + item.measuredHeight
-        Log.d("recycler_animation", "vertical movement is $verticalMovement")
+        val verticalMovement = if (toY > fromY)
+            (toY - fromY).toFloat() - (item.measuredHeight)
+        else (fromY - toY).toFloat() - (item.measuredHeight)
         item.animate()
             .translationY(verticalMovement)
-            .setDuration(500)
+            .setDuration(300)
             .setInterpolator(FastOutSlowInInterpolator())
             .setStartDelay(200)
             .setListener(object : AnimatorListenerAdapter() {

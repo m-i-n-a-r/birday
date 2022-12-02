@@ -65,7 +65,7 @@ class HomeFragment : Fragment() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        // Checks the orientation of the screen
+        // Check the orientation of the screen, minimize the card on landscape
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             binding.root.progress = 1F
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
