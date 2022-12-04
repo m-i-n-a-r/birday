@@ -4,9 +4,9 @@
     <string name="app_name_extended">Birday - Správce událostí</string>
     <string name="leave_review_title">Ohodnoťte Birday</string>
     <string name="leave_review_subtitle">Zanechte recenzi, která mi pomůže s aplikací. Mějte na paměti, že kromě darů je tato aplikace zcela zdarma a bez reklam!</string>
-    <string name="yes_review">Zanechat recenzi</string>
+    <string name="yes_review">Rád pomůžu!</string>
     <string name="later">Později, přísahám</string>
-    <string name="no_thanks">V žádném případě</string>
+    <string name="no_thanks">Nepomůžu</string>
     <string name="title_home">Domů</string>
     <string name="title_favorites">Oblíbené</string>
     <string name="title_settings">Nastavení</string>
@@ -18,28 +18,28 @@
     <string name="stats_summary">Přehled statistik</string>
     <string name="no_stats_description">Pro zobrazení statistik nemáte dostatek událostí. Přidejte další a vraťte se později!</string>
     <plurals name="stats_total">
-        <item quantity="one">Birday vám pomáhá zapamatovat si celkem %d událostí</item>
+        <item quantity="one">Birday vám pomáhá zapamatovat si %d událost</item>
         <item quantity="few">Birday vám pomáhá zapamatovat si celkem %d události</item>
-        <item quantity="many">Birday vám pomáhá zapamatovat si celkem %d událostí.</item>
-        <item quantity="other">Birday vám pomáhá zapamatovat si celkem %d událostí.</item>
+        <item quantity="many">Birday vám pomáhá zapamatovat si celkem %d událostí</item>
+        <item quantity="other">Birday vám pomáhá zapamatovat si celkem %d událostí</item>
     </plurals>
-    <string name="next_event">Další událost</string>
-    <string name="no_next_event">Žádné událost k zobrazení!</string>
+    <string name="next_event">Následující událost</string>
+    <string name="no_next_event">Žádné události k zobrazení!</string>
     <string name="no_next_event_description">Dosud jste nevytvořili ani neimportovali žádnou událost. Přidejte ji a nechte Birday, aby vás na ni včas upozornil!</string>
-    <string name="next_age_years">Léta</string>
+    <string name="next_age_years">Věk</string>
     <string name="event_others">a další</string>
     <plurals name="days_left">
-        <item quantity="one">Zbývá dní: %d</item>
-        <item quantity="few">%d zbývá dny</item>
-        <item quantity="many">%d zbývá dnů</item>
-        <item quantity="other">%d zbývá dnů</item>
+        <item quantity="one">Zbývá %d den</item>
+        <item quantity="few">Zbývají %d dny</item>
+        <item quantity="many">Zbývá %d dní</item>
+        <item quantity="other">Zbývá %d dní</item>
     </plurals>
     <!-- Settings -->
     <string name="customization">Přizpůsobení</string>
     <string name="app_behavior">Chování aplikace</string>
     <string name="additional_notification_name">Dodatečné upozornění</string>
     <string name="additional_notification_description">Nastavte dodatečné upozornění, které se odešle několik dní před událostí. Aktuálně nastaveno na %s před událostí</string>
-    <string name="no_additional_notification">Žádné další upozornění</string>
+    <string name="no_additional_notification">žádné další upozornění</string>
     <string name="one_day_before">Jeden den předtím</string>
     <string name="two_days_before">Dva dny předtím</string>
     <string name="three_days_before">Tři dny předtím</string>
@@ -105,7 +105,7 @@
     <string name="hide_images_description_on">Skryté obrázky událostí</string>
     <string name="hide_images_description_off">Obrázky událostí jsou viditelné</string>
     <string name="notification_only_favorites">Pouze oblíbené</string>
-    <string name="notification_only_favorites_description_on">Poslat upozornění pouze pro oblíbené události</string>
+    <string name="notification_only_favorites_description_on">Odeslat upozornění pouze pro oblíbené události</string>
     <string name="notification_only_favorites_description_off">Odeslat upozornění na každou událost</string>
     <string name="additional_notification_only_favorites">Dodatečné upozornění pro oblíbené</string>
     <string name="additional_notification_only_favorites_description_on">Odeslat dodatečné upozornění pouze pro oblíbené události</string>
@@ -115,9 +115,9 @@
     <string name="battery_optimization_description">Otevřete nastavení a deaktivujte jakoukoli optimalizaci baterie pro Birday. Užitečné, pokud nefungují upozornění</string>
     <string name="notification_sound_title">Zvuk upozornění</string>
     <string name="notification_sound_description">Přejít k nastavení zvuku upozornění, pokud se vám nelíbí výchozí zvuk ptáčků</string>
-    <string name="missing_permission_notifications">Oprávněník k upozornění bylo zamítnuto. Birday vás nebude moct upozornit na události. Povolte prosím oprávnění v nastaveních smartphonu!</string>
+    <string name="missing_permission_notifications">Oprávnění k upozornění bylo zamítnuto. Birday vás nebude moct upozornit na události. Povolte prosím oprávnění v nastaveních smartphonu!</string>
     <string name="missing_permission_notifications_forever">Oprávněník k upozornění bylo zamítnuto a nemůže být znovu vyžádáno. Birday vás nebude moct upozornit na události. Povolte prosím oprávnění v nastaveních smartphonu!</string>
-    <string name="missing_permission_calendar">Oprávněník k přístupu ke kalendáři bylo zamítnuto. Birday nebude moct importovat události z kalendáře. Povolte prosím oprávnění v nastaveních smartphonu!</string>
+    <string name="missing_permission_calendar">Oprávnění k přístupu ke kalendáři bylo zamítnuto. Birday nebude moct importovat události z kalendáře. Povolte prosím oprávnění v nastaveních smartphonu!</string>
     <string name="missing_permission_calendar_forever">Oprávnění k přístupu ke kalendáři bylo zamítnuto a Birday nemůže importovat položky z kalendáře! Udělte oprávnění ručně z nastavení smartphonu, protože Birday již nemůže znovu otevřít dialogové okno oprávnění.</string>
     <string name="import_calendar_title">Importovat z kalendáře</string>
     <string name="import_calendar_description">Importujte libovolnou roční událost ze svých kalendářů. Nezapomeňte nastavit typ události a rok, aby bylo vše správně seřazeno!</string>
@@ -174,7 +174,7 @@
     <string name="special_ages">Důležité nadcházející narozeniny jsou %s</string>
     <string name="random_zodiac_sign">Znamení %1$s: %2$s</string>
     <string name="most_common_zodiac_sign">Nejběžnějším znamením je %s</string>
-    <string name="most_common_chinese_sign">Nejběžnějším znamením zvěrokruhu je %s</string>
+    <string name="most_common_chinese_sign">Nejběžnějším čínským znamením je %s</string>
     <string name="random_day_of_week">%1$s se narodil %2$s</string>
     <string name="most_common_day_of_week">Nejběžnějším dnem narození je %s</string>
     <plurals name="leap_year_total">
@@ -216,7 +216,7 @@
         <item quantity="other">%d měsíců</item>
     </plurals>
     <string name="today">Dnes!</string>
-    <string name="yesterday">Včera</string>
+    <string name="yesterday">Včera!</string>
     <string name="tomorrow">Zítra!</string>
     <plurals name="years">
         <item quantity="one">%d rok</item>
@@ -264,7 +264,7 @@
     <string name="search_no_result_description">Váš vyhledávací řetězec neodpovídá žádné události v Birday!</string>
     <!-- Notes -->
     <string name="notes">Poznámky</string>
-    <string name="write_something">Napište něco...</string>
+    <string name="write_something">Napište něco…</string>
     <!-- Overview -->
     <string name="overview">Přehled</string>
     <string name="overview_description">Roční přehled uložených událostí</string>
@@ -274,26 +274,26 @@
     <string name="experimental_disclaimer">Následující funkce jsou experimentální a nemusí fungovat správně. Používejte je na vlastní riziko. Pro kontrolu aktuálního stavu zkontrolujte Github, některé z těchto funkcí by mohly být \"aktualizovány\" a preloženy</string>
     <string name="check_github">Přejít na Github</string>
     <string name="translate_app">Pomozte s překladem Birday</string>
-    <string name="launch_auto_import_title">Automatický import při spuštění</string>
-    <string name="launch_auto_import_description_off">Birday nebude při spuštění automaticky importovat kontakty</string>
-    <string name="launch_auto_import_description_on">Birday se automaticky synchronizuje s kontakty při spuštění</string>
-    <string name="hide_on_scroll_title">Při posouvání skrýt navigační lištu</string>
-    <string name="hide_on_scroll_description_on">Skrýt dolní navigační lištu při posouvání</string>
-    <string name="hide_on_scroll_description_off">Spodní navigační lišta bude vždy viditelná</string>
+    <string name="launch_auto_import_title">Synchronizace s kontakty při spuštění</string>
+    <string name="launch_auto_import_description_off">Birday se při spuštění nebude automaticky synchronizovat s kontakty</string>
+    <string name="launch_auto_import_description_on">Birday se při spuštění automaticky synchronizuje s kontakty</string>
+    <string name="hide_on_scroll_title">Skrýt spodní navigační lištu při posouvání</string>
+    <string name="hide_on_scroll_description_on">Navigační lišta bude při posouvání skryta</string>
+    <string name="hide_on_scroll_description_off">Navigační lišta bude vždy viditelná</string>
     <string name="angry_bird_title">Režim Angry Bird</string>
     <string name="angry_bird_description_on">Trvalá upozornění, kratší texty a další vylepšení týkající se upozornění</string>
     <string name="angry_bird_description_off">Standardní chování upozornění</string>
-    <string name="disable_astrology_title">Zakázat astrologii</string>
-    <string name="disable_astrology_description_on">Skrýt znamení zvěrokruhu v detailech a statistikách</string>
-    <string name="disable_astrology_description_off">Informace o zvěrokruhu se zobrazí standardně</string>
+    <string name="disable_astrology_title">Skrýt znamení zvěrokruhu</string>
+    <string name="disable_astrology_description_on">Znamení budou v detailech a statistikách skryta</string>
+    <string name="disable_astrology_description_off">Znamení budou v detailech a statistikách zobrazena</string>
     <string name="import_json_title">Importovat z JSON</string>
     <string name="import_json_description">Importovat z JSON. Požadovanou strukturu souboru najdete na wiki na Githubu</string>
     <string name="export_json_title">Exportovat do JSON</string>
-    <string name="export_json_description">Exportuje každou událost do JSON, kromě obrázku</string>
+    <string name="export_json_description">Exportuje každou událost (kromě obrázku) do JSON</string>
     <string name="import_csv_title">Importovat z CSV</string>
     <string name="import_csv_description">Importovat z CSV. Požadovanou strukturu souboru najdete na wiki na Githubu</string>
     <string name="export_csv_title">Exportovat do CSV</string>
-    <string name="export_csv_description">Exportuje každou událost do CSV, kromě obrázku</string>
+    <string name="export_csv_description">Exportovat každou událost (kromě obrázku) do CSV</string>
     <string name="delete_db_title">Smazat všechny události</string>
     <string name="delete_db_description">Jednoduše řečeno, smaže celou databázi. Než kliknete, dvakrát si to rozmyslete!</string>
     <string name="delete_db_dialog_title">Jste si jistý?</string>
