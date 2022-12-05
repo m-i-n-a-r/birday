@@ -246,6 +246,8 @@
     <string name="widget_background_description">Mostra uno sfondo per il widget</string>
     <string name="compact_widget_title">Layout compatto</string>
     <string name="compact_widget_description">Ottimizza il layout per essere estremamente compatto</string>
+    <string name="align_start_widget_title">Allinea all\'inizio</string>
+    <string name="align_start_widget_description">Allinea il contenuto del widget all\'inizio (a destra o a sinistra a seconda della tua località)</string>
     <!-- Search -->
     <string name="search_event">Cerca…</string>
     <string name="search_no_result_title">Nessun risultato trovato</string>
@@ -269,7 +271,7 @@
     <string name="hide_on_scroll_description_on">Nasconde la barra di navigazione quando si esegue uno scroll</string>
     <string name="hide_on_scroll_description_off">La barra di navigazione sarà sempre visibile</string>
     <string name="angry_bird_title">Modalità Angry Bird</string>
-    <string name="angry_bird_description_on">Notifiche persistenti, testi più brevi e altre modifiche alle notifiche</string>
+    <string name="angry_bird_description_on">Notifiche persistenti, testi più brevi e altre modifiche relative alle notifiche</string>
     <string name="angry_bird_description_off">Le notifiche si comporteranno normalmente</string>
     <string name="disable_astrology_title">Disabilita astrologia</string>
     <string name="disable_astrology_description_on">Segni zodiacali nascosti da dettagli e statistiche</string>
