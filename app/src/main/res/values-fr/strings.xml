@@ -246,6 +246,8 @@
     <string name="widget_background_description">Afficher un arrière-plan derrière le widget</string>
     <string name="compact_widget_title">Disposition compacte</string>
     <string name="compact_widget_description">Optimise la disposition pour la rendre extrêmement compacte</string>
+    <string name="align_start_widget_title">Aligner au démarrage</string>
+    <string name="align_start_widget_description">Aligner le contenu du widget au début (à droite ou à gauche selon votre locale)</string>
     <!-- Search -->
     <string name="search_event">Rechercher…</string>
     <string name="search_no_result_title">Aucun résultat n\'a été trouvé</string>
