@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import android.widget.RemoteViews
 import androidx.appcompat.app.AppCompatActivity
@@ -85,6 +86,17 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
         val darkText = binding.configurationDarkTextSwitch
         val background = binding.configurationBackgroundSwitch
         val compact = binding.configurationCompactSwitch
+        val alignStart = binding.configurationAlignStartSwitch
+
+        // Restore the state of the saved configuration
+        val darkTextValue = sharedPrefs.getBoolean("widget_minimal_dark_text", false)
+        val backgroundValue = sharedPrefs.getBoolean("widget_minimal_background", false)
+        val compactValue = sharedPrefs.getBoolean("widget_minimal_compact", false)
+        val alignStartValue = sharedPrefs.getBoolean("widget_minimal_align_start", false)
+        darkText.isChecked = darkTextValue
+        background.isChecked = backgroundValue
+        compact.isChecked = compactValue
+        alignStart.isChecked = alignStartValue
 
         // Animate the title image
         binding.configurationTitleImage.applyLoopingAnimatedVectorDrawable(
@@ -106,6 +118,56 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
 
         // Collect the options selected
         doneButton.setOnClickListener {
+            // Save everything in shared preferences
+            val editor = sharedPrefs.edit()
+            editor.putBoolean("widget_minimal_dark_text", darkText.isChecked)
+            editor.putBoolean("widget_minimal_background", background.isChecked)
+            editor.putBoolean("widget_minimal_compact", compact.isChecked)
+            editor.putBoolean("widget_minimal_align_start", alignStart.isChecked)
+            editor.apply()
+
+            // Align the text to start if selected
+            if (alignStart.isChecked) {
+                views.setInt(R.id.minimalWidgetLinearLayout, "setGravity", Gravity.START)
+                views.setInt(R.id.minimalWidgetTitle, "setGravity", Gravity.START)
+                views.setInt(R.id.minimalWidgetText, "setGravity", Gravity.START)
+            } else {
+                views.setInt(R.id.minimalWidgetLinearLayout, "setGravity", Gravity.CENTER)
+                views.setInt(R.id.minimalWidgetTitle, "setGravity", Gravity.CENTER)
+                views.setInt(R.id.minimalWidgetText, "setGravity", Gravity.CENTER)
+            }
+            // Set the padding depending on the background
+            if (background.isChecked) {
+                views.setViewPadding(
+                    R.id.minimalWidgetText,
+                    resources.getDimension(R.dimen.between_row_padding).toInt(),
+                    0,
+                    resources.getDimension(R.dimen.between_row_padding).toInt(),
+                    resources.getDimension(R.dimen.between_row_padding).toInt()
+                )
+                views.setViewPadding(
+                    R.id.minimalWidgetTitle,
+                    resources.getDimension(R.dimen.between_row_padding).toInt(),
+                    resources.getDimension(R.dimen.between_row_padding).toInt(),
+                    resources.getDimension(R.dimen.between_row_padding).toInt(),
+                    0
+                )
+            } else {
+                views.setViewPadding(
+                    R.id.minimalWidgetText,
+                    resources.getDimension(R.dimen.widget_margin).toInt(),
+                    0,
+                    resources.getDimension(R.dimen.widget_margin).toInt(),
+                    resources.getDimension(R.dimen.widget_margin).toInt()
+                )
+                views.setViewPadding(
+                    R.id.minimalWidgetTitle,
+                    resources.getDimension(R.dimen.widget_margin).toInt(),
+                    resources.getDimension(R.dimen.widget_margin).toInt(),
+                    resources.getDimension(R.dimen.widget_margin).toInt(),
+                    0
+                )
+            }
             // Activate the dark text if selected
             if (darkText.isChecked) {
                 views.setTextColor(R.id.minimalWidgetTitle, getColor(android.R.color.black))
@@ -113,21 +175,21 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
                 // Activate the background if selected
                 if (background.isChecked) {
                     views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.VISIBLE)
-                    views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.INVISIBLE)
+                    views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.GONE)
                 } else {
-                    views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.INVISIBLE)
-                    views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.INVISIBLE)
+                    views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.GONE)
+                    views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.GONE)
                 }
             } else {
                 views.setTextColor(R.id.minimalWidgetTitle, getColor(R.color.almostWhite))
                 views.setTextColor(R.id.minimalWidgetText, getColor(R.color.almostWhite))
                 // Activate the background if selected
                 if (background.isChecked) {
-                    views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.INVISIBLE)
+                    views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.GONE)
                     views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.VISIBLE)
                 } else {
-                    views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.INVISIBLE)
-                    views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.INVISIBLE)
+                    views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.GONE)
+                    views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.GONE)
                 }
             }
             // Activate the compact layout if selected

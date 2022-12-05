@@ -55,7 +55,7 @@
     <!-- Widgets -->
     <dimen name="widget_margin">4dp</dimen>
     <dimen name="widget_padding">8dp</dimen>
-    <dimen name="widget_shadow_radius">6</dimen>
+    <dimen name="widget_shadow_radius">4</dimen>
     <dimen name="widget_image_size">38.5dp</dimen>
     <dimen name="widget_image_decoration_size">48dp</dimen>
     <dimen name="widget_image_horizontal_margin">2dp</dimen>

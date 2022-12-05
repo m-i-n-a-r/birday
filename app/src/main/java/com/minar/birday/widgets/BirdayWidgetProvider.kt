@@ -7,8 +7,10 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.widget.RemoteViews
+import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
@@ -86,6 +88,97 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
         val views = RemoteViews(context.packageName, R.layout.widget_minimal)
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
         val intent = Intent(context, MainActivity::class.java)
+        // Retrieve previous values
+        val sp = PreferenceManager.getDefaultSharedPreferences(context)
+        val darkText = sp.getBoolean("widget_minimal_dark_text", false)
+        val background = sp.getBoolean("widget_minimal_background", false)
+        val compact = sp.getBoolean("widget_minimal_compact", false)
+        val alignStart = sp.getBoolean("widget_minimal_align_start", false)
+
+        // Align the text to start if selected
+        if (alignStart) {
+            views.setInt(R.id.minimalWidgetLinearLayout, "setGravity", Gravity.START)
+            views.setInt(R.id.minimalWidgetTitle, "setGravity", Gravity.START)
+            views.setInt(R.id.minimalWidgetText, "setGravity", Gravity.START)
+        } else {
+            views.setInt(R.id.minimalWidgetLinearLayout, "setGravity", Gravity.CENTER)
+            views.setInt(R.id.minimalWidgetTitle, "setGravity", Gravity.CENTER)
+            views.setInt(R.id.minimalWidgetText, "setGravity", Gravity.CENTER)
+        }
+        // Set the padding depending on the background
+        if (background) {
+            views.setViewPadding(
+                R.id.minimalWidgetText,
+                context.resources.getDimension(R.dimen.between_row_padding).toInt(),
+                0,
+                context.resources.getDimension(R.dimen.between_row_padding).toInt(),
+                context.resources.getDimension(R.dimen.between_row_padding).toInt()
+            )
+            views.setViewPadding(
+                R.id.minimalWidgetTitle,
+                context.resources.getDimension(R.dimen.between_row_padding).toInt(),
+                context.resources.getDimension(R.dimen.between_row_padding).toInt(),
+                context.resources.getDimension(R.dimen.between_row_padding).toInt(),
+                0
+            )
+        } else {
+            views.setViewPadding(
+                R.id.minimalWidgetText,
+                context.resources.getDimension(R.dimen.widget_margin).toInt(),
+                0,
+                context.resources.getDimension(R.dimen.widget_margin).toInt(),
+                context.resources.getDimension(R.dimen.widget_margin).toInt(),
+            )
+            views.setViewPadding(
+                R.id.minimalWidgetTitle,
+                context.resources.getDimension(R.dimen.widget_margin).toInt(),
+                context.resources.getDimension(R.dimen.widget_margin).toInt(),
+                context.resources.getDimension(R.dimen.widget_margin).toInt(),
+                0
+            )
+        }
+        // Activate the dark text if selected
+        if (darkText) {
+            views.setTextColor(
+                R.id.minimalWidgetTitle,
+                ContextCompat.getColor(context, android.R.color.black)
+            )
+            views.setTextColor(
+                R.id.minimalWidgetText,
+                ContextCompat.getColor(context, android.R.color.black)
+            )
+            // Activate the background if selected
+            if (background) {
+                views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.VISIBLE)
+                views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.INVISIBLE)
+            } else {
+                views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.INVISIBLE)
+                views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.INVISIBLE)
+            }
+        } else {
+            views.setTextColor(
+                R.id.minimalWidgetTitle,
+                ContextCompat.getColor(context, R.color.almostWhite)
+            )
+            views.setTextColor(
+                R.id.minimalWidgetText,
+                ContextCompat.getColor(context, R.color.almostWhite)
+            )
+            // Activate the background if selected
+            if (background) {
+                views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.INVISIBLE)
+                views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.VISIBLE)
+            } else {
+                views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.INVISIBLE)
+                views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.INVISIBLE)
+            }
+        }
+        // Activate the compact layout if selected
+        if (compact) {
+            views.setViewVisibility(R.id.minimalWidgetTitle, View.GONE)
+        } else {
+            views.setViewVisibility(R.id.minimalWidgetTitle, View.VISIBLE)
+        }
 
         Thread {
             // Get the next events and the proper formatter

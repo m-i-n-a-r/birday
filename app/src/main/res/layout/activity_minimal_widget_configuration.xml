@@ -146,6 +146,38 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/configurationCompactTitle" />
 
+    <!-- Align text to the left -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/configurationAlignStartTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/align_start_widget_title"
+        android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+        android:textSize="@dimen/custom_preference_title_text_size"
+        app:layout_constraintEnd_toStartOf="@id/configurationAlignStartSwitch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/configurationCompactDescription" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/configurationAlignStartDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/align_start_widget_description"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+        app:layout_constraintEnd_toStartOf="@id/configurationAlignStartSwitch"
+        app:layout_constraintStart_toStartOf="@id/configurationAlignStartTitle"
+        app:layout_constraintTop_toBottomOf="@id/configurationAlignStartTitle" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/configurationAlignStartSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/custom_preference_subtitle_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/configurationAlignStartDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/configurationAlignStartTitle" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/configurationConfirmButton"
         style="@style/Widget.Material3.FloatingActionButton.Large.Secondary"
@@ -156,7 +188,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/configurationCompactDescription"
+        app:layout_constraintTop_toBottomOf="@id/configurationAlignStartDescription"
         app:layout_constraintVertical_bias="1"
         app:srcCompat="@drawable/ic_appintro_done" />
 
