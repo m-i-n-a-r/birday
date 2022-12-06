@@ -263,6 +263,8 @@
     <string name="widget_background_description">Afișează un fundal pentru widget</string>
     <string name="compact_widget_title">Aspect compact</string>
     <string name="compact_widget_description">Optimizare aspect pentru a fi extrem de compact</string>
+    <string name="align_start_widget_title">Aliniere la început</string>
+    <string name="align_start_widget_description">Alinierea conținutului widget-ului la început (dreapta sau stânga în funcție de limbă)</string>
     <!-- Search -->
     <string name="search_event">Căutare…</string>
     <string name="search_no_result_title">Niciun rezultat găsit</string>
