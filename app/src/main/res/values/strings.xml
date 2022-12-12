@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name" translatable="false">Birday</string>
     <string name="app_welcome">Welcome to Birday</string>
     <string name="app_name_extended">Birday - Event Manager</string>
@@ -32,7 +31,6 @@
         <item quantity="one">%d day left</item>
         <item quantity="other">%d days left</item>
     </plurals>
-
     <!-- Settings -->
     <string name="customization">Customization</string>
     <string name="app_behavior">App behavior</string>
@@ -59,7 +57,8 @@
     <string name="accent_name">Accent color</string>
     <string name="theme_description">Use a dark, light or automatic app theme</string>
     <string name="theme_name">App theme</string>
-    <string name="monet" translatable="false">Monet</string> <!-- Untranslated for now -->
+    <string name="monet" translatable="false">Monet</string>
+    <!-- Untranslated for now -->
     <string name="aqua">Aqua</string>
     <string name="brown">Brown</string>
     <string name="blue">Blue</string>
@@ -124,7 +123,6 @@
     <string name="missing_permission_calendar_forever">The calendar permission was denied and can\'t be asked again, so Birday can\'t import from calendar! Activate the permission manually, from settings.</string>
     <string name="import_calendar_title">Import from calendar</string>
     <string name="import_calendar_description">Import any yearly event from your calendars. Remember to set the event type and year to keep things ordered!</string>
-
     <!-- Developer -->
     <string name="dev_name" translatable="false">m.i.n.a.r.</string>
     <string name="dev_description">I\'m a polite guy and I like beautiful things, like animations, icons, sport cars and 3D printing. I work as a designer and computer engineer.</string>
@@ -137,7 +135,6 @@
     <string name="dev_other_apps" translatable="false">https://play.google.com/store/apps/dev?id=7720251761301594831</string>
     <string name="easter_egg">Nice logo, huh? ;D</string>
     <string name="wtf" translatable="false">WTF?!</string>
-
     <!-- New event -->
     <string name="new_event">New event</string>
     <string name="new_event_description">Enter a person you care about, and Birday will help you to remember their birthday or other events!</string>
@@ -155,7 +152,6 @@
     <string name="festivity">Festivity</string>
     <string name="name_day">Name day</string>
     <string name="other">Other</string>
-
     <!-- Event actions -->
     <string name="event_actions">Actions</string>
     <string name="event_actions_description">Here you can change or remove this event!</string>
@@ -164,14 +160,12 @@
     <string name="update_event">Update event</string>
     <string name="share_event">Share event</string>
     <string name="deleted">Deleted!</string>
-
     <!-- Event details -->
     <string name="event_details">Details</string>
     <string name="birth_date">Birth date</string>
     <string name="next_age">Next age:</string>
     <string name="zodiac_sign">Zodiac sign:</string>
     <string name="chinese_zodiac_sign">Chinese sign:</string>
-
     <!-- Quick apps -->
     <string name="event_apps">Quick apps</string>
     <string name="event_apps_description">Apps to wish all the best rapidly!</string>
@@ -184,7 +178,6 @@
     <string name="wishes_birthday">Happy birthday!</string>
     <string name="no_default_dialer">No default dialer app found!</string>
     <string name="no_default_sms">No default SMS app found!</string>
-
     <!-- Statistics -->
     <string name="did_you_know">Did you know?</string>
     <string name="age_average">The average age is %s</string>
@@ -228,7 +221,6 @@
     <string name="zodiac_virgo">virgo</string>
     <string name="zodiac_libra">libra</string>
     <string name="zodiac_scorpio">scorpio</string>
-
     <!-- Common words -->
     <plurals name="months">
         <item quantity="one">%d month</item>
@@ -249,7 +241,6 @@
         <item quantity="one">event: %s</item>
         <item quantity="other">events: %s</item>
     </plurals>
-
     <!-- Notifications -->
     <string name="events_notification_channel">Event Reminder</string>
     <string name="events_channel_description">Reminders about the upcoming events from Birday</string>
@@ -257,7 +248,6 @@
     <string name="notification_description_part_1">Today\'s events are</string>
     <string name="notification_description_part_2">Have a great day!</string>
     <string name="additional_notification_text">Upcoming events!</string>
-
     <!-- Introduction slides -->
     <string name="slide_one_title">Welcome to Birday!</string>
     <string name="slide_one_description">Birday is a simple and lightweight app to manage important events!
@@ -272,7 +262,6 @@
     <string name="slide_three_description">It\'s also possible to import the events you\'ve already saved
     from your contacts. Birday can do it for you, just grant the contacts permission. Enjoy!
     </string>
-
     <!-- Widget -->
     <string name="appwidget_upcoming">Upcoming events</string>
     <string name="add_widget">Birday - Upcoming</string>
@@ -287,20 +276,16 @@
     <string name="compact_widget_description">Optimize the layout to be extremely compact</string>
     <string name="align_start_widget_title">Align at start</string>
     <string name="align_start_widget_description">Align the widget content to the start (right or left depending on your locale)</string>
-
     <!-- Search -->
     <string name="search_event">Search…</string>
     <string name="search_no_result_title">No results found</string>
     <string name="search_no_result_description">Your search string doesn\'t match any event that you\'ve added!</string>
-
     <!-- Notes -->
     <string name="notes">Notes</string>
     <string name="write_something">Write something…</string>
-
     <!-- Overview -->
     <string name="overview">Overview</string>
     <string name="overview_description">A yearly overview of every saved event</string>
-
     <!-- Experimental preferences -->
     <string name="experimental_settings_title">Experimental</string>
     <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
@@ -316,7 +301,7 @@
     <string name="hide_on_scroll_description_on">Hide the bottom navbar when you scroll</string>
     <string name="hide_on_scroll_description_off">The bottom navbar will always be visible</string>
     <string name="angry_bird_title">Angry Bird mode</string>
-    <string name="angry_bird_description_on">Un-dismissible notifications, shorter texts and other notification related tweaks</string>
+    <string name="angry_bird_description_on">Persistent notifications, shorter texts and other notification related tweaks</string>
     <string name="angry_bird_description_off">Notifications will behave normally</string>
     <string name="disable_astrology_title">Disable astrology</string>
     <string name="disable_astrology_description_on">Zodiac signs hidden from details and stats</string>
@@ -337,5 +322,4 @@
     <string name="delete_search_description_off">It won\'t be possible to delete multiple events at once</string>
     <string name="delete_search_description_on">Press the trash button when you search one or more events to quickly delete them all from Birday. Use with caution!</string>
     <string name="delete_search_confirm">This will delete all the results of this search. You can undo the process shortly after clicking OK if you change your mind!</string>
-
 </resources>
