@@ -563,8 +563,11 @@ class MainActivity : AppCompatActivity() {
                         showSnackbar(
                             getString(R.string.missing_permission_notifications),
                             actionText = getString(R.string.cancel),
-                            action = fun() {
-                                askContactsPermission()
+                            action =
+                            fun() {
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                                    askNotificationPermission()
+                                }
                             })
                     else showSnackbar(
                         getString(R.string.missing_permission_notifications_forever),
