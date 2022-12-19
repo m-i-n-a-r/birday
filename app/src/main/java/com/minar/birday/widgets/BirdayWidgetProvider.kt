@@ -10,7 +10,6 @@ import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.RemoteViews
-import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
@@ -95,89 +94,57 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
         val compact = sp.getBoolean("widget_minimal_compact", false)
         val alignStart = sp.getBoolean("widget_minimal_align_start", false)
 
+        // First off, hide the text views and backgrounds depending on light or dark
+        val titleTextView: Int
+        val textTextView: Int
+        if (darkText) {
+            views.setViewVisibility(R.id.minimalWidgetTitleLight, View.GONE)
+            views.setViewVisibility(R.id.minimalWidgetTextLight, View.GONE)
+            views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.VISIBLE)
+            views.setViewVisibility(R.id.minimalWidgetTitleDark, View.VISIBLE)
+            views.setViewVisibility(R.id.minimalWidgetTextDark, View.VISIBLE)
+            views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.GONE)
+            titleTextView = R.id.minimalWidgetTitleDark
+            textTextView = R.id.minimalWidgetTextDark
+        } else {
+            views.setViewVisibility(R.id.minimalWidgetTitleLight, View.VISIBLE)
+            views.setViewVisibility(R.id.minimalWidgetTextLight, View.VISIBLE)
+            views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.GONE)
+            views.setViewVisibility(R.id.minimalWidgetTitleDark, View.GONE)
+            views.setViewVisibility(R.id.minimalWidgetTextDark, View.GONE)
+            views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.VISIBLE)
+            titleTextView = R.id.minimalWidgetTitleLight
+            textTextView = R.id.minimalWidgetTextLight
+        }
         // Align the text to start if selected
         if (alignStart) {
             views.setInt(R.id.minimalWidgetLinearLayout, "setGravity", Gravity.START)
-            views.setInt(R.id.minimalWidgetTitle, "setGravity", Gravity.START)
-            views.setInt(R.id.minimalWidgetText, "setGravity", Gravity.START)
+            views.setInt(titleTextView, "setGravity", Gravity.START)
+            views.setInt(textTextView, "setGravity", Gravity.START)
         } else {
             views.setInt(R.id.minimalWidgetLinearLayout, "setGravity", Gravity.CENTER)
-            views.setInt(R.id.minimalWidgetTitle, "setGravity", Gravity.CENTER)
-            views.setInt(R.id.minimalWidgetText, "setGravity", Gravity.CENTER)
+            views.setInt(titleTextView, "setGravity", Gravity.CENTER)
+            views.setInt(textTextView, "setGravity", Gravity.CENTER)
         }
+        val hiPadding = context.resources.getDimension(R.dimen.between_row_padding).toInt()
+        val loPadding = context.resources.getDimension(R.dimen.widget_margin).toInt()
         // Set the padding depending on the background
         if (background) {
-            views.setViewPadding(
-                R.id.minimalWidgetText,
-                context.resources.getDimension(R.dimen.between_row_padding).toInt(),
-                0,
-                context.resources.getDimension(R.dimen.between_row_padding).toInt(),
-                context.resources.getDimension(R.dimen.between_row_padding).toInt()
-            )
-            views.setViewPadding(
-                R.id.minimalWidgetTitle,
-                context.resources.getDimension(R.dimen.between_row_padding).toInt(),
-                context.resources.getDimension(R.dimen.between_row_padding).toInt(),
-                context.resources.getDimension(R.dimen.between_row_padding).toInt(),
-                0
-            )
+            views.setViewPadding(titleTextView, hiPadding, loPadding, hiPadding, loPadding)
+            views.setViewPadding(textTextView, hiPadding, 0, hiPadding, loPadding)
         } else {
-            views.setViewPadding(
-                R.id.minimalWidgetText,
-                context.resources.getDimension(R.dimen.widget_margin).toInt(),
-                0,
-                context.resources.getDimension(R.dimen.widget_margin).toInt(),
-                context.resources.getDimension(R.dimen.widget_margin).toInt(),
-            )
-            views.setViewPadding(
-                R.id.minimalWidgetTitle,
-                context.resources.getDimension(R.dimen.widget_margin).toInt(),
-                context.resources.getDimension(R.dimen.widget_margin).toInt(),
-                context.resources.getDimension(R.dimen.widget_margin).toInt(),
-                0
-            )
-        }
-        // Activate the dark text if selected
-        if (darkText) {
-            views.setTextColor(
-                R.id.minimalWidgetTitle,
-                ContextCompat.getColor(context, android.R.color.black)
-            )
-            views.setTextColor(
-                R.id.minimalWidgetText,
-                ContextCompat.getColor(context, android.R.color.black)
-            )
-            // Activate the background if selected
-            if (background) {
-                views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.VISIBLE)
-                views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.INVISIBLE)
-            } else {
-                views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.INVISIBLE)
-                views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.INVISIBLE)
-            }
-        } else {
-            views.setTextColor(
-                R.id.minimalWidgetTitle,
-                ContextCompat.getColor(context, R.color.almostWhite)
-            )
-            views.setTextColor(
-                R.id.minimalWidgetText,
-                ContextCompat.getColor(context, R.color.almostWhite)
-            )
-            // Activate the background if selected
-            if (background) {
-                views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.INVISIBLE)
-                views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.VISIBLE)
-            } else {
-                views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.INVISIBLE)
-                views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.INVISIBLE)
-            }
+            views.setViewPadding(titleTextView, loPadding, loPadding, loPadding, loPadding)
+            views.setViewPadding(textTextView, loPadding, 0, loPadding, loPadding)
+            views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.GONE)
+            views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.GONE)
+            views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.GONE)
+            views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.GONE)
         }
         // Activate the compact layout if selected
         if (compact) {
-            views.setViewVisibility(R.id.minimalWidgetTitle, View.GONE)
+            views.setViewVisibility(titleTextView, View.GONE)
         } else {
-            views.setViewVisibility(R.id.minimalWidgetTitle, View.VISIBLE)
+            views.setViewVisibility(titleTextView, View.VISIBLE)
         }
 
         Thread {
@@ -210,7 +177,7 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
                     context
                 )
             }"
-            views.setTextViewText(R.id.minimalWidgetText, widgetUpcoming)
+            views.setTextViewText(textTextView, widgetUpcoming)
 
             // Instruct the widget manager to update the widget
             appWidgetManager.updateAppWidget(appWidgetId, views)

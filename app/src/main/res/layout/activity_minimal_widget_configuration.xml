@@ -77,6 +77,7 @@
             android:layout_height="wrap_content"
             android:text="@string/dark_widget_description_on"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textSize="@dimen/custom_preference_subtitle_text_size"
             app:layout_constraintEnd_toStartOf="@id/configurationDarkTextSwitch"
             app:layout_constraintStart_toStartOf="@id/configurationDarkWidgetTitle"
             app:layout_constraintTop_toBottomOf="@id/configurationDarkWidgetTitle" />
@@ -85,7 +86,8 @@
             android:id="@+id/configurationDarkTextSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/custom_preference_subtitle_text_size"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/card_margin"
             app:layout_constraintBottom_toBottomOf="@id/configurationDarkWidgetDescription"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/configurationDarkWidgetTitle" />
@@ -109,6 +111,7 @@
             android:layout_height="wrap_content"
             android:text="@string/widget_background_description"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textSize="@dimen/custom_preference_subtitle_text_size"
             app:layout_constraintEnd_toStartOf="@id/configurationBackgroundSwitch"
             app:layout_constraintStart_toStartOf="@id/configurationBackgroundTitle"
             app:layout_constraintTop_toBottomOf="@id/configurationBackgroundTitle" />
@@ -117,7 +120,8 @@
             android:id="@+id/configurationBackgroundSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/custom_preference_subtitle_text_size"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/card_margin"
             app:layout_constraintBottom_toBottomOf="@id/configurationBackgroundDescription"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/configurationBackgroundTitle" />
@@ -141,6 +145,7 @@
             android:layout_height="wrap_content"
             android:text="@string/compact_widget_description"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textSize="@dimen/custom_preference_subtitle_text_size"
             app:layout_constraintEnd_toStartOf="@id/configurationCompactSwitch"
             app:layout_constraintStart_toStartOf="@id/configurationCompactTitle"
             app:layout_constraintTop_toBottomOf="@id/configurationCompactTitle" />
@@ -149,7 +154,8 @@
             android:id="@+id/configurationCompactSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/custom_preference_subtitle_text_size"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/card_margin"
             app:layout_constraintBottom_toBottomOf="@id/configurationCompactDescription"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/configurationCompactTitle" />
@@ -173,6 +179,7 @@
             android:layout_height="wrap_content"
             android:text="@string/align_start_widget_description"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textSize="@dimen/custom_preference_subtitle_text_size"
             app:layout_constraintEnd_toStartOf="@id/configurationAlignStartSwitch"
             app:layout_constraintStart_toStartOf="@id/configurationAlignStartTitle"
             app:layout_constraintTop_toBottomOf="@id/configurationAlignStartTitle" />
@@ -181,7 +188,8 @@
             android:id="@+id/configurationAlignStartSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/custom_preference_subtitle_text_size"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/card_margin"
             app:layout_constraintBottom_toBottomOf="@id/configurationAlignStartDescription"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/configurationAlignStartTitle" />
@@ -196,11 +204,105 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/configurationAlignStartDescription"
-            app:layout_constraintVertical_bias="1"
             app:srcCompat="@drawable/ic_appintro_done" />
 
-        <!-- TODO Include a preview copy of the widget layout? -->
+        <!-- Preview of the widget layout -->
+        <FrameLayout
+            android:id="@+id/minimalWidgetPreviewMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/linear_vertical_margin"
+            android:background="@drawable/snackbar_background"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:theme="@style/WidgetTheme"
+            app:layout_constraintBottom_toTopOf="@id/configurationConfirmButton"
+            app:layout_constraintTop_toBottomOf="@id/configurationAlignStartDescription"
+            tools:layout_editor_absoluteX="38dp">
+
+            <ImageView
+                android:id="@+id/minimalWidgetPreviewBackgroundDark"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha=".85"
+                android:background="@drawable/widget_inner_rounded_container"
+                android:backgroundTint="@color/deepGray"
+                android:contentDescription="@string/widget_background_title"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/minimalWidgetPreviewBackgroundLight"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha=".85"
+                android:background="@drawable/widget_inner_rounded_container"
+                android:backgroundTint="@color/almostWhite"
+                android:contentDescription="@string/widget_background_title"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/minimalWidgetPreviewLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/widget_margin">
+
+                <TextView
+                    android:id="@+id/minimalWidgetPreviewTitleLight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_upcoming"
+                    android:drawableStart="@drawable/ic_balloon_24dp"
+                    android:drawablePadding="@dimen/in_row_padding"
+                    android:drawableTint="?attr/colorPrimaryDark"
+                    android:shadowColor="@color/shadowGray"
+                    android:shadowDy="3"
+                    android:shadowRadius="@dimen/widget_shadow_radius"
+                    android:text="@string/appwidget_upcoming"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                    android:textColor="@color/almostWhite"
+                    tools:ignore="UseCompatTextViewDrawableXml" />
+                <!-- TODO the suggested drawable start compat doesn't work -->
+
+                <TextView
+                    android:id="@+id/minimalWidgetPreviewTextLight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_upcoming"
+                    android:shadowColor="@color/shadowGray"
+                    android:shadowDy="3"
+                    android:shadowRadius="@dimen/widget_shadow_radius"
+                    android:text="@string/no_next_event"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@color/almostWhite" />
+
+                <TextView
+                    android:id="@+id/minimalWidgetPreviewTitleDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_upcoming"
+                    android:drawableStart="@drawable/ic_balloon_24dp"
+                    android:drawablePadding="@dimen/in_row_padding"
+                    android:drawableTint="?attr/colorPrimary"
+                    android:text="@string/appwidget_upcoming"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                    android:textColor="@android:color/black"
+                    android:visibility="gone"
+                    tools:ignore="UseCompatTextViewDrawableXml" />
+                <!-- TODO the suggested drawable start compat doesn't work -->
+
+                <TextView
+                    android:id="@+id/minimalWidgetPreviewTextDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_upcoming"
+                    android:text="@string/no_next_event"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@android:color/black"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
