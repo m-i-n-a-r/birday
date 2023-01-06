@@ -5,66 +5,67 @@ An open source app to remember birthdays and events without having to open Faceb
 <p align='center'>
   <a href='https://github.com/m-i-n-a-r/birday/blob/master/LICENSE.md'><img src='https://img.shields.io/badge/license-GPL 3-333333'/></a>
   <img src='https://img.shields.io/github/v/release/m-i-n-a-r/birday'>
-	<img src='https://img.shields.io/badge/status-released-success'/>
-	<img src='https://img.shields.io/badge/-translations%20needed!-yellow'/>
+  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/birday"><img src="https://badges.crowdin.net/birday/localized.svg"></a>
 </p>
 
 ## Introduction
 This is an open source app to remember **birthdays** and other events in a fast, light and beautiful way. No less, no more. I had this idea considering that Google Calendar doesn't display an automatic notification the day of the birthday, and sometimes i need to remember a birthday for a person who is not in my Contacts. Also, adding too much events to the calendar makes it messy and i prefer to manage them separately. The main focus of this app is being easy to use, clean and lightweight. I'm always glad to add features, but only important and really useful features!
 
-## Translations (guide and info below)
+## Translations (guide and info below, refer to [Crowdin](https://crwd.in/birday))
 
 | LANGUAGE                | STATUS       | SPECIAL THANKS | UPDATED BY                  |
 |:------------------------|:------------:|:---------------|:----------------------------|
 | **English**             | complete     | myself         | ar-maged, Commenter25       |
-| **Spanish**             | complete     | myself         | Joseahfer                   |
+| **Spanish**             | needs review | myself         | Joseahfer                   |
 | **Swedish**             | needs review | SlowNicoFish   |                             |
-| **Dutch**               | complete     | stefanvi       |                             |
+| **Dutch**               | needs review | stefanvi       |                             |
 | **Italian**             | complete     | myself         | myself                      |
-| **French**              | complete     | Mattis Biton   |                             |
+| **French**              | needs review | Mattis Biton   |                             |
 | **Hungarian**           | needs review | Obi            |                             |
-| **German**              | complete     | pizzapastamix  | WrstFngr, AlexanderRitter02 |
-| **Vietnamese**          | complee      | Lee Huynh      | dmtrilc                     |
+| **German**              | needs review | pizzapastamix  | WrstFngr, AlexanderRitter02 |
+| **Vietnamese**          | needs review | Lee Huynh      | dmtrilc                     |
 | **Russian**             | needs review | koterpillar    |                             |
 | **Czech**               | needs review | Miloš Koliáš   |                             |
-| **Polish**              | complete     | mateusz-bak    |                             |
-| **Croatian**            | complete     | Dominik Novosel| Dominik Novosel             |
-| **Portuguese**          | complete     | smarquespt     | smarquespt                  |
-| **Brazilian**           | complete     | BadJuice67     | Paiusco                     |
-| **Romanian**            | complete     | ygorigor       | ygorigor                    |
-| **Traditional Chinese** | complete     | Still34        |                             |
+| **Polish**              | needs review | mateusz-bak    |                             |
+| **Croatian**            | needs review | Dominik Novosel| Dominik Novosel             |
+| **Portuguese**          | needs review | smarquespt     | smarquespt                  |
+| **Brazilian**           | needs review | BadJuice67     | Paiusco                     |
+| **Romanian**            | needs review | ygorigor       | ygorigor                    |
+| **Traditional Chinese** | needs review | Still34        |                             |
 | **Catalan**             | needs update | retiolus       |                             |
-| **Serbian**             | complete     | Th3Unkn0wn0n3  |                             |
-| **Ukrainian**           | complete     | taras          |                             |
-| **Marathi**             | complete     | Ramesh Kumar   |                             |
-| **Malayalam**           | complete     | Lavin-tom      |                             |
-| **Hindi**               | complete     | assembleDebug  |                             |
+| **Serbian**             | needs review | Th3Unkn0wn0n3  | vatonbero                   |
+| **Ukrainian**           | needs review | taras          |                             |
+| **Marathi**             | needs review | Ramesh Kumar   |                             |
+| **Malayalam**           | needs review | Lavin-tom      |                             |
+| **Hindi**               | needs review | assembleDebug  |                             |
 
 ## Features
 - Notification the day of the event (with selectable time)
 - Additional notification up to 7 days before the event
-- Fetch the existing birthdays from the contacts app, images included!
+- Import from contacts (and auto import on launch option)
 - Easily backup and restore your saved events!
+- Experimental CSV and JSON import/export
 - insert an event manually, just specifying a name, an optional surname, an image and a date (with optional year)
 - Choose your favorite events to see detailed information about them and a countdown for each one
 - Tap on an event to see every possible detail and the available actions
 - The birthdays are also automagically backed up in cloud by Google Play Services when the app is installed from Play Store
-- A set of stats (zodiac, average age and much more) when more than 5 events are inserted, plus an animated counter
+- A set of stats (zodiac, average age and much more) when more than 5 events are inserted
 - Easily delete, modify and share the saved events!
-- Each event has a note field
+- Each event has an handy note field
 - Easily hide the top cards to display the list in fullscreen
 - Main list organized by months
 - Quick glance row, to visualize the events in the next 10 days
-- A nice searchbar, to quickly search a person in the saved events
+- Yearly overview screen
+- A nice searchbar and an event type selector
 - Quick apps launcher
 - Light, dark, and system default theme
-- Selectable accent (no app restart needed, 12 choices + system default)
+- Full Material 3 / Monet support
+- Selectable accent (no app restart needed, 12 choices)
 - Shimmer effect (it can be disabled) and confetti, because why not
 - Name first or surname first choice
 - Notification only for favorite events
 - Hide and show images
-- Dark and light minimal widget
-- Material You guidelines
+- Material 3 widget featuring the list of the events
 - Beautiful animations (and animated notification icon)
 - Multiwindow / freeform full support
 - Animated splashscreen and app intro, dynamic layouts and more
@@ -73,17 +74,17 @@ This is an open source app to remember **birthdays** and other events in a fast,
 
 ## Screenshots
 <p align='center'>
-  <img src='https://i.imgur.com/Zm8HWr6.png' width='18%'/>
-  <img src='https://i.imgur.com/MI0kCnn.png' width='18%'/>
-  <img src='https://i.imgur.com/DVGatDY.png' width='18%'/>
-  <img src='https://i.imgur.com/kaAMT3k.png' width='18%'/>
-  <img src='https://i.imgur.com/lLj6KS7.png' width='18%'/>
+  <img src='https://i.imgur.com/xYHoQpY.png' width='18%'/>
+  <img src='https://i.imgur.com/FWAB9W3.png' width='18%'/>
+  <img src='https://i.imgur.com/OwzKP96.png' width='18%'/>
+  <img src='https://i.imgur.com/77nWllU.png' width='18%'/>
+  <img src='https://i.imgur.com/Zc0exjT.png' width='18%'/>
 
-  <img src='https://i.imgur.com/C6OUdTL.png' width='18%'/>
-  <img src='https://i.imgur.com/iQBLjH5.png' width='18%'/>
-  <img src='https://i.imgur.com/Vm1OOcQ.png' width='18%'/>
-  <img src='https://i.imgur.com/mWEuuSl.png' width='18%'/>
-  <img src='https://i.imgur.com/cVd4xFu.png' width='18%'/>
+  <img src='https://i.imgur.com/FB51xRj.png' width='18%'/>
+  <img src='https://i.imgur.com/mEEmK0B.png' width='18%'/>
+  <img src='https://i.imgur.com/Wn5U2vB.png' width='18%'/>
+  <img src='https://i.imgur.com/egZkfSH.png' width='18%'/>
+  <img src='https://i.imgur.com/gyt9bw0.png' width='18%'/>
 </p>
 
 ## Download
@@ -98,7 +99,6 @@ The app is available through Google Play and F-Droid\
 
 ## Credits and contributions
 Birday uses some open source libraries, just a few:
-- [Material Dialogs](https://github.com/afollestad/material-dialogs)
 - [Konfetti](https://github.com/DanielMartinus/Konfetti)
 - [App Intro](https://github.com/AppIntro/AppIntro)
 - [Shimmer](https://github.com/facebook/shimmer-android)

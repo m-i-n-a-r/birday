@@ -44,7 +44,7 @@
             android:padding="@dimen/in_row_padding"
             android:text="@string/overview"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/overviewTitleImage"
@@ -53,95 +53,110 @@
         <androidx.constraintlayout.helper.widget.Flow
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:constraint_referenced_ids="OverviewCalendarJan, OverviewCalendarFeb, OverviewCalendarMar, OverviewCalendarApr, OverviewCalendarMay, OverviewCalendarJun, OverviewCalendarJul, OverviewCalendarAug, OverviewCalendarSep, OverviewCalendarOct, OverviewCalendarNov, OverviewCalendarDec"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            app:constraint_referenced_ids="overviewJan, overviewFeb, overviewMar,overviewApr,overviewMay,overviewJun, overviewJul, overviewAug, overviewSep, overviewOct, overviewNov, overviewDec"
+            app:flow_horizontalGap="@dimen/in_row_padding"
+            app:flow_maxElementsWrap="6"
             app:flow_wrapMode="aligned"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/overviewTitle" />
 
-        <CalendarView
-            android:id="@+id/OverviewCalendarJan"
-            android:layout_width="180dp"
-            android:layout_height="200dp"
+        <com.minar.birday.utilities.MinarMonth
+            android:id="@+id/overviewJan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:month="january" />
 
-        <CalendarView
-            android:id="@+id/OverviewCalendarFeb"
-            android:layout_width="180dp"
-            android:layout_height="200dp"
+        <com.minar.birday.utilities.MinarMonth
+            android:id="@+id/overviewFeb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:month="february" />
 
-        <CalendarView
-            android:id="@+id/OverviewCalendarMar"
-            android:layout_width="180dp"
-            android:layout_height="200dp"
+        <com.minar.birday.utilities.MinarMonth
+            android:id="@+id/overviewMar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:month="march" />
 
-        <CalendarView
-            android:id="@+id/OverviewCalendarApr"
-            android:layout_width="180dp"
-            android:layout_height="200dp"
+        <com.minar.birday.utilities.MinarMonth
+            android:id="@+id/overviewApr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:month="april" />
 
-        <CalendarView
-            android:id="@+id/OverviewCalendarMay"
-            android:layout_width="180dp"
-            android:layout_height="200dp"
+        <com.minar.birday.utilities.MinarMonth
+            android:id="@+id/overviewMay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:month="may" />
 
-        <CalendarView
-            android:id="@+id/OverviewCalendarJun"
-            android:layout_width="180dp"
-            android:layout_height="200dp"
+        <com.minar.birday.utilities.MinarMonth
+            android:id="@+id/overviewJun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:month="june" />
 
-        <CalendarView
-            android:id="@+id/OverviewCalendarJul"
-            android:layout_width="180dp"
-            android:layout_height="200dp"
+        <com.minar.birday.utilities.MinarMonth
+            android:id="@+id/overviewJul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:month="july" />
 
-        <CalendarView
-            android:id="@+id/OverviewCalendarAug"
-            android:layout_width="180dp"
-            android:layout_height="200dp"
+        <com.minar.birday.utilities.MinarMonth
+            android:id="@+id/overviewAug"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:month="august" />
 
-        <CalendarView
-            android:id="@+id/OverviewCalendarSep"
-            android:layout_width="180dp"
-            android:layout_height="200dp"
+        <com.minar.birday.utilities.MinarMonth
+            android:id="@+id/overviewSep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:month="september" />
 
-        <CalendarView
-            android:id="@+id/OverviewCalendarOct"
-            android:layout_width="180dp"
-            android:layout_height="200dp"
+        <com.minar.birday.utilities.MinarMonth
+            android:id="@+id/overviewOct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:month="october" />
 
-        <CalendarView
-            android:id="@+id/OverviewCalendarNov"
-            android:layout_width="180dp"
-            android:layout_height="200dp"
+        <com.minar.birday.utilities.MinarMonth
+            android:id="@+id/overviewNov"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:month="november" />
 
-        <CalendarView
-            android:id="@+id/OverviewCalendarDec"
-            android:layout_width="180dp"
-            android:layout_height="200dp"
+        <com.minar.birday.utilities.MinarMonth
+            android:id="@+id/overviewDec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:month="december" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

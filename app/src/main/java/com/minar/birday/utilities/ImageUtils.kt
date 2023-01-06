@@ -2,6 +2,8 @@ package com.minar.birday.utilities
 
 import android.graphics.*
 import android.graphics.drawable.Drawable
+import android.os.Handler
+import android.os.Looper
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
@@ -56,34 +58,47 @@ fun getCircularBitmap(bitmap: Bitmap): Bitmap {
     return output
 }
 
-// Return the event image converted in bitmap or the placeholder
-fun setEventImageOrPlaceholder(event: EventResult, eventImage: ImageView) {
+// Return true if the event has an image, else false
+fun setEventImageOrPlaceholder(event: EventResult, eventImage: ImageView): Boolean {
     if (event.image != null && event.image.isNotEmpty()) {
         // The click is not implemented atm
         eventImage.setImageBitmap(byteArrayToBitmap(event.image))
-    } else eventImage.setImageDrawable(
-        ContextCompat.getDrawable(
-            eventImage.context,
-            // Set the image depending on the event type
-            when (event.type) {
-                EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
-                EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
-                EventCode.DEATH.name -> R.drawable.placeholder_death_image
-                EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
-                else -> R.drawable.placeholder_other_image
-            }
+        return true
+    } else {
+        eventImage.setImageDrawable(
+            ContextCompat.getDrawable(
+                eventImage.context,
+                // Set the image depending on the event type
+                when (event.type) {
+                    EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
+                    EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
+                    EventCode.DEATH.name -> R.drawable.placeholder_death_image
+                    EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
+                    else -> R.drawable.placeholder_other_image
+                }
+            )
         )
-    )
+        return false
+    }
 }
 
 // Loop an animated vector drawable indefinitely
-fun ImageView.applyLoopingAnimatedVectorDrawable(@DrawableRes animatedVector: Int) {
+fun ImageView.applyLoopingAnimatedVectorDrawable(
+    @DrawableRes animatedVector: Int,
+    endDelay: Long = 0,
+    disableLooping: Boolean = false
+) {
     val animated = AnimatedVectorDrawableCompat.create(context, animatedVector)
-    animated?.registerAnimationCallback(object : Animatable2Compat.AnimationCallback() {
-        override fun onAnimationEnd(drawable: Drawable?) {
-            this@applyLoopingAnimatedVectorDrawable.post { animated.start() }
-        }
-    })
+    // Ability to disable the loop, for a future option
+    if (!disableLooping) {
+        animated?.registerAnimationCallback(object : Animatable2Compat.AnimationCallback() {
+            override fun onAnimationEnd(drawable: Drawable?) {
+                Handler(Looper.getMainLooper()).postDelayed({
+                    this@applyLoopingAnimatedVectorDrawable.post { animated.start() }
+                }, endDelay)
+            }
+        })
+    }
     this.setImageDrawable(animated)
     animated?.start()
 }

@@ -1,0 +1,265 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/insertEventBottomSheetScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/insertEventBottomSheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:padding="@dimen/linear_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            app:behavior_hideable="true"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+            <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+                android:id="@+id/dragHandle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/insertEventImage"
+                android:layout_width="@dimen/bottom_sheet_icon_size"
+                android:layout_height="@dimen/bottom_sheet_icon_size"
+                android:layout_marginStart="@dimen/activity_vertical_margin"
+                android:contentDescription="@string/insert_event"
+                android:src="@drawable/ic_party_24dp"
+                app:layout_constraintBottom_toBottomOf="@id/insertEventTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/insertEventTitle" />
+
+            <TextView
+                android:id="@+id/insertEventTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/activity_vertical_margin"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:text="@string/insert_event"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/insertEventImage"
+                app:layout_constraintTop_toBottomOf="@id/dragHandle" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageEvent"
+                android:layout_width="@dimen/card_image_height"
+                android:layout_height="@dimen/card_image_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:contentDescription="@string/event_details"
+                android:focusable="true"
+                android:padding="@dimen/in_row_padding"
+                android:src="@drawable/placeholder_birthday_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/insertEventTitle"
+                app:shapeAppearanceOverlay="@style/roundedImageView"
+                app:strokeColor="?attr/colorOutline"
+                app:strokeWidth="@dimen/card_stroke" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/typeEventLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:hint="@string/event_type_hint"
+                android:labelFor="@+id/typeEvent"
+                app:boxBackgroundColor="@color/transparent"
+                app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
+                app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
+                app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
+                app:boxCornerRadiusTopStart="@dimen/text_field_corner"
+                app:hintAnimationEnabled="true"
+                app:hintTextColor="?attr/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="@id/imageEvent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageEvent"
+                app:layout_constraintTop_toTopOf="@id/imageEvent"
+                app:startIconDrawable="@drawable/ic_event_type_black_24dp"
+                app:startIconTint="?attr/colorOutline">
+
+                <AutoCompleteTextView
+                    android:id="@+id/typeEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="none"
+                    android:padding="0dp"
+                    android:textCursorDrawable="@drawable/custom_cursor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nameEventLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:hint="@string/insert_name_hint"
+                app:boxBackgroundColor="@color/transparent"
+                app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
+                app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
+                app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
+                app:boxCornerRadiusTopStart="@dimen/text_field_corner"
+                app:boxStrokeErrorColor="@color/redError"
+                app:errorContentDescription="@string/insert_name_hint"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_alert_24dp"
+                app:errorIconTint="?attr/colorPrimary"
+                app:errorTextColor="?attr/colorPrimary"
+                app:hintAnimationEnabled="true"
+                app:hintTextColor="?attr/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageEvent"
+                app:startIconDrawable="@drawable/ic_cool_black_24dp"
+                app:startIconTint="?attr/colorOutline">
+
+                <!-- Someone uses 2 names for anniversaries in this fields -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nameEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords|textPersonName"
+                    android:maxLength="30"
+                    android:padding="0dp"
+                    android:textCursorDrawable="@drawable/custom_cursor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/surnameEventLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/form_vertical_margin"
+                android:hint="@string/insert_surname_hint"
+                app:boxBackgroundColor="@color/transparent"
+                app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
+                app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
+                app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
+                app:boxCornerRadiusTopStart="@dimen/text_field_corner"
+                app:boxStrokeErrorColor="@color/redError"
+                app:errorContentDescription="@string/insert_surname_hint"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_alert_24dp"
+                app:errorIconTint="?attr/colorPrimary"
+                app:errorTextColor="?attr/colorPrimary"
+                app:hintAnimationEnabled="true"
+                app:hintTextColor="?attr/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nameEventLayout"
+                app:startIconDrawable="@drawable/ic_smile_24dp"
+                app:startIconTint="?attr/colorOutline">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/surnameEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords|textPersonName"
+                    android:maxLength="25"
+                    android:padding="0dp"
+                    android:textCursorDrawable="@drawable/custom_cursor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dateEventLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/form_vertical_margin"
+                android:hint="@string/insert_date_hint"
+                app:boxBackgroundColor="@color/transparent"
+                app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
+                app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
+                app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
+                app:boxCornerRadiusTopStart="@dimen/text_field_corner"
+                app:boxStrokeErrorColor="@color/redError"
+                app:errorContentDescription="@string/insert_date_hint"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_alert_24dp"
+                app:errorIconTint="?attr/colorPrimary"
+                app:errorTextColor="?attr/colorPrimary"
+                app:hintAnimationEnabled="true"
+                app:hintTextColor="?attr/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/surnameEventLayout"
+                app:startIconDrawable="@drawable/ic_date_black_24dp"
+                app:startIconTint="?attr/colorOutline">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/dateEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:inputType="none"
+                    android:padding="0dp"
+                    android:textCursorDrawable="@drawable/custom_cursor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/countYearSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:checked="true"
+                android:drawableStart="@drawable/ic_date_question_black_24dp"
+                android:drawablePadding="@dimen/text_field_horizontal_margin"
+                android:drawableTint="?attr/colorOutline"
+                android:text="@string/consider_year"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                android:textColor="?attr/colorOutline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dateEventLayout"
+                app:switchPadding="@dimen/text_switch_padding"
+                app:switchTextAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+            <Button
+                android:id="@+id/positiveButton"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/insert_event"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/countYearSwitch" />
+
+            <Button
+                android:id="@+id/negativeButton"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                app:layout_constraintBottom_toBottomOf="@id/positiveButton"
+                app:layout_constraintEnd_toStartOf="@id/positiveButton"
+                app:layout_constraintTop_toTopOf="@id/positiveButton" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

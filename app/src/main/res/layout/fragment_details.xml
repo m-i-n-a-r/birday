@@ -47,7 +47,7 @@
             android:padding="@dimen/in_row_padding"
             android:text="@string/app_name"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/detailsEventNameImage"
@@ -81,7 +81,7 @@
             app:layout_constraintStart_toStartOf="@id/detailsEventImageBackground"
             app:layout_constraintTop_toTopOf="@id/detailsEventImageBackground"
             app:shapeAppearanceOverlay="@style/roundedImageView"
-            app:strokeColor="@color/goodGray"
+            app:strokeColor="?attr/colorOutline"
             app:strokeWidth="@dimen/card_stroke" />
 
         <ImageView
@@ -96,7 +96,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsEventImageBackground"
             app:srcCompat="@drawable/ic_favorites_24dp"
-            app:tint="@color/goodGray" />
+            app:tint="?attr/colorOutline" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detailsBirthDate"
@@ -107,8 +107,8 @@
             android:padding="@dimen/in_row_padding"
             android:text="@string/birth_date"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-            android:textColor="@color/goodGray"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?attr/colorOutline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsEventImageBackground" />
@@ -121,7 +121,7 @@
             android:padding="@dimen/in_row_padding"
             android:text="@string/app_name"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detailsBirthDate" />
@@ -163,8 +163,8 @@
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 android:text="@string/app_name"
                 android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-                android:textColor="?colorAccent"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                android:textColor="?attr/colorPrimary"
                 android:textStyle="bold" />
 
         </com.facebook.shimmer.ShimmerFrameLayout>
@@ -179,8 +179,8 @@
             android:padding="@dimen/in_row_padding"
             android:text="@string/next_age"
             android:textAlignment="viewEnd"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-            android:textColor="@color/goodGray"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?attr/colorOutline"
             app:layout_constraintBaseline_toBaselineOf="@+id/detailsNextAgeValue"
             app:layout_constraintEnd_toStartOf="@id/detailsNextAgeValue"
             app:layout_constraintHorizontal_chainStyle="packed"
@@ -194,7 +194,7 @@
             android:layout_marginEnd="@dimen/linear_vertical_margin"
             android:padding="@dimen/in_row_padding"
             android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/detailsNextAge"
             app:layout_constraintTop_toBottomOf="@+id/detailsCountdownShimmer" />
@@ -208,8 +208,8 @@
             android:padding="@dimen/in_row_padding"
             android:text="@string/zodiac_sign"
             android:textAlignment="viewEnd"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-            android:textColor="@color/goodGray"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?attr/colorOutline"
             app:layout_constraintBaseline_toBaselineOf="@+id/detailsZodiacSignValue"
             app:layout_constraintEnd_toStartOf="@+id/detailsZodiacSignValue"
             app:layout_constraintHorizontal_chainStyle="packed"
@@ -222,7 +222,7 @@
             android:layout_margin="@dimen/in_row_padding"
             android:padding="@dimen/in_row_padding"
             android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/detailsZodiacSign"
             app:layout_constraintTop_toBottomOf="@+id/detailsNextAge" />
@@ -236,8 +236,8 @@
             android:padding="@dimen/in_row_padding"
             android:text="@string/chinese_zodiac_sign"
             android:textAlignment="viewEnd"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-            android:textColor="@color/goodGray"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?attr/colorOutline"
             app:layout_constraintBaseline_toBaselineOf="@+id/detailsChineseSignValue"
             app:layout_constraintEnd_toStartOf="@+id/detailsChineseSignValue"
             app:layout_constraintHorizontal_chainStyle="packed"
@@ -250,7 +250,7 @@
             android:layout_margin="@dimen/in_row_padding"
             android:padding="@dimen/in_row_padding"
             android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/detailsChineseSign"
             app:layout_constraintTop_toBottomOf="@+id/detailsZodiacSign"
@@ -267,8 +267,8 @@
             android:contentDescription="@string/edit_event"
             android:paddingVertical="@dimen/in_row_button_padding"
             android:text="@string/edit_event"
-            android:textColor="?colorAccent"
-            android:tint="?colorAccent"
+            android:textColor="?attr/colorPrimary"
+            android:tint="?attr/colorPrimary"
             app:icon="@drawable/ic_edit_24dp"
             app:layout_constraintBottom_toTopOf="@id/detailsDeleteButton"
             app:layout_constraintEnd_toEndOf="parent"
@@ -277,7 +277,7 @@
             app:layout_constraintVertical_bias="1"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintWidth_max="@dimen/details_button_max_width"
-            app:rippleColor="?colorAccent" />
+            app:rippleColor="?attr/colorPrimary" />
 
         <Button
             android:id="@+id/detailsDeleteButton"
@@ -289,16 +289,16 @@
             android:contentDescription="@string/delete_event"
             android:paddingVertical="@dimen/in_row_button_padding"
             android:text="@string/delete_event"
-            android:textColor="?colorAccent"
-            android:tint="?colorAccent"
-            app:icon="@drawable/ic_delete_black_24dp"
+            android:textColor="?attr/colorPrimary"
+            android:tint="?attr/colorPrimary"
+            app:icon="@drawable/ic_delete_24dp"
             app:layout_constraintBottom_toTopOf="@id/detailsShareButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsEditButton"
             app:layout_constraintVertical_bias="1"
             app:layout_constraintWidth_max="@dimen/details_button_max_width"
-            app:rippleColor="?colorAccent" />
+            app:rippleColor="?attr/colorPrimary" />
 
         <Button
             android:id="@+id/detailsShareButton"
@@ -310,8 +310,8 @@
             android:contentDescription="@string/share_event"
             android:paddingVertical="@dimen/in_row_button_padding"
             android:text="@string/share_event"
-            android:textColor="?colorAccent"
-            android:tint="?colorAccent"
+            android:textColor="?attr/colorPrimary"
+            android:tint="?attr/colorPrimary"
             app:icon="@drawable/ic_share_black_24dp"
             app:layout_constraintBottom_toTopOf="@id/detailsNotesButton"
             app:layout_constraintEnd_toEndOf="parent"
@@ -319,7 +319,7 @@
             app:layout_constraintTop_toBottomOf="@id/detailsDeleteButton"
             app:layout_constraintVertical_bias="1"
             app:layout_constraintWidth_max="@dimen/details_button_max_width"
-            app:rippleColor="?colorAccent" />
+            app:rippleColor="?attr/colorPrimary" />
 
         <Button
             android:id="@+id/detailsNotesButton"
@@ -328,12 +328,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/linear_vertical_margin"
-            android:layout_marginBottom="@dimen/linear_vertical_margin"
+            android:layout_marginBottom="@dimen/bottom_navbar_height"
             android:contentDescription="@string/share_event"
             android:paddingVertical="@dimen/in_row_button_padding"
             android:text="@string/notes"
-            android:textColor="?colorAccent"
-            android:tint="?colorAccent"
+            android:textColor="?attr/colorPrimary"
+            android:tint="?attr/colorPrimary"
             app:icon="@drawable/ic_note_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -341,7 +341,7 @@
             app:layout_constraintTop_toBottomOf="@id/detailsShareButton"
             app:layout_constraintVertical_bias="1"
             app:layout_constraintWidth_max="@dimen/details_button_max_width"
-            app:rippleColor="?colorAccent" />
+            app:rippleColor="?attr/colorPrimary" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </ScrollView>

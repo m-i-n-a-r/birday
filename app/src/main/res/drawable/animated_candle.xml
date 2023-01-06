@@ -11,7 +11,7 @@
             <path
                 android:name="candle_stick"
                 android:pathData="M 10 11 C 9.448 11 9 11.448 9 12 L 9 22.48 L 16 22.48 L 16 12 C 16 11.448 15.552 11 15 11 Z"
-                android:fillColor="@color/goodGray"
+                android:fillColor="?attr/colorOutline"
                 android:strokeLineCap="round"
                 android:strokeLineJoin="round"/>
             <path

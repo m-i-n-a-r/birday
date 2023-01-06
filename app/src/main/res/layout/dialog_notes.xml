@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusableInTouchMode="true"
-    android:paddingHorizontal="@dimen/dialog_horizontal_padding">
+    android:paddingHorizontal="@dimen/dialog_horizontal_padding"
+    android:paddingTop="@dimen/linear_vertical_margin">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/favoritesNotesLayout"

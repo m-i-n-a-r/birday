@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/eventWidgetRowItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hapticFeedbackEnabled="false"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/widget_padding"
+    android:paddingVertical="@dimen/between_row_padding">
+
+    <TextView
+        android:id="@+id/eventWidgetRowPerson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/in_row_padding"
+        android:paddingVertical="@dimen/in_row_padding"
+        android:text="@string/invalid_value_name"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        tools:ignore="UseCompoundDrawables">
+
+        <FrameLayout
+            android:id="@+id/eventWidgetRowTypeBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/eventWidgetRowTypeBackground"
+                android:layout_width="@dimen/widget_type_icon_background_size"
+                android:layout_height="@dimen/widget_type_icon_background_size"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_dot_black_24dp"
+                android:backgroundTint="?attr/colorSurface"
+                android:contentDescription="@string/event_type_hint" />
+
+            <ImageView
+                android:id="@+id/eventWidgetRowTypeImage"
+                android:layout_width="@dimen/widget_type_icon_size"
+                android:layout_height="@dimen/widget_type_icon_size"
+                android:layout_gravity="center"
+                android:contentDescription="@string/event_type_hint"
+                android:maxWidth="@dimen/preview_dot_size"
+                android:maxHeight="@dimen/preview_dot_size"
+                android:padding="0dp"
+                android:src="@drawable/ic_party_24dp"
+                android:tint="?attr/colorPrimary"
+                tools:ignore="UseAppTint" />
+        </FrameLayout>
+
+        <!-- The date of the event -->
+        <TextView
+            android:id="@+id/eventWidgetRowDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/eventWidgetRowTypeBadge"
+            android:paddingHorizontal="@dimen/in_row_button_padding"
+            android:paddingVertical="@dimen/in_row_button_padding"
+            android:text="@string/birth_date"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+
+        <!-- Countdown -->
+        <TextView
+            android:id="@+id/eventWidgetRowCountdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="end"
+            android:layout_toEndOf="@id/eventWidgetRowDate"
+            android:gravity="end"
+            android:paddingHorizontal="@dimen/in_row_button_padding"
+            android:paddingVertical="@dimen/in_row_button_padding"
+            android:text="@string/unknown"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?attr/colorSecondary" />
+
+    </RelativeLayout>
+
+</LinearLayout>

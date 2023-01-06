@@ -6,15 +6,15 @@
     android:viewportHeight="24">
     <path
         android:name="background"
-        android:fillColor="@color/goodGrayTranslucent"
+        android:fillColor="?attr/colorSurfaceVariant"
         android:pathData="M -0.28 -0.35 L 24.28 -0.35 L 24.28 24.35 L -0.28 24.35 Z" />
     <path
         android:name="halo_bw"
-        android:fillColor="@color/goodGray"
+        android:fillColor="?attr/colorOutline"
         android:pathData="M 12,10.94955 A 3.4888418,3.4888418 0 0 1 8.5111582,7.4607087 3.4888418,3.4888418 0 0 1 12,3.9718669 3.4888418,3.4888418 0 0 1 15.488842,7.4607087 3.4888418,3.4888418 0 0 1 12,10.94955 M 12,3.0996564 A 4.3610523,4.3610523 0 0 0 7.6389477,7.4607087 4.3610523,4.3610523 0 0 0 12,11.821761 4.3610523,4.3610523 0 0 0 16.361052,7.4607087 4.3610523,4.3610523 0 0 0 12,3.0996564 Z" />
     <path
         android:name="halo"
-        android:fillColor="?colorAccent"
+        android:fillColor="?attr/colorPrimary"
         android:pathData="M 12,10.94955 A 3.4888418,3.4888418 0 0 1 8.5111582,7.4607087 3.4888418,3.4888418 0 0 1 12,3.9718669 3.4888418,3.4888418 0 0 1 15.488842,7.4607087 3.4888418,3.4888418 0 0 1 12,10.94955 M 12,3.0996564 A 4.3610523,4.3610523 0 0 0 7.6389477,7.4607087 4.3610523,4.3610523 0 0 0 12,11.821761 4.3610523,4.3610523 0 0 0 16.361052,7.4607087 4.3610523,4.3610523 0 0 0 12,3.0996564 Z" />
     <path
         android:name="person"

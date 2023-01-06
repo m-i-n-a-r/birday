@@ -4,62 +4,48 @@ import android.Manifest
 import android.app.ActivityManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.content.ContentResolver
-import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
+import android.appwidget.AppWidgetManager
+import android.content.*
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
+import android.database.Cursor
 import android.graphics.Color
-import android.graphics.ImageDecoder
 import android.media.AudioAttributes
 import android.media.AudioAttributes.Builder
-import android.media.ThumbnailUtils
 import android.net.Uri
 import android.os.*
-import android.provider.MediaStore
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.TypedValue
+import android.provider.OpenableColumns
+import android.provider.Settings
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.annotation.AttrRes
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.preference.PreferenceManager
-import com.afollestad.materialdialogs.LayoutMode
-import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.WhichButton
-import com.afollestad.materialdialogs.actions.getActionButton
-import com.afollestad.materialdialogs.bottomsheets.BottomSheet
-import com.afollestad.materialdialogs.customview.customView
-import com.google.android.material.datepicker.CalendarConstraints
-import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.color.DynamicColors
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.elevation.SurfaceColors
 import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
-import com.minar.birday.backup.BirdayImporter
-import com.minar.birday.backup.ContactsImporter
 import com.minar.birday.databinding.ActivityMainBinding
-import com.minar.birday.databinding.DialogInsertEventBinding
-import com.minar.birday.model.Event
-import com.minar.birday.model.EventCode
+import com.minar.birday.fragments.dialogs.InsertEventBottomSheet
+import com.minar.birday.preferences.backup.BirdayImporter
+import com.minar.birday.preferences.backup.ContactsImporter
+import com.minar.birday.preferences.backup.CsvImporter
+import com.minar.birday.preferences.backup.JsonImporter
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
+import com.minar.birday.widgets.EventWidgetProvider
+import com.minar.birday.widgets.MinimalWidgetProvider
 import java.io.IOException
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 import java.util.*
+import kotlin.concurrent.thread
 
 
 @ExperimentalStdlibApi
@@ -67,33 +53,21 @@ class MainActivity : AppCompatActivity() {
     val mainViewModel: MainViewModel by viewModels()
     private lateinit var sharedPrefs: SharedPreferences
     private lateinit var binding: ActivityMainBinding
-    private var _dialogInsertEventBinding: DialogInsertEventBinding? = null
-    private val dialogInsertEventBinding get() = _dialogInsertEventBinding!!
-    private lateinit var resultLauncher: ActivityResultLauncher<String>
-    private var imageChosen = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Handle the splash screen transition.
-        val splashScreen = installSplashScreen()
-        // Keep the splashscreen until the data are ready
-        splashScreen.setKeepOnScreenCondition {
-            mainViewModel.allEvents.value == null
-        }
         super.onCreate(savedInstanceState)
 
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
-        // Initialize the result launcher to pick the image
-        resultLauncher =
-            registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-                // Handle the returned Uri
-                if (uri != null) {
-                    imageChosen = true
-                    setImage(uri)
-                }
-            }
 
-        // Create the notification channel and check the permission (note: appIntro 6.0 is still buggy, better avoid to use it for asking permissions)
-        askContactsPermission()
+        // Create the notification channel and check the permission on Tiramisu
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            // Contacts permission is asked after the response to this permission on tiramisu
+            if (askNotificationPermission())
+            // Ask for contacts permission, if the first permission is already granted
+                askContactsPermission()
+        } else {
+            askContactsPermission()
+        }
         createNotificationChannel()
 
         // Retrieve the shared preferences
@@ -104,6 +78,12 @@ class MainActivity : AppCompatActivity() {
         if (sharedPrefs.getBoolean("first", true)) {
             val editor = sharedPrefs.edit()
             editor.putBoolean("first", false)
+            // Set default accent based on the Android version
+            when (Build.VERSION.SDK_INT) {
+                23, 24, 25, 26, 27, 28, 29 -> editor.putString("accent_color", "blue")
+                31 -> editor.putString("accent_color", "system")
+                else -> editor.putString("accent_color", "monet")
+            }
             editor.apply()
             val intent = Intent(this, WelcomeActivity::class.java)
             startActivity(intent)
@@ -116,8 +96,8 @@ class MainActivity : AppCompatActivity() {
             "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
-
         when (accent) {
+            "monet" -> setTheme(R.style.AppTheme_Monet)
             "system" -> setTheme(R.style.AppTheme_System)
             "brown" -> setTheme(R.style.AppTheme_Brown)
             "blue" -> setTheme(R.style.AppTheme_Blue)
@@ -187,7 +167,8 @@ class MainActivity : AppCompatActivity() {
             // Only do something if there's something in the back stack (only in event details)
             if (navController.currentBackStackEntry != null &&
                 (navController.currentDestination?.label == "fragment_details" ||
-                        navController.currentDestination?.label == "fragment_overview")
+                        navController.currentDestination?.label == "fragment_overview" ||
+                        navController.currentDestination?.label == "fragment_experimental_settings")
             )
                 navController.popBackStack()
         }
@@ -196,225 +177,90 @@ class MainActivity : AppCompatActivity() {
         AppRater.appLaunched(this)
 
         // Manage the fab
-        val fab = binding.fab
+        val addFab = binding.fab
+        val deleteFab = binding.fabDelete
+
+        // Open the bottom sheet to insert a new event
+        addFab.setOnClickListener {
+            vibrate()
+            val bottomSheet = InsertEventBottomSheet(this)
+            if (bottomSheet.isAdded) return@setOnClickListener
+            bottomSheet.show(supportFragmentManager, "insert_event_bottom_sheet")
+        }
         // Show a quick description of the action
-        fab.setOnLongClickListener {
+        addFab.setOnLongClickListener {
             vibrate()
             showSnackbar(getString(R.string.new_event_description))
-            return@setOnLongClickListener true
+            true
         }
-        // Open the bottom sheet to insert a new event
-        fab.setOnClickListener {
+
+        // Animate the fab icon
+        addFab.applyLoopingAnimatedVectorDrawable(R.drawable.animated_add_event, 5000L)
+
+        // Set the delete search action (initially hidden)
+        deleteFab.setOnClickListener {
             vibrate()
-            _dialogInsertEventBinding = DialogInsertEventBinding.inflate(layoutInflater)
-            // Show a bottom sheet containing the form to insert a new event
-            imageChosen = false
-            var eventType = EventCode.BIRTHDAY
-            var nameValue = "error"
-            var surnameValue = ""
-            var eventDateValue: LocalDate = LocalDate.of(1970, 1, 1)
-            var countYearValue = true
-            val dialog = MaterialDialog(this, BottomSheet(LayoutMode.WRAP_CONTENT)).show {
-                cornerRadius(res = R.dimen.rounded_corners)
-                title(R.string.new_event)
-                icon(R.drawable.ic_party_24dp)
-                // Don't use scrollable here, instead use a nestedScrollView in the layout
-                customView(view = dialogInsertEventBinding.root)
-                positiveButton(R.string.insert_event) {
-                    var image: ByteArray? = null
-                    if (imageChosen)
-                        image =
-                            bitmapToByteArray(dialogInsertEventBinding.imageEvent.drawable.toBitmap())
-                    // Use the data to create an event object and insert it in the db
-                    val tuple = Event(
-                        id = 0,
-                        originalDate = eventDateValue,
-                        name = nameValue.smartFixName(),
-                        surname = surnameValue.smartFixName(),
-                        yearMatter = countYearValue,
-                        type = eventType.name,
-                        image = image,
-                    )
-                    // Insert using another thread
-                    val thread = Thread { mainViewModel.insert(tuple) }
-                    thread.start()
-                    dismiss()
-                }
-                negativeButton(R.string.cancel) {
-                    dismiss()
-                }
-            }
-
-            // Setup listeners and checks on the fields
-            dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
-            val type = dialogInsertEventBinding.typeEvent
-            val name = dialogInsertEventBinding.nameEvent
-            val surname = dialogInsertEventBinding.surnameEvent
-            val eventDate = dialogInsertEventBinding.dateEvent
-            val countYear = dialogInsertEventBinding.countYearSwitch
-            val eventImage = dialogInsertEventBinding.imageEvent
-
-            // Set the dropdown to show the available event types
-            val items = getAvailableTypes(this)
-            val adapter = ArrayAdapter(this, R.layout.event_type_list_item, items)
-            with(type) {
-                setAdapter(adapter)
-                setText(items.first().toString(), false)
-                onItemClickListener =
-                    AdapterView.OnItemClickListener { _, _, position, _ ->
-                        eventType = items[position].codeName
-                        if (!imageChosen)
-                            eventImage.setImageDrawable(
-                                ContextCompat.getDrawable(
-                                    context,
-                                    // Set the image depending on the event type
-                                    when (eventType.name) {
-                                        EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
-                                        EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
-                                        EventCode.DEATH.name -> R.drawable.placeholder_death_image
-                                        EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
-                                        else -> R.drawable.placeholder_other_image
-                                    }
-                                )
-                            )
+            val searchedEvents = mainViewModel.allEvents.value
+            if (searchedEvents != null && searchedEvents.isNotEmpty()) {
+                // Native dialog
+                MaterialAlertDialogBuilder(this)
+                    .setTitle(getString(R.string.delete_db_dialog_title))
+                    .setMessage(getString(R.string.delete_search_confirm))
+                    .setIcon(R.drawable.ic_delete_24dp)
+                    .setPositiveButton(resources.getString(android.R.string.ok)) { dialog, _ ->
+                        dialog.dismiss()
+                        mainViewModel.deleteAll(searchedEvents.map { resultToEvent(it) })
+                        showSnackbar(
+                            getString(R.string.deleted),
+                            actionText = getString(R.string.cancel),
+                            action = fun() {
+                                mainViewModel.insertAll(searchedEvents.map { resultToEvent(it) })
+                            })
                     }
-            }
-
-            // Calendar setup. The end date is the last day in the following year (dumb users)
-            val startDate = Calendar.getInstance()
-            val endDate = Calendar.getInstance()
-            endDate.set(Calendar.YEAR, endDate.get(Calendar.YEAR) + 1)
-            endDate.set(Calendar.DAY_OF_YEAR, endDate.getActualMaximum(Calendar.DAY_OF_YEAR))
-            startDate.set(1500, 1, 1)
-            val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
-            var dateDialog: MaterialDatePicker<Long>? = null
-
-            // To automatically show the last selected date, parse it to another Calendar object
-            val lastDate = Calendar.getInstance()
-
-            // Update the boolean value on each click
-            countYear.setOnCheckedChangeListener { _, isChecked ->
-                countYearValue = isChecked
-            }
-
-            eventImage.setOnClickListener {
-                resultLauncher.launch("image/*")
-            }
-
-            eventDate.setOnClickListener {
-                // Prevent double dialogs on fast click
-                if (dateDialog == null) {
-                    // Build constraints
-                    val constraints =
-                        CalendarConstraints.Builder()
-                            .setStart(startDate.timeInMillis)
-                            .setEnd(endDate.timeInMillis)
-                            .build()
-
-                    // Build the dialog itself
-                    dateDialog =
-                        MaterialDatePicker.Builder.datePicker()
-                            .setTitleText(R.string.insert_date_hint)
-                            .setSelection(lastDate.timeInMillis)
-                            .setCalendarConstraints(constraints)
-                            .build()
-
-                    // The user pressed ok
-                    dateDialog!!.addOnPositiveButtonClickListener {
-                        val selection = it
-                        if (selection != null) {
-                            val date = Calendar.getInstance()
-                            // Use a standard timezone to avoid wrong date on different time zones
-                            date.timeZone = TimeZone.getTimeZone("UTC")
-                            date.timeInMillis = selection
-                            val year = date.get(Calendar.YEAR)
-                            val month = date.get(Calendar.MONTH) + 1
-                            val day = date.get(Calendar.DAY_OF_MONTH)
-                            eventDateValue = LocalDate.of(year, month, day)
-                            val todayDate = LocalDate.now()
-
-                            // Force the date to be before today programmatically
-                            while (eventDateValue.isAfter(todayDate)) {
-                                eventDateValue = LocalDate.of(
-                                    todayDate.year - 1,
-                                    eventDateValue.monthValue,
-                                    eventDateValue.dayOfMonth
-                                )
-                            }
-                            eventDate.setText(eventDateValue.format(formatter))
-                            // The last selected date is saved if the dialog is reopened
-                            lastDate.set(eventDateValue.year, month - 1, day)
-                        }
-
+                    .setNegativeButton(resources.getString(android.R.string.cancel)) { dialog, _ ->
+                        dialog.dismiss()
                     }
-                    // Show the picker and wait to reset the variable
-                    dateDialog!!.show(supportFragmentManager, "main_act_picker")
-                    Handler(Looper.getMainLooper()).postDelayed({ dateDialog = null }, 750)
+                    .show()
+            }
+        }
+        // Show a quick description of the action
+        deleteFab.setOnLongClickListener {
+            vibrate()
+            showSnackbar(getString(R.string.delete_search_title))
+            true
+        }
+
+        // Navigation bar color management (if executed before, it doesn't work)
+        if (accent == "monet") {
+            DynamicColors.applyToActivityIfAvailable(this)
+            window.navigationBarColor = SurfaceColors.SURFACE_2.getColor(this)
+        }
+
+        // Auto import on launch TODO Only available in experimental settings
+        if (sharedPrefs.getBoolean("auto_import", false)) {
+            val currentLaunchTime = System.currentTimeMillis()
+            val lastLaunch = sharedPrefs.getLong("last_launch", 0L)
+
+            // Only launch the auto import if 3 minutes are passed
+            if (lastLaunch + (3 * 60 * 1000) < currentLaunchTime) {
+                sharedPrefs.edit().putLong("last_launch", currentLaunchTime).apply()
+                thread {
+                    ContactsImporter(this, null).importContacts(this)
                 }
             }
+        }
 
-            // Validate each field in the form with the same watcher
-            var nameCorrect = false
-            var surnameCorrect = true // Surname is not mandatory
-            var eventDateCorrect = false
-            val watcher = object : TextWatcher {
-                override fun beforeTextChanged(
-                    charSequence: CharSequence,
-                    i: Int,
-                    i1: Int,
-                    i2: Int
-                ) {
-                }
+        // Hide on scroll, requires restart TODO Only available in experimental settings
+        if (sharedPrefs.getBoolean("hide_scroll", false)) {
+            binding.bottomBar.hideOnScroll = true
+            binding.navHostFragment.setPadding(0, 0, 0, 0)
+        }
 
-                override fun onTextChanged(
-                    charSequence: CharSequence,
-                    i: Int,
-                    i1: Int,
-                    i2: Int
-                ) {
-                }
-
-                override fun afterTextChanged(editable: Editable) {
-                    when {
-                        editable === name.editableText -> {
-                            val nameText = name.text.toString()
-                            if (nameText.isBlank() || !checkName(nameText)) {
-                                // Setting the error on the layout is important to make the properties work
-                                dialogInsertEventBinding.nameEventLayout.error =
-                                    getString(R.string.invalid_value_name)
-                                dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
-                                nameCorrect = false
-                            } else {
-                                nameValue = nameText
-                                dialogInsertEventBinding.nameEventLayout.error = null
-                                nameCorrect = true
-                            }
-                        }
-                        editable === surname.editableText -> {
-                            val surnameText = surname.text.toString()
-                            if (!checkName(surnameText)) {
-                                // Setting the error on the layout is important to make the properties work
-                                dialogInsertEventBinding.surnameEventLayout.error =
-                                    getString(R.string.invalid_value_name)
-                                dialog.getActionButton(WhichButton.POSITIVE).isEnabled = false
-                                surnameCorrect = false
-                            } else {
-                                surnameValue = surnameText
-                                dialogInsertEventBinding.surnameEventLayout.error = null
-                                surnameCorrect = true
-                            }
-                        }
-                        // Once selected, the date can't be blank anymore
-                        editable === eventDate.editableText -> eventDateCorrect = true
-                    }
-                    if (eventDateCorrect && nameCorrect && surnameCorrect) dialog.getActionButton(
-                        WhichButton.POSITIVE
-                    ).isEnabled = true
-                }
-            }
-            name.addTextChangedListener(watcher)
-            surname.addTextChangedListener(watcher)
-            eventDate.addTextChangedListener(watcher)
+        // Only the next events, without considering the search string, ordered
+        mainViewModel.allEventsUnfiltered.observe(this)
+        {
+            // Update the widgets using this livedata, to avoid strange behaviors when searching
+            updateWidget()
         }
     }
 
@@ -432,33 +278,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Set the chosen image in the circular image
-    private fun setImage(data: Uri) {
-        var bitmap: Bitmap? = null
-        try {
-            if (Build.VERSION.SDK_INT < 29) {
-                @Suppress("DEPRECATION")
-                bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, data)
-            } else {
-                val source = ImageDecoder.createSource(this.contentResolver, data)
-                bitmap = ImageDecoder.decodeBitmap(source)
-            }
-        } catch (e: IOException) {
-        }
-        if (bitmap == null) return
+    // Update the existing widgets with the newest data and the onclick action
+    private fun updateWidget() {
+        val intentUpcoming = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+        intentUpcoming.component = ComponentName(this, EventWidgetProvider::class.java)
+        sendBroadcast(intentUpcoming)
 
-        // Bitmap ready. Avoid images larger than 450*450
-        var dimension: Int = getBitmapSquareSize(bitmap)
-        if (dimension > 450) dimension = 450
-
-        val resizedBitmap = ThumbnailUtils.extractThumbnail(
-            bitmap,
-            dimension,
-            dimension,
-            ThumbnailUtils.OPTIONS_RECYCLE_INPUT,
-        )
-        val image = dialogInsertEventBinding.imageEvent
-        image.setImageBitmap(resizedBitmap)
+        val intentMinimal = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+        intentMinimal.component = ComponentName(this, MinimalWidgetProvider::class.java)
+        sendBroadcast(intentMinimal)
     }
 
     // Create the NotificationChannel. This code does nothing when it already exists
@@ -489,15 +317,53 @@ class MainActivity : AppCompatActivity() {
     val selectBackup =
         registerForActivityResult(ActivityResultContracts.GetContent()) { fileUri: Uri? ->
             try {
-                val birdayImporter = BirdayImporter(this, null)
-                if (fileUri != null) birdayImporter.importBirthdays(this, fileUri)
+                if (fileUri == null) return@registerForActivityResult
+                // Select the correct importer. Always use native import, except for JSON and csv
+                when (getFileName(fileUri).split(".").last()) {
+                    "json" -> {
+                        val jsonImporter = JsonImporter(this, null)
+                        jsonImporter.importEventsJson(this, fileUri)
+                    }
+                    "csv" -> {
+                        val csvImporter = CsvImporter(this, null)
+                        csvImporter.importEventsCsv(this, fileUri)
+                    }
+                    else -> {
+                        val birdayImporter = BirdayImporter(this, null)
+                        birdayImporter.importEvents(this, fileUri)
+                    }
+                }
             } catch (e: IOException) {
+                // Invalid file, other errors, can't even try to import
                 e.printStackTrace()
+                showSnackbar(getString(R.string.birday_import_failure))
             }
         }
 
 
     // Some utility functions, used from every fragment connected to this activity
+
+    // Given an uri, find the file name
+    private fun getFileName(uri: Uri): String {
+        var result = ""
+        if (uri.scheme == "content") {
+            val cursor: Cursor? = contentResolver.query(
+                uri,
+                arrayOf(OpenableColumns.DISPLAY_NAME),
+                null,
+                null,
+                null
+            )
+            cursor.use {
+                if (cursor != null && cursor.moveToFirst()) {
+                    val columnIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                    if (columnIndex == -1) return@use
+                    result = cursor.getString(columnIndex)
+                }
+            }
+        }
+        return result
+    }
 
     // Vibrate using a standard vibration pattern
     fun vibrate() {
@@ -518,13 +384,6 @@ class MainActivity : AppCompatActivity() {
             vib.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
     }
 
-    // Return the accent color to use it programmatically
-    fun getThemeColor(@AttrRes attrRes: Int): Int {
-        val typedValue = TypedValue()
-        theme.resolveAttribute(attrRes, typedValue, true)
-        return typedValue.data
-    }
-
     // Show a snackbar containing a given text and an optional action, with a 5 seconds duration
     fun showSnackbar(
         content: String,
@@ -539,12 +398,67 @@ class MainActivity : AppCompatActivity() {
         else
             snackbar.anchorView = binding.bottomBar
         if (action != null) {
-            snackbar.setActionTextColor(getThemeColor(android.R.attr.colorAccent))
+            snackbar.setActionTextColor(getThemeColor(android.R.attr.colorSecondary, this))
             snackbar.setAction(actionText) {
                 action()
             }
         }
         snackbar.show()
+    }
+
+    // Change the fab to show a delete icon
+    fun toggleDeleteFab(active: Boolean = false) {
+        val addFab = binding.fab
+        val deleteFab = binding.fabDelete
+        val bottomBarId = binding.bottomBar.id
+        val addParams: CoordinatorLayout.LayoutParams =
+            addFab.layoutParams as CoordinatorLayout.LayoutParams
+        val deleteParams: CoordinatorLayout.LayoutParams =
+            deleteFab.layoutParams as CoordinatorLayout.LayoutParams
+
+        // Case 1: add fab currently hidden, it needs to be active
+        if (!active && addFab.visibility == View.GONE) {
+            // Change anchors to avoid visual problems
+            addParams.anchorId = bottomBarId
+            addFab.layoutParams = addParams
+
+            deleteParams.anchorId = View.NO_ID
+            deleteFab.layoutParams = deleteParams
+
+            addFab.visibility = View.VISIBLE
+            deleteFab.visibility = View.GONE
+            deleteFab.applyLoopingAnimatedVectorDrawable(
+                R.drawable.animated_delete,
+                3000L,
+                true
+            )
+            addFab.applyLoopingAnimatedVectorDrawable(
+                R.drawable.animated_add_event,
+                5000L
+            )
+        }
+
+        // Case 2: delete fab currently hidden, it needs to be active
+        if (active && deleteFab.visibility == View.GONE) {
+            // Change anchors to avoid visual problems
+            addParams.anchorId = View.NO_ID
+            addFab.layoutParams = addParams
+
+            deleteParams.anchorId = bottomBarId
+            deleteFab.layoutParams = deleteParams
+
+            addFab.visibility = View.GONE
+            deleteFab.visibility = View.VISIBLE
+            deleteFab.applyLoopingAnimatedVectorDrawable(
+                R.drawable.animated_delete,
+                3000L
+            )
+            addFab.applyLoopingAnimatedVectorDrawable(
+                R.drawable.animated_add_event,
+                5000L,
+                true
+            )
+        }
     }
 
     // Ask contacts permission
@@ -562,6 +476,45 @@ class MainActivity : AppCompatActivity() {
             ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.READ_CONTACTS
+            ) == PackageManager.PERMISSION_GRANTED
+        } else true
+    }
+
+    // Ask calendar permission
+    fun askCalendarPermission(code: Int = 301): Boolean {
+        return if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_CALENDAR
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.READ_CALENDAR),
+                code
+            )
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_CALENDAR
+            ) == PackageManager.PERMISSION_GRANTED
+        } else true
+    }
+
+    // Ask notification permission
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    fun askNotificationPermission(code: Int = 201): Boolean {
+        return if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                code
+            )
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
             ) == PackageManager.PERMISSION_GRANTED
         } else true
     }
@@ -585,11 +538,64 @@ class MainActivity : AppCompatActivity() {
             102 -> {
                 if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS))
-                        showSnackbar(getString(R.string.missing_permission_contacts))
-                    else showSnackbar(getString(R.string.missing_permission_contacts_forever))
+                        showSnackbar(
+                            getString(R.string.missing_permission_contacts),
+                            actionText = getString(R.string.cancel),
+                            action = fun() {
+                                askContactsPermission()
+                            })
+                    else showSnackbar(getString(R.string.missing_permission_contacts_forever),
+                        actionText = getString(R.string.title_settings),
+                        action = fun() {
+                            startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                                data = Uri.fromParts("package", packageName, null)
+                            })
+                        })
                 } else {
                     val contactImporter = ContactsImporter(this, null)
                     contactImporter.importContacts(this)
+                }
+            }
+            // Notifications request at startup, plus contacts after
+            201 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS))
+                        showSnackbar(
+                            getString(R.string.missing_permission_notifications),
+                            actionText = getString(R.string.cancel),
+                            action = fun() {
+                                askContactsPermission()
+                            })
+                    else showSnackbar(
+                        getString(R.string.missing_permission_notifications_forever),
+                        actionText = getString(R.string.title_settings),
+                        action = fun() {
+                            startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                                data = Uri.fromParts("package", packageName, null)
+                            })
+                        })
+                }
+                // Request contacts permission in every case
+                askContactsPermission()
+            }
+            // Calendar permission when importing from calendar
+            302 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CALENDAR))
+                        showSnackbar(
+                            getString(R.string.missing_permission_calendar),
+                            actionText = getString(R.string.cancel),
+                            action = fun() {
+                                askCalendarPermission()
+                            })
+                    else showSnackbar(
+                        getString(R.string.missing_permission_calendar_forever),
+                        actionText = getString(R.string.title_settings),
+                        action = fun() {
+                            startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                                data = Uri.fromParts("package", packageName, null)
+                            })
+                        })
                 }
             }
         }

@@ -1,0 +1,12 @@
+- New full Material 3 UI
+- New full Material 3 widget 
+- The widget features a list of all the events
+- Experimental settings (import/export CSV, import/export JSON, delete all events, hide on scroll, auto import from contacts at launch)
+- Android 13 specific features (monochrome icon, per app language support)
+- Dates from year 0 to tomorrow supported
+- Almost every single icon is animated now
+- New animated type selector to filter the events by type
+- New yearly overview screen
+- Many optimizations
+- A lot of bugs fixed
+- New languages supported

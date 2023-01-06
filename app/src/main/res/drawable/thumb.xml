@@ -10,6 +10,6 @@
 
     <padding android:paddingHorizontal="@dimen/linear_vertical_margin" />
 
-    <solid android:color="?colorAccent" />
+    <solid android:color="?attr/colorPrimary" />
 
 </shape>

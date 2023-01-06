@@ -21,22 +21,34 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(application)
     val allEvents: LiveData<List<EventResult>>
     val allEventsUnfiltered: LiveData<List<EventResult>>
-    private val eventsCount: LiveData<Int>
-    val nextEvents: LiveData<List<EventResult>>
+    private val eventsCount: LiveData<Int> // Unused since it's null sometimes
     val searchString = MutableLiveData<String>()
+    val selectedType = MutableLiveData<String>()
+    private val searchValues = MediatorLiveData<Pair<String?, String?>>()
     private val eventDao: EventDao = EventDatabase.getBirdayDatabase(application).eventDao()
     var confettiDone: Boolean = false
 
     init {
         searchString.value = ""
+        selectedType.value = ""
+        // The Pair values are nullable as getting "liveData.value" can be null
+        searchValues.apply {
+            addSource(searchString) { value = it to selectedType.value }
+            addSource(selectedType) { value = searchString.value to it }
+        }
+
         // All the events, unfiltered
         allEventsUnfiltered = eventDao.getOrderedEvents()
-        // All the events, filtered by search string
-        allEvents = Transformations.switchMap(searchString) { string ->
-            eventDao.getOrderedEventsByName(string)
+        // All the events, filtered by search string and type
+        allEvents = Transformations.switchMap(searchValues) { pair ->
+            val searchString = pair.first
+            val selectedType = pair.second
+            if (!searchString.isNullOrBlank())
+                eventDao.getOrderedEventsByName(searchString)
+            else if (!selectedType.isNullOrBlank())
+                eventDao.getOrderedEventsByType(selectedType)
+            else eventDao.getOrderedEventsByName("")
         }
-        // Only the upcoming events not considering the search
-        nextEvents = eventDao.getOrderedNextEvents()
         eventsCount = eventDao.getEventsCount()
         scheduleNextCheck()
     }
@@ -56,6 +68,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun delete(event: Event) = viewModelScope.launch(Dispatchers.IO) {
         eventDao.deleteEvent(event)
+    }
+
+    fun deleteAll(events: List<Event>) = viewModelScope.launch(Dispatchers.IO) {
+        eventDao.deleteAllEvent(events)
     }
 
     fun update(event: Event) = viewModelScope.launch(Dispatchers.IO) {
@@ -87,6 +103,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     // Update the name searched in the search bar
     fun searchStringChanged(newSearchString: String) {
+        if (searchString.value == newSearchString) return
         searchString.value = newSearchString
+    }
+
+    // Update the type selected in the search bar
+    fun eventTypeChanged(newSelectedType: String?) {
+        if (selectedType.value == newSelectedType) return
+        selectedType.value = newSelectedType ?: ""
     }
 }

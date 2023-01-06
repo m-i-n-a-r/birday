@@ -1,0 +1,165 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/activity_horizontal_margin"
+    tools:context=".activities.MinimalWidgetConfigurationActivity">
+
+    <ImageView
+        android:id="@+id/configurationTitleImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/event_details"
+        app:layout_constraintBottom_toBottomOf="@id/configurationTitle"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toStartOf="@id/configurationTitle"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/configurationTitle"
+        app:srcCompat="@drawable/animated_nav_settings"
+        app:tint="?attr/colorPrimary" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/configurationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:drawablePadding="@dimen/activity_vertical_margin"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:padding="@dimen/in_row_padding"
+        android:text="@string/widget_configuration_title"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/configurationTitleImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/configurationDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/widget_configuration_description"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/configurationTitle" />
+
+    <!-- Dark texts -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/configurationDarkWidgetTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/linear_vertical_margin"
+        android:text="@string/dark_widget_name"
+        android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+        android:textSize="@dimen/custom_preference_title_text_size"
+        app:layout_constraintEnd_toStartOf="@id/configurationDarkTextSwitch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/configurationDescription" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/configurationDarkWidgetDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/dark_widget_description_on"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+        app:layout_constraintEnd_toStartOf="@id/configurationDarkTextSwitch"
+        app:layout_constraintStart_toStartOf="@id/configurationDarkWidgetTitle"
+        app:layout_constraintTop_toBottomOf="@id/configurationDarkWidgetTitle" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/configurationDarkTextSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/custom_preference_subtitle_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/configurationDarkWidgetDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/configurationDarkWidgetTitle" />
+
+    <!-- Background visibility -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/configurationBackgroundTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/widget_background_title"
+        android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+        android:textSize="@dimen/custom_preference_title_text_size"
+        app:layout_constraintEnd_toStartOf="@id/configurationBackgroundSwitch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/configurationDarkWidgetDescription" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/configurationBackgroundDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/widget_background_description"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+        app:layout_constraintEnd_toStartOf="@id/configurationBackgroundSwitch"
+        app:layout_constraintStart_toStartOf="@id/configurationBackgroundTitle"
+        app:layout_constraintTop_toBottomOf="@id/configurationBackgroundTitle" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/configurationBackgroundSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/custom_preference_subtitle_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/configurationBackgroundDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/configurationBackgroundTitle" />
+
+    <!-- Hyper compact layout -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/configurationCompactTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/compact_widget_title"
+        android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+        android:textSize="@dimen/custom_preference_title_text_size"
+        app:layout_constraintEnd_toStartOf="@id/configurationCompactSwitch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/configurationBackgroundDescription" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/configurationCompactDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/compact_widget_description"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+        app:layout_constraintEnd_toStartOf="@id/configurationCompactSwitch"
+        app:layout_constraintStart_toStartOf="@id/configurationCompactTitle"
+        app:layout_constraintTop_toBottomOf="@id/configurationCompactTitle" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/configurationCompactSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/custom_preference_subtitle_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/configurationCompactDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/configurationCompactTitle" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/configurationConfirmButton"
+        style="@style/Widget.Material3.FloatingActionButton.Large.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:contentDescription="@android:string/ok"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/configurationCompactDescription"
+        app:layout_constraintVertical_bias="1"
+        app:srcCompat="@drawable/ic_appintro_done" />
+
+    <!-- TODO Include a preview copy of the widget layout? -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

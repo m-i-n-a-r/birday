@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_welcome">Birday मध्ये आपले स्वागत आहे</string>
     <string name="app_name_extended">Birday - कार्यक्रम व्यवस्थापक</string>
     <string name="leave_review_title">Birday कसे आहे ते आम्हाला सांगा</string>
@@ -31,7 +30,6 @@
         <item quantity="one">%d दिवस उरलेला</item>
         <item quantity="other">%d दिवस उरलेले</item>
     </plurals>
-
     <!-- Settings -->
     <string name="customization">सानुकूलन</string>
     <string name="app_behavior">अॅप वर्तन</string>
@@ -45,6 +43,9 @@
     <string name="five_days_before">पाच दिवस आधी</string>
     <string name="six_days_before">सहा दिवस आधी</string>
     <string name="seven_days_before">सात दिवस आधीe</string>
+    <string name="ten_days_before">Ten days before</string>
+    <string name="fourteen_days_before">Fourteen days before</string>
+    <string name="twentyone_days_before">Twentyone days before</string>
     <string name="vibration_name">कंपन</string>
     <string name="vibration_description_on">बटण दाबल्यावर कंपन करा</string>
     <string name="vibration_description_off">बटण दाबल्यावर कंपन होत नाही</string>
@@ -55,6 +56,7 @@
     <string name="accent_name">उच्चारण रंग</string>
     <string name="theme_description">गडद, हलकी किंवा स्वयंचलित अॅप थीम वापरा</string>
     <string name="theme_name">अॅप थीम</string>
+    <!-- Untranslated for now -->
     <string name="aqua">पाण्यासारखा निळा</string>
     <string name="brown">तपकिरी</string>
     <string name="blue">निळा</string>
@@ -74,9 +76,6 @@
     <string name="shimmer_name">चमकणारा प्रभाव</string>
     <string name="shimmer_description_on">येथे आणि तेथे एक चमकदार अॅनिमेशन</string>
     <string name="shimmer_description_off">कोणतेही अतिरिक्त ग्राफिक प्रभाव नाहीत</string>
-    <string name="dark_widget_name">गडद विजेट</string>
-    <string name="dark_widget_description_on">विजेट गडद थीम वापरते</string>
-    <string name="dark_widget_description_off">विजेट लाइट थीम वापरते</string>
     <string name="import_export">आयात आणि निर्यात</string>
     <string name="import_contacts_title">संपर्कांमधून कार्यक्रम इंपोर्ट करा</string>
     <string name="import_contacts_description">नेहमी अचूक आकडेवारी मिळण्यासाठी गहाळ वर्षांसह कार्यक्रम सुधारित करण्याचे सुनिश्चित करा!</string>
@@ -84,7 +83,7 @@
     <string name="import_nothing_found">कोणताही कार्यक्रम आढळला नाही!</string>
     <string name="import_failed">काहीतरी चूक झाली!</string>
     <string name="missing_permission_contacts">संपर्क परवानगी नाकारली गेली. पुन्हा प्रयत्न करा किंवा परवानगी व्यक्तिचलितपणे सक्रिय करा, किंवा संपर्क आयात कार्य करणार नाही!</string>
-    <string name="missing_permission_contacts_forever">Birday संपर्क आयात करण्याची परवानगी मागू शकत नाही, तुम्ही "पुन्हा कधीही विचारू नका" हे तपासले आहे. ते व्यक्तिचलितपणे सक्षम करा!</string>
+    <string name="missing_permission_contacts_forever">Birday संपर्क आयात करण्याची परवानगी मागू शकत नाही, तुम्ही \"पुन्हा कधीही विचारू नका\" हे तपासले आहे. ते व्यक्तिचलितपणे सक्षम करा!</string>
     <string name="birday_import_title">Import a Birday backup</string>
     <string name="birday_import_description">तुमचे कार्यक्रम पुनर्संचयित करण्यासाठी वैध Birday बॅकअप निवडा. सर्व विद्यमान डेटा अधिलिखित केले जाईल!</string>
     <string name="birday_export_title">कार्यक्रम निर्यात आणि शेअर करा</string>
@@ -104,16 +103,23 @@
     <string name="notification_only_favorites">फक्त आवडते</string>
     <string name="notification_only_favorites_description_on">फक्त आवडत्या कार्यक्रमांसाठी सूचना पाठवा</string>
     <string name="notification_only_favorites_description_off">घातलेल्या प्रत्येक कार्यक्रमासाठी सूचना पाठवा</string>
+    <string name="additional_notification_only_favorites">Additional notification for favorites</string>
+    <string name="additional_notification_only_favorites_description_on">Send the additional notification for favorite events only</string>
+    <string name="additional_notification_only_favorites_description_off">Send the additional notification for every event inserted</string>
     <string name="troubleshoot">समस्यानिवारण आणि अतिरिक्त</string>
     <string name="battery_optimization_title">बॅटरी ऑप्टिमायझेशन अक्षम करा</string>
     <string name="battery_optimization_description">Birday साठी कोणतेही ऑप्टिमायझेशन अक्षम करण्यासाठी सेटिंग्ज उघडा. सूचना कार्य करत नसल्यास उपयुक्त</string>
     <string name="notification_sound_title">सूचना आवाज</string>
     <string name="notification_sound_description">तुम्हाला डिफॉल्ट पक्षी आवाज आवडत नसल्यास, सूचना आवाज सेटिंग्जचा शॉर्टकट</string>
-
+    <string name="missing_permission_notifications">The notification permission was denied, and Birday can\'t send notifications! Activate the permission from settings.</string>
+    <string name="missing_permission_notifications_forever">The notification permission was denied and can\'t be asked again, so Birday can\'t send notifications! Activate the permission manually, from settings.</string>
+    <string name="missing_permission_calendar">The calendar permission was denied, and Birday can\'t import from calendar! Activate the permission from settings.</string>
+    <string name="missing_permission_calendar_forever">The calendar permission was denied and can\'t be asked again, so Birday can\'t import from calendar! Activate the permission manually, from settings.</string>
+    <string name="import_calendar_title">Import from calendar</string>
+    <string name="import_calendar_description">Import any yearly event from your calendars. Remember to set the event type and year to keep things ordered!</string>
     <!-- Developer -->
     <string name="dev_description">मी एक विनयशील माणूस आहे आणि मला अॅनिमेशन, आयकॉन, स्पोर्ट कार आणि 3D प्रिंटिंग सारख्या सुंदर गोष्टी आवडतात. मी डिझायनर आणि संगणक अभियंता म्हणून काम करतो.</string>
     <string name="easter_egg">छान लोगो, हं? ;D</string>
-
     <!-- New event -->
     <string name="new_event">नवीन कार्यक्रम</string>
     <string name="new_event_description">एखादी व्यक्ती ज्याची तुम्हाला काळजी आहे एंटर करा आणि Birday तुम्हाला त्यांचा वाढदिवस किंवा इतर कार्यक्रम लक्षात ठेवण्यास मदत करेल!</string>
@@ -131,7 +137,6 @@
     <string name="festivity">उत्सव</string>
     <string name="name_day">बारसे</string>
     <string name="other">इतर</string>
-
     <!-- Event actions -->
     <string name="event_actions">क्रिया</string>
     <string name="event_actions_description">येथे तुम्ही हा कार्यक्रम बदलू किंवा काढू शकता!</string>
@@ -140,26 +145,20 @@
     <string name="update_event">कार्यक्रम अद्यतनित करा</string>
     <string name="share_event">कार्यक्रम शेअर करा</string>
     <string name="deleted">हटवले!</string>
-
     <!-- Event details -->
     <string name="event_details">तपशील</string>
     <string name="birth_date">जन्मदिनांक</string>
     <string name="next_age">पुढचे वय:</string>
     <string name="zodiac_sign">राशी चिन्ह:</string>
     <string name="chinese_zodiac_sign">चीनी राशिचक्र चिन्ह:</string>
-
     <!-- Quick apps -->
     <string name="event_apps">द्रुत अॅप्स</string>
     <string name="event_apps_description">सर्व जलद शुभेच्छा देण्यासाठी अॅप्स!</string>
-    <string name="whatsapp">व्हॉट्सॲप</string>
-    <string name="signal">सिग्नल</string>
-    <string name="telegram">टेलिग्राम</string>
-    <string name="textMessage">लिखित संदेश</string>
+    <string name="text_message">लिखित संदेश</string>
     <string name="dialer">डायलर</string>
     <string name="wishes_birthday">वाढदिवसाच्या हार्दिक शुभेच्छा!</string>
     <string name="no_default_dialer">कोणतेही डीफॉल्ट डायलर अॅप आढळले नाही!</string>
     <string name="no_default_sms">कोणतेही डीफॉल्ट SMS अॅप आढळले नाही!</string>
-
     <!-- Statistics -->
     <string name="did_you_know">तुम्हाला माहीत आहे का?</string>
     <string name="age_average">सरासरी वय आहे %s</string>
@@ -202,7 +201,6 @@
     <string name="zodiac_virgo">कन्यारास</string>
     <string name="zodiac_libra">तूळ</string>
     <string name="zodiac_scorpio">वृश्चिक</string>
-
     <!-- Common words -->
     <plurals name="months">
         <item quantity="one">%d महिना</item>
@@ -221,7 +219,6 @@
         <item quantity="one">कार्यक्रम: %s</item>
         <item quantity="other">कार्यक्रम: %s</item>
     </plurals>
-
     <!-- Notifications -->
     <string name="events_notification_channel">कार्यक्रम स्मरणपत्र</string>
     <string name="events_channel_description">Birday कडून आगामी कार्यक्रमांबद्दल स्मरणपत्रे</string>
@@ -229,7 +226,6 @@
     <string name="notification_description_part_1">आजच्या घटना आहेत</string>
     <string name="notification_description_part_2">तुमचा दिवस चांगला जावो!</string>
     <string name="additional_notification_text">पुढील कार्यक्रम!</string>
-
     <!-- Introduction slides -->
     <string name="slide_one_title">Birday मध्ये आपले स्वागत आहे!</string>
     <string name="slide_one_description">Birday हे महत्त्वाचे कार्यक्रम व्यवस्थापित करण्यासाठी सोपे आणि हलके अॅप आहे! तुम्ही विश्वासार्ह आणि जलद मार्गाने तुम्हाला आवडत असलेल्या लोकांचे वाढदिवस लक्षात ठेवण्यासाठी आणि संग्रहित करण्यासाठी याचा वापर करू शकता.
@@ -240,22 +236,57 @@
     <string name="slide_three_title">संपर्कांमधून आयात करा</string>
     <string name="slide_three_description">तुम्ही आधीच सेव्ह केलेले इव्हेंट इंपोर्ट करणे देखील शक्य आहे तुमच्या संपर्कांमधून. Birday हे तुमच्यासाठी करू शकते, फक्त संपर्कांना परवानगी द्या. आनंद घ्या!
     </string>
-
     <!-- Widget -->
     <string name="appwidget_upcoming">पुढील कार्यक्रम</string>
     <string name="add_widget">Birday - आगामी</string>
-
+    <string name="dark_widget_name">गडद विजेट</string>
+    <string name="dark_widget_description_on">विजेट गडद थीम वापरते</string>
+    <string name="dark_widget_description_off">विजेट लाइट थीम वापरते</string>
+    <string name="widget_configuration_title">Widget configuration</string>
+    <string name="widget_configuration_description">Configure the widget to match your style</string>
+    <string name="widget_background_title">Background</string>
+    <string name="widget_background_description">Show a background for the widget</string>
+    <string name="compact_widget_title">Compact layout</string>
+    <string name="compact_widget_description">Optimize the layout to be extremely compact</string>
     <!-- Search -->
     <string name="search_event">शोधा…</string>
     <string name="search_no_result_title">कोणतेही परिणाम आढळले नाहीत</string>
     <string name="search_no_result_description">तुमची शोध स्ट्रिंग तुम्ही जोडलेल्या कोणत्याही इव्हेंटशी जुळत नाही!</string>
-
     <!-- Notes -->
     <string name="notes">नोट्स</string>
     <string name="write_something">काहीतरी लिहा…</string>
-
     <!-- Overview -->
     <string name="overview">आढावा</string>
     <string name="overview_description">जतन केलेल्या प्रत्येक इव्हेंटचे वार्षिक विहंगावलोकन</string>
-
+    <!-- Experimental preferences -->
+    <string name="experimental_settings_title">Experimental</string>
+    <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
+    <string name="check_github">Check Github</string>
+    <string name="translate_app">Translate the app</string>
+    <string name="launch_auto_import_title">Auto import on launch</string>
+    <string name="launch_auto_import_description_off">Birday won\'t import contacts automatically when launched</string>
+    <string name="launch_auto_import_description_on">Birday will automatically sync with contacts at startup</string>
+    <string name="hide_on_scroll_title">Hide navbar on scroll</string>
+    <string name="hide_on_scroll_description_on">Hide the bottom navbar when you scroll</string>
+    <string name="hide_on_scroll_description_off">The bottom navbar will always be visible</string>
+    <string name="angry_bird_title">Angry Bird mode</string>
+    <string name="angry_bird_description_on">Persistent notifications, shorter texts and other notification related tweaks</string>
+    <string name="angry_bird_description_off">Notifications will behave normally</string>
+    <string name="import_json_title">Import from JSON</string>
+    <string name="import_json_description">Import from a JSON file. Refer to the wiki on Github for the required file structure</string>
+    <string name="export_json_title">Export to JSON</string>
+    <string name="export_json_description">Export each event to a JSON file, image excluded</string>
+    <string name="import_csv_title">Import from CSV</string>
+    <string name="import_csv_description">Import from a CSV file. Refer to the wiki on Github for the required file structure</string>
+    <string name="export_csv_title">Export to CSV</string>
+    <string name="export_csv_description">Export each event to a CSV file, image excluded</string>
+    <string name="delete_db_title">Delete all the events</string>
+    <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
+    <string name="delete_db_dialog_title">Are you sure?</string>
+    <string name="delete_db_dialog_description">Make sure to backup your events first, this operation will wipe the DB and should be used for debugging purposes only</string>
+    <string name="delete_search_title">Delete search selection</string>
+    <string name="delete_search_description_off">It won\'t be possible to delete multiple events at once</string>
+    <string name="delete_search_description_on">Press the trash button when you search one or more events to quickly delete them all from Birday. Use with caution!</string>
+    <string name="delete_search_confirm">This will delete all the results of this search. You can undo the process shortly after clicking OK if you change your mind!</string>
 </resources>

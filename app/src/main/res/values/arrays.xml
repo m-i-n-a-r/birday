@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <string-array name="themes">
         <item>@string/system_theme</item>
@@ -13,8 +13,7 @@
         <item>light</item>
     </string-array>
 
-    <string-array name="accents">
-        <item>@string/system_theme</item>
+    <string-array name="accents" tools:ignore="InconsistentArrays">
         <item>@string/aqua</item>
         <item>@string/brown</item>
         <item>@string/blue</item>
@@ -30,8 +29,7 @@
         <item>@string/crimson</item>
     </string-array>
 
-    <string-array name="accentValues">
-        <item>system</item>
+    <string-array name="accentValues" tools:ignore="InconsistentArrays">
         <item>aqua</item>
         <item>brown</item>
         <item>blue</item>
@@ -56,6 +54,9 @@
         <item>@string/five_days_before</item>
         <item>@string/six_days_before</item>
         <item>@string/seven_days_before</item>
+        <item>@string/ten_days_before</item>
+        <item>@string/fourteen_days_before</item>
+        <item>@string/twentyone_days_before</item>
     </string-array>
 
     <string-array name="additionalNotificationValues">
@@ -67,6 +68,9 @@
         <item>5</item>
         <item>6</item>
         <item>7</item>
+        <item>10</item>
+        <item>14</item>
+        <item>21</item>
     </string-array>
 
 </resources>

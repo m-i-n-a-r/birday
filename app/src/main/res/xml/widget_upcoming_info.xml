@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:description="@string/appwidget_upcoming"
+    android:initialKeyguardLayout="@layout/widget_upcoming"
+    android:initialLayout="@layout/widget_upcoming"
+    android:previewImage="@drawable/birday_widget_preview"
+    android:previewLayout="@layout/widget_upcoming"
+    android:resizeMode="horizontal|vertical"
+    android:targetCellWidth="3"
+    android:targetCellHeight="1"
+    android:updatePeriodMillis="10800000"
+    android:widgetCategory="home_screen"
+    tools:targetApi="s" /><!-- Updated every 3 hours, minimum size is 3 * 1 -->

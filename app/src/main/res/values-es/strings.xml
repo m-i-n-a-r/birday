@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
-
+<resources>
     <string name="app_welcome">Bienvenido/a a Birday</string>
     <string name="app_name_extended">Birday - Gestor de eventos</string>
     <string name="leave_review_title">Valora Birday</string>
@@ -31,7 +30,6 @@
         <item quantity="one">Falta %d día</item>
         <item quantity="other">Faltan %d días</item>
     </plurals>
-
     <!-- Settings -->
     <string name="customization">Personalización</string>
     <string name="app_behavior">Ajustes generales</string>
@@ -45,6 +43,9 @@
     <string name="five_days_before">5 días antes</string>
     <string name="six_days_before">6 días antes</string>
     <string name="seven_days_before">7 días antes</string>
+    <string name="ten_days_before">Diez días antes</string>
+    <string name="fourteen_days_before">Catorce días antes</string>
+    <string name="twentyone_days_before">Veintiún días antes</string>
     <string name="vibration_name">Vibración</string>
     <string name="vibration_description_on">Se producen vibraciones al pulsar un botón</string>
     <string name="vibration_description_off">No se producen vibraciones al pulsar un botón</string>
@@ -55,6 +56,7 @@
     <string name="accent_name">Color principal</string>
     <string name="theme_description">Usa un tema oscuro, claro o automático</string>
     <string name="theme_name">Tema de la aplicación</string>
+    <!-- Untranslated for now -->
     <string name="aqua">Aguamarina</string>
     <string name="brown">Marrón</string>
     <string name="blue">Azul</string>
@@ -73,10 +75,7 @@
     <string name="light_theme">Claro</string>
     <string name="shimmer_name">Efectos de brillo</string>
     <string name="shimmer_description_on">Brilli brilli por aquí y por allá</string>
-    <string name="shimmer_description_off" tools:ignore="Typos">Nada de brilli brilli</string>
-    <string name="dark_widget_name">¿Widget oscuro?</string>
-    <string name="dark_widget_description_on">El widget usa un tema oscuro</string>
-    <string name="dark_widget_description_off">El widget usa un tema claro</string>
+    <string name="shimmer_description_off">Nada de brilli brilli</string>
     <string name="import_export">Importar y exportar</string>
     <string name="import_contacts_title">Importar eventos desde contactos</string>
     <string name="import_contacts_description">No olvides modificar los eventos con los años que falten para tener estadísticas más precisas</string>
@@ -104,16 +103,23 @@
     <string name="notification_only_favorites">¿Notificar solo favoritos?</string>
     <string name="notification_only_favorites_description_on">Solo notifica los eventos favoritos</string>
     <string name="notification_only_favorites_description_off">Notifica todos los eventos</string>
+    <string name="additional_notification_only_favorites">Notificación adicional para favoritos</string>
+    <string name="additional_notification_only_favorites_description_on">Enviar notificación adicional solo para eventos favoritos</string>
+    <string name="additional_notification_only_favorites_description_off">Enviar la notificación adicional para cada evento insertado</string>
     <string name="troubleshoot">Solucionar problemas</string>
     <string name="battery_optimization_title">Deshabilitar la optimización de la batería</string>
     <string name="battery_optimization_description">Abra la configuración para deshabilitar cualquier optimización para Birday. Útil si las notificaciones no funcionan</string>
     <string name="notification_sound_title">Sonido de notificación</string>
     <string name="notification_sound_description">Acceso directo a la configuración de sonido de notificación, si no te gusta el sonido de pájaro predeterminado</string>
-
+    <string name="missing_permission_notifications">¡El permiso de notificación fue denegado, y Birday no puede enviar notificaciones! Activa el permiso desde la configuración.</string>
+    <string name="missing_permission_notifications_forever">¡El permiso de notificación fue denegado y no se puede preguntar de nuevo, por lo que Birday no puede enviar notificaciones! Activa el permiso manualmente, desde la configuración.</string>
+    <string name="missing_permission_calendar">¡El permiso de calendario fue denegado, y Birday no puede importar desde el calendario! Active el permiso de configuración.</string>
+    <string name="missing_permission_calendar_forever">¡El permiso de calendario fue denegado y no se puede preguntar de nuevo, así que Birday no puede importar desde el calendario! Active el permiso manualmente, desde la configuración.</string>
+    <string name="import_calendar_title">Importar desde calendario</string>
+    <string name="import_calendar_description">Importa cualquier evento anual de tus calendarios. ¡Recuerda establecer el tipo de evento y el año para mantener las cosas ordenadas!</string>
     <!-- Developer -->
     <string name="dev_description">Soy un tipo amable al que le gustan las animaciones, los iconos, los coches deportivos y la impresión 3D. Trabajo como diseñador e ingeniero informático.</string>
     <string name="easter_egg">Bonito logo, ¿eh? ;D</string>
-
     <!-- New event -->
     <string name="new_event">Nuevo evento</string>
     <string name="new_event_description">Escribe la persona que quieras añadir y Birday te ayudará a recordar su cumpleaños u otros eventos</string>
@@ -131,7 +137,6 @@
     <string name="festivity">Festividad</string>
     <string name="name_day">Día del nombre</string>
     <string name="other">Otro</string>
-
     <!-- Event actions -->
     <string name="event_actions">Acciones</string>
     <string name="event_actions_description">Aquí podrás cambiar o eliminar este evento</string>
@@ -140,23 +145,20 @@
     <string name="update_event">Actualizar evento</string>
     <string name="share_event">Compartir evento</string>
     <string name="deleted">¡Eliminado!</string>
-
     <!-- Event details -->
     <string name="event_details">Detalles</string>
     <string name="birth_date">Fecha de nacimiento</string>
     <string name="next_age">Próximamente cumplirá:</string>
     <string name="zodiac_sign">Signo del zodiaco:</string>
     <string name="chinese_zodiac_sign">Signo del zodiaco chino:</string>
-
     <!-- Quick apps -->
     <string name="event_apps">Aplicaciones</string>
     <string name="event_apps_description">Algunas aplicaciones con las que poder felicitar los cumpleaños</string>
-    <string name="textMessage">Mensaje SMS</string>
+    <string name="text_message">Mensaje SMS</string>
     <string name="dialer">Teléfono</string>
     <string name="wishes_birthday">¡Feliz cumpleaños!</string>
     <string name="no_default_dialer">¡No se ha encontrado la aplicación Teléfono!</string>
     <string name="no_default_sms">¡No se ha encontrado la aplicación Mensajes!</string>
-
     <!-- Statistics -->
     <string name="did_you_know">¿Sabías que…?</string>
     <string name="age_average">La edad media es de %s</string>
@@ -199,7 +201,6 @@
     <string name="zodiac_virgo">virgo</string>
     <string name="zodiac_libra">libra</string>
     <string name="zodiac_scorpio">escorpio</string>
-
     <!-- Common words -->
     <plurals name="months">
         <item quantity="one">%d mes</item>
@@ -218,7 +219,6 @@
         <item quantity="one">evento: %s</item>
         <item quantity="other">eventos: %s</item>
     </plurals>
-
     <!-- Notifications -->
     <string name="events_notification_channel">Recordatorio de evento</string>
     <string name="events_channel_description">Recordatorio de los próximos eventos de Birday</string>
@@ -226,7 +226,6 @@
     <string name="notification_description_part_1">Los eventos de hoy son</string>
     <string name="notification_description_part_2">¡Que tengas un buen día!</string>
     <string name="additional_notification_text">¡Próximos eventos!</string>
-
     <!-- Introduction slides -->
     <string name="slide_one_title">¡Bienvenido/a a Birday!</string>
     <string name="slide_one_description">Birday es una aplicación sencilla y ligera que permite gestionar eventos importantes. Puedes utilizarla para registrar y recordar los cumpleaños de tus allegados y otro, de forma rápida y segura.</string>
@@ -234,22 +233,57 @@
     <string name="slide_two_description">Birday es gratuita, de código abierto y no tiene publicidad. Cuenta con estadísticas, sistema de favoritos y una interfaz personalizable. ¡Y con soporte y actualizaciones garantizadas!</string>
     <string name="slide_three_title">Importar desde contactos</string>
     <string name="slide_three_description">También puedes importar los eventos que ya tengas guardados en tus contactos. Birday puede hacerlo por ti, solo tienes que permitir el acceso a tus contactos. ¡Que lo disfrutes!</string>
-
     <!-- Widget -->
     <string name="appwidget_upcoming">Próximos eventos</string>
     <string name="add_widget">Birday - Eventos</string>
-
+    <string name="dark_widget_name">¿Widget oscuro?</string>
+    <string name="dark_widget_description_on">El widget usa un tema oscuro</string>
+    <string name="dark_widget_description_off">El widget usa un tema claro</string>
+    <string name="widget_configuration_title">Configuración del widget</string>
+    <string name="widget_configuration_description">Configura el widget para que coincida con tu estilo</string>
+    <string name="widget_background_title">Fondo</string>
+    <string name="widget_background_description">Mostrar un fondo para el widget</string>
+    <string name="compact_widget_title">Disposición compacta</string>
+    <string name="compact_widget_description">Optimizar la disposición para ser extremadamente compacta</string>
     <!-- Search -->
     <string name="search_event">Buscar…</string>
     <string name="search_no_result_title">Sin resultados</string>
     <string name="search_no_result_description">El texto introducido no coincide con ningún evento que hayas añadido</string>
-
     <!-- Notes -->
     <string name="notes">Notas</string>
     <string name="write_something">Escribe alguna anotación…</string>
-
     <!-- Overview -->
     <string name="overview">Resumen</string>
     <string name="overview_description">Una visión general anual de los eventos guardados</string>
-
+    <!-- Experimental preferences -->
+    <string name="experimental_settings_title">Experimental</string>
+    <string name="experimental_settings_description">Algunas opciones y características experimentales. Utilícelas bajo tu propio riesgo</string>
+    <string name="experimental_disclaimer">Las siguientes características son experimentales y pueden no funcionar correctamente. Utilícelas bajo su propio riesgo. Consulte Github para cualquier progreso, ya que algunas de estas características podrían ser \"promocionadas\" y traducidas</string>
+    <string name="check_github">Ver en GitHub</string>
+    <string name="translate_app">Traducir la app</string>
+    <string name="launch_auto_import_title">Auto importación al iniciar</string>
+    <string name="launch_auto_import_description_off">Birday no importará contactos automáticamente cuando se inicie</string>
+    <string name="launch_auto_import_description_on">Birday se sincronizará automáticamente con los contactos al iniciar</string>
+    <string name="hide_on_scroll_title">Ocultar barra de navegación al desplazar</string>
+    <string name="hide_on_scroll_description_on">Oculta la barra de navegación inferior cuando se desplaza</string>
+    <string name="hide_on_scroll_description_off">La barra de navegación inferior será siempre visible</string>
+    <string name="angry_bird_title">Modo Angry Bird</string>
+    <string name="angry_bird_description_on">Notificaciones persistentes, textos más cortos y otros ajustes relacionados con notificaciones</string>
+    <string name="angry_bird_description_off">Las notificaciones se comportarán normalmente</string>
+    <string name="import_json_title">Importar desde JSON</string>
+    <string name="import_json_description">Importar desde un archivo JSON. Consulte la wiki en Github para ver la estructura de archivos requerida</string>
+    <string name="export_json_title">Exportar a JSON</string>
+    <string name="export_json_description">Exportar cada evento a un archivo JSON, imagen excluida</string>
+    <string name="import_csv_title">Importar desde CSV</string>
+    <string name="import_csv_description">Importar desde un archivo CSV. Consulte la wiki en Github para ver la estructura de archivos requerida</string>
+    <string name="export_csv_title">Exportar a CSV</string>
+    <string name="export_csv_description">Exportar cada evento a un archivo CSV, imagen excluida</string>
+    <string name="delete_db_title">Eliminar todos los eventos</string>
+    <string name="delete_db_description">Sencillamente, destruye el DB. ¡Piensa dos veces antes de hacer clic!</string>
+    <string name="delete_db_dialog_title">¿Estás seguro?</string>
+    <string name="delete_db_dialog_description">Asegúrese de hacer una copia de seguridad de sus eventos, esta operación borrará la base de datos y debe ser usada solo para propósitos de debug</string>
+    <string name="delete_search_title">Eliminar selección de búsqueda</string>
+    <string name="delete_search_description_off">No será posible eliminar múltiples eventos a la vez</string>
+    <string name="delete_search_description_on">Pulsa el botón de la papelera cuando busques uno o más eventos para eliminarlos rápidamente de Birday. ¡Usa con precaución!</string>
+    <string name="delete_search_confirm">Esto eliminará todos los resultados de esta búsqueda. ¡Puedes deshacer el proceso poco después de hacer clic en Aceptar si cambias de opinión!</string>
 </resources>
