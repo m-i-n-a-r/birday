@@ -93,6 +93,7 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
         val background = sp.getBoolean("widget_minimal_background", false)
         val compact = sp.getBoolean("widget_minimal_compact", false)
         val alignStart = sp.getBoolean("widget_minimal_align_start", false)
+        val hideIfFar = sp.getBoolean("widget_minimal_hide_if_far", false)
 
         // First off, hide the text views and backgrounds depending on light or dark
         val titleTextView: Int
@@ -178,6 +179,16 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
                 )
             }"
             views.setTextViewText(textTextView, widgetUpcoming)
+
+            // Hide the entire widget if the event is far enough in time
+            if (hideIfFar) {
+                val anticipationDays =
+                    sp.getString("additional_notification", "0")!!.toInt()
+                if (LocalDate.now()
+                        .until(filteredNextEvents.first().nextDate).days > anticipationDays
+                )
+                    views.setViewVisibility(R.id.minimalWidgetMain, View.INVISIBLE)
+            }
 
             // Instruct the widget manager to update the widget
             appWidgetManager.updateAppWidget(appWidgetId, views)

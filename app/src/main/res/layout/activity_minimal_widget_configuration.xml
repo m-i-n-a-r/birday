@@ -194,6 +194,40 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/configurationAlignStartTitle" />
 
+        <!-- Align text to the left -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/configurationHideIfFarTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:text="@string/hide_far_widget_title"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+            android:textSize="@dimen/custom_preference_title_text_size"
+            app:layout_constraintEnd_toStartOf="@id/configurationHideIfFarSwitch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/configurationAlignStartDescription" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/configurationHideIfFarDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/hide_far_widget_description"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textSize="@dimen/custom_preference_subtitle_text_size"
+            app:layout_constraintEnd_toStartOf="@id/configurationHideIfFarSwitch"
+            app:layout_constraintStart_toStartOf="@id/configurationHideIfFarTitle"
+            app:layout_constraintTop_toBottomOf="@id/configurationHideIfFarTitle" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/configurationHideIfFarSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/card_margin"
+            app:layout_constraintBottom_toBottomOf="@id/configurationHideIfFarDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/configurationHideIfFarTitle" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/configurationConfirmButton"
             style="@style/Widget.Material3.FloatingActionButton.Large.Secondary"
@@ -216,7 +250,7 @@
             android:padding="@dimen/activity_horizontal_margin"
             android:theme="@style/WidgetTheme"
             app:layout_constraintBottom_toTopOf="@id/configurationConfirmButton"
-            app:layout_constraintTop_toBottomOf="@id/configurationAlignStartDescription"
+            app:layout_constraintTop_toBottomOf="@id/configurationHideIfFarDescription"
             tools:layout_editor_absoluteX="38dp">
 
             <ImageView

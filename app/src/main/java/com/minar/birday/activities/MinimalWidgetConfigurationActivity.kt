@@ -22,6 +22,7 @@ import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 import com.minar.birday.utilities.formatEventList
 import com.minar.birday.utilities.getNextYears
 import com.minar.birday.utilities.nextDateFormatted
+import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
@@ -87,16 +88,20 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
         val background = binding.configurationBackgroundSwitch
         val compact = binding.configurationCompactSwitch
         val alignStart = binding.configurationAlignStartSwitch
+        val hideIfFar = binding.configurationHideIfFarSwitch
 
         // Restore the state of the saved configuration
         val darkTextValue = sharedPrefs.getBoolean("widget_minimal_dark_text", false)
         val backgroundValue = sharedPrefs.getBoolean("widget_minimal_background", false)
         val compactValue = sharedPrefs.getBoolean("widget_minimal_compact", false)
         val alignStartValue = sharedPrefs.getBoolean("widget_minimal_align_start", false)
+        val hideIfFarValue = sharedPrefs.getBoolean("widget_hide_if_far", false)
+
         darkText.isChecked = darkTextValue
         background.isChecked = backgroundValue
         compact.isChecked = compactValue
         alignStart.isChecked = alignStartValue
+        hideIfFar.isChecked = hideIfFarValue
 
         // Animate the title image
         binding.configurationTitleImage.applyLoopingAnimatedVectorDrawable(
@@ -260,9 +265,10 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
             editor.putBoolean("widget_minimal_background", background.isChecked)
             editor.putBoolean("widget_minimal_compact", compact.isChecked)
             editor.putBoolean("widget_minimal_align_start", alignStart.isChecked)
+            editor.putBoolean("widget_minimal_hide_if_far", hideIfFar.isChecked)
             editor.apply()
 
-            // First off, hide the text views and backgrounds depending on light or dark
+            // Hide the text views and backgrounds depending on light or dark
             val titleTextView: Int
             val textTextView: Int
             if (darkText.isChecked) {
@@ -331,7 +337,7 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
                 // Remove events in the future today (eg: now is december 1st 2023, an event has original date = december 1st 2050)
                 var filteredNextEvents = nextEvents.toMutableList()
                 filteredNextEvents.removeIf { getNextYears(it) == 0 }
-                // If the events are all in the future, display them but avoid confetti
+                // If the events are all in the future, display them anyway
                 if (filteredNextEvents.isEmpty()) {
                     filteredNextEvents = nextEvents.toMutableList()
                 }
@@ -345,6 +351,15 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
                 }"
                 views.setTextViewText(textTextView, widgetUpcoming)
 
+                // Hide the entire widget if the event is far enough in time
+                if (hideIfFar.isChecked) {
+                    val anticipationDays =
+                        sharedPrefs.getString("additional_notification", "0")!!.toInt()
+                    if (LocalDate.now()
+                            .until(filteredNextEvents.first().nextDate).days > anticipationDays
+                    )
+                        views.setViewVisibility(R.id.minimalWidgetMain, View.INVISIBLE)
+                }
                 // Instruct the widget manager to update the widget
                 widgetManager.updateAppWidget(widgetId, views)
             }.start()
