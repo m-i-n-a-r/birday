@@ -248,6 +248,8 @@
     <string name="compact_widget_description">Ottimizza il layout per essere estremamente compatto</string>
     <string name="align_start_widget_title">Allinea all\'inizio</string>
     <string name="align_start_widget_description">Allinea il contenuto del widget all\'inizio (a destra o a sinistra a seconda della tua località)</string>
+    <string name="hide_far_widget_title">Nascondi widget per eventi lontani</string>
+    <string name="hide_far_widget_description">Nascondi il widget se i prossimi eventi sono dopo il periodo di notifica aggiuntiva (es: notifica 7 giorni prima, il prossimo evento è tra 10 giorni -&gt; il widget è nascosto)</string>
     <!-- Search -->
     <string name="search_event">Cerca…</string>
     <string name="search_no_result_title">Nessun risultato trovato</string>
