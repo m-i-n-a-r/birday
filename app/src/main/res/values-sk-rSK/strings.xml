@@ -258,6 +258,10 @@
     <string name="widget_background_description">Zobraziť pozadie widgetu</string>
     <string name="compact_widget_title">Kompaktné rozloženie</string>
     <string name="compact_widget_description">Optimalizujte rozloženie tak, aby bolo mimoriadne kompaktné</string>
+    <string name="align_start_widget_title">Zarovnať začiatok</string>
+    <string name="align_start_widget_description">Zarovnajte obsah widgetu na začiatok (doprava alebo doľava v závislosti od vášho miestneho nastavenia)</string>
+    <string name="hide_far_widget_title">Skryť widget pre vzdialené udalosti</string>
+    <string name="hide_far_widget_description">Skryť widget, ak udalosti nastanú až po dodatočnom upozornení (napr.: widget zostane skrytý, ak je dod. upozornenie nastavené 7 dní pred udalosťou, ale udalosť sa koná až o 10 dní)</string>
     <!-- Search -->
     <string name="search_event">Vyhľadávanie…</string>
     <string name="search_no_result_title">Nenašli sa žiadne výsledky</string>
