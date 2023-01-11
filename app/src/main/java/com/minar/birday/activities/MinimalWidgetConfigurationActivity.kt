@@ -359,6 +359,7 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
                             .until(filteredNextEvents.first().nextDate).days > anticipationDays
                     )
                         views.setViewVisibility(R.id.minimalWidgetMain, View.INVISIBLE)
+                    else views.setViewVisibility(R.id.minimalWidgetMain, View.VISIBLE)
                 }
                 // Instruct the widget manager to update the widget
                 widgetManager.updateAppWidget(widgetId, views)
