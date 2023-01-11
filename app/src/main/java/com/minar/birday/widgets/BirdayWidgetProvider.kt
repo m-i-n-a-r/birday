@@ -184,7 +184,7 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
             if (hideIfFar) {
                 val anticipationDays =
                     sp.getString("additional_notification", "0")!!.toInt()
-                if (LocalDate.now()
+                if (filteredNextEvents.isEmpty() || LocalDate.now()
                         .until(filteredNextEvents.first().nextDate).days > anticipationDays
                 )
                     views.setViewVisibility(R.id.minimalWidgetMain, View.INVISIBLE)
