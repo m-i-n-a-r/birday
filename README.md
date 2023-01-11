@@ -13,32 +13,33 @@ This is an open source app to remember **birthdays** and other events in a fast,
 
 ## Translations (guide and info below, refer to [Crowdin](https://crwd.in/birday))
 
-| LANGUAGE                | SPECIAL THANKS | UPDATED BY                  |
-|:------------------------|:---------------|:----------------------------|
-| **English**             | myself         | ar-maged, Commenter25       |
-| **Spanish**             | myself         | Joseahfer                   |
-| **Swedish**             | SlowNicoFish   |                             |
-| **Dutch**               | stefanvi       |                             |
-| **Italian**             | myself         | myself                      |
-| **French**              | Mattis Biton   |                             |
-| **Hungarian**           | Obi            |                             |
-| **German**              | pizzapastamix  | WrstFngr, AlexanderRitter02 |
-| **Vietnamese**          | Lee Huynh      | dmtrilc                     |
-| **Russian**             | koterpillar    |                             |
-| **Czech**               | Miloš Koliáš   | IQLogic                     |
-| **Slovak**              | IQLogic        |                             |
-| **Polish**              | mateusz-bak    |                             |
-| **Croatian**            | Dominik Novosel| Dominik Novosel             |
-| **Portuguese**          | smarquespt     | smarquespt                  |
-| **Brazilian**           | BadJuice67     | Paiusco                     |
-| **Romanian**            | ygorigor       | ygorigor                    |
-| **Traditional Chinese** | Still34        |                             |
-| **Catalan**             | retiolus       |                             |
-| **Serbian**             | Th3Unkn0wn0n3  | vatonbero                   |
-| **Ukrainian**           | taras          |                             |
-| **Marathi**             | Ramesh Kumar   |                             |
-| **Malayalam**           | Lavin-tom      |                             |
-| **Hindi**               | assembleDebug  |                             |
+| LANGUAGE                | SPECIAL THANKS  | UPDATED BY                  |
+|:------------------------|:----------------|:----------------------------|
+| **English**             | myself          | ar-maged, Commenter25       |
+| **Spanish**             | myself          | Joseahfer                   |
+| **Swedish**             | SlowNicoFish    |                             |
+| **Dutch**               | stefanvi        |                             |
+| **Italian**             | myself          | myself                      |
+| **French**              | Mattis Biton    |                             |
+| **Hungarian**           | Obi             |                             |
+| **German**              | pizzapastamix   | WrstFngr, AlexanderRitter02 |
+| **Vietnamese**          | Lee Huynh       | dmtrilc                     |
+| **Russian**             | koterpillar     |                             |
+| **Czech**               | Miloš Koliáš    | IQLogic                     |
+| **Slovak**              | IQLogic         |                             |
+| **Polish**              | mateusz-bak     |                             |
+| **Croatian**            | Dominik Novosel | Dominik Novosel             |
+| **Portuguese**          | smarquespt      | smarquespt                  |
+| **Brazilian**           | BadJuice67      | Paiusco                     |
+| **Romanian**            | ygorigor        | ygorigor                    |
+| **Traditional Chinese** | Still34         |                             |
+| **Simplified Chinese**  | daoxi           |                             |
+| **Catalan**             | retiolus        |                             |
+| **Serbian**             | Th3Unkn0wn0n3   | vatonbero                   |
+| **Ukrainian**           | taras           |                             |
+| **Marathi**             | Ramesh Kumar    |                             |
+| **Malayalam**           | Lavin-tom       |                             |
+| **Hindi**               | assembleDebug   |                             |
 
 ## Features
 - Notification the day of the event (with selectable time)
