@@ -21,7 +21,8 @@
     <dimen name="event_type_badge_padding">5dp</dimen>
     <dimen name="between_row_padding">8dp</dimen>
     <dimen name="recycler_padding">18dp</dimen>
-    <dimen name="recycler_extra_space_vertical">34dp</dimen>
+    <dimen name="recycler_extra_space_top">42dp</dimen>
+    <dimen name="recycler_extra_space_bottom">84dp</dimen>
     <dimen name="dialog_actions_padding">40dp</dimen>
     <dimen name="dialog_horizontal_padding">24dp</dimen>
     <dimen name="details_text_max_width">196dp</dimen>
@@ -54,7 +55,7 @@
     <!-- Widgets -->
     <dimen name="widget_margin">4dp</dimen>
     <dimen name="widget_padding">8dp</dimen>
-    <dimen name="widget_shadow_radius">6</dimen>
+    <dimen name="widget_shadow_radius">4</dimen>
     <dimen name="widget_image_size">38.5dp</dimen>
     <dimen name="widget_image_decoration_size">48dp</dimen>
     <dimen name="widget_image_horizontal_margin">2dp</dimen>

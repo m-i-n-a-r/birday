@@ -13,7 +13,7 @@
     <color name="goodGrayTotalTranslucent">#3f959595</color>
     <color name="deepGray">#0f0f0f</color>
     <color name="deepGrayLight">#3f3f3f</color>
-    <color name="shadowGray">#a00f0f0f</color>
+    <color name="shadowGray">#d00f0f0f</color>
     <color name="transparent">#00ffffff</color>
     <color name="redError">#70df5252</color>
 

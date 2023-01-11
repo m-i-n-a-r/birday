@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name" translatable="false">Birday</string>
     <string name="app_welcome">欢迎使用Birday</string>
     <string name="app_name_extended">Birday - 事件管理</string>
@@ -323,5 +322,4 @@
     <string name="delete_search_description_off">不可能一次性删除多个事件</string>
     <string name="delete_search_description_on">当你搜索一个或多个事件时点击垃圾箱键来将他们全部从Birday快速删除掉。小心使用！</string>
     <string name="delete_search_confirm">这会删除所有的搜索结果。如果你在点击OK后很快改主意的话可以撤销进程！</string>
-
 </resources>

@@ -1,50 +1,49 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/minimalWidgetMain"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/WidgetTheme">
 
     <ImageView
         android:id="@+id/minimalWidgetBackgroundDark"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:alpha=".85"
         android:background="@drawable/widget_inner_rounded_container"
         android:backgroundTint="@color/deepGray"
         android:contentDescription="@string/widget_background_title"
-        android:visibility="invisible" />
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/minimalWidgetBackgroundLight"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:alpha=".85"
         android:background="@drawable/widget_inner_rounded_container"
         android:backgroundTint="@color/almostWhite"
         android:contentDescription="@string/widget_background_title"
-        android:visibility="invisible" />
+        android:visibility="gone" />
 
     <LinearLayout
+        android:id="@+id/minimalWidgetLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:orientation="vertical"
-        android:padding="@dimen/between_row_padding"
-        android:theme="@style/WidgetTheme">
+        android:paddingVertical="@dimen/widget_margin">
 
         <TextView
-            android:id="@+id/minimalWidgetTitle"
+            android:id="@+id/minimalWidgetTitleLight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:contentDescription="@string/appwidget_upcoming"
             android:drawableStart="@drawable/ic_balloon_24dp"
             android:drawablePadding="@dimen/in_row_padding"
-            android:drawableTint="?attr/colorPrimary"
-            android:paddingHorizontal="@dimen/widget_padding"
-            android:shadowColor="@color/goodGrayTotalTranslucent"
-            android:shadowDy="4"
+            android:drawableTint="?attr/colorPrimaryDark"
+            android:shadowColor="@color/shadowGray"
+            android:shadowDy="3"
             android:shadowRadius="@dimen/widget_shadow_radius"
             android:text="@string/appwidget_upcoming"
-            android:textAlignment="center"
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
             android:textColor="@color/almostWhite"
@@ -52,20 +51,41 @@
         <!-- TODO the suggested drawable start compat doesn't work -->
 
         <TextView
-            android:id="@+id/minimalWidgetText"
+            android:id="@+id/minimalWidgetTextLight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:contentDescription="@string/appwidget_upcoming"
-            android:paddingHorizontal="@dimen/widget_padding"
-            android:paddingVertical="@dimen/widget_image_horizontal_margin"
-            android:shadowColor="@color/goodGrayTotalTranslucent"
-            android:shadowDy="4"
+            android:shadowColor="@color/shadowGray"
+            android:shadowDy="3"
             android:shadowRadius="@dimen/widget_shadow_radius"
             android:text="@string/no_next_event"
-            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             android:textColor="@color/almostWhite" />
 
+        <TextView
+            android:id="@+id/minimalWidgetTitleDark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/appwidget_upcoming"
+            android:drawableStart="@drawable/ic_balloon_24dp"
+            android:drawablePadding="@dimen/in_row_padding"
+            android:drawableTint="?attr/colorPrimary"
+            android:text="@string/appwidget_upcoming"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            android:textColor="@android:color/black"
+            android:visibility="gone"
+            tools:ignore="UseCompatTextViewDrawableXml" />
+        <!-- TODO the suggested drawable start compat doesn't work -->
+
+        <TextView
+            android:id="@+id/minimalWidgetTextDark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/appwidget_upcoming"
+            android:text="@string/no_next_event"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@android:color/black"
+            android:visibility="gone" />
     </LinearLayout>
 </FrameLayout>

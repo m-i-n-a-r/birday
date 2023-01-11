@@ -31,6 +31,7 @@ class ClearDBPreference(context: Context, attrs: AttributeSet?) :
 
     override fun onClick(v: View) {
         val act = context as MainActivity
+        act.vibrate()
 
         MaterialAlertDialogBuilder(act)
             .setTitle(R.string.delete_db_dialog_title)

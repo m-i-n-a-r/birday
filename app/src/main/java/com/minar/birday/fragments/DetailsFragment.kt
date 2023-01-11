@@ -84,6 +84,8 @@ class DetailsFragment : Fragment() {
         val fullView = binding.detailsMotionLayout
         val shimmer = binding.detailsCountdownShimmer
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
+        val astrologyDisabled = sharedPrefs.getBoolean("disable_astrology", false)
+        val hideImage = sharedPrefs.getBoolean("hide_images", false)
         val titleText = "${getString(R.string.event_details)} - ${event.name}"
         val title = binding.detailsEventName
         val image = binding.detailsEventImage
@@ -101,7 +103,6 @@ class DetailsFragment : Fragment() {
 
         // Bind the data on the views and set the transition name, to play it in reverse
         title.text = titleText
-        val hideImage = sharedPrefs.getBoolean("hide_images", false)
         if (hideImage) {
             image.visibility = View.GONE
             imageBg.visibility = View.GONE
@@ -239,9 +240,9 @@ class DetailsFragment : Fragment() {
                 binding.detailsChineseSignValue.text =
                     statsGenerator.getChineseSign(event)
             }
-
-            // Set the drawable of the zodiac sign
-            when (statsGenerator.getZodiacSignNumber(event)) {
+            // Set the drawable of the zodiac sign or disable them entirely
+            if (astrologyDisabled) disableAstrology()
+            else when (statsGenerator.getZodiacSignNumber(event)) {
                 0 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_sagittarius
@@ -304,7 +305,7 @@ class DetailsFragment : Fragment() {
                 )
             }
         } else {
-            // Set the drawable of the event type
+            // Not a birthday, set the drawable of the event type
             when (event.type) {
                 EventCode.ANNIVERSARY.name -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
@@ -343,11 +344,8 @@ class DetailsFragment : Fragment() {
                 getStringForTypeCodename(requireContext(), event.type!!)
             binding.detailsBirthDate.visibility = View.INVISIBLE
             binding.detailsNextAge.visibility = View.GONE
-            binding.detailsZodiacSign.visibility = View.GONE
-            binding.detailsZodiacSignValue.visibility = View.GONE
             binding.detailsClearBackground.visibility = View.GONE
-            binding.detailsChineseSign.visibility = View.GONE
-            binding.detailsChineseSignValue.visibility = View.GONE
+            disableAstrology()
         }
         startPostponedEnterTransition()
     }
@@ -402,5 +400,13 @@ class DetailsFragment : Fragment() {
             .setType("text/plain")
             .setChooserTitle(getString(R.string.share_event))
             .startChooser()
+    }
+
+    // Disable any astrology related view
+    private fun disableAstrology() {
+        binding.detailsZodiacSign.visibility = View.GONE
+        binding.detailsZodiacSignValue.visibility = View.GONE
+        binding.detailsChineseSign.visibility = View.GONE
+        binding.detailsChineseSignValue.visibility = View.GONE
     }
 }

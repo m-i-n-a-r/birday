@@ -170,6 +170,7 @@
     <string name="special_ages">Un cumpleaños importante es el de %s</string>
     <string name="random_zodiac_sign">Signo zodiacal de %1$s: %2$s</string>
     <string name="most_common_zodiac_sign">El signo zodiacal más común es %s</string>
+    <string name="most_common_chinese_sign">El signo chino más común es %s</string>
     <string name="random_day_of_week">%1$s nació el %2$s</string>
     <string name="most_common_day_of_week">El día en el que más cumplen es el %s</string>
     <plurals name="leap_year_total">
@@ -245,6 +246,10 @@
     <string name="widget_background_description">Mostrar un fondo para el widget</string>
     <string name="compact_widget_title">Disposición compacta</string>
     <string name="compact_widget_description">Optimizar la disposición para ser extremadamente compacta</string>
+    <string name="align_start_widget_title">Alinear al inicio</string>
+    <string name="align_start_widget_description">Alinear el contenido del widget al principio (derecha o izquierda dependiendo de su local)</string>
+    <string name="hide_far_widget_title">Ocultar widget para eventos lejanos</string>
+    <string name="hide_far_widget_description">Ocultar el widget si los siguientes eventos son después del período de notificación adicional (por ejemplo: notificación 7 días antes, el siguiente evento está en 10 días -&gt; el widget está oculto)</string>
     <!-- Search -->
     <string name="search_event">Buscar…</string>
     <string name="search_no_result_title">Sin resultados</string>
@@ -270,6 +275,9 @@
     <string name="angry_bird_title">Modo Angry Bird</string>
     <string name="angry_bird_description_on">Notificaciones persistentes, textos más cortos y otros ajustes relacionados con notificaciones</string>
     <string name="angry_bird_description_off">Las notificaciones se comportarán normalmente</string>
+    <string name="disable_astrology_title">Desactivar astrología</string>
+    <string name="disable_astrology_description_on">Señales de zodíaco ocultas en detalles y estadísticas</string>
+    <string name="disable_astrology_description_off">La información del Zodiac se muestra normalmente</string>
     <string name="import_json_title">Importar desde JSON</string>
     <string name="import_json_description">Importar desde un archivo JSON. Consulte la wiki en Github para ver la estructura de archivos requerida</string>
     <string name="export_json_title">Exportar a JSON</string>

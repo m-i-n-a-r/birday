@@ -1,0 +1,23 @@
+<animation-list android:oneshot="false"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Angry bird -->
+    <item android:drawable="@drawable/icon_birday_angry_1" android:duration="20" />
+    <item android:drawable="@drawable/icon_birday_angry_2" android:duration="20" />
+    <item android:drawable="@drawable/icon_birday_angry_3" android:duration="20" />
+    <item android:drawable="@drawable/icon_birday_angry_4" android:duration="20" />
+    <item android:drawable="@drawable/icon_birday_angry_5" android:duration="20" />
+    <item android:drawable="@drawable/icon_birday_angry_6" android:duration="20" />
+    <item android:drawable="@drawable/icon_birday_angry_7" android:duration="20" />
+    <item android:drawable="@drawable/icon_birday_angry_8" android:duration="20" />
+    <item android:drawable="@drawable/icon_birday_angry_9" android:duration="20" />
+    <item android:drawable="@drawable/icon_birday_angry_10" android:duration="20" />
+    <item android:drawable="@drawable/icon_birday_angry_9" android:duration="20" />
+    <item android:drawable="@drawable/icon_birday_angry_8" android:duration="20" />
+    <item android:drawable="@drawable/icon_birday_angry_7" android:duration="20" />
+    <item android:drawable="@drawable/icon_birday_angry_6" android:duration="20" />
+    <item android:drawable="@drawable/icon_birday_angry_5" android:duration="20" />
+    <item android:drawable="@drawable/icon_birday_angry_4" android:duration="20" />
+    <item android:drawable="@drawable/icon_birday_angry_3" android:duration="20" />
+    <item android:drawable="@drawable/icon_birday_angry_2" android:duration="20" />
+
+</animation-list>

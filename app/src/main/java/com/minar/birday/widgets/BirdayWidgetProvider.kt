@@ -7,6 +7,7 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.widget.RemoteViews
 import androidx.preference.PreferenceManager
@@ -86,6 +87,66 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
         val views = RemoteViews(context.packageName, R.layout.widget_minimal)
         val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
         val intent = Intent(context, MainActivity::class.java)
+        // Retrieve previous values
+        val sp = PreferenceManager.getDefaultSharedPreferences(context)
+        val darkText = sp.getBoolean("widget_minimal_dark_text", false)
+        val background = sp.getBoolean("widget_minimal_background", false)
+        val compact = sp.getBoolean("widget_minimal_compact", false)
+        val alignStart = sp.getBoolean("widget_minimal_align_start", false)
+        val hideIfFar = sp.getBoolean("widget_minimal_hide_if_far", false)
+
+        // First off, hide the text views and backgrounds depending on light or dark
+        val titleTextView: Int
+        val textTextView: Int
+        if (darkText) {
+            views.setViewVisibility(R.id.minimalWidgetTitleLight, View.GONE)
+            views.setViewVisibility(R.id.minimalWidgetTextLight, View.GONE)
+            views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.VISIBLE)
+            views.setViewVisibility(R.id.minimalWidgetTitleDark, View.VISIBLE)
+            views.setViewVisibility(R.id.minimalWidgetTextDark, View.VISIBLE)
+            views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.GONE)
+            titleTextView = R.id.minimalWidgetTitleDark
+            textTextView = R.id.minimalWidgetTextDark
+        } else {
+            views.setViewVisibility(R.id.minimalWidgetTitleLight, View.VISIBLE)
+            views.setViewVisibility(R.id.minimalWidgetTextLight, View.VISIBLE)
+            views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.GONE)
+            views.setViewVisibility(R.id.minimalWidgetTitleDark, View.GONE)
+            views.setViewVisibility(R.id.minimalWidgetTextDark, View.GONE)
+            views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.VISIBLE)
+            titleTextView = R.id.minimalWidgetTitleLight
+            textTextView = R.id.minimalWidgetTextLight
+        }
+        // Align the text to start if selected
+        if (alignStart) {
+            views.setInt(R.id.minimalWidgetLinearLayout, "setGravity", Gravity.START)
+            views.setInt(titleTextView, "setGravity", Gravity.START)
+            views.setInt(textTextView, "setGravity", Gravity.START)
+        } else {
+            views.setInt(R.id.minimalWidgetLinearLayout, "setGravity", Gravity.CENTER)
+            views.setInt(titleTextView, "setGravity", Gravity.CENTER)
+            views.setInt(textTextView, "setGravity", Gravity.CENTER)
+        }
+        val hiPadding = context.resources.getDimension(R.dimen.between_row_padding).toInt()
+        val loPadding = context.resources.getDimension(R.dimen.widget_margin).toInt()
+        // Set the padding depending on the background
+        if (background) {
+            views.setViewPadding(titleTextView, hiPadding, loPadding, hiPadding, loPadding)
+            views.setViewPadding(textTextView, hiPadding, 0, hiPadding, loPadding)
+        } else {
+            views.setViewPadding(titleTextView, loPadding, loPadding, loPadding, loPadding)
+            views.setViewPadding(textTextView, loPadding, 0, loPadding, loPadding)
+            views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.GONE)
+            views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.GONE)
+            views.setViewVisibility(R.id.minimalWidgetBackgroundDark, View.GONE)
+            views.setViewVisibility(R.id.minimalWidgetBackgroundLight, View.GONE)
+        }
+        // Activate the compact layout if selected
+        if (compact) {
+            views.setViewVisibility(titleTextView, View.GONE)
+        } else {
+            views.setViewVisibility(titleTextView, View.VISIBLE)
+        }
 
         Thread {
             // Get the next events and the proper formatter
@@ -117,7 +178,17 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
                     context
                 )
             }"
-            views.setTextViewText(R.id.minimalWidgetText, widgetUpcoming)
+            views.setTextViewText(textTextView, widgetUpcoming)
+
+            // Hide the entire widget if the event is far enough in time
+            if (hideIfFar) {
+                val anticipationDays =
+                    sp.getString("additional_notification", "0")!!.toInt()
+                if (LocalDate.now()
+                        .until(filteredNextEvents.first().nextDate).days > anticipationDays
+                )
+                    views.setViewVisibility(R.id.minimalWidgetMain, View.INVISIBLE)
+            }
 
             // Instruct the widget manager to update the widget
             appWidgetManager.updateAppWidget(appWidgetId, views)

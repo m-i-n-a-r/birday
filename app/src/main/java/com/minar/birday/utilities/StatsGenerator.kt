@@ -14,7 +14,12 @@ import java.util.*
 import kotlin.math.truncate
 import kotlin.random.Random
 
-class StatsGenerator(eventList: List<EventResult>, context: Context?) {
+// Generate a series of stats based on a list of events and focused on birthdays
+class StatsGenerator(
+    eventList: List<EventResult>,
+    context: Context?,
+    private val astrologyDisabled: Boolean = false
+) {
     private val events: List<EventResult> = eventList
     private val birthdays = filterBirthdays()
     private val anniversaries = filterAnniversaries()
@@ -36,11 +41,11 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
                 4 -> mostCommonAgeRange()
                 5 -> specialAges()
                 6 -> leapYearTotal()
-                7 -> mostCommonZodiacSign()
+                7 -> if (astrologyDisabled) dayOfWeek(randomPerson) else mostCommonZodiacSign()
                 8 -> mostCommonDayOfWeek()
                 9 -> dayOfWeek(randomPerson)
-                10 -> zodiacSign(randomPerson)
-                11 -> chineseSign(randomPerson)
+                10 -> if (astrologyDisabled) dayOfWeek(randomPerson) else zodiacSign(randomPerson)
+                11 -> if (astrologyDisabled) dayOfWeek(randomPerson) else chineseSign(randomPerson)
                 else -> ageAverage()
             }
         }
@@ -58,8 +63,12 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         stats.add(mostCommonDayOfWeek())
         stats.add(mostCommonDecade())
         stats.add(mostCommonMonth())
-        stats.add(mostCommonZodiacSign())
         stats.add(leapYearTotal())
+        // Only include astrology related stats if astrology is enabled
+        if (!astrologyDisabled) {
+            stats.add(mostCommonZodiacSign())
+            stats.add(mostCommonChineseSign())
+        }
         stats.add(eventTypesNumbers())
         stats.removeIf { it.isBlank() }
         sb.appendBulletSpans(
@@ -105,7 +114,10 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         var oldestName = ""
         var oldestAge = 0
         birthdays.forEach {
-            if (oldestDate.isAfter(it.originalDate) && it.yearMatter!!) {
+            if (oldestDate.isAfter(it.originalDate) &&
+                it.yearMatter!! &&
+                it.originalDate.isBefore(LocalDate.now())
+            ) {
                 oldestName = it.name
                 oldestDate = it.originalDate
                 oldestAge = getYears(it)
@@ -127,7 +139,10 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         var youngestName = ""
         var youngestAge = 0
         birthdays.forEach {
-            if (youngestDate.isBefore(it.originalDate) && it.yearMatter!!) {
+            if (youngestDate.isBefore(it.originalDate) &&
+                it.yearMatter!! &&
+                it.originalDate.isBefore(LocalDate.now())
+            ) {
                 youngestName = it.name
                 youngestDate = it.originalDate
                 youngestAge = getYears(it)
@@ -259,6 +274,21 @@ class StatsGenerator(eventList: List<EventResult>, context: Context?) {
         return String.format(
             applicationContext?.getString(R.string.most_common_zodiac_sign)!!,
             commonZodiacSign,
+        )
+    }
+
+    // The most common chinese sign. When there's no common chinese sign, return a blank string
+    private fun mostCommonChineseSign(): String {
+        val chineseSigns = mutableMapOf<String, Int>()
+        birthdays.forEach {
+            if (chineseSigns[getChineseSign(it)] == null) chineseSigns[getChineseSign(it)] = 1
+            else chineseSigns[getChineseSign(it)] = chineseSigns[getChineseSign(it)]!!.plus(1)
+        }
+        val commonChineseSign: String = evaluateResult(chineseSigns)
+        if (commonChineseSign.isBlank()) return commonChineseSign
+        return String.format(
+            applicationContext?.getString(R.string.most_common_chinese_sign)!!,
+            commonChineseSign,
         )
     }
 

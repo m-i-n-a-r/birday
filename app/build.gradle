@@ -10,8 +10,8 @@ android {
         applicationId "com.minar.birday"
         minSdkVersion 26
         targetSdkVersion 33
-        versionCode 25
-        versionName "4.1.0"
+        versionCode 26
+        versionName "4.2.0"
         resConfigs 'en', 'ca', 'cs', 'de', 'es', 'fr', 'hi', 'hr', 'hu', 'it', 'ml', 'mr', 'nl', 'pl', 'pt', 'pt-rBR', 'ro', 'ru', 'sr', 'sv-rSE', 'uk-rUA', 'vi', 'zh-rTW'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -59,7 +59,7 @@ dependencies {
     implementation 'androidx.preference:preference-ktx:1.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.activity:activity-ktx:1.6.1'
-    implementation 'androidx.fragment:fragment-ktx:1.5.4'
+    implementation 'androidx.fragment:fragment-ktx:1.5.5'
 
     // Constraint / motion layout
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -68,7 +68,7 @@ dependencies {
     implementation 'androidx.core:core-splashscreen:1.0.0'
 
     // Material Components
-    implementation 'com.google.android.material:material:1.8.0-alpha02'
+    implementation 'com.google.android.material:material:1.8.0-beta01'
 
     // WorkManager
     implementation 'androidx.work:work-runtime-ktx:2.7.1'

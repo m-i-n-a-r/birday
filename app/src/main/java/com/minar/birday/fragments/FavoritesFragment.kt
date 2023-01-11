@@ -1,5 +1,7 @@
 package com.minar.birday.fragments
 
+import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.text.SpannableStringBuilder
@@ -10,11 +12,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.FavoritesAdapter
+import com.minar.birday.animators.BirdayRecyclerAnimator
 import com.minar.birday.databinding.DialogNotesBinding
 import com.minar.birday.databinding.FragmentFavoritesBinding
 import com.minar.birday.fragments.dialogs.StatsBottomSheet
@@ -32,6 +36,7 @@ class FavoritesFragment : Fragment() {
     private lateinit var adapter: FavoritesAdapter
     private lateinit var fullStats: SpannableStringBuilder
     private lateinit var act: MainActivity
+    private lateinit var sharedPrefs: SharedPreferences
     private var _binding: FragmentFavoritesBinding? = null
     private val binding get() = _binding!!
     private var _dialogNotesBinding: DialogNotesBinding? = null
@@ -40,8 +45,21 @@ class FavoritesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = FavoritesAdapter { item -> onItemClick(item) }
+        adapter = FavoritesAdapter(
+            onItemClick = { position -> onItemClick(position) },
+            onItemLongClick = { position -> onItemLongClick(position) }
+        )
         act = activity as MainActivity
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        // Check the orientation of the screen, minimize the card on landscape
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            binding.root.progress = 1F
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            binding.root.progress = sharedPrefs.getFloat("favorite_motion_state", 0.0F)
+        }
     }
 
     override fun onCreateView(
@@ -57,8 +75,9 @@ class FavoritesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val statsImage = binding.statsImage
         val shimmer = binding.favoritesCardShimmer
-        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
+        val astrologyDisabled = sharedPrefs.getBoolean("disable_astrology", false)
         val favoriteMotionLayout = binding.favoritesMain
         val favoritesCard = binding.favoritesCard
         val favoritesMiniFab = binding.favoritesMiniFab
@@ -101,13 +120,15 @@ class FavoritesFragment : Fragment() {
         }
 
         // Setup the recycler view
-        binding.favoritesRecycler.adapter = adapter
+        val recycler = binding.favoritesRecycler
+        recycler.adapter = adapter
         with(mainViewModel) {
             getFavorites().observe(viewLifecycleOwner) { events ->
                 // Update the cached copy in the adapter
                 if (events != null && events.isNotEmpty()) {
                     removePlaceholder()
                     adapter.submitList(events)
+                    recycler.itemAnimator = BirdayRecyclerAnimator()
                 }
             }
         }
@@ -132,7 +153,8 @@ class FavoritesFragment : Fragment() {
             mainViewModel.allEventsUnfiltered.observe(viewLifecycleOwner) { events ->
                 // Stats - Under a minimum size, no stats will be shown (at least 5 birthdays containing a year)
                 if (events.filter { it.yearMatter == true && isBirthday(it) }.size > 4) generateStat(
-                    events
+                    events,
+                    astrologyDisabled
                 )
                 else fullStats = SpannableStringBuilder(
                     requireActivity().applicationContext.getString(
@@ -257,6 +279,21 @@ class FavoritesFragment : Fragment() {
             .show()
     }
 
+    // Open the details screen on long press, just another shortcut
+    private fun onItemLongClick(position: Int) {
+        // Return if there was a navigation, useful to avoid double tap on two events
+        if (findNavController().currentDestination?.label != "fragment_favorites")
+            return
+        act.vibrate()
+        // Cast required to obtain the original event result from the event item wrapper
+        val event = adapter.getItem(position)
+
+        // Navigate to the new fragment passing in the event with safe args
+        val action =
+            FavoritesFragmentDirections.actionNavigationFavoritesToDetailsFragment(event, position)
+        findNavController().navigate(action)
+    }
+
     // Remove the placeholder or return if the placeholder was already removed before
     private fun removePlaceholder() {
         val placeholder = binding.noFavorites
@@ -272,10 +309,10 @@ class FavoritesFragment : Fragment() {
     }
 
     // Use the generator to generate a random stat and display it
-    private fun generateStat(events: List<EventResult>) {
+    private fun generateStat(events: List<EventResult>, astrologyDisabled: Boolean = false) {
         val cardSubtitle: TextView = binding.statsSubtitle
         val cardDescription: TextView = binding.statsDescription
-        val generator = StatsGenerator(events, context)
+        val generator = StatsGenerator(events, context, astrologyDisabled)
         cardSubtitle.text = generator.generateRandomStat()
         fullStats = generator.generateFullStats()
         val summary = resources.getQuantityString(R.plurals.event, events.size, events.size)

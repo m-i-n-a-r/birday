@@ -2,6 +2,7 @@ package com.minar.birday.fragments
 
 import android.animation.ObjectAnimator
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -26,6 +27,7 @@ import androidx.preference.PreferenceManager
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.EventAdapter
+import com.minar.birday.animators.BirdayRecyclerAnimator
 import com.minar.birday.databinding.FragmentHomeBinding
 import com.minar.birday.fragments.dialogs.QuickAppsBottomSheet
 import com.minar.birday.model.EventCode
@@ -59,6 +61,16 @@ class HomeFragment : Fragment() {
         )
         act = activity as MainActivity
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        // Check the orientation of the screen, minimize the card on landscape
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            binding.root.progress = 1F
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            binding.root.progress = sharedPrefs.getFloat("home_motion_state", 0.0F)
+        }
     }
 
     override fun onCreateView(
@@ -235,7 +247,7 @@ class HomeFragment : Fragment() {
                     (!mainViewModel.searchString.value.isNullOrBlank() ||
                             !mainViewModel.selectedType.value.isNullOrBlank())
                 ) {
-                    Log.d("events", "Showing te delete fab")
+                    Log.d("events", "Showing the delete fab")
                     act.toggleDeleteFab(true)
                 } else {
                     Log.d("events", "Hiding the delete fab")
@@ -263,7 +275,10 @@ class HomeFragment : Fragment() {
                 startPostponedEnterTransition()
             }.also {
                 if (events.isEmpty()) recycler.visibility = View.GONE
-                else recycler.visibility = View.VISIBLE
+                else {
+                    recycler.visibility = View.VISIBLE
+                    recycler.itemAnimator = BirdayRecyclerAnimator()
+                }
             }
         }
 
