@@ -42,13 +42,13 @@ fun normalizeEvent(event: Event): Event {
     if (isUnknownType(event.type?.uppercase()))
         fixedType = EventCode.OTHER.name
 
-    // No restrictions on special characters for now
+    // No restrictions on special characters for now, notes length is hardcoded to avoid using ctx
     return Event(
         id = 0,
         name = event.name.substring(IntRange(0, 30.coerceAtMost(event.name.length) - 1)),
         surname = event.surname?.substring(IntRange(0, 30.coerceAtMost(event.surname.length) - 1)),
         favorite = false,
-        notes = event.notes?.substring(IntRange(0, 300.coerceAtMost(event.notes.length) - 1)),
+        notes = event.notes?.substring(IntRange(0, 500.coerceAtMost(event.notes.length) - 1)),
         originalDate = event.originalDate,
         yearMatter = event.yearMatter,
         type = fixedType

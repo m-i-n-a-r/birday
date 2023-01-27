@@ -80,5 +80,6 @@
     <dimen name="bottom_sheet_peek_height">1000dp</dimen>
     <dimen name="bottom_sheet_icon_size">40dp</dimen>
     <dimen name="main_fab_icon_size">40dp</dimen>
+    <dimen name="notes_max_length">500</dimen>
 
 </resources>
