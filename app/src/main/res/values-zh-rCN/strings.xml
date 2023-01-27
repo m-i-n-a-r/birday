@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Birday</string>
-    <string name="app_welcome">欢迎使用Birday</string>
-    <string name="app_name_extended">Birday - 事件管理</string>
-    <string name="leave_review_title">评价Birday</string>
-    <string name="leave_review_subtitle">留下评价来帮助我开发app。别忘了，除了捐款外，这个app完全是免费和无广告的！</string>
+    <string name="app_welcome">欢迎使用 Birday</string>
+    <string name="app_name_extended">Birday - 事件管理器</string>
+    <string name="leave_review_title">为 Birday 评分</string>
+    <string name="leave_review_subtitle">请帮我为这个应用留个评价吧！记住，这个应用除了捐赠外，是完全免费且无广告的！</string>
     <string name="yes_review">评价！</string>
-    <string name="later">待会儿，我保证</string>
-    <string name="no_thanks">没门！</string>
+    <string name="later">稍候，我保证</string>
+    <string name="no_thanks">不可能！</string>
     <string name="title_home">主页</string>
     <string name="title_favorites">收藏</string>
     <string name="title_settings">设置</string>
-    <string name="no_events">没有事件！用下面的按钮来添加！</string>
-    <string name="no_favorites">没有收藏！点击星标来将事件保存到你的收藏中！</string>
-    <string name="add_favorite">添加到收藏</string>
-    <string name="stats">数据</string>
-    <string name="no_stats">没有可显示的数据！</string>
+    <string name="no_events">没有事件！现在来用下面按钮添加一个！</string>
+    <string name="no_favorites">暂无收藏！按星号在收藏夹中保存一个事件！</string>
+    <string name="add_favorite">添加至收藏</string>
+    <string name="stats">统计</string>
+    <string name="no_stats">没有要显示的统计信息！</string>
     <string name="stats_summary">数据概览</string>
     <string name="no_stats_description">你没有足够的事件来生成数据，添加一些后再回来看！</string>
     <plurals name="stats_total">
-        <item quantity="one">Birday帮助你记住了共%d个事件</item>
         <item quantity="other">Birday帮助你记住了共%d个事件</item>
     </plurals>
     <string name="next_event">下个事件</string>
@@ -28,10 +26,8 @@
     <string name="next_age_years">年</string>
     <string name="event_others">和其它</string>
     <plurals name="days_left">
-        <item quantity="one">剩余%d天</item>
         <item quantity="other">剩余%d天</item>
     </plurals>
-
     <!-- Settings -->
     <string name="customization">自定义</string>
     <string name="app_behavior">App行为</string>
@@ -58,7 +54,7 @@
     <string name="accent_name">配色</string>
     <string name="theme_description">使用黑暗，光明，或自动的app主题</string>
     <string name="theme_name">App主题</string>
-    <string name="monet" translatable="false">Monet</string> <!-- Untranslated for now -->
+    <!-- Untranslated for now -->
     <string name="aqua">水色</string>
     <string name="brown">棕色</string>
     <string name="blue">蓝色</string>
@@ -84,12 +80,16 @@
     <string name="import_success">成功完成导入！</string>
     <string name="import_nothing_found">未找到事件！</string>
     <string name="import_failed">有什么出错了！</string>
-    <string name="missing_permission_contacts">通讯录权限被拒绝，再试下或手动打开权限，否则无法导入通讯录！</string>
-    <string name="missing_permission_contacts_forever">Birday无法询问导入通讯录的权限，因为你选择了“不再询问”。请手动开启权限！</string>
+    <string name="missing_permission_contacts">通讯录权限被拒绝，再试下或手动打开权限，
+		否则无法导入通讯录！</string>
+    <string name="missing_permission_contacts_forever">Birday无法询问导入通讯录的权限，
+		因为你选择了“不再询问”。请手动开启权限！</string>
     <string name="birday_import_title">导入Birday备份</string>
-    <string name="birday_import_description">选择一个有效的Birday备份来恢复你的事件。所有现存数据会被覆盖！</string>
+    <string name="birday_import_description">选择一个有效的Birday备份来恢复你的事件。
+		所有现存数据会被覆盖！</string>
     <string name="birday_export_title">导入和分享事件</string>
-    <string name="birday_export_description">将可用的事件导出到备份中，并且如果你想的话可以分享它们。文件路径在Android/data/com.minar.birday/files</string>
+    <string name="birday_export_description">将可用的事件导出到备份中，并且如果你想的话可以分享它们。
+		文件路径在Android/data/com.minar.birday/files</string>
     <string name="birday_import_success">导入完成！</string>
     <string name="birday_import_failure">导入失败。请问你选择了正确的文件吗？</string>
     <string name="birday_import_invalid_file">导入失败。所选文件不是Birday备份！</string>
@@ -119,20 +119,9 @@
     <string name="missing_permission_calendar_forever">日历权限被拒绝且无法再次询问，所以Birday无法从日历导入！请从设置中手动开启权限。</string>
     <string name="import_calendar_title">从日历导入</string>
     <string name="import_calendar_description">从你的日历导入任何年度事件。记住设置事件的类型和年份来让它们整齐！</string>
-
     <!-- Developer -->
-    <string name="dev_name" translatable="false">m.i.n.a.r.</string>
     <string name="dev_description">我是一个有礼貌和喜欢美好事物的家伙，喜欢动画，图标，跑车和3D打印。我的工作是设计家和计算机工程师。</string>
-    <string name="dev_email" translatable="false">minar.tastic@gmail.com</string>
-    <string name="dev_personal_site" translatable="false">https://minar.ml</string>
-    <string name="dev_instagram" translatable="false">https://www.instagram.com/minar.tastic/</string>
-    <string name="dev_twitter" translatable="false">https://twitter.com/MinarTastic</string>
-    <string name="dev_telegram_channel" translatable="false">https://t.me/minartastic</string>
-    <string name="dev_github" translatable="false">https://github.com/m-i-n-a-r</string>
-    <string name="dev_other_apps" translatable="false">https://play.google.com/store/apps/dev?id=7720251761301594831</string>
     <string name="easter_egg">标志不错，对吧？;D</string>
-    <string name="wtf" translatable="false">WTF?!</string>
-
     <!-- New event -->
     <string name="new_event">新事件</string>
     <string name="new_event_description">输入一个你关心的人，然后Birday会帮你记住他们的生日或其它事件！</string>
@@ -150,7 +139,6 @@
     <string name="festivity">喜庆</string>
     <string name="name_day">命名日</string>
     <string name="other">其它</string>
-
     <!-- Event actions -->
     <string name="event_actions">动作</string>
     <string name="event_actions_description">你能在这修改或移除这个事件！</string>
@@ -159,27 +147,20 @@
     <string name="update_event">更新事件</string>
     <string name="share_event">分享事件</string>
     <string name="deleted">已删除！</string>
-
     <!-- Event details -->
     <string name="event_details">细节</string>
     <string name="birth_date">出生日期</string>
     <string name="next_age">下一个年龄：</string>
     <string name="zodiac_sign">星座：</string>
     <string name="chinese_zodiac_sign">中国生肖：</string>
-
     <!-- Quick apps -->
     <string name="event_apps">快速app</string>
     <string name="event_apps_description">快速祝福的app！</string>
-    <string name="whatsapp" translatable="false">Whatsapp</string>
-    <string name="signal" translatable="false">Signal</string>
-    <string name="telegram" translatable="false">Telegram</string>
-    <string name="email" translatable="false">Email</string>
     <string name="text_message">短信</string>
     <string name="dialer">拨号</string>
     <string name="wishes_birthday">生日快乐！</string>
     <string name="no_default_dialer">找不到默认的拨号app！</string>
     <string name="no_default_sms">找不到默认的短信app！</string>
-
     <!-- Statistics -->
     <string name="did_you_know">你知道吗？</string>
     <string name="age_average">平均年龄是%s</string>
@@ -191,10 +172,10 @@
     <string name="special_ages">一个即将到来的生日是%s</string>
     <string name="random_zodiac_sign">星座 %1$s: %2$s</string>
     <string name="most_common_zodiac_sign">最常见的星座是%s</string>
+    <string name="most_common_chinese_sign">最常见的中国生肖是%s</string>
     <string name="random_day_of_week">%1$s 出生于 %2$s</string>
     <string name="most_common_day_of_week">最常见的出生所在星期几是%s</string>
     <plurals name="leap_year_total">
-        <item quantity="one">闰年出生的人数是%d</item>
         <item quantity="other">闰年出生的人数是%d</item>
     </plurals>
     <string name="random_chinese_year">中国生肖 %1$s: %2$s</string>
@@ -206,7 +187,7 @@
     <string name="chinese_zodiac_snake">蛇</string>
     <string name="chinese_zodiac_horse">马</string>
     <string name="chinese_zodiac_goat">羊</string>
-    <string name="chinese_zodiac_monkey">	猴</string>
+    <string name="chinese_zodiac_monkey">猴</string>
     <string name="chinese_zodiac_rooster">鸡</string>
     <string name="chinese_zodiac_dog">狗</string>
     <string name="chinese_zodiac_pig">猪</string>
@@ -222,28 +203,21 @@
     <string name="zodiac_virgo">处女座</string>
     <string name="zodiac_libra">天秤座</string>
     <string name="zodiac_scorpio">天蝎座</string>
-
     <!-- Common words -->
     <plurals name="months">
-        <item quantity="one">%d月</item>
         <item quantity="other">%d月</item>
     </plurals>
     <string name="today">今天！</string>
     <string name="yesterday">昨天！</string>
     <string name="tomorrow">明天！</string>
     <plurals name="years">
-        <item quantity="one">%d年</item>
         <item quantity="other">%d年</item>
     </plurals>
     <string name="born_in">出生于</string>
     <string name="and">和</string>
-    <string name="unknown" translatable="false">\??</string>
-    <string name="exclamation" translatable="false">! !</string>
     <plurals name="event">
-        <item quantity="one">事件：%s</item>
         <item quantity="other">事件：%s</item>
     </plurals>
-
     <!-- Notifications -->
     <string name="events_notification_channel">事件提醒</string>
     <string name="events_channel_description">来自Birday的关于即将到来的事件的提醒</string>
@@ -251,18 +225,20 @@
     <string name="notification_description_part_1">今天的事件是</string>
     <string name="notification_description_part_2">祝您愉快！</string>
     <string name="additional_notification_text">即将到来的事件！</string>
-
     <!-- Introduction slides -->
     <string name="slide_one_title">欢迎使用Birday！</string>
-    <string name="slide_one_description">Birday是个简单且轻量的管理重要事件的app！你能用它来记住和存储你爱的人的生日等等，可靠又迅捷。
+    <string name="slide_one_description">Birday是个简单且轻量的管理重要事件的app！
+		你能用它来记住和存储你爱的人的生日等等，可靠又迅捷。
     </string>
     <string name="slide_two_title">免费，简单，可自定义</string>
-    <string name="slide_two_description">Birday免费，无广告，且开源。它提供一套关于你的事件的数据，一个最受喜爱的系统和可自定义的界面。还有保证的支持和更新！
+    <string name="slide_two_description">Birday免费，无广告，且开源。
+		它提供一套关于你的事件的数据，一个最受喜爱的系统和可自定义的界面。
+		还有保证的支持和更新！
     </string>
     <string name="slide_three_title">从通讯录导入</string>
-    <string name="slide_three_description">从你的通讯录导入你已保存的事件也是可能的。Birday能帮你搞定，只要提供通讯录权限即可。请享受吧！
+    <string name="slide_three_description">从你的通讯录导入你已保存的事件也是可能的。
+		Birday能帮你搞定，只要提供通讯录权限即可。请享受吧！
     </string>
-
     <!-- Widget -->
     <string name="appwidget_upcoming">即将到来的事件</string>
     <string name="add_widget">Birday - 即将到来</string>
@@ -275,28 +251,26 @@
     <string name="widget_background_description">为组件显示背景</string>
     <string name="compact_widget_title">紧凑排版</string>
     <string name="compact_widget_description">将排版优化为极度紧凑</string>
-
+		<string name="align_start_widget_title">在开始处对齐</string>
+    <string name="align_start_widget_description">将组件内容向开始处对齐（根据你的区域设置决定向左或右）</string>
+    <string name="hide_far_widget_title">对很久后的事件隐藏组件</string>
+    <string name="hide_far_widget_description">如果下个事件是在额外通知时段后则隐藏组件（比如：7天前通知，下个事件是10天后 -> 隐藏组件）</string>
     <!-- Search -->
     <string name="search_event">搜索…</string>
     <string name="search_no_result_title">未找到结果</string>
     <string name="search_no_result_description">你的搜索字符串并不符合任何你添加的事件！</string>
-
     <!-- Notes -->
     <string name="notes">笔记</string>
     <string name="write_something">写点什么…</string>
-
     <!-- Overview -->
     <string name="overview">总览</string>
     <string name="overview_description">对每个保存的事件的年度总览</string>
-
     <!-- Experimental preferences -->
     <string name="experimental_settings_title">试验性</string>
     <string name="experimental_settings_description">一些试验性或bug多的设置和功能。使用它们风险自负</string>
     <string name="experimental_disclaimer">以下功能是试验性的，并且可能无法正常使用。使用它们风险自负。参考Github来看进度，因为其中部分功能可能被提升或翻译。</string>
     <string name="check_github">查看Github</string>
     <string name="translate_app">翻译app</string>
-    <string name="github_repo_develop" translatable="false">https://github.com/m-i-n-a-r/birday/commits/develop</string>
-    <string name="crowdin_project" translatable="false">https://crwd.in/birday</string>
     <string name="launch_auto_import_title">开启时自动导入</string>
     <string name="launch_auto_import_description_off">Birday不会在开启时自动导入通讯录</string>
     <string name="launch_auto_import_description_on">Birday会在开启时与通讯录自动同步</string>
@@ -304,8 +278,11 @@
     <string name="hide_on_scroll_description_on">当你滑动时隐藏底部导航栏</string>
     <string name="hide_on_scroll_description_off">底部导航栏总是可见</string>
     <string name="angry_bird_title">愤怒的小鸟模式</string>
-    <string name="angry_bird_description_on">不可无视的通知，更短的文本以及其它与通知相关的调整</string>
+    <string name="angry_bird_description_on">持久性通知、缩短文本和其他相关调整</string>
     <string name="angry_bird_description_off">通知会正常表现</string>
+    <string name="disable_astrology_title">禁用星座</string>
+    <string name="disable_astrology_description_on">在细节与数据中隐藏星座</string>
+    <string name="disable_astrology_description_off">正常显示星座信息</string>
     <string name="import_json_title">从JSON导入</string>
     <string name="import_json_description">从一个JSON文件导入。参考Github的wiki来看所需的文件结构</string>
     <string name="export_json_title">导出到JSON</string>
