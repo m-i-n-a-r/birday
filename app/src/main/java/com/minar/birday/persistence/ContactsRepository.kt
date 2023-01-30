@@ -10,10 +10,12 @@ import android.util.Log
 import androidx.annotation.RequiresPermission
 import androidx.core.database.getStringOrNull
 import com.minar.birday.model.ContactInfo
+import com.minar.birday.model.Event
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.ImportedEvent
 import com.minar.birday.utilities.bitmapToByteArray
 import com.minar.birday.utilities.getBitmapSquareSize
+import java.time.LocalDate
 
 /**
  * Fetches the contacts from the system.
@@ -179,5 +181,40 @@ class ContactsRepository {
         eventCursor?.close()
 
         return events
+    }
+
+    @RequiresPermission(Manifest.permission.READ_CONTACTS)
+    fun getEventsFromContacts(resolver: ContentResolver): List<Event> {
+        return getContactEvents(resolver).mapNotNull { contact ->
+            // Take the name and split it to separate name and surname
+            val splitName = contact.completeName.split(",")
+            var countYear = true
+            val notes = contact.customLabel
+
+            val name: String = splitName[0].trim()
+            val surname = if (splitName.size == 2) splitName[1].trim() else ""
+
+            try {
+                // Missing year, simply don't consider the year exactly like the contacts app does
+                var parseDate = contact.eventDate
+                if (parseDate.length < 8) {
+                    parseDate = contact.eventDate.replaceFirst("-", "1970")
+                    countYear = false
+                }
+
+                Event(
+                    id = 0,
+                    name = name,
+                    surname = surname,
+                    originalDate = LocalDate.parse(parseDate),
+                    yearMatter = countYear,
+                    type = contact.eventType,
+                    image = contact.image,
+                    notes = notes
+                )
+            } catch (e: Exception) {
+                null
+            }
+        }
     }
 }
