@@ -20,6 +20,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -33,6 +34,7 @@ import com.minar.birday.model.Event
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.*
+import com.minar.birday.viewmodels.InsertEventViewModel
 import java.io.IOException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -50,6 +52,7 @@ class InsertEventBottomSheet(
     private val binding get() = _binding!!
     private lateinit var resultLauncher: ActivityResultLauncher<String>
     private var imageChosen = false
+    private val viewModel: InsertEventViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -200,6 +203,9 @@ class InsertEventBottomSheet(
                         )
                 }
         }
+
+        // Initialize contacts list, using InsertEventViewModel
+        viewModel.initContactsList(act)
 
         // Calendar setup. The end date is the last day in the following year (dumb users)
         val startDate = Calendar.getInstance()
