@@ -30,7 +30,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
     private var sundayFirst: Boolean
     private var showSnackBars: Boolean
 
-    private lateinit var dateWithChosenMonth: LocalDate
+    private var dateWithChosenMonth: LocalDate
     private lateinit var cellsList: MutableList<TextView>
     private var binding: MinarMonthBinding
     private var eventCount = 0
@@ -49,6 +49,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
             }
         }
         binding = MinarMonthBinding.inflate(LayoutInflater.from(context), this, true)
+        dateWithChosenMonth = LocalDate.now().withMonth(month + 1).withDayOfMonth(1)
         initMonth()
     }
 
@@ -102,6 +103,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         autoOpacity: Boolean = false,
         autoTextColor: Boolean = false,
         asForeground: Boolean = false,
+        snackbarText: String = ""
     ) {
         // Update the global event count
         eventCount += 1
@@ -109,6 +111,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         // The textview will be hidden if the day doesn't exist in the current month
         for (cell in cellsList) {
             if (cell.text.trim() == day.toString()) {
+                // Graphical stuff
                 if (drawable == null) {
                     cell.setTextColor(color)
                 } else {
@@ -138,6 +141,16 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
                                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) resources.configuration.isNightModeActive else null
                                 )
                             )
+                        }
+                    }
+                    // Display a snackbar on tap if the text exists
+                    if (snackbarText.isNotBlank()) {
+                        cell.setOnClickListener {
+                            (context as MainActivity).showSnackbar(snackbarText.replaceFirstChar {
+                                if (it.isLowerCase()) it.titlecase(
+                                    Locale.ROOT
+                                ) else it.toString()
+                            })
                         }
                     }
                 }
@@ -278,7 +291,6 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         }
 
         // Set the number and name (capitalized) for the month (from range 0-11 to 1-12)
-        dateWithChosenMonth = LocalDate.now().withMonth(month + 1).withDayOfMonth(1)
         val firstDayOfWeekForChosenMonth = dateWithChosenMonth.dayOfWeek
         val monthTitle = binding.overviewMonthName
         monthTitle.text =
@@ -336,5 +348,11 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
             sundayFirst = enable
             initMonth()
         }
+    }
+
+    // Set a specific year for the overview screen
+    fun setYear(year: Int) {
+        dateWithChosenMonth = dateWithChosenMonth.withYear(year)
+        initMonth()
     }
 }

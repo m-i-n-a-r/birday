@@ -50,6 +50,48 @@
             app:layout_constraintStart_toEndOf="@id/overviewTitleImage"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Advanced stuff: year selection -->
+        <TextView
+            android:id="@+id/overviewAdvancedYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/overviewTitle" />
+
+        <!-- The content description of the following buttons is set programmatically -->
+        <ImageView
+            android:id="@+id/overviewAdvancedPrevious"
+            android:layout_width="@dimen/card_image_height"
+            android:layout_height="@dimen/card_image_height"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/advanced_overview_title"
+            android:padding="@dimen/between_row_padding"
+            android:src="@drawable/ic_arrow_left_24dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/overviewAdvancedYear"
+            app:layout_constraintEnd_toStartOf="@id/overviewAdvancedYear"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/overviewAdvancedYear" />
+
+        <ImageView
+            android:id="@+id/overviewAdvancedNext"
+            android:layout_width="@dimen/card_image_height"
+            android:layout_height="@dimen/card_image_height"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/advanced_overview_title"
+            android:padding="@dimen/between_row_padding"
+            android:src="@drawable/ic_arrow_right_24dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/overviewAdvancedYear"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/overviewAdvancedYear"
+            app:layout_constraintTop_toTopOf="@id/overviewAdvancedYear" />
+
         <androidx.constraintlayout.helper.widget.Flow
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -60,7 +102,7 @@
             app:flow_wrapMode="aligned"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/overviewTitle" />
+            app:layout_constraintTop_toBottomOf="@id/overviewAdvancedNext" />
 
         <com.minar.birday.utilities.MinarMonth
             android:id="@+id/overviewJan"

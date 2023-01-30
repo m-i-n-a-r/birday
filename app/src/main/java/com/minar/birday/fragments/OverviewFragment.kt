@@ -1,5 +1,6 @@
 package com.minar.birday.fragments
 
+import android.content.SharedPreferences
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.preference.PreferenceManager
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.FragmentOverviewBinding
@@ -25,6 +27,7 @@ import java.util.*
 class OverviewFragment : Fragment() {
     private lateinit var act: MainActivity
     private val mainViewModel: MainViewModel by activityViewModels()
+    private lateinit var sharedPrefs: SharedPreferences
     private var _binding: FragmentOverviewBinding? = null
     private val binding get() = _binding!!
     private lateinit var events: List<EventResult>
@@ -34,6 +37,8 @@ class OverviewFragment : Fragment() {
         super.onCreate(savedInstanceState)
         act = activity as MainActivity
         events = mainViewModel.allEventsUnfiltered.value ?: emptyList()
+
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
     }
 
     override fun onDestroyView() {
@@ -49,7 +54,10 @@ class OverviewFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentOverviewBinding.inflate(inflater, container, false)
 
-        val title: String = getString(R.string.overview) + " - ${LocalDate.now().year}"
+        val advancedView = sharedPrefs.getBoolean("advanced_overview", false)
+        var yearNumber = LocalDate.now().year
+        val title: String =
+            if (advancedView) getString(R.string.overview) else getString(R.string.overview) + " - $yearNumber}"
         binding.overviewTitle.text = title
         binding.overviewTitleImage.applyLoopingAnimatedVectorDrawable(
             R.drawable.animated_overview,
@@ -91,6 +99,37 @@ class OverviewFragment : Fragment() {
             }
         }
 
+        // Manage the advanced views and buttons
+        if (advancedView) {
+            val advancedYearTitle = binding.overviewAdvancedYear
+            val nextButton = binding.overviewAdvancedNext
+            val prevButton = binding.overviewAdvancedPrevious
+            advancedYearTitle.visibility = View.VISIBLE
+            advancedYearTitle.text = yearNumber.toString()
+            nextButton.visibility = View.VISIBLE
+            prevButton.visibility = View.VISIBLE
+            nextButton.contentDescription = (yearNumber + 1).toString()
+            prevButton.contentDescription = (yearNumber - 1).toString()
+            nextButton.setOnClickListener {
+                yearNumber += 1
+                advancedYearTitle.text = yearNumber.toString()
+                act.vibrate()
+                for (month in year) {
+                    month.setYear(yearNumber)
+                }
+            }
+            prevButton.setOnClickListener {
+                act.vibrate()
+                yearNumber -= 1
+                advancedYearTitle.text = yearNumber.toString()
+                for (month in year) {
+                    month.setYear(yearNumber)
+                }
+
+            }
+
+        }
+
         // Highlight the current date
         highlightCurrentDate()
 
@@ -102,7 +141,8 @@ class OverviewFragment : Fragment() {
                 AppCompatResources.getDrawable(act, R.drawable.minar_month_circle),
                 makeBold = false,
                 autoOpacity = true,
-                autoTextColor = true
+                autoTextColor = true,
+                snackbarText = if (advancedView) event.name else ""
             )
 
         return binding.root
@@ -116,7 +156,8 @@ class OverviewFragment : Fragment() {
         makeBold: Boolean = false,
         autoOpacity: Boolean = false,
         autoTextColor: Boolean = false,
-        asForeground: Boolean = false
+        asForeground: Boolean = false,
+        snackbarText: String = ""
     ) {
         if (date == null) return
         year[date.month.value - 1].highlightDay(
@@ -127,6 +168,7 @@ class OverviewFragment : Fragment() {
             autoOpacity = autoOpacity,
             autoTextColor = autoTextColor,
             asForeground = asForeground,
+            snackbarText = snackbarText
         )
     }
 
