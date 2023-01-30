@@ -285,59 +285,41 @@ class InsertEventBottomSheet(
         var nameCorrect = false
         var surnameCorrect = true // Surname is not mandatory
         var eventDateCorrect = event != null
-        val watcher = object : TextWatcher {
-            override fun beforeTextChanged(
-                charSequence: CharSequence,
-                i: Int,
-                i1: Int,
-                i2: Int
-            ) {
-            }
-
-            override fun onTextChanged(
-                charSequence: CharSequence,
-                i: Int,
-                i1: Int,
-                i2: Int
-            ) {
-            }
-
-            override fun afterTextChanged(editable: Editable) {
-                when {
-                    editable === name.editableText -> {
-                        val nameText = name.text.toString()
-                        if (nameText.isBlank() || !checkName(nameText)) {
-                            // Setting the error on the layout is important to make the properties work
-                            binding.nameEventLayout.error =
-                                getString(R.string.invalid_value_name)
-                            positiveButton.isEnabled = false
-                            nameCorrect = false
-                        } else {
-                            nameValue = nameText
-                            binding.nameEventLayout.error = null
-                            nameCorrect = true
-                        }
+        val watcher = afterTextChangedWatcher { editable ->
+            when {
+                editable === name.editableText -> {
+                    val nameText = name.text.toString()
+                    if (nameText.isBlank() || !checkName(nameText)) {
+                        // Setting the error on the layout is important to make the properties work
+                        binding.nameEventLayout.error =
+                            getString(R.string.invalid_value_name)
+                        positiveButton.isEnabled = false
+                        nameCorrect = false
+                    } else {
+                        nameValue = nameText
+                        binding.nameEventLayout.error = null
+                        nameCorrect = true
                     }
-                    editable === surname.editableText -> {
-                        val surnameText = surname.text.toString()
-                        if (!checkName(surnameText)) {
-                            // Setting the error on the layout is important to make the properties work
-                            binding.surnameEventLayout.error =
-                                getString(R.string.invalid_value_name)
-                            positiveButton.isEnabled = false
-                            surnameCorrect = false
-                        } else {
-                            surnameValue = surnameText
-                            binding.surnameEventLayout.error = null
-                            surnameCorrect = true
-                        }
-                    }
-                    // Once selected, the date can't be blank anymore
-                    editable === eventDate.editableText -> eventDateCorrect = true
                 }
-                if (eventDateCorrect && nameCorrect && surnameCorrect) positiveButton.isEnabled =
-                    true
+                editable === surname.editableText -> {
+                    val surnameText = surname.text.toString()
+                    if (!checkName(surnameText)) {
+                        // Setting the error on the layout is important to make the properties work
+                        binding.surnameEventLayout.error =
+                            getString(R.string.invalid_value_name)
+                        positiveButton.isEnabled = false
+                        surnameCorrect = false
+                    } else {
+                        surnameValue = surnameText
+                        binding.surnameEventLayout.error = null
+                        surnameCorrect = true
+                    }
+                }
+                // Once selected, the date can't be blank anymore
+                editable === eventDate.editableText -> eventDateCorrect = true
             }
+            if (eventDateCorrect && nameCorrect && surnameCorrect) positiveButton.isEnabled =
+                true
         }
         name.addTextChangedListener(watcher)
         surname.addTextChangedListener(watcher)
@@ -378,4 +360,27 @@ class InsertEventBottomSheet(
         val image = binding.imageEvent
         image.setImageBitmap(resizedBitmap)
     }
+
+    private inline fun afterTextChangedWatcher(crossinline afterTextChanged: (editable: Editable) -> Unit) =
+        object : TextWatcher {
+            override fun beforeTextChanged(
+                charSequence: CharSequence,
+                i: Int,
+                i1: Int,
+                i2: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                charSequence: CharSequence,
+                i: Int,
+                i1: Int,
+                i2: Int
+            ) {
+            }
+
+            override fun afterTextChanged(editable: Editable) {
+                afterTextChanged(editable)
+            }
+        }
 }
