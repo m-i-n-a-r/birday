@@ -225,7 +225,14 @@ class InsertEventBottomSheet(
                 )
             )
 
-            // TODO: Handle item click
+            val onAutocompleteClick = AdapterView.OnItemClickListener { parent, _, i, _ ->
+                val clickedItem =
+                    parent.getItemAtPosition(i) as? ContactInfo ?: return@OnItemClickListener
+                binding.nameEvent.setText(clickedItem.name)
+                binding.surnameEvent.setText(clickedItem.surname)
+            }
+            binding.nameEvent.onItemClickListener = onAutocompleteClick
+            binding.surnameEvent.onItemClickListener = onAutocompleteClick
         }
 
         // Calendar setup. The end date is the last day in the following year (dumb users)
