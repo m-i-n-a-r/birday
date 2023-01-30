@@ -29,7 +29,9 @@ import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
+import com.minar.birday.adapters.ContactsFilterArrayAdapter
 import com.minar.birday.databinding.BottomSheetInsertEventBinding
+import com.minar.birday.model.ContactInfo
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
@@ -172,9 +174,9 @@ class InsertEventBottomSheet(
 
         // Set the dropdown to show the available event types
         val items = getAvailableTypes(act)
-        val adapter = ArrayAdapter(act, R.layout.event_type_list_item, items)
+        val eventTypeAdapter = ArrayAdapter(act, R.layout.event_type_list_item, items)
         with(type) {
-            setAdapter(adapter)
+            setAdapter(eventTypeAdapter)
             setText(getStringForTypeCodename(context, typeValue), false)
             onItemClickListener =
                 AdapterView.OnItemClickListener { _, _, position, _ ->
@@ -206,6 +208,25 @@ class InsertEventBottomSheet(
 
         // Initialize contacts list, using InsertEventViewModel
         viewModel.initContactsList(act)
+        viewModel.contactsList.observe(viewLifecycleOwner) { contacts ->
+            // Setup AutoCompleteEditText adapters
+            binding.nameEvent.setAdapter(
+                ContactsFilterArrayAdapter(
+                    requireContext(),
+                    contacts,
+                    ContactInfo::name,
+                )
+            )
+            binding.surnameEvent.setAdapter(
+                ContactsFilterArrayAdapter(
+                    requireContext(),
+                    contacts,
+                    ContactInfo::surname,
+                )
+            )
+
+            // TODO: Handle item click
+        }
 
         // Calendar setup. The end date is the last day in the following year (dumb users)
         val startDate = Calendar.getInstance()

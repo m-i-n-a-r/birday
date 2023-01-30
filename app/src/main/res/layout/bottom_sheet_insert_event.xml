@@ -129,7 +129,7 @@
                 app:startIconTint="?attr/colorOutline">
 
                 <!-- Someone uses 2 names for anniversaries in this fields -->
-                <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/nameEvent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -168,7 +168,7 @@
                 app:startIconDrawable="@drawable/ic_smile_24dp"
                 app:startIconTint="?attr/colorOutline">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/surnameEvent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
