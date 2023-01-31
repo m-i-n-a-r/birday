@@ -378,7 +378,7 @@ class MainActivity : AppCompatActivity() {
             getSystemService(VIBRATOR_SERVICE) as Vibrator
         }
 
-        if (sharedPrefs.getBoolean("vibration", true)) {
+        if (sharedPrefs.getBoolean("vibration", false)) {
             // Vibrate if the vibration in options is set to on
             vib.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
