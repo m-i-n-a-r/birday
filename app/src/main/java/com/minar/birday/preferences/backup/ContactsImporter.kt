@@ -14,7 +14,6 @@ import com.minar.birday.persistence.ContactsRepository
 import kotlin.concurrent.thread
 
 
-@ExperimentalStdlibApi
 class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
     View.OnClickListener {
     private val contactsRepository = ContactsRepository()

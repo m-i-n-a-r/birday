@@ -40,7 +40,6 @@ import java.time.format.FormatStyle
 import java.util.*
 
 
-@ExperimentalStdlibApi
 class InsertEventBottomSheet(
     private val act: MainActivity,
     private val event: EventResult? = null

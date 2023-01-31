@@ -22,7 +22,6 @@ import java.time.format.FormatStyle
 import java.time.format.TextStyle
 import java.util.*
 
-@OptIn(ExperimentalStdlibApi::class)
 class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
     // Custom attributes
     private var month = 0

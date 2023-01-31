@@ -14,7 +14,6 @@ import java.io.File
 import java.time.LocalDate
 
 
-@ExperimentalStdlibApi
 class BirdayExporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
     View.OnClickListener {
 

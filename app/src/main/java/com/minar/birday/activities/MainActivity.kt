@@ -48,8 +48,6 @@ import java.io.IOException
 import java.util.*
 import kotlin.concurrent.thread
 
-
-@ExperimentalStdlibApi
 class MainActivity : AppCompatActivity() {
     val mainViewModel: MainViewModel by viewModels()
     private lateinit var sharedPrefs: SharedPreferences

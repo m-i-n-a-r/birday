@@ -14,7 +14,6 @@ import com.minar.birday.databinding.BottomSheetQuickAppsBinding
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 
 
-@ExperimentalStdlibApi
 class QuickAppsBottomSheet(private val act: MainActivity) : BottomSheetDialogFragment() {
     private var _binding: BottomSheetQuickAppsBinding? = null
     private val binding get() = _binding!!

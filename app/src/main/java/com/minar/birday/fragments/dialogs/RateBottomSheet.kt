@@ -14,7 +14,6 @@ import com.minar.birday.databinding.BottomSheetRateBinding
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 
 
-@ExperimentalStdlibApi
 class RateBottomSheet(private val editor: SharedPreferences.Editor) : BottomSheetDialogFragment() {
     private var _binding: BottomSheetRateBinding? = null
     private val binding get() = _binding!!

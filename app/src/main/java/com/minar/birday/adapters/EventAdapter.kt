@@ -32,7 +32,6 @@ import java.util.*
 private const val ITEM_VIEW_TYPE_HEADER = 0
 private const val ITEM_VIEW_TYPE_EVENT = 1
 
-@ExperimentalStdlibApi
 class EventAdapter(
     private val updateFavorite: (value: EventResult) -> Unit,
     private val showFavoriteHint: () -> Unit,
@@ -135,7 +134,6 @@ class EventAdapter(
         }
 
         // Set every necessary text and click action in each row
-        @ExperimentalStdlibApi
         fun bind(eventItem: EventDataItem.EventItem) {
             val event = eventItem.eventResult
             val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context)

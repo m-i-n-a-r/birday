@@ -12,7 +12,6 @@ import com.github.appintro.model.SliderPagerBuilder
 import com.minar.birday.R
 
 
-@ExperimentalStdlibApi
 class WelcomeActivity : AppIntro() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

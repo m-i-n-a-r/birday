@@ -16,7 +16,6 @@ import java.io.FileOutputStream
 import java.io.InputStreamReader
 
 
-@ExperimentalStdlibApi
 class BirdayImporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
     View.OnClickListener {
     private val act = context as MainActivity

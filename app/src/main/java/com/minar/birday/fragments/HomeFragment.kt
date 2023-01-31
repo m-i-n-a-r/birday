@@ -42,7 +42,6 @@ import java.time.format.FormatStyle
 import java.time.temporal.ChronoUnit
 
 
-@ExperimentalStdlibApi
 class HomeFragment : Fragment() {
     private val mainViewModel: MainViewModel by activityViewModels()
     private lateinit var adapter: EventAdapter

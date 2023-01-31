@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalStdlibApi::class)
-
 package com.minar.birday.fragments.dialogs
 
 import android.annotation.SuppressLint

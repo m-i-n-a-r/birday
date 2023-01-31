@@ -18,7 +18,6 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
 // A custom preference to show a time picker
-@ExperimentalStdlibApi
 class TimePickerPreference(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
     View.OnClickListener {
     private lateinit var sharedPrefs: SharedPreferences

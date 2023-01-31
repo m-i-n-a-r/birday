@@ -15,7 +15,6 @@ import kotlinx.coroutines.launch
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-@ExperimentalStdlibApi
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val workManager = WorkManager.getInstance(application)
     private val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(application)

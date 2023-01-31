@@ -21,7 +21,6 @@ import java.time.temporal.WeekFields
 import java.util.*
 
 
-@ExperimentalStdlibApi
 class OverviewFragment : Fragment() {
     private lateinit var act: MainActivity
     private val mainViewModel: MainViewModel by activityViewModels()

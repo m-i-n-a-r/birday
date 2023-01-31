@@ -13,7 +13,6 @@ import com.minar.birday.databinding.NotificationSoundRowBinding
 
 
 // A custom preference to open the notification sound settings for Birday
-@ExperimentalStdlibApi
 class NotificationSoundPreference(context: Context, attrs: AttributeSet?) :
     Preference(context, attrs),
     View.OnClickListener {
