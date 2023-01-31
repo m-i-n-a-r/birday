@@ -294,4 +294,6 @@
     <string name="delete_search_description_off">Non sarà possibile eliminare più eventi contemporaneamente</string>
     <string name="delete_search_description_on">Premere il pulsante Cestino quando si cerca uno o più eventi per eliminarli rapidamente tutti da Birday. Utilizzare con cautela!</string>
     <string name="delete_search_confirm">Questo eliminerà tutti i risultati di questa ricerca. È possibile annullare il processo poco dopo aver cliccato OK se si cambia idea!</string>
+    <string name="import_contacts_bottom_sheet_description">Vorresti importare tutti gli eventi dai tuoi contatti?</string>
+    <string name="yes_import">Importa</string>
 </resources>
