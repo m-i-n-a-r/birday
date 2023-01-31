@@ -28,7 +28,7 @@ class ContactsRepository {
      * Read all the possible events from the contacts.
      */
     @RequiresPermission(Manifest.permission.READ_CONTACTS)
-    fun getContactEvents(resolver: ContentResolver): List<ImportedEvent> {
+    private fun getContactEvents(resolver: ContentResolver): List<ImportedEvent> {
         return queryContacts(resolver).asSequence()
             .flatMap { getEventsForContact(it, resolver) }
             .toList()
