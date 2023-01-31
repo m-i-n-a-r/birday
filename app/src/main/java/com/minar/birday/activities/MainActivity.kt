@@ -16,8 +16,10 @@ import android.os.*
 import android.provider.OpenableColumns
 import android.provider.Settings
 import android.view.View
+import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.annotation.IdRes
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -25,6 +27,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.preference.PreferenceManager
@@ -54,6 +57,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var sharedPrefs: SharedPreferences
     private lateinit var binding: ActivityMainBinding
 
+    private val navController: NavController
+        get() {
+            val navHostFragment = supportFragmentManager
+                .findFragmentById(R.id.navHostFragment) as NavHostFragment
+            return navHostFragment.navController
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -69,6 +79,15 @@ class MainActivity : AppCompatActivity() {
             askContactsPermission()
         }
         createNotificationChannel()
+
+        // Register back pressed callback (do not use onBackPressed() - deprecated)
+        onBackPressedDispatcher.addCallback(this) {
+            if (navController.currentDestination?.id == R.id.navigationMain) {
+                finish()
+            } else {
+                navController.navigateWithOptions(R.id.navigationMain)
+            }
+        }
 
         // Retrieve the shared preferences
         val theme = sharedPrefs.getString("theme_color", "system")
@@ -138,28 +157,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         // Get the bottom navigation bar and configure it for the navigation plugin
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.navHostFragment) as NavHostFragment
-        val navController = navHostFragment.navController
         val navigation = binding.navigation
 
-        // Only way to use custom animations with the bottom navigation bar
-        val options = NavOptions.Builder()
-            .setLaunchSingleTop(true)
-            .setEnterAnim(R.anim.nav_enter_anim)
-            .setExitAnim(R.anim.nav_exit_anim)
-            .setPopEnterAnim(R.anim.nav_pop_enter_anim)
-            .setPopExitAnim(R.anim.nav_pop_exit_anim)
-            .setPopUpTo(R.id.nav_graph, true)
-            .build()
         navigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigationMain ->
-                    navController.navigate(R.id.navigationMain, null, options)
+                    navController.navigateWithOptions(R.id.navigationMain)
                 R.id.navigationFavorites ->
-                    navController.navigate(R.id.navigationFavorites, null, options)
+                    navController.navigateWithOptions(R.id.navigationFavorites)
                 R.id.navigationSettings ->
-                    navController.navigate(R.id.navigationSettings, null, options)
+                    navController.navigateWithOptions(R.id.navigationSettings)
             }
             true
         }
@@ -262,6 +269,20 @@ class MainActivity : AppCompatActivity() {
             // Update the widgets using this livedata, to avoid strange behaviors when searching
             updateWidget()
         }
+    }
+
+    private fun NavController.navigateWithOptions(@IdRes destination: Int) {
+        // Only way to use custom animations with the bottom navigation bar
+        val options = NavOptions.Builder()
+            .setLaunchSingleTop(true)
+            .setEnterAnim(R.anim.nav_enter_anim)
+            .setExitAnim(R.anim.nav_exit_anim)
+            .setPopEnterAnim(R.anim.nav_pop_enter_anim)
+            .setPopExitAnim(R.anim.nav_pop_exit_anim)
+            .setPopUpTo(R.id.nav_graph, true)
+            .build()
+
+        navigate(destination, null, options)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -601,6 +622,14 @@ class MainActivity : AppCompatActivity() {
                         })
                 }
             }
+        }
+    }
+
+    override fun onBackPressed() { // FIXME
+        if (navController.currentDestination?.id == R.id.navigationMain) {
+            super.onBackPressed()
+        } else {
+            navController.navigateWithOptions(R.id.navigationMain)
         }
     }
 }
