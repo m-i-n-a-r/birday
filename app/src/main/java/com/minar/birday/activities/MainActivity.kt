@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity() {
             editor.putBoolean("first", false)
             // Set default accent based on the Android version
             when (Build.VERSION.SDK_INT) {
-                23, 24, 25, 26, 27, 28, 29 -> editor.putString("accent_color", "blue")
+                in 23..29 -> editor.putString("accent_color", "blue")
                 31 -> editor.putString("accent_color", "system")
                 else -> editor.putString("accent_color", "monet")
             }
@@ -622,14 +622,6 @@ class MainActivity : AppCompatActivity() {
                         })
                 }
             }
-        }
-    }
-
-    override fun onBackPressed() { // FIXME
-        if (navController.currentDestination?.id == R.id.navigationMain) {
-            super.onBackPressed()
-        } else {
-            navController.navigateWithOptions(R.id.navigationMain)
         }
     }
 }
