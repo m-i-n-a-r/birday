@@ -1,6 +1,7 @@
 package com.minar.birday.utilities
 
 import android.content.SharedPreferences
+import androidx.fragment.app.FragmentActivity
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.fragments.dialogs.RateBottomSheet
 
@@ -41,8 +42,8 @@ object AppRater {
     }
 
     @ExperimentalStdlibApi
-    private fun showRateDialog(activity: MainActivity, editor: SharedPreferences.Editor) {
-        val bottomSheet = RateBottomSheet(activity, editor)
+    private fun showRateDialog(activity: FragmentActivity, editor: SharedPreferences.Editor) {
+        val bottomSheet = RateBottomSheet(editor)
         if (bottomSheet.isAdded) return
         bottomSheet.show(activity.supportFragmentManager, "rate_bottom_sheet")
     }
