@@ -85,6 +85,7 @@ class MainActivity : AppCompatActivity() {
             if (navController.currentDestination?.id == R.id.navigationMain) {
                 finish()
             } else {
+                binding.navigation.selectedItemId = R.id.navigationMain
                 navController.navigateWithOptions(R.id.navigationMain)
             }
         }
