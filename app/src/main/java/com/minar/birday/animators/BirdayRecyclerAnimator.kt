@@ -4,12 +4,12 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.util.Log
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.SimpleItemAnimator
 
 
 // A custom animator to animate the items in recycler view
-class BirdayRecyclerAnimator : SimpleItemAnimator() {
+class BirdayRecyclerAnimator : DefaultItemAnimator() {
 
     // Never called
     override fun animateRemove(viewHolder: RecyclerView.ViewHolder): Boolean {

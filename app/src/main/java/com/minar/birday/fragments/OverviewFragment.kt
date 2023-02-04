@@ -32,6 +32,7 @@ class OverviewFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var events: List<EventResult>
     private lateinit var year: List<MinarMonth>
+    private var yearNumber: Int = LocalDate.now().year
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +56,6 @@ class OverviewFragment : Fragment() {
         _binding = FragmentOverviewBinding.inflate(inflater, container, false)
 
         val advancedView = sharedPrefs.getBoolean("advanced_overview", false)
-        var yearNumber = LocalDate.now().year
         val title: String =
             if (advancedView) getString(R.string.overview) else getString(R.string.overview) + " - $yearNumber}"
         binding.overviewTitle.text = title
@@ -175,6 +175,7 @@ class OverviewFragment : Fragment() {
     // Highlight the current date with a ring
     private fun highlightCurrentDate(drawable: Drawable? = null, color: Int? = null) {
         val date = LocalDate.now()
+        if (date.year != yearNumber) return
         val chosenColor = color ?: getThemeColor(R.attr.colorTertiary, act)
         val chosenDrawable =
             drawable ?: AppCompatResources.getDrawable(act, R.drawable.minar_month_ring)
