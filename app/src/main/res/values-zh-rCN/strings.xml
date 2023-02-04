@@ -80,16 +80,12 @@
     <string name="import_success">成功完成导入！</string>
     <string name="import_nothing_found">未找到事件！</string>
     <string name="import_failed">有什么出错了！</string>
-    <string name="missing_permission_contacts">通讯录权限被拒绝，再试下或手动打开权限，
-		否则无法导入通讯录！</string>
-    <string name="missing_permission_contacts_forever">Birday无法询问导入通讯录的权限，
-		因为你选择了“不再询问”。请手动开启权限！</string>
+    <string name="missing_permission_contacts">通讯录权限被拒绝，再试下或手动打开权限，否则无法导入通讯录！</string>
+    <string name="missing_permission_contacts_forever">Birday无法询问导入通讯录的权限，因为你选择了“不再询问”。请手动开启权限！</string>
     <string name="birday_import_title">导入Birday备份</string>
-    <string name="birday_import_description">选择一个有效的Birday备份来恢复你的事件。
-		所有现存数据会被覆盖！</string>
+    <string name="birday_import_description">选择一个有效的Birday备份来恢复你的事件。所有现存数据会被覆盖！</string>
     <string name="birday_export_title">导入和分享事件</string>
-    <string name="birday_export_description">将可用的事件导出到备份中，并且如果你想的话可以分享它们。
-		文件路径在Android/data/com.minar.birday/files</string>
+    <string name="birday_export_description">将可用的事件导出到备份中，并且如果你想的话可以分享它们。文件路径在Android/data/com.minar.birday/files</string>
     <string name="birday_import_success">导入完成！</string>
     <string name="birday_import_failure">导入失败。请问你选择了正确的文件吗？</string>
     <string name="birday_import_invalid_file">导入失败。所选文件不是Birday备份！</string>
@@ -227,17 +223,13 @@
     <string name="additional_notification_text">即将到来的事件！</string>
     <!-- Introduction slides -->
     <string name="slide_one_title">欢迎使用Birday！</string>
-    <string name="slide_one_description">Birday是个简单且轻量的管理重要事件的app！
-		你能用它来记住和存储你爱的人的生日等等，可靠又迅捷。
+    <string name="slide_one_description">Birday是个简单且轻量的管理重要事件的app！你能用它来记住和存储你爱的人的生日等等，可靠又迅捷。
     </string>
     <string name="slide_two_title">免费，简单，可自定义</string>
-    <string name="slide_two_description">Birday免费，无广告，且开源。
-		它提供一套关于你的事件的数据，一个最受喜爱的系统和可自定义的界面。
-		还有保证的支持和更新！
+    <string name="slide_two_description">Birday免费，无广告，且开源。它提供一套关于你的事件的数据，一个最受喜爱的系统和可自定义的界面。还有保证的支持和更新！
     </string>
     <string name="slide_three_title">从通讯录导入</string>
-    <string name="slide_three_description">从你的通讯录导入你已保存的事件也是可能的。
-		Birday能帮你搞定，只要提供通讯录权限即可。请享受吧！
+    <string name="slide_three_description">从你的通讯录导入你已保存的事件也是可能的。Birday能帮你搞定，只要提供通讯录权限即可。请享受吧！
     </string>
     <!-- Widget -->
     <string name="appwidget_upcoming">即将到来的事件</string>
@@ -251,10 +243,10 @@
     <string name="widget_background_description">为组件显示背景</string>
     <string name="compact_widget_title">紧凑排版</string>
     <string name="compact_widget_description">将排版优化为极度紧凑</string>
-		<string name="align_start_widget_title">在开始处对齐</string>
+    <string name="align_start_widget_title">在开始处对齐</string>
     <string name="align_start_widget_description">将组件内容向开始处对齐（根据你的区域设置决定向左或右）</string>
     <string name="hide_far_widget_title">对很久后的事件隐藏组件</string>
-    <string name="hide_far_widget_description">如果下个事件是在额外通知时段后则隐藏组件（比如：7天前通知，下个事件是10天后 -> 隐藏组件）</string>
+    <string name="hide_far_widget_description">如果下个事件是在额外通知时段后则隐藏组件（比如：7天前通知，下个事件是10天后 -&gt; 隐藏组件）</string>
     <!-- Search -->
     <string name="search_event">搜索…</string>
     <string name="search_no_result_title">未找到结果</string>
