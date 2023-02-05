@@ -56,6 +56,18 @@ class OverviewFragment : Fragment() {
         _binding = FragmentOverviewBinding.inflate(inflater, container, false)
 
         val advancedView = sharedPrefs.getBoolean("advanced_overview", false)
+
+        // Add some bottom padding to avoid hidden content behind the bottom navigation bar
+        val hideNavbar = sharedPrefs.getBoolean("hide_scroll", false)
+        if (hideNavbar) {
+            binding.overviewMain.setPadding(
+                0,
+                0,
+                0,
+                act.resources.getDimension(R.dimen.bottom_navbar_height).toInt()
+            )
+        }
+
         val title: String =
             if (advancedView) getString(R.string.overview) else getString(R.string.overview) + " - $yearNumber}"
         binding.overviewTitle.text = title

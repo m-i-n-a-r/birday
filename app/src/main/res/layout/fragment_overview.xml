@@ -9,6 +9,7 @@
 
     <!-- The empty view is useful to make the screen large as the screen or more (with scrolling) -->
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/overviewMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/linear_vertical_margin">
