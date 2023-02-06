@@ -60,6 +60,8 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:text="@string/app_name"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+            android:textColor="?attr/colorSecondary"
+            android:textStyle="bold"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

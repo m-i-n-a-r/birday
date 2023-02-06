@@ -63,7 +63,7 @@ class OverviewFragment : Fragment() {
         }
 
         val title: String =
-            if (advancedView) getString(R.string.overview) else getString(R.string.overview) + " - $yearNumber}"
+            if (advancedView) getString(R.string.overview) else getString(R.string.overview) + " - $yearNumber"
         binding.overviewTitle.text = title
         binding.overviewTitleImage.applyLoopingAnimatedVectorDrawable(
             R.drawable.animated_overview,

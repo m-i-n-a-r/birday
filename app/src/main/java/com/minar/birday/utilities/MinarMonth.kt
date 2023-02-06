@@ -299,7 +299,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
                     if (it.isLowerCase()) it.titlecase(Locale.getDefault())
                     else it.toString()
                 }
-        if (dateWithChosenMonth.month == LocalDate.now().month) {
+        if (dateWithChosenMonth.month == LocalDate.now().month && dateWithChosenMonth.year == LocalDate.now().year) {
             monthTitle.setTextColor(getThemeColor(R.attr.colorTertiary, context))
         }
 
@@ -353,6 +353,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
     // Set a specific year for the overview screen
     fun setYear(year: Int) {
         eventCount = 0
+        binding.overviewMonthName.setTextColor(getThemeColor(R.attr.colorSecondary, context))
         dateWithChosenMonth = dateWithChosenMonth.withYear(year)
         initMonth()
     }
