@@ -352,7 +352,20 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
 
     // Set a specific year for the overview screen
     fun setYear(year: Int) {
+        eventCount = 0
         dateWithChosenMonth = dateWithChosenMonth.withYear(year)
         initMonth()
+    }
+
+    // Reset every highlighted cell to the normal state
+    fun resetHighlighting() {
+        for (cell in cellsList) {
+            if (cell.background != null) {
+                cell.background.alpha = 0
+                cell.background = null
+            }
+            cell.setTextColor(getThemeColor(R.attr.colorOnBackground, context))
+            cell.foreground = null
+        }
     }
 }

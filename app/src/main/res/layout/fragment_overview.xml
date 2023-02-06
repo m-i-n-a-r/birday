@@ -93,113 +93,13 @@
             app:layout_constraintStart_toEndOf="@id/overviewAdvancedYear"
             app:layout_constraintTop_toTopOf="@id/overviewAdvancedYear" />
 
-        <androidx.constraintlayout.helper.widget.Flow
-            android:layout_width="0dp"
+        <com.minar.birday.utilities.MinarYear
+            android:id="@+id/overviewYearView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            app:constraint_referenced_ids="overviewJan, overviewFeb, overviewMar,overviewApr,overviewMay,overviewJun, overviewJul, overviewAug, overviewSep, overviewOct, overviewNov, overviewDec"
-            app:flow_horizontalGap="@dimen/in_row_padding"
-            app:flow_maxElementsWrap="6"
-            app:flow_wrapMode="aligned"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/overviewAdvancedNext" />
-
-        <com.minar.birday.utilities.MinarMonth
-            android:id="@+id/overviewJan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:month="january" />
-
-        <com.minar.birday.utilities.MinarMonth
-            android:id="@+id/overviewFeb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:month="february" />
-
-        <com.minar.birday.utilities.MinarMonth
-            android:id="@+id/overviewMar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:month="march" />
-
-        <com.minar.birday.utilities.MinarMonth
-            android:id="@+id/overviewApr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:month="april" />
-
-        <com.minar.birday.utilities.MinarMonth
-            android:id="@+id/overviewMay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:month="may" />
-
-        <com.minar.birday.utilities.MinarMonth
-            android:id="@+id/overviewJun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:month="june" />
-
-        <com.minar.birday.utilities.MinarMonth
-            android:id="@+id/overviewJul"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:month="july" />
-
-        <com.minar.birday.utilities.MinarMonth
-            android:id="@+id/overviewAug"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:month="august" />
-
-        <com.minar.birday.utilities.MinarMonth
-            android:id="@+id/overviewSep"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:month="september" />
-
-        <com.minar.birday.utilities.MinarMonth
-            android:id="@+id/overviewOct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:month="october" />
-
-        <com.minar.birday.utilities.MinarMonth
-            android:id="@+id/overviewNov"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:month="november" />
-
-        <com.minar.birday.utilities.MinarMonth
-            android:id="@+id/overviewDec"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:month="december" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
