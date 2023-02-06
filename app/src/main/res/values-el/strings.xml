@@ -305,4 +305,7 @@
     <string name="delete_search_description_off">Δεν θα είναι δυνατή η διαγραφή πολλαπλών συμβάντων ταυτόχρονα</string>
     <string name="delete_search_description_on">Πατήστε το κουμπί \"Κάδος\" όταν κάνετε αναζήτηση σε ένα ή περισσότερα γεγονότα για να τα διαγράψετε γρήγορα όλα από το Birday. Χρησιμοποιήστε το με προσοχή!</string>
     <string name="delete_search_confirm">Αυτό θα διαγράψει όλα τα αποτελέσματα αυτής της αναζήτησης. Μπορείτε να αναιρέσετε τη διαδικασία λίγο μετά το κλικ OK αν αλλάξετε γνώμη!</string>
+    <string name="advanced_overview_title">Προηγμένη επισκόπηση</string>
+    <string name="advanced_overview_description_off">Η οθόνη επισκόπησης θα εμφανίζει μόνο βασικές πληροφορίες</string>
+    <string name="advanced_overview_description_on">Η οθόνη επισκόπησης θα εμφανίσει άλλα έτη και λεπτομερείς πληροφορίες</string>
 </resources>
