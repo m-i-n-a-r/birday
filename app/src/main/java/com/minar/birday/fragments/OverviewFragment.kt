@@ -1,6 +1,7 @@
 package com.minar.birday.fragments
 
 import android.content.SharedPreferences
+import android.graphics.drawable.Animatable2
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -84,14 +85,32 @@ class OverviewFragment : Fragment() {
             nextButton.contentDescription = (yearNumber + 1).toString()
             prevButton.contentDescription = (yearNumber - 1).toString()
             minarYear.setAdvancedInfoEnabled(true)
+            advancedYearTitle.setOnClickListener {
+                yearNumber = LocalDate.now().year
+                act.vibrate()
+                minarYear.renderYear(yearNumber, events)
+                advancedYearTitle.text = yearNumber.toString()
+            }
             nextButton.setOnClickListener {
+                (nextButton.drawable as Animatable2).start()
+                act.vibrate()
+                // Small easter egg
+                if (yearNumber == 3000) {
+                    act.showSnackbar(getString(R.string.wtf))
+                    return@setOnClickListener
+                }
                 yearNumber += 1
                 advancedYearTitle.text = yearNumber.toString()
-                act.vibrate()
                 minarYear.renderYear(yearNumber, events)
             }
             prevButton.setOnClickListener {
+                (prevButton.drawable as Animatable2).start()
                 act.vibrate()
+                // Small easter egg
+                if (yearNumber == 0) {
+                    act.showSnackbar(getString(R.string.wtf))
+                    return@setOnClickListener
+                }
                 yearNumber -= 1
                 advancedYearTitle.text = yearNumber.toString()
                 minarYear.renderYear(yearNumber, events)

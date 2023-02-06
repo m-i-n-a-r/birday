@@ -1,0 +1,81 @@
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+            android:name="vector"
+            android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="24"
+            android:viewportHeight="24">
+            <group
+                android:name="arrow_group"
+                android:pivotX="12"
+                android:pivotY="12">
+                <path
+                    android:name="arrow"
+                    android:fillColor="?attr/colorTertiary"
+                    android:pathData="M 19.641 3.901 L 19.641 20.099 C 19.641 20.428 19.523 20.747 19.308 20.996 C 19.092 21.245 18.794 21.409 18.468 21.457 C 18.143 21.504 17.81 21.433 17.532 21.257 L 5.095 13.342 C 4.793 13.15 4.564 12.861 4.447 12.523 C 4.329 12.184 4.329 11.816 4.447 11.477 C 4.564 11.139 4.793 10.85 5.095 10.658 L 17.532 2.743 C 17.81 2.567 18.143 2.496 18.468 2.543 C 18.794 2.591 19.092 2.755 19.308 3.004 C 19.523 3.253 19.641 3.572 19.641 3.901 Z"
+                    android:strokeAlpha="0"
+                    android:strokeColor="?attr/colorPrimary"
+                    android:strokeLineCap="round"
+                    android:strokeLineJoin="round" />
+            </group>
+        </vector>
+    </aapt:attr>
+    <target android:name="arrow_group">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:duration="200"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="translateX"
+                    android:valueFrom="0"
+                    android:valueTo="-2"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="100"
+                    android:interpolator="@android:anim/linear_interpolator"
+                    android:propertyName="translateX"
+                    android:startOffset="200"
+                    android:valueFrom="-2"
+                    android:valueTo="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="arrow">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:duration="200"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="fillAlpha"
+                    android:valueFrom="1"
+                    android:valueTo="0.9"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="300"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="strokeWidth"
+                    android:valueFrom="0"
+                    android:valueTo="2"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="300"
+                    android:interpolator="@android:anim/accelerate_interpolator"
+                    android:propertyName="strokeAlpha"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="100"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="fillAlpha"
+                    android:startOffset="200"
+                    android:valueFrom="0.9"
+                    android:valueTo="1"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>
