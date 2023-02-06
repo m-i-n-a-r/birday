@@ -1,9 +1,12 @@
 package com.minar.birday.workers
 
+import android.Manifest
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.preference.PreferenceManager
@@ -185,7 +188,16 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                     setLargeIcon(getCircularBitmap(bitmap))
                 }
         }
-        with(NotificationManagerCompat.from(applicationContext)) { notify(id, builder.build()) }
+        with(NotificationManagerCompat.from(applicationContext)) {
+            if (ActivityCompat.checkSelfPermission(
+                    applicationContext,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                return
+            }
+            notify(id, builder.build())
+        }
     }
 
     // Notification for upcoming events, also considering
