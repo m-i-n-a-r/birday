@@ -91,6 +91,10 @@ class OverviewFragment : Fragment() {
                 minarYear.renderYear(yearNumber, events)
                 advancedYearTitle.text = yearNumber.toString()
             }
+            advancedYearTitle.setOnLongClickListener {
+                minarYear.setAppearance(-1)
+                true
+            }
             nextButton.setOnClickListener {
                 (nextButton.drawable as Animatable2).start()
                 act.vibrate()

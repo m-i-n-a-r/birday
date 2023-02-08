@@ -29,9 +29,12 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
     private var hideWeekDays: Boolean
     private var sundayFirst: Boolean
     private var showSnackBars: Boolean
+    private var appearance = 0
 
     private var dateWithChosenMonth: LocalDate
     private lateinit var cellsList: MutableList<TextView>
+    private lateinit var weekDaysList: MutableList<TextView>
+    private lateinit var monthTitle: TextView
     private var binding: MinarMonthBinding
     private var eventCount = 0
 
@@ -44,6 +47,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
                 hideWeekDays = getBoolean(R.styleable.MinarMonth_hideWeekDays, false)
                 sundayFirst = getBoolean(R.styleable.MinarMonth_sundayAsFirstDay, false)
                 showSnackBars = getBoolean(R.styleable.MinarMonth_showInfoSnackBars, true)
+                appearance = getInteger(R.styleable.MinarMonth_appearance, 0)
             } finally {
                 recycle()
             }
@@ -173,6 +177,9 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         val weekDayFive = binding.weekDayFive
         val weekDaySix = binding.weekDaySix
         val weekDaySeven = binding.weekDaySeven
+        weekDaysList = mutableListOf(
+            weekDayOne, weekDayTwo, weekDayThree, weekDayFour, weekDayFive, weekDaySix, weekDaySeven
+        )
 
         // Month cells
         val cell1 = binding.monthCell1
@@ -292,7 +299,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
 
         // Set the number and name (capitalized) for the month (from range 0-11 to 1-12)
         val firstDayOfWeekForChosenMonth = dateWithChosenMonth.dayOfWeek
-        val monthTitle = binding.overviewMonthName
+        monthTitle = binding.overviewMonthName
         monthTitle.text =
             dateWithChosenMonth.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
                 .replaceFirstChar {
@@ -340,6 +347,46 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
                 (context as MainActivity).showSnackbar(content)
             }
         }
+
+        // Set the appearance (0 small default, 1 medium, 2 large)
+        when (appearance) {
+            1 -> setAppearance(1)
+            2 -> setAppearance(2)
+        }
+    }
+
+    // Set the information density for month
+    fun setAppearance(appearance: Int) {
+        when (appearance) {
+            0 -> {
+                for (cell in cellsList) {
+                    cell.setTextAppearance(R.style.TextAppearance_Material3_LabelMedium)
+                }
+                for (day in weekDaysList) {
+                    day.setTextAppearance(R.style.TextAppearance_Material3_LabelMedium)
+                }
+                monthTitle.setTextAppearance(R.style.TextAppearance_Material3_BodyMedium)
+            }
+            1 -> {
+                for (cell in cellsList) {
+                    cell.setTextAppearance(R.style.TextAppearance_Material3_BodyMedium)
+                }
+                for (day in weekDaysList) {
+                    day.setTextAppearance(R.style.TextAppearance_Material3_BodyMedium)
+                }
+                monthTitle.setTextAppearance(R.style.TextAppearance_Material3_BodyLarge)
+            }
+            2 -> {
+                for (cell in cellsList) {
+                    cell.setTextAppearance(R.style.TextAppearance_Material3_BodyLarge)
+                }
+                for (day in weekDaysList) {
+                    day.setTextAppearance(R.style.TextAppearance_Material3_BodyLarge)
+                }
+                monthTitle.setTextAppearance(R.style.TextAppearance_Material3_HeadlineSmall)
+            }
+            else -> return
+        }
     }
 
     // Dynamically set the first day of the week
@@ -364,6 +411,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
             if (cell.background != null) {
                 cell.background.alpha = 0
                 cell.background = null
+                cell.setOnClickListener(null)
             }
             cell.setTextColor(getThemeColor(R.attr.colorOnBackground, context))
             cell.foreground = null

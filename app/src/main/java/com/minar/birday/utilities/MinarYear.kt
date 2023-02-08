@@ -19,6 +19,7 @@ class MinarYear(context: Context, attrs: AttributeSet) : LinearLayout(context, a
     private var sundayFirst: Boolean
     private var showSnackBars: Boolean
     private var showAdvancedInfo: Boolean
+    private var appearance: Int
 
     private var year: Int = LocalDate.now().year
     private lateinit var monthList: MutableList<MinarMonth>
@@ -33,6 +34,7 @@ class MinarYear(context: Context, attrs: AttributeSet) : LinearLayout(context, a
                 sundayFirst = getBoolean(R.styleable.MinarYear_sundayAsFirstDay, false)
                 showSnackBars = getBoolean(R.styleable.MinarYear_showInfoSnackBars, true)
                 showAdvancedInfo = getBoolean(R.styleable.MinarYear_showAdvancedInfo, false)
+                appearance = getInteger(R.styleable.MinarYear_appearance, 0)
             } finally {
                 recycle()
             }
@@ -80,6 +82,12 @@ class MinarYear(context: Context, attrs: AttributeSet) : LinearLayout(context, a
             }
         }
 
+        // Set the appearance (0 small default, 1 medium, 2 large)
+        when (appearance) {
+            0 -> return
+            1 -> setAppearance(1)
+            2 -> setAppearance(2)
+        }
     }
 
     // Set a specific year for the overview screen
@@ -161,5 +169,17 @@ class MinarYear(context: Context, attrs: AttributeSet) : LinearLayout(context, a
     // Enable additional snack bars
     fun setAdvancedInfoEnabled(enabled: Boolean) {
         showAdvancedInfo = enabled
+    }
+
+    // Set the appearance of the entire year
+    fun setAppearance(appearance: Int) {
+        if (appearance > 2 || appearance < 0) {
+            this.appearance += 1
+            if (this.appearance == 3) this.appearance = 0
+        } else
+            this.appearance = appearance
+        for (month in monthList) {
+            month.setAppearance(this.appearance)
+        }
     }
 }

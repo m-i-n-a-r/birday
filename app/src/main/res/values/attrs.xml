@@ -3,6 +3,11 @@
     <attr name="sundayAsFirstDay" format="boolean" />
     <attr name="hideWeekDays" format="boolean" />
     <attr name="showInfoSnackBars" format="boolean" />
+    <attr name="appearance" format="enum">
+        <enum name="small" value="0" />
+        <enum name="medium" value="1" />
+        <enum name="large" value="2" />
+    </attr>
 
     <declare-styleable name="AppWidgetAttrs">
         <attr name="appWidgetPadding" format="dimension" />
@@ -28,6 +33,7 @@
             <enum name="december" value="11" />
         </attr>
         <attr name="showInfoSnackBars" />
+        <attr name="appearance" />
     </declare-styleable>
 
     <declare-styleable name="MinarYear">
@@ -35,5 +41,6 @@
         <attr name="hideWeekDays" />
         <attr name="showInfoSnackBars" />
         <attr name="showAdvancedInfo" format="boolean" />
+        <attr name="appearance" />
     </declare-styleable>
 </resources>
