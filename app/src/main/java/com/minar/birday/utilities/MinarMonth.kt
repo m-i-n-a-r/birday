@@ -306,9 +306,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
                     if (it.isLowerCase()) it.titlecase(Locale.getDefault())
                     else it.toString()
                 }
-        if (dateWithChosenMonth.month == LocalDate.now().month && dateWithChosenMonth.year == LocalDate.now().year) {
-            monthTitle.setTextColor(getThemeColor(R.attr.colorTertiary, context))
-        }
+
 
         if (!sundayFirst)
         // Case 1: monday is the first day of the week
@@ -348,10 +346,12 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
             }
         }
 
-        // Set the appearance (0 small default, 1 medium, 2 large)
+        // Set the appearance (0 small default, 1 medium, 2 large, 3 xlarge)
         when (appearance) {
+            0 -> colorize()
             1 -> setAppearance(1)
             2 -> setAppearance(2)
+            3 -> setAppearance(3)
         }
     }
 
@@ -361,6 +361,8 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
             0 -> {
                 for (cell in cellsList) {
                     cell.setTextAppearance(R.style.TextAppearance_Material3_LabelMedium)
+                    cell.setPadding(3, 3, 3, 3)
+                    cell.typeface = Typeface.MONOSPACE
                 }
                 for (day in weekDaysList) {
                     day.setTextAppearance(R.style.TextAppearance_Material3_LabelMedium)
@@ -370,6 +372,8 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
             1 -> {
                 for (cell in cellsList) {
                     cell.setTextAppearance(R.style.TextAppearance_Material3_BodyMedium)
+                    cell.setPadding(8, 8, 8, 8)
+                    cell.typeface = Typeface.MONOSPACE
                 }
                 for (day in weekDaysList) {
                     day.setTextAppearance(R.style.TextAppearance_Material3_BodyMedium)
@@ -379,14 +383,28 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
             2 -> {
                 for (cell in cellsList) {
                     cell.setTextAppearance(R.style.TextAppearance_Material3_BodyLarge)
+                    cell.setPadding(12, 12, 12, 12)
+                    cell.typeface = Typeface.MONOSPACE
                 }
                 for (day in weekDaysList) {
                     day.setTextAppearance(R.style.TextAppearance_Material3_BodyLarge)
                 }
                 monthTitle.setTextAppearance(R.style.TextAppearance_Material3_HeadlineSmall)
             }
+            3 -> {
+                for (cell in cellsList) {
+                    cell.setTextAppearance(R.style.TextAppearance_Material3_HeadlineMedium)
+                    cell.setPadding(16, 16, 16, 16)
+                    cell.typeface = Typeface.MONOSPACE
+                }
+                for (day in weekDaysList) {
+                    day.setTextAppearance(R.style.TextAppearance_Material3_HeadlineMedium)
+                }
+                monthTitle.setTextAppearance(R.style.TextAppearance_Material3_HeadlineLarge)
+            }
             else -> return
         }
+        colorize()
     }
 
     // Dynamically set the first day of the week
@@ -416,5 +434,13 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
             cell.setTextColor(getThemeColor(R.attr.colorOnBackground, context))
             cell.foreground = null
         }
+    }
+
+    // Color some elements in the month
+    private fun colorize() {
+        if (dateWithChosenMonth.month == LocalDate.now().month && dateWithChosenMonth.year == LocalDate.now().year) {
+            monthTitle.setTextColor(getThemeColor(R.attr.colorTertiary, context))
+        } else monthTitle.setTextColor(getThemeColor(R.attr.colorSecondary, context))
+        for (weekDay in weekDaysList) weekDay.alpha = .85f
     }
 }

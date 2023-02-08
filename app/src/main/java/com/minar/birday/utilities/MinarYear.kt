@@ -82,11 +82,12 @@ class MinarYear(context: Context, attrs: AttributeSet) : LinearLayout(context, a
             }
         }
 
-        // Set the appearance (0 small default, 1 medium, 2 large)
+        // Set the appearance (0 small default, 1 medium, 2 large, 3 xlarge)
         when (appearance) {
             0 -> return
             1 -> setAppearance(1)
             2 -> setAppearance(2)
+            3 -> setAppearance(3)
         }
     }
 
@@ -175,7 +176,7 @@ class MinarYear(context: Context, attrs: AttributeSet) : LinearLayout(context, a
     fun setAppearance(appearance: Int) {
         if (appearance > 2 || appearance < 0) {
             this.appearance += 1
-            if (this.appearance == 3) this.appearance = 0
+            if (this.appearance == 4) this.appearance = 0
         } else
             this.appearance = appearance
         for (month in monthList) {

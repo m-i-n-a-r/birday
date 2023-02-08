@@ -7,6 +7,7 @@
         <enum name="small" value="0" />
         <enum name="medium" value="1" />
         <enum name="large" value="2" />
+        <enum name="xlarge" value="3" />
     </attr>
 
     <declare-styleable name="AppWidgetAttrs">

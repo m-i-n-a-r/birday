@@ -92,6 +92,7 @@ class OverviewFragment : Fragment() {
                 advancedYearTitle.text = yearNumber.toString()
             }
             advancedYearTitle.setOnLongClickListener {
+                // Cycles between the appearances
                 minarYear.setAppearance(-1)
                 true
             }
