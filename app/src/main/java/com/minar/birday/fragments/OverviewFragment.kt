@@ -78,6 +78,7 @@ class OverviewFragment : Fragment() {
             val advancedYearTitle = binding.overviewAdvancedYear
             val nextButton = binding.overviewAdvancedNext
             val prevButton = binding.overviewAdvancedPrevious
+            val appearance = sharedPrefs.getInt("overview_scale", 0)
             advancedYearTitle.visibility = View.VISIBLE
             advancedYearTitle.text = yearNumber.toString()
             nextButton.visibility = View.VISIBLE
@@ -85,6 +86,7 @@ class OverviewFragment : Fragment() {
             nextButton.contentDescription = (yearNumber + 1).toString()
             prevButton.contentDescription = (yearNumber - 1).toString()
             minarYear.setAdvancedInfoEnabled(true)
+            minarYear.setAppearance(appearance)
             advancedYearTitle.setOnClickListener {
                 yearNumber = LocalDate.now().year
                 act.vibrate()
@@ -93,7 +95,8 @@ class OverviewFragment : Fragment() {
             }
             advancedYearTitle.setOnLongClickListener {
                 // Cycles between the appearances
-                minarYear.setAppearance(-1)
+                val updatedAppearance = minarYear.setAppearance(-1)
+                sharedPrefs.edit().putInt("overview_scale", updatedAppearance).apply()
                 true
             }
             nextButton.setOnClickListener {

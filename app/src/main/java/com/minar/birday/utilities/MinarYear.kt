@@ -172,9 +172,9 @@ class MinarYear(context: Context, attrs: AttributeSet) : LinearLayout(context, a
         showAdvancedInfo = enabled
     }
 
-    // Set the appearance of the entire year
-    fun setAppearance(appearance: Int) {
-        if (appearance > 2 || appearance < 0) {
+    // Set the appearance of the entire year, returns the current appearance
+    fun setAppearance(appearance: Int): Int {
+        if (appearance > 3 || appearance < 0) {
             this.appearance += 1
             if (this.appearance == 4) this.appearance = 0
         } else
@@ -182,5 +182,6 @@ class MinarYear(context: Context, attrs: AttributeSet) : LinearLayout(context, a
         for (month in monthList) {
             month.setAppearance(this.appearance)
         }
+        return this.appearance
     }
 }
