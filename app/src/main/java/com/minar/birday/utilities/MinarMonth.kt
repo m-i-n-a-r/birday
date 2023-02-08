@@ -79,21 +79,30 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
             } catch (_: Exception) {
             }
         }
-        // Hide unnecessary cells
+        // Hide unnecessary cells, also resetting the text to avoid false positive when highlighting
         if (min != 0) for (i in 0 until min) {
             cellsList[i].visibility = View.INVISIBLE
+            cellsList[i].text = ""
         }
         when (dateWithChosenMonth.month) {
             Month.NOVEMBER, Month.APRIL, Month.JUNE, Month.SEPTEMBER -> {
-                for (i in (30 + min) until cellsList.size) cellsList[i].visibility = View.INVISIBLE
+                for (i in (30 + min) until cellsList.size) {
+                    cellsList[i].visibility = View.INVISIBLE
+                    cellsList[i].text = ""
+                }
             }
             Month.FEBRUARY -> {
                 val leapIndex = if (dateWithChosenMonth.isLeapYear) 29 else 28
-                for (i in (leapIndex + min) until cellsList.size) cellsList[i].visibility =
-                    View.INVISIBLE
+                for (i in (leapIndex + min) until cellsList.size) {
+                    cellsList[i].visibility = View.INVISIBLE
+                    cellsList[i].text = ""
+                }
             }
             else -> {
-                for (i in (31 + min) until cellsList.size) cellsList[i].visibility = View.INVISIBLE
+                for (i in (31 + min) until cellsList.size) {
+                    cellsList[i].visibility = View.INVISIBLE
+                    cellsList[i].text = ""
+                }
             }
         }
     }
