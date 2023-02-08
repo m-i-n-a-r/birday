@@ -126,7 +126,8 @@ class MinarYear(context: Context, attrs: AttributeSet) : LinearLayout(context, a
                             dayEvents,
                             false,
                             context,
-                            false
+                            false,
+                            true
                         ) else ""
                     )
             }

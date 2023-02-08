@@ -116,13 +116,16 @@ fun formatEventList(
     events: List<EventResult>,
     surnameFirst: Boolean,
     context: Context,
-    showSurnames: Boolean = true
+    showSurnames: Boolean = true,
+    inCurrentYear: Boolean = false
 ): String {
     var formattedEventList = ""
     if (events.isEmpty()) formattedEventList = context.getString(R.string.no_next_event)
     else events.forEach {
         // Years. They're not used in the string if the year doesn't matter
-        val years = getNextYears(it)
+        val years = if (inCurrentYear && it.originalDate.withYear(LocalDate.now().year)
+                .isBefore(LocalDate.now())
+        ) (getNextYears(it) - 1).coerceAtLeast(0) else getNextYears(it)
         // Only the data of the first 3 events are displayed
         if (events.indexOf(it) in 0..2) {
             // If the event is not the first, add an extra comma
