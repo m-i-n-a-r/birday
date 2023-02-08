@@ -171,7 +171,7 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                 if (contactInfo.any { it.id == id }) continue
 
                 val prefix = cursor.getStringOrNull(prefixValue) ?: ""
-                val firstName = cursor.getString(firstNameValue)
+                val firstName = cursor.getStringOrNull(firstNameValue) ?: "??"
                 val middleName = cursor.getStringOrNull(middleNameValue) ?: ""
                 val lastName = cursor.getStringOrNull(lastNameValue) ?: ""
                 val suffix = cursor.getStringOrNull(suffixValue) ?: ""
