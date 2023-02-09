@@ -170,13 +170,15 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                 val id = cursor.getString(idValue)
                 if (contactInfo.any { it.id == id }) continue
 
+                val unknownString = context.getString(R.string.unknown)
                 val prefix = cursor.getStringOrNull(prefixValue) ?: ""
-                val firstName = cursor.getStringOrNull(firstNameValue) ?: "??"
+                var firstName = cursor.getStringOrNull(firstNameValue) ?: unknownString
                 val middleName = cursor.getStringOrNull(middleNameValue) ?: ""
                 val lastName = cursor.getStringOrNull(lastNameValue) ?: ""
                 val suffix = cursor.getStringOrNull(suffixValue) ?: ""
 
                 // The format at this time is first name, last name (+ extra stuff)
+                if (firstName.isBlank()) firstName = unknownString
                 val birdayFirstName = "$prefix $firstName $middleName".replace(',', ' ').trim()
                 val birdayLastName = "$lastName $suffix".replace(',', ' ').trim()
                 val birdayName =
