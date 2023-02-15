@@ -143,9 +143,8 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                 ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME,
                 ContactsContract.CommonDataKinds.StructuredName.SUFFIX
             ),
-            ContactsContract.Data.MIMETYPE + " = ? AND " +
-                    ContactsContract.Data.IN_VISIBLE_GROUP + " = ?",
-            arrayOf(ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE, "1"),
+            ContactsContract.Data.MIMETYPE + " = ?",
+            arrayOf(ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE),
             null
         )
         if (cursor != null && cursor.count > 0) {
@@ -257,6 +256,7 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                 }
             }
         }
+        // If the first query didn't succeed, another import strategy could be used
         cursor?.close()
         return contactInfo
     }
