@@ -1,0 +1,6 @@
+- Other options and preview for the minimal widget
+- Advanced overview mode
+- UI Improvements
+- New list animations and transitions
+- Some fixes, including a better contacts import
+- Many translations updated
