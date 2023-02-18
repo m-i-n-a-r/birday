@@ -1,120 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_welcome">Benvingut a Birday</string>
-    <string name="app_name_extended">Birday - Gestor d\'esdeveniments</string>
-    <string name="leave_review_title">Ressenya Birday</string>
-    <string name="leave_review_subtitle">Deixa una ressenya per ajudar-me amb l\'aplicació. Tingues en compte que, a banda de les donacions, aquesta aplicació és totalment gratuïta i sense anuncis!</string>
-    <string name="yes_review">Ressenya!</string>
-    <string name="later">Més tard, ho prometo</string>
-    <string name="no_thanks">De cap manera!</string>
-    <string name="title_home">Inici</string>
-    <string name="title_favorites">Preferits</string>
-    <string name="title_settings">Paràmetres </string>
-    <string name="no_events">Sense esdeveniments! Comença a afegir-ne un amb el botó següent!</string>
-    <string name="no_favorites">Sense preferits! Prem l\'estrella per desar un esdeveniment als teus preferits!</string>
-    <string name="add_favorite">Afegir als preferits</string>
-    <string name="stats">Estadístiques</string>
-    <string name="no_stats">No hi ha estadístiques per mostrar!</string>
-    <string name="stats_summary">Resum d\'estadístiques</string>
-    <string name="no_stats_description">No tens prou esdeveniments per generar estadístiques. Afegeix-ne alguns i torna més tard!</string>
+    <string name="app_welcome">Birdayへようこそ</string>
+    <string name="app_name_extended">Birday - イベントマネージャー</string>
+    <string name="leave_review_title">Birdayをレビュー</string>
+    <string name="leave_review_subtitle">アプリで私を助けるためにレビューを残してください。 寄付は別として、このアプリは完全に無料で広告もありません！</string>
+    <string name="yes_review">レビュー！</string>
+    <string name="later">後で約束する</string>
+    <string name="no_thanks">とんでもない!</string>
+    <string name="title_home">ホーム</string>
+    <string name="title_favorites">お気に入り</string>
+    <string name="title_settings">設定</string>
+    <string name="no_events">イベントはありません！下のボタンを使用して追加してください。</string>
+    <string name="no_favorites">イベントがありません！下のボタンを使用して追加します！</string>
+    <string name="add_favorite">お気に入りに追加</string>
+    <string name="stats">統計</string>
+    <string name="no_stats">表示する統計がありません！</string>
+    <string name="stats_summary">統計の概要</string>
+    <string name="no_stats_description">You don\'t have enough events to generate stats. Add some and come back later!</string>
     <plurals name="stats_total">
-        <item quantity="one">Birday t\'ajuda a recordar un total de %d esdeveniment</item>
-        <item quantity="other">Birday t\'ajuda a recordar un total de %d esdeveniments</item>
+        <item quantity="other">Birday is helping you to remember a total of %d events</item>
     </plurals>
-    <string name="next_event">Pròxim esdeveniment</string>
-    <string name="no_next_event">No hi ha esdeveniments per mostrar!</string>
-    <string name="no_next_event_description">Encara no has introduït ni importat cap esdeveniment. Afegeix-ne un i deixa que Birday t\'ajudi!</string>
-    <string name="next_age_years">Anys</string>
-    <string name="event_others">i altres</string>
+    <string name="next_event">Next event</string>
+    <string name="no_next_event">No events to show!</string>
+    <string name="no_next_event_description">You haven\'t entered or imported an event yet. Add one and let Birday help you!</string>
+    <string name="next_age_years">Years</string>
+    <string name="event_others">and others</string>
     <plurals name="days_left">
-        <item quantity="one">Falta %d dia</item>
-        <item quantity="other">Falten %d dies</item>
+        <item quantity="other">%d days left</item>
     </plurals>
     <!-- Settings -->
-    <string name="customization">Personalització</string>
-    <string name="app_behavior">Comportament de l\'aplicació</string>
-    <string name="additional_notification_name">Notificació addicional</string>
-    <string name="additional_notification_description">Enviar una notificació addicional dies abans de l\'esdeveniment. %s</string>
-    <string name="no_additional_notification">Sense notificació addicional</string>
-    <string name="one_day_before">Un dia abans</string>
-    <string name="two_days_before">Dos dies abans</string>
-    <string name="three_days_before">Tres dies abans</string>
-    <string name="four_days_before">Quatre dies abans</string>
-    <string name="five_days_before">Cinc dies abans</string>
-    <string name="six_days_before">Sis dies abans</string>
-    <string name="seven_days_before">Set dies abans</string>
+    <string name="customization">Customization</string>
+    <string name="app_behavior">App behavior</string>
+    <string name="additional_notification_name">Additional notification</string>
+    <string name="additional_notification_description">Send an additional notification days before the event. %s</string>
+    <string name="no_additional_notification">No additional notification</string>
+    <string name="one_day_before">One day before</string>
+    <string name="two_days_before">Two days before</string>
+    <string name="three_days_before">Three days before</string>
+    <string name="four_days_before">Four days before</string>
+    <string name="five_days_before">Five days before</string>
+    <string name="six_days_before">Six days before</string>
+    <string name="seven_days_before">Seven days before</string>
     <string name="ten_days_before">Ten days before</string>
     <string name="fourteen_days_before">Fourteen days before</string>
     <string name="twentyone_days_before">Twentyone days before</string>
-    <string name="vibration_name">Vibració</string>
-    <string name="vibration_description_on">Vibrar quan es prem un botó</string>
-    <string name="vibration_description_off">No vibrar quan es prem un botó</string>
-    <string name="date_format_name">Format de data</string>
-    <string name="notification_hour_name">Hora de notificació</string>
-    <string name="notification_hour_description">%s \n\nTingues en compte que la notificació pot no funcionar quan el sistema elimina l\'aplicació en alguns dispositius Huawei, Xiaomi i OnePlus. Consulta dontkillmyapp.com per obtenir més informació</string>
-    <string name="accent_description">Canviar el color d\'accent predeterminat</string>
-    <string name="accent_name">Color d\'accentuació</string>
-    <string name="theme_description">Utilitzar un tema d\'aplicació fosc, clar o automàtic</string>
-    <string name="theme_name">Tema de l\'aplicació</string>
+    <string name="vibration_name">Vibration</string>
+    <string name="vibration_description_on">Vibrate when a button is pressed</string>
+    <string name="vibration_description_off">No vibrations when a button is pressed</string>
+    <string name="date_format_name">Date format</string>
+    <string name="notification_hour_name">Notification hour</string>
+    <string name="notification_hour_description">%s \n\nPlease note that the notification might not work when the app is killed by the system in some Huawei, Xiaomi and OnePlus devices. Refer to dontkillmyapp.com for more information</string>
+    <string name="accent_description">Change the default accent color</string>
+    <string name="accent_name">Accent color</string>
+    <string name="theme_description">Use a dark, light or automatic app theme</string>
+    <string name="theme_name">App theme</string>
     <!-- Untranslated for now -->
     <string name="aqua">Aqua</string>
-    <string name="brown">Marró</string>
-    <string name="blue">Blau</string>
-    <string name="green">Verd</string>
-    <string name="orange">Taronja</string>
-    <string name="yellow">Groc</string>
+    <string name="brown">Brown</string>
+    <string name="blue">Blue</string>
+    <string name="green">Green</string>
+    <string name="orange">Orange</string>
+    <string name="yellow">Yellow</string>
     <string name="teal">Teal</string>
-    <string name="violet">Violeta</string>
-    <string name="pink">Rosa</string>
-    <string name="light_blue">Blau clar</string>
-    <string name="red">Vermell</string>
-    <string name="lime">Llima</string>
-    <string name="crimson">Carmesí</string>
-    <string name="system_theme">Opció predeterminada del sistema</string>
-    <string name="dark_theme">Fosc</string>
-    <string name="light_theme">Clar</string>
-    <string name="shimmer_name">Efecte brillantor</string>
-    <string name="shimmer_description_on">Una animació brillant aquí i allà</string>
-    <string name="shimmer_description_off">Sense efectes gràfics addicionals</string>
-    <string name="import_export">Importar i Exportar</string>
-    <string name="import_contacts_title">Importar esdeveniments dels contactes</string>
-    <string name="import_contacts_description">Assegura\'t de modificar els esdeveniments amb anys que falten per tenir sempre estadístiques precises!</string>
-    <string name="import_success">La importació s\'ha completat correctament!</string>
-    <string name="import_nothing_found">No s\'ha trobat cap esdeveniment!</string>
-    <string name="import_failed">Alguna cosa ha anat malament!</string>
-    <string name="missing_permission_contacts">S\'ha denegat el permís de contacte. Torna-ho a provar o activa el permís manualment,
-    o la importació de contactes no funcionarà!</string>
-    <string name="missing_permission_contacts_forever">Birday no pot demanar permís per importar contactes,
-    ja que has marcat \"mai més preguntar\". Activa-ho manualment!</string>
-    <string name="birday_import_title">Importa una còpia de seguretat de Birday</string>
-    <string name="birday_import_description">Tria una còpia de seguretat de Birday vàlida per restaurar els teus esdeveniments. Totes les dades existents
-    se sobreescriuran!</string>
-    <string name="birday_export_title">Exportar i compartir esdeveniments</string>
-    <string name="birday_export_description">Exporta els esdeveniments disponibles a una còpia de seguretat i comparteix-la si vols. L\'arxiu està dins
+    <string name="violet">Violet</string>
+    <string name="pink">Pink</string>
+    <string name="light_blue">Light Blue</string>
+    <string name="red">Red</string>
+    <string name="lime">Lime</string>
+    <string name="crimson">Crimson</string>
+    <string name="system_theme">System default</string>
+    <string name="dark_theme">Dark</string>
+    <string name="light_theme">Light</string>
+    <string name="shimmer_name">Shimmer effect</string>
+    <string name="shimmer_description_on">A shiny animation here and there</string>
+    <string name="shimmer_description_off">No additional graphic effects</string>
+    <string name="import_export">Import and Export</string>
+    <string name="import_contacts_title">Import events from contacts</string>
+    <string name="import_contacts_description">Make sure to modify the events with missing years to always have accurate statistics!</string>
+    <string name="import_success">Import completed successfully!</string>
+    <string name="import_nothing_found">No event found!</string>
+    <string name="import_failed">Something went wrong!</string>
+    <string name="missing_permission_contacts">The contact permission was denied. Try again or activate the permission manually,
+    or the contacts import won\'t work!</string>
+    <string name="missing_permission_contacts_forever">Birday can\'t ask for permission to import contacts,
+    since you checked \"never ask again\". Enable it manually!</string>
+    <string name="birday_import_title">Import a Birday backup</string>
+    <string name="birday_import_description">Choose a valid Birday backup to restore your events. All existing data
+    will be overwritten!</string>
+    <string name="birday_export_title">Export and share events</string>
+    <string name="birday_export_description">Export the available events to a backup, and share them if you want. The file is in
     Android/data/com.minar.birday/files</string>
-    <string name="birday_import_success">Importació completada!</string>
-    <string name="birday_import_failure">La importació ha fallat. Has escollit el fitxer correctament?</string>
-    <string name="birday_import_invalid_file">La importació ha fallat. El fitxer escollit no és una còpia de seguretat de Birday!</string>
-    <string name="birday_export_success">Exportació completada!</string>
-    <string name="birday_export_failure">Ha fallat l\'exportació. Òndia!</string>
-    <string name="birday_export_nothing_found">Res a exportar!</string>
-    <string name="surname_first">Primer cognom</string>
-    <string name="surname_first_description_on">Mostrar el cognom abans del nom</string>
-    <string name="surname_first_description_off">Mostrar el nom abans del cognom</string>
-    <string name="hide_images">Amagar imatges</string>
-    <string name="hide_images_description_on">Imatges d\'esdeveniments amagades</string>
-    <string name="hide_images_description_off">Imatges d\'esdeveniments visibles</string>
-    <string name="notification_only_favorites">Unicament preferits</string>
-    <string name="notification_only_favorites_description_on">Enviar una notificació només per als esdeveniments preferits</string>
-    <string name="notification_only_favorites_description_off">Enviar una notificació per cada esdeveniment inserit</string>
+    <string name="birday_import_success">Import completed!</string>
+    <string name="birday_import_failure">Import failed. Did you choose the file correctly?</string>
+    <string name="birday_import_invalid_file">Import failed. The chosen file is not a Birday backup!</string>
+    <string name="birday_export_success">Export completed!</string>
+    <string name="birday_export_failure">Export failed. Whoopsie!</string>
+    <string name="birday_export_nothing_found">Nothing to export!</string>
+    <string name="surname_first">Surname first</string>
+    <string name="surname_first_description_on">Show the surname before the name</string>
+    <string name="surname_first_description_off">Show the name before the surname</string>
+    <string name="hide_images">Hide images</string>
+    <string name="hide_images_description_on">Event images hidden</string>
+    <string name="hide_images_description_off">Event images visible</string>
+    <string name="notification_only_favorites">Favorites only</string>
+    <string name="notification_only_favorites_description_on">Send a notification for favorite events only</string>
+    <string name="notification_only_favorites_description_off">Send a notification for every event inserted</string>
     <string name="additional_notification_only_favorites">Additional notification for favorites</string>
     <string name="additional_notification_only_favorites_description_on">Send the additional notification for favorite events only</string>
     <string name="additional_notification_only_favorites_description_off">Send the additional notification for every event inserted</string>
-    <string name="troubleshoot">Resolució de problemes i extra</string>
-    <string name="battery_optimization_title">Desactivar l\'optimització de la bateria</string>
-    <string name="battery_optimization_description">Obra la configuració per desactivar qualsevol optimització per a Birday. Útil si les notificacions no funcionen</string>
-    <string name="notification_sound_title">So de notificació</string>
-    <string name="notification_sound_description">Drecera a la configuració del so de notificació, si t\'agrada el so predeterminat dels ocells</string>
+    <string name="troubleshoot">Troubleshoot and extra</string>
+    <string name="battery_optimization_title">Disable battery optimization</string>
+    <string name="battery_optimization_description">Open the settings to disable any optimization for Birday. Useful if notifications aren\'t working</string>
+    <string name="notification_sound_title">Notification sound</string>
+    <string name="notification_sound_description">Shortcut to the notification sound settings, if you don\'t like the default bird sound</string>
     <string name="missing_permission_notifications">The notification permission was denied, and Birday can\'t send notifications! Activate the permission from settings.</string>
     <string name="missing_permission_notifications_forever">The notification permission was denied and can\'t be asked again, so Birday can\'t send notifications! Activate the permission manually, from settings.</string>
     <string name="missing_permission_calendar">The calendar permission was denied, and Birday can\'t import from calendar! Activate the permission from settings.</string>
@@ -158,7 +156,7 @@
     <!-- Quick apps -->
     <string name="event_apps">Quick apps</string>
     <string name="event_apps_description">Apps to wish all the best rapidly!</string>
-    <string name="text_message">Mensaje de texto</string>
+    <string name="text_message">Text message</string>
     <string name="dialer">Dialer</string>
     <string name="wishes_birthday">Happy birthday!</string>
     <string name="no_default_dialer">No default dialer app found!</string>
@@ -178,7 +176,6 @@
     <string name="random_day_of_week">%1$s was born on %2$s</string>
     <string name="most_common_day_of_week">The most common day of the week of birth is %s</string>
     <plurals name="leap_year_total">
-        <item quantity="one">The number of persons born in a leap year is %d</item>
         <item quantity="other">The number of persons born in a leap year is %d</item>
     </plurals>
     <string name="random_chinese_year">Chinese zodiac sign of %1$s: %2$s</string>
@@ -208,20 +205,17 @@
     <string name="zodiac_scorpio">scorpio</string>
     <!-- Common words -->
     <plurals name="months">
-        <item quantity="one">%d month</item>
         <item quantity="other">%d months</item>
     </plurals>
     <string name="today">Today!</string>
     <string name="yesterday">Yesterday!</string>
     <string name="tomorrow">Tomorrow!</string>
     <plurals name="years">
-        <item quantity="one">%d year</item>
         <item quantity="other">%d years</item>
     </plurals>
     <string name="born_in">born in</string>
     <string name="and">and</string>
     <plurals name="event">
-        <item quantity="one">event: %s</item>
         <item quantity="other">events: %s</item>
     </plurals>
     <!-- Notifications -->
@@ -248,9 +242,9 @@
     <!-- Widget -->
     <string name="appwidget_upcoming">Upcoming events</string>
     <string name="add_widget">Birday - Upcoming</string>
-    <string name="dark_widget_name">Giny fosc</string>
-    <string name="dark_widget_description_on">El giny utilitza el tema fosc</string>
-    <string name="dark_widget_description_off">El giny utilitza el tema clar</string>
+    <string name="dark_widget_name">Dark widget</string>
+    <string name="dark_widget_description_on">The widget uses the dark theme</string>
+    <string name="dark_widget_description_off">The widget uses the light theme</string>
     <string name="widget_configuration_title">Widget configuration</string>
     <string name="widget_configuration_description">Configure the widget to match your style</string>
     <string name="widget_background_title">Background</string>
@@ -284,7 +278,7 @@
     <string name="hide_on_scroll_description_on">Hide the bottom navbar when you scroll</string>
     <string name="hide_on_scroll_description_off">The bottom navbar will always be visible</string>
     <string name="angry_bird_title">Angry Bird mode</string>
-    <string name="angry_bird_description_on">Notificacions persistents, textos més breus i altres ajustaments relacionats amb les notificacions</string>
+    <string name="angry_bird_description_on">Persistent notifications, shorter texts and other notification related tweaks</string>
     <string name="angry_bird_description_off">Notifications will behave normally</string>
     <string name="disable_astrology_title">Disable astrology</string>
     <string name="disable_astrology_description_on">Zodiac signs hidden from details and stats</string>
@@ -305,7 +299,7 @@
     <string name="delete_search_description_off">It won\'t be possible to delete multiple events at once</string>
     <string name="delete_search_description_on">Press the trash button when you search one or more events to quickly delete them all from Birday. Use with caution!</string>
     <string name="delete_search_confirm">This will delete all the results of this search. You can undo the process shortly after clicking OK if you change your mind!</string>
-    <string name="advanced_overview_title">Advanced overview</string>
-    <string name="advanced_overview_description_off">The overview screen will only display basic information</string>
-    <string name="advanced_overview_description_on">The overview screen will show other years and detailed information</string>
+    <string name="advanced_overview_title">高度な概要</string>
+    <string name="advanced_overview_description_off">概要画面には基本情報のみが表示されます</string>
+    <string name="advanced_overview_description_on">概要画面に他の年と詳細情報が表示されます</string>
 </resources>

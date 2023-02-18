@@ -24,6 +24,15 @@
         android:title="@string/hide_on_scroll_title"
         app:iconSpaceReserved="false" />
 
+    <!-- Advanced yearly calendar mode -->
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="advanced_overview"
+        android:summaryOff="@string/advanced_overview_description_off"
+        android:summaryOn="@string/advanced_overview_description_on"
+        android:title="@string/advanced_overview_title"
+        app:iconSpaceReserved="false" />
+
     <!-- Quickly delete searched events -->
     <SwitchPreferenceCompat
         android:defaultValue="false"

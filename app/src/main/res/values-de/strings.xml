@@ -248,6 +248,8 @@
     <string name="compact_widget_description">Optimieren Sie das Layout als extrem kompakt</string>
     <string name="align_start_widget_title">Start ausrichten</string>
     <string name="align_start_widget_description">Richten Sie den Widget-Inhalt am Anfang aus (rechts oder links, je nach Gebietsschema)</string>
+    <string name="hide_far_widget_title">Widget für entfernte Ereignisse ausblenden</string>
+    <string name="hide_far_widget_description">Widget ausblenden, wenn die nächsten Ereignisse nach der zusätzlichen Benachrichtigungsfrist sind (zB.: Benachrichtigung 7 Tage zuvor das nächste Ereignis ist in 10 Tagen -&gt; das Widget ist versteckt)</string>
     <!-- Search -->
     <string name="search_event">Suchen…</string>
     <string name="search_no_result_title">Keine Ergebnisse gefunden</string>
@@ -292,4 +294,7 @@
     <string name="delete_search_description_off">Es ist nicht möglich, mehrere Ereignisse gleichzeitig zu löschen</string>
     <string name="delete_search_description_on">Drücken Sie den Papierkorb-Button, wenn Sie ein oder mehrere Ereignisse suchen, um sie schnell alle vom Geburtstag zu löschen. Mit Vorsicht verwenden!</string>
     <string name="delete_search_confirm">Dies löscht alle Ergebnisse dieser Suche. Sie können den Vorgang kurz nach dem Klicken auf OK rückgängig machen, wenn Sie Ihre Meinung ändern!</string>
+    <string name="advanced_overview_title">Erweiterte Übersicht</string>
+    <string name="advanced_overview_description_off">Der Übersichtsbildschirm zeigt nur Basisinformationen an</string>
+    <string name="advanced_overview_description_on">Der Übersichtsbildschirm zeigt weitere Jahre und detaillierte Informationen</string>
 </resources>
