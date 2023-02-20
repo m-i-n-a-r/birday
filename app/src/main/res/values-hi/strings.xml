@@ -247,9 +247,9 @@
     <string name="compact_widget_title">सुगठित अभिन्यास</string>
     <string name="compact_widget_description">अभिन्यास को अति-सुगठित करने हेतु अनुकूलित करें</string>
     <string name="align_start_widget_title">आरंभ में संरेखित करें</string>
-    <string name="align_start_widget_description">Align the widget content to the start (right or left depending on your locale)</string>
-    <string name="hide_far_widget_title">Hide widget for far events</string>
-    <string name="hide_far_widget_description">Hide the widget if the next events are after the additional notification period (eg: notification 7 days before, the next event is in 10 days -&gt; the widget is hidden)</string>
+    <string name="align_start_widget_description">विजेट विषय वस्तु को शुरूआत से संरेखित करें (स्थानीय ढंग में बांय अथवा दांत)</string>
+    <string name="hide_far_widget_title">दूरस्थ कार्यक्रमों वाले विजेट छिपाऐं</string>
+    <string name="hide_far_widget_description">ऐसे विजेट छिपाऐं जिनका अगला कार्यक्रम उसकी अतिरिक्त अधिसूचना अवधि के बाद होगा (उदाहरणार्थ: अगला कार्यक्रम १० दिन बाद है - &gt;, अधिसूचना कार्यक्रम से ७ दिन पहले है, ऐसा विजेट छिपा दिया)</string>
     <!-- Search -->
     <string name="search_event">खोजें…</string>
     <string name="search_no_result_title">कोई परिणाम नहीं मिला</string>
@@ -261,8 +261,8 @@
     <string name="overview">अवलोकन</string>
     <string name="overview_description">सहेजे गए प्रत्येक ईवेंट का वार्षिक अवलोकन</string>
     <!-- Experimental preferences -->
-    <string name="experimental_settings_title">Experimental</string>
-    <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
+    <string name="experimental_settings_title">प्रयोगात्मक</string>
+    <string name="experimental_settings_description">कुछ सेटिंग्स और विशेषताएं प्रयोगात्मक अथवा त्रउटइबद्ध हैं। इन्का प्रयोग करने से यदि कोई हानि हुई तो उत्तरदायित्व स्वयं आपका होगा</string>
     <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
     <string name="check_github">Check Github</string>
     <string name="translate_app">Translate the app</string>
