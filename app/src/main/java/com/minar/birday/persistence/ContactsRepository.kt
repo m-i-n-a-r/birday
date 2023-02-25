@@ -50,9 +50,8 @@ class ContactsRepository {
                 ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME,
                 ContactsContract.CommonDataKinds.StructuredName.SUFFIX
             ),
-            ContactsContract.Data.MIMETYPE + " = ? AND " +
-                    ContactsContract.Data.IN_VISIBLE_GROUP + " = ?",
-            arrayOf(ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE, "1"),
+            ContactsContract.Data.MIMETYPE + " = ?",
+            arrayOf(ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE),
             null
         )
 
@@ -78,8 +77,9 @@ class ContactsRepository {
                 val id = cursor.getString(idValue)
                 if (idsSet.contains(id)) continue
 
+                val unknownString = "??"
                 val prefix = cursor.getStringOrNull(prefixValue) ?: ""
-                val firstName = cursor.getString(firstNameValue)
+                val firstName = cursor.getString(firstNameValue) ?: unknownString
                 val middleName = cursor.getStringOrNull(middleNameValue) ?: ""
                 val lastName = cursor.getStringOrNull(lastNameValue) ?: ""
                 val suffix = cursor.getStringOrNull(suffixValue) ?: ""

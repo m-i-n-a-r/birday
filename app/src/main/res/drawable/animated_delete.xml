@@ -11,11 +11,6 @@
                 android:name="path"
                 android:fillColor="?attr/colorTertiary"
                 android:pathData="M 12 2 C 17.53 2 22 6.47 22 12 C 22 17.53 17.53 22 12 22 C 6.47 22 2 17.53 2 12 C 2 6.47 6.47 2 12 2 M 17 7 L 14.5 7 L 13.5 6 L 10.5 6 L 9.5 7 L 7 7 L 7 9 L 17 9 L 17 7 M 9 18 L 15 18 C 15.265 18 15.52 17.895 15.707 17.707 C 15.895 17.52 16 17.265 16 17 L 16 10 L 8 10 L 8 17 C 8 17.265 8.105 17.52 8.293 17.707 C 8.48 17.895 8.735 18 9 18 Z" />
-            <path
-                android:name="path_1"
-                android:fillAlpha="0"
-                android:fillColor="?attr/colorTertiary"
-                android:pathData="M 17 13 L 7 13 L 7 11 L 17 11 M 12 2 C 9.349 2 6.804 3.054 4.929 4.929 C 3.054 6.804 2 9.349 2 12 C 2 14.651 3.054 17.196 4.929 19.071 C 6.804 20.946 9.349 22 12 22 C 13.755 22 15.48 21.538 17 20.66 C 18.52 19.783 19.783 18.52 20.66 17 C 21.538 15.48 22 13.755 22 12 C 22 10.245 21.538 8.52 20.66 7 C 19.783 5.48 18.52 4.217 17 3.34 C 15.48 2.462 13.755 2 12 2 Z" />
         </vector>
     </aapt:attr>
     <target android:name="path">
@@ -28,14 +23,6 @@
                     android:valueFrom="M 12 2 C 9.058 2 6.416 3.265 4.588 5.282 C 2.979 7.056 2 9.412 2 12 C 2 14.489 2.905 16.762 4.405 18.511 C 6.238 20.648 8.959 22 12 22 C 14.063 22 15.978 21.378 17.569 20.311 C 19.044 19.322 20.241 17.949 21.017 16.335 C 21.647 15.024 22 13.554 22 12 C 22 10.236 21.545 8.58 20.746 7.142 C 19.914 5.646 18.71 4.386 17.258 3.488 C 15.731 2.544 13.93 2 12 2 C 12 2 12 2 12 2 M 17 9 L 7 9 L 7 7 L 9.5 7 L 10.5 6 L 13.5 6 L 14.5 7 L 17 7 L 17 9 M 9 18 L 9 18 C 8.735 18 8.48 17.895 8.293 17.707 C 8.105 17.52 8 17.265 8 17 L 8 10 L 16 10 L 16 17 C 16 17.265 15.895 17.52 15.707 17.707 C 15.52 17.895 15.265 18 15 18 L 9 18"
                     android:valueTo="M 12 2 C 9.349 2 6.804 3.054 4.929 4.929 C 3.054 6.804 2 9.349 2 12 C 2 14.651 3.054 17.196 4.929 19.071 C 6.804 20.946 9.349 22 12 22 C 13.755 22 15.48 21.538 17 20.66 C 18.52 19.783 19.783 18.52 20.66 17 C 21.538 15.48 22 13.755 22 12 C 22 10.245 21.538 8.52 20.66 7 C 19.783 5.48 18.52 4.217 17 3.34 C 15.48 2.462 13.755 2 12 2 C 12 2 12 2 12 2 M 17 13 L 7 13 L 7 11 L 11.964 11 L 11.964 11 L 11.964 11 L 11.964 11 L 16.97 11 L 17 11 M 12 14 L 12 14 C 12 14 12 14 12 14 C 12 14 12 14 12 14 L 12 14 L 12 14 L 12 14 C 12 14 12 14 12 14 C 12 14 12 14 12 14 L 12 14"
                     android:valueType="pathType" />
-                <objectAnimator
-                    android:duration="1"
-                    android:interpolator="@android:interpolator/fast_out_slow_in"
-                    android:propertyName="fillAlpha"
-                    android:startOffset="1000"
-                    android:valueFrom="1"
-                    android:valueTo="0"
-                    android:valueType="floatType" />
                 <objectAnimator
                     android:duration="1000"
                     android:interpolator="@android:interpolator/fast_out_slow_in"
@@ -52,22 +39,8 @@
                     android:valueFrom="?attr/colorPrimary"
                     android:valueTo="?attr/colorTertiary"
                     android:valueType="colorType" />
-            </set>
-        </aapt:attr>
-    </target>
-    <target android:name="path_1">
-        <aapt:attr name="android:animation">
-            <set>
                 <objectAnimator
-                    android:duration="1"
-                    android:interpolator="@android:interpolator/fast_out_slow_in"
-                    android:propertyName="fillAlpha"
-                    android:startOffset="1000"
-                    android:valueFrom="0"
-                    android:valueTo="1"
-                    android:valueType="floatType" />
-                <objectAnimator
-                    android:duration="999"
+                    android:duration="1000"
                     android:interpolator="@android:interpolator/fast_out_slow_in"
                     android:propertyName="pathData"
                     android:startOffset="1001"

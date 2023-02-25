@@ -262,6 +262,8 @@
     <string name="compact_widget_description">Optimizujte izgled da bude vrlo kompaktan</string>
     <string name="align_start_widget_title">Izravnajte na početku</string>
     <string name="align_start_widget_description">Podesite sadržaj prečice na početak (desno ili levo u zavisnosti od vašeg prostora)</string>
+    <string name="hide_far_widget_title">Hide widget for far events</string>
+    <string name="hide_far_widget_description">Hide the widget if the next events are after the additional notification period (eg: notification 7 days before, the next event is in 10 days -&gt; the widget is hidden)</string>
     <!-- Search -->
     <string name="search_event">Pretražite…</string>
     <string name="search_no_result_title">Nema rezultata</string>
@@ -306,4 +308,7 @@
     <string name="delete_search_description_off">Nije moguće izbrisati više događaja odjednom</string>
     <string name="delete_search_description_on">Pritisnite dugme za smeće kada pretražujete jedan ili više događaja da biste ih sve brzo izbrisali sa aplikacije. Funkciju koristite sa oprezom!</string>
     <string name="delete_search_confirm">Rezultati ove pretrage biće izbrisani. Ako se predomislite, možete poništiti proces odmah nakon što kliknete na OK!</string>
+    <string name="advanced_overview_title">Advanced overview</string>
+    <string name="advanced_overview_description_off">The overview screen will only display basic information</string>
+    <string name="advanced_overview_description_on">The overview screen will show other years and detailed information</string>
 </resources>

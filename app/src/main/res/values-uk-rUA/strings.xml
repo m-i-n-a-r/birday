@@ -312,4 +312,7 @@
     <string name="delete_search_description_off">Неможливо видалити кілька подій одночасно</string>
     <string name="delete_search_description_on">Натисніть кнопку «Видалити», коли шукатимете одну або кілька подій, щоби швидко видалити їх з Birday! Користуйтесь з обережністю!</string>
     <string name="delete_search_confirm">Це видалить всі результати цього пошуку. Ви зможете швидко скасувати це після натискання ОК, якщо передумаєте!</string>
+    <string name="advanced_overview_title">Advanced overview</string>
+    <string name="advanced_overview_description_off">The overview screen will only display basic information</string>
+    <string name="advanced_overview_description_on">The overview screen will show other years and detailed information</string>
 </resources>

@@ -42,13 +42,13 @@ fun normalizeEvent(event: Event): Event {
     if (isUnknownType(event.type?.uppercase()))
         fixedType = EventCode.OTHER.name
 
-    // No restrictions on special characters for now
+    // No restrictions on special characters for now, notes length is hardcoded to avoid using ctx
     return Event(
         id = 0,
         name = event.name.substring(IntRange(0, 30.coerceAtMost(event.name.length) - 1)),
         surname = event.surname?.substring(IntRange(0, 30.coerceAtMost(event.surname.length) - 1)),
         favorite = false,
-        notes = event.notes?.substring(IntRange(0, 300.coerceAtMost(event.notes.length) - 1)),
+        notes = event.notes?.substring(IntRange(0, 500.coerceAtMost(event.notes.length) - 1)),
         originalDate = event.originalDate,
         yearMatter = event.yearMatter,
         type = fixedType
@@ -116,13 +116,16 @@ fun formatEventList(
     events: List<EventResult>,
     surnameFirst: Boolean,
     context: Context,
-    showSurnames: Boolean = true
+    showSurnames: Boolean = true,
+    inCurrentYear: Boolean = false
 ): String {
     var formattedEventList = ""
     if (events.isEmpty()) formattedEventList = context.getString(R.string.no_next_event)
     else events.forEach {
         // Years. They're not used in the string if the year doesn't matter
-        val years = getNextYears(it)
+        val years = if (inCurrentYear && it.originalDate.withYear(LocalDate.now().year)
+                .isBefore(LocalDate.now())
+        ) (getNextYears(it) - 1).coerceAtLeast(0) else getNextYears(it)
         // Only the data of the first 3 events are displayed
         if (events.indexOf(it) in 0..2) {
             // If the event is not the first, add an extra comma

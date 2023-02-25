@@ -28,9 +28,12 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
     private var hideWeekDays: Boolean
     private var sundayFirst: Boolean
     private var showSnackBars: Boolean
+    private var appearance = 0
 
-    private lateinit var dateWithChosenMonth: LocalDate
+    private var dateWithChosenMonth: LocalDate
     private lateinit var cellsList: MutableList<TextView>
+    private lateinit var weekDaysList: MutableList<TextView>
+    private lateinit var monthTitle: TextView
     private var binding: MinarMonthBinding
     private var eventCount = 0
 
@@ -43,11 +46,13 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
                 hideWeekDays = getBoolean(R.styleable.MinarMonth_hideWeekDays, false)
                 sundayFirst = getBoolean(R.styleable.MinarMonth_sundayAsFirstDay, false)
                 showSnackBars = getBoolean(R.styleable.MinarMonth_showInfoSnackBars, true)
+                appearance = getInteger(R.styleable.MinarMonth_appearance, 0)
             } finally {
                 recycle()
             }
         }
         binding = MinarMonthBinding.inflate(LayoutInflater.from(context), this, true)
+        dateWithChosenMonth = LocalDate.now().withMonth(month + 1).withDayOfMonth(1)
         initMonth()
     }
 
@@ -73,21 +78,30 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
             } catch (_: Exception) {
             }
         }
-        // Hide unnecessary cells
+        // Hide unnecessary cells, also resetting the text to avoid false positive when highlighting
         if (min != 0) for (i in 0 until min) {
             cellsList[i].visibility = View.INVISIBLE
+            cellsList[i].text = ""
         }
         when (dateWithChosenMonth.month) {
             Month.NOVEMBER, Month.APRIL, Month.JUNE, Month.SEPTEMBER -> {
-                for (i in (30 + min) until cellsList.size) cellsList[i].visibility = View.INVISIBLE
+                for (i in (30 + min) until cellsList.size) {
+                    cellsList[i].visibility = View.INVISIBLE
+                    cellsList[i].text = ""
+                }
             }
             Month.FEBRUARY -> {
                 val leapIndex = if (dateWithChosenMonth.isLeapYear) 29 else 28
-                for (i in (leapIndex + min) until cellsList.size) cellsList[i].visibility =
-                    View.INVISIBLE
+                for (i in (leapIndex + min) until cellsList.size) {
+                    cellsList[i].visibility = View.INVISIBLE
+                    cellsList[i].text = ""
+                }
             }
             else -> {
-                for (i in (31 + min) until cellsList.size) cellsList[i].visibility = View.INVISIBLE
+                for (i in (31 + min) until cellsList.size) {
+                    cellsList[i].visibility = View.INVISIBLE
+                    cellsList[i].text = ""
+                }
             }
         }
     }
@@ -101,6 +115,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         autoOpacity: Boolean = false,
         autoTextColor: Boolean = false,
         asForeground: Boolean = false,
+        snackbarText: String = ""
     ) {
         // Update the global event count
         eventCount += 1
@@ -108,6 +123,7 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         // The textview will be hidden if the day doesn't exist in the current month
         for (cell in cellsList) {
             if (cell.text.trim() == day.toString()) {
+                // Graphical stuff
                 if (drawable == null) {
                     cell.setTextColor(color)
                 } else {
@@ -139,6 +155,16 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
                             )
                         }
                     }
+                    // Display a snackbar on tap if the text exists
+                    if (snackbarText.isNotBlank()) {
+                        cell.setOnClickListener {
+                            (context as MainActivity).showSnackbar(snackbarText.replaceFirstChar {
+                                if (it.isLowerCase()) it.titlecase(
+                                    Locale.ROOT
+                                ) else it.toString()
+                            })
+                        }
+                    }
                 }
                 // The font will change, and monospace doesn't have a bold style
                 if (makeBold) {
@@ -159,6 +185,9 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         val weekDayFive = binding.weekDayFive
         val weekDaySix = binding.weekDaySix
         val weekDaySeven = binding.weekDaySeven
+        weekDaysList = mutableListOf(
+            weekDayOne, weekDayTwo, weekDayThree, weekDayFour, weekDayFive, weekDaySix, weekDaySeven
+        )
 
         // Month cells
         val cell1 = binding.monthCell1
@@ -277,18 +306,15 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
         }
 
         // Set the number and name (capitalized) for the month (from range 0-11 to 1-12)
-        dateWithChosenMonth = LocalDate.now().withMonth(month + 1).withDayOfMonth(1)
         val firstDayOfWeekForChosenMonth = dateWithChosenMonth.dayOfWeek
-        val monthTitle = binding.overviewMonthName
+        monthTitle = binding.overviewMonthName
         monthTitle.text =
             dateWithChosenMonth.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
                 .replaceFirstChar {
                     if (it.isLowerCase()) it.titlecase(Locale.getDefault())
                     else it.toString()
                 }
-        if (dateWithChosenMonth.month == LocalDate.now().month) {
-            monthTitle.setTextColor(getThemeColor(R.attr.colorTertiary, context))
-        }
+
 
         if (!sundayFirst)
         // Case 1: monday is the first day of the week
@@ -327,6 +353,66 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
                 (context as MainActivity).showSnackbar(content)
             }
         }
+
+        // Set the appearance (0 small default, 1 medium, 2 large, 3 xlarge)
+        when (appearance) {
+            0 -> colorize()
+            1 -> setAppearance(1)
+            2 -> setAppearance(2)
+            3 -> setAppearance(3)
+        }
+    }
+
+    // Set the information density for month
+    fun setAppearance(appearance: Int) {
+        when (appearance) {
+            0 -> {
+                for (cell in cellsList) {
+                    cell.setTextAppearance(R.style.TextAppearance_Material3_LabelMedium)
+                    cell.setPadding(3, 3, 3, 3)
+                    cell.typeface = Typeface.MONOSPACE
+                }
+                for (day in weekDaysList) {
+                    day.setTextAppearance(R.style.TextAppearance_Material3_LabelMedium)
+                }
+                monthTitle.setTextAppearance(R.style.TextAppearance_Material3_BodyMedium)
+            }
+            1 -> {
+                for (cell in cellsList) {
+                    cell.setTextAppearance(R.style.TextAppearance_Material3_BodyMedium)
+                    cell.setPadding(8, 8, 8, 8)
+                    cell.typeface = Typeface.MONOSPACE
+                }
+                for (day in weekDaysList) {
+                    day.setTextAppearance(R.style.TextAppearance_Material3_BodyMedium)
+                }
+                monthTitle.setTextAppearance(R.style.TextAppearance_Material3_BodyLarge)
+            }
+            2 -> {
+                for (cell in cellsList) {
+                    cell.setTextAppearance(R.style.TextAppearance_Material3_BodyLarge)
+                    cell.setPadding(12, 12, 12, 12)
+                    cell.typeface = Typeface.MONOSPACE
+                }
+                for (day in weekDaysList) {
+                    day.setTextAppearance(R.style.TextAppearance_Material3_BodyLarge)
+                }
+                monthTitle.setTextAppearance(R.style.TextAppearance_Material3_HeadlineSmall)
+            }
+            3 -> {
+                for (cell in cellsList) {
+                    cell.setTextAppearance(R.style.TextAppearance_Material3_HeadlineMedium)
+                    cell.setPadding(16, 16, 16, 16)
+                    cell.typeface = Typeface.MONOSPACE
+                }
+                for (day in weekDaysList) {
+                    day.setTextAppearance(R.style.TextAppearance_Material3_HeadlineMedium)
+                }
+                monthTitle.setTextAppearance(R.style.TextAppearance_Material3_HeadlineLarge)
+            }
+            else -> return
+        }
+        colorize()
     }
 
     // Dynamically set the first day of the week
@@ -335,5 +421,34 @@ class MinarMonth(context: Context, attrs: AttributeSet) : LinearLayout(context, 
             sundayFirst = enable
             initMonth()
         }
+    }
+
+    // Set a specific year for the overview screen
+    fun setYear(year: Int) {
+        eventCount = 0
+        binding.overviewMonthName.setTextColor(getThemeColor(R.attr.colorSecondary, context))
+        dateWithChosenMonth = dateWithChosenMonth.withYear(year)
+        initMonth()
+    }
+
+    // Reset every highlighted cell to the normal state
+    fun resetHighlighting() {
+        for (cell in cellsList) {
+            if (cell.background != null) {
+                cell.background.alpha = 0
+                cell.background = null
+                cell.setOnClickListener(null)
+            }
+            cell.setTextColor(getThemeColor(R.attr.colorOnBackground, context))
+            cell.foreground = null
+        }
+    }
+
+    // Color some elements in the month
+    private fun colorize() {
+        if (dateWithChosenMonth.month == LocalDate.now().month && dateWithChosenMonth.year == LocalDate.now().year) {
+            monthTitle.setTextColor(getThemeColor(R.attr.colorTertiary, context))
+        } else monthTitle.setTextColor(getThemeColor(R.attr.colorSecondary, context))
+        for (weekDay in weekDaysList) weekDay.alpha = .85f
     }
 }

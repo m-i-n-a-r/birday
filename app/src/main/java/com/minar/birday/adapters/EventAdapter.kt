@@ -53,23 +53,24 @@ class EventAdapter(
     // Take the original list and divide it in months, thus adding the header
     fun addHeadersAndSubmitList(list: List<EventResult>?) {
         if (list.isNullOrEmpty()) submitList(listOf())
-        else
-            adapterScope.launch {
-                val organizedEvents = mutableListOf<EventDataItem>()
-                // Base case: insert the header for the first element and initialize the last date
-                var lastDate = list[0].nextDate
-                organizedEvents.add(EventDataItem.MonthHeader(lastDate!!))
-                for (event in list) {
-                    if (event.nextDate!!.monthValue != lastDate!!.monthValue) {
-                        lastDate = event.nextDate
-                        organizedEvents.add(EventDataItem.MonthHeader(lastDate))
-                    }
-                    organizedEvents.add(EventDataItem.EventItem(event))
+        else adapterScope.launch {
+            val organizedEvents = mutableListOf<EventDataItem>()
+            // Base case: insert the header for the first element and initialize the last date
+            var lastDate = list[0].nextDate
+            organizedEvents.add(EventDataItem.MonthHeader(lastDate!!))
+            for (event in list) {
+                // If the month has changed
+                if (event.nextDate!!.monthValue != lastDate!!.monthValue ||
+                    event.nextDate.year != lastDate.year) {
+                    lastDate = event.nextDate
+                    organizedEvents.add(EventDataItem.MonthHeader(lastDate))
                 }
-                activityScope.launch {
-                    submitList(organizedEvents.toList())
-                }
+                organizedEvents.add(EventDataItem.EventItem(event))
             }
+            activityScope.launch {
+                submitList(organizedEvents.toList())
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -77,13 +78,12 @@ class EventAdapter(
         // Depending on the view type, return the correct view holder
         return when (viewType) {
             ITEM_VIEW_TYPE_EVENT -> {
-                val binding = EventRowBinding
-                    .inflate(LayoutInflater.from(context), parent, false)
+                val binding = EventRowBinding.inflate(LayoutInflater.from(context), parent, false)
                 EventViewHolder(binding)
             }
             ITEM_VIEW_TYPE_HEADER -> {
-                val binding = MonthHeaderRowBinding
-                    .inflate(LayoutInflater.from(context), parent, false)
+                val binding =
+                    MonthHeaderRowBinding.inflate(LayoutInflater.from(context), parent, false)
                 MonthHeaderViewHolder(binding)
             }
             else -> throw ClassCastException("Unknown viewType $viewType")
@@ -109,8 +109,7 @@ class EventAdapter(
         fun bind(monthHeader: EventDataItem.MonthHeader) {
             val headerText = "${
                 monthHeader.startDate.month.getDisplayName(
-                    TextStyle.FULL,
-                    Locale.getDefault()
+                    TextStyle.FULL, Locale.getDefault()
                 )
             } - ${monthHeader.startDate.year}"
             monthHeaderText.text = headerText

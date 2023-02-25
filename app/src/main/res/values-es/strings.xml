@@ -294,4 +294,7 @@
     <string name="delete_search_description_off">No será posible eliminar múltiples eventos a la vez</string>
     <string name="delete_search_description_on">Pulsa el botón de la papelera cuando busques uno o más eventos para eliminarlos rápidamente de Birday. ¡Usa con precaución!</string>
     <string name="delete_search_confirm">Esto eliminará todos los resultados de esta búsqueda. ¡Puedes deshacer el proceso poco después de hacer clic en Aceptar si cambias de opinión!</string>
+    <string name="advanced_overview_title">Resumen avanzado</string>
+    <string name="advanced_overview_description_off">La pantalla de resumen solo mostrará información básica</string>
+    <string name="advanced_overview_description_on">La pantalla de resumen mostrará otros años e información detallada</string>
 </resources>
