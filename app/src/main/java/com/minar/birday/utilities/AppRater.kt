@@ -1,6 +1,7 @@
 package com.minar.birday.utilities
 
 import android.content.SharedPreferences
+import androidx.fragment.app.FragmentActivity
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.fragments.dialogs.RateBottomSheet
 
@@ -13,7 +14,6 @@ object AppRater {
     private const val DAYS_UNTIL_PROMPT = 2 // Min number of days
     private const val LAUNCHES_UNTIL_PROMPT = 3 // Min number of launches
 
-    @ExperimentalStdlibApi
     @JvmStatic
     fun appLaunched(activity: MainActivity) {
         val prefs = activity.getSharedPreferences(APP_RATING, 0)
@@ -40,9 +40,8 @@ object AppRater {
         editor.apply()
     }
 
-    @ExperimentalStdlibApi
-    private fun showRateDialog(activity: MainActivity, editor: SharedPreferences.Editor) {
-        val bottomSheet = RateBottomSheet(activity, editor)
+    private fun showRateDialog(activity: FragmentActivity, editor: SharedPreferences.Editor) {
+        val bottomSheet = RateBottomSheet(editor)
         if (bottomSheet.isAdded) return
         bottomSheet.show(activity.supportFragmentManager, "rate_bottom_sheet")
     }

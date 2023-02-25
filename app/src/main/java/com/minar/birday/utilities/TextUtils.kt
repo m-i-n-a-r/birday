@@ -3,7 +3,6 @@ package com.minar.birday.utilities
 import java.util.*
 
 // Format a name, considering other uppercase letter, multiple words, the apostrophe and inner spaces
-@ExperimentalStdlibApi
 fun String.smartFixName(forceCapitalize: Boolean = false): String {
     return replace(Regex("(\\s)+"), " ")
         .trim()

@@ -30,7 +30,6 @@ import java.time.LocalDate
 import java.util.*
 
 
-@ExperimentalStdlibApi
 class FavoritesFragment : Fragment() {
     private val mainViewModel: MainViewModel by activityViewModels()
     private lateinit var adapter: FavoritesAdapter

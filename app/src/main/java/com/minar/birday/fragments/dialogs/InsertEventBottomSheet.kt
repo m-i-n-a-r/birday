@@ -20,6 +20,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -28,11 +29,14 @@ import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
+import com.minar.birday.adapters.ContactsFilterArrayAdapter
 import com.minar.birday.databinding.BottomSheetInsertEventBinding
+import com.minar.birday.model.ContactInfo
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.*
+import com.minar.birday.viewmodels.InsertEventViewModel
 import java.io.IOException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -40,7 +44,6 @@ import java.time.format.FormatStyle
 import java.util.*
 
 
-@ExperimentalStdlibApi
 class InsertEventBottomSheet(
     private val act: MainActivity,
     private val event: EventResult? = null
@@ -50,6 +53,7 @@ class InsertEventBottomSheet(
     private val binding get() = _binding!!
     private lateinit var resultLauncher: ActivityResultLauncher<String>
     private var imageChosen = false
+    private val viewModel: InsertEventViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -169,9 +173,9 @@ class InsertEventBottomSheet(
 
         // Set the dropdown to show the available event types
         val items = getAvailableTypes(act)
-        val adapter = ArrayAdapter(act, R.layout.event_type_list_item, items)
+        val eventTypeAdapter = ArrayAdapter(act, R.layout.event_type_list_item, items)
         with(type) {
-            setAdapter(adapter)
+            setAdapter(eventTypeAdapter)
             setText(getStringForTypeCodename(context, typeValue), false)
             onItemClickListener =
                 AdapterView.OnItemClickListener { _, _, position, _ ->
@@ -199,6 +203,35 @@ class InsertEventBottomSheet(
                             )
                         )
                 }
+        }
+
+        // Initialize contacts list, using InsertEventViewModel
+        viewModel.initContactsList(act)
+        viewModel.contactsList.observe(viewLifecycleOwner) { contacts ->
+            // Setup AutoCompleteEditText adapters
+            binding.nameEvent.setAdapter(
+                ContactsFilterArrayAdapter(
+                    requireContext(),
+                    contacts,
+                    ContactInfo::name,
+                )
+            )
+            binding.surnameEvent.setAdapter(
+                ContactsFilterArrayAdapter(
+                    requireContext(),
+                    contacts,
+                    ContactInfo::surname,
+                )
+            )
+
+            val onAutocompleteClick = AdapterView.OnItemClickListener { parent, _, i, _ ->
+                val clickedItem =
+                    parent.getItemAtPosition(i) as? ContactInfo ?: return@OnItemClickListener
+                binding.nameEvent.setText(clickedItem.name)
+                binding.surnameEvent.setText(clickedItem.surname)
+            }
+            binding.nameEvent.onItemClickListener = onAutocompleteClick
+            binding.surnameEvent.onItemClickListener = onAutocompleteClick
         }
 
         // Calendar setup. The end date is the last day in the following year (dumb users)
@@ -279,59 +312,41 @@ class InsertEventBottomSheet(
         var nameCorrect = false
         var surnameCorrect = true // Surname is not mandatory
         var eventDateCorrect = event != null
-        val watcher = object : TextWatcher {
-            override fun beforeTextChanged(
-                charSequence: CharSequence,
-                i: Int,
-                i1: Int,
-                i2: Int
-            ) {
-            }
-
-            override fun onTextChanged(
-                charSequence: CharSequence,
-                i: Int,
-                i1: Int,
-                i2: Int
-            ) {
-            }
-
-            override fun afterTextChanged(editable: Editable) {
-                when {
-                    editable === name.editableText -> {
-                        val nameText = name.text.toString()
-                        if (nameText.isBlank() || !checkName(nameText)) {
-                            // Setting the error on the layout is important to make the properties work
-                            binding.nameEventLayout.error =
-                                getString(R.string.invalid_value_name)
-                            positiveButton.isEnabled = false
-                            nameCorrect = false
-                        } else {
-                            nameValue = nameText
-                            binding.nameEventLayout.error = null
-                            nameCorrect = true
-                        }
+        val watcher = afterTextChangedWatcher { editable ->
+            when {
+                editable === name.editableText -> {
+                    val nameText = name.text.toString()
+                    if (nameText.isBlank() || !checkName(nameText)) {
+                        // Setting the error on the layout is important to make the properties work
+                        binding.nameEventLayout.error =
+                            getString(R.string.invalid_value_name)
+                        positiveButton.isEnabled = false
+                        nameCorrect = false
+                    } else {
+                        nameValue = nameText
+                        binding.nameEventLayout.error = null
+                        nameCorrect = true
                     }
-                    editable === surname.editableText -> {
-                        val surnameText = surname.text.toString()
-                        if (!checkName(surnameText)) {
-                            // Setting the error on the layout is important to make the properties work
-                            binding.surnameEventLayout.error =
-                                getString(R.string.invalid_value_name)
-                            positiveButton.isEnabled = false
-                            surnameCorrect = false
-                        } else {
-                            surnameValue = surnameText
-                            binding.surnameEventLayout.error = null
-                            surnameCorrect = true
-                        }
-                    }
-                    // Once selected, the date can't be blank anymore
-                    editable === eventDate.editableText -> eventDateCorrect = true
                 }
-                if (eventDateCorrect && nameCorrect && surnameCorrect) positiveButton.isEnabled =
-                    true
+                editable === surname.editableText -> {
+                    val surnameText = surname.text.toString()
+                    if (!checkName(surnameText)) {
+                        // Setting the error on the layout is important to make the properties work
+                        binding.surnameEventLayout.error =
+                            getString(R.string.invalid_value_name)
+                        positiveButton.isEnabled = false
+                        surnameCorrect = false
+                    } else {
+                        surnameValue = surnameText
+                        binding.surnameEventLayout.error = null
+                        surnameCorrect = true
+                    }
+                }
+                // Once selected, the date can't be blank anymore
+                editable === eventDate.editableText -> eventDateCorrect = true
             }
+            if (eventDateCorrect && nameCorrect && surnameCorrect) positiveButton.isEnabled =
+                true
         }
         name.addTextChangedListener(watcher)
         surname.addTextChangedListener(watcher)
@@ -372,4 +387,27 @@ class InsertEventBottomSheet(
         val image = binding.imageEvent
         image.setImageBitmap(resizedBitmap)
     }
+
+    private inline fun afterTextChangedWatcher(crossinline afterTextChanged: (editable: Editable) -> Unit) =
+        object : TextWatcher {
+            override fun beforeTextChanged(
+                charSequence: CharSequence,
+                i: Int,
+                i1: Int,
+                i2: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                charSequence: CharSequence,
+                i: Int,
+                i1: Int,
+                i2: Int
+            ) {
+            }
+
+            override fun afterTextChanged(editable: Editable) {
+                afterTextChanged(editable)
+            }
+        }
 }

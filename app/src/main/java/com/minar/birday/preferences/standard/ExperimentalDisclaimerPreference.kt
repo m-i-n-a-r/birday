@@ -11,7 +11,7 @@ import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.ExperimentalDisclaimerRowBinding
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 
-@ExperimentalStdlibApi
+
 class ExperimentalDisclaimerPreference(context: Context, attrs: AttributeSet?) :
     Preference(context, attrs) {
 

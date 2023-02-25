@@ -20,7 +20,6 @@ import java.time.format.DateTimeFormatter
 import kotlin.concurrent.thread
 
 
-@ExperimentalStdlibApi
 class CalendarImporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
     View.OnClickListener {
 

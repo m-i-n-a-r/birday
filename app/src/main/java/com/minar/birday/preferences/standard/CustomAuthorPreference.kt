@@ -22,7 +22,6 @@ import nl.dionsegijn.konfetti.KonfettiView
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
 
-@ExperimentalStdlibApi
 class CustomAuthorPreference(context: Context, attrs: AttributeSet?) :
     Preference(context, attrs), View.OnClickListener {
     private val activityScope = CoroutineScope(Dispatchers.Main)

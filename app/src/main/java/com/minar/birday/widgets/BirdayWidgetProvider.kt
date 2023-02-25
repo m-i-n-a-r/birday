@@ -25,7 +25,6 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
-@OptIn(ExperimentalStdlibApi::class)
 abstract class BirdayWidgetProvider : AppWidgetProvider() {
     abstract var widgetLayout: Int
 
@@ -57,7 +56,6 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
         // Enter relevant functionality for when the last widget is disabled
     }
 
-    @ExperimentalStdlibApi
     internal fun updateAppWidget(
         context: Context,
         appWidgetManager: AppWidgetManager,

@@ -15,7 +15,6 @@ class MinimalWidgetProvider : BirdayWidgetProvider() {
             R.layout.widget_minimal
         }
 
-    @OptIn(ExperimentalStdlibApi::class)
     override fun onReceive(context: Context, intent: Intent) {
         val action = intent.action
         if (action.equals(AppWidgetManager.ACTION_APPWIDGET_UPDATE)) {

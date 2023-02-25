@@ -16,7 +16,6 @@ import java.time.LocalDate
 import kotlin.concurrent.thread
 
 
-@ExperimentalStdlibApi
 class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
     View.OnClickListener {
     private val act = context as MainActivity

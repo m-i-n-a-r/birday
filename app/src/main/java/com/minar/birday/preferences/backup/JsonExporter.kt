@@ -17,7 +17,6 @@ import java.io.File
 import java.time.LocalDate
 
 
-@ExperimentalStdlibApi
 class JsonExporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
     View.OnClickListener {
 

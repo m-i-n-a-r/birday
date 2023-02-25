@@ -18,7 +18,6 @@ import com.minar.birday.viewmodels.MainViewModel
 import java.time.LocalDate
 
 
-@ExperimentalStdlibApi
 class OverviewFragment : Fragment() {
     private lateinit var act: MainActivity
     private val mainViewModel: MainViewModel by activityViewModels()
