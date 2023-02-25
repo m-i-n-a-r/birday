@@ -291,9 +291,9 @@
     <string name="delete_search_description_off">不可能一次性删除多个事件</string>
     <string name="delete_search_description_on">当你搜索一个或多个事件时点击垃圾箱键来将他们全部从Birday快速删除掉。小心使用！</string>
     <string name="delete_search_confirm">这会删除所有的搜索结果。如果你在点击OK后很快改主意的话可以撤销进程！</string>
-    <string name="import_contacts_bottom_sheet_description">Would you like to import all the events from your contacts right now?</string>
-    <string name="yes_import">Import</string>
-    <string name="advanced_overview_title">Advanced overview</string>
-    <string name="advanced_overview_description_off">The overview screen will only display basic information</string>
-    <string name="advanced_overview_description_on">The overview screen will show other years and detailed information</string>
+    <string name="import_contacts_bottom_sheet_description">您想要现在从您的联系人中导入所有事件吗？</string>
+    <string name="yes_import">导入</string>
+    <string name="advanced_overview_title">高级概述</string>
+    <string name="advanced_overview_description_off">概览屏幕将只显示基本信息</string>
+    <string name="advanced_overview_description_on">概览屏幕将显示其他年份和详细信息</string>
 </resources>
