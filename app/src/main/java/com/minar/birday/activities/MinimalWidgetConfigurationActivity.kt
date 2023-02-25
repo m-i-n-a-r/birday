@@ -33,7 +33,6 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
     private lateinit var widgetManager: AppWidgetManager
     private lateinit var views: RemoteViews
 
-    @OptIn(ExperimentalStdlibApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setResult(RESULT_CANCELED)

@@ -14,18 +14,9 @@ import com.minar.birday.databinding.BottomSheetRateBinding
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 
 
-@ExperimentalStdlibApi
-class RateBottomSheet(activity: MainActivity, editor: SharedPreferences.Editor) :
-    BottomSheetDialogFragment() {
-    private val activity: MainActivity
-    private val editor: SharedPreferences.Editor
+class RateBottomSheet(private val editor: SharedPreferences.Editor) : BottomSheetDialogFragment() {
     private var _binding: BottomSheetRateBinding? = null
     private val binding get() = _binding!!
-
-    init {
-        this.activity = activity
-        this.editor = editor
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,10 +38,10 @@ class RateBottomSheet(activity: MainActivity, editor: SharedPreferences.Editor) 
 
         // Handling the positive button
         positiveButton.setOnClickListener {
-            activity.startActivity(
+            requireContext().startActivity(
                 Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("market://details?id=${activity.packageName}")
+                    Uri.parse("market://details?id=${requireContext().packageName}")
                 )
             )
             editor.putBoolean(DO_NOT_SHOW_AGAIN, true)

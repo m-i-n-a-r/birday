@@ -13,7 +13,6 @@ import com.minar.birday.databinding.DisableOptimizationsRowBinding
 
 
 // A custom preference to open the battery optimization settings
-@ExperimentalStdlibApi
 class DisableOptimizationsPreference(context: Context, attrs: AttributeSet?) :
     Preference(context, attrs),
     View.OnClickListener {

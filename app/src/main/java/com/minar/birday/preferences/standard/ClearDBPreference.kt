@@ -17,7 +17,6 @@ import kotlinx.coroutines.launch
 
 
 // A custom preference to open the notification sound settings for Birday
-@ExperimentalStdlibApi
 class ClearDBPreference(context: Context, attrs: AttributeSet?) :
     Preference(context, attrs),
     View.OnClickListener {

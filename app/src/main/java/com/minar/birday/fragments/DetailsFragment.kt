@@ -31,7 +31,6 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
 
-@ExperimentalStdlibApi
 class DetailsFragment : Fragment() {
     private lateinit var act: MainActivity
     private val mainViewModel: MainViewModel by activityViewModels()
@@ -365,7 +364,6 @@ class DetailsFragment : Fragment() {
         mainViewModel.insert(resultToEvent(eventResult))
     }
 
-    @ExperimentalStdlibApi
     private fun editEvent(eventResult: EventResult) {
         val bottomSheet = InsertEventBottomSheet(act, eventResult)
         if (bottomSheet.isAdded) return

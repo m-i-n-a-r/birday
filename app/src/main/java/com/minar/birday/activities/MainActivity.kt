@@ -37,6 +37,7 @@ import com.google.android.material.elevation.SurfaceColors
 import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
 import com.minar.birday.databinding.ActivityMainBinding
+import com.minar.birday.fragments.dialogs.ImportContactsBottomSheet
 import com.minar.birday.fragments.dialogs.InsertEventBottomSheet
 import com.minar.birday.preferences.backup.BirdayImporter
 import com.minar.birday.preferences.backup.ContactsImporter
@@ -50,8 +51,6 @@ import java.io.IOException
 import java.util.*
 import kotlin.concurrent.thread
 
-
-@ExperimentalStdlibApi
 class MainActivity : AppCompatActivity() {
     val mainViewModel: MainViewModel by viewModels()
     private lateinit var sharedPrefs: SharedPreferences
@@ -558,6 +557,12 @@ class MainActivity : AppCompatActivity() {
                 if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS))
                         showSnackbar(getString(R.string.missing_permission_contacts))
+                } else if (grantResults.isNotEmpty() /* && grantResults[0] == PackageManager.PERMISSION_GRANTED */) {
+                    // Show Bottom sheet for import
+                    ImportContactsBottomSheet().showIfNotAdded(
+                        supportFragmentManager,
+                        ImportContactsBottomSheet.TAG
+                    )
                 }
             }
             // Contacts while trying to import from contacts

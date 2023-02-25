@@ -18,7 +18,6 @@ import java.util.*
 import kotlin.concurrent.thread
 
 
-@ExperimentalStdlibApi
 class JsonImporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
     View.OnClickListener {
     private val act = context as MainActivity

@@ -19,7 +19,6 @@ import com.minar.birday.widgets.EventWidgetProvider
 import com.minar.birday.widgets.MinimalWidgetProvider
 
 
-@ExperimentalStdlibApi
 class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeListener {
     private val mainViewModel: MainViewModel by activityViewModels()
 

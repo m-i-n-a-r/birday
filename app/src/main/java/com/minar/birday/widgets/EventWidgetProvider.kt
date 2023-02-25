@@ -15,7 +15,6 @@ class EventWidgetProvider : BirdayWidgetProvider() {
             R.layout.widget_upcoming
         }
 
-    @OptIn(ExperimentalStdlibApi::class)
     override fun onReceive(context: Context, intent: Intent) {
         val action = intent.action
         if (action.equals(AppWidgetManager.ACTION_APPWIDGET_UPDATE)) {

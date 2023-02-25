@@ -13,7 +13,6 @@ import java.io.File
 import java.time.LocalDate
 
 
-@ExperimentalStdlibApi
 class CsvExporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
     View.OnClickListener {
 
