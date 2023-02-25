@@ -311,8 +311,8 @@
     <string name="delete_search_description_off">Nu va fi posibil să ștergeți mai multe evenimente odată</string>
     <string name="delete_search_description_on">Apăsați butonul de gunoi când căutați unul sau mai multe evenimente pentru a le șterge rapid pe toate din Birday. Utilizați cu prudență!</string>
     <string name="delete_search_confirm">Aceasta va șterge toate rezultatele acestei căutări. Puteți anula procesul la scurt timp după ce faceți clic pe OK dacă vă răzgândiți!</string>
-    <string name="import_contacts_bottom_sheet_description">Would you like to import all the events from your contacts right now?</string>
-    <string name="yes_import">Import</string>
+    <string name="import_contacts_bottom_sheet_description">Dorești să imporți toate evenimentele din contacte acum?</string>
+    <string name="yes_import">Importă</string>
     <string name="advanced_overview_title">Prezentare avansată</string>
     <string name="advanced_overview_description_off">Ecranul de ansamblu va afișa doar informațiile de bază</string>
     <string name="advanced_overview_description_on">Ecranul de ansamblu va arăta alți ani și informații detaliate</string>
