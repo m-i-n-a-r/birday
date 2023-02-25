@@ -16,8 +16,10 @@ import android.os.*
 import android.provider.OpenableColumns
 import android.provider.Settings
 import android.view.View
+import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.annotation.IdRes
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -25,6 +27,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.preference.PreferenceManager
@@ -54,6 +57,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var sharedPrefs: SharedPreferences
     private lateinit var binding: ActivityMainBinding
 
+    private val navController: NavController
+        get() {
+            val navHostFragment = supportFragmentManager
+                .findFragmentById(R.id.navHostFragment) as NavHostFragment
+            return navHostFragment.navController
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -70,6 +80,16 @@ class MainActivity : AppCompatActivity() {
         }
         createNotificationChannel()
 
+        // Register back pressed callback (do not use onBackPressed() - deprecated)
+        onBackPressedDispatcher.addCallback(this) {
+            if (navController.currentDestination?.id == R.id.navigationMain) {
+                finish()
+            } else {
+                binding.navigation.selectedItemId = R.id.navigationMain
+                navController.navigateWithOptions(R.id.navigationMain)
+            }
+        }
+
         // Retrieve the shared preferences
         val theme = sharedPrefs.getString("theme_color", "system")
         val accent = sharedPrefs.getString("accent_color", "system")
@@ -80,7 +100,7 @@ class MainActivity : AppCompatActivity() {
             editor.putBoolean("first", false)
             // Set default accent based on the Android version
             when (Build.VERSION.SDK_INT) {
-                23, 24, 25, 26, 27, 28, 29 -> editor.putString("accent_color", "blue")
+                in 23..29 -> editor.putString("accent_color", "blue")
                 31 -> editor.putString("accent_color", "system")
                 else -> editor.putString("accent_color", "monet")
             }
@@ -138,28 +158,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         // Get the bottom navigation bar and configure it for the navigation plugin
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.navHostFragment) as NavHostFragment
-        val navController = navHostFragment.navController
         val navigation = binding.navigation
 
-        // Only way to use custom animations with the bottom navigation bar
-        val options = NavOptions.Builder()
-            .setLaunchSingleTop(true)
-            .setEnterAnim(R.anim.nav_enter_anim)
-            .setExitAnim(R.anim.nav_exit_anim)
-            .setPopEnterAnim(R.anim.nav_pop_enter_anim)
-            .setPopExitAnim(R.anim.nav_pop_exit_anim)
-            .setPopUpTo(R.id.nav_graph, true)
-            .build()
         navigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigationMain ->
-                    navController.navigate(R.id.navigationMain, null, options)
+                    navController.navigateWithOptions(R.id.navigationMain)
                 R.id.navigationFavorites ->
-                    navController.navigate(R.id.navigationFavorites, null, options)
+                    navController.navigateWithOptions(R.id.navigationFavorites)
                 R.id.navigationSettings ->
-                    navController.navigate(R.id.navigationSettings, null, options)
+                    navController.navigateWithOptions(R.id.navigationSettings)
             }
             true
         }
@@ -264,6 +272,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun NavController.navigateWithOptions(@IdRes destination: Int) {
+        // Only way to use custom animations with the bottom navigation bar
+        val options = NavOptions.Builder()
+            .setLaunchSingleTop(true)
+            .setEnterAnim(R.anim.nav_enter_anim)
+            .setExitAnim(R.anim.nav_exit_anim)
+            .setPopEnterAnim(R.anim.nav_pop_enter_anim)
+            .setPopExitAnim(R.anim.nav_pop_exit_anim)
+            .setPopUpTo(R.id.nav_graph, true)
+            .build()
+
+        navigate(destination, null, options)
+    }
+
     override fun onSaveInstanceState(outState: Bundle) {
         // Manage refresh from settings, since there's a bug where the refresh doesn't work properly
         val refreshed = sharedPrefs.getBoolean("refreshed", false)
@@ -366,6 +388,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Vibrate using a standard vibration pattern
+    // or use system Haptic feedback if vibration is disabled
     fun vibrate() {
         // Deprecated for no reason
         val vib = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -376,12 +399,15 @@ class MainActivity : AppCompatActivity() {
             @Suppress("DEPRECATION")
             getSystemService(VIBRATOR_SERVICE) as Vibrator
         }
-        if (sharedPrefs.getBoolean(
-                "vibration",
-                true
-            )
-        ) // Vibrate if the vibration in options is set to on
+
+        if (sharedPrefs.getBoolean("vibration", false)) {
+            // Vibrate if the vibration in options is set to on
             vib.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            // Use system Haptic feedback
+            if (vib.areEffectsSupported(VibrationEffect.EFFECT_CLICK)[0] == Vibrator.VIBRATION_EFFECT_SUPPORT_YES)
+                vib.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK))
+        }
     }
 
     // Show a snackbar containing a given text and an optional action, with a 5 seconds duration

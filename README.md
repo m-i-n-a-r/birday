@@ -13,37 +13,38 @@ This is an open source app to remember **birthdays** and other events in a fast,
 
 ## Translations (guide and info below, refer to [Crowdin](https://crwd.in/birday))
 
-| LANGUAGE                | SPECIAL THANKS | UPDATED BY                  |
-|:------------------------|:---------------|:----------------------------|
-| **English**             | myself         | ar-maged, Commenter25       |
-| **Spanish**             | myself         | Joseahfer                   |
-| **Swedish**             | SlowNicoFish   |                             |
-| **Dutch**               | stefanvi       |                             |
-| **Italian**             | myself         | myself                      |
-| **French**              | Mattis Biton   |                             |
-| **Hungarian**           | Obi            |                             |
-| **German**              | pizzapastamix  | WrstFngr, AlexanderRitter02 |
-| **Vietnamese**          | Lee Huynh      | dmtrilc                     |
-| **Russian**             | koterpillar    |                             |
-| **Czech**               | Miloš Koliáš   | IQLogic                     |
-| **Slovak**              | IQLogic        |                             |
-| **Polish**              | mateusz-bak    |                             |
-| **Croatian**            | Dominik Novosel| Dominik Novosel             |
-| **Portuguese**          | smarquespt     | smarquespt                  |
-| **Brazilian**           | BadJuice67     | Paiusco                     |
-| **Romanian**            | ygorigor       | ygorigor                    |
-| **Traditional Chinese** | Still34        |                             |
-| **Catalan**             | retiolus       |                             |
-| **Serbian**             | Th3Unkn0wn0n3  | vatonbero                   |
-| **Ukrainian**           | taras          |                             |
-| **Marathi**             | Ramesh Kumar   |                             |
-| **Malayalam**           | Lavin-tom      |                             |
-| **Hindi**               | assembleDebug  |                             |
+| LANGUAGE                | SPECIAL THANKS  | UPDATED BY                  |
+|:------------------------|:----------------|:----------------------------|
+| **English**             | myself          | ar-maged, Commenter25       |
+| **Spanish**             | myself          | Joseahfer                   |
+| **Swedish**             | SlowNicoFish    |                             |
+| **Dutch**               | stefanvi        |                             |
+| **Italian**             | myself          | myself                      |
+| **French**              | Mattis Biton    |                             |
+| **Hungarian**           | Obi             |                             |
+| **German**              | pizzapastamix   | WrstFngr, AlexanderRitter02 |
+| **Vietnamese**          | Lee Huynh       | dmtrilc                     |
+| **Russian**             | koterpillar     |                             |
+| **Czech**               | Miloš Koliáš    | IQLogic                     |
+| **Slovak**              | IQLogic         |                             |
+| **Polish**              | mateusz-bak     |                             |
+| **Croatian**            | Dominik Novosel | Dominik Novosel             |
+| **Portuguese**          | smarquespt      | smarquespt                  |
+| **Brazilian**           | BadJuice67      | Paiusco                     |
+| **Romanian**            | ygorigor        | ygorigor                    |
+| **Traditional Chinese** | Still34         |                             |
+| **Simplified Chinese**  | daoxi           |                             |
+| **Catalan**             | retiolus        |                             |
+| **Serbian**             | Th3Unkn0wn0n3   | vatonbero                   |
+| **Ukrainian**           | taras           |                             |
+| **Marathi**             | Ramesh Kumar    |                             |
+| **Malayalam**           | Lavin-tom       |                             |
+| **Hindi**               | assembleDebug   |                             |
 
 ## Features
 - Notification the day of the event (with selectable time)
 - Additional notification up to 7 days before the event
-- Import from contacts (and auto import on launch option)
+- Import from contacts or calendar (and auto import on launch option)
 - Easily backup and restore your saved events!
 - Experimental CSV and JSON import/export
 - insert an event manually, just specifying a name, an optional surname, an image and a date (with optional year)
@@ -56,7 +57,7 @@ This is an open source app to remember **birthdays** and other events in a fast,
 - Easily hide the top cards to display the list in fullscreen
 - Main list organized by months
 - Quick glance row, to visualize the events in the next 10 days
-- Yearly overview screen
+- Yearly overview screen (advanced mode available)
 - A nice searchbar and an event type selector
 - Quick apps launcher
 - Light, dark, and system default theme
@@ -66,7 +67,7 @@ This is an open source app to remember **birthdays** and other events in a fast,
 - Name first or surname first choice
 - Notification only for favorite events
 - Hide and show images
-- Material 3 widget featuring the list of the events
+- Material 3 configurable widgets (minimal and complete)
 - Beautiful animations (and animated notification icon)
 - Multiwindow / freeform full support
 - Animated splashscreen and app intro, dynamic layouts and more
