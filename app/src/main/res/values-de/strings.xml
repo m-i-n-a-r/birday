@@ -294,6 +294,8 @@
     <string name="delete_search_description_off">Es ist nicht möglich, mehrere Ereignisse gleichzeitig zu löschen</string>
     <string name="delete_search_description_on">Drücken Sie den Papierkorb-Button, wenn Sie ein oder mehrere Ereignisse suchen, um sie schnell alle vom Geburtstag zu löschen. Mit Vorsicht verwenden!</string>
     <string name="delete_search_confirm">Dies löscht alle Ergebnisse dieser Suche. Sie können den Vorgang kurz nach dem Klicken auf OK rückgängig machen, wenn Sie Ihre Meinung ändern!</string>
+    <string name="import_contacts_bottom_sheet_description">Would you like to import all the events from your contacts right now?</string>
+    <string name="yes_import">Import</string>
     <string name="advanced_overview_title">Erweiterte Übersicht</string>
     <string name="advanced_overview_description_off">Der Übersichtsbildschirm zeigt nur Basisinformationen an</string>
     <string name="advanced_overview_description_on">Der Übersichtsbildschirm zeigt weitere Jahre und detaillierte Informationen</string>
