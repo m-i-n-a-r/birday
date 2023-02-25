@@ -296,6 +296,8 @@
     <string name="delete_search_description_off">It won\'t be possible to delete multiple events at once</string>
     <string name="delete_search_description_on">Press the trash button when you search one or more events to quickly delete them all from Birday. Use with caution!</string>
     <string name="delete_search_confirm">This will delete all the results of this search. You can undo the process shortly after clicking OK if you change your mind!</string>
+    <string name="import_contacts_bottom_sheet_description">Would you like to import all the events from your contacts right now?</string>
+    <string name="yes_import">Import</string>
     <string name="advanced_overview_title">Advanced overview</string>
     <string name="advanced_overview_description_off">The overview screen will only display basic information</string>
     <string name="advanced_overview_description_on">The overview screen will show other years and detailed information</string>
