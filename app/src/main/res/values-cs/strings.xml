@@ -306,6 +306,8 @@
     <string name="delete_search_description_off">Nebude možné odstranit více událostí najednou</string>
     <string name="delete_search_description_on">Při vyhledávání jedné nebo více událostí stiskněte tlačítko koše, abyste je všechny rychle odstranili z aplikace Birday. Používejte opatrně!</string>
     <string name="delete_search_confirm">Tím se odstraní všechny výsledky tohoto vyhledávání. Pokud si to rozmyslíte, můžete tento proces krátce po kliknutí na tlačítko OK vrátit zpět!</string>
+    <string name="import_contacts_bottom_sheet_description">Chcete okamžitě importovat všechny události z vašich kontaktů?</string>
+    <string name="yes_import">Importovat</string>
     <string name="advanced_overview_title">Rozšířený přehled</string>
     <string name="advanced_overview_description_off">Menu přehledu zobrazí pouze základní informace</string>
     <string name="advanced_overview_description_on">Menu přehledu zobrazí ostatní roky a detailní informace</string>
