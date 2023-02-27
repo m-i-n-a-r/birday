@@ -118,12 +118,8 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
         // Align the text to start if selected
         if (alignStart) {
             views.setInt(R.id.minimalWidgetLinearLayout, "setGravity", Gravity.START)
-            views.setInt(titleTextView, "setGravity", Gravity.START)
-            views.setInt(textTextView, "setGravity", Gravity.START)
         } else {
             views.setInt(R.id.minimalWidgetLinearLayout, "setGravity", Gravity.CENTER)
-            views.setInt(titleTextView, "setGravity", Gravity.CENTER)
-            views.setInt(textTextView, "setGravity", Gravity.CENTER)
         }
         val hiPadding = context.resources.getDimension(R.dimen.between_row_padding).toInt()
         val loPadding = context.resources.getDimension(R.dimen.widget_margin).toInt()
@@ -187,7 +183,7 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
                 )
                     views.setViewVisibility(R.id.minimalWidgetMain, View.INVISIBLE)
                 else views.setViewVisibility(R.id.minimalWidgetMain, View.VISIBLE)
-            }
+            } else views.setViewVisibility(R.id.minimalWidgetMain, View.VISIBLE)
 
             // Instruct the widget manager to update the widget
             appWidgetManager.updateAppWidget(appWidgetId, views)

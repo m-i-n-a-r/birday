@@ -94,7 +94,7 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
         val backgroundValue = sharedPrefs.getBoolean("widget_minimal_background", false)
         val compactValue = sharedPrefs.getBoolean("widget_minimal_compact", false)
         val alignStartValue = sharedPrefs.getBoolean("widget_minimal_align_start", false)
-        val hideIfFarValue = sharedPrefs.getBoolean("widget_hide_if_far", false)
+        val hideIfFarValue = sharedPrefs.getBoolean("widget_minimal_hide_if_far", false)
 
         darkText.isChecked = darkTextValue
         background.isChecked = backgroundValue
@@ -292,12 +292,8 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
             // Align the text to start if selected
             if (alignStart.isChecked) {
                 views.setInt(R.id.minimalWidgetLinearLayout, "setGravity", Gravity.START)
-                views.setInt(titleTextView, "setGravity", Gravity.START)
-                views.setInt(textTextView, "setGravity", Gravity.START)
             } else {
                 views.setInt(R.id.minimalWidgetLinearLayout, "setGravity", Gravity.CENTER)
-                views.setInt(titleTextView, "setGravity", Gravity.CENTER)
-                views.setInt(textTextView, "setGravity", Gravity.CENTER)
             }
             // Set the padding depending on the background
             if (background.isChecked) {
@@ -359,7 +355,8 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
                     )
                         views.setViewVisibility(R.id.minimalWidgetMain, View.INVISIBLE)
                     else views.setViewVisibility(R.id.minimalWidgetMain, View.VISIBLE)
-                }
+                } else views.setViewVisibility(R.id.minimalWidgetMain, View.VISIBLE)
+
                 // Instruct the widget manager to update the widget
                 widgetManager.updateAppWidget(widgetId, views)
             }.start()
