@@ -72,7 +72,10 @@ class OverviewFragment : Fragment() {
 
         // Manage the yearly view
         val tcYear = binding.overviewYearView
-        // TODO Set snack bars prefix
+        // Surely not a good approach, but it does the job, more or less
+        tcYear.setSnackBarsPrefix(
+            resources.getQuantityString(R.plurals.years, 10).replace("10", "")
+        )
         val tcEvents: List<TastiCalendarEvent> =
             events.map { TastiCalendarEvent(it.originalDate, it.notes) }
 
@@ -93,11 +96,7 @@ class OverviewFragment : Fragment() {
             advancedYearTitle.setOnClickListener {
                 yearNumber = LocalDate.now().year
                 act.vibrate()
-                tcYear.renderYear(
-                    yearNumber,
-                    tcEvents,
-                    null
-                )
+                tcYear.renderYear(yearNumber, tcEvents)
                 advancedYearTitle.text = yearNumber.toString()
             }
             advancedYearTitle.setOnLongClickListener {
@@ -116,7 +115,7 @@ class OverviewFragment : Fragment() {
                 }
                 yearNumber += 1
                 advancedYearTitle.text = yearNumber.toString()
-                tcYear.renderYear(yearNumber, tcEvents, null)
+                tcYear.renderYear(yearNumber, tcEvents)
             }
             prevButton.setOnClickListener {
                 (prevButton.drawable as Animatable2).start()
@@ -128,12 +127,12 @@ class OverviewFragment : Fragment() {
                 }
                 yearNumber -= 1
                 advancedYearTitle.text = yearNumber.toString()
-                tcYear.renderYear(yearNumber, tcEvents, null)
+                tcYear.renderYear(yearNumber, tcEvents)
             }
         }
 
         // Finally, render the selected year
-        tcYear.renderYear(yearNumber, tcEvents, null)
+        tcYear.renderYear(yearNumber, tcEvents)
 
         return binding.root
     }
