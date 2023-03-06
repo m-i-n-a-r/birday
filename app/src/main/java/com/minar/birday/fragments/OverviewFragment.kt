@@ -15,6 +15,7 @@ import com.minar.birday.databinding.FragmentOverviewBinding
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 import com.minar.birday.viewmodels.MainViewModel
+import com.minar.tasticalendar.model.TastiCalendarEvent
 import java.time.LocalDate
 
 
@@ -70,7 +71,10 @@ class OverviewFragment : Fragment() {
         )
 
         // Manage the yearly view
-        val minarYear = binding.overviewYearView
+        val tcYear = binding.overviewYearView
+        // TODO Set snack bars prefix
+        val tcEvents: List<TastiCalendarEvent> =
+            events.map { TastiCalendarEvent(it.originalDate, it.notes) }
 
         // Manage the advanced views and buttons
         if (advancedView) {
@@ -84,17 +88,21 @@ class OverviewFragment : Fragment() {
             prevButton.visibility = View.VISIBLE
             nextButton.contentDescription = (yearNumber + 1).toString()
             prevButton.contentDescription = (yearNumber - 1).toString()
-            minarYear.setAdvancedInfoEnabled(true)
-            minarYear.setAppearance(appearance)
+            tcYear.setAdvancedInfoEnabled(true)
+            tcYear.setAppearance(appearance)
             advancedYearTitle.setOnClickListener {
                 yearNumber = LocalDate.now().year
                 act.vibrate()
-                minarYear.renderYear(yearNumber, events)
+                tcYear.renderYear(
+                    yearNumber,
+                    tcEvents,
+                    null
+                )
                 advancedYearTitle.text = yearNumber.toString()
             }
             advancedYearTitle.setOnLongClickListener {
                 // Cycles between the appearances
-                val updatedAppearance = minarYear.setAppearance(-1)
+                val updatedAppearance = tcYear.setAppearance(-1)
                 sharedPrefs.edit().putInt("overview_scale", updatedAppearance).apply()
                 true
             }
@@ -108,7 +116,7 @@ class OverviewFragment : Fragment() {
                 }
                 yearNumber += 1
                 advancedYearTitle.text = yearNumber.toString()
-                minarYear.renderYear(yearNumber, events)
+                tcYear.renderYear(yearNumber, tcEvents, null)
             }
             prevButton.setOnClickListener {
                 (prevButton.drawable as Animatable2).start()
@@ -120,12 +128,12 @@ class OverviewFragment : Fragment() {
                 }
                 yearNumber -= 1
                 advancedYearTitle.text = yearNumber.toString()
-                minarYear.renderYear(yearNumber, events)
+                tcYear.renderYear(yearNumber, tcEvents, null)
             }
         }
 
         // Finally, render the selected year
-        minarYear.renderYear(yearNumber, events)
+        tcYear.renderYear(yearNumber, tcEvents, null)
 
         return binding.root
     }
