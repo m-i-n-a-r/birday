@@ -12,9 +12,9 @@
             android:id="@+id/insertEventBottomSheet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:fitsSystemWindows="true"
             android:padding="@dimen/linear_vertical_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
             app:behavior_hideable="true"
             app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
@@ -131,12 +131,14 @@
                 <!-- Someone uses 2 names for anniversaries in this fields -->
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/nameEvent"
+                    style="?attr/textInputOutlinedExposedDropdownMenuStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
                     android:inputType="textCapWords|textPersonName"
                     android:maxLength="30"
                     android:padding="0dp"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                     android:textCursorDrawable="@drawable/custom_cursor" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -170,12 +172,14 @@
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/surnameEvent"
+                    style="?attr/textInputOutlinedExposedDropdownMenuStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
                     android:inputType="textCapWords|textPersonName"
-                    android:maxLength="25"
+                    android:maxLength="30"
                     android:padding="0dp"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                     android:textCursorDrawable="@drawable/custom_cursor" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -215,6 +219,7 @@
                     android:focusable="false"
                     android:inputType="none"
                     android:padding="0dp"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                     android:textCursorDrawable="@drawable/custom_cursor" />
 
             </com.google.android.material.textfield.TextInputLayout>
