@@ -81,9 +81,19 @@ class MainActivity : AppCompatActivity() {
 
         // Register back pressed callback (do not use onBackPressed() - deprecated)
         onBackPressedDispatcher.addCallback(this) {
+            // Exit if the navigation is in the home page
             if (navController.currentDestination?.id == R.id.navigationMain) {
                 finish()
-            } else {
+            }
+            // Pop the backstack if the navigation is in a secondary screen
+            else if (navController.currentBackStackEntry != null &&
+                (navController.currentDestination?.label == "fragment_details" ||
+                        navController.currentDestination?.label == "fragment_overview" ||
+                        navController.currentDestination?.label == "fragment_experimental_settings")
+            )
+                navController.popBackStack()
+            // Else, first, go back to the home screen before closing the app
+            else {
                 binding.navigation.selectedItemId = R.id.navigationMain
                 navController.navigateWithOptions(R.id.navigationMain)
             }
