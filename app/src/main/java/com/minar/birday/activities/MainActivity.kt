@@ -389,6 +389,9 @@ class MainActivity : AppCompatActivity() {
     // Vibrate using a standard vibration pattern
     // or use system Haptic feedback if vibration is disabled
     fun vibrate() {
+        val active = sharedPrefs.getBoolean("vibration", false)
+        if (!active) return
+
         // Deprecated for no reason
         val vib = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             val vibratorManager =
@@ -399,14 +402,13 @@ class MainActivity : AppCompatActivity() {
             getSystemService(VIBRATOR_SERVICE) as Vibrator
         }
 
-        if (sharedPrefs.getBoolean("vibration", false)) {
-            // Vibrate if the vibration in options is set to on
+        // Create a short vibration for earlier Android versions
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R)
             vib.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            // Use system Haptic feedback
+        // Or use system Haptic feedback if available
+        else
             if (vib.areEffectsSupported(VibrationEffect.EFFECT_CLICK)[0] == Vibrator.VIBRATION_EFFECT_SUPPORT_YES)
                 vib.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK))
-        }
     }
 
     // Show a snackbar containing a given text and an optional action, with a 5 seconds duration
