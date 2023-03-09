@@ -14,6 +14,7 @@ import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.FragmentOverviewBinding
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
+import com.minar.birday.utilities.formatEventList
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.tasticalendar.model.TastiCalendarEvent
 import java.time.LocalDate
@@ -73,11 +74,21 @@ class OverviewFragment : Fragment() {
         // Manage the yearly view
         val tcYear = binding.overviewYearView
         // Surely not a good approach, but it does the job, more or less
-        tcYear.setSnackBarsPrefix(
-            resources.getQuantityString(R.plurals.years, 10).replace("10", "")
-        )
+
         val tcEvents: List<TastiCalendarEvent> =
-            events.map { TastiCalendarEvent(it.originalDate, it.notes) }
+            events.map {
+                TastiCalendarEvent(
+                    it.originalDate,
+                    formatEventList(listOf(it), surnameFirst = false, act, showSurnames = false)
+                )
+            }
+
+        // Snackbar related settings
+        tcYear.apply {
+            setSnackBarsDuration(5000, false)
+            setSnackBarsPrefix(R.plurals.event, plural = true, false)
+            setSnackBarBaseView(act.findViewById(R.id.bottomBar)) // TODO Use binding
+        }
 
         // Manage the advanced views and buttons
         if (advancedView) {
@@ -91,7 +102,6 @@ class OverviewFragment : Fragment() {
             prevButton.visibility = View.VISIBLE
             nextButton.contentDescription = (yearNumber + 1).toString()
             prevButton.contentDescription = (yearNumber - 1).toString()
-            tcYear.setAdvancedInfoEnabled(true)
             tcYear.setAppearance(appearance)
             advancedYearTitle.setOnClickListener {
                 yearNumber = LocalDate.now().year
