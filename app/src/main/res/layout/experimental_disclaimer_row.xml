@@ -26,12 +26,20 @@
         android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         android:textColor="?attr/colorPrimary" />
 
+    <TextView
+        android:id="@+id/appVersionInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/linear_vertical_margin"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
+
     <Button
         android:id="@+id/checkGithubButton"
         style="@style/Widget.Material3.Button.ElevatedButton.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/linear_vertical_margin"
+        android:layout_marginTop="@dimen/in_row_button_padding"
         android:contentDescription="@string/check_github"
         android:paddingVertical="@dimen/in_row_button_padding"
         android:text="@string/check_github"
