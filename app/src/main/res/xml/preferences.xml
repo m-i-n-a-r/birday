@@ -90,7 +90,7 @@
             app:iconSpaceReserved="false" />
 
         <SwitchPreferenceCompat
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:key="vibration"
             android:summaryOff="@string/vibration_description_off"
             android:summaryOn="@string/vibration_description_on"

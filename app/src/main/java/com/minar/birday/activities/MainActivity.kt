@@ -399,7 +399,7 @@ class MainActivity : AppCompatActivity() {
     // Vibrate using a standard vibration pattern
     // or use system Haptic feedback if vibration is disabled
     fun vibrate() {
-        val active = sharedPrefs.getBoolean("vibration", false)
+        val active = sharedPrefs.getBoolean("vibration", true)
         if (!active) return
 
         // Deprecated for no reason
