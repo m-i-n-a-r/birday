@@ -10,8 +10,8 @@ android {
         applicationId "com.minar.birday"
         minSdkVersion 26
         targetSdkVersion 33
-        versionCode 26
-        versionName "4.2.0"
+        versionCode 27
+        versionName "4.3.0"
         resConfigs 'en', 'ca', 'cs', 'de', 'es', 'fr', 'hi', 'hr', 'hu', 'it', 'ml', 'mr', 'nl', 'pl', 'pt', 'pt-rBR', 'ro', 'ru', 'sr', 'sv-rSE', 'uk-rUA', 'vi', 'zh-rTW', 'zh-rCN'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -99,7 +99,7 @@ dependencies {
     implementation 'nl.dionsegijn:konfetti:1.3.2'
 
     // TastiCalendar (my library :D)
-    implementation 'com.github.m-i-n-a-r:tasticalendar:1.2.3'
+    implementation 'com.github.m-i-n-a-r:tasticalendar:1.3.3'
 
     // [Testing] Basic
     testImplementation 'junit:junit:4.13.2'
