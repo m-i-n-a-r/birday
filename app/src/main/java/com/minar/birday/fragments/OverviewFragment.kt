@@ -17,6 +17,7 @@ import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 import com.minar.birday.utilities.formatEventList
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.tasticalendar.model.TastiCalendarEvent
+import com.minar.tasticalendar.model.TcSundayHighlight
 import java.time.LocalDate
 
 
@@ -87,6 +88,7 @@ class OverviewFragment : Fragment() {
         tcYear.apply {
             setSnackBarsDuration(5000, false)
             setSnackBarsPrefix(R.plurals.event, plural = true, false)
+            setSundayHighlight(TcSundayHighlight.BOLDCOLORED, false)
             setSnackBarBaseView(act.findViewById(R.id.bottomBar)) // TODO Use binding
         }
 
