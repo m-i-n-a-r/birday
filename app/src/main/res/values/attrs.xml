@@ -1,47 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="sundayAsFirstDay" format="boolean" />
-    <attr name="hideWeekDays" format="boolean" />
-    <attr name="showInfoSnackBars" format="boolean" />
-    <attr name="appearance" format="enum">
-        <enum name="small" value="0" />
-        <enum name="medium" value="1" />
-        <enum name="large" value="2" />
-        <enum name="xlarge" value="3" />
-    </attr>
-
     <declare-styleable name="AppWidgetAttrs">
         <attr name="appWidgetPadding" format="dimension" />
         <attr name="appWidgetInnerRadius" format="dimension" />
         <attr name="appWidgetRadius" format="dimension" />
-    </declare-styleable>
-
-    <declare-styleable name="MinarMonth">
-        <attr name="sundayAsFirstDay" />
-        <attr name="hideWeekDays" />
-        <attr name="month" format="enum">
-            <enum name="january" value="0" />
-            <enum name="february" value="1" />
-            <enum name="march" value="2" />
-            <enum name="april" value="3" />
-            <enum name="may" value="4" />
-            <enum name="june" value="5" />
-            <enum name="july" value="6" />
-            <enum name="august" value="7" />
-            <enum name="september" value="8" />
-            <enum name="october" value="9" />
-            <enum name="november" value="10" />
-            <enum name="december" value="11" />
-        </attr>
-        <attr name="showInfoSnackBars" />
-        <attr name="appearance" />
-    </declare-styleable>
-
-    <declare-styleable name="MinarYear">
-        <attr name="sundayAsFirstDay" />
-        <attr name="hideWeekDays" />
-        <attr name="showInfoSnackBars" />
-        <attr name="showAdvancedInfo" format="boolean" />
-        <attr name="appearance" />
     </declare-styleable>
 </resources>

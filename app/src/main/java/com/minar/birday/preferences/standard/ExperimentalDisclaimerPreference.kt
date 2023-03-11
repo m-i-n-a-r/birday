@@ -6,6 +6,7 @@ import android.net.Uri
 import android.util.AttributeSet
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
+import com.minar.birday.BuildConfig
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.ExperimentalDisclaimerRowBinding
@@ -37,5 +38,11 @@ class ExperimentalDisclaimerPreference(context: Context, attrs: AttributeSet?) :
             val uri = Uri.parse(context.getString(R.string.crowdin_project))
             context.startActivity(Intent(Intent.ACTION_VIEW, uri))
         }
+
+        // Set the app version name and number text
+        val versionCode = BuildConfig.VERSION_CODE
+        val versionName = BuildConfig.VERSION_NAME
+        val versionInfo = "v$versionName ($versionCode)"
+        binding.appVersionInfo.text = versionInfo
     }
 }

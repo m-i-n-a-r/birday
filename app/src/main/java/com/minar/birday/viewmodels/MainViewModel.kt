@@ -39,7 +39,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         // All the events, unfiltered
         allEventsUnfiltered = eventDao.getOrderedEvents()
         // All the events, filtered by search string and type
-        allEvents = Transformations.switchMap(searchValues) { pair ->
+        allEvents = searchValues.switchMap { pair ->
             val searchString = pair.first
             val selectedType = pair.second
             if (!searchString.isNullOrBlank())

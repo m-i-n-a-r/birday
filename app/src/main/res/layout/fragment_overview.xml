@@ -96,7 +96,7 @@
             app:layout_constraintStart_toEndOf="@id/overviewAdvancedYear"
             app:layout_constraintTop_toTopOf="@id/overviewAdvancedYear" />
 
-        <com.minar.birday.utilities.MinarYear
+        <com.minar.tasticalendar.core.TastiCalendarYear
             android:id="@+id/overviewYearView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

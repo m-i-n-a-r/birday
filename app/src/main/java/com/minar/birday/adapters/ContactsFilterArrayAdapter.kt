@@ -3,6 +3,7 @@ package com.minar.birday.adapters
 import android.content.Context
 import android.widget.ArrayAdapter
 import android.widget.Filter
+import com.minar.birday.R
 import com.minar.birday.model.ContactInfo
 import java.util.*
 
@@ -12,7 +13,7 @@ class ContactsFilterArrayAdapter(
     private val filterBy: (contactInfo: ContactInfo) -> (String),
 ) : ArrayAdapter<ContactInfo>(
     context,
-    android.R.layout.simple_dropdown_item_1line,
+    R.layout.event_type_list_item,
     contacts.toMutableList()
 ) {
 

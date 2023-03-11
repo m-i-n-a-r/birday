@@ -294,6 +294,8 @@
     <string name="delete_search_description_off">Il ne sera pas possible de supprimer plusieurs événements à la fois</string>
     <string name="delete_search_description_on">Appuyez sur l\'icône de la corbeille pendant que vous cherchez un ou plusieurs événements pour tous les supprimer rapidement de Birday. À utiliser prudemment !</string>
     <string name="delete_search_confirm">Cela va supprimer tous les résultats de la recherche. Vous pourrez annuler le processus si vous changez d\'avis rapidement après avoir validé.</string>
+    <string name="import_contacts_bottom_sheet_description">Voulez-vous importer tous les événements de vos contacts maintenant ?</string>
+    <string name="yes_import">Importer</string>
     <string name="advanced_overview_title">Aperçu avancé</string>
     <string name="advanced_overview_description_off">L\'écran d\'aperçu n\'affichera que les informations de base</string>
     <string name="advanced_overview_description_on">L\'écran d\'aperçu montrera d\'autres années et des informations détaillées</string>

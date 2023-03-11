@@ -44,10 +44,10 @@ This is an open source app to remember **birthdays** and other events in a fast,
 ## Features
 - Notification the day of the event (with selectable time)
 - Additional notification up to 7 days before the event
-- Import from contacts or calendar (and auto import on launch option)
+- Import from contacts or calendar (import on first launch, auto import on each launch option)
 - Easily backup and restore your saved events!
 - Experimental CSV and JSON import/export
-- insert an event manually, just specifying a name, an optional surname, an image and a date (with optional year)
+- insert an event manually, just specifying a first name, an optional last name, an image and a date (with optional year)
 - Choose your favorite events to see detailed information about them and a countdown for each one
 - Tap on an event to see every possible detail and the available actions
 - The birthdays are also automagically backed up in cloud by Google Play Services when the app is installed from Play Store
@@ -55,7 +55,7 @@ This is an open source app to remember **birthdays** and other events in a fast,
 - Easily delete, modify and share the saved events!
 - Each event has an handy note field
 - Easily hide the top cards to display the list in fullscreen
-- Main list organized by months
+- Main list organized by month
 - Quick glance row, to visualize the events in the next 10 days
 - Yearly overview screen (advanced mode available)
 - A nice searchbar and an event type selector
@@ -84,7 +84,7 @@ This is an open source app to remember **birthdays** and other events in a fast,
 
   <img src='https://i.imgur.com/FB51xRj.png' width='18%'/>
   <img src='https://i.imgur.com/mEEmK0B.png' width='18%'/>
-  <img src='https://i.imgur.com/Wn5U2vB.png' width='18%'/>
+  <img src='https://i.imgur.com/pj5GuTZ.png' width='18%'/>
   <img src='https://i.imgur.com/egZkfSH.png' width='18%'/>
   <img src='https://i.imgur.com/gyt9bw0.png' width='18%'/>
 </p>
@@ -101,6 +101,7 @@ The app is available through Google Play and F-Droid\
 
 ## Credits and contributions
 Birday uses some open source libraries, just a few:
+- [TastiCalendar](https://github.com/m-i-n-a-r/tasticalendar)
 - [Konfetti](https://github.com/DanielMartinus/Konfetti)
 - [App Intro](https://github.com/AppIntro/AppIntro)
 - [Shimmer](https://github.com/facebook/shimmer-android)
@@ -108,6 +109,7 @@ Birday uses some open source libraries, just a few:
 Top contributors (special thanks to them!):
 - [Alberto Pedron](https://github.com/Alberto97) for the precious advices and for contributing with many useful pull requests
 - [Dominik Novosel](https://github.com/DominikNovosel) for the suggestions, for supporting the project and for the LTS version
+- [Simone Sestito](https://github.com/simonesestito) for adding useful features and for being a great friend
 
 Currently, Birday supports the languages in the above table. If you want to translate the app in any other language or update an existing translation, just contact me or send a pull request: you'll be quoted both on Github and in the Play Store description. For a detailed guide on how to translate the app, refer to the [Wiki](https://github.com/m-i-n-a-r/birday/wiki/Translate-the-app)
 

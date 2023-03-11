@@ -81,9 +81,19 @@ class MainActivity : AppCompatActivity() {
 
         // Register back pressed callback (do not use onBackPressed() - deprecated)
         onBackPressedDispatcher.addCallback(this) {
+            // Exit if the navigation is in the home page
             if (navController.currentDestination?.id == R.id.navigationMain) {
                 finish()
-            } else {
+            }
+            // Pop the backstack if the navigation is in a secondary screen
+            else if (navController.currentBackStackEntry != null &&
+                (navController.currentDestination?.label == "fragment_details" ||
+                        navController.currentDestination?.label == "fragment_overview" ||
+                        navController.currentDestination?.label == "fragment_experimental_settings")
+            )
+                navController.popBackStack()
+            // Else, first, go back to the home screen before closing the app
+            else {
                 binding.navigation.selectedItemId = R.id.navigationMain
                 navController.navigateWithOptions(R.id.navigationMain)
             }
@@ -389,6 +399,9 @@ class MainActivity : AppCompatActivity() {
     // Vibrate using a standard vibration pattern
     // or use system Haptic feedback if vibration is disabled
     fun vibrate() {
+        val active = sharedPrefs.getBoolean("vibration", true)
+        if (!active) return
+
         // Deprecated for no reason
         val vib = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             val vibratorManager =
@@ -399,14 +412,13 @@ class MainActivity : AppCompatActivity() {
             getSystemService(VIBRATOR_SERVICE) as Vibrator
         }
 
-        if (sharedPrefs.getBoolean("vibration", false)) {
-            // Vibrate if the vibration in options is set to on
+        // Create a short vibration for earlier Android versions
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R)
             vib.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            // Use system Haptic feedback
+        // Or use system Haptic feedback if available
+        else
             if (vib.areEffectsSupported(VibrationEffect.EFFECT_CLICK)[0] == Vibrator.VIBRATION_EFFECT_SUPPORT_YES)
                 vib.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK))
-        }
     }
 
     // Show a snackbar containing a given text and an optional action, with a 5 seconds duration
