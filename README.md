@@ -37,6 +37,7 @@ This is an open source app to remember **birthdays** and other events in a fast,
 | **Catalan**             | retiolus        |                             |
 | **Serbian**             | Th3Unkn0wn0n3   | vatonbero                   |
 | **Ukrainian**           | taras           |                             |
+| **Greek**               | Retrial         |                             |
 | **Marathi**             | Ramesh Kumar    |                             |
 | **Malayalam**           | Lavin-tom       |                             |
 | **Hindi**               | assembleDebug   |                             |
