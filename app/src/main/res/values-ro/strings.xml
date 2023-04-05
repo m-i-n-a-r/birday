@@ -113,7 +113,7 @@
     <string name="additional_notification_only_favorites_description_on">Trimite o notificare suplimentară doar pentru evenimentele favorite</string>
     <string name="additional_notification_only_favorites_description_off">Trimite o notificare suplimentară pentru fiecare eveniment introdus</string>
     <string name="troubleshoot">Depanați</string>
-    <string name="battery_optimization_title">Dezactivați optimizarea bateriei</string>
+    <string name="battery_optimization_title">Dezactivează optimizarea bateriei</string>
     <string name="battery_optimization_description">Deschide setările pentru a dezactiva orice optimizare pentru Birday. Util dacă notificările nu funcționează</string>
     <string name="notification_sound_title">Sunet de notificare</string>
     <string name="notification_sound_description">Comandă rapidă la setările sunetului de notificare, dacă nu vă place sunetul implicit al păsărilor</string>
