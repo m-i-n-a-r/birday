@@ -113,7 +113,7 @@
     <string name="additional_notification_only_favorites_description_on">Trimite o notificare suplimentară doar pentru evenimentele favorite</string>
     <string name="additional_notification_only_favorites_description_off">Trimite o notificare suplimentară pentru fiecare eveniment introdus</string>
     <string name="troubleshoot">Depanați</string>
-    <string name="battery_optimization_title">Dezactivați optimizarea bateriei</string>
+    <string name="battery_optimization_title">Dezactivează optimizarea bateriei</string>
     <string name="battery_optimization_description">Deschide setările pentru a dezactiva orice optimizare pentru Birday. Util dacă notificările nu funcționează</string>
     <string name="notification_sound_title">Sunet de notificare</string>
     <string name="notification_sound_description">Comandă rapidă la setările sunetului de notificare, dacă nu vă place sunetul implicit al păsărilor</string>
@@ -133,7 +133,7 @@
     <string name="cancel">Anulează</string>
     <string name="insert_name_hint">Introdu prenumele</string>
     <string name="insert_surname_hint">Introdu numele</string>
-    <string name="insert_date_hint">Selectează o dată</string>
+    <string name="insert_date_hint">Selectează data</string>
     <string name="invalid_value_name">Nume nevalid!</string>
     <string name="consider_year">Consideră anul</string>
     <string name="event_type_hint">Tipul evenimentului</string>
@@ -146,7 +146,7 @@
     <!-- Event actions -->
     <string name="event_actions">Acțiuni</string>
     <string name="event_actions_description">Aici poți schimba sau elimina acest eveniment!</string>
-    <string name="edit_event">Editare eveniment</string>
+    <string name="edit_event">Editează evenimentul</string>
     <string name="delete_event">Șterge evenimentul</string>
     <string name="update_event">Actualizează evenimentul</string>
     <string name="share_event">Distribuie evenimentul</string>
