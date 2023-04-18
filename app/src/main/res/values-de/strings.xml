@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Willkommen zu Birday</string>
-    <string name="app_name_extended">Birday - Ereignishandler</string>
+    <string name="app_name_extended">Birday - Ereignismanager</string>
     <string name="leave_review_title">Birday bewerten</string>
     <string name="leave_review_subtitle">Lass eine Bewertung da, um mir mit der App zu helfen. Berücksichtige, dass diese App, abgesehen von Spenden, völlig kostenlos und werbefrei ist!</string>
     <string name="yes_review">Bewerten!</string>
