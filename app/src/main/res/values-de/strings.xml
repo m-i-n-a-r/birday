@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_welcome">Willkommen zu Birday</string>
-    <string name="app_name_extended">Birday - Ereignishandler</string>
+    <string name="app_welcome">Willkommen bei Birday</string>
+    <string name="app_name_extended">Birday - Ereignismanager</string>
     <string name="leave_review_title">Birday bewerten</string>
     <string name="leave_review_subtitle">Lass eine Bewertung da, um mir mit der App zu helfen. Berücksichtige, dass diese App, abgesehen von Spenden, völlig kostenlos und werbefrei ist!</string>
     <string name="yes_review">Bewerten!</string>
@@ -101,7 +101,7 @@
     <string name="hide_images_description_on">Versteckte Eventbilder</string>
     <string name="hide_images_description_off">Ereignisbilder sichtbar</string>
     <string name="notification_only_favorites">Nur Favoriten</string>
-    <string name="notification_only_favorites_description_on">Sendet Sie Benachrichtigungen nur für Lieblingsereignisse</string>
+    <string name="notification_only_favorites_description_on">Sendet Benachrichtigungen nur für favorisierte Ereignisse</string>
     <string name="notification_only_favorites_description_off">Sendet eine Benachrichtigung für jedes eingegebene Ereignis</string>
     <string name="additional_notification_only_favorites">Zusätzliche Benachrichtigung für Favoriten</string>
     <string name="additional_notification_only_favorites_description_on">Sende die zusätzliche Benachrichtigung nur für Lieblingsereignisse</string>
@@ -111,35 +111,35 @@
     <string name="battery_optimization_description">Öffnen Sie die Einstellungen, um jegliche Optimierung für Birday zu deaktivieren. Nützlich, wenn Benachrichtigungen nicht funktionieren</string>
     <string name="notification_sound_title">Benachrichtigungston</string>
     <string name="notification_sound_description">Verknüpfung zu den Benachrichtigungstoneinstellungen, wenn Ihnen der Standard-Vogelton nicht gefällt</string>
-    <string name="missing_permission_notifications">Die Benachrichtigungs-Berechtigung wurde verweigert, und Birday kann keine Benachrichtigungen senden! Aktivieren Sie die Berechtigung von Einstellungen.</string>
-    <string name="missing_permission_notifications_forever">Die Kalender-Berechtigung wurde verweigert und kann nicht erneut gefragt werden, daher kann Birday nicht aus Kalender importieren! Aktivieren Sie die Berechtigung manuell in den Einstellungen.</string>
-    <string name="missing_permission_calendar">Die Kalender-Berechtigung wurde verweigert und kann nicht erneut gefragt werden, daher kann Birday nicht aus Kalender importieren! Aktivieren Sie die Berechtigung manuell in den Einstellungen.</string>
-    <string name="missing_permission_calendar_forever">Die Kalender-Berechtigung wurde verweigert und kann nicht erneut gefragt werden, daher kann Birday nicht aus Kalender importieren! Aktivieren Sie die Berechtigung manuell in den Einstellungen.</string>
+    <string name="missing_permission_notifications">Die Benachrichtigungs-Berechtigung wurde verweigert und Birday kann keine Benachrichtigungen senden! Aktiviere die Berechtigung in den Einstellungen.</string>
+    <string name="missing_permission_notifications_forever">Die Benachrichtigungs-Berechtigung wurde verweigert und kann nicht erneut erfragt werden, daher kann Birday keine Benachrichtigungen senden! Aktivieren Sie die Berechtigung manuell in den Einstellungen.</string>
+    <string name="missing_permission_calendar">Die Kalender-Berechtigung wurde verweigert und kann nicht erneut erfragt werden, daher kann Birday nicht aus dem Kalender importieren! Aktiviere die Berechtigung manuell in den Einstellungen.</string>
+    <string name="missing_permission_calendar_forever">Die Kalender-Berechtigung wurde verweigert und kann nicht erneut erfragt werden, daher kann Birday nicht aus dem Kalender importieren! Aktiviere die Berechtigung manuell in den Einstellungen.</string>
     <string name="import_calendar_title">Vom Kalender importieren</string>
-    <string name="import_calendar_description">Importieren Sie jedes Ereignis pro Jahr aus Ihren Kalendern. Denken Sie daran, den Ereignistyp und das Jahr festzulegen, um Ordnung zu halten!</string>
+    <string name="import_calendar_description">Importiere jedes jährliche Ereignis aus deinem Kalender. Denke daran, den Ereignistyp und das Jahr festzulegen, um Ordnung zu halten!</string>
     <!-- Developer -->
     <string name="dev_description">Ich bin ein netter Mensch und ich mag schöne Dinge wie Animationen, Icons, Sportwagen und 3D-Druck. Ich arbeite als Designer und Computeringenieur.</string>
     <string name="easter_egg">Schönes logo, hm? ;D</string>
     <!-- New event -->
-    <string name="new_event">Neuer Ereignis</string>
-    <string name="new_event_description">Gib eine neue Person ein, die dir wichtig ist, und Birday wird dir helfen, sich an ihren Geburtstag oder andere Ereignisse zu erinnern!!</string>
+    <string name="new_event">Neues Ereignis</string>
+    <string name="new_event_description">Gib eine Person ein, die dir wichtig ist und Birday wird dir helfen, dich an ihren Geburtstag oder andere Ereignisse zu erinnern!</string>
     <string name="insert_event">Ereignis eingeben</string>
     <string name="cancel">Abbrechen</string>
     <string name="insert_name_hint">Vornamen eingeben</string>
     <string name="insert_surname_hint">Nachnamen eingeben</string>
     <string name="insert_date_hint">Wähle ein Datum</string>
     <string name="invalid_value_name">Ungültiger Name!</string>
-    <string name="consider_year">Inklusive Jahr</string>
+    <string name="consider_year">Jahr berücksichtigen</string>
     <string name="event_type_hint">Ereignistyp</string>
     <string name="birthday">Geburtstag</string>
     <string name="anniversary">Jubiläum</string>
     <string name="death_anniversary">Todestag</string>
-    <string name="festivity">Fest</string>
+    <string name="festivity">Feierlichkeit</string>
     <string name="name_day">Namenstag</string>
     <string name="other">Andere</string>
     <!-- Event actions -->
     <string name="event_actions">Aktion</string>
-    <string name="event_actions_description">hier kannst du dieses Ereignis löschen oder einfach bearbeiten!</string>
+    <string name="event_actions_description">Hier kannst du dieses Ereignis löschen oder bearbeiten!</string>
     <string name="edit_event">Ereignis bearbeiten</string>
     <string name="delete_event">Ereignis löschen</string>
     <string name="update_event">Ereignis aktualisieren</string>
@@ -157,7 +157,7 @@
     <string name="text_message">Textnachricht</string>
     <string name="dialer">Telefon</string>
     <string name="wishes_birthday">Alles Gute zum Geburtstag!</string>
-    <string name="no_default_dialer">Keine Standard-Dialer-App gefunden</string>
+    <string name="no_default_dialer">Keine Standard-Telefon-App gefunden!</string>
     <string name="no_default_sms">Keine Standard SMS App gefunden!</string>
     <!-- Statistics -->
     <string name="did_you_know">Wusstest du das?</string>
@@ -171,7 +171,7 @@
     <string name="random_zodiac_sign">Sternzeichen von %1$s: %2$s</string>
     <string name="most_common_zodiac_sign">Das häufigste Sternzeichen ist %s</string>
     <string name="most_common_chinese_sign">Das häufigste chinesische Zeichen ist %s</string>
-    <string name="random_day_of_week">%1$s ist geboren am %2$s</string>
+    <string name="random_day_of_week">%1$s wurde geboren am %2$s</string>
     <string name="most_common_day_of_week">Der häufigste Geburtswochentag ist %s</string>
     <plurals name="leap_year_total">
         <item quantity="one">Die Zahl der in einem Schaltjahr geborenen Personen ist %d</item>
@@ -214,7 +214,7 @@
         <item quantity="one">%d Jahr</item>
         <item quantity="other">%d Jahre</item>
     </plurals>
-    <string name="born_in">geboren in</string>
+    <string name="born_in">geboren</string>
     <string name="and">und</string>
     <plurals name="event">
         <item quantity="one">ereignis: %s</item>
@@ -228,7 +228,7 @@
     <string name="notification_description_part_2">Einen schönen Tag noch!</string>
     <string name="additional_notification_text">Bevorstehende Ereignisse!</string>
     <!-- Introduction slides -->
-    <string name="slide_one_title">Willkommen zu Birday!</string>
+    <string name="slide_one_title">Willkommen bei Birday!</string>
     <string name="slide_one_description">Birday ist eine einfache und leichte App zum Verwalten wichtiger Ereignisse! Damit können Sie sich schnell und zuverlässig die Geburtstage Ihrer Lieben merken und speichern und vieles mehr.</string>
     <string name="slide_two_title">Kostenlos, einfach, individualisierbar</string>
     <string name="slide_two_description">Birday ist kostenlos, werbefrei und quelloffen. Es bietet eine Reihe von Statistiken über deine Geburtstage, ein Favoritensystem und eine anpassbare Oberfläche. Und garantierten Support und Updates!</string>
@@ -237,17 +237,17 @@
     <!-- Widget -->
     <string name="appwidget_upcoming">Bevorstehende Ereignisse</string>
     <string name="add_widget">Birday - bevorstehend</string>
-    <string name="dark_widget_name">Dunkle widget</string>
-    <string name="dark_widget_description_on">Das Widget verwendet das dunkle Thema</string>
-    <string name="dark_widget_description_off">Das Widget verwendet ein klares Thema</string>
+    <string name="dark_widget_name">Dunkles Widget</string>
+    <string name="dark_widget_description_on">Das Widget verwendet das dunkle Design</string>
+    <string name="dark_widget_description_off">Das Widget verwendet das helle Design</string>
     <string name="widget_configuration_title">Widget-Konfiguration</string>
     <string name="widget_configuration_description">Konfigurieren Sie das Widget auf Ihren Stil</string>
     <string name="widget_background_title">Hintergrund</string>
     <string name="widget_background_description">Zeige einen Hintergrund für das Widget</string>
     <string name="compact_widget_title">Kompaktes Layout</string>
     <string name="compact_widget_description">Optimieren Sie das Layout als extrem kompakt</string>
-    <string name="align_start_widget_title">Start ausrichten</string>
-    <string name="align_start_widget_description">Richten Sie den Widget-Inhalt am Anfang aus (rechts oder links, je nach Gebietsschema)</string>
+    <string name="align_start_widget_title">Linksbündig ausrichten</string>
+    <string name="align_start_widget_description">Richte den Widget-Text linksbündig aus (rechts oder links, je nach Region)</string>
     <string name="hide_far_widget_title">Widget für entfernte Ereignisse ausblenden</string>
     <string name="hide_far_widget_description">Widget ausblenden, wenn die nächsten Ereignisse nach der zusätzlichen Benachrichtigungsfrist sind (zB.: Benachrichtigung 7 Tage zuvor das nächste Ereignis ist in 10 Tagen -&gt; das Widget ist versteckt)</string>
     <!-- Search -->
@@ -264,22 +264,22 @@
     <string name="experimental_settings_title">Experimentell</string>
     <string name="experimental_settings_description">Einige experimentelle oder fehlerhafte Einstellungen und Funktionen, verwenden Sie sie auf eigene Gefahr</string>
     <string name="experimental_disclaimer">Die folgenden Funktionen sind experimentell und funktionieren möglicherweise nicht korrekt. Sie werden auf eigene Gefahr verwendet. Beziehen Sie sich auf Github für jeden Fortschritt, da einige dieser Funktionen \"gefördert\" und übersetzt werden könnten</string>
-    <string name="check_github">Überprüfe aus Github</string>
+    <string name="check_github">Schau auf Github nach</string>
     <string name="translate_app">Übersetze die App</string>
     <string name="launch_auto_import_title">Automatischer Import beim Start</string>
-    <string name="launch_auto_import_description_off">Birday importiert Kontakte nicht automatisch, wenn gestartet wird</string>
+    <string name="launch_auto_import_description_off">Birday importiert Kontakte beim Start nicht automatisch</string>
     <string name="launch_auto_import_description_on">Birday wird beim Start automatisch mit Kontakten synchronisieren</string>
     <string name="hide_on_scroll_title">Navigationsleiste beim Scrollen ausblenden</string>
     <string name="hide_on_scroll_description_on">Die untere Navigationsleiste beim Scrollen ausblenden</string>
     <string name="hide_on_scroll_description_off">Die untere Leiste dauerhaft Anzeigen</string>
-    <string name="angry_bird_title">Wütender Angry Bird</string>
+    <string name="angry_bird_title">Angry Bird Modus</string>
     <string name="angry_bird_description_on">Dauerhafte Benachrichtigungen, kürzere Texte und andere Benachrichtigungs-bezogene Optimierungen</string>
     <string name="angry_bird_description_off">Benachrichtigungen werden sich normal verhalten</string>
     <string name="disable_astrology_title">Astrologie deaktivieren</string>
-    <string name="disable_astrology_description_on">Sternzeichen vor Details und Statistiken versteckt</string>
+    <string name="disable_astrology_description_on">Sternzeichen aus Details und Statistiken entfernen</string>
     <string name="disable_astrology_description_off">Sternzeichen-Informationen werden normal angezeigt</string>
     <string name="import_json_title">Aus JSON importieren</string>
-    <string name="import_json_description">Importieren aus einer CSV-Datei. Konsultieren Sie das Wiki auf Github für die erforderliche Dateistruktur</string>
+    <string name="import_json_description">Importieren aus einer JSON-Datei. Konsultiere das Github-Wiki für die erforderliche Dateistruktur</string>
     <string name="export_json_title">Als JSON exportieren</string>
     <string name="export_json_description">Exportieren Sie jedes Ereignis in eine JSON-Datei, Bild ausgeschlossen</string>
     <string name="import_csv_title">Aus CSV-Datei importieren</string>
@@ -287,9 +287,9 @@
     <string name="export_csv_title">Als CSV-Datei exportieren</string>
     <string name="export_csv_description">Exportieren Sie jedes Ereignis in eine CSV-Datei, Bild ausgeschlossen</string>
     <string name="delete_db_title">Alle Events löschen</string>
-    <string name="delete_db_description">Lösche die DB. Überlege dir zweimal vor dem Klicken!</string>
+    <string name="delete_db_description">Lösche die Datenbank. Überlege es dir zweimal bevor du klickst!</string>
     <string name="delete_db_dialog_title">Bist du dir sicher?</string>
-    <string name="delete_db_dialog_description">Stelle sicher, dass du zuerst deine Ereignisse sichern kannst. Dieser Vorgang löscht die DB und sollte nur für das Debuggen verwendet werden</string>
+    <string name="delete_db_dialog_description">Stelle sicher, dass du zuerst ein Backup deiner Ereignisse erstellst. Dieser Vorgang löscht die Datenbank und sollte nur zum Zweck des Debuggings verwendet werden</string>
     <string name="delete_search_title">Suchauswahl löschen</string>
     <string name="delete_search_description_off">Es ist nicht möglich, mehrere Ereignisse gleichzeitig zu löschen</string>
     <string name="delete_search_description_on">Drücken Sie den Papierkorb-Button, wenn Sie ein oder mehrere Ereignisse suchen, um sie schnell alle vom Geburtstag zu löschen. Mit Vorsicht verwenden!</string>
