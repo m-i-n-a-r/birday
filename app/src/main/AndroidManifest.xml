@@ -7,6 +7,13 @@
             <action android:name="android.intent.action.SEND" />
             <data android:mimeType="*/*" />
         </intent>
+
+        <package android:name="com.whatsapp" />
+        <package android:name="org.telegram.messenger" />
+        <package android:name="com.viber.voip" />
+        <package android:name="org.thoughtcrime.securesms" />
+        <package android:name="com.instagram.android" />
+        <package android:name="com.facebook.orca" />
     </queries>
 
     <uses-permission android:name="android.permission.VIBRATE" />
