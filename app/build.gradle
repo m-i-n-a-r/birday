@@ -10,9 +10,9 @@ android {
         applicationId "com.minar.birday"
         minSdkVersion 26
         targetSdkVersion 33
-        versionCode 27
-        versionName "4.3.0"
-        resConfigs 'en', 'ca', 'cs', 'de', 'es', 'fr', 'hi', 'hr', 'hu', 'it', 'ml', 'mr', 'nl', 'pl', 'pt', 'pt-rBR', 'ro', 'ru', 'sr', 'sv-rSE', 'uk-rUA', 'vi', 'zh-rTW', 'zh-rCN'
+        versionCode 28
+        versionName "4.4.0"
+        resourceConfigurations += ['en', 'ca', 'cs', 'de', 'el', 'es', 'fr', 'hi', 'hr', 'hu', 'it', 'ml', 'mr', 'nl', 'pl', 'pt', 'pt-rBR', 'ro', 'ru', 'sr', 'sv-rSE', 'uk-rUA', 'vi', 'zh-rTW', 'zh-rCN']
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -24,12 +24,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 
     packagingOptions {
@@ -57,17 +57,17 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.10.0'
     implementation 'androidx.preference:preference-ktx:1.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.activity:activity-ktx:1.7.0'
-    implementation 'androidx.fragment:fragment-ktx:1.5.6'
+    implementation 'androidx.activity:activity-ktx:1.7.1'
+    implementation 'androidx.fragment:fragment-ktx:1.5.7'
 
     // Constraint / motion layout
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     // Splashscreen
-    implementation 'androidx.core:core-splashscreen:1.0.0'
+    implementation 'androidx.core:core-splashscreen:1.0.1'
 
     // Material Components
-    implementation 'com.google.android.material:material:1.10.0-alpha01'
+    implementation 'com.google.android.material:material:1.9.0-rc01'
 
     // WorkManager
     implementation 'androidx.work:work-runtime-ktx:2.8.1'

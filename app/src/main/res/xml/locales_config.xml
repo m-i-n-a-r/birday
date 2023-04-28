@@ -4,6 +4,7 @@
     <locale android:name="cs"/> <!-- Czech -->
     <locale android:name="de"/> <!-- German -->
     <locale android:name="en"/> <!-- English -->
+    <locale android:name="el"/> <!-- Greek -->
     <locale android:name="es"/> <!-- Spanish (Spain) -->
     <locale android:name="fr"/> <!-- French (France) -->
     <locale android:name="hi"/> <!-- Hindi -->
