@@ -84,15 +84,15 @@
     <string name="import_failed">Il y a eu un problème !</string>
     <string name="missing_permission_contacts">Vous n\'avez pas autorisé l\'accès aux contacts. Veuillez réessayer ou l\'importation des contacts ne pourra aboutir !</string>
     <string name="missing_permission_contacts_forever">Birday n\'a pas pu importer vos contacts ni pu vous en demander l\'autorisation. Si vous avez cliquer sur \"Refuser et ne plus demander\", il faut autoriser l\'accès manuellement.</string>
-    <string name="birday_import_title">Importer une sauvegarde d\'anniversaires</string>
+    <string name="birday_import_title">Importer une sauvegarde Birday</string>
     <string name="birday_import_description">Veuillez choisir une sauvegarde valide pour restaurer manuellement vos événements. Toutes vos données existantes seront écrasées !</string>
     <string name="birday_export_title">Exporter et partager des événements</string>
     <string name="birday_export_description">Exportez vos événements et partagez-les ! Le fichier se trouve dans Android/data/com.minar.birday/files.</string>
     <string name="birday_import_success">Importation terminée !</string>
     <string name="birday_import_failure">L\'importation a échouée. Avez-vous choisi le bon fichier ?</string>
-    <string name="birday_import_invalid_file">L\'importation a échouée. Le fichier n\'est pas une sauvegarde Birday !</string>
+    <string name="birday_import_invalid_file">L\'importation a échoué. Le fichier n\'est pas une sauvegarde Birday !</string>
     <string name="birday_export_success">Exportation terminée !</string>
-    <string name="birday_export_failure">L\'exportation a échouée. Oups !</string>
+    <string name="birday_export_failure">L\'exportation a échoué. Oups !</string>
     <string name="birday_export_nothing_found">Il n\'y a rien à exporter !</string>
     <string name="surname_first">Nom pour le premier</string>
     <string name="surname_first_description_on">Afficher le nom avant le prénom</string>
@@ -134,8 +134,8 @@
     <string name="birthday">Anniversaire</string>
     <string name="anniversary">Mariage</string>
     <string name="death_anniversary">Anniversaire de la mort</string>
-    <string name="festivity">Festivitè</string>
-    <string name="name_day">Nom-jour</string>
+    <string name="festivity">Festivité</string>
+    <string name="name_day">Saint-Patron</string>
     <string name="other">Autre</string>
     <!-- Event actions -->
     <string name="event_actions">Actions</string>
