@@ -306,9 +306,9 @@
     <string name="delete_search_description_off">Nebude možné vymazať viacero udalostí naraz</string>
     <string name="delete_search_description_on">Pri vyhľadávaní jednej alebo viacerých udalostí stlačte tlačidlo Kôš, aby ste ich všetky rýchlo odstránili z aplikácie Birday. Používajte opatrne!</string>
     <string name="delete_search_confirm">Odstránia sa tak všetky výsledky tohto vyhľadávania. Ak si to rozmyslíte, môžete tento proces vrátiť krátko po kliknutí na tlačidlo OK!</string>
-    <string name="import_contacts_bottom_sheet_description">Would you like to import all the events from your contacts right now?</string>
-    <string name="yes_import">Import</string>
-    <string name="advanced_overview_title">Advanced overview</string>
-    <string name="advanced_overview_description_off">The overview screen will only display basic information</string>
-    <string name="advanced_overview_description_on">The overview screen will show other years and detailed information</string>
+    <string name="import_contacts_bottom_sheet_description">Chcete importovať všetky udalosti zo svojich kontaktov?</string>
+    <string name="yes_import">Importovať</string>
+    <string name="advanced_overview_title">Pokročilý prehľad</string>
+    <string name="advanced_overview_description_off">Na obrazovke prehľadu sa zobrazia len základné informácie</string>
+    <string name="advanced_overview_description_on">Na obrazovke prehľadu sa zobrazia ďalšie roky a podrobné informácie</string>
 </resources>
