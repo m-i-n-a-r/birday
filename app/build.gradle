@@ -58,7 +58,7 @@ dependencies {
     implementation 'androidx.preference:preference-ktx:1.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.activity:activity-ktx:1.7.2'
-    implementation 'androidx.fragment:fragment-ktx:1.5.7'
+    implementation 'androidx.fragment:fragment-ktx:1.6.0'
 
     // Constraint / motion layout
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -67,7 +67,7 @@ dependencies {
     implementation 'androidx.core:core-splashscreen:1.0.1'
 
     // Material Components
-    implementation 'com.google.android.material:material:1.10.0-alpha03'
+    implementation 'com.google.android.material:material:1.10.0-alpha04'
 
     // WorkManager
     implementation 'androidx.work:work-runtime-ktx:2.8.1'
