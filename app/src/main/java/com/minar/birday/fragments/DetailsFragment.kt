@@ -27,8 +27,11 @@ import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
+import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
+import java.time.format.TextStyle
+import java.util.Locale
 
 
 class DetailsFragment : Fragment() {
@@ -216,8 +219,12 @@ class DetailsFragment : Fragment() {
         val subject: MutableList<EventResult> = mutableListOf()
         subject.add(event)
         val statsGenerator = StatsGenerator(subject, context)
+        val daysRemaining = getRemainingDays(event.nextDate!!)
+        val dayOfWeek = LocalDate.now().plusDays(daysRemaining.toLong()).dayOfWeek.getDisplayName(
+            TextStyle.FULL, Locale.getDefault())
         val daysCountdown =
-            formatDaysRemaining(getRemainingDays(event.nextDate!!), requireContext())
+            formatDaysRemaining(daysRemaining, requireContext()) + ", " +
+                    dayOfWeek
         binding.detailsZodiacSignValue.text =
             statsGenerator.getZodiacSign(event)
         binding.detailsCountdown.text = daysCountdown
