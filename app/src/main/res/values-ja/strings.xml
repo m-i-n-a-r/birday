@@ -55,9 +55,9 @@
     <string name="theme_description">Use a dark, light or automatic app theme</string>
     <string name="theme_name">App theme</string>
     <!-- Untranslated for now -->
-    <string name="aqua">Aqua</string>
-    <string name="brown">Brown</string>
-    <string name="blue">Blue</string>
+    <string name="aqua">水色</string>
+    <string name="brown">茶</string>
+    <string name="blue">青</string>
     <string name="green">Green</string>
     <string name="orange">Orange</string>
     <string name="yellow">Yellow</string>
@@ -131,11 +131,11 @@
     <string name="insert_surname_hint">Insert Last Name</string>
     <string name="insert_date_hint">Select a date</string>
     <string name="invalid_value_name">Invalid name!</string>
-    <string name="consider_year">Consider the year</string>
+    <string name="consider_year">年を考慮する</string>
     <string name="event_type_hint">Event type</string>
-    <string name="birthday">Birthday</string>
-    <string name="anniversary">Anniversary</string>
-    <string name="death_anniversary">Death anniversary</string>
+    <string name="birthday">誕生日</string>
+    <string name="anniversary">記念日</string>
+    <string name="death_anniversary">死亡記念日。</string>
     <string name="festivity">Festivity</string>
     <string name="name_day">Name day</string>
     <string name="other">Other</string>
@@ -158,7 +158,7 @@
     <string name="event_apps_description">Apps to wish all the best rapidly!</string>
     <string name="text_message">Text message</string>
     <string name="dialer">Dialer</string>
-    <string name="wishes_birthday">Happy birthday!</string>
+    <string name="wishes_birthday">誕生日おめでとう！</string>
     <string name="no_default_dialer">No default dialer app found!</string>
     <string name="no_default_sms">No default SMS app found!</string>
     <!-- Statistics -->
@@ -192,24 +192,24 @@
     <string name="chinese_zodiac_dog">dog</string>
     <string name="chinese_zodiac_pig">pig</string>
     <string name="zodiac_sagittarius">sagittarius</string>
-    <string name="zodiac_capricorn">capricorn</string>
-    <string name="zodiac_aquarius">aquarius</string>
-    <string name="zodiac_pisces">pisces</string>
-    <string name="zodiac_aries">aries</string>
-    <string name="zodiac_taurus">taurus</string>
-    <string name="zodiac_gemini">gemini</string>
-    <string name="zodiac_cancer">cancer</string>
-    <string name="zodiac_leo">leo</string>
-    <string name="zodiac_virgo">virgo</string>
-    <string name="zodiac_libra">libra</string>
-    <string name="zodiac_scorpio">scorpio</string>
+    <string name="zodiac_capricorn">山羊座</string>
+    <string name="zodiac_aquarius">水瓶座</string>
+    <string name="zodiac_pisces">魚座</string>
+    <string name="zodiac_aries">牡羊座</string>
+    <string name="zodiac_taurus">牡牛座</string>
+    <string name="zodiac_gemini">双子座</string>
+    <string name="zodiac_cancer">蟹座</string>
+    <string name="zodiac_leo">獅子座</string>
+    <string name="zodiac_virgo">乙女座</string>
+    <string name="zodiac_libra">天秤座</string>
+    <string name="zodiac_scorpio">蠍座</string>
     <!-- Common words -->
     <plurals name="months">
         <item quantity="other">%d months</item>
     </plurals>
-    <string name="today">Today!</string>
-    <string name="yesterday">Yesterday!</string>
-    <string name="tomorrow">Tomorrow!</string>
+    <string name="today">今日!</string>
+    <string name="yesterday">昨日!</string>
+    <string name="tomorrow">明日!</string>
     <plurals name="years">
         <item quantity="other">%d years</item>
     </plurals>
@@ -287,20 +287,20 @@
     <string name="import_json_description">Import from a JSON file. Refer to the wiki on Github for the required file structure</string>
     <string name="export_json_title">Export to JSON</string>
     <string name="export_json_description">Export each event to a JSON file, image excluded</string>
-    <string name="import_csv_title">Import from CSV</string>
+    <string name="import_csv_title">CSV からインポート</string>
     <string name="import_csv_description">Import from a CSV file. Refer to the wiki on Github for the required file structure</string>
-    <string name="export_csv_title">Export to CSV</string>
+    <string name="export_csv_title">CSV にエクスポート</string>
     <string name="export_csv_description">Export each event to a CSV file, image excluded</string>
     <string name="delete_db_title">Delete all the events</string>
     <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
-    <string name="delete_db_dialog_title">Are you sure?</string>
+    <string name="delete_db_dialog_title">よろしいですか？</string>
     <string name="delete_db_dialog_description">Make sure to backup your events first, this operation will wipe the DB and should be used for debugging purposes only</string>
     <string name="delete_search_title">Delete search selection</string>
     <string name="delete_search_description_off">It won\'t be possible to delete multiple events at once</string>
     <string name="delete_search_description_on">Press the trash button when you search one or more events to quickly delete them all from Birday. Use with caution!</string>
     <string name="delete_search_confirm">This will delete all the results of this search. You can undo the process shortly after clicking OK if you change your mind!</string>
     <string name="import_contacts_bottom_sheet_description">Would you like to import all the events from your contacts right now?</string>
-    <string name="yes_import">Import</string>
+    <string name="yes_import">インポートする</string>
     <string name="advanced_overview_title">高度な概要</string>
     <string name="advanced_overview_description_off">概要画面には基本情報のみが表示されます</string>
     <string name="advanced_overview_description_on">概要画面に他の年と詳細情報が表示されます</string>
