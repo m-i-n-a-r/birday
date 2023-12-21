@@ -18,7 +18,7 @@
     <string name="stats_summary">統計摘要</string>
     <string name="no_stats_description">您目前沒有足夠的節日來生成統計。新增一些項目再回來吧！</string>
     <plurals name="stats_total">
-        <item quantity="other">Birday is helping you to remember a total of %d events</item>
+        <item quantity="other">Birday 幫你記住了多達 %d 個重要日子</item>
     </plurals>
     <string name="next_event">下個活動</string>
     <string name="no_next_event">沒有可顯示的紀念日！</string>
@@ -26,7 +26,7 @@
     <string name="next_age_years">年齡</string>
     <string name="event_others">及其他</string>
     <plurals name="days_left">
-        <item quantity="other">%d days left</item>
+        <item quantity="other">剩下 %d 天</item>
     </plurals>
     <!-- Settings -->
     <string name="customization">自訂</string>
@@ -41,9 +41,9 @@
     <string name="five_days_before">五天前</string>
     <string name="six_days_before">六天前</string>
     <string name="seven_days_before">七天前</string>
-    <string name="ten_days_before">Ten days before</string>
-    <string name="fourteen_days_before">Fourteen days before</string>
-    <string name="twentyone_days_before">Twentyone days before</string>
+    <string name="ten_days_before">十天前</string>
+    <string name="fourteen_days_before">十四天前</string>
+    <string name="twentyone_days_before">二十一天前</string>
     <string name="vibration_name">振動</string>
     <string name="vibration_description_on">按下按鈕時振動</string>
     <string name="vibration_description_off">按下按鈕時無振動</string>
@@ -101,20 +101,20 @@
     <string name="notification_only_favorites">僅限我的最愛</string>
     <string name="notification_only_favorites_description_on">僅提醒我的最愛中的紀念日</string>
     <string name="notification_only_favorites_description_off">提醒所有的紀念日</string>
-    <string name="additional_notification_only_favorites">Additional notification for favorites</string>
-    <string name="additional_notification_only_favorites_description_on">Send the additional notification for favorite events only</string>
-    <string name="additional_notification_only_favorites_description_off">Send the additional notification for every event inserted</string>
+    <string name="additional_notification_only_favorites">為喜愛的人添加額外通知</string>
+    <string name="additional_notification_only_favorites_description_on">只為喜愛的節日發送額外通知</string>
+    <string name="additional_notification_only_favorites_description_off">在每一個節日都發送額外通知</string>
     <string name="troubleshoot">疑难解答</string>
     <string name="battery_optimization_title">禁用电池优化</string>
     <string name="battery_optimization_description">打开设置以禁用 Birday 的任何优化。 如果通知不起作用，则很有用</string>
     <string name="notification_sound_title">通知声音</string>
     <string name="notification_sound_description">通知声音设置的快捷方式，如果您不喜欢默认的鸟声</string>
-    <string name="missing_permission_notifications">The notification permission was denied, and Birday can\'t send notifications! Activate the permission from settings.</string>
-    <string name="missing_permission_notifications_forever">The notification permission was denied and can\'t be asked again, so Birday can\'t send notifications! Activate the permission manually, from settings.</string>
-    <string name="missing_permission_calendar">The calendar permission was denied, and Birday can\'t import from calendar! Activate the permission from settings.</string>
-    <string name="missing_permission_calendar_forever">The calendar permission was denied and can\'t be asked again, so Birday can\'t import from calendar! Activate the permission manually, from settings.</string>
-    <string name="import_calendar_title">Import from calendar</string>
-    <string name="import_calendar_description">Import any yearly event from your calendars. Remember to set the event type and year to keep things ordered!</string>
+    <string name="missing_permission_notifications">發送通知許可被拒絕了，因此 Birday 並不能發送通知！請在設置裡開啟許可。</string>
+    <string name="missing_permission_notifications_forever">發送通知許可被拒絕了，且不能再詢問，因此 Birday 並不能發送通知！請自行往設置裡開啟許可。</string>
+    <string name="missing_permission_calendar">行事曆的許可被拒絕了，因此 Birday 不能從行事曆引入！請在設置裡開啟許可。</string>
+    <string name="missing_permission_calendar_forever">行事曆的許可被拒絕了，且不能再詢問，因此 Birday 不能從行事曆裡引入！請自行前往設置裡開啟許可。</string>
+    <string name="import_calendar_title">從行事曆裡引入</string>
+    <string name="import_calendar_description">從行事曆裡引入各種年度節日。記得設置節日類型和年份，以避免混亂！</string>
     <!-- Developer -->
     <string name="dev_description">我是一個有禮貌、喜歡漂亮東西的人，像動畫製作、圖案設計、跑車、跟3D列印。我目前擔任的職務是設計師及電腦工程師。</string>
     <string name="easter_egg">扛棒很棒吧，嘻嘻！</string>
@@ -168,7 +168,7 @@
     <string name="special_ages">重要的生日將要來臨 %s</string>
     <string name="random_zodiac_sign">%1$s 的星座是: %2$s</string>
     <string name="most_common_zodiac_sign">最常見的星座是 %s</string>
-    <string name="most_common_chinese_sign">The most common chinese sign is %s</string>
+    <string name="most_common_chinese_sign">最多的生肖是 %s</string>
     <string name="random_day_of_week">%1$s 出生於 %2$s</string>
     <string name="most_common_day_of_week">最多人出生於 %s</string>
     <plurals name="leap_year_total">
@@ -201,13 +201,13 @@
     <string name="zodiac_scorpio">天蠍座</string>
     <!-- Common words -->
     <plurals name="months">
-        <item quantity="other">%d months</item>
+        <item quantity="other">%d 個月</item>
     </plurals>
     <string name="today">今天！</string>
     <string name="yesterday">昨天！</string>
     <string name="tomorrow">明天！</string>
     <plurals name="years">
-        <item quantity="other">%d years</item>
+        <item quantity="other">%d 年</item>
     </plurals>
     <string name="born_in">出生於</string>
     <string name="and">及</string>
@@ -236,10 +236,10 @@
     <string name="dark_widget_name">深色小工具</string>
     <string name="dark_widget_description_on">桌面小工具使用深色主題</string>
     <string name="dark_widget_description_off">桌面小工具使用淺色主題</string>
-    <string name="widget_configuration_title">Widget configuration</string>
-    <string name="widget_configuration_description">Configure the widget to match your style</string>
-    <string name="widget_background_title">Background</string>
-    <string name="widget_background_description">Show a background for the widget</string>
+    <string name="widget_configuration_title">設置小部件</string>
+    <string name="widget_configuration_description">設置小部件以適合你的美觀</string>
+    <string name="widget_background_title">背景</string>
+    <string name="widget_background_description">在小部件展示背景</string>
     <string name="compact_widget_title">Compact layout</string>
     <string name="compact_widget_description">Optimize the layout to be extremely compact</string>
     <string name="align_start_widget_title">Align at start</string>
@@ -265,22 +265,22 @@
     <string name="launch_auto_import_title">Auto import on launch</string>
     <string name="launch_auto_import_description_off">Birday won\'t import contacts automatically when launched</string>
     <string name="launch_auto_import_description_on">Birday will automatically sync with contacts at startup</string>
-    <string name="hide_on_scroll_title">Hide navbar on scroll</string>
-    <string name="hide_on_scroll_description_on">Hide the bottom navbar when you scroll</string>
-    <string name="hide_on_scroll_description_off">The bottom navbar will always be visible</string>
-    <string name="angry_bird_title">Angry Bird mode</string>
+    <string name="hide_on_scroll_title">在滑動時隱藏導覽列</string>
+    <string name="hide_on_scroll_description_on">在你滑動時隱藏下方的導覽列</string>
+    <string name="hide_on_scroll_description_off">下方的導覽列將永遠出現</string>
+    <string name="angry_bird_title">生氣模式</string>
     <string name="angry_bird_description_on">持續通知、較短的文本和其他與通知相關的調整</string>
-    <string name="angry_bird_description_off">Notifications will behave normally</string>
-    <string name="disable_astrology_title">Disable astrology</string>
-    <string name="disable_astrology_description_on">Zodiac signs hidden from details and stats</string>
-    <string name="disable_astrology_description_off">Zodiac information are displayed normally</string>
-    <string name="import_json_title">Import from JSON</string>
-    <string name="import_json_description">Import from a JSON file. Refer to the wiki on Github for the required file structure</string>
-    <string name="export_json_title">Export to JSON</string>
-    <string name="export_json_description">Export each event to a JSON file, image excluded</string>
-    <string name="import_csv_title">Import from CSV</string>
-    <string name="import_csv_description">Import from a CSV file. Refer to the wiki on Github for the required file structure</string>
-    <string name="export_csv_title">Export to CSV</string>
+    <string name="angry_bird_description_off">通知將會普通的出現</string>
+    <string name="disable_astrology_title">關閉星座</string>
+    <string name="disable_astrology_description_on">星座將會被隱藏</string>
+    <string name="disable_astrology_description_off">星座細節會正常地展現</string>
+    <string name="import_json_title">從 JSON 引入</string>
+    <string name="import_json_description">從 JSON 文件引入。請參考 Github 的維基以獲得所需的文件結構</string>
+    <string name="export_json_title">導出至 JSON</string>
+    <string name="export_json_description">導出每一個節日至 JSON 文件，照片除外</string>
+    <string name="import_csv_title">從 CSV 引入</string>
+    <string name="import_csv_description">從 CSV 文件引入。請參考 Github 的維基以獲得所需的文件結構</string>
+    <string name="export_csv_title">導出至 CSV</string>
     <string name="export_csv_description">Export each event to a CSV file, image excluded</string>
     <string name="delete_db_title">Delete all the events</string>
     <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
