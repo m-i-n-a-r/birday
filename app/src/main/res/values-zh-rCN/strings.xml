@@ -23,7 +23,7 @@
     <string name="next_event">下个事件</string>
     <string name="no_next_event">没有可显示的事件！</string>
     <string name="no_next_event_description">你还没有输入或导入任何事件，添加一个并让Birday帮助你！</string>
-    <string name="next_age_years">年</string>
+    <string name="next_age_years">岁</string>
     <string name="event_others">和其它</string>
     <plurals name="days_left">
         <item quantity="other">剩余%d天</item>
