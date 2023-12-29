@@ -2,8 +2,8 @@
 
 buildscript {
     ext {
-        kotlin_version = '1.8.0'
-        navigation_version = '2.6.0'
+        kotlin_version = '1.9.0'
+        navigation_version = '2.7.6'
     }
     repositories {
         google()
@@ -11,13 +11,17 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.0.2'
+        classpath 'com.android.tools.build:gradle:8.2.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
+}
+
+plugins {
+    id 'com.google.devtools.ksp' version '1.9.0-1.0.13' apply false
 }
 
 allprojects {
@@ -28,6 +32,6 @@ allprojects {
     }
 }
 
-task clean(type: Delete) {
+tasks.register('clean', Delete) {
     delete rootProject.buildDir
 }
