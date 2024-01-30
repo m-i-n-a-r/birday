@@ -10,19 +10,19 @@
     <string name="title_home">首頁</string>
     <string name="title_favorites">我的最愛</string>
     <string name="title_settings">設定</string>
-    <string name="no_events">尚未新增任何節日！透過下面的按鈕來建立一個吧！</string>
+    <string name="no_events">尚未新增任何紀念日！透過下面的按鈕來建立一個吧！</string>
     <string name="no_favorites">尚有任何最愛！透過生日旁的星星將重要的日子加到最愛中吧！</string>
     <string name="add_favorite">新增至我的最愛中</string>
     <string name="stats">統計</string>
     <string name="no_stats">沒有數據可顯示！</string>
     <string name="stats_summary">統計摘要</string>
-    <string name="no_stats_description">您目前沒有足夠的節日來生成統計。新增一些項目再回來吧！</string>
+    <string name="no_stats_description">您目前沒有足夠的紀念日來生成統計。新增一些項目再回來吧！</string>
     <plurals name="stats_total">
-        <item quantity="other">Birday幫助你記住了共%d個事件</item>
+        <item quantity="other">Birday幫助你記住了共%d個紀念日</item>
     </plurals>
     <string name="next_event">下個活動</string>
     <string name="no_next_event">沒有可顯示的紀念日！</string>
-    <string name="no_next_event_description">您尚未輸入或匯入任何節日。趕快新增一個讓 Birday 幫你替未來慶生吧！</string>
+    <string name="no_next_event_description">您尚未輸入或匯入任何紀念日。趕快新增一個讓 Birday 幫你替未來慶生吧！</string>
     <string name="next_age_years">年齡</string>
     <string name="event_others">及其他</string>
     <plurals name="days_left">
@@ -76,7 +76,7 @@
     <string name="shimmer_description_off">不使用任何附加動畫</string>
     <string name="import_export">匯入及匯出</string>
     <string name="import_contacts_title">自聯絡人中匯入紀念日</string>
-    <string name="import_contacts_description">請確保各個聯絡人的節日有出生年份設好，否則統計數據可能會不準！</string>
+    <string name="import_contacts_description">請確保各個聯絡人的紀念日有出生年份設好，否則統計數據可能會不準！</string>
     <string name="import_success">已成功匯入！</string>
     <string name="import_nothing_found">找不到任何可匯入的紀念日！</string>
     <string name="import_failed">出事了！</string>
@@ -85,7 +85,7 @@
     <string name="birday_import_title">匯入 Birday 備份</string>
     <string name="birday_import_description">選擇任何可用的 Birday 備份進行還原。請注意，所有現有資料將被覆寫！</string>
     <string name="birday_export_title">匯出及分享紀念日</string>
-    <string name="birday_export_description">匯出現有的節日作為備份或分享用。匯出後的檔案位於 Android/data/com.minar.birday/files。</string>
+    <string name="birday_export_description">匯出現有的紀念日作為備份或分享用。匯出後的檔案位於 Android/data/com.minar.birday/files。</string>
     <string name="birday_import_success">匯入成功！</string>
     <string name="birday_import_failure">匯入失敗。您是否正常選擇了適當的檔案？</string>
     <string name="birday_import_invalid_file">匯入失敗。您所選的檔案不是 Birday 的備份檔案！</string>
@@ -101,20 +101,20 @@
     <string name="notification_only_favorites">僅限我的最愛</string>
     <string name="notification_only_favorites_description_on">僅提醒我的最愛中的紀念日</string>
     <string name="notification_only_favorites_description_off">提醒所有的紀念日</string>
-    <string name="additional_notification_only_favorites">Additional notification for favorites</string>
-    <string name="additional_notification_only_favorites_description_on">Send the additional notification for favorite events only</string>
-    <string name="additional_notification_only_favorites_description_off">Send the additional notification for every event inserted</string>
+    <string name="additional_notification_only_favorites">爲所最愛的額外通知</string>
+    <string name="additional_notification_only_favorites_description_on">僅為最愛的紀念日發送額外通知</string>
+    <string name="additional_notification_only_favorites_description_off">為每個插入的紀念日發送額外通知</string>
     <string name="troubleshoot">疑难解答</string>
     <string name="battery_optimization_title">禁用电池优化</string>
     <string name="battery_optimization_description">打开设置以禁用 Birday 的任何优化。 如果通知不起作用，则很有用</string>
     <string name="notification_sound_title">通知声音</string>
     <string name="notification_sound_description">通知声音设置的快捷方式，如果您不喜欢默认的鸟声</string>
-    <string name="missing_permission_notifications">The notification permission was denied, and Birday can\'t send notifications! Activate the permission from settings.</string>
-    <string name="missing_permission_notifications_forever">The notification permission was denied and can\'t be asked again, so Birday can\'t send notifications! Activate the permission manually, from settings.</string>
-    <string name="missing_permission_calendar">The calendar permission was denied, and Birday can\'t import from calendar! Activate the permission from settings.</string>
-    <string name="missing_permission_calendar_forever">The calendar permission was denied and can\'t be asked again, so Birday can\'t import from calendar! Activate the permission manually, from settings.</string>
-    <string name="import_calendar_title">Import from calendar</string>
-    <string name="import_calendar_description">Import any yearly event from your calendars. Remember to set the event type and year to keep things ordered!</string>
+    <string name="missing_permission_notifications">通知權限被拒絕，且Birday無法發送通知！請從設置中開啟權限。</string>
+    <string name="missing_permission_notifications_forever">通知權限被拒絕且無法再次詢問，所以Birday無法發送通知！請從設置中手動開啟權限。</string>
+    <string name="missing_permission_calendar">日曆權限被拒絕，且Birday無法從日曆導入！請從設置中開啟權限。</string>
+    <string name="missing_permission_calendar_forever">日曆權限被拒絕且無法再次詢問，所以Birday無法從日曆導入！請從設置中手動開啟權限。</string>
+    <string name="import_calendar_title">從日曆導入</string>
+    <string name="import_calendar_description">從你的日曆導入任何年度事件。記住設置事件的類型和年份來讓它們整齊！</string>
     <!-- Developer -->
     <string name="dev_description">我是一個有禮貌、喜歡漂亮東西的人，像動畫製作、圖案設計、跑車、跟3D列印。我目前擔任的職務是設計師及電腦工程師。</string>
     <string name="easter_egg">扛棒很棒吧，嘻嘻！</string>
@@ -137,7 +137,7 @@
     <string name="other">其他</string>
     <!-- Event actions -->
     <string name="event_actions">動作</string>
-    <string name="event_actions_description">你可以在這裡編輯或刪除此節日！</string>
+    <string name="event_actions_description">你可以在這裡編輯或刪除此紀念日！</string>
     <string name="edit_event">編輯紀念日</string>
     <string name="delete_event">刪除紀念日</string>
     <string name="update_event">更新紀念日</string>
@@ -223,13 +223,13 @@
     <string name="additional_notification_text">即將到來的紀念日！</string>
     <!-- Introduction slides -->
     <string name="slide_one_title">歡迎使用 Birday！</string>
-    <string name="slide_one_description">Birday 是一個簡單輕巧並用於管理重要節日的 App！
+    <string name="slide_one_description">Birday 是一個簡單輕巧並用於管理重要紀念日的 App！
     你可以透過它來以快速可靠的方式記住任何你所喜歡的人的生日。</string>
     <string name="slide_two_title">免費、簡單、可自訂化</string>
     <string name="slide_two_description">Birday 是免費、無廣告且開源的。功能包括提供聯絡人生日的
     統計訊息、我的最愛、及可自定義的界面。除此之外，我們也將持續提供更新及支援！</string>
     <string name="slide_three_title">從聯絡人匯入</string>
-    <string name="slide_three_description">如果你的聯絡人資料中含有節日相關資訊，Birday 也可以從聯絡人中匯入此資訊！
+    <string name="slide_three_description">如果你的聯絡人資料中含有紀念日相關資訊，Birday 也可以從聯絡人中匯入此資訊！
 		</string>
     <!-- Widget -->
     <string name="appwidget_upcoming">即將到來的紀念日</string>
@@ -256,7 +256,7 @@
     <string name="write_something">寫些東西…</string>
     <!-- Overview -->
     <string name="overview">概述</string>
-    <string name="overview_description">已保存節日的年度概覽</string>
+    <string name="overview_description">已保存紀念日的年度概覽</string>
     <!-- Experimental preferences -->
     <string name="experimental_settings_title">Experimental</string>
     <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
