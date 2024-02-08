@@ -71,16 +71,6 @@
                 app:layout_constraintTop_toBottomOf="@id/quickAppsDescription">
 
                 <Button
-                    android:id="@+id/whatsappButton"
-                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/whatsapp"
-                    android:paddingVertical="@dimen/in_row_button_padding"
-                    android:text="@string/whatsapp"
-                    app:icon="@drawable/ic_apps_whatsapp_24dp" />
-
-                <Button
                     android:id="@+id/dialerButton"
                     style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                     android:layout_width="match_parent"
@@ -89,16 +79,6 @@
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/dialer"
                     app:icon="@drawable/ic_apps_dialer_24dp" />
-
-                <Button
-                    android:id="@+id/telegramButton"
-                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/telegram"
-                    android:paddingVertical="@dimen/in_row_button_padding"
-                    android:text="@string/telegram"
-                    app:icon="@drawable/ic_apps_telegram_24dp" />
 
                 <Button
                     android:id="@+id/messagesButton"
@@ -119,6 +99,56 @@
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/email"
                     app:icon="@drawable/ic_apps_email_24dp" />
+
+                <Button
+                    android:id="@+id/whatsappButton"
+                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/whatsapp"
+                    android:paddingVertical="@dimen/in_row_button_padding"
+                    android:text="@string/whatsapp"
+                    app:icon="@drawable/ic_apps_whatsapp_24dp" />
+
+                <Button
+                    android:id="@+id/telegramButton"
+                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/telegram"
+                    android:paddingVertical="@dimen/in_row_button_padding"
+                    android:text="@string/telegram"
+                    app:icon="@drawable/ic_apps_telegram_24dp" />
+
+                <Button
+                    android:id="@+id/instagramButton"
+                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/instagram"
+                    android:paddingVertical="@dimen/in_row_button_padding"
+                    android:text="@string/instagram"
+                    app:icon="@drawable/ic_instagram_black_24dp" />
+
+                <Button
+                    android:id="@+id/messengerButton"
+                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/messenger"
+                    android:paddingVertical="@dimen/in_row_button_padding"
+                    android:text="@string/messenger"
+                    app:icon="@drawable/ic_apps_messenger_24dp" />
+
+                <Button
+                    android:id="@+id/viberButton"
+                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/viber"
+                    android:paddingVertical="@dimen/in_row_button_padding"
+                    android:text="@string/viber"
+                    app:icon="@drawable/ic_apps_viber_24dp" />
 
                 <Button
                     android:id="@+id/signalButton"

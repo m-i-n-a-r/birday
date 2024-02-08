@@ -177,12 +177,14 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             if (bitmap != null)
                 with(builder) {
                     // Show the bigger picture only if the text is (presumably) short
-                    if (nextEvents.size == 1)
+                    if (nextEvents.size == 1) {
+                        val nullBitmap: Bitmap? = null
                         setStyle(
                             NotificationCompat.BigPictureStyle()
                                 .bigPicture(bitmap)
-                                .bigLargeIcon(null)
+                                .bigLargeIcon(nullBitmap)
                         )
+                    }
                     setLargeIcon(getCircularBitmap(bitmap))
                 }
         }

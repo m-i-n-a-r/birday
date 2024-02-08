@@ -218,7 +218,7 @@ class MainActivity : AppCompatActivity() {
         deleteFab.setOnClickListener {
             vibrate()
             val searchedEvents = mainViewModel.allEvents.value
-            if (searchedEvents != null && searchedEvents.isNotEmpty()) {
+            if (!searchedEvents.isNullOrEmpty()) {
                 // Native dialog
                 MaterialAlertDialogBuilder(this)
                     .setTitle(getString(R.string.delete_db_dialog_title))
