@@ -52,7 +52,7 @@
     <string name="notification_hour_description">%s \n\n请注意通知可能因app被一些华为，小米，一加设备杀掉进程而无法工作。参考dontkillmyapp.com来获得更多信息。</string>
     <string name="accent_description">修改默认配色</string>
     <string name="accent_name">配色</string>
-    <string name="theme_description">使用深色，浅色，或自动的app主题</string>
+    <string name="theme_description">使用黑暗，光明，或自动的app主题</string>
     <string name="theme_name">App主题</string>
     <!-- Untranslated for now -->
     <string name="aqua">水色</string>
@@ -69,8 +69,8 @@
     <string name="lime">草绿色</string>
     <string name="crimson">绯红色</string>
     <string name="system_theme">系统默认</string>
-    <string name="dark_theme">深色</string>
-    <string name="light_theme">浅色</string>
+    <string name="dark_theme">黑暗</string>
+    <string name="light_theme">光明</string>
     <string name="shimmer_name">微光效果</string>
     <string name="shimmer_description_on">这里那里的闪亮动画</string>
     <string name="shimmer_description_off">无额外显示特效</string>
@@ -234,9 +234,9 @@
     <!-- Widget -->
     <string name="appwidget_upcoming">即将到来的事件</string>
     <string name="add_widget">Birday - 即将到来</string>
-    <string name="dark_widget_name">深色组件</string>
-    <string name="dark_widget_description_on">组件使用深色主题</string>
-    <string name="dark_widget_description_off">组件使用浅色主题</string>
+    <string name="dark_widget_name">黑暗组件</string>
+    <string name="dark_widget_description_on">组件使用黑暗主题</string>
+    <string name="dark_widget_description_off">组件使用光明主题</string>
     <string name="widget_configuration_title">组件设定</string>
     <string name="widget_configuration_description">设定组件来匹配你的风格</string>
     <string name="widget_background_title">背景</string>
