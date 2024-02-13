@@ -32,8 +32,8 @@ This is an open source app to remember **birthdays** and other events in a fast,
 | **Portuguese**          | smarquespt      | smarquespt                  |
 | **Brazilian**           | BadJuice67      | Paiusco                     |
 | **Romanian**            | ygorigor        | ygorigor                    |
-| **Traditional Chinese** | Still34         |                             |
-| **Simplified Chinese**  | daoxi           |                             |
+| **Traditional Chinese** | Still34         | daoxi                       |
+| **Simplified Chinese**  | daoxi           | daoxi                       |
 | **Catalan**             | retiolus        |                             |
 | **Serbian**             | Th3Unkn0wn0n3   | vatonbero                   |
 | **Ukrainian**           | taras           |                             |
@@ -41,6 +41,7 @@ This is an open source app to remember **birthdays** and other events in a fast,
 | **Marathi**             | Ramesh Kumar    |                             |
 | **Malayalam**           | Lavin-tom       |                             |
 | **Hindi**               | assembleDebug   |                             |
+| **Finnish**             | manaryde        |                             |
 
 ## Features
 - Notification the day of the event (with selectable time)
