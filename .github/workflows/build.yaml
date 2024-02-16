@@ -12,10 +12,8 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v2
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v2
+        uses: android-actions/setup-android@v3.2.0
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
-      - name: Run gradle tests
-        run: ./gradlew test
       - name: Build gradle project
         run: ./gradlew build
