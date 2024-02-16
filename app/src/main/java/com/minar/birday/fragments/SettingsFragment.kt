@@ -48,7 +48,8 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
             ?.unregisterOnSharedPreferenceChangeListener(this)
     }
 
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        if (sharedPreferences == null) return
         when (key) {
             "theme_color" -> {
                 // The activity should be refreshed automatically when the main theme changes,
@@ -60,6 +61,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                     else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                 }
             }
+
             "accent_color" -> hotReloadActivity(sharedPreferences)
             "shimmer" -> hotReloadActivity(sharedPreferences)
             "notification_hour" -> mainViewModel.scheduleNextCheck()
@@ -74,6 +76,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                 intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
                 requireContext().sendBroadcast(intent)
             }
+
             "additional_notification" -> {
                 // Update every existing widget with a broadcast
                 val intent = Intent(context, MinimalWidgetProvider::class.java)
