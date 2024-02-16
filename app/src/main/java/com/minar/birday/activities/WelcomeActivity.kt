@@ -2,6 +2,7 @@ package com.minar.birday.activities
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -23,7 +24,8 @@ class WelcomeActivity : AppIntro() {
         val insetsController = WindowCompat.getInsetsController(window, window.decorView)
         val navBars = WindowInsetsCompat.Type.navigationBars()
         insetsController.hide(navBars)
-        insetsController.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        insetsController.systemBarsBehavior =
+            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
     }
 
     override fun onDonePressed(currentFragment: Fragment?) {
@@ -55,7 +57,7 @@ class WelcomeActivity : AppIntro() {
         // Options
         showStatusBar(false)
         isSkipButtonEnabled = false
-        setNavBarColor(R.color.slideThree)
+        setNavBarColor(ContextCompat.getColor(this, R.color.slideThree))
         vibrateDuration = 30
         isColorTransitionsEnabled = true
 
