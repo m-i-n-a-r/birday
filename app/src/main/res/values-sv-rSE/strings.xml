@@ -56,7 +56,7 @@
     <string name="accent_name">Accentfärg</string>
     <string name="theme_description">Använd ett mörkt, ljust eller automatiskt apptema</string>
     <string name="theme_name">Apptema</string>
-    <!-- Untranslated for now -->
+    <!-- ^ Untranslated for now -->
     <string name="aqua">Vattenblå</string>
     <string name="brown">Brun</string>
     <string name="blue">Blå</string>
@@ -117,6 +117,15 @@
     <string name="missing_permission_calendar_forever">Kalenderns behörighet nekades och kan inte frågas igen, så Birday kan inte importera från kalendern! Aktivera behörigheten från inställningarna.</string>
     <string name="import_calendar_title">Importera från kalendern</string>
     <string name="import_calendar_description">Importera varje årlig händelse från dina kalendrar. Kom ihåg att ställa in händelsetyp och år för att hålla ordning på saker!</string>
+    <string name="loop_avd_title">Loop animations</string>
+    <string name="loop_avd_description_on">The animations are looped infinitely</string>
+    <string name="loop_avd_description_off">The animations will run a single time</string>
+    <string name="order_alphabetically_title">Alphabetical order</string>
+    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
+    <string name="order_alphabetically_description_off">The events are ordered by date</string>
+    <string name="grouped_notifications_title">Group multiple notifications</string>
+    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
+    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
     <!-- Developer -->
     <string name="dev_description">Jag är en trevlig grabb som gillar fina saker såsom animationer, ikoner, sportbilar och 3d-utskrivning. Jag jobbar som designer och dataingenjör</string>
     <string name="easter_egg">Snygg logga va? ;D</string>
