@@ -93,7 +93,8 @@ class InsertEventBottomSheet(
         imageChosen = false
         var nameValue = "error"
         var surnameValue = ""
-        var eventDateValue: LocalDate = LocalDate.now().minusDays(1L)
+        // The initial date is today
+        var eventDateValue: LocalDate = LocalDate.now()
         var countYearValue = true
         val positiveButton = binding.positiveButton
         val negativeButton = binding.negativeButton
