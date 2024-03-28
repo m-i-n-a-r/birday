@@ -60,7 +60,7 @@
     <string name="accent_name">Цвет акцента</string>
     <string name="theme_description">Использовать темную, светлую тему или менять автоматически</string>
     <string name="theme_name">Тема приложения</string>
-    <!-- Untranslated for now -->
+    <!-- ^ Untranslated for now -->
     <string name="aqua">Aква-синий</string>
     <string name="brown">Коричневый</string>
     <string name="blue">Синий</string>
@@ -122,6 +122,15 @@
     <string name="missing_permission_calendar_forever">Разрешение для календаря было отклонено и не может быть запрошено снова, поэтому Birday не может импортировать из него. Активируйте разрешение вручную через настройки.</string>
     <string name="import_calendar_title">Импортировать из календаря</string>
     <string name="import_calendar_description">Импортируйте любое событие в году из ваших календарей. Не забудьте установить тип события и дату, дабы всё было структурировано!</string>
+    <string name="loop_avd_title">Loop animations</string>
+    <string name="loop_avd_description_on">The animations are looped infinitely</string>
+    <string name="loop_avd_description_off">The animations will run a single time</string>
+    <string name="order_alphabetically_title">Alphabetical order</string>
+    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
+    <string name="order_alphabetically_description_off">The events are ordered by date</string>
+    <string name="grouped_notifications_title">Group multiple notifications</string>
+    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
+    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
     <!-- Developer -->
     <string name="dev_description">Я вежливый парень и люблю красивые вещи - анимации, иконки, спортивные машины и 3D-печать. Я работаю дизайнером и компьютерным инженером.</string>
     <string name="easter_egg">Прикольный логотип, не? ;D</string>
