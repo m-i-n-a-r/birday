@@ -54,7 +54,7 @@
     <string name="accent_name">Màu nhấn</string>
     <string name="theme_description">Sử dụng chủ đề ứng dụng tối, sáng hoặc tự động</string>
     <string name="theme_name">Chủ đề ứng dụng</string>
-    <!-- Untranslated for now -->
+    <!-- ^ Untranslated for now -->
     <string name="aqua">Thủy màu xanh</string>
     <string name="brown">Nâu</string>
     <string name="blue">Xanh dương</string>
@@ -115,6 +115,15 @@
     <string name="missing_permission_calendar_forever">The calendar permission was denied and can\'t be asked again, so Birday can\'t import from calendar! Activate the permission manually, from settings.</string>
     <string name="import_calendar_title">Import from calendar</string>
     <string name="import_calendar_description">Import any yearly event from your calendars. Remember to set the event type and year to keep things ordered!</string>
+    <string name="loop_avd_title">Loop animations</string>
+    <string name="loop_avd_description_on">The animations are looped infinitely</string>
+    <string name="loop_avd_description_off">The animations will run a single time</string>
+    <string name="order_alphabetically_title">Alphabetical order</string>
+    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
+    <string name="order_alphabetically_description_off">The events are ordered by date</string>
+    <string name="grouped_notifications_title">Group multiple notifications</string>
+    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
+    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
     <!-- Developer -->
     <string name="dev_description">Tôi là một chàng trai lịch sự và thích những thứ đẹp đẽ, như hoạt hình, biểu tượng, xe thể thao và in 3d. Tôi làm việc như một nhà thiết kế và kỹ sư máy tính.</string>
     <string name="easter_egg">Logo đẹp, ha? ;D</string>
