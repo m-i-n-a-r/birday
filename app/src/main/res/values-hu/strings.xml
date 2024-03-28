@@ -56,7 +56,7 @@
     <string name="accent_name">Ékezetes szín</string>
     <string name="theme_description">Használjon sötét, világos vagy automatikus alkalmazás témát</string>
     <string name="theme_name">Alkalmazás téma</string>
-    <!-- Untranslated for now -->
+    <!-- ^ Untranslated for now -->
     <string name="aqua">Aqua</string>
     <string name="brown">Barna</string>
     <string name="blue">Kék</string>
@@ -117,6 +117,15 @@
     <string name="missing_permission_calendar_forever">Az naptár engedély nem lett elfogadva, és nem lehet újra kérvényezni, szóval Birday nem tud importálni a naptárból! Engedélyezd a naptárat a beállításokból manuálisan.</string>
     <string name="import_calendar_title">Naptár importálása</string>
     <string name="import_calendar_description">Importálj akármilyen éves eseményt a naptárodból. Ne felejtsd el beállítani az esemény típúsát és az évet, hhog rendben tartsd a dolgokat!</string>
+    <string name="loop_avd_title">Loop animations</string>
+    <string name="loop_avd_description_on">The animations are looped infinitely</string>
+    <string name="loop_avd_description_off">The animations will run a single time</string>
+    <string name="order_alphabetically_title">Alphabetical order</string>
+    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
+    <string name="order_alphabetically_description_off">The events are ordered by date</string>
+    <string name="grouped_notifications_title">Group multiple notifications</string>
+    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
+    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
     <!-- Developer -->
     <string name="dev_description">Udvarias srác vagyok, és szeretem a szép dolgokat, mint animációk, ikonok, sportkocsik és 3D nyomtatás. Tervezőként és számítógépes mérnökként dolgozom.</string>
     <string name="easter_egg">Szép logó, mi? ;D</string>
