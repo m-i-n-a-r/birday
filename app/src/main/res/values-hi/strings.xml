@@ -56,7 +56,7 @@
     <string name="accent_name">एक्सेंट रंग</string>
     <string name="theme_description">डार्क, लाइट या ऑटोमैटिक ऐप थीम का उपयोग करें</string>
     <string name="theme_name">ऐप थीम</string>
-    <!-- Untranslated for now -->
+    <!-- ^ Untranslated for now -->
     <string name="aqua">पानी</string>
     <string name="brown">भूरा</string>
     <string name="blue">नीला</string>
@@ -117,6 +117,15 @@
     <string name="missing_permission_calendar_forever">पांचवां आज्ञा अस्वीकार कर दी गई तथा एक और बार नहीं पूछा जा सकता, अतः बर्डे पांचांग से आयात नहीं कर सकता ! सेटिंग्स में जाकर यह आज्ञा अपने हाथों से प्रदान करें।</string>
     <string name="import_calendar_title">पांचांग से आयात करें</string>
     <string name="import_calendar_description">पांचांगों से किसी वार्षिक कार्यक्रम को आयात करें। चीजों को व्यवस्थित रखने के लिए कार्यक्रम प्रकार और वर्ष स्थापित करने का स्मरण करें।</string>
+    <string name="loop_avd_title">Loop animations</string>
+    <string name="loop_avd_description_on">The animations are looped infinitely</string>
+    <string name="loop_avd_description_off">The animations will run a single time</string>
+    <string name="order_alphabetically_title">Alphabetical order</string>
+    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
+    <string name="order_alphabetically_description_off">The events are ordered by date</string>
+    <string name="grouped_notifications_title">Group multiple notifications</string>
+    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
+    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
     <!-- Developer -->
     <string name="dev_description">मैं एक विनम्र व्यक्ति हूं और मुझे सुंदर चीजें पसंद हैं, जैसे एनिमेशन, आइकन, स्पोर्ट कार और 3डी प्रिंटिंग। मैं एक डिजाइनर और कंप्यूटर इंजीनियर के रूप में काम करता हूं।</string>
     <string name="easter_egg">अच्छा लोगो, हुह? ;D</string>
