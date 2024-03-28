@@ -56,7 +56,7 @@
     <string name="accent_name">Χρώμα έμφασης</string>
     <string name="theme_description">Χρησιμοποιήστε ένα σκοτεινό, φωτεινό ή αυτόματο θέμα εφαρμογής</string>
     <string name="theme_name">Θέμα εφαρμογής</string>
-    <!-- Untranslated for now -->
+    <!-- ^ Untranslated for now -->
     <string name="aqua">Θαλασσί</string>
     <string name="brown">Καφέ</string>
     <string name="blue">Μπλέ</string>
@@ -121,6 +121,15 @@
     <string name="missing_permission_calendar_forever">Η άδεια ημερολογίου απορρίφθηκε και δεν μπορεί να ζητηθεί ξανά, επομένως το Birday δεν μπορεί να κάνει εισαγωγή από το ημερολόγιο! Ενεργοποιήστε την άδεια χειροκίνητα, από τις ρυθμίσεις.</string>
     <string name="import_calendar_title">Εισαγωγή από ημερολόγιο</string>
     <string name="import_calendar_description">Εισαγάγετε οποιοδήποτε ετήσιο συμβάν από τα ημερολόγιά σας. Θυμηθείτε να ορίσετε τον τύπο και το έτος εκδήλωσης για να κρατάτε τα πράγματα σε τάξη!</string>
+    <string name="loop_avd_title">Loop animations</string>
+    <string name="loop_avd_description_on">The animations are looped infinitely</string>
+    <string name="loop_avd_description_off">The animations will run a single time</string>
+    <string name="order_alphabetically_title">Alphabetical order</string>
+    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
+    <string name="order_alphabetically_description_off">The events are ordered by date</string>
+    <string name="grouped_notifications_title">Group multiple notifications</string>
+    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
+    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
     <!-- Developer -->
     <string name="dev_description">Είμαι ευγενικός τύπος και μου αρέσουν τα όμορφα πράγματα, όπως κινούμενα σχέδια, εικονίδια, σπορ αυτοκίνητα και τρισδιάστατη εκτύπωση. Εργάζομαι ως σχεδιαστής και μηχανικός υπολογιστών.</string>
     <string name="easter_egg">Ωραίο λογότυπο, ε; ;D</string>
