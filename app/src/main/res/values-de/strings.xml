@@ -56,7 +56,7 @@
     <string name="accent_name">Akzentfarbe</string>
     <string name="theme_description">Verwende ein dunkles, helles oder automatisches App-Theme</string>
     <string name="theme_name">App-Theme</string>
-    <!-- Untranslated for now -->
+    <!-- ^ Untranslated for now -->
     <string name="aqua">Wasserblau</string>
     <string name="brown">Braun</string>
     <string name="blue">Blau</string>
@@ -117,6 +117,15 @@
     <string name="missing_permission_calendar_forever">Die Kalender-Berechtigung wurde verweigert und kann nicht erneut erfragt werden, daher kann Birday nicht aus dem Kalender importieren! Aktiviere die Berechtigung manuell in den Einstellungen.</string>
     <string name="import_calendar_title">Vom Kalender importieren</string>
     <string name="import_calendar_description">Importiere jedes jährliche Ereignis aus deinem Kalender. Denke daran, den Ereignistyp und das Jahr festzulegen, um Ordnung zu halten!</string>
+    <string name="loop_avd_title">Loop animations</string>
+    <string name="loop_avd_description_on">The animations are looped infinitely</string>
+    <string name="loop_avd_description_off">The animations will run a single time</string>
+    <string name="order_alphabetically_title">Alphabetical order</string>
+    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
+    <string name="order_alphabetically_description_off">The events are ordered by date</string>
+    <string name="grouped_notifications_title">Group multiple notifications</string>
+    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
+    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
     <!-- Developer -->
     <string name="dev_description">Ich bin ein netter Mensch und ich mag schöne Dinge wie Animationen, Icons, Sportwagen und 3D-Druck. Ich arbeite als Designer und Computeringenieur.</string>
     <string name="easter_egg">Schönes logo, hm? ;D</string>
