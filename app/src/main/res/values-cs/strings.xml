@@ -271,6 +271,8 @@
     <string name="align_start_widget_description">Zarovnejte obsah widgetu na začátek (zprava nebo zleva v závislosti na vaší lokalizaci)</string>
     <string name="hide_far_widget_title">Skrýt widget pro vzdálené události</string>
     <string name="hide_far_widget_description">Skrýt widget, pokud události nastanou až po dodatečném upozornění (např.: widget zůstane skrytý, je-li dod. upozornění nastaveno 7 dní před událostí, ale událost se koná až o 10 dní -&gt;)</string>
+    <string name="show_following_widget_title">Show the following event</string>
+    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <!-- Search -->
     <string name="search_event">Vyhledávání…</string>
     <string name="search_no_result_title">Nebyly nalezeny žádné výsledky</string>
