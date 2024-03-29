@@ -256,6 +256,8 @@
     <string name="align_start_widget_description">将组件内容向开始处对齐（根据你的区域设置决定向左或右）</string>
     <string name="hide_far_widget_title">对很久后的事件隐藏组件</string>
     <string name="hide_far_widget_description">如果下个事件是在额外通知时段后则隐藏组件（比如：7天前通知，下个事件是10天后 -&gt; 隐藏组件）</string>
+    <string name="show_following_widget_title">Show the following event</string>
+    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <!-- Search -->
     <string name="search_event">搜索…</string>
     <string name="search_no_result_title">未找到结果</string>
