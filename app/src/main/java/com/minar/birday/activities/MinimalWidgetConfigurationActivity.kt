@@ -22,6 +22,7 @@ import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 import com.minar.birday.utilities.formatEventList
 import com.minar.birday.utilities.getNextYears
 import com.minar.birday.utilities.nextDateFormatted
+import com.minar.birday.utilities.removeOrGetUpcomingEvents
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -41,6 +42,7 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
         // Retrieve the shared preferences
         val theme = sharedPrefs.getString("theme_color", "system")
         val accent = sharedPrefs.getString("accent_color", "system")
+        val avdLooping = sharedPrefs.getBoolean("loop_avd", true)
 
         // Avoid crashes when the widget is used before opening the app for the very first time
         if (sharedPrefs.getBoolean("first", true)) {
@@ -88,6 +90,7 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
         val compact = binding.configurationCompactSwitch
         val alignStart = binding.configurationAlignStartSwitch
         val hideIfFar = binding.configurationHideIfFarSwitch
+        val showFollowing = binding.configurationShowFollowingSwitch
 
         // Restore the state of the saved configuration
         val darkTextValue = sharedPrefs.getBoolean("widget_minimal_dark_text", false)
@@ -95,16 +98,18 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
         val compactValue = sharedPrefs.getBoolean("widget_minimal_compact", false)
         val alignStartValue = sharedPrefs.getBoolean("widget_minimal_align_start", false)
         val hideIfFarValue = sharedPrefs.getBoolean("widget_minimal_hide_if_far", false)
+        val showFollowingValue = sharedPrefs.getBoolean("widget_minimal_show_following", false)
 
         darkText.isChecked = darkTextValue
         background.isChecked = backgroundValue
         compact.isChecked = compactValue
         alignStart.isChecked = alignStartValue
         hideIfFar.isChecked = hideIfFarValue
+        showFollowing.isChecked = showFollowingValue
 
         // Animate the title image
         binding.configurationTitleImage.applyLoopingAnimatedVectorDrawable(
-            R.drawable.animated_nav_settings, 1000
+            R.drawable.animated_nav_settings, 1000, disableLooping = !avdLooping
         )
 
         // Initialize any widget related variable
@@ -112,6 +117,7 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
         views = RemoteViews(this.packageName, R.layout.widget_minimal)
         val hiPadding = resources.getDimension(R.dimen.between_row_padding).toInt()
         val loPadding = resources.getDimension(R.dimen.widget_margin).toInt()
+
         // Find the widget id from the intent
         val startIntent = intent
         val widgetId = startIntent?.extras?.getInt(
@@ -174,6 +180,14 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
             previewTitleLight.gravity = Gravity.CENTER
             previewTextDark.gravity = Gravity.CENTER
             previewTextLight.gravity = Gravity.CENTER
+        }
+        if (showFollowingValue) {
+            val showFollowingText =
+                "${getString(R.string.no_next_event)} \n${getString(R.string.next_event)} → ${
+                    getString(R.string.no_next_event)
+                }"
+            previewTextDark.text = showFollowingText
+            previewTextLight.text = showFollowingText
         }
 
         // Dark text preview
@@ -256,6 +270,21 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
             }
         }
 
+        // Show following event
+        showFollowing.setOnCheckedChangeListener { _, isChecked ->
+            val showFollowingText =
+                "${getString(R.string.no_next_event)} \n${getString(R.string.next_event)} → ${
+                    getString(R.string.no_next_event)
+                }"
+            if (isChecked) {
+                previewTextDark.text = showFollowingText
+                previewTextLight.text = showFollowingText
+            } else {
+                previewTextDark.text = getString(R.string.no_next_event)
+                previewTextLight.text = getString(R.string.no_next_event)
+            }
+        }
+
         // Collect the options selected
         doneButton.setOnClickListener {
             // Save everything in shared preferences
@@ -265,6 +294,7 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
             editor.putBoolean("widget_minimal_compact", compact.isChecked)
             editor.putBoolean("widget_minimal_align_start", alignStart.isChecked)
             editor.putBoolean("widget_minimal_hide_if_far", hideIfFar.isChecked)
+            editor.putBoolean("widget_minimal_show_following", showFollowing.isChecked)
             editor.apply()
 
             // Hide the text views and backgrounds depending on light or dark
@@ -319,7 +349,7 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
             Thread {
                 // Get the next events and the proper formatter
                 val eventDao: EventDao = EventDatabase.getBirdayDatabase(this).eventDao()
-                val nextEvents: List<EventResult> = eventDao.getOrderedNextEventsStatic()
+                val orderedEvents: List<EventResult> = eventDao.getOrderedEventsStatic()
 
                 // Launch the app on click
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -330,11 +360,13 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
                 views.setOnClickPendingIntent(R.id.minimalWidgetMain, pendingIntent)
 
                 // Remove events in the future today (eg: now is december 1st 2023, an event has original date = december 1st 2050)
-                var filteredNextEvents = nextEvents.toMutableList()
+                var filteredNextEvents =
+                    removeOrGetUpcomingEvents(orderedEvents, true).toMutableList()
                 filteredNextEvents.removeIf { getNextYears(it) == 0 }
-                // If the events are all in the future, display them anyway
+                // If the events are all in the future, display them
                 if (filteredNextEvents.isEmpty()) {
-                    filteredNextEvents = nextEvents.toMutableList()
+                    filteredNextEvents =
+                        removeOrGetUpcomingEvents(orderedEvents, true).toMutableList()
                 }
 
                 // Make sure to show if there's more than one event
@@ -344,7 +376,24 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
                         filteredNextEvents[0], formatter, this
                     )
                 }"
-                views.setTextViewText(textTextView, widgetUpcoming)
+                // Show the following event if show following is enabled
+                if (showFollowing.isChecked) {
+                    var filteredUpcomingEvents =
+                        removeOrGetUpcomingEvents(orderedEvents, false).toMutableList()
+                    filteredUpcomingEvents =
+                        removeOrGetUpcomingEvents(filteredUpcomingEvents, true).toMutableList()
+                    val widgetUpcomingExpanded =
+                        "$widgetUpcoming \n${getString(R.string.next_event)} → ${
+                            formatEventList(
+                                filteredUpcomingEvents,
+                                true,
+                                this,
+                                false,
+                            )
+                        }"
+                    views.setTextViewText(textTextView, widgetUpcomingExpanded)
+                } else
+                    views.setTextViewText(textTextView, widgetUpcoming)
 
                 // Hide the entire widget if the event is far enough in time
                 if (hideIfFar.isChecked) {

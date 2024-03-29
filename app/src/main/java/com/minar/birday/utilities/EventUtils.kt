@@ -78,7 +78,7 @@ fun isOther(event: EventResult): Boolean =
 // Check if a given type, in string form, is unknown
 fun isUnknownType(type: String?): Boolean {
     if (type.isNullOrBlank()) return true
-    return !EventCode.values().map { it.name }.contains(type)
+    return !EventCode.entries.map { it.name }.contains(type)
 }
 
 // Properly format the next date for widget and next event card
@@ -102,13 +102,22 @@ fun formatDaysRemaining(daysRemaining: Int, context: Context): String {
     }
 }
 
-// Given an ordered series of events, remove the upcoming events
-fun removeUpcomingEvents(events: List<EventResult>): List<EventResult> {
-    val noUpcoming: MutableList<EventResult> = events.toMutableList()
-    noUpcoming.removeIf {
-        it.nextDate!! == events[0].nextDate
+// Given an ordered series of events, remove the upcoming events or return them
+fun removeOrGetUpcomingEvents(
+    events: List<EventResult>,
+    returnUpcoming: Boolean = false
+): List<EventResult> {
+    val upcomingResult: MutableList<EventResult> = events.toMutableList()
+    if (returnUpcoming) {
+        upcomingResult.removeIf {
+            it.nextDate!! != events[0].nextDate
+        }
+    } else {
+        upcomingResult.removeIf {
+            it.nextDate!! == events[0].nextDate
+        }
     }
-    return noUpcoming
+    return upcomingResult
 }
 
 // Given a series of events, format them considering the yearMatters parameter and the number
@@ -117,7 +126,7 @@ fun formatEventList(
     surnameFirst: Boolean,
     context: Context,
     showSurnames: Boolean = true,
-    inCurrentYear: Boolean = false
+    inCurrentYear: Boolean = false,
 ): String {
     var formattedEventList = ""
     if (events.isEmpty()) formattedEventList = context.getString(R.string.no_next_event)

@@ -21,6 +21,7 @@ import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.formatEventList
 import com.minar.birday.utilities.getNextYears
 import com.minar.birday.utilities.nextDateFormatted
+import com.minar.birday.utilities.removeOrGetUpcomingEvents
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -66,6 +67,7 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
                 R.layout.widget_upcoming -> {
                     updateUpcoming(context, appWidgetManager, appWidgetId)
                 }
+
                 R.layout.widget_minimal -> {
                     updateMinimal(context, appWidgetManager, appWidgetId)
                 }
@@ -92,6 +94,7 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
         val compact = sp.getBoolean("widget_minimal_compact", false)
         val alignStart = sp.getBoolean("widget_minimal_align_start", false)
         val hideIfFar = sp.getBoolean("widget_minimal_hide_if_far", false)
+        val showFollowing = sp.getBoolean("widget_minimal_show_following", false)
 
         // First off, hide the text views and backgrounds depending on light or dark
         val titleTextView: Int
@@ -145,7 +148,7 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
         Thread {
             // Get the next events and the proper formatter
             val eventDao: EventDao = EventDatabase.getBirdayDatabase(context).eventDao()
-            val nextEvents: List<EventResult> = eventDao.getOrderedNextEventsStatic()
+            val orderedEvents: List<EventResult> = eventDao.getOrderedEventsStatic()
 
             // Launch the app on click
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -156,11 +159,11 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
             views.setOnClickPendingIntent(R.id.minimalWidgetMain, pendingIntent)
 
             // Remove events in the future today (eg: now is december 1st 2023, an event has original date = december 1st 2050)
-            var filteredNextEvents = nextEvents.toMutableList()
+            var filteredNextEvents = removeOrGetUpcomingEvents(orderedEvents, true).toMutableList()
             filteredNextEvents.removeIf { getNextYears(it) == 0 }
-            // If the events are all in the future, display them but avoid confetti
+            // If the events are all in the future, display them
             if (filteredNextEvents.isEmpty()) {
-                filteredNextEvents = nextEvents.toMutableList()
+                filteredNextEvents = removeOrGetUpcomingEvents(orderedEvents, true).toMutableList()
             }
 
             // Make sure to show if there's more than one event
@@ -172,7 +175,24 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
                     context
                 )
             }"
-            views.setTextViewText(textTextView, widgetUpcoming)
+            // Show the following event if show following is enabled
+            if (showFollowing) {
+                var filteredUpcomingEvents =
+                    removeOrGetUpcomingEvents(orderedEvents, false).toMutableList()
+                filteredUpcomingEvents =
+                    removeOrGetUpcomingEvents(filteredUpcomingEvents, true).toMutableList()
+                val widgetUpcomingExpanded =
+                    "$widgetUpcoming \n${context.getString(R.string.next_event)} → ${
+                        formatEventList(
+                            filteredUpcomingEvents,
+                            true,
+                            context,
+                            false,
+                        )
+                    }"
+                views.setTextViewText(textTextView, widgetUpcomingExpanded)
+            } else
+                views.setTextViewText(textTextView, widgetUpcoming)
 
             // Hide the entire widget if the event is far enough in time
             if (hideIfFar) {
