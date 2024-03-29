@@ -270,6 +270,8 @@
     <string name="align_start_widget_description">Ευθυγράμμιση του περιεχομένου widget στην αρχή (δεξιά ή αριστερά ανάλογα με τη γλώσσα σας)</string>
     <string name="hide_far_widget_title">Απόκρυψη widget για μακρινά συμβάντα</string>
     <string name="hide_far_widget_description">Απόκρυψη του widget εάν τα επόμενα συμβάντα είναι μετά την πρόσθετη περίοδο ειδοποίησης (π. χ.: ειδοποίηση 7 ημέρες πριν, η επόμενη εκδήλωση είναι σε 10 ημέρες -&gt; το widget είναι κρυμμένο)</string>
+    <string name="show_following_widget_title">Show the following event</string>
+    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <!-- Search -->
     <string name="search_event">Αναζήτηση…</string>
     <string name="search_no_result_title">Δε βρέθηκαν αποτελέσματα</string>
