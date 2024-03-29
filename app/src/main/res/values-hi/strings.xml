@@ -259,6 +259,8 @@
     <string name="align_start_widget_description">विजेट विषय वस्तु को शुरूआत से संरेखित करें (स्थानीय ढंग में बांय अथवा दांत)</string>
     <string name="hide_far_widget_title">दूरस्थ कार्यक्रमों वाले विजेट छिपाऐं</string>
     <string name="hide_far_widget_description">ऐसे विजेट छिपाऐं जिनका अगला कार्यक्रम उसकी अतिरिक्त अधिसूचना अवधि के बाद होगा (उदाहरणार्थ: अगला कार्यक्रम १० दिन बाद है - &gt;, अधिसूचना कार्यक्रम से ७ दिन पहले है, ऐसा विजेट छिपा दिया)</string>
+    <string name="show_following_widget_title">Show the following event</string>
+    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <!-- Search -->
     <string name="search_event">खोजें…</string>
     <string name="search_no_result_title">कोई परिणाम नहीं मिला</string>
