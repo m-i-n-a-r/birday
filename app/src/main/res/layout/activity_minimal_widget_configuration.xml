@@ -194,7 +194,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/configurationAlignStartTitle" />
 
-        <!-- Align text to the left -->
+        <!-- Hide an event if it's too far -->
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/configurationHideIfFarTitle"
             android:layout_width="0dp"
@@ -228,6 +228,40 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/configurationHideIfFarTitle" />
 
+        <!-- Show the second next event -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/configurationShowFollowingTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:text="@string/show_following_widget_title"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+            android:textSize="@dimen/custom_preference_title_text_size"
+            app:layout_constraintEnd_toStartOf="@id/configurationShowFollowingSwitch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/configurationHideIfFarDescription" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/configurationShowFollowingDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/show_following_widget_description"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textSize="@dimen/custom_preference_subtitle_text_size"
+            app:layout_constraintEnd_toStartOf="@id/configurationShowFollowingSwitch"
+            app:layout_constraintStart_toStartOf="@id/configurationShowFollowingTitle"
+            app:layout_constraintTop_toBottomOf="@id/configurationShowFollowingTitle" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/configurationShowFollowingSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/card_margin"
+            app:layout_constraintBottom_toBottomOf="@id/configurationShowFollowingDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/configurationShowFollowingTitle" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/configurationConfirmButton"
             style="@style/Widget.Material3.FloatingActionButton.Large.Secondary"
@@ -250,7 +284,7 @@
             android:padding="@dimen/activity_horizontal_margin"
             android:theme="@style/WidgetTheme"
             app:layout_constraintBottom_toTopOf="@id/configurationConfirmButton"
-            app:layout_constraintTop_toBottomOf="@id/configurationHideIfFarDescription"
+            app:layout_constraintTop_toBottomOf="@id/configurationShowFollowingDescription"
             tools:layout_editor_absoluteX="38dp">
 
             <ImageView
