@@ -123,15 +123,15 @@
     <string name="missing_permission_calendar_forever">Permisiunea pentru calendar a fost refuzată și nu poate fi solicitată din nou, așa că Birday nu poate importa din calendar! Activează permisiunea manual în Setări.</string>
     <string name="import_calendar_title">Import din calendar</string>
     <string name="import_calendar_description">Importă orice eveniment anual din calendare. Nu uita să setezi tipul evenimentului și anul pentru a menține lucrurile ordonate!</string>
-    <string name="loop_avd_title">Loop animations</string>
-    <string name="loop_avd_description_on">The animations are looped infinitely</string>
-    <string name="loop_avd_description_off">The animations will run a single time</string>
-    <string name="order_alphabetically_title">Alphabetical order</string>
-    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
-    <string name="order_alphabetically_description_off">The events are ordered by date</string>
-    <string name="grouped_notifications_title">Group multiple notifications</string>
-    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
-    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
+    <string name="loop_avd_title">Animații în buclă</string>
+    <string name="loop_avd_description_on">Animațiile sunt repetate infinit</string>
+    <string name="loop_avd_description_off">Animațiile vor rula o singură dată</string>
+    <string name="order_alphabetically_title">În ordine alfabetică</string>
+    <string name="order_alphabetically_description_on">Evenimentele sunt ordonate alfabetic</string>
+    <string name="order_alphabetically_description_off">Evenimentele sunt ordonate după dată</string>
+    <string name="grouped_notifications_title">Grupează notificări multiple</string>
+    <string name="grouped_notifications_description_on">Dacă există două sau mai multe evenimente într-o singură zi, notificările sunt grupate</string>
+    <string name="grouped_notifications_description_off">Dacă există două sau mai multe evenimente într-o singură zi, Birday va trimite o notificare pentru fiecare</string>
     <!-- Developer -->
     <string name="dev_description">Sunt un tip politicos și îmi plac lucruri frumoase, precum animații, pictograme, mașini sportive și imprimare 3D. Eu lucrez ca designer și inginer de calculatoare.</string>
     <string name="easter_egg">Frumoasă siglă, nu? ;D</string>
