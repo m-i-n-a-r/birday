@@ -261,6 +261,8 @@
     <string name="align_start_widget_description">Igazítsa a widget-et a kezdéshez (jobb vagy bal, a lokalizációdtól függően)</string>
     <string name="hide_far_widget_title">Rejtse el a widget-et a távoli eseményeknél</string>
     <string name="hide_far_widget_description">A widget elrejtése, ha a következő események a további értesítési időszak utánra esnek (pl.: értesítés 7 nappal előtte, a következő esemény 10 nap múlva lesz -&gt; a widget el van rejtve)</string>
+    <string name="show_following_widget_title">Show the following event</string>
+    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <!-- Search -->
     <string name="search_event">Keresés…</string>
     <string name="search_no_result_title">Nincs találat</string>
