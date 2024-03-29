@@ -11,7 +11,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.BottomSheetStatsBinding
-import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 import kotlin.math.min
 
 
@@ -37,7 +36,7 @@ class StatsBottomSheet(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // Animate the drawable in loop
         val titleIcon = binding.statsImage
-        titleIcon.applyLoopingAnimatedVectorDrawable(R.drawable.animated_stats, 1500L)
+        act.animateAvd(titleIcon, R.drawable.animated_stats, 1500L)
 
         binding.fullStats.text = fullStats
         // Prepare the toast
@@ -47,7 +46,7 @@ class StatsBottomSheet(
         val backgroundDrawable = binding.eventCounterBackground
         // Link the opacity of the background to the number of events (min = 0.05 / max = 100)
         backgroundDrawable.alpha = min(0.01F * totalEvents + 0.05F, 1.0F)
-        backgroundDrawable.applyLoopingAnimatedVectorDrawable(R.drawable.animated_counter_background)
+        act.animateAvd(backgroundDrawable, R.drawable.animated_counter_background)
         // Show an explanation for the counter, even if it's quite obvious
         backgroundDrawable.setOnClickListener {
             act.vibrate()

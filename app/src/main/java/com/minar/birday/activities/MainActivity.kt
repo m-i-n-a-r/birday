@@ -5,17 +5,26 @@ import android.app.ActivityManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.appwidget.AppWidgetManager
-import android.content.*
+import android.content.ComponentName
+import android.content.ContentResolver
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.database.Cursor
 import android.graphics.Color
 import android.media.AudioAttributes
 import android.media.AudioAttributes.Builder
 import android.net.Uri
-import android.os.*
+import android.os.Build
+import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.os.VibratorManager
 import android.provider.OpenableColumns
 import android.provider.Settings
 import android.view.View
+import android.widget.ImageView
 import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -43,12 +52,15 @@ import com.minar.birday.preferences.backup.BirdayImporter
 import com.minar.birday.preferences.backup.ContactsImporter
 import com.minar.birday.preferences.backup.CsvImporter
 import com.minar.birday.preferences.backup.JsonImporter
-import com.minar.birday.utilities.*
+import com.minar.birday.utilities.AppRater
+import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
+import com.minar.birday.utilities.getThemeColor
+import com.minar.birday.utilities.resultToEvent
+import com.minar.birday.utilities.showIfNotAdded
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidgetProvider
 import com.minar.birday.widgets.MinimalWidgetProvider
 import java.io.IOException
-import java.util.*
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
@@ -173,8 +185,10 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.navigationMain ->
                     navController.navigateWithOptions(R.id.navigationMain)
+
                 R.id.navigationFavorites ->
                     navController.navigateWithOptions(R.id.navigationFavorites)
+
                 R.id.navigationSettings ->
                     navController.navigateWithOptions(R.id.navigationSettings)
             }
@@ -212,7 +226,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Animate the fab icon
-        addFab.applyLoopingAnimatedVectorDrawable(R.drawable.animated_add_event, 5000L)
+        animateAvd(addFab, R.drawable.animated_add_event, 5000L)
 
         // Set the delete search action (initially hidden)
         deleteFab.setOnClickListener {
@@ -253,7 +267,7 @@ class MainActivity : AppCompatActivity() {
             window.navigationBarColor = SurfaceColors.SURFACE_2.getColor(this)
         }
 
-        // Auto import on launch TODO Only available in experimental settings
+        // Auto import on launch
         if (sharedPrefs.getBoolean("auto_import", false)) {
             val currentLaunchTime = System.currentTimeMillis()
             val lastLaunch = sharedPrefs.getLong("last_launch", 0L)
@@ -355,10 +369,12 @@ class MainActivity : AppCompatActivity() {
                         val jsonImporter = JsonImporter(this, null)
                         jsonImporter.importEventsJson(this, fileUri)
                     }
+
                     "csv" -> {
                         val csvImporter = CsvImporter(this, null)
                         csvImporter.importEventsCsv(this, fileUri)
                     }
+
                     else -> {
                         val birdayImporter = BirdayImporter(this, null)
                         birdayImporter.importEvents(this, fileUri)
@@ -421,6 +437,20 @@ class MainActivity : AppCompatActivity() {
                 vib.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK))
     }
 
+    // Animate an animated vector drawable thus centralizing this operation
+    fun animateAvd(
+        imageView: ImageView,
+        avd: Int = R.drawable.animated_experimental_danger,
+        endDelay: Long = 0
+    ) {
+        val loopAnimation = sharedPrefs.getBoolean("loop_avd", true)
+        imageView.applyLoopingAnimatedVectorDrawable(
+            animatedVector = avd,
+            disableLooping = !loopAnimation,
+            endDelay = endDelay
+        )
+    }
+
     // Show a snackbar containing a given text and an optional action, with a 5 seconds duration
     fun showSnackbar(
         content: String,
@@ -464,12 +494,13 @@ class MainActivity : AppCompatActivity() {
 
             addFab.visibility = View.VISIBLE
             deleteFab.visibility = View.GONE
-            deleteFab.applyLoopingAnimatedVectorDrawable(
+            animateAvd(
+                deleteFab,
                 R.drawable.animated_delete,
                 3000L,
-                true
             )
-            addFab.applyLoopingAnimatedVectorDrawable(
+            animateAvd(
+                addFab,
                 R.drawable.animated_add_event,
                 5000L
             )
@@ -486,14 +517,15 @@ class MainActivity : AppCompatActivity() {
 
             addFab.visibility = View.GONE
             deleteFab.visibility = View.VISIBLE
-            deleteFab.applyLoopingAnimatedVectorDrawable(
+            animateAvd(
+                deleteFab,
                 R.drawable.animated_delete,
                 3000L
             )
-            addFab.applyLoopingAnimatedVectorDrawable(
+            animateAvd(
+                addFab,
                 R.drawable.animated_add_event,
                 5000L,
-                true
             )
         }
     }

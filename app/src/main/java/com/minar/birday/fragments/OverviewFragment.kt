@@ -13,7 +13,6 @@ import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.FragmentOverviewBinding
 import com.minar.birday.model.EventResult
-import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 import com.minar.birday.utilities.formatEventList
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.tasticalendar.model.TastiCalendarEvent
@@ -67,7 +66,8 @@ class OverviewFragment : Fragment() {
         val title: String =
             if (advancedView) getString(R.string.overview) else getString(R.string.overview) + " - $yearNumber"
         binding.overviewTitle.text = title
-        binding.overviewTitleImage.applyLoopingAnimatedVectorDrawable(
+        act.animateAvd(
+            binding.overviewTitleImage,
             R.drawable.animated_overview,
             2500L
         )

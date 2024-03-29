@@ -131,6 +131,7 @@ class HomeFragment : Fragment() {
                     if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
                         mainViewModel.eventTypeChanged("")
                 }
+
                 R.id.homeTypeSelectorAnniversary -> {
                     // Only display events of type anniversary
                     if (isChecked) {
@@ -139,6 +140,7 @@ class HomeFragment : Fragment() {
                     if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
                         mainViewModel.eventTypeChanged("")
                 }
+
                 R.id.homeTypeSelectorDeathAnniversary -> {
                     // Only display events of type death anniversary
                     if (isChecked) {
@@ -147,6 +149,7 @@ class HomeFragment : Fragment() {
                     if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
                         mainViewModel.eventTypeChanged("")
                 }
+
                 R.id.homeTypeSelectorNameDay -> {
                     // Only display events of type name day
                     if (isChecked) {
@@ -155,6 +158,7 @@ class HomeFragment : Fragment() {
                     if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
                         mainViewModel.eventTypeChanged("")
                 }
+
                 R.id.homeTypeSelectorOther -> {
                     // Only display events of type other
                     if (isChecked) {
@@ -163,6 +167,7 @@ class HomeFragment : Fragment() {
                     if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
                         mainViewModel.eventTypeChanged("")
                 }
+
                 R.id.homeTypeSelectorClose -> {
                     typeSelector.pivotX = searchBarLayout.measuredWidth.toFloat() * 0.95F
                     ObjectAnimator.ofFloat(typeSelector, "scaleX", 0.0f).apply {
@@ -208,6 +213,7 @@ class HomeFragment : Fragment() {
                     homeMotionLayout.transitionToEnd()
                     sharedPrefs.edit().putFloat("home_motion_state", 1.0F).apply()
                 }
+
                 1.0F -> {
                     homeMotionLayout.transitionToStart()
                     sharedPrefs.edit().putFloat("home_motion_state", 0.0F).apply()
@@ -262,7 +268,7 @@ class HomeFragment : Fragment() {
             } else {
                 adapter.submitList(listOf())
                 // Avd for empty card (same avd for no results or no events atm)
-                upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_no_results)
+                act.animateAvd(upcomingImage, R.drawable.animated_no_results)
                 when {
                     mainViewModel.searchString.value!!.isNotBlank() -> restorePlaceholders(true)
                     mainViewModel.selectedType.value!!.isNotBlank() -> restorePlaceholders(true)
@@ -395,19 +401,28 @@ class HomeFragment : Fragment() {
 
         // Set the correct avd
         when {
-            nextEvents.all { it.type == EventCode.DEATH.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+            nextEvents.all { it.type == EventCode.DEATH.name } -> act.animateAvd(
+                upcomingImage,
                 R.drawable.animated_death_anniversary, 1000
             )
-            nextEvents.all { it.type == EventCode.ANNIVERSARY.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+
+            nextEvents.all { it.type == EventCode.ANNIVERSARY.name } -> act.animateAvd(
+                upcomingImage,
                 R.drawable.animated_anniversary, 1000
             )
-            nextEvents.all { it.type == EventCode.NAME_DAY.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+
+            nextEvents.all { it.type == EventCode.NAME_DAY.name } -> act.animateAvd(
+                upcomingImage,
                 R.drawable.animated_name_day, 1000
             )
-            nextEvents.all { it.type == EventCode.OTHER.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+
+            nextEvents.all { it.type == EventCode.OTHER.name } -> act.animateAvd(
+                upcomingImage,
                 R.drawable.animated_other, 1000
             )
-            else -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+
+            else -> act.animateAvd(
+                upcomingImage,
                 R.drawable.animated_party_popper,
                 1000
             )
@@ -448,10 +463,12 @@ class HomeFragment : Fragment() {
                     nextDateText = nextDateFormatted(event, formatter, requireContext())
                     nextAge = getString(R.string.next_age_years) + ": $age"
                 }
+
                 1, 2 -> {
                     personName += ", $formattedPersonName"
                     nextAge += ", $age"
                 }
+
                 3 -> {
                     personName += " " + getString(R.string.event_others)
                     nextAge += "..."

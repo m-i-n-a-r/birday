@@ -129,11 +129,12 @@ class DetailsFragment : Fragment() {
                     )
                 )
             }
-            imageBg.applyLoopingAnimatedVectorDrawable(R.drawable.animated_ripple_circle)
+            act.animateAvd(imageBg, R.drawable.animated_ripple_circle)
         }
 
         // Default animated vector drawable
-        binding.detailsEventNameImage.applyLoopingAnimatedVectorDrawable(
+        act.animateAvd(
+            binding.detailsEventNameImage,
             R.drawable.animated_balloon,
             1500
         )
@@ -221,7 +222,8 @@ class DetailsFragment : Fragment() {
         val statsGenerator = StatsGenerator(subject, context)
         val daysRemaining = getRemainingDays(event.nextDate!!)
         val dayOfWeek = LocalDate.now().plusDays(daysRemaining.toLong()).dayOfWeek.getDisplayName(
-            TextStyle.FULL, Locale.getDefault())
+            TextStyle.FULL, Locale.getDefault()
+        )
         val daysCountdown =
             formatDaysRemaining(daysRemaining, requireContext()) + ", " +
                     dayOfWeek
@@ -254,56 +256,67 @@ class DetailsFragment : Fragment() {
                         requireContext(), R.drawable.ic_zodiac_sagittarius
                     )
                 )
+
                 1 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_capricorn
                     )
                 )
+
                 2 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_aquarius
                     )
                 )
+
                 3 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_pisces
                     )
                 )
+
                 4 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_aries
                     )
                 )
+
                 5 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_taurus
                     )
                 )
+
                 6 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_gemini
                     )
                 )
+
                 7 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_cancer
                     )
                 )
+
                 8 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_leo
                     )
                 )
+
                 9 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_virgo
                     )
                 )
+
                 10 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_libra
                     )
                 )
+
                 11 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_scorpio
@@ -318,22 +331,26 @@ class DetailsFragment : Fragment() {
                         requireContext(), R.drawable.ic_anniversary_24dp
                     )
                 )
+
                 EventCode.DEATH.name -> {
                     binding.detailsClearBackground.setImageDrawable(
                         ContextCompat.getDrawable(
                             requireContext(), R.drawable.ic_death_anniversary_24dp
                         )
                     )
-                    binding.detailsEventNameImage.applyLoopingAnimatedVectorDrawable(
+                    act.animateAvd(
+                        binding.detailsEventNameImage,
                         R.drawable.animated_candle_new,
                         1500
                     )
                 }
+
                 EventCode.NAME_DAY.name -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_name_day_24dp
                     )
                 )
+
                 EventCode.OTHER.name -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_other_24dp

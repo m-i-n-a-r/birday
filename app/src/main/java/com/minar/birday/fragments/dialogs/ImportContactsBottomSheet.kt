@@ -9,9 +9,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.minar.birday.R
+import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.BottomSheetImportContactsBinding
 import com.minar.birday.persistence.ContactsRepository
-import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 import com.minar.birday.viewmodels.MainViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,6 +19,7 @@ import kotlinx.coroutines.withContext
 
 class ImportContactsBottomSheet : BottomSheetDialogFragment() {
     private val viewModel: MainViewModel by activityViewModels()
+    private val act: MainActivity = requireActivity() as MainActivity
     private val contactsRepository = ContactsRepository()
 
     override fun onCreateView(
@@ -31,7 +32,8 @@ class ImportContactsBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val binding = BottomSheetImportContactsBinding.bind(view)
 
-        binding.importContactsImage.applyLoopingAnimatedVectorDrawable(
+        act.animateAvd(
+            binding.importContactsImage,
             R.drawable.animated_balloon, 1500L
         )
 

@@ -12,7 +12,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.BottomSheetQuickAppsBinding
-import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 
 
 class QuickAppsBottomSheet(private val act: MainActivity) : BottomSheetDialogFragment() {
@@ -79,7 +78,7 @@ class QuickAppsBottomSheet(private val act: MainActivity) : BottomSheetDialogFra
             dismiss()
         }
 
-        titleIcon.applyLoopingAnimatedVectorDrawable(R.drawable.animated_quick_apps, 1500L)
+        act.animateAvd(titleIcon, R.drawable.animated_quick_apps, 1500L)
 
         dialerButton.setOnClickListener {
             act.vibrate()
