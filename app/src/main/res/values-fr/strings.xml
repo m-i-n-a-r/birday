@@ -259,6 +259,8 @@
     <string name="align_start_widget_description">Aligner le contenu du widget au début (à droite ou à gauche selon votre locale)</string>
     <string name="hide_far_widget_title">Masquer le widget pour les événements éloignés</string>
     <string name="hide_far_widget_description">Masquer le widget si les prochains événements sont après la période de notification supplémentaire (ex: notification 7 jours avant, le prochain événement est dans 10 jours -&gt; le widget est masqué)</string>
+    <string name="show_following_widget_title">Show the following event</string>
+    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <!-- Search -->
     <string name="search_event">Rechercher…</string>
     <string name="search_no_result_title">Aucun résultat n\'a été trouvé</string>
