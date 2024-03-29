@@ -267,6 +267,8 @@
     <string name="align_start_widget_description">Align the widget content to the start (right or left depending on your locale)</string>
     <string name="hide_far_widget_title">Hide widget for far events</string>
     <string name="hide_far_widget_description">Hide the widget if the next events are after the additional notification period (eg: notification 7 days before, the next event is in 10 days -&gt; the widget is hidden)</string>
+    <string name="show_following_widget_title">Show the following event</string>
+    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <!-- Search -->
     <string name="search_event">തിരയുക …</string>
     <string name="search_no_result_title">ഒന്നും കണ്ടെത്താൻ കഴിഞ്ഞില്ല</string>
