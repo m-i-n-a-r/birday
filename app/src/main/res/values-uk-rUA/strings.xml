@@ -277,6 +277,8 @@
     <string name="align_start_widget_description">Розташувати вміст віджету на початку (праворуч чи ліворуч у залежності від локалізації)</string>
     <string name="hide_far_widget_title">Приховати віджет для далеких подій</string>
     <string name="hide_far_widget_description">Приховати віджет, якщо наступні події після додаткового періоду сповіщення (наприклад: сповіщення за 7 днів до події, наступна подія через 10 днів -&gt; віджет прихований)</string>
+    <string name="show_following_widget_title">Show the following event</string>
+    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <!-- Search -->
     <string name="search_event">Шукати…</string>
     <string name="search_no_result_title">Нічого не знайдено</string>
