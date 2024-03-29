@@ -259,6 +259,8 @@
     <string name="align_start_widget_description">Justera widgetens innehåll till början (höger eller vänster beroende på ditt språk)</string>
     <string name="hide_far_widget_title">Dölj widget för fjärran händelser</string>
     <string name="hide_far_widget_description">Dölj widgeten om nästa händelser är efter ytterligare aviseringsperiod (t.ex: avisering 7 dagar innan, nästa händelse är inom 10 dagar -&gt; widgeten är dold)</string>
+    <string name="show_following_widget_title">Show the following event</string>
+    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <!-- Search -->
     <string name="search_event">Sök…</string>
     <string name="search_no_result_title">Inga resultat funna</string>
