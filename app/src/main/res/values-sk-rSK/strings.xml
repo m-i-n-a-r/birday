@@ -60,7 +60,7 @@
     <string name="accent_name">Farba zvýraznenia</string>
     <string name="theme_description">Použite tmavý, svetlý alebo automatický motív aplikácie</string>
     <string name="theme_name">Motív aplikácie</string>
-    <!-- Untranslated for now -->
+    <!-- ^ Untranslated for now -->
     <string name="aqua">Aqua</string>
     <string name="brown">Hnedá</string>
     <string name="blue">Modrá</string>
@@ -121,6 +121,15 @@
     <string name="missing_permission_calendar_forever">Oprávnenie na prístup ku kalendáru bolo zamietnuté a Birday nemôže importovať položky z kalendára! Udeľte oprávnenie ručne z nastavení smartfónu, pretože Birday už nemôže znovu otvoriť dialógové okno oprávnenia.</string>
     <string name="import_calendar_title">Importovať z kalendára</string>
     <string name="import_calendar_description">Importujte ľubovoľnú ročnú udalosť zo svojich kalendárov. Nezabudnite nastaviť typ udalosti a rok, aby bolo všetko správne zoradené!</string>
+    <string name="loop_avd_title">Loop animations</string>
+    <string name="loop_avd_description_on">The animations are looped infinitely</string>
+    <string name="loop_avd_description_off">The animations will run a single time</string>
+    <string name="order_alphabetically_title">Alphabetical order</string>
+    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
+    <string name="order_alphabetically_description_off">The events are ordered by date</string>
+    <string name="grouped_notifications_title">Group multiple notifications</string>
+    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
+    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
     <!-- Developer -->
     <string name="dev_description">Som milý a skromný človek, ktorý má rád krásne veci ako sú animácie, ikony, športové autá a 3D tlač. Pracujem ako dizajnér a počítačový inžinier.</string>
     <string name="easter_egg">Husté logo, žeee? ;D</string>
@@ -262,6 +271,8 @@
     <string name="align_start_widget_description">Zarovnajte obsah widgetu na začiatok (doprava alebo doľava v závislosti od vášho miestneho nastavenia)</string>
     <string name="hide_far_widget_title">Skryť widget pre vzdialené udalosti</string>
     <string name="hide_far_widget_description">Skryť widget, ak udalosti nastanú až po dodatočnom upozornení (napr.: widget zostane skrytý, ak je dod. upozornenie nastavené 7 dní pred udalosťou, ale udalosť sa koná až o 10 dní)</string>
+    <string name="show_following_widget_title">Show the following event</string>
+    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <!-- Search -->
     <string name="search_event">Vyhľadávanie…</string>
     <string name="search_no_result_title">Nenašli sa žiadne výsledky</string>

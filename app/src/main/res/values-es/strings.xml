@@ -56,7 +56,7 @@
     <string name="accent_name">Color principal</string>
     <string name="theme_description">Usa un tema oscuro, claro o automático</string>
     <string name="theme_name">Tema de la aplicación</string>
-    <!-- Untranslated for now -->
+    <!-- ^ Untranslated for now -->
     <string name="aqua">Aguamarina</string>
     <string name="brown">Marrón</string>
     <string name="blue">Azul</string>
@@ -117,6 +117,15 @@
     <string name="missing_permission_calendar_forever">¡El permiso de calendario fue denegado y no se puede preguntar de nuevo, así que Birday no puede importar desde el calendario! Active el permiso manualmente, desde la configuración.</string>
     <string name="import_calendar_title">Importar desde calendario</string>
     <string name="import_calendar_description">Importa cualquier evento anual de tus calendarios. ¡Recuerda establecer el tipo de evento y el año para mantener las cosas ordenadas!</string>
+    <string name="loop_avd_title">Loop animations</string>
+    <string name="loop_avd_description_on">The animations are looped infinitely</string>
+    <string name="loop_avd_description_off">The animations will run a single time</string>
+    <string name="order_alphabetically_title">Alphabetical order</string>
+    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
+    <string name="order_alphabetically_description_off">The events are ordered by date</string>
+    <string name="grouped_notifications_title">Group multiple notifications</string>
+    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
+    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
     <!-- Developer -->
     <string name="dev_description">Soy un tipo amable al que le gustan las animaciones, los iconos, los coches deportivos y la impresión 3D. Trabajo como diseñador e ingeniero informático.</string>
     <string name="easter_egg">Bonito logo, ¿eh? ;D</string>
@@ -250,6 +259,8 @@
     <string name="align_start_widget_description">Alinear el contenido del widget al principio (derecha o izquierda dependiendo de su local)</string>
     <string name="hide_far_widget_title">Ocultar widget para eventos lejanos</string>
     <string name="hide_far_widget_description">Ocultar el widget si los siguientes eventos son después del período de notificación adicional (por ejemplo: notificación 7 días antes, el siguiente evento está en 10 días -&gt; el widget está oculto)</string>
+    <string name="show_following_widget_title">Show the following event</string>
+    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <!-- Search -->
     <string name="search_event">Buscar…</string>
     <string name="search_no_result_title">Sin resultados</string>
