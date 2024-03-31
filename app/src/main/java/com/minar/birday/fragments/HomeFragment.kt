@@ -95,6 +95,8 @@ class HomeFragment : Fragment() {
         val searchBar = binding.homeSearch
         val searchBarLayout = binding.homeSearchLayout
         val recycler = binding.eventRecycler
+        val orderAlphabetically = sharedPrefs.getBoolean("order_alphabetically", false)
+        val surnameFirst = sharedPrefs.getBoolean("surname_first", false)
         if (shimmerEnabled) shimmer.startShimmer()
 
         // Setup the search bar
@@ -261,7 +263,7 @@ class HomeFragment : Fragment() {
             }
 
             if (events.isNotEmpty()) {
-                adapter.addHeadersAndSubmitList(events)
+                adapter.prepareAndSubmitList(events, orderAlphabetically, surnameFirst)
                 // Insert the events in the upper card and remove the placeholders
                 insertUpcomingEvents(events)
                 removePlaceholder()

@@ -15,13 +15,14 @@ import com.minar.birday.databinding.BottomSheetRateBinding
 class RateBottomSheet(private val editor: SharedPreferences.Editor) : BottomSheetDialogFragment() {
     private var _binding: BottomSheetRateBinding? = null
     private val binding get() = _binding!!
-    private val act: MainActivity = requireActivity() as MainActivity
+    private lateinit var act: MainActivity
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         // Inflate the bottom sheet, initialize the shared preferences and the recent options list
         _binding = BottomSheetRateBinding.inflate(inflater, container, false)
+        act = requireActivity() as MainActivity
         return binding.root
     }
 
