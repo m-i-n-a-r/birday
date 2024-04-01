@@ -25,13 +25,19 @@ import com.minar.birday.fragments.dialogs.InsertEventBottomSheet
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
-import com.minar.birday.utilities.*
+import com.minar.birday.utilities.StatsGenerator
+import com.minar.birday.utilities.byteArrayToBitmap
+import com.minar.birday.utilities.formatDaysRemaining
+import com.minar.birday.utilities.formatName
+import com.minar.birday.utilities.getNextYears
+import com.minar.birday.utilities.getReducedDate
+import com.minar.birday.utilities.getRemainingDays
+import com.minar.birday.utilities.getStringForTypeCodename
+import com.minar.birday.utilities.getThemeColor
+import com.minar.birday.utilities.resultToEvent
 import com.minar.birday.viewmodels.MainViewModel
-import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
-import java.time.format.TextStyle
-import java.util.Locale
 
 
 class DetailsFragment : Fragment() {
