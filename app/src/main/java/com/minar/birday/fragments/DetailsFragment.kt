@@ -221,12 +221,10 @@ class DetailsFragment : Fragment() {
         subject.add(event)
         val statsGenerator = StatsGenerator(subject, context)
         val daysRemaining = getRemainingDays(event.nextDate!!)
-        val dayOfWeek = LocalDate.now().plusDays(daysRemaining.toLong()).dayOfWeek.getDisplayName(
-            TextStyle.FULL, Locale.getDefault()
-        )
+        val nextDateFormatted = event.nextDate.format(formatter)
+        // Days remaining, plus next date properly formatted
         val daysCountdown =
-            formatDaysRemaining(daysRemaining, requireContext()) + ", " +
-                    dayOfWeek
+            formatDaysRemaining(daysRemaining, requireContext()) + "\n" + nextDateFormatted
         binding.detailsZodiacSignValue.text =
             statsGenerator.getZodiacSign(event)
         binding.detailsCountdown.text = daysCountdown
