@@ -44,6 +44,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         val onlyFavoritesNotification = sharedPrefs.getBoolean("notification_only_favorites", false)
         val onlyFavoritesAdditional = sharedPrefs.getBoolean("additional_only_favorites", false)
         val angryBird = sharedPrefs.getBoolean("angry_bird", false)
+        val groupNotification = sharedPrefs.getBoolean("grouped_notifications", true)
 
         try {
             // Check for upcoming and actual birthdays and send notification
@@ -65,21 +66,48 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                     actual.add(event)
                 }
             }
-            if (anticipated.isNotEmpty()) sendNotification(
-                anticipated,
-                1,
-                surnameFirst,
-                hideImage,
-                true,
-                angryBird = angryBird
-            )
-            if (actual.isNotEmpty()) sendNotification(
-                actual,
-                2,
-                surnameFirst,
-                hideImage,
-                angryBird = angryBird
-            )
+            // Send a grouped notification, or a single notification for each event
+            if (groupNotification) {
+                if (anticipated.isNotEmpty()) sendNotification(
+                    anticipated,
+                    1,
+                    surnameFirst,
+                    hideImage,
+                    true,
+                    angryBird = angryBird
+                )
+                if (actual.isNotEmpty()) sendNotification(
+                    actual,
+                    2,
+                    surnameFirst,
+                    hideImage,
+                    angryBird = angryBird
+                )
+            } else {
+                // Play with the ids to make sure they are unique
+                if (anticipated.isNotEmpty())
+                    for (e in anticipated) {
+                        sendNotification(
+                            listOf(e),
+                            anticipated.indexOf(e),
+                            surnameFirst,
+                            hideImage,
+                            true,
+                            angryBird
+                        )
+                    }
+                if (actual.isNotEmpty())
+                    for (e in actual) {
+                        sendNotification(
+                            listOf(e),
+                            actual.indexOf(e) + anticipated.size,
+                            surnameFirst,
+                            hideImage,
+                            true,
+                            angryBird
+                        )
+                    }
+            }
 
             // Set Execution at the time specified + 15 seconds to avoid midnight problems
             dueDate.set(Calendar.HOUR_OF_DAY, workHour)
