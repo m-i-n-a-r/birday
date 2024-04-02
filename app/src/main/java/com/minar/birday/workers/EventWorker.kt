@@ -21,11 +21,13 @@ import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.receivers.NotificationActionReceiver
 import com.minar.birday.utilities.byteArrayToBitmap
+import com.minar.birday.utilities.formatDaysRemaining
 import com.minar.birday.utilities.formatEventList
 import com.minar.birday.utilities.getCircularBitmap
+import com.minar.birday.utilities.getRemainingDays
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
-import java.util.*
+import java.util.Calendar
 import java.util.concurrent.TimeUnit
 
 class EventWorker(context: Context, params: WorkerParameters) : Worker(context, params) {
@@ -38,7 +40,8 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(applicationContext)
         val workHour = sharedPrefs.getString("notification_hour", "8")!!.toInt()
         val workMinute = sharedPrefs.getString("notification_minute", "0")!!.toInt()
-        val additionalNotification = sharedPrefs.getString("additional_notification", "0")!!.toInt()
+        val additionalNotificationDays =
+            sharedPrefs.getStringSet("multi_additional_notification", setOf())
         val surnameFirst = sharedPrefs.getBoolean("surname_first", false)
         val hideImage = sharedPrefs.getBoolean("hide_images", false)
         val onlyFavoritesNotification = sharedPrefs.getBoolean("notification_only_favorites", false)
@@ -53,9 +56,11 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             val actual = mutableListOf<EventResult>()
             for (event in allEvents) {
                 // Fill the list of upcoming events
-                if (additionalNotification != 0 &&
-                    ChronoUnit.DAYS.between(LocalDate.now(), event.nextDate)
-                        .toInt() == additionalNotification
+                if (!additionalNotificationDays.isNullOrEmpty() &&
+                    additionalNotificationDays.any {
+                        it.toInt() == ChronoUnit.DAYS.between(LocalDate.now(), event.nextDate)
+                            .toInt()
+                    }
                 ) {
                     if (onlyFavoritesAdditional && event.favorite == false) continue
                     anticipated.add(event)
@@ -69,15 +74,21 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             }
             // Send a grouped notification, or a single notification for each event
             if (groupNotification) {
-                if (anticipated.isNotEmpty()) sendNotification(
-                    anticipated,
-                    1,
-                    surnameFirst,
-                    hideImage,
-                    true,
-                    angryBird = angryBird,
-                    disableAnimations = !loopAvd
-                )
+                if (anticipated.isNotEmpty()) {
+                    // Send a grouped notification for each enabled additional notification
+                    val groupedAnticipated = anticipated.groupBy { it.nextDate }
+                    for (anticipatedList in groupedAnticipated.values)
+                    // The strategy to pick a different id for each is kinda poor, but whatever
+                        sendNotification(
+                            anticipatedList,
+                            2 + anticipated.indexOf(anticipatedList[0]),
+                            surnameFirst,
+                            hideImage,
+                            true,
+                            angryBird = angryBird,
+                            disableAnimations = !loopAvd
+                        )
+                }
                 if (actual.isNotEmpty()) sendNotification(
                     actual,
                     2,
@@ -158,7 +169,13 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                 else if (!angryBird) R.drawable.animated_notification_icon
                 else R.drawable.animated_angry_notification_icon
             )
-            .setContentTitle(applicationContext.getString(R.string.notification_title))
+            // Use the title to quickly distinguish between reminders and additional notifications
+            .setContentTitle(
+                if (upcoming) formatDaysRemaining(
+                    getRemainingDays(nextEvents[0].nextDate!!),
+                    applicationContext
+                ) else applicationContext.getString(R.string.notification_title)
+            )
             .setContentText(notificationText)
             .setStyle(
                 NotificationCompat.BigTextStyle()

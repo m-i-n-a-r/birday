@@ -72,3 +72,15 @@ fun checkName(submission: String): Boolean {
     }
     return true
 }
+
+// Return the max number of additional notification days selected as an int
+fun maxNumberOfAdditionalNotificationDays(selectedDays: MutableSet<String>?): Int {
+    if (selectedDays == null) return 0
+    var maxNumber = 0
+    for (numberOfDays in selectedDays) {
+        val daysAsNumber = numberOfDays.toInt()
+        if (daysAsNumber > maxNumber)
+            maxNumber = daysAsNumber
+    }
+    return maxNumber
+}

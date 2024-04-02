@@ -20,6 +20,7 @@ import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.formatEventList
 import com.minar.birday.utilities.getNextYears
+import com.minar.birday.utilities.maxNumberOfAdditionalNotificationDays
 import com.minar.birday.utilities.nextDateFormatted
 import com.minar.birday.utilities.removeOrGetUpcomingEvents
 import java.time.LocalDate
@@ -196,8 +197,12 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
 
             // Hide the entire widget if the event is far enough in time
             if (hideIfFar) {
-                val anticipationDays =
-                    sp.getString("additional_notification", "0")!!.toInt()
+                val anticipationDays = maxNumberOfAdditionalNotificationDays(
+                    sp.getStringSet(
+                        "multi_additional_notification",
+                        setOf()
+                    )
+                )
                 if (filteredNextEvents.isEmpty() || LocalDate.now()
                         .until(filteredNextEvents.first().nextDate).days > anticipationDays
                 )

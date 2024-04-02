@@ -77,7 +77,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                 requireContext().sendBroadcast(intent)
             }
 
-            "additional_notification" -> {
+            "multi_additional_notification" -> {
                 // Update every existing widget with a broadcast
                 val intent = Intent(context, MinimalWidgetProvider::class.java)
                 intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
