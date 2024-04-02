@@ -218,6 +218,7 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
     ) {
         val sp = PreferenceManager.getDefaultSharedPreferences(context)
         val hideImages = sp.getBoolean("hide_images", false)
+        val surnameFirst = sp.getBoolean("surname_first", false)
         val formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
         val fullFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
         val views = RemoteViews(context.packageName, R.layout.widget_upcoming)
@@ -263,7 +264,12 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
                 }
 
                 // Make sure to show if there's more than one event
-                var widgetUpcoming = formatEventList(filteredNextEvents, true, context, false)
+                var widgetUpcoming = formatEventList(
+                    filteredNextEvents,
+                    surnameFirst,
+                    context,
+                    filteredNextEvents.size == 1
+                )
                 if (filteredNextEvents.isNotEmpty()) widgetUpcoming += "\n${
                     nextDateFormatted(
                         filteredNextEvents[0],

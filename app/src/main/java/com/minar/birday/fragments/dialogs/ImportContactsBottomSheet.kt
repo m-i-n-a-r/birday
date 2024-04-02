@@ -19,14 +19,17 @@ import kotlinx.coroutines.withContext
 
 class ImportContactsBottomSheet : BottomSheetDialogFragment() {
     private val viewModel: MainViewModel by activityViewModels()
-    private val act: MainActivity = requireActivity() as MainActivity
+    private lateinit var act: MainActivity
     private val contactsRepository = ContactsRepository()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = BottomSheetImportContactsBinding.inflate(inflater, container, false).root
+    ): View {
+        act = requireActivity() as MainActivity
+        return BottomSheetImportContactsBinding.inflate(inflater, container, false).root
+    }
 
     @SuppressLint("MissingPermission")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
