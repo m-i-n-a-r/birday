@@ -78,7 +78,7 @@
     <string name="shimmer_description_off">Nessun effetto grafico aggiuntivo</string>
     <string name="import_export">Importazione ed esportazione</string>
     <string name="import_contacts_title">Importa eventi dai contatti</string>
-    <string name="import_contacts_description">Modificare gli eventi con anno mancante per avere statistiche accurate!</string>
+    <string name="import_contacts_description">Assicurati di modificare gli eventi con anno mancante per avere statistiche accurate!</string>
     <string name="import_success">Importazione completata con successo!</string>
     <string name="import_nothing_found">Nessun evento trovato!</string>
     <string name="import_failed">Qualcosa è andato storto!</string>
