@@ -11,6 +11,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.preference.MultiSelectListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.minar.birday.R
@@ -32,6 +33,18 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
             navController.navigate(R.id.action_navigationSettings_to_experimentalSettingsFragment)
             true
         }
+
+        // Set a custom summary provider for the multi selection option
+        val additionalNotificationPref =
+            findPreference<MultiSelectListPreference>("multi_additional_notification")
+        additionalNotificationPref?.summaryProvider =
+            Preference.SummaryProvider<MultiSelectListPreference> { preference ->
+                val selectedOptions = preference.values
+                generateMultiSelectSummary(
+                    selectedOptions,
+                    getString(R.string.additional_notification_description)
+                )
+            }
     }
 
     override fun onResume() {
@@ -98,4 +111,26 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
         ActivityCompat.recreate(activity)
     }
 
+    // Generate the summary for a multi select preference (not done by default)
+    private fun generateMultiSelectSummary(
+        selectedValues: Set<String>?,
+        currentSummary: String
+    ): String {
+        if (selectedValues.isNullOrEmpty()) return currentSummary.replace("%s", "")
+        val sortedValues = selectedValues.toMutableList()
+        sortedValues.sortBy { it.toInt() }
+        var formattedValues = ""
+        for (value in sortedValues) {
+            formattedValues += if (sortedValues.lastOrNull() == value)
+                ""
+            else
+                "$value, "
+        }
+        val formattedValuesComplete = formattedValues + resources.getQuantityString(
+            R.plurals.days_left,
+            if (sortedValues.any { it.toInt() == 1 } && sortedValues.size == 1) 1 else 10,
+            sortedValues.last().toInt(),
+        )
+        return currentSummary.replace("%s", formattedValuesComplete)
+    }
 }

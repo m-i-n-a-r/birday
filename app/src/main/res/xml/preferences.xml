@@ -20,7 +20,6 @@
             android:entries="@array/additionalNotification"
             android:entryValues="@array/additionalNotificationValues"
             android:key="multi_additional_notification"
-            android:summary="@string/additional_notification_description"
             android:title="@string/additional_notification_name"
             app:iconSpaceReserved="false" />
 
