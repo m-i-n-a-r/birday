@@ -45,6 +45,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         val onlyFavoritesAdditional = sharedPrefs.getBoolean("additional_only_favorites", false)
         val angryBird = sharedPrefs.getBoolean("angry_bird", false)
         val groupNotification = sharedPrefs.getBoolean("grouped_notifications", true)
+        val loopAvd = sharedPrefs.getBoolean("loop_avd", true)
 
         try {
             // Check for upcoming and actual birthdays and send notification
@@ -74,14 +75,16 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                     surnameFirst,
                     hideImage,
                     true,
-                    angryBird = angryBird
+                    angryBird = angryBird,
+                    disableAnimations = !loopAvd
                 )
                 if (actual.isNotEmpty()) sendNotification(
                     actual,
                     2,
                     surnameFirst,
                     hideImage,
-                    angryBird = angryBird
+                    angryBird = angryBird,
+                    disableAnimations = !loopAvd
                 )
             } else {
                 // Play with the ids to make sure they are unique
@@ -93,7 +96,8 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                             surnameFirst,
                             hideImage,
                             true,
-                            angryBird
+                            angryBird = angryBird,
+                            disableAnimations = !loopAvd
                         )
                     }
                 if (actual.isNotEmpty())
@@ -104,7 +108,8 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                             surnameFirst,
                             hideImage,
                             true,
-                            angryBird
+                            angryBird = angryBird,
+                            disableAnimations = !loopAvd
                         )
                     }
             }
@@ -133,7 +138,8 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         surnameFirst: Boolean,
         hideImage: Boolean,
         upcoming: Boolean = false,
-        angryBird: Boolean = false
+        angryBird: Boolean = false,
+        disableAnimations: Boolean = false,
     ) {
         val intent = Intent(applicationContext, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -147,7 +153,11 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             else formulateAdditionalNotificationText(nextEvents, surnameFirst)
 
         val builder = NotificationCompat.Builder(applicationContext, "events_channel")
-            .setSmallIcon(if (!angryBird) R.drawable.animated_notification_icon else R.drawable.animated_angry_notification_icon)
+            .setSmallIcon(
+                if (disableAnimations) R.drawable.static_notification_icon
+                else if (!angryBird) R.drawable.animated_notification_icon
+                else R.drawable.animated_angry_notification_icon
+            )
             .setContentTitle(applicationContext.getString(R.string.notification_title))
             .setContentText(notificationText)
             .setStyle(
