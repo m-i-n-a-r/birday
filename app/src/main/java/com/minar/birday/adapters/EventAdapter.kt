@@ -237,7 +237,7 @@ class EventAdapter(
                 }
             } else eventTypeImage.visibility = View.GONE
 
-            // Manage the favorite logic
+            // Manage the favorite/ignored logic TODO finish it
             if (event.favorite == false) favoriteButton.setImageResource(R.drawable.animated_to_favorite)
             else favoriteButton.setImageResource(R.drawable.animated_from_favorite)
             favoriteButton.setOnClickListener {

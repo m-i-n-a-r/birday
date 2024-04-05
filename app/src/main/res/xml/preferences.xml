@@ -131,20 +131,20 @@
         android:title="@string/import_export"
         app:icon="@drawable/ic_backup_restore_24dp">
 
-        <com.minar.birday.preferences.backup.ContactsImporter
-            android:layout="@layout/contacts_import_row"
+        <com.minar.birday.preferences.backup.BirdayExporter
+            android:layout="@layout/birday_export_row"
             android:selectable="true" />
 
         <com.minar.birday.preferences.backup.BirdayImporter
             android:layout="@layout/birday_import_row"
             android:selectable="true" />
 
-        <com.minar.birday.preferences.backup.CalendarImporter
-            android:layout="@layout/calendar_import_row"
+        <com.minar.birday.preferences.backup.ContactsImporter
+            android:layout="@layout/contacts_import_row"
             android:selectable="true" />
 
-        <com.minar.birday.preferences.backup.BirdayExporter
-            android:layout="@layout/birday_export_row"
+        <com.minar.birday.preferences.backup.CalendarImporter
+            android:layout="@layout/calendar_import_row"
             android:selectable="true" />
 
         <!-- Auto import on each start -->
