@@ -299,10 +299,10 @@
     <string name="export_csv_description">Export each event to a CSV file, image excluded</string>
     <string name="delete_db_title">Delete all the events</string>
     <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
-    <string name="delete_db_dialog_title">Are you sure?</string>
+    <string name="delete_db_dialog_title">क्या आप सुनिश्चित हैं?</string>
     <string name="delete_db_dialog_description">Make sure to backup your events first, this operation will wipe the DB and should be used for debugging purposes only</string>
-    <string name="delete_search_title">Delete search selection</string>
-    <string name="delete_search_description_off">It won\'t be possible to delete multiple events at once</string>
+    <string name="delete_search_title">खोज चयन मिटाएँ</string>
+    <string name="delete_search_description_off">एक साथ अनेक ईवेंट हटाना संभव नहीं होगा</string>
     <string name="delete_search_description_on">Press the trash button when you search one or more events to quickly delete them all from Birday. Use with caution!</string>
     <string name="delete_search_confirm">This will delete all the results of this search. You can undo the process shortly after clicking OK if you change your mind!</string>
     <string name="import_contacts_bottom_sheet_description">Would you like to import all the events from your contacts right now?</string>
