@@ -99,6 +99,9 @@ class HomeFragment : Fragment() {
         val surnameFirst = sharedPrefs.getBoolean("surname_first", false)
         if (shimmerEnabled) shimmer.startShimmer()
 
+        // add insets
+        recycler.addInsetsByPadding(bottom = true)
+
         // Setup the search bar
         typeSelector.scaleX = 0F
         val listener = OnClickListener {

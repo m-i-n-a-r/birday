@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.activityViewModels
@@ -14,7 +15,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.MultiSelectListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
+import com.minar.birday.utilities.addInsetsByPadding
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidgetProvider
 import com.minar.birday.widgets.MinimalWidgetProvider
@@ -132,5 +135,13 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
             sortedValues.last().toInt(),
         )
         return currentSummary.replace("%s", formattedValuesComplete)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Add insets for preferences
+        val recyclerView = view.findViewById<RecyclerView>(androidx.preference.R.id.recycler_view)
+        recyclerView.addInsetsByPadding(bottom = true)
     }
 }

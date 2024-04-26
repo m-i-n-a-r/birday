@@ -20,7 +20,7 @@
         android:id="@+id/bottomBar"
         style="@style/Widget.Material3.BottomAppBar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/bottom_navbar_height"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:contentInsetStart="0dp"
         app:fabAlignmentMode="end"
@@ -50,7 +50,8 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/new_event"
         android:hapticFeedbackEnabled="false"
-        app:layout_anchor="@id/bottomBar"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
         app:maxImageSize="@dimen/main_fab_icon_size"
         app:srcCompat="@drawable/ic_party_24dp"
         app:tint="@null" />
