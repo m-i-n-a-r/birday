@@ -29,6 +29,7 @@
             android:summaryOff="@string/notification_only_favorites_description_off"
             android:summaryOn="@string/notification_only_favorites_description_on"
             android:title="@string/notification_only_favorites"
+            android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
         <SwitchPreferenceCompat
@@ -37,6 +38,7 @@
             android:summaryOff="@string/additional_notification_only_favorites_description_off"
             android:summaryOn="@string/additional_notification_only_favorites_description_on"
             android:title="@string/additional_notification_only_favorites"
+            android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
         <com.minar.birday.preferences.standard.NotificationSoundPreference
@@ -56,6 +58,7 @@
             android:summaryOff="@string/hide_images_description_off"
             android:summaryOn="@string/hide_images_description_on"
             android:title="@string/hide_images"
+            android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
         <SwitchPreferenceCompat
@@ -64,6 +67,7 @@
             android:summaryOff="@string/surname_first_description_off"
             android:summaryOn="@string/surname_first_description_on"
             android:title="@string/surname_first"
+            android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
         <!-- Disable astrology information -->
@@ -73,6 +77,7 @@
             android:summaryOff="@string/disable_astrology_description_off"
             android:summaryOn="@string/disable_astrology_description_on"
             android:title="@string/disable_astrology_title"
+            android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
         <!-- Advanced yearly calendar mode -->
@@ -82,6 +87,7 @@
             android:summaryOff="@string/advanced_overview_description_off"
             android:summaryOn="@string/advanced_overview_description_on"
             android:title="@string/advanced_overview_title"
+            android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
     </PreferenceCategory>
@@ -115,6 +121,7 @@
             android:summaryOff="@string/shimmer_description_off"
             android:summaryOn="@string/shimmer_description_on"
             android:title="@string/shimmer_name"
+            android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
         <SwitchPreferenceCompat
@@ -123,6 +130,7 @@
             android:summaryOff="@string/vibration_description_off"
             android:summaryOn="@string/vibration_description_on"
             android:title="@string/vibration_name"
+            android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
     </PreferenceCategory>
 
@@ -154,6 +162,7 @@
             android:summaryOff="@string/launch_auto_import_description_off"
             android:summaryOn="@string/launch_auto_import_description_on"
             android:title="@string/launch_auto_import_title"
+            android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
     </PreferenceCategory>
@@ -174,6 +183,7 @@
             android:summaryOff="@string/angry_bird_description_off"
             android:summaryOn="@string/angry_bird_description_on"
             android:title="@string/angry_bird_title"
+            android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
         <Preference

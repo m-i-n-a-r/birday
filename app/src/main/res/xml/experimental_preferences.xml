@@ -13,6 +13,7 @@
         android:summaryOff="@string/grouped_notifications_description_off"
         android:summaryOn="@string/grouped_notifications_description_on"
         android:title="@string/grouped_notifications_title"
+        android:widgetLayout="@layout/preference_switch_widget"
         app:iconSpaceReserved="false" />
 
     <!-- Hide the bottom navbar on scroll (still can cause navigation issues) -->
@@ -22,6 +23,7 @@
         android:summaryOff="@string/hide_on_scroll_description_off"
         android:summaryOn="@string/hide_on_scroll_description_on"
         android:title="@string/hide_on_scroll_title"
+        android:widgetLayout="@layout/preference_switch_widget"
         app:iconSpaceReserved="false" />
 
     <!-- Don't loop animated vector drawables -->
@@ -31,6 +33,7 @@
         android:summaryOff="@string/loop_avd_description_off"
         android:summaryOn="@string/loop_avd_description_on"
         android:title="@string/loop_avd_title"
+        android:widgetLayout="@layout/preference_switch_widget"
         app:iconSpaceReserved="false" />
 
     <!-- Order events alphabetically (by first or last name, depending on the surname first option) -->
@@ -40,6 +43,7 @@
         android:summaryOff="@string/order_alphabetically_description_off"
         android:summaryOn="@string/order_alphabetically_description_on"
         android:title="@string/order_alphabetically_title"
+        android:widgetLayout="@layout/preference_switch_widget"
         app:iconSpaceReserved="false" />
 
     <!-- Quickly delete searched events -->
@@ -49,6 +53,7 @@
         android:summaryOff="@string/delete_search_description_off"
         android:summaryOn="@string/delete_search_description_on"
         android:title="@string/delete_search_title"
+        android:widgetLayout="@layout/preference_switch_widget"
         app:iconSpaceReserved="false" />
 
     <!-- Import from CSV -->
