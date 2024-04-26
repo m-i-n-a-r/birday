@@ -30,6 +30,7 @@
         <item name="switchStyle">@style/CustomMaterialSwitch</item>
         <item name="bottomNavigationStyle">@style/CustomBottomNavigation</item>
         <item name="bottomAppBarStyle">@style/CustomBottomAppBar</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
         <item name="android:navigationBarColor">@color/deepGray</item>
     </style>
 
@@ -45,6 +46,7 @@
         </item>
         <item name="alertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog.Monet</item>
         <item name="switchStyle">@style/Widget.Material3.CompoundButton.MaterialSwitch</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
         <item name="windowNoTitle">true</item>
         <item name="android:navigationBarColor">?attr/colorSurface</item>
     </style>

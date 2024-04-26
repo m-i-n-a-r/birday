@@ -28,6 +28,7 @@
         <item name="switchStyle">@style/CustomMaterialSwitch</item>
         <item name="bottomNavigationStyle">@style/CustomBottomNavigation</item>
         <item name="bottomAppBarStyle">@style/CustomBottomAppBar</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
         <item name="colorOutline">@color/goodGray</item>
         <item name="colorSurfaceVariant">@color/goodGrayTranslucent</item>
         <item name="android:navigationBarColor">@color/deepGray</item>
@@ -46,6 +47,7 @@
         <item name="alertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog.Monet</item>
         <item name="windowNoTitle">true</item>
         <item name="switchStyle">@style/Widget.Material3.CompoundButton.MaterialSwitch</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
         <item name="android:navigationBarColor">?attr/colorSurface</item>
     </style>
 
@@ -121,6 +123,11 @@
         <item name="startIconDrawable">@drawable/ic_date_black_24dp</item>
         <item name="errorEnabled">true</item>
         <item name="startIconTint">?attr/colorOutline</item>
+    </style>
+
+    <!-- Make Bottom Sheet edge to edge -->
+    <style name="ThemeOverlay.App.BottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
     <!-- Monet time picker theme -->
