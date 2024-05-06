@@ -166,6 +166,7 @@
     <string name="next_age">Next age:</string>
     <string name="zodiac_sign">Zodiac sign:</string>
     <string name="chinese_zodiac_sign">Chinese sign:</string>
+    <string name="republican_calendar">Republican calendar:</string>
     <!-- Quick apps -->
     <string name="event_apps">Quick apps</string>
     <string name="event_apps_description">Apps to wish all the best rapidly!</string>
