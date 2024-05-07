@@ -167,6 +167,12 @@
     <string name="zodiac_sign">Zodiac sign:</string>
     <string name="chinese_zodiac_sign">Chinese sign:</string>
     <string name="republican_calendar">Republican calendar:</string>
+    <string name="republican_virtue_day">Virtue day</string>
+    <string name="republican_engineering_day">Engineering day</string>
+    <string name="republican_labor_day">Labor day</string>
+    <string name="republican_opinion_day">Opinion day</string>
+    <string name="republican_rewards_day">Rewards day</string>
+    <string name="republican_revolution_day">Revolution day</string>
     <!-- Quick apps -->
     <string name="event_apps">Quick apps</string>
     <string name="event_apps_description">Apps to wish all the best rapidly!</string>
