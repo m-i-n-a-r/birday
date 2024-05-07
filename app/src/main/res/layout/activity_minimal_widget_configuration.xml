@@ -82,7 +82,7 @@
             app:layout_constraintStart_toStartOf="@id/configurationDarkWidgetTitle"
             app:layout_constraintTop_toBottomOf="@id/configurationDarkWidgetTitle" />
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
+        <com.google.android.material.materialswitch.MaterialSwitch
             android:id="@+id/configurationDarkTextSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
             app:layout_constraintStart_toStartOf="@id/configurationBackgroundTitle"
             app:layout_constraintTop_toBottomOf="@id/configurationBackgroundTitle" />
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
+        <com.google.android.material.materialswitch.MaterialSwitch
             android:id="@+id/configurationBackgroundSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -150,7 +150,7 @@
             app:layout_constraintStart_toStartOf="@id/configurationCompactTitle"
             app:layout_constraintTop_toBottomOf="@id/configurationCompactTitle" />
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
+        <com.google.android.material.materialswitch.MaterialSwitch
             android:id="@+id/configurationCompactSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -184,7 +184,7 @@
             app:layout_constraintStart_toStartOf="@id/configurationAlignStartTitle"
             app:layout_constraintTop_toBottomOf="@id/configurationAlignStartTitle" />
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
+        <com.google.android.material.materialswitch.MaterialSwitch
             android:id="@+id/configurationAlignStartSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -218,7 +218,7 @@
             app:layout_constraintStart_toStartOf="@id/configurationHideIfFarTitle"
             app:layout_constraintTop_toBottomOf="@id/configurationHideIfFarTitle" />
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
+        <com.google.android.material.materialswitch.MaterialSwitch
             android:id="@+id/configurationHideIfFarSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -252,7 +252,7 @@
             app:layout_constraintStart_toStartOf="@id/configurationShowFollowingTitle"
             app:layout_constraintTop_toBottomOf="@id/configurationShowFollowingTitle" />
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
+        <com.google.android.material.materialswitch.MaterialSwitch
             android:id="@+id/configurationShowFollowingSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

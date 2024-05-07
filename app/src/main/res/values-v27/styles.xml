@@ -6,7 +6,6 @@
 
     <style name="SplashTheme.V27" parent="SplashTheme.Base.Legacy">
         <item name="android:windowLightNavigationBar">true</item>
-        <item name="android:navigationBarColor">@color/colorBackground</item>
     </style>
 
 </resources>

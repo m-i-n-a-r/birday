@@ -224,7 +224,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <androidx.appcompat.widget.SwitchCompat
+            <com.google.android.material.materialswitch.MaterialSwitch
                 android:id="@+id/countYearSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -265,6 +265,7 @@
                 app:layout_constraintTop_toTopOf="@id/positiveButton" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -69,7 +69,7 @@ dependencies {
     implementation 'androidx.core:core-splashscreen:1.0.1'
 
     // Material Components
-    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'com.google.android.material:material:1.13.0-alpha01'
 
     // WorkManager
     implementation 'androidx.work:work-runtime-ktx:2.9.0'
@@ -92,7 +92,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
 
     // App Intro
-    implementation 'com.github.AppIntro:AppIntro:6.0.0'
+    implementation 'com.github.AppIntro:AppIntro:6.3.1'
 
     // Facebook shimmer effect
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
@@ -109,5 +109,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     // [Testing] ICU
-    testImplementation group: 'com.ibm.icu', name: 'icu4j', version: '70.1'
+    testImplementation group: 'com.ibm.icu', name: 'icu4j', version: '75.1'
 }

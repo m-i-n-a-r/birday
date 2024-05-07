@@ -4,8 +4,6 @@
     <style name="AppTheme" parent="AppTheme.Base" />
 
     <style name="AppTheme.Base" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:windowLightStatusBar">false</item>
-        <item name="android:statusBarColor">@color/colorBackgroundInverse</item>
         <item name="android:colorBackground">@color/colorBackgroundInverse</item>
         <item name="android:textColorPrimary">@color/textColorPrimaryInverse</item>
         <item name="colorOnPrimary">@color/colorBackground</item>
@@ -30,14 +28,12 @@
         <item name="switchStyle">@style/CustomMaterialSwitch</item>
         <item name="bottomNavigationStyle">@style/CustomBottomNavigation</item>
         <item name="bottomAppBarStyle">@style/CustomBottomAppBar</item>
-        <item name="android:navigationBarColor">@color/deepGray</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
     </style>
 
     <!-- Monet theme -->
-    <style name="AppTheme.Monet" parent="Theme.Material3.DynamicColors.DayNight">
-        <item name="android:windowLightStatusBar">false</item>
+    <style name="AppTheme.Monet" parent="Theme.Material3.DynamicColors.DayNight.NoActionBar">
         <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="materialTimePickerTheme">@style/ThemeOverlay.App.TimePicker</item>
         <item name="snackbarStyle">@style/Widget.App.Snackbar</item>
         <item name="snackbarTextViewStyle">@style/MaterialSnackbarTextViewTheme</item>
@@ -45,8 +41,7 @@
         </item>
         <item name="alertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog.Monet</item>
         <item name="switchStyle">@style/Widget.Material3.CompoundButton.MaterialSwitch</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:navigationBarColor">?attr/colorSurface</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
     </style>
 
     <!-- Splash screen theme -->

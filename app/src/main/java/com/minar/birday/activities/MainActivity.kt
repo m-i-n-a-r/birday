@@ -26,6 +26,7 @@ import android.provider.Settings
 import android.view.View
 import android.widget.ImageView
 import androidx.activity.addCallback
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.IdRes
@@ -36,13 +37,14 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.preference.PreferenceManager
-import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.elevation.SurfaceColors
 import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
 import com.minar.birday.databinding.ActivityMainBinding
@@ -53,6 +55,8 @@ import com.minar.birday.preferences.backup.ContactsImporter
 import com.minar.birday.preferences.backup.CsvImporter
 import com.minar.birday.preferences.backup.JsonImporter
 import com.minar.birday.utilities.AppRater
+import com.minar.birday.utilities.addInsetsByMargin
+import com.minar.birday.utilities.addInsetsByPadding
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 import com.minar.birday.utilities.getThemeColor
 import com.minar.birday.utilities.resultToEvent
@@ -173,6 +177,12 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
+        // Enable edge to edge
+        enableEdgeToEdge()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            window.isNavigationBarContrastEnforced = false
+        }
+
         // Initialize the binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
@@ -261,10 +271,22 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        // Navigation bar color management (if executed before, it doesn't work)
-        if (accent == "monet") {
-            DynamicColors.applyToActivityIfAvailable(this)
-            window.navigationBarColor = SurfaceColors.SURFACE_2.getColor(this)
+        // Add insets
+        binding.navHostFragment.addInsetsByPadding(top = true, right = true, left = true)
+        binding.fab.addInsetsByMargin(bottom = true, right = true, left = true)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.bottomBar) { v, insets ->
+            val systemBarsInsets = ViewCompat.getRootWindowInsets(v)!!.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.updatePadding(bottom = systemBarsInsets.bottom, left = systemBarsInsets.left, right = systemBarsInsets.right)
+            insets
+        }
+        ViewCompat.setOnApplyWindowInsetsListener(binding.navigation) { _, insets ->
+            insets
+        }
+
+        // Hide on scroll, requires restart TODO Only available in experimental settings
+        if (sharedPrefs.getBoolean("hide_scroll", false)) {
+            binding.bottomBar.hideOnScroll = true
+            binding.navHostFragment.updatePadding(bottom = 0)
         }
 
         // Auto import on launch
@@ -279,12 +301,6 @@ class MainActivity : AppCompatActivity() {
                     ContactsImporter(this, null).importContacts(this)
                 }
             }
-        }
-
-        // Hide on scroll, requires restart TODO Only available in experimental settings
-        if (sharedPrefs.getBoolean("hide_scroll", false)) {
-            binding.bottomBar.hideOnScroll = true
-            binding.navHostFragment.setPadding(0, 0, 0, 0)
         }
 
         // Only the next events, without considering the search string, ordered

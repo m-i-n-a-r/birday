@@ -188,7 +188,7 @@
                 app:layout_constraintTop_toTopOf="@id/homeSearchLayout"
                 app:singleSelection="true">
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/homeTypeSelectorBirthday"
                     style="@style/Widget.App.Button.OutlinedButton.IconOnly"
                     android:layout_width="wrap_content"
@@ -197,7 +197,7 @@
                     android:contentDescription="@string/birthday"
                     app:icon="@drawable/ic_party_24dp" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/homeTypeSelectorAnniversary"
                     style="@style/Widget.App.Button.OutlinedButton.IconOnly"
                     android:layout_width="wrap_content"
@@ -206,7 +206,7 @@
                     android:contentDescription="@string/anniversary"
                     app:icon="@drawable/ic_anniversary_24dp" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/homeTypeSelectorDeathAnniversary"
                     style="@style/Widget.App.Button.OutlinedButton.IconOnly"
                     android:layout_width="wrap_content"
@@ -215,7 +215,7 @@
                     android:contentDescription="@string/death_anniversary"
                     app:icon="@drawable/ic_death_anniversary_24dp" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/homeTypeSelectorNameDay"
                     style="@style/Widget.App.Button.OutlinedButton.IconOnly"
                     android:layout_width="wrap_content"
@@ -224,7 +224,7 @@
                     android:contentDescription="@string/name_day"
                     app:icon="@drawable/ic_name_day_24dp" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/homeTypeSelectorOther"
                     style="@style/Widget.App.Button.OutlinedButton.IconOnly"
                     android:layout_width="wrap_content"
@@ -233,7 +233,7 @@
                     android:contentDescription="@string/other"
                     app:icon="@drawable/ic_other_24dp" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/homeTypeSelectorClose"
                     style="@style/Widget.App.Button.OutlinedButton.IconOnly"
                     android:layout_width="wrap_content"
@@ -242,6 +242,7 @@
                     app:backgroundTint="?attr/colorSurfaceVariant"
                     app:icon="@drawable/ic_arrow_right_24dp"
                     app:iconTint="?attr/colorPrimary" />
+
             </com.google.android.material.button.MaterialButtonToggleGroup>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

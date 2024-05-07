@@ -132,6 +132,9 @@ class FavoritesFragment : Fragment() {
             }
         }
 
+        // Add insets
+        recycler.addInsetsByPadding(bottom = true)
+
         // Set the overview button
         overviewButton.setOnClickListener {
             // Vibrate and navigate to the overview screen
