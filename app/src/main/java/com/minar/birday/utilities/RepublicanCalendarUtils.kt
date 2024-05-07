@@ -3,10 +3,64 @@ package com.minar.birday.utilities
 import java.time.LocalDate
 import kotlin.math.absoluteValue
 
-// In this file, all numbers prefixed with 0 follow this logic:
-// year goes from -1 to 1
-// year0 goes from -1 to 0, as all positive values are shifted by 1
-// This helps simplify the code.
+// This implementation is based on the following rules (translated from French):
+// ```
+// Article 1. The era of the French begins with the foundation of the republic, which took place on September 22, 1792, in the vulgar era, the day the sun reached the true autumn equinox, entering the sign of Libra at 9 hours, 18 minutes, and 30 seconds in the morning for the Paris Observatory.
+// 
+// II. The vulgar era is abolished for civil purposes.
+// 
+// III. Each year begins at midnight, on the day when the true autumn equinox falls for the Paris Observatory.
+// 
+// IV. The first year of the French Republic began at midnight on September 22, 1792, and ended at midnight, separating September 21 from September 22, 1793.
+// 
+// V. The second year began on September 22, 1793, at midnight, the true autumn equinox having occurred that day, for the Paris Observatory, at 3:11:38 PM.
+// 
+// VI. The decree establishing the start of the second year on January 1, 1793, is repealed; all acts dated in the second year of the Republic, occurring between January 1 and September 21 inclusive, are considered part of the first year of the Republic.
+// 
+// VII. The year is divided into twelve equal months, each with thirty days; after the twelve months, five days follow to complete the ordinary year; these 5 days do not belong to any month.
+// 
+// VIII. Each month is divided into three equal parts of ten days each, called decades.
+// 
+// IX. The names of the days of the decade are:
+// 
+// Primedi, Duodi, Tridi, Quartidi, Quintidi, Sextidi, Septidi, Octidi, Nonidi, Décadi.
+// 
+// The names of the months are:
+// 
+// For Autumn: Vendémiaire, Brumaire, Frimaire;
+// 
+// For Winter: Nivôse, Pluviôse, Ventôse;
+// 
+// For Spring: Germinal, Floréal, Prairial;
+// 
+// For Summer: Messidor, Thermidor, Fructidor.
+// 
+// The last five days are called the Sansculotides.
+// 
+// X. The ordinary year receives an additional day, depending on the position of the equinox, to maintain the coincidence of the civil year with celestial movements. This day, called the Revolution Day, is placed at the end of the year and forms the sixth of the Sansculotides. The period of four years, at the end of which this addition of a day is usually necessary, is called the Franciade, in memory of the revolution that, after four years of efforts, led France to republican government. The fourth year of the Franciade is called Sextile.
+// 
+// XI. The day, from midnight to midnight, is divided into 10 parts or hours, each part into ten others; and so on to the smallest measurable portion of time. The 100th part of the hour is called a decimal minute; the 100th part of the minute is called a decimal second. This article shall be enforceable for public acts starting from Vendémiaire 1, year three of the Republic.
+// 
+// XII. The Public Instruction Committee is responsible for printing the new calendar in various formats, along with a simple instruction to explain its principles and usage.
+// 
+// XIII. The calendar, along with the instruction, will be sent to administrative bodies, municipalities, courts, justices of the peace, and all public officers, armies, popular societies, and all colleges and schools. The provisional executive council shall send it to ministers, consuls, and other agents of France in foreign countries.
+// 
+// XIV. All public acts shall be dated according to the new organization of the year.
+// 
+// XV. Professors, instructors, parents, and all those who oversee children's education shall promptly explain the new calendar to them, following the attached instruction.
+// 
+// XVI. Every four years, or every Franciade, on the day of the revolution, republican games shall be celebrated in memory of the French Revolution.
+// ```
+// The contradiction between articles III and IX is resolved by prioritizing article III, as decided in year 79 by the Commune de Paris. Indeed, a year isn't exactly 365.25 days long, so Franciades will not always be 365*4+1 days long.
+// Also as a reminder: Romme's WIP reform was never adopted. It wasn't a good idea anyway. This implementation ignores the proposed the reform.
+// 
+// # 0-prefixed variables
+//  
+// Some integer values of the republican calendar are defined on ℕ* (the set of non-zero natural numbers)
+// For instance, there is no year 0, no month 0 and no day 0.
+// The year going from -1 to 1 complexifies the code.
+// This implementation simplifies this by shifting all positive values by 1, so that 0 is a valid value.
+// The shifted variables are suffixed with 0.
 
 /// This array contains the precise republican timestamps (divided by 10^5) for all years from 1583 to 2999 (gregorian)
 /// It was automatically generated by this code: https://github.com/Mubelotix/calendrier/blob/master/build.rs
@@ -17,13 +71,15 @@ val YEAR_STARTS = intArrayOf(-76336, -75970, -75605, -75240, -74875, -74510, -74
 /// Returns an estimate if the precise value is not known.
 fun getYearStart0(republicanYear0: Int): Long {
     val index = republicanYear0 + 209
-    if (index >= YEAR_STARTS.size0) {
+    if (index >= YEAR_STARTS.size) {
+        // Year is after 2999 gregorian (1208 republican), so try to estimate the number of days since 1208
         val sextileYearsSince1208 = (republicanYear0 + 1 - 1208) / 4
         val standardYearsSince1208 = republicanYear0 + 1 - 1208 - sextileYearsSince1208
         val daysSince1208 = sextileYearsSince1208 * 366 + standardYearsSince1208 * 365
         val dayStart = getYearStart0(1208-1) + daysSince1208 * REPUBLICAN_SECONDS_PER_DAY
         return dayStart
     } else if (index < 0) {
+        // Year is before 1583 gregorian (-210 republican), so try to estimate the number of days before -210
         val sextileYearsSinceM210 = -(republicanYear0 + 210) / 4
         val standardYearsSinceM210 = -(republicanYear0 + 210) - sextileYearsSinceM210
         val daysSinceM210 = sextileYearsSinceM210 * 366 + standardYearsSinceM210 * 365
@@ -51,7 +107,7 @@ fun getDayCount0(republicanYear0: Int): Short {
     }
 }
 
-const val REPUBLICAN_EPOCH_GREGORIAN_SECONDS: Long = -5594227200
+const val REPUBLICAN_EPOCH_GREGORIAN_SECONDS: Long = -5594227200 // Unix timestamp for 1792-09-22
 const val REPUBLICAN_SECONDS_PER_DAY: Long = 100000
 const val REPUBLICAN_SECONDS_PER_MONTH: Long = 30 * REPUBLICAN_SECONDS_PER_DAY
 const val GREGORIAN_SECONDS_PER_DAY: Long = 86400
@@ -104,7 +160,7 @@ fun formatRepublicanDate(date: LocalDate): String {
     var secondsInMonth = secondsInYear % REPUBLICAN_SECONDS_PER_MONTH
     var day0 = (secondsInMonth / REPUBLICAN_SECONDS_PER_DAY).toInt()
 
-    var year = if (year0 >= 0) { year0 += 1 } else { year0 }
+    var year = if (year0 >= 0) year0 += 1 else year0
     var month = when (month0) {
         0 -> "Vendémiaire"
         1 -> "Brumaire"
