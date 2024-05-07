@@ -77,6 +77,7 @@ class FavoritesFragment : Fragment() {
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
         val astrologyDisabled = sharedPrefs.getBoolean("disable_astrology", false)
+        val republicanCalendarDisabled = sharedPrefs.getBoolean("disable_republican_calendar", false)
         val favoriteMotionLayout = binding.favoritesMain
         val favoritesCard = binding.favoritesCard
         val favoritesMiniFab = binding.favoritesMiniFab

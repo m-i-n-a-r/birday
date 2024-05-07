@@ -256,6 +256,35 @@
             app:layout_constraintTop_toBottomOf="@+id/detailsZodiacSign"
             tools:layout_editor_absoluteY="390dp" />
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailsRepublicanCalendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/in_row_padding"
+            android:maxWidth="@dimen/details_text_max_width"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/republican_calendar"
+            android:textAlignment="viewEnd"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?attr/colorOutline"
+            app:layout_constraintBaseline_toBaselineOf="@+id/detailsRepublicanCalendarValue"
+            app:layout_constraintEnd_toStartOf="@+id/detailsRepublicanCalendarValue"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailsRepublicanCalendarValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/in_row_padding"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/detailsRepublicanCalendar"
+            app:layout_constraintTop_toBottomOf="@+id/detailsChineseSign"
+            tools:layout_editor_absoluteY="390dp" />
+
         <Button
             android:id="@+id/detailsEditButton"
             style="@style/Widget.Material3.Button.ElevatedButton.Icon"
@@ -273,7 +302,7 @@
             app:layout_constraintBottom_toTopOf="@id/detailsDeleteButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detailsChineseSignValue"
+            app:layout_constraintTop_toBottomOf="@id/detailsRepublicanCalendarValue"
             app:layout_constraintVertical_bias="1"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintWidth_max="@dimen/details_button_max_width"

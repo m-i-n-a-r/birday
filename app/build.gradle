@@ -92,7 +92,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
 
     // App Intro
-    implementation 'com.github.AppIntro:AppIntro:6.0.0'
+    implementation 'com.github.AppIntro:AppIntro:6.3.1'
 
     // Facebook shimmer effect
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
