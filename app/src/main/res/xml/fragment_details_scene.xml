@@ -63,6 +63,16 @@
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />
         </Constraint>
+        <Constraint android:id="@id/detailsRepublicanCalendar">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsRepublicanCalendarValue">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
         <Constraint android:id="@id/detailsCountdownShimmer">
             <PropertySet
                 app:applyMotionScene="false"
@@ -96,6 +106,11 @@
                 app:visibilityMode="ignore" />
         </Constraint>
         <Constraint android:id="@id/detailsChineseSignValue">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsRepublicanCalendarValue">
             <PropertySet
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />

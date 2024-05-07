@@ -313,6 +313,9 @@
     <string name="disable_astrology_title">Disable astrology</string>
     <string name="disable_astrology_description_on">Zodiac signs hidden from details and stats</string>
     <string name="disable_astrology_description_off">Zodiac information are displayed normally</string>
+    <string name="disable_republican_calendar_title">Disable republican calendar</string>
+    <string name="disable_republican_calendar_description_on">Republican dates hidden from details</string>
+    <string name="disable_republican_calendar_description_off">Republican dates are displayed normally</string>
     <string name="import_json_title">Import from JSON</string>
     <string name="import_json_description">Import from a JSON file. Refer to the wiki on Github for the required file structure</string>
     <string name="export_json_title">Export to JSON</string>
