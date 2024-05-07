@@ -1,5 +1,7 @@
 package com.minar.birday.utilities
 
+import android.content.Context
+import com.minar.birday.R
 import java.time.LocalDate
 import kotlin.math.absoluteValue
 
@@ -23,6 +25,7 @@ import kotlin.math.absoluteValue
 // 
 // IX. The names of the days of the decade are:
 // Primedi, Duodi, Tridi, Quartidi, Quintidi, Sextidi, Septidi, Octidi, Nonidi, Décadi.
+//
 // The names of the months are:
 // For Autumn: Vendémiaire, Brumaire, Frimaire;
 // For Winter: Nivôse, Pluviôse, Ventôse;
@@ -145,7 +148,7 @@ fun tsToYear(ts: Long): Int {
 }
 
 // Formats a date in the republican calendar.
-fun formatRepublicanDate(date: LocalDate): String {
+fun formatRepublicanDate(date: LocalDate, context: Context?): String {
     val unixTimestamp = date.toEpochDay() * GREGORIAN_SECONDS_PER_DAY
     val republicanTimestamp = timestampFromUnix(unixTimestamp)
 
@@ -169,14 +172,17 @@ fun formatRepublicanDate(date: LocalDate): String {
         9 -> "Messidor"
         10 -> "Thermidor"
         11 -> "Fructidor"
-        else -> when (day0) { // Complementary days don't belong to any month
-            0 -> return "Jour de la Vertu $year"
-            1 -> return "Jour du Génie $year"
-            2 -> return "Jour du Travail $year"
-            3 -> return "Jour de l'Opinion $year"
-            4 -> return "Jour des Récompenses $year"
-            5 -> return "Jour de la Révolution $year"
-            else -> return "Jour inconnu $year"
+        else -> {
+            val day = when (day0) { // Complementary days don't belong to any month
+                0 -> context?.getString(R.string.republican_virtue_day)
+                1 -> context?.getString(R.string.republican_engineering_day)
+                2 -> context?.getString(R.string.republican_labor_day)
+                3 -> context?.getString(R.string.republican_opinion_day)
+                4 -> context?.getString(R.string.republican_rewards_day)
+                5 -> context?.getString(R.string.republican_revolution_day)
+                else -> "unreachable"
+            }
+            return "$day $year"
         }
     }
     val day = day0 + 1
