@@ -104,14 +104,14 @@
     <string name="notification_only_favorites_description_on">Envie uma notificação apenas para eventos favoritos</string>
     <string name="notification_only_favorites_description_off">Envia uma notificação para todos os eventos inseridos</string>
     <string name="additional_notification_only_favorites">Notificação adicional para favoritos</string>
-    <string name="additional_notification_only_favorites_description_on">Send the additional notification for favorite events only</string>
-    <string name="additional_notification_only_favorites_description_off">Send the additional notification for every event inserted</string>
+    <string name="additional_notification_only_favorites_description_on">Enviar notificação adicional apenas para eventos favoritos</string>
+    <string name="additional_notification_only_favorites_description_off">Enviar notificação adicional para cada evento inserido</string>
     <string name="troubleshoot">Solucionar problemas</string>
     <string name="battery_optimization_title">Desative a otimização da bateria</string>
     <string name="battery_optimization_description">Abra as configurações para desativar qualquer otimização para Birday. Útil se as notificações não estiverem funcionando</string>
     <string name="notification_sound_title">Som de notificação</string>
     <string name="notification_sound_description">Atalho para as configurações de som de notificação, se você não gostar do som padrão do pássaro</string>
-    <string name="missing_permission_notifications">The notification permission was denied, and Birday can\'t send notifications! Activate the permission from settings.</string>
+    <string name="missing_permission_notifications">A permissão de notificação foi negada, e o Birday não consegue enviar notificações! Ative a permissão nas configurações.</string>
     <string name="missing_permission_notifications_forever">The notification permission was denied and can\'t be asked again, so Birday can\'t send notifications! Activate the permission manually, from settings.</string>
     <string name="missing_permission_calendar">The calendar permission was denied, and Birday can\'t import from calendar! Activate the permission from settings.</string>
     <string name="missing_permission_calendar_forever">The calendar permission was denied and can\'t be asked again, so Birday can\'t import from calendar! Activate the permission manually, from settings.</string>
