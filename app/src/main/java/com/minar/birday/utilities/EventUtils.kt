@@ -199,7 +199,7 @@ fun getNextYears(eventResult: EventResult): Int {
     var years = -2
     if (eventResult.yearMatter!!) years =
         eventResult.nextDate!!.year - eventResult.originalDate.year
-    return if (years <= -1) 0 else years
+    return if (years <= -1 && eventResult.yearMatter) 0 else years
 }
 
 // Get the decade of birth
