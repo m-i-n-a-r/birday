@@ -9,7 +9,7 @@
     android:requiresFadingEdge="vertical"
     android:transitionGroup="true">
 
-    <!-- The empty view is useful to make the screen large as the screen or more (with scrolling) -->
+    <!-- The empty view is useful to make the layout large as the screen or more (with scrolling) -->
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/detailsMotionLayout"
         android:layout_width="match_parent"
@@ -296,7 +296,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsEditButton"
-            app:layout_constraintVertical_bias="1"
             app:layout_constraintWidth_max="@dimen/details_button_max_width"
             app:rippleColor="?attr/colorPrimary" />
 
@@ -317,7 +316,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsDeleteButton"
-            app:layout_constraintVertical_bias="1"
             app:layout_constraintWidth_max="@dimen/details_button_max_width"
             app:rippleColor="?attr/colorPrimary" />
 
@@ -328,20 +326,25 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/linear_vertical_margin"
-            android:layout_marginBottom="@dimen/bottom_navbar_height"
+            android:layout_marginBottom="@dimen/details_image_padding"
             android:contentDescription="@string/share_event"
             android:paddingVertical="@dimen/in_row_button_padding"
             android:text="@string/notes"
             android:textColor="?attr/colorPrimary"
             android:tint="?attr/colorPrimary"
             app:icon="@drawable/ic_note_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/detailsButtonSpacer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsShareButton"
-            app:layout_constraintVertical_bias="1"
             app:layout_constraintWidth_max="@dimen/details_button_max_width"
             app:rippleColor="?attr/colorPrimary" />
+
+        <View
+            android:id="@+id/detailsButtonSpacer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_navbar_height"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </ScrollView>
