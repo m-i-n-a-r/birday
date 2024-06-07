@@ -40,6 +40,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.ViewCompat
+import androidx.core.view.animation.PathInterpolatorCompat
 import androidx.core.view.updatePadding
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
@@ -73,6 +74,10 @@ class MainActivity : AppCompatActivity() {
     val mainViewModel: MainViewModel by viewModels()
     private lateinit var sharedPrefs: SharedPreferences
     private lateinit var binding: ActivityMainBinding
+
+    companion object {
+        val GestureInterpolator = PathInterpolatorCompat.create(0f, 0f, 0f, 1f)
+    }
 
     private val navController: NavController
         get() {
