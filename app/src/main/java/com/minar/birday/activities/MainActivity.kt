@@ -25,6 +25,8 @@ import android.provider.OpenableColumns
 import android.provider.Settings
 import android.view.View
 import android.widget.ImageView
+import androidx.activity.BackEventCompat
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -38,12 +40,12 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.preference.PreferenceManager
+import androidx.transition.TransitionSeekController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
@@ -95,26 +97,58 @@ class MainActivity : AppCompatActivity() {
         }
         createNotificationChannel()
 
-        // Register back pressed callback (do not use onBackPressed() - deprecated)
-        onBackPressedDispatcher.addCallback(this) {
-            // Exit if the navigation is in the home page
-            if (navController.currentDestination?.id == R.id.navigationMain) {
-                finish()
+        val callback = object : OnBackPressedCallback(enabled = false) {
+
+            var controller: TransitionSeekController? = null
+
+            @RequiresApi(34)
+            override fun handleOnBackStarted(backEvent: BackEventCompat) {
+                // Create the transition
             }
-            // Pop the backstack if the navigation is in a secondary screen
-            else if (navController.currentBackStackEntry != null &&
-                (navController.currentDestination?.label == "fragment_details" ||
-                        navController.currentDestination?.label == "fragment_overview" ||
-                        navController.currentDestination?.label == "fragment_experimental_settings")
-            )
-                navController.popBackStack()
-            // Else, first, go back to the home screen before closing the app
-            else {
-                binding.navigation.selectedItemId = R.id.navigationMain
-                navController.navigateWithOptions(R.id.navigationMain)
+
+            @RequiresApi(34)
+            override fun handleOnBackProgressed(backEvent: BackEventCompat) {
+                // Play the transition as the user swipes back
+                if (controller?.isReady == true) {
+                    controller?.currentFraction = backEvent.progress
+                }
+            }
+
+            override fun handleOnBackPressed() {
+                // Finish playing the transition when the user commits back
+                controller?.animateToEnd()
+                this.isEnabled = false
+            }
+
+            @RequiresApi(34)
+            override fun handleOnBackCancelled() {
+                // If the user cancels the back gesture, reset the state
             }
         }
 
+        // Register back pressed callback (do not use onBackPressed() - deprecated)
+        if (Build.VERSION.SDK_INT >= 33) {
+            onBackPressedDispatcher.addCallback(callback)
+
+        } else
+            onBackPressedDispatcher.addCallback(this) {
+                // Exit if the navigation is in the home page
+                if (navController.currentDestination?.id == R.id.navigationMain) {
+                    finish()
+                }
+                // Pop the backstack if the navigation is in a secondary screen
+                else if (navController.currentBackStackEntry != null &&
+                    (navController.currentDestination?.label == "fragment_details" ||
+                            navController.currentDestination?.label == "fragment_overview" ||
+                            navController.currentDestination?.label == "fragment_experimental_settings")
+                )
+                    navController.popBackStack()
+                // Else, first, go back to the home screen before closing the app
+                else {
+                    binding.navigation.selectedItemId = R.id.navigationMain
+                    navController.navigateWithOptions(R.id.navigationMain)
+                }
+            }
         // Retrieve the shared preferences
         val theme = sharedPrefs.getString("theme_color", "system")
         val accent = sharedPrefs.getString("accent_color", "system")
@@ -272,13 +306,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Add insets
-        binding.navHostFragment.addInsetsByPadding(top = true, right = true, left = true)
-        binding.fab.addInsetsByMargin(bottom = true, right = true, left = true)
-        ViewCompat.setOnApplyWindowInsetsListener(binding.bottomBar) { v, insets ->
-            val systemBarsInsets = ViewCompat.getRootWindowInsets(v)!!.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.updatePadding(bottom = systemBarsInsets.bottom, left = systemBarsInsets.left, right = systemBarsInsets.right)
-            insets
-        }
+        binding.navHostFragment.addInsetsByMargin(top = true, right = true, left = true)
+        binding.bottomBar.addInsetsByPadding(bottom = true, left = true, right = true)
+
         ViewCompat.setOnApplyWindowInsetsListener(binding.navigation) { _, insets ->
             insets
         }
