@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.widget.RemoteViews
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
@@ -18,6 +19,7 @@ import com.minar.birday.databinding.ActivityMinimalWidgetConfigurationBinding
 import com.minar.birday.model.EventResult
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
+import com.minar.birday.utilities.addInsetsByPadding
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 import com.minar.birday.utilities.formatEventList
 import com.minar.birday.utilities.getNextYears
@@ -85,6 +87,8 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
         binding = ActivityMinimalWidgetConfigurationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        enableEdgeToEdge()
+        binding.container.addInsetsByPadding(top = true, bottom = true, left = true, right = true)
         val doneButton = binding.configurationConfirmButton
         val darkText = binding.configurationDarkTextSwitch
         val background = binding.configurationBackgroundSwitch
