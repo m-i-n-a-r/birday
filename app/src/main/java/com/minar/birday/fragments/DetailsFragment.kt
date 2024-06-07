@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.BackEventCompat
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
@@ -374,6 +376,55 @@ class DetailsFragment : Fragment() {
             binding.detailsClearBackground.visibility = View.GONE
             disableAstrology()
         }
+
+        // Manage the predictive back between fragments
+        val predictiveBackMargin =
+            resources.getDimensionPixelSize(R.dimen.predictive_back_margin)
+        var initialTouchY = -1f
+        val background = binding.background
+        requireActivity().onBackPressedDispatcher.addCallback(
+            requireActivity(),
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().popBackStack()
+                }
+
+                override fun handleOnBackProgressed(backEvent: BackEventCompat) {
+                    val progress = MainActivity.GestureInterpolator.getInterpolation(backEvent.progress)
+                    if (initialTouchY < 0f) {
+                        initialTouchY = backEvent.touchY
+                    }
+                    val progressY = MainActivity.GestureInterpolator.getInterpolation(
+                        (backEvent.touchY - initialTouchY) / background.height
+                    )
+
+                    // Shift horizontally
+                    val maxTranslationX = (background.width / 20) - predictiveBackMargin
+                    background.translationX = progress * maxTranslationX *
+                            (if (backEvent.swipeEdge == BackEventCompat.EDGE_LEFT) 1 else -1)
+
+                    // Shift vertically
+                    val maxTranslationY = (background.height / 20) - predictiveBackMargin
+                    background.translationY = progressY * maxTranslationY
+
+                    // Scale down from 100% to 90%
+                    val scale = 1f - (0.1f * progress)
+                    background.scaleX = scale
+                    background.scaleY = scale
+                }
+
+                override fun handleOnBackCancelled() {
+                    initialTouchY = -1f
+                    background.run {
+                        translationX = 0f
+                        translationY = 0f
+                        scaleX = 1f
+                        scaleY = 1f
+                    }
+                }
+            }
+        )
+
         startPostponedEnterTransition()
     }
 
