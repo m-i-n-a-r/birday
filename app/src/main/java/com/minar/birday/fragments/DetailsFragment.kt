@@ -96,7 +96,8 @@ class DetailsFragment : Fragment() {
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
         val astrologyDisabled = sharedPrefs.getBoolean("disable_astrology", false)
         val hideImage = sharedPrefs.getBoolean("hide_images", false)
-        val titleText = "${getString(R.string.event_details)} - ${event.name}"
+        val surnameFirst = sharedPrefs.getBoolean("surname_first", false)
+        val titleText = formatName(event, surnameFirst)
         val title = binding.detailsEventName
         val image = binding.detailsEventImage
         val imageBg = binding.detailsEventImageBackground
@@ -386,7 +387,8 @@ class DetailsFragment : Fragment() {
             object : OnBackPressedCallback(true) {
 
                 override fun handleOnBackProgressed(backEvent: BackEventCompat) {
-                    val progress = MainActivity.GestureInterpolator.getInterpolation(backEvent.progress)
+                    val progress =
+                        MainActivity.GestureInterpolator.getInterpolation(backEvent.progress)
                     if (initialTouchY < 0f) {
                         initialTouchY = backEvent.touchY
                     }
