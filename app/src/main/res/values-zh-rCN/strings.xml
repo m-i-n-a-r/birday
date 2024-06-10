@@ -294,6 +294,9 @@
     <string name="import_csv_description">从一个CSV文件导入。参考Github的wiki来看所需的文件结构</string>
     <string name="export_csv_title">导出到CSV</string>
     <string name="export_csv_description">将每个事件导出到一个CSV文件，包含图片</string>
+    <string name="add_demo_entries_title">Add demo entries</string>
+    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
+    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
     <string name="delete_db_title">删除所有事件</string>
     <string name="delete_db_description">单纯的，把数据库核爆掉。好好思考下再点！</string>
     <string name="delete_db_dialog_title">你确认吗？</string>
