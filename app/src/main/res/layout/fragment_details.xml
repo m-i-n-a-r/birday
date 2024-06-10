@@ -1,358 +1,351 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/background"
+    android:id="@+id/fragmentBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorSurface"
-    android:elevation="1dp">
+    android:fadingEdgeLength="@dimen/linear_vertical_margin"
+    android:fillViewport="true"
+    android:requiresFadingEdge="vertical"
+    android:transitionGroup="true">
 
-    <ScrollView
+    <!-- The empty view is useful to make the layout large as the screen or more (with scrolling) -->
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/detailsMotionLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fadingEdgeLength="@dimen/linear_vertical_margin"
-        android:fillViewport="true"
-        android:requiresFadingEdge="vertical"
-        android:transitionGroup="true">
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:paddingHorizontal="@dimen/linear_vertical_margin"
+        app:layoutDescription="@xml/fragment_details_scene">
 
-        <!-- The empty view is useful to make the layout large as the screen or more (with scrolling) -->
-        <androidx.constraintlayout.motion.widget.MotionLayout
-            android:id="@+id/detailsMotionLayout"
+        <View
+            android:id="@+id/expanderView"
             android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/detailsEventNameImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/event_details"
+            app:layout_constraintBottom_toBottomOf="@id/detailsEventName"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@id/detailsEventName"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/detailsEventName"
+            app:srcCompat="@drawable/ic_balloon_24dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailsEventName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clipChildren="false"
-            android:paddingHorizontal="@dimen/linear_vertical_margin"
-            app:layoutDescription="@xml/fragment_details_scene">
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:drawablePadding="@dimen/activity_vertical_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/detailsEventNameImage"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <View
-                android:id="@+id/expanderView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/detailsEventImageBackground"
+            android:layout_width="@dimen/details_image_size"
+            android:layout_height="@dimen/details_image_size"
+            android:layout_marginTop="@dimen/form_vertical_margin"
+            android:clickable="true"
+            android:contentDescription="@string/event_details"
+            android:focusable="true"
+            app:layout_constraintBottom_toTopOf="@id/detailsClearBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsEventName"
+            app:srcCompat="@drawable/animated_ripple_circle" />
 
-            <ImageView
-                android:id="@+id/detailsEventNameImage"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:contentDescription="@string/event_details"
-                app:layout_constraintBottom_toBottomOf="@id/detailsEventName"
-                app:layout_constraintDimensionRatio="1"
-                app:layout_constraintEnd_toStartOf="@id/detailsEventName"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/detailsEventName"
-                app:srcCompat="@drawable/ic_balloon_24dp" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/detailsEventImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/details_image_padding"
+            android:contentDescription="@string/event_details"
+            android:padding="@dimen/in_row_padding"
+            android:src="@drawable/placeholder_birthday_image"
+            app:layout_constraintBottom_toBottomOf="@id/detailsEventImageBackground"
+            app:layout_constraintDimensionRatio="1.0"
+            app:layout_constraintEnd_toEndOf="@id/detailsEventImageBackground"
+            app:layout_constraintStart_toStartOf="@id/detailsEventImageBackground"
+            app:layout_constraintTop_toTopOf="@id/detailsEventImageBackground"
+            app:shapeAppearanceOverlay="@style/roundedImageView"
+            app:strokeColor="?attr/colorOutline"
+            app:strokeWidth="@dimen/card_stroke" />
+
+        <ImageView
+            android:id="@+id/detailsClearBackground"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0.15"
+            android:contentDescription="@string/event_type_hint"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            app:layout_constraintBottom_toTopOf="@id/detailsEditButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsEventImageBackground"
+            app:srcCompat="@drawable/ic_party_24dp"
+            app:tint="?attr/colorOutline" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailsBirthDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/form_vertical_margin"
+            android:gravity="center"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/birth_date"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?attr/colorOutline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsEventImageBackground" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailsBirthDateValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailsBirthDate" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailsBirthDateValue" />
+
+        <!-- Duration and repeat delay must be hardcoded -->
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/detailsCountdownShimmer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider"
+            app:shimmer_auto_start="false"
+            app:shimmer_base_alpha="@dimen/shimmer_base_alpha"
+            app:shimmer_dropoff="@dimen/shimmer_dropoff"
+            app:shimmer_duration="600"
+            app:shimmer_highlight_alpha="@dimen/shimmer_highlight_alpha"
+            app:shimmer_intensity="@dimen/shimmer_intensity"
+            app:shimmer_repeat_delay="2400"
+            app:shimmer_repeat_mode="reverse"
+            app:shimmer_tilt="@dimen/shimmer_tilt">
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/detailsEventName"
-                android:layout_width="wrap_content"
+                android:id="@+id/detailsCountdown"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:drawablePadding="@dimen/activity_vertical_margin"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:padding="@dimen/in_row_padding"
+                android:alpha="0.8"
+                android:paddingBottom="@dimen/activity_vertical_margin"
                 android:text="@string/app_name"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/detailsEventNameImage"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/detailsEventImageBackground"
-                android:layout_width="@dimen/details_image_size"
-                android:layout_height="@dimen/details_image_size"
-                android:layout_marginTop="@dimen/form_vertical_margin"
-                android:clickable="true"
-                android:contentDescription="@string/event_details"
-                android:focusable="true"
-                app:layout_constraintBottom_toTopOf="@id/detailsClearBackground"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detailsEventName"
-                app:srcCompat="@drawable/animated_ripple_circle" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/detailsEventImage"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_margin="@dimen/details_image_padding"
-                android:contentDescription="@string/event_details"
-                android:padding="@dimen/in_row_padding"
-                android:src="@drawable/placeholder_birthday_image"
-                app:layout_constraintBottom_toBottomOf="@id/detailsEventImageBackground"
-                app:layout_constraintDimensionRatio="1.0"
-                app:layout_constraintEnd_toEndOf="@id/detailsEventImageBackground"
-                app:layout_constraintStart_toStartOf="@id/detailsEventImageBackground"
-                app:layout_constraintTop_toTopOf="@id/detailsEventImageBackground"
-                app:shapeAppearanceOverlay="@style/roundedImageView"
-                app:strokeColor="?attr/colorOutline"
-                app:strokeWidth="@dimen/card_stroke" />
-
-            <ImageView
-                android:id="@+id/detailsClearBackground"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:alpha="0.15"
-                android:contentDescription="@string/event_type_hint"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                app:layout_constraintBottom_toTopOf="@id/detailsEditButton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detailsEventImageBackground"
-                app:srcCompat="@drawable/ic_party_24dp"
-                app:tint="?attr/colorOutline" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/detailsBirthDate"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/form_vertical_margin"
-                android:gravity="center"
-                android:padding="@dimen/in_row_padding"
-                android:text="@string/birth_date"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                android:textColor="?attr/colorOutline"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detailsEventImageBackground" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/detailsBirthDateValue"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="@dimen/in_row_padding"
-                android:text="@string/app_name"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailsBirthDate" />
-
-            <View
-                android:id="@+id/divider"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:background="?android:attr/listDivider"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailsBirthDateValue" />
-
-            <!-- Duration and repeat delay must be hardcoded -->
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/detailsCountdownShimmer"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider"
-                app:shimmer_auto_start="false"
-                app:shimmer_base_alpha="@dimen/shimmer_base_alpha"
-                app:shimmer_dropoff="@dimen/shimmer_dropoff"
-                app:shimmer_duration="600"
-                app:shimmer_highlight_alpha="@dimen/shimmer_highlight_alpha"
-                app:shimmer_intensity="@dimen/shimmer_intensity"
-                app:shimmer_repeat_delay="2400"
-                app:shimmer_repeat_mode="reverse"
-                app:shimmer_tilt="@dimen/shimmer_tilt">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/detailsCountdown"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:alpha="0.8"
-                    android:paddingBottom="@dimen/activity_vertical_margin"
-                    android:text="@string/app_name"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
-                    android:textColor="?attr/colorPrimary"
-                    android:textStyle="bold" />
-
-            </com.facebook.shimmer.ShimmerFrameLayout>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/detailsNextAge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/in_row_padding"
-                android:layout_marginStart="@dimen/linear_vertical_margin"
-                android:maxWidth="@dimen/details_text_max_width"
-                android:padding="@dimen/in_row_padding"
-                android:text="@string/next_age"
-                android:textAlignment="viewEnd"
-                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                android:textColor="?attr/colorOutline"
-                app:layout_constraintBaseline_toBaselineOf="@+id/detailsNextAgeValue"
-                app:layout_constraintEnd_toStartOf="@id/detailsNextAgeValue"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/detailsNextAgeValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/in_row_padding"
-                android:layout_marginEnd="@dimen/linear_vertical_margin"
-                android:padding="@dimen/in_row_padding"
-                android:text="@string/app_name"
-                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/detailsNextAge"
-                app:layout_constraintTop_toBottomOf="@+id/detailsCountdownShimmer" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/detailsZodiacSign"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/in_row_padding"
-                android:maxWidth="@dimen/details_text_max_width"
-                android:padding="@dimen/in_row_padding"
-                android:text="@string/zodiac_sign"
-                android:textAlignment="viewEnd"
-                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                android:textColor="?attr/colorOutline"
-                app:layout_constraintBaseline_toBaselineOf="@+id/detailsZodiacSignValue"
-                app:layout_constraintEnd_toStartOf="@+id/detailsZodiacSignValue"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/detailsZodiacSignValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/in_row_padding"
-                android:padding="@dimen/in_row_padding"
-                android:text="@string/app_name"
-                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/detailsZodiacSign"
-                app:layout_constraintTop_toBottomOf="@+id/detailsNextAge" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/detailsChineseSign"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/in_row_padding"
-                android:maxWidth="@dimen/details_text_max_width"
-                android:padding="@dimen/in_row_padding"
-                android:text="@string/chinese_zodiac_sign"
-                android:textAlignment="viewEnd"
-                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                android:textColor="?attr/colorOutline"
-                app:layout_constraintBaseline_toBaselineOf="@+id/detailsChineseSignValue"
-                app:layout_constraintEnd_toStartOf="@+id/detailsChineseSignValue"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/detailsChineseSignValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/in_row_padding"
-                android:padding="@dimen/in_row_padding"
-                android:text="@string/app_name"
-                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/detailsChineseSign"
-                app:layout_constraintTop_toBottomOf="@+id/detailsZodiacSign"
-                tools:layout_editor_absoluteY="390dp" />
-
-            <Button
-                android:id="@+id/detailsEditButton"
-                style="@style/Widget.Material3.Button.ElevatedButton.Icon"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="@dimen/linear_vertical_margin"
-                android:layout_marginTop="@dimen/linear_vertical_margin"
-                android:contentDescription="@string/edit_event"
-                android:paddingVertical="@dimen/in_row_button_padding"
-                android:text="@string/edit_event"
                 android:textColor="?attr/colorPrimary"
-                android:tint="?attr/colorPrimary"
-                app:icon="@drawable/ic_edit_24dp"
-                app:layout_constraintBottom_toTopOf="@id/detailsDeleteButton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detailsChineseSignValue"
-                app:layout_constraintVertical_bias="1"
-                app:layout_constraintVertical_chainStyle="packed"
-                app:layout_constraintWidth_max="@dimen/details_button_max_width"
-                app:rippleColor="?attr/colorPrimary" />
+                android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/detailsDeleteButton"
-                style="@style/Widget.Material3.Button.ElevatedButton.Icon"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="@dimen/linear_vertical_margin"
-                android:contentDescription="@string/delete_event"
-                android:paddingVertical="@dimen/in_row_button_padding"
-                android:text="@string/delete_event"
-                android:textColor="?attr/colorPrimary"
-                android:tint="?attr/colorPrimary"
-                app:icon="@drawable/ic_delete_24dp"
-                app:layout_constraintBottom_toTopOf="@id/detailsShareButton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detailsEditButton"
-                app:layout_constraintWidth_max="@dimen/details_button_max_width"
-                app:rippleColor="?attr/colorPrimary" />
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
-            <Button
-                android:id="@+id/detailsShareButton"
-                style="@style/Widget.Material3.Button.ElevatedButton.Icon"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="@dimen/linear_vertical_margin"
-                android:contentDescription="@string/share_event"
-                android:paddingVertical="@dimen/in_row_button_padding"
-                android:text="@string/share_event"
-                android:textColor="?attr/colorPrimary"
-                android:tint="?attr/colorPrimary"
-                app:icon="@drawable/ic_share_black_24dp"
-                app:layout_constraintBottom_toTopOf="@id/detailsNotesButton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detailsDeleteButton"
-                app:layout_constraintWidth_max="@dimen/details_button_max_width"
-                app:rippleColor="?attr/colorPrimary" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailsNextAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/in_row_padding"
+            android:layout_marginStart="@dimen/linear_vertical_margin"
+            android:maxWidth="@dimen/details_text_max_width"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/next_age"
+            android:textAlignment="viewEnd"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?attr/colorOutline"
+            app:layout_constraintBaseline_toBaselineOf="@+id/detailsNextAgeValue"
+            app:layout_constraintEnd_toStartOf="@id/detailsNextAgeValue"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <Button
-                android:id="@+id/detailsNotesButton"
-                style="@style/Widget.Material3.Button.ElevatedButton.Icon"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="@dimen/linear_vertical_margin"
-                android:layout_marginBottom="@dimen/details_image_padding"
-                android:contentDescription="@string/share_event"
-                android:paddingVertical="@dimen/in_row_button_padding"
-                android:text="@string/notes"
-                android:textColor="?attr/colorPrimary"
-                android:tint="?attr/colorPrimary"
-                app:icon="@drawable/ic_note_24dp"
-                app:layout_constraintBottom_toTopOf="@id/detailsButtonSpacer"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detailsShareButton"
-                app:layout_constraintWidth_max="@dimen/details_button_max_width"
-                app:rippleColor="?attr/colorPrimary" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailsNextAgeValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/in_row_padding"
+            android:layout_marginEnd="@dimen/linear_vertical_margin"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/detailsNextAge"
+            app:layout_constraintTop_toBottomOf="@+id/detailsCountdownShimmer" />
 
-            <View
-                android:id="@+id/detailsButtonSpacer"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/bottom_navbar_height"
-                app:layout_constraintBottom_toBottomOf="parent" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailsZodiacSign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/in_row_padding"
+            android:maxWidth="@dimen/details_text_max_width"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/zodiac_sign"
+            android:textAlignment="viewEnd"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?attr/colorOutline"
+            app:layout_constraintBaseline_toBaselineOf="@+id/detailsZodiacSignValue"
+            app:layout_constraintEnd_toStartOf="@+id/detailsZodiacSignValue"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        </androidx.constraintlayout.motion.widget.MotionLayout>
-    </ScrollView>
-</FrameLayout>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailsZodiacSignValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/in_row_padding"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/detailsZodiacSign"
+            app:layout_constraintTop_toBottomOf="@+id/detailsNextAge" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailsChineseSign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/in_row_padding"
+            android:maxWidth="@dimen/details_text_max_width"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/chinese_zodiac_sign"
+            android:textAlignment="viewEnd"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?attr/colorOutline"
+            app:layout_constraintBaseline_toBaselineOf="@+id/detailsChineseSignValue"
+            app:layout_constraintEnd_toStartOf="@+id/detailsChineseSignValue"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailsChineseSignValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/in_row_padding"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/detailsChineseSign"
+            app:layout_constraintTop_toBottomOf="@+id/detailsZodiacSign"
+            tools:layout_editor_absoluteY="390dp" />
+
+        <Button
+            android:id="@+id/detailsEditButton"
+            style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/linear_vertical_margin"
+            android:layout_marginTop="@dimen/linear_vertical_margin"
+            android:contentDescription="@string/edit_event"
+            android:paddingVertical="@dimen/in_row_button_padding"
+            android:text="@string/edit_event"
+            android:textColor="?attr/colorPrimary"
+            android:tint="?attr/colorPrimary"
+            app:icon="@drawable/ic_edit_24dp"
+            app:layout_constraintBottom_toTopOf="@id/detailsDeleteButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsChineseSignValue"
+            app:layout_constraintVertical_bias="1"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintWidth_max="@dimen/details_button_max_width"
+            app:rippleColor="?attr/colorPrimary" />
+
+        <Button
+            android:id="@+id/detailsDeleteButton"
+            style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/linear_vertical_margin"
+            android:contentDescription="@string/delete_event"
+            android:paddingVertical="@dimen/in_row_button_padding"
+            android:text="@string/delete_event"
+            android:textColor="?attr/colorPrimary"
+            android:tint="?attr/colorPrimary"
+            app:icon="@drawable/ic_delete_24dp"
+            app:layout_constraintBottom_toTopOf="@id/detailsShareButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsEditButton"
+            app:layout_constraintWidth_max="@dimen/details_button_max_width"
+            app:rippleColor="?attr/colorPrimary" />
+
+        <Button
+            android:id="@+id/detailsShareButton"
+            style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/linear_vertical_margin"
+            android:contentDescription="@string/share_event"
+            android:paddingVertical="@dimen/in_row_button_padding"
+            android:text="@string/share_event"
+            android:textColor="?attr/colorPrimary"
+            android:tint="?attr/colorPrimary"
+            app:icon="@drawable/ic_share_black_24dp"
+            app:layout_constraintBottom_toTopOf="@id/detailsNotesButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsDeleteButton"
+            app:layout_constraintWidth_max="@dimen/details_button_max_width"
+            app:rippleColor="?attr/colorPrimary" />
+
+        <Button
+            android:id="@+id/detailsNotesButton"
+            style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/linear_vertical_margin"
+            android:layout_marginBottom="@dimen/details_image_padding"
+            android:contentDescription="@string/share_event"
+            android:paddingVertical="@dimen/in_row_button_padding"
+            android:text="@string/notes"
+            android:textColor="?attr/colorPrimary"
+            android:tint="?attr/colorPrimary"
+            app:icon="@drawable/ic_note_24dp"
+            app:layout_constraintBottom_toTopOf="@id/detailsButtonSpacer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsShareButton"
+            app:layout_constraintWidth_max="@dimen/details_button_max_width"
+            app:rippleColor="?attr/colorPrimary" />
+
+        <View
+            android:id="@+id/detailsButtonSpacer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_navbar_height"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</ScrollView>

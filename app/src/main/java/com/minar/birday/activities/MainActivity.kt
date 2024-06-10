@@ -25,9 +25,7 @@ import android.provider.OpenableColumns
 import android.provider.Settings
 import android.view.View
 import android.widget.ImageView
-import androidx.activity.BackEventCompat
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -46,7 +44,6 @@ import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.preference.PreferenceManager
-import androidx.transition.TransitionSeekController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
@@ -102,58 +99,6 @@ class MainActivity : AppCompatActivity() {
         }
         createNotificationChannel()
 
-        val callback = object : OnBackPressedCallback(enabled = false) {
-
-            var controller: TransitionSeekController? = null
-
-            @RequiresApi(34)
-            override fun handleOnBackStarted(backEvent: BackEventCompat) {
-                // Create the transition
-            }
-
-            @RequiresApi(34)
-            override fun handleOnBackProgressed(backEvent: BackEventCompat) {
-                // Play the transition as the user swipes back
-                if (controller?.isReady == true) {
-                    controller?.currentFraction = backEvent.progress
-                }
-            }
-
-            override fun handleOnBackPressed() {
-                // Finish playing the transition when the user commits back
-                controller?.animateToEnd()
-                this.isEnabled = false
-            }
-
-            @RequiresApi(34)
-            override fun handleOnBackCancelled() {
-                // If the user cancels the back gesture, reset the state
-            }
-        }
-
-        // Register back pressed callback (do not use onBackPressed() - deprecated)
-        if (Build.VERSION.SDK_INT >= 33) {
-            onBackPressedDispatcher.addCallback(callback)
-
-        } else
-            onBackPressedDispatcher.addCallback(this) {
-                // Exit if the navigation is in the home page
-                if (navController.currentDestination?.id == R.id.navigationMain) {
-                    finish()
-                }
-                // Pop the backstack if the navigation is in a secondary screen
-                else if (navController.currentBackStackEntry != null &&
-                    (navController.currentDestination?.label == "fragment_details" ||
-                            navController.currentDestination?.label == "fragment_overview" ||
-                            navController.currentDestination?.label == "fragment_experimental_settings")
-                )
-                    navController.popBackStack()
-                // Else, first, go back to the home screen before closing the app
-                else {
-                    binding.navigation.selectedItemId = R.id.navigationMain
-                    navController.navigateWithOptions(R.id.navigationMain)
-                }
-            }
         // Retrieve the shared preferences
         val theme = sharedPrefs.getString("theme_color", "system")
         val accent = sharedPrefs.getString("accent_color", "system")
@@ -230,16 +175,29 @@ class MainActivity : AppCompatActivity() {
         // Get the bottom navigation bar and configure it for the navigation plugin
         val navigation = binding.navigation
 
+        // Prepare the back home callback
+        val backHomeCallback = object: OnBackPressedCallback(enabled = false) {
+            override fun handleOnBackPressed() {
+                binding.navigation.selectedItemId = R.id.navigationMain
+                navController.navigateWithOptions(R.id.navigationMain)
+            }
+        }
+
+        // Activate or disable the callback to return to the home fragment before exiting the app
         navigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.navigationMain ->
+                R.id.navigationMain -> {
+                    backHomeCallback.isEnabled = false
                     navController.navigateWithOptions(R.id.navigationMain)
-
-                R.id.navigationFavorites ->
+                }
+                R.id.navigationFavorites -> {
+                    backHomeCallback.isEnabled = true
                     navController.navigateWithOptions(R.id.navigationFavorites)
-
-                R.id.navigationSettings ->
+                }
+                R.id.navigationSettings -> {
+                    backHomeCallback.isEnabled = true
                     navController.navigateWithOptions(R.id.navigationSettings)
+                }
             }
             true
         }
@@ -344,6 +302,8 @@ class MainActivity : AppCompatActivity() {
             // Update the widgets using this livedata, to avoid strange behaviors when searching
             updateWidget()
         }
+
+        onBackPressedDispatcher.addCallback(this, backHomeCallback)
     }
 
     private fun NavController.navigateWithOptions(@IdRes destination: Int) {

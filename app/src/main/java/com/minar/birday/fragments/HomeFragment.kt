@@ -33,7 +33,14 @@ import com.minar.birday.fragments.dialogs.QuickAppsBottomSheet
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventDataItem
 import com.minar.birday.model.EventResult
-import com.minar.birday.utilities.*
+import com.minar.birday.utilities.addInsetsByPadding
+import com.minar.birday.utilities.formatDaysRemaining
+import com.minar.birday.utilities.formatName
+import com.minar.birday.utilities.getNextYears
+import com.minar.birday.utilities.getRemainingDays
+import com.minar.birday.utilities.getThemeColor
+import com.minar.birday.utilities.nextDateFormatted
+import com.minar.birday.utilities.resultToEvent
 import com.minar.birday.viewmodels.MainViewModel
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
@@ -99,7 +106,7 @@ class HomeFragment : Fragment() {
         val surnameFirst = sharedPrefs.getBoolean("surname_first", false)
         if (shimmerEnabled) shimmer.startShimmer()
 
-        // add insets
+        // Add insets
         recycler.addInsetsByPadding(bottom = true)
 
         // Setup the search bar

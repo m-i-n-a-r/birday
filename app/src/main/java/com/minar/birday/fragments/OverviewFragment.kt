@@ -6,8 +6,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.BackEventCompat
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
@@ -149,5 +152,56 @@ class OverviewFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Manage the predictive back between fragments
+        val predictiveBackMargin = resources.getDimensionPixelSize(R.dimen.predictive_back_margin)
+        var initialTouchY = -1f
+        val background = binding.fragmentBackground
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+
+                override fun handleOnBackProgressed(backEvent: BackEventCompat) {
+                    val progress = MainActivity.GestureInterpolator.getInterpolation(backEvent.progress)
+                    if (initialTouchY < 0f) {
+                        initialTouchY = backEvent.touchY
+                    }
+                    val progressY = MainActivity.GestureInterpolator.getInterpolation(
+                        (backEvent.touchY - initialTouchY) / background.height
+                    )
+
+                    // Shift horizontally
+                    val maxTranslationX = (background.width / 20) - predictiveBackMargin
+                    background.translationX = progress * maxTranslationX *
+                            (if (backEvent.swipeEdge == BackEventCompat.EDGE_LEFT) 1 else -1)
+
+                    // Shift vertically
+                    val maxTranslationY = (background.height / 20) - predictiveBackMargin
+                    background.translationY = progressY * maxTranslationY
+
+                    // Scale down from 100% to 90%
+                    val scale = 1f - (0.1f * progress)
+                    background.scaleX = scale
+                    background.scaleY = scale
+                }
+
+                override fun handleOnBackPressed() {
+                    findNavController().popBackStack()
+                }
+
+                override fun handleOnBackCancelled() {
+                    initialTouchY = -1f
+                    background.run {
+                        translationX = 0f
+                        translationY = 0f
+                        scaleX = 1f
+                        scaleY = 1f
+                    }
+                }
+            }
+        )
+    }
 
 }

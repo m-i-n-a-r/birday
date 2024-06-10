@@ -378,16 +378,12 @@ class DetailsFragment : Fragment() {
         }
 
         // Manage the predictive back between fragments
-        val predictiveBackMargin =
-            resources.getDimensionPixelSize(R.dimen.predictive_back_margin)
+        val predictiveBackMargin = resources.getDimensionPixelSize(R.dimen.predictive_back_margin)
         var initialTouchY = -1f
-        val background = binding.background
+        val background = binding.fragmentBackground
         requireActivity().onBackPressedDispatcher.addCallback(
-            requireActivity(),
+            viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    findNavController().popBackStack()
-                }
 
                 override fun handleOnBackProgressed(backEvent: BackEventCompat) {
                     val progress = MainActivity.GestureInterpolator.getInterpolation(backEvent.progress)
@@ -411,6 +407,10 @@ class DetailsFragment : Fragment() {
                     val scale = 1f - (0.1f * progress)
                     background.scaleX = scale
                     background.scaleY = scale
+                }
+
+                override fun handleOnBackPressed() {
+                    findNavController().popBackStack()
                 }
 
                 override fun handleOnBackCancelled() {
