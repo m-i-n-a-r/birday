@@ -309,6 +309,9 @@
     <string name="import_csv_description">Importovat z CSV. Požadovanou strukturu souboru najdete na wiki na Githubu</string>
     <string name="export_csv_title">Exportovat do CSV</string>
     <string name="export_csv_description">Exportovat každou událost (kromě obrázku) do CSV</string>
+    <string name="add_demo_entries_title">Add demo entries</string>
+    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
+    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
     <string name="delete_db_title">Smazat všechny události</string>
     <string name="delete_db_description">Jednoduše řečeno, smaže celou databázi. Než kliknete, dvakrát si to rozmyslete!</string>
     <string name="delete_db_dialog_title">Jste si jistý?</string>
