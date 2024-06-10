@@ -170,7 +170,7 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
                 return@forEach
             }
             // Type detection
-            if (EventCode.values().map { it.name }.contains(rowItem)) {
+            if (EventCode.entries.map { it.name }.contains(rowItem)) {
                 type = rowItem
                 return@forEach
             }

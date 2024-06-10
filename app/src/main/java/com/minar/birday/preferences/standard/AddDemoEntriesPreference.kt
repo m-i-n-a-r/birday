@@ -8,23 +8,24 @@ import androidx.preference.PreferenceViewHolder
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
-import com.minar.birday.databinding.ClearDbRowBinding
-import com.minar.birday.persistence.EventDatabase
+import com.minar.birday.databinding.AddDemoEntriesRowBinding
+import com.minar.birday.preferences.backup.CsvImporter
+import com.minar.birday.utilities.getResourceUri
 import com.minar.birday.utilities.smartFixName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-// A custom preference to nuke the DB
-class ClearDBPreference(context: Context, attrs: AttributeSet?) :
+// A custom preference to add some demo entries to the DB
+class AddDemoEntriesPreference(context: Context, attrs: AttributeSet?) :
     Preference(context, attrs),
     View.OnClickListener {
-    private lateinit var binding: ClearDbRowBinding
+    private lateinit var binding: AddDemoEntriesRowBinding
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
-        binding = ClearDbRowBinding.bind(holder.itemView)
+        binding = AddDemoEntriesRowBinding.bind(holder.itemView)
         binding.root.setOnClickListener(this)
     }
 
@@ -35,11 +36,15 @@ class ClearDBPreference(context: Context, attrs: AttributeSet?) :
         MaterialAlertDialogBuilder(act)
             .setTitle(R.string.delete_db_dialog_title)
             .setIcon(R.drawable.ic_alert_24dp)
-            .setMessage(R.string.delete_db_dialog_description)
+            .setMessage(R.string.add_demo_entries_dialog_description)
             .setPositiveButton(act.resources.getString(android.R.string.ok)) { dialog, _ ->
                 CoroutineScope(Dispatchers.IO).launch {
-                    // Delete every saved data and send a snackbar
-                    EventDatabase.getBirdayDatabase(context).clearAllTables()
+                    // Insert a series of events from a csv in assets
+                    val csvImporter = CsvImporter(act, null)
+                    csvImporter.importEventsCsv(
+                        act,
+                        getResourceUri(R.raw.birday_demo_entries)
+                    )
                 }.invokeOnCompletion {
                     act.showSnackbar(
                         context.getString(R.string.app_intro_done_button).lowercase()
