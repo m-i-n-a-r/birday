@@ -23,14 +23,14 @@ import com.minar.birday.databinding.DialogNotesBinding
 import com.minar.birday.databinding.FragmentFavoritesBinding
 import com.minar.birday.fragments.dialogs.StatsBottomSheet
 import com.minar.birday.model.Event
-import com.minar.birday.model.EventResult
-import com.minar.birday.utilities.*
+import com.minar.birday.utilities.StatsGenerator
+import com.minar.birday.utilities.addInsetsByPadding
+import com.minar.birday.utilities.getRemainingDays
+import com.minar.birday.utilities.getThemeColor
+import com.minar.birday.utilities.isBirthday
 import com.minar.birday.viewmodels.MainViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.time.LocalDate
-import java.util.*
+import java.util.Locale
 
 
 class FavoritesFragment : Fragment() {
