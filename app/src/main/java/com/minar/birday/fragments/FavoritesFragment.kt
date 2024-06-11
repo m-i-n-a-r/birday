@@ -26,6 +26,10 @@ import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.util.*
 
@@ -33,9 +37,9 @@ import java.util.*
 class FavoritesFragment : Fragment() {
     private val mainViewModel: MainViewModel by activityViewModels()
     private lateinit var adapter: FavoritesAdapter
-    private lateinit var fullStats: SpannableStringBuilder
     private lateinit var act: MainActivity
     private lateinit var sharedPrefs: SharedPreferences
+    private var fullStats: SpannableStringBuilder? = null
     private var _binding: FragmentFavoritesBinding? = null
     private val binding get() = _binding!!
     private var _dialogNotesBinding: DialogNotesBinding? = null
@@ -95,6 +99,7 @@ class FavoritesFragment : Fragment() {
                     favoriteMotionLayout.transitionToEnd()
                     sharedPrefs.edit().putFloat("favorite_motion_state", 1.0F).apply()
                 }
+
                 1.0F -> {
                     favoriteMotionLayout.transitionToStart()
                     sharedPrefs.edit().putFloat("favorite_motion_state", 0.0F).apply()
@@ -154,10 +159,8 @@ class FavoritesFragment : Fragment() {
         with(binding) {
             mainViewModel.allEventsUnfiltered.observe(viewLifecycleOwner) { events ->
                 // Stats - Under a minimum size, no stats will be shown (at least 5 birthdays containing a year)
-                if (events.filter { it.yearMatter == true && isBirthday(it) }.size > 4) generateStat(
-                    events,
-                    astrologyDisabled
-                )
+                if (events.filter { it.yearMatter == true && isBirthday(it) }.size > 4)
+                    generateStat(events, astrologyDisabled)
                 else fullStats = SpannableStringBuilder(
                     requireActivity().applicationContext.getString(
                         R.string.no_stats_description
@@ -172,56 +175,81 @@ class FavoritesFragment : Fragment() {
                         for (i in 0..9L) this.add(today.plusDays(i).dayOfMonth)
                     }
 
-                    // Prepare the dots
+                    // Prepare the dots and the UI, while resetting the opacity
                     val primary = getThemeColor(R.attr.colorPrimary, act)
                     val onPrimary = getThemeColor(R.attr.colorOnPrimary, act)
                     overviewDot1.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText1.text = nextDays[0].toString()
+                    overviewDot1.alpha = .0F
+
                     overviewDot2.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText2.text = nextDays[1].toString()
+                    overviewDot2.alpha = .0F
+
                     overviewDot3.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText3.text = nextDays[2].toString()
+                    overviewDot3.alpha = .0F
+
                     overviewDot4.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText4.text = nextDays[3].toString()
+                    overviewDot4.alpha = .0F
+
                     overviewDot5.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText5.text = nextDays[4].toString()
+                    overviewDot5.alpha = .0F
+
                     overviewDot6.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText6.text = nextDays[5].toString()
+                    overviewDot6.alpha = .0F
+
                     overviewDot7.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText7.text = nextDays[6].toString()
+                    overviewDot7.alpha = .0F
+
                     overviewDot8.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText8.text = nextDays[7].toString()
+                    overviewDot8.alpha = .0F
+
                     overviewDot9.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText9.text = nextDays[8].toString()
+                    overviewDot9.alpha = .0F
+
                     overviewDot10.setColorFilter(primary, android.graphics.PorterDuff.Mode.SRC_IN)
                     overviewText10.text = nextDays[9].toString()
-
-                    // Set the opacities
-                    overviewDot1.alpha = .0F
-                    overviewDot2.alpha = .0F
-                    overviewDot3.alpha = .0F
-                    overviewDot4.alpha = .0F
-                    overviewDot5.alpha = .0F
-                    overviewDot6.alpha = .0F
-                    overviewDot7.alpha = .0F
-                    overviewDot8.alpha = .0F
-                    overviewDot9.alpha = .0F
                     overviewDot10.alpha = .0F
+
+                    // Raise the opacity for each event in that day, until events farther than 9 days
+                    val alphaList: MutableList<Float> = MutableList(10) { 0F }
                     for (event in events) {
                         when (getRemainingDays(event.nextDate!!)) {
-                            0 -> overviewDot1.alpha += .30F
-                            1 -> overviewDot2.alpha += .30F
-                            2 -> overviewDot3.alpha += .30F
-                            3 -> overviewDot4.alpha += .30F
-                            4 -> overviewDot5.alpha += .30F
-                            5 -> overviewDot6.alpha += .30F
-                            6 -> overviewDot7.alpha += .30F
-                            7 -> overviewDot8.alpha += .30F
-                            8 -> overviewDot9.alpha += .30F
-                            9 -> overviewDot10.alpha += .30F
-                            else -> continue
+                            0 -> alphaList[0] += .30F
+                            1 -> alphaList[1] += .30F
+                            2 -> alphaList[2] += .30F
+                            3 -> alphaList[3] += .30F
+                            4 -> alphaList[4] += .30F
+                            5 -> alphaList[5] += .30F
+                            6 -> alphaList[6] += .30F
+                            7 -> alphaList[7] += .30F
+                            8 -> alphaList[8] += .30F
+                            9 -> alphaList[9] += .30F
+                            else -> break
                         }
                     }
+
+                    // Remove values higher than 1, since they make no sense for alpha value
+                    alphaList.forEach { it.coerceAtMost(1F) }
+
+                    // Update the opacities
+                    overviewDot1.alpha = alphaList[0]
+                    overviewDot2.alpha = alphaList[1]
+                    overviewDot3.alpha = alphaList[2]
+                    overviewDot4.alpha = alphaList[3]
+                    overviewDot5.alpha = alphaList[4]
+                    overviewDot6.alpha = alphaList[5]
+                    overviewDot7.alpha = alphaList[6]
+                    overviewDot8.alpha = alphaList[7]
+                    overviewDot9.alpha = alphaList[8]
+                    overviewDot10.alpha = alphaList[9]
 
                     // Make sure the text is readable
                     if (overviewDot1.alpha > .7) overviewText1.setTextColor(onPrimary)
@@ -305,20 +333,37 @@ class FavoritesFragment : Fragment() {
     // Show a bottom sheet containing the stats
     private fun showStatsSheet() {
         act.vibrate()
-        val bottomSheet = StatsBottomSheet(act, totalEvents, fullStats)
+        if (fullStats == null) {
+            act.showSnackbar(getString(R.string.no_stats))
+            return
+        }
+        // Prevent double dialogs in a stupid yet effective way
+        for (fragment in act.supportFragmentManager.fragments) {
+            if (fragment is StatsBottomSheet)
+                return
+        }
+        val bottomSheet = StatsBottomSheet(act, totalEvents, fullStats!!)
         if (bottomSheet.isAdded) return
         bottomSheet.show(act.supportFragmentManager, "stats_bottom_sheet")
     }
 
-    // Use the generator to generate a random stat and display it
+    // Use the generator to generate a random stat and display it, asynchronously
     private fun generateStat(events: List<EventResult>, astrologyDisabled: Boolean = false) {
         val cardSubtitle: TextView = binding.statsSubtitle
         val cardDescription: TextView = binding.statsDescription
         val generator = StatsGenerator(events, context, astrologyDisabled)
-        cardSubtitle.text = generator.generateRandomStat()
-        fullStats = generator.generateFullStats()
-        val summary = resources.getQuantityString(R.plurals.event, events.size, events.size)
-            .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
-        cardDescription.text = summary
+        CoroutineScope(Dispatchers.IO).launch {
+            val randomStat = generator.generateRandomStat()
+            fullStats = generator.generateFullStats()
+            act.runOnUiThread {
+                // Stop all UI updates if the fragment is not visible
+                if (!this@FavoritesFragment.isVisible) return@runOnUiThread
+                cardSubtitle.text = randomStat
+                val summary = resources.getQuantityString(R.plurals.event, events.size, events.size)
+                    .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+                cardDescription.text = summary
+            }
+        }
+
     }
 }

@@ -496,6 +496,11 @@ class HomeFragment : Fragment() {
     // Show a bottom sheet containing some quick apps
     private fun showQuickAppsSheet() {
         act.vibrate()
+        // Prevent double dialogs in a stupid yet effective way
+        for (fragment in act.supportFragmentManager.fragments) {
+            if (fragment is QuickAppsBottomSheet)
+                return
+        }
         val bottomSheet = QuickAppsBottomSheet(act)
         if (bottomSheet.isAdded) return
         bottomSheet.show(act.supportFragmentManager, "quick_apps_bottom_sheet")
