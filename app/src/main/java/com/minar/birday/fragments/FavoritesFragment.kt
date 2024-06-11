@@ -157,14 +157,6 @@ class FavoritesFragment : Fragment() {
         // Set the data which requires the complete and unfiltered event list
         with(binding) {
             mainViewModel.allEventsUnfiltered.observe(viewLifecycleOwner) { events ->
-                // Stats - Under a minimum size, no stats will be shown (at least 5 birthdays containing a year)
-                if (events.filter { it.yearMatter == true && isBirthday(it) }.size > 4)
-                    generateStat(events, astrologyDisabled)
-                else fullStats = SpannableStringBuilder(
-                    requireActivity().applicationContext.getString(
-                        R.string.no_stats_description
-                    )
-                )
                 totalEvents = events.size
 
                 // Quick glance - alpha set to .3 for 1 event, .6 for 2 events, 1 for 3+ events
@@ -264,6 +256,31 @@ class FavoritesFragment : Fragment() {
                 }
             }
         }
+
+        mainViewModel.fullStats.observe(viewLifecycleOwner) {
+            // Stats - Under a minimum size, no stats will be shown (at least 5 birthdays containing a year)
+            val currentEvents = mainViewModel.allEventsUnfiltered.value ?: return@observe
+            if (currentEvents.filter { it.yearMatter == true && isBirthday(it) }.size < 5) {
+                fullStats = SpannableStringBuilder(
+                    requireActivity().applicationContext.getString(
+                        R.string.no_stats_description
+                    )
+                )
+                return@observe
+            }
+
+            val cardSubtitle: TextView = binding.statsSubtitle
+            val cardDescription: TextView = binding.statsDescription
+            val generator = StatsGenerator(currentEvents, context, astrologyDisabled)
+            val randomStat = generator.generateRandomStat()
+            fullStats = mainViewModel.fullStats.value
+            // Stop all UI updates if the fragment is not visible
+            cardSubtitle.text = randomStat
+            val summary =
+                resources.getQuantityString(R.plurals.event, currentEvents.size, currentEvents.size)
+                    .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+            cardDescription.text = summary
+        }
     }
 
     override fun onDestroyView() {
@@ -344,25 +361,5 @@ class FavoritesFragment : Fragment() {
         val bottomSheet = StatsBottomSheet(act, totalEvents, fullStats!!)
         if (bottomSheet.isAdded) return
         bottomSheet.show(act.supportFragmentManager, "stats_bottom_sheet")
-    }
-
-    // Use the generator to generate a random stat and display it, asynchronously
-    private fun generateStat(events: List<EventResult>, astrologyDisabled: Boolean = false) {
-        val cardSubtitle: TextView = binding.statsSubtitle
-        val cardDescription: TextView = binding.statsDescription
-        val generator = StatsGenerator(events, context, astrologyDisabled)
-        CoroutineScope(Dispatchers.IO).launch {
-            val randomStat = generator.generateRandomStat()
-            fullStats = mainViewModel.fullStats
-            act.runOnUiThread {
-                // Stop all UI updates if the fragment is not visible
-                if (!this@FavoritesFragment.isVisible) return@runOnUiThread
-                cardSubtitle.text = randomStat
-                val summary = resources.getQuantityString(R.plurals.event, events.size, events.size)
-                    .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
-                cardDescription.text = summary
-            }
-        }
-
     }
 }

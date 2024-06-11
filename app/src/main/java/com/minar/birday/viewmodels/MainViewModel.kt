@@ -27,7 +27,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val searchString = MutableLiveData<String>()
     val selectedType = MutableLiveData<String>()
     private val searchValues = MediatorLiveData<Pair<String?, String?>>()
-    var fullStats: SpannableStringBuilder? = null
+    var fullStats = MutableLiveData<SpannableStringBuilder>()
     private val eventDao: EventDao = EventDatabase.getBirdayDatabase(application).eventDao()
     var confettiDone: Boolean = false
 
@@ -61,7 +61,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun getStats(events: List<EventResult>, context: Context, astrologyDisabled: Boolean) =
         viewModelScope.launch(Dispatchers.IO) {
             val generator = StatsGenerator(events, context, astrologyDisabled)
-            fullStats = generator.generateFullStats()
+            fullStats.postValue(generator.generateFullStats())
         }
 
     fun getFavorites(): LiveData<List<EventResult>> =
