@@ -68,12 +68,15 @@ class EventAdapter(
                     mutableList.sortWith(compareBy({ it.name }, { it.surname }))
                 // Base case: insert the header for the first element and initialize the first or last name letter
                 var lastLetter =
-                    if (surnameFirst) mutableList[0].surname?.get(0)
-                        ?: "" else mutableList[0].name[0]
+                    if (mutableList.size == 0 || mutableList[0].surname.isNullOrEmpty()) "" else
+                        if (surnameFirst) mutableList[0].surname?.get(0)
+                            ?: "" else mutableList[0].name[0]
                 organizedEvents.add(EventDataItem.IndexHeader(if (lastLetter == "") "?" else lastLetter.toString()))
                 for (event in mutableList) {
                     val nextLetter =
-                        if (surnameFirst) event.surname?.get(0) ?: "" else event.name[0]
+                        if (mutableList[0].surname.isNullOrEmpty()) "" else if (surnameFirst) event.surname?.get(
+                            0
+                        ) ?: "" else event.name[0]
                     // If the letter has changed, add the new letter
                     if (lastLetter != nextLetter) {
                         lastLetter = nextLetter
