@@ -297,9 +297,9 @@
     <string name="import_csv_description">Importera från en CSV-fil. Hänvisa till wikin på Github för önskad filstruktur</string>
     <string name="export_csv_title">Exportera till CSV</string>
     <string name="export_csv_description">Exportera varje händelse till en CSV fil, bild utesluten</string>
-    <string name="add_demo_entries_title">Add demo entries</string>
-    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
-    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
+    <string name="add_demo_entries_title">Lägg till demoinlägg</string>
+    <string name="add_demo_entries_description">Populera DB med en demouppsättning händelser, mestadels skådespelare och historiska figurer</string>
+    <string name="add_demo_entries_dialog_description">Detta kommer permanent lägga till TUSENTALS av poster till DB och är avsedd för debug-ändamål. Det kommer inte att ta bort någon befintlig händelse, men om du vill ta bort de nya posterna, måste du göra det manuellt. Lycka till för det.</string>
     <string name="delete_db_title">Radera alla händelser</string>
     <string name="delete_db_description">Radera databasen. Tänk om innan du klickar!</string>
     <string name="delete_db_dialog_title">Är du säker?</string>
