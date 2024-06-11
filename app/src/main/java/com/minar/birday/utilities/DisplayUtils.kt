@@ -52,7 +52,8 @@ fun View.addInsetsByMargin(
     top: Boolean = false,
     bottom: Boolean = false,
     left: Boolean = false,
-    right: Boolean = false
+    right: Boolean = false,
+    halveInsets: Boolean = false,
 ) {
     ViewCompat.setOnApplyWindowInsetsListener(this) { view, insets ->
         val inset = Insets.max(
@@ -61,7 +62,7 @@ fun View.addInsetsByMargin(
         )
         if (top) {
             val lastTopMargin = view.getTag(R.id.view_add_insets_margin_top_tag) as? Int ?: 0
-            val newTopMargin = inset.top
+            val newTopMargin = if (halveInsets) inset.top / 2 else inset.top
             view.setTag(R.id.view_add_insets_margin_top_tag, newTopMargin)
             (view.layoutParams as? ViewGroup.MarginLayoutParams)?.let { layoutParams ->
                 layoutParams.topMargin = layoutParams.topMargin - lastTopMargin + newTopMargin
@@ -70,7 +71,7 @@ fun View.addInsetsByMargin(
         }
         if (bottom) {
             val lastBottomMargin = view.getTag(R.id.view_add_insets_margin_bottom_tag) as? Int ?: 0
-            val newBottomMargin = inset.bottom
+            val newBottomMargin = if (halveInsets) inset.bottom / 2 else inset.bottom
             view.setTag(R.id.view_add_insets_margin_bottom_tag, newBottomMargin)
             (view.layoutParams as? ViewGroup.MarginLayoutParams)?.let { layoutParams ->
                 layoutParams.bottomMargin = layoutParams.bottomMargin - lastBottomMargin + newBottomMargin
@@ -79,7 +80,7 @@ fun View.addInsetsByMargin(
         }
         if (left) {
             val lastLeftMargin = view.getTag(R.id.view_add_insets_margin_left_tag) as? Int ?: 0
-            val newLeftMargin = inset.left
+            val newLeftMargin = if (halveInsets) inset.left / 2 else inset.left
             view.setTag(R.id.view_add_insets_margin_left_tag, newLeftMargin)
             (view.layoutParams as? ViewGroup.MarginLayoutParams)?.let { layoutParams ->
                 layoutParams.leftMargin = layoutParams.leftMargin - lastLeftMargin + newLeftMargin
@@ -88,7 +89,7 @@ fun View.addInsetsByMargin(
         }
         if (right) {
             val lastRightMargin = view.getTag(R.id.view_add_insets_margin_right_tag) as? Int ?: 0
-            val newRightMargin = inset.right
+            val newRightMargin = if (halveInsets) inset.right / 2 else inset.right
             view.setTag(R.id.view_add_insets_margin_right_tag, newRightMargin)
             (view.layoutParams as? ViewGroup.MarginLayoutParams)?.let { layoutParams ->
                 layoutParams.rightMargin = layoutParams.rightMargin - lastRightMargin + newRightMargin

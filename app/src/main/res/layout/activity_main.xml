@@ -49,7 +49,6 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/new_event"
         android:hapticFeedbackEnabled="false"
-        android:layout_marginBottom="@dimen/bottom_navbar_item_padding"
         app:layout_anchor="@id/navigation"
         app:maxImageSize="@dimen/main_fab_icon_size"
         app:srcCompat="@drawable/ic_party_24dp"

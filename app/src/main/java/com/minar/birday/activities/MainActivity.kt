@@ -271,7 +271,7 @@ class MainActivity : AppCompatActivity() {
         // Add insets
         binding.navHostFragment.addInsetsByMargin(top = true, right = true, left = true)
         binding.bottomBar.addInsetsByPadding(bottom = true, left = true, right = true)
-        binding.fab.addInsetsByMargin(right = true)
+        binding.fab.addInsetsByMargin(bottom = true, halveInsets = true)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.navigation) { _, insets ->
             insets
