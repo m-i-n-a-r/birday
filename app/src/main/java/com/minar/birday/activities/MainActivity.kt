@@ -271,6 +271,7 @@ class MainActivity : AppCompatActivity() {
         // Add insets
         binding.navHostFragment.addInsetsByMargin(top = true, right = true, left = true)
         binding.bottomBar.addInsetsByPadding(bottom = true, left = true, right = true)
+        binding.fab.addInsetsByMargin(right = true)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.navigation) { _, insets ->
             insets
@@ -297,10 +298,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Only the next events, without considering the search string, ordered
+        val astrologyDisabled = sharedPrefs.getBoolean("disable_astrology", false)
         mainViewModel.allEventsUnfiltered.observe(this)
         {
-            // Update the widgets using this livedata, to avoid strange behaviors when searching
+            // Update the widgets and the stats, to avoid strange behaviors when searching
             updateWidget()
+            mainViewModel.getStats(it, this, astrologyDisabled)
         }
 
         onBackPressedDispatcher.addCallback(this, backHomeCallback)

@@ -28,7 +28,6 @@ import com.minar.birday.utilities.*
 import com.minar.birday.viewmodels.MainViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.util.*
@@ -354,7 +353,7 @@ class FavoritesFragment : Fragment() {
         val generator = StatsGenerator(events, context, astrologyDisabled)
         CoroutineScope(Dispatchers.IO).launch {
             val randomStat = generator.generateRandomStat()
-            fullStats = generator.generateFullStats()
+            fullStats = mainViewModel.fullStats
             act.runOnUiThread {
                 // Stop all UI updates if the fragment is not visible
                 if (!this@FavoritesFragment.isVisible) return@runOnUiThread
