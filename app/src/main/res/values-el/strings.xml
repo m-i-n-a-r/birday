@@ -308,6 +308,9 @@
     <string name="import_csv_description">Εισαγωγή από ένα αρχείο CSV. Ανατρέξτε στο wiki στο Github για την απαιτούμενη δομή αρχείου</string>
     <string name="export_csv_title">Εξαγωγή σε CSV</string>
     <string name="export_csv_description">Εξαγωγή κάθε συμβάντος σε αρχείο CSV, η εικόνα εξαιρείται</string>
+    <string name="add_demo_entries_title">Add demo entries</string>
+    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
+    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
     <string name="delete_db_title">Διαγραφή όλων των συμβάντων</string>
     <string name="delete_db_description">Απλώς, διαγράψτε τη Βάση Δεδομένων. Σκεφτείτε δύο φορές πριν κάνετε κλικ!</string>
     <string name="delete_db_dialog_title">Είστε σίγουρος/η;</string>

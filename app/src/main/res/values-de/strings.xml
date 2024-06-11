@@ -297,6 +297,9 @@
     <string name="import_csv_description">Importieren aus einer CSV-Datei. Konsultieren Sie das Wiki auf Github für die erforderliche Dateistruktur</string>
     <string name="export_csv_title">Als CSV-Datei exportieren</string>
     <string name="export_csv_description">Exportieren Sie jedes Ereignis in eine CSV-Datei, Bild ausgeschlossen</string>
+    <string name="add_demo_entries_title">Add demo entries</string>
+    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
+    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
     <string name="delete_db_title">Alle Events löschen</string>
     <string name="delete_db_description">Lösche die Datenbank. Überlege es dir zweimal bevor du klickst!</string>
     <string name="delete_db_dialog_title">Bist du dir sicher?</string>

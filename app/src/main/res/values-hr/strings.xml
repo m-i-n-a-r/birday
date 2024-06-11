@@ -311,6 +311,9 @@
     <string name="import_csv_description">Uvezi iz CSV datoteke. Pogledajte \'\'wiki\'\' na GitHubu za potrebnu strukturu datoteka</string>
     <string name="export_csv_title">Izvezi u CSV datoteku</string>
     <string name="export_csv_description">Izvezi svaki događaj u CSV datoteku, uključujući sliku</string>
+    <string name="add_demo_entries_title">Add demo entries</string>
+    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
+    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
     <string name="delete_db_title">Izbriši sve događaje</string>
     <string name="delete_db_description">Ovo će izbrisati cijelu podatkovnu bazu, razmislite dvaput prije nego kliknete!</string>
     <string name="delete_db_dialog_title">Jeste li sigurni?</string>

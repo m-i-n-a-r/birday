@@ -314,6 +314,9 @@
     <string name="import_csv_description">Importă dintr-un fișier CSV. Consultă wiki de pe Github pentru structura necesară a fișierului</string>
     <string name="export_csv_title">Exportare în CSV</string>
     <string name="export_csv_description">Exportă fiecare eveniment într-un fișier CSV, imaginea este exclusă</string>
+    <string name="add_demo_entries_title">Adaugă intrări demo</string>
+    <string name="add_demo_entries_description">Completează baza de date cu un set demo de evenimente, în principal actori și cifre istorice</string>
+    <string name="add_demo_entries_dialog_description">Acest lucru va adăuga permanent SUTE de evenimente în baza de date și este destinat pentru depanare. Nu va șterge niciun eveniment existent, dar dacă dorești să ștergi noile evenimente, va trebui să faci acest lucru manual. Mult noroc cu asta.</string>
     <string name="delete_db_title">Șterge toate evenimentele</string>
     <string name="delete_db_description">Pur și simplu, șterge BD. Gândește-te de două ori înainte de a da clic!</string>
     <string name="delete_db_dialog_title">Ești sigur?</string>

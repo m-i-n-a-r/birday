@@ -309,6 +309,9 @@
     <string name="import_csv_description">Importovať z CSV. Požadovanú štruktúru súborov nájdete na wiki Github</string>
     <string name="export_csv_title">Exportovať do CSV</string>
     <string name="export_csv_description">Exportovať každú udalosť (okrem obrázku) do CSV</string>
+    <string name="add_demo_entries_title">Add demo entries</string>
+    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
+    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
     <string name="delete_db_title">Odstrániť všetky udalosti</string>
     <string name="delete_db_description">Jednoducho povedané, vymaže celú databázu. Pred kliknutím si to dvakrát premyslite!</string>
     <string name="delete_db_dialog_title">Ste si istý?</string>
