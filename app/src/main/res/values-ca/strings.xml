@@ -113,6 +113,7 @@
     <string name="troubleshoot">Resolució de problemes i extra</string>
     <string name="battery_optimization_title">Desactivar l\'optimització de la bateria</string>
     <string name="battery_optimization_description">Obra la configuració per desactivar qualsevol optimització per a Birday. Útil si les notificacions no funcionen</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
     <string name="notification_sound_title">So de notificació</string>
     <string name="notification_sound_description">Drecera a la configuració del so de notificació, si t\'agrada el so predeterminat dels ocells</string>
     <string name="missing_permission_notifications">The notification permission was denied, and Birday can\'t send notifications! Activate the permission from settings.</string>
