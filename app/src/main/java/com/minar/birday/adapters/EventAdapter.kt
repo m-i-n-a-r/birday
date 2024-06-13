@@ -188,6 +188,7 @@ class EventAdapter(
                     Locale.getDefault()
                 ) else it.toString()
             }
+            // TODO Improve the eventDate row by adding the current age
             eventPerson.text = formattedPersonName
             eventDate.text = originalDate
 

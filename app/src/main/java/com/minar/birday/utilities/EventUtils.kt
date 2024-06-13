@@ -87,8 +87,14 @@ fun nextDateFormatted(event: EventResult, formatter: DateTimeFormatter, context:
     return event.nextDate.format(formatter) + ". " + formatDaysRemaining(daysRemaining, context)
 }
 
-// Return the remaining days or a string
+// Return the remaining days, properly formatted, including "yesterday" case
 fun formatDaysRemaining(daysRemaining: Int, context: Context): String {
+    // Special case: the event was yesterday
+    if (daysRemaining > 363) {
+        val previousOccurrence = LocalDate.now().plusDays(daysRemaining.toLong()).minusYears(1L)
+        val wasYesterday = LocalDate.now().toEpochDay().minus(previousOccurrence.toEpochDay()) == 1L
+        if (wasYesterday) return context.getString(R.string.yesterday)
+    }
     return when (daysRemaining) {
         // The -1 case should never happen
         -1 -> context.getString(R.string.yesterday)
@@ -164,7 +170,10 @@ fun formatEventList(
                     )
         }
         // If more than 3 events, just let the user know other events are in the list
-        if (events.indexOf(it) == 3) ", ${context.getString(R.string.event_others)}"
+        if (events.indexOf(it) > 2) {
+            formattedEventList += ", ${context.getString(R.string.event_others)}"
+            return@forEach
+        }
     }
     return formattedEventList
 }

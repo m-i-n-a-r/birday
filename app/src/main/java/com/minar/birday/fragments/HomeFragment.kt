@@ -469,6 +469,7 @@ class HomeFragment : Fragment() {
                 getNextYears(event)
             else if (event.type == EventCode.NAME_DAY.name) getString(R.string.name_day)
             else getString(R.string.unknown)
+            // Don't use the function in EventUtils since this assigns all the variables at once
             when (nextEvents.indexOf(event)) {
                 0 -> {
                     personName = formattedPersonName

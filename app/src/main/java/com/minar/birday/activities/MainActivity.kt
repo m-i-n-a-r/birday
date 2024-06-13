@@ -176,7 +176,7 @@ class MainActivity : AppCompatActivity() {
         val navigation = binding.navigation
 
         // Prepare the back home callback
-        val backHomeCallback = object: OnBackPressedCallback(enabled = false) {
+        val backHomeCallback = object : OnBackPressedCallback(enabled = false) {
             override fun handleOnBackPressed() {
                 binding.navigation.selectedItemId = R.id.navigationMain
                 navController.navigateWithOptions(R.id.navigationMain)
@@ -190,10 +190,12 @@ class MainActivity : AppCompatActivity() {
                     backHomeCallback.isEnabled = false
                     navController.navigateWithOptions(R.id.navigationMain)
                 }
+
                 R.id.navigationFavorites -> {
                     backHomeCallback.isEnabled = true
                     navController.navigateWithOptions(R.id.navigationFavorites)
                 }
+
                 R.id.navigationSettings -> {
                     backHomeCallback.isEnabled = true
                     navController.navigateWithOptions(R.id.navigationSettings)
@@ -272,6 +274,7 @@ class MainActivity : AppCompatActivity() {
         binding.navHostFragment.addInsetsByMargin(top = true, right = true, left = true)
         binding.bottomBar.addInsetsByPadding(bottom = true, left = true, right = true)
         binding.fab.addInsetsByMargin(bottom = true, halveInsets = true)
+        binding.fabDelete.addInsetsByMargin(bottom = true, halveInsets = true)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.navigation) { _, insets ->
             insets
