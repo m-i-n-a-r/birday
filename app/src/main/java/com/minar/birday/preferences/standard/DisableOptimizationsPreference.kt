@@ -26,9 +26,19 @@ class DisableOptimizationsPreference(context: Context, attrs: AttributeSet?) :
 
     override fun onClick(v: View) {
         try {
-            // TODO Toast message, or some other kind of guide
             val intent = Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
             context.startActivity(intent)
+            // Double tasty toast for a longer reading time
+            Toast.makeText(
+                context,
+                context.getString(R.string.battery_optimization_tutorial),
+                Toast.LENGTH_LONG
+            ).show()
+            Toast.makeText(
+                context,
+                context.getString(R.string.battery_optimization_tutorial),
+                Toast.LENGTH_LONG
+            ).show()
         } catch (e: Exception) {
             Toast.makeText(
                 context, context.getString(R.string.wtf), Toast.LENGTH_LONG
