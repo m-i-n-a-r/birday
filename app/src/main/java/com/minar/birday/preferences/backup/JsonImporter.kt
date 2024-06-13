@@ -10,12 +10,10 @@ import com.google.gson.GsonBuilder
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.model.Event
-import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.LocalDateJsonSerializer
 import com.minar.birday.utilities.normalizeEvent
 import java.time.LocalDate
 import java.util.*
-import kotlin.concurrent.thread
 
 
 class JsonImporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),

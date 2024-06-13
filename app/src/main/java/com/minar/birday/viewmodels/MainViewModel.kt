@@ -5,7 +5,6 @@ import android.content.Context
 import android.text.SpannableStringBuilder
 import androidx.lifecycle.*
 import androidx.preference.PreferenceManager
-import androidx.room.OnConflictStrategy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.minar.birday.model.Event

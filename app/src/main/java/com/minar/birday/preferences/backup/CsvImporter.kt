@@ -10,10 +10,14 @@ import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventCode
-import com.minar.birday.persistence.EventDatabase
-import com.minar.birday.utilities.*
+import com.minar.birday.utilities.COLUMN_DATE
+import com.minar.birday.utilities.COLUMN_NAME
+import com.minar.birday.utilities.COLUMN_NOTES
+import com.minar.birday.utilities.COLUMN_SURNAME
+import com.minar.birday.utilities.COLUMN_TYPE
+import com.minar.birday.utilities.COLUMN_YEAR_MATTER
+import com.minar.birday.utilities.normalizeEvent
 import java.time.LocalDate
-import kotlin.concurrent.thread
 
 
 class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
