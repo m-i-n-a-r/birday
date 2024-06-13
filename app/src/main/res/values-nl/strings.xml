@@ -322,4 +322,7 @@
     <string name="advanced_overview_title">Geavanceerd overzicht</string>
     <string name="advanced_overview_description_off">Het overzichtsscherm toont alleen basisinformatie</string>
     <string name="advanced_overview_description_on">Het overzichtsscherm toont andere jaren en gedetailleerde informatie</string>
+    <string name="replace_on_conflict_title">Replace on conflict</string>
+    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
+    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
 </resources>
