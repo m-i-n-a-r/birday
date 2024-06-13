@@ -47,6 +47,7 @@ import nl.dionsegijn.konfetti.models.Size
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.time.temporal.ChronoUnit
+import java.util.Locale
 
 
 class HomeFragment : Fragment() {
@@ -54,6 +55,7 @@ class HomeFragment : Fragment() {
     private lateinit var adapter: EventAdapter
     lateinit var act: MainActivity
     lateinit var sharedPrefs: SharedPreferences
+    private val emptyString = ""
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -122,7 +124,7 @@ class HomeFragment : Fragment() {
                     start()
                 }
             } else {
-                searchBar.setText("")
+                searchBar.setText(emptyString)
             }
         }
         searchBarLayout.setEndIconOnClickListener(listener)
@@ -365,7 +367,10 @@ class HomeFragment : Fragment() {
                 requireContext()
             )
             else "${getString(R.string.next_age)} ${getNextYears(event)}, " +
-                    formatDaysRemaining(getRemainingDays(event.nextDate!!), requireContext())
+                    formatDaysRemaining(
+                        getRemainingDays(event.nextDate!!),
+                        requireContext()
+                    ).replaceFirstChar { it.lowercase(Locale.ROOT) }
         act.showSnackbar(quickStat)
     }
 
@@ -387,7 +392,7 @@ class HomeFragment : Fragment() {
             cardDescription.text = getString(R.string.no_next_event_description)
         } else {
             cardTitle.text = getString(R.string.search_no_result_title)
-            cardSubtitle.text = ""
+            cardSubtitle.text = emptyString
             cardDescription.text = getString(R.string.search_no_result_description)
             placeholder.text = getString(R.string.search_no_result_title)
         }
