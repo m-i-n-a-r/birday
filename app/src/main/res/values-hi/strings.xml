@@ -109,6 +109,7 @@
     <string name="troubleshoot">समस्या निवारण और अतिरिक्त</string>
     <string name="battery_optimization_title">बैटरी अनुकूलन बंद करें</string>
     <string name="battery_optimization_description">बर्डे के लिए किसी भी अनुकूलन को बंद करने के लिए सेटिंग्स खोलें। उपयोगी है अगर नोटिफिकेशन काम नहीं कर रहे हैं</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
     <string name="notification_sound_title">नोटिफिकेशन ध्वनि</string>
     <string name="notification_sound_description">नोटिफिकेशन ध्वनि सेटिंग का शॉर्टकट, यदि आपको डिफ़ॉल्ट पक्षी ध्वनि पसंद नहीं है</string>
     <string name="missing_permission_notifications">अधिसूचना भेजने की आज्ञा प्राप्त नहीं हो सकी और बर्डे अधिसूचनाएं नहीं भेज पा रहा ! क्रपया सेटिंग्स में जाकर आज्ञा प्रदान करें |</string>
