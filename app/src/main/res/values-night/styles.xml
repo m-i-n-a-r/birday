@@ -5,6 +5,7 @@
 
     <style name="AppTheme.Base" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:colorBackground">@color/colorBackgroundInverse</item>
+        <item name="colorSurfaceContainerLow">@color/colorBackgroundInverse</item>
         <item name="android:textColorPrimary">@color/textColorPrimaryInverse</item>
         <item name="colorOnPrimary">@color/colorBackground</item>
         <item name="android:textColorSecondary">@color/textColorSecondaryInverse</item>

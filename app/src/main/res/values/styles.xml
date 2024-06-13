@@ -6,6 +6,7 @@
     <style name="AppTheme.Base" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorSurfaceContainerLow">@color/colorBackground</item>
         <item name="colorOnPrimary">@color/deepGray</item>
         <item name="colorPrimary">@color/colorAccent</item>
         <item name="colorPrimaryContainer">@color/colorAccentTranslucent</item>
@@ -43,7 +44,7 @@
         </item>
         <item name="alertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog.Monet</item>
         <item name="switchStyle">@style/Widget.Material3.CompoundButton.MaterialSwitch</item>
-        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog.Monet</item>
     </style>
 
     <!-- Splash screen theme -->
@@ -71,10 +72,9 @@
     <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
         <item name="dialogCornerRadius">@dimen/rounded_corners</item>
-        <item name="android:background">@drawable/dialog_bg_monet</item>
-        <!-- Remove the accent-ish tint TODO Useless since every dialog has this tint now
+        <!-- Remove the accent-ish tint -->
         <item name="backgroundTint">?colorBackgroundFloating</item>
-        <item name="android:background">?colorBackgroundFloating</item> -->
+        <item name="android:background">?colorBackgroundFloating</item>
     </style>
 
     <!-- Preference dialog Monet theme -->
@@ -120,8 +120,19 @@
         <item name="startIconTint">?attr/colorOutline</item>
     </style>
 
-    <!-- Make Bottom Sheet edge to edge -->
+    <!-- Bottom sheet, normal and edge to edge -->
+    <style name="ModalBottomSheetDialog" parent="Widget.Material3.BottomSheet.Modal">
+        <!-- Remove the accent-ish tint -->
+        <item name="backgroundTint">?colorSurfaceContainerLow</item>
+    </style>
+
     <style name="ThemeOverlay.App.BottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="bottomSheetStyle">@style/ModalBottomSheetDialog</item>
+    </style>
+
+    <!-- Bottom sheet, monet and edge to edge -->
+    <style name="ThemeOverlay.App.BottomSheetDialog.Monet" parent="ThemeOverlay.Material3.BottomSheetDialog">
         <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
