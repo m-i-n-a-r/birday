@@ -107,6 +107,7 @@
     <string name="troubleshoot">Khắc phục sự cố</string>
     <string name="battery_optimization_title">Tắt tối ưu hóa pin</string>
     <string name="battery_optimization_description">Mở cài đặt để tắt mọi tối ưu hóa cho Birday. Hữu ích nếu thông báo không hoạt động</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
     <string name="notification_sound_title">Âm thanh thông báo</string>
     <string name="notification_sound_description">Phím tắt đến cài đặt âm thanh thông báo, nếu bạn không thích tiếng chim mặc định</string>
     <string name="missing_permission_notifications">The notification permission was denied, and Birday can\'t send notifications! Activate the permission from settings.</string>
