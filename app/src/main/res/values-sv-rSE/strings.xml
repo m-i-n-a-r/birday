@@ -313,7 +313,7 @@
     <string name="advanced_overview_title">Avancerad översikt</string>
     <string name="advanced_overview_description_off">Översiktsskärmen visar bara grundläggande information</string>
     <string name="advanced_overview_description_on">Översiktsskärmen visar andra år och detaljerad information</string>
-    <string name="replace_on_conflict_title">Replace on conflict</string>
-    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
-    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+    <string name="replace_on_conflict_title">Ersätt vid konflikt</string>
+    <string name="replace_on_conflict_description_off">Vid import kommer en duplicerad händelse inte att ersättas av den importerade dubbletten</string>
+    <string name="replace_on_conflict_description_on">Vid import kommer en duplicerad händelse att skrivas över av den importerade dubbletten</string>
 </resources>
