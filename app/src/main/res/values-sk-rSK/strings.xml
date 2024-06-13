@@ -325,4 +325,7 @@
     <string name="advanced_overview_title">Pokročilý prehľad</string>
     <string name="advanced_overview_description_off">Na obrazovke prehľadu sa zobrazia len základné informácie</string>
     <string name="advanced_overview_description_on">Na obrazovke prehľadu sa zobrazia ďalšie roky a podrobné informácie</string>
+    <string name="replace_on_conflict_title">Replace on conflict</string>
+    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
+    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
 </resources>
