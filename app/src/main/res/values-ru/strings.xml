@@ -333,4 +333,7 @@
     <string name="advanced_overview_title">Расширенный обзор</string>
     <string name="advanced_overview_description_off">На экране обзора будет отображаться только основная информация</string>
     <string name="advanced_overview_description_on">На экране обзора будут показаны другие годы и подробная информация</string>
+    <string name="replace_on_conflict_title">Replace on conflict</string>
+    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
+    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
 </resources>
