@@ -92,7 +92,7 @@ class OverviewFragment : Fragment() {
             setSnackBarsDuration(5000, false)
             setSnackBarsPrefix(R.plurals.event, plural = true, false)
             setSundayHighlight(TcSundayHighlight.BOLDCOLORED, false)
-            setSnackBarBaseView(act.findViewById(R.id.bottomBar)) // TODO Use binding
+            setSnackBarBaseView(act.binding.bottomBar)
         }
 
         // Manage the advanced views and buttons

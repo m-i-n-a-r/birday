@@ -70,7 +70,7 @@ import kotlin.concurrent.thread
 class MainActivity : AppCompatActivity() {
     val mainViewModel: MainViewModel by viewModels()
     private lateinit var sharedPrefs: SharedPreferences
-    private lateinit var binding: ActivityMainBinding
+    internal lateinit var binding: ActivityMainBinding
 
     companion object {
         val GestureInterpolator = PathInterpolatorCompat.create(0f, 0f, 0f, 1f)
