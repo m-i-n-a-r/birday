@@ -113,6 +113,7 @@
     <string name="troubleshoot">Odstraňovanie problémov a ďalšie</string>
     <string name="battery_optimization_title">Zakázať optimalizáciu batérie</string>
     <string name="battery_optimization_description">Ak nefungujú upozornenia, otvorte nastavenie a deaktivujte akúkoľvek optimalizáciu batérie pre Birday</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
     <string name="notification_sound_title">Zvuk upozornení</string>
     <string name="notification_sound_description">Zmeniť nastavenie zvuku upozornení, ak sa vám nepáči predvolený zvuk vtáčikov</string>
     <string name="missing_permission_notifications">Oprávnenie na prístup k upozorneniam bolo zamietnuté. Birday vás nebude môcť upozorniť na udalosti. Povoľte prosím oprávnenie v nastaveniach smartfónu!</string>
