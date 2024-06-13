@@ -298,12 +298,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Only the next events, without considering the search string, ordered
-        val astrologyDisabled = sharedPrefs.getBoolean("disable_astrology", false)
         mainViewModel.allEventsUnfiltered.observe(this)
         {
             // Update the widgets and the stats, to avoid strange behaviors when searching
             updateWidget()
-            mainViewModel.getStats(it, this, astrologyDisabled)
+            mainViewModel.getStats(it, this)
         }
 
         onBackPressedDispatcher.addCallback(this, backHomeCallback)

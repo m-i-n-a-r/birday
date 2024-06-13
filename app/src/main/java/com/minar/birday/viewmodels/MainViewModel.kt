@@ -5,6 +5,7 @@ import android.content.Context
 import android.text.SpannableStringBuilder
 import androidx.lifecycle.*
 import androidx.preference.PreferenceManager
+import androidx.room.OnConflictStrategy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.minar.birday.model.Event
@@ -58,8 +59,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     // Launching new coroutines to insert the data in a non-blocking way
 
-    fun getStats(events: List<EventResult>, context: Context, astrologyDisabled: Boolean) =
+    fun getStats(events: List<EventResult>, context: Context) =
         viewModelScope.launch(Dispatchers.IO) {
+            val astrologyDisabled = sharedPrefs.getBoolean("disable_astrology", false)
             val generator = StatsGenerator(events, context, astrologyDisabled)
             fullStats.postValue(generator.generateFullStats())
         }
@@ -68,11 +70,15 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         eventDao.getOrderedFavoriteEvents()
 
     fun insert(event: Event) = viewModelScope.launch(Dispatchers.IO) {
-        eventDao.insertEvent(event)
+        val replaceOnConflict = sharedPrefs.getBoolean("replace_on_conflict", true)
+        if (replaceOnConflict)
+            eventDao.insertEventReplace(event) else eventDao.insertEventIgnore(event)
     }
 
     fun insertAll(events: List<Event>) = viewModelScope.launch(Dispatchers.IO) {
-        eventDao.insertAllEvent(events)
+        val replaceOnConflict = sharedPrefs.getBoolean("replace_on_conflict", true)
+        if (replaceOnConflict)
+            eventDao.insertAllEventReplace(events) else eventDao.insertAllEventIgnore(events)
     }
 
     fun delete(event: Event) = viewModelScope.launch(Dispatchers.IO) {
@@ -84,7 +90,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun update(event: Event) = viewModelScope.launch(Dispatchers.IO) {
-        eventDao.updateEvent(event)
+        val replaceOnConflict = sharedPrefs.getBoolean("replace_on_conflict", true)
+        if (replaceOnConflict)
+            eventDao.updateEventReplace(event) else eventDao.updateEventIgnore(event)
     }
 
     // Schedule the next work for the specified hour, nothing will happen if there's no event

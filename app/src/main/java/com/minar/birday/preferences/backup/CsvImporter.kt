@@ -38,7 +38,6 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
         val fileStream = context.contentResolver.openInputStream(fileUri)!!
         val csvString = fileStream.bufferedReader().use { it.readText() }
         val csvList = csvString.split('\n')
-        val eventDao = EventDatabase.getBirdayDatabase(context).eventDao()
         val eventList = mutableListOf<Event>()
         var columnsMapping: Map<String, Int>? = null
         try {
@@ -95,9 +94,7 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
             }
 
             // Bulk insert, using the standard duplicate detection strategy
-            thread {
-                eventDao.insertAllEvent(eventList)
-            }
+            act.mainViewModel.insertAll(eventList)
             // Done. There's no need to restart the app
             fileStream.close()
             (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_success))
