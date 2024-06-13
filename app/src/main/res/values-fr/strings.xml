@@ -313,4 +313,7 @@
     <string name="advanced_overview_title">Aperçu avancé</string>
     <string name="advanced_overview_description_off">L\'écran d\'aperçu n\'affichera que les informations de base</string>
     <string name="advanced_overview_description_on">L\'écran d\'aperçu montrera d\'autres années et des informations détaillées</string>
+    <string name="replace_on_conflict_title">Replace on conflict</string>
+    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
+    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
 </resources>
