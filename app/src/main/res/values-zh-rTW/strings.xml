@@ -309,4 +309,7 @@
     <string name="advanced_overview_title">高級概述</string>
     <string name="advanced_overview_description_off">概覽螢幕將只顯示基本資訊</string>
     <string name="advanced_overview_description_on">概覽螢幕將顯示其他年份和詳細資訊</string>
+    <string name="replace_on_conflict_title">Replace on conflict</string>
+    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
+    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
 </resources>
