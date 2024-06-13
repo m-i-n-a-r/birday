@@ -5,7 +5,7 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.TimeInterpolator
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
-import androidx.core.view.ViewCompat
+import androidx.core.view.postOnAnimationDelayed
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
@@ -98,7 +98,7 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
             }
             if (removalsPending) {
                 val view = moves[0].holder.itemView
-                ViewCompat.postOnAnimationDelayed(view, mover, removeDuration)
+                view.postOnAnimationDelayed(removeDuration) { mover.run() }
             } else {
                 mover.run()
             }
@@ -118,7 +118,7 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
             }
             if (removalsPending) {
                 val holder = changes[0].oldHolder
-                ViewCompat.postOnAnimationDelayed(holder!!.itemView, changer, removeDuration)
+                holder!!.itemView.postOnAnimationDelayed(removeDuration) { changer.run() }
             } else {
                 changer.run()
             }
@@ -142,7 +142,7 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
                 val changeDuration = if (changesPending) changeDuration else 0
                 val totalDelay = removeDuration + moveDuration.coerceAtLeast(changeDuration)
                 val view = additions[0].itemView
-                ViewCompat.postOnAnimationDelayed(view, adder, totalDelay)
+                view.postOnAnimationDelayed(totalDelay) { adder.run() }
             } else {
                 adder.run()
             }
