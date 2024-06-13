@@ -18,7 +18,6 @@ import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventDataItem
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.formatName
-import com.minar.birday.utilities.getNextYears
 import com.minar.birday.utilities.getReducedDate
 import com.minar.birday.utilities.getYears
 import com.minar.birday.utilities.setEventImageOrPlaceholder
@@ -29,7 +28,7 @@ import kotlinx.coroutines.launch
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.time.format.TextStyle
-import java.util.*
+import java.util.Locale
 
 private const val ITEM_VIEW_TYPE_HEADER = 0
 private const val ITEM_VIEW_TYPE_EVENT = 1
