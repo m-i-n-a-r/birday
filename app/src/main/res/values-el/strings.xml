@@ -324,4 +324,7 @@
     <string name="advanced_overview_title">Προηγμένη επισκόπηση</string>
     <string name="advanced_overview_description_off">Η οθόνη επισκόπησης θα εμφανίζει μόνο βασικές πληροφορίες</string>
     <string name="advanced_overview_description_on">Η οθόνη επισκόπησης θα εμφανίσει άλλα έτη και λεπτομερείς πληροφορίες</string>
+    <string name="replace_on_conflict_title">Replace on conflict</string>
+    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
+    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
 </resources>
