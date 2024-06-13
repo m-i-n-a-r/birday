@@ -315,4 +315,7 @@
     <string name="advanced_overview_title">Részletes áttekintés</string>
     <string name="advanced_overview_description_off">Az áttekintő képernyő csak az alapvető információkat jeleníti meg</string>
     <string name="advanced_overview_description_on">Az áttekintő képernyő más éveket és részletes információkat mutat</string>
+    <string name="replace_on_conflict_title">Replace on conflict</string>
+    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
+    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
 </resources>

@@ -327,4 +327,7 @@
     <string name="advanced_overview_title">Napredni sažetak</string>
     <string name="advanced_overview_description_off">U sažetku će se prikazivati samo osnovne informacije</string>
     <string name="advanced_overview_description_on">U sažetku će se prikazivati i ostale godine i detaljne informacije</string>
+    <string name="replace_on_conflict_title">Replace on conflict</string>
+    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
+    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
 </resources>

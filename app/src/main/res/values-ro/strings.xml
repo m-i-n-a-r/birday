@@ -330,4 +330,7 @@
     <string name="advanced_overview_title">Prezentare avansată</string>
     <string name="advanced_overview_description_off">Ecranul de ansamblu va afișa doar informațiile de bază</string>
     <string name="advanced_overview_description_on">Ecranul de ansamblu va arăta alți ani și informații detaliate</string>
+    <string name="replace_on_conflict_title">Înlocuiește la conflict</string>
+    <string name="replace_on_conflict_description_off">Atunci când se importă, un eveniment duplicat nu va fi înlocuit cu duplicatul importat</string>
+    <string name="replace_on_conflict_description_on">Atunci când se importă, un eveniment duplicat va fi înlocuit cu duplicatul importat</string>
 </resources>
