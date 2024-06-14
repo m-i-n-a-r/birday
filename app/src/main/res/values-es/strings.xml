@@ -109,7 +109,7 @@
     <string name="troubleshoot">Solucionar problemas</string>
     <string name="battery_optimization_title">Deshabilitar la optimización de la batería</string>
     <string name="battery_optimization_description">Abra la configuración para deshabilitar cualquier optimización para Birday. Útil si las notificaciones no funcionan</string>
-    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
+    <string name="battery_optimization_tutorial">- Muestra todas las aplicaciones y encuentra Birday en la lista\n- Pulsa en Birday y selecciona \"No optimizar\"</string>
     <string name="notification_sound_title">Sonido de notificación</string>
     <string name="notification_sound_description">Acceso directo a la configuración de sonido de notificación, si no te gusta el sonido de pájaro predeterminado</string>
     <string name="missing_permission_notifications">¡El permiso de notificación fue denegado, y Birday no puede enviar notificaciones! Activa el permiso desde la configuración.</string>
@@ -314,7 +314,7 @@
     <string name="advanced_overview_title">Resumen avanzado</string>
     <string name="advanced_overview_description_off">La pantalla de resumen solo mostrará información básica</string>
     <string name="advanced_overview_description_on">La pantalla de resumen mostrará otros años e información detallada</string>
-    <string name="replace_on_conflict_title">Replace on conflict</string>
-    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
-    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+    <string name="replace_on_conflict_title">Reemplazar cuando haya conflicto</string>
+    <string name="replace_on_conflict_description_off">Cuando se importa, un evento duplicado no será reemplazado por el duplicado importado</string>
+    <string name="replace_on_conflict_description_on">Cuando se importa, un evento duplicado será sobrescrito por el duplicado importado</string>
 </resources>
