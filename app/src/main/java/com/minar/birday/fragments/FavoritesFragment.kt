@@ -300,6 +300,7 @@ class FavoritesFragment : Fragment() {
 
         // Native dialog
         MaterialAlertDialogBuilder(act)
+            .setView(dialogNotesBinding.root)
             .setTitle(notesTitle)
             .setIcon(R.drawable.ic_note_24dp)
             .setPositiveButton(resources.getString(android.R.string.ok)) { dialog, _ ->
@@ -321,7 +322,6 @@ class FavoritesFragment : Fragment() {
             .setNegativeButton(resources.getString(android.R.string.cancel)) { dialog, _ ->
                 dialog.dismiss()
             }
-            .setView(dialogNotesBinding.root)
             .show()
     }
 

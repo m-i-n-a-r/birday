@@ -130,7 +130,7 @@ class HomeFragment : Fragment() {
         searchBarLayout.setEndIconOnClickListener(listener)
         searchBar.addTextChangedListener { text ->
             mainViewModel.searchStringChanged(text.toString())
-            if (text.isNullOrBlank()) searchBarLayout.setEndIconDrawable(R.drawable.ic_arrow_right_24dp)
+            if (text.isNullOrBlank()) searchBarLayout.setEndIconDrawable(R.drawable.ic_arrow_left_24dp)
             else searchBarLayout.setEndIconDrawable(R.drawable.ic_clear_24dp)
         }
 
