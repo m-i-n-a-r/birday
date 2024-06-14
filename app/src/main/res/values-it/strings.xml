@@ -109,6 +109,7 @@
     <string name="troubleshoot">Risoluzione dei problemi</string>
     <string name="battery_optimization_title">Disabilita ottimizzazione batteria</string>
     <string name="battery_optimization_description">Apri le impostazioni per disabilitare le ottimizzazioni per Birday. Utile se le notifiche non funzionano</string>
+    <string name="battery_optimization_tutorial">- Mostra tutte le app e trova Birday nella lista\n- Tocca Birday e seleziona \"Non ottimizzare\"</string>
     <string name="notification_sound_title">Suono di notifica</string>
     <string name="notification_sound_description">Scorciatoia per le impostazioni del suono di notifica, se non ti piace il suono dell\'uccellino di default</string>
     <string name="missing_permission_notifications">Il permesso per le notifiche è stato negato, e Birday non può inviare notifiche! Attivalo dalle impostazioni.</string>

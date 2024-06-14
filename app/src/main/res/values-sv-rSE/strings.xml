@@ -109,6 +109,7 @@
     <string name="troubleshoot">Felsökning</string>
     <string name="battery_optimization_title">Inaktivera batterioptimering</string>
     <string name="battery_optimization_description">Öppna inställningarna för att inaktivera eventuell optimering för Birday. Användbart om aviseringar inte fungerar</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
     <string name="notification_sound_title">Notifikations ljud</string>
     <string name="notification_sound_description">Genväg till inställningarna för meddelandeljud om du inte gillar standard fågelljud</string>
     <string name="missing_permission_notifications">Behörigheten för aviseringen nekades, och Birday kan inte skicka aviseringar! Aktivera behörigheten från inställningarna.</string>

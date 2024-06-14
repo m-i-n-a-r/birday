@@ -107,6 +107,7 @@
     <string name="troubleshoot">疑难解答</string>
     <string name="battery_optimization_title">禁用电池优化</string>
     <string name="battery_optimization_description">打开设置以禁用 Birday 的任何优化。 如果通知不起作用，则很有用</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
     <string name="notification_sound_title">通知声音</string>
     <string name="notification_sound_description">通知声音设置的快捷方式，如果您不喜欢默认的鸟声</string>
     <string name="missing_permission_notifications">發送通知許可被拒絕了，因此 Birday 並不能發送通知！請在設置裡開啟許可。</string>

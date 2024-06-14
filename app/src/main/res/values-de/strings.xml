@@ -109,6 +109,7 @@
     <string name="troubleshoot">Fehlerbehebung</string>
     <string name="battery_optimization_title">Batterieoptimierung deaktivieren</string>
     <string name="battery_optimization_description">Öffnen Sie die Einstellungen, um jegliche Optimierung für Birday zu deaktivieren. Nützlich, wenn Benachrichtigungen nicht funktionieren</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
     <string name="notification_sound_title">Benachrichtigungston</string>
     <string name="notification_sound_description">Verknüpfung zu den Benachrichtigungstoneinstellungen, wenn Ihnen der Standard-Vogelton nicht gefällt</string>
     <string name="missing_permission_notifications">Die Benachrichtigungs-Berechtigung wurde verweigert und Birday kann keine Benachrichtigungen senden! Aktiviere die Berechtigung in den Einstellungen.</string>

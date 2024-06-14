@@ -111,6 +111,7 @@
     <string name="troubleshoot">Resolução de problemas</string>
     <string name="battery_optimization_title">Desative a otimização da bateria</string>
     <string name="battery_optimization_description">Abra as definições e desative quaisquer otimizações para Birday. Útil se as notificações não estiverem a funcionar</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
     <string name="notification_sound_title">Som de notificação</string>
     <string name="notification_sound_description">Atalho para as definições de som das notificações, se você não gostar do som padrão</string>
     <string name="missing_permission_notifications">A permissão de notificação foi recusada e o Birday não pode enviar notificações! Ative a permissão nas configurações.</string>

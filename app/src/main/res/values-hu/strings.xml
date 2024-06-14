@@ -109,6 +109,7 @@
     <string name="troubleshoot">Hibaelhárítás</string>
     <string name="battery_optimization_title">Az akkumulátor optimalizálás letiltása</string>
     <string name="battery_optimization_description">Nyissa meg a beállításokat a Birday optimalizálásának letiltásához</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
     <string name="notification_sound_title">Értesítési hang</string>
     <string name="notification_sound_description">Parancsikon az értesítési hangbeállításokhoz, ha nem tetszik az alapértelmezett madárhang</string>
     <string name="missing_permission_notifications">Az értesítés engedély nem lett elfogadva, és Birday nem tud értesítést küldeni! Engedélyezd az értesítéseket a beállításokból, különben Birday morcos lesz!</string>

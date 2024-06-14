@@ -115,6 +115,7 @@
     <string name="troubleshoot">Решавање проблема и додатно</string>
     <string name="battery_optimization_title">Онемогућите оптимизацију батерије</string>
     <string name="battery_optimization_description">Пречица до подешавања да бисте онемогућили било коју оптимизацију за Birday. Корисно ако обавештења не раде</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
     <string name="notification_sound_title">Звук обавештења</string>
     <string name="notification_sound_description">Пречица до подешавања звука обавештења, ако вам се не свиђа подразумевани звук птице</string>
     <string name="missing_permission_notifications">The notification permission was denied, and Birday can\'t send notifications! Activate the permission from settings.</string>

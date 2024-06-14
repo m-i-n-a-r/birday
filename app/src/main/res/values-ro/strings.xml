@@ -115,6 +115,7 @@
     <string name="troubleshoot">Depanați</string>
     <string name="battery_optimization_title">Dezactivează optimizarea bateriei</string>
     <string name="battery_optimization_description">Deschide setările pentru a dezactiva orice optimizare pentru Birday. Util dacă notificările nu funcționează</string>
+    <string name="battery_optimization_tutorial">- Afișează toate aplicațiile și găsește Birday în listă\n- Apasă pe Birday și selectează \"Nu optimiza\"</string>
     <string name="notification_sound_title">Sunet de notificare</string>
     <string name="notification_sound_description">Comandă rapidă la setările sunetului de notificare, dacă nu vă place sunetul implicit al păsărilor</string>
     <string name="missing_permission_notifications">Permisiunea de notificare a fost refuzată, iar Birday nu poate trimite notificări! Activați permisiunea din setări.</string>

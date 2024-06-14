@@ -112,6 +112,7 @@
     <string name="troubleshoot">Rješavanje problema</string>
     <string name="battery_optimization_title">Onemogućite optimizaciju baterije</string>
     <string name="battery_optimization_description">Prečac do postavki za onemogućavanje uštede baterije za Birday. Korisno ako obavijesti ne funkcioniraju</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
     <string name="notification_sound_title">Zvuk obavijesti</string>
     <string name="notification_sound_description">Prečac do postavki zvuka obavijesti, ako vam se ne sviđa zadani zvuk ptica</string>
     <string name="missing_permission_notifications">Dopuštenje za obavijesti nije dano, te ih Birday ne može prikazati! Aktivirajte dopuštenje u postavkama.</string>

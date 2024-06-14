@@ -113,6 +113,7 @@
     <string name="troubleshoot">Усунення несправностей та ін.</string>
     <string name="battery_optimization_title">Вимкнути оптимізацію батареї</string>
     <string name="battery_optimization_description">Відкрийте налаштування щоб вимкнути будь-яку оптимізацію для Birday. Корисно якщо не працюють сповіщння </string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
     <string name="notification_sound_title">Звук сповіщень</string>
     <string name="notification_sound_description">Ярлик до налаштувань звуку сповіщень, якщо вам не подобається звук пташки за замовчуванням</string>
     <string name="missing_permission_notifications">Дозвіл надсилати сповіщення відхилено, тому Birday не може надсилати сповіщення! Надайте дозвіл вручну в налаштуваннях.</string>

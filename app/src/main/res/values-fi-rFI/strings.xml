@@ -113,6 +113,7 @@
     <string name="troubleshoot">Vianmääritys ja muut</string>
     <string name="battery_optimization_title">Ota akun käytön optimointi pois käytöstä</string>
     <string name="battery_optimization_description">Avaa asetukset, jotta voit poistaa käytöstä akun optimoinnin Birdaylle. Hyödyllinen, jos ilmoitukset eivät toimi</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
     <string name="notification_sound_title">Ilmoituksen ääni</string>
     <string name="notification_sound_description">Pikakuvake ilmoitusääni-asetuksiin, jos et pidä oletus-lintuäänestä</string>
     <string name="missing_permission_notifications">Ilmoituslupa on kielletty, eikä Birday voi lähettää ilmoituksia! Anna käyttöoikeudet asetuksista.</string>

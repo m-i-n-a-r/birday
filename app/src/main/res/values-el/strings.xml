@@ -113,6 +113,7 @@
     <string name="troubleshoot">Αντιμετώπιση προβλημάτων και πολλά άλλα</string>
     <string name="battery_optimization_title">Απενεργοποίηση βελτιστοποίησης μπαταρίας</string>
     <string name="battery_optimization_description">Ανοίξτε τις ρυθμίσεις για να απενεργοποιήσετε οποιαδήποτε βελτιστοποίηση για τo Birday. Χρήσιμo εάν οι ειδοποιήσεις δεν λειτουργούν</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
     <string name="notification_sound_title">Ήχος ειδοποίησης</string>
     <string name="notification_sound_description">Συντόμευση στις ρυθμίσεις ήχου ειδοποίησης, αν δεν σας αρέσει ο προεπιλεγμένος ήχος πουλιών</string>
     <string name="missing_permission_notifications">Το δικαίωμα ειδοποίησης απορρίφθηκε και το Birday δεν μποροεί να στείλει ειδοποιήσεις! Ενεργοποιήστε το δικαίωμα από τις ρυθμίσεις.</string>

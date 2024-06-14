@@ -109,6 +109,7 @@
     <string name="troubleshoot">समस्यानिवारण आणि अतिरिक्त</string>
     <string name="battery_optimization_title">बॅटरी ऑप्टिमायझेशन अक्षम करा</string>
     <string name="battery_optimization_description">Birday साठी कोणतेही ऑप्टिमायझेशन अक्षम करण्यासाठी सेटिंग्ज उघडा. सूचना कार्य करत नसल्यास उपयुक्त</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
     <string name="notification_sound_title">सूचना आवाज</string>
     <string name="notification_sound_description">तुम्हाला डिफॉल्ट पक्षी आवाज आवडत नसल्यास, सूचना आवाज सेटिंग्जचा शॉर्टकट</string>
     <string name="missing_permission_notifications">The notification permission was denied, and Birday can\'t send notifications! Activate the permission from settings.</string>
