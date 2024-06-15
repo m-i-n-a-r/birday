@@ -13,7 +13,6 @@ android {
         compileSdk 34
         versionCode 28
         versionName "4.4.0"
-        resourceConfigurations += ['en', 'ca', 'cs', 'de', 'el', 'es', 'fr', 'hi', 'hr', 'hu', 'it', 'ml', 'mr', 'nl', 'pl', 'pt', 'pt-rBR', 'ro', 'ru', 'sr', 'sv-rSE', 'uk-rUA', 'vi', 'zh-rTW', 'zh-rCN']
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -22,6 +21,10 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    androidResources {
+        generateLocaleConfig true
     }
 
     compileOptions {
