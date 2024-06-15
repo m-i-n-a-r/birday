@@ -186,9 +186,11 @@ class InsertEventBottomSheet(
                     // Automatically uncheck "the year matters" for name days
                     if (typeValue == EventCode.NAME_DAY.name) {
                         countYear.isChecked = false
+                        countYear.isEnabled = false
                         countYearValue = false
                     } else {
                         countYear.isChecked = true
+                        countYear.isEnabled = true
                         countYearValue = true
                     }
                     if (!imageChosen)
