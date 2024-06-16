@@ -75,7 +75,6 @@
                     style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/dialer"
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/dialer"
                     app:icon="@drawable/ic_apps_dialer_24dp" />
@@ -85,7 +84,6 @@
                     style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/text_message"
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/text_message"
                     app:icon="@drawable/ic_apps_messages_24dp" />
@@ -95,7 +93,6 @@
                     style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/email"
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/email"
                     app:icon="@drawable/ic_apps_email_24dp" />
@@ -105,7 +102,6 @@
                     style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/whatsapp"
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/whatsapp"
                     app:icon="@drawable/ic_apps_whatsapp_24dp" />
@@ -115,7 +111,6 @@
                     style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/telegram"
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/telegram"
                     app:icon="@drawable/ic_apps_telegram_24dp" />
@@ -125,7 +120,6 @@
                     style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/instagram"
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/instagram"
                     app:icon="@drawable/ic_instagram_black_24dp" />
@@ -135,7 +129,6 @@
                     style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/messenger"
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/messenger"
                     app:icon="@drawable/ic_apps_messenger_24dp" />
@@ -145,7 +138,6 @@
                     style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/viber"
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/viber"
                     app:icon="@drawable/ic_apps_viber_24dp" />
@@ -155,10 +147,18 @@
                     style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/signal"
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/signal"
                     app:icon="@drawable/ic_apps_signal_24dp" />
+
+                <Button
+                    android:id="@+id/threemaButton"
+                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="@dimen/in_row_button_padding"
+                    android:text="@string/threema"
+                    app:icon="@drawable/ic_apps_threema_24dp" />
 
             </LinearLayout>
 

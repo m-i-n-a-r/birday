@@ -14,6 +14,7 @@
         <package android:name="org.thoughtcrime.securesms" />
         <package android:name="com.instagram.android" />
         <package android:name="com.facebook.orca" />
+        <package android:name="ch.threema.app" />
     </queries>
 
     <uses-permission android:name="android.permission.VIBRATE" />
