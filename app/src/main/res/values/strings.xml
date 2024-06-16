@@ -75,6 +75,7 @@
     <string name="system_theme">System default</string>
     <string name="dark_theme">Dark</string>
     <string name="light_theme">Light</string>
+    <string name="black_theme" translatable="false">Amoled</string>
     <string name="shimmer_name">Shimmer effect</string>
     <string name="shimmer_description_on">A shiny animation here and there</string>
     <string name="shimmer_description_off">No additional graphic effects</string>

@@ -45,6 +45,13 @@
         <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
     </style>
 
+    <!-- Black theme -->
+    <style name="AppTheme.PerfectDark" parent="AppTheme.Base">
+        <item name="android:colorBackground">@android:color/black</item>
+        <item name="colorSurfaceContainerLow">@android:color/black</item>
+        <item name="colorSurface">@android:color/black</item>
+    </style>
+
     <!-- Splash screen theme -->
     <style name="SplashTheme" parent="SplashTheme.Night.Legacy" />
 

@@ -122,7 +122,7 @@ class MainActivity : AppCompatActivity() {
         // Set the base theme and the accent
         when (theme) {
             "system" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-            "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            "dark", "black" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
         when (accent) {
@@ -142,6 +142,7 @@ class MainActivity : AppCompatActivity() {
             "crimson" -> setTheme(R.style.AppTheme_Crimson)
             else -> setTheme(R.style.AppTheme) // Default (aqua)
         }
+        if (theme == "black") setTheme(R.style.AppTheme_PerfectDark)
 
         // Set the task appearance in recent apps
         @Suppress("DEPRECATION")
