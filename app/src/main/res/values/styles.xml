@@ -25,7 +25,7 @@
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
         <item name="alertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
         <item name="colorSurface">@color/colorSurface</item>
-        <item name="switchStyle">@style/CustomMaterialSwitch</item>
+        <item name="materialSwitchStyle">@style/CustomMaterialSwitch</item>
         <item name="bottomNavigationStyle">@style/CustomBottomNavigation</item>
         <item name="bottomAppBarStyle">@style/CustomBottomAppBar</item>
         <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
@@ -43,7 +43,8 @@
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog.Monet
         </item>
         <item name="alertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog.Monet</item>
-        <item name="switchStyle">@style/Widget.Material3.CompoundButton.MaterialSwitch</item>
+        <item name="materialSwitchStyle">@style/Widget.Material3.CompoundButton.MaterialSwitch
+        </item>
         <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog.Monet</item>
     </style>
 
@@ -131,7 +132,6 @@
         <item name="bottomSheetStyle">@style/ModalBottomSheetDialog</item>
     </style>
 
-    <!-- Bottom sheet, monet and edge to edge -->
     <style name="ThemeOverlay.App.BottomSheetDialog.Monet" parent="ThemeOverlay.Material3.BottomSheetDialog">
         <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
@@ -169,10 +169,13 @@
         <item name="android:backgroundTint">@color/deepGray</item>
     </style>
 
-    <!-- Switch for non-monet accents -->
+    <style name="CustomBottomAppBarAmoled" parent="Widget.Material3.BottomAppBar">
+        <item name="colorSurface">@android:color/black</item>
+    </style>
+
+    <!-- Switch for non-monet accents, probably useless -->
     <style name="CustomMaterialSwitch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
         <item name="thumbIconTint">?attr/colorPrimary</item>
-        <item name="trackDecorationTint">?attr/colorPrimary</item>
     </style>
 
     <!-- Custom button group -->

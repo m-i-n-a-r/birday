@@ -126,8 +126,7 @@ class MainActivity : AppCompatActivity() {
             "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
 
-
-
+        // Set an amoled theme or a normal theme depending on amoled mode
         if (theme == "black")
             when (accent) {
                 "monet" -> setTheme(R.style.AppTheme_Monet_PerfectDark)

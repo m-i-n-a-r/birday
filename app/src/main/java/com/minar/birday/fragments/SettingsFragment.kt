@@ -72,12 +72,17 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                 // so there's no point in using a custom approach
                 sharedPreferences.edit().putBoolean("refreshed", true).apply()
                 when (sharedPreferences.getString("theme_color", "")) {
-                    "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    "dark" -> {
+                        // Needed because passing from Amoled to dark doesn't trigger the refresh
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                        hotReloadActivity(sharedPreferences)
+                    }
                     "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                     "black" -> {
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                         hotReloadActivity(sharedPreferences)
                     }
+
                     else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                 }
             }

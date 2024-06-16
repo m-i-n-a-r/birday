@@ -26,7 +26,7 @@
         <item name="colorSurfaceVariant">@color/goodGrayTranslucent</item>
         <item name="android:textColorTertiary">@color/textColorSecondaryInverse</item>
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
-        <item name="switchStyle">@style/CustomMaterialSwitch</item>
+        <item name="materialSwitchStyle">@style/CustomMaterialSwitch</item>
         <item name="bottomNavigationStyle">@style/CustomBottomNavigation</item>
         <item name="bottomAppBarStyle">@style/CustomBottomAppBar</item>
         <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
@@ -41,51 +41,230 @@
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog.Monet
         </item>
         <item name="alertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog.Monet</item>
-        <item name="switchStyle">@style/Widget.Material3.CompoundButton.MaterialSwitch</item>
+        <item name="materialSwitchStyle">@style/Widget.Material3.CompoundButton.MaterialSwitch
+        </item>
         <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
     </style>
 
-    <!-- Black theme -->
+    <!-- Switch for amoled theme -->
+    <style name="ThemeOverlay.App.Switch" parent="">
+        <item name="colorSurfaceVariant">@android:color/black</item>
+        <item name="colorOnPrimary">@android:color/black</item>
+    </style>
+
+    <style name="CustomMaterialAmoledSwitch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Switch</item>
+    </style>
+
+    <!-- Black themes, one for each accent, sadly -->
     <style name="AppTheme.Monet.PerfectDark" parent="AppTheme.Monet">
         <item name="android:colorBackground">@android:color/black</item>
         <item name="colorSurfaceContainerLow">@android:color/black</item>
         <item name="colorSurface">@android:color/black</item>
+        <item name="colorSurfaceVariant">@android:color/black</item>
         <item name="colorContainer">@android:color/black</item>
+        <item name="colorSurfaceContainer">@android:color/black</item>
+        <item name="colorBackgroundFloating">@android:color/black</item>
+        <item name="bottomAppBarStyle">@style/CustomBottomAppBarAmoled</item>
+        <item name="materialSwitchStyle">@style/CustomMaterialAmoledSwitch</item>
+        <item name="colorSurfaceContainerHigh">@android:color/black</item>
+        <item name="colorSurfaceContainerHighest">@android:color/black</item>
     </style>
 
     <style name="AppTheme.System.PerfectDark" parent="AppTheme.System">
         <item name="android:colorBackground">@android:color/black</item>
         <item name="colorSurfaceContainerLow">@android:color/black</item>
+        <item name="colorSurfaceVariant">@android:color/black</item>
         <item name="colorSurface">@android:color/black</item>
         <item name="colorContainer">@android:color/black</item>
+        <item name="colorSurfaceContainer">@android:color/black</item>
+        <item name="colorBackgroundFloating">@android:color/black</item>
+        <item name="bottomAppBarStyle">@style/CustomBottomAppBarAmoled</item>
+        <item name="materialSwitchStyle">@style/CustomMaterialAmoledSwitch</item>
+        <item name="colorSurfaceContainerHigh">@android:color/black</item>
+        <item name="colorSurfaceContainerHighest">@android:color/black</item>
     </style>
 
-    <style name="AppTheme.PerfectDark" parent="AppTheme.System">
+    <style name="AppTheme.PerfectDark" parent="AppTheme.Base">
+        <item name="android:colorBackground">@android:color/black</item>
+        <item name="colorSurfaceContainerLow">@android:color/black</item>
+        <item name="colorSurface">@android:color/black</item>
+        <item name="colorSurfaceVariant">@android:color/black</item>
+        <item name="colorContainer">@android:color/black</item>
+        <item name="colorSurfaceContainer">@android:color/black</item>
+        <item name="colorBackgroundFloating">@android:color/black</item>
+        <item name="bottomAppBarStyle">@style/CustomBottomAppBarAmoled</item>
+        <item name="materialSwitchStyle">@style/CustomMaterialAmoledSwitch</item>
+        <item name="colorSurfaceContainerHigh">@android:color/black</item>
+        <item name="colorSurfaceContainerHighest">@android:color/black</item>
+    </style>
+
+    <style name="AppTheme.Brown.PerfectDark" parent="AppTheme.Brown">
         <item name="android:colorBackground">@android:color/black</item>
         <item name="colorSurfaceContainerLow">@android:color/black</item>
         <item name="colorSurface">@android:color/black</item>
         <item name="colorContainer">@android:color/black</item>
+        <item name="colorSurfaceVariant">@android:color/black</item>
+        <item name="colorSurfaceContainer">@android:color/black</item>
+        <item name="colorBackgroundFloating">@android:color/black</item>
+        <item name="bottomAppBarStyle">@style/CustomBottomAppBarAmoled</item>
+        <item name="materialSwitchStyle">@style/CustomMaterialAmoledSwitch</item>
+        <item name="colorSurfaceContainerHigh">@android:color/black</item>
+        <item name="colorSurfaceContainerHighest">@android:color/black</item>
     </style>
 
-    <style name="AppTheme.System.PerfectDark" parent="AppTheme.System">
+    <style name="AppTheme.Blue.PerfectDark" parent="AppTheme.Blue">
         <item name="android:colorBackground">@android:color/black</item>
         <item name="colorSurfaceContainerLow">@android:color/black</item>
         <item name="colorSurface">@android:color/black</item>
         <item name="colorContainer">@android:color/black</item>
+        <item name="colorSurfaceVariant">@android:color/black</item>
+        <item name="colorSurfaceContainer">@android:color/black</item>
+        <item name="colorBackgroundFloating">@android:color/black</item>
+        <item name="bottomAppBarStyle">@style/CustomBottomAppBarAmoled</item>
+        <item name="materialSwitchStyle">@style/CustomMaterialAmoledSwitch</item>
+        <item name="colorSurfaceContainerHigh">@android:color/black</item>
+        <item name="colorSurfaceContainerHighest">@android:color/black</item>
     </style>
 
-    <style name="AppTheme.System.PerfectDark" parent="AppTheme.System">
+    <style name="AppTheme.Green.PerfectDark" parent="AppTheme.Green">
         <item name="android:colorBackground">@android:color/black</item>
         <item name="colorSurfaceContainerLow">@android:color/black</item>
         <item name="colorSurface">@android:color/black</item>
         <item name="colorContainer">@android:color/black</item>
+        <item name="colorSurfaceVariant">@android:color/black</item>
+        <item name="colorSurfaceContainer">@android:color/black</item>
+        <item name="colorBackgroundFloating">@android:color/black</item>
+        <item name="bottomAppBarStyle">@style/CustomBottomAppBarAmoled</item>
+        <item name="materialSwitchStyle">@style/CustomMaterialAmoledSwitch</item>
+        <item name="colorSurfaceContainerHigh">@android:color/black</item>
+        <item name="colorSurfaceContainerHighest">@android:color/black</item>
     </style>
 
-    <style name="AppTheme.System.PerfectDark" parent="AppTheme.System">
+    <style name="AppTheme.Orange.PerfectDark" parent="AppTheme.Orange">
         <item name="android:colorBackground">@android:color/black</item>
         <item name="colorSurfaceContainerLow">@android:color/black</item>
         <item name="colorSurface">@android:color/black</item>
         <item name="colorContainer">@android:color/black</item>
+        <item name="colorSurfaceVariant">@android:color/black</item>
+        <item name="colorSurfaceContainer">@android:color/black</item>
+        <item name="colorBackgroundFloating">@android:color/black</item>
+        <item name="bottomAppBarStyle">@style/CustomBottomAppBarAmoled</item>
+        <item name="materialSwitchStyle">@style/CustomMaterialAmoledSwitch</item>
+        <item name="colorSurfaceContainerHigh">@android:color/black</item>
+        <item name="colorSurfaceContainerHighest">@android:color/black</item>
+    </style>
+
+    <style name="AppTheme.Yellow.PerfectDark" parent="AppTheme.Yellow">
+        <item name="android:colorBackground">@android:color/black</item>
+        <item name="colorSurfaceContainerLow">@android:color/black</item>
+        <item name="colorSurface">@android:color/black</item>
+        <item name="colorContainer">@android:color/black</item>
+        <item name="colorSurfaceVariant">@android:color/black</item>
+        <item name="colorSurfaceContainer">@android:color/black</item>
+        <item name="colorBackgroundFloating">@android:color/black</item>
+        <item name="bottomAppBarStyle">@style/CustomBottomAppBarAmoled</item>
+        <item name="materialSwitchStyle">@style/CustomMaterialAmoledSwitch</item>
+        <item name="colorSurfaceContainerHigh">@android:color/black</item>
+        <item name="colorSurfaceContainerHighest">@android:color/black</item>
+    </style>
+
+    <style name="AppTheme.Teal.PerfectDark" parent="AppTheme.Teal">
+        <item name="android:colorBackground">@android:color/black</item>
+        <item name="colorSurfaceContainerLow">@android:color/black</item>
+        <item name="colorSurface">@android:color/black</item>
+        <item name="colorContainer">@android:color/black</item>
+        <item name="colorSurfaceVariant">@android:color/black</item>
+        <item name="colorSurfaceContainer">@android:color/black</item>
+        <item name="colorBackgroundFloating">@android:color/black</item>
+        <item name="bottomAppBarStyle">@style/CustomBottomAppBarAmoled</item>
+        <item name="materialSwitchStyle">@style/CustomMaterialAmoledSwitch</item>
+        <item name="colorSurfaceContainerHigh">@android:color/black</item>
+        <item name="colorSurfaceContainerHighest">@android:color/black</item>
+    </style>
+
+    <style name="AppTheme.Violet.PerfectDark" parent="AppTheme.Violet">
+        <item name="android:colorBackground">@android:color/black</item>
+        <item name="colorSurfaceContainerLow">@android:color/black</item>
+        <item name="colorSurface">@android:color/black</item>
+        <item name="colorContainer">@android:color/black</item>
+        <item name="colorSurfaceVariant">@android:color/black</item>
+        <item name="colorSurfaceContainer">@android:color/black</item>
+        <item name="colorBackgroundFloating">@android:color/black</item>
+        <item name="bottomAppBarStyle">@style/CustomBottomAppBarAmoled</item>
+        <item name="materialSwitchStyle">@style/CustomMaterialAmoledSwitch</item>
+        <item name="colorSurfaceContainerHigh">@android:color/black</item>
+        <item name="colorSurfaceContainerHighest">@android:color/black</item>
+    </style>
+
+    <style name="AppTheme.Pink.PerfectDark" parent="AppTheme.Pink">
+        <item name="android:colorBackground">@android:color/black</item>
+        <item name="colorSurfaceContainerLow">@android:color/black</item>
+        <item name="colorSurface">@android:color/black</item>
+        <item name="colorContainer">@android:color/black</item>
+        <item name="colorSurfaceVariant">@android:color/black</item>
+        <item name="colorSurfaceContainer">@android:color/black</item>
+        <item name="colorBackgroundFloating">@android:color/black</item>
+        <item name="bottomAppBarStyle">@style/CustomBottomAppBarAmoled</item>
+        <item name="materialSwitchStyle">@style/CustomMaterialAmoledSwitch</item>
+        <item name="colorSurfaceContainerHigh">@android:color/black</item>
+        <item name="colorSurfaceContainerHighest">@android:color/black</item>
+    </style>
+
+    <style name="AppTheme.LightBlue.PerfectDark" parent="AppTheme.LightBlue">
+        <item name="android:colorBackground">@android:color/black</item>
+        <item name="colorSurfaceContainerLow">@android:color/black</item>
+        <item name="colorSurface">@android:color/black</item>
+        <item name="colorContainer">@android:color/black</item>
+        <item name="colorSurfaceVariant">@android:color/black</item>
+        <item name="colorSurfaceContainer">@android:color/black</item>
+        <item name="colorBackgroundFloating">@android:color/black</item>
+        <item name="bottomAppBarStyle">@style/CustomBottomAppBarAmoled</item>
+        <item name="materialSwitchStyle">@style/CustomMaterialAmoledSwitch</item>
+        <item name="colorSurfaceContainerHigh">@android:color/black</item>
+        <item name="colorSurfaceContainerHighest">@android:color/black</item>
+    </style>
+
+    <style name="AppTheme.Red.PerfectDark" parent="AppTheme.Red">
+        <item name="android:colorBackground">@android:color/black</item>
+        <item name="colorSurfaceContainerLow">@android:color/black</item>
+        <item name="colorSurface">@android:color/black</item>
+        <item name="colorContainer">@android:color/black</item>
+        <item name="colorSurfaceVariant">@android:color/black</item>
+        <item name="colorSurfaceContainer">@android:color/black</item>
+        <item name="colorBackgroundFloating">@android:color/black</item>
+        <item name="bottomAppBarStyle">@style/CustomBottomAppBarAmoled</item>
+        <item name="materialSwitchStyle">@style/CustomMaterialAmoledSwitch</item>
+        <item name="colorSurfaceContainerHigh">@android:color/black</item>
+        <item name="colorSurfaceContainerHighest">@android:color/black</item>
+    </style>
+
+    <style name="AppTheme.Lime.PerfectDark" parent="AppTheme.Lime">
+        <item name="android:colorBackground">@android:color/black</item>
+        <item name="colorSurfaceContainerLow">@android:color/black</item>
+        <item name="colorSurface">@android:color/black</item>
+        <item name="colorContainer">@android:color/black</item>
+        <item name="colorSurfaceVariant">@android:color/black</item>
+        <item name="colorSurfaceContainer">@android:color/black</item>
+        <item name="colorBackgroundFloating">@android:color/black</item>
+        <item name="bottomAppBarStyle">@style/CustomBottomAppBarAmoled</item>
+        <item name="materialSwitchStyle">@style/CustomMaterialAmoledSwitch</item>
+        <item name="colorSurfaceContainerHigh">@android:color/black</item>
+        <item name="colorSurfaceContainerHighest">@android:color/black</item>
+    </style>
+
+    <style name="AppTheme.Crimson.PerfectDark" parent="AppTheme.Crimson">
+        <item name="android:colorBackground">@android:color/black</item>
+        <item name="colorSurfaceContainerLow">@android:color/black</item>
+        <item name="colorSurface">@android:color/black</item>
+        <item name="colorContainer">@android:color/black</item>
+        <item name="colorSurfaceVariant">@android:color/black</item>
+        <item name="colorSurfaceContainer">@android:color/black</item>
+        <item name="colorBackgroundFloating">@android:color/black</item>
+        <item name="bottomAppBarStyle">@style/CustomBottomAppBarAmoled</item>
+        <item name="materialSwitchStyle">@style/CustomMaterialAmoledSwitch</item>
+        <item name="colorSurfaceContainerHigh">@android:color/black</item>
+        <item name="colorSurfaceContainerHighest">@android:color/black</item>
     </style>
 
     <!-- Splash screen theme -->
