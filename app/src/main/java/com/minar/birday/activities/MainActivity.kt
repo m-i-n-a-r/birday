@@ -125,27 +125,49 @@ class MainActivity : AppCompatActivity() {
             "dark", "black" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
-        when (accent) {
-            "monet" -> setTheme(R.style.AppTheme_Monet)
-            "system" -> setTheme(R.style.AppTheme_System)
-            "brown" -> setTheme(R.style.AppTheme_Brown)
-            "blue" -> setTheme(R.style.AppTheme_Blue)
-            "green" -> setTheme(R.style.AppTheme_Green)
-            "orange" -> setTheme(R.style.AppTheme_Orange)
-            "yellow" -> setTheme(R.style.AppTheme_Yellow)
-            "teal" -> setTheme(R.style.AppTheme_Teal)
-            "violet" -> setTheme(R.style.AppTheme_Violet)
-            "pink" -> setTheme(R.style.AppTheme_Pink)
-            "lightBlue" -> setTheme(R.style.AppTheme_LightBlue)
-            "red" -> setTheme(R.style.AppTheme_Red)
-            "lime" -> setTheme(R.style.AppTheme_Lime)
-            "crimson" -> setTheme(R.style.AppTheme_Crimson)
-            else -> setTheme(R.style.AppTheme) // Default (aqua)
-        }
-        if (theme == "black") setTheme(R.style.AppTheme_PerfectDark)
+
+
+
+        if (theme == "black")
+            when (accent) {
+                "monet" -> setTheme(R.style.AppTheme_Monet_PerfectDark)
+                "system" -> setTheme(R.style.AppTheme_System_PerfectDark)
+                "brown" -> setTheme(R.style.AppTheme_Brown_PerfectDark)
+                "blue" -> setTheme(R.style.AppTheme_Blue_PerfectDark)
+                "green" -> setTheme(R.style.AppTheme_Green_PerfectDark)
+                "orange" -> setTheme(R.style.AppTheme_Orange_PerfectDark)
+                "yellow" -> setTheme(R.style.AppTheme_Yellow_PerfectDark)
+                "teal" -> setTheme(R.style.AppTheme_Teal_PerfectDark)
+                "violet" -> setTheme(R.style.AppTheme_Violet_PerfectDark)
+                "pink" -> setTheme(R.style.AppTheme_Pink_PerfectDark)
+                "lightBlue" -> setTheme(R.style.AppTheme_LightBlue_PerfectDark)
+                "red" -> setTheme(R.style.AppTheme_Red_PerfectDark)
+                "lime" -> setTheme(R.style.AppTheme_Lime_PerfectDark)
+                "crimson" -> setTheme(R.style.AppTheme_Crimson_PerfectDark)
+                else -> setTheme(R.style.AppTheme_PerfectDark)
+            }
+        else
+            when (accent) {
+                "monet" -> setTheme(R.style.AppTheme_Monet)
+                "system" -> setTheme(R.style.AppTheme_System)
+                "brown" -> setTheme(R.style.AppTheme_Brown)
+                "blue" -> setTheme(R.style.AppTheme_Blue)
+                "green" -> setTheme(R.style.AppTheme_Green)
+                "orange" -> setTheme(R.style.AppTheme_Orange)
+                "yellow" -> setTheme(R.style.AppTheme_Yellow)
+                "teal" -> setTheme(R.style.AppTheme_Teal)
+                "violet" -> setTheme(R.style.AppTheme_Violet)
+                "pink" -> setTheme(R.style.AppTheme_Pink)
+                "lightBlue" -> setTheme(R.style.AppTheme_LightBlue)
+                "red" -> setTheme(R.style.AppTheme_Red)
+                "lime" -> setTheme(R.style.AppTheme_Lime)
+                "crimson" -> setTheme(R.style.AppTheme_Crimson)
+                else -> setTheme(R.style.AppTheme) // Default (aqua)
+            }
 
         // Set the task appearance in recent apps
         @Suppress("DEPRECATION")
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             setTaskDescription(
                 ActivityManager.TaskDescription(

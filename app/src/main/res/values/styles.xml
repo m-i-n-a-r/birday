@@ -188,7 +188,9 @@
     </style>
 
     <!-- Custom color styles -->
-    <style name="AppTheme.System" parent="AppTheme">
+    <style name="AppTheme.Accent" parent="AppTheme" />
+
+    <style name="AppTheme.System" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/aqua</item>
         <item name="colorSecondary">@color/aqua</item>
         <item name="colorTertiary">@color/aquaDark</item>
@@ -197,7 +199,7 @@
         <item name="colorTertiaryContainer">@color/aquaTranslucent</item>
     </style>
 
-    <style name="AppTheme.Brown" parent="AppTheme">
+    <style name="AppTheme.Brown" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/brown</item>
         <item name="colorSecondary">@color/brown</item>
         <item name="colorTertiary">@color/brownDark</item>
@@ -206,7 +208,7 @@
         <item name="colorTertiaryContainer">@color/brownTranslucent</item>
     </style>
 
-    <style name="AppTheme.Blue" parent="AppTheme">
+    <style name="AppTheme.Blue" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/blue</item>
         <item name="colorSecondary">@color/blue</item>
         <item name="colorTertiary">@color/blueDark</item>
@@ -215,7 +217,7 @@
         <item name="colorTertiaryContainer">@color/blueTranslucent</item>
     </style>
 
-    <style name="AppTheme.Green" parent="AppTheme">
+    <style name="AppTheme.Green" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/green</item>
         <item name="colorSecondary">@color/green</item>
         <item name="colorTertiary">@color/greenDark</item>
@@ -224,7 +226,7 @@
         <item name="colorTertiaryContainer">@color/greenTranslucent</item>
     </style>
 
-    <style name="AppTheme.Orange" parent="AppTheme">
+    <style name="AppTheme.Orange" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/orange</item>
         <item name="colorSecondary">@color/orange</item>
         <item name="colorTertiary">@color/orangeDark</item>
@@ -233,7 +235,7 @@
         <item name="colorTertiaryContainer">@color/orangeTranslucent</item>
     </style>
 
-    <style name="AppTheme.Yellow" parent="AppTheme">
+    <style name="AppTheme.Yellow" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/yellow</item>
         <item name="colorSecondary">@color/yellow</item>
         <item name="colorTertiary">@color/yellowDark</item>
@@ -242,7 +244,7 @@
         <item name="colorTertiaryContainer">@color/yellowTranslucent</item>
     </style>
 
-    <style name="AppTheme.Teal" parent="AppTheme">
+    <style name="AppTheme.Teal" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/teal</item>
         <item name="colorSecondary">@color/teal</item>
         <item name="colorTertiary">@color/tealDark</item>
@@ -251,7 +253,7 @@
         <item name="colorTertiaryContainer">@color/tealTranslucent</item>
     </style>
 
-    <style name="AppTheme.Violet" parent="AppTheme">
+    <style name="AppTheme.Violet" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/violet</item>
         <item name="colorSecondary">@color/violet</item>
         <item name="colorTertiary">@color/violetDark</item>
@@ -260,7 +262,7 @@
         <item name="colorTertiaryContainer">@color/violetTranslucent</item>
     </style>
 
-    <style name="AppTheme.Pink" parent="AppTheme">
+    <style name="AppTheme.Pink" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/pink</item>
         <item name="colorSecondary">@color/pink</item>
         <item name="colorTertiary">@color/pinkDark</item>
@@ -269,7 +271,7 @@
         <item name="colorTertiaryContainer">@color/pinkTranslucent</item>
     </style>
 
-    <style name="AppTheme.LightBlue" parent="AppTheme">
+    <style name="AppTheme.LightBlue" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/lightBlue</item>
         <item name="colorSecondary">@color/lightBlue</item>
         <item name="colorTertiary">@color/lightBlueDark</item>
@@ -278,7 +280,7 @@
         <item name="colorTertiaryContainer">@color/lightBlueTranslucent</item>
     </style>
 
-    <style name="AppTheme.Red" parent="AppTheme">
+    <style name="AppTheme.Red" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/red</item>
         <item name="colorSecondary">@color/red</item>
         <item name="colorTertiary">@color/redDark</item>
@@ -287,7 +289,7 @@
         <item name="colorTertiaryContainer">@color/redTranslucent</item>
     </style>
 
-    <style name="AppTheme.Lime" parent="AppTheme">
+    <style name="AppTheme.Lime" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/lime</item>
         <item name="colorSecondary">@color/lime</item>
         <item name="colorTertiary">@color/limeDark</item>
@@ -296,7 +298,7 @@
         <item name="colorTertiaryContainer">@color/limeTranslucent</item>
     </style>
 
-    <style name="AppTheme.Crimson" parent="AppTheme">
+    <style name="AppTheme.Crimson" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/crimson</item>
         <item name="colorSecondary">@color/crimson</item>
         <item name="colorTertiary">@color/crimsonDark</item>
