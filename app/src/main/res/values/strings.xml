@@ -185,6 +185,7 @@
     <string name="telegram" translatable="false">Telegram</string>
     <string name="instagram" translatable="false">Instagram</string>
     <string name="messenger" translatable="false">Messenger</string>
+    <string name="threema" translatable="false">Threema</string>
     <string name="email" translatable="false">Email</string>
     <string name="viber" translatable="false">Viber</string>
     <string name="text_message">Text message</string>
