@@ -84,7 +84,7 @@
     <string name="missing_permission_contacts_forever">Birday无法询问导入通讯录的权限，因为你选择了“不再询问”。请手动开启权限！</string>
     <string name="birday_import_title">导入Birday备份</string>
     <string name="birday_import_description">选择一个有效的Birday备份来恢复你的事件。所有现存数据会被覆盖！</string>
-    <string name="birday_export_title">导入和分享事件</string>
+    <string name="birday_export_title">导出并共享事件</string>
     <string name="birday_export_description">将可用的事件导出到备份中，并且如果你想的话可以分享它们。文件路径在Android/data/com.minar.birday/files</string>
     <string name="birday_import_success">导入完成！</string>
     <string name="birday_import_failure">导入失败。请问你选择了正确的文件吗？</string>
