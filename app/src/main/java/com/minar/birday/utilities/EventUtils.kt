@@ -136,7 +136,7 @@ fun formatEventList(
 ): String {
     var formattedEventList = ""
     if (events.isEmpty()) formattedEventList = context.getString(R.string.no_next_event)
-    else events.forEach {
+    else events.takeWhile { events.indexOf(it) <= 3 }.forEach {
         // Years. They're not used in the string if the year doesn't matter
         val years = if (inCurrentYear && it.originalDate.withYear(LocalDate.now().year)
                 .isBefore(LocalDate.now())
@@ -149,18 +149,12 @@ fun formatEventList(
 
             // Show the last name, if any, if there's only one event
             formattedEventList +=
-                if (events.size == 1 && showSurnames)
-                    formatName(it, surnameFirst)
+                if (events.size == 1 && showSurnames) formatName(it, surnameFirst)
                 else it.name
 
             // Show event type if different from birthday
             if (it.type != EventCode.BIRTHDAY.name)
-                formattedEventList += " (${
-                    getStringForTypeCodename(
-                        context,
-                        it.type!!
-                    )
-                })"
+                formattedEventList += " (${getStringForTypeCodename(context, it.type!!)})"
             // If the year is considered, display it. Else only display the name
             if (it.yearMatter!!) formattedEventList += ", " +
                     context.resources.getQuantityString(
@@ -170,10 +164,8 @@ fun formatEventList(
                     )
         }
         // If more than 3 events, just let the user know other events are in the list
-        if (events.indexOf(it) > 2) {
+        if (events.indexOf(it) == 3)
             formattedEventList += ", ${context.getString(R.string.event_others)}"
-            return@forEach
-        }
     }
     return formattedEventList
 }
