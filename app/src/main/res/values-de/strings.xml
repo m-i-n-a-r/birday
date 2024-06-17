@@ -109,7 +109,7 @@
     <string name="troubleshoot">Fehlerbehebung</string>
     <string name="battery_optimization_title">Batterieoptimierung deaktivieren</string>
     <string name="battery_optimization_description">Öffnen Sie die Einstellungen, um jegliche Optimierung für Birday zu deaktivieren. Nützlich, wenn Benachrichtigungen nicht funktionieren</string>
-    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
+    <string name="battery_optimization_tutorial">- Zeige alle Apps und finde Birday in der Liste\n- Tippe auf Birday und wähle \"Nicht optimieren\"</string>
     <string name="notification_sound_title">Benachrichtigungston</string>
     <string name="notification_sound_description">Verknüpfung zu den Benachrichtigungstoneinstellungen, wenn Ihnen der Standard-Vogelton nicht gefällt</string>
     <string name="missing_permission_notifications">Die Benachrichtigungs-Berechtigung wurde verweigert und Birday kann keine Benachrichtigungen senden! Aktiviere die Berechtigung in den Einstellungen.</string>
@@ -255,7 +255,7 @@
     <string name="widget_background_title">Hintergrund</string>
     <string name="widget_background_description">Zeige einen Hintergrund für das Widget</string>
     <string name="compact_widget_title">Kompaktes Layout</string>
-    <string name="compact_widget_description">Optimieren Sie das Layout als extrem kompakt</string>
+    <string name="compact_widget_description">Optimiere das Layout, um extrem kompakt zu sein</string>
     <string name="align_start_widget_title">Linksbündig ausrichten</string>
     <string name="align_start_widget_description">Richte den Widget-Text linksbündig aus (rechts oder links, je nach Region)</string>
     <string name="hide_far_widget_title">Widget für entfernte Ereignisse ausblenden</string>
@@ -275,7 +275,7 @@
     <!-- Experimental preferences -->
     <string name="experimental_settings_title">Experimentell</string>
     <string name="experimental_settings_description">Einige experimentelle oder fehlerhafte Einstellungen und Funktionen, verwenden Sie sie auf eigene Gefahr</string>
-    <string name="experimental_disclaimer">Die folgenden Funktionen sind experimentell und funktionieren möglicherweise nicht korrekt. Sie werden auf eigene Gefahr verwendet. Beziehen Sie sich auf Github für jeden Fortschritt, da einige dieser Funktionen \"gefördert\" und übersetzt werden könnten</string>
+    <string name="experimental_disclaimer">Die folgenden Funktionen sind experimentell und funktionieren möglicherweise nicht richtig. Verwendung auf eigene Gefahr. Beziehe dich auf Github für jeglichen Fortschritt, da einige dieser Funktionen \"gefördert\" und übersetzt werden könnten</string>
     <string name="check_github">Schau auf Github nach</string>
     <string name="translate_app">Übersetze die App</string>
     <string name="launch_auto_import_title">Automatischer Import beim Start</string>
@@ -298,23 +298,23 @@
     <string name="import_csv_description">Importieren aus einer CSV-Datei. Konsultieren Sie das Wiki auf Github für die erforderliche Dateistruktur</string>
     <string name="export_csv_title">Als CSV-Datei exportieren</string>
     <string name="export_csv_description">Exportieren Sie jedes Ereignis in eine CSV-Datei, Bild ausgeschlossen</string>
-    <string name="add_demo_entries_title">Add demo entries</string>
-    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
-    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
+    <string name="add_demo_entries_title">Demo-Einträge hinzufügen</string>
+    <string name="add_demo_entries_description">Fülle die DB mit einer Reihe von Demo-Ereignissen, hauptsächlich Schauspielern und historischen Figuren</string>
+    <string name="add_demo_entries_dialog_description">Dies fügt dauerhaft TAUSENDE von Einträgen zur DB hinzu und ist für Debugging-Zwecke gedacht. Es wird kein existierendes Ereignis gelöscht, aber wenn du die neuen Einträge löschen möchtest, musst du es manuell tun. Viel Glück dabei.</string>
     <string name="delete_db_title">Alle Events löschen</string>
     <string name="delete_db_description">Lösche die Datenbank. Überlege es dir zweimal bevor du klickst!</string>
     <string name="delete_db_dialog_title">Bist du dir sicher?</string>
     <string name="delete_db_dialog_description">Stelle sicher, dass du zuerst ein Backup deiner Ereignisse erstellst. Dieser Vorgang löscht die Datenbank und sollte nur zum Zweck des Debuggings verwendet werden</string>
     <string name="delete_search_title">Suchauswahl löschen</string>
     <string name="delete_search_description_off">Es ist nicht möglich, mehrere Ereignisse gleichzeitig zu löschen</string>
-    <string name="delete_search_description_on">Drücken Sie den Papierkorb-Button, wenn Sie ein oder mehrere Ereignisse suchen, um sie schnell alle vom Geburtstag zu löschen. Mit Vorsicht verwenden!</string>
-    <string name="delete_search_confirm">Dies löscht alle Ergebnisse dieser Suche. Sie können den Vorgang kurz nach dem Klicken auf OK rückgängig machen, wenn Sie Ihre Meinung ändern!</string>
+    <string name="delete_search_description_on">Drücke den Papierkorb-Button, wenn du ein oder mehrere Ereignisse suchst, um sie schnell aus Birday zu löschen. Mit Vorsicht verwenden!</string>
+    <string name="delete_search_confirm">Dies löscht alle Ergebnisse dieser Suche. Du kannst den Vorgang kurz nach dem Klicken auf OK rückgängig machen, wenn du deine Meinung änderst!</string>
     <string name="import_contacts_bottom_sheet_description">Möchten Sie alle Ereignisse von Ihren Kontakten jetzt importieren?</string>
     <string name="yes_import">Importieren</string>
     <string name="advanced_overview_title">Erweiterte Übersicht</string>
     <string name="advanced_overview_description_off">Der Übersichtsbildschirm zeigt nur Basisinformationen an</string>
     <string name="advanced_overview_description_on">Der Übersichtsbildschirm zeigt weitere Jahre und detaillierte Informationen</string>
-    <string name="replace_on_conflict_title">Replace on conflict</string>
-    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
-    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+    <string name="replace_on_conflict_title">Bei Konflikt ersetzen</string>
+    <string name="replace_on_conflict_description_off">Beim Importieren wird ein doppeltes Ereignis nicht durch das importierte Duplikat ersetzt</string>
+    <string name="replace_on_conflict_description_on">Beim Importieren wird ein doppeltes Ereignis durch das importierte Duplikat überschrieben</string>
 </resources>
