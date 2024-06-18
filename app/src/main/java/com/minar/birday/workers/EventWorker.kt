@@ -81,7 +81,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                     // The strategy to pick a different id for each is kinda poor, but whatever
                         sendNotification(
                             anticipatedList,
-                            2 + anticipated.indexOf(anticipatedList[0]),
+                            3 + anticipated.indexOf(anticipatedList[0]),
                             surnameFirst,
                             hideImage,
                             true,
