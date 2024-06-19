@@ -3,29 +3,29 @@
     <cloud-backup>
         <include
             domain="file"
-            path="string" />
+            path="." />
         <include
             domain="sharedpref"
-            path="string" />
+            path="." />
         <include
             domain="database"
-            path="string" />
+            path="." />
         <include
             domain="root"
-            path="string" />
+            path="." />
     </cloud-backup>
     <device-transfer>
         <include
             domain="file"
-            path="string" />
+            path="." />
         <include
             domain="sharedpref"
-            path="string" />
+            path="." />
         <include
             domain="database"
-            path="string" />
+            path="." />
         <include
             domain="root"
-            path="string" />
+            path="." />
     </device-transfer>
 </data-extraction-rules>
