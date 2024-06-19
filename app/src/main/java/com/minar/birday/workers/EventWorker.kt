@@ -86,7 +86,8 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                             hideImage,
                             true,
                             angryBird = angryBird,
-                            disableAnimations = !loopAvd
+                            disableAnimations = !loopAvd,
+                            ungrouped = false
                         )
                 }
                 if (actual.isNotEmpty()) sendNotification(
@@ -95,7 +96,8 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                     surnameFirst,
                     hideImage,
                     angryBird = angryBird,
-                    disableAnimations = !loopAvd
+                    disableAnimations = !loopAvd,
+                    ungrouped = false
                 )
             } else {
                 // Play with the ids to make sure they are unique
@@ -118,9 +120,10 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                             actual.indexOf(e) + anticipated.size,
                             surnameFirst,
                             hideImage,
-                            true,
+                            false,
                             angryBird = angryBird,
-                            disableAnimations = !loopAvd
+                            disableAnimations = !loopAvd,
+                            ungrouped = true
                         )
                     }
             }
@@ -151,6 +154,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         upcoming: Boolean = false,
         angryBird: Boolean = false,
         disableAnimations: Boolean = false,
+        ungrouped: Boolean = false,
     ) {
         val intent = Intent(applicationContext, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -160,8 +164,9 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
 
         // Distinguish between normal notification and upcoming birthday notification
         val notificationText =
-            if (!upcoming) formulateNotificationText(nextEvents, surnameFirst, angryBird)
-            else formulateAdditionalNotificationText(nextEvents, surnameFirst)
+            if (!upcoming && ungrouped) formulateNotificationText(nextEvents, surnameFirst, angryBird, true)
+            else if (!upcoming) formulateNotificationText(nextEvents, surnameFirst, angryBird)
+            else formulateAdditionalNotificationText(nextEvents, surnameFirst, angryBird)
 
         val builder = NotificationCompat.Builder(applicationContext, "events_channel")
             .setSmallIcon(
@@ -258,25 +263,30 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
     // Notification for upcoming events, also considering
     private fun formulateAdditionalNotificationText(
         nextEvents: List<EventResult>,
-        surnameFirst: Boolean
+        surnameFirst: Boolean,
+        angryBird: Boolean = false
     ) =
-        applicationContext.getString(R.string.additional_notification_text) + " " + formatEventList(
-            nextEvents, surnameFirst, applicationContext
-        ) + ". "
+        if (angryBird) formatEventList(nextEvents, surnameFirst, applicationContext) + "."
+        else
+            applicationContext.getString(R.string.additional_notification_text) + " " + formatEventList(
+                nextEvents, surnameFirst, applicationContext
+            ) + ". "
 
     // Notification for actual events, extended if there's one event only
     private fun formulateNotificationText(
         nextEvents: List<EventResult>,
         surnameFirst: Boolean,
-        angryBird: Boolean = false
+        angryBird: Boolean = false,
+        ungrouped: Boolean = false,
     ) =
-        if (angryBird) formatEventList(nextEvents, surnameFirst, applicationContext) + "."
-        else if (nextEvents.size == 1)
-            applicationContext.getString(R.string.notification_description_part_1) + ": " + formatEventList(
+        if (angryBird || ungrouped) formatEventList(nextEvents, surnameFirst, applicationContext) + "."
+        else {
+            if (nextEvents.size == 1)
+                applicationContext.getString(R.string.notification_description_part_1) + ": " + formatEventList(
+                    nextEvents, surnameFirst, applicationContext
+                ) + ". " + applicationContext.getString(R.string.notification_description_part_2)
+            else applicationContext.getString(R.string.notification_description_part_1) + ": " + formatEventList(
                 nextEvents, surnameFirst, applicationContext
-            ) + ". " + applicationContext.getString(R.string.notification_description_part_2)
-        else applicationContext.getString(R.string.notification_description_part_1) + ": " + formatEventList(
-            nextEvents, surnameFirst, applicationContext
-        ) + ". "
-
+            ) + ". "
+        }
 }
