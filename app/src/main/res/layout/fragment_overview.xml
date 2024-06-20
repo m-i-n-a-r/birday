@@ -13,7 +13,7 @@
         android:id="@+id/overviewMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/linear_vertical_margin">
+        android:paddingBottom="@dimen/recycler_extra_space_top">
 
         <View
             android:id="@+id/expanderView"

@@ -12,7 +12,7 @@ android {
         minSdkVersion 26
         compileSdk 34
         versionCode 29
-        versionName "4.4.0"
+        versionName "4.4.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
