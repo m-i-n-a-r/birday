@@ -10,10 +10,14 @@ import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventCode
-import com.minar.birday.persistence.EventDatabase
-import com.minar.birday.utilities.*
+import com.minar.birday.utilities.COLUMN_DATE
+import com.minar.birday.utilities.COLUMN_NAME
+import com.minar.birday.utilities.COLUMN_NOTES
+import com.minar.birday.utilities.COLUMN_SURNAME
+import com.minar.birday.utilities.COLUMN_TYPE
+import com.minar.birday.utilities.COLUMN_YEAR_MATTER
+import com.minar.birday.utilities.normalizeEvent
 import java.time.LocalDate
-import kotlin.concurrent.thread
 
 
 class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
@@ -35,31 +39,44 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
     // Import a backup overwriting any existing data and checking if the file is valid
     fun importEventsCsv(context: Context, fileUri: Uri): Boolean {
         // Read the file as a list of rows
+        var separator = ','
         val fileStream = context.contentResolver.openInputStream(fileUri)!!
         val csvString = fileStream.bufferedReader().use { it.readText() }
         val csvList = csvString.split('\n')
-        val eventDao = EventDatabase.getBirdayDatabase(context).eventDao()
         val eventList = mutableListOf<Event>()
         var columnsMapping: Map<String, Int>? = null
         try {
             // Check if the column names are in the file, in the smartest way possible
-            if (csvList[0].lowercase().contains("date"))
-                columnsMapping = smartDetectColumns(csvList[0])
+            if (csvList[0].lowercase().contains("date")) {
+                columnsMapping = smartDetectColumns(csvList[0], separator)
+                if (columnsMapping.isNullOrEmpty()) {
+                    separator = ';'
+                    columnsMapping = smartDetectColumns(csvList[0], separator)
+                }
+            }
             // If the line didn't contain the columns, try parsing it
             if (columnsMapping.isNullOrEmpty()) {
-                val detectedEvent: Event? = smartDetectEvent(csvList[0])
+                // Trying again with the comma if something was found with the ';' is trivial
+                separator = ','
+                var detectedEvent: Event? = smartDetectEvent(csvList[0], separator)
                 if (detectedEvent != null) eventList.add(detectedEvent)
+                else {
+                    // At this point, if something is detected using this separator, that's the one
+                    separator = ';'
+                    detectedEvent = smartDetectEvent(csvList[0], separator)
+                    if (detectedEvent != null) eventList.add(detectedEvent)
+                }
             }
             // Depending on the first element, build the others
             if (columnsMapping.isNullOrEmpty()) {
                 for (i in 1 until csvList.size) {
                     // Create an entity for each valid line
-                    val detectedEvent: Event? = smartDetectEvent(csvList[i])
+                    val detectedEvent: Event? = smartDetectEvent(csvList[i], separator)
                     if (detectedEvent != null) eventList.add(detectedEvent)
                 }
             } else {
                 for (i in 1 until csvList.size) {
-                    val rowValues = csvList[i].lowercase().split(',')
+                    val rowValues = csvList[i].lowercase().split(separator)
                     try {
                         // Depending on the detected columns, create the event objects
                         val event = Event(
@@ -95,9 +112,7 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
             }
 
             // Bulk insert, using the standard duplicate detection strategy
-            thread {
-                eventDao.insertAllEvent(eventList)
-            }
+            act.mainViewModel.insertAll(eventList)
             // Done. There's no need to restart the app
             fileStream.close()
             (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_success))
@@ -110,8 +125,8 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
     }
 
     // Return a map containing the order of the columns from the column names row
-    private fun smartDetectColumns(csvRow: String): Map<String, Int>? {
-        val rowValues = csvRow.lowercase().split(',')
+    private fun smartDetectColumns(csvRow: String, delimiter: Char = ','): Map<String, Int>? {
+        val rowValues = csvRow.lowercase().split(delimiter)
         val rowMapping = mutableMapOf<String, Int>()
         // Search each field: name and date (mandatory), type, surname, yearMatter, notes
         rowValues.forEach {
@@ -146,8 +161,8 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
     }
 
     // Return an event starting from a data line, if possible
-    private fun smartDetectEvent(csvRow: String): Event? {
-        val rowValues = csvRow.split(',')
+    private fun smartDetectEvent(csvRow: String, delimiter: Char = ','): Event? {
+        val rowValues = csvRow.split(delimiter)
         var date: LocalDate? = null
         var name = ""
         var surname = ""
@@ -170,7 +185,7 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
                 return@forEach
             }
             // Type detection
-            if (EventCode.values().map { it.name }.contains(rowItem)) {
+            if (EventCode.entries.map { it.name }.contains(rowItem)) {
                 type = rowItem
                 return@forEach
             }

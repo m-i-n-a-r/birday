@@ -12,9 +12,8 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v2
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v2
-      - name: Build the app
-        uses: burrunan/gradle-cache-action@v1
-        with:
-          arguments: |
-            build
+        uses: android-actions/setup-android@v3.2.0
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+      - name: Build gradle project
+        run: ./gradlew build

@@ -7,20 +7,19 @@
         android:selectable="false" />
 
     <PreferenceCategory
-        android:key="app_behavior"
-        android:title="@string/app_behavior"
-        app:icon="@drawable/ic_app_behavior_24dp">
+        android:key="notifications"
+        android:title="@string/events_notification_channel"
+        app:icon="@drawable/ic_notifications_24dp">
 
         <com.minar.birday.preferences.standard.TimePickerPreference
             android:layout="@layout/time_picker_row"
             android:selectable="true" />
 
-        <ListPreference
-            android:defaultValue="0"
+        <MultiSelectListPreference
+            android:defaultValue="@array/additionalNotificationDefaultValues"
             android:entries="@array/additionalNotification"
             android:entryValues="@array/additionalNotificationValues"
-            android:key="additional_notification"
-            android:summary="@string/additional_notification_description"
+            android:key="multi_additional_notification"
             android:title="@string/additional_notification_name"
             app:iconSpaceReserved="false" />
 
@@ -30,6 +29,7 @@
             android:summaryOff="@string/notification_only_favorites_description_off"
             android:summaryOn="@string/notification_only_favorites_description_on"
             android:title="@string/notification_only_favorites"
+            android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
         <SwitchPreferenceCompat
@@ -38,7 +38,19 @@
             android:summaryOff="@string/additional_notification_only_favorites_description_off"
             android:summaryOn="@string/additional_notification_only_favorites_description_on"
             android:title="@string/additional_notification_only_favorites"
+            android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
+
+        <com.minar.birday.preferences.standard.NotificationSoundPreference
+            android:layout="@layout/notification_sound_row"
+            android:selectable="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="app_behavior"
+        android:title="@string/app_behavior"
+        app:icon="@drawable/ic_app_behavior_24dp">
 
         <SwitchPreferenceCompat
             android:defaultValue="false"
@@ -46,6 +58,7 @@
             android:summaryOff="@string/hide_images_description_off"
             android:summaryOn="@string/hide_images_description_on"
             android:title="@string/hide_images"
+            android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
         <SwitchPreferenceCompat
@@ -54,6 +67,27 @@
             android:summaryOff="@string/surname_first_description_off"
             android:summaryOn="@string/surname_first_description_on"
             android:title="@string/surname_first"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
+
+        <!-- Disable astrology information -->
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="disable_astrology"
+            android:summaryOff="@string/disable_astrology_description_off"
+            android:summaryOn="@string/disable_astrology_description_on"
+            android:title="@string/disable_astrology_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
+
+        <!-- Advanced yearly calendar mode -->
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="advanced_overview"
+            android:summaryOff="@string/advanced_overview_description_off"
+            android:summaryOn="@string/advanced_overview_description_on"
+            android:title="@string/advanced_overview_title"
+            android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
     </PreferenceCategory>
@@ -87,6 +121,7 @@
             android:summaryOff="@string/shimmer_description_off"
             android:summaryOn="@string/shimmer_description_on"
             android:title="@string/shimmer_name"
+            android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
         <SwitchPreferenceCompat
@@ -95,6 +130,7 @@
             android:summaryOff="@string/vibration_description_off"
             android:summaryOn="@string/vibration_description_on"
             android:title="@string/vibration_name"
+            android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
     </PreferenceCategory>
 
@@ -103,21 +139,31 @@
         android:title="@string/import_export"
         app:icon="@drawable/ic_backup_restore_24dp">
 
-        <com.minar.birday.preferences.backup.ContactsImporter
-            android:layout="@layout/contacts_import_row"
+        <com.minar.birday.preferences.backup.BirdayExporter
+            android:layout="@layout/birday_export_row"
             android:selectable="true" />
 
         <com.minar.birday.preferences.backup.BirdayImporter
             android:layout="@layout/birday_import_row"
             android:selectable="true" />
 
+        <com.minar.birday.preferences.backup.ContactsImporter
+            android:layout="@layout/contacts_import_row"
+            android:selectable="true" />
+
         <com.minar.birday.preferences.backup.CalendarImporter
             android:layout="@layout/calendar_import_row"
             android:selectable="true" />
 
-        <com.minar.birday.preferences.backup.BirdayExporter
-            android:layout="@layout/birday_export_row"
-            android:selectable="true" />
+        <!-- Auto import on each start -->
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="auto_import"
+            android:summaryOff="@string/launch_auto_import_description_off"
+            android:summaryOn="@string/launch_auto_import_description_on"
+            android:title="@string/launch_auto_import_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
 
     </PreferenceCategory>
 
@@ -130,9 +176,15 @@
             android:layout="@layout/disable_optimizations_row"
             android:selectable="true" />
 
-        <com.minar.birday.preferences.standard.NotificationSoundPreference
-            android:layout="@layout/notification_sound_row"
-            android:selectable="true" />
+        <!-- Angry bird mode for notifications (and possibly more?) -->
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="angry_bird"
+            android:summaryOff="@string/angry_bird_description_off"
+            android:summaryOn="@string/angry_bird_description_on"
+            android:title="@string/angry_bird_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
 
         <Preference
             android:key="experimental"

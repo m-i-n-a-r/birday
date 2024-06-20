@@ -21,19 +21,19 @@ abstract class EventDatabase : RoomDatabase() {
 
         // Migration strategy to add two columns from version 9 to 10
         private val MIGRATION_9_10: Migration = object : Migration(9, 10) {
-            override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL(
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
                     "ALTER TABLE Event ADD COLUMN notes TEXT DEFAULT ''"
                 )
-                database.execSQL(
+                db.execSQL(
                     "ALTER TABLE Event ADD COLUMN image BLOB"
                 )
             }
         }
         // Migration strategy to uppercase the type from version 10 to 11
         private val MIGRATION_10_11: Migration = object : Migration(10, 11) {
-            override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL(
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
                     "UPDATE Event SET type = UPPER(type)"
                 )
             }

@@ -1,0 +1,11 @@
+- Black Amoled theme, UI improvements
+- Multiple additional notifications
+- Group or ungroup notifications
+- Disable animation looping
+- Display the events in alphabetical order
+- Selectable conflict strategy when importing
+- Android 14 predictive back
+- Rearranged the settings
+- Demo elements DB, for testing purposes
+- New translations, translations updated
+- Many fixes and much more!

@@ -6,6 +6,8 @@
     <style name="AppTheme.Base" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorSurfaceContainerLow">@color/colorBackground</item>
+        <item name="colorOutlineVariant">@color/deepGray</item>
         <item name="colorOnPrimary">@color/deepGray</item>
         <item name="colorPrimary">@color/colorAccent</item>
         <item name="colorPrimaryContainer">@color/colorAccentTranslucent</item>
@@ -14,7 +16,6 @@
         </item> <!-- Navbar halo -->
         <item name="colorTertiary">@color/colorAccentDark</item>
         <item name="colorTertiaryContainer">@color/colorAccentTranslucent</item>
-        <item name="android:statusBarColor">@color/colorBackground</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
         <item name="android:textColorTertiary">@color/textColorSecondary</item>
@@ -25,18 +26,17 @@
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
         <item name="alertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
         <item name="colorSurface">@color/colorSurface</item>
-        <item name="switchStyle">@style/CustomMaterialSwitch</item>
+        <item name="materialSwitchStyle">@style/CustomMaterialSwitch</item>
         <item name="bottomNavigationStyle">@style/CustomBottomNavigation</item>
         <item name="bottomAppBarStyle">@style/CustomBottomAppBar</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
         <item name="colorOutline">@color/goodGray</item>
         <item name="colorSurfaceVariant">@color/goodGrayTranslucent</item>
-        <item name="android:navigationBarColor">@color/deepGray</item>
     </style>
 
     <!-- Monet theme -->
-    <style name="AppTheme.Monet" parent="Theme.Material3.DynamicColors.DayNight">
+    <style name="AppTheme.Monet" parent="Theme.Material3.DynamicColors.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
         <item name="materialTimePickerTheme">@style/ThemeOverlay.App.TimePicker</item>
         <item name="snackbarStyle">@style/Widget.App.Snackbar</item>
@@ -44,9 +44,9 @@
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog.Monet
         </item>
         <item name="alertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog.Monet</item>
-        <item name="windowNoTitle">true</item>
-        <item name="switchStyle">@style/Widget.Material3.CompoundButton.MaterialSwitch</item>
-        <item name="android:navigationBarColor">?attr/colorSurface</item>
+        <item name="materialSwitchStyle">@style/Widget.Material3.CompoundButton.MaterialSwitch
+        </item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog.Monet</item>
     </style>
 
     <!-- Splash screen theme -->
@@ -74,10 +74,9 @@
     <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
         <item name="dialogCornerRadius">@dimen/rounded_corners</item>
-        <item name="android:background">@drawable/dialog_bg_monet</item>
-        <!-- Remove the accent-ish tint TODO Useless since every dialog has this tint now
+        <!-- Remove the accent-ish tint -->
         <item name="backgroundTint">?colorBackgroundFloating</item>
-        <item name="android:background">?colorBackgroundFloating</item> -->
+        <item name="android:background">?colorBackgroundFloating</item>
     </style>
 
     <!-- Preference dialog Monet theme -->
@@ -123,6 +122,21 @@
         <item name="startIconTint">?attr/colorOutline</item>
     </style>
 
+    <!-- Bottom sheet, normal and edge to edge -->
+    <style name="ModalBottomSheetDialog" parent="Widget.Material3.BottomSheet.Modal">
+        <!-- Remove the accent-ish tint -->
+        <item name="backgroundTint">?colorSurfaceContainerLow</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="bottomSheetStyle">@style/ModalBottomSheetDialog</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomSheetDialog.Monet" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
     <!-- Monet time picker theme -->
     <style name="ThemeOverlay.App.TimePicker" parent="@style/ThemeOverlay.Material3.MaterialTimePicker">
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
@@ -153,13 +167,16 @@
     </style>
 
     <style name="CustomBottomAppBar" parent="Widget.Material3.BottomAppBar">
-        <item name="android:backgroundTint">@color/deepGray</item>
+        <item name="android:backgroundTint">?attr/colorOutlineVariant</item>
     </style>
 
-    <!-- Switch for non-monet accents -->
+    <style name="CustomBottomAppBarAmoled" parent="Widget.Material3.BottomAppBar">
+        <item name="colorSurface">@android:color/black</item>
+    </style>
+
+    <!-- Switch for non-monet accents, probably useless -->
     <style name="CustomMaterialSwitch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
         <item name="thumbIconTint">?attr/colorPrimary</item>
-        <item name="trackDecorationTint">?attr/colorPrimary</item>
     </style>
 
     <!-- Custom button group -->
@@ -175,7 +192,9 @@
     </style>
 
     <!-- Custom color styles -->
-    <style name="AppTheme.System" parent="AppTheme">
+    <style name="AppTheme.Accent" parent="AppTheme" />
+
+    <style name="AppTheme.System" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/aqua</item>
         <item name="colorSecondary">@color/aqua</item>
         <item name="colorTertiary">@color/aquaDark</item>
@@ -184,7 +203,7 @@
         <item name="colorTertiaryContainer">@color/aquaTranslucent</item>
     </style>
 
-    <style name="AppTheme.Brown" parent="AppTheme">
+    <style name="AppTheme.Brown" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/brown</item>
         <item name="colorSecondary">@color/brown</item>
         <item name="colorTertiary">@color/brownDark</item>
@@ -193,7 +212,7 @@
         <item name="colorTertiaryContainer">@color/brownTranslucent</item>
     </style>
 
-    <style name="AppTheme.Blue" parent="AppTheme">
+    <style name="AppTheme.Blue" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/blue</item>
         <item name="colorSecondary">@color/blue</item>
         <item name="colorTertiary">@color/blueDark</item>
@@ -202,7 +221,7 @@
         <item name="colorTertiaryContainer">@color/blueTranslucent</item>
     </style>
 
-    <style name="AppTheme.Green" parent="AppTheme">
+    <style name="AppTheme.Green" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/green</item>
         <item name="colorSecondary">@color/green</item>
         <item name="colorTertiary">@color/greenDark</item>
@@ -211,7 +230,7 @@
         <item name="colorTertiaryContainer">@color/greenTranslucent</item>
     </style>
 
-    <style name="AppTheme.Orange" parent="AppTheme">
+    <style name="AppTheme.Orange" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/orange</item>
         <item name="colorSecondary">@color/orange</item>
         <item name="colorTertiary">@color/orangeDark</item>
@@ -220,7 +239,7 @@
         <item name="colorTertiaryContainer">@color/orangeTranslucent</item>
     </style>
 
-    <style name="AppTheme.Yellow" parent="AppTheme">
+    <style name="AppTheme.Yellow" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/yellow</item>
         <item name="colorSecondary">@color/yellow</item>
         <item name="colorTertiary">@color/yellowDark</item>
@@ -229,7 +248,7 @@
         <item name="colorTertiaryContainer">@color/yellowTranslucent</item>
     </style>
 
-    <style name="AppTheme.Teal" parent="AppTheme">
+    <style name="AppTheme.Teal" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/teal</item>
         <item name="colorSecondary">@color/teal</item>
         <item name="colorTertiary">@color/tealDark</item>
@@ -238,7 +257,7 @@
         <item name="colorTertiaryContainer">@color/tealTranslucent</item>
     </style>
 
-    <style name="AppTheme.Violet" parent="AppTheme">
+    <style name="AppTheme.Violet" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/violet</item>
         <item name="colorSecondary">@color/violet</item>
         <item name="colorTertiary">@color/violetDark</item>
@@ -247,7 +266,7 @@
         <item name="colorTertiaryContainer">@color/violetTranslucent</item>
     </style>
 
-    <style name="AppTheme.Pink" parent="AppTheme">
+    <style name="AppTheme.Pink" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/pink</item>
         <item name="colorSecondary">@color/pink</item>
         <item name="colorTertiary">@color/pinkDark</item>
@@ -256,7 +275,7 @@
         <item name="colorTertiaryContainer">@color/pinkTranslucent</item>
     </style>
 
-    <style name="AppTheme.LightBlue" parent="AppTheme">
+    <style name="AppTheme.LightBlue" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/lightBlue</item>
         <item name="colorSecondary">@color/lightBlue</item>
         <item name="colorTertiary">@color/lightBlueDark</item>
@@ -265,7 +284,7 @@
         <item name="colorTertiaryContainer">@color/lightBlueTranslucent</item>
     </style>
 
-    <style name="AppTheme.Red" parent="AppTheme">
+    <style name="AppTheme.Red" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/red</item>
         <item name="colorSecondary">@color/red</item>
         <item name="colorTertiary">@color/redDark</item>
@@ -274,7 +293,7 @@
         <item name="colorTertiaryContainer">@color/redTranslucent</item>
     </style>
 
-    <style name="AppTheme.Lime" parent="AppTheme">
+    <style name="AppTheme.Lime" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/lime</item>
         <item name="colorSecondary">@color/lime</item>
         <item name="colorTertiary">@color/limeDark</item>
@@ -283,7 +302,7 @@
         <item name="colorTertiaryContainer">@color/limeTranslucent</item>
     </style>
 
-    <style name="AppTheme.Crimson" parent="AppTheme">
+    <style name="AppTheme.Crimson" parent="AppTheme.Accent">
         <item name="colorPrimary">@color/crimson</item>
         <item name="colorSecondary">@color/crimson</item>
         <item name="colorTertiary">@color/crimsonDark</item>

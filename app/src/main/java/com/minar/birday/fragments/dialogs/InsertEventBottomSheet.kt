@@ -83,17 +83,19 @@ class InsertEventBottomSheet(
         // Animate the drawable in loop
         val titleIcon = binding.insertEventImage
         val title = binding.insertEventTitle
-        if (event == null) titleIcon.applyLoopingAnimatedVectorDrawable(
+        if (event == null) act.animateAvd(
+            titleIcon,
             R.drawable.animated_insert_event,
             2500L
         )
-        else titleIcon.applyLoopingAnimatedVectorDrawable(R.drawable.animated_edit_event, 2500L)
+        else act.animateAvd(titleIcon, R.drawable.animated_edit_event, 2500L)
 
         // Show a bottom sheet containing the form to insert a new event
         imageChosen = false
         var nameValue = "error"
         var surnameValue = ""
-        var eventDateValue: LocalDate = LocalDate.now().minusDays(1L)
+        // The initial date is today
+        var eventDateValue: LocalDate = LocalDate.now()
         var countYearValue = true
         val positiveButton = binding.positiveButton
         val negativeButton = binding.negativeButton
@@ -184,9 +186,11 @@ class InsertEventBottomSheet(
                     // Automatically uncheck "the year matters" for name days
                     if (typeValue == EventCode.NAME_DAY.name) {
                         countYear.isChecked = false
+                        countYear.isEnabled = false
                         countYearValue = false
                     } else {
                         countYear.isChecked = true
+                        countYear.isEnabled = true
                         countYearValue = true
                     }
                     if (!imageChosen)
@@ -329,6 +333,7 @@ class InsertEventBottomSheet(
                         nameCorrect = true
                     }
                 }
+
                 editable === surname.editableText -> {
                     val surnameText = surname.text.toString()
                     if (!checkName(surnameText)) {

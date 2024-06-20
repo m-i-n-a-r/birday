@@ -11,27 +11,25 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.BottomSheetRateBinding
-import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
-
 
 class RateBottomSheet(private val editor: SharedPreferences.Editor) : BottomSheetDialogFragment() {
     private var _binding: BottomSheetRateBinding? = null
     private val binding get() = _binding!!
+    private lateinit var act: MainActivity
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         // Inflate the bottom sheet, initialize the shared preferences and the recent options list
         _binding = BottomSheetRateBinding.inflate(inflater, container, false)
+        act = requireActivity() as MainActivity
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // Animate the drawable in loop
         val titleIcon = binding.rateImage
-        titleIcon.applyLoopingAnimatedVectorDrawable(R.drawable.animated_review_star, 1500L)
+        act.animateAvd(titleIcon, R.drawable.animated_review_star, 1500L)
         val positiveButton = binding.positiveButton
         val negativeButton = binding.negativeButton
         val neutralButton = binding.neutralButton

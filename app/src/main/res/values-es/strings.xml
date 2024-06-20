@@ -56,7 +56,7 @@
     <string name="accent_name">Color principal</string>
     <string name="theme_description">Usa un tema oscuro, claro o automático</string>
     <string name="theme_name">Tema de la aplicación</string>
-    <!-- Untranslated for now -->
+    <!-- ^ Untranslated for now -->
     <string name="aqua">Aguamarina</string>
     <string name="brown">Marrón</string>
     <string name="blue">Azul</string>
@@ -109,6 +109,7 @@
     <string name="troubleshoot">Solucionar problemas</string>
     <string name="battery_optimization_title">Deshabilitar la optimización de la batería</string>
     <string name="battery_optimization_description">Abra la configuración para deshabilitar cualquier optimización para Birday. Útil si las notificaciones no funcionan</string>
+    <string name="battery_optimization_tutorial">- Muestra todas las aplicaciones y encuentra Birday en la lista\n- Pulsa en Birday y selecciona \"No optimizar\"</string>
     <string name="notification_sound_title">Sonido de notificación</string>
     <string name="notification_sound_description">Acceso directo a la configuración de sonido de notificación, si no te gusta el sonido de pájaro predeterminado</string>
     <string name="missing_permission_notifications">¡El permiso de notificación fue denegado, y Birday no puede enviar notificaciones! Activa el permiso desde la configuración.</string>
@@ -117,6 +118,15 @@
     <string name="missing_permission_calendar_forever">¡El permiso de calendario fue denegado y no se puede preguntar de nuevo, así que Birday no puede importar desde el calendario! Active el permiso manualmente, desde la configuración.</string>
     <string name="import_calendar_title">Importar desde calendario</string>
     <string name="import_calendar_description">Importa cualquier evento anual de tus calendarios. ¡Recuerda establecer el tipo de evento y el año para mantener las cosas ordenadas!</string>
+    <string name="loop_avd_title">Animaciones en bucle</string>
+    <string name="loop_avd_description_on">Las animaciones se repiten infinitamente</string>
+    <string name="loop_avd_description_off">Las animaciones se ejecutarán una sola vez</string>
+    <string name="order_alphabetically_title">En orden alfabético</string>
+    <string name="order_alphabetically_description_on">Los eventos se ordenan alfabéticamente</string>
+    <string name="order_alphabetically_description_off">Los eventos son ordenados por fecha</string>
+    <string name="grouped_notifications_title">Agrupar notificaciones múltiples</string>
+    <string name="grouped_notifications_description_on">Si hay dos o más eventos en un mismo día, las notificaciones serán agrupadas</string>
+    <string name="grouped_notifications_description_off">Si hay dos o más eventos en un mismo día, Birday enviará una notificación para cada uno de ellos</string>
     <!-- Developer -->
     <string name="dev_description">Soy un tipo amable al que le gustan las animaciones, los iconos, los coches deportivos y la impresión 3D. Trabajo como diseñador e ingeniero informático.</string>
     <string name="easter_egg">Bonito logo, ¿eh? ;D</string>
@@ -250,6 +260,8 @@
     <string name="align_start_widget_description">Alinear el contenido del widget al principio (derecha o izquierda dependiendo de su local)</string>
     <string name="hide_far_widget_title">Ocultar widget para eventos lejanos</string>
     <string name="hide_far_widget_description">Ocultar el widget si los siguientes eventos son después del período de notificación adicional (por ejemplo: notificación 7 días antes, el siguiente evento está en 10 días -&gt; el widget está oculto)</string>
+    <string name="show_following_widget_title">Mostrar el siguiente evento</string>
+    <string name="show_following_widget_description">Muestra el evento o los eventos posteriores al siguiente, en una fila adicional</string>
     <!-- Search -->
     <string name="search_event">Buscar…</string>
     <string name="search_no_result_title">Sin resultados</string>
@@ -286,6 +298,9 @@
     <string name="import_csv_description">Importar desde un archivo CSV. Consulte la wiki en Github para ver la estructura de archivos requerida</string>
     <string name="export_csv_title">Exportar a CSV</string>
     <string name="export_csv_description">Exportar cada evento a un archivo CSV, imagen excluida</string>
+    <string name="add_demo_entries_title">Añadir entradas demo</string>
+    <string name="add_demo_entries_description">Puebla el DB con un set de eventos demo, en su mayoría actores y figuras históricas</string>
+    <string name="add_demo_entries_dialog_description">Esto añadirá MILES de entradas a la base de datos permanentemente y está destinado para propósitos de debug. No eliminará ningún evento existente, pero si quieres eliminar las nuevas entradas, tendrás que hacerlo manualmente. Buena suerte por eso.</string>
     <string name="delete_db_title">Eliminar todos los eventos</string>
     <string name="delete_db_description">Sencillamente, destruye el DB. ¡Piensa dos veces antes de hacer clic!</string>
     <string name="delete_db_dialog_title">¿Estás seguro?</string>
@@ -299,4 +314,7 @@
     <string name="advanced_overview_title">Resumen avanzado</string>
     <string name="advanced_overview_description_off">La pantalla de resumen solo mostrará información básica</string>
     <string name="advanced_overview_description_on">La pantalla de resumen mostrará otros años e información detallada</string>
+    <string name="replace_on_conflict_title">Reemplazar cuando haya conflicto</string>
+    <string name="replace_on_conflict_description_off">Cuando se importa, un evento duplicado no será reemplazado por el duplicado importado</string>
+    <string name="replace_on_conflict_description_on">Cuando se importa, un evento duplicado será sobrescrito por el duplicado importado</string>
 </resources>

@@ -56,7 +56,7 @@
     <string name="accent_name">Cor de destaque</string>
     <string name="theme_description">Utilizar um tema escuro, claro ou automático</string>
     <string name="theme_name">Tema da aplicação</string>
-    <!-- Untranslated for now -->
+    <!-- ^ Untranslated for now -->
     <string name="aqua">Água</string>
     <string name="brown">Castanho</string>
     <string name="blue">Azul</string>
@@ -111,14 +111,24 @@
     <string name="troubleshoot">Resolução de problemas</string>
     <string name="battery_optimization_title">Desative a otimização da bateria</string>
     <string name="battery_optimization_description">Abra as definições e desative quaisquer otimizações para Birday. Útil se as notificações não estiverem a funcionar</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
     <string name="notification_sound_title">Som de notificação</string>
     <string name="notification_sound_description">Atalho para as definições de som das notificações, se você não gostar do som padrão</string>
     <string name="missing_permission_notifications">A permissão de notificação foi recusada e o Birday não pode enviar notificações! Ative a permissão nas configurações.</string>
-    <string name="missing_permission_notifications_forever">The notification permission was denied and can\'t be asked again, so Birday can\'t send notifications! Activate the permission manually, from settings.</string>
-    <string name="missing_permission_calendar">The calendar permission was denied, and Birday can\'t import from calendar! Activate the permission from settings.</string>
-    <string name="missing_permission_calendar_forever">The calendar permission was denied and can\'t be asked again, so Birday can\'t import from calendar! Activate the permission manually, from settings.</string>
-    <string name="import_calendar_title">Import from calendar</string>
-    <string name="import_calendar_description">Import any yearly event from your calendars. Remember to set the event type and year to keep things ordered!</string>
+    <string name="missing_permission_notifications_forever">A permissão de notificação foi negada e não pode ser perguntada novamente, então o Birday não pode enviar notificações! Ative a permissão manualmente a partir das configurações.</string>
+    <string name="missing_permission_calendar">A permissão de notificação foi recusada e o Birday não pode enviar notificações! Ative a permissão nas configurações.</string>
+    <string name="missing_permission_calendar_forever">A permissão de notificação foi negada e não pode ser perguntada novamente, então o Birday não pode enviar notificações! Ative a permissão manualmente a partir das configurações.</string>
+    <string name="import_calendar_title">Importar da agenda</string>
+    <string name="import_calendar_description">Importe qualquer evento anual de suas agendas. Lembre-se de definir o tipo de evento e o ano para manter as coisas ordenadas!</string>
+    <string name="loop_avd_title">Animação em ciclo</string>
+    <string name="loop_avd_description_on">The animations are looped infinitely</string>
+    <string name="loop_avd_description_off">The animations will run a single time</string>
+    <string name="order_alphabetically_title">Alphabetical order</string>
+    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
+    <string name="order_alphabetically_description_off">The events are ordered by date</string>
+    <string name="grouped_notifications_title">Group multiple notifications</string>
+    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
+    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
     <!-- Developer -->
     <string name="dev_description">Sou uma pessoa simples que gosta de coisas bonitas tais como animações, ícones, carros desportivos e impressões 3D. Trabalho como designer e como engenheiro computacional.</string>
     <string name="easter_egg">Belo logotipo não? ;D</string>
@@ -258,6 +268,8 @@
     <string name="align_start_widget_description">Align the widget content to the start (right or left depending on your locale)</string>
     <string name="hide_far_widget_title">Hide widget for far events</string>
     <string name="hide_far_widget_description">Hide the widget if the next events are after the additional notification period (eg: notification 7 days before, the next event is in 10 days -&gt; the widget is hidden)</string>
+    <string name="show_following_widget_title">Show the following event</string>
+    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <!-- Search -->
     <string name="search_event">Pesquisar…</string>
     <string name="search_no_result_title">Não existem resultados</string>
@@ -294,6 +306,9 @@
     <string name="import_csv_description">Import from a CSV file. Refer to the wiki on Github for the required file structure</string>
     <string name="export_csv_title">Export to CSV</string>
     <string name="export_csv_description">Export each event to a CSV file, image excluded</string>
+    <string name="add_demo_entries_title">Add demo entries</string>
+    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
+    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
     <string name="delete_db_title">Delete all the events</string>
     <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
     <string name="delete_db_dialog_title">Are you sure?</string>
@@ -307,4 +322,7 @@
     <string name="advanced_overview_title">Advanced overview</string>
     <string name="advanced_overview_description_off">The overview screen will only display basic information</string>
     <string name="advanced_overview_description_on">The overview screen will show other years and detailed information</string>
+    <string name="replace_on_conflict_title">Replace on conflict</string>
+    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
+    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
 </resources>

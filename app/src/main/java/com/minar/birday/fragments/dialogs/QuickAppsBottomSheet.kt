@@ -12,7 +12,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.BottomSheetQuickAppsBinding
-import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 
 
 class QuickAppsBottomSheet(private val act: MainActivity) : BottomSheetDialogFragment() {
@@ -39,6 +38,7 @@ class QuickAppsBottomSheet(private val act: MainActivity) : BottomSheetDialogFra
         val messengerButton = binding.messengerButton
         val viberButton = binding.viberButton
         val signalButton = binding.signalButton
+        val threemaButton = binding.threemaButton
 
         // Hide some apps if they're not installed
         if (!isAppInstalled(act, "com.whatsapp")) whatsAppButton.visibility = View.GONE
@@ -71,15 +71,20 @@ class QuickAppsBottomSheet(private val act: MainActivity) : BottomSheetDialogFra
             launchOrOpenAppStore("com.instagram.android")
             dismiss()
         }
-
         if (!isAppInstalled(act, "com.facebook.orca")) messengerButton.visibility = View.GONE
         else messengerButton.setOnClickListener {
             act.vibrate()
             launchOrOpenAppStore("com.facebook.orca")
             dismiss()
         }
+        if (!isAppInstalled(act, "ch.threema.app")) threemaButton.visibility = View.GONE
+        else threemaButton.setOnClickListener {
+            act.vibrate()
+            launchOrOpenAppStore("ch.threema.app")
+            dismiss()
+        }
 
-        titleIcon.applyLoopingAnimatedVectorDrawable(R.drawable.animated_quick_apps, 1500L)
+        act.animateAvd(titleIcon, R.drawable.animated_quick_apps, 1500L)
 
         dialerButton.setOnClickListener {
             act.vibrate()

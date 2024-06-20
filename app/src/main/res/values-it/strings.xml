@@ -56,7 +56,7 @@
     <string name="accent_name">Colore accent</string>
     <string name="theme_description">Usa un tema scuro, chiaro o automatico</string>
     <string name="theme_name">Tema applicazione</string>
-    <!-- Untranslated for now -->
+    <!-- ^ Untranslated for now -->
     <string name="aqua">Acqua</string>
     <string name="brown">Marrone</string>
     <string name="blue">Blu</string>
@@ -78,7 +78,7 @@
     <string name="shimmer_description_off">Nessun effetto grafico aggiuntivo</string>
     <string name="import_export">Importazione ed esportazione</string>
     <string name="import_contacts_title">Importa eventi dai contatti</string>
-    <string name="import_contacts_description">Modificare gli eventi con anno mancante per avere statistiche accurate!</string>
+    <string name="import_contacts_description">Assicurati di modificare gli eventi con anno mancante per avere statistiche accurate!</string>
     <string name="import_success">Importazione completata con successo!</string>
     <string name="import_nothing_found">Nessun evento trovato!</string>
     <string name="import_failed">Qualcosa è andato storto!</string>
@@ -109,6 +109,7 @@
     <string name="troubleshoot">Risoluzione dei problemi</string>
     <string name="battery_optimization_title">Disabilita ottimizzazione batteria</string>
     <string name="battery_optimization_description">Apri le impostazioni per disabilitare le ottimizzazioni per Birday. Utile se le notifiche non funzionano</string>
+    <string name="battery_optimization_tutorial">- Mostra tutte le app e trova Birday nella lista\n- Tocca Birday e seleziona \"Non ottimizzare\"</string>
     <string name="notification_sound_title">Suono di notifica</string>
     <string name="notification_sound_description">Scorciatoia per le impostazioni del suono di notifica, se non ti piace il suono dell\'uccellino di default</string>
     <string name="missing_permission_notifications">Il permesso per le notifiche è stato negato, e Birday non può inviare notifiche! Attivalo dalle impostazioni.</string>
@@ -117,6 +118,15 @@
     <string name="missing_permission_calendar_forever">Il permesso calendario è stato negato e non può essere chiesto nuovamente, quindi Birday non può importare dal calendario! Attivalo manualmente, dalle impostazioni.</string>
     <string name="import_calendar_title">Importa da calendario</string>
     <string name="import_calendar_description">Importa qualsiasi evento annuale dai tuoi calendari. Ricorda di impostare il tipo di evento e l\'anno per tenere le cose ordinate!</string>
+    <string name="loop_avd_title">Loop delle animazioni</string>
+    <string name="loop_avd_description_on">Le animazioni continuano all\'infinito</string>
+    <string name="loop_avd_description_off">Le animazioni saranno eseguite una singola volta</string>
+    <string name="order_alphabetically_title">Ordine alfabetico</string>
+    <string name="order_alphabetically_description_on">Gli eventi sono ordinati alfabeticamente</string>
+    <string name="order_alphabetically_description_off">Gli eventi sono ordinati per data</string>
+    <string name="grouped_notifications_title">Raggruppa notifiche multiple</string>
+    <string name="grouped_notifications_description_on">Se ci sono due o più eventi in un singolo giorno, le notifiche sono raggruppate</string>
+    <string name="grouped_notifications_description_off">Se ci sono due o più eventi in un singolo giorno, Birday manderà una notifica per ognuno</string>
     <!-- Developer -->
     <string name="dev_description">Sono un ragazzo educato e mi piacciono le cose belle, come animazioni, icone, macchine sportive e stampa 3d. Lavoro come designer e ingegnere informatico.</string>
     <string name="easter_egg">Bel logo, eh? ;D</string>
@@ -250,6 +260,8 @@
     <string name="align_start_widget_description">Allinea il contenuto del widget all\'inizio (a destra o a sinistra a seconda della tua località)</string>
     <string name="hide_far_widget_title">Nascondi widget per eventi lontani</string>
     <string name="hide_far_widget_description">Nascondi il widget se i prossimi eventi sono dopo il periodo di notifica aggiuntiva (es: notifica 7 giorni prima, il prossimo evento è tra 10 giorni -&gt; il widget è nascosto)</string>
+    <string name="show_following_widget_title">Mostra l\'evento successivo</string>
+    <string name="show_following_widget_description">Mostra l\'evento o gli eventi che seguono il prossimo in una riga aggiuntiva</string>
     <!-- Search -->
     <string name="search_event">Cerca…</string>
     <string name="search_no_result_title">Nessun risultato trovato</string>
@@ -286,6 +298,9 @@
     <string name="import_csv_description">Importa da un file CSV. Fare riferimento alla wiki su Github per la struttura dei file richiesta</string>
     <string name="export_csv_title">Esporta in CSV</string>
     <string name="export_csv_description">Esporta ciascuna evento in un file CSV, immagine esclusa</string>
+    <string name="add_demo_entries_title">Aggiungi elementi demo</string>
+    <string name="add_demo_entries_description">Popola il DB con un set di eventi demo, per lo più attori e figure storiche</string>
+    <string name="add_demo_entries_dialog_description">Questo aggiungerà permanentemente MIGLIAIA di elementi al DB ed è inteso per scopi di debug. Non eliminerà nessun evento esistente, ma se vorrai cancellare i nuovi elementi, dovrai farlo manualmente. Buona fortuna con quello.</string>
     <string name="delete_db_title">Elimina tutti gli eventi</string>
     <string name="delete_db_description">Semplicemente, elimina il DB. Pensa due volte prima di cliccare!</string>
     <string name="delete_db_dialog_title">Sei sicuro?</string>
@@ -299,4 +314,7 @@
     <string name="advanced_overview_title">Panoramica avanzata</string>
     <string name="advanced_overview_description_off">La schermata panoramica mostrerà solo le informazioni di base</string>
     <string name="advanced_overview_description_on">La schermata panoramica mostrerà altri anni e informazioni dettagliate</string>
+    <string name="replace_on_conflict_title">Rimpiazza se in conflitto</string>
+    <string name="replace_on_conflict_description_off">Durante l\'importazione, un evento duplicato non sarà sostituito dal duplicato importato</string>
+    <string name="replace_on_conflict_description_on">Durante l\'importazione, un evento duplicato sarà sovrascritto dal duplicato importato</string>
 </resources>

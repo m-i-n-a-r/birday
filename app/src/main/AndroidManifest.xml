@@ -14,6 +14,7 @@
         <package android:name="org.thoughtcrime.securesms" />
         <package android:name="com.instagram.android" />
         <package android:name="com.facebook.orca" />
+        <package android:name="ch.threema.app" />
     </queries>
 
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -21,14 +22,14 @@
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
-    <!-- Not sure if enableOnBackInvokedCallback is useful -->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="@xml/backup_rules"
+        android:backupInForeground="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:localeConfig="@xml/locales_config"
         android:resizeableActivity="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -84,7 +85,6 @@
             android:name=".activities.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             android:exported="true"
-            android:screenOrientation="fullUser"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -113,6 +113,7 @@
 
         <service
             android:name=".widgets.EventWidgetService"
+            android:foregroundServiceType="dataSync"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
     </application>

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
-    <!-- TODO Is hide handy? Insert app:hideOnScroll="true" as an option -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/navHostFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -20,7 +19,7 @@
         android:id="@+id/bottomBar"
         style="@style/Widget.Material3.BottomAppBar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/bottom_navbar_height"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:contentInsetStart="0dp"
         app:fabAlignmentMode="end"
@@ -50,7 +49,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/new_event"
         android:hapticFeedbackEnabled="false"
-        app:layout_anchor="@id/bottomBar"
+        app:layout_anchor="@id/navigation"
         app:maxImageSize="@dimen/main_fab_icon_size"
         app:srcCompat="@drawable/ic_party_24dp"
         app:tint="@null" />

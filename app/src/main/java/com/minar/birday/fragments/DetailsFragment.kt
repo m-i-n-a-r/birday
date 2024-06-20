@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.BackEventCompat
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
@@ -25,13 +27,19 @@ import com.minar.birday.fragments.dialogs.InsertEventBottomSheet
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
-import com.minar.birday.utilities.*
+import com.minar.birday.utilities.StatsGenerator
+import com.minar.birday.utilities.byteArrayToBitmap
+import com.minar.birday.utilities.formatDaysRemaining
+import com.minar.birday.utilities.formatName
+import com.minar.birday.utilities.getNextYears
+import com.minar.birday.utilities.getReducedDate
+import com.minar.birday.utilities.getRemainingDays
+import com.minar.birday.utilities.getStringForTypeCodename
+import com.minar.birday.utilities.getThemeColor
+import com.minar.birday.utilities.resultToEvent
 import com.minar.birday.viewmodels.MainViewModel
-import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
-import java.time.format.TextStyle
-import java.util.Locale
 
 
 class DetailsFragment : Fragment() {
@@ -88,7 +96,8 @@ class DetailsFragment : Fragment() {
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
         val astrologyDisabled = sharedPrefs.getBoolean("disable_astrology", false)
         val hideImage = sharedPrefs.getBoolean("hide_images", false)
-        val titleText = "${getString(R.string.event_details)} - ${event.name}"
+        val surnameFirst = sharedPrefs.getBoolean("surname_first", false)
+        val titleText = formatName(event, surnameFirst)
         val title = binding.detailsEventName
         val image = binding.detailsEventImage
         val imageBg = binding.detailsEventImageBackground
@@ -129,11 +138,12 @@ class DetailsFragment : Fragment() {
                     )
                 )
             }
-            imageBg.applyLoopingAnimatedVectorDrawable(R.drawable.animated_ripple_circle)
+            act.animateAvd(imageBg, R.drawable.animated_ripple_circle)
         }
 
         // Default animated vector drawable
-        binding.detailsEventNameImage.applyLoopingAnimatedVectorDrawable(
+        act.animateAvd(
+            binding.detailsEventNameImage,
             R.drawable.animated_balloon,
             1500
         )
@@ -181,6 +191,7 @@ class DetailsFragment : Fragment() {
 
             // Native dialog
             MaterialAlertDialogBuilder(act)
+                .setView(dialogNotesBinding.root)
                 .setTitle(notesTitle)
                 .setIcon(R.drawable.ic_note_24dp)
                 .setPositiveButton(resources.getString(android.R.string.ok)) { dialog, _ ->
@@ -210,7 +221,6 @@ class DetailsFragment : Fragment() {
                 .setNegativeButton(resources.getString(android.R.string.cancel)) { dialog, _ ->
                     dialog.dismiss()
                 }
-                .setView(dialogNotesBinding.root)
                 .show()
         }
 
@@ -220,11 +230,10 @@ class DetailsFragment : Fragment() {
         subject.add(event)
         val statsGenerator = StatsGenerator(subject, context)
         val daysRemaining = getRemainingDays(event.nextDate!!)
-        val dayOfWeek = LocalDate.now().plusDays(daysRemaining.toLong()).dayOfWeek.getDisplayName(
-            TextStyle.FULL, Locale.getDefault())
+        val nextDateFormatted = event.nextDate.format(formatter)
+        // Days remaining, plus next date properly formatted
         val daysCountdown =
-            formatDaysRemaining(daysRemaining, requireContext()) + ", " +
-                    dayOfWeek
+            formatDaysRemaining(daysRemaining, requireContext()) + "\n" + nextDateFormatted
         binding.detailsZodiacSignValue.text =
             statsGenerator.getZodiacSign(event)
         binding.detailsCountdown.text = daysCountdown
@@ -254,56 +263,67 @@ class DetailsFragment : Fragment() {
                         requireContext(), R.drawable.ic_zodiac_sagittarius
                     )
                 )
+
                 1 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_capricorn
                     )
                 )
+
                 2 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_aquarius
                     )
                 )
+
                 3 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_pisces
                     )
                 )
+
                 4 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_aries
                     )
                 )
+
                 5 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_taurus
                     )
                 )
+
                 6 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_gemini
                     )
                 )
+
                 7 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_cancer
                     )
                 )
+
                 8 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_leo
                     )
                 )
+
                 9 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_virgo
                     )
                 )
+
                 10 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_libra
                     )
                 )
+
                 11 -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_zodiac_scorpio
@@ -318,22 +338,26 @@ class DetailsFragment : Fragment() {
                         requireContext(), R.drawable.ic_anniversary_24dp
                     )
                 )
+
                 EventCode.DEATH.name -> {
                     binding.detailsClearBackground.setImageDrawable(
                         ContextCompat.getDrawable(
                             requireContext(), R.drawable.ic_death_anniversary_24dp
                         )
                     )
-                    binding.detailsEventNameImage.applyLoopingAnimatedVectorDrawable(
+                    act.animateAvd(
+                        binding.detailsEventNameImage,
                         R.drawable.animated_candle_new,
                         1500
                     )
                 }
+
                 EventCode.NAME_DAY.name -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_name_day_24dp
                     )
                 )
+
                 EventCode.OTHER.name -> binding.detailsClearBackground.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(), R.drawable.ic_other_24dp
@@ -353,6 +377,56 @@ class DetailsFragment : Fragment() {
             binding.detailsClearBackground.visibility = View.GONE
             disableAstrology()
         }
+
+        // Manage the predictive back between fragments
+        val predictiveBackMargin = resources.getDimensionPixelSize(R.dimen.predictive_back_margin)
+        var initialTouchY = -1f
+        val background = binding.fragmentBackground
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+
+                override fun handleOnBackProgressed(backEvent: BackEventCompat) {
+                    val progress =
+                        MainActivity.GestureInterpolator.getInterpolation(backEvent.progress)
+                    if (initialTouchY < 0f) {
+                        initialTouchY = backEvent.touchY
+                    }
+                    val progressY = MainActivity.GestureInterpolator.getInterpolation(
+                        (backEvent.touchY - initialTouchY) / background.height
+                    )
+
+                    // Shift horizontally
+                    val maxTranslationX = (background.width / 20) - predictiveBackMargin
+                    background.translationX = progress * maxTranslationX *
+                            (if (backEvent.swipeEdge == BackEventCompat.EDGE_LEFT) 1 else -1)
+
+                    // Shift vertically
+                    val maxTranslationY = (background.height / 20) - predictiveBackMargin
+                    background.translationY = progressY * maxTranslationY
+
+                    // Scale down from 100% to 90%
+                    val scale = 1f - (0.1f * progress)
+                    background.scaleX = scale
+                    background.scaleY = scale
+                }
+
+                override fun handleOnBackPressed() {
+                    findNavController().popBackStack()
+                }
+
+                override fun handleOnBackCancelled() {
+                    initialTouchY = -1f
+                    background.run {
+                        translationX = 0f
+                        translationY = 0f
+                        scaleX = 1f
+                        scaleY = 1f
+                    }
+                }
+            }
+        )
+
         startPostponedEnterTransition()
     }
 

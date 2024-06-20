@@ -52,9 +52,9 @@
     <string name="notification_hour_description">%s \n\n请注意通知可能因app被一些华为，小米，一加设备杀掉进程而无法工作。参考dontkillmyapp.com来获得更多信息。</string>
     <string name="accent_description">修改默认配色</string>
     <string name="accent_name">配色</string>
-    <string name="theme_description">使用深色，浅色，或自动的app主题</string>
+    <string name="theme_description">使用黑暗，光明，或自动的app主题</string>
     <string name="theme_name">App主题</string>
-    <!-- Untranslated for now -->
+    <!-- ^ Untranslated for now -->
     <string name="aqua">水色</string>
     <string name="brown">棕色</string>
     <string name="blue">蓝色</string>
@@ -69,8 +69,8 @@
     <string name="lime">草绿色</string>
     <string name="crimson">绯红色</string>
     <string name="system_theme">系统默认</string>
-    <string name="dark_theme">深色</string>
-    <string name="light_theme">浅色</string>
+    <string name="dark_theme">黑暗</string>
+    <string name="light_theme">光明</string>
     <string name="shimmer_name">微光效果</string>
     <string name="shimmer_description_on">这里那里的闪亮动画</string>
     <string name="shimmer_description_off">无额外显示特效</string>
@@ -84,7 +84,7 @@
     <string name="missing_permission_contacts_forever">Birday无法询问导入通讯录的权限，因为你选择了“不再询问”。请手动开启权限！</string>
     <string name="birday_import_title">导入Birday备份</string>
     <string name="birday_import_description">选择一个有效的Birday备份来恢复你的事件。所有现存数据会被覆盖！</string>
-    <string name="birday_export_title">导入和分享事件</string>
+    <string name="birday_export_title">导出并共享事件</string>
     <string name="birday_export_description">将可用的事件导出到备份中，并且如果你想的话可以分享它们。文件路径在Android/data/com.minar.birday/files</string>
     <string name="birday_import_success">导入完成！</string>
     <string name="birday_import_failure">导入失败。请问你选择了正确的文件吗？</string>
@@ -107,6 +107,7 @@
     <string name="troubleshoot">疑难诊断和更多</string>
     <string name="battery_optimization_title">禁用电池优化</string>
     <string name="battery_optimization_description">打开设置来为Birday禁用任何优化。如果通知不正常工作的话会有用。</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
     <string name="notification_sound_title">通知声音</string>
     <string name="notification_sound_description">通知声音设置的快捷方式，如果你不喜欢默认的声音。</string>
     <string name="missing_permission_notifications">通知权限被拒绝，且Birday无法发送通知！请从设置中开启权限。</string>
@@ -115,6 +116,15 @@
     <string name="missing_permission_calendar_forever">日历权限被拒绝且无法再次询问，所以Birday无法从日历导入！请从设置中手动开启权限。</string>
     <string name="import_calendar_title">从日历导入</string>
     <string name="import_calendar_description">从你的日历导入任何年度事件。记住设置事件的类型和年份来让它们整齐！</string>
+    <string name="loop_avd_title">Loop animations</string>
+    <string name="loop_avd_description_on">The animations are looped infinitely</string>
+    <string name="loop_avd_description_off">The animations will run a single time</string>
+    <string name="order_alphabetically_title">Alphabetical order</string>
+    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
+    <string name="order_alphabetically_description_off">The events are ordered by date</string>
+    <string name="grouped_notifications_title">Group multiple notifications</string>
+    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
+    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
     <!-- Developer -->
     <string name="dev_description">我是一个有礼貌和喜欢美好事物的家伙，喜欢动画，图标，跑车和3D打印。我的工作是设计家和计算机工程师。</string>
     <string name="easter_egg">标志不错，对吧？;D</string>
@@ -234,9 +244,9 @@
     <!-- Widget -->
     <string name="appwidget_upcoming">即将到来的事件</string>
     <string name="add_widget">Birday - 即将到来</string>
-    <string name="dark_widget_name">深色组件</string>
-    <string name="dark_widget_description_on">组件使用深色主题</string>
-    <string name="dark_widget_description_off">组件使用浅色主题</string>
+    <string name="dark_widget_name">黑暗组件</string>
+    <string name="dark_widget_description_on">组件使用黑暗主题</string>
+    <string name="dark_widget_description_off">组件使用光明主题</string>
     <string name="widget_configuration_title">组件设定</string>
     <string name="widget_configuration_description">设定组件来匹配你的风格</string>
     <string name="widget_background_title">背景</string>
@@ -247,6 +257,8 @@
     <string name="align_start_widget_description">将组件内容向开始处对齐（根据你的区域设置决定向左或右）</string>
     <string name="hide_far_widget_title">对很久后的事件隐藏组件</string>
     <string name="hide_far_widget_description">如果下个事件是在额外通知时段后则隐藏组件（比如：7天前通知，下个事件是10天后 -&gt; 隐藏组件）</string>
+    <string name="show_following_widget_title">Show the following event</string>
+    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <!-- Search -->
     <string name="search_event">搜索…</string>
     <string name="search_no_result_title">未找到结果</string>
@@ -283,6 +295,9 @@
     <string name="import_csv_description">从一个CSV文件导入。参考Github的wiki来看所需的文件结构</string>
     <string name="export_csv_title">导出到CSV</string>
     <string name="export_csv_description">将每个事件导出到一个CSV文件，包含图片</string>
+    <string name="add_demo_entries_title">Add demo entries</string>
+    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
+    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
     <string name="delete_db_title">删除所有事件</string>
     <string name="delete_db_description">单纯的，把数据库核爆掉。好好思考下再点！</string>
     <string name="delete_db_dialog_title">你确认吗？</string>
@@ -296,4 +311,7 @@
     <string name="advanced_overview_title">高级概述</string>
     <string name="advanced_overview_description_off">概览屏幕将只显示基本信息</string>
     <string name="advanced_overview_description_on">概览屏幕将显示其他年份和详细信息</string>
+    <string name="replace_on_conflict_title">Replace on conflict</string>
+    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
+    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
 </resources>

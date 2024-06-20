@@ -6,13 +6,14 @@
         android:layout="@layout/experimental_disclaimer_row"
         android:selectable="false" />
 
-    <!-- Auto import on each start -->
+    <!-- Single notifications instead of grouped notifications -->
     <SwitchPreferenceCompat
-        android:defaultValue="false"
-        android:key="auto_import"
-        android:summaryOff="@string/launch_auto_import_description_off"
-        android:summaryOn="@string/launch_auto_import_description_on"
-        android:title="@string/launch_auto_import_title"
+        android:defaultValue="true"
+        android:key="grouped_notifications"
+        android:summaryOff="@string/grouped_notifications_description_off"
+        android:summaryOn="@string/grouped_notifications_description_on"
+        android:title="@string/grouped_notifications_title"
+        android:widgetLayout="@layout/preference_switch_widget"
         app:iconSpaceReserved="false" />
 
     <!-- Hide the bottom navbar on scroll (still can cause navigation issues) -->
@@ -22,15 +23,27 @@
         android:summaryOff="@string/hide_on_scroll_description_off"
         android:summaryOn="@string/hide_on_scroll_description_on"
         android:title="@string/hide_on_scroll_title"
+        android:widgetLayout="@layout/preference_switch_widget"
         app:iconSpaceReserved="false" />
 
-    <!-- Advanced yearly calendar mode -->
+    <!-- Don't loop animated vector drawables -->
+    <SwitchPreferenceCompat
+        android:defaultValue="true"
+        android:key="loop_avd"
+        android:summaryOff="@string/loop_avd_description_off"
+        android:summaryOn="@string/loop_avd_description_on"
+        android:title="@string/loop_avd_title"
+        android:widgetLayout="@layout/preference_switch_widget"
+        app:iconSpaceReserved="false" />
+
+    <!-- Order events alphabetically (by first or last name, depending on the surname first option) -->
     <SwitchPreferenceCompat
         android:defaultValue="false"
-        android:key="advanced_overview"
-        android:summaryOff="@string/advanced_overview_description_off"
-        android:summaryOn="@string/advanced_overview_description_on"
-        android:title="@string/advanced_overview_title"
+        android:key="order_alphabetically"
+        android:summaryOff="@string/order_alphabetically_description_off"
+        android:summaryOn="@string/order_alphabetically_description_on"
+        android:title="@string/order_alphabetically_title"
+        android:widgetLayout="@layout/preference_switch_widget"
         app:iconSpaceReserved="false" />
 
     <!-- Quickly delete searched events -->
@@ -40,24 +53,17 @@
         android:summaryOff="@string/delete_search_description_off"
         android:summaryOn="@string/delete_search_description_on"
         android:title="@string/delete_search_title"
+        android:widgetLayout="@layout/preference_switch_widget"
         app:iconSpaceReserved="false" />
 
-    <!-- Angry bird mode for notifications -->
+    <!-- Ignore or replace duplicate events when importing -->
     <SwitchPreferenceCompat
-        android:defaultValue="false"
-        android:key="angry_bird"
-        android:summaryOff="@string/angry_bird_description_off"
-        android:summaryOn="@string/angry_bird_description_on"
-        android:title="@string/angry_bird_title"
-        app:iconSpaceReserved="false" />
-
-    <!-- Disable astrology information -->
-    <SwitchPreferenceCompat
-        android:defaultValue="false"
-        android:key="disable_astrology"
-        android:summaryOff="@string/disable_astrology_description_off"
-        android:summaryOn="@string/disable_astrology_description_on"
-        android:title="@string/disable_astrology_title"
+        android:defaultValue="true"
+        android:key="replace_on_conflict"
+        android:summaryOff="@string/replace_on_conflict_description_off"
+        android:summaryOn="@string/replace_on_conflict_description_on"
+        android:title="@string/replace_on_conflict_title"
+        android:widgetLayout="@layout/preference_switch_widget"
         app:iconSpaceReserved="false" />
 
     <!-- Import from CSV -->
@@ -71,6 +77,9 @@
 
     <!-- Export to JSON -->
     <com.minar.birday.preferences.backup.JsonExporter android:layout="@layout/json_export_row" />
+
+    <!-- Add demo entries (mostly VIP) -->
+    <com.minar.birday.preferences.standard.AddDemoEntriesPreference android:layout="@layout/add_demo_entries_row" />
 
     <!-- Clear DB (with confirmation dialog) -->
     <com.minar.birday.preferences.standard.ClearDBPreference android:layout="@layout/clear_db_row" />

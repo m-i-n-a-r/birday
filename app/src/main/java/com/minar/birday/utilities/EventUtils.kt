@@ -78,7 +78,7 @@ fun isOther(event: EventResult): Boolean =
 // Check if a given type, in string form, is unknown
 fun isUnknownType(type: String?): Boolean {
     if (type.isNullOrBlank()) return true
-    return !EventCode.values().map { it.name }.contains(type)
+    return !EventCode.entries.map { it.name }.contains(type)
 }
 
 // Properly format the next date for widget and next event card
@@ -87,8 +87,14 @@ fun nextDateFormatted(event: EventResult, formatter: DateTimeFormatter, context:
     return event.nextDate.format(formatter) + ". " + formatDaysRemaining(daysRemaining, context)
 }
 
-// Return the remaining days or a string
+// Return the remaining days, properly formatted, including "yesterday" case
 fun formatDaysRemaining(daysRemaining: Int, context: Context): String {
+    // Special case: the event was yesterday
+    if (daysRemaining > 363) {
+        val previousOccurrence = LocalDate.now().plusDays(daysRemaining.toLong()).minusYears(1L)
+        val wasYesterday = LocalDate.now().toEpochDay().minus(previousOccurrence.toEpochDay()) == 1L
+        if (wasYesterday) return context.getString(R.string.yesterday)
+    }
     return when (daysRemaining) {
         // The -1 case should never happen
         -1 -> context.getString(R.string.yesterday)
@@ -102,13 +108,22 @@ fun formatDaysRemaining(daysRemaining: Int, context: Context): String {
     }
 }
 
-// Given an ordered series of events, remove the upcoming events
-fun removeUpcomingEvents(events: List<EventResult>): List<EventResult> {
-    val noUpcoming: MutableList<EventResult> = events.toMutableList()
-    noUpcoming.removeIf {
-        it.nextDate!! == events[0].nextDate
+// Given an ordered series of events, remove the upcoming events or return them
+fun removeOrGetUpcomingEvents(
+    events: List<EventResult>,
+    returnUpcoming: Boolean = false
+): List<EventResult> {
+    val upcomingResult: MutableList<EventResult> = events.toMutableList()
+    if (returnUpcoming) {
+        upcomingResult.removeIf {
+            it.nextDate!! != events[0].nextDate
+        }
+    } else {
+        upcomingResult.removeIf {
+            it.nextDate!! == events[0].nextDate
+        }
     }
-    return noUpcoming
+    return upcomingResult
 }
 
 // Given a series of events, format them considering the yearMatters parameter and the number
@@ -117,11 +132,11 @@ fun formatEventList(
     surnameFirst: Boolean,
     context: Context,
     showSurnames: Boolean = true,
-    inCurrentYear: Boolean = false
+    inCurrentYear: Boolean = false,
 ): String {
     var formattedEventList = ""
     if (events.isEmpty()) formattedEventList = context.getString(R.string.no_next_event)
-    else events.forEach {
+    else events.takeWhile { events.indexOf(it) <= 3 }.forEach {
         // Years. They're not used in the string if the year doesn't matter
         val years = if (inCurrentYear && it.originalDate.withYear(LocalDate.now().year)
                 .isBefore(LocalDate.now())
@@ -134,18 +149,12 @@ fun formatEventList(
 
             // Show the last name, if any, if there's only one event
             formattedEventList +=
-                if (events.size == 1 && showSurnames)
-                    formatName(it, surnameFirst)
+                if (events.size == 1 && showSurnames) formatName(it, surnameFirst)
                 else it.name
 
             // Show event type if different from birthday
             if (it.type != EventCode.BIRTHDAY.name)
-                formattedEventList += " (${
-                    getStringForTypeCodename(
-                        context,
-                        it.type!!
-                    )
-                })"
+                formattedEventList += " (${getStringForTypeCodename(context, it.type!!)})"
             // If the year is considered, display it. Else only display the name
             if (it.yearMatter!!) formattedEventList += ", " +
                     context.resources.getQuantityString(
@@ -155,7 +164,8 @@ fun formatEventList(
                     )
         }
         // If more than 3 events, just let the user know other events are in the list
-        if (events.indexOf(it) == 3) ", ${context.getString(R.string.event_others)}"
+        if (events.indexOf(it) == 3)
+            formattedEventList += ", ${context.getString(R.string.event_others)}"
     }
     return formattedEventList
 }
@@ -190,7 +200,7 @@ fun getNextYears(eventResult: EventResult): Int {
     var years = -2
     if (eventResult.yearMatter!!) years =
         eventResult.nextDate!!.year - eventResult.originalDate.year
-    return if (years <= -1) 0 else years
+    return if (years <= -1 && eventResult.yearMatter) 0 else years
 }
 
 // Get the decade of birth

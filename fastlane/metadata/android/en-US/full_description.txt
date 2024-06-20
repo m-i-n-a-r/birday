@@ -11,23 +11,26 @@ Well, i'll tell you 3 main reasons:
     <li> It's beautiful, full of animations and simple to use! </li>
 </ul>
 
-Birday allows you to import the birthdays directly from your contacts, with a simple favorite system and a set of stats to discover!
+Birday allows you to import the events directly from your contacts or calendar, with a simple favorite system and a set of stats to discover!
 if you're starting to develop apps and you need an app to look at, to find some inspiration and tricks: click on the Github link, and the Birday source code is served!
   
 
 <h2><b>Features 🎂</b></h2>
 <ul>
-    <li> Simple birthday timeline, with the next date and the name of each person </li>
-    <li> Favorite system, to aggregate your favorite birthdays and see more information </li>
-    <li> Import birthdays from contacts with basic duplicate detection </li>
-    <li> Easily delete or modify every birthday </li>
+    <li> Simple events timeline, with the next date and the name of each person </li>
+    <li> Favorite system, to aggregate your favorite events and see more information </li>
+    <li> Overview screen and a lot of basic and advanced settings </li>
+    <li> Import birthdays from contacts or calendar with basic duplicate detection </li>
+    <li> Backup your events easily, in native, csv or json format
+    <li> 30+ language available. If you don't see your language, you can translate the app yourself! </li>
+    <li> Easily delete, modify or share every event </li>
     <li> Each favorite event has an handy note field </li>
-    <li> Customizable notification the day of the birthday! </li>
-    <li> Light and dark themes (Android 10 automatic dark mode supported) </li>
-    <li> Selectable accent (12 choices) </li>
+    <li> Customizable notification the day of the event, and additional notification(s)! </li>
+    <li> Light, dark and black Amoled theme </li>
+    <li> Selectable accent and Monet accent (12 choices) </li>
     <li> Hide and unhide the top cards for maximum ui flexibility </li>
-    <li> A quick search bar! </li>
-    <li> A minimal widget, with optional dark theme </li>
+    <li> A quick search bar and type selector! </li>
+    <li> 2 customizable widgets </li>
     <li> First introduction and beautiful animations including an animated notification icon </li>
     <li> Simple and precise ui, following the material guidelines </li>
 </ul>
