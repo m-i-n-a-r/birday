@@ -7,6 +7,7 @@
         <item name="android:colorBackground">@color/colorBackgroundInverse</item>
         <item name="colorSurfaceContainerLow">@color/colorBackgroundInverse</item>
         <item name="android:textColorPrimary">@color/textColorPrimaryInverse</item>
+        <item name="colorOutlineVariant">@color/deepGray</item>
         <item name="colorOnPrimary">@color/colorBackground</item>
         <item name="android:textColorSecondary">@color/textColorSecondaryInverse</item>
         <item name="colorSurface">@color/colorSurfaceInverse</item>

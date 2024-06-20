@@ -7,6 +7,7 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:colorBackground">@color/colorBackground</item>
         <item name="colorSurfaceContainerLow">@color/colorBackground</item>
+        <item name="colorOutlineVariant">@color/deepGray</item>
         <item name="colorOnPrimary">@color/deepGray</item>
         <item name="colorPrimary">@color/colorAccent</item>
         <item name="colorPrimaryContainer">@color/colorAccentTranslucent</item>
@@ -166,7 +167,7 @@
     </style>
 
     <style name="CustomBottomAppBar" parent="Widget.Material3.BottomAppBar">
-        <item name="android:backgroundTint">@color/deepGray</item>
+        <item name="android:backgroundTint">?attr/colorOutlineVariant</item>
     </style>
 
     <style name="CustomBottomAppBarAmoled" parent="Widget.Material3.BottomAppBar">

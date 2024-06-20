@@ -26,6 +26,7 @@ import android.provider.Settings
 import android.view.View
 import android.widget.ImageView
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -183,12 +184,6 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        // Enable edge to edge
-        enableEdgeToEdge()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            window.isNavigationBarContrastEnforced = false
-        }
-
         // Initialize the binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
@@ -292,7 +287,21 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        // Add insets
+        // Enable edge to edge, but specify the navigation bar color for android < Q
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q)
+        // The colorOutlineVariant color is used to store the deep gray and fix the navbar color on older devices
+            enableEdgeToEdge(
+                navigationBarStyle = SystemBarStyle.dark(
+                    getThemeColor(
+                        R.attr.colorOutlineVariant,
+                        this
+                    )
+                )
+            )
+        else {
+            enableEdgeToEdge()
+            window.isNavigationBarContrastEnforced = false
+        }
         binding.navHostFragment.addInsetsByMargin(top = true, right = true, left = true)
         binding.bottomBar.addInsetsByPadding(bottom = true, left = true, right = true)
         binding.fab.addInsetsByMargin(bottom = true, halveInsets = true)
@@ -300,6 +309,7 @@ class MainActivity : AppCompatActivity() {
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.navigation) { _, insets ->
             insets
+
         }
 
         // Hide on scroll, requires restart TODO Only available in experimental settings
