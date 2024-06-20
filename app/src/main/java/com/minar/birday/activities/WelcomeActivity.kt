@@ -3,7 +3,6 @@ package com.minar.birday.activities
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
-import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -18,8 +17,8 @@ class WelcomeActivity : AppIntro() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        hideSystemUi()
         showIntroSlides()
+        hideSystemUi()
     }
 
     private fun hideSystemUi() {
@@ -57,9 +56,8 @@ class WelcomeActivity : AppIntro() {
             .build()
 
         // Options
-        showStatusBar(false)
         isSkipButtonEnabled = false
-        setNavBarColor(ContextCompat.getColor(this, R.color.slideThree))
+        showStatusBar(false)
         vibrateDuration = 30
         isColorTransitionsEnabled = true
 
