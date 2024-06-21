@@ -78,17 +78,17 @@ This is an open source app to remember **birthdays** and other events in a fast,
 
 ## Screenshots
 <p align='center'>
-  <img src='https://i.imgur.com/UFMMkEu.png' width='18%'/>
-  <img src='https://i.imgur.com/RvSy5y5.png' width='18%'/>
-  <img src='https://i.imgur.com/2y9lX2d.png' width='18%'/>
-  <img src='https://i.imgur.com/ztLm6Um.png' width='18%'/>
-  <img src='https://i.imgur.com/CSqWCcy.png' width='18%'/>
+  <img src='https://i.imgur.com/UFMMkEu.png' width='19%'/>
+  <img src='https://i.imgur.com/RvSy5y5.png' width='19%'/>
+  <img src='https://i.imgur.com/2y9lX2d.png' width='19%'/>
+  <img src='https://i.imgur.com/ztLm6Um.png' width='19%'/>
+  <img src='https://i.imgur.com/CSqWCcy.png' width='19%'/>
 
-  <img src='https://i.imgur.com/seGRReK.png' width='18%'/>
-  <img src='https://i.imgur.com/z6DbIof.png' width='18%'/>
-  <img src='https://i.imgur.com/RyMyprK.png' width='18%'/>
-  <img src='https://i.imgur.com/qQJdQTN.png' width='18%'/>
-  <img src='https://i.imgur.com/k3UV8XG.png' width='18%'/>
+  <img src='https://i.imgur.com/seGRReK.png' width='19%'/>
+  <img src='https://i.imgur.com/z6DbIof.png' width='19%'/>
+  <img src='https://i.imgur.com/RyMyprK.png' width='19%'/>
+  <img src='https://i.imgur.com/qQJdQTN.png' width='19%'/>
+  <img src='https://i.imgur.com/k3UV8XG.png' width='19%'/>
 </p>
 
 ## Download
