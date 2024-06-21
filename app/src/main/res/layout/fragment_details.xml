@@ -204,6 +204,24 @@
             app:layout_constraintTop_toTopOf="@id/detailsNextAge" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailsNextAgeYears"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/in_row_padding"
+            android:layout_marginVertical="@dimen/recycler_extra_space_top"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+            android:textColor="?attr/colorTertiary"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/detailsEditButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/detailsNextAge"
+            app:layout_constraintVertical_bias="0" />
+
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detailsZodiacSign"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
