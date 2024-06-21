@@ -114,7 +114,7 @@
     <string name="troubleshoot">Устранение неполадок</string>
     <string name="battery_optimization_title">Отключить оптимизацию батареи</string>
     <string name="battery_optimization_description">Откройте настройки, чтобы отключить любую оптимизацию для Birday. Полезно, если уведомления не работают</string>
-    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
+    <string name="battery_optimization_tutorial">- Отобразить список всех приложений и найти Birday в этом списке\n- Нажать на Birday и выбрать \"Не оптимизировать\"</string>
     <string name="notification_sound_title">Звук уведомления</string>
     <string name="notification_sound_description">Ярлык для настройки звука уведомления, если вам не нравится звук птицы по умолчанию</string>
     <string name="missing_permission_notifications">Разрешение на уведомление было отклонено и Birday не может их отправлять! Включите эту возможность в настройках.</string>
@@ -318,9 +318,9 @@
     <string name="import_csv_description">Импортировать из файла CSV. Обратитесь к Wiki на Github для требуемой структуры файлов</string>
     <string name="export_csv_title">Экспотировать в CSV</string>
     <string name="export_csv_description">Экспортировать каждое событие в файл CSV, без изображений</string>
-    <string name="add_demo_entries_title">Add demo entries</string>
-    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
-    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
+    <string name="add_demo_entries_title">Добавить демо записи</string>
+    <string name="add_demo_entries_description">Заполнить базу данных демонстрационным набором событий, преимущественно связанных с актерами и историческими личностями</string>
+    <string name="add_demo_entries_dialog_description">Эта операция навсегда добавит ТЫСЯЧИ записей в базу данных и предназначена для целей отладки. Она не удалит ни одного существующего события, но если вы хотите удалить новые записи, вам придется сделать это вручную. Удачи вам с этим.</string>
     <string name="delete_db_title">Удалить все события</string>
     <string name="delete_db_description">Простое удаление всей базы данных. Перед нажатием подумайте дважды!</string>
     <string name="delete_db_dialog_title">Вы уверены?</string>
@@ -334,7 +334,7 @@
     <string name="advanced_overview_title">Расширенный обзор</string>
     <string name="advanced_overview_description_off">На экране обзора будет отображаться только основная информация</string>
     <string name="advanced_overview_description_on">На экране обзора будут показаны другие годы и подробная информация</string>
-    <string name="replace_on_conflict_title">Replace on conflict</string>
-    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
-    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+    <string name="replace_on_conflict_title">Заменить при конфликте</string>
+    <string name="replace_on_conflict_description_off">При импорте дубликат события не будет заменен импортируемым дубликатом</string>
+    <string name="replace_on_conflict_description_on">При импорте дубликат события будет перезаписан импортируемым дубликатом</string>
 </resources>
