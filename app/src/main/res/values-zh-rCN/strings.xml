@@ -18,7 +18,7 @@
     <string name="stats_summary">数据概览</string>
     <string name="no_stats_description">你没有足够的事件来生成数据，添加一些后再回来看！</string>
     <plurals name="stats_total">
-        <item quantity="other">Birday帮助你记住了共%d个事件</item>
+        <item quantity="other">Birday帮助你记住了共 %d 个事件</item>
     </plurals>
     <string name="next_event">下个事件</string>
     <string name="no_next_event">没有可显示的事件！</string>
@@ -26,7 +26,7 @@
     <string name="next_age_years">年</string>
     <string name="event_others">和其它</string>
     <plurals name="days_left">
-        <item quantity="other">剩余%d天</item>
+        <item quantity="other">剩余 %d 天</item>
     </plurals>
     <!-- Settings -->
     <string name="customization">自定义</string>
@@ -107,7 +107,7 @@
     <string name="troubleshoot">疑难诊断和更多</string>
     <string name="battery_optimization_title">禁用电池优化</string>
     <string name="battery_optimization_description">打开系统设置来为 Birday 禁用任何优化。如果通知不正常工作的话会有用。</string>
-    <string name="battery_optimization_tutorial">- 在打开的电池优化列表中找到 Birday\n- 点击 Birday 并选择”不优化“</string>
+    <string name="battery_optimization_tutorial">- 在打开的电池优化列表中找到 Birday\n- 点击 Birday 并选择“不优化”</string>
     <string name="notification_sound_title">通知声音</string>
     <string name="notification_sound_description">通知声音设置的快捷方式，如果你不喜欢默认的声音。</string>
     <string name="missing_permission_notifications">通知权限被拒绝，且 Birday 无法发送通知！请从设置中开启权限。</string>
@@ -182,7 +182,7 @@
     <string name="random_day_of_week">%1$s 出生于 %2$s</string>
     <string name="most_common_day_of_week">最常见的出生的所在星期是 %s</string>
     <plurals name="leap_year_total">
-        <item quantity="other">闰年出生的人数是%d</item>
+        <item quantity="other">闰年出生的人数是 %d</item>
     </plurals>
     <string name="random_chinese_year">中国生肖 %1$s： %2$s</string>
     <string name="chinese_zodiac_rat">鼠</string>
@@ -211,13 +211,13 @@
     <string name="zodiac_scorpio">天蝎座</string>
     <!-- Common words -->
     <plurals name="months">
-        <item quantity="other">%d月</item>
+        <item quantity="other">%d 月</item>
     </plurals>
     <string name="today">今天！</string>
     <string name="yesterday">昨天！</string>
     <string name="tomorrow">明天！</string>
     <plurals name="years">
-        <item quantity="other">%d年</item>
+        <item quantity="other">%d 年</item>
     </plurals>
     <string name="born_in">出生于</string>
     <string name="and">和</string>
