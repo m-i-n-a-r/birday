@@ -16,8 +16,8 @@ android {
         applicationId = "com.minar.birday"
         targetSdk = 35
         minSdk = 26
-        versionCode = 30
-        versionName = "4.4.2"
+        versionCode = 31
+        versionName = "4.4.3"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -65,10 +65,6 @@ android {
         buildConfig = true
     }
 
-//    lint {
-//        disable 'MissingTranslation'
-//        disable 'MissingQuantity'
-//    }
     lint {
         disable += listOf("MissingTranslation", "MissingQuantity")
     }
