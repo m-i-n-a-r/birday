@@ -348,18 +348,13 @@
             android:textColor="?attr/colorPrimary"
             android:tint="?attr/colorPrimary"
             app:icon="@drawable/ic_note_24dp"
-            app:layout_constraintBottom_toTopOf="@id/detailsButtonSpacer"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsShareButton"
             app:layout_constraintWidth_max="@dimen/details_button_max_width"
             app:rippleColor="?attr/colorPrimary" />
 
-        <View
-            android:id="@+id/detailsButtonSpacer"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/bottom_navbar_height"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
     </androidx.constraintlayout.motion.widget.MotionLayout>
+
 </ScrollView>
