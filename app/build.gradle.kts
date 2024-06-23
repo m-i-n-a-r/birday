@@ -53,6 +53,9 @@ android {
         dex {
             useLegacyPackaging = false
         }
+        resources {
+            excludes += listOf("META-INF/*.version")
+        }
     }
 
     dependenciesInfo {
