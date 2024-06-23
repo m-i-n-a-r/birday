@@ -364,15 +364,20 @@ class DetailsFragment : Fragment() {
                     )
                 )
             }
+            // It makes no sense to write "age" when it's not a birthday, so just print the years
             if (event.yearMatter!!) {
-                binding.detailsNextAgeValue.text = String.format(
+                // Using another view instead of altering detailsNextAgeValue
+                binding.detailsNextAgeValue.visibility = View.GONE
+                binding.detailsNextAgeYears.visibility = View.VISIBLE
+                binding.detailsNextAgeYears.text = String.format(
                     resources.getQuantityString(R.plurals.years, getNextYears(event)),
                     getNextYears(event)
                 )
-            } else binding.detailsNextAgeValue.visibility = View.GONE
+            } else
+                binding.detailsNextAgeValue.visibility = View.GONE
             binding.detailsBirthDateValue.text =
                 getStringForTypeCodename(requireContext(), event.type!!)
-            binding.detailsBirthDate.visibility = View.INVISIBLE
+            binding.detailsBirthDate.visibility = View.GONE
             binding.detailsNextAge.visibility = View.GONE
             binding.detailsClearBackground.visibility = View.GONE
             disableAstrology()
