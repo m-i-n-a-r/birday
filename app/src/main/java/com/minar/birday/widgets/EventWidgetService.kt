@@ -26,14 +26,9 @@ class EventWidgetService : RemoteViewsService() {
     }
 }
 
-internal class EventWidgetRemoteViewsFactory(context: Context) : RemoteViewsFactory {
+internal class EventWidgetRemoteViewsFactory(private val context: Context) : RemoteViewsFactory {
     private lateinit var events: List<EventResult>
     private var surnameFirst = false
-    private val context: Context
-
-    init {
-        this.context = context
-    }
 
     override fun onCreate() {
         // In onCreate(), setup any connections / cursors to the data source
