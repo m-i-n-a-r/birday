@@ -181,7 +181,7 @@
     <string name="random_zodiac_sign">%1$s kişisinin Burcu: %2$s</string>
     <string name="most_common_zodiac_sign">%s en yaygın burçtur</string>
     <string name="most_common_chinese_sign">%s en yaygın çin burcudur</string>
-    <string name="random_day_of_week">%1$s was born on %2$s</string>
+    <string name="random_day_of_week">%1$s, %2$s\'de doğdu</string>
     <string name="most_common_day_of_week">%s en yaygın doğum günüdür</string>
     <plurals name="leap_year_total">
         <item quantity="one">artık yılda doğan insan sayısı: %s</item>
