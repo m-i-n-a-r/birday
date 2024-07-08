@@ -349,10 +349,7 @@ class HomeFragment : Fragment() {
         val extras: FragmentNavigator.Extras = if (sharedPrefs.getBoolean("hide_images", false)) {
             FragmentNavigatorExtras(fullView to "shared_full_view$position")
         } else {
-            FragmentNavigatorExtras(
-                image to "shared_image$position",
-
-                )
+            FragmentNavigatorExtras(image to "shared_image$position")
         }
         findNavController().navigate(action, extras)
     }

@@ -307,10 +307,7 @@ class MainActivity : AppCompatActivity() {
         binding.fab.addInsetsByMargin(bottom = true, halveInsets = true)
         binding.fabDelete.addInsetsByMargin(bottom = true, halveInsets = true)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.navigation) { _, insets ->
-            insets
-
-        }
+        ViewCompat.setOnApplyWindowInsetsListener(binding.navigation, null)
 
         // Hide on scroll, requires restart TODO Only available in experimental settings
         if (sharedPrefs.getBoolean("hide_scroll", false)) {
