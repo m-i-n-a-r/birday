@@ -36,17 +36,12 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
     class ChangeInfo private constructor(
         oldHolder: RecyclerView.ViewHolder, newHolder: RecyclerView.ViewHolder
     ) {
-        var oldHolder: RecyclerView.ViewHolder?
-        var newHolder: RecyclerView.ViewHolder?
+        var oldHolder: RecyclerView.ViewHolder? = oldHolder
+        var newHolder: RecyclerView.ViewHolder? = newHolder
         var fromX = 0
         var fromY = 0
         var toX = 0
         var toY = 0
-
-        init {
-            this.oldHolder = oldHolder
-            this.newHolder = newHolder
-        }
 
         internal constructor(
             oldHolder: RecyclerView.ViewHolder,
