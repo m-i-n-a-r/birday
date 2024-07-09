@@ -272,7 +272,7 @@
     <!-- Overview -->
     <string name="overview">Panoramica</string>
     <string name="overview_description">Una panoramica annuale degli eventi salvati</string>
-    <!-- Experimental preferences -->
+    <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Sperimentale</string>
     <string name="experimental_settings_description">Alcune impostazioni e funzioni sperimentali o ancora problematiche. Usale a tuo rischio e pericolo</string>
     <string name="experimental_disclaimer">Le seguenti funzioni sono sperimentali, e potrebbero non funzionare correttamente. Usale a tuo rischio. Per progressi su queste funzionalità, fare riferimento a Github, dato che alcune di queste funzioni potrebbero essere \"promosse\" e tradotte</string>
@@ -298,6 +298,11 @@
     <string name="import_csv_description">Importa da un file CSV. Fare riferimento alla wiki su Github per la struttura dei file richiesta</string>
     <string name="export_csv_title">Esporta in CSV</string>
     <string name="export_csv_description">Esporta ciascuna evento in un file CSV, immagine esclusa</string>
+    <string name="export_calendar_title">Export to calendar</string>
+    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
+    <string name="auto_export_title">Auto export events</string>
+    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
+    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
     <string name="add_demo_entries_title">Aggiungi elementi demo</string>
     <string name="add_demo_entries_description">Popola il DB con un set di eventi demo, per lo più attori e figure storiche</string>
     <string name="add_demo_entries_dialog_description">Questo aggiungerà permanentemente MIGLIAIA di elementi al DB ed è inteso per scopi di debug. Non eliminerà nessun evento esistente, ma se vorrai cancellare i nuovi elementi, dovrai farlo manualmente. Buona fortuna con quello.</string>
