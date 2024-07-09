@@ -274,7 +274,7 @@
     <!-- Overview -->
     <string name="overview">Áttekintés</string>
     <string name="overview_description">Éves áttekintés a mentett eseményekről</string>
-    <!-- Experimental preferences -->
+    <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">kísérleti labor, belépés csak védőfelszerélessel!</string>
     <string name="experimental_settings_description">Néhány kísérleti, vagy bogaras (bugos) beállítások és fícsörök. Csak saját felelősségre használd őket!</string>
     <string name="experimental_disclaimer">A következő funkciók kísérleti jellegűek, és előfordulhat, hogy nem működnek megfelelően. Használd őket saját felelősségére. Nézd meg a Githubot az előrehaladásról, mivel ezeknek a funkcióknak egy része „előléptethető” és lefordítható</string>
@@ -300,6 +300,11 @@
     <string name="import_csv_description">Importálás CSV-fájlból. A szükséges fájlstruktúrát a Github wikijében találod</string>
     <string name="export_csv_title">CSV-be exportálás</string>
     <string name="export_csv_description">Minden esemény exportálása CSV-fájlba, kép nélkűl</string>
+    <string name="export_calendar_title">Export to calendar</string>
+    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
+    <string name="auto_export_title">Auto export events</string>
+    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
+    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
     <string name="add_demo_entries_title">Add demo entries</string>
     <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
     <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
