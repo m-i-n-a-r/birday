@@ -279,7 +279,7 @@
     <!-- Overview -->
     <string name="overview">Genel Bakış</string>
     <string name="overview_description">Kaydedilen tüm etkinliklere yıllık genel bakış</string>
-    <!-- Experimental preferences -->
+    <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Deneysel</string>
     <string name="experimental_settings_description">Bazı deneysel ve sorun yaratabilecek özellikleri içerir. Sorumluluk size aittir</string>
     <string name="experimental_disclaimer">Bu özellikler deneysel amaçlıdır hâliyle düzgünce çalışmayabilir. Bu özelliklerden bazıları \"geliştirilip\" çevirilebileceğinden, herhangi bir geliştirme önerisi için Github\'a başvurun.</string>
@@ -305,6 +305,11 @@
     <string name="import_csv_description">Bir CSV dosyasından içe aktarın. Gerekli dosya yapısı için Github\'daki wikiyi ziyaret edin</string>
     <string name="export_csv_title">CSV\'ye aktar</string>
     <string name="export_csv_description">Her etkinliği bir CSV dosyasına aktarın, resimler aktarılmaz</string>
+    <string name="export_calendar_title">Export to calendar</string>
+    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
+    <string name="auto_export_title">Auto export events</string>
+    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
+    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
     <string name="add_demo_entries_title">Demo girişleri ekleyin</string>
     <string name="add_demo_entries_description">DB\'yi aktörler ve tarihi şahsiyetlerden oluşan bir dizi etkinlikle doldurun</string>
     <string name="add_demo_entries_dialog_description">Bu, hata ayıklama amaçlı DB\'ye kalıcı olarak BİNLERCE giriş ekler. Var olan etkinlikler silinmeyecek ancak yeni girişleri silmek istemeniz durumunda bunu manuel olarak yapmak zorunda kalacaksınız. Bol şans.</string>
