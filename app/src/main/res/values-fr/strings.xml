@@ -298,11 +298,11 @@
     <string name="import_csv_description">Importe depuis un fichier CSV. Consultez le wiki sur GitHub pour la structure de données requise</string>
     <string name="export_csv_title">Exporter en CSV</string>
     <string name="export_csv_description">Exporte tous les événements dans un fichier CSV, sans les images</string>
-    <string name="export_calendar_title">Export to calendar</string>
-    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
-    <string name="auto_export_title">Auto export events</string>
-    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
-    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
+    <string name="export_calendar_title">Exporter vers le calendrier</string>
+    <string name="export_calendar_description">Enregistrer chaque événement dans votre calendrier local, si possible. Nécessite l\'autorisation du calendrier</string>
+    <string name="auto_export_title">Exportation automatique des événements</string>
+    <string name="auto_export_description_on">Birday exportera automatiquement un backup lorsque l\'application sera fermée. Veuillez noter que chaque backup remplacera le précédent</string>
+    <string name="auto_export_description_off">Pour effectuer un backup de Birday locale, elle doit être exécutée manuellement</string>
     <string name="add_demo_entries_title">Ajouter des entrées démo</string>
     <string name="add_demo_entries_description">Remplir le DB avec un ensemble de démonstrations d\'événements, principalement des acteurs et des figures historiques</string>
     <string name="add_demo_entries_dialog_description">Ceci ajoutera définitivement des MILLIERS d\'entrées à le DB et est destiné à des fins de debug. Il ne supprimera aucun événement existant, mais si vous voulez supprimer les nouvelles entrées, vous devez le faire manuellement. Bonne chance pour cela.</string>
