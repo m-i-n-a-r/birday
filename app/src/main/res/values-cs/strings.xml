@@ -284,7 +284,7 @@
     <!-- Overview -->
     <string name="overview">Přehled</string>
     <string name="overview_description">Roční přehled uložených událostí</string>
-    <!-- Experimental preferences -->
+    <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimentální funkce</string>
     <string name="experimental_settings_description">Zopár experimentálních nastavení a funkcí. Můžou obsahovat chyby. Používejte na vlastní riziko</string>
     <string name="experimental_disclaimer">Následující funkce jsou experimentální a nemusí fungovat správně. Používejte je na vlastní riziko. Pro kontrolu aktuálního stavu zkontrolujte Github, některé z těchto funkcí by mohly být \"aktualizovány\" a preloženy</string>
@@ -310,6 +310,11 @@
     <string name="import_csv_description">Importovat z CSV. Požadovanou strukturu souboru najdete na wiki na Githubu</string>
     <string name="export_csv_title">Exportovat do CSV</string>
     <string name="export_csv_description">Exportovat každou událost (kromě obrázku) do CSV</string>
+    <string name="export_calendar_title">Export to calendar</string>
+    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
+    <string name="auto_export_title">Auto export events</string>
+    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
+    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
     <string name="add_demo_entries_title">Add demo entries</string>
     <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
     <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
