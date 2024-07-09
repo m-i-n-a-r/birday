@@ -275,7 +275,7 @@
     <!-- Overview -->
     <string name="overview">Visão geral</string>
     <string name="overview_description">Uma visão geral anual dos eventos salvos</string>
-    <!-- Experimental preferences -->
+    <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimental</string>
     <string name="experimental_settings_description">Algumas configurações e recursos experimentais. Utilize-os a seu próprio risco</string>
     <string name="experimental_disclaimer">Os recursos a seguir são experimentais e podem não funcionar devidamente. Utilize-os a sua própria conta e risco. Faça requisições no GitHub para novos recursos e traduções</string>
@@ -301,6 +301,11 @@
     <string name="import_csv_description">Importar de um arquivo CSV. Consulte a wiki no Github para obter a estrutura de arquivo necessária</string>
     <string name="export_csv_title">Exportar para CSV</string>
     <string name="export_csv_description">Exportar cada evento para um arquivo CSV, imagens exclusas</string>
+    <string name="export_calendar_title">Export to calendar</string>
+    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
+    <string name="auto_export_title">Auto export events</string>
+    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
+    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
     <string name="add_demo_entries_title">Adicionar entradas de demonstração</string>
     <string name="add_demo_entries_description">Popular o banco de dados com uma lista de eventos exemplares, grande parte sendo atores e figuras históricas</string>
     <string name="add_demo_entries_dialog_description">Isto irá adicionar permanentemente MILHARES de registros ao banco de dados e só deverá ser utilizado para fins de desenvolvimento. nenhum evento existente será deletado, porém, se quiser deletar novos registros, terá que fazer manualmente. Boa sorte.</string>
