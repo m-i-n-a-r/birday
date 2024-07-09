@@ -292,7 +292,7 @@
     <!-- Overview -->
     <string name="overview">Обзор</string>
     <string name="overview_description">Годовой обзор сохраненных событий</string>
-    <!-- Experimental preferences -->
+    <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Экспериментальный</string>
     <string name="experimental_settings_description">Некоторые экспериментальные или недоработанные настройки и особенности. Использовать на свой страх и риск</string>
     <string name="experimental_disclaimer">Данные функции находятся в этапе экспериментирования и могу работать с ошибками. Используйте их только в том случае, если не боитесь что-то потерять. Обращайтесь к Github для поиска любого прогресса приложения, так как некоторые из этих функций могут быть улучшены и переведены</string>
@@ -318,6 +318,11 @@
     <string name="import_csv_description">Импортировать из файла CSV. Обратитесь к Wiki на Github для требуемой структуры файлов</string>
     <string name="export_csv_title">Экспотировать в CSV</string>
     <string name="export_csv_description">Экспортировать каждое событие в файл CSV, без изображений</string>
+    <string name="export_calendar_title">Export to calendar</string>
+    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
+    <string name="auto_export_title">Auto export events</string>
+    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
+    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
     <string name="add_demo_entries_title">Добавить демо записи</string>
     <string name="add_demo_entries_description">Заполнить базу данных демонстрационным набором событий, преимущественно связанных с актерами и историческими личностями</string>
     <string name="add_demo_entries_dialog_description">Эта операция навсегда добавит ТЫСЯЧИ записей в базу данных и предназначена для целей отладки. Она не удалит ни одного существующего события, но если вы хотите удалить новые записи, вам придется сделать это вручную. Удачи вам с этим.</string>
