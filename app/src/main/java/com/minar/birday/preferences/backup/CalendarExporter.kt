@@ -20,7 +20,7 @@ import java.time.format.DateTimeFormatter
 import kotlin.concurrent.thread
 
 
-class CalendarImporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
+class CalendarExporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
     View.OnClickListener {
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
@@ -34,17 +34,17 @@ class CalendarImporter(context: Context, attrs: AttributeSet?) : Preference(cont
         v.setOnClickListener(null)
         act.vibrate()
         thread {
-            importCalendar(context)
+            exportCalendar(context)
             (context as MainActivity).runOnUiThread {
                 v.setOnClickListener(this)
             }
         }
     }
 
-    // Import the yearly events from the system calendar
-    private fun importCalendar(context: Context): Boolean {
+    // Import the contacts from device contacts (not necessarily Google)
+    private fun exportCalendar(context: Context): Boolean {
         val act = context as MainActivity
-        // Ask for calendar permission
+        // Ask for contacts permission
         val permission = act.askCalendarPermission(302)
         if (!permission) return false
 
@@ -99,7 +99,7 @@ class CalendarImporter(context: Context, attrs: AttributeSet?) : Preference(cont
         }
     }
 
-    // Get the calendar events and save them in a map
+    // Get the contacts and save them in a map
     private fun getCalendarEvents(): List<ImportedEvent> {
         val eventInfo = mutableListOf<ImportedEvent>()
 
