@@ -25,6 +25,7 @@ import android.provider.OpenableColumns
 import android.provider.Settings
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
@@ -51,6 +52,7 @@ import com.minar.birday.R
 import com.minar.birday.databinding.ActivityMainBinding
 import com.minar.birday.fragments.dialogs.ImportContactsBottomSheet
 import com.minar.birday.fragments.dialogs.InsertEventBottomSheet
+import com.minar.birday.preferences.backup.BirdayExporter
 import com.minar.birday.preferences.backup.BirdayImporter
 import com.minar.birday.preferences.backup.ContactsImporter
 import com.minar.birday.preferences.backup.CsvImporter
@@ -307,10 +309,7 @@ class MainActivity : AppCompatActivity() {
         binding.fab.addInsetsByMargin(bottom = true, halveInsets = true)
         binding.fabDelete.addInsetsByMargin(bottom = true, halveInsets = true)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.navigation) { _, insets ->
-            insets
-
-        }
+        ViewCompat.setOnApplyWindowInsetsListener(binding.navigation, null)
 
         // Hide on scroll, requires restart TODO Only available in experimental settings
         if (sharedPrefs.getBoolean("hide_scroll", false)) {
@@ -341,6 +340,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         onBackPressedDispatcher.addCallback(this, backHomeCallback)
+    }
+
+    override fun onDestroy() {
+        // TODO Only available in experimental settings
+        val autoExport = sharedPrefs.getBoolean("auto_export", false)
+        if (autoExport) {
+            val exporter = BirdayExporter(this, null)
+            exporter.exportEvents(this, autoBackup = true)
+        }
+        super.onDestroy()
     }
 
     private fun NavController.navigateWithOptions(@IdRes destination: Int) {

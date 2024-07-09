@@ -66,6 +66,19 @@
         android:widgetLayout="@layout/preference_switch_widget"
         app:iconSpaceReserved="false" />
 
+    <!-- Auto export on each modification or when the app is closed -->
+    <SwitchPreferenceCompat
+        android:defaultValue="true"
+        android:key="auto_export"
+        android:summaryOff="@string/auto_export_description_off"
+        android:summaryOn="@string/auto_export_description_on"
+        android:title="@string/auto_export_title"
+        android:widgetLayout="@layout/preference_switch_widget"
+        app:iconSpaceReserved="false" />
+
+    <!-- Save events on local calendar -->
+    <com.minar.birday.preferences.backup.CalendarExporter android:layout="@layout/calendar_export_row" />
+
     <!-- Import from CSV -->
     <com.minar.birday.preferences.backup.CsvImporter android:layout="@layout/csv_import_row" />
 
