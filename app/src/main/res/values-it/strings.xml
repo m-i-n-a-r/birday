@@ -298,11 +298,11 @@
     <string name="import_csv_description">Importa da un file CSV. Fare riferimento alla wiki su Github per la struttura dei file richiesta</string>
     <string name="export_csv_title">Esporta in CSV</string>
     <string name="export_csv_description">Esporta ciascuna evento in un file CSV, immagine esclusa</string>
-    <string name="export_calendar_title">Export to calendar</string>
-    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
-    <string name="auto_export_title">Auto export events</string>
-    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
-    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
+    <string name="export_calendar_title">Esporta nel calendario</string>
+    <string name="export_calendar_description">Salva ciascun evento nel tuo calendario locale, se possibile. Richiede il permesso di accesso al calendario</string>
+    <string name="auto_export_title">Esporta automaticamente gli eventi</string>
+    <string name="auto_export_description_on">Birday esporterà automaticamente un backup quando l\'app viene chiusa. Nota che ogni backup sovrascriverà il precedente</string>
+    <string name="auto_export_description_off">Per eseguire un backup Birday locale, deve essere avviato manualmente</string>
     <string name="add_demo_entries_title">Aggiungi elementi demo</string>
     <string name="add_demo_entries_description">Popola il DB con un set di eventi demo, per lo più attori e figure storiche</string>
     <string name="add_demo_entries_dialog_description">Questo aggiungerà permanentemente MIGLIAIA di elementi al DB ed è inteso per scopi di debug. Non eliminerà nessun evento esistente, ma se vorrai cancellare i nuovi elementi, dovrai farlo manualmente. Buona fortuna con quello.</string>
