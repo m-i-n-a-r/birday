@@ -298,11 +298,11 @@
     <string name="import_csv_description">Importar desde un archivo CSV. Consulte la wiki en Github para ver la estructura de archivos requerida</string>
     <string name="export_csv_title">Exportar a CSV</string>
     <string name="export_csv_description">Exportar cada evento a un archivo CSV, imagen excluida</string>
-    <string name="export_calendar_title">Export to calendar</string>
-    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
-    <string name="auto_export_title">Auto export events</string>
-    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
-    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
+    <string name="export_calendar_title">Exportar al calendario</string>
+    <string name="export_calendar_description">Salva cada evento en tu calendario local, si es posible. Requiere el permiso del calendario</string>
+    <string name="auto_export_title">Autoexporta eventos</string>
+    <string name="auto_export_description_on">Birday exportará automáticamente un backup cuando la aplicación esté cerrada. Tenga en cuenta que cada backup sobrescribirá la anterior</string>
+    <string name="auto_export_description_off">Para realizar un backup local de Birday, se debe ejecutar manualmente</string>
     <string name="add_demo_entries_title">Añadir entradas demo</string>
     <string name="add_demo_entries_description">Puebla el DB con un set de eventos demo, en su mayoría actores y figuras históricas</string>
     <string name="add_demo_entries_dialog_description">Esto añadirá MILES de entradas a la base de datos permanentemente y está destinado para propósitos de debug. No eliminará ningún evento existente, pero si quieres eliminar las nuevas entradas, tendrás que hacerlo manualmente. Buena suerte por eso.</string>
