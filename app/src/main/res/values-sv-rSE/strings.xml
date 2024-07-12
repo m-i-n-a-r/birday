@@ -298,11 +298,11 @@
     <string name="import_csv_description">Importera från en CSV-fil. Hänvisa till wikin på Github för önskad filstruktur</string>
     <string name="export_csv_title">Exportera till CSV</string>
     <string name="export_csv_description">Exportera varje händelse till en CSV fil, bild utesluten</string>
-    <string name="export_calendar_title">Export to calendar</string>
-    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
-    <string name="auto_export_title">Auto export events</string>
-    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
-    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
+    <string name="export_calendar_title">Exportera till kalender</string>
+    <string name="export_calendar_description">Spara varje händelse i din lokala kalender, om möjligt. Kräver kalenderbehörighet</string>
+    <string name="auto_export_title">Exportera händelser automatiskt</string>
+    <string name="auto_export_description_on">Birday exporterar automatiskt en säkerhetskopia när appen är stängd. Observera att varje säkerhetskopia kommer att skriva över den tidigare</string>
+    <string name="auto_export_description_off">För att utföra en lokal Birday-säkerhetskopiering måste den köras manuellt</string>
     <string name="add_demo_entries_title">Lägg till demoinlägg</string>
     <string name="add_demo_entries_description">Populera DB med en demouppsättning händelser, mestadels skådespelare och historiska figurer</string>
     <string name="add_demo_entries_dialog_description">Detta kommer permanent lägga till TUSENTALS av poster till DB och är avsedd för debug-ändamål. Det kommer inte att ta bort någon befintlig händelse, men om du vill ta bort de nya posterna, måste du göra det manuellt. Lycka till för det.</string>
