@@ -25,7 +25,6 @@ import android.provider.OpenableColumns
 import android.provider.Settings
 import android.view.View
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
@@ -68,6 +67,9 @@ import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidgetProvider
 import com.minar.birday.widgets.MinimalWidgetProvider
 import java.io.IOException
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.ZoneOffset
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
@@ -345,9 +347,17 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         // TODO Only available in experimental settings
         val autoExport = sharedPrefs.getBoolean("auto_export", false)
-        if (autoExport) {
+        val lastExport = sharedPrefs.getLong("last_auto_export", 0)
+        // Max one auto export every 30 seconds
+        val allowedExportTime = lastExport + 30
+        val currentTime = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)
+        if (autoExport && currentTime > allowedExportTime) {
+            sharedPrefs.edit().putLong("last_auto_export", currentTime).apply()
             val exporter = BirdayExporter(this, null)
-            exporter.exportEvents(this, autoBackup = true)
+            val thread = Thread {
+                exporter.exportEvents(this, autoBackup = true)
+            }
+            thread.start()
         }
         super.onDestroy()
     }
@@ -621,6 +631,25 @@ class MainActivity : AppCompatActivity() {
             ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.READ_CALENDAR
+            ) == PackageManager.PERMISSION_GRANTED
+        } else true
+    }
+
+    // Ask calendar permission
+    fun askWriteCalendarPermission(code: Int = 401): Boolean {
+        return if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_CALENDAR
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.WRITE_CALENDAR),
+                code
+            )
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_CALENDAR
             ) == PackageManager.PERMISSION_GRANTED
         } else true
     }

@@ -63,7 +63,7 @@ class BirdayExporter(context: Context, attrs: AttributeSet?) : Preference(contex
                     Toast.makeText(
                         context,
                         context.getString(R.string.birday_export_success),
-                        Toast.LENGTH_LONG
+                        Toast.LENGTH_SHORT
                     ).show()
                 }
             }
@@ -75,7 +75,7 @@ class BirdayExporter(context: Context, attrs: AttributeSet?) : Preference(contex
                     Toast.makeText(
                         context,
                         context.getString(R.string.birday_export_failure),
-                        Toast.LENGTH_LONG
+                        Toast.LENGTH_SHORT
                     ).show()
                 }
             }

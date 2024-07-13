@@ -68,7 +68,7 @@
 
     <!-- Auto export on each modification or when the app is closed -->
     <SwitchPreferenceCompat
-        android:defaultValue="true"
+        android:defaultValue="false"
         android:key="auto_export"
         android:summaryOff="@string/auto_export_description_off"
         android:summaryOn="@string/auto_export_description_on"
