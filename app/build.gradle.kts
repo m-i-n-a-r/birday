@@ -113,9 +113,9 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.2")
 
     // Room
-    val room_version = "2.6.1"
-    implementation("androidx.room:room-runtime:$room_version")
-    ksp("androidx.room:room-compiler:$room_version")
+    val roomVersion = "2.6.1"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    ksp("androidx.room:room-compiler:$roomVersion")
 
     // Gson
     implementation("com.google.code.gson:gson:2.11.0")
