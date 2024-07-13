@@ -300,11 +300,11 @@
     <string name="import_csv_description">Importieren aus einer CSV-Datei. Im Wiki auf Github findest du die erforderliche Dateistruktur</string>
     <string name="export_csv_title">Als CSV-Datei exportieren</string>
     <string name="export_csv_description">Exportiere jedes Ereignis in eine CSV-Datei, Bild ausgeschlossen</string>
-    <string name="export_calendar_title">Export to calendar</string>
-    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
-    <string name="auto_export_title">Auto export events</string>
-    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
-    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
+    <string name="export_calendar_title">In Kalender exportieren</string>
+    <string name="export_calendar_description">Speichere jedes Ereignis in deinem lokalen Kalender, wenn möglich. Erfordert die Kalenderberechtigung</string>
+    <string name="auto_export_title">Ereignisse automatisch exportieren</string>
+    <string name="auto_export_description_on">Birday exportiert automatisch eine Sicherung, wenn die App geschlossen wird. Bitte beachte, dass jede Sicherung die vorherige überschreibt</string>
+    <string name="auto_export_description_off">Um eine lokale Birday-Sicherung durchzuführen, muss diese manuell ausgeführt werden</string>
     <string name="add_demo_entries_title">Demo-Einträge hinzufügen</string>
     <string name="add_demo_entries_description">Fülle die DB mit einer Reihe von Demo-Ereignissen, hauptsächlich Schauspielern und historischen Figuren</string>
     <string name="add_demo_entries_dialog_description">Dies fügt dauerhaft TAUSENDE von Einträgen zur DB hinzu und ist für Debugging-Zwecke gedacht. Es wird kein existierendes Ereignis gelöscht, aber wenn du die neuen Einträge löschen möchtest, musst du es manuell tun. Viel Glück dabei.</string>
