@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
-        <shape>
-            <solid android:color="?attr/colorSurface" />
-            <corners
-                android:bottomLeftRadius="@dimen/rounded_corners"
-                android:bottomRightRadius="@dimen/rounded_corners"
-                android:topLeftRadius="@dimen/rounded_corners"
-                android:topRightRadius="@dimen/rounded_corners" />
-        </shape>
-    </item>
-    <item>
-        <shape>
-            <solid
-                android:color="@color/m3_popupmenu_overlay_color"
-                tools:ignore="PrivateResource" />
+        <shape
+            android:shape="rectangle"
+            android:tint="?attr/colorSurfaceContainerHigh">
             <corners
                 android:bottomLeftRadius="@dimen/rounded_corners"
                 android:bottomRightRadius="@dimen/rounded_corners"

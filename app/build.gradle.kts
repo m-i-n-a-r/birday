@@ -98,14 +98,14 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.1")
 
     // Material Components
-    implementation("com.google.android.material:material:1.13.0-alpha03")
+    implementation("com.google.android.material:material:1.13.0-alpha04")
 
     // WorkManager
     implementation("androidx.work:work-runtime-ktx:2.9.0")
 
     // Navigation component
-    implementation("androidx.navigation:navigation-fragment-ktx:2.8.0-beta04")
-    implementation("androidx.navigation:navigation-ui-ktx:2.8.0-beta04")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.8.0-beta05")
+    implementation("androidx.navigation:navigation-ui-ktx:2.8.0-beta05")
 
     // Lifecycle and ViewModel
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
