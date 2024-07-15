@@ -96,6 +96,7 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
         val alignStart = sp.getBoolean("widget_minimal_align_start", false)
         val hideIfFar = sp.getBoolean("widget_minimal_hide_if_far", false)
         val showFollowing = sp.getBoolean("widget_minimal_show_following", false)
+        val surnameFirst = sp.getBoolean("surname_first", false)
 
         // First off, hide the text views and backgrounds depending on light or dark
         val titleTextView: Int
@@ -185,9 +186,9 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
                     "$widgetUpcoming \n${context.getString(R.string.next_event)} → ${
                         formatEventList(
                             filteredUpcomingEvents,
-                            true,
+                            surnameFirst = surnameFirst,
                             context,
-                            false,
+                            showSurnames = filteredUpcomingEvents.size == 1,
                         )
                     }"
                 views.setTextViewText(textTextView, widgetUpcomingExpanded)
@@ -270,9 +271,9 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
                 // Make sure to show if there's more than one event
                 var widgetUpcoming = formatEventList(
                     filteredNextEvents,
-                    surnameFirst,
+                    surnameFirst = surnameFirst,
                     context,
-                    filteredNextEvents.size == 1
+                    showSurnames = filteredNextEvents.size == 1
                 )
                 if (filteredNextEvents.isNotEmpty()) widgetUpcoming += "\n${
                     nextDateFormatted(

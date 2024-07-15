@@ -46,6 +46,7 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
         val theme = sharedPrefs.getString("theme_color", "system")
         val accent = sharedPrefs.getString("accent_color", "system")
         val avdLooping = sharedPrefs.getBoolean("loop_avd", true)
+        val surnameFirst = sharedPrefs.getBoolean("surname_first", false)
 
         // Avoid crashes when the widget is used before opening the app for the very first time
         if (sharedPrefs.getBoolean("first", true)) {
@@ -375,7 +376,12 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
                 }
 
                 // Make sure to show if there's more than one event
-                var widgetUpcoming = formatEventList(filteredNextEvents, true, this, false)
+                var widgetUpcoming = formatEventList(
+                    filteredNextEvents,
+                    surnameFirst,
+                    this,
+                    filteredNextEvents.size == 1
+                )
                 if (filteredNextEvents.isNotEmpty()) widgetUpcoming += "\n${
                     nextDateFormatted(
                         filteredNextEvents[0], formatter, this

@@ -77,6 +77,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                         hotReloadActivity(sharedPreferences)
                     }
+
                     "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                     "black" -> {
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -94,27 +95,9 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
             "shimmer" -> hotReloadActivity(sharedPreferences)
             "notification_hour" -> mainViewModel.scheduleNextCheck()
             "notification_minute" -> mainViewModel.scheduleNextCheck()
-            "surname_first", "hide_images" -> {
-                // Update every existing widget with a broadcast
-                val intent = Intent(context, EventWidgetProvider::class.java)
-                intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-                val ids = AppWidgetManager.getInstance(context).getAppWidgetIds(
-                    ComponentName(requireContext(), EventWidgetProvider::class.java)
-                )
-                intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
-                requireContext().sendBroadcast(intent)
-            }
-
-            "multi_additional_notification" -> {
-                // Update every existing widget with a broadcast
-                val intent = Intent(context, MinimalWidgetProvider::class.java)
-                intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-                val ids = AppWidgetManager.getInstance(context).getAppWidgetIds(
-                    ComponentName(requireContext(), MinimalWidgetProvider::class.java)
-                )
-                intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
-                requireContext().sendBroadcast(intent)
-            }
+            "surname_first" -> updateWidgets(updateUpcoming = true, updateMinimal = true)
+            "hide_images" -> updateWidgets(updateUpcoming = true)
+            "multi_additional_notification" -> updateWidgets(updateMinimal = true)
         }
     }
 
@@ -124,6 +107,29 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
         // Recreate doesn't support an animation, but any workaround is buggy
         val activity = requireActivity()
         ActivityCompat.recreate(activity)
+    }
+
+    // Refresh one or more widgets
+    private fun updateWidgets(updateUpcoming: Boolean = false, updateMinimal: Boolean = false) {
+        // Update every existing widget with a broadcast
+        if (updateUpcoming) {
+            val upcomingIntent = Intent(context, EventWidgetProvider::class.java)
+            upcomingIntent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+            val upcomingIds = AppWidgetManager.getInstance(context).getAppWidgetIds(
+                ComponentName(requireContext(), EventWidgetProvider::class.java)
+            )
+            upcomingIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, upcomingIds)
+            requireContext().sendBroadcast(upcomingIntent)
+        }
+        if (updateMinimal) {
+            val minimalIntent = Intent(context, MinimalWidgetProvider::class.java)
+            minimalIntent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+            val minimalIds = AppWidgetManager.getInstance(context).getAppWidgetIds(
+                ComponentName(requireContext(), MinimalWidgetProvider::class.java)
+            )
+            minimalIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, minimalIds)
+            requireContext().sendBroadcast(minimalIntent)
+        }
     }
 
     // Generate the summary for a multi select preference (not done by default)
