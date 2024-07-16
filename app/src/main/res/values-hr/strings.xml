@@ -172,6 +172,7 @@
     <string name="wishes_birthday">Sretan rođendan!</string>
     <string name="no_default_dialer">Nije pronađena zadana aplikacija za biranje brojeva!</string>
     <string name="no_default_sms">Nije pronađena zadana aplikacija za SMS!</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">Jeste li znali?</string>
     <string name="age_average">Prosječna dob je: %s</string>
