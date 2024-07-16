@@ -169,6 +169,7 @@
     <string name="wishes_birthday">Feliz Aniversário!</string>
     <string name="no_default_dialer">Nenhum aplicativo discador padrão encontrado!</string>
     <string name="no_default_sms">Nenhum aplicativo SMS padrão encontrado!</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">Você sabia?</string>
     <string name="age_average">A idade média é %s</string>
