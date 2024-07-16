@@ -175,7 +175,7 @@
     <string name="wishes_birthday">La mulți ani!</string>
     <string name="no_default_dialer">Nu a fost găsită nicio aplicație de apelare implicită!</string>
     <string name="no_default_sms">Nu a fost găsită nicio aplicație prestabilită pentru SMS!</string>
-    <string name="might_have_missed">You might have missed:</string>
+    <string name="might_have_missed">S-ar putea să fi ratat:</string>
     <!-- Statistics -->
     <string name="did_you_know">Știai că?</string>
     <string name="age_average">Vârsta medie este %s</string>
