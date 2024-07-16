@@ -169,7 +169,7 @@
     <string name="wishes_birthday">Tanti auguri!</string>
     <string name="no_default_dialer">Nessuna app telefono di default trovata!</string>
     <string name="no_default_sms">Nessuna app sms di default trovata!</string>
-    <string name="might_have_missed">You might have missed:</string>
+    <string name="might_have_missed">Potresti esserti perso:</string>
     <!-- Statistics -->
     <string name="did_you_know">Lo sapevi?</string>
     <string name="age_average">L\'età media è %s</string>
