@@ -193,6 +193,7 @@
     <string name="wishes_birthday">Happy birthday!</string>
     <string name="no_default_dialer">No default dialer app found!</string>
     <string name="no_default_sms">No default SMS app found!</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">Did you know?</string>
     <string name="age_average">The average age is %s</string>

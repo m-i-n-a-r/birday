@@ -9,9 +9,10 @@ import com.minar.birday.model.EventType
 import java.time.LocalDate
 import java.time.Period
 import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 import java.time.format.TextStyle
 import java.time.temporal.ChronoUnit
-import java.util.*
+import java.util.Locale
 
 // Event related constants
 const val START_YEAR = 0
@@ -239,4 +240,19 @@ fun getStringForTypeCodename(context: Context, codename: String): String {
     } catch (e: Exception) {
         context.getString(R.string.unknown)
     }
+}
+
+// Format a normal LocalDate in a year-less format. It probably doesn't work in every locale
+fun forceMonthDayFormat(date: LocalDate, style: FormatStyle = FormatStyle.MEDIUM): String {
+    val formatter = DateTimeFormatter.ofLocalizedDate(style)
+    var formattedDate = date.format(formatter)
+    val yearAsString = date.year.toString()
+    val yearIndex = formattedDate.indexOf(yearAsString)
+    if (!formattedDate[yearIndex - 1].isWhitespace() && !(formattedDate[yearIndex - 1]).isLetterOrDigit())
+        formattedDate = formattedDate.removeRange(yearIndex - 1, yearIndex)
+    if (!formattedDate[yearIndex - 2].isWhitespace() && !(formattedDate[yearIndex - 2]).isLetterOrDigit())
+        formattedDate = formattedDate.removeRange(yearIndex - 2, yearIndex - 1)
+    formattedDate = formattedDate.replace(yearAsString, "")
+    formattedDate = formattedDate.trim()
+    return formattedDate
 }

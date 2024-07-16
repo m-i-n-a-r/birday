@@ -51,6 +51,8 @@
     <dimen name="details_image_size">172dp</dimen>
     <dimen name="details_image_padding">26dp</dimen>
     <dimen name="predictive_back_margin">8dp</dimen>
+    <dimen name="carousel_item_width">220dp</dimen>
+    <dimen name="carousel_item_height">220dp</dimen>
 
     <!-- Widgets -->
     <dimen name="widget_margin">4dp</dimen>
