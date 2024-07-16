@@ -169,6 +169,7 @@
     <string name="wishes_birthday">İyi ki doğdun!</string>
     <string name="no_default_dialer">Varsayılan arama uygulaması bulunamadı!</string>
     <string name="no_default_sms">Varsayılan SMS uygulaması bulunamadı!</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">Biliyor muydun?</string>
     <string name="age_average">%s, Dünyadaki ortalama yaştır</string>
