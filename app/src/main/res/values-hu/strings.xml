@@ -169,6 +169,7 @@
     <string name="wishes_birthday">Boldog születésnapot!</string>
     <string name="no_default_dialer">Nem található alapértelmezett tárcsázó alkalmazás!</string>
     <string name="no_default_sms">Nem található alapértelmezett sms alkalmazás!</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">Tudtad?</string>
     <string name="age_average">Az átlagos életkor %s</string>
