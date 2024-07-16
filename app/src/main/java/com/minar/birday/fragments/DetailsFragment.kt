@@ -450,13 +450,8 @@ class DetailsFragment : Fragment() {
         act.showSnackbar(
             requireContext().getString(R.string.deleted),
             actionText = requireContext().getString(R.string.cancel),
-            action = fun() = insertBack(eventResult),
+            action = fun() = act.insertBack(eventResult),
         )
-    }
-
-    // Insert a previously deleted event back in the database
-    private fun insertBack(eventResult: EventResult) {
-        mainViewModel.insert(resultToEvent(eventResult))
     }
 
     private fun editEvent(eventResult: EventResult) {

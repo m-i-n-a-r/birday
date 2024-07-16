@@ -51,6 +51,7 @@ import com.minar.birday.R
 import com.minar.birday.databinding.ActivityMainBinding
 import com.minar.birday.fragments.dialogs.ImportContactsBottomSheet
 import com.minar.birday.fragments.dialogs.InsertEventBottomSheet
+import com.minar.birday.model.EventResult
 import com.minar.birday.preferences.backup.BirdayExporter
 import com.minar.birday.preferences.backup.BirdayImporter
 import com.minar.birday.preferences.backup.ContactsImporter
@@ -537,6 +538,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
         snackbar.show()
+    }
+
+    // Insert a previously deleted event back in the database
+    fun insertBack(eventResult: EventResult) {
+        mainViewModel.insert(resultToEvent(eventResult))
     }
 
     // Change the fab to show a delete icon

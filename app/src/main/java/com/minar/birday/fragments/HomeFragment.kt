@@ -47,7 +47,6 @@ import nl.dionsegijn.konfetti.models.Size
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.time.temporal.ChronoUnit
-import java.util.Locale
 
 
 class HomeFragment : Fragment() {
@@ -359,16 +358,18 @@ class HomeFragment : Fragment() {
         act.vibrate()
         val event = (adapter.getItem(position) as EventDataItem.EventItem).eventResult
         val quickStat =
-            if (event.yearMatter == false || event.type != EventCode.BIRTHDAY.name) formatDaysRemaining(
+            formatDaysRemaining(
                 getRemainingDays(event.nextDate!!),
                 requireContext()
             )
-            else "${getString(R.string.next_age)} ${getNextYears(event)}, " +
-                    formatDaysRemaining(
-                        getRemainingDays(event.nextDate!!),
-                        requireContext()
-                    ).replaceFirstChar { it.lowercase(Locale.ROOT) }
-        act.showSnackbar(quickStat)
+        act.showSnackbar(quickStat, action = fun() {
+            mainViewModel.delete(resultToEvent(event))
+            act.showSnackbar(
+                requireContext().getString(R.string.deleted),
+                actionText = requireContext().getString(R.string.cancel),
+                action = fun() = act.insertBack(event),
+            )
+        }, actionText = getString(R.string.delete_event))
     }
 
     // Remove the placeholder or return if the placeholder was already removed before
