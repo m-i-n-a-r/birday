@@ -167,6 +167,7 @@
     <string name="wishes_birthday">Chúc mừng sinh nhật!</string>
     <string name="no_default_dialer">Không tìm được ứng dụng quay số mặc định!</string>
     <string name="no_default_sms">Không tìm được ứng dụng sms mặc định!</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">Bạn có biết không?</string>
     <string name="age_average">Tuổi trung bình là %s</string>
