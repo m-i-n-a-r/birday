@@ -14,8 +14,8 @@ import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.forceMonthDayFormat
 import com.minar.birday.utilities.formatName
-import com.minar.birday.utilities.getNextYears
 import com.minar.birday.utilities.getStringForTypeCodename
+import com.minar.birday.utilities.getYears
 
 
 class MissedCarouselAdapter(private val missedEvents: List<EventResult>) :
@@ -62,13 +62,15 @@ class MissedCarouselAdapter(private val missedEvents: List<EventResult>) :
                 event,
                 false
             )
+            // Show che current age, since the event is in the past
         }\n${forceMonthDayFormat(event.nextDate!!.minusYears(1))}, ${
             String.format(
                 context.resources.getQuantityString(
-                    R.plurals.years, getNextYears(event)
-                ), getNextYears(event)
+                    R.plurals.years, getYears(event)
+                ), getYears(event)
             )
         }\n${getStringForTypeCodename(context, event.type!!)}"
+        // If the years can't be used, show a shorter version
         else "${
             formatName(
                 event,
