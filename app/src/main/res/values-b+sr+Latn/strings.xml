@@ -175,6 +175,7 @@
     <string name="wishes_birthday">Srećan rođendan!</string>
     <string name="no_default_dialer">Nije pronađena podrazumevana aplikacija za pozivanje!</string>
     <string name="no_default_sms">Nije pronađena podrazumevana aplikacija za SMS!</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">Da li ste znali?</string>
     <string name="age_average">Prosečna starost je %s</string>
