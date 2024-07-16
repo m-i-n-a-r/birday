@@ -173,6 +173,7 @@
     <string name="wishes_birthday">З днем народження!</string>
     <string name="no_default_dialer">Не знайдено додаток за умовчанням для набору номера!</string>
     <string name="no_default_sms">Не знайдено додаток за умовчанням для СМС!</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">А ви знали?</string>
     <string name="age_average">Середнім віком є %s</string>
