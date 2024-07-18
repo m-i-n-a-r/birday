@@ -1,8 +1,10 @@
 package com.minar.birday.adapters
 
 import android.content.Context
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -15,10 +17,13 @@ import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.forceMonthDayFormat
 import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getStringForTypeCodename
+import com.minar.birday.utilities.getThemeColor
 import com.minar.birday.utilities.getYears
 
 
-class MissedCarouselAdapter(private val missedEvents: List<EventResult>) :
+class MissedCarouselAdapter(private val missedEvents: List<EventResult>,
+                            private val hideImages: Boolean = true
+) :
     RecyclerView.Adapter<MissedCarouselAdapter.ViewHolder>() {
     private lateinit var context: Context
 
@@ -38,23 +43,32 @@ class MissedCarouselAdapter(private val missedEvents: List<EventResult>) :
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val event = missedEvents[position]
-        val image = event.image
-        if (image != null) viewHolder.previewImage.setImageBitmap(byteArrayToBitmap(image))
-        // Set the proper image
+        if (hideImages) {
+            viewHolder.previewImage.setBackgroundColor(getThemeColor(R.attr.colorPrimary, context))
+            val params = viewHolder.previewText.layoutParams as FrameLayout.LayoutParams
+            params.apply {
+                gravity = Gravity.CENTER
+            }
+        }
         else {
-            viewHolder.previewImage.setImageDrawable(
-                ContextCompat.getDrawable(
-                    context,
-                    // Set the image depending on the event type
-                    when (event.type) {
-                        EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
-                        EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
-                        EventCode.DEATH.name -> R.drawable.placeholder_death_image
-                        EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
-                        else -> R.drawable.placeholder_other_image
-                    }
+            val image = event.image
+            if (image != null) viewHolder.previewImage.setImageBitmap(byteArrayToBitmap(image))
+            // Set the proper image
+            else {
+                viewHolder.previewImage.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        context,
+                        // Set the image depending on the event type
+                        when (event.type) {
+                            EventCode.BIRTHDAY.name -> R.drawable.placeholder_birthday_image
+                            EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
+                            EventCode.DEATH.name -> R.drawable.placeholder_death_image
+                            EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
+                            else -> R.drawable.placeholder_other_image
+                        }
+                    )
                 )
-            )
+            }
         }
         // Show a super condensed description of the event containing date, years, name and type
         val eventQuickDescription = if (event.yearMatter!!) "${

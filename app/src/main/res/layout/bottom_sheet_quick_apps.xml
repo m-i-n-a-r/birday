@@ -176,7 +176,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/quickAppsMissedCarousel"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/carousel_item_height"
                 android:layout_marginVertical="@dimen/linear_vertical_margin"
                 android:clipChildren="false"

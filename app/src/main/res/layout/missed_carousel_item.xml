@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="@dimen/rounded_corners"
+        android:layout_marginVertical="@dimen/rounded_corners"
         android:text="@string/event_details"
         android:shadowColor="@color/shadowGray"
         android:shadowDy="3"

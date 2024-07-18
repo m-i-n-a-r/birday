@@ -8,6 +8,7 @@ import android.provider.Telephony
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.preference.PreferenceManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.carousel.CarouselLayoutManager
 import com.minar.birday.R
@@ -147,7 +148,9 @@ class QuickAppsBottomSheet(private val act: MainActivity) : BottomSheetDialogFra
         carouselTitle.visibility = View.VISIBLE
         carousel.visibility = View.VISIBLE
         carousel.layoutManager = CarouselLayoutManager()
-        carousel.adapter = MissedCarouselAdapter(allEventsFiltered)
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(act)
+        val hideImages = sharedPrefs.getBoolean("hide_images", false)
+        carousel.adapter = MissedCarouselAdapter(allEventsFiltered, hideImages)
     }
 
     override fun onDestroyView() {
