@@ -80,7 +80,7 @@
     <string name="shimmer_description_off">Bez dodatnih grafičkih efekata</string>
     <string name="import_export">Uvoz i Izvoz</string>
     <string name="import_contacts_title">Uvezite događaje iz kontakata</string>
-    <string name="import_contacts_description">Obavezno izmijenite događaje s godinama koje nedostaju kako biste uvijek imali točne statistike!</string>
+    <string name="import_contacts_description">Svakako dopunite događaje s godinama koje nedostaju kako biste uvijek imali točne statistike!</string>
     <string name="import_success">Uvoz je uspješno završen!</string>
     <string name="import_nothing_found">Nema pronađenih događaja!</string>
     <string name="import_failed">Uvoz neuspješan!</string>
@@ -172,7 +172,7 @@
     <string name="wishes_birthday">Sretan rođendan!</string>
     <string name="no_default_dialer">Nije pronađena zadana aplikacija za biranje brojeva!</string>
     <string name="no_default_sms">Nije pronađena zadana aplikacija za SMS!</string>
-    <string name="might_have_missed">You might have missed:</string>
+    <string name="might_have_missed">Možda ste propustili:</string>
     <!-- Statistics -->
     <string name="did_you_know">Jeste li znali?</string>
     <string name="age_average">Prosječna dob je: %s</string>
