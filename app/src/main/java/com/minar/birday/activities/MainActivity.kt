@@ -437,7 +437,7 @@ class MainActivity : AppCompatActivity() {
                         jsonImporter.importEventsJson(this, fileUri)
                     }
 
-                    "csv" -> {
+                    "csv", "xls", "xlsx" -> {
                         val csvImporter = CsvImporter(this, null)
                         csvImporter.importEventsCsv(this, fileUri)
                     }

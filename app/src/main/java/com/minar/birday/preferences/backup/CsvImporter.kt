@@ -45,16 +45,20 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
         val csvList = csvString.split('\n')
         val eventList = mutableListOf<Event>()
         var columnsMapping: Map<String, Int>? = null
+        // Encapsulate in a try, to avoid crashes
         try {
             // Check if the column names are in the file, in the smartest way possible
-            if (csvList[0].lowercase().contains("date")) {
-                columnsMapping = smartDetectColumns(csvList[0], separator)
+            val headerLower = csvList[0].lowercase()
+            if (headerLower.contains("date")) {
+                columnsMapping = smartDetectColumns(headerLower, separator)
+                // Check if a mapping was found using the comma separator
                 if (columnsMapping.isNullOrEmpty()) {
                     separator = ';'
-                    columnsMapping = smartDetectColumns(csvList[0], separator)
+                    // Try again using the semicolon
+                    columnsMapping = smartDetectColumns(headerLower, separator)
                 }
             }
-            // If the line didn't contain the columns, try parsing it
+            // If the line didn't contain the column names, try parsing it anyway
             if (columnsMapping.isNullOrEmpty()) {
                 // Trying again with the comma if something was found with the ';' is trivial
                 separator = ','
@@ -74,9 +78,17 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
                     val detectedEvent: Event? = smartDetectEvent(csvList[i], separator)
                     if (detectedEvent != null) eventList.add(detectedEvent)
                 }
-            } else {
+            }
+            // We have a mapping and we can add events securely
+            else {
                 for (i in 1 until csvList.size) {
                     val rowValues = csvList[i].lowercase().split(separator)
+                    // Detect if the type is valid first
+                    val rowItem = rowValues.getOrNull(columnsMapping.getOrDefault(COLUMN_TYPE, -1))
+                        ?.uppercase()
+                        ?: EventCode.BIRTHDAY.name
+                    val type = if (EventCode.entries.map { it.name }.contains(rowItem)) rowItem
+                    else EventCode.BIRTHDAY.name
                     try {
                         // Depending on the detected columns, create the event objects
                         val event = Event(
@@ -89,8 +101,7 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
                                     -1
                                 )
                             ) ?: "",
-                            type = rowValues.getOrNull(columnsMapping.getOrDefault(COLUMN_TYPE, -1))
-                                ?: "",
+                            type = type,
                             yearMatter = rowValues.getOrNull(
                                 columnsMapping.getOrDefault(
                                     COLUMN_YEAR_MATTER,
@@ -110,7 +121,10 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
                     }
                 }
             }
-
+            // If the list is empty, the file was probably malformed
+            if (eventList.isEmpty())
+                (context as MainActivity)
+                    .showSnackbar(context.getString(R.string.import_nothing_found))
             // Bulk insert, using the standard duplicate detection strategy
             act.mainViewModel.insertAll(eventList)
             // Done. There's no need to restart the app
@@ -130,27 +144,28 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
         val rowMapping = mutableMapOf<String, Int>()
         // Search each field: name and date (mandatory), type, surname, yearMatter, notes
         rowValues.forEach {
-            if (it.contains("date") && rowMapping[COLUMN_DATE] != null) {
+            // Each field of the mapping can be assigned once
+            if (it.contains("date") && rowMapping[COLUMN_DATE] == null) {
                 rowMapping[COLUMN_DATE] = rowValues.indexOf(it)
                 return@forEach
             }
-            if (it.contains("name") && rowMapping[COLUMN_NAME] != null) {
+            if (it == "name" || it.contains("first") && rowMapping[COLUMN_NAME] == null) {
                 rowMapping[COLUMN_NAME] = rowValues.indexOf(it)
                 return@forEach
             }
-            if ((it.contains("surname") || it.contains("last name")) && rowMapping[COLUMN_SURNAME] != null) {
+            if ((it.contains("surname") || it.contains("last")) && rowMapping[COLUMN_SURNAME] == null) {
                 rowMapping[COLUMN_SURNAME] = rowValues.indexOf(it)
                 return@forEach
             }
-            if (it.contains("note") && rowMapping[COLUMN_NOTES] != null) {
+            if (it.contains("note") && rowMapping[COLUMN_NOTES] == null) {
                 rowMapping[COLUMN_NOTES] = rowValues.indexOf(it)
                 return@forEach
             }
-            if (it.contains("type") && rowMapping[COLUMN_TYPE] != null) {
+            if (it.contains("type") && rowMapping[COLUMN_TYPE] == null) {
                 rowMapping[COLUMN_TYPE] = rowValues.indexOf(it)
                 return@forEach
             }
-            if (it.contains("year") && rowMapping[COLUMN_YEAR_MATTER] != null) {
+            if (it.contains("year") && rowMapping[COLUMN_YEAR_MATTER] == null) {
                 rowMapping[COLUMN_YEAR_MATTER] = rowValues.indexOf(it)
                 return@forEach
             }
