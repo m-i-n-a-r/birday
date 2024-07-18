@@ -168,7 +168,7 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
                 filteredNextEvents = removeOrGetUpcomingEvents(orderedEvents, true).toMutableList()
             }
             // Make sure to show if there's more than one event, show surname when there's a single event
-            var widgetUpcoming = formatEventList(filteredNextEvents, true, context, filteredNextEvents.size == 1)
+            var widgetUpcoming = formatEventList(filteredNextEvents, surnameFirst, context, filteredNextEvents.size == 1)
             if (filteredNextEvents.isNotEmpty()) widgetUpcoming += "\n${
                 nextDateFormatted(
                     filteredNextEvents[0],
