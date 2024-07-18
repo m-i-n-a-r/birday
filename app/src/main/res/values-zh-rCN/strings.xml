@@ -167,6 +167,7 @@
     <string name="wishes_birthday">生日快乐！</string>
     <string name="no_default_dialer">找不到默认的拨号app！</string>
     <string name="no_default_sms">找不到默认的短信app！</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">你知道吗？</string>
     <string name="age_average">平均年龄是%s</string>

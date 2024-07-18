@@ -174,6 +174,7 @@
     <string name="wishes_birthday">С днем рождения!</string>
     <string name="no_default_dialer">Не найдено приложение по умолчанию для звонков!</string>
     <string name="no_default_sms">Не найдено приложение по умолчанию для СМС!</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">Знаете ли вы?</string>
     <string name="age_average">Средний возраст %s</string>

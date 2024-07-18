@@ -173,6 +173,7 @@
     <string name="wishes_birthday">Wszystkiego najlepszego!</string>
     <string name="no_default_dialer">Brak domyślnej aplikacji telefonu!</string>
     <string name="no_default_sms">Brak domyślnej aplikacji SMS!</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">Czy wiedziałeś?</string>
     <string name="age_average">Średni wiek to %s</string>

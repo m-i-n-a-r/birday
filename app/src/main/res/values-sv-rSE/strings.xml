@@ -169,6 +169,7 @@
     <string name="wishes_birthday">Grattis på födelsedagen!</string>
     <string name="no_default_dialer">Ingen standard-telefonapp hittades!</string>
     <string name="no_default_sms">Ingen standard-smsapp hittades!</string>
+    <string name="might_have_missed">Du kanske har missat:</string>
     <!-- Statistics -->
     <string name="did_you_know">Visste du?</string>
     <string name="age_average">Medelåldern är %s</string>

@@ -173,6 +173,7 @@
     <string name="wishes_birthday">Χρόνια πολλά!</string>
     <string name="no_default_dialer">Δεν βρέθηκε προεπιλεγμένη εφαρμογή κλήσης!</string>
     <string name="no_default_sms">Δεν βρέθηκε προεπιλεγμένη εφαρμογή SMS!</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">Το γνωρίζατε;</string>
     <string name="age_average">Η μέση ηλικία είναι %s</string>
