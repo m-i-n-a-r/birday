@@ -169,7 +169,7 @@
     <string name="wishes_birthday">Feliz Aniversário!</string>
     <string name="no_default_dialer">Nenhum aplicativo discador padrão encontrado!</string>
     <string name="no_default_sms">Nenhum aplicativo SMS padrão encontrado!</string>
-    <string name="might_have_missed">You might have missed:</string>
+    <string name="might_have_missed">Você poderia ter perdido:</string>
     <!-- Statistics -->
     <string name="did_you_know">Você sabia?</string>
     <string name="age_average">A idade média é %s</string>
@@ -302,11 +302,11 @@
     <string name="import_csv_description">Importar de um arquivo CSV. Consulte a wiki no Github para obter a estrutura de arquivo necessária</string>
     <string name="export_csv_title">Exportar para CSV</string>
     <string name="export_csv_description">Exportar cada evento para um arquivo CSV, imagens exclusas</string>
-    <string name="export_calendar_title">Export to calendar</string>
-    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
-    <string name="auto_export_title">Auto export events</string>
-    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
-    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
+    <string name="export_calendar_title">Exportar para calendário</string>
+    <string name="export_calendar_description">Salve todos os eventos no seu calendário, se possível. Requer a permissão de calendário</string>
+    <string name="auto_export_title">Exportação automática de eventos</string>
+    <string name="auto_export_description_on">Birday exportará automaticamente um backup quando o aplicativo for fechado. Por favor, note que cada backup substituirá o anterior</string>
+    <string name="auto_export_description_off">Para realizar um Birday backup local, ele tem que ser executado manualmente</string>
     <string name="add_demo_entries_title">Adicionar entradas de demonstração</string>
     <string name="add_demo_entries_description">Popular o banco de dados com uma lista de eventos exemplares, grande parte sendo atores e figuras históricas</string>
     <string name="add_demo_entries_dialog_description">Isto irá adicionar permanentemente MILHARES de registros ao banco de dados e só deverá ser utilizado para fins de desenvolvimento. nenhum evento existente será deletado, porém, se quiser deletar novos registros, terá que fazer manualmente. Boa sorte.</string>
