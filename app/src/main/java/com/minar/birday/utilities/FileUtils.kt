@@ -12,7 +12,8 @@ import java.io.File
 // Share the backup to a supported app
 fun shareFile(context: Context, fileUri: String) {
     val file = File(fileUri)
-    val contentUri: Uri = FileProvider.getUriForFile(context, "com.minar.birday.fileprovider", file)
+    val contentUri: Uri =
+        FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", file)
     val shareIntent = Intent().apply {
         action = Intent.ACTION_SEND
         putExtra(Intent.EXTRA_STREAM, contentUri)

@@ -388,7 +388,6 @@ class DetailsFragment : Fragment() {
                 getStringForTypeCodename(requireContext(), event.type!!)
             binding.detailsBirthDate.visibility = View.GONE
             binding.detailsNextAge.visibility = View.GONE
-            binding.detailsClearBackground.visibility = View.GONE
             disableAstrology()
         }
 

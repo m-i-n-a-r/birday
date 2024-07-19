@@ -140,6 +140,11 @@
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />
         </Constraint>
+        <Constraint android:id="@+id/detailsNextAgeYears">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
         <Constraint android:id="@id/detailsCountdownShimmer">
             <PropertySet
                 app:applyMotionScene="false"
