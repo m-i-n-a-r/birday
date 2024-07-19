@@ -170,6 +170,7 @@
     <string name="wishes_birthday">ജന്മദിനാശംസകൾ!</string>
     <string name="no_default_dialer">സ്ഥിര ഡയലർ ആപ്ലിക്കേഷൻ കണ്ടെത്താൻ കഴിഞ്ഞില്ല!</string>
     <string name="no_default_sms">സ്ഥിര എസ് എം എസ് അപ്ലിക്കേഷൻ കണ്ടെത്താൻ കഴിഞ്ഞില്ല!</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">നിങ്ങൾക്ക് അറിയാമോ?</string>
     <string name="age_average">ശരാശരി പ്രായം %s</string>

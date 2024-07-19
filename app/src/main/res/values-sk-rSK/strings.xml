@@ -173,6 +173,7 @@
     <string name="wishes_birthday">Všetko najlepšie k narodeninám!</string>
     <string name="no_default_dialer">Nebola nájdená žiadna predvolená aplikácia telefónu!</string>
     <string name="no_default_sms">Nebola nájdená žiadna predvolená aplikácia pre SMS!</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">Vedeli ste?</string>
     <string name="age_average">Priemerný vek je %s</string>

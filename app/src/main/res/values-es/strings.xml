@@ -169,6 +169,7 @@
     <string name="wishes_birthday">¡Feliz cumpleaños!</string>
     <string name="no_default_dialer">¡No se ha encontrado la aplicación Teléfono!</string>
     <string name="no_default_sms">¡No se ha encontrado la aplicación Mensajes!</string>
+    <string name="might_have_missed">Puede que te haya perdido:</string>
     <!-- Statistics -->
     <string name="did_you_know">¿Sabías que…?</string>
     <string name="age_average">La edad media es de %s</string>

@@ -169,6 +169,7 @@
     <string name="wishes_birthday">वाढदिवसाच्या हार्दिक शुभेच्छा!</string>
     <string name="no_default_dialer">कोणतेही डीफॉल्ट डायलर अॅप आढळले नाही!</string>
     <string name="no_default_sms">कोणतेही डीफॉल्ट SMS अॅप आढळले नाही!</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">तुम्हाला माहीत आहे का?</string>
     <string name="age_average">सरासरी वय आहे %s</string>

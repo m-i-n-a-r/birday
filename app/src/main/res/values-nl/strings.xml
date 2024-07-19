@@ -173,6 +173,7 @@
     <string name="wishes_birthday">Fijne verjaardag!</string>
     <string name="no_default_dialer">Geen standaard telefoon app gevonden!</string>
     <string name="no_default_sms">Geen standaard sms app gevonden!</string>
+    <string name="might_have_missed">Je hebt misschien gemist:</string>
     <!-- Statistics -->
     <string name="did_you_know">Wist je dat?</string>
     <string name="age_average">De gemiddelde leeftijd is %s</string>
@@ -307,9 +308,9 @@
     <string name="import_csv_description">Importeren uit een CSV-bestand. Raadpleeg de wiki op Github voor de vereiste bestandsstructuur</string>
     <string name="export_csv_title">Exporteren naar CSV</string>
     <string name="export_csv_description">Exporteer alle gebeurtenissen naar een CSV-bestand, afbeelding uitgesloten</string>
-    <string name="export_calendar_title">Export to calendar</string>
+    <string name="export_calendar_title">Exporteren naar kalender</string>
     <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
-    <string name="auto_export_title">Auto export events</string>
+    <string name="auto_export_title">Afspraken automatisch exporteren</string>
     <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
     <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
     <string name="add_demo_entries_title">Add demo entries</string>
@@ -328,7 +329,7 @@
     <string name="advanced_overview_title">Geavanceerd overzicht</string>
     <string name="advanced_overview_description_off">Het overzichtsscherm toont alleen basisinformatie</string>
     <string name="advanced_overview_description_on">Het overzichtsscherm toont andere jaren en gedetailleerde informatie</string>
-    <string name="replace_on_conflict_title">Replace on conflict</string>
+    <string name="replace_on_conflict_title">Vervangen bij conflict</string>
     <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
     <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
 </resources>
