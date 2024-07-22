@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Velkommen til Birday</string>
-    <string name="app_name_extended">Birday - Event Manager</string>
-    <string name="leave_review_title">Review Birday</string>
-    <string name="leave_review_subtitle">Leave a review to help me with the app. Keep in mind that, donations aside, this app is completely free and ad-free!</string>
-    <string name="yes_review">Review!</string>
-    <string name="later">Later, I swear</string>
+    <string name="app_name_extended">Birday - Hendelsesbehandler</string>
+    <string name="leave_review_title">Gi Birday en vurdering</string>
+    <string name="leave_review_subtitle">Gi en vurdering for å hjelpe meg med appen. Husk at utenom donasjoner, så er appen helt gratis og fri fra reklame!</string>
+    <string name="yes_review">Gi vurdering!</string>
+    <string name="later">Senere, jeg lover</string>
     <string name="no_thanks">Nei takk!</string>
     <string name="title_home">Hjem</string>
     <string name="title_favorites">Favoritter</string>
@@ -63,38 +63,38 @@
     <string name="green">Grønn</string>
     <string name="orange">Oransje</string>
     <string name="yellow">Gul</string>
-    <string name="teal">Teal</string>
-    <string name="violet">Violet</string>
-    <string name="pink">Pink</string>
-    <string name="light_blue">Light Blue</string>
-    <string name="red">Red</string>
-    <string name="lime">Lime</string>
-    <string name="crimson">Crimson</string>
-    <string name="system_theme">System default</string>
-    <string name="dark_theme">Dark</string>
-    <string name="light_theme">Light</string>
+    <string name="teal">Blågrønn</string>
+    <string name="violet">Fiolett</string>
+    <string name="pink">Rosa</string>
+    <string name="light_blue">Lyseblå</string>
+    <string name="red">Rød</string>
+    <string name="lime">Limegrønn</string>
+    <string name="crimson">Karmosinrød</string>
+    <string name="system_theme">Systemstandard</string>
+    <string name="dark_theme">Mørkt</string>
+    <string name="light_theme">Lyst</string>
     <string name="shimmer_name">Shimmer effect</string>
     <string name="shimmer_description_on">A shiny animation here and there</string>
     <string name="shimmer_description_off">No additional graphic effects</string>
-    <string name="import_export">Import and Export</string>
-    <string name="import_contacts_title">Import events from contacts</string>
+    <string name="import_export">Importer og eksporter</string>
+    <string name="import_contacts_title">Importer hendelser fra kontakter</string>
     <string name="import_contacts_description">Make sure to modify the events with missing years to always have accurate statistics!</string>
-    <string name="import_success">Import completed successfully!</string>
-    <string name="import_nothing_found">No event found!</string>
-    <string name="import_failed">Something went wrong!</string>
-    <string name="missing_permission_contacts">The contact permission was denied. Try again or activate the permission manually,
-    or the contacts import won\'t work!</string>
+    <string name="import_success">Importering vellykket!</string>
+    <string name="import_nothing_found">Ingen hendelser funnet!</string>
+    <string name="import_failed">Noe gikk galt!</string>
+    <string name="missing_permission_contacts">Tilgangen til kontakter ble avvist. Prøv igjen eller aktiver tilgangen manuelt,
+    ellers vil det ikke fungere å importere kontakter!</string>
     <string name="missing_permission_contacts_forever">Birday can\'t ask for permission to import contacts,
     since you checked \"never ask again\". Enable it manually!</string>
-    <string name="birday_import_title">Import a Birday backup</string>
-    <string name="birday_import_description">Choose a valid Birday backup to restore your events. All existing data
-    will be overwritten!</string>
+    <string name="birday_import_title">Importer en sikkerhetskopi fra Birday</string>
+    <string name="birday_import_description">Velg en gyldig sikkerhetskopi fra Birday for å gjenopprette hendelsene dine. Alle eksisterende data
+    vil bli overskrevet!</string>
     <string name="birday_export_title">Export and share events</string>
-    <string name="birday_export_description">Export the available events to a backup, and share them if you want. The file is in
+    <string name="birday_export_description">Eksporter tilgjengelige hendelser til en sikkerhetskopi, og del dem om du ønsker. Filen ligger under
     Android/data/com.minar.birday/files</string>
     <string name="birday_import_success">Import completed!</string>
     <string name="birday_import_failure">Import failed. Did you choose the file correctly?</string>
-    <string name="birday_import_invalid_file">Import failed. The chosen file is not a Birday backup!</string>
+    <string name="birday_import_invalid_file">Importering feilet. Den valgte filen er ikke en sikkerhetskopi fra Birday!</string>
     <string name="birday_export_success">Export completed!</string>
     <string name="birday_export_failure">Export failed. Whoopsie!</string>
     <string name="birday_export_nothing_found">Nothing to export!</string>
