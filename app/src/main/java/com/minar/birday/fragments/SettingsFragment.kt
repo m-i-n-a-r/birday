@@ -17,6 +17,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
+import com.minar.birday.activities.MainActivity
 import com.minar.birday.utilities.addInsetsByPadding
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidgetProvider
@@ -98,6 +99,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
             "surname_first" -> updateWidgets(updateUpcoming = true, updateMinimal = true)
             "hide_images" -> updateWidgets(updateUpcoming = true)
             "multi_additional_notification" -> updateWidgets(updateMinimal = true)
+            "disable_astrology" -> (requireActivity() as MainActivity).forceRefreshStats()
         }
     }
 

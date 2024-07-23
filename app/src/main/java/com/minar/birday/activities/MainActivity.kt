@@ -545,6 +545,13 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.insert(resultToEvent(eventResult))
     }
 
+    // Force refresh the stats, useful when the events are the same, but something else changes
+    fun forceRefreshStats() {
+        val events = mainViewModel.allEventsUnfiltered.value
+        if (events != null)
+            mainViewModel.getStats(events, this)
+    }
+
     // Change the fab to show a delete icon
     fun toggleDeleteFab(active: Boolean = false) {
         val addFab = binding.fab
