@@ -169,7 +169,7 @@
     <string name="wishes_birthday">İyi ki doğdun!</string>
     <string name="no_default_dialer">Varsayılan arama uygulaması bulunamadı!</string>
     <string name="no_default_sms">Varsayılan SMS uygulaması bulunamadı!</string>
-    <string name="might_have_missed">You might have missed:</string>
+    <string name="might_have_missed">Kaçırmış olabilirsin:</string>
     <!-- Statistics -->
     <string name="did_you_know">Biliyor muydun?</string>
     <string name="age_average">%s, Dünyadaki ortalama yaştır</string>
@@ -306,11 +306,11 @@
     <string name="import_csv_description">Bir CSV dosyasından içe aktarın. Gerekli dosya yapısı için Github\'daki wikiyi ziyaret edin</string>
     <string name="export_csv_title">CSV\'ye aktar</string>
     <string name="export_csv_description">Her etkinliği bir CSV dosyasına aktarın, resimler aktarılmaz</string>
-    <string name="export_calendar_title">Export to calendar</string>
-    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
-    <string name="auto_export_title">Auto export events</string>
-    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
-    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
+    <string name="export_calendar_title">Takvime aktar</string>
+    <string name="export_calendar_description">Mümkünse her etkinliği yerel takviminize kaydedin. Takvim izni gerektirir</string>
+    <string name="auto_export_title">Olayları otomatik dışa aktarma</string>
+    <string name="auto_export_description_on">Birday, uygulama kapatıldığında otomatik olarak bir yedeği dışa aktaracaktır. Lütfen her yedeğin bir önceki yedeğin üzerine yazılacağını unutmayın</string>
+    <string name="auto_export_description_off">Yerel Birday yedeklemesi gerçekleştirmek için manuel olarak yürütülmesi gerekir</string>
     <string name="add_demo_entries_title">Demo girişleri ekleyin</string>
     <string name="add_demo_entries_description">DB\'yi aktörler ve tarihi şahsiyetlerden oluşan bir dizi etkinlikle doldurun</string>
     <string name="add_demo_entries_dialog_description">Bu, hata ayıklama amaçlı DB\'ye kalıcı olarak BİNLERCE giriş ekler. Var olan etkinlikler silinmeyecek ancak yeni girişleri silmek istemeniz durumunda bunu manuel olarak yapmak zorunda kalacaksınız. Bol şans.</string>
