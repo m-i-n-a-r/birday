@@ -77,10 +77,10 @@
     <string name="shimmer_description_on">Ένα λαμπερό κινούμενο σχέδιο εδώ και εκεί</string>
     <string name="shimmer_description_off">Χωρίς πρόσθετα γραφικά εφέ</string>
     <string name="import_export">Εισαγωγή και Εξαγωγή</string>
-    <string name="import_contacts_title">Εισαγωγή συμβάντων από επαφές</string>
+    <string name="import_contacts_title">Εισαγωγή εκδηλώσεων από τις επαφές</string>
     <string name="import_contacts_description">Μην ξεχνάτε να προσαρμόζετε τα γεγονότα με χρόνια που λείπουν, ώστε να έχετε πάντα ακριβή στατιστικά!</string>
     <string name="import_success">Η εισαγωγή ολοκληρώθηκε επιτυχώς!</string>
-    <string name="import_nothing_found">Δεν βρέθηκε κανένα γεγονός!</string>
+    <string name="import_nothing_found">Δε βρέθηκε καμία εκδήλωση!</string>
     <string name="import_failed">Κάτι πήγε στραβά!</string>
     <string name="missing_permission_contacts">Η άδεια επαφών δεν επιτράπηκε. Δοκιμάστε ξανά ή ενεργοποιήστε την άδεια χειροκίνητα,
     αλλιώς η εισαγωγή επαφών δεν θα λειτουργήσει!</string>
