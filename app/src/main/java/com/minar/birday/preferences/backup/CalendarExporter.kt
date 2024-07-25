@@ -12,6 +12,11 @@ import androidx.preference.PreferenceViewHolder
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.model.EventResult
+import com.minar.birday.utilities.addEvent
+import com.minar.birday.utilities.createOrGetCalendar
+import com.minar.birday.utilities.formatName
+import java.time.Instant
+import java.time.ZoneId
 import kotlin.concurrent.thread
 
 
@@ -44,13 +49,14 @@ class CalendarExporter(context: Context, attrs: AttributeSet?) : Preference(cont
     // Import the contacts from device contacts (not necessarily Google)
     private fun exportCalendar(context: Context): Boolean {
         val act = context as MainActivity
-        // Ask for write calendar permission
-        val permission = act.askWriteCalendarPermission(402)
-        if (!permission) return false
+        // Ask for write calendar permissions
+        val permissionRead = act.askCalendarPermission(302)
+        val permissionWrite = act.askWriteCalendarPermission(402)
+        if (!permissionWrite || !permissionRead) return false
 
         // Phase 1: create the Birday calendar
-        val created = createBirdayCalendar(act)
-        if (created == 0L) return false
+        val calendarId = createOrGetCalendar(act)
+        if (calendarId == -1L) return false
 
         // Phase 2: get every event and write it the the system calendar
         val events = act.mainViewModel.allEventsUnfiltered.value
@@ -59,7 +65,7 @@ class CalendarExporter(context: Context, attrs: AttributeSet?) : Preference(cont
                 context.showSnackbar(context.getString(R.string.import_nothing_found))
             })
         }
-        val writeOk = writeEventsToCalendar(act, events!!)
+        val writeOk = writeEventsToCalendar(act, events!!, calendarId)
 
         // Phase 3: check if the write event went as expected and return accordingly
         return if (writeOk) {
@@ -72,59 +78,24 @@ class CalendarExporter(context: Context, attrs: AttributeSet?) : Preference(cont
 
     }
 
-    // Get the contacts and save them in a map
-    private fun writeEventsToCalendar(context: Context, events: List<EventResult>): Boolean {
+    // Write each event as an entry on the Birday calendar, in the local calendar app
+    private fun writeEventsToCalendar(
+        context: Context,
+        events: List<EventResult>,
+        calendarId: Long
+    ): Boolean {
         try {
-            for (event in events) {
-                val intent = Intent(Intent.ACTION_INSERT)
-                    .setData(CalendarContract.Events.CONTENT_URI)
-                    .putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true)
-                    .putExtra(CalendarContract.Events.TITLE, "Yoga")
-                    .putExtra(CalendarContract.Events.DESCRIPTION, "Group class")
-                    .putExtra(CalendarContract.Events.EVENT_LOCATION, "The gym")
-                    .putExtra(
-                        CalendarContract.Events.AVAILABILITY,
-                        CalendarContract.Events.AVAILABILITY_FREE
-                    )
-
-                    .putExtra(Intent.EXTRA_EMAIL, "rowan@example.com,trevor@example.com")
-                context.startActivity(intent)
-            }
+            for (event in events) addEvent(
+                context,
+                calendarId,
+                formatName(event, false),
+                event.notes,
+                event.originalDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli()
+            )
             return true
         } catch (e: Exception) {
+            e.printStackTrace()
             return false
         }
-    }
-
-    // Create a calendar to store the events from Birday
-    private fun createBirdayCalendar(context: Context): Long {
-        var calUri = CalendarContract.Calendars.CONTENT_URI
-        val cv = ContentValues()
-        cv.put(CalendarContract.Calendars.ACCOUNT_NAME, "Birday")
-        cv.put(CalendarContract.Calendars.ACCOUNT_TYPE, CalendarContract.ACCOUNT_TYPE_LOCAL)
-        cv.put(CalendarContract.Calendars.NAME, "Birday")
-        cv.put(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME, "Birday events")
-        cv.put(CalendarContract.Calendars.CALENDAR_COLOR, context.getColor(R.color.brownLight))
-        cv.put(
-            CalendarContract.Calendars.CALENDAR_ACCESS_LEVEL,
-            CalendarContract.Calendars.CAL_ACCESS_OWNER
-        )
-        cv.put(CalendarContract.Calendars.OWNER_ACCOUNT, true)
-        cv.put(CalendarContract.Calendars.VISIBLE, 1)
-        cv.put(CalendarContract.Calendars.SYNC_EVENTS, 1)
-
-        calUri = calUri.buildUpon()
-            .appendQueryParameter(CalendarContract.CALLER_IS_SYNCADAPTER, "true")
-            .appendQueryParameter(CalendarContract.Calendars.ACCOUNT_NAME, "Birday")
-            .appendQueryParameter(
-                CalendarContract.Calendars.ACCOUNT_TYPE,
-                CalendarContract.ACCOUNT_TYPE_LOCAL
-            )
-            .build()
-        val resolver = context.contentResolver
-        val result: Uri? = resolver.insert(calUri, cv)
-        return if (result != null) {
-            result.lastPathSegment!!.toLong()
-        } else 0L
     }
 }
