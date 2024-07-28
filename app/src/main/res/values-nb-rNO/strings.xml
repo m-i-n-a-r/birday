@@ -33,9 +33,9 @@
     <!-- Settings -->
     <string name="customization">Personalisering</string>
     <string name="app_behavior">Appens virkemåte</string>
-    <string name="additional_notification_name">Ekstra påminnelse</string>
-    <string name="additional_notification_description">Send en ekstra påminnelse dager før hendelsen. %s</string>
-    <string name="no_additional_notification">Ingen ekstra påminnelser</string>
+    <string name="additional_notification_name">Ekstra varsel</string>
+    <string name="additional_notification_description">Send et ekstra varsel dager før hendelsen. %s</string>
+    <string name="no_additional_notification">Ikke ekstra varsel</string>
     <string name="one_day_before">En dag før</string>
     <string name="two_days_before">To dager før</string>
     <string name="three_days_before">Tre dager før</string>
@@ -50,12 +50,12 @@
     <string name="vibration_description_on">Vibrer når en knapp trykkes</string>
     <string name="vibration_description_off">Ingen vibrasjoner når en knapp trykkes</string>
     <string name="date_format_name">Datoformat</string>
-    <string name="notification_hour_name">Tidspunkt for påminnelse</string>
-    <string name="notification_hour_description">%s \n\nVær oppmerksom på at varselet kanskje ikke fungerer når appen avsluttes av systemet på noen Huawei, Xiaomi og OnePlus enheter. Se dontkillmyapp.com for mer informasjon</string>
+    <string name="notification_hour_name">Tidspunkt for varsel</string>
+    <string name="notification_hour_description">%s \n\nVær oppmerksom på at varsler kanskje ikke fungerer når appen avsluttes av systemet på noen Huawei, Xiaomi og OnePlus enheter. Se dontkillmyapp.com for mer informasjon</string>
     <string name="accent_description">Endre standard aksentfarge</string>
     <string name="accent_name">Aksentfarge</string>
     <string name="theme_description">Bruk mørkt, lyst eller automatisk tema i appen</string>
-    <string name="theme_name">App tema</string>
+    <string name="theme_name">Appens tema</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Akvamarin</string>
     <string name="brown">Brun</string>
