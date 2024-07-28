@@ -89,7 +89,7 @@
     <string name="birday_import_title">Εισαγωγή αντιγράφου ασφαλείας Birday</string>
     <string name="birday_import_description">Επιλέξτε ένα έγκυρο αντίγραφο ασφαλείας Birday για να επαναφέρετε τα συμβάντα σας. Όλα τα υπάρχοντα δεδομένα
     θα αντικατασταθούν!</string>
-    <string name="birday_export_title">Εξαγωγή και κοινοποίηση συμβάντων</string>
+    <string name="birday_export_title">Εξαγωγή και κοινοποίηση εκδηλώσεων</string>
     <string name="birday_export_description">Εξαγωγή των διαθέσιμων συμβάντων σε ένα αντίγραφο ασφαλείας και κοινοποίηση αν θέλετε. Το αρχείο είναι σε
     Android/data/com.minar.birday/files</string>
     <string name="birday_import_success">Η εισαγωγή ολοκληρώθηκε!</string>
@@ -102,11 +102,11 @@
     <string name="surname_first_description_on">Εμφάνιση του επώνυμου πριν από το όνομα</string>
     <string name="surname_first_description_off">Εμφάνιση ονόματος πριν από το επώνυμο</string>
     <string name="hide_images">Απόκρυψη εικόνων</string>
-    <string name="hide_images_description_on">Εικόνες συμβάντων κρυμμένες</string>
-    <string name="hide_images_description_off">Εικόνες συμβάντων ορατές</string>
+    <string name="hide_images_description_on">Εικόνες εκδηλώσεων κρυμμένες</string>
+    <string name="hide_images_description_off">Εικόνες εκδηλώσεων ορατές</string>
     <string name="notification_only_favorites">Μόνο τα Αγαπημένα</string>
-    <string name="notification_only_favorites_description_on">Αποστολή ειδοποίησης μόνο για τα αγαπημένα συμβάντα</string>
-    <string name="notification_only_favorites_description_off">Αποστολή ειδοποίησης για κάθε συμβάν που έχει εισαχθεί</string>
+    <string name="notification_only_favorites_description_on">Αποστολή ειδοποίησης μόνο για τις αγαπημένες εκδηλώσεις</string>
+    <string name="notification_only_favorites_description_off">Αποστολή ειδοποίησης για κάθε εκδήλωση που έχει εισαχθεί</string>
     <string name="additional_notification_only_favorites">Πρόσθετες ειδοποιήσεις για αγαπημένα</string>
     <string name="additional_notification_only_favorites_description_on">Αποστολή επιπλέον ειδοποίησης μόνο για αγαπημένα γεγονότα</string>
     <string name="additional_notification_only_favorites_description_off">Αποστολή της επιπλέον ειδοποίησης για κάθε γεγονός που έχει εισαχθεί</string>
@@ -169,7 +169,7 @@
     <string name="event_apps">Γρήγορες εφαρμογές</string>
     <string name="event_apps_description">Εφαρμογή για να ευχηθείτε τα καλύτερα γρήγορα!</string>
     <string name="text_message">Γραπτό μήνυμα</string>
-    <string name="dialer">Κλήση</string>
+    <string name="dialer">Εφαρμογή κλήσεων</string>
     <string name="wishes_birthday">Χρόνια πολλά!</string>
     <string name="no_default_dialer">Δεν βρέθηκε προεπιλεγμένη εφαρμογή κλήσης!</string>
     <string name="no_default_sms">Δεν βρέθηκε προεπιλεγμένη εφαρμογή SMS!</string>
