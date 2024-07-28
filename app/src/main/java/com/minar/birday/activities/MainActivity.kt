@@ -132,7 +132,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Set an amoled theme or a normal theme depending on amoled mode
-        if (theme == "black")
+        if (theme == "black") {
+            setTheme(R.style.AppTheme)
             when (accent) {
                 "monet" -> setTheme(R.style.AppTheme_Monet_PerfectDark)
                 "system" -> setTheme(R.style.AppTheme_System_PerfectDark)
@@ -150,7 +151,7 @@ class MainActivity : AppCompatActivity() {
                 "crimson" -> setTheme(R.style.AppTheme_Crimson_PerfectDark)
                 else -> setTheme(R.style.AppTheme_PerfectDark)
             }
-        else
+        } else
             when (accent) {
                 "monet" -> setTheme(R.style.AppTheme_Monet)
                 "system" -> setTheme(R.style.AppTheme_System)

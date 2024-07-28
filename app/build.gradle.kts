@@ -85,11 +85,11 @@ dependencies {
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.activity:activity-ktx:1.9.0")
-    implementation("androidx.fragment:fragment-ktx:1.8.1")
+    implementation("androidx.activity:activity-ktx:1.9.1")
+    implementation("androidx.fragment:fragment-ktx:1.8.2")
 
     // Transition
-    implementation("androidx.transition:transition-ktx:1.5.0")
+    implementation("androidx.transition:transition-ktx:1.5.1")
 
     // Constraint / motion layout
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
@@ -104,12 +104,12 @@ dependencies {
     implementation("androidx.work:work-runtime-ktx:2.9.0")
 
     // Navigation component
-    implementation("androidx.navigation:navigation-fragment-ktx:2.8.0-beta05")
-    implementation("androidx.navigation:navigation-ui-ktx:2.8.0-beta05")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.8.0-beta06")
+    implementation("androidx.navigation:navigation-ui-ktx:2.8.0-beta06")
 
     // Lifecycle and ViewModel
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.3")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
 
     // Room

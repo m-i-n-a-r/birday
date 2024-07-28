@@ -1,10 +1,6 @@
 package com.minar.birday.preferences.backup
 
-import android.content.ContentValues
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
-import android.provider.CalendarContract
 import android.util.AttributeSet
 import android.view.View
 import androidx.preference.Preference
@@ -15,7 +11,6 @@ import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.addEvent
 import com.minar.birday.utilities.createOrGetCalendar
 import com.minar.birday.utilities.formatName
-import java.time.Instant
 import java.time.ZoneId
 import kotlin.concurrent.thread
 
