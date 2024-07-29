@@ -29,19 +29,32 @@ fun getCalendarId(context: Context, accountName: String, calendarDisplayName: St
     return -1
 }
 
+// Create the Birday calendar or return the existing one, if it already exists
+fun createOrGetCalendar(context: Context): Long {
+    val accountName = context.getString(R.string.app_name)
+    val calendarDisplayName = context.getString(R.string.events_notification_channel)
+    var calendarId = getCalendarId(context, accountName, calendarDisplayName)
+
+    if (calendarId == -1L) {
+        // The calendar does not exist, create it
+        calendarId = addCalendar(context, accountName, calendarDisplayName)
+    }
+    return calendarId
+}
+
 // Add a local calendar for Birday and return its ID
-fun addCalendar(context: Context): Long {
+fun addCalendar(context: Context, accountName: String, calendarDisplayName: String): Long {
     val values = ContentValues().apply {
-        put(CalendarContract.Calendars.ACCOUNT_NAME, "Birday")
+        put(CalendarContract.Calendars.ACCOUNT_NAME, accountName)
         put(CalendarContract.Calendars.ACCOUNT_TYPE, CalendarContract.ACCOUNT_TYPE_LOCAL)
-        put(CalendarContract.Calendars.NAME, context.getString(R.string.events_notification_channel))
-        put(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME, context.getString(R.string.events_notification_channel))
+        put(CalendarContract.Calendars.NAME, calendarDisplayName)
+        put(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME, calendarDisplayName)
         put(CalendarContract.Calendars.CALENDAR_COLOR, context.getColor(R.color.brownLight))
         put(
             CalendarContract.Calendars.CALENDAR_ACCESS_LEVEL,
             CalendarContract.Calendars.CAL_ACCESS_OWNER
         )
-        put(CalendarContract.Calendars.OWNER_ACCOUNT, "Birday")
+        put(CalendarContract.Calendars.OWNER_ACCOUNT, accountName)
         put(CalendarContract.Calendars.CALENDAR_TIME_ZONE, TimeZone.getDefault().id)
         put(CalendarContract.Calendars.VISIBLE, 1)
         put(CalendarContract.Calendars.SYNC_EVENTS, 1)
@@ -49,7 +62,7 @@ fun addCalendar(context: Context): Long {
 
     val builder = CalendarContract.Calendars.CONTENT_URI.buildUpon()
     builder.appendQueryParameter(CalendarContract.CALLER_IS_SYNCADAPTER, "true")
-    builder.appendQueryParameter(CalendarContract.Calendars.ACCOUNT_NAME, "Birday")
+    builder.appendQueryParameter(CalendarContract.Calendars.ACCOUNT_NAME, accountName)
     builder.appendQueryParameter(
         CalendarContract.Calendars.ACCOUNT_TYPE,
         CalendarContract.ACCOUNT_TYPE_LOCAL
@@ -59,21 +72,14 @@ fun addCalendar(context: Context): Long {
     return uri?.lastPathSegment?.toLong() ?: -1
 }
 
-// Create the Birday calendar or return the existing one, if it already exists
-fun createOrGetCalendar(context: Context): Long {
-    val accountName = "Birday"
-    val calendarDisplayName = context.getString(R.string.events_notification_channel)
-    var calendarId = getCalendarId(context, accountName, calendarDisplayName)
-
-    if (calendarId == -1L) {
-        // The calendar does not exist, create it
-        calendarId = addCalendar(context)
-    }
-    return calendarId
-}
-
 // Add an event to the local Birday calendar
-fun addEvent(context: Context, calendarId: Long, title: String, description: String? = "", startTime: Long): Long {
+fun addEvent(
+    context: Context,
+    calendarId: Long,
+    title: String,
+    description: String? = "",
+    startTime: Long
+): Long {
     val values = ContentValues().apply {
         put(CalendarContract.Events.DTSTART, startTime)
         put(CalendarContract.Events.DTEND, startTime + TimeUnit.DAYS.toMillis(1))
@@ -82,9 +88,8 @@ fun addEvent(context: Context, calendarId: Long, title: String, description: Str
         put(CalendarContract.Events.DESCRIPTION, description)
         put(CalendarContract.Events.CALENDAR_ID, calendarId)
         put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().id)
-        put(CalendarContract.Events.HAS_ALARM, 1) // 1 if alarm, 0 if not
         put(CalendarContract.Events.ALL_DAY, 1)
-        put(CalendarContract.Events.RRULE, "FREQ=YEARLY") // Yearly
+        put(CalendarContract.Events.RRULE, "FREQ=YEARLY") // Yearly, of course
     }
 
     val uri = context.contentResolver.insert(CalendarContract.Events.CONTENT_URI, values)

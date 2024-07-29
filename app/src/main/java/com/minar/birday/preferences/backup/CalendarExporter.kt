@@ -11,6 +11,7 @@ import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.addEvent
 import com.minar.birday.utilities.createOrGetCalendar
 import com.minar.birday.utilities.formatName
+import com.minar.birday.utilities.getStringForTypeCodename
 import java.time.ZoneId
 import kotlin.concurrent.thread
 
@@ -42,16 +43,21 @@ class CalendarExporter(context: Context, attrs: AttributeSet?) : Preference(cont
     }
 
     // Import the contacts from device contacts (not necessarily Google)
-    private fun exportCalendar(context: Context): Boolean {
+    fun exportCalendar(context: Context): Boolean {
         val act = context as MainActivity
-        // Ask for write calendar permissions
-        val permissionRead = act.askCalendarPermission(302)
+        // Ask for read / write calendar permissions
         val permissionWrite = act.askWriteCalendarPermission(402)
-        if (!permissionWrite || !permissionRead) return false
+        if (!permissionWrite) return false
+        val permissionRead = act.askCalendarPermission(302)
+        if (!permissionRead) return false
 
         // Phase 1: create the Birday calendar
-        val calendarId = createOrGetCalendar(act)
-        if (calendarId == -1L) return false
+        var calendarId = createOrGetCalendar(act)
+        if (calendarId == -1L) calendarId = createOrGetCalendar(act)
+        if (calendarId == -1L) {
+            context.runOnUiThread(Runnable { context.showSnackbar(context.getString(R.string.birday_export_failure)) })
+            return false
+        }
 
         // Phase 2: get every event and write it the the system calendar
         val events = act.mainViewModel.allEventsUnfiltered.value
@@ -80,13 +86,23 @@ class CalendarExporter(context: Context, attrs: AttributeSet?) : Preference(cont
         calendarId: Long
     ): Boolean {
         try {
-            for (event in events) addEvent(
-                context,
-                calendarId,
-                formatName(event, false),
-                event.notes,
-                event.originalDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli()
-            )
+            // Always first name first, to simplify a bit, plus the event type
+            for (event in events) {
+                val eventName = formatName(event, false) + "- ${
+                    getStringForTypeCodename(
+                        context,
+                        event.type!!
+                    )
+                }"
+                addEvent(
+                    context,
+                    calendarId,
+                    eventName,
+                    event.notes,
+                    event.originalDate.atStartOfDay(ZoneId.systemDefault()).toInstant()
+                        .toEpochMilli()
+                )
+            }
             return true
         } catch (e: Exception) {
             e.printStackTrace()

@@ -54,6 +54,7 @@ import com.minar.birday.fragments.dialogs.InsertEventBottomSheet
 import com.minar.birday.model.EventResult
 import com.minar.birday.preferences.backup.BirdayExporter
 import com.minar.birday.preferences.backup.BirdayImporter
+import com.minar.birday.preferences.backup.CalendarExporter
 import com.minar.birday.preferences.backup.ContactsImporter
 import com.minar.birday.preferences.backup.CsvImporter
 import com.minar.birday.preferences.backup.JsonImporter
@@ -629,7 +630,7 @@ class MainActivity : AppCompatActivity() {
         } else true
     }
 
-    // Ask calendar permission
+    // Ask read calendar permission
     fun askCalendarPermission(code: Int = 301): Boolean {
         return if (ContextCompat.checkSelfPermission(
                 this,
@@ -648,7 +649,7 @@ class MainActivity : AppCompatActivity() {
         } else true
     }
 
-    // Ask calendar permission
+    // Ask write calendar permission
     fun askWriteCalendarPermission(code: Int = 401): Boolean {
         return if (ContextCompat.checkSelfPermission(
                 this,
@@ -773,6 +774,33 @@ class MainActivity : AppCompatActivity() {
                                 data = Uri.fromParts("package", packageName, null)
                             })
                         })
+                }
+                else {
+                    val calendarExporter = CalendarExporter(this, null)
+                    calendarExporter.exportCalendar(this)
+                }
+            }
+            402 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    if (shouldShowRequestPermissionRationale(Manifest.permission.WRITE_CALENDAR))
+                        showSnackbar(
+                            getString(R.string.missing_permission_calendar),
+                            actionText = getString(R.string.cancel),
+                            action = fun() {
+                                askWriteCalendarPermission()
+                            })
+                    else showSnackbar(
+                        getString(R.string.missing_permission_calendar_forever),
+                        actionText = getString(R.string.title_settings),
+                        action = fun() {
+                            startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                                data = Uri.fromParts("package", packageName, null)
+                            })
+                        })
+                }
+                else {
+                    val calendarExporter = CalendarExporter(this, null)
+                    calendarExporter.exportCalendar(this)
                 }
             }
         }
