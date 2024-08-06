@@ -1,6 +1,8 @@
 package com.minar.birday.fragments
 
 import android.animation.ObjectAnimator
+import android.app.Activity
+import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Build
@@ -11,6 +13,7 @@ import android.view.View
 import android.view.View.OVER_SCROLL_ALWAYS
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.animation.doOnEnd
@@ -24,6 +27,7 @@ import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
+import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.EventAdapter
@@ -253,7 +257,13 @@ class HomeFragment : Fragment() {
 
         // Setup the recycler view
         recycler.adapter = adapter
-
+        recycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
+                    hideKeyboard(requireActivity())
+                }
+            }
+        })
         // The events, ordered and filtered by the eventual search
         mainViewModel.allEvents.observe(viewLifecycleOwner)
         { events ->
@@ -556,6 +566,20 @@ class HomeFragment : Fragment() {
             .addSizes(Size(8), Size(12), Size(16))
             .setPosition(-50f, confetti.width + 50f, -50f, -50f)
             .streamFor(200, 2000L)
+    }
+
+    //hide keyboard
+    fun hideKeyboard(activity: Activity) {
+        try {
+            val inputMethodManager =
+                activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            val currentFocus = activity.currentFocus
+            if (currentFocus != null) {
+                inputMethodManager.hideSoftInputFromWindow(currentFocus.windowToken, 0)
+            }
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
     }
 }
 

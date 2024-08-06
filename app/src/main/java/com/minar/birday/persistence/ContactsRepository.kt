@@ -210,7 +210,18 @@ class ContactsRepository {
                     yearMatter = countYear,
                     type = contact.eventType,
                     image = contact.image,
-                    notes = notes
+                    notes = notes,
+                    //vehicle insurance
+                    manufacturer_name = "",
+                    manufacturer_name1 = "",
+                    manufacturer_name2 = "",
+                    manufacturer_name3 = "",
+
+                    model_name = "",
+                    model_name1 = "",
+                    model_name2 = "",
+                    model_name3 = "",
+                    insurance_provider = ""
                 )
             } catch (e: Exception) {
                 null

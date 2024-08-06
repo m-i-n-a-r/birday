@@ -55,7 +55,7 @@
         app:layout_constraintDimensionRatio="H,1"
         app:layout_constraintStart_toEndOf="@id/eventImage"
         app:layout_constraintTop_toTopOf="@id/eventDate"
-        tools:visibility="visible" />
+        tools:visibility="gone" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/eventDate"

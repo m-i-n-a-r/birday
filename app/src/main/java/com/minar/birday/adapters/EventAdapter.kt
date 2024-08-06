@@ -247,6 +247,8 @@ class EventAdapter(
                             context, R.drawable.ic_other_24dp
                         )
                     )
+
+                    EventCode.VEHICLE_INSURANCE.name -> eventTypeImage.visibility = View.GONE
                 }
             } else eventTypeImage.visibility = View.GONE
 

@@ -133,6 +133,7 @@ class DetailsFragment : Fragment() {
                             EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
                             EventCode.DEATH.name -> R.drawable.placeholder_death_image
                             EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
+                            EventCode.VEHICLE_INSURANCE.name -> R.drawable.placeholder_vehicle_image
                             else -> R.drawable.placeholder_other_image
                         }
                     )
@@ -205,7 +206,18 @@ class DetailsFragment : Fragment() {
                         surname = event.surname,
                         favorite = event.favorite,
                         notes = note,
-                        image = event.image
+                        image = event.image,
+                        //vehicle insurance
+                        manufacturer_name = event.manufacturer_name!!,
+                        manufacturer_name1 = event.manufacturer_name1!!,
+                        manufacturer_name2 = event.manufacturer_name2!!,
+                        manufacturer_name3 = event.manufacturer_name3!!,
+
+                        model_name = event.model_name!!,
+                        model_name1 = event.model_name1!!,
+                        model_name2 = event.model_name2!!,
+                        model_name3 = event.model_name3!!,
+                        insurance_provider = event.insurance_provider!!
                     )
                     mainViewModel.update(tuple)
                     // Update locally (no livedata here)
@@ -464,6 +476,7 @@ class DetailsFragment : Fragment() {
             EventCode.ANNIVERSARY.name -> typeEmoji = String(Character.toChars(0x1F495))
             EventCode.DEATH.name -> typeEmoji = String(Character.toChars(0x1FAA6))
             EventCode.NAME_DAY.name -> typeEmoji = String(Character.toChars(0x1F607))
+            EventCode.VEHICLE_INSURANCE.name -> typeEmoji = String(Character.toChars(0x1F697))
             EventCode.OTHER.name -> typeEmoji = String(Character.toChars(0x1F7E2))
         }
         val eventInformation =

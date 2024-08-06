@@ -22,6 +22,19 @@ const val COLUMN_DATE = "date"
 const val COLUMN_YEAR_MATTER = "yearMatter"
 const val COLUMN_NOTES = "notes"
 
+//vehicle insurance event
+const val COLUMN_VEHICLE_MANUFACTURER_NAME = "vehicle_manufacturer_name"
+const val COLUMN_VEHICLE_MANUFACTURER_NAME1 = "vehicle_manufacturer_name1"
+const val COLUMN_VEHICLE_MANUFACTURER_NAME2 = "vehicle_manufacturer_name2"
+const val COLUMN_VEHICLE_MANUFACTURER_NAME3 = "vehicle_manufacturer_name3"
+
+const val COLUMN_VEHICLE_MODELNAME = "vehicle_model_name"
+const val COLUMN_VEHICLE_MODELNAME1 = "vehicle_model_name1"
+const val COLUMN_VEHICLE_MODELNAME2 = "vehicle_model_name2"
+const val COLUMN_VEHICLE_MODELNAME3 = "vehicle_model_name3"
+
+const val COLUMN_VEHICLE_INSURANCENAME = "vehicle_insurance_name"
+
 // Transform an event result in a simple event
 fun resultToEvent(eventResult: EventResult) = Event(
     id = eventResult.id,
@@ -32,7 +45,18 @@ fun resultToEvent(eventResult: EventResult) = Event(
     originalDate = eventResult.originalDate,
     yearMatter = eventResult.yearMatter,
     notes = eventResult.notes,
-    image = eventResult.image
+    image = eventResult.image,
+    //vehicle insurance
+    manufacturer_name = eventResult.manufacturer_name!!,
+    manufacturer_name1 = eventResult.manufacturer_name1!!,
+    manufacturer_name2 = eventResult.manufacturer_name2!!,
+    manufacturer_name3 = eventResult.manufacturer_name3!!,
+
+    model_name = eventResult.model_name!!,
+    model_name1 = eventResult.model_name1!!,
+    model_name2 = eventResult.model_name2!!,
+    model_name3 = eventResult.model_name3!!,
+    insurance_provider = eventResult.insurance_provider!!
 )
 
 // Destroy any illegal character and length in the fields, add missing fields if possible
@@ -51,6 +75,18 @@ fun normalizeEvent(event: Event): Event {
         notes = event.notes?.substring(IntRange(0, 500.coerceAtMost(event.notes.length) - 1)),
         originalDate = event.originalDate,
         yearMatter = event.yearMatter,
+        //vehicle insurance event
+        manufacturer_name = event.manufacturer_name.substring(IntRange(0, 30.coerceAtMost(event.manufacturer_name.length) - 1)),
+        manufacturer_name1 = event.manufacturer_name1.substring(IntRange(0, 30.coerceAtMost(event.manufacturer_name1.length) - 1)),
+        manufacturer_name2 = event.manufacturer_name2.substring(IntRange(0, 30.coerceAtMost(event.manufacturer_name2.length) - 1)),
+        manufacturer_name3 = event.manufacturer_name3.substring(IntRange(0, 30.coerceAtMost(event.manufacturer_name3.length) - 1)),
+
+        model_name = event.model_name.substring(IntRange(0, 30.coerceAtMost(event.model_name.length) - 1)),
+        model_name1 = event.model_name1.substring(IntRange(0, 30.coerceAtMost(event.model_name1.length) - 1)),
+        model_name2 = event.model_name2.substring(IntRange(0, 30.coerceAtMost(event.model_name2.length) - 1)),
+        model_name3 = event.model_name3.substring(IntRange(0, 30.coerceAtMost(event.model_name3.length) - 1)),
+
+        insurance_provider = event.insurance_provider.substring(IntRange(0, 30.coerceAtMost(event.insurance_provider.length) - 1)),
         type = fixedType
     )
 }
@@ -70,6 +106,10 @@ fun isDeathAnniversary(event: EventResult): Boolean =
 // Check if an event is a name day
 fun isNameDay(event: EventResult): Boolean =
     event.type == EventCode.NAME_DAY.name
+
+// Check if an event is a vehicle insurance
+fun isVehicleInsurance(event: EventResult): Boolean =
+    event.type == EventCode.VEHICLE_INSURANCE.name
 
 // Check if an event is "other"
 fun isOther(event: EventResult): Boolean =
@@ -222,6 +262,7 @@ fun getAvailableTypes(context: Context): List<EventType> {
         EventType(EventCode.ANNIVERSARY, context.getString(R.string.anniversary)),
         EventType(EventCode.DEATH, context.getString(R.string.death_anniversary)),
         EventType(EventCode.NAME_DAY, context.getString(R.string.name_day)),
+        EventType(EventCode.VEHICLE_INSURANCE, context.getString(R.string.vehicle_insurance)),
         EventType(EventCode.OTHER, context.getString(R.string.other)),
     )
 }
@@ -234,9 +275,11 @@ fun getStringForTypeCodename(context: Context, codename: String): String {
             EventCode.ANNIVERSARY -> context.getString(R.string.anniversary)
             EventCode.DEATH -> context.getString(R.string.death_anniversary)
             EventCode.NAME_DAY -> context.getString(R.string.name_day)
+            EventCode.VEHICLE_INSURANCE -> context.getString(R.string.vehicle_insurance)
             EventCode.OTHER -> context.getString(R.string.other)
         }
     } catch (e: Exception) {
         context.getString(R.string.unknown)
     }
 }
+

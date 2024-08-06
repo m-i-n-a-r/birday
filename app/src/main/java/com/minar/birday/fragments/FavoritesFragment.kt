@@ -314,7 +314,18 @@ class FavoritesFragment : Fragment() {
                     surname = event.surname,
                     favorite = event.favorite,
                     notes = note,
-                    image = event.image
+                    image = event.image,
+                    //vehicle insurance
+                    manufacturer_name = event.manufacturer_name!!,
+                    manufacturer_name1 = event.manufacturer_name1!!,
+                    manufacturer_name2 = event.manufacturer_name2!!,
+                    manufacturer_name3 = event.manufacturer_name3!!,
+
+                    model_name = event.model_name!!,
+                    model_name1 = event.model_name1!!,
+                    model_name2 = event.model_name2!!,
+                    model_name3 = event.model_name3!!,
+                    insurance_provider = event.insurance_provider!!
                 )
                 mainViewModel.update(tuple)
                 dialog.dismiss()

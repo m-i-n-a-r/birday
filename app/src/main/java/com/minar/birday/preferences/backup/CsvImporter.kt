@@ -15,6 +15,15 @@ import com.minar.birday.utilities.COLUMN_NAME
 import com.minar.birday.utilities.COLUMN_NOTES
 import com.minar.birday.utilities.COLUMN_SURNAME
 import com.minar.birday.utilities.COLUMN_TYPE
+import com.minar.birday.utilities.COLUMN_VEHICLE_INSURANCENAME
+import com.minar.birday.utilities.COLUMN_VEHICLE_MANUFACTURER_NAME
+import com.minar.birday.utilities.COLUMN_VEHICLE_MANUFACTURER_NAME1
+import com.minar.birday.utilities.COLUMN_VEHICLE_MANUFACTURER_NAME2
+import com.minar.birday.utilities.COLUMN_VEHICLE_MANUFACTURER_NAME3
+import com.minar.birday.utilities.COLUMN_VEHICLE_MODELNAME
+import com.minar.birday.utilities.COLUMN_VEHICLE_MODELNAME1
+import com.minar.birday.utilities.COLUMN_VEHICLE_MODELNAME2
+import com.minar.birday.utilities.COLUMN_VEHICLE_MODELNAME3
 import com.minar.birday.utilities.COLUMN_YEAR_MATTER
 import com.minar.birday.utilities.normalizeEvent
 import java.time.LocalDate
@@ -97,6 +106,62 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
                                     -1
                                 )
                             )?.toBooleanStrict() ?: true,
+                            //vehicle insurance provider
+                            manufacturer_name = rowValues.getOrNull(
+                                columnsMapping.getOrDefault(
+                                    COLUMN_VEHICLE_MANUFACTURER_NAME,
+                                    -1
+                                )
+                            ) ?: "",
+                            manufacturer_name1 = rowValues.getOrNull(
+                                columnsMapping.getOrDefault(
+                                    COLUMN_VEHICLE_MANUFACTURER_NAME1,
+                                    -1
+                                )
+                            ) ?: "",
+                            manufacturer_name2 = rowValues.getOrNull(
+                                columnsMapping.getOrDefault(
+                                    COLUMN_VEHICLE_MANUFACTURER_NAME2,
+                                    -1
+                                )
+                            ) ?: "",
+                            manufacturer_name3 = rowValues.getOrNull(
+                                columnsMapping.getOrDefault(
+                                    COLUMN_VEHICLE_MANUFACTURER_NAME3,
+                                    -1
+                                )
+                            ) ?: "",
+
+                            model_name = rowValues.getOrNull(
+                                columnsMapping.getOrDefault(
+                                    COLUMN_VEHICLE_MODELNAME,
+                                    -1
+                                )
+                            ) ?: "",
+                            model_name1 = rowValues.getOrNull(
+                                columnsMapping.getOrDefault(
+                                    COLUMN_VEHICLE_MODELNAME1,
+                                    -1
+                                )
+                            ) ?: "",
+                            model_name2 = rowValues.getOrNull(
+                                columnsMapping.getOrDefault(
+                                    COLUMN_VEHICLE_MODELNAME2,
+                                    -1
+                                )
+                            ) ?: "",
+                            model_name3 = rowValues.getOrNull(
+                                columnsMapping.getOrDefault(
+                                    COLUMN_VEHICLE_MODELNAME3,
+                                    -1
+                                )
+                            ) ?: "",
+                            insurance_provider = rowValues.getOrNull(
+                                columnsMapping.getOrDefault(
+                                    COLUMN_VEHICLE_INSURANCENAME,
+                                    -1
+                                )
+                            ) ?: "",
                             notes = rowValues.getOrNull(
                                 columnsMapping.getOrDefault(
                                     COLUMN_NOTES,
@@ -154,6 +219,45 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
                 rowMapping[COLUMN_YEAR_MATTER] = rowValues.indexOf(it)
                 return@forEach
             }
+            //vehicle insurance event
+            if (it.contains("manufacturer_name") && rowMapping[COLUMN_VEHICLE_MANUFACTURER_NAME] != null) {
+                rowMapping[COLUMN_VEHICLE_MANUFACTURER_NAME] = rowValues.indexOf(it)
+                return@forEach
+            }
+            if (it.contains("manufacturer_name1") && rowMapping[COLUMN_VEHICLE_MANUFACTURER_NAME1] != null) {
+                rowMapping[COLUMN_VEHICLE_MANUFACTURER_NAME1] = rowValues.indexOf(it)
+                return@forEach
+            }
+            if (it.contains("manufacturer_name2") && rowMapping[COLUMN_VEHICLE_MANUFACTURER_NAME2] != null) {
+                rowMapping[COLUMN_VEHICLE_MANUFACTURER_NAME2] = rowValues.indexOf(it)
+                return@forEach
+            }
+            if (it.contains("manufacturer_name3") && rowMapping[COLUMN_VEHICLE_MANUFACTURER_NAME3] != null) {
+                rowMapping[COLUMN_VEHICLE_MANUFACTURER_NAME3] = rowValues.indexOf(it)
+                return@forEach
+            }
+
+            if (it.contains("insurance_provider") && rowMapping[COLUMN_VEHICLE_INSURANCENAME] != null) {
+                rowMapping[COLUMN_VEHICLE_INSURANCENAME] = rowValues.indexOf(it)
+                return@forEach
+            }
+
+            if (it.contains("model_name") && rowMapping[COLUMN_VEHICLE_MODELNAME] != null) {
+                rowMapping[COLUMN_VEHICLE_MODELNAME] = rowValues.indexOf(it)
+                return@forEach
+            }
+            if (it.contains("model_name1") && rowMapping[COLUMN_VEHICLE_MODELNAME1] != null) {
+                rowMapping[COLUMN_VEHICLE_MODELNAME1] = rowValues.indexOf(it)
+                return@forEach
+            }
+            if (it.contains("model_name2") && rowMapping[COLUMN_VEHICLE_MODELNAME2] != null) {
+                rowMapping[COLUMN_VEHICLE_MODELNAME2] = rowValues.indexOf(it)
+                return@forEach
+            }
+            if (it.contains("model_name3") && rowMapping[COLUMN_VEHICLE_MODELNAME3] != null) {
+                rowMapping[COLUMN_VEHICLE_MODELNAME3] = rowValues.indexOf(it)
+                return@forEach
+            }
         }
         return if (rowMapping[COLUMN_DATE] != null && rowMapping[COLUMN_NAME] != null)
             rowMapping
@@ -169,6 +273,17 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
         var notes = ""
         var type: String = EventCode.BIRTHDAY.name
         var yearMatter = true
+        //vehicle insurance due date add event
+        var manufacturerName = ""
+        var manufacturerName1 = ""
+        var manufacturerName2 = ""
+        var manufacturerName3 = ""
+
+        var insurance_provider = ""
+        var model_name = ""
+        var model_name1 = ""
+        var model_name2 = ""
+        var model_name3 = ""
 
         // First, search for the only two mandatory columns, name and date
         rowValues.forEach { rowItem ->
@@ -202,6 +317,44 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
             // Notes detection
             if (rowItem.length > 30 || (name.isNotBlank() && surname.isNotBlank()))
                 notes = rowItem
+
+            //vehicle insurance due date add event
+            if (manufacturerName.isBlank() && rowItem.length < 30) {
+                manufacturerName = rowItem
+                return@forEach
+            }
+            if (manufacturerName1.isBlank() && rowItem.length < 30) {
+                manufacturerName1 = rowItem
+                return@forEach
+            }
+            if (manufacturerName2.isBlank() && rowItem.length < 30) {
+                manufacturerName2 = rowItem
+                return@forEach
+            }
+            if (manufacturerName3.isBlank() && rowItem.length < 30) {
+                manufacturerName3 = rowItem
+                return@forEach
+            }
+            if (insurance_provider.isBlank() && rowItem.length < 30) {
+                insurance_provider = rowItem
+                return@forEach
+            }
+            if (model_name.isBlank() && rowItem.length < 30) {
+                model_name = rowItem
+                return@forEach
+            }
+            if (model_name1.isBlank() && rowItem.length < 30) {
+                model_name1 = rowItem
+                return@forEach
+            }
+            if (model_name2.isBlank() && rowItem.length < 30) {
+                model_name2 = rowItem
+                return@forEach
+            }
+            if (model_name3.isBlank() && rowItem.length < 30) {
+                model_name3 = rowItem
+                return@forEach
+            }
         }
 
         // Create and return the event (normalizing it) if each necessary field exists
@@ -214,7 +367,18 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
                     type = type,
                     originalDate = date!!,
                     yearMatter = yearMatter,
-                    notes = notes
+                    notes = notes,
+                    //vehicle insurance due date add event
+                    manufacturer_name = manufacturerName,
+                    manufacturer_name1 = manufacturerName1,
+                    manufacturer_name2 = manufacturerName2!!,
+                    manufacturer_name3 = manufacturerName3!!,
+
+                    model_name = model_name!!,
+                    model_name1 = model_name1!!,
+                    model_name2 = model_name2!!,
+                    model_name3 = model_name3!!,
+                    insurance_provider = insurance_provider!!
                 )
             )
         else null
