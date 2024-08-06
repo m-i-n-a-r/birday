@@ -487,26 +487,42 @@ class HomeFragment : Fragment() {
             // Don't use the function in EventUtils since this assigns all the variables at once
             when (nextEvents.indexOf(event)) {
                 0 -> {
-                    personName = formattedPersonName
+                    if (event.type == "VEHICLE_INSURANCE") {
+                        personName = event.manufacturer_name.toString()
+                        nextAge = "Model: "+event.model_name.toString()
+                    } else {
+                        personName = formattedPersonName
+                        nextAge = getString(R.string.next_age_years) + ": $age"
+                    }
                     nextDateText = nextDateFormatted(event, formatter, requireContext())
-                    nextAge = getString(R.string.next_age_years) + ": $age"
+
                 }
 
                 1, 2 -> {
-                    personName += ", $formattedPersonName"
+                    if (event.type == "VEHICLE_INSURANCE") {
+                        personName = event.manufacturer_name.toString()
+                    } else {
+                        personName += ", $formattedPersonName"
+                    }
                     nextAge += ", $age"
                 }
 
                 3 -> {
-                    personName += " " + getString(R.string.event_others)
+                    if (event.type == "VEHICLE_INSURANCE") {
+                        personName = event.manufacturer_name.toString()
+                    } else {
+                        personName += " " + getString(R.string.event_others)
+                    }
                     nextAge += "..."
                 }
             }
             if (ChronoUnit.DAYS.between(event.nextDate, upcomingDate) < 0) break
         }
+
         cardTitle.text = personName
-        cardSubtitle.text = nextDateText
         cardDescription.text = nextAge
+        cardSubtitle.text = nextDateText
+
     }
 
     // Show a bottom sheet containing some quick apps

@@ -211,7 +211,7 @@ class ContactsRepository {
                     type = contact.eventType,
                     image = contact.image,
                     notes = notes,
-                    //vehicle insurance
+                    //vehicle insurance add event
                     manufacturer_name = "",
                     manufacturer_name1 = "",
                     manufacturer_name2 = "",
@@ -221,7 +221,19 @@ class ContactsRepository {
                     model_name1 = "",
                     model_name2 = "",
                     model_name3 = "",
-                    insurance_provider = ""
+                    insurance_provider = "",
+
+                    //vehicle insurance renewal add event
+                    input1 = "",
+                    input2 = "",
+                    input3 = "",
+                    input4 = "",
+                    input5 = "",
+                    input6 = "",
+                    input7 = "",
+                    input8 = "",
+                    input9 = "",
+                    input10 = ""
                 )
             } catch (e: Exception) {
                 null

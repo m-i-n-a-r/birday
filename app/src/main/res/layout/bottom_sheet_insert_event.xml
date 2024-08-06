@@ -668,6 +668,417 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/vehicle_insurance_renewal_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/vehicle_insurance_layout"
+                >
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input1_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:hint="@string/input1"
+                    app:boxBackgroundColor="@color/transparent"
+                    app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopStart="@dimen/text_field_corner"
+                    app:boxStrokeErrorColor="@color/redError"
+                    app:errorContentDescription="@string/input1"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@drawable/ic_alert_24dp"
+                    app:errorIconTint="?attr/colorPrimary"
+                    app:errorTextColor="?attr/colorPrimary"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="?attr/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:startIconDrawable="@drawable/ic_input_24dp"
+                    app:startIconTint="?attr/colorOutline">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/input1_event"
+                        style="?attr/textInputOutlinedExposedDropdownMenuStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords|textPersonName"
+                        android:maxLength="30"
+                        android:padding="0dp"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        android:textCursorDrawable="@drawable/custom_cursor" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input2_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:hint="@string/input2"
+                    app:boxBackgroundColor="@color/transparent"
+                    app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopStart="@dimen/text_field_corner"
+                    app:boxStrokeErrorColor="@color/redError"
+                    app:errorContentDescription="@string/input2"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@drawable/ic_alert_24dp"
+                    app:errorIconTint="?attr/colorPrimary"
+                    app:errorTextColor="?attr/colorPrimary"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="?attr/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:startIconDrawable="@drawable/ic_input_24dp"
+                    app:startIconTint="?attr/colorOutline">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/input2_event"
+                        style="?attr/textInputOutlinedExposedDropdownMenuStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords|textPersonName"
+                        android:maxLength="30"
+                        android:padding="0dp"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        android:textCursorDrawable="@drawable/custom_cursor" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input3_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:hint="@string/input3"
+                    app:boxBackgroundColor="@color/transparent"
+                    app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopStart="@dimen/text_field_corner"
+                    app:boxStrokeErrorColor="@color/redError"
+                    app:errorContentDescription="@string/input3"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@drawable/ic_alert_24dp"
+                    app:errorIconTint="?attr/colorPrimary"
+                    app:errorTextColor="?attr/colorPrimary"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="?attr/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:startIconDrawable="@drawable/ic_input_24dp"
+                    app:startIconTint="?attr/colorOutline">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/input3_event"
+                        style="?attr/textInputOutlinedExposedDropdownMenuStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords|textPersonName"
+                        android:maxLength="30"
+                        android:padding="0dp"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        android:textCursorDrawable="@drawable/custom_cursor" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input4_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:hint="@string/input4"
+                    app:boxBackgroundColor="@color/transparent"
+                    app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopStart="@dimen/text_field_corner"
+                    app:boxStrokeErrorColor="@color/redError"
+                    app:errorContentDescription="@string/input4"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@drawable/ic_alert_24dp"
+                    app:errorIconTint="?attr/colorPrimary"
+                    app:errorTextColor="?attr/colorPrimary"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="?attr/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:startIconDrawable="@drawable/ic_input_24dp"
+                    app:startIconTint="?attr/colorOutline">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/input4_event"
+                        style="?attr/textInputOutlinedExposedDropdownMenuStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords|textPersonName"
+                        android:maxLength="30"
+                        android:padding="0dp"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        android:textCursorDrawable="@drawable/custom_cursor" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input5_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:hint="@string/input5"
+                    app:boxBackgroundColor="@color/transparent"
+                    app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopStart="@dimen/text_field_corner"
+                    app:boxStrokeErrorColor="@color/redError"
+                    app:errorContentDescription="@string/input5"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@drawable/ic_alert_24dp"
+                    app:errorIconTint="?attr/colorPrimary"
+                    app:errorTextColor="?attr/colorPrimary"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="?attr/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:startIconDrawable="@drawable/ic_input_24dp"
+                    app:startIconTint="?attr/colorOutline">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/input5_event"
+                        style="?attr/textInputOutlinedExposedDropdownMenuStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords|textPersonName"
+                        android:maxLength="30"
+                        android:padding="0dp"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        android:textCursorDrawable="@drawable/custom_cursor" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input6_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:hint="@string/input6"
+                    app:boxBackgroundColor="@color/transparent"
+                    app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopStart="@dimen/text_field_corner"
+                    app:boxStrokeErrorColor="@color/redError"
+                    app:errorContentDescription="@string/input6"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@drawable/ic_alert_24dp"
+                    app:errorIconTint="?attr/colorPrimary"
+                    app:errorTextColor="?attr/colorPrimary"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="?attr/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:startIconDrawable="@drawable/ic_input_24dp"
+                    app:startIconTint="?attr/colorOutline">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/input6_event"
+                        style="?attr/textInputOutlinedExposedDropdownMenuStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords|textPersonName"
+                        android:maxLength="30"
+                        android:padding="0dp"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        android:textCursorDrawable="@drawable/custom_cursor" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input7_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:hint="@string/input7"
+                    app:boxBackgroundColor="@color/transparent"
+                    app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopStart="@dimen/text_field_corner"
+                    app:boxStrokeErrorColor="@color/redError"
+                    app:errorContentDescription="@string/input7"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@drawable/ic_alert_24dp"
+                    app:errorIconTint="?attr/colorPrimary"
+                    app:errorTextColor="?attr/colorPrimary"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="?attr/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:startIconDrawable="@drawable/ic_input_24dp"
+                    app:startIconTint="?attr/colorOutline">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/input7_event"
+                        style="?attr/textInputOutlinedExposedDropdownMenuStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords|textPersonName"
+                        android:maxLength="30"
+                        android:padding="0dp"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        android:textCursorDrawable="@drawable/custom_cursor" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input8_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:hint="@string/input8"
+                    app:boxBackgroundColor="@color/transparent"
+                    app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopStart="@dimen/text_field_corner"
+                    app:boxStrokeErrorColor="@color/redError"
+                    app:errorContentDescription="@string/input8"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@drawable/ic_alert_24dp"
+                    app:errorIconTint="?attr/colorPrimary"
+                    app:errorTextColor="?attr/colorPrimary"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="?attr/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:startIconDrawable="@drawable/ic_input_24dp"
+                    app:startIconTint="?attr/colorOutline">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/input8_event"
+                        style="?attr/textInputOutlinedExposedDropdownMenuStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords|textPersonName"
+                        android:maxLength="30"
+                        android:padding="0dp"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        android:textCursorDrawable="@drawable/custom_cursor" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input9_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:hint="@string/input9"
+                    app:boxBackgroundColor="@color/transparent"
+                    app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopStart="@dimen/text_field_corner"
+                    app:boxStrokeErrorColor="@color/redError"
+                    app:errorContentDescription="@string/input9"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@drawable/ic_alert_24dp"
+                    app:errorIconTint="?attr/colorPrimary"
+                    app:errorTextColor="?attr/colorPrimary"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="?attr/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:startIconDrawable="@drawable/ic_input_24dp"
+                    app:startIconTint="?attr/colorOutline">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/input9_event"
+                        style="?attr/textInputOutlinedExposedDropdownMenuStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords|textPersonName"
+                        android:maxLength="30"
+                        android:padding="0dp"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        android:textCursorDrawable="@drawable/custom_cursor" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input10_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:hint="@string/input10"
+                    app:boxBackgroundColor="@color/transparent"
+                    app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
+                    app:boxCornerRadiusTopStart="@dimen/text_field_corner"
+                    app:boxStrokeErrorColor="@color/redError"
+                    app:errorContentDescription="@string/input10"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@drawable/ic_alert_24dp"
+                    app:errorIconTint="?attr/colorPrimary"
+                    app:errorTextColor="?attr/colorPrimary"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="?attr/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:startIconDrawable="@drawable/ic_input_24dp"
+                    app:startIconTint="?attr/colorOutline">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/input10_event"
+                        style="?attr/textInputOutlinedExposedDropdownMenuStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords|textPersonName"
+                        android:maxLength="30"
+                        android:padding="0dp"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        android:textCursorDrawable="@drawable/custom_cursor" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
             <com.google.android.material.materialswitch.MaterialSwitch
                 android:id="@+id/countYearSwitch"
                 android:layout_width="wrap_content"
@@ -683,7 +1094,7 @@
                 android:textColor="?attr/colorOutline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/vehicle_insurance_layout"
+                app:layout_constraintTop_toBottomOf="@id/vehicle_insurance_renewal_layout"
                 app:switchPadding="@dimen/text_switch_padding"
                 app:switchTextAppearance="@style/TextAppearance.Material3.BodyLarge" />
 

@@ -24,6 +24,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -45,15 +46,18 @@ import com.minar.birday.utilities.checkName
 import com.minar.birday.utilities.getAvailableTypes
 import com.minar.birday.utilities.getBitmapSquareSize
 import com.minar.birday.utilities.getStringForTypeCodename
+import com.minar.birday.utilities.resultToEvent
 import com.minar.birday.utilities.setEventImageOrPlaceholder
 import com.minar.birday.utilities.smartFixName
 import com.minar.birday.viewmodels.InsertEventViewModel
+import com.minar.birday.viewmodels.MainViewModel
 import java.io.IOException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.Calendar
 import java.util.TimeZone
+import java.util.zip.GZIPOutputStream
 
 
 @OptIn(ExperimentalStdlibApi::class)
@@ -67,6 +71,7 @@ class InsertEventBottomSheet(
     private lateinit var resultLauncher: ActivityResultLauncher<String>
     private var imageChosen = false
     private val viewModel: InsertEventViewModel by viewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -106,7 +111,7 @@ class InsertEventBottomSheet(
         imageChosen = false
         var nameValue = "error"
         var surnameValue = ""
-        //vehicle insurance
+        //vehicle insurance add event
         var manufacturerName = ""
         var manufacturerName1 = ""
         var manufacturerName2 = ""
@@ -134,7 +139,7 @@ class InsertEventBottomSheet(
             eventDateValue = event.originalDate
             positiveButton.text = getString(R.string.update_event)
             title.text = getString(R.string.edit_event)
-            //vehicle insurance
+            //vehicle insurance add event
             manufacturerName = event.manufacturer_name ?: ""
             manufacturerName1 = event.manufacturer_name1 ?: ""
             manufacturerName2 = event.manufacturer_name2 ?: ""
@@ -158,9 +163,17 @@ class InsertEventBottomSheet(
 
             if(typeValue == "VEHICLE_INSURANCE"){
                 other_event_layout.visibility=View.GONE
+                binding.vehicleInsuranceRenewalLayout.visibility=View.GONE
                 vehicle_insurance_event_layout.visibility=View.VISIBLE
+                val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
+                binding.dueDateEvent.setText(eventDateValue.format(formatter))
+            }else if(typeValue == "VEHICLE_INSURANCE"){
+                other_event_layout.visibility=View.GONE
+                vehicle_insurance_event_layout.visibility=View.GONE
+                binding.vehicleInsuranceRenewalLayout.visibility=View.VISIBLE
             }else{
                 vehicle_insurance_event_layout.visibility=View.GONE
+                binding.vehicleInsuranceRenewalLayout.visibility=View.GONE
                 other_event_layout.visibility=View.VISIBLE
             }
 
@@ -173,7 +186,7 @@ class InsertEventBottomSheet(
             imageChosen = setEventImageOrPlaceholder(event, eventImage)
             positiveButton.isEnabled = true
 
-            //vehicle insurance
+            //vehicle insurance add event
             binding.vehicleManufacturerEvent.setText(manufacturerName.toString())
             binding.vehicleManufacturerEvent1.setText(manufacturerName1.toString())
             binding.vehicleManufacturerEvent2.setText(manufacturerName2.toString())
@@ -203,7 +216,7 @@ class InsertEventBottomSheet(
                 favorite = event.favorite,
                 notes = event.notes,
                 image = image,
-                //vehicle insurance
+                //vehicle insurance add event
                 manufacturer_name = manufacturerName,
                 manufacturer_name1 = manufacturerName1,
                 manufacturer_name2 = manufacturerName2,
@@ -213,6 +226,18 @@ class InsertEventBottomSheet(
                 model_name1 = modelName1,
                 model_name2 = modelName2,
                 model_name3 = modelName3,
+
+                //vehicle insurance renewal add event
+                input1 = binding.input1Event.text.toString(),
+                input2 = binding.input2Event.text.toString(),
+                input3 = binding.input3Event.text.toString(),
+                input4= binding.input4Event.text.toString(),
+                input5= binding.input5Event.text.toString(),
+                input6= binding.input6Event.text.toString(),
+                input7= binding.input7Event.text.toString(),
+                input8= binding.input8Event.text.toString(),
+                input9= binding.input9Event.text.toString(),
+                input10= binding.input10Event.text.toString(),
 
                 insurance_provider = insuranceProvider
             ) else
@@ -224,7 +249,7 @@ class InsertEventBottomSheet(
                     yearMatter = countYearValue,
                     type = typeValue,
                     image = image,
-                    //vehicle insurance
+                    //vehicle insurance add event
                     manufacturer_name = manufacturerName,
                     manufacturer_name1 = manufacturerName1,
                     manufacturer_name2 = manufacturerName2,
@@ -235,6 +260,18 @@ class InsertEventBottomSheet(
                     model_name2 = modelName2,
                     model_name3 = modelName3,
 
+                    //vehicle insurance add event
+                    input1 = binding.input1Event.text.toString(),
+                    input2 = binding.input2Event.text.toString(),
+                    input3 = binding.input3Event.text.toString(),
+                    input4= binding.input4Event.text.toString(),
+                    input5= binding.input5Event.text.toString(),
+                    input6= binding.input6Event.text.toString(),
+                    input7= binding.input7Event.text.toString(),
+                    input8= binding.input8Event.text.toString(),
+                    input9= binding.input9Event.text.toString(),
+                    input10= binding.input10Event.text.toString(),
+
                     insurance_provider = insuranceProvider
                 )
             // Insert using another thread
@@ -242,11 +279,21 @@ class InsertEventBottomSheet(
                 if (event != null) {
                     act.mainViewModel.update(tuple)
                     // Go back to the first screen to avoid updating the displayed details
+                    act.showSnackbar(
+                        requireContext().getString(R.string.updated_event)
+                    )
                     act.runOnUiThread {
                         findNavController().popBackStack()
-                        Toast.makeText(context, requireContext().getString(R.string.added_event), Toast.LENGTH_LONG).show()
                     }
-                } else act.mainViewModel.insert(tuple)
+                } else {
+                    act.mainViewModel.insert(tuple)
+                    act.showSnackbar(
+                        requireContext().getString(R.string.added_event)
+                    )
+                    act.runOnUiThread {
+                        findNavController().popBackStack()
+                    }
+                }
             }
             thread.start()
             dismiss()
@@ -302,9 +349,15 @@ class InsertEventBottomSheet(
 
                         binding.otherEventLayout.visibility = View.VISIBLE
                         binding.vehicleInsuranceLayout.visibility = View.GONE
+                        binding.vehicleInsuranceRenewalLayout.visibility = View.GONE
                     } else if(typeValue == EventCode.VEHICLE_INSURANCE.name){
                         binding.vehicleInsuranceLayout.visibility = View.VISIBLE
                         binding.otherEventLayout.visibility = View.GONE
+                        binding.vehicleInsuranceRenewalLayout.visibility = View.GONE
+                    }else if(typeValue == EventCode.VEHICLE_INSURANCE_RENEWAL.name){
+                        binding.vehicleInsuranceRenewalLayout.visibility = View.VISIBLE
+                        binding.otherEventLayout.visibility = View.GONE
+                        binding.vehicleInsuranceLayout.visibility = View.GONE
                     }
                     else {
                         countYear.isChecked = true
@@ -326,6 +379,7 @@ class InsertEventBottomSheet(
                                     EventCode.DEATH.name -> R.drawable.placeholder_death_image
                                     EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
                                     EventCode.VEHICLE_INSURANCE.name -> R.drawable.placeholder_vehicle_image
+                                    EventCode.VEHICLE_INSURANCE_RENEWAL.name -> R.drawable.placeholder_vehicle_image
                                     else -> R.drawable.placeholder_other_image
                                 }
                             )
@@ -475,7 +529,7 @@ class InsertEventBottomSheet(
         var nameCorrect = false
         var surnameCorrect = true // Surname is not mandatory
         var eventDateCorrect = event != null
-        //vehicle insurance
+        //vehicle insurance add event
         var manufacturerCorrect = false
         var modelCorrect = false
         var insuranceCorrect = false
@@ -514,7 +568,7 @@ class InsertEventBottomSheet(
                 // Once selected, the date can't be blank anymore
                 editable === eventDate.editableText -> eventDateCorrect = true
 
-                //vehicle insurance
+                //vehicle insurance add event
                 editable === binding.vehicleManufacturerEvent.editableText -> {
                     val manufacturer_name = binding.vehicleManufacturerEvent.text.toString()
                     if (manufacturer_name.isNotEmpty()) {
@@ -588,6 +642,8 @@ class InsertEventBottomSheet(
                 }
                 if (manufacturerCorrect && modelCorrect && insuranceCorrect && eventDateCorrect) positiveButton.isEnabled =true
 
+            }else if(typeValue == "VEHICLE_INSURANCE_RENEWAL"){
+                positiveButton.isEnabled = true
             }else {
                 if (eventDateCorrect && nameCorrect && surnameCorrect) positiveButton.isEnabled = true
             }
@@ -596,7 +652,7 @@ class InsertEventBottomSheet(
         name.addTextChangedListener(watcher)
         surname.addTextChangedListener(watcher)
         eventDate.addTextChangedListener(watcher)
-        //vehicle insurance
+        //vehicle insurance add event
         binding.dueDateEvent.addTextChangedListener(watcher)
         binding.vehicleManufacturerEvent1.addTextChangedListener(watcher)
         binding.vehicleManufacturerEvent.addTextChangedListener(watcher)
@@ -608,6 +664,8 @@ class InsertEventBottomSheet(
         binding.vehicleModel2Event.addTextChangedListener(watcher)
         binding.vehicleModel3Event.addTextChangedListener(watcher)
         binding.vehicleInsuranceProviderEvent.addTextChangedListener(watcher)
+        //vehicle insurance renewal add event
+        binding.input1Event.addTextChangedListener(watcher)
     }
 
     override fun onDestroyView() {
@@ -667,4 +725,5 @@ class InsertEventBottomSheet(
                 afterTextChanged(editable)
             }
         }
+
 }

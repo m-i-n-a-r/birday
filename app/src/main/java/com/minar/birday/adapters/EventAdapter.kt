@@ -198,8 +198,13 @@ class EventAdapter(
                 ) else it.toString()
             }
             // The original date row also has the current age
-            eventPerson.text = formattedPersonName
-            eventDate.text = originalDate
+            if(event.type=="VEHICLE_INSURANCE") {
+                eventPerson.text = event.manufacturer_name.toString()
+                eventDate.text = event.originalDate.toString()
+            }else{
+                eventPerson.text = formattedPersonName
+                eventDate.text = originalDate
+            }
 
             // Manage the image
             val hideImages = sharedPrefs.getBoolean("hide_images", false)

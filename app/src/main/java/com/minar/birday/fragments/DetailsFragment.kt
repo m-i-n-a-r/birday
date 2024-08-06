@@ -97,7 +97,12 @@ class DetailsFragment : Fragment() {
         val astrologyDisabled = sharedPrefs.getBoolean("disable_astrology", false)
         val hideImage = sharedPrefs.getBoolean("hide_images", false)
         val surnameFirst = sharedPrefs.getBoolean("surname_first", false)
-        val titleText = formatName(event, surnameFirst)
+        var titleText=""
+        if(event.type=="VEHICLE_INSURANCE"){
+            titleText=event.manufacturer_name.toString()
+        }else{
+         titleText = formatName(event, surnameFirst)
+        }
         val title = binding.detailsEventName
         val image = binding.detailsEventImage
         val imageBg = binding.detailsEventImageBackground
@@ -207,7 +212,7 @@ class DetailsFragment : Fragment() {
                         favorite = event.favorite,
                         notes = note,
                         image = event.image,
-                        //vehicle insurance
+                        //vehicle insurance add event
                         manufacturer_name = event.manufacturer_name!!,
                         manufacturer_name1 = event.manufacturer_name1!!,
                         manufacturer_name2 = event.manufacturer_name2!!,
@@ -217,7 +222,20 @@ class DetailsFragment : Fragment() {
                         model_name1 = event.model_name1!!,
                         model_name2 = event.model_name2!!,
                         model_name3 = event.model_name3!!,
-                        insurance_provider = event.insurance_provider!!
+                        insurance_provider = event.insurance_provider!!,
+
+                        //vehicle insurance renewal add event
+                        input1 = event.input1!!,
+                        input2 = event.input2!!,
+                        input3 = event.input3!!,
+                        input4 = event.input4!!,
+                        input5 = event.input5!!,
+                        input6 = event.input6!!,
+                        input7 = event.input7!!,
+                        input8 = event.input8!!,
+                        input9 = event.input9!!,
+                        input10 = event.input10!!
+
                     )
                     mainViewModel.update(tuple)
                     // Update locally (no livedata here)
@@ -483,10 +501,16 @@ class DetailsFragment : Fragment() {
             String(Character.toChars(0x1F388)) + "  " +
                     getString(R.string.notification_title) +
                     "\n" + typeEmoji + "  " +
-                    formatName(event, sharedPrefs.getBoolean("surname_first", false)) +
-                    " (" + getStringForTypeCodename(requireContext(), event.type!!) +
-                    ")\n" + String(Character.toChars(0x1F56F)) + "  " +
-                    event.nextDate!!.format(formatter) +
+                    if(event.type=="VEHICLE_INSURANCE") {
+                        event.manufacturer_name.toString()+" (" + getStringForTypeCodename(requireContext(), event.type!!) +
+                                ")\n"+"Model: "+event.model_name.toString()
+                    } else {
+                        formatName(event, sharedPrefs.getBoolean("surname_first", false))+
+                        " (" + getStringForTypeCodename(requireContext(), event.type!!) +
+                                ")\n"
+                        String(Character.toChars(0x1F56F)) + "  " +
+                                event.nextDate!!.format(formatter)
+                    }+
                     // Add a fourth line with the original date, if the year matters
                     if (event.yearMatter!!)
                         "\n" + String(Character.toChars(0x1F4C5)) + "  " +
