@@ -185,6 +185,22 @@ class HomeFragment : Fragment() {
                     if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
                         mainViewModel.eventTypeChanged("")
                 }
+                R.id.homeTypeSelectorInsurance -> {
+                    // Only display events of type other
+                    if (isChecked) {
+                        mainViewModel.eventTypeChanged(EventCode.VEHICLE_INSURANCE.name)
+                    }
+                    if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
+                        mainViewModel.eventTypeChanged("")
+                }
+                R.id.homeTypeSelectorInsuranceRenewal -> {
+                    // Only display events of type other
+                    if (isChecked) {
+                        mainViewModel.eventTypeChanged(EventCode.VEHICLE_INSURANCE_RENEWAL.name)
+                    }
+                    if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
+                        mainViewModel.eventTypeChanged("")
+                }
 
                 R.id.homeTypeSelectorClose -> {
                     typeSelector.pivotX = searchBarLayout.measuredWidth.toFloat() * 0.95F
@@ -487,10 +503,13 @@ class HomeFragment : Fragment() {
             // Don't use the function in EventUtils since this assigns all the variables at once
             when (nextEvents.indexOf(event)) {
                 0 -> {
-                    if (event.type == "VEHICLE_INSURANCE") {
+                    if (event.type == getString(R.string.vehicle_insurance_caps)) {
                         personName = event.manufacturer_name.toString()
                         nextAge = "Model: "+event.model_name.toString()
-                    } else {
+                    } else if (event.type == getString(R.string.vehicle_insurance_renewal_caps)) {
+                        personName = event.input1.toString()
+                        nextAge = "Model: "+event.input2.toString()
+                    }else {
                         personName = formattedPersonName
                         nextAge = getString(R.string.next_age_years) + ": $age"
                     }
@@ -499,7 +518,7 @@ class HomeFragment : Fragment() {
                 }
 
                 1, 2 -> {
-                    if (event.type == "VEHICLE_INSURANCE") {
+                    if (event.type == getString(R.string.vehicle_insurance_caps)) {
                         personName = event.manufacturer_name.toString()
                     } else {
                         personName += ", $formattedPersonName"
@@ -508,7 +527,7 @@ class HomeFragment : Fragment() {
                 }
 
                 3 -> {
-                    if (event.type == "VEHICLE_INSURANCE") {
+                    if (event.type == getString(R.string.vehicle_insurance_caps)) {
                         personName = event.manufacturer_name.toString()
                     } else {
                         personName += " " + getString(R.string.event_others)

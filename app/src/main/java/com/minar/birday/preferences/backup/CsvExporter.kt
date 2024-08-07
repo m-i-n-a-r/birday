@@ -45,15 +45,38 @@ class CsvExporter(context: Context, attrs: AttributeSet?) : Preference(context, 
         val events = eventDao.getOrderedEventsStatic()
         val sb = StringBuilder()
         // Prepare the first row, for the column names
-        sb.append("type, name, surname, yearMatter, date, notes\n")
+        sb.append("date,name,surname,type,yearMatter,manufacturer_name,manufacturer_name1," +
+                "manufacturer_name2,manufacturer_name3,model_name,model_name1,model_name2," +
+                "model_name3,insurance_provider,notes,input1,input2,input3,input4,input5," +
+                "input6,input7,input8,input9,input10\n")
         for (event in events) {
             sb.append(
-                "${event.type}," +
+                "${event.originalDate}," +
                         "${event.name.replace(',', ' ')}," +
                         "${(event.surname ?: "").replace(',', ' ')}," +
+                        "${event.type}," +
                         "${event.yearMatter}," +
-                        "${event.originalDate}," +
-                        "${(event.notes ?: "").replace(',', ' ')}\n"
+                        "${event.manufacturer_name}," +
+                        "${event.manufacturer_name1}," +
+                        "${event.manufacturer_name2}," +
+                        "${event.manufacturer_name3}," +
+                        "${event.model_name}," +
+                        "${event.model_name1}," +
+                        "${event.model_name2}," +
+                        "${event.model_name3}," +
+                        "${event.insurance_provider}," +
+                        "${(event.notes ?: "").replace(',', ' ')},"+
+                        "${event.input1}," +
+                        "${event.input2}," +
+                        "${event.input3}," +
+                        "${event.input4}," +
+                        "${event.input5}," +
+                        "${event.input6}," +
+                        "${event.input7}," +
+                        "${event.input8}," +
+                        "${event.input9}," +
+                        "${event.input10}\n"
+
             )
         }
 

@@ -116,6 +116,7 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
                                     -1
                                 )
                             )?.toBooleanStrict() ?: true,
+
                             //vehicle insurance provider
                             manufacturer_name = rowValues.getOrNull(
                                 columnsMapping.getOrDefault(

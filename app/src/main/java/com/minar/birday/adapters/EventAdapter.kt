@@ -198,10 +198,15 @@ class EventAdapter(
                 ) else it.toString()
             }
             // The original date row also has the current age
-            if(event.type=="VEHICLE_INSURANCE") {
+            if(event.type==context.getString(R.string.vehicle_insurance_caps)) {
                 eventPerson.text = event.manufacturer_name.toString()
-                eventDate.text = event.originalDate.toString()
-            }else{
+                val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
+                eventDate.text = event.originalDate.format(formatter).toString()
+            }else if(event.type==context.getString(R.string.vehicle_insurance_renewal_caps)) {
+                eventPerson.text = event.input1.toString()
+                val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
+                eventDate.text = event.originalDate.format(formatter).toString()
+            } else{
                 eventPerson.text = formattedPersonName
                 eventDate.text = originalDate
             }
@@ -254,6 +259,7 @@ class EventAdapter(
                     )
 
                     EventCode.VEHICLE_INSURANCE.name -> eventTypeImage.visibility = View.GONE
+                    EventCode.VEHICLE_INSURANCE_RENEWAL.name -> eventTypeImage.visibility = View.GONE
                 }
             } else eventTypeImage.visibility = View.GONE
 

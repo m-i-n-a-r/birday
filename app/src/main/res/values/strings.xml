@@ -166,6 +166,7 @@
 
     <!--vehicle insurance add event-->
     <string name="vehicle_insurance">Vehicle Insurance</string>
+    <string name="vehicle_insurance_caps">VEHICLE_INSURANCE</string>
     <string name="insert_vehicle_manufacturer">Insert Vehicle Manufacturer</string>
     <string name="insert_vehicle_manufacturer1">Insert Vehicle Manufacturer-1</string>
     <string name="insert_vehicle_manufacturer2">Insert Vehicle Manufacturer-2</string>
@@ -180,6 +181,7 @@
 
     <!--vehicle insurance renewal event add-->
     <string name="vehicle_insurance_renewal">Vehicle Insurance Renewal</string>
+    <string name="vehicle_insurance_renewal_caps">VEHICLE_INSURANCE_RENEWAL</string>
     <string name="input1">input1</string>
     <string name="input2">input2</string>
     <string name="input3">input3</string>
