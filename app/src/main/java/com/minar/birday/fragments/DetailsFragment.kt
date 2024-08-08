@@ -97,7 +97,15 @@ class DetailsFragment : Fragment() {
         val astrologyDisabled = sharedPrefs.getBoolean("disable_astrology", false)
         val hideImage = sharedPrefs.getBoolean("hide_images", false)
         val surnameFirst = sharedPrefs.getBoolean("surname_first", false)
-        val titleText = formatName(event, surnameFirst)
+        var titleText=""
+
+        if(event.type==getString(R.string.vehicle_insurance_caps)){
+            titleText=event.manufacturerName.toString()
+        }else if(event.type==getString(R.string.vehicle_insurance_renewal_caps)){
+            titleText=event.input1.toString()
+        }else{
+             titleText = formatName(event, surnameFirst)
+        }
         val title = binding.detailsEventName
         val image = binding.detailsEventImage
         val imageBg = binding.detailsEventImageBackground
@@ -133,6 +141,8 @@ class DetailsFragment : Fragment() {
                             EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
                             EventCode.DEATH.name -> R.drawable.placeholder_death_image
                             EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
+                            EventCode.VEHICLE_INSURANCE.name -> R.drawable.placeholder_vehicle_image
+                            EventCode.VEHICLE_INSURANCE_RENEWAL.name -> R.drawable.placeholder_vehicle_image
                             else -> R.drawable.placeholder_other_image
                         }
                     )
@@ -205,7 +215,31 @@ class DetailsFragment : Fragment() {
                         surname = event.surname,
                         favorite = event.favorite,
                         notes = note,
-                        image = event.image
+                        image = event.image,
+                        //vehicle insurance add event
+                        manufacturerName = event.manufacturerName!!,
+                        manufacturerName1 = event.manufacturerName1!!,
+                        manufacturerName2 = event.manufacturerName2!!,
+                        manufacturerName3 = event.manufacturerName3!!,
+
+                        modelName = event.modelName!!,
+                        modelName1 = event.modelName1!!,
+                        modelName2 = event.modelName2!!,
+                        modelName3 = event.modelName3!!,
+                        insuranceProvider = event.insuranceProvider!!,
+
+                        //vehicle insurance renewal add event
+                        input1 = event.input1!!,
+                        input2 = event.input2!!,
+                        input3 = event.input3!!,
+                        input4 = event.input4!!,
+                        input5 = event.input5!!,
+                        input6 = event.input6!!,
+                        input7 = event.input7!!,
+                        input8 = event.input8!!,
+                        input9 = event.input9!!,
+                        input10 = event.input10!!
+
                     )
                     mainViewModel.update(tuple)
                     // Update locally (no livedata here)
@@ -464,21 +498,42 @@ class DetailsFragment : Fragment() {
             EventCode.ANNIVERSARY.name -> typeEmoji = String(Character.toChars(0x1F495))
             EventCode.DEATH.name -> typeEmoji = String(Character.toChars(0x1FAA6))
             EventCode.NAME_DAY.name -> typeEmoji = String(Character.toChars(0x1F607))
+            EventCode.VEHICLE_INSURANCE.name -> typeEmoji = String(Character.toChars(0x1F697))
+            EventCode.VEHICLE_INSURANCE_RENEWAL.name -> typeEmoji = String(Character.toChars(0x1F697))
             EventCode.OTHER.name -> typeEmoji = String(Character.toChars(0x1F7E2))
         }
-        val eventInformation =
-            String(Character.toChars(0x1F388)) + "  " +
+        var eventInformation =" "
+        if(event.type==getString(R.string.vehicle_insurance_caps)) {
+            eventInformation= String(Character.toChars(0x1F388)) + "  " +
                     getString(R.string.notification_title) +
-                    "\n" + typeEmoji + "  " +
-                    formatName(event, sharedPrefs.getBoolean("surname_first", false)) +
-                    " (" + getStringForTypeCodename(requireContext(), event.type!!) +
-                    ")\n" + String(Character.toChars(0x1F56F)) + "  " +
-                    event.nextDate!!.format(formatter) +
+                    "\n" + typeEmoji + "  " +event.manufacturerName.toString() + " (" + getStringForTypeCodename(requireContext(), event.type!!) +
+                    ")\n"+String(Character.toChars(0x1F697))+"  Model: " + event.modelName.toString()+
                     // Add a fourth line with the original date, if the year matters
                     if (event.yearMatter!!)
-                        "\n" + String(Character.toChars(0x1F4C5)) + "  " +
-                                event.originalDate.format(formatter)
+                        "\n" + String(Character.toChars(0x1F4C5)) + "  " + event.originalDate.format(formatter)
                     else ""
+        }else if(event.type==getString(R.string.vehicle_insurance_renewal_caps)) {
+            eventInformation= String(Character.toChars(0x1F388)) + "  " +
+                    getString(R.string.notification_title) +
+                    "\n" + typeEmoji + "  " + event.input1.toString() + " (" + getStringForTypeCodename(requireContext(), event.type!!) +
+                    ")\n"+String(Character.toChars(0x1F697))+"  Model: " + event.input2.toString()+
+                    // Add a fourth line with the original date, if the year matters
+                    if (event.yearMatter!!)
+                        "\n" + String(Character.toChars(0x1F4C5)) + "  " + event.originalDate.format(formatter)
+                    else ""
+        }else{
+            eventInformation= String(Character.toChars(0x1F388)) + "  " +
+                    getString(R.string.notification_title) +
+                    "\n" + typeEmoji + "  " +
+                    formatName(event, sharedPrefs.getBoolean("surname_first", false))+
+                    " (" + getStringForTypeCodename(requireContext(), event.type!!) + ")\n"
+            String(Character.toChars(0x1F56F)) + "  " + event.nextDate!!.format(formatter)+
+                    // Add a fourth line with the original date, if the year matters
+                    if (event.yearMatter!!)
+                        "\n" + String(Character.toChars(0x1F4C5)) + "  " + event.originalDate.format(formatter)
+                    else ""
+        }
+
         ShareCompat.IntentBuilder(requireActivity())
             .setText(eventInformation)
             .setType("text/plain")

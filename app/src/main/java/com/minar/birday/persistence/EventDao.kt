@@ -6,7 +6,6 @@ import androidx.sqlite.db.SupportSQLiteQuery
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
 
-
 @Dao
 interface EventDao {
     // Replace on conflict. This means that contacts will have priority over Birday data

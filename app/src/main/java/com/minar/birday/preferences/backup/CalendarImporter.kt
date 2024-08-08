@@ -79,7 +79,30 @@ class CalendarImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                 yearMatter = countYear,
                 type = calendarEvent.eventType,
                 image = calendarEvent.image,
-                notes = notes
+                notes = notes,
+                //vehicle insurance add event
+                manufacturerName = "",
+                manufacturerName1 = "",
+                manufacturerName2 = "",
+                manufacturerName3 = "",
+
+                modelName = "",
+                modelName1 = "",
+                modelName2 = "",
+                modelName3 = "",
+                insuranceProvider = "",
+
+                //vehicle insurance renewal add event
+                input1 = "",
+                input2 = "",
+                input3 = "",
+                input4 = "",
+                input5 = "",
+                input6 = "",
+                input7 = "",
+                input8 = "",
+                input9 = "",
+                input10 = ""
             )
             events.add(event)
         }
