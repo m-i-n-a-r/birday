@@ -100,7 +100,7 @@ class DetailsFragment : Fragment() {
         var titleText=""
 
         if(event.type==getString(R.string.vehicle_insurance_caps)){
-            titleText=event.manufacturer_name.toString()
+            titleText=event.manufacturerName.toString()
         }else if(event.type==getString(R.string.vehicle_insurance_renewal_caps)){
             titleText=event.input1.toString()
         }else{
@@ -217,16 +217,16 @@ class DetailsFragment : Fragment() {
                         notes = note,
                         image = event.image,
                         //vehicle insurance add event
-                        manufacturer_name = event.manufacturer_name!!,
-                        manufacturer_name1 = event.manufacturer_name1!!,
-                        manufacturer_name2 = event.manufacturer_name2!!,
-                        manufacturer_name3 = event.manufacturer_name3!!,
+                        manufacturerName = event.manufacturerName!!,
+                        manufacturerName1 = event.manufacturerName1!!,
+                        manufacturerName2 = event.manufacturerName2!!,
+                        manufacturerName3 = event.manufacturerName3!!,
 
-                        model_name = event.model_name!!,
-                        model_name1 = event.model_name1!!,
-                        model_name2 = event.model_name2!!,
-                        model_name3 = event.model_name3!!,
-                        insurance_provider = event.insurance_provider!!,
+                        modelName = event.modelName!!,
+                        modelName1 = event.modelName1!!,
+                        modelName2 = event.modelName2!!,
+                        modelName3 = event.modelName3!!,
+                        insuranceProvider = event.insuranceProvider!!,
 
                         //vehicle insurance renewal add event
                         input1 = event.input1!!,
@@ -506,8 +506,8 @@ class DetailsFragment : Fragment() {
         if(event.type==getString(R.string.vehicle_insurance_caps)) {
             eventInformation= String(Character.toChars(0x1F388)) + "  " +
                     getString(R.string.notification_title) +
-                    "\n" + typeEmoji + "  " +event.manufacturer_name.toString() + " (" + getStringForTypeCodename(requireContext(), event.type!!) +
-                    ")\n"+String(Character.toChars(0x1F697))+"  Model: " + event.model_name.toString()+
+                    "\n" + typeEmoji + "  " +event.manufacturerName.toString() + " (" + getStringForTypeCodename(requireContext(), event.type!!) +
+                    ")\n"+String(Character.toChars(0x1F697))+"  Model: " + event.modelName.toString()+
                     // Add a fourth line with the original date, if the year matters
                     if (event.yearMatter!!)
                         "\n" + String(Character.toChars(0x1F4C5)) + "  " + event.originalDate.format(formatter)

@@ -74,9 +74,9 @@ date;name;surname;type;yearMatter;manufacturer_name;manufacturer_name1;manufactu
 2024-10-18;Steve;Thomas;VEHICLE_INSURANCE;TRUE;Hyundai;Chevrolet;Kia;Ford;Sonata;Malibu;Sportage;Explorer;Travelers;Sample note 73;Input 1;Input 2;Input 3;Input 4;Input 5;Input 6;Input 7;Input 8;Input 9;Input 10
 2024-10-19;Tina;Jones;VEHICLE_INSURANCE;FALSE;Subaru;Mazda;Toyota;Honda;Legacy;Corolla;Camry;Mazda3;Farmers;Sample note 74;Input 1;Input 2;Input 3;Input 4;Input 5;Input 6;Input 7;Input 8;Input 9;Input 10
 2024-10-20;Ulysses;Roberts;VEHICLE_INSURANCE;TRUE;Chevrolet;Hyundai;Kia;Ford;Impala;Optima;Sonata;Focus;Esurance;Sample note 75;Input 1;Input 2;Input 3;Input 4;Input 5;Input 6;Input 7;Input 8;Input 9;Input 10
-2024-10-21;Vera;Walker;VEHICLE_INSURANCE_RENEWAL;FALSE;1949;Mazda;Subaru;Toyota;Nissan;Mazda6;Legacy;Camry;Altima;American Family;Sample note 76;Input 1;Input 2;Input 3;Input 4;Input 5;Input 6;Input 7;Input 8;Input 9;Input 10
-2024-10-22;Walter;Green;VEHICLE_INSURANCE_RENEWAL;TRUE;1948;Hyundai;Chevrolet;Kia;Ford;Sonata;Malibu;Sportage;Explorer;Farmers;Sample note 77;Input 1;Input 2;Input 3;Input 4;Input 5;Input 6;Input 7;Input 8;Input 9;Input 10
-2024-10-23;Xander;Young;VEHICLE_INSURANCE_RENEWAL;FALSE;1947;Subaru;Toyota;Mazda;Honda;Legacy;Outback;Mazda3;Civic;State Farm;Sample note 78;Input 1;Input 2;Input 3;Input 4;Input 5;Input 6;Input 7;Input 8;Input 9;Input 10
+2024-10-21;Vera;Walker;VEHICLE_INSURANCE_RENEWAL;FALSE;Mazda;Subaru;Toyota;Nissan;Mazda6;Legacy;Camry;Altima;American Family;Sample note 76;Input 1;Input 2;Input 3;Input 4;Input 5;Input 6;Input 7;Input 8;Input 9;Input 10
+2024-10-22;Walter;Green;VEHICLE_INSURANCE_RENEWAL;TRUE;Hyundai;Chevrolet;Kia;Ford;Sonata;Malibu;Sportage;Explorer;Farmers;Sample note 77;Input 1;Input 2;Input 3;Input 4;Input 5;Input 6;Input 7;Input 8;Input 9;Input 10
+2024-10-23;Xander;Young;VEHICLE_INSURANCE_RENEWAL;FALSE;Subaru;Toyota;Mazda;Honda;Legacy;Outback;Mazda3;Civic;State Farm;Sample note 78;Input 1;Input 2;Input 3;Input 4;Input 5;Input 6;Input 7;Input 8;Input 9;Input 10
 2024-10-24;Yvonne;Wilson;VEHICLE_INSURANCE_RENEWAL;TRUE;Chevrolet;Hyundai;Kia;Ford;Impala;Sonata;Optima;Focus;Progressive;Sample note 79;Input 1;Input 2;Input 3;Input 4;Input 5;Input 6;Input 7;Input 8;Input 9;Input 10
 2024-10-25;Zane;Walker;VEHICLE_INSURANCE_RENEWAL;FALSE;Subaru;Mazda;Toyota;Nissan;Forester;Mazda3;Camry;Altima;Travelers;Sample note 80;Input 1;Input 2;Input 3;Input 4;Input 5;Input 6;Input 7;Input 8;Input 9;Input 10
 2024-10-26;Anna;Smith;VEHICLE_INSURANCE_RENEWAL;TRUE;Hyundai;Chevrolet;Kia;Ford;Sonata;Malibu;Sportage;Explorer;Esurance;Sample note 81;Input 1;Input 2;Input 3;Input 4;Input 5;Input 6;Input 7;Input 8;Input 9;Input 10
@@ -99,8 +99,3 @@ date;name;surname;type;yearMatter;manufacturer_name;manufacturer_name1;manufactu
 2024-08-08;Frank;Martinez;OTHER;FALSE;Kia;Nissan;Ford;Chevrolet;Soul;Rogue;Escape;Impala;Travelers;Sample note 8;Input 1;Input 2;Input 3;Input 4;Input 5;Input 6;Input 7;Input 8;Input 9;Input 10
 2024-08-09;Grace;Wilson;OTHER;TRUE;Chevrolet;Toyota;Honda;Subaru;Malibu;Camry;CR-V;Forester;American Family;Sample note 9;Input 1;Input 2;Input 3;Input 4;Input 5;Input 6;Input 7;Input 8;Input 9;Input 10
 2024-08-10;Hank;Moore;OTHER;FALSE;Audi;BMW;Mercedes;Lexus;A4;328i;C-Class;IS;Esurance;Sample note 10;Input 1;Input 2;Input 3;Input 4;Input 5;Input 6;Input 7;Input 8;Input 9;Input 10
-
-
-
-
-

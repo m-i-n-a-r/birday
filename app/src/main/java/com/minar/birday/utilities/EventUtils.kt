@@ -23,17 +23,17 @@ const val COLUMN_YEAR_MATTER = "yearMatter"
 const val COLUMN_NOTES = "notes"
 
 //vehicle insurance add event
-const val COLUMN_VEHICLE_MANUFACTURER_NAME = "vehicle_manufacturer_name"
-const val COLUMN_VEHICLE_MANUFACTURER_NAME1 = "vehicle_manufacturer_name1"
-const val COLUMN_VEHICLE_MANUFACTURER_NAME2 = "vehicle_manufacturer_name2"
-const val COLUMN_VEHICLE_MANUFACTURER_NAME3 = "vehicle_manufacturer_name3"
+const val COLUMN_VEHICLE_MANUFACTURER_NAME = "manufacturerName"
+const val COLUMN_VEHICLE_MANUFACTURER_NAME1 = "manufacturerName1"
+const val COLUMN_VEHICLE_MANUFACTURER_NAME2 = "manufacturerName2"
+const val COLUMN_VEHICLE_MANUFACTURER_NAME3 = "manufacturerName3"
 
-const val COLUMN_VEHICLE_MODELNAME = "vehicle_model_name"
-const val COLUMN_VEHICLE_MODELNAME1 = "vehicle_model_name1"
-const val COLUMN_VEHICLE_MODELNAME2 = "vehicle_model_name2"
-const val COLUMN_VEHICLE_MODELNAME3 = "vehicle_model_name3"
+const val COLUMN_VEHICLE_MODELNAME = "modelName"
+const val COLUMN_VEHICLE_MODELNAME1 = "modelName1"
+const val COLUMN_VEHICLE_MODELNAME2 = "modelName2"
+const val COLUMN_VEHICLE_MODELNAME3 = "modelName3"
 
-const val COLUMN_VEHICLE_INSURANCENAME = "vehicle_insurance_name"
+const val COLUMN_VEHICLE_INSURANCEPROVIDER = "insuranceProvider"
 
 //vehicle insurance renewal add event
 const val COLUMN_INPUT1 = "input1"
@@ -59,15 +59,15 @@ fun resultToEvent(eventResult: EventResult) = Event(
     notes = eventResult.notes,
     image = eventResult.image,
     //vehicle insurance add event
-    manufacturer_name = eventResult.manufacturer_name!!,
-    manufacturer_name1 = eventResult.manufacturer_name1!!,
-    manufacturer_name2 = eventResult.manufacturer_name2!!,
-    manufacturer_name3 = eventResult.manufacturer_name3!!,
+    manufacturerName = eventResult.manufacturerName!!,
+    manufacturerName1 = eventResult.manufacturerName1!!,
+    manufacturerName2 = eventResult.manufacturerName2!!,
+    manufacturerName3 = eventResult.manufacturerName3!!,
 
-    model_name = eventResult.model_name!!,
-    model_name1 = eventResult.model_name1!!,
-    model_name2 = eventResult.model_name2!!,
-    model_name3 = eventResult.model_name3!!,
+    modelName = eventResult.modelName!!,
+    modelName1 = eventResult.modelName1!!,
+    modelName2 = eventResult.modelName2!!,
+    modelName3 = eventResult.modelName3!!,
 
     //vehicle insurance renewal add event
     input1 = eventResult.input1!!,
@@ -81,7 +81,7 @@ fun resultToEvent(eventResult: EventResult) = Event(
     input9 = eventResult.input9!!,
     input10 = eventResult.input10!!,
 
-    insurance_provider = eventResult.insurance_provider!!
+    insuranceProvider = eventResult.insuranceProvider!!
 )
 
 // Destroy any illegal character and length in the fields, add missing fields if possible
@@ -101,17 +101,17 @@ fun normalizeEvent(event: Event): Event {
         originalDate = event.originalDate,
         yearMatter = event.yearMatter,
         //vehicle insurance add event
-        manufacturer_name = event.manufacturer_name.substring(IntRange(0, 30.coerceAtMost(event.manufacturer_name.length) - 1)),
-        manufacturer_name1 = event.manufacturer_name1.substring(IntRange(0, 30.coerceAtMost(event.manufacturer_name1.length) - 1)),
-        manufacturer_name2 = event.manufacturer_name2.substring(IntRange(0, 30.coerceAtMost(event.manufacturer_name2.length) - 1)),
-        manufacturer_name3 = event.manufacturer_name3.substring(IntRange(0, 30.coerceAtMost(event.manufacturer_name3.length) - 1)),
+        manufacturerName = event.manufacturerName?.substring(IntRange(0, 30.coerceAtMost(event.manufacturerName.length) - 1)),
+        manufacturerName1 = event.manufacturerName1?.substring(IntRange(0, 30.coerceAtMost(event.manufacturerName1.length) - 1)),
+        manufacturerName2 = event.manufacturerName2?.substring(IntRange(0, 30.coerceAtMost(event.manufacturerName2.length) - 1)),
+        manufacturerName3 = event.manufacturerName3?.substring(IntRange(0, 30.coerceAtMost(event.manufacturerName3.length) - 1)),
 
-        model_name = event.model_name.substring(IntRange(0, 30.coerceAtMost(event.model_name.length) - 1)),
-        model_name1 = event.model_name1.substring(IntRange(0, 30.coerceAtMost(event.model_name1.length) - 1)),
-        model_name2 = event.model_name2.substring(IntRange(0, 30.coerceAtMost(event.model_name2.length) - 1)),
-        model_name3 = event.model_name3.substring(IntRange(0, 30.coerceAtMost(event.model_name3.length) - 1)),
+        modelName = event.modelName?.substring(IntRange(0, 30.coerceAtMost(event.modelName.length) - 1)),
+        modelName1 = event.modelName1?.substring(IntRange(0, 30.coerceAtMost(event.modelName1.length) - 1)),
+        modelName2 = event.modelName2?.substring(IntRange(0, 30.coerceAtMost(event.modelName2.length) - 1)),
+        modelName3 = event.modelName3?.substring(IntRange(0, 30.coerceAtMost(event.modelName3.length) - 1)),
 
-        insurance_provider = event.insurance_provider.substring(IntRange(0, 30.coerceAtMost(event.insurance_provider.length) - 1)),
+        insuranceProvider = event.insuranceProvider?.substring(IntRange(0, 30.coerceAtMost(event.insuranceProvider.length) - 1)),
         //vehicle insurance renewal add event
         input1 = event.input1.substring(IntRange(0, 30.coerceAtMost(event.input1.length) - 1)),
         input2 = event.input2.substring(IntRange(0, 30.coerceAtMost(event.input2.length) - 1)),

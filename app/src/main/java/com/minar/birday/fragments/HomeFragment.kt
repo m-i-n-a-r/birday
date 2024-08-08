@@ -503,34 +503,54 @@ class HomeFragment : Fragment() {
             // Don't use the function in EventUtils since this assigns all the variables at once
             when (nextEvents.indexOf(event)) {
                 0 -> {
-                    if (event.type == getString(R.string.vehicle_insurance_caps)) {
-                        personName = event.manufacturer_name.toString()
-                        nextAge = "Model: "+event.model_name.toString()
-                    } else if (event.type == getString(R.string.vehicle_insurance_renewal_caps)) {
-                        personName = event.input1.toString()
-                        nextAge = "Model: "+event.input2.toString()
-                    }else {
-                        personName = formattedPersonName
-                        nextAge = getString(R.string.next_age_years) + ": $age"
+                    when (event.type) {
+                        getString(R.string.vehicle_insurance_caps) -> {
+                            personName = event.manufacturerName.toString()
+                            nextAge = "Model: "+event.modelName.toString()
+                        }
+                        getString(R.string.vehicle_insurance_renewal_caps) -> {
+                            personName = event.input1.toString()
+                            nextAge = "Model: "+event.input2.toString()
+                        }
+                        else -> {
+                            personName = formattedPersonName
+                            nextAge = getString(R.string.next_age_years) + ": $age"
+                        }
                     }
                     nextDateText = nextDateFormatted(event, formatter, requireContext())
 
                 }
 
                 1, 2 -> {
-                    if (event.type == getString(R.string.vehicle_insurance_caps)) {
-                        personName = event.manufacturer_name.toString()
-                    } else {
-                        personName += ", $formattedPersonName"
+                    when (event.type) {
+                        getString(R.string.vehicle_insurance_caps) -> {
+                            personName = event.manufacturerName.toString()
+                        }
+                        getString(R.string.vehicle_insurance_caps) -> {
+                            personName = event.input1.toString()
+                            nextAge = "Model: "+event.input2.toString()
+                        }
+                        else -> {
+                            personName += ", $formattedPersonName"
+                            nextAge = getString(R.string.next_age_years) + ": $age"
+                        }
                     }
                     nextAge += ", $age"
                 }
 
                 3 -> {
-                    if (event.type == getString(R.string.vehicle_insurance_caps)) {
-                        personName = event.manufacturer_name.toString()
-                    } else {
-                        personName += " " + getString(R.string.event_others)
+                    when (event.type) {
+                        getString(R.string.vehicle_insurance_caps) -> {
+                            personName = event.manufacturerName.toString()
+                        }
+                        getString(R.string.vehicle_insurance_caps) -> {
+                            personName = event.input1.toString()
+                            nextAge = "Model: "+event.input2.toString()
+                        }
+                        else -> {
+                            personName += " " + getString(R.string.event_others)
+                            nextAge = getString(R.string.next_age_years) + ": $age"
+                        }
                     }
                     nextAge += "..."
                 }
