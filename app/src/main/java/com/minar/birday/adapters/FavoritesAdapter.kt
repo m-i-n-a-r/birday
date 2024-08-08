@@ -75,7 +75,17 @@ class FavoritesAdapter(
             val actualAge = if (event.type == EventCode.BIRTHDAY.name)
                 "${context.getString(R.string.next_age_years)}: $age, ${context.getString(R.string.born_in)} ${event.originalDate.year}"
             else "${context.getString(R.string.next_age_years)}: $age"
-            eventPerson.text = formattedPersonName
+            when (event.type) {
+                context.getString(R.string.vehicle_insurance_caps) -> {
+                    eventPerson.text= event.manufacturer_name.toString()
+                }
+                context.getString(R.string.vehicle_insurance_caps) -> {
+                    eventPerson.text= event.input1.toString()
+                }
+                else -> {
+                    eventPerson.text = formattedPersonName
+                }
+            }
             // Show an icon if there's a note
             if (!event.notes.isNullOrEmpty()) eventNote.visibility = View.VISIBLE
             else eventNote.visibility = View.GONE
@@ -112,6 +122,9 @@ class FavoritesAdapter(
                             context, R.drawable.ic_other_24dp
                         )
                     )
+                    EventCode.VEHICLE_INSURANCE.name -> eventTypeImage.visibility=View.GONE
+                    EventCode.VEHICLE_INSURANCE_RENEWAL.name -> eventTypeImage.visibility=View.GONE
+
                 }
             } else eventTypeImage.visibility = View.GONE
         }

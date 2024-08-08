@@ -1,6 +1,8 @@
 package com.minar.birday.fragments
 
 import android.animation.ObjectAnimator
+import android.app.Activity
+import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Build
@@ -11,6 +13,7 @@ import android.view.View
 import android.view.View.OVER_SCROLL_ALWAYS
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.animation.doOnEnd
@@ -24,6 +27,7 @@ import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
+import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.EventAdapter
@@ -181,6 +185,22 @@ class HomeFragment : Fragment() {
                     if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
                         mainViewModel.eventTypeChanged("")
                 }
+                R.id.homeTypeSelectorInsurance -> {
+                    // Only display events of type other
+                    if (isChecked) {
+                        mainViewModel.eventTypeChanged(EventCode.VEHICLE_INSURANCE.name)
+                    }
+                    if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
+                        mainViewModel.eventTypeChanged("")
+                }
+                R.id.homeTypeSelectorInsuranceRenewal -> {
+                    // Only display events of type other
+                    if (isChecked) {
+                        mainViewModel.eventTypeChanged(EventCode.VEHICLE_INSURANCE_RENEWAL.name)
+                    }
+                    if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
+                        mainViewModel.eventTypeChanged("")
+                }
 
                 R.id.homeTypeSelectorClose -> {
                     typeSelector.pivotX = searchBarLayout.measuredWidth.toFloat() * 0.95F
@@ -253,7 +273,13 @@ class HomeFragment : Fragment() {
 
         // Setup the recycler view
         recycler.adapter = adapter
-
+        recycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
+                    hideKeyboard(requireActivity())
+                }
+            }
+        })
         // The events, ordered and filtered by the eventual search
         mainViewModel.allEvents.observe(viewLifecycleOwner)
         { events ->
@@ -477,26 +503,45 @@ class HomeFragment : Fragment() {
             // Don't use the function in EventUtils since this assigns all the variables at once
             when (nextEvents.indexOf(event)) {
                 0 -> {
-                    personName = formattedPersonName
+                    if (event.type == getString(R.string.vehicle_insurance_caps)) {
+                        personName = event.manufacturer_name.toString()
+                        nextAge = "Model: "+event.model_name.toString()
+                    } else if (event.type == getString(R.string.vehicle_insurance_renewal_caps)) {
+                        personName = event.input1.toString()
+                        nextAge = "Model: "+event.input2.toString()
+                    }else {
+                        personName = formattedPersonName
+                        nextAge = getString(R.string.next_age_years) + ": $age"
+                    }
                     nextDateText = nextDateFormatted(event, formatter, requireContext())
-                    nextAge = getString(R.string.next_age_years) + ": $age"
+
                 }
 
                 1, 2 -> {
-                    personName += ", $formattedPersonName"
+                    if (event.type == getString(R.string.vehicle_insurance_caps)) {
+                        personName = event.manufacturer_name.toString()
+                    } else {
+                        personName += ", $formattedPersonName"
+                    }
                     nextAge += ", $age"
                 }
 
                 3 -> {
-                    personName += " " + getString(R.string.event_others)
+                    if (event.type == getString(R.string.vehicle_insurance_caps)) {
+                        personName = event.manufacturer_name.toString()
+                    } else {
+                        personName += " " + getString(R.string.event_others)
+                    }
                     nextAge += "..."
                 }
             }
             if (ChronoUnit.DAYS.between(event.nextDate, upcomingDate) < 0) break
         }
+
         cardTitle.text = personName
-        cardSubtitle.text = nextDateText
         cardDescription.text = nextAge
+        cardSubtitle.text = nextDateText
+
     }
 
     // Show a bottom sheet containing some quick apps
@@ -556,6 +601,20 @@ class HomeFragment : Fragment() {
             .addSizes(Size(8), Size(12), Size(16))
             .setPosition(-50f, confetti.width + 50f, -50f, -50f)
             .streamFor(200, 2000L)
+    }
+
+    //hide keyboard
+    fun hideKeyboard(activity: Activity) {
+        try {
+            val inputMethodManager =
+                activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            val currentFocus = activity.currentFocus
+            if (currentFocus != null) {
+                inputMethodManager.hideSoftInputFromWindow(currentFocus.windowToken, 0)
+            }
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
     }
 }
 

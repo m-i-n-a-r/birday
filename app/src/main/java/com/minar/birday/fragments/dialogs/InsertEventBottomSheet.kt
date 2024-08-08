@@ -1,5 +1,6 @@
 package com.minar.birday.fragments.dialogs
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.media.ThumbnailUtils
@@ -12,14 +13,18 @@ import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -35,13 +40,24 @@ import com.minar.birday.model.ContactInfo
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
-import com.minar.birday.utilities.*
+import com.minar.birday.utilities.START_YEAR
+import com.minar.birday.utilities.bitmapToByteArray
+import com.minar.birday.utilities.checkName
+import com.minar.birday.utilities.getAvailableTypes
+import com.minar.birday.utilities.getBitmapSquareSize
+import com.minar.birday.utilities.getStringForTypeCodename
+import com.minar.birday.utilities.resultToEvent
+import com.minar.birday.utilities.setEventImageOrPlaceholder
+import com.minar.birday.utilities.smartFixName
 import com.minar.birday.viewmodels.InsertEventViewModel
+import com.minar.birday.viewmodels.MainViewModel
 import java.io.IOException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
-import java.util.*
+import java.util.Calendar
+import java.util.TimeZone
+import java.util.zip.GZIPOutputStream
 
 
 @OptIn(ExperimentalStdlibApi::class)
@@ -92,10 +108,9 @@ class InsertEventBottomSheet(
 
         // Show a bottom sheet containing the form to insert a new event
         imageChosen = false
-        var nameValue = "error"
-        var surnameValue = ""
         // The initial date is today
         var eventDateValue: LocalDate = LocalDate.now()
+        var dueDateValue: LocalDate = LocalDate.now()
         var countYearValue = true
         val positiveButton = binding.positiveButton
         val negativeButton = binding.negativeButton
@@ -105,28 +120,70 @@ class InsertEventBottomSheet(
 
         if (event != null) {
             typeValue = event.type!!
-            nameValue = event.name
-            surnameValue = event.surname ?: ""
             countYearValue = event.yearMatter ?: true
             eventDateValue = event.originalDate
             positiveButton.text = getString(R.string.update_event)
             title.text = getString(R.string.edit_event)
 
             // Set the fields
-            val type = binding.typeEvent
-            val name = binding.nameEvent
-            val surname = binding.surnameEvent
             val eventDate = binding.dateEvent
             val countYear = binding.countYearSwitch
-            type.setText(typeValue, false)
-            name.setText(nameValue)
-            surname.setText(surnameValue)
+
+            when (typeValue) {
+                getString(R.string.vehicle_insurance_caps) -> {
+                    binding.otherEventLayout.visibility=View.GONE
+                    binding.vehicleInsuranceRenewalLayout.visibility=View.GONE
+                    binding.vehicleInsuranceLayout.visibility=View.VISIBLE
+                    val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
+                    binding.dueDateEvent.setText(eventDateValue.format(formatter))
+                }
+                getString(R.string.vehicle_insurance_renewal_caps) -> {
+                    binding.otherEventLayout.visibility=View.GONE
+                    binding.vehicleInsuranceLayout.visibility=View.GONE
+                    binding.vehicleInsuranceRenewalLayout.visibility=View.VISIBLE
+                }
+                else -> {
+                    binding.vehicleInsuranceLayout.visibility=View.GONE
+                    binding.vehicleInsuranceRenewalLayout.visibility=View.GONE
+                    binding.otherEventLayout.visibility=View.VISIBLE
+                }
+            }
+
+            binding.typeEvent.setText(typeValue, false)
+            binding.nameEvent.setText(event.name)
+            binding.surnameEvent.setText(event.surname)
             countYear.isChecked = countYearValue
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
             eventDate.setText(eventDateValue.format(formatter))
             imageChosen = setEventImageOrPlaceholder(event, eventImage)
             positiveButton.isEnabled = true
+
+            //vehicle insurance add event
+            binding.vehicleManufacturerEvent.setText(event.manufacturer_name.toString())
+            binding.vehicleManufacturerEvent1.setText(event.manufacturer_name1.toString())
+            binding.vehicleManufacturerEvent2.setText(event.manufacturer_name2.toString())
+            binding.vehicleManufacturerEvent3.setText(event.manufacturer_name3.toString())
+
+            binding.vehicleModelEvent.setText(event.model_name.toString())
+            binding.vehicleModel1Event.setText(event.model_name1.toString())
+            binding.vehicleModel2Event.setText(event.model_name2.toString())
+            binding.vehicleModel3Event.setText(event.model_name3.toString())
+
+            binding.vehicleInsuranceProviderEvent.setText(event.insurance_provider.toString())
+
+            //vehicle insurance renewal event add
+            binding.input1Event.setText(event.input1.toString())
+            binding.input2Event.setText(event.input2.toString())
+            binding.input3Event.setText(event.input3.toString())
+            binding.input4Event.setText(event.input4.toString())
+            binding.input5Event.setText(event.input5.toString())
+            binding.input6Event.setText(event.input6.toString())
+            binding.input7Event.setText(event.input7.toString())
+            binding.input8Event.setText(event.input8.toString())
+            binding.input9Event.setText(event.input9.toString())
+            binding.input10Event.setText(event.input10.toString())
         }
+
         positiveButton.setOnClickListener {
             var image: ByteArray? = null
             if (imageChosen)
@@ -136,33 +193,95 @@ class InsertEventBottomSheet(
                 id = event.id,
                 type = typeValue,
                 originalDate = eventDateValue,
-                name = nameValue.smartFixName(),
+                name = binding.nameEvent.text.toString().trim(),
                 yearMatter = countYearValue,
-                surname = surnameValue.smartFixName(),
+                surname = binding.surnameEvent.text.toString().trim(),
                 favorite = event.favorite,
                 notes = event.notes,
-                image = image
+                image = image,
+                //vehicle insurance add event
+                manufacturer_name = binding.vehicleManufacturerEvent.text.toString().trim(),
+                manufacturer_name1 = binding.vehicleManufacturerEvent1.text.toString().trim(),
+                manufacturer_name2 = binding.vehicleManufacturerEvent2.text.toString().trim(),
+                manufacturer_name3 = binding.vehicleManufacturerEvent3.text.toString().trim(),
+
+                model_name = binding.vehicleModelEvent.text.toString().trim(),
+                model_name1 = binding.vehicleModel1Event.text.toString().trim(),
+                model_name2 = binding.vehicleModel2Event.text.toString().trim(),
+                model_name3 = binding.vehicleModel3Event.text.toString().trim(),
+
+                //vehicle insurance renewal add event
+                input1 = binding.input1Event.text.toString(),
+                input2 = binding.input2Event.text.toString(),
+                input3 = binding.input3Event.text.toString(),
+                input4= binding.input4Event.text.toString(),
+                input5= binding.input5Event.text.toString(),
+                input6= binding.input6Event.text.toString(),
+                input7= binding.input7Event.text.toString(),
+                input8= binding.input8Event.text.toString(),
+                input9= binding.input9Event.text.toString(),
+                input10= binding.input10Event.text.toString(),
+
+                insurance_provider = binding.vehicleInsuranceProviderEvent.text.toString().trim()
             ) else
                 Event(
                     id = 0,
                     originalDate = eventDateValue,
-                    name = nameValue.smartFixName(),
-                    surname = surnameValue.smartFixName(),
+                    name = binding.nameEvent.text.toString().trim(),
+                    surname = binding.surnameEvent.text.toString().trim(),
                     yearMatter = countYearValue,
                     type = typeValue,
                     image = image,
+                    //vehicle insurance add event
+                    manufacturer_name = binding.vehicleManufacturerEvent.text.toString().trim(),
+                    manufacturer_name1 = binding.vehicleManufacturerEvent1.text.toString().trim(),
+                    manufacturer_name2 = binding.vehicleManufacturerEvent2.text.toString().trim(),
+                    manufacturer_name3 = binding.vehicleManufacturerEvent3.text.toString().trim(),
+
+                    model_name = binding.vehicleModelEvent.text.toString().trim(),
+                    model_name1 = binding.vehicleModel1Event.text.toString().trim(),
+                    model_name2 = binding.vehicleModel2Event.text.toString().trim(),
+                    model_name3 = binding.vehicleModel3Event.text.toString().trim(),
+
+                    //vehicle insurance add event
+                    input1 = binding.input1Event.text.toString(),
+                    input2 = binding.input2Event.text.toString(),
+                    input3 = binding.input3Event.text.toString(),
+                    input4= binding.input4Event.text.toString(),
+                    input5= binding.input5Event.text.toString(),
+                    input6= binding.input6Event.text.toString(),
+                    input7= binding.input7Event.text.toString(),
+                    input8= binding.input8Event.text.toString(),
+                    input9= binding.input9Event.text.toString(),
+                    input10= binding.input10Event.text.toString(),
+
+                    insurance_provider = binding.vehicleInsuranceProviderEvent.text.toString().trim()
                 )
             // Insert using another thread
             val thread = Thread {
                 if (event != null) {
                     act.mainViewModel.update(tuple)
                     // Go back to the first screen to avoid updating the displayed details
-                    act.runOnUiThread { findNavController().popBackStack() }
-                } else act.mainViewModel.insert(tuple)
+                    act.showSnackbar(
+                        requireContext().getString(R.string.updated_event)
+                    )
+                    act.runOnUiThread {
+                        findNavController().popBackStack()
+                    }
+                } else {
+                    act.mainViewModel.insert(tuple)
+                    act.showSnackbar(
+                        requireContext().getString(R.string.added_event)
+                    )
+                    act.runOnUiThread {
+                        findNavController().popBackStack()
+                    }
+                }
             }
             thread.start()
             dismiss()
         }
+
         negativeButton.setOnClickListener {
             dismiss()
         }
@@ -173,6 +292,28 @@ class InsertEventBottomSheet(
         val surname = binding.surnameEvent
         val eventDate = binding.dateEvent
         val countYear = binding.countYearSwitch
+
+        binding.vehicleManufacturerEvent.setOnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                binding.vehicleManufacturerListLayout.visibility = View.VISIBLE
+                binding.vehicleManufacturerEvent.requestFocus()
+
+                val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.showSoftInput(binding.vehicleManufacturerEvent, InputMethodManager.SHOW_IMPLICIT)
+            }
+            true
+        }
+
+        binding.vehicleModelEvent.setOnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                binding.vehicleModelListLayout.visibility = View.VISIBLE
+                binding.vehicleModelEvent.requestFocus()
+
+                val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.showSoftInput(binding.vehicleModelEvent, InputMethodManager.SHOW_IMPLICIT)
+            }
+            true
+        }
 
         // Set the dropdown to show the available event types
         val items = getAvailableTypes(act)
@@ -188,11 +329,28 @@ class InsertEventBottomSheet(
                         countYear.isChecked = false
                         countYear.isEnabled = false
                         countYearValue = false
-                    } else {
+
+                        binding.otherEventLayout.visibility = View.VISIBLE
+                        binding.vehicleInsuranceLayout.visibility = View.GONE
+                        binding.vehicleInsuranceRenewalLayout.visibility = View.GONE
+                    } else if(typeValue == EventCode.VEHICLE_INSURANCE.name){
+                        binding.vehicleInsuranceLayout.visibility = View.VISIBLE
+                        binding.otherEventLayout.visibility = View.GONE
+                        binding.vehicleInsuranceRenewalLayout.visibility = View.GONE
+                    }else if(typeValue == EventCode.VEHICLE_INSURANCE_RENEWAL.name){
+                        binding.vehicleInsuranceRenewalLayout.visibility = View.VISIBLE
+                        binding.otherEventLayout.visibility = View.GONE
+                        binding.vehicleInsuranceLayout.visibility = View.GONE
+                    }
+                    else {
                         countYear.isChecked = true
                         countYear.isEnabled = true
                         countYearValue = true
+
+                        binding.otherEventLayout.visibility = View.VISIBLE
+                        binding.vehicleInsuranceLayout.visibility = View.GONE
                     }
+
                     if (!imageChosen)
                         eventImage.setImageDrawable(
                             ContextCompat.getDrawable(
@@ -203,10 +361,13 @@ class InsertEventBottomSheet(
                                     EventCode.ANNIVERSARY.name -> R.drawable.placeholder_anniversary_image
                                     EventCode.DEATH.name -> R.drawable.placeholder_death_image
                                     EventCode.NAME_DAY.name -> R.drawable.placeholder_name_day_image
+                                    EventCode.VEHICLE_INSURANCE.name -> R.drawable.placeholder_vehicle_image
+                                    EventCode.VEHICLE_INSURANCE_RENEWAL.name -> R.drawable.placeholder_vehicle_image
                                     else -> R.drawable.placeholder_other_image
                                 }
                             )
                         )
+
                 }
         }
 
@@ -291,19 +452,53 @@ class InsertEventBottomSheet(
                         val month = date.get(Calendar.MONTH) + 1
                         val day = date.get(Calendar.DAY_OF_MONTH)
                         eventDateValue = LocalDate.of(year, month, day)
-                        val todayDate = LocalDate.now()
 
-                        // Force the date to be max one day after today, to consider different time zones
-                        while (eventDateValue.isAfter(todayDate.plusDays(1))) {
-                            eventDateValue = LocalDate.of(
-                                todayDate.year - 1,
-                                eventDateValue.monthValue,
-                                eventDateValue.dayOfMonth
-                            )
-                        }
                         eventDate.setText(eventDateValue.format(formatter))
                         // The last selected date is saved if the dialog is reopened
                         lastDate.set(eventDateValue.year, month - 1, day)
+                    }
+
+                }
+                // Show the picker and wait to reset the variable
+                dateDialog!!.show(act.supportFragmentManager, "main_act_picker")
+                Handler(Looper.getMainLooper()).postDelayed({ dateDialog = null }, 750)
+            }
+        }
+
+        binding.dueDateEvent.setOnClickListener {
+            // Prevent double dialogs on fast click
+            if (dateDialog == null) {
+                // Build constraints
+                val constraints =
+                    CalendarConstraints.Builder()
+                        .setStart(startDate.timeInMillis)
+                        .setEnd(endDate.timeInMillis)
+                        .build()
+
+                // Build the dialog itself
+                dateDialog =
+                    MaterialDatePicker.Builder.datePicker()
+                        .setTitleText(R.string.insert_date_hint)
+                        .setSelection(lastDate.timeInMillis)
+                        .setCalendarConstraints(constraints)
+                        .build()
+
+                // The user pressed ok
+                dateDialog!!.addOnPositiveButtonClickListener {
+                    val selection = it
+                    if (selection != null) {
+                        val date = Calendar.getInstance()
+                        // Use a standard timezone to avoid wrong date on different time zones
+                        date.timeZone = TimeZone.getTimeZone("UTC")
+                        date.timeInMillis = selection
+                        val year = date.get(Calendar.YEAR)
+                        val month = date.get(Calendar.MONTH) + 1
+                        val day = date.get(Calendar.DAY_OF_MONTH)
+                        dueDateValue = LocalDate.of(year, month, day)
+
+                        binding.dueDateEvent.setText(dueDateValue.format(formatter))
+                        // The last selected date is saved if the dialog is reopened
+                        lastDate.set(dueDateValue.year, month - 1, day)
                     }
 
                 }
@@ -317,6 +512,11 @@ class InsertEventBottomSheet(
         var nameCorrect = false
         var surnameCorrect = true // Surname is not mandatory
         var eventDateCorrect = event != null
+        //vehicle insurance add event
+        var manufacturerCorrect = false
+        var modelCorrect = false
+        var insuranceCorrect = false
+
         val watcher = afterTextChangedWatcher { editable ->
             when {
                 editable === name.editableText -> {
@@ -328,7 +528,6 @@ class InsertEventBottomSheet(
                         positiveButton.isEnabled = false
                         nameCorrect = false
                     } else {
-                        nameValue = nameText
                         binding.nameEventLayout.error = null
                         nameCorrect = true
                     }
@@ -343,20 +542,88 @@ class InsertEventBottomSheet(
                         positiveButton.isEnabled = false
                         surnameCorrect = false
                     } else {
-                        surnameValue = surnameText
                         binding.surnameEventLayout.error = null
                         surnameCorrect = true
                     }
                 }
                 // Once selected, the date can't be blank anymore
                 editable === eventDate.editableText -> eventDateCorrect = true
+
+                //vehicle insurance add event
+                editable === binding.vehicleManufacturerEvent.editableText -> {
+                    val manufacturer_name = binding.vehicleManufacturerEvent.text.toString()
+                    if (manufacturer_name.isNotEmpty()) {
+                        binding.vehicleManufacturerLayout.error = null
+                        manufacturerCorrect = true
+                    } else {
+                        // Setting the error on the layout is important to make the properties work
+                        binding.vehicleManufacturerLayout.error =
+                            getString(R.string.invalid_value_name)
+                        positiveButton.isEnabled = false
+                        manufacturerCorrect = false
+                    }
+                }
+
+                editable === binding.vehicleModelEvent.editableText -> {
+                    val model_name = binding.vehicleModelEvent.text.toString()
+                    if (model_name.isEmpty()) {
+                        // Setting the error on the layout is important to make the properties work
+                        binding.vehicleModelLayout.error =
+                            getString(R.string.invalid_value_name)
+                        positiveButton.isEnabled = false
+                        modelCorrect = false
+                    } else {
+                        binding.vehicleManufacturerLayout.error = null
+                        modelCorrect = true
+                    }
+                }
+
+                editable === binding.vehicleInsuranceProviderEvent.editableText -> {
+                    val insurance_provider_name = binding.vehicleInsuranceProviderEvent.text.toString()
+                    if (insurance_provider_name.isEmpty()) {
+                        // Setting the error on the layout is important to make the properties work
+                        binding.insuranceProviderLayout.error =
+                            getString(R.string.invalid_value_name)
+                        positiveButton.isEnabled = false
+                        insuranceCorrect = false
+                    } else {
+                        binding.insuranceProviderLayout.error = null
+                        insuranceCorrect = true
+                    }
+                }
+
             }
-            if (eventDateCorrect && nameCorrect && surnameCorrect) positiveButton.isEnabled =
-                true
+
+            if(typeValue == getString(R.string.vehicle_insurance_caps)){
+               if(binding.dueDateEvent.text!!.isNotEmpty()){
+                    eventDateCorrect = true
+                }
+                if (manufacturerCorrect && modelCorrect && insuranceCorrect && eventDateCorrect) positiveButton.isEnabled =true
+
+            }else if(typeValue == getString(R.string.vehicle_insurance_renewal_caps)){
+                positiveButton.isEnabled = true
+            }else {
+                if (eventDateCorrect && nameCorrect && surnameCorrect) positiveButton.isEnabled = true
+            }
         }
+
         name.addTextChangedListener(watcher)
-        surname.addTextChangedListener(watcher)
+        binding.surnameEvent.addTextChangedListener(watcher)
         eventDate.addTextChangedListener(watcher)
+        //vehicle insurance add event
+        binding.dueDateEvent.addTextChangedListener(watcher)
+        binding.vehicleManufacturerEvent1.addTextChangedListener(watcher)
+        binding.vehicleManufacturerEvent.addTextChangedListener(watcher)
+        binding.vehicleManufacturerEvent2.addTextChangedListener(watcher)
+        binding.vehicleManufacturerEvent3.addTextChangedListener(watcher)
+
+        binding.vehicleModelEvent.addTextChangedListener(watcher)
+        binding.vehicleModel1Event.addTextChangedListener(watcher)
+        binding.vehicleModel2Event.addTextChangedListener(watcher)
+        binding.vehicleModel3Event.addTextChangedListener(watcher)
+        binding.vehicleInsuranceProviderEvent.addTextChangedListener(watcher)
+        //vehicle insurance renewal add event
+        binding.input1Event.addTextChangedListener(watcher)
     }
 
     override fun onDestroyView() {
@@ -416,4 +683,5 @@ class InsertEventBottomSheet(
                 afterTextChanged(editable)
             }
         }
+
 }

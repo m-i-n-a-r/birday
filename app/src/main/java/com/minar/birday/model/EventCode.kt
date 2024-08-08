@@ -5,5 +5,7 @@ enum class EventCode {
     ANNIVERSARY,
     DEATH,
     NAME_DAY,
+    VEHICLE_INSURANCE,
+    VEHICLE_INSURANCE_RENEWAL,
     OTHER
 }

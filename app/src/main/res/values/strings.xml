@@ -163,6 +163,36 @@
     <string name="festivity">Festivity</string>
     <string name="name_day">Name day</string>
     <string name="other">Other</string>
+
+    <!--vehicle insurance add event-->
+    <string name="vehicle_insurance">Vehicle Insurance</string>
+    <string name="vehicle_insurance_caps">VEHICLE_INSURANCE</string>
+    <string name="insert_vehicle_manufacturer">Insert Vehicle Manufacturer</string>
+    <string name="insert_vehicle_manufacturer1">Insert Vehicle Manufacturer-1</string>
+    <string name="insert_vehicle_manufacturer2">Insert Vehicle Manufacturer-2</string>
+    <string name="insert_vehicle_manufacturer3">Insert Vehicle Manufacturer-3</string>
+
+    <string name="insert_vehicle_model">Insert Vehicle Model</string>
+    <string name="insert_vehicle_model1">Insert Vehicle Model-1</string>
+    <string name="insert_vehicle_model2">Insert Vehicle Model-2</string>
+    <string name="insert_vehicle_model3">Insert Vehicle Model-3</string>
+    <string name="vehicle_insurance_provider">Vehicle Insurance Provider</string>
+    <string name="vehicle_insurance_due_date">Due Date</string>
+
+    <!--vehicle insurance renewal event add-->
+    <string name="vehicle_insurance_renewal">Vehicle Insurance Renewal</string>
+    <string name="vehicle_insurance_renewal_caps">VEHICLE_INSURANCE_RENEWAL</string>
+    <string name="input1">input1</string>
+    <string name="input2">input2</string>
+    <string name="input3">input3</string>
+    <string name="input4">input4</string>
+    <string name="input5">input5</string>
+    <string name="input6">input6</string>
+    <string name="input7">input7</string>
+    <string name="input8">input8</string>
+    <string name="input9">input9</string>
+    <string name="input10">input10</string>
+
     <!-- Event actions -->
     <string name="event_actions">Actions</string>
     <string name="event_actions_description">Here you can change or remove this event!</string>
@@ -171,6 +201,9 @@
     <string name="update_event">Update event</string>
     <string name="share_event">Share event</string>
     <string name="deleted">Deleted!</string>
+    <string name="added_event">Event Added Successfully!</string>
+    <string name="updated_event">Event Updated Successfully!</string>
+
     <!-- Event details -->
     <string name="event_details">Details</string>
     <string name="birth_date">Birth date</string>
