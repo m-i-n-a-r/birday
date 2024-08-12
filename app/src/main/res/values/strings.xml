@@ -11,6 +11,7 @@
     <string name="title_home">Home</string>
     <string name="title_favorites">Favorites</string>
     <string name="title_settings">Settings</string>
+    <string name="title_dnd">DND</string>
     <string name="no_events">No events! Start adding one using the button below!</string>
     <string name="no_favorites">No favorites! Press the star to save an event in your favorites!</string>
     <string name="add_favorite">Add to favorites</string>
@@ -146,6 +147,11 @@
     <string name="dev_other_apps" translatable="false">https://play.google.com/store/apps/dev?id=7720251761301594831</string>
     <string name="easter_egg">Nice logo, huh? ;D</string>
     <string name="wtf" translatable="false">WTF?!</string>
+    <!--dnd function-->
+    <string name="dnd_title">Do Not Disturb</string>
+    <string name="allowed_apps">Allowed Apps</string>
+    <string name="add_new_app">Add App</string>
+    <string name="no_apps">DND enabled Apps Not found!</string>
     <!-- New event -->
     <string name="new_event">New event</string>
     <string name="new_event_description">Enter a person you care about, and Birday will help you to remember their birthday or other events!</string>
@@ -386,4 +392,6 @@
     <string name="replace_on_conflict_title">Replace on conflict</string>
     <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
     <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -316,16 +316,16 @@ class FavoritesFragment : Fragment() {
                     notes = note,
                     image = event.image,
                     //vehicle insurance add event
-                    manufacturer_name = event.manufacturer_name!!,
-                    manufacturer_name1 = event.manufacturer_name1!!,
-                    manufacturer_name2 = event.manufacturer_name2!!,
-                    manufacturer_name3 = event.manufacturer_name3!!,
+                    manufacturerName = event.manufacturerName!!,
+                    manufacturerName1 = event.manufacturerName1!!,
+                    manufacturerName2 = event.manufacturerName2!!,
+                    manufacturerName3 = event.manufacturerName3!!,
 
-                    model_name = event.model_name!!,
-                    model_name1 = event.model_name1!!,
-                    model_name2 = event.model_name2!!,
-                    model_name3 = event.model_name3!!,
-                    insurance_provider = event.insurance_provider!!,
+                    modelName = event.modelName!!,
+                    modelName1 = event.modelName1!!,
+                    modelName2 = event.modelName2!!,
+                    modelName3 = event.modelName3!!,
+                    insuranceProvider = event.insuranceProvider!!,
 
                     //vehicle insurance renewal add event
                     input1 = event.input1!!,

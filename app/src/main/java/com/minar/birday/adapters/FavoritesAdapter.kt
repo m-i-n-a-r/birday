@@ -77,7 +77,7 @@ class FavoritesAdapter(
             else "${context.getString(R.string.next_age_years)}: $age"
             when (event.type) {
                 context.getString(R.string.vehicle_insurance_caps) -> {
-                    eventPerson.text= event.manufacturer_name.toString()
+                    eventPerson.text= event.manufacturerName.toString()
                 }
                 context.getString(R.string.vehicle_insurance_caps) -> {
                     eventPerson.text= event.input1.toString()

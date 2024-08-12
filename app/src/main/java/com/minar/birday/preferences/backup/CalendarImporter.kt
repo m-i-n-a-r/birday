@@ -81,16 +81,16 @@ class CalendarImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                 image = calendarEvent.image,
                 notes = notes,
                 //vehicle insurance add event
-                manufacturer_name = "",
-                manufacturer_name1 = "",
-                manufacturer_name2 = "",
-                manufacturer_name3 = "",
+                manufacturerName = "",
+                manufacturerName1 = "",
+                manufacturerName2 = "",
+                manufacturerName3 = "",
 
-                model_name = "",
-                model_name1 = "",
-                model_name2 = "",
-                model_name3 = "",
-                insurance_provider = "",
+                modelName = "",
+                modelName1 = "",
+                modelName2 = "",
+                modelName3 = "",
+                insuranceProvider = "",
 
                 //vehicle insurance renewal add event
                 input1 = "",

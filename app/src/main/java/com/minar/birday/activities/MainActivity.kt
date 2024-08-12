@@ -80,7 +80,8 @@ class MainActivity : AppCompatActivity() {
     private val navController: NavController
         get() {
             val navHostFragment = supportFragmentManager
-                .findFragmentById(R.id.navHostFragment) as NavHostFragment
+                .findFragmentById(R
+                    .id.navHostFragment) as NavHostFragment
             return navHostFragment.navController
         }
 
@@ -216,6 +217,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigationSettings -> {
                     backHomeCallback.isEnabled = true
                     navController.navigateWithOptions(R.id.navigationSettings)
+                }
+                R.id.navigationDND -> {
+                    backHomeCallback.isEnabled = true
+                    navController.navigateWithOptions(R.id.navigationDND)
                 }
             }
             true

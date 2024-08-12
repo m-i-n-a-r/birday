@@ -15,15 +15,15 @@ data class EventResult (
     var notes: String? = "",
     val image: ByteArray? = null,
     //vehicle insurance add event
-    val manufacturer_name: String? ="",
-    val manufacturer_name1: String? ="",
-    val manufacturer_name2: String? ="",
-    val manufacturer_name3: String? ="",
-    val model_name: String? ="",
-    val model_name1: String? ="",
-    val model_name2: String? ="",
-    val model_name3: String? ="",
-    val insurance_provider: String? ="",
+    val manufacturerName: String? ="",
+    val manufacturerName1: String? ="",
+    val manufacturerName2: String? ="",
+    val manufacturerName3: String? ="",
+    val modelName: String? ="",
+    val modelName1: String? ="",
+    val modelName2: String? ="",
+    val modelName3: String? ="",
+    val insuranceProvider: String? ="",
     //vehicle insurance renewal add event
     val input1: String? ="",
     val input2: String? ="",
@@ -52,14 +52,14 @@ data class EventResult (
         if (!image.contentEquals(other.image)) return false
 
         //vehicle insurance add event
-        if (manufacturer_name != other.manufacturer_name) return false
-        if (manufacturer_name1 != other.manufacturer_name1) return false
-        if (manufacturer_name2 != other.manufacturer_name2) return false
-        if (manufacturer_name3 != other.manufacturer_name3) return false
-        if (model_name != other.model_name) return false
-        if (model_name1 != other.model_name1) return false
-        if (model_name2 != other.model_name2) return false
-        if (model_name3 != other.model_name3) return false
+        if (manufacturerName != other.manufacturerName) return false
+        if (manufacturerName1 != other.manufacturerName1) return false
+        if (manufacturerName2 != other.manufacturerName2) return false
+        if (manufacturerName3 != other.manufacturerName3) return false
+        if (modelName != other.modelName) return false
+        if (modelName1 != other.modelName1) return false
+        if (modelName2 != other.modelName2) return false
+        if (modelName3 != other.modelName3) return false
 
         //vehicle insurance renewal add event
         if (input1 != other.input1) return false
@@ -89,11 +89,28 @@ data class EventResult (
         result = 31 * result + (image?.contentHashCode() ?: 0)
 
         //vehicle insurance add event
-        result = 31 * result + manufacturer_name.hashCode()
-        result = 31 * result + (model_name.hashCode() ?: 0)
+        result = 31 * result + (manufacturerName?.hashCode() ?: 0)
+        result = 31 * result + (manufacturerName1?.hashCode() ?: 0)
+        result = 31 * result + (manufacturerName2?.hashCode() ?: 0)
+        result = 31 * result + (manufacturerName3?.hashCode() ?: 0)
+
+        result = 31 * result + (modelName.hashCode() ?: 0)
+        result = 31 * result + (modelName1.hashCode() ?: 0)
+        result = 31 * result + (modelName2.hashCode() ?: 0)
+        result = 31 * result + (modelName3.hashCode() ?: 0)
+        result = 31 * result + (insuranceProvider.hashCode() ?: 0)
 
         //vehicle insurance renewal add event
         result = 31 * result + (input1.hashCode() ?: 0)
+        result = 31 * result + (input2.hashCode() ?: 0)
+        result = 31 * result + (input3.hashCode() ?: 0)
+        result = 31 * result + (input4.hashCode() ?: 0)
+        result = 31 * result + (input5.hashCode() ?: 0)
+        result = 31 * result + (input6.hashCode() ?: 0)
+        result = 31 * result + (input7.hashCode() ?: 0)
+        result = 31 * result + (input8.hashCode() ?: 0)
+        result = 31 * result + (input9.hashCode() ?: 0)
+        result = 31 * result + (input10.hashCode() ?: 0)
 
         return result
     }
