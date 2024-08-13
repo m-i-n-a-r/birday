@@ -105,44 +105,5 @@
         </RelativeLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/dnd_apps_Recycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:overScrollMode="never"
-            android:scrollbarSize="0dp"
-            android:scrollbarStyle="outsideOverlay"
-            app:fastScrollEnabled="true"
-            android:layout_marginTop="5dp"
-            app:layout_constraintTop_toBottomOf="@+id/homeCard"
-            app:fastScrollHorizontalThumbDrawable="@drawable/scroll_thumb_drawable"
-            app:fastScrollHorizontalTrackDrawable="@drawable/scroll_line_drawable"
-            app:fastScrollVerticalThumbDrawable="@drawable/scroll_thumb_drawable"
-            app:fastScrollVerticalTrackDrawable="@drawable/scroll_line_drawable"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/no_apps"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:autoSizeTextType="uniform"
-            android:gravity="center"
-            android:maxLines="3"
-            android:paddingHorizontal="@dimen/placeholders_padding"
-            android:scrollbarSize="0dp"
-            android:text="@string/no_apps"
-            android:visibility="gone"
-            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-            android:textColor="?attr/colorOutline"
-            app:drawableTint="?attr/colorOutline"
-            app:drawableTopCompat="@drawable/ic_neutral_72dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
-
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </ScrollView>

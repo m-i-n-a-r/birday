@@ -78,12 +78,5 @@
         android:name="com.minar.birday.fragments.DNDFragment"
         android:label="fragment_dnd"
         tools:layout="@layout/fragment_d_n_d">
-        <action
-            android:id="@+id/action_navigation_dndFragment"
-            app:destination="@id/detailsFragment"
-            app:enterAnim="@anim/nav_enter_secondary_anim"
-            app:exitAnim="@anim/nav_exit_secondary_anim"
-            app:popEnterAnim="@anim/nav_pop_enter_secondary_anim"
-            app:popExitAnim="@anim/nav_pop_exit_secondary_anim" />
     </fragment>
 </navigation>

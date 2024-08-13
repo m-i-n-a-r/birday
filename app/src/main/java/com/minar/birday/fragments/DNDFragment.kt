@@ -1,56 +1,40 @@
 package com.minar.birday.fragments
 
+import android.Manifest
+import android.app.ActivityManager
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import android.telecom.TelecomManager
 import android.telephony.PhoneStateListener
 import android.telephony.TelephonyManager
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.Switch
 import android.widget.Toast
-import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.core.content.ContextCompat.getSystemService
+import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textview.MaterialTextView
 import com.minar.birday.R
-import com.minar.birday.activities.MainActivity
-import com.minar.birday.fragments.dialogs.QuickAppsBottomSheet
-import com.minar.birday.utilities.resultToEvent
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DNDFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class DNDFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class DNDFragment : BottomSheetDialogFragment() {
 
     private lateinit var notificationManager: NotificationManager
     lateinit var dndSwitch: Switch
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var isDndOn = false
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,81 +44,70 @@ class DNDFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_d_n_d, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DNDFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DNDFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        try {
 
-        dndSwitch = view.findViewById(R.id.switch_dnd)
-        val add_app_dnd: Button = view.findViewById(R.id.add_app_dnd)
-        val dnd_apps_rv: RecyclerView = view.findViewById(R.id.dnd_apps_Recycler)
-        val no_data: MaterialTextView = view.findViewById(R.id.no_apps)
+            dndSwitch = view.findViewById(R.id.switch_dnd)
+            val add_app_dnd: Button = view.findViewById(R.id.add_app_dnd)
 
-        notificationManager = requireActivity().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager =
+                requireActivity().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        add_app_dnd.setOnClickListener {
-            val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
-            startActivity(intent)
-        }
+            add_app_dnd.setOnClickListener {
+                val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
+                startActivity(intent)
+            }
 
-        if(isDndEnabled(requireContext())){
-            dndSwitch.isChecked=true
-            val telephonyManager = requireActivity().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-
-            val phoneStateListener = object : PhoneStateListener() {
-                override fun onCallStateChanged(state: Int, phoneNumber: String?) {
-                    super.onCallStateChanged(state, phoneNumber)
-                    val isDNDActive = notificationManager.currentInterruptionFilter != NotificationManager.INTERRUPTION_FILTER_ALL
-                    if (isDNDActive && state == TelephonyManager.CALL_STATE_RINGING) {
-                        // End the call
-                        endCall()
+            if (isDndEnabled(requireContext())) {
+                if (notificationManager.isNotificationPolicyAccessGranted) {
+                    if (ContextCompat.checkSelfPermission(
+                            requireContext(),
+                            Manifest.permission.ANSWER_PHONE_CALLS
+                        )
+                        != PackageManager.PERMISSION_GRANTED
+                    ) {
+                        requestPermissions(arrayOf(Manifest.permission.ANSWER_PHONE_CALLS), 2)
+                    } else {
+                        isDndOn = true
+                        dndSwitch.isChecked = true
+                        updateDndStatus()
                     }
+                }else{
+                    disableDND()
+                }
+            } else {
+                isDndOn=false
+                dndSwitch.isChecked = false
+            }
+
+            dndSwitch.setOnCheckedChangeListener { _, isChecked ->
+                // Check the current DND state and update the switch
+                dndSwitch.isChecked =
+                    notificationManager.currentInterruptionFilter == NotificationManager.INTERRUPTION_FILTER_NONE
+
+                if (isChecked) {
+                    enableDND()
+                } else {
+                    disableDND()
                 }
             }
-            telephonyManager.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE)
-        }else{
-            dndSwitch.isChecked=false
+
+            // Set up call listener
+            setUpCallListener()
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
-
-        dndSwitch.setOnCheckedChangeListener { _, isChecked ->
-            // Check the current DND state and update the switch
-            dndSwitch.isChecked = notificationManager.currentInterruptionFilter == NotificationManager.INTERRUPTION_FILTER_NONE
-
-            if (isChecked) {
-                enableDND()
-            } else {
-                disableDND()
-            }
-        }
-
-        dnd_apps_rv.visibility=View.GONE
-        no_data.visibility=View.VISIBLE
     }
 
     fun isDndEnabled(context: Context): Boolean {
-        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         return when (notificationManager.currentInterruptionFilter) {
             NotificationManager.INTERRUPTION_FILTER_NONE,
             NotificationManager.INTERRUPTION_FILTER_PRIORITY -> true
+
             else -> false
         }
     }
@@ -143,47 +116,29 @@ class DNDFragment : Fragment() {
     private fun enableDND() {
         // Check if the app has permission to modify DND settings
         if (notificationManager.isNotificationPolicyAccessGranted) {
-            dndSwitch.isChecked=true
-            notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
-
-            val telephonyManager = requireActivity().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-
-            val phoneStateListener = object : PhoneStateListener() {
-                override fun onCallStateChanged(state: Int, phoneNumber: String?) {
-                    super.onCallStateChanged(state, phoneNumber)
-                    val isDNDActive = notificationManager.currentInterruptionFilter != NotificationManager.INTERRUPTION_FILTER_ALL
-                    if (isDNDActive && state == TelephonyManager.CALL_STATE_RINGING) {
-                        // End the call
-                        endCall()
-                    }
-                }
+            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ANSWER_PHONE_CALLS)
+                != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(arrayOf(Manifest.permission.ANSWER_PHONE_CALLS), 2)
+            }else {
+                dndSwitch.isChecked = true
+                notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
+                updateDndStatus()
             }
-            telephonyManager.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE)
-
         } else {
-            Toast.makeText(requireContext(), "Kindly Grant the DND permission for this app!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                "Kindly Grant the DND permission for this app!",
+                Toast.LENGTH_SHORT
+            ).show()
             // If not, request permission from the user
             val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
             startActivityForResult(intent, 1)
         }
     }
 
-    //end call
-    fun endCall() {
-        try {
-            val telephonyService = requireActivity().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-            val endCallMethod = telephonyService.javaClass.getDeclaredMethod("endCall")
-            endCallMethod.isAccessible = true
-            endCallMethod.invoke(telephonyService)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
-
     private fun disableDND() {
         if (notificationManager.isNotificationPolicyAccessGranted) {
-            dndSwitch.isChecked=false
+            dndSwitch.isChecked = false
             notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
         }
     }
@@ -191,10 +146,82 @@ class DNDFragment : Fragment() {
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         if (requestCode == 1) {
             enableDND()
         }
     }
+
+    private fun updateDndStatus() {
+        if (isDndOn) {
+            checkRunningAppsAndRejectCalls()
+        }
+    }
+
+    private fun checkRunningAppsAndRejectCalls() {
+        val activityManager = requireActivity().getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val runningApps = activityManager.runningAppProcesses
+
+        val dndApps = listOf("com.zoom.us", "com.microsoft.teams")
+
+        for (app in runningApps) {
+            if (dndApps.contains(app.processName)) {
+                // Logic to handle call rejection
+                setUpCallListener()
+                break
+            }
+        }
+    }
+
+    private fun setUpCallListener() {
+        val telephonyManager = requireActivity().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+        telephonyManager.listen(object : PhoneStateListener() {
+            override fun onCallStateChanged(state: Int, phoneNumber: String?) {
+                super.onCallStateChanged(state, phoneNumber)
+                if (state == TelephonyManager.CALL_STATE_RINGING && isDndOn) {
+                    // Reject the call
+                    rejectCall()
+                }
+            }
+        }, PhoneStateListener.LISTEN_CALL_STATE)
+    }
+
+    private fun rejectCall() {
+        // This may require special permissions and API-level support
+        val telephonyManager = requireActivity().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+        val telecomManager = requireActivity().getSystemService(Context.TELECOM_SERVICE) as TelecomManager
+
+        val phoneStateListener = object : PhoneStateListener() {
+            @RequiresApi(Build.VERSION_CODES.P)
+            override fun onCallStateChanged(state: Int, phoneNumber: String?) {
+                if (state == TelephonyManager.CALL_STATE_RINGING) {
+                    if (ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.ANSWER_PHONE_CALLS) == PackageManager.PERMISSION_GRANTED) {
+                        telecomManager.endCall() // End the current call
+                        println("Call rejected")
+                    } else {
+                        // Handle the case where the permission is not granted
+                        println("Permission not granted for rejecting calls")
+                    }
+                }
+            }
+        }
+        telephonyManager.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == 2) {
+            if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                isDndOn = true
+                dndSwitch.isChecked = true
+                notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
+                updateDndStatus()
+            } else {
+                // Permission denied, handle the case accordingly
+                Toast.makeText(requireContext(), "Kindly Grant Permission!.", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
 
 }

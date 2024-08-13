@@ -49,6 +49,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
 import com.minar.birday.databinding.ActivityMainBinding
+import com.minar.birday.fragments.DNDFragment
 import com.minar.birday.fragments.dialogs.ImportContactsBottomSheet
 import com.minar.birday.fragments.dialogs.InsertEventBottomSheet
 import com.minar.birday.preferences.backup.BirdayImporter
@@ -220,7 +221,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.navigationDND -> {
                     backHomeCallback.isEnabled = true
-                    navController.navigateWithOptions(R.id.navigationDND)
+                    //navController.navigateWithOptions(R.id.navigationDND)
+                    val bottomSheetFragment = DNDFragment()
+                    bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
                 }
             }
             true
