@@ -221,10 +221,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.navigationDND -> {
                     backHomeCallback.isEnabled = true
-                    //navController.navigateWithOptions(R.id.navigationDND)
-                    val bottomSheetFragment = DNDFragment()
-                    bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
+                    val newBottomSheetFragment = DNDFragment()
+                    newBottomSheetFragment.show(supportFragmentManager, "DNDFragment")
                 }
+
             }
             true
         }

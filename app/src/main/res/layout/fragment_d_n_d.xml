@@ -10,16 +10,32 @@
     android:transitionGroup="true">
 
     <!-- The empty view is useful to make the layout large as the screen or more (with scrolling) -->
-    <androidx.constraintlayout.motion.widget.MotionLayout
+    <RelativeLayout
         android:id="@+id/detailsMotionLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipChildren="false"
         android:paddingHorizontal="10dp"
         tools:ignore="MotionLayoutInvalidSceneFileReference">
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/homeMiniFab"
+            style="?attr/floatingActionButtonSmallStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="@dimen/mini_fab_opacity"
+            android:contentDescription="@string/cancel"
+            android:hapticFeedbackEnabled="false"
+            android:padding="@dimen/between_row_padding"
+            app:backgroundTint="?attr/colorOnSurface"
+            app:elevation="@dimen/bottom_navbar_elevation"
+            android:layout_centerHorizontal="true"
+            app:rippleColor="?attr/colorPrimary"
+            app:srcCompat="@drawable/ic_arrow_up_24dp"
+            app:tint="?attr/colorPrimary" />
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/homeCard"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
             android:clickable="true"
@@ -105,5 +121,5 @@
         </RelativeLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
-    </androidx.constraintlayout.motion.widget.MotionLayout>
+    </RelativeLayout>
 </ScrollView>

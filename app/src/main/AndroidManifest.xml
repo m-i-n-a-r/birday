@@ -36,6 +36,10 @@
     <uses-permission android:name="android.permission.READ_CALL_LOG"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
 
 
     <application
@@ -50,7 +54,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/SplashTheme"
-        tools:ignore="UnusedAttribute">
+        tools:ignore="ForegroundServicePermission,UnusedAttribute">
 
         <!-- Main, Material 3 and complete widget -->
         <receiver
@@ -131,6 +135,12 @@
             android:name=".widgets.EventWidgetService"
             android:foregroundServiceType="dataSync"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <!--auto reject call when zoom or teams open-->
+        <service
+            android:name=".receivers.AppMonitoringService"
+            android:exported="false"
+            android:permission="android.permission.FOREGROUND_SERVICE" />
     </application>
 
 </manifest>

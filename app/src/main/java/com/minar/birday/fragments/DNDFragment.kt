@@ -1,31 +1,27 @@
 package com.minar.birday.fragments
 
 import android.Manifest
-import android.app.ActivityManager
+import android.app.AppOpsManager
+import android.app.Dialog
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
-import android.telecom.TelecomManager
-import android.telephony.PhoneStateListener
-import android.telephony.TelephonyManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Switch
 import android.widget.Toast
-import androidx.annotation.RequiresApi
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.textview.MaterialTextView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.minar.birday.R
+import com.minar.birday.activities.MainActivity
+import com.minar.birday.receivers.AppMonitoringService
 
 
 class DNDFragment : BottomSheetDialogFragment() {
@@ -33,8 +29,7 @@ class DNDFragment : BottomSheetDialogFragment() {
     private lateinit var notificationManager: NotificationManager
     lateinit var dndSwitch: Switch
 
-    private var isDndOn = false
-
+    lateinit var act: MainActivity
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,12 +39,27 @@ class DNDFragment : BottomSheetDialogFragment() {
         return inflater.inflate(R.layout.fragment_d_n_d, container, false)
     }
 
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
+        return dialog
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        // Make sure the fragment is properly dismissed to avoid memory leaks
+        dialog?.dismiss()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         try {
 
             dndSwitch = view.findViewById(R.id.switch_dnd)
             val add_app_dnd: Button = view.findViewById(R.id.add_app_dnd)
+            val homeMiniFab = view.findViewById<FloatingActionButton>(R.id.homeMiniFab)
+            // Set motion layout state, since it's saved
 
             notificationManager =
                 requireActivity().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -59,6 +69,18 @@ class DNDFragment : BottomSheetDialogFragment() {
                 startActivity(intent)
             }
 
+            act = activity as MainActivity
+
+            // Vibration on the mini fab (with manual managing of the transition)
+            homeMiniFab.setOnClickListener {
+                act.vibrate()
+                // Replace the fragment
+                dismiss()
+                val intent = Intent(requireActivity(), MainActivity::class.java)
+                startActivity(intent)
+            }
+
+            //it was automatically reject the call for all apps
             if (isDndEnabled(requireContext())) {
                 if (notificationManager.isNotificationPolicyAccessGranted) {
                     if (ContextCompat.checkSelfPermission(
@@ -69,17 +91,17 @@ class DNDFragment : BottomSheetDialogFragment() {
                     ) {
                         requestPermissions(arrayOf(Manifest.permission.ANSWER_PHONE_CALLS), 2)
                     } else {
-                        isDndOn = true
                         dndSwitch.isChecked = true
-                        updateDndStatus()
+                        startMonitoringService()
                     }
-                }else{
+                } else {
                     disableDND()
+                    stopMonitoringService()
                 }
             } else {
-                isDndOn=false
                 dndSwitch.isChecked = false
             }
+
 
             dndSwitch.setOnCheckedChangeListener { _, isChecked ->
                 // Check the current DND state and update the switch
@@ -90,15 +112,15 @@ class DNDFragment : BottomSheetDialogFragment() {
                     enableDND()
                 } else {
                     disableDND()
+                    stopMonitoringService()
                 }
             }
 
-            // Set up call listener
-            setUpCallListener()
         } catch (e: Exception) {
             e.printStackTrace()
         }
     }
+
 
     fun isDndEnabled(context: Context): Boolean {
         val notificationManager =
@@ -116,13 +138,17 @@ class DNDFragment : BottomSheetDialogFragment() {
     private fun enableDND() {
         // Check if the app has permission to modify DND settings
         if (notificationManager.isNotificationPolicyAccessGranted) {
-            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ANSWER_PHONE_CALLS)
-                != PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.ANSWER_PHONE_CALLS
+                )
+                != PackageManager.PERMISSION_GRANTED
+            ) {
                 requestPermissions(arrayOf(Manifest.permission.ANSWER_PHONE_CALLS), 2)
-            }else {
+            } else {
                 dndSwitch.isChecked = true
                 notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
-                updateDndStatus()
+                startMonitoringService()
             }
         } else {
             Toast.makeText(
@@ -148,80 +174,78 @@ class DNDFragment : BottomSheetDialogFragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1) {
             enableDND()
+        } else if (requestCode == 4) {
+            dndSwitch.isChecked = true
+            notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
+            startMonitoringService()
         }
     }
 
-    private fun updateDndStatus() {
-        if (isDndOn) {
-            checkRunningAppsAndRejectCalls()
-        }
+    private fun startMonitoringService() {
+        val intent = Intent(requireContext(), AppMonitoringService::class.java)
+        ContextCompat.startForegroundService(requireContext(), intent)
     }
 
-    private fun checkRunningAppsAndRejectCalls() {
-        val activityManager = requireActivity().getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-        val runningApps = activityManager.runningAppProcesses
-
-        val dndApps = listOf("com.zoom.us", "com.microsoft.teams")
-
-        for (app in runningApps) {
-            if (dndApps.contains(app.processName)) {
-                // Logic to handle call rejection
-                setUpCallListener()
-                break
-            }
-        }
+    private fun stopMonitoringService() {
+        val intent = Intent(requireContext(), AppMonitoringService::class.java)
+        requireContext().stopService(intent)
     }
 
-    private fun setUpCallListener() {
-        val telephonyManager = requireActivity().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-        telephonyManager.listen(object : PhoneStateListener() {
-            override fun onCallStateChanged(state: Int, phoneNumber: String?) {
-                super.onCallStateChanged(state, phoneNumber)
-                if (state == TelephonyManager.CALL_STATE_RINGING && isDndOn) {
-                    // Reject the call
-                    rejectCall()
-                }
-            }
-        }, PhoneStateListener.LISTEN_CALL_STATE)
-    }
-
-    private fun rejectCall() {
-        // This may require special permissions and API-level support
-        val telephonyManager = requireActivity().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-        val telecomManager = requireActivity().getSystemService(Context.TELECOM_SERVICE) as TelecomManager
-
-        val phoneStateListener = object : PhoneStateListener() {
-            @RequiresApi(Build.VERSION_CODES.P)
-            override fun onCallStateChanged(state: Int, phoneNumber: String?) {
-                if (state == TelephonyManager.CALL_STATE_RINGING) {
-                    if (ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.ANSWER_PHONE_CALLS) == PackageManager.PERMISSION_GRANTED) {
-                        telecomManager.endCall() // End the current call
-                        println("Call rejected")
-                    } else {
-                        // Handle the case where the permission is not granted
-                        println("Permission not granted for rejecting calls")
-                    }
-                }
-            }
-        }
-        telephonyManager.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE)
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         if (requestCode == 2) {
             if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                isDndOn = true
-                dndSwitch.isChecked = true
-                notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
-                updateDndStatus()
+                if (ContextCompat.checkSelfPermission(
+                        requireContext(),
+                        Manifest.permission.READ_PHONE_STATE
+                    )
+                    != PackageManager.PERMISSION_GRANTED
+                ) {
+                    requestPermissions(arrayOf(Manifest.permission.READ_PHONE_STATE), 3)
+                }
             } else {
                 // Permission denied, handle the case accordingly
-                Toast.makeText(requireContext(), "Kindly Grant Permission!.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Kindly Grant Permission!.", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        } else if (requestCode == 3) {
+            if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+
+                if (!hasUsageStatsPermission()) {
+                    requestUsageStatsPermission()
+                } else {
+                    dndSwitch.isChecked = true
+                    notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
+                    startMonitoringService()
+                }
+
+            } else {
+                // Permission denied, handle the case accordingly
+                Toast.makeText(requireContext(), "Kindly Grant Permission!.", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
 
+    //to detect meeting apps like zoom or teams
+    private fun hasUsageStatsPermission(): Boolean {
+        val appOpsManager =
+            requireActivity().getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
+        val mode = appOpsManager.checkOpNoThrow(
+            AppOpsManager.OPSTR_GET_USAGE_STATS,
+            android.os.Process.myUid(), requireContext().packageName
+        )
+        return mode == AppOpsManager.MODE_ALLOWED
+    }
+
+    private fun requestUsageStatsPermission() {
+        Toast.makeText(requireContext(),"Kindly Grant permission for this app!",Toast.LENGTH_SHORT).show()
+        startActivityForResult(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS), 4)
+    }
 
 }
