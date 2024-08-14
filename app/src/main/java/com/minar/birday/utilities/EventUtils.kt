@@ -22,6 +22,31 @@ const val COLUMN_DATE = "date"
 const val COLUMN_YEAR_MATTER = "yearMatter"
 const val COLUMN_NOTES = "notes"
 
+//vehicle insurance add event
+const val COLUMN_VEHICLE_MANUFACTURER_NAME = "manufacturerName"
+const val COLUMN_VEHICLE_MANUFACTURER_NAME1 = "manufacturerName1"
+const val COLUMN_VEHICLE_MANUFACTURER_NAME2 = "manufacturerName2"
+const val COLUMN_VEHICLE_MANUFACTURER_NAME3 = "manufacturerName3"
+
+const val COLUMN_VEHICLE_MODELNAME = "modelName"
+const val COLUMN_VEHICLE_MODELNAME1 = "modelName1"
+const val COLUMN_VEHICLE_MODELNAME2 = "modelName2"
+const val COLUMN_VEHICLE_MODELNAME3 = "modelName3"
+
+const val COLUMN_VEHICLE_INSURANCEPROVIDER = "insuranceProvider"
+
+//vehicle insurance renewal add event
+const val COLUMN_INPUT1 = "input1"
+const val COLUMN_INPUT2 = "input2"
+const val COLUMN_INPUT3 = "input3"
+const val COLUMN_INPUT4 = "input4"
+const val COLUMN_INPUT5 = "input5"
+const val COLUMN_INPUT6 = "input6"
+const val COLUMN_INPUT7 = "input7"
+const val COLUMN_INPUT8 = "input8"
+const val COLUMN_INPUT9 = "input9"
+const val COLUMN_INPUT10 = "input10"
+
 // Transform an event result in a simple event
 fun resultToEvent(eventResult: EventResult) = Event(
     id = eventResult.id,
@@ -32,7 +57,31 @@ fun resultToEvent(eventResult: EventResult) = Event(
     originalDate = eventResult.originalDate,
     yearMatter = eventResult.yearMatter,
     notes = eventResult.notes,
-    image = eventResult.image
+    image = eventResult.image,
+    //vehicle insurance add event
+    manufacturerName = eventResult.manufacturerName!!,
+    manufacturerName1 = eventResult.manufacturerName1!!,
+    manufacturerName2 = eventResult.manufacturerName2!!,
+    manufacturerName3 = eventResult.manufacturerName3!!,
+
+    modelName = eventResult.modelName!!,
+    modelName1 = eventResult.modelName1!!,
+    modelName2 = eventResult.modelName2!!,
+    modelName3 = eventResult.modelName3!!,
+
+    //vehicle insurance renewal add event
+    input1 = eventResult.input1!!,
+    input2 = eventResult.input2!!,
+    input3 = eventResult.input3!!,
+    input4 = eventResult.input4!!,
+    input5 = eventResult.input5!!,
+    input6 = eventResult.input6!!,
+    input7 = eventResult.input7!!,
+    input8 = eventResult.input8!!,
+    input9 = eventResult.input9!!,
+    input10 = eventResult.input10!!,
+
+    insuranceProvider = eventResult.insuranceProvider!!
 )
 
 // Destroy any illegal character and length in the fields, add missing fields if possible
@@ -51,6 +100,30 @@ fun normalizeEvent(event: Event): Event {
         notes = event.notes?.substring(IntRange(0, 500.coerceAtMost(event.notes.length) - 1)),
         originalDate = event.originalDate,
         yearMatter = event.yearMatter,
+        //vehicle insurance add event
+        manufacturerName = event.manufacturerName?.substring(IntRange(0, 30.coerceAtMost(event.manufacturerName.length) - 1)),
+        manufacturerName1 = event.manufacturerName1?.substring(IntRange(0, 30.coerceAtMost(event.manufacturerName1.length) - 1)),
+        manufacturerName2 = event.manufacturerName2?.substring(IntRange(0, 30.coerceAtMost(event.manufacturerName2.length) - 1)),
+        manufacturerName3 = event.manufacturerName3?.substring(IntRange(0, 30.coerceAtMost(event.manufacturerName3.length) - 1)),
+
+        modelName = event.modelName?.substring(IntRange(0, 30.coerceAtMost(event.modelName.length) - 1)),
+        modelName1 = event.modelName1?.substring(IntRange(0, 30.coerceAtMost(event.modelName1.length) - 1)),
+        modelName2 = event.modelName2?.substring(IntRange(0, 30.coerceAtMost(event.modelName2.length) - 1)),
+        modelName3 = event.modelName3?.substring(IntRange(0, 30.coerceAtMost(event.modelName3.length) - 1)),
+
+        insuranceProvider = event.insuranceProvider?.substring(IntRange(0, 30.coerceAtMost(event.insuranceProvider.length) - 1)),
+        //vehicle insurance renewal add event
+        input1 = event.input1.substring(IntRange(0, 30.coerceAtMost(event.input1.length) - 1)),
+        input2 = event.input2.substring(IntRange(0, 30.coerceAtMost(event.input2.length) - 1)),
+        input3 = event.input3.substring(IntRange(0, 30.coerceAtMost(event.input3.length) - 1)),
+        input4 = event.input4.substring(IntRange(0, 30.coerceAtMost(event.input4.length) - 1)),
+        input5 = event.input5.substring(IntRange(0, 30.coerceAtMost(event.input5.length) - 1)),
+        input6 = event.input6.substring(IntRange(0, 30.coerceAtMost(event.input6.length) - 1)),
+        input7 = event.input7.substring(IntRange(0, 30.coerceAtMost(event.input7.length) - 1)),
+        input8 = event.input8.substring(IntRange(0, 30.coerceAtMost(event.input8.length) - 1)),
+        input9 = event.input9.substring(IntRange(0, 30.coerceAtMost(event.input9.length) - 1)),
+        input10 = event.input10.substring(IntRange(0, 30.coerceAtMost(event.input10.length) - 1)),
+
         type = fixedType
     )
 }
@@ -70,6 +143,10 @@ fun isDeathAnniversary(event: EventResult): Boolean =
 // Check if an event is a name day
 fun isNameDay(event: EventResult): Boolean =
     event.type == EventCode.NAME_DAY.name
+
+// Check if an event is a vehicle insurance
+fun isVehicleInsurance(event: EventResult): Boolean =
+    event.type == EventCode.VEHICLE_INSURANCE.name
 
 // Check if an event is "other"
 fun isOther(event: EventResult): Boolean =
@@ -222,6 +299,8 @@ fun getAvailableTypes(context: Context): List<EventType> {
         EventType(EventCode.ANNIVERSARY, context.getString(R.string.anniversary)),
         EventType(EventCode.DEATH, context.getString(R.string.death_anniversary)),
         EventType(EventCode.NAME_DAY, context.getString(R.string.name_day)),
+        EventType(EventCode.VEHICLE_INSURANCE, context.getString(R.string.vehicle_insurance)),
+        EventType(EventCode.VEHICLE_INSURANCE_RENEWAL, context.getString(R.string.vehicle_insurance_renewal)),
         EventType(EventCode.OTHER, context.getString(R.string.other)),
     )
 }
@@ -234,9 +313,12 @@ fun getStringForTypeCodename(context: Context, codename: String): String {
             EventCode.ANNIVERSARY -> context.getString(R.string.anniversary)
             EventCode.DEATH -> context.getString(R.string.death_anniversary)
             EventCode.NAME_DAY -> context.getString(R.string.name_day)
+            EventCode.VEHICLE_INSURANCE -> context.getString(R.string.vehicle_insurance)
+            EventCode.VEHICLE_INSURANCE_RENEWAL -> context.getString(R.string.vehicle_insurance_renewal)
             EventCode.OTHER -> context.getString(R.string.other)
         }
     } catch (e: Exception) {
         context.getString(R.string.unknown)
     }
 }
+

@@ -49,6 +49,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
 import com.minar.birday.databinding.ActivityMainBinding
+import com.minar.birday.fragments.DNDFragment
 import com.minar.birday.fragments.dialogs.ImportContactsBottomSheet
 import com.minar.birday.fragments.dialogs.InsertEventBottomSheet
 import com.minar.birday.preferences.backup.BirdayImporter
@@ -80,7 +81,8 @@ class MainActivity : AppCompatActivity() {
     private val navController: NavController
         get() {
             val navHostFragment = supportFragmentManager
-                .findFragmentById(R.id.navHostFragment) as NavHostFragment
+                .findFragmentById(R
+                    .id.navHostFragment) as NavHostFragment
             return navHostFragment.navController
         }
 
@@ -217,6 +219,12 @@ class MainActivity : AppCompatActivity() {
                     backHomeCallback.isEnabled = true
                     navController.navigateWithOptions(R.id.navigationSettings)
                 }
+                R.id.navigationDND -> {
+                    backHomeCallback.isEnabled = true
+                    val newBottomSheetFragment = DNDFragment()
+                    newBottomSheetFragment.show(supportFragmentManager, "DNDFragment")
+                }
+
             }
             true
         }

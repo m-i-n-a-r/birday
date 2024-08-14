@@ -314,7 +314,30 @@ class FavoritesFragment : Fragment() {
                     surname = event.surname,
                     favorite = event.favorite,
                     notes = note,
-                    image = event.image
+                    image = event.image,
+                    //vehicle insurance add event
+                    manufacturerName = event.manufacturerName!!,
+                    manufacturerName1 = event.manufacturerName1!!,
+                    manufacturerName2 = event.manufacturerName2!!,
+                    manufacturerName3 = event.manufacturerName3!!,
+
+                    modelName = event.modelName!!,
+                    modelName1 = event.modelName1!!,
+                    modelName2 = event.modelName2!!,
+                    modelName3 = event.modelName3!!,
+                    insuranceProvider = event.insuranceProvider!!,
+
+                    //vehicle insurance renewal add event
+                    input1 = event.input1!!,
+                    input2 = event.input2!!,
+                    input3 = event.input3!!,
+                    input4 = event.input4!!,
+                    input5 = event.input5!!,
+                    input6 = event.input6!!,
+                    input7 = event.input7!!,
+                    input8 = event.input8!!,
+                    input9 = event.input9!!,
+                    input10 = event.input10!!
                 )
                 mainViewModel.update(tuple)
                 dialog.dismiss()

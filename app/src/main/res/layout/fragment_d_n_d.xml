@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fadingEdgeLength="@dimen/linear_vertical_margin"
+    android:fillViewport="true"
+    android:requiresFadingEdge="vertical"
+    android:transitionGroup="true">
+
+    <!-- The empty view is useful to make the layout large as the screen or more (with scrolling) -->
+    <RelativeLayout
+        android:id="@+id/detailsMotionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:paddingHorizontal="10dp"
+        tools:ignore="MotionLayoutInvalidSceneFileReference">
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/homeMiniFab"
+            style="?attr/floatingActionButtonSmallStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="@dimen/mini_fab_opacity"
+            android:contentDescription="@string/cancel"
+            android:hapticFeedbackEnabled="false"
+            android:padding="@dimen/between_row_padding"
+            app:backgroundTint="?attr/colorOnSurface"
+            app:elevation="@dimen/bottom_navbar_elevation"
+            android:layout_centerHorizontal="true"
+            app:rippleColor="?attr/colorPrimary"
+            app:srcCompat="@drawable/ic_arrow_up_24dp"
+            app:tint="?attr/colorPrimary" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/homeCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="@dimen/rounded_corners"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rippleColor="?attr/colorSecondary"
+            app:strokeColor="?attr/colorOutline"
+            app:strokeWidth="@dimen/card_stroke">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="13dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="0dp"
+            android:weightSum="3"
+            tools:ignore="MissingConstraints">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/event_details"
+                app:srcCompat="@drawable/ic_dnd_24" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/detailsEventName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_weight="2.7"
+                android:text="@string/dnd_title"
+                android:layout_marginLeft="20dp"
+                android:textAlignment="textStart"
+                android:layout_gravity="start|center"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                android:textStyle="bold"
+                />
+            <Switch
+                android:id="@+id/switch_dnd"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center|end"
+                android:layout_marginLeft="10dp"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            >
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start|center"
+                android:padding="@dimen/in_row_padding"
+                android:text="@string/allowed_apps"
+                android:textAlignment="textStart"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"/>
+
+            <Button
+                android:id="@+id/add_app_dnd"
+                style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:text="@string/add_new_app"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_alignParentRight="true"
+                android:textColor="?attr/colorPrimary"
+                app:rippleColor="?attr/colorPrimary" />
+        </RelativeLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </RelativeLayout>
+</ScrollView>

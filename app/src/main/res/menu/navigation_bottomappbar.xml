@@ -19,17 +19,14 @@
         android:icon="@drawable/nav_animation_settings"
         android:title="@string/title_settings"
         app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/navigationDND"
+        android:icon="@drawable/ic_dnd_24"
+        android:title="@string/title_dnd"
+        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/actionEmpty1"
-        android:title=""
-        android:checkable="false"
-        android:checked="false"
-        app:showAsAction="always"
-        android:enabled="false"/>
-
-    <item
-        android:id="@+id/actionEmpty2"
         android:title=""
         android:checkable="false"
         android:checked="false"
