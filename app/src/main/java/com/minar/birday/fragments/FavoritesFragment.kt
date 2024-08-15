@@ -133,6 +133,10 @@ class FavoritesFragment : Fragment() {
                     adapter.submitList(events)
                     recycler.itemAnimator = BirdayRecyclerAnimator()
                 }
+                if (events.isNullOrEmpty()) {
+                    adapter.submitList(emptyList())
+                    restorePlaceholder()
+                }
             }
         }
 
@@ -344,6 +348,12 @@ class FavoritesFragment : Fragment() {
     private fun removePlaceholder() {
         val placeholder = binding.noFavorites
         placeholder.visibility = View.GONE
+    }
+
+    // Restore the placeholder
+    private fun restorePlaceholder() {
+        val placeholder = binding.noFavorites
+        placeholder.visibility = View.VISIBLE
     }
 
     // Show a bottom sheet containing the stats
