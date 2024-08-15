@@ -1,9 +1,15 @@
 package com.minar.birday.utilities
 
+import android.content.ContentResolver
+import android.content.ContentUris
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
+import android.net.Uri
 import android.provider.CalendarContract
+import android.util.Log
 import com.minar.birday.R
+import java.time.LocalDate
 import java.util.TimeZone
 import java.util.concurrent.TimeUnit
 
@@ -80,6 +86,7 @@ fun addEvent(
     description: String? = "",
     startTime: Long
 ): Long {
+    Log.d("export", "Exporting to calendar: $title with start time $startTime")
     val values = ContentValues().apply {
         put(CalendarContract.Events.DTSTART, startTime)
         put(CalendarContract.Events.DTEND, startTime + TimeUnit.DAYS.toMillis(1))
@@ -91,9 +98,54 @@ fun addEvent(
         put(CalendarContract.Events.ALL_DAY, 1)
         put(CalendarContract.Events.RRULE, "FREQ=YEARLY") // Yearly, of course
     }
+    // Stop if the event already exists
+    if (isEventDuplicate(context, title, startTime)) {
+        Log.d("export", "Duplicate found in calendar: $title")
+        return -1
+    }
 
+    // Else insert it and return its ID
     val uri = context.contentResolver.insert(CalendarContract.Events.CONTENT_URI, values)
     return uri?.lastPathSegment?.toLong() ?: -1
+}
+
+// Check if an event is already in the calendar by name and date. Naive, but whatever
+fun isEventDuplicate(
+    context: Context,
+    title: String,
+    eventStartTime: Long
+): Boolean {
+    val resolver: ContentResolver = context.contentResolver
+    val uri: Uri = CalendarContract.Events.CONTENT_URI
+    val selection =
+        "((${CalendarContract.Events.TITLE} = ?))"
+    val selectionArgs = arrayOf(title)
+
+    val cursor: Cursor? = resolver.query(uri, null, selection, selectionArgs, null)
+    return cursor?.use { it.count > 0 } ?: false
+}
+
+// Fucking nuke the local calendar and send it directly to hell
+fun deleteLocalCalendar(context: Context, calendarName: String) {
+    val cr: ContentResolver = context.contentResolver
+    val uri: Uri = CalendarContract.Calendars.CONTENT_URI
+    val selection = "${CalendarContract.Calendars.CALENDAR_DISPLAY_NAME} = ?"
+    val selectionArgs = arrayOf(calendarName)
+
+    // Obtain the calendar ID
+    val cursor = cr.query(uri, arrayOf(CalendarContract.Calendars._ID), selection, selectionArgs, null)
+    cursor?.use {
+        if (it.moveToFirst()) {
+            val calendarId = it.getLong(0)
+            val deleteUri = ContentUris.withAppendedId(uri, calendarId)
+            val rowsDeleted = cr.delete(deleteUri, null, null)
+            if (rowsDeleted > 0) {
+                Log.d("calendar","Calendar nuked, get rekt")
+            } else {
+                Log.d("calendar", "Can't find the local calendar")
+            }
+        }
+    }
 }
 
 // Add a reminder for an event, probably unused, but could have sense in certain cases

@@ -10,19 +10,22 @@ import com.minar.birday.activities.MainActivity
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.addEvent
 import com.minar.birday.utilities.createOrGetCalendar
+import com.minar.birday.utilities.deleteLocalCalendar
 import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getStringForTypeCodename
 import java.time.ZoneId
+import java.time.ZoneOffset
 import kotlin.concurrent.thread
 
 
 class CalendarExporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
-    View.OnClickListener {
+    View.OnClickListener, View.OnLongClickListener {
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
         val v = holder.itemView
         v.setOnClickListener(this)
+        v.setOnLongClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -88,7 +91,9 @@ class CalendarExporter(context: Context, attrs: AttributeSet?) : Preference(cont
         try {
             // Always first name first, to simplify a bit, plus the event type
             for (event in events) {
-                val eventName = formatName(event, false) + "- ${
+                val startDate =
+                    event.originalDate.atStartOfDay().toInstant(ZoneOffset.UTC).toEpochMilli()
+                val eventName = formatName(event, false) + " - ${
                     getStringForTypeCodename(
                         context,
                         event.type!!
@@ -99,8 +104,7 @@ class CalendarExporter(context: Context, attrs: AttributeSet?) : Preference(cont
                     calendarId,
                     eventName,
                     event.notes,
-                    event.originalDate.atStartOfDay(ZoneId.systemDefault()).toInstant()
-                        .toEpochMilli()
+                    startDate
                 )
             }
             return true
@@ -108,5 +112,14 @@ class CalendarExporter(context: Context, attrs: AttributeSet?) : Preference(cont
             e.printStackTrace()
             return false
         }
+    }
+
+    // Delete the local calendar on long click
+    override fun onLongClick(p0: View?): Boolean {
+        val act = context as MainActivity
+        act.vibrate()
+        deleteLocalCalendar(context, context.getString(R.string.events_notification_channel))
+        act.showSnackbar(context.getString(R.string.deleted))
+        return true
     }
 }
