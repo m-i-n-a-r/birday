@@ -63,26 +63,48 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
         // Set the base theme and the accent
         when (theme) {
             "system" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-            "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            "dark", "black" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
-        when (accent) {
-            "monet" -> setTheme(R.style.AppTheme_Monet)
-            "system" -> setTheme(R.style.AppTheme_System)
-            "brown" -> setTheme(R.style.AppTheme_Brown)
-            "blue" -> setTheme(R.style.AppTheme_Blue)
-            "green" -> setTheme(R.style.AppTheme_Green)
-            "orange" -> setTheme(R.style.AppTheme_Orange)
-            "yellow" -> setTheme(R.style.AppTheme_Yellow)
-            "teal" -> setTheme(R.style.AppTheme_Teal)
-            "violet" -> setTheme(R.style.AppTheme_Violet)
-            "pink" -> setTheme(R.style.AppTheme_Pink)
-            "lightBlue" -> setTheme(R.style.AppTheme_LightBlue)
-            "red" -> setTheme(R.style.AppTheme_Red)
-            "lime" -> setTheme(R.style.AppTheme_Lime)
-            "crimson" -> setTheme(R.style.AppTheme_Crimson)
-            else -> setTheme(R.style.AppTheme) // Default (aqua)
-        }
+
+        // Set an amoled theme or a normal theme depending on amoled mode
+        if (theme == "black") {
+            setTheme(R.style.AppTheme)
+            when (accent) {
+                "monet" -> setTheme(R.style.AppTheme_Monet_PerfectDark)
+                "system" -> setTheme(R.style.AppTheme_System_PerfectDark)
+                "brown" -> setTheme(R.style.AppTheme_Brown_PerfectDark)
+                "blue" -> setTheme(R.style.AppTheme_Blue_PerfectDark)
+                "green" -> setTheme(R.style.AppTheme_Green_PerfectDark)
+                "orange" -> setTheme(R.style.AppTheme_Orange_PerfectDark)
+                "yellow" -> setTheme(R.style.AppTheme_Yellow_PerfectDark)
+                "teal" -> setTheme(R.style.AppTheme_Teal_PerfectDark)
+                "violet" -> setTheme(R.style.AppTheme_Violet_PerfectDark)
+                "pink" -> setTheme(R.style.AppTheme_Pink_PerfectDark)
+                "lightBlue" -> setTheme(R.style.AppTheme_LightBlue_PerfectDark)
+                "red" -> setTheme(R.style.AppTheme_Red_PerfectDark)
+                "lime" -> setTheme(R.style.AppTheme_Lime_PerfectDark)
+                "crimson" -> setTheme(R.style.AppTheme_Crimson_PerfectDark)
+                else -> setTheme(R.style.AppTheme_PerfectDark)
+            }
+        } else
+            when (accent) {
+                "monet" -> setTheme(R.style.AppTheme_Monet)
+                "system" -> setTheme(R.style.AppTheme_System)
+                "brown" -> setTheme(R.style.AppTheme_Brown)
+                "blue" -> setTheme(R.style.AppTheme_Blue)
+                "green" -> setTheme(R.style.AppTheme_Green)
+                "orange" -> setTheme(R.style.AppTheme_Orange)
+                "yellow" -> setTheme(R.style.AppTheme_Yellow)
+                "teal" -> setTheme(R.style.AppTheme_Teal)
+                "violet" -> setTheme(R.style.AppTheme_Violet)
+                "pink" -> setTheme(R.style.AppTheme_Pink)
+                "lightBlue" -> setTheme(R.style.AppTheme_LightBlue)
+                "red" -> setTheme(R.style.AppTheme_Red)
+                "lime" -> setTheme(R.style.AppTheme_Lime)
+                "crimson" -> setTheme(R.style.AppTheme_Crimson)
+                else -> setTheme(R.style.AppTheme) // Default (aqua)
+            }
 
         // Initialize the binding
         binding = ActivityMinimalWidgetConfigurationBinding.inflate(layoutInflater)
@@ -96,6 +118,7 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
         val compact = binding.configurationCompactSwitch
         val alignStart = binding.configurationAlignStartSwitch
         val hideIfFar = binding.configurationHideIfFarSwitch
+        val onlyFavorites = binding.configurationShowOnlyFavoritesSwitch
         val showFollowing = binding.configurationShowFollowingSwitch
 
         // Restore the state of the saved configuration
@@ -104,6 +127,7 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
         val compactValue = sharedPrefs.getBoolean("widget_minimal_compact", false)
         val alignStartValue = sharedPrefs.getBoolean("widget_minimal_align_start", false)
         val hideIfFarValue = sharedPrefs.getBoolean("widget_minimal_hide_if_far", false)
+        val onlyFavoritesValue = sharedPrefs.getBoolean("widget_minimal_only_favorites", false)
         val showFollowingValue = sharedPrefs.getBoolean("widget_minimal_show_following", false)
 
         darkText.isChecked = darkTextValue
@@ -111,6 +135,7 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
         compact.isChecked = compactValue
         alignStart.isChecked = alignStartValue
         hideIfFar.isChecked = hideIfFarValue
+        onlyFavorites.isChecked = onlyFavoritesValue
         showFollowing.isChecked = showFollowingValue
 
         // Animate the title image
@@ -300,6 +325,7 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
             editor.putBoolean("widget_minimal_compact", compact.isChecked)
             editor.putBoolean("widget_minimal_align_start", alignStart.isChecked)
             editor.putBoolean("widget_minimal_hide_if_far", hideIfFar.isChecked)
+            editor.putBoolean("widget_minimal_only_favorites", onlyFavorites.isChecked)
             editor.putBoolean("widget_minimal_show_following", showFollowing.isChecked)
             editor.apply()
 
@@ -367,12 +393,20 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
 
                 // Remove events in the future today (eg: now is december 1st 2023, an event has original date = december 1st 2050)
                 var filteredNextEvents =
-                    removeOrGetUpcomingEvents(orderedEvents, true).toMutableList()
+                    removeOrGetUpcomingEvents(
+                        orderedEvents,
+                        true,
+                        onlyFavorites = onlyFavorites.isChecked
+                    ).toMutableList()
                 filteredNextEvents.removeIf { getNextYears(it) == 0 }
                 // If the events are all in the future, display them
                 if (filteredNextEvents.isEmpty()) {
                     filteredNextEvents =
-                        removeOrGetUpcomingEvents(orderedEvents, true).toMutableList()
+                        removeOrGetUpcomingEvents(
+                            orderedEvents,
+                            true,
+                            onlyFavorites = onlyFavorites.isChecked
+                        ).toMutableList()
                 }
 
                 // Make sure to show if there's more than one event
@@ -390,9 +424,17 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
                 // Show the following event if show following is enabled
                 if (showFollowing.isChecked) {
                     var filteredUpcomingEvents =
-                        removeOrGetUpcomingEvents(orderedEvents, false).toMutableList()
+                        removeOrGetUpcomingEvents(
+                            orderedEvents,
+                            false,
+                            onlyFavorites = onlyFavorites.isChecked
+                        ).toMutableList()
                     filteredUpcomingEvents =
-                        removeOrGetUpcomingEvents(filteredUpcomingEvents, true).toMutableList()
+                        removeOrGetUpcomingEvents(
+                            filteredUpcomingEvents,
+                            true,
+                            onlyFavorites = onlyFavorites.isChecked
+                        ).toMutableList()
                     val widgetUpcomingExpanded =
                         "$widgetUpcoming \n${getString(R.string.next_event)} → ${
                             formatEventList(

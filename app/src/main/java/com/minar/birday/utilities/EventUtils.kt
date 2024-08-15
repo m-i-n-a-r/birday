@@ -112,16 +112,19 @@ fun formatDaysRemaining(daysRemaining: Int, context: Context): String {
 // Given an ordered series of events, remove the upcoming events or return them
 fun removeOrGetUpcomingEvents(
     events: List<EventResult>,
-    returnUpcoming: Boolean = false
+    returnUpcoming: Boolean = false,
+    onlyFavorites: Boolean = false
 ): List<EventResult> {
     val upcomingResult: MutableList<EventResult> = events.toMutableList()
+    if (onlyFavorites)
+        upcomingResult.removeIf { it.favorite == false }
     if (returnUpcoming) {
         upcomingResult.removeIf {
-            it.nextDate!! != events[0].nextDate
+            it.nextDate!! != upcomingResult[0].nextDate
         }
     } else {
         upcomingResult.removeIf {
-            it.nextDate!! == events[0].nextDate
+            it.nextDate!! == upcomingResult[0].nextDate
         }
     }
     return upcomingResult
