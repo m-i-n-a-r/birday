@@ -9,7 +9,6 @@ import android.net.Uri
 import android.provider.CalendarContract
 import android.util.Log
 import com.minar.birday.R
-import java.time.LocalDate
 import java.util.TimeZone
 import java.util.concurrent.TimeUnit
 
@@ -99,7 +98,7 @@ fun addEvent(
         put(CalendarContract.Events.RRULE, "FREQ=YEARLY") // Yearly, of course
     }
     // Stop if the event already exists
-    if (isEventDuplicate(context, title, startTime)) {
+    if (isEventDuplicate(context, title)) {
         Log.d("export", "Duplicate found in calendar: $title")
         return -1
     }
@@ -112,8 +111,7 @@ fun addEvent(
 // Check if an event is already in the calendar by name and date. Naive, but whatever
 fun isEventDuplicate(
     context: Context,
-    title: String,
-    eventStartTime: Long
+    title: String
 ): Boolean {
     val resolver: ContentResolver = context.contentResolver
     val uri: Uri = CalendarContract.Events.CONTENT_URI

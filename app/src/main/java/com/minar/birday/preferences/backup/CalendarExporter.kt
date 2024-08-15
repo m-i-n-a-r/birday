@@ -13,7 +13,6 @@ import com.minar.birday.utilities.createOrGetCalendar
 import com.minar.birday.utilities.deleteLocalCalendar
 import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getStringForTypeCodename
-import java.time.ZoneId
 import java.time.ZoneOffset
 import kotlin.concurrent.thread
 
