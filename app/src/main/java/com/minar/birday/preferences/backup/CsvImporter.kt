@@ -82,7 +82,7 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
             // We have a mapping and we can add events securely
             else {
                 for (i in 1 until csvList.size) {
-                    val rowValues = csvList[i].lowercase().split(separator)
+                    val rowValues = csvList[i].split(separator)
                     // Detect if the type is valid first
                     val rowItem = rowValues.getOrNull(columnsMapping.getOrDefault(COLUMN_TYPE, -1))
                         ?.uppercase()
@@ -144,28 +144,32 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
         val rowMapping = mutableMapOf<String, Int>()
         // Search each field: name and date (mandatory), type, surname, yearMatter, notes
         rowValues.forEach {
+            val column = it.trim()
             // Each field of the mapping can be assigned once
-            if (it.contains("date") && rowMapping[COLUMN_DATE] == null) {
+            if (column.contains("date") && rowMapping[COLUMN_DATE] == null) {
                 rowMapping[COLUMN_DATE] = rowValues.indexOf(it)
                 return@forEach
             }
-            if (it == "name" || it.contains("first") && rowMapping[COLUMN_NAME] == null) {
+            if (column == "name" || (column.contains("name") &&
+                        column.contains("first")) &&
+                rowMapping[COLUMN_NAME] == null
+            ) {
                 rowMapping[COLUMN_NAME] = rowValues.indexOf(it)
                 return@forEach
             }
-            if ((it.contains("surname") || it.contains("last")) && rowMapping[COLUMN_SURNAME] == null) {
+            if ((column == ("surname") || column.contains("last")) && rowMapping[COLUMN_SURNAME] == null) {
                 rowMapping[COLUMN_SURNAME] = rowValues.indexOf(it)
                 return@forEach
             }
-            if (it.contains("note") && rowMapping[COLUMN_NOTES] == null) {
+            if (column.contains("note") && rowMapping[COLUMN_NOTES] == null) {
                 rowMapping[COLUMN_NOTES] = rowValues.indexOf(it)
                 return@forEach
             }
-            if (it.contains("type") && rowMapping[COLUMN_TYPE] == null) {
+            if (column.contains("type") && rowMapping[COLUMN_TYPE] == null) {
                 rowMapping[COLUMN_TYPE] = rowValues.indexOf(it)
                 return@forEach
             }
-            if (it.contains("year") && rowMapping[COLUMN_YEAR_MATTER] == null) {
+            if (column.contains("year") && rowMapping[COLUMN_YEAR_MATTER] == null) {
                 rowMapping[COLUMN_YEAR_MATTER] = rowValues.indexOf(it)
                 return@forEach
             }
