@@ -11,7 +11,7 @@
     <string name="title_favorites">Favoriten</string>
     <string name="title_settings">Einstellungen</string>
     <string name="no_events">Keine Ereignisse! Starte mit dem Hinzufügen mit der Schaltfläche unten!</string>
-    <string name="no_favorites">Keine Favoriten! Drücke auf den Stern, um eine Veranstaltung in deinen Favoriten zu speichern!</string>
+    <string name="no_favorites">Keine Favoriten! Drücke auf den Stern, um ein Ereignis in deinen Favoriten zu speichern!</string>
     <string name="add_favorite">Zu Favoriten hinzufügen</string>
     <string name="stats">Statistik</string>
     <string name="no_stats">Keine Statistiken zu zeigen!</string>
@@ -27,7 +27,7 @@
     <string name="next_age_years">Jahre</string>
     <string name="event_others">und andere</string>
     <plurals name="days_left">
-        <item quantity="one">%d verbleibende Tag</item>
+        <item quantity="one">%d verbleibender Tag</item>
         <item quantity="other">%d verbleibende Tage</item>
     </plurals>
     <!-- Settings -->
@@ -43,9 +43,9 @@
     <string name="five_days_before">Fünf Tage vorher</string>
     <string name="six_days_before">Sechs Tage vorher</string>
     <string name="seven_days_before">Sieben Tage vorher</string>
-    <string name="ten_days_before">Vor zehn Tagen</string>
-    <string name="fourteen_days_before">Vor vierzehn Tagen</string>
-    <string name="twentyone_days_before">Vor einundzwanzig Tagen</string>
+    <string name="ten_days_before">Zehn Tage vorher</string>
+    <string name="fourteen_days_before">Vierzehn Tage vorher</string>
+    <string name="twentyone_days_before">Einundzwanzig Tage vorher</string>
     <string name="vibration_name">Vibration</string>
     <string name="vibration_description_on">Vibriere bei Tastendruck</string>
     <string name="vibration_description_off">Keine Vibration bei Tastendruck</string>
@@ -74,15 +74,15 @@
     <string name="dark_theme">Dunkel</string>
     <string name="light_theme">Hell</string>
     <string name="shimmer_name">Schimmereffekt</string>
-    <string name="shimmer_description_on">Eine glänzende Animation hier und da in der App</string>
+    <string name="shimmer_description_on">Eine glänzende Animation hier und da</string>
     <string name="shimmer_description_off">Keine zusätzlichen graphischen Effekte</string>
     <string name="import_export">Import und Export</string>
-    <string name="import_contacts_title">Importiere Ereignisse von Kontakte</string>
+    <string name="import_contacts_title">Importiere Ereignisse aus Kontakten</string>
     <string name="import_contacts_description">Achte darauf, die Ereignisse mit fehlendem Jahr zu ändern, um immer genaue Statistiken zu haben!</string>
     <string name="import_success">Import erfolgreich abgeschlossen!</string>
     <string name="import_nothing_found">Keine Ereignisse gefunden!</string>
     <string name="import_failed">Etwas ist schief gelaufen!</string>
-    <string name="missing_permission_contacts">Die Kontakterlaubnis wurde verweigert. Versuche es noch einmal oder aktiviere die Berechtigung manuell, sonst funktioniert der Import der Kontakte nicht!</string>
+    <string name="missing_permission_contacts">Die Kontaktberechtigung wurde verweigert. Versuche es noch einmal oder aktiviere die Berechtigung manuell, sonst funktioniert der Import der Kontakte nicht!</string>
     <string name="missing_permission_contacts_forever">Birday konnte deine Kontakte weder importieren noch um Berechtigung fragen, da \"nie wieder fragen\" angekreuzt wurde. Du musst es manuell aktivieren!</string>
     <string name="birday_import_title">Importiere ein Birday Backup</string>
     <string name="birday_import_description">Wähle ein gültiges Birday Backup, um deine Ereignisse manuell wiederherzustellen. Alle vorhandenen Daten werden dabei überschrieben!</string>
@@ -104,7 +104,7 @@
     <string name="notification_only_favorites_description_on">Sendet Benachrichtigungen nur für favorisierte Ereignisse</string>
     <string name="notification_only_favorites_description_off">Sendet eine Benachrichtigung für jedes eingegebene Ereignis</string>
     <string name="additional_notification_only_favorites">Zusätzliche Benachrichtigung für Favoriten</string>
-    <string name="additional_notification_only_favorites_description_on">Sende die zusätzliche Benachrichtigung nur für Lieblingsereignisse</string>
+    <string name="additional_notification_only_favorites_description_on">Sende die zusätzliche Benachrichtigung nur für favorisierte Ereignisse</string>
     <string name="additional_notification_only_favorites_description_off">Sende die zusätzliche Benachrichtigung für jedes eingefügte Ereignis</string>
     <string name="troubleshoot">Fehlerbehebung</string>
     <string name="battery_optimization_title">Batterieoptimierung deaktivieren</string>
@@ -116,7 +116,7 @@
     <string name="missing_permission_notifications_forever">Die Benachrichtigungs-Berechtigung wurde verweigert und kann nicht erneut erfragt werden, daher kann Birday keine Benachrichtigungen senden! Aktiviere die Berechtigung manuell in den Einstellungen.</string>
     <string name="missing_permission_calendar">Die Kalender-Berechtigung wurde verweigert und kann nicht erneut erfragt werden, daher kann Birday nicht aus dem Kalender importieren! Aktiviere die Berechtigung manuell in den Einstellungen.</string>
     <string name="missing_permission_calendar_forever">Die Kalender-Berechtigung wurde verweigert und kann nicht erneut erfragt werden, daher kann Birday nicht aus dem Kalender importieren! Aktiviere die Berechtigung manuell in den Einstellungen.</string>
-    <string name="import_calendar_title">Vom Kalender importieren</string>
+    <string name="import_calendar_title">Aus Kalender importieren</string>
     <string name="import_calendar_description">Importiere jedes jährliche Ereignis aus deinem Kalender. Denke daran, den Ereignistyp und das Jahr festzulegen, um Ordnung zu halten!</string>
     <string name="loop_avd_title">Endlose Animationen</string>
     <string name="loop_avd_description_on">Die Animationen werden unendlich wiederholt</string>
@@ -129,7 +129,7 @@
     <string name="grouped_notifications_description_off">Wenn es zwei oder mehr Ereignisse an einem einzigen Tag gibt, wird Birday für jedes eine Benachrichtigung senden</string>
     <!-- Developer -->
     <string name="dev_description">Ich bin ein netter Mensch und ich mag schöne Dinge wie Animationen, Icons, Sportwagen und 3D-Druck. Ich arbeite als Designer und Computeringenieur.</string>
-    <string name="easter_egg">Schönes logo, hm? ;D</string>
+    <string name="easter_egg">Schönes Logo, hm? ;D</string>
     <!-- New event -->
     <string name="new_event">Neues Ereignis</string>
     <string name="new_event_description">Gib eine Person ein, die dir wichtig ist und Birday wird dir helfen, dich an ihren Geburtstag oder andere Ereignisse zu erinnern!</string>
@@ -169,6 +169,7 @@
     <string name="wishes_birthday">Alles Gute zum Geburtstag!</string>
     <string name="no_default_dialer">Keine Standard-Telefon-App gefunden!</string>
     <string name="no_default_sms">Keine Standard SMS App gefunden!</string>
+    <string name="might_have_missed">Du könntest verpasst haben:</string>
     <!-- Statistics -->
     <string name="did_you_know">Wusstest du das?</string>
     <string name="age_average">Das Durchschnittsalter ist %s</string>
@@ -245,7 +246,7 @@
     <string name="slide_two_title">Kostenlos, einfach, individualisierbar</string>
     <string name="slide_two_description">Birday ist kostenlos, werbefrei und quelloffen. Es bietet eine Reihe von Statistiken über deine Geburtstage, ein Favoritensystem und eine anpassbare Oberfläche. Und garantierten Support und Updates!</string>
     <string name="slide_three_title">Import aus Kontakten</string>
-    <string name="slide_three_description">Es ist auch möglich, die bereits gespeicherten Ereignisse aus deinen Kontakten zu importieren. Birday kann das für dich erledigen, gib der App einfach die Kontakterlaubnis. Viel Spaß!</string>
+    <string name="slide_three_description">Es ist auch möglich, die bereits gespeicherten Ereignisse aus deinen Kontakten zu importieren. Birday kann das für dich erledigen, gib der App einfach die Kontaktberechtigung. Viel Spaß!</string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Bevorstehende Ereignisse</string>
     <string name="add_widget">Birday - bevorstehend</string>
@@ -274,7 +275,7 @@
     <!-- Overview -->
     <string name="overview">Überblick</string>
     <string name="overview_description">Eine Jahresübersicht der gespeicherten Ereignisse</string>
-    <!-- Experimental preferences -->
+    <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimentell</string>
     <string name="experimental_settings_description">Einige experimentelle oder fehlerhafte Einstellungen und Funktionen, verwende sie auf eigene Gefahr</string>
     <string name="experimental_disclaimer">Die folgenden Funktionen sind experimentell und funktionieren möglicherweise nicht richtig. Verwendung auf eigene Gefahr. Beziehe dich auf Github für jeglichen Fortschritt, da einige dieser Funktionen \"gefördert\" und übersetzt werden könnten</string>
@@ -285,7 +286,7 @@
     <string name="launch_auto_import_description_on">Birday wird beim Start automatisch mit Kontakten synchronisieren</string>
     <string name="hide_on_scroll_title">Navigationsleiste beim Scrollen ausblenden</string>
     <string name="hide_on_scroll_description_on">Die untere Navigationsleiste beim Scrollen ausblenden</string>
-    <string name="hide_on_scroll_description_off">Die untere Leiste dauerhaft Anzeigen</string>
+    <string name="hide_on_scroll_description_off">Die untere Navigationsleiste dauerhaft anzeigen</string>
     <string name="angry_bird_title">Angry Bird Modus</string>
     <string name="angry_bird_description_on">Dauerhafte Benachrichtigungen, kürzere Texte und andere Benachrichtigungs-bezogene Optimierungen</string>
     <string name="angry_bird_description_off">Benachrichtigungen werden sich normal verhalten</string>
@@ -300,6 +301,11 @@
     <string name="import_csv_description">Importieren aus einer CSV-Datei. Im Wiki auf Github findest du die erforderliche Dateistruktur</string>
     <string name="export_csv_title">Als CSV-Datei exportieren</string>
     <string name="export_csv_description">Exportiere jedes Ereignis in eine CSV-Datei, Bild ausgeschlossen</string>
+    <string name="export_calendar_title">In Kalender exportieren</string>
+    <string name="export_calendar_description">Speichere jedes Ereignis in deinem lokalen Kalender, wenn möglich. Erfordert die Kalenderberechtigung</string>
+    <string name="auto_export_title">Ereignisse automatisch exportieren</string>
+    <string name="auto_export_description_on">Birday exportiert automatisch eine Sicherung, wenn die App geschlossen wird. Bitte beachte, dass jede Sicherung die vorherige überschreibt</string>
+    <string name="auto_export_description_off">Um eine lokale Birday-Sicherung durchzuführen, muss diese manuell ausgeführt werden</string>
     <string name="add_demo_entries_title">Demo-Einträge hinzufügen</string>
     <string name="add_demo_entries_description">Fülle die DB mit einer Reihe von Demo-Ereignissen, hauptsächlich Schauspielern und historischen Figuren</string>
     <string name="add_demo_entries_dialog_description">Dies fügt dauerhaft TAUSENDE von Einträgen zur DB hinzu und ist für Debugging-Zwecke gedacht. Es wird kein existierendes Ereignis gelöscht, aber wenn du die neuen Einträge löschen möchtest, musst du es manuell tun. Viel Glück dabei.</string>

@@ -175,6 +175,7 @@
     <string name="wishes_birthday">La mulți ani!</string>
     <string name="no_default_dialer">Nu a fost găsită nicio aplicație de apelare implicită!</string>
     <string name="no_default_sms">Nu a fost găsită nicio aplicație prestabilită pentru SMS!</string>
+    <string name="might_have_missed">S-ar putea să fi ratat:</string>
     <!-- Statistics -->
     <string name="did_you_know">Știai că?</string>
     <string name="age_average">Vârsta medie este %s</string>
@@ -289,7 +290,7 @@
     <!-- Overview -->
     <string name="overview">Sumar</string>
     <string name="overview_description">Prezentare anuală a fiecărui eveniment salvat</string>
-    <!-- Experimental preferences -->
+    <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimentale</string>
     <string name="experimental_settings_description">Unele setări și funcții experimentale sau cu erori. Folosește-le pe propriul risc</string>
     <string name="experimental_disclaimer">Următoarele caracteristici sunt experimentale și este posibil să nu funcționeze corect. Folosește-le pe propriul risc. Consultă Github pentru orice progres, deoarece unele dintre aceste caracteristici ar putea fi „promovate” și traduse</string>
@@ -315,6 +316,11 @@
     <string name="import_csv_description">Importă dintr-un fișier CSV. Consultă wiki de pe Github pentru structura necesară a fișierului</string>
     <string name="export_csv_title">Exportare în CSV</string>
     <string name="export_csv_description">Exportă fiecare eveniment într-un fișier CSV, imaginea este exclusă</string>
+    <string name="export_calendar_title">Export în calendar</string>
+    <string name="export_calendar_description">Salvează fiecare eveniment în calendarul local, dacă este posibil. Necesită permisiunea calendarului</string>
+    <string name="auto_export_title">Se exportă evenimentele în mod automat</string>
+    <string name="auto_export_description_on">Birday va exporta automat o copie de rezervă atunci când aplicația este închisă. Reține că fiecare copie de rezervă va suprascrie precedenta</string>
+    <string name="auto_export_description_off">Pentru a efectua o copie de rezervă locală Birday, trebuie să fie executată manual</string>
     <string name="add_demo_entries_title">Adaugă intrări demo</string>
     <string name="add_demo_entries_description">Completează baza de date cu un set demo de evenimente, în principal actori și cifre istorice</string>
     <string name="add_demo_entries_dialog_description">Acest lucru va adăuga permanent SUTE de evenimente în baza de date și este destinat pentru depanare. Nu va șterge niciun eveniment existent, dar dacă dorești să ștergi noile evenimente, va trebui să faci acest lucru manual. Mult noroc cu asta.</string>

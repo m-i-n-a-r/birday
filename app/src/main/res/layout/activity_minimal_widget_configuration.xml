@@ -194,6 +194,29 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/configurationAlignStartTitle" />
 
+        <!-- Show only favorites, doesn't have a description so it has additional vertical margin -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/configurationShowOnlyFavoritesTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:text="@string/notification_only_favorites"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+            android:textSize="@dimen/custom_preference_title_text_size"
+            app:layout_constraintEnd_toStartOf="@id/configurationShowOnlyFavoritesSwitch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/configurationAlignStartDescription" />
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/configurationShowOnlyFavoritesSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/card_margin"
+            app:layout_constraintBottom_toBottomOf="@id/configurationShowOnlyFavoritesTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/configurationShowOnlyFavoritesTitle" />
+
         <!-- Hide an event if it's too far -->
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/configurationHideIfFarTitle"
@@ -205,7 +228,7 @@
             android:textSize="@dimen/custom_preference_title_text_size"
             app:layout_constraintEnd_toStartOf="@id/configurationHideIfFarSwitch"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/configurationAlignStartDescription" />
+            app:layout_constraintTop_toBottomOf="@id/configurationShowOnlyFavoritesTitle" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/configurationHideIfFarDescription"

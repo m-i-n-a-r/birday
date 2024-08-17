@@ -51,7 +51,10 @@ import com.minar.birday.R
 import com.minar.birday.databinding.ActivityMainBinding
 import com.minar.birday.fragments.dialogs.ImportContactsBottomSheet
 import com.minar.birday.fragments.dialogs.InsertEventBottomSheet
+import com.minar.birday.model.EventResult
+import com.minar.birday.preferences.backup.BirdayExporter
 import com.minar.birday.preferences.backup.BirdayImporter
+import com.minar.birday.preferences.backup.CalendarExporter
 import com.minar.birday.preferences.backup.ContactsImporter
 import com.minar.birday.preferences.backup.CsvImporter
 import com.minar.birday.preferences.backup.JsonImporter
@@ -66,6 +69,8 @@ import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidgetProvider
 import com.minar.birday.widgets.MinimalWidgetProvider
 import java.io.IOException
+import java.time.LocalDateTime
+import java.time.ZoneOffset
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
@@ -128,7 +133,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Set an amoled theme or a normal theme depending on amoled mode
-        if (theme == "black")
+        if (theme == "black") {
+            setTheme(R.style.AppTheme)
             when (accent) {
                 "monet" -> setTheme(R.style.AppTheme_Monet_PerfectDark)
                 "system" -> setTheme(R.style.AppTheme_System_PerfectDark)
@@ -146,7 +152,7 @@ class MainActivity : AppCompatActivity() {
                 "crimson" -> setTheme(R.style.AppTheme_Crimson_PerfectDark)
                 else -> setTheme(R.style.AppTheme_PerfectDark)
             }
-        else
+        } else
             when (accent) {
                 "monet" -> setTheme(R.style.AppTheme_Monet)
                 "system" -> setTheme(R.style.AppTheme_System)
@@ -307,10 +313,7 @@ class MainActivity : AppCompatActivity() {
         binding.fab.addInsetsByMargin(bottom = true, halveInsets = true)
         binding.fabDelete.addInsetsByMargin(bottom = true, halveInsets = true)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.navigation) { _, insets ->
-            insets
-
-        }
+        ViewCompat.setOnApplyWindowInsetsListener(binding.navigation, null)
 
         // Hide on scroll, requires restart TODO Only available in experimental settings
         if (sharedPrefs.getBoolean("hide_scroll", false)) {
@@ -341,6 +344,24 @@ class MainActivity : AppCompatActivity() {
         }
 
         onBackPressedDispatcher.addCallback(this, backHomeCallback)
+    }
+
+    override fun onDestroy() {
+        // TODO Only available in experimental settings
+        val autoExport = sharedPrefs.getBoolean("auto_export", false)
+        val lastExport = sharedPrefs.getLong("last_auto_export", 0)
+        // Max one auto export every 30 seconds
+        val allowedExportTime = lastExport + 30
+        val currentTime = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)
+        if (autoExport && currentTime > allowedExportTime) {
+            sharedPrefs.edit().putLong("last_auto_export", currentTime).apply()
+            val exporter = BirdayExporter(this, null)
+            val thread = Thread {
+                exporter.exportEvents(this, autoBackup = true)
+            }
+            thread.start()
+        }
+        super.onDestroy()
     }
 
     private fun NavController.navigateWithOptions(@IdRes destination: Int) {
@@ -418,7 +439,7 @@ class MainActivity : AppCompatActivity() {
                         jsonImporter.importEventsJson(this, fileUri)
                     }
 
-                    "csv" -> {
+                    "csv", "xls", "xlsx" -> {
                         val csvImporter = CsvImporter(this, null)
                         csvImporter.importEventsCsv(this, fileUri)
                     }
@@ -521,6 +542,18 @@ class MainActivity : AppCompatActivity() {
         snackbar.show()
     }
 
+    // Insert a previously deleted event back in the database
+    fun insertBack(eventResult: EventResult) {
+        mainViewModel.insert(resultToEvent(eventResult))
+    }
+
+    // Force refresh the stats, useful when the events are the same, but something else changes
+    fun forceRefreshStats() {
+        val events = mainViewModel.allEventsUnfiltered.value
+        if (events != null)
+            mainViewModel.getStats(events, this)
+    }
+
     // Change the fab to show a delete icon
     fun toggleDeleteFab(active: Boolean = false) {
         val addFab = binding.fab
@@ -597,7 +630,7 @@ class MainActivity : AppCompatActivity() {
         } else true
     }
 
-    // Ask calendar permission
+    // Ask read calendar permission
     fun askCalendarPermission(code: Int = 301): Boolean {
         return if (ContextCompat.checkSelfPermission(
                 this,
@@ -612,6 +645,25 @@ class MainActivity : AppCompatActivity() {
             ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.READ_CALENDAR
+            ) == PackageManager.PERMISSION_GRANTED
+        } else true
+    }
+
+    // Ask write calendar permission
+    fun askWriteCalendarPermission(code: Int = 401): Boolean {
+        return if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_CALENDAR
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.WRITE_CALENDAR),
+                code
+            )
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_CALENDAR
             ) == PackageManager.PERMISSION_GRANTED
         } else true
     }
@@ -722,6 +774,33 @@ class MainActivity : AppCompatActivity() {
                                 data = Uri.fromParts("package", packageName, null)
                             })
                         })
+                }
+                else {
+                    val calendarExporter = CalendarExporter(this, null)
+                    calendarExporter.exportCalendar(this)
+                }
+            }
+            402 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    if (shouldShowRequestPermissionRationale(Manifest.permission.WRITE_CALENDAR))
+                        showSnackbar(
+                            getString(R.string.missing_permission_calendar),
+                            actionText = getString(R.string.cancel),
+                            action = fun() {
+                                askWriteCalendarPermission()
+                            })
+                    else showSnackbar(
+                        getString(R.string.missing_permission_calendar_forever),
+                        actionText = getString(R.string.title_settings),
+                        action = fun() {
+                            startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                                data = Uri.fromParts("package", packageName, null)
+                            })
+                        })
+                }
+                else {
+                    val calendarExporter = CalendarExporter(this, null)
+                    calendarExporter.exportCalendar(this)
                 }
             }
         }

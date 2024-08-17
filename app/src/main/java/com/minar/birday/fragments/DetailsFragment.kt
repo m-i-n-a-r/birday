@@ -11,6 +11,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
+import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -28,6 +29,7 @@ import com.minar.birday.model.Event
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.StatsGenerator
+import com.minar.birday.utilities.addInsetsByPadding
 import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.formatDaysRemaining
 import com.minar.birday.utilities.formatName
@@ -110,6 +112,13 @@ class DetailsFragment : Fragment() {
         if (shimmerEnabled) {
             shimmer.startShimmer()
             shimmer.showShimmer(true)
+        }
+
+        // Add insets
+        fullView.addInsetsByPadding(bottom = true)
+        if (act.binding.bottomBar.hideOnScroll) {
+            val navbarHeight = resources.getDimensionPixelSize(R.dimen.bottom_navbar_height)
+            fullView.updatePadding(bottom = fullView.paddingBottom + navbarHeight)
         }
 
         // Bind the data on the views and set the transition name, to play it in reverse
@@ -379,7 +388,6 @@ class DetailsFragment : Fragment() {
                 getStringForTypeCodename(requireContext(), event.type!!)
             binding.detailsBirthDate.visibility = View.GONE
             binding.detailsNextAge.visibility = View.GONE
-            binding.detailsClearBackground.visibility = View.GONE
             disableAstrology()
         }
 
@@ -441,13 +449,8 @@ class DetailsFragment : Fragment() {
         act.showSnackbar(
             requireContext().getString(R.string.deleted),
             actionText = requireContext().getString(R.string.cancel),
-            action = fun() = insertBack(eventResult),
+            action = fun() = act.insertBack(eventResult),
         )
-    }
-
-    // Insert a previously deleted event back in the database
-    private fun insertBack(eventResult: EventResult) {
-        mainViewModel.insert(resultToEvent(eventResult))
     }
 
     private fun editEvent(eventResult: EventResult) {

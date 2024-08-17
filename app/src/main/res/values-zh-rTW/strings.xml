@@ -167,6 +167,7 @@
     <string name="wishes_birthday">生日快樂！</string>
     <string name="no_default_dialer">找不到預設撥號器！</string>
     <string name="no_default_sms">找不到預設簡訊 App！</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">你知道嗎？</string>
     <string name="age_average">大家的平均年齡是 %s</string>
@@ -268,7 +269,7 @@
     <!-- Overview -->
     <string name="overview">概述</string>
     <string name="overview_description">已保存節日的年度概覽</string>
-    <!-- Experimental preferences -->
+    <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">試驗性</string>
     <string name="experimental_settings_description">一些試驗性或bug多的設置和功能。使用它們風險自負</string>
     <string name="experimental_disclaimer">以下功能是試驗性的，並且可能無法正常使用。使用它們風險自負。參考Github來看進度，因為其中部分功能可能被提升或翻譯。</string>
@@ -294,6 +295,11 @@
     <string name="import_csv_description">從 CSV 文件引入。請參考 Github 的維基以獲得所需的文件結構</string>
     <string name="export_csv_title">導出至 CSV</string>
     <string name="export_csv_description">將每個事件導出到一個CSV文件，包含圖片</string>
+    <string name="export_calendar_title">Export to calendar</string>
+    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
+    <string name="auto_export_title">Auto export events</string>
+    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
+    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
     <string name="add_demo_entries_title">Add demo entries</string>
     <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
     <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>

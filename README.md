@@ -13,35 +13,36 @@ This is an open source app to remember **birthdays** and other events in a fast,
 
 ## Translations (guide and info below, refer to [Crowdin](https://crwd.in/birday))
 
-| LANGUAGE                | SPECIAL THANKS  | UPDATED BY                  |
-|:------------------------|:----------------|:----------------------------|
-| **English**             | myself          | ar-maged, Commenter25       |
-| **Spanish**             | myself          | Joseahfer                   |
-| **Swedish**             | SlowNicoFish    |                             |
-| **Dutch**               | stefanvi        |                             |
-| **Italian**             | myself          | myself                      |
-| **French**              | Mattis Biton    |                             |
-| **Hungarian**           | Obi             |                             |
-| **German**              | pizzapastamix   | WrstFngr, AlexanderRitter02 |
-| **Vietnamese**          | Lee Huynh       | dmtrilc                     |
-| **Russian**             | koterpillar     |                             |
-| **Czech**               | Miloš Koliáš    | IQLogic                     |
-| **Slovak**              | IQLogic         |                             |
-| **Polish**              | mateusz-bak     |                             |
-| **Croatian**            | Dominik Novosel | Dominik Novosel             |
-| **Portuguese**          | smarquespt      | smarquespt                  |
-| **Brazilian**           | BadJuice67      | Paiusco                     |
-| **Romanian**            | ygorigor        | ygorigor                    |
-| **Traditional Chinese** | Still34         | daoxi                       |
-| **Simplified Chinese**  | daoxi           | daoxi                       |
-| **Catalan**             | retiolus        |                             |
-| **Serbian**             | Th3Unkn0wn0n3   | vatonbero                   |
-| **Ukrainian**           | taras           |                             |
-| **Greek**               | Retrial         |                             |
-| **Marathi**             | Ramesh Kumar    |                             |
-| **Malayalam**           | Lavin-tom       |                             |
-| **Hindi**               | assembleDebug   |                             |
-| **Finnish**             | manaryde        |                             |
+| LANGUAGE                | SPECIAL THANKS    | UPDATED BY                  |
+|:------------------------|:------------------|:----------------------------|
+| **English**             | myself            | ar-maged, Commenter25       |
+| **Spanish**             | myself            | Joseahfer                   |
+| **Swedish**             | SlowNicoFish      |                             |
+| **Dutch**               | stefanvi          |                             |
+| **Italian**             | myself            | myself                      |
+| **French**              | Mattis Biton      |                             |
+| **Hungarian**           | Obi               |                             |
+| **German**              | pizzapastamix     | WrstFngr, AlexanderRitter02 |
+| **Vietnamese**          | Lee Huynh         | dmtrilc                     |
+| **Russian**             | koterpillar       |                             |
+| **Czech**               | Miloš Koliáš      | IQLogic                     |
+| **Slovak**              | IQLogic           |                             |
+| **Polish**              | mateusz-bak       |                             |
+| **Croatian**            | Dominik Novosel   | Dominik Novosel             |
+| **Portuguese**          | smarquespt        | smarquespt                  |
+| **Brazilian**           | BadJuice67        | Paiusco                     |
+| **Romanian**            | ygorigor          | ygorigor                    |
+| **Traditional Chinese** | Still34           | daoxi                       |
+| **Simplified Chinese**  | daoxi             | daoxi                       |
+| **Catalan**             | retiolus          |                             |
+| **Serbian**             | Th3Unkn0wn0n3     | vatonbero                   |
+| **Ukrainian**           | taras             |                             |
+| **Greek**               | Retrial           |                             |
+| **Marathi**             | Ramesh Kumar      |                             |
+| **Malayalam**           | Lavin-tom         |                             |
+| **Hindi**               | assembleDebug     |                             |
+| **Finnish**             | manaryde          |                             |
+| **Turkish**             | Ömer Selim Öztürk |                             |
 
 ## Features
 - Notification the day of the event (with selectable time and optional grouping for multiple events in the same day)

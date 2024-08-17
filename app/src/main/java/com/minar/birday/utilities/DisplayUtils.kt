@@ -26,8 +26,7 @@ fun View.addInsetsByPadding(
             view.updatePadding(top = view.paddingTop - lastTopPadding + newTopPadding)
         }
         if (bottom) {
-            val lastBottomPadding =
-                view.getTag(R.id.view_add_insets_padding_bottom_tag) as? Int ?: 0
+            val lastBottomPadding = view.getTag(R.id.view_add_insets_padding_bottom_tag) as? Int ?: 0
             val newBottomPadding = inset.bottom
             view.setTag(R.id.view_add_insets_padding_bottom_tag, newBottomPadding)
             view.updatePadding(bottom = view.paddingBottom - lastBottomPadding + newBottomPadding)

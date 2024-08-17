@@ -8,10 +8,15 @@ import android.provider.Telephony
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.preference.PreferenceManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.carousel.CarouselLayoutManager
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
+import com.minar.birday.adapters.MissedCarouselAdapter
 import com.minar.birday.databinding.BottomSheetQuickAppsBinding
+import java.time.Duration
+import java.time.LocalDate
 
 
 class QuickAppsBottomSheet(private val act: MainActivity) : BottomSheetDialogFragment() {
@@ -123,6 +128,29 @@ class QuickAppsBottomSheet(private val act: MainActivity) : BottomSheetDialogFra
                 launchOrOpenAppStore("com.google.android.gm")
             }
         }
+
+        // Setup the "you might have missed" carousel
+        val allEvents = act.mainViewModel.allEventsUnfiltered.value
+        if (allEvents.isNullOrEmpty()) return
+        val allEventsFiltered = allEvents.toMutableList()
+        allEventsFiltered.removeAll {
+            // Remove events not in the past 10 days
+            Duration.between(
+                it.nextDate!!.minusYears(1).atStartOfDay(),
+                LocalDate.now().atStartOfDay()
+            ).toDays() > 10
+        }
+        if (allEventsFiltered.isEmpty()) return
+
+        // Ok, it makes sense to show the carousel, proceed
+        val carouselTitle = binding.quickAppsMissedTitle
+        val carousel = binding.quickAppsMissedCarousel
+        carouselTitle.visibility = View.VISIBLE
+        carousel.visibility = View.VISIBLE
+        carousel.layoutManager = CarouselLayoutManager()
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(act)
+        val hideImages = sharedPrefs.getBoolean("hide_images", false)
+        carousel.adapter = MissedCarouselAdapter(allEventsFiltered, hideImages)
     }
 
     override fun onDestroyView() {

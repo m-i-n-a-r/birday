@@ -169,6 +169,7 @@
     <string name="wishes_birthday">¡Feliz cumpleaños!</string>
     <string name="no_default_dialer">¡No se ha encontrado la aplicación Teléfono!</string>
     <string name="no_default_sms">¡No se ha encontrado la aplicación Mensajes!</string>
+    <string name="might_have_missed">Puede que te haya perdido:</string>
     <!-- Statistics -->
     <string name="did_you_know">¿Sabías que…?</string>
     <string name="age_average">La edad media es de %s</string>
@@ -272,7 +273,7 @@
     <!-- Overview -->
     <string name="overview">Resumen</string>
     <string name="overview_description">Una visión general anual de los eventos guardados</string>
-    <!-- Experimental preferences -->
+    <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimental</string>
     <string name="experimental_settings_description">Algunas opciones y características experimentales. Utilícelas bajo tu propio riesgo</string>
     <string name="experimental_disclaimer">Las siguientes características son experimentales y pueden no funcionar correctamente. Utilícelas bajo su propio riesgo. Consulte Github para cualquier progreso, ya que algunas de estas características podrían ser \"promocionadas\" y traducidas</string>
@@ -298,6 +299,11 @@
     <string name="import_csv_description">Importar desde un archivo CSV. Consulte la wiki en Github para ver la estructura de archivos requerida</string>
     <string name="export_csv_title">Exportar a CSV</string>
     <string name="export_csv_description">Exportar cada evento a un archivo CSV, imagen excluida</string>
+    <string name="export_calendar_title">Exportar al calendario</string>
+    <string name="export_calendar_description">Salva cada evento en tu calendario local, si es posible. Requiere el permiso del calendario</string>
+    <string name="auto_export_title">Autoexporta eventos</string>
+    <string name="auto_export_description_on">Birday exportará automáticamente un backup cuando la aplicación esté cerrada. Tenga en cuenta que cada backup sobrescribirá la anterior</string>
+    <string name="auto_export_description_off">Para realizar un backup local de Birday, se debe ejecutar manualmente</string>
     <string name="add_demo_entries_title">Añadir entradas demo</string>
     <string name="add_demo_entries_description">Puebla el DB con un set de eventos demo, en su mayoría actores y figuras históricas</string>
     <string name="add_demo_entries_dialog_description">Esto añadirá MILES de entradas a la base de datos permanentemente y está destinado para propósitos de debug. No eliminará ningún evento existente, pero si quieres eliminar las nuevas entradas, tendrás que hacerlo manualmente. Buena suerte por eso.</string>

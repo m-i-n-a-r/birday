@@ -12,7 +12,6 @@
             android:id="@+id/quickAppsBottomSheet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
             android:padding="@dimen/linear_vertical_margin"
             app:behavior_hideable="true"
             app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
@@ -61,6 +60,7 @@
                 app:layout_constraintTop_toBottomOf="@id/quickAppsTitle" />
 
             <LinearLayout
+                android:id="@+id/quickAppsButtons"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/event_actions"
@@ -161,6 +161,30 @@
                     app:icon="@drawable/ic_apps_threema_24dp" />
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/quickAppsMissedTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/activity_horizontal_margin"
+                android:text="@string/might_have_missed"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/quickAppsButtons" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/quickAppsMissedCarousel"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/carousel_item_height"
+                android:layout_marginVertical="@dimen/linear_vertical_margin"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/quickAppsMissedTitle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

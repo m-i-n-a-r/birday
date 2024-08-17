@@ -3,6 +3,7 @@ package com.minar.birday.preferences.backup
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
+import android.widget.Toast
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import androidx.sqlite.db.SimpleSQLiteQuery
@@ -40,22 +41,43 @@ class BirdayExporter(context: Context, attrs: AttributeSet?) : Preference(contex
     }
 
     // Export the room database to a file in Android/data/com.minar.birday/files
-    private fun exportEvents(context: Context): String {
+    fun exportEvents(
+        context: Context,
+        autoBackup: Boolean = false
+    ): String {
         // Perform a checkpoint to empty the write ahead logging temporary files and avoid closing the entire db
         val eventDao = EventDatabase.getBirdayDatabase(context).eventDao()
         eventDao.checkpoint(SimpleSQLiteQuery("pragma wal_checkpoint(full)"))
 
         val dbFile = context.getDatabasePath("BirdayDB").absoluteFile
         val appDirectory = File(context.getExternalFilesDir(null)!!.absolutePath)
-        val fileName = "BirdayBackup_${LocalDate.now()}"
+        val fileName = if (autoBackup) "BirdayBackup_auto" else "BirdayBackup_${LocalDate.now()}"
         val fileFullPath: String = appDirectory.path + File.separator + fileName
         // Snackbar need the UI thread to work, so they must be forced on that thread
         try {
             dbFile.copyTo(File(fileFullPath), true)
-            (context as MainActivity).runOnUiThread { context.showSnackbar(context.getString(R.string.birday_export_success)) }
+            (context as MainActivity).runOnUiThread {
+                if (!autoBackup)
+                    context.showSnackbar(context.getString(R.string.birday_export_success))
+                else {
+                    Toast.makeText(
+                        context,
+                        context.getString(R.string.birday_export_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
         } catch (e: Exception) {
             (context as MainActivity).runOnUiThread {
-                context.showSnackbar(context.getString(R.string.birday_export_failure))
+                if (!autoBackup)
+                    context.showSnackbar(context.getString(R.string.birday_export_failure))
+                else {
+                    Toast.makeText(
+                        context,
+                        context.getString(R.string.birday_export_failure),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
             e.printStackTrace()
             return ""

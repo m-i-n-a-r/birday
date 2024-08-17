@@ -80,7 +80,7 @@
     <string name="shimmer_description_off">Bez dodatnih grafičkih efekata</string>
     <string name="import_export">Uvoz i Izvoz</string>
     <string name="import_contacts_title">Uvezite događaje iz kontakata</string>
-    <string name="import_contacts_description">Obavezno izmijenite događaje s godinama koje nedostaju kako biste uvijek imali točne statistike!</string>
+    <string name="import_contacts_description">Svakako dopunite događaje s godinama koje nedostaju kako biste uvijek imali točne statistike!</string>
     <string name="import_success">Uvoz je uspješno završen!</string>
     <string name="import_nothing_found">Nema pronađenih događaja!</string>
     <string name="import_failed">Uvoz neuspješan!</string>
@@ -172,6 +172,7 @@
     <string name="wishes_birthday">Sretan rođendan!</string>
     <string name="no_default_dialer">Nije pronađena zadana aplikacija za biranje brojeva!</string>
     <string name="no_default_sms">Nije pronađena zadana aplikacija za SMS!</string>
+    <string name="might_have_missed">Možda ste propustili:</string>
     <!-- Statistics -->
     <string name="did_you_know">Jeste li znali?</string>
     <string name="age_average">Prosječna dob je: %s</string>
@@ -286,7 +287,7 @@
     <!-- Overview -->
     <string name="overview">Pregled</string>
     <string name="overview_description">Godišnji pregled spremljenih događaja</string>
-    <!-- Experimental preferences -->
+    <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Eksperimentalno</string>
     <string name="experimental_settings_description">Eksperimentalne, nestabilne i neprevedene postavke i mogućnosti. Koristiti s oprezom</string>
     <string name="experimental_disclaimer">Ove značajke su eksperimentalne i možda ne rade kako treba. Koristite ih na vlastitu odgovornost. Možete provjeriti napredak njihova razvoja na GitHubu.</string>
@@ -312,6 +313,11 @@
     <string name="import_csv_description">Uvezi iz CSV datoteke. Pogledajte \'\'wiki\'\' na GitHubu za potrebnu strukturu datoteka</string>
     <string name="export_csv_title">Izvezi u CSV datoteku</string>
     <string name="export_csv_description">Izvezi svaki događaj u CSV datoteku, uključujući sliku</string>
+    <string name="export_calendar_title">Izvezi u kalendar</string>
+    <string name="export_calendar_description">Spremi sve događaje u lokalni kalendar, ako je moguće. Ova funkcija zahtijeva dopuštenje za pristup kalendaru</string>
+    <string name="auto_export_title">Automatski izvoz događaja</string>
+    <string name="auto_export_description_on">Birday će automatski izvesti sigurnosnu kopiju događaja kada se aplikacija zatvori. Imajte na umu da će svaka sigurnosna kopija zamijeniti prethodnu</string>
+    <string name="auto_export_description_off">Komanda za izvoz sigurnosne kopije će se morati izvršavati ručno</string>
     <string name="add_demo_entries_title">Dodaj demo događaje</string>
     <string name="add_demo_entries_description">Ispunite podatkovnu bazu s par demonstracijskih događaja, pretežno u vezi s glumcima i povijesnim ličnostima</string>
     <string name="add_demo_entries_dialog_description">Ovo će trajno dodati TISUĆE događaja u podatkovnu bazu i namijenjeno je otklanjanju poteškoća. Postojeći događaji neće biti izbrisani, no ako želite izbrisati dodane događaje, to ćete morati ručno. Sretno vam bilo.</string>

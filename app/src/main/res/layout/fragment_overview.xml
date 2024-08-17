@@ -38,7 +38,7 @@
             android:id="@+id/overviewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
             android:layout_marginEnd="@dimen/linear_vertical_margin"
             android:drawablePadding="@dimen/activity_vertical_margin"
             android:ellipsize="end"

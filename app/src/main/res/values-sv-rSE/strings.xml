@@ -169,6 +169,7 @@
     <string name="wishes_birthday">Grattis på födelsedagen!</string>
     <string name="no_default_dialer">Ingen standard-telefonapp hittades!</string>
     <string name="no_default_sms">Ingen standard-smsapp hittades!</string>
+    <string name="might_have_missed">Du kanske har missat:</string>
     <!-- Statistics -->
     <string name="did_you_know">Visste du?</string>
     <string name="age_average">Medelåldern är %s</string>
@@ -272,7 +273,7 @@
     <!-- Overview -->
     <string name="overview">Översikt</string>
     <string name="overview_description">En årlig översikt över sparade händelser</string>
-    <!-- Experimental preferences -->
+    <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimentella</string>
     <string name="experimental_settings_description">Vissa experimentella eller buggiga inställningar och funktioner. Använd dem på egen risk</string>
     <string name="experimental_disclaimer">Följande funktioner är experimentella och kanske inte fungerar som de ska. Använd dem på egen risk. Hänvisa till Github för alla framsteg, eftersom några av dessa funktioner kan \"främjas\" och översättas</string>
@@ -298,6 +299,11 @@
     <string name="import_csv_description">Importera från en CSV-fil. Hänvisa till wikin på Github för önskad filstruktur</string>
     <string name="export_csv_title">Exportera till CSV</string>
     <string name="export_csv_description">Exportera varje händelse till en CSV fil, bild utesluten</string>
+    <string name="export_calendar_title">Exportera till kalender</string>
+    <string name="export_calendar_description">Spara varje händelse i din lokala kalender, om möjligt. Kräver kalenderbehörighet</string>
+    <string name="auto_export_title">Exportera händelser automatiskt</string>
+    <string name="auto_export_description_on">Birday exporterar automatiskt en säkerhetskopia när appen är stängd. Observera att varje säkerhetskopia kommer att skriva över den tidigare</string>
+    <string name="auto_export_description_off">För att utföra en lokal Birday-säkerhetskopiering måste den köras manuellt</string>
     <string name="add_demo_entries_title">Lägg till demoinlägg</string>
     <string name="add_demo_entries_description">Populera DB med en demouppsättning händelser, mestadels skådespelare och historiska figurer</string>
     <string name="add_demo_entries_dialog_description">Detta kommer permanent lägga till TUSENTALS av poster till DB och är avsedd för debug-ändamål. Det kommer inte att ta bort någon befintlig händelse, men om du vill ta bort de nya posterna, måste du göra det manuellt. Lycka till för det.</string>

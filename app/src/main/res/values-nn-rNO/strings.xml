@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_welcome">Velkommen til Birday</string>
+    <string name="app_name_extended">Birday - Hendelsesbehandler</string>
+    <string name="leave_review_title">Gi Birday en vurdering</string>
+    <string name="leave_review_subtitle">Gi en vurdering for å hjelpe meg med appen. Husk at utenom donasjoner, så er appen helt gratis og fri fra reklame!</string>
+    <string name="yes_review">Gi vurdering!</string>
+    <string name="later">Senere, jeg lover</string>
+    <string name="no_thanks">Nei takk!</string>
+    <string name="title_home">Hjem</string>
+    <string name="title_favorites">Favoritter</string>
+    <string name="title_settings">Innstillinger</string>
+    <string name="no_events">Ingen hendelser! Begynn å legge til en med knappen under!</string>
+    <string name="no_favorites">Ingen favotitter! Trykk på stjernen for å lagre en hendelse i favorittene dine!</string>
+    <string name="add_favorite">Legg til som favoritt</string>
+    <string name="stats">Statistikk</string>
+    <string name="no_stats">Ingen statistikk å vise!</string>
+    <string name="stats_summary">Oppsummering av statistikk</string>
+    <string name="no_stats_description">Du har ikke nok hendelser til å generere statistikk. Legg til flere hendelser og kom tilbake seinere!</string>
+    <plurals name="stats_total">
+        <item quantity="one">Birday hjelper deg å huske på totalt %d hendelse</item>
+        <item quantity="other">Birday hjelper deg å huske på totalt %d hendelser</item>
+    </plurals>
+    <string name="next_event">Neste hendelse</string>
+    <string name="no_next_event">Ingen hendelser å vise!</string>
+    <string name="no_next_event_description">Du har ikke lagt inn eller importert en hendelse enda. Legg til en og la Birday hjelpe deg!</string>
+    <string name="next_age_years">År</string>
+    <string name="event_others">og andre</string>
+    <plurals name="days_left">
+        <item quantity="one">%d dag igjen</item>
+        <item quantity="other">%d dager igjen</item>
+    </plurals>
+    <!-- Settings -->
+    <string name="customization">Personalisering</string>
+    <string name="app_behavior">Appens virkemåte</string>
+    <string name="additional_notification_name">Ekstra påminnelse</string>
+    <string name="additional_notification_description">Send en ekstra påminnelse dager før hendelsen. %s</string>
+    <string name="no_additional_notification">Ingen ekstra påminnelser</string>
+    <string name="one_day_before">En dag før</string>
+    <string name="two_days_before">To dager før</string>
+    <string name="three_days_before">Tre dager før</string>
+    <string name="four_days_before">Fire dager før</string>
+    <string name="five_days_before">Fem dager før</string>
+    <string name="six_days_before">Seks dager før</string>
+    <string name="seven_days_before">Syv dager før</string>
+    <string name="ten_days_before">Ti dager før</string>
+    <string name="fourteen_days_before">14 dager før</string>
+    <string name="twentyone_days_before">21 dager før</string>
+    <string name="vibration_name">Vibrasjon</string>
+    <string name="vibration_description_on">Vibrer når en knapp trykkes</string>
+    <string name="vibration_description_off">Ingen vibrasjoner når en knapp trykkes</string>
+    <string name="date_format_name">Datoformat</string>
+    <string name="notification_hour_name">Tidspunkt for påminnelse</string>
+    <string name="notification_hour_description">%s \n\nVær oppmerksom på at varselet kanskje ikke fungerer når appen avsluttes av systemet på noen Huawei, Xiaomi og OnePlus enheter. Se dontkillmyapp.com for mer informasjon</string>
+    <string name="accent_description">Endre standard aksentfarge</string>
+    <string name="accent_name">Aksentfarge</string>
+    <string name="theme_description">Bruk mørkt, lyst eller automatisk tema i appen</string>
+    <string name="theme_name">App tema</string>
+    <!-- ^ Untranslated for now -->
+    <string name="aqua">Aqua</string>
+    <string name="brown">Brun</string>
+    <string name="blue">Blå</string>
+    <string name="green">Grønn</string>
+    <string name="orange">Oransje</string>
+    <string name="yellow">Gul</string>
+    <string name="teal">Blågrønn</string>
+    <string name="violet">Fiolett</string>
+    <string name="pink">Rosa</string>
+    <string name="light_blue">Lyseblå</string>
+    <string name="red">Rød</string>
+    <string name="lime">Limegrønn</string>
+    <string name="crimson">Karmosinrød</string>
+    <string name="system_theme">Systemstandard</string>
+    <string name="dark_theme">Mørkt</string>
+    <string name="light_theme">Lyst</string>
+    <string name="shimmer_name">Shimmer effect</string>
+    <string name="shimmer_description_on">A shiny animation here and there</string>
+    <string name="shimmer_description_off">No additional graphic effects</string>
+    <string name="import_export">Importer og eksporter</string>
+    <string name="import_contacts_title">Importer hendelser fra kontakter</string>
+    <string name="import_contacts_description">Make sure to modify the events with missing years to always have accurate statistics!</string>
+    <string name="import_success">Importering vellykket!</string>
+    <string name="import_nothing_found">Ingen hendelser funnet!</string>
+    <string name="import_failed">Noe gikk galt!</string>
+    <string name="missing_permission_contacts">Tilgangen til kontakter ble avvist. Prøv igjen eller aktiver tilgangen manuelt,
+    ellers vil det ikke fungere å importere kontakter!</string>
+    <string name="missing_permission_contacts_forever">Birday can\'t ask for permission to import contacts,
+    since you checked \"never ask again\". Enable it manually!</string>
+    <string name="birday_import_title">Importer en sikkerhetskopi fra Birday</string>
+    <string name="birday_import_description">Velg en gyldig sikkerhetskopi fra Birday for å gjenopprette hendelsene dine. Alle eksisterende data
+    vil bli overskrevet!</string>
+    <string name="birday_export_title">Export and share events</string>
+    <string name="birday_export_description">Eksporter tilgjengelige hendelser til en sikkerhetskopi, og del dem om du ønsker. Filen ligger under
+    Android/data/com.minar.birday/files</string>
+    <string name="birday_import_success">Import fullført!</string>
+    <string name="birday_import_failure">Import failed. Did you choose the file correctly?</string>
+    <string name="birday_import_invalid_file">Importering feilet. Den valgte filen er ikke en sikkerhetskopi fra Birday!</string>
+    <string name="birday_export_success">Eksport fullført!</string>
+    <string name="birday_export_failure">Eksport feilet. Ups!</string>
+    <string name="birday_export_nothing_found">Ingenting å eksportere!</string>
+    <string name="surname_first">Etternavn først</string>
+    <string name="surname_first_description_on">Vis etternavn foran fornavn</string>
+    <string name="surname_first_description_off">Vis fornavn foran etternavn</string>
+    <string name="hide_images">Skjul bilder</string>
+    <string name="hide_images_description_on">Hendelsesbilder skjult</string>
+    <string name="hide_images_description_off">Hendelsesbilder synlig</string>
+    <string name="notification_only_favorites">Kun favoritter</string>
+    <string name="notification_only_favorites_description_on">Send a notification for favorite events only</string>
+    <string name="notification_only_favorites_description_off">Send a notification for every event inserted</string>
+    <string name="additional_notification_only_favorites">Additional notification for favorites</string>
+    <string name="additional_notification_only_favorites_description_on">Send the additional notification for favorite events only</string>
+    <string name="additional_notification_only_favorites_description_off">Send the additional notification for every event inserted</string>
+    <string name="troubleshoot">Troubleshoot and extra</string>
+    <string name="battery_optimization_title">Deaktiver batterioptimalisering</string>
+    <string name="battery_optimization_description">Open the settings to disable any optimization for Birday. Useful if notifications aren\'t working</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
+    <string name="notification_sound_title">Notification sound</string>
+    <string name="notification_sound_description">Shortcut to the notification sound settings, if you don\'t like the default bird sound</string>
+    <string name="missing_permission_notifications">The notification permission was denied, and Birday can\'t send notifications! Activate the permission from settings.</string>
+    <string name="missing_permission_notifications_forever">The notification permission was denied and can\'t be asked again, so Birday can\'t send notifications! Activate the permission manually, from settings.</string>
+    <string name="missing_permission_calendar">The calendar permission was denied, and Birday can\'t import from calendar! Activate the permission from settings.</string>
+    <string name="missing_permission_calendar_forever">The calendar permission was denied and can\'t be asked again, so Birday can\'t import from calendar! Activate the permission manually, from settings.</string>
+    <string name="import_calendar_title">Importer fra kalender</string>
+    <string name="import_calendar_description">Import any yearly event from your calendars. Remember to set the event type and year to keep things ordered!</string>
+    <string name="loop_avd_title">Gjenta animasjoner</string>
+    <string name="loop_avd_description_on">Animasjonene gjentas uendelig</string>
+    <string name="loop_avd_description_off">Animasjonene kjøres én gang</string>
+    <string name="order_alphabetically_title">Alfabetisk rekkefølge</string>
+    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
+    <string name="order_alphabetically_description_off">The events are ordered by date</string>
+    <string name="grouped_notifications_title">Group multiple notifications</string>
+    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
+    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
+    <!-- Developer -->
+    <string name="dev_description">I\'m a polite guy and I like beautiful things, like animations, icons, sport cars and 3D printing. I work as a designer and computer engineer.</string>
+    <string name="easter_egg">Nice logo, huh? ;D</string>
+    <!-- New event -->
+    <string name="new_event">Ny hendelse</string>
+    <string name="new_event_description">Enter a person you care about, and Birday will help you to remember their birthday or other events!</string>
+    <string name="insert_event">Sett inn hendelse</string>
+    <string name="cancel">Avbryt</string>
+    <string name="insert_name_hint">Sett inn fornavn</string>
+    <string name="insert_surname_hint">Legg inn etternavn</string>
+    <string name="insert_date_hint">Velg en dato</string>
+    <string name="invalid_value_name">Ugyldig navn!</string>
+    <string name="consider_year">Inkluder år</string>
+    <string name="event_type_hint">Hendelsestype</string>
+    <string name="birthday">Bursdag</string>
+    <string name="anniversary">Jubileum</string>
+    <string name="death_anniversary">Death anniversary</string>
+    <string name="festivity">Festivity</string>
+    <string name="name_day">Navnedag</string>
+    <string name="other">Annet</string>
+    <!-- Event actions -->
+    <string name="event_actions">Handlinger</string>
+    <string name="event_actions_description">Her kan du redigere eller slette denne hendelsen!</string>
+    <string name="edit_event">Rediger hendelse</string>
+    <string name="delete_event">Slett hendelse</string>
+    <string name="update_event">Oppdater hendelse</string>
+    <string name="share_event">Del hendelse</string>
+    <string name="deleted">Slettet!</string>
+    <!-- Event details -->
+    <string name="event_details">Detaljer</string>
+    <string name="birth_date">Fødselsdato</string>
+    <string name="next_age">Neste alder:</string>
+    <string name="zodiac_sign">Stjernetegn:</string>
+    <string name="chinese_zodiac_sign">Kinesisk dyretegn:</string>
+    <!-- Quick apps -->
+    <string name="event_apps">Quick apps</string>
+    <string name="event_apps_description">Apps to wish all the best rapidly!</string>
+    <string name="text_message">Tekstmelding</string>
+    <string name="dialer">Taleanrop</string>
+    <string name="wishes_birthday">Gratulerer med dagen!</string>
+    <string name="no_default_dialer">Kunne ikke finne standardapp for taleanrop!</string>
+    <string name="no_default_sms">Kunne ikke finne standardapp for SMS!</string>
+    <string name="might_have_missed">You might have missed:</string>
+    <!-- Statistics -->
+    <string name="did_you_know">Visste du?</string>
+    <string name="age_average">Gjennomsnittlig alder er %s</string>
+    <string name="oldest_person">Den eldste personen er %s</string>
+    <string name="youngest_person">Den yngste personen er %s</string>
+    <string name="most_common_month">Den vanligste måneden for bursdager er %s</string>
+    <string name="most_common_decade">Den vanligste måneden for dødsfall er %s</string>
+    <string name="most_common_age_range">Den vanligste aldersgruppen strekker seg mellom %1$s og %2$s</string>
+    <string name="special_ages">En viktig kommende bursdag er %s</string>
+    <string name="random_zodiac_sign">Zodiac sign of %1$s: %2$s</string>
+    <string name="most_common_zodiac_sign">Det vanligste stjernetegnet er %s</string>
+    <string name="most_common_chinese_sign">Det vanligste kinesiske dyretegnet er %s</string>
+    <string name="random_day_of_week">%1$s ble født på %2$s</string>
+    <string name="most_common_day_of_week">Den vanligste ukedagen for bursdager er %s</string>
+    <plurals name="leap_year_total">
+        <item quantity="one">The number of persons born in a leap year is %d</item>
+        <item quantity="other">The number of persons born in a leap year is %d</item>
+    </plurals>
+    <string name="random_chinese_year">Chinese zodiac sign of %1$s: %2$s</string>
+    <string name="chinese_zodiac_rat">rotte</string>
+    <string name="chinese_zodiac_ox">okse</string>
+    <string name="chinese_zodiac_tiger">tiger</string>
+    <string name="chinese_zodiac_rabbit">kanin</string>
+    <string name="chinese_zodiac_dragon">drage</string>
+    <string name="chinese_zodiac_snake">slange</string>
+    <string name="chinese_zodiac_horse">hest</string>
+    <string name="chinese_zodiac_goat">geit</string>
+    <string name="chinese_zodiac_monkey">ape</string>
+    <string name="chinese_zodiac_rooster">hane</string>
+    <string name="chinese_zodiac_dog">hund</string>
+    <string name="chinese_zodiac_pig">gris</string>
+    <string name="zodiac_sagittarius">skytten</string>
+    <string name="zodiac_capricorn">steinbukken</string>
+    <string name="zodiac_aquarius">vannmannen</string>
+    <string name="zodiac_pisces">fiskene</string>
+    <string name="zodiac_aries">væren</string>
+    <string name="zodiac_taurus">tyren</string>
+    <string name="zodiac_gemini">tvillingene</string>
+    <string name="zodiac_cancer">krepsen</string>
+    <string name="zodiac_leo">løven</string>
+    <string name="zodiac_virgo">jomfruen</string>
+    <string name="zodiac_libra">vekten</string>
+    <string name="zodiac_scorpio">skorpionen</string>
+    <!-- Common words -->
+    <plurals name="months">
+        <item quantity="one">%d måned</item>
+        <item quantity="other">%d måneder</item>
+    </plurals>
+    <string name="today">I dag!</string>
+    <string name="yesterday">I går!</string>
+    <string name="tomorrow">I morgen!</string>
+    <plurals name="years">
+        <item quantity="one">%d år</item>
+        <item quantity="other">%d år</item>
+    </plurals>
+    <string name="born_in">født i</string>
+    <string name="and">og</string>
+    <plurals name="event">
+        <item quantity="one">hendelse: %s</item>
+        <item quantity="other">hendelser: %s</item>
+    </plurals>
+    <!-- Notifications -->
+    <string name="events_notification_channel">Påminnelse for hendelser</string>
+    <string name="events_channel_description">Påminnelser om kommende hendelser fra Birday</string>
+    <string name="notification_title">Birday Påminnelse</string>
+    <string name="notification_description_part_1">Dagens hendelser er</string>
+    <string name="notification_description_part_2">Ha en fin dag!</string>
+    <string name="additional_notification_text">Kommende hendelser!</string>
+    <!-- Introduction slides -->
+    <string name="slide_one_title">Velkommen til Birday!</string>
+    <string name="slide_one_description">Birday is a simple and lightweight app to manage important events!
+    You can use it to remember and store the birthdays of the people you love and more, in a reliable and fast way.
+    </string>
+    <string name="slide_two_title">Free, simple, customizable</string>
+    <string name="slide_two_description">Birday is free, ad-free and open source. It provides a set of
+    stats about your events, a favorite system and a customizable interface. And guaranteed
+    support and updates!
+    </string>
+    <string name="slide_three_title">Import from contacts</string>
+    <string name="slide_three_description">It\'s also possible to import the events you\'ve already saved
+    from your contacts. Birday can do it for you, just grant the contacts permission. Enjoy!
+    </string>
+    <!-- Widget -->
+    <string name="appwidget_upcoming">Kommende hendelser</string>
+    <string name="add_widget">Birday - Kommende</string>
+    <string name="dark_widget_name">Mørk modul</string>
+    <string name="dark_widget_description_on">Modulen bruker mørkt tema</string>
+    <string name="dark_widget_description_off">Modulen bruker lyst tema</string>
+    <string name="widget_configuration_title">Modulkonfigurasjon</string>
+    <string name="widget_configuration_description">Konfigurer modulen til å passe stilen din</string>
+    <string name="widget_background_title">Bakgrunn</string>
+    <string name="widget_background_description">Vis en bakgrunn for modulen</string>
+    <string name="compact_widget_title">Kompakt oppsett</string>
+    <string name="compact_widget_description">Optimaliser oppsettet til å bli ekstra kompakt</string>
+    <string name="align_start_widget_title">Juster til siden</string>
+    <string name="align_start_widget_description">Juster modulens innhold til siden (høyre eller venstre avhengig av lokalitet)</string>
+    <string name="hide_far_widget_title">Skjul modul for hendelser frem i tid</string>
+    <string name="hide_far_widget_description">Hide the widget if the next events are after the additional notification period (eg: notification 7 days before, the next event is in 10 days -&gt; the widget is hidden)</string>
+    <string name="show_following_widget_title">Vis neste hendelse</string>
+    <string name="show_following_widget_description">Vis hendelsen, eller hendelsene, som kommer etter den neste hendelsen</string>
+    <!-- Search -->
+    <string name="search_event">Søk…</string>
+    <string name="search_no_result_title">Ingen resultater</string>
+    <string name="search_no_result_description">Your search string doesn\'t match any event that you\'ve added!</string>
+    <!-- Notes -->
+    <string name="notes">Notater</string>
+    <string name="write_something">Skriv noe…</string>
+    <!-- Overview -->
+    <string name="overview">Oversikt</string>
+    <string name="overview_description">En årlig oversikt over alle lagrede hendelser</string>
+    <!-- Experimental preferences, unclassified -->
+    <string name="experimental_settings_title">Eksperimentelt</string>
+    <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
+    <string name="check_github">Sjekk GitHub</string>
+    <string name="translate_app">Oversett appen</string>
+    <string name="launch_auto_import_title">Importer automatisk ved oppstart</string>
+    <string name="launch_auto_import_description_off">Birday won\'t import contacts automatically when launched</string>
+    <string name="launch_auto_import_description_on">Birday will automatically sync with contacts at startup</string>
+    <string name="hide_on_scroll_title">Hide navbar on scroll</string>
+    <string name="hide_on_scroll_description_on">Hide the bottom navbar when you scroll</string>
+    <string name="hide_on_scroll_description_off">The bottom navbar will always be visible</string>
+    <string name="angry_bird_title">Angry Bird mode</string>
+    <string name="angry_bird_description_on">Persistent notifications, shorter texts and other notification related tweaks</string>
+    <string name="angry_bird_description_off">Notifications will behave normally</string>
+    <string name="disable_astrology_title">Disable astrology</string>
+    <string name="disable_astrology_description_on">Zodiac signs hidden from details and stats</string>
+    <string name="disable_astrology_description_off">Zodiac information are displayed normally</string>
+    <string name="import_json_title">Importer fra JSON</string>
+    <string name="import_json_description">Import from a JSON file. Refer to the wiki on Github for the required file structure</string>
+    <string name="export_json_title">Eksporter til JSON</string>
+    <string name="export_json_description">Export each event to a JSON file, image excluded</string>
+    <string name="import_csv_title">Importer fra CSV</string>
+    <string name="import_csv_description">Import from a CSV file. Refer to the wiki on Github for the required file structure</string>
+    <string name="export_csv_title">Eksporter til CSV</string>
+    <string name="export_csv_description">Export each event to a CSV file, image excluded</string>
+    <string name="export_calendar_title">Eksporter til kalender</string>
+    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
+    <string name="auto_export_title">Eksporter hendelser automatisk</string>
+    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
+    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
+    <string name="add_demo_entries_title">Add demo entries</string>
+    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
+    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
+    <string name="delete_db_title">Delete all the events</string>
+    <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
+    <string name="delete_db_dialog_title">Are you sure?</string>
+    <string name="delete_db_dialog_description">Make sure to backup your events first, this operation will wipe the DB and should be used for debugging purposes only</string>
+    <string name="delete_search_title">Delete search selection</string>
+    <string name="delete_search_description_off">It won\'t be possible to delete multiple events at once</string>
+    <string name="delete_search_description_on">Press the trash button when you search one or more events to quickly delete them all from Birday. Use with caution!</string>
+    <string name="delete_search_confirm">This will delete all the results of this search. You can undo the process shortly after clicking OK if you change your mind!</string>
+    <string name="import_contacts_bottom_sheet_description">Would you like to import all the events from your contacts right now?</string>
+    <string name="yes_import">Importer</string>
+    <string name="advanced_overview_title">Advanced overview</string>
+    <string name="advanced_overview_description_off">The overview screen will only display basic information</string>
+    <string name="advanced_overview_description_on">The overview screen will show other years and detailed information</string>
+    <string name="replace_on_conflict_title">Replace on conflict</string>
+    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
+    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+</resources>

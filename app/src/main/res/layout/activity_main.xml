@@ -21,7 +21,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:contentInsetStart="0dp"
         app:fabAlignmentMode="end"
         app:fabAnimationMode="slide"
         app:title="@string/app_name">
@@ -33,8 +32,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottom_navbar_height"
             android:background="@android:color/transparent"
-            app:backgroundTint="@android:color/transparent"
-            app:elevation="0dp"
             app:itemPaddingBottom="@dimen/bottom_navbar_item_padding"
             app:itemPaddingTop="@dimen/bottom_navbar_item_padding"
             app:labelVisibilityMode="selected"

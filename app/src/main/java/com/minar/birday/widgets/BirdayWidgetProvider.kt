@@ -96,6 +96,8 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
         val alignStart = sp.getBoolean("widget_minimal_align_start", false)
         val hideIfFar = sp.getBoolean("widget_minimal_hide_if_far", false)
         val showFollowing = sp.getBoolean("widget_minimal_show_following", false)
+        val surnameFirst = sp.getBoolean("surname_first", false)
+        val onlyFavorites = sp.getBoolean("widget_minimal_only_favorites", false)
 
         // First off, hide the text views and backgrounds depending on light or dark
         val titleTextView: Int
@@ -160,14 +162,27 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
             views.setOnClickPendingIntent(R.id.minimalWidgetMain, pendingIntent)
 
             // Remove events in the future today (eg: now is december 1st 2023, an event has original date = december 1st 2050)
-            var filteredNextEvents = removeOrGetUpcomingEvents(orderedEvents, true).toMutableList()
+            var filteredNextEvents = removeOrGetUpcomingEvents(
+                orderedEvents,
+                true,
+                onlyFavorites = onlyFavorites
+            ).toMutableList()
             filteredNextEvents.removeIf { getNextYears(it) == 0 }
             // If the events are all in the future, display them
             if (filteredNextEvents.isEmpty()) {
-                filteredNextEvents = removeOrGetUpcomingEvents(orderedEvents, true).toMutableList()
+                filteredNextEvents = removeOrGetUpcomingEvents(
+                    orderedEvents,
+                    true,
+                    onlyFavorites = onlyFavorites
+                ).toMutableList()
             }
             // Make sure to show if there's more than one event, show surname when there's a single event
-            var widgetUpcoming = formatEventList(filteredNextEvents, true, context, filteredNextEvents.size == 1)
+            var widgetUpcoming = formatEventList(
+                filteredNextEvents,
+                surnameFirst,
+                context,
+                filteredNextEvents.size == 1
+            )
             if (filteredNextEvents.isNotEmpty()) widgetUpcoming += "\n${
                 nextDateFormatted(
                     filteredNextEvents[0],
@@ -178,16 +193,24 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
             // Show the following event if show following is enabled
             if (showFollowing) {
                 var filteredUpcomingEvents =
-                    removeOrGetUpcomingEvents(orderedEvents, false).toMutableList()
+                    removeOrGetUpcomingEvents(
+                        orderedEvents,
+                        false,
+                        onlyFavorites = onlyFavorites
+                    ).toMutableList()
                 filteredUpcomingEvents =
-                    removeOrGetUpcomingEvents(filteredUpcomingEvents, true).toMutableList()
+                    removeOrGetUpcomingEvents(
+                        filteredUpcomingEvents,
+                        true,
+                        onlyFavorites = onlyFavorites
+                    ).toMutableList()
                 val widgetUpcomingExpanded =
                     "$widgetUpcoming \n${context.getString(R.string.next_event)} → ${
                         formatEventList(
                             filteredUpcomingEvents,
-                            true,
+                            surnameFirst = surnameFirst,
                             context,
-                            false,
+                            showSurnames = filteredUpcomingEvents.size == 1,
                         )
                     }"
                 views.setTextViewText(textTextView, widgetUpcomingExpanded)
@@ -270,9 +293,9 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
                 // Make sure to show if there's more than one event
                 var widgetUpcoming = formatEventList(
                     filteredNextEvents,
-                    surnameFirst,
+                    surnameFirst = surnameFirst,
                     context,
-                    filteredNextEvents.size == 1
+                    showSurnames = filteredNextEvents.size == 1
                 )
                 if (filteredNextEvents.isNotEmpty()) widgetUpcoming += "\n${
                     nextDateFormatted(

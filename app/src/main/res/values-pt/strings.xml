@@ -171,6 +171,7 @@
     <string name="wishes_birthday">Feliz aniversário!</string>
     <string name="no_default_dialer">Não existe uma aplicação para fazer a chamada!</string>
     <string name="no_default_sms">Não existe uma aplicação para enviar a SMS!</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">Sabia que?</string>
     <string name="age_average">A idade média é %s</string>
@@ -280,7 +281,7 @@
     <!-- Overview -->
     <string name="overview">Visão geral</string>
     <string name="overview_description">Uma visão geral anual dos eventos guardados</string>
-    <!-- Experimental preferences -->
+    <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimental</string>
     <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
     <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
@@ -306,6 +307,11 @@
     <string name="import_csv_description">Import from a CSV file. Refer to the wiki on Github for the required file structure</string>
     <string name="export_csv_title">Export to CSV</string>
     <string name="export_csv_description">Export each event to a CSV file, image excluded</string>
+    <string name="export_calendar_title">Export to calendar</string>
+    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
+    <string name="auto_export_title">Auto export events</string>
+    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
+    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
     <string name="add_demo_entries_title">Add demo entries</string>
     <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
     <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
