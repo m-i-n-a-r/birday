@@ -314,12 +314,12 @@
     <string name="auto_export_description_on">Birday exporteert automatisch een back-up wanneer de app wordt gesloten. Houd er rekening mee dat elke back-up de vorige overschrijft</string>
     <string name="auto_export_description_off">Om een lokale Birday-back-up uit te voeren, moet deze handmatig worden gestuurd</string>
     <string name="add_demo_entries_title">Demo invoergegevens toevoegen</string>
-    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
+    <string name="add_demo_entries_description">Populeren van de DB met een demo reeks gebeurtenissen, voornamelijk acteurs en historische cijfers</string>
     <string name="add_demo_entries_dialog_description">Dit zal permanent DUIZENDEN vermeldingen aan de DB toevoegen en is bedoeld voor debug-doeleinden. Er worden geen bestaande evenementen verwijderd, maar als u de nieuwe invoer wilt verwijderen, moet u dit handmatig doen. Succes daarmee.</string>
     <string name="delete_db_title">Alle gebeurtenissen verwijderen</string>
     <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
     <string name="delete_db_dialog_title">Weet je het zeker?</string>
-    <string name="delete_db_dialog_description">Make sure to backup your events first, this operation will wipe the DB and should be used for debugging purposes only</string>
+    <string name="delete_db_dialog_description">Zorg ervoor dat u eerst een back-up maakt van uw gebeurtenissen, deze actie zal de DB wissen en moet alleen worden gebruikt voor debugging doeleinden</string>
     <string name="delete_search_title">Zoekselectie verwijderen</string>
     <string name="delete_search_description_off">Het is niet mogelijk meerdere gebeurtenissen tegelijk te verwijderen</string>
     <string name="delete_search_description_on">Press the trash button when you search one or more events to quickly delete them all from Birday. Use with caution!</string>
