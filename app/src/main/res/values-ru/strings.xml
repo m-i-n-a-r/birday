@@ -174,7 +174,7 @@
     <string name="wishes_birthday">С днем рождения!</string>
     <string name="no_default_dialer">Не найдено приложение по умолчанию для звонков!</string>
     <string name="no_default_sms">Не найдено приложение по умолчанию для СМС!</string>
-    <string name="might_have_missed">You might have missed:</string>
+    <string name="might_have_missed">Возможно, вы пропустили:</string>
     <!-- Statistics -->
     <string name="did_you_know">Знаете ли вы?</string>
     <string name="age_average">Средний возраст %s</string>
@@ -319,9 +319,9 @@
     <string name="import_csv_description">Импортировать из файла CSV. Обратитесь к Wiki на Github для требуемой структуры файлов</string>
     <string name="export_csv_title">Экспотировать в CSV</string>
     <string name="export_csv_description">Экспортировать каждое событие в файл CSV, без изображений</string>
-    <string name="export_calendar_title">Export to calendar</string>
-    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
-    <string name="auto_export_title">Auto export events</string>
+    <string name="export_calendar_title">Экспортировать в календарь</string>
+    <string name="export_calendar_description">Сохранять каждое событие в свой локальный календарь, если возможно. Требуется разрешение на календарь</string>
+    <string name="auto_export_title">Автоэкспорт событий</string>
     <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
     <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
     <string name="add_demo_entries_title">Добавить демо записи</string>
