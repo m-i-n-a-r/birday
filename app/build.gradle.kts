@@ -104,8 +104,8 @@ dependencies {
     implementation("androidx.work:work-runtime-ktx:2.9.1")
 
     // Navigation component
-    implementation("androidx.navigation:navigation-fragment-ktx:2.8.0-beta07")
-    implementation("androidx.navigation:navigation-ui-ktx:2.8.0-beta07")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.8.0-rc01")
+    implementation("androidx.navigation:navigation-ui-ktx:2.8.0-rc01")
 
     // Lifecycle and ViewModel
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
