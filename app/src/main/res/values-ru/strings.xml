@@ -322,8 +322,8 @@
     <string name="export_calendar_title">Экспортировать в календарь</string>
     <string name="export_calendar_description">Сохранять каждое событие в свой локальный календарь, если возможно. Требуется разрешение на календарь</string>
     <string name="auto_export_title">Автоэкспорт событий</string>
-    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
-    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
+    <string name="auto_export_description_on">Birday автоматически экспортирует резервную копию при закрытии. Пожалуйста, обратите внимание, что каждая резервная копия перезапишет предыдущую</string>
+    <string name="auto_export_description_off">Чтобы сделать локальную резервную копию Birday, оно должно быть сделано в ручную</string>
     <string name="add_demo_entries_title">Добавить демо записи</string>
     <string name="add_demo_entries_description">Заполнить базу данных демонстрационным набором событий, преимущественно связанных с актерами и историческими личностями</string>
     <string name="add_demo_entries_dialog_description">Эта операция навсегда добавит ТЫСЯЧИ записей в базу данных и предназначена для целей отладки. Она не удалит ни одного существующего события, но если вы хотите удалить новые записи, вам придется сделать это вручную. Удачи вам с этим.</string>
