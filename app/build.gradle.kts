@@ -86,7 +86,7 @@ dependencies {
     implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.activity:activity-ktx:1.9.2")
-    implementation("androidx.fragment:fragment-ktx:1.8.3")
+    implementation("androidx.fragment:fragment-ktx:1.8.4")
 
     // Transition
     implementation("androidx.transition:transition-ktx:1.5.1")
@@ -104,8 +104,8 @@ dependencies {
     implementation("androidx.work:work-runtime-ktx:2.9.1")
 
     // Navigation component
-    implementation("androidx.navigation:navigation-fragment-ktx:2.8.1")
-    implementation("androidx.navigation:navigation-ui-ktx:2.8.1")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.8.2")
+    implementation("androidx.navigation:navigation-ui-ktx:2.8.2")
 
     // Lifecycle and ViewModel
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
