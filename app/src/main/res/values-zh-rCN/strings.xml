@@ -167,7 +167,7 @@
     <string name="wishes_birthday">生日快乐！</string>
     <string name="no_default_dialer">找不到默认的拨号app！</string>
     <string name="no_default_sms">找不到默认的短信app！</string>
-    <string name="might_have_missed">You might have missed:</string>
+    <string name="might_have_missed">你可能错过了：</string>
     <!-- Statistics -->
     <string name="did_you_know">你知道吗？</string>
     <string name="age_average">平均年龄是%s</string>
@@ -296,11 +296,11 @@
     <string name="import_csv_description">从一个CSV文件导入。参考Github的wiki来看所需的文件结构</string>
     <string name="export_csv_title">导出到CSV</string>
     <string name="export_csv_description">将每个事件导出到一个CSV文件，包含图片</string>
-    <string name="export_calendar_title">Export to calendar</string>
-    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
-    <string name="auto_export_title">Auto export events</string>
-    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
-    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
+    <string name="export_calendar_title">导出到日历</string>
+    <string name="export_calendar_description">如有可能，则将所有事件保存至本地日历。需要日历权限</string>
+    <string name="auto_export_title">自动导出事件</string>
+    <string name="auto_export_description_on">应用关闭时，Birday将自动导出备份。请注意，新备份将覆盖旧备份</string>
+    <string name="auto_export_description_off">要在本地备份Birday信息，则必须手动进行</string>
     <string name="add_demo_entries_title">添加演示条目</string>
     <string name="add_demo_entries_description">使用一组演示事件填充数据库，其中大部分是演员和历史人物</string>
     <string name="add_demo_entries_dialog_description">这将永久地向数据库添加数千个条目，用于调试目的。它不会删除任何现有事件，但如果您想删除新条目，则需要手动执行。祝你好运。</string>
