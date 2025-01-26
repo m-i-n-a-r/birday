@@ -292,7 +292,7 @@
     <string name="translate_app">Oversett appen</string>
     <string name="launch_auto_import_title">Importer automatisk ved oppstart</string>
     <string name="launch_auto_import_description_off">Birday vil ikke importere kontakter automatisk når åpnet</string>
-    <string name="launch_auto_import_description_on">Birday vil automatisk synkronisere kontakter når åpnet</string>
+    <string name="launch_auto_import_description_on">Birday vil automatisk synkronisere kontakter når appen startes</string>
     <string name="hide_on_scroll_title">Skjul navigasjonslinjen ved rulling</string>
     <string name="hide_on_scroll_description_on">Skjul nedre navigasjonslinge når du blar ned</string>
     <string name="hide_on_scroll_description_off">Den nedre navigasjonslinjen vil alltid være synlig</string>
