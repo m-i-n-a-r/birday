@@ -51,9 +51,9 @@ class CalendarImporter(context: Context, attrs: AttributeSet?) : Preference(cont
         // Phase 1: get every calendar event having at least a name and a date
         val calendarEvents = getCalendarEvents()
         if (calendarEvents.isEmpty()) {
-            context.runOnUiThread(Runnable {
+            context.runOnUiThread {
                 context.showSnackbar(context.getString(R.string.import_nothing_found))
-            })
+            }
             return true
         }
 
@@ -68,7 +68,7 @@ class CalendarImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                 // Missing year, simply don't consider the year exactly like the contacts app does
                 val parseDate = calendarEvent.eventDate
                 date = LocalDate.parse(parseDate)
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 continue
             }
             val event = Event(
@@ -85,16 +85,16 @@ class CalendarImporter(context: Context, attrs: AttributeSet?) : Preference(cont
         }
 
         // Phase 3: insert the remaining events in the db and update the recycler
-        return if (events.size == 0) {
-            context.runOnUiThread(Runnable {
+        return if (events.isEmpty()) {
+            context.runOnUiThread {
                 context.showSnackbar(context.getString(R.string.import_nothing_found))
-            })
+            }
             true
         } else {
             act.mainViewModel.insertAll(events)
-            context.runOnUiThread(Runnable {
+            context.runOnUiThread {
                 context.showSnackbar(context.getString(R.string.import_success))
-            })
+            }
             true
         }
     }

@@ -212,7 +212,7 @@ class ContactsRepository {
                     image = contact.image,
                     notes = notes
                 )
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 null
             }
         }

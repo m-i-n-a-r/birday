@@ -9,12 +9,12 @@ plugins {
 
 android {
     namespace = "com.minar.birday"
-    compileSdk = 35
+    compileSdk = 36
     buildToolsVersion = "35.0.0"
 
     defaultConfig {
         applicationId = "com.minar.birday"
-        targetSdk = 35
+        targetSdk = 36
         minSdk = 26
         versionCode = 33
         versionName = "4.5.1"
@@ -98,10 +98,10 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.1")
 
     // Material Components
-    implementation("com.google.android.material:material:1.13.0-alpha12")
+    implementation("com.google.android.material:material:1.13.0-alpha14")
 
     // WorkManager
-    implementation("androidx.work:work-runtime-ktx:2.10.1")
+    implementation("androidx.work:work-runtime-ktx:2.10.2")
 
     // Navigation component
     implementation("androidx.navigation:navigation-fragment-ktx:2.9.0")
@@ -109,16 +109,16 @@ dependencies {
 
     // Lifecycle and ViewModel
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.1")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
 
     // Room
-    val roomVersion = "2.7.0"
+    val roomVersion = "2.7.2"
     implementation("androidx.room:room-runtime:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
 
     // Gson
-    implementation("com.google.code.gson:gson:2.11.0")
+    implementation("com.google.code.gson:gson:2.13.1")
 
     // App Intro
     implementation("com.github.AppIntro:AppIntro:6.3.1")
@@ -138,5 +138,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
 
     // [Testing] ICU
-    testImplementation("com.ibm.icu:icu4j:75.1")
+    testImplementation("com.ibm.icu:icu4j:77.1")
 }

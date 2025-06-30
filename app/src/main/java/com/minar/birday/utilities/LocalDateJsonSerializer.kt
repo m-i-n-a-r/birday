@@ -18,7 +18,7 @@ class LocalDateJsonSerializer : TypeAdapter<LocalDate>() {
     override fun read(input: JsonReader): LocalDate {
         return try {
             LocalDate.parse(input.nextString())
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             LocalDate.now()
         }
     }

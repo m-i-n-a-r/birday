@@ -2,11 +2,11 @@ package com.minar.birday.fragments.dialogs
 
 import android.content.Intent
 import android.content.SharedPreferences
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
@@ -39,7 +39,7 @@ class RateBottomSheet(private val editor: SharedPreferences.Editor) : BottomShee
             requireContext().startActivity(
                 Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("market://details?id=${requireContext().packageName}")
+                    "market://details?id=${requireContext().packageName}".toUri()
                 )
             )
             editor.putBoolean(DO_NOT_SHOW_AGAIN, true)

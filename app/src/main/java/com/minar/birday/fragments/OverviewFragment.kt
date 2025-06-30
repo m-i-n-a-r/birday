@@ -21,6 +21,7 @@ import com.minar.birday.viewmodels.MainViewModel
 import com.minar.tasticalendar.model.TastiCalendarEvent
 import com.minar.tasticalendar.model.TcSundayHighlight
 import java.time.LocalDate
+import androidx.core.content.edit
 
 
 class OverviewFragment : Fragment() {
@@ -117,7 +118,7 @@ class OverviewFragment : Fragment() {
             advancedYearTitle.setOnLongClickListener {
                 // Cycles between the appearances
                 val updatedAppearance = tcYear.setAppearance(-1)
-                sharedPrefs.edit().putInt("overview_scale", updatedAppearance).apply()
+                sharedPrefs.edit { putInt("overview_scale", updatedAppearance) }
                 true
             }
             nextButton.setOnClickListener {

@@ -45,7 +45,7 @@ class DisableOptimizationsPreference(context: Context, attrs: AttributeSet?) :
                 context.getString(R.string.battery_optimization_tutorial),
                 Toast.LENGTH_LONG
             ).show()
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             Toast.makeText(
                 context, context.getString(R.string.wtf), Toast.LENGTH_LONG
             ).show()

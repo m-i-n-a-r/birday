@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import androidx.fragment.app.FragmentActivity
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.fragments.dialogs.RateBottomSheet
+import androidx.core.content.edit
 
 object AppRater {
 
@@ -18,26 +19,26 @@ object AppRater {
     fun appLaunched(activity: MainActivity) {
         val prefs = activity.getSharedPreferences(APP_RATING, 0)
         if (prefs.getBoolean(DO_NOT_SHOW_AGAIN, false)) return
-        val editor = prefs.edit()
+        prefs.edit {
 
-        // Increment launch counter
-        val launchCount = prefs.getLong(LAUNCH_COUNT, 0) + 1
-        editor.putLong(LAUNCH_COUNT, launchCount)
+            // Increment launch counter
+            val launchCount = prefs.getLong(LAUNCH_COUNT, 0) + 1
+            putLong(LAUNCH_COUNT, launchCount)
 
-        // Get date of first launch
-        var dateFirstLaunch = prefs.getLong(DATE_FIRST_LAUNCH, 0)
-        if (dateFirstLaunch == 0L) {
-            dateFirstLaunch = System.currentTimeMillis()
-            editor.putLong(DATE_FIRST_LAUNCH, dateFirstLaunch)
-        }
+            // Get date of first launch
+            var dateFirstLaunch = prefs.getLong(DATE_FIRST_LAUNCH, 0)
+            if (dateFirstLaunch == 0L) {
+                dateFirstLaunch = System.currentTimeMillis()
+                putLong(DATE_FIRST_LAUNCH, dateFirstLaunch)
+            }
 
-        // Wait at least n days before opening
-        if (launchCount >= LAUNCHES_UNTIL_PROMPT) {
-            if (System.currentTimeMillis() >= dateFirstLaunch + DAYS_UNTIL_PROMPT * 24 * 60 * 60 * 1000) {
-                showRateDialog(activity, editor)
+            // Wait at least n days before opening
+            if (launchCount >= LAUNCHES_UNTIL_PROMPT) {
+                if (System.currentTimeMillis() >= dateFirstLaunch + DAYS_UNTIL_PROMPT * 24 * 60 * 60 * 1000) {
+                    showRateDialog(activity, this)
+                }
             }
         }
-        editor.apply()
     }
 
     private fun showRateDialog(activity: FragmentActivity, editor: SharedPreferences.Editor) {

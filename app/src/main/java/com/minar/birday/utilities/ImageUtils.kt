@@ -13,6 +13,7 @@ import com.minar.birday.R
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import java.io.ByteArrayOutputStream
+import androidx.core.graphics.createBitmap
 
 
 // Given a bitmap, convert it to a byte array
@@ -20,7 +21,7 @@ fun bitmapToByteArray(bitmap: Bitmap): ByteArray {
     val imgConverted: ByteArray = byteArrayOf()
     return try {
         bitmap.toByteArray()
-    } catch (e: Exception) {
+    } catch (_: Exception) {
         imgConverted
     }
 }
@@ -28,7 +29,7 @@ fun bitmapToByteArray(bitmap: Bitmap): ByteArray {
 // Given a byte array containing an image, return the corresponding bitmap
 fun byteArrayToBitmap(byteImg: ByteArray): Bitmap {
     // If the string is empty, just return an empty white bitmap
-    if (byteImg.isEmpty()) return Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
+    if (byteImg.isEmpty()) return createBitmap(1, 1)
     return BitmapFactory.decodeByteArray(byteImg, 0, byteImg.size)
 }
 
@@ -39,11 +40,7 @@ fun getBitmapSquareSize(bitmap: Bitmap): Int {
 
 // Transform a square bitmap in a circular bitmap, useful for notification
 fun getCircularBitmap(bitmap: Bitmap): Bitmap {
-    val output = Bitmap.createBitmap(
-        bitmap.width,
-        bitmap.height,
-        Bitmap.Config.ARGB_8888,
-    )
+    val output = createBitmap(bitmap.width, bitmap.height)
     val canvas = Canvas(output)
     val color: Int = Color.GRAY
     val paint = Paint()

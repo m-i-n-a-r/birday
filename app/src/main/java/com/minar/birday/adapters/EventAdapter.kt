@@ -69,7 +69,7 @@ class EventAdapter(
                     mutableList.sortWith(compareBy({ it.name }, { it.surname }))
                 // Base case: insert the header for the first element and initialize the first or last name letter
                 var lastLetter =
-                    if (mutableList.size == 0 || mutableList[0].surname.isNullOrEmpty()) "" else
+                    if (mutableList.isEmpty() || mutableList[0].surname.isNullOrEmpty()) "" else
                         if (surnameFirst) mutableList[0].surname?.get(0)
                             ?: "" else mutableList[0].name[0]
                 organizedEvents.add(EventDataItem.IndexHeader(if (lastLetter == "") "?" else lastLetter.toString()))

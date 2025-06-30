@@ -13,7 +13,6 @@ import com.minar.birday.model.Event
 import com.minar.birday.utilities.LocalDateJsonSerializer
 import com.minar.birday.utilities.normalizeEvent
 import java.time.LocalDate
-import java.util.*
 
 
 class JsonImporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),

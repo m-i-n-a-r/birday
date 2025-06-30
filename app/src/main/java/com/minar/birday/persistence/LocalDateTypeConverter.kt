@@ -11,7 +11,7 @@ class LocalDateTypeConverter {
         return try {
             if (value == null) LocalDate.now()
             else LocalDate.parse(value)
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             if (value!!.substring(5) == "02-29")
                 LocalDate.parse("${value.substring(0,5)}03-01")
             else LocalDate.now()

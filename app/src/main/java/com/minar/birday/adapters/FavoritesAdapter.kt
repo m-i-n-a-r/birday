@@ -33,7 +33,7 @@ class FavoritesAdapter(
         return FavoriteViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: FavoritesAdapter.FavoriteViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 

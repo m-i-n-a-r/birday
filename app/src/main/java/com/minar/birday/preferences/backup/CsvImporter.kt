@@ -231,7 +231,7 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
                     name = name,
                     surname = surname,
                     type = type,
-                    originalDate = date!!,
+                    originalDate = date,
                     yearMatter = yearMatter,
                     notes = notes
                 )

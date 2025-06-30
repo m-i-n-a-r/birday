@@ -7,7 +7,6 @@ import android.app.NotificationManager
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.ContentResolver
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
@@ -24,6 +23,7 @@ import android.os.VibratorManager
 import android.provider.OpenableColumns
 import android.provider.Settings
 import android.view.View
+import android.view.animation.Interpolator
 import android.widget.ImageView
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.SystemBarStyle
@@ -37,9 +37,12 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.edit
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.animation.PathInterpolatorCompat
+import androidx.core.view.isGone
 import androidx.core.view.updatePadding
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
@@ -79,7 +82,7 @@ class MainActivity : AppCompatActivity() {
     internal lateinit var binding: ActivityMainBinding
 
     companion object {
-        val GestureInterpolator = PathInterpolatorCompat.create(0f, 0f, 0f, 1f)
+        val GestureInterpolator: Interpolator = PathInterpolatorCompat.create(0f, 0f, 0f, 1f)
     }
 
     private val navController: NavController
@@ -111,15 +114,15 @@ class MainActivity : AppCompatActivity() {
 
         // Show the introduction for the first launch
         if (sharedPrefs.getBoolean("first", true)) {
-            val editor = sharedPrefs.edit()
-            editor.putBoolean("first", false)
-            // Set default accent based on the Android version
-            when (Build.VERSION.SDK_INT) {
-                in 23..29 -> editor.putString("accent_color", "blue")
-                31 -> editor.putString("accent_color", "system")
-                else -> editor.putString("accent_color", "monet")
+            sharedPrefs.edit {
+                putBoolean("first", false)
+                // Set default accent based on the Android version
+                when (Build.VERSION.SDK_INT) {
+                    in 23..29 -> putString("accent_color", "blue")
+                    31 -> putString("accent_color", "system")
+                    else -> putString("accent_color", "monet")
+                }
             }
-            editor.apply()
             val intent = Intent(this, WelcomeActivity::class.java)
             startActivity(intent)
             finish()
@@ -328,7 +331,7 @@ class MainActivity : AppCompatActivity() {
 
             // Only launch the auto import if 3 minutes are passed
             if (lastLaunch + (3 * 60 * 1000) < currentLaunchTime) {
-                sharedPrefs.edit().putLong("last_launch", currentLaunchTime).apply()
+                sharedPrefs.edit { putLong("last_launch", currentLaunchTime) }
                 thread {
                     ContactsImporter(this, null).importContacts(this)
                 }
@@ -354,7 +357,7 @@ class MainActivity : AppCompatActivity() {
         val allowedExportTime = lastExport + 30
         val currentTime = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)
         if (autoExport && currentTime > allowedExportTime) {
-            sharedPrefs.edit().putLong("last_auto_export", currentTime).apply()
+            sharedPrefs.edit { putLong("last_auto_export", currentTime) }
             val exporter = BirdayExporter(this, null)
             val thread = Thread {
                 exporter.exportEvents(this, autoBackup = true)
@@ -382,7 +385,7 @@ class MainActivity : AppCompatActivity() {
         // Manage refresh from settings, since there's a bug where the refresh doesn't work properly
         val refreshed = sharedPrefs.getBoolean("refreshed", false)
         if (refreshed) {
-            sharedPrefs.edit().putBoolean("refreshed", false).apply()
+            sharedPrefs.edit { putBoolean("refreshed", false) }
             super.onSaveInstanceState(outState)
         } else {
             // Dirty, dirty fix to avoid TransactionTooBigException:
@@ -406,7 +409,7 @@ class MainActivity : AppCompatActivity() {
     // Create the NotificationChannel. This code does nothing when it already exists
     private fun createNotificationChannel() {
         val soundUri =
-            Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + applicationContext.packageName + "/" + R.raw.birday_notification)
+            (ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + applicationContext.packageName + "/" + R.raw.birday_notification).toUri()
         val attributes: AudioAttributes = Builder()
             .setUsage(AudioAttributes.USAGE_NOTIFICATION)
             .build()
@@ -423,7 +426,7 @@ class MainActivity : AppCompatActivity() {
         channel.enableVibration(true)
         // Register the channel with the system
         val notificationManager: NotificationManager =
-            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannel(channel)
     }
 
@@ -490,7 +493,7 @@ class MainActivity : AppCompatActivity() {
         // Deprecated for no reason
         val vib = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             val vibratorManager =
-                this.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+                this.getSystemService(VIBRATOR_MANAGER_SERVICE) as VibratorManager
             vibratorManager.defaultVibrator
         } else {
             @Suppress("DEPRECATION")
@@ -565,7 +568,7 @@ class MainActivity : AppCompatActivity() {
             deleteFab.layoutParams as CoordinatorLayout.LayoutParams
 
         // Case 1: add fab currently hidden, it needs to be active
-        if (!active && addFab.visibility == View.GONE) {
+        if (!active && addFab.isGone) {
             // Change anchors to avoid visual problems
             addParams.anchorId = bottomBarId
             addFab.layoutParams = addParams
@@ -588,7 +591,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Case 2: delete fab currently hidden, it needs to be active
-        if (active && deleteFab.visibility == View.GONE) {
+        if (active && deleteFab.isGone) {
             // Change anchors to avoid visual problems
             addParams.anchorId = View.NO_ID
             addFab.layoutParams = addParams
