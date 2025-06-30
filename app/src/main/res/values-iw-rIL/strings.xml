@@ -89,9 +89,8 @@
     <string name="missing_permission_contacts">ההרשאה לאנשי קשר נדחתה.  נסה שוב או הפעל את ההרשאה באופן ידני,
      או שייבוא אנשי הקשר לא יעבוד!</string>
     <string name="missing_permission_contacts_forever">יום הולדת לא יכול לבקש רשות לייבא אנשי קשר, מכיוון שסימנת \"לעולם אל תשאל שוב\".  תן הרשאה באופן ידני!</string>
-    <string name="birday_import_title">Import a Birday backup</string>
-    <string name="birday_import_description">Choose a valid Birday backup to restore your events. All existing data
-    will be overwritten!</string>
+    <string name="birday_import_title">ייבוא גיבוי יום הולדת</string>
+    <string name="birday_import_description">בחר גיבוי חוקי של יום הולדת כדי לשחזר את האירועים שלך. כל הנתונים הקיימים יימחקו!</string>
     <string name="birday_export_title">Export and share events</string>
     <string name="birday_export_description">Export the available events to a backup, and share them if you want. The file is in
     Android/data/com.minar.birday/files</string>
