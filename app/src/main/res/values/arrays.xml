@@ -5,12 +5,14 @@
         <item>@string/system_theme</item>
         <item>@string/dark_theme</item>
         <item>@string/light_theme</item>
+        <item>@string/black_theme</item>
     </string-array>
 
     <string-array name="themeValues">
         <item>system</item>
         <item>dark</item>
         <item>light</item>
+        <item>black</item>
     </string-array>
 
     <string-array name="accents" tools:ignore="InconsistentArrays">
@@ -46,7 +48,6 @@
     </string-array>
 
     <string-array name="additionalNotification">
-        <item>@string/no_additional_notification</item>
         <item>@string/one_day_before</item>
         <item>@string/two_days_before</item>
         <item>@string/three_days_before</item>
@@ -60,7 +61,6 @@
     </string-array>
 
     <string-array name="additionalNotificationValues">
-        <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -73,4 +73,6 @@
         <item>21</item>
     </string-array>
 
+    <string-array name="additionalNotificationDefaultValues">
+    </string-array>
 </resources>

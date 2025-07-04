@@ -58,7 +58,7 @@
     <string name="accent_name">Boja sučelja</string>
     <string name="theme_description">Upotrijebite tamnu, svijetlu ili automatsku temu aplikacije</string>
     <string name="theme_name">Tema aplikacije</string>
-    <!-- Untranslated for now -->
+    <!-- ^ Untranslated for now -->
     <string name="aqua">Aqua</string>
     <string name="brown">Smeđa</string>
     <string name="blue">Plava</string>
@@ -80,7 +80,7 @@
     <string name="shimmer_description_off">Bez dodatnih grafičkih efekata</string>
     <string name="import_export">Uvoz i Izvoz</string>
     <string name="import_contacts_title">Uvezite događaje iz kontakata</string>
-    <string name="import_contacts_description">Obavezno izmijenite događaje s godinama koje nedostaju kako biste uvijek imali točne statistike!</string>
+    <string name="import_contacts_description">Svakako dopunite događaje s godinama koje nedostaju kako biste uvijek imali točne statistike!</string>
     <string name="import_success">Uvoz je uspješno završen!</string>
     <string name="import_nothing_found">Nema pronađenih događaja!</string>
     <string name="import_failed">Uvoz neuspješan!</string>
@@ -112,6 +112,7 @@
     <string name="troubleshoot">Rješavanje problema</string>
     <string name="battery_optimization_title">Onemogućite optimizaciju baterije</string>
     <string name="battery_optimization_description">Prečac do postavki za onemogućavanje uštede baterije za Birday. Korisno ako obavijesti ne funkcioniraju</string>
+    <string name="battery_optimization_tutorial">- Pokažite sve aplikacije i pronađite Birday na popisu\n- Pritisnite na Birday i odaberite \"Nemoj optimizirati\"</string>
     <string name="notification_sound_title">Zvuk obavijesti</string>
     <string name="notification_sound_description">Prečac do postavki zvuka obavijesti, ako vam se ne sviđa zadani zvuk ptica</string>
     <string name="missing_permission_notifications">Dopuštenje za obavijesti nije dano, te ih Birday ne može prikazati! Aktivirajte dopuštenje u postavkama.</string>
@@ -120,6 +121,15 @@
     <string name="missing_permission_calendar_forever">Dopuštenje za pristup kalendaru je odbijeno i ne može se ponovno zatražiti automatski, te Birday ne može uvesti događaje iz kalendara! Aktivirajte dopuštenje ručno u postavkama.</string>
     <string name="import_calendar_title">Uvezi iz kalendara</string>
     <string name="import_calendar_description">Uvezite bilo koji godišnji događaj iz svojeg kalendara. Sjetite se postaviti vrstu događaja i godinu kako bi stvari ostale organizirane!</string>
+    <string name="loop_avd_title">Ponavljaj animacije</string>
+    <string name="loop_avd_description_on">Animacije će se ponavljati cijelo vrijeme</string>
+    <string name="loop_avd_description_off">Animacije će se odviti samo jedanput</string>
+    <string name="order_alphabetically_title">Abecedni red</string>
+    <string name="order_alphabetically_description_on">Događaji će biti poredani abecednim redom</string>
+    <string name="order_alphabetically_description_off">Događaji će biti poredani po datumu</string>
+    <string name="grouped_notifications_title">Grupiraj više obavijesti</string>
+    <string name="grouped_notifications_description_on">Ako se u jednom danu odvija više od jednog događaja, njihove će obavijesti biti grupirane</string>
+    <string name="grouped_notifications_description_off">Ako se u jednom danu odvija više od jednog događaja, Birday će prikazati zasebnu obavijest za svaki od njih</string>
     <!-- Developer -->
     <string name="dev_description">Ja sam pristojan momak i volim lijepe stvari, poput animacija, ikona, sportskih automobila i 3D printanja. Radim kao dizajner i računalni inženjer.</string>
     <string name="easter_egg">Lijep logo, zar ne? ;D</string>
@@ -162,6 +172,7 @@
     <string name="wishes_birthday">Sretan rođendan!</string>
     <string name="no_default_dialer">Nije pronađena zadana aplikacija za biranje brojeva!</string>
     <string name="no_default_sms">Nije pronađena zadana aplikacija za SMS!</string>
+    <string name="might_have_missed">Možda ste propustili:</string>
     <!-- Statistics -->
     <string name="did_you_know">Jeste li znali?</string>
     <string name="age_average">Prosječna dob je: %s</string>
@@ -264,6 +275,8 @@
     <string name="align_start_widget_description">Poravnaj sadržaj widgeta na početak</string>
     <string name="hide_far_widget_title">Sakrij widget za udaljene događaje</string>
     <string name="hide_far_widget_description">Sakrij widget ako su sljedeći događaji nakon postavljenog vremena dodatne obavijesti (npr. ako je dodatna obavijest 7 dana prije, a sljedeći događaj je za 10 dana -&gt;, widget će biti skriven)</string>
+    <string name="show_following_widget_title">Prikaži idući događaj</string>
+    <string name="show_following_widget_description">Prikaži događaje nakon nadolazećeg događaja u dodatnom retku</string>
     <!-- Search -->
     <string name="search_event">Pretražite…</string>
     <string name="search_no_result_title">Nema rezultata</string>
@@ -274,7 +287,7 @@
     <!-- Overview -->
     <string name="overview">Pregled</string>
     <string name="overview_description">Godišnji pregled spremljenih događaja</string>
-    <!-- Experimental preferences -->
+    <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Eksperimentalno</string>
     <string name="experimental_settings_description">Eksperimentalne, nestabilne i neprevedene postavke i mogućnosti. Koristiti s oprezom</string>
     <string name="experimental_disclaimer">Ove značajke su eksperimentalne i možda ne rade kako treba. Koristite ih na vlastitu odgovornost. Možete provjeriti napredak njihova razvoja na GitHubu.</string>
@@ -300,6 +313,14 @@
     <string name="import_csv_description">Uvezi iz CSV datoteke. Pogledajte \'\'wiki\'\' na GitHubu za potrebnu strukturu datoteka</string>
     <string name="export_csv_title">Izvezi u CSV datoteku</string>
     <string name="export_csv_description">Izvezi svaki događaj u CSV datoteku, uključujući sliku</string>
+    <string name="export_calendar_title">Izvezi u kalendar</string>
+    <string name="export_calendar_description">Spremi sve događaje u lokalni kalendar, ako je moguće. Ova funkcija zahtijeva dopuštenje za pristup kalendaru</string>
+    <string name="auto_export_title">Automatski izvoz događaja</string>
+    <string name="auto_export_description_on">Birday će automatski izvesti sigurnosnu kopiju događaja kada se aplikacija zatvori. Imajte na umu da će svaka sigurnosna kopija zamijeniti prethodnu</string>
+    <string name="auto_export_description_off">Komanda za izvoz sigurnosne kopije će se morati izvršavati ručno</string>
+    <string name="add_demo_entries_title">Dodaj demo događaje</string>
+    <string name="add_demo_entries_description">Ispunite podatkovnu bazu s par demonstracijskih događaja, pretežno u vezi s glumcima i povijesnim ličnostima</string>
+    <string name="add_demo_entries_dialog_description">Ovo će trajno dodati TISUĆE događaja u podatkovnu bazu i namijenjeno je otklanjanju poteškoća. Postojeći događaji neće biti izbrisani, no ako želite izbrisati dodane događaje, to ćete morati ručno. Sretno vam bilo.</string>
     <string name="delete_db_title">Izbriši sve događaje</string>
     <string name="delete_db_description">Ovo će izbrisati cijelu podatkovnu bazu, razmislite dvaput prije nego kliknete!</string>
     <string name="delete_db_dialog_title">Jeste li sigurni?</string>
@@ -313,4 +334,7 @@
     <string name="advanced_overview_title">Napredni sažetak</string>
     <string name="advanced_overview_description_off">U sažetku će se prikazivati samo osnovne informacije</string>
     <string name="advanced_overview_description_on">U sažetku će se prikazivati i ostale godine i detaljne informacije</string>
+    <string name="replace_on_conflict_title">Zamijeni u slučaju konflikta</string>
+    <string name="replace_on_conflict_description_off">Pri uvozu, duplicirani događaji neće biti zamijenjeni uvezenim duplikatima</string>
+    <string name="replace_on_conflict_description_on">Pri uvozu, duplicirani događaji bit će zamijenjeni uvezenim duplikatima</string>
 </resources>

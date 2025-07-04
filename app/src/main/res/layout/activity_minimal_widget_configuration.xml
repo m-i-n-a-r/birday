@@ -82,7 +82,7 @@
             app:layout_constraintStart_toStartOf="@id/configurationDarkWidgetTitle"
             app:layout_constraintTop_toBottomOf="@id/configurationDarkWidgetTitle" />
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
+        <com.google.android.material.materialswitch.MaterialSwitch
             android:id="@+id/configurationDarkTextSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
             app:layout_constraintStart_toStartOf="@id/configurationBackgroundTitle"
             app:layout_constraintTop_toBottomOf="@id/configurationBackgroundTitle" />
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
+        <com.google.android.material.materialswitch.MaterialSwitch
             android:id="@+id/configurationBackgroundSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -150,7 +150,7 @@
             app:layout_constraintStart_toStartOf="@id/configurationCompactTitle"
             app:layout_constraintTop_toBottomOf="@id/configurationCompactTitle" />
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
+        <com.google.android.material.materialswitch.MaterialSwitch
             android:id="@+id/configurationCompactSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -184,7 +184,7 @@
             app:layout_constraintStart_toStartOf="@id/configurationAlignStartTitle"
             app:layout_constraintTop_toBottomOf="@id/configurationAlignStartTitle" />
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
+        <com.google.android.material.materialswitch.MaterialSwitch
             android:id="@+id/configurationAlignStartSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -194,7 +194,30 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/configurationAlignStartTitle" />
 
-        <!-- Align text to the left -->
+        <!-- Show only favorites, doesn't have a description so it has additional vertical margin -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/configurationShowOnlyFavoritesTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:text="@string/notification_only_favorites"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+            android:textSize="@dimen/custom_preference_title_text_size"
+            app:layout_constraintEnd_toStartOf="@id/configurationShowOnlyFavoritesSwitch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/configurationAlignStartDescription" />
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/configurationShowOnlyFavoritesSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/card_margin"
+            app:layout_constraintBottom_toBottomOf="@id/configurationShowOnlyFavoritesTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/configurationShowOnlyFavoritesTitle" />
+
+        <!-- Hide an event if it's too far -->
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/configurationHideIfFarTitle"
             android:layout_width="0dp"
@@ -205,7 +228,7 @@
             android:textSize="@dimen/custom_preference_title_text_size"
             app:layout_constraintEnd_toStartOf="@id/configurationHideIfFarSwitch"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/configurationAlignStartDescription" />
+            app:layout_constraintTop_toBottomOf="@id/configurationShowOnlyFavoritesTitle" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/configurationHideIfFarDescription"
@@ -218,7 +241,7 @@
             app:layout_constraintStart_toStartOf="@id/configurationHideIfFarTitle"
             app:layout_constraintTop_toBottomOf="@id/configurationHideIfFarTitle" />
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
+        <com.google.android.material.materialswitch.MaterialSwitch
             android:id="@+id/configurationHideIfFarSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -227,6 +250,40 @@
             app:layout_constraintBottom_toBottomOf="@id/configurationHideIfFarDescription"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/configurationHideIfFarTitle" />
+
+        <!-- Show the second next event -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/configurationShowFollowingTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:text="@string/show_following_widget_title"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+            android:textSize="@dimen/custom_preference_title_text_size"
+            app:layout_constraintEnd_toStartOf="@id/configurationShowFollowingSwitch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/configurationHideIfFarDescription" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/configurationShowFollowingDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/show_following_widget_description"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textSize="@dimen/custom_preference_subtitle_text_size"
+            app:layout_constraintEnd_toStartOf="@id/configurationShowFollowingSwitch"
+            app:layout_constraintStart_toStartOf="@id/configurationShowFollowingTitle"
+            app:layout_constraintTop_toBottomOf="@id/configurationShowFollowingTitle" />
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/configurationShowFollowingSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/card_margin"
+            app:layout_constraintBottom_toBottomOf="@id/configurationShowFollowingDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/configurationShowFollowingTitle" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/configurationConfirmButton"
@@ -250,7 +307,7 @@
             android:padding="@dimen/activity_horizontal_margin"
             android:theme="@style/WidgetTheme"
             app:layout_constraintBottom_toTopOf="@id/configurationConfirmButton"
-            app:layout_constraintTop_toBottomOf="@id/configurationHideIfFarDescription"
+            app:layout_constraintTop_toBottomOf="@id/configurationShowFollowingDescription"
             tools:layout_editor_absoluteX="38dp">
 
             <ImageView

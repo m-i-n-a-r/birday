@@ -13,39 +13,41 @@ This is an open source app to remember **birthdays** and other events in a fast,
 
 ## Translations (guide and info below, refer to [Crowdin](https://crwd.in/birday))
 
-| LANGUAGE                | SPECIAL THANKS  | UPDATED BY                  |
-|:------------------------|:----------------|:----------------------------|
-| **English**             | myself          | ar-maged, Commenter25       |
-| **Spanish**             | myself          | Joseahfer                   |
-| **Swedish**             | SlowNicoFish    |                             |
-| **Dutch**               | stefanvi        |                             |
-| **Italian**             | myself          | myself                      |
-| **French**              | Mattis Biton    |                             |
-| **Hungarian**           | Obi             |                             |
-| **German**              | pizzapastamix   | WrstFngr, AlexanderRitter02 |
-| **Vietnamese**          | Lee Huynh       | dmtrilc                     |
-| **Russian**             | koterpillar     |                             |
-| **Czech**               | Miloš Koliáš    | IQLogic                     |
-| **Slovak**              | IQLogic         |                             |
-| **Polish**              | mateusz-bak     |                             |
-| **Croatian**            | Dominik Novosel | Dominik Novosel             |
-| **Portuguese**          | smarquespt      | smarquespt                  |
-| **Brazilian**           | BadJuice67      | Paiusco                     |
-| **Romanian**            | ygorigor        | ygorigor                    |
-| **Traditional Chinese** | Still34         |                             |
-| **Simplified Chinese**  | daoxi           |                             |
-| **Catalan**             | retiolus        |                             |
-| **Serbian**             | Th3Unkn0wn0n3   | vatonbero                   |
-| **Ukrainian**           | taras           |                             |
-| **Greek**               | Retrial         |                             |
-| **Marathi**             | Ramesh Kumar    |                             |
-| **Malayalam**           | Lavin-tom       |                             |
-| **Hindi**               | assembleDebug   |                             |
+| LANGUAGE                | SPECIAL THANKS    | UPDATED BY                  |
+|:------------------------|:------------------|:----------------------------|
+| **English**             | myself            | ar-maged, Commenter25       |
+| **Spanish**             | myself            | Joseahfer                   |
+| **Swedish**             | SlowNicoFish      |                             |
+| **Dutch**               | stefanvi          |                             |
+| **Italian**             | myself            | myself                      |
+| **French**              | Mattis Biton      |                             |
+| **Hungarian**           | Obi               |                             |
+| **German**              | pizzapastamix     | WrstFngr, AlexanderRitter02 |
+| **Vietnamese**          | Lee Huynh         | dmtrilc                     |
+| **Russian**             | koterpillar       |                             |
+| **Czech**               | Miloš Koliáš      | IQLogic                     |
+| **Slovak**              | IQLogic           |                             |
+| **Polish**              | mateusz-bak       |                             |
+| **Croatian**            | Dominik Novosel   | Dominik Novosel             |
+| **Portuguese**          | smarquespt        | smarquespt                  |
+| **Brazilian**           | BadJuice67        | Paiusco                     |
+| **Romanian**            | ygorigor          | ygorigor                    |
+| **Traditional Chinese** | Still34           | daoxi                       |
+| **Simplified Chinese**  | daoxi             | daoxi                       |
+| **Catalan**             | retiolus          |                             |
+| **Serbian**             | Th3Unkn0wn0n3     | vatonbero                   |
+| **Ukrainian**           | taras             |                             |
+| **Greek**               | Retrial           |                             |
+| **Marathi**             | Ramesh Kumar      |                             |
+| **Malayalam**           | Lavin-tom         |                             |
+| **Hindi**               | assembleDebug     |                             |
+| **Finnish**             | manaryde          |                             |
+| **Turkish**             | Ömer Selim Öztürk |                             |
 
 ## Features
-- Notification the day of the event (with selectable time)
-- Additional notification up to 7 days before the event
-- Import from contacts or calendar (import on first launch, auto import on each launch option)
+- Notification the day of the event (with selectable time and optional grouping for multiple events in the same day)
+- Additional notification up to 21 days before the event (multiple selections are possible)
+- Import from contacts or calendar (import on first launch, auto import on each launch option, selectable on conflict strategy)
 - Easily backup and restore your saved events!
 - Experimental CSV and JSON import/export
 - insert an event manually, just specifying a first name, an optional last name, an image and a date (with optional year)
@@ -56,12 +58,12 @@ This is an open source app to remember **birthdays** and other events in a fast,
 - Easily delete, modify and share the saved events!
 - Each event has an handy note field
 - Easily hide the top cards to display the list in fullscreen
-- Main list organized by month
+- Main list organized by month or alphabetically
 - Quick glance row, to visualize the events in the next 10 days
 - Yearly overview screen (advanced mode available)
 - A nice searchbar and an event type selector
 - Quick apps launcher
-- Light, dark, and system default theme
+- Light, dark, Amoled black and system default theme
 - Full Material 3 / Monet support
 - Selectable accent (no app restart needed, 12 choices)
 - Shimmer effect (it can be disabled) and confetti, because why not
@@ -69,25 +71,25 @@ This is an open source app to remember **birthdays** and other events in a fast,
 - Notification only for favorite events
 - Hide and show images
 - Material 3 configurable widgets (minimal and complete)
-- Beautiful animations (and animated notification icon)
+- Beautiful animations (and animated notification icon, both can be disabled, but if you do it, be aware that I hate you)
 - Multiwindow / freeform full support
 - Animated splashscreen and app intro, dynamic layouts and more
 - Small and optimized apk size
-- Many languages available!
+- 30+ locales supported and counting!
 
 ## Screenshots
 <p align='center'>
-  <img src='https://i.imgur.com/xYHoQpY.png' width='18%'/>
-  <img src='https://i.imgur.com/FWAB9W3.png' width='18%'/>
-  <img src='https://i.imgur.com/OwzKP96.png' width='18%'/>
-  <img src='https://i.imgur.com/77nWllU.png' width='18%'/>
-  <img src='https://i.imgur.com/Zc0exjT.png' width='18%'/>
+  <img src='https://i.imgur.com/UFMMkEu.png' width='19%'/>
+  <img src='https://i.imgur.com/RvSy5y5.png' width='19%'/>
+  <img src='https://i.imgur.com/2y9lX2d.png' width='19%'/>
+  <img src='https://i.imgur.com/ztLm6Um.png' width='19%'/>
+  <img src='https://i.imgur.com/CSqWCcy.png' width='19%'/>
 
-  <img src='https://i.imgur.com/FB51xRj.png' width='18%'/>
-  <img src='https://i.imgur.com/mEEmK0B.png' width='18%'/>
-  <img src='https://i.imgur.com/pj5GuTZ.png' width='18%'/>
-  <img src='https://i.imgur.com/egZkfSH.png' width='18%'/>
-  <img src='https://i.imgur.com/gyt9bw0.png' width='18%'/>
+  <img src='https://i.imgur.com/seGRReK.png' width='19%'/>
+  <img src='https://i.imgur.com/z6DbIof.png' width='19%'/>
+  <img src='https://i.imgur.com/RyMyprK.png' width='19%'/>
+  <img src='https://i.imgur.com/qQJdQTN.png' width='19%'/>
+  <img src='https://i.imgur.com/k3UV8XG.png' width='19%'/>
 </p>
 
 ## Download

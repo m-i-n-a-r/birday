@@ -1,0 +1,5 @@
+- Many important fixes (csv import for example)
+- Recently missed events in quick apps dialog
+- Auto export (experimental)
+- Export to calendar (experimental, long press to delete local calendar)
+- New translations and more!

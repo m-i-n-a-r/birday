@@ -1,47 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.textfield.TextInputLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:focusableInTouchMode="true"
+    android:id="@+id/favoritesNotesLayout"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:paddingHorizontal="@dimen/dialog_horizontal_padding"
-    android:paddingTop="@dimen/linear_vertical_margin">
+    android:paddingTop="@dimen/linear_vertical_margin"
+    app:boxBackgroundColor="@color/transparent"
+    app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
+    app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
+    app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
+    app:boxCornerRadiusTopStart="@dimen/text_field_corner"
+    app:counterEnabled="true"
+    app:counterMaxLength="500"
+    app:helperText="@string/write_something"
+    app:helperTextEnabled="true"
+    app:hintEnabled="false">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/favoritesNotesLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/favoritesNotes"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:boxBackgroundColor="@color/transparent"
-        app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
-        app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
-        app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
-        app:boxCornerRadiusTopStart="@dimen/text_field_corner"
-        app:counterEnabled="true"
-        app:counterMaxLength="500"
-        app:helperText="@string/write_something"
-        app:helperTextEnabled="true"
-        app:hintEnabled="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:gravity="top|start"
+        android:inputType="textMultiLine|textCapSentences"
+        android:maxHeight="@dimen/notes_maximum_height"
+        android:maxLength="500"
+        android:minHeight="@dimen/notes_minimum_height"
+        android:nestedScrollingEnabled="true"
+        android:paddingHorizontal="0dp"
+        android:paddingVertical="@dimen/list_vertical_padding"
+        android:requiresFadingEdge="vertical"
+        android:textCursorDrawable="@drawable/custom_cursor" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/favoritesNotes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="top|start"
-            android:inputType="textMultiLine|textCapSentences"
-            android:maxHeight="@dimen/notes_maximum_height"
-            android:maxLength="500"
-            android:minHeight="@dimen/notes_minimum_height"
-            android:nestedScrollingEnabled="true"
-            android:paddingHorizontal="0dp"
-            android:paddingVertical="@dimen/list_vertical_padding"
-            android:requiresFadingEdge="vertical"
-            android:textCursorDrawable="@drawable/custom_cursor" />
+</com.google.android.material.textfield.TextInputLayout>
 
-    </com.google.android.material.textfield.TextInputLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>

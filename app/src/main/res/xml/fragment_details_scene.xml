@@ -43,6 +43,11 @@
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />
         </Constraint>
+        <Constraint android:id="@id/detailsNextAgeYears">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
         <Constraint android:id="@id/detailsZodiacSign">
             <PropertySet
                 app:applyMotionScene="false"
@@ -146,6 +151,11 @@
                 app:visibilityMode="ignore" />
         </Constraint>
         <Constraint android:id="@id/detailsBirthDateValue">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@+id/detailsNextAgeYears">
             <PropertySet
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />

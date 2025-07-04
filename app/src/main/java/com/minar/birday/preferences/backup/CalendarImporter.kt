@@ -41,10 +41,10 @@ class CalendarImporter(context: Context, attrs: AttributeSet?) : Preference(cont
         }
     }
 
-    // Import the contacts from device contacts (not necessarily Google)
+    // Import the yearly events from the system calendar
     private fun importCalendar(context: Context): Boolean {
         val act = context as MainActivity
-        // Ask for contacts permission
+        // Ask for calendar permission
         val permission = act.askCalendarPermission(302)
         if (!permission) return false
 
@@ -99,7 +99,7 @@ class CalendarImporter(context: Context, attrs: AttributeSet?) : Preference(cont
         }
     }
 
-    // Get the contacts and save them in a map
+    // Get the calendar events and save them in a map
     private fun getCalendarEvents(): List<ImportedEvent> {
         val eventInfo = mutableListOf<ImportedEvent>()
 

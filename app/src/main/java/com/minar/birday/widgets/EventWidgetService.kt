@@ -14,7 +14,7 @@ import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getReducedDate
 import com.minar.birday.utilities.getRemainingDays
-import com.minar.birday.utilities.removeUpcomingEvents
+import com.minar.birday.utilities.removeOrGetUpcomingEvents
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.*
@@ -26,14 +26,9 @@ class EventWidgetService : RemoteViewsService() {
     }
 }
 
-internal class EventWidgetRemoteViewsFactory(context: Context) : RemoteViewsFactory {
+internal class EventWidgetRemoteViewsFactory(private val context: Context) : RemoteViewsFactory {
     private lateinit var events: List<EventResult>
     private var surnameFirst = false
-    private val context: Context
-
-    init {
-        this.context = context
-    }
 
     override fun onCreate() {
         // In onCreate(), setup any connections / cursors to the data source
@@ -110,6 +105,6 @@ internal class EventWidgetRemoteViewsFactory(context: Context) : RemoteViewsFact
     override fun onDataSetChanged() {
         val eventDao: EventDao = EventDatabase.getBirdayDatabase(context).eventDao()
         // Remove next events to avoid double data
-        events = removeUpcomingEvents(eventDao.getOrderedEventsStatic())
+        events = removeOrGetUpcomingEvents(eventDao.getOrderedEventsStatic())
     }
 }

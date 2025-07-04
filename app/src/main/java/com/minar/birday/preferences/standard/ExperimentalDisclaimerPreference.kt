@@ -10,7 +10,6 @@ import com.minar.birday.BuildConfig
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.ExperimentalDisclaimerRowBinding
-import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 
 
 class ExperimentalDisclaimerPreference(context: Context, attrs: AttributeSet?) :
@@ -21,7 +20,8 @@ class ExperimentalDisclaimerPreference(context: Context, attrs: AttributeSet?) :
         val binding = ExperimentalDisclaimerRowBinding.bind(holder.itemView)
 
         // Animate the vector drawable
-        binding.animatedDanger.applyLoopingAnimatedVectorDrawable(
+        (context as MainActivity).animateAvd(
+            binding.animatedDanger,
             R.drawable.animated_experimental_danger, 1500
         )
 

@@ -10,23 +10,23 @@
     <string name="title_home">首頁</string>
     <string name="title_favorites">我的最愛</string>
     <string name="title_settings">設定</string>
-    <string name="no_events">尚未新增任何紀念日！透過下面的按鈕來建立一個吧！</string>
+    <string name="no_events">尚未新增任何節日！透過下面的按鈕來建立一個吧！</string>
     <string name="no_favorites">尚有任何最愛！透過生日旁的星星將重要的日子加到最愛中吧！</string>
     <string name="add_favorite">新增至我的最愛中</string>
     <string name="stats">統計</string>
     <string name="no_stats">沒有數據可顯示！</string>
     <string name="stats_summary">統計摘要</string>
-    <string name="no_stats_description">您目前沒有足夠的紀念日來生成統計。新增一些項目再回來吧！</string>
+    <string name="no_stats_description">您目前沒有足夠的節日來生成統計。新增一些項目再回來吧！</string>
     <plurals name="stats_total">
-        <item quantity="other">Birday幫助你記住了共%d個紀念日</item>
+        <item quantity="other">Birday 幫你記住了多達 %d 個重要日子</item>
     </plurals>
     <string name="next_event">下個活動</string>
     <string name="no_next_event">沒有可顯示的紀念日！</string>
-    <string name="no_next_event_description">您尚未輸入或匯入任何紀念日。趕快新增一個讓 Birday 幫你替未來慶生吧！</string>
+    <string name="no_next_event_description">您尚未輸入或匯入任何節日。趕快新增一個讓 Birday 幫你替未來慶生吧！</string>
     <string name="next_age_years">年齡</string>
     <string name="event_others">及其他</string>
     <plurals name="days_left">
-        <item quantity="other">剩餘%d天</item>
+        <item quantity="other">剩下 %d 天</item>
     </plurals>
     <!-- Settings -->
     <string name="customization">自訂</string>
@@ -54,7 +54,7 @@
     <string name="accent_name">配色</string>
     <string name="theme_description">使用自動、深色或淺色主題</string>
     <string name="theme_name">應用程式主題</string>
-    <!-- Untranslated for now -->
+    <!-- ^ Untranslated for now -->
     <string name="aqua">水色</string>
     <string name="brown">棕色</string>
     <string name="blue">藍色</string>
@@ -76,7 +76,7 @@
     <string name="shimmer_description_off">不使用任何附加動畫</string>
     <string name="import_export">匯入及匯出</string>
     <string name="import_contacts_title">自聯絡人中匯入紀念日</string>
-    <string name="import_contacts_description">請確保各個聯絡人的紀念日有出生年份設好，否則統計數據可能會不準！</string>
+    <string name="import_contacts_description">請確保各個聯絡人的節日有出生年份設好，否則統計數據可能會不準！</string>
     <string name="import_success">已成功匯入！</string>
     <string name="import_nothing_found">找不到任何可匯入的紀念日！</string>
     <string name="import_failed">出事了！</string>
@@ -85,7 +85,7 @@
     <string name="birday_import_title">匯入 Birday 備份</string>
     <string name="birday_import_description">選擇任何可用的 Birday 備份進行還原。請注意，所有現有資料將被覆寫！</string>
     <string name="birday_export_title">匯出及分享紀念日</string>
-    <string name="birday_export_description">匯出現有的紀念日作為備份或分享用。匯出後的檔案位於 Android/data/com.minar.birday/files。</string>
+    <string name="birday_export_description">匯出現有的節日作為備份或分享用。匯出後的檔案位於 Android/data/com.minar.birday/files。</string>
     <string name="birday_import_success">匯入成功！</string>
     <string name="birday_import_failure">匯入失敗。您是否正常選擇了適當的檔案？</string>
     <string name="birday_import_invalid_file">匯入失敗。您所選的檔案不是 Birday 的備份檔案！</string>
@@ -101,20 +101,30 @@
     <string name="notification_only_favorites">僅限我的最愛</string>
     <string name="notification_only_favorites_description_on">僅提醒我的最愛中的紀念日</string>
     <string name="notification_only_favorites_description_off">提醒所有的紀念日</string>
-    <string name="additional_notification_only_favorites">爲所最愛的額外通知</string>
-    <string name="additional_notification_only_favorites_description_on">僅為最愛的紀念日發送額外通知</string>
-    <string name="additional_notification_only_favorites_description_off">為每個插入的紀念日發送額外通知</string>
+    <string name="additional_notification_only_favorites">為喜愛的人添加額外通知</string>
+    <string name="additional_notification_only_favorites_description_on">只為喜愛的節日發送額外通知</string>
+    <string name="additional_notification_only_favorites_description_off">在每一個節日都發送額外通知</string>
     <string name="troubleshoot">疑难解答</string>
     <string name="battery_optimization_title">禁用电池优化</string>
     <string name="battery_optimization_description">打开设置以禁用 Birday 的任何优化。 如果通知不起作用，则很有用</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
     <string name="notification_sound_title">通知声音</string>
     <string name="notification_sound_description">通知声音设置的快捷方式，如果您不喜欢默认的鸟声</string>
-    <string name="missing_permission_notifications">通知權限被拒絕，且Birday無法發送通知！請從設置中開啟權限。</string>
-    <string name="missing_permission_notifications_forever">通知權限被拒絕且無法再次詢問，所以Birday無法發送通知！請從設置中手動開啟權限。</string>
-    <string name="missing_permission_calendar">日曆權限被拒絕，且Birday無法從日曆導入！請從設置中開啟權限。</string>
-    <string name="missing_permission_calendar_forever">日曆權限被拒絕且無法再次詢問，所以Birday無法從日曆導入！請從設置中手動開啟權限。</string>
-    <string name="import_calendar_title">從日曆導入</string>
-    <string name="import_calendar_description">從你的日曆導入任何年度事件。記住設置事件的類型和年份來讓它們整齊！</string>
+    <string name="missing_permission_notifications">發送通知許可被拒絕了，因此 Birday 並不能發送通知！請在設置裡開啟許可。</string>
+    <string name="missing_permission_notifications_forever">發送通知許可被拒絕了，且不能再詢問，因此 Birday 並不能發送通知！請自行往設置裡開啟許可。</string>
+    <string name="missing_permission_calendar">行事曆的許可被拒絕了，因此 Birday 不能從行事曆引入！請在設置裡開啟許可。</string>
+    <string name="missing_permission_calendar_forever">行事曆的許可被拒絕了，且不能再詢問，因此 Birday 不能從行事曆裡引入！請自行前往設置裡開啟許可。</string>
+    <string name="import_calendar_title">從行事曆裡引入</string>
+    <string name="import_calendar_description">從行事曆裡引入各種年度節日。記得設置節日類型和年份，以避免混亂！</string>
+    <string name="loop_avd_title">Loop animations</string>
+    <string name="loop_avd_description_on">The animations are looped infinitely</string>
+    <string name="loop_avd_description_off">The animations will run a single time</string>
+    <string name="order_alphabetically_title">Alphabetical order</string>
+    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
+    <string name="order_alphabetically_description_off">The events are ordered by date</string>
+    <string name="grouped_notifications_title">Group multiple notifications</string>
+    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
+    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
     <!-- Developer -->
     <string name="dev_description">我是一個有禮貌、喜歡漂亮東西的人，像動畫製作、圖案設計、跑車、跟3D列印。我目前擔任的職務是設計師及電腦工程師。</string>
     <string name="easter_egg">扛棒很棒吧，嘻嘻！</string>
@@ -137,7 +147,7 @@
     <string name="other">其他</string>
     <!-- Event actions -->
     <string name="event_actions">動作</string>
-    <string name="event_actions_description">你可以在這裡編輯或刪除此紀念日！</string>
+    <string name="event_actions_description">你可以在這裡編輯或刪除此節日！</string>
     <string name="edit_event">編輯紀念日</string>
     <string name="delete_event">刪除紀念日</string>
     <string name="update_event">更新紀念日</string>
@@ -157,6 +167,7 @@
     <string name="wishes_birthday">生日快樂！</string>
     <string name="no_default_dialer">找不到預設撥號器！</string>
     <string name="no_default_sms">找不到預設簡訊 App！</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">你知道嗎？</string>
     <string name="age_average">大家的平均年齡是 %s</string>
@@ -168,7 +179,7 @@
     <string name="special_ages">重要的生日將要來臨 %s</string>
     <string name="random_zodiac_sign">%1$s 的星座是: %2$s</string>
     <string name="most_common_zodiac_sign">最常見的星座是 %s</string>
-    <string name="most_common_chinese_sign">最常見的中國生肖是%s</string>
+    <string name="most_common_chinese_sign">最多的生肖是 %s</string>
     <string name="random_day_of_week">%1$s 出生於 %2$s</string>
     <string name="most_common_day_of_week">最多人出生於 %s</string>
     <plurals name="leap_year_total">
@@ -201,13 +212,13 @@
     <string name="zodiac_scorpio">天蠍座</string>
     <!-- Common words -->
     <plurals name="months">
-        <item quantity="other">%d月</item>
+        <item quantity="other">%d 個月</item>
     </plurals>
     <string name="today">今天！</string>
     <string name="yesterday">昨天！</string>
     <string name="tomorrow">明天！</string>
     <plurals name="years">
-        <item quantity="other">%d年</item>
+        <item quantity="other">%d 年</item>
     </plurals>
     <string name="born_in">出生於</string>
     <string name="and">及</string>
@@ -223,30 +234,31 @@
     <string name="additional_notification_text">即將到來的紀念日！</string>
     <!-- Introduction slides -->
     <string name="slide_one_title">歡迎使用 Birday！</string>
-    <string name="slide_one_description">Birday 是一個簡單輕巧並用於管理重要紀念日的 App！
+    <string name="slide_one_description">Birday 是一個簡單輕巧並用於管理重要節日的 App！
     你可以透過它來以快速可靠的方式記住任何你所喜歡的人的生日。</string>
     <string name="slide_two_title">免費、簡單、可自訂化</string>
     <string name="slide_two_description">Birday 是免費、無廣告且開源的。功能包括提供聯絡人生日的
     統計訊息、我的最愛、及可自定義的界面。除此之外，我們也將持續提供更新及支援！</string>
     <string name="slide_three_title">從聯絡人匯入</string>
-    <string name="slide_three_description">如果你的聯絡人資料中含有紀念日相關資訊，Birday 也可以從聯絡人中匯入此資訊！
-		</string>
+    <string name="slide_three_description">如果你的聯絡人資料中含有節日相關資訊，Birday 也可以從聯絡人中匯入此資訊！</string>
     <!-- Widget -->
     <string name="appwidget_upcoming">即將到來的紀念日</string>
     <string name="add_widget">Birday - 即將到來的紀念日</string>
-    <string name="dark_widget_name">深色組件</string>
-    <string name="dark_widget_description_on">桌面組件使用深色主題</string>
-    <string name="dark_widget_description_off">桌面組件使用淺色主題</string>
-    <string name="widget_configuration_title">組件設定</string>
-    <string name="widget_configuration_description">設定組件來匹配你的風格</string>
+    <string name="dark_widget_name">深色小工具</string>
+    <string name="dark_widget_description_on">桌面小工具使用深色主題</string>
+    <string name="dark_widget_description_off">桌面小工具使用淺色主題</string>
+    <string name="widget_configuration_title">設置小部件</string>
+    <string name="widget_configuration_description">設置小部件以適合你的美觀</string>
     <string name="widget_background_title">背景</string>
-    <string name="widget_background_description">為組件顯示背景</string>
+    <string name="widget_background_description">在小部件展示背景</string>
     <string name="compact_widget_title">緊湊排版</string>
     <string name="compact_widget_description">將排版最佳化為極度緊湊</string>
     <string name="align_start_widget_title">在開始處對齊</string>
     <string name="align_start_widget_description">將組件內容向開始處對齊（根據你的區域設置決定向左或右）</string>
     <string name="hide_far_widget_title">對很久後的事件隱藏組件</string>
     <string name="hide_far_widget_description">如果下個事件是在額外通知時段後則隱藏組件（比如：7天前通知，下個事件是10天後 -&gt; 隱藏組件）</string>
+    <string name="show_following_widget_title">Show the following event</string>
+    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <!-- Search -->
     <string name="search_event">搜尋…</string>
     <string name="search_no_result_title">未找到結果</string>
@@ -256,8 +268,8 @@
     <string name="write_something">寫些東西…</string>
     <!-- Overview -->
     <string name="overview">概述</string>
-    <string name="overview_description">已保存紀念日的年度概覽</string>
-    <!-- Experimental preferences -->
+    <string name="overview_description">已保存節日的年度概覽</string>
+    <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">試驗性</string>
     <string name="experimental_settings_description">一些試驗性或bug多的設置和功能。使用它們風險自負</string>
     <string name="experimental_disclaimer">以下功能是試驗性的，並且可能無法正常使用。使用它們風險自負。參考Github來看進度，因為其中部分功能可能被提升或翻譯。</string>
@@ -266,23 +278,31 @@
     <string name="launch_auto_import_title">開啟時自動導入</string>
     <string name="launch_auto_import_description_off">Birday不會在開啟時自動導入通訊錄</string>
     <string name="launch_auto_import_description_on">Birday會在開啟時與通訊錄自動同步</string>
-    <string name="hide_on_scroll_title">滑動時隱藏導航欄</string>
-    <string name="hide_on_scroll_description_on">當你滑動時隱藏底部導航欄</string>
-    <string name="hide_on_scroll_description_off">底部導航欄總是可見</string>
-    <string name="angry_bird_title">憤怒的小鳥模式</string>
+    <string name="hide_on_scroll_title">在滑動時隱藏導覽列</string>
+    <string name="hide_on_scroll_description_on">在你滑動時隱藏下方的導覽列</string>
+    <string name="hide_on_scroll_description_off">下方的導覽列將永遠出現</string>
+    <string name="angry_bird_title">生氣模式</string>
     <string name="angry_bird_description_on">持續通知、較短的文本和其他與通知相關的調整</string>
-    <string name="angry_bird_description_off">通知會正常表現</string>
-    <string name="disable_astrology_title">禁用星座</string>
-    <string name="disable_astrology_description_on">在細節與數據中隱藏星座</string>
-    <string name="disable_astrology_description_off">正常顯示星座資訊</string>
-    <string name="import_json_title">從JSON導入</string>
-    <string name="import_json_description">從一個JSON文件導入。參考Github的wiki來看所需的文件結構</string>
-    <string name="export_json_title">導出到JSON</string>
-    <string name="export_json_description">將每個事件導出到一個JSON文件，包含圖片</string>
-    <string name="import_csv_title">從CSV導入</string>
-    <string name="import_csv_description">從一個CSV文件導入。參考Github的wiki來看所需的文件結構</string>
-    <string name="export_csv_title">導出到CSV</string>
+    <string name="angry_bird_description_off">通知將會普通的出現</string>
+    <string name="disable_astrology_title">關閉星座</string>
+    <string name="disable_astrology_description_on">星座將會被隱藏</string>
+    <string name="disable_astrology_description_off">星座細節會正常地展現</string>
+    <string name="import_json_title">從 JSON 引入</string>
+    <string name="import_json_description">從 JSON 文件引入。請參考 Github 的維基以獲得所需的文件結構</string>
+    <string name="export_json_title">導出至 JSON</string>
+    <string name="export_json_description">導出每一個節日至 JSON 文件，照片除外</string>
+    <string name="import_csv_title">從 CSV 引入</string>
+    <string name="import_csv_description">從 CSV 文件引入。請參考 Github 的維基以獲得所需的文件結構</string>
+    <string name="export_csv_title">導出至 CSV</string>
     <string name="export_csv_description">將每個事件導出到一個CSV文件，包含圖片</string>
+    <string name="export_calendar_title">Export to calendar</string>
+    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
+    <string name="auto_export_title">Auto export events</string>
+    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
+    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
+    <string name="add_demo_entries_title">Add demo entries</string>
+    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
+    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
     <string name="delete_db_title">刪除所有事件</string>
     <string name="delete_db_description">單純的，把資料庫核爆掉。好好思考一下再點！</string>
     <string name="delete_db_dialog_title">你確認嗎？</string>
@@ -296,4 +316,7 @@
     <string name="advanced_overview_title">高級概述</string>
     <string name="advanced_overview_description_off">概覽螢幕將只顯示基本資訊</string>
     <string name="advanced_overview_description_on">概覽螢幕將顯示其他年份和詳細資訊</string>
+    <string name="replace_on_conflict_title">Replace on conflict</string>
+    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
+    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
 </resources>

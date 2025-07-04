@@ -1,0 +1,40 @@
+<com.google.android.material.carousel.MaskableFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/carousel_item_container"
+    android:layout_width="@dimen/carousel_item_width"
+    android:layout_height="match_parent"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
+    android:foreground="?attr/selectableItemBackground"
+    app:shapeAppearance="?attr/shapeAppearanceCornerExtraLarge">
+
+    <ImageView
+        android:id="@+id/missedCarouselImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha=".8"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/missedCarouselGradient"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:importantForAccessibility="no"
+        android:alpha=".9"
+        android:src="@drawable/colored_shadow_gradient" />
+
+    <TextView
+        android:id="@+id/missedCarouselText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginVertical="@dimen/rounded_corners"
+        android:text="@string/event_details"
+        android:shadowColor="@color/shadowGray"
+        android:shadowDy="3"
+        android:shadowRadius="@dimen/widget_shadow_radius"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+
+</com.google.android.material.carousel.MaskableFrameLayout>

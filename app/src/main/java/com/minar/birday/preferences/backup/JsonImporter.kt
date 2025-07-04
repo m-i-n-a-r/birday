@@ -10,12 +10,10 @@ import com.google.gson.GsonBuilder
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.model.Event
-import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.LocalDateJsonSerializer
 import com.minar.birday.utilities.normalizeEvent
 import java.time.LocalDate
 import java.util.*
-import kotlin.concurrent.thread
 
 
 class JsonImporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
@@ -38,7 +36,6 @@ class JsonImporter(context: Context, attrs: AttributeSet?) : Preference(context,
     fun importEventsJson(context: Context, fileUri: Uri): Boolean {
         val fileStream = context.contentResolver.openInputStream(fileUri)!!
         val jsonString = fileStream.bufferedReader().use { it.readText() }
-        val eventDao = EventDatabase.getBirdayDatabase(context).eventDao()
         val gsonBuilder = GsonBuilder().registerTypeAdapter(
             LocalDate::class.java,
             LocalDateJsonSerializer().nullSafe()
@@ -50,9 +47,7 @@ class JsonImporter(context: Context, attrs: AttributeSet?) : Preference(context,
             importedEvents.forEach { normalizedEvents.add(normalizeEvent(it)) }
 
             // Bulk insert, using the standard duplicate detection strategy
-            thread {
-                eventDao.insertAllEvent(normalizedEvents)
-            }
+            act.mainViewModel.insertAll(normalizedEvents)
             fileStream.close()
             (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_success))
         } catch (e: Exception) {

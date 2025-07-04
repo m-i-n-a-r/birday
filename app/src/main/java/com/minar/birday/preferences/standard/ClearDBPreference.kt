@@ -16,7 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-// A custom preference to open the notification sound settings for Birday
+// A custom preference to nuke the DB
 class ClearDBPreference(context: Context, attrs: AttributeSet?) :
     Preference(context, attrs),
     View.OnClickListener {
@@ -40,12 +40,13 @@ class ClearDBPreference(context: Context, attrs: AttributeSet?) :
                 CoroutineScope(Dispatchers.IO).launch {
                     // Delete every saved data and send a snackbar
                     EventDatabase.getBirdayDatabase(context).clearAllTables()
+                }.invokeOnCompletion {
+                    act.showSnackbar(
+                        context.getString(R.string.app_intro_done_button).lowercase()
+                            .smartFixName(forceCapitalize = true)
+                    )
+                    dialog.dismiss()
                 }
-                act.showSnackbar(
-                    context.getString(R.string.app_intro_done_button).lowercase()
-                        .smartFixName(forceCapitalize = true)
-                )
-                dialog.dismiss()
             }
             .setNegativeButton(act.resources.getString(android.R.string.cancel)) { dialog, _ ->
                 dialog.dismiss()

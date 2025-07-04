@@ -5,7 +5,7 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.TimeInterpolator
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
-import androidx.core.view.ViewCompat
+import androidx.core.view.postOnAnimationDelayed
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
@@ -36,17 +36,12 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
     class ChangeInfo private constructor(
         oldHolder: RecyclerView.ViewHolder, newHolder: RecyclerView.ViewHolder
     ) {
-        var oldHolder: RecyclerView.ViewHolder?
-        var newHolder: RecyclerView.ViewHolder?
+        var oldHolder: RecyclerView.ViewHolder? = oldHolder
+        var newHolder: RecyclerView.ViewHolder? = newHolder
         var fromX = 0
         var fromY = 0
         var toX = 0
         var toY = 0
-
-        init {
-            this.oldHolder = oldHolder
-            this.newHolder = newHolder
-        }
 
         internal constructor(
             oldHolder: RecyclerView.ViewHolder,
@@ -98,7 +93,7 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
             }
             if (removalsPending) {
                 val view = moves[0].holder.itemView
-                ViewCompat.postOnAnimationDelayed(view, mover, removeDuration)
+                view.postOnAnimationDelayed(removeDuration) { mover.run() }
             } else {
                 mover.run()
             }
@@ -118,7 +113,7 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
             }
             if (removalsPending) {
                 val holder = changes[0].oldHolder
-                ViewCompat.postOnAnimationDelayed(holder!!.itemView, changer, removeDuration)
+                holder!!.itemView.postOnAnimationDelayed(removeDuration) { changer.run() }
             } else {
                 changer.run()
             }
@@ -142,7 +137,7 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
                 val changeDuration = if (changesPending) changeDuration else 0
                 val totalDelay = removeDuration + moveDuration.coerceAtLeast(changeDuration)
                 val view = additions[0].itemView
-                ViewCompat.postOnAnimationDelayed(view, adder, totalDelay)
+                view.postOnAnimationDelayed(totalDelay) { adder.run() }
             } else {
                 adder.run()
             }

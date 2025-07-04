@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_welcome">Tervetuloa Birday-sovellukseen</string>
+    <string name="app_name_extended">Birday - Tapahtumien hallinta</string>
+    <string name="leave_review_title">Arvostele Birday</string>
+    <string name="leave_review_subtitle">Voit auttaa sovelluksen kehittämisessä tekemällä arvostelun. Muista, että lahjoituksia lukuun ottamatta tämä sovellus on täysin ilmainen ja ilman mainoksia!</string>
+    <string name="yes_review">Kirjoita arvostelu!</string>
+    <string name="later">Myöhemmin, lupaan sen</string>
+    <string name="no_thanks">Ei todellakaan!</string>
+    <string name="title_home">Etusivu</string>
+    <string name="title_favorites">Suosikit</string>
+    <string name="title_settings">Asetukset</string>
+    <string name="no_events">Ei tapahtumia! Voit lisätä tapahtuman alla olevalla painikkeella!</string>
+    <string name="no_favorites">Ei suosikkeja! Paina tähteä lisätäksesi tapahtuman suosikkeihin!</string>
+    <string name="add_favorite">Lisää suosikkeihin</string>
+    <string name="stats">Tilastot</string>
+    <string name="no_stats">Ei näytettäviä tilastoja!</string>
+    <string name="stats_summary">Tilastojen yhteenveto</string>
+    <string name="no_stats_description">Ei tarpeeksi tapahtumia tilastojen luomiseen. Lisää tapahtumia, ja yritä sitten uudelleen!</string>
+    <plurals name="stats_total">
+        <item quantity="one">Birday auttaa sinua muistamaan %d tapahtuman</item>
+        <item quantity="other">Birday auttaa sinua muistamaan %d tapahtumaa</item>
+    </plurals>
+    <string name="next_event">Seuraava tapahtuma</string>
+    <string name="no_next_event">Ei näytettäviä tapahtumia!</string>
+    <string name="no_next_event_description">Et ole vielä tehnyt tai tuonut tapahtumaa. Lisää tapahtuma ja anna Birdayn auttaa sinua!</string>
+    <string name="next_age_years">Vuosi</string>
+    <string name="event_others">ja muut</string>
+    <plurals name="days_left">
+        <item quantity="one">%d päivää jäljellä</item>
+        <item quantity="other">%d päivää jäljellä</item>
+    </plurals>
+    <!-- Settings -->
+    <string name="customization">Mukauttaminen</string>
+    <string name="app_behavior">Sovelluksen käyttäytyminen</string>
+    <string name="additional_notification_name">Lisäilmoitus</string>
+    <string name="additional_notification_description">Lähetä ylimääräinen ilmoitus x päivää ennen tapahtumaa. %s</string>
+    <string name="no_additional_notification">Ei lisäilmoituksia</string>
+    <string name="one_day_before">Yksi päivä ennen</string>
+    <string name="two_days_before">Kaksi päivää ennen</string>
+    <string name="three_days_before">Kolme päivää ennen</string>
+    <string name="four_days_before">Neljä päivää ennen</string>
+    <string name="five_days_before">Viisi päivää ennen</string>
+    <string name="six_days_before">Kuusi päivää ennen</string>
+    <string name="seven_days_before">Seitsemän päivää ennen</string>
+    <string name="ten_days_before">Kymmenen päivää ennen</string>
+    <string name="fourteen_days_before">14 päivää ennen</string>
+    <string name="twentyone_days_before">21 päivää ennen</string>
+    <string name="vibration_name">Värinä</string>
+    <string name="vibration_description_on">Värinä kun painiketta painetaan</string>
+    <string name="vibration_description_off">Ei värinää, kun painiketta painetaan</string>
+    <string name="date_format_name">Päivämäärän muoto</string>
+    <string name="notification_hour_name">Ilmoituksen tunti</string>
+    <string name="notification_hour_description">%s \n\nHuom: ilmoitus ei ehkä toimi, jos järjestelmä sulkee sovelluksen joissakin Huawei Xiaomi ja OnePlus laitteissa. Katso lisätietoja osoitteesta dontkillmyapp.com</string>
+    <string name="accent_description">Muuta korostuksen oletusväriä</string>
+    <string name="accent_name">Korostuksen väri</string>
+    <string name="theme_description">Käytä tummaa, vaaleaatai automaattista teemaa</string>
+    <string name="theme_name">Sovelluksen teema</string>
+    <!-- ^ Untranslated for now -->
+    <string name="aqua">Aqua</string>
+    <string name="brown">Ruskea</string>
+    <string name="blue">Sininen</string>
+    <string name="green">Vihreä</string>
+    <string name="orange">Oranssi</string>
+    <string name="yellow">Keltainen</string>
+    <string name="teal">Turkoosi</string>
+    <string name="violet">Violetti</string>
+    <string name="pink">Pinkki</string>
+    <string name="light_blue">Vaaleansininen</string>
+    <string name="red">Punainen</string>
+    <string name="lime">Limenvihreä</string>
+    <string name="crimson">Tummanpunainen</string>
+    <string name="system_theme">Järjestelmän oletus</string>
+    <string name="dark_theme">Tumma</string>
+    <string name="light_theme">Vaalea</string>
+    <string name="shimmer_name">Hohto-efekti</string>
+    <string name="shimmer_description_on">Kiiltävä animaatio siellä ja täällä</string>
+    <string name="shimmer_description_off">Ei muita graafisia tehosteita</string>
+    <string name="import_export">Tuo ja vie</string>
+    <string name="import_contacts_title">Tuo tapahtumat yhteystiedoista</string>
+    <string name="import_contacts_description">Lisää tapahtumiin vuosiluvut saadaksesi aina tarkat tilastotiedot!</string>
+    <string name="import_success">Tuonti onnistui!</string>
+    <string name="import_nothing_found">Tapahtumia ei löytynyt!</string>
+    <string name="import_failed">Jokin meni pieleen!</string>
+    <string name="missing_permission_contacts">Yhteystiedon käyttö kiellettiin. Yritä uudelleen tai aseta oikeudet manuaalisesti,
+    muuten yhteystietojen tuonti ei toimi!</string>
+    <string name="missing_permission_contacts_forever">Birday ei voi pyytää lupaa tuoda yhteystietoja,
+    koska valitsit \"älä koskaan kysy uudelleen\". Ota se käyttöön käsin!</string>
+    <string name="birday_import_title">Tuo Birdayn varmuuskopio</string>
+    <string name="birday_import_description">Valitse Birdayn varmuuskopio palauttaaksesi tapahtumia. Kaikki olemassa olevat tiedot
+    ylikirjoitetaan!</string>
+    <string name="birday_export_title">Vie ja jaa tapahtumia</string>
+    <string name="birday_export_description">Vie saatavilla olevat tapahtumat varmuuskopioon, ja jaa ne halutessasi. Tiedosto on
+    Android/data/com.minar.birday/files</string>
+    <string name="birday_import_success">Tuonti valmis!</string>
+    <string name="birday_import_failure">Tuonti epäonnistui. Valitsitko oikean tiedoston?</string>
+    <string name="birday_import_invalid_file">Tuonti epäonnistui. Valittu tiedosto ei ole Birdayn varmuuskopio!</string>
+    <string name="birday_export_success">Vienti valmis!</string>
+    <string name="birday_export_failure">Vienti epäonnistui. Hupsis!</string>
+    <string name="birday_export_nothing_found">Ei mitään vietävää!</string>
+    <string name="surname_first">Sukunimi ensin</string>
+    <string name="surname_first_description_on">Näytä sukunimi ennen etunimeä</string>
+    <string name="surname_first_description_off">Näytä etunimi ennen sukunimeä</string>
+    <string name="hide_images">Piilota kuvat</string>
+    <string name="hide_images_description_on">Tapahtumien kuvat piilotettu</string>
+    <string name="hide_images_description_off">Tapahtumien kuvat näkyvissä</string>
+    <string name="notification_only_favorites">Vain suosikit</string>
+    <string name="notification_only_favorites_description_on">Lähetä ilmoitus vain suosikkitapahtumista</string>
+    <string name="notification_only_favorites_description_off">Lähetä ilmoitus jokaisesta lisätystä tapahtumasta</string>
+    <string name="additional_notification_only_favorites">Lisäilmoitus suosikeille</string>
+    <string name="additional_notification_only_favorites_description_on">Lähetä ylimääräinen ilmoitus vain suosikkitapahtumille</string>
+    <string name="additional_notification_only_favorites_description_off">Lähetä ylimääräinen ilmoitus jokaisesta lisätystä tapahtumasta</string>
+    <string name="troubleshoot">Vianmääritys ja muut</string>
+    <string name="battery_optimization_title">Ota akun käytön optimointi pois käytöstä</string>
+    <string name="battery_optimization_description">Avaa asetukset, jotta voit poistaa käytöstä akun optimoinnin Birdaylle. Hyödyllinen, jos ilmoitukset eivät toimi</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
+    <string name="notification_sound_title">Ilmoituksen ääni</string>
+    <string name="notification_sound_description">Pikakuvake ilmoitusääni-asetuksiin, jos et pidä oletus-lintuäänestä</string>
+    <string name="missing_permission_notifications">Ilmoituslupa on kielletty, eikä Birday voi lähettää ilmoituksia! Anna käyttöoikeudet asetuksista.</string>
+    <string name="missing_permission_notifications_forever">Ilmoituslupa on kielletty, ja sitä ei voi kysyä uudestaan, joten Birday ei voi lähettää ilmoituksia! Anna käyttöoikeudet asetuksista.</string>
+    <string name="missing_permission_calendar">Kalenterin käyttöoikeus on kielletty, eikä Birday voi tuoda kalenterista! Anna oikeudet asetuksista.</string>
+    <string name="missing_permission_calendar_forever">Kalenterin käyttöoikeus on estetty ja sitä ei voi kysyä uudestaan, joten Birday ei voi tuoda kalenterista! Aseta käyttöoikeudet manuaalisesti.</string>
+    <string name="import_calendar_title">Tuo kalenterista</string>
+    <string name="import_calendar_description">Tuo vuosittaiset tapahtumat kalentereista. Muista asettaa tapahtumatyyppi ja vuosi pitääksesi asiat järjestyksessä!</string>
+    <string name="loop_avd_title">Loop animations</string>
+    <string name="loop_avd_description_on">The animations are looped infinitely</string>
+    <string name="loop_avd_description_off">The animations will run a single time</string>
+    <string name="order_alphabetically_title">Alphabetical order</string>
+    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
+    <string name="order_alphabetically_description_off">The events are ordered by date</string>
+    <string name="grouped_notifications_title">Group multiple notifications</string>
+    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
+    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
+    <!-- Developer -->
+    <string name="dev_description">Olen kohtelias kaveri. Pidän kauniista asioita, kuten animaatioista, kuvakkeista, urheiluautoista ja 3D-tulostuksesta. Työskentelen suunnittelijana ja tietokoneinsinöörinä.</string>
+    <string name="easter_egg">Hieno logo, eikö? ;D</string>
+    <!-- New event -->
+    <string name="new_event">Uusi tapahtuma</string>
+    <string name="new_event_description">Syötä sinulle tärkeä henkilö, ja Birday auttaa sinua muistamaan hänen syntymäpäivän tai muut tapahtumat!</string>
+    <string name="insert_event">Lisää tapahtuma</string>
+    <string name="cancel">Peruuta</string>
+    <string name="insert_name_hint">Syötä etunimi</string>
+    <string name="insert_surname_hint">Syötä sukunimi</string>
+    <string name="insert_date_hint">Valitse päivämäärä</string>
+    <string name="invalid_value_name">Virheellinen nimi!</string>
+    <string name="consider_year">Tarkista vuosi</string>
+    <string name="event_type_hint">Tapahtuman tyyppi</string>
+    <string name="birthday">Syntymäpäivä</string>
+    <string name="anniversary">Vuosipäivä</string>
+    <string name="death_anniversary">Kuoleman vuosipäivä</string>
+    <string name="festivity">Juhla</string>
+    <string name="name_day">Nimipäivä</string>
+    <string name="other">Muu</string>
+    <!-- Event actions -->
+    <string name="event_actions">Toiminnot</string>
+    <string name="event_actions_description">Täällä voit muuttaa tai poistaa tämän tapahtuman!</string>
+    <string name="edit_event">Muokkaa tapahtumaa</string>
+    <string name="delete_event">Poista tapahtuma</string>
+    <string name="update_event">Päivitä tapahtuma</string>
+    <string name="share_event">Jaa tapahtuma</string>
+    <string name="deleted">Poistettu!</string>
+    <!-- Event details -->
+    <string name="event_details">Tiedot</string>
+    <string name="birth_date">Syntymäpäivä</string>
+    <string name="next_age">Seuraava ikä:</string>
+    <string name="zodiac_sign">Horoskooppi-merkki:</string>
+    <string name="chinese_zodiac_sign">Kiinalaisen horoskoopin merkki:</string>
+    <!-- Quick apps -->
+    <string name="event_apps">Pikasovellukset</string>
+    <string name="event_apps_description">Apps to wish all the best rapidly!</string>
+    <string name="text_message">Tekstiviesti</string>
+    <string name="dialer">Puhelin</string>
+    <string name="wishes_birthday">Hyvää syntymäpäivää!</string>
+    <string name="no_default_dialer">Oletus-puhelinsovellusta ei löytynyt!</string>
+    <string name="no_default_sms">Oletustekstiviestisovellusta ei löytynyt!</string>
+    <string name="might_have_missed">You might have missed:</string>
+    <!-- Statistics -->
+    <string name="did_you_know">Tiesitkö?</string>
+    <string name="age_average">Keskimääräinen ikä on %s</string>
+    <string name="oldest_person">Vanhin henkilö on %s</string>
+    <string name="youngest_person">Nuorin henkilö on %s</string>
+    <string name="most_common_month">Yleisin syntymäkuukausi on %s</string>
+    <string name="most_common_decade">Yleisin syntymäpäivän vuosikymmen on %s</string>
+    <string name="most_common_age_range">Yleisin ikäluokka on %1$s-%2$s</string>
+    <string name="special_ages">Tärkeä tuleva syntymäpäivä on %s</string>
+    <string name="random_zodiac_sign">Zodiac-merkki %1$s: %2$s</string>
+    <string name="most_common_zodiac_sign">Yleisin zodiac-merkki on %s</string>
+    <string name="most_common_chinese_sign">Yleisin kiinalainen merkki on %s</string>
+    <string name="random_day_of_week">%1$s syntyi %2$s</string>
+    <string name="most_common_day_of_week">Yleisin syntymäpäivien viikonpäivä on %s</string>
+    <plurals name="leap_year_total">
+        <item quantity="one">Karkausvuonna syntyneiden määrä on %d</item>
+        <item quantity="other">Karkausvuonna syntyneiden määrä on %d</item>
+    </plurals>
+    <string name="random_chinese_year">Kiinalainen zodiac-merkki %1$s: %2$s</string>
+    <string name="chinese_zodiac_rat">rotta</string>
+    <string name="chinese_zodiac_ox">härkä</string>
+    <string name="chinese_zodiac_tiger">tiikeri</string>
+    <string name="chinese_zodiac_rabbit">jänis</string>
+    <string name="chinese_zodiac_dragon">lohikäärme</string>
+    <string name="chinese_zodiac_snake">käärme</string>
+    <string name="chinese_zodiac_horse">hevonen</string>
+    <string name="chinese_zodiac_goat">vuohi</string>
+    <string name="chinese_zodiac_monkey">apina</string>
+    <string name="chinese_zodiac_rooster">kukko</string>
+    <string name="chinese_zodiac_dog">koira</string>
+    <string name="chinese_zodiac_pig">sika</string>
+    <string name="zodiac_sagittarius">jousimies</string>
+    <string name="zodiac_capricorn">kauris</string>
+    <string name="zodiac_aquarius">vesimies</string>
+    <string name="zodiac_pisces">kalat</string>
+    <string name="zodiac_aries">oinas</string>
+    <string name="zodiac_taurus">härkä</string>
+    <string name="zodiac_gemini">kaksoset</string>
+    <string name="zodiac_cancer">rapu</string>
+    <string name="zodiac_leo">leijona</string>
+    <string name="zodiac_virgo">neitsyt</string>
+    <string name="zodiac_libra">vaaka</string>
+    <string name="zodiac_scorpio">skorpioni</string>
+    <!-- Common words -->
+    <plurals name="months">
+        <item quantity="one">%d kuukausi</item>
+        <item quantity="other">%d kuukautta</item>
+    </plurals>
+    <string name="today">Tänään!</string>
+    <string name="yesterday">Eilen!</string>
+    <string name="tomorrow">Huomenna!</string>
+    <plurals name="years">
+        <item quantity="one">%d vuosi</item>
+        <item quantity="other">%d vuotta</item>
+    </plurals>
+    <string name="born_in">syntynyt paikassa</string>
+    <string name="and">ja</string>
+    <plurals name="event">
+        <item quantity="one">tapahtuma: %s</item>
+        <item quantity="other">tapahtumat: %s</item>
+    </plurals>
+    <!-- Notifications -->
+    <string name="events_notification_channel">Tapahtuman Muistutus</string>
+    <string name="events_channel_description">Muistutuksia tulevista tapahtumista Birdayssa</string>
+    <string name="notification_title">Birdayn Muistutus</string>
+    <string name="notification_description_part_1">Tämän päivän tapahtumat ovat</string>
+    <string name="notification_description_part_2">Hyvää päivänjatkoa!</string>
+    <string name="additional_notification_text">Tulevat tapahtumat!</string>
+    <!-- Introduction slides -->
+    <string name="slide_one_title">Tervetuloa Birday-sovellukseen!</string>
+    <string name="slide_one_description">Birday on yksinkertainen ja kevyt sovellus tärkeiden tapahtumien hallintaan!
+    Sen avulla muistat ja säilytät rakkaiden ihmisten merkkipäiviä luotettavasti ja kätevästi.
+    </string>
+    <string name="slide_two_title">Ilmainen, yksinkertainen, muokattava</string>
+    <string name="slide_two_description">Birday on ilmainen avoimen lähdekoodin sovellus ilman mainoksia.
+    Siitä löytyy tilastot tapahtumista, suosikit sekä muokattava käyttöliittymä.
+    Taattu tuki ja päivitykset!
+    </string>
+    <string name="slide_three_title">Tuo yhteystiedoista</string>
+    <string name="slide_three_description">On mahdollista tuoda yhteystietoihin tallennetut tapahtumat.
+    Birday tekee sen puolestasi, kun annat sille oikeudet yhteystietoihin. Nauti!</string>
+    <!-- Widget -->
+    <string name="appwidget_upcoming">Tulevat tapahtumat</string>
+    <string name="add_widget">Birday - Tulevat</string>
+    <string name="dark_widget_name">Tumma pienoissovellus</string>
+    <string name="dark_widget_description_on">Pienoissovellus käytää tummaa teemaa</string>
+    <string name="dark_widget_description_off">Pienoissovellus käytää vaaleaa teemaa</string>
+    <string name="widget_configuration_title">Pienoissovelluksen asetukset</string>
+    <string name="widget_configuration_description">Määritä pienoissovellus tyyliisi sopivaksi</string>
+    <string name="widget_background_title">Tausta</string>
+    <string name="widget_background_description">Näytä pienoissovelluksessa tausta</string>
+    <string name="compact_widget_title">Tiivis ulkoasu</string>
+    <string name="compact_widget_description">Määritä asettelu erittäin tiiviiksi</string>
+    <string name="align_start_widget_title">Tasaus alussa</string>
+    <string name="align_start_widget_description">Kohdista pienoissovelluksen sisältö alkuun (oikea tai vasen riippuen maa-asetuksistasi)</string>
+    <string name="hide_far_widget_title">Piilota pienoissovelluksesta kaukaiset tapahtumat</string>
+    <string name="hide_far_widget_description">Piilota pienoissovellus, jos seuraavat tapahtumat ovat ilmoitusajan jälkeen (esim. ilmoitus 7 päivää ennen, seuraava tapahtuma on 10 päivää -&gt; pienoissovellus piilotetaan)</string>
+    <string name="show_following_widget_title">Show the following event</string>
+    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
+    <!-- Search -->
+    <string name="search_event">Hae…</string>
+    <string name="search_no_result_title">Ei tuloksia</string>
+    <string name="search_no_result_description">Hakua vastaavaa tapahtumaa ei löytynyt!</string>
+    <!-- Notes -->
+    <string name="notes">Muistiinpanot</string>
+    <string name="write_something">Kirjoita jotain…</string>
+    <!-- Overview -->
+    <string name="overview">Yleiskatsaus</string>
+    <string name="overview_description">Vuotuinen katsaus jokaisesta tallennetusta tapahtumasta</string>
+    <!-- Experimental preferences, unclassified -->
+    <string name="experimental_settings_title">Kokeellinen</string>
+    <string name="experimental_settings_description">Joitakin kokeellisia tai bugisia asetuksia ja ominaisuuksia. Käytä niitä omalla vastuullasi</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
+    <string name="check_github">Check Github</string>
+    <string name="translate_app">Käännä tämä sovellus</string>
+    <string name="launch_auto_import_title">Tuo automaattisesti käynnistettäessä</string>
+    <string name="launch_auto_import_description_off">Birday ei tuo yhteystietoja automaattisesti käynnistettäessä</string>
+    <string name="launch_auto_import_description_on">Birday synkronoi automaattisesti yhteystiedot käynnistettäessä</string>
+    <string name="hide_on_scroll_title">Piilota navigointipalkki vieritettäessä</string>
+    <string name="hide_on_scroll_description_on">Piilota alaosan navigointipalkki vieritettäessä</string>
+    <string name="hide_on_scroll_description_off">Alareunan navigointipalkki aina näkyvissä</string>
+    <string name="angry_bird_title">Angry Bird -tila</string>
+    <string name="angry_bird_description_on">Pysyvät ilmoitukset, lyhyemmät tekstit ja muut ilmoitukseen liittyvät säädöt</string>
+    <string name="angry_bird_description_off">Ilmoitukset toimivat normaalisti</string>
+    <string name="disable_astrology_title">Poista astrologia käytöstä</string>
+    <string name="disable_astrology_description_on">Zodiac-merkit piilotetaan yksityiskohdista ja tilastoista</string>
+    <string name="disable_astrology_description_off">Zodiac-tiedot näytetään normaalisti</string>
+    <string name="import_json_title">Tuo JSON:sta</string>
+    <string name="import_json_description">Tuo JSON-tiedostosta. Katso Githubin wikistä tiedostoformaatti</string>
+    <string name="export_json_title">Vie JSON:iin</string>
+    <string name="export_json_description">Export each event to a JSON file, image excluded</string>
+    <string name="import_csv_title">Tuo CSV-tiedostosta</string>
+    <string name="import_csv_description">Import from a CSV file. Refer to the wiki on Github for the required file structure</string>
+    <string name="export_csv_title">Vie CSV-tiedostoon</string>
+    <string name="export_csv_description">Export each event to a CSV file, image excluded</string>
+    <string name="export_calendar_title">Export to calendar</string>
+    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
+    <string name="auto_export_title">Auto export events</string>
+    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
+    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
+    <string name="add_demo_entries_title">Add demo entries</string>
+    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
+    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
+    <string name="delete_db_title">Poista kaikki tapahtumat</string>
+    <string name="delete_db_description">Poistaa KAIKKI tiedot. Mieti kaksi kertaa ennen kuin klikkaat!</string>
+    <string name="delete_db_dialog_title">Oletko varma?</string>
+    <string name="delete_db_dialog_description">Varmista, että varmuuskopioit tapahtumasi ensin, koska tämä toiminto pyyhkii kaikki tiedot, ja sitä kannattaa käyttää vain jos mikään muu ei auta</string>
+    <string name="delete_search_title">Poista hakuvalinnat</string>
+    <string name="delete_search_description_off">Ei ole mahdollista poistaa useita tapahtumia kerralla</string>
+    <string name="delete_search_description_on">Paina roskakori-painiketta, kun haet tapahtumia poistaaksesi ne nopeasti Birdaysta. Käytä varoen!</string>
+    <string name="delete_search_confirm">Tämä poistaa kaikki tämän haun tulokset. Voit perua poiston vähän aikaa OK: n klikkaamisen jälkeen, jos muutat mieltä!</string>
+    <string name="import_contacts_bottom_sheet_description">Haluatko tuoda kaikki tapahtumat yhteystiedoista juuri nyt?</string>
+    <string name="yes_import">Tuonti</string>
+    <string name="advanced_overview_title">Edistynyt yleiskatsaus</string>
+    <string name="advanced_overview_description_off">Yleisnäkymä näyttää vain perustiedot</string>
+    <string name="advanced_overview_description_on">Yleisnäkymä näyttää muut vuodet sekä yksityiskohtaisia tietoja</string>
+    <string name="replace_on_conflict_title">Replace on conflict</string>
+    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
+    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+</resources>

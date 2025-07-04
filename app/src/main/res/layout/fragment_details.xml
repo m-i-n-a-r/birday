@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fadingEdgeLength="@dimen/linear_vertical_margin"
@@ -9,7 +9,7 @@
     android:requiresFadingEdge="vertical"
     android:transitionGroup="true">
 
-    <!-- The empty view is useful to make the screen large as the screen or more (with scrolling) -->
+    <!-- The empty view is useful to make the layout large as the screen or more (with scrolling) -->
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/detailsMotionLayout"
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             android:id="@+id/detailsEventName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
             android:drawablePadding="@dimen/activity_vertical_margin"
             android:ellipsize="end"
             android:maxLines="1"
@@ -90,7 +90,7 @@
             android:layout_height="0dp"
             android:alpha="0.15"
             android:contentDescription="@string/event_type_hint"
-            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/card_image_padding"
             app:layout_constraintBottom_toTopOf="@id/detailsEditButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -127,7 +127,7 @@
             app:layout_constraintTop_toBottomOf="@+id/detailsBirthDate" />
 
         <View
-            android:id="@+id/divider"
+            android:id="@+id/detailsDivider"
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -143,7 +143,7 @@
             android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider"
+            app:layout_constraintTop_toBottomOf="@+id/detailsNextAgeYears"
             app:shimmer_auto_start="false"
             app:shimmer_base_alpha="@dimen/shimmer_base_alpha"
             app:shimmer_dropoff="@dimen/shimmer_dropoff"
@@ -169,121 +169,138 @@
 
         </com.facebook.shimmer.ShimmerFrameLayout>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/detailsNextAge"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/detailsGuideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".5" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailsNextAge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/in_row_padding"
-            android:layout_marginStart="@dimen/linear_vertical_margin"
-            android:maxWidth="@dimen/details_text_max_width"
             android:padding="@dimen/in_row_padding"
             android:text="@string/next_age"
             android:textAlignment="viewEnd"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             android:textColor="?attr/colorOutline"
-            app:layout_constraintBaseline_toBaselineOf="@+id/detailsNextAgeValue"
-            app:layout_constraintEnd_toStartOf="@id/detailsNextAgeValue"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/detailsNextAgeValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/in_row_padding"
-            android:layout_marginEnd="@dimen/linear_vertical_margin"
-            android:padding="@dimen/in_row_padding"
-            android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/detailsNextAge"
+            app:layout_constraintEnd_toStartOf="@id/detailsGuideline"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detailsCountdownShimmer" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/detailsZodiacSign"
-            android:layout_width="wrap_content"
+            android:id="@+id/detailsNextAgeValue"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/in_row_padding"
-            android:maxWidth="@dimen/details_text_max_width"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            app:layout_constraintBottom_toBottomOf="@id/detailsNextAge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/detailsGuideline"
+            app:layout_constraintTop_toTopOf="@id/detailsNextAge" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailsNextAgeYears"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/in_row_padding"
+            android:layout_marginVertical="@dimen/linear_vertical_margin"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+            android:textColor="?attr/colorTertiary"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/detailsDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/detailsCountdownShimmer" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailsZodiacSign"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/in_row_padding"
             android:padding="@dimen/in_row_padding"
             android:text="@string/zodiac_sign"
             android:textAlignment="viewEnd"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             android:textColor="?attr/colorOutline"
-            app:layout_constraintBaseline_toBaselineOf="@+id/detailsZodiacSignValue"
-            app:layout_constraintEnd_toStartOf="@+id/detailsZodiacSignValue"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/detailsGuideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailsNextAge" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detailsZodiacSignValue"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/in_row_padding"
             android:padding="@dimen/in_row_padding"
             android:text="@string/app_name"
             android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            app:layout_constraintBottom_toBottomOf="@id/detailsZodiacSign"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/detailsZodiacSign"
-            app:layout_constraintTop_toBottomOf="@+id/detailsNextAge" />
+            app:layout_constraintStart_toEndOf="@id/detailsGuideline"
+            app:layout_constraintTop_toTopOf="@id/detailsZodiacSign" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detailsChineseSign"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/in_row_padding"
-            android:maxWidth="@dimen/details_text_max_width"
             android:padding="@dimen/in_row_padding"
             android:text="@string/chinese_zodiac_sign"
             android:textAlignment="viewEnd"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             android:textColor="?attr/colorOutline"
-            app:layout_constraintBaseline_toBaselineOf="@+id/detailsChineseSignValue"
-            app:layout_constraintEnd_toStartOf="@+id/detailsChineseSignValue"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/detailsGuideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailsZodiacSign" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detailsChineseSignValue"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/in_row_padding"
             android:padding="@dimen/in_row_padding"
             android:text="@string/app_name"
             android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            app:layout_constraintBottom_toBottomOf="@id/detailsChineseSign"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/detailsChineseSign"
-            app:layout_constraintTop_toBottomOf="@+id/detailsZodiacSign"
-            tools:layout_editor_absoluteY="390dp" />
+            app:layout_constraintStart_toEndOf="@id/detailsGuideline"
+            app:layout_constraintTop_toTopOf="@id/detailsChineseSign" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detailsRepublicanCalendar"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/in_row_padding"
-            android:maxWidth="@dimen/details_text_max_width"
             android:padding="@dimen/in_row_padding"
             android:text="@string/republican_calendar"
             android:textAlignment="viewEnd"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             android:textColor="?attr/colorOutline"
-            app:layout_constraintBaseline_toBaselineOf="@+id/detailsRepublicanCalendarValue"
-            app:layout_constraintEnd_toStartOf="@+id/detailsRepublicanCalendarValue"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/detailsGuideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailsChineseSign" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detailsRepublicanCalendarValue"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/in_row_padding"
             android:padding="@dimen/in_row_padding"
             android:text="@string/app_name"
             android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            app:layout_constraintBottom_toBottomOf="@id/detailsRepublicanCalendar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/detailsRepublicanCalendar"
-            app:layout_constraintTop_toBottomOf="@+id/detailsChineseSign"
-            tools:layout_editor_absoluteY="390dp" />
+            app:layout_constraintStart_toEndOf="@id/detailsGuideline"
+            app:layout_constraintTop_toTopOf="@id/detailsRepublicanCalendar" />
 
         <Button
             android:id="@+id/detailsEditButton"
@@ -293,7 +310,6 @@
             android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/linear_vertical_margin"
             android:layout_marginTop="@dimen/linear_vertical_margin"
-            android:contentDescription="@string/edit_event"
             android:paddingVertical="@dimen/in_row_button_padding"
             android:text="@string/edit_event"
             android:textColor="?attr/colorPrimary"
@@ -302,7 +318,7 @@
             app:layout_constraintBottom_toTopOf="@id/detailsDeleteButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detailsRepublicanCalendarValue"
+            app:layout_constraintTop_toBottomOf="@id/detailsRepublicanCalendar"
             app:layout_constraintVertical_bias="1"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintWidth_max="@dimen/details_button_max_width"
@@ -315,7 +331,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/linear_vertical_margin"
-            android:contentDescription="@string/delete_event"
             android:paddingVertical="@dimen/in_row_button_padding"
             android:text="@string/delete_event"
             android:textColor="?attr/colorPrimary"
@@ -325,7 +340,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsEditButton"
-            app:layout_constraintVertical_bias="1"
             app:layout_constraintWidth_max="@dimen/details_button_max_width"
             app:rippleColor="?attr/colorPrimary" />
 
@@ -336,7 +350,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/linear_vertical_margin"
-            android:contentDescription="@string/share_event"
             android:paddingVertical="@dimen/in_row_button_padding"
             android:text="@string/share_event"
             android:textColor="?attr/colorPrimary"
@@ -346,7 +359,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsDeleteButton"
-            app:layout_constraintVertical_bias="1"
             app:layout_constraintWidth_max="@dimen/details_button_max_width"
             app:rippleColor="?attr/colorPrimary" />
 
@@ -357,8 +369,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/linear_vertical_margin"
-            android:layout_marginBottom="@dimen/bottom_navbar_height"
-            android:contentDescription="@string/share_event"
+            android:layout_marginBottom="@dimen/details_image_padding"
             android:paddingVertical="@dimen/in_row_button_padding"
             android:text="@string/notes"
             android:textColor="?attr/colorPrimary"
@@ -368,9 +379,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsShareButton"
-            app:layout_constraintVertical_bias="1"
             app:layout_constraintWidth_max="@dimen/details_button_max_width"
             app:rippleColor="?attr/colorPrimary" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
+
 </ScrollView>

@@ -56,7 +56,7 @@
     <string name="accent_name">उच्चारण रंग</string>
     <string name="theme_description">गडद, हलकी किंवा स्वयंचलित अॅप थीम वापरा</string>
     <string name="theme_name">अॅप थीम</string>
-    <!-- Untranslated for now -->
+    <!-- ^ Untranslated for now -->
     <string name="aqua">पाण्यासारखा निळा</string>
     <string name="brown">तपकिरी</string>
     <string name="blue">निळा</string>
@@ -109,6 +109,7 @@
     <string name="troubleshoot">समस्यानिवारण आणि अतिरिक्त</string>
     <string name="battery_optimization_title">बॅटरी ऑप्टिमायझेशन अक्षम करा</string>
     <string name="battery_optimization_description">Birday साठी कोणतेही ऑप्टिमायझेशन अक्षम करण्यासाठी सेटिंग्ज उघडा. सूचना कार्य करत नसल्यास उपयुक्त</string>
+    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
     <string name="notification_sound_title">सूचना आवाज</string>
     <string name="notification_sound_description">तुम्हाला डिफॉल्ट पक्षी आवाज आवडत नसल्यास, सूचना आवाज सेटिंग्जचा शॉर्टकट</string>
     <string name="missing_permission_notifications">The notification permission was denied, and Birday can\'t send notifications! Activate the permission from settings.</string>
@@ -117,6 +118,15 @@
     <string name="missing_permission_calendar_forever">The calendar permission was denied and can\'t be asked again, so Birday can\'t import from calendar! Activate the permission manually, from settings.</string>
     <string name="import_calendar_title">Import from calendar</string>
     <string name="import_calendar_description">Import any yearly event from your calendars. Remember to set the event type and year to keep things ordered!</string>
+    <string name="loop_avd_title">Loop animations</string>
+    <string name="loop_avd_description_on">The animations are looped infinitely</string>
+    <string name="loop_avd_description_off">The animations will run a single time</string>
+    <string name="order_alphabetically_title">Alphabetical order</string>
+    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
+    <string name="order_alphabetically_description_off">The events are ordered by date</string>
+    <string name="grouped_notifications_title">Group multiple notifications</string>
+    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
+    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
     <!-- Developer -->
     <string name="dev_description">मी एक विनयशील माणूस आहे आणि मला अॅनिमेशन, आयकॉन, स्पोर्ट कार आणि 3D प्रिंटिंग सारख्या सुंदर गोष्टी आवडतात. मी डिझायनर आणि संगणक अभियंता म्हणून काम करतो.</string>
     <string name="easter_egg">छान लोगो, हं? ;D</string>
@@ -159,6 +169,7 @@
     <string name="wishes_birthday">वाढदिवसाच्या हार्दिक शुभेच्छा!</string>
     <string name="no_default_dialer">कोणतेही डीफॉल्ट डायलर अॅप आढळले नाही!</string>
     <string name="no_default_sms">कोणतेही डीफॉल्ट SMS अॅप आढळले नाही!</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">तुम्हाला माहीत आहे का?</string>
     <string name="age_average">सरासरी वय आहे %s</string>
@@ -253,6 +264,8 @@
     <string name="align_start_widget_description">Align the widget content to the start (right or left depending on your locale)</string>
     <string name="hide_far_widget_title">Hide widget for far events</string>
     <string name="hide_far_widget_description">Hide the widget if the next events are after the additional notification period (eg: notification 7 days before, the next event is in 10 days -&gt; the widget is hidden)</string>
+    <string name="show_following_widget_title">Show the following event</string>
+    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <!-- Search -->
     <string name="search_event">शोधा…</string>
     <string name="search_no_result_title">कोणतेही परिणाम आढळले नाहीत</string>
@@ -263,7 +276,7 @@
     <!-- Overview -->
     <string name="overview">आढावा</string>
     <string name="overview_description">जतन केलेल्या प्रत्येक इव्हेंटचे वार्षिक विहंगावलोकन</string>
-    <!-- Experimental preferences -->
+    <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimental</string>
     <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
     <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
@@ -289,6 +302,14 @@
     <string name="import_csv_description">Import from a CSV file. Refer to the wiki on Github for the required file structure</string>
     <string name="export_csv_title">Export to CSV</string>
     <string name="export_csv_description">Export each event to a CSV file, image excluded</string>
+    <string name="export_calendar_title">Export to calendar</string>
+    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
+    <string name="auto_export_title">Auto export events</string>
+    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
+    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
+    <string name="add_demo_entries_title">Add demo entries</string>
+    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
+    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
     <string name="delete_db_title">Delete all the events</string>
     <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
     <string name="delete_db_dialog_title">Are you sure?</string>
@@ -302,4 +323,7 @@
     <string name="advanced_overview_title">Advanced overview</string>
     <string name="advanced_overview_description_off">The overview screen will only display basic information</string>
     <string name="advanced_overview_description_on">The overview screen will show other years and detailed information</string>
+    <string name="replace_on_conflict_title">Replace on conflict</string>
+    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
+    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
 </resources>

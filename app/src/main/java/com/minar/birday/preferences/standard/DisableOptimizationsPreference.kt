@@ -22,12 +22,29 @@ class DisableOptimizationsPreference(context: Context, attrs: AttributeSet?) :
         super.onBindViewHolder(holder)
         binding = DisableOptimizationsRowBinding.bind(holder.itemView)
         binding.root.setOnClickListener(this)
+        // Include the tutorial in the description itself, since the toast can be unreadable with big text sizes
+        binding.batteryOptimizationsDescription.text = buildString {
+            append(context.getString(R.string.battery_optimization_description))
+            append("\n\n")
+            append(context.getString(R.string.battery_optimization_tutorial))
+        }
     }
 
     override fun onClick(v: View) {
         try {
             val intent = Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
             context.startActivity(intent)
+            // Double tasty toast for a longer reading time
+            Toast.makeText(
+                context,
+                context.getString(R.string.battery_optimization_tutorial),
+                Toast.LENGTH_LONG
+            ).show()
+            Toast.makeText(
+                context,
+                context.getString(R.string.battery_optimization_tutorial),
+                Toast.LENGTH_LONG
+            ).show()
         } catch (e: Exception) {
             Toast.makeText(
                 context, context.getString(R.string.wtf), Toast.LENGTH_LONG

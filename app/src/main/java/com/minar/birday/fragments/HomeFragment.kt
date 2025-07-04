@@ -33,7 +33,14 @@ import com.minar.birday.fragments.dialogs.QuickAppsBottomSheet
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventDataItem
 import com.minar.birday.model.EventResult
-import com.minar.birday.utilities.*
+import com.minar.birday.utilities.addInsetsByPadding
+import com.minar.birday.utilities.formatDaysRemaining
+import com.minar.birday.utilities.formatName
+import com.minar.birday.utilities.getNextYears
+import com.minar.birday.utilities.getRemainingDays
+import com.minar.birday.utilities.getThemeColor
+import com.minar.birday.utilities.nextDateFormatted
+import com.minar.birday.utilities.resultToEvent
 import com.minar.birday.viewmodels.MainViewModel
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
@@ -47,6 +54,7 @@ class HomeFragment : Fragment() {
     private lateinit var adapter: EventAdapter
     lateinit var act: MainActivity
     lateinit var sharedPrefs: SharedPreferences
+    private val emptyString = ""
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -95,7 +103,12 @@ class HomeFragment : Fragment() {
         val searchBar = binding.homeSearch
         val searchBarLayout = binding.homeSearchLayout
         val recycler = binding.eventRecycler
+        val orderAlphabetically = sharedPrefs.getBoolean("order_alphabetically", false)
+        val surnameFirst = sharedPrefs.getBoolean("surname_first", false)
         if (shimmerEnabled) shimmer.startShimmer()
+
+        // Add insets
+        recycler.addInsetsByPadding(bottom = true)
 
         // Setup the search bar
         typeSelector.scaleX = 0F
@@ -110,13 +123,13 @@ class HomeFragment : Fragment() {
                     start()
                 }
             } else {
-                searchBar.setText("")
+                searchBar.setText(emptyString)
             }
         }
         searchBarLayout.setEndIconOnClickListener(listener)
         searchBar.addTextChangedListener { text ->
             mainViewModel.searchStringChanged(text.toString())
-            if (text.isNullOrBlank()) searchBarLayout.setEndIconDrawable(R.drawable.ic_arrow_right_24dp)
+            if (text.isNullOrBlank()) searchBarLayout.setEndIconDrawable(R.drawable.ic_arrow_left_24dp)
             else searchBarLayout.setEndIconDrawable(R.drawable.ic_clear_24dp)
         }
 
@@ -131,6 +144,7 @@ class HomeFragment : Fragment() {
                     if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
                         mainViewModel.eventTypeChanged("")
                 }
+
                 R.id.homeTypeSelectorAnniversary -> {
                     // Only display events of type anniversary
                     if (isChecked) {
@@ -139,6 +153,7 @@ class HomeFragment : Fragment() {
                     if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
                         mainViewModel.eventTypeChanged("")
                 }
+
                 R.id.homeTypeSelectorDeathAnniversary -> {
                     // Only display events of type death anniversary
                     if (isChecked) {
@@ -147,6 +162,7 @@ class HomeFragment : Fragment() {
                     if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
                         mainViewModel.eventTypeChanged("")
                 }
+
                 R.id.homeTypeSelectorNameDay -> {
                     // Only display events of type name day
                     if (isChecked) {
@@ -155,6 +171,7 @@ class HomeFragment : Fragment() {
                     if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
                         mainViewModel.eventTypeChanged("")
                 }
+
                 R.id.homeTypeSelectorOther -> {
                     // Only display events of type other
                     if (isChecked) {
@@ -163,6 +180,7 @@ class HomeFragment : Fragment() {
                     if (!isChecked && typeSelector.checkedButtonId == View.NO_ID)
                         mainViewModel.eventTypeChanged("")
                 }
+
                 R.id.homeTypeSelectorClose -> {
                     typeSelector.pivotX = searchBarLayout.measuredWidth.toFloat() * 0.95F
                     ObjectAnimator.ofFloat(typeSelector, "scaleX", 0.0f).apply {
@@ -208,6 +226,7 @@ class HomeFragment : Fragment() {
                     homeMotionLayout.transitionToEnd()
                     sharedPrefs.edit().putFloat("home_motion_state", 1.0F).apply()
                 }
+
                 1.0F -> {
                     homeMotionLayout.transitionToStart()
                     sharedPrefs.edit().putFloat("home_motion_state", 0.0F).apply()
@@ -255,14 +274,14 @@ class HomeFragment : Fragment() {
             }
 
             if (events.isNotEmpty()) {
-                adapter.addHeadersAndSubmitList(events)
+                adapter.prepareAndSubmitList(events, orderAlphabetically, surnameFirst)
                 // Insert the events in the upper card and remove the placeholders
                 insertUpcomingEvents(events)
                 removePlaceholder()
             } else {
                 adapter.submitList(listOf())
                 // Avd for empty card (same avd for no results or no events atm)
-                upcomingImage.applyLoopingAnimatedVectorDrawable(R.drawable.animated_no_results)
+                act.animateAvd(upcomingImage, R.drawable.animated_no_results)
                 when {
                     mainViewModel.searchString.value!!.isNotBlank() -> restorePlaceholders(true)
                     mainViewModel.selectedType.value!!.isNotBlank() -> restorePlaceholders(true)
@@ -329,10 +348,7 @@ class HomeFragment : Fragment() {
         val extras: FragmentNavigator.Extras = if (sharedPrefs.getBoolean("hide_images", false)) {
             FragmentNavigatorExtras(fullView to "shared_full_view$position")
         } else {
-            FragmentNavigatorExtras(
-                image to "shared_image$position",
-
-                )
+            FragmentNavigatorExtras(image to "shared_image$position")
         }
         findNavController().navigate(action, extras)
     }
@@ -342,13 +358,18 @@ class HomeFragment : Fragment() {
         act.vibrate()
         val event = (adapter.getItem(position) as EventDataItem.EventItem).eventResult
         val quickStat =
-            if (event.yearMatter == false || event.type != EventCode.BIRTHDAY.name) formatDaysRemaining(
+            formatDaysRemaining(
                 getRemainingDays(event.nextDate!!),
                 requireContext()
             )
-            else "${getString(R.string.next_age)} ${getNextYears(event)}, " +
-                    formatDaysRemaining(getRemainingDays(event.nextDate!!), requireContext())
-        act.showSnackbar(quickStat)
+        act.showSnackbar(quickStat, action = fun() {
+            mainViewModel.delete(resultToEvent(event))
+            act.showSnackbar(
+                requireContext().getString(R.string.deleted),
+                actionText = requireContext().getString(R.string.cancel),
+                action = fun() = act.insertBack(event),
+            )
+        }, actionText = getString(R.string.delete_event))
     }
 
     // Remove the placeholder or return if the placeholder was already removed before
@@ -369,7 +390,7 @@ class HomeFragment : Fragment() {
             cardDescription.text = getString(R.string.no_next_event_description)
         } else {
             cardTitle.text = getString(R.string.search_no_result_title)
-            cardSubtitle.text = ""
+            cardSubtitle.text = emptyString
             cardDescription.text = getString(R.string.search_no_result_description)
             placeholder.text = getString(R.string.search_no_result_title)
         }
@@ -395,19 +416,28 @@ class HomeFragment : Fragment() {
 
         // Set the correct avd
         when {
-            nextEvents.all { it.type == EventCode.DEATH.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+            nextEvents.all { it.type == EventCode.DEATH.name } -> act.animateAvd(
+                upcomingImage,
                 R.drawable.animated_death_anniversary, 1000
             )
-            nextEvents.all { it.type == EventCode.ANNIVERSARY.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+
+            nextEvents.all { it.type == EventCode.ANNIVERSARY.name } -> act.animateAvd(
+                upcomingImage,
                 R.drawable.animated_anniversary, 1000
             )
-            nextEvents.all { it.type == EventCode.NAME_DAY.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+
+            nextEvents.all { it.type == EventCode.NAME_DAY.name } -> act.animateAvd(
+                upcomingImage,
                 R.drawable.animated_name_day, 1000
             )
-            nextEvents.all { it.type == EventCode.OTHER.name } -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+
+            nextEvents.all { it.type == EventCode.OTHER.name } -> act.animateAvd(
+                upcomingImage,
                 R.drawable.animated_other, 1000
             )
-            else -> upcomingImage.applyLoopingAnimatedVectorDrawable(
+
+            else -> act.animateAvd(
+                upcomingImage,
                 R.drawable.animated_party_popper,
                 1000
             )
@@ -442,16 +472,19 @@ class HomeFragment : Fragment() {
                 getNextYears(event)
             else if (event.type == EventCode.NAME_DAY.name) getString(R.string.name_day)
             else getString(R.string.unknown)
+            // Don't use the function in EventUtils since this assigns all the variables at once
             when (nextEvents.indexOf(event)) {
                 0 -> {
                     personName = formattedPersonName
                     nextDateText = nextDateFormatted(event, formatter, requireContext())
                     nextAge = getString(R.string.next_age_years) + ": $age"
                 }
+
                 1, 2 -> {
                     personName += ", $formattedPersonName"
                     nextAge += ", $age"
                 }
+
                 3 -> {
                     personName += " " + getString(R.string.event_others)
                     nextAge += "..."
@@ -467,6 +500,11 @@ class HomeFragment : Fragment() {
     // Show a bottom sheet containing some quick apps
     private fun showQuickAppsSheet() {
         act.vibrate()
+        // Prevent double dialogs in a stupid yet effective way
+        for (fragment in act.supportFragmentManager.fragments) {
+            if (fragment is QuickAppsBottomSheet)
+                return
+        }
         val bottomSheet = QuickAppsBottomSheet(act)
         if (bottomSheet.isAdded) return
         bottomSheet.show(act.supportFragmentManager, "quick_apps_bottom_sheet")

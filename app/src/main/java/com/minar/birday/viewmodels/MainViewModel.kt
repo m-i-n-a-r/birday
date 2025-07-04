@@ -1,6 +1,8 @@
 package com.minar.birday.viewmodels
 
 import android.app.Application
+import android.content.Context
+import android.text.SpannableStringBuilder
 import androidx.lifecycle.*
 import androidx.preference.PreferenceManager
 import androidx.work.OneTimeWorkRequestBuilder
@@ -9,6 +11,7 @@ import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
+import com.minar.birday.utilities.StatsGenerator
 import com.minar.birday.workers.EventWorker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,6 +27,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val searchString = MutableLiveData<String>()
     val selectedType = MutableLiveData<String>()
     private val searchValues = MediatorLiveData<Pair<String?, String?>>()
+    var fullStats = MutableLiveData<SpannableStringBuilder>()
     private val eventDao: EventDao = EventDatabase.getBirdayDatabase(application).eventDao()
     var confettiDone: Boolean = false
 
@@ -54,15 +58,26 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     // Launching new coroutines to insert the data in a non-blocking way
 
+    fun getStats(events: List<EventResult>, context: Context) =
+        viewModelScope.launch(Dispatchers.IO) {
+            val astrologyDisabled = sharedPrefs.getBoolean("disable_astrology", false)
+            val generator = StatsGenerator(events, context, astrologyDisabled)
+            fullStats.postValue(generator.generateFullStats())
+        }
+
     fun getFavorites(): LiveData<List<EventResult>> =
         eventDao.getOrderedFavoriteEvents()
 
     fun insert(event: Event) = viewModelScope.launch(Dispatchers.IO) {
-        eventDao.insertEvent(event)
+        val replaceOnConflict = sharedPrefs.getBoolean("replace_on_conflict", true)
+        if (replaceOnConflict)
+            eventDao.insertEventReplace(event) else eventDao.insertEventIgnore(event)
     }
 
     fun insertAll(events: List<Event>) = viewModelScope.launch(Dispatchers.IO) {
-        eventDao.insertAllEvent(events)
+        val replaceOnConflict = sharedPrefs.getBoolean("replace_on_conflict", true)
+        if (replaceOnConflict)
+            eventDao.insertAllEventReplace(events) else eventDao.insertAllEventIgnore(events)
     }
 
     fun delete(event: Event) = viewModelScope.launch(Dispatchers.IO) {
@@ -74,7 +89,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun update(event: Event) = viewModelScope.launch(Dispatchers.IO) {
-        eventDao.updateEvent(event)
+        val replaceOnConflict = sharedPrefs.getBoolean("replace_on_conflict", true)
+        if (replaceOnConflict)
+            eventDao.updateEventReplace(event) else eventDao.updateEventIgnore(event)
     }
 
     // Schedule the next work for the specified hour, nothing will happen if there's no event

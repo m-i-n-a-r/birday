@@ -5,18 +5,29 @@ import android.app.ActivityManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.appwidget.AppWidgetManager
-import android.content.*
+import android.content.ComponentName
+import android.content.ContentResolver
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.database.Cursor
 import android.graphics.Color
 import android.media.AudioAttributes
 import android.media.AudioAttributes.Builder
 import android.net.Uri
-import android.os.*
+import android.os.Build
+import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.os.VibratorManager
 import android.provider.OpenableColumns
 import android.provider.Settings
 import android.view.View
-import androidx.activity.addCallback
+import android.widget.ImageView
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.SystemBarStyle
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.IdRes
@@ -27,34 +38,49 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.view.ViewCompat
+import androidx.core.view.animation.PathInterpolatorCompat
+import androidx.core.view.updatePadding
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.preference.PreferenceManager
-import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.elevation.SurfaceColors
 import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
 import com.minar.birday.databinding.ActivityMainBinding
 import com.minar.birday.fragments.dialogs.ImportContactsBottomSheet
 import com.minar.birday.fragments.dialogs.InsertEventBottomSheet
+import com.minar.birday.model.EventResult
+import com.minar.birday.preferences.backup.BirdayExporter
 import com.minar.birday.preferences.backup.BirdayImporter
+import com.minar.birday.preferences.backup.CalendarExporter
 import com.minar.birday.preferences.backup.ContactsImporter
 import com.minar.birday.preferences.backup.CsvImporter
 import com.minar.birday.preferences.backup.JsonImporter
-import com.minar.birday.utilities.*
+import com.minar.birday.utilities.AppRater
+import com.minar.birday.utilities.addInsetsByMargin
+import com.minar.birday.utilities.addInsetsByPadding
+import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
+import com.minar.birday.utilities.getThemeColor
+import com.minar.birday.utilities.resultToEvent
+import com.minar.birday.utilities.showIfNotAdded
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidgetProvider
 import com.minar.birday.widgets.MinimalWidgetProvider
 import java.io.IOException
-import java.util.*
+import java.time.LocalDateTime
+import java.time.ZoneOffset
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     val mainViewModel: MainViewModel by viewModels()
     private lateinit var sharedPrefs: SharedPreferences
-    private lateinit var binding: ActivityMainBinding
+    internal lateinit var binding: ActivityMainBinding
+
+    companion object {
+        val GestureInterpolator = PathInterpolatorCompat.create(0f, 0f, 0f, 1f)
+    }
 
     private val navController: NavController
         get() {
@@ -79,26 +105,6 @@ class MainActivity : AppCompatActivity() {
         }
         createNotificationChannel()
 
-        // Register back pressed callback (do not use onBackPressed() - deprecated)
-        onBackPressedDispatcher.addCallback(this) {
-            // Exit if the navigation is in the home page
-            if (navController.currentDestination?.id == R.id.navigationMain) {
-                finish()
-            }
-            // Pop the backstack if the navigation is in a secondary screen
-            else if (navController.currentBackStackEntry != null &&
-                (navController.currentDestination?.label == "fragment_details" ||
-                        navController.currentDestination?.label == "fragment_overview" ||
-                        navController.currentDestination?.label == "fragment_experimental_settings")
-            )
-                navController.popBackStack()
-            // Else, first, go back to the home screen before closing the app
-            else {
-                binding.navigation.selectedItemId = R.id.navigationMain
-                navController.navigateWithOptions(R.id.navigationMain)
-            }
-        }
-
         // Retrieve the shared preferences
         val theme = sharedPrefs.getString("theme_color", "system")
         val accent = sharedPrefs.getString("accent_color", "system")
@@ -122,29 +128,52 @@ class MainActivity : AppCompatActivity() {
         // Set the base theme and the accent
         when (theme) {
             "system" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-            "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            "dark", "black" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
-        when (accent) {
-            "monet" -> setTheme(R.style.AppTheme_Monet)
-            "system" -> setTheme(R.style.AppTheme_System)
-            "brown" -> setTheme(R.style.AppTheme_Brown)
-            "blue" -> setTheme(R.style.AppTheme_Blue)
-            "green" -> setTheme(R.style.AppTheme_Green)
-            "orange" -> setTheme(R.style.AppTheme_Orange)
-            "yellow" -> setTheme(R.style.AppTheme_Yellow)
-            "teal" -> setTheme(R.style.AppTheme_Teal)
-            "violet" -> setTheme(R.style.AppTheme_Violet)
-            "pink" -> setTheme(R.style.AppTheme_Pink)
-            "lightBlue" -> setTheme(R.style.AppTheme_LightBlue)
-            "red" -> setTheme(R.style.AppTheme_Red)
-            "lime" -> setTheme(R.style.AppTheme_Lime)
-            "crimson" -> setTheme(R.style.AppTheme_Crimson)
-            else -> setTheme(R.style.AppTheme) // Default (aqua)
-        }
+
+        // Set an amoled theme or a normal theme depending on amoled mode
+        if (theme == "black") {
+            setTheme(R.style.AppTheme)
+            when (accent) {
+                "monet" -> setTheme(R.style.AppTheme_Monet_PerfectDark)
+                "system" -> setTheme(R.style.AppTheme_System_PerfectDark)
+                "brown" -> setTheme(R.style.AppTheme_Brown_PerfectDark)
+                "blue" -> setTheme(R.style.AppTheme_Blue_PerfectDark)
+                "green" -> setTheme(R.style.AppTheme_Green_PerfectDark)
+                "orange" -> setTheme(R.style.AppTheme_Orange_PerfectDark)
+                "yellow" -> setTheme(R.style.AppTheme_Yellow_PerfectDark)
+                "teal" -> setTheme(R.style.AppTheme_Teal_PerfectDark)
+                "violet" -> setTheme(R.style.AppTheme_Violet_PerfectDark)
+                "pink" -> setTheme(R.style.AppTheme_Pink_PerfectDark)
+                "lightBlue" -> setTheme(R.style.AppTheme_LightBlue_PerfectDark)
+                "red" -> setTheme(R.style.AppTheme_Red_PerfectDark)
+                "lime" -> setTheme(R.style.AppTheme_Lime_PerfectDark)
+                "crimson" -> setTheme(R.style.AppTheme_Crimson_PerfectDark)
+                else -> setTheme(R.style.AppTheme_PerfectDark)
+            }
+        } else
+            when (accent) {
+                "monet" -> setTheme(R.style.AppTheme_Monet)
+                "system" -> setTheme(R.style.AppTheme_System)
+                "brown" -> setTheme(R.style.AppTheme_Brown)
+                "blue" -> setTheme(R.style.AppTheme_Blue)
+                "green" -> setTheme(R.style.AppTheme_Green)
+                "orange" -> setTheme(R.style.AppTheme_Orange)
+                "yellow" -> setTheme(R.style.AppTheme_Yellow)
+                "teal" -> setTheme(R.style.AppTheme_Teal)
+                "violet" -> setTheme(R.style.AppTheme_Violet)
+                "pink" -> setTheme(R.style.AppTheme_Pink)
+                "lightBlue" -> setTheme(R.style.AppTheme_LightBlue)
+                "red" -> setTheme(R.style.AppTheme_Red)
+                "lime" -> setTheme(R.style.AppTheme_Lime)
+                "crimson" -> setTheme(R.style.AppTheme_Crimson)
+                else -> setTheme(R.style.AppTheme) // Default (aqua)
+            }
 
         // Set the task appearance in recent apps
         @Suppress("DEPRECATION")
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             setTaskDescription(
                 ActivityManager.TaskDescription(
@@ -169,14 +198,31 @@ class MainActivity : AppCompatActivity() {
         // Get the bottom navigation bar and configure it for the navigation plugin
         val navigation = binding.navigation
 
+        // Prepare the back home callback
+        val backHomeCallback = object : OnBackPressedCallback(enabled = false) {
+            override fun handleOnBackPressed() {
+                binding.navigation.selectedItemId = R.id.navigationMain
+                navController.navigateWithOptions(R.id.navigationMain)
+            }
+        }
+
+        // Activate or disable the callback to return to the home fragment before exiting the app
         navigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.navigationMain ->
+                R.id.navigationMain -> {
+                    backHomeCallback.isEnabled = false
                     navController.navigateWithOptions(R.id.navigationMain)
-                R.id.navigationFavorites ->
+                }
+
+                R.id.navigationFavorites -> {
+                    backHomeCallback.isEnabled = true
                     navController.navigateWithOptions(R.id.navigationFavorites)
-                R.id.navigationSettings ->
+                }
+
+                R.id.navigationSettings -> {
+                    backHomeCallback.isEnabled = true
                     navController.navigateWithOptions(R.id.navigationSettings)
+                }
             }
             true
         }
@@ -212,7 +258,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Animate the fab icon
-        addFab.applyLoopingAnimatedVectorDrawable(R.drawable.animated_add_event, 5000L)
+        animateAvd(addFab, R.drawable.animated_add_event, 5000L)
 
         // Set the delete search action (initially hidden)
         deleteFab.setOnClickListener {
@@ -247,13 +293,35 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        // Navigation bar color management (if executed before, it doesn't work)
-        if (accent == "monet") {
-            DynamicColors.applyToActivityIfAvailable(this)
-            window.navigationBarColor = SurfaceColors.SURFACE_2.getColor(this)
+        // Enable edge to edge, but specify the navigation bar color for android < Q
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q)
+        // The colorOutlineVariant color is used to store the deep gray and fix the navbar color on older devices
+            enableEdgeToEdge(
+                navigationBarStyle = SystemBarStyle.dark(
+                    getThemeColor(
+                        R.attr.colorOutlineVariant,
+                        this
+                    )
+                )
+            )
+        else {
+            enableEdgeToEdge()
+            window.isNavigationBarContrastEnforced = false
+        }
+        binding.navHostFragment.addInsetsByMargin(top = true, right = true, left = true)
+        binding.bottomBar.addInsetsByPadding(bottom = true, left = true, right = true)
+        binding.fab.addInsetsByMargin(bottom = true, halveInsets = true)
+        binding.fabDelete.addInsetsByMargin(bottom = true, halveInsets = true)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.navigation, null)
+
+        // Hide on scroll, requires restart TODO Only available in experimental settings
+        if (sharedPrefs.getBoolean("hide_scroll", false)) {
+            binding.bottomBar.hideOnScroll = true
+            binding.navHostFragment.updatePadding(bottom = 0)
         }
 
-        // Auto import on launch TODO Only available in experimental settings
+        // Auto import on launch
         if (sharedPrefs.getBoolean("auto_import", false)) {
             val currentLaunchTime = System.currentTimeMillis()
             val lastLaunch = sharedPrefs.getLong("last_launch", 0L)
@@ -267,18 +335,33 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Hide on scroll, requires restart TODO Only available in experimental settings
-        if (sharedPrefs.getBoolean("hide_scroll", false)) {
-            binding.bottomBar.hideOnScroll = true
-            binding.navHostFragment.setPadding(0, 0, 0, 0)
-        }
-
         // Only the next events, without considering the search string, ordered
         mainViewModel.allEventsUnfiltered.observe(this)
         {
-            // Update the widgets using this livedata, to avoid strange behaviors when searching
+            // Update the widgets and the stats, to avoid strange behaviors when searching
             updateWidget()
+            mainViewModel.getStats(it, this)
         }
+
+        onBackPressedDispatcher.addCallback(this, backHomeCallback)
+    }
+
+    override fun onDestroy() {
+        // TODO Only available in experimental settings
+        val autoExport = sharedPrefs.getBoolean("auto_export", false)
+        val lastExport = sharedPrefs.getLong("last_auto_export", 0)
+        // Max one auto export every 30 seconds
+        val allowedExportTime = lastExport + 30
+        val currentTime = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)
+        if (autoExport && currentTime > allowedExportTime) {
+            sharedPrefs.edit().putLong("last_auto_export", currentTime).apply()
+            val exporter = BirdayExporter(this, null)
+            val thread = Thread {
+                exporter.exportEvents(this, autoBackup = true)
+            }
+            thread.start()
+        }
+        super.onDestroy()
     }
 
     private fun NavController.navigateWithOptions(@IdRes destination: Int) {
@@ -355,10 +438,12 @@ class MainActivity : AppCompatActivity() {
                         val jsonImporter = JsonImporter(this, null)
                         jsonImporter.importEventsJson(this, fileUri)
                     }
-                    "csv" -> {
+
+                    "csv", "xls", "xlsx" -> {
                         val csvImporter = CsvImporter(this, null)
                         csvImporter.importEventsCsv(this, fileUri)
                     }
+
                     else -> {
                         val birdayImporter = BirdayImporter(this, null)
                         birdayImporter.importEvents(this, fileUri)
@@ -421,6 +506,20 @@ class MainActivity : AppCompatActivity() {
                 vib.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK))
     }
 
+    // Animate an animated vector drawable thus centralizing this operation
+    fun animateAvd(
+        imageView: ImageView,
+        avd: Int = R.drawable.animated_experimental_danger,
+        endDelay: Long = 0
+    ) {
+        val loopAnimation = sharedPrefs.getBoolean("loop_avd", true)
+        imageView.applyLoopingAnimatedVectorDrawable(
+            animatedVector = avd,
+            disableLooping = !loopAnimation,
+            endDelay = endDelay
+        )
+    }
+
     // Show a snackbar containing a given text and an optional action, with a 5 seconds duration
     fun showSnackbar(
         content: String,
@@ -441,6 +540,18 @@ class MainActivity : AppCompatActivity() {
             }
         }
         snackbar.show()
+    }
+
+    // Insert a previously deleted event back in the database
+    fun insertBack(eventResult: EventResult) {
+        mainViewModel.insert(resultToEvent(eventResult))
+    }
+
+    // Force refresh the stats, useful when the events are the same, but something else changes
+    fun forceRefreshStats() {
+        val events = mainViewModel.allEventsUnfiltered.value
+        if (events != null)
+            mainViewModel.getStats(events, this)
     }
 
     // Change the fab to show a delete icon
@@ -464,12 +575,13 @@ class MainActivity : AppCompatActivity() {
 
             addFab.visibility = View.VISIBLE
             deleteFab.visibility = View.GONE
-            deleteFab.applyLoopingAnimatedVectorDrawable(
+            animateAvd(
+                deleteFab,
                 R.drawable.animated_delete,
                 3000L,
-                true
             )
-            addFab.applyLoopingAnimatedVectorDrawable(
+            animateAvd(
+                addFab,
                 R.drawable.animated_add_event,
                 5000L
             )
@@ -486,14 +598,15 @@ class MainActivity : AppCompatActivity() {
 
             addFab.visibility = View.GONE
             deleteFab.visibility = View.VISIBLE
-            deleteFab.applyLoopingAnimatedVectorDrawable(
+            animateAvd(
+                deleteFab,
                 R.drawable.animated_delete,
                 3000L
             )
-            addFab.applyLoopingAnimatedVectorDrawable(
+            animateAvd(
+                addFab,
                 R.drawable.animated_add_event,
                 5000L,
-                true
             )
         }
     }
@@ -517,7 +630,7 @@ class MainActivity : AppCompatActivity() {
         } else true
     }
 
-    // Ask calendar permission
+    // Ask read calendar permission
     fun askCalendarPermission(code: Int = 301): Boolean {
         return if (ContextCompat.checkSelfPermission(
                 this,
@@ -532,6 +645,25 @@ class MainActivity : AppCompatActivity() {
             ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.READ_CALENDAR
+            ) == PackageManager.PERMISSION_GRANTED
+        } else true
+    }
+
+    // Ask write calendar permission
+    fun askWriteCalendarPermission(code: Int = 401): Boolean {
+        return if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_CALENDAR
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.WRITE_CALENDAR),
+                code
+            )
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_CALENDAR
             ) == PackageManager.PERMISSION_GRANTED
         } else true
     }
@@ -642,6 +774,33 @@ class MainActivity : AppCompatActivity() {
                                 data = Uri.fromParts("package", packageName, null)
                             })
                         })
+                }
+                else {
+                    val calendarExporter = CalendarExporter(this, null)
+                    calendarExporter.exportCalendar(this)
+                }
+            }
+            402 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    if (shouldShowRequestPermissionRationale(Manifest.permission.WRITE_CALENDAR))
+                        showSnackbar(
+                            getString(R.string.missing_permission_calendar),
+                            actionText = getString(R.string.cancel),
+                            action = fun() {
+                                askWriteCalendarPermission()
+                            })
+                    else showSnackbar(
+                        getString(R.string.missing_permission_calendar_forever),
+                        actionText = getString(R.string.title_settings),
+                        action = fun() {
+                            startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                                data = Uri.fromParts("package", packageName, null)
+                            })
+                        })
+                }
+                else {
+                    val calendarExporter = CalendarExporter(this, null)
+                    calendarExporter.exportCalendar(this)
                 }
             }
         }

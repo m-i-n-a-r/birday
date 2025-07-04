@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_welcome">Birday\'e Hoşgeldin</string>
+    <string name="app_name_extended">Birday - Etkinlik Yöneticisi</string>
+    <string name="leave_review_title">Birday\'i Yorumlayın</string>
+    <string name="leave_review_subtitle">Uygulamayı yorumlamanız benim için önemli. Bağışlar dışında bu uygulamanın tamamen ücretsiz ve reklamsız olduğunu unutmayın!</string>
+    <string name="yes_review">Yorumla!</string>
+    <string name="later">Sonra, söz</string>
+    <string name="no_thanks">Olamaz!</string>
+    <string name="title_home">Home</string>
+    <string name="title_favorites">Favoriler</string>
+    <string name="title_settings">Ayarlar</string>
+    <string name="no_events">Etkinlik yok! Aşağıdaki tuşa basarak yeni bir tane ekle!</string>
+    <string name="no_favorites">Favori yok! Bir etkinliği favorilere eklemek için yıldıza dokun!</string>
+    <string name="add_favorite">Favorilere ekle</string>
+    <string name="stats">İstatistikler</string>
+    <string name="no_stats">Henüz bir şey yok!</string>
+    <string name="stats_summary">İstatistik özeti</string>
+    <string name="no_stats_description">İstatistik oluşturacak kadar etkinliğin yok. Biraz daha ekle ve geri dön!</string>
+    <plurals name="stats_total">
+        <item quantity="one">Birday toplamda %d etkinliği hatırlamanda yardımcı oluyor</item>
+        <item quantity="other">Birday toplamda %d etkinliği hatırlamanda yardımcı oluyor</item>
+    </plurals>
+    <string name="next_event">Sonraki etkinlik</string>
+    <string name="no_next_event">Gösterilecek etkinlik yok!</string>
+    <string name="no_next_event_description">Henüz bir etkinlik eklemedin veya aktarmadın. Bir tane ekle ve işi Birday\'e bırak!</string>
+    <string name="next_age_years">Seneler</string>
+    <string name="event_others">ve diğerleri</string>
+    <plurals name="days_left">
+        <item quantity="one">%d gün kaldı</item>
+        <item quantity="other">%d gün kaldı</item>
+    </plurals>
+    <!-- Settings -->
+    <string name="customization">Kişiselleştirme</string>
+    <string name="app_behavior">Uygulama davranışı</string>
+    <string name="additional_notification_name">Ek bildirim</string>
+    <string name="additional_notification_description">Etkinlikten birkaç gün önce ek bildirim gönder. %s</string>
+    <string name="no_additional_notification">Ek bir bildirim yok</string>
+    <string name="one_day_before">Bir gün önce</string>
+    <string name="two_days_before">İki gün önce</string>
+    <string name="three_days_before">Üç gün önce</string>
+    <string name="four_days_before">Dört gün önce</string>
+    <string name="five_days_before">Beş gün önce</string>
+    <string name="six_days_before">Altı gün önce</string>
+    <string name="seven_days_before">Yedi gün önce</string>
+    <string name="ten_days_before">On gün önce</string>
+    <string name="fourteen_days_before">On dört gün önce</string>
+    <string name="twentyone_days_before">Yirmi bir gün önce</string>
+    <string name="vibration_name">Titreşim</string>
+    <string name="vibration_description_on">Bir tuşa basıldığında titret</string>
+    <string name="vibration_description_off">Titreşim yok</string>
+    <string name="date_format_name">Tarih formatı</string>
+    <string name="notification_hour_name">Bildirim saati</string>
+    <string name="notification_hour_description">%s \n\n Uygulamanın arkaplanda çalışması sistem tarafından durdurulursa (genelde Xiaomi, Huawei ve OnePlus cihazlarda) düzgün çalışmayabileceğini unutmayınız. Daha fazla bilgi için dontkillmyapp.com</string>
+    <string name="accent_description">Varsayılan vurgu rengini değiştir</string>
+    <string name="accent_name">Vurgu tonu</string>
+    <string name="theme_description">Karanlık, açık ya da otomatik tema kullan</string>
+    <string name="theme_name">Uygulama teması</string>
+    <!-- ^ Untranslated for now -->
+    <string name="aqua">Aqua</string>
+    <string name="brown">Kahverengi</string>
+    <string name="blue">Mavi</string>
+    <string name="green">Yeşil</string>
+    <string name="orange">Turuncu</string>
+    <string name="yellow">Sarı</string>
+    <string name="teal">Turkuaz</string>
+    <string name="violet">Menekşe</string>
+    <string name="pink">Pembe</string>
+    <string name="light_blue">Açık Mavi</string>
+    <string name="red">Kırmızı</string>
+    <string name="lime">Lime</string>
+    <string name="crimson">Kızıl</string>
+    <string name="system_theme">Sistem varsayılanı</string>
+    <string name="dark_theme">Karanlık</string>
+    <string name="light_theme">Açık</string>
+    <string name="shimmer_name">Işıltı efekti</string>
+    <string name="shimmer_description_on">Bazı parıltılı animasyonlar</string>
+    <string name="shimmer_description_off">Ek grafik efekti yok</string>
+    <string name="import_export">İçe ve Dışa aktar</string>
+    <string name="import_contacts_title">Kişilerimden etkinlik içe aktar</string>
+    <string name="import_contacts_description">İstatistiklerin doğru olması için eksik sene içeren etkinlikleri düzelttiğinizden emin olun!</string>
+    <string name="import_success">İçe aktarım başarılı!</string>
+    <string name="import_nothing_found">Etkinlik bulunamadı!</string>
+    <string name="import_failed">Bir şeyler ters gitti!</string>
+    <string name="missing_permission_contacts">Kişiler izni reddedildi. Tekrar deneyin veya uygulama iznini ayarlardan kendiniz verin aksi halde içe aktarım çalışmayacak!</string>
+    <string name="missing_permission_contacts_forever">\"Bir daha sorma\" seçeneğini işaretlediğiniz için Birday kişileri aktarmak için izin isteyemez. Ayarlardan kendiniz izni verin!</string>
+    <string name="birday_import_title">Bir Birday yedeğini içe aktarın</string>
+    <string name="birday_import_description">Etkinliklerinizi kurtarmak için geçerli bi yedek seçiniz. Şimdiki verilerin üstüne yazılacak!</string>
+    <string name="birday_export_title">Dışa aktar ve paylaş</string>
+    <string name="birday_export_description">Geçerli etkinlikleri bir yedek dosyasına aktar. Dosya Android/data/com.minar.birday/files konumundadır</string>
+    <string name="birday_import_success">İçe aktarım tamamlandı!</string>
+    <string name="birday_import_failure">İçe aktarılamadı. Doğru dosyayı seçtiğinden emin misin?</string>
+    <string name="birday_import_invalid_file">İçe aktarılamadı. Seçilen dosya bir Birday yedeği değil!</string>
+    <string name="birday_export_success">Dışa aktarım tamamlandı!</string>
+    <string name="birday_export_failure">Dışa aktarılamadı. Oops!</string>
+    <string name="birday_export_nothing_found">Dışa aktarılacak bir şey yok!</string>
+    <string name="surname_first">Önce soyad</string>
+    <string name="surname_first_description_on">Soyismi isimden önce göster</string>
+    <string name="surname_first_description_off">İsmi soyisimden önce göster</string>
+    <string name="hide_images">Resimleri gösterme</string>
+    <string name="hide_images_description_on">Etkinlik resimleri gösterilmiyor</string>
+    <string name="hide_images_description_off">Etkinlik resimleri görünür</string>
+    <string name="notification_only_favorites">Sadece favoriler</string>
+    <string name="notification_only_favorites_description_on">Sadece favori etkinlikler için bildirim gönder</string>
+    <string name="notification_only_favorites_description_off">Oluşturulan her etkinlik için bir bildirim gönder</string>
+    <string name="additional_notification_only_favorites">Favoriler için ek bildirim</string>
+    <string name="additional_notification_only_favorites_description_on">Ek bildirimi sadece favori etkinlikler için gönder</string>
+    <string name="additional_notification_only_favorites_description_off">Ek bildirimi oluşturulan her etkinlik için gönder</string>
+    <string name="troubleshoot">Hata ayıklama ve extra</string>
+    <string name="battery_optimization_title">Pil optimizasyonunu devre dışı bırak</string>
+    <string name="battery_optimization_description">Optimizasyonları devre dışı bırakmak için ayarları aç. Bildirimler çalışmıyorsa etkili olacaktır.</string>
+    <string name="battery_optimization_tutorial">Uygulama ayarlarındaki listeden Birday\'i bul\n- Birday\'e tıkla ve \"Optimize etme\"yi seç</string>
+    <string name="notification_sound_title">Bildirim sesi</string>
+    <string name="notification_sound_description">Bildirim sesi ayarları için kısayol, varsayılan kuş sesini sevmiyorsanız</string>
+    <string name="missing_permission_notifications">Bildirim izni reddedildi, Birday bildirim gönderemez! İzni ayarlardan aktif edin.</string>
+    <string name="missing_permission_notifications_forever">Bildirim izni reddedildi ve artık yeniden izin istenemiyor. Birday\'in bildirim gönderebilmesi için ayarlardan izni aktif etmeniz gerek.</string>
+    <string name="missing_permission_calendar">Takvim izni reddedildi, Birday takvime erişemiyor. İzni ayarlardan aktif edin.</string>
+    <string name="missing_permission_calendar_forever">Takvim izni reddedildi ve artık yeniden izin istenemiyor. Birday\'in takvime erişmesi için ayarlardan izni aktif etmeniz gerek.</string>
+    <string name="import_calendar_title">Takvimden aktar</string>
+    <string name="import_calendar_description">Herhangi bir yıllık etkinliği takviminizden aktarın. Etkinlik tipini ve seneyi doğru ayarladığınızdan emin olun!</string>
+    <string name="loop_avd_title">Döngü animasyonları</string>
+    <string name="loop_avd_description_on">Animasyonlar sürekli döngü hâlindedir</string>
+    <string name="loop_avd_description_off">Animasyonlar sadece bir kere çalışır</string>
+    <string name="order_alphabetically_title">Alfabetik sıra</string>
+    <string name="order_alphabetically_description_on">Etkinlikler alfabetik olarak sınıflandırılır</string>
+    <string name="order_alphabetically_description_off">Etkinlikler tarihe göre sınıflandırılır</string>
+    <string name="grouped_notifications_title">Çoklu grup bildirimleri</string>
+    <string name="grouped_notifications_description_on">Eğer bir günde iki veya daha fazla etkinlik varsa bildirimler gruplandırılır</string>
+    <string name="grouped_notifications_description_off">Eğer bir günde iki veya daha fazla etkinlik varsa bildirimler ayrı ayrı gönderilir</string>
+    <!-- Developer -->
+    <string name="dev_description">Efendi bir adamımdır. Animasyon, ikonlar, spor arabalar ve 3D yazıcılar gibi şeyleri severim. Bilgisayar mühendisliği ve dizayn ile uğraşıyorum.</string>
+    <string name="easter_egg">Hoş logo, değil mi? ;D</string>
+    <!-- New event -->
+    <string name="new_event">Yeni etkinlik</string>
+    <string name="new_event_description">Önemsediğin birini yaz, Birday önemli yıl dönümlerini ve doğum günlerini hatırlamanda yardımcı olacak!</string>
+    <string name="insert_event">Etkinlik oluştur</string>
+    <string name="cancel">Vazgeç</string>
+    <string name="insert_name_hint">İsim</string>
+    <string name="insert_surname_hint">Soyisim</string>
+    <string name="insert_date_hint">Bir tarih seç</string>
+    <string name="invalid_value_name">Geçersiz isim!</string>
+    <string name="consider_year">Seneyi de say</string>
+    <string name="event_type_hint">Etkinlik tipi</string>
+    <string name="birthday">Doğum günü</string>
+    <string name="anniversary">Yıl dönümü</string>
+    <string name="death_anniversary">Ölüm yıl dönümü</string>
+    <string name="festivity">Şenlik</string>
+    <string name="name_day">İsim günü</string>
+    <string name="other">Diğer</string>
+    <!-- Event actions -->
+    <string name="event_actions">Hareketler</string>
+    <string name="event_actions_description">Etkinliği bu kısımdan değiştirebilir veya kaldırabilirsin!</string>
+    <string name="edit_event">Düzenle</string>
+    <string name="delete_event">Etkinliği sil</string>
+    <string name="update_event">Güncelle</string>
+    <string name="share_event">Paylaş</string>
+    <string name="deleted">Silindi!</string>
+    <!-- Event details -->
+    <string name="event_details">Detaylar</string>
+    <string name="birth_date">Doğum tarihi</string>
+    <string name="next_age">Sonraki yaş:</string>
+    <string name="zodiac_sign">Burç:</string>
+    <string name="chinese_zodiac_sign">Çin takvimi:</string>
+    <!-- Quick apps -->
+    <string name="event_apps">Hızlı uygulamalar</string>
+    <string name="event_apps_description">En iyi dileklerini ileteceğin uygulamalar!</string>
+    <string name="text_message">SMS</string>
+    <string name="dialer">Ara</string>
+    <string name="wishes_birthday">İyi ki doğdun!</string>
+    <string name="no_default_dialer">Varsayılan arama uygulaması bulunamadı!</string>
+    <string name="no_default_sms">Varsayılan SMS uygulaması bulunamadı!</string>
+    <string name="might_have_missed">Kaçırmış olabilirsin:</string>
+    <!-- Statistics -->
+    <string name="did_you_know">Biliyor muydun?</string>
+    <string name="age_average">%s, Dünyadaki ortalama yaştır</string>
+    <string name="oldest_person">En yaşlı kişi: %s</string>
+    <string name="youngest_person">En genç kişi: %s</string>
+    <string name="most_common_month">%s en yaygın doğum ayıdır</string>
+    <string name="most_common_decade">%s doğum açısından en yaygın onluktur</string>
+    <string name="most_common_age_range">En yaygın yaş aralığı %1$s-%2$s dır</string>
+    <string name="special_ages">Yaklaşan bir doğum günü var: %s</string>
+    <string name="random_zodiac_sign">%1$s kişisinin Burcu: %2$s</string>
+    <string name="most_common_zodiac_sign">%s en yaygın burçtur</string>
+    <string name="most_common_chinese_sign">%s en yaygın çin burcudur</string>
+    <string name="random_day_of_week">%1$s, %2$s\'de doğdu</string>
+    <string name="most_common_day_of_week">%s en yaygın doğum günüdür</string>
+    <plurals name="leap_year_total">
+        <item quantity="one">artık yılda doğan insan sayısı: %s</item>
+        <item quantity="other">artık yılda doğan insan sayısı: %s</item>
+    </plurals>
+    <string name="random_chinese_year">%1$s kişisinin Çin burcu: %2$s</string>
+    <string name="chinese_zodiac_rat">fare</string>
+    <string name="chinese_zodiac_ox">öküz</string>
+    <string name="chinese_zodiac_tiger">kaplan</string>
+    <string name="chinese_zodiac_rabbit">tavşan</string>
+    <string name="chinese_zodiac_dragon">ejderha</string>
+    <string name="chinese_zodiac_snake">yılan</string>
+    <string name="chinese_zodiac_horse">at</string>
+    <string name="chinese_zodiac_goat">keçi</string>
+    <string name="chinese_zodiac_monkey">maymun</string>
+    <string name="chinese_zodiac_rooster">horoz</string>
+    <string name="chinese_zodiac_dog">köpek</string>
+    <string name="chinese_zodiac_pig">domuz</string>
+    <string name="zodiac_sagittarius">yay</string>
+    <string name="zodiac_capricorn">oğlak</string>
+    <string name="zodiac_aquarius">kova</string>
+    <string name="zodiac_pisces">balık</string>
+    <string name="zodiac_aries">koç</string>
+    <string name="zodiac_taurus">boğa</string>
+    <string name="zodiac_gemini">ikizler</string>
+    <string name="zodiac_cancer">yengeç</string>
+    <string name="zodiac_leo">aslan</string>
+    <string name="zodiac_virgo">başak</string>
+    <string name="zodiac_libra">terazi</string>
+    <string name="zodiac_scorpio">akrep</string>
+    <!-- Common words -->
+    <plurals name="months">
+        <item quantity="one">%d ay</item>
+        <item quantity="other">%d ay</item>
+    </plurals>
+    <string name="today">Bugün!</string>
+    <string name="yesterday">Dün!</string>
+    <string name="tomorrow">Yarın!</string>
+    <plurals name="years">
+        <item quantity="one">%d sene</item>
+        <item quantity="other">%d sene</item>
+    </plurals>
+    <string name="born_in">doğum</string>
+    <string name="and">ve</string>
+    <plurals name="event">
+        <item quantity="one">etkinlik: %s</item>
+        <item quantity="other">etkinlikler: %s</item>
+    </plurals>
+    <!-- Notifications -->
+    <string name="events_notification_channel">Etkinlik Hatırlatıcı</string>
+    <string name="events_channel_description">Birday\'den yaklaşan etkinlikler hakkında hatırlatmalar</string>
+    <string name="notification_title">Birday Hatırlatma</string>
+    <string name="notification_description_part_1">Bugünün etkinlikleri</string>
+    <string name="notification_description_part_2">İyi günler!</string>
+    <string name="additional_notification_text">Yaklaşan etkinlikler!</string>
+    <!-- Introduction slides -->
+    <string name="slide_one_title">Birday\'e Hoşgeldin!</string>
+    <string name="slide_one_description">Birday önemli olayları ve etkinliklerini hatırlatmaya yarayan basit, küçük bir uygulamadır!
+    Sevdiklerinin doğum günlerini ve daha fazlasını hızlıca yönetmekte kullanabilirsin.
+    </string>
+    <string name="slide_two_title">Ücretsiz, basit, kişiselleştirilebilir</string>
+    <string name="slide_two_description">Birday ücretsiz, reklamsız ve açık kaynak bir yazılımdır.
+    Etkinliklerin hakkında istatistikler, favoriler sistemi ve kişiselleştirilebilir bir arayüz sunar
+    Geliştiricilerden destek alır ve güncel durumunu korur!
+    </string>
+    <string name="slide_three_title">Kişilerimden aktar</string>
+    <string name="slide_three_description">Önceden kişilerde kaydettiğiniz etkinlikleri aktarmak da mümkün.
+    Kişilere erişim izni verin ve Birday sizin için işi halletsin!
+    </string>
+    <!-- Widget -->
+    <string name="appwidget_upcoming">Yaklaşan etkinlikler</string>
+    <string name="add_widget">Birday - Yakında</string>
+    <string name="dark_widget_name">Karanlık tema widget\'ı</string>
+    <string name="dark_widget_description_on">Karanlık tema kullanan widget</string>
+    <string name="dark_widget_description_off">Açık tema kullanan widget</string>
+    <string name="widget_configuration_title">Widget yapılandırması</string>
+    <string name="widget_configuration_description">Widget\'ı kendi stilinize göre düzenleyin</string>
+    <string name="widget_background_title">Arka plan</string>
+    <string name="widget_background_description">Widget için bir arka plan göster</string>
+    <string name="compact_widget_title">Kompakt düzen</string>
+    <string name="compact_widget_description">Düzeni extra kompakt olacak şekilde optimize et</string>
+    <string name="align_start_widget_title">Başlangıçta hizala</string>
+    <string name="align_start_widget_description">Widget içeriğini başlangıca hizala (yerinize bağlı olarak sağa ya da sola)</string>
+    <string name="hide_far_widget_title">Uzaktaki etkinlikler için widget\'ı gizle</string>
+    <string name="hide_far_widget_description">Sıradaki etkinlik ek bildirim periyodundan sonra ise widget\'ı gizle (ör: bildirimler 7 gün sonra ama etkinliğe daha 10 gün var ise &gt; widget gizlenir)</string>
+    <string name="show_following_widget_title">Sıradaki etkinliği göster</string>
+    <string name="show_following_widget_description">Sıradaki etkinliği takip eden etkinlikleri ek bir satırda göster</string>
+    <!-- Search -->
+    <string name="search_event">Ara…</string>
+    <string name="search_no_result_title">Sonuç bulunamadı</string>
+    <string name="search_no_result_description">Aramanız hiçbir etkinlikle uyuşmuyor!</string>
+    <!-- Notes -->
+    <string name="notes">Notlar</string>
+    <string name="write_something">Bir şeyler yaz…</string>
+    <!-- Overview -->
+    <string name="overview">Genel Bakış</string>
+    <string name="overview_description">Kaydedilen tüm etkinliklere yıllık genel bakış</string>
+    <!-- Experimental preferences, unclassified -->
+    <string name="experimental_settings_title">Deneysel</string>
+    <string name="experimental_settings_description">Bazı deneysel ve sorun yaratabilecek özellikleri içerir. Sorumluluk size aittir</string>
+    <string name="experimental_disclaimer">Bu özellikler deneysel amaçlıdır hâliyle düzgünce çalışmayabilir. Bu özelliklerden bazıları \"geliştirilip\" çevirilebileceğinden, herhangi bir geliştirme önerisi için Github\'a başvurun.</string>
+    <string name="check_github">Github\'a göz at</string>
+    <string name="translate_app">Uygulamayı çevirin</string>
+    <string name="launch_auto_import_title">Uygulama açılırken otomatik içe aktar</string>
+    <string name="launch_auto_import_description_off">Birday açılırken kişileri otomatik olarak içe aktarmayacak</string>
+    <string name="launch_auto_import_description_on">Birday açılırken kişileri otomatik olarak senkronize edecek</string>
+    <string name="hide_on_scroll_title">Kaydırırken navigasyon çubuğunu gizle</string>
+    <string name="hide_on_scroll_description_on">Kaydırırken alt navigasyon çubuğunu gizle</string>
+    <string name="hide_on_scroll_description_off">Alt navigasyoub çubuğu herzaman görünür</string>
+    <string name="angry_bird_title">Angry Bird modu</string>
+    <string name="angry_bird_description_on">Kalıcı bildirimler, daha kısa yazılar ve diğer bildirimle ilgili ayarlar</string>
+    <string name="angry_bird_description_off">Bildirimler normal davranacak</string>
+    <string name="disable_astrology_title">Astrolojiyi devre dışı bırak</string>
+    <string name="disable_astrology_description_on">Burçları detaylardan kaldır</string>
+    <string name="disable_astrology_description_off">Burç bilgileri normal şekilde görüntülenir</string>
+    <string name="import_json_title">JSON\'dan içe aktar</string>
+    <string name="import_json_description">Bir JSON dosyasından içe aktarın. Gerekli dosya yapısı için Github\'daki wikiyi ziyaret edin</string>
+    <string name="export_json_title">JSON\'a aktar</string>
+    <string name="export_json_description">Her etkinliği bir JSON dosyasına aktarın, resimler aktarılmaz</string>
+    <string name="import_csv_title">CSV\'den içe aktar</string>
+    <string name="import_csv_description">Bir CSV dosyasından içe aktarın. Gerekli dosya yapısı için Github\'daki wikiyi ziyaret edin</string>
+    <string name="export_csv_title">CSV\'ye aktar</string>
+    <string name="export_csv_description">Her etkinliği bir CSV dosyasına aktarın, resimler aktarılmaz</string>
+    <string name="export_calendar_title">Takvime aktar</string>
+    <string name="export_calendar_description">Mümkünse her etkinliği yerel takviminize kaydedin. Takvim izni gerektirir</string>
+    <string name="auto_export_title">Olayları otomatik dışa aktarma</string>
+    <string name="auto_export_description_on">Birday, uygulama kapatıldığında otomatik olarak bir yedeği dışa aktaracaktır. Lütfen her yedeğin bir önceki yedeğin üzerine yazılacağını unutmayın</string>
+    <string name="auto_export_description_off">Yerel Birday yedeklemesi gerçekleştirmek için manuel olarak yürütülmesi gerekir</string>
+    <string name="add_demo_entries_title">Demo girişleri ekleyin</string>
+    <string name="add_demo_entries_description">DB\'yi aktörler ve tarihi şahsiyetlerden oluşan bir dizi etkinlikle doldurun</string>
+    <string name="add_demo_entries_dialog_description">Bu, hata ayıklama amaçlı DB\'ye kalıcı olarak BİNLERCE giriş ekler. Var olan etkinlikler silinmeyecek ancak yeni girişleri silmek istemeniz durumunda bunu manuel olarak yapmak zorunda kalacaksınız. Bol şans.</string>
+    <string name="delete_db_title">Tüm etkinlikleri sil</string>
+    <string name="delete_db_description">Kısaca, DB\'yi havaya uçurur. Tıklamadan önce iki kez düşün!</string>
+    <string name="delete_db_dialog_title">Emin misin?</string>
+    <string name="delete_db_dialog_description">Önce etkinliklerini yedeklediğinden emin ol, bu tüm DB\'yi silip süpürecek. Sadece hata ayıklama amacıyla kullanılmalıdır.</string>
+    <string name="delete_search_title">Arama bölümünü kaldır</string>
+    <string name="delete_search_description_off">Birden fazla etkinliği aynı anda silmek mümkün olmayacak</string>
+    <string name="delete_search_description_on">Bir veya birden fazla etkinliği arattığında çöp kutusu ikonuna basarak anında etkinlikleri silmeni sağlar. Dikkatle kullanın!</string>
+    <string name="delete_search_confirm">Bu seçenek bu aramaların tüm sonuçlarını siler. OK tuşuna bastıktan sonra fikrini değiştirirsen hemen geri dönebilirsin!</string>
+    <string name="import_contacts_bottom_sheet_description">Tüm etkinliklerinizi şimdi kişilerden aktarmak ister misiniz?</string>
+    <string name="yes_import">İçe aktar</string>
+    <string name="advanced_overview_title">Gelişmiş genel bakış</string>
+    <string name="advanced_overview_description_off">Genel bakş ekranı sadece basit bilgiler gösterecek</string>
+    <string name="advanced_overview_description_on">Genel bakış ekranı diğer seneleri ve detayları da gösterecek</string>
+    <string name="replace_on_conflict_title">Çatışma durumunda değiştir</string>
+    <string name="replace_on_conflict_description_off">İçe aktarırken kopyası oluşturulmuş etkinlik aktarılan kopya ile değiştirilmeyecek</string>
+    <string name="replace_on_conflict_description_on">İçe aktarılırken, kopyası oluşturulmuş etkinliğin üzerine aktarılan kopya yazılacak</string>
+</resources>

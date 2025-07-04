@@ -60,7 +60,7 @@
     <string name="accent_name">Цвет акцента</string>
     <string name="theme_description">Использовать темную, светлую тему или менять автоматически</string>
     <string name="theme_name">Тема приложения</string>
-    <!-- Untranslated for now -->
+    <!-- ^ Untranslated for now -->
     <string name="aqua">Aква-синий</string>
     <string name="brown">Коричневый</string>
     <string name="blue">Синий</string>
@@ -114,6 +114,7 @@
     <string name="troubleshoot">Устранение неполадок</string>
     <string name="battery_optimization_title">Отключить оптимизацию батареи</string>
     <string name="battery_optimization_description">Откройте настройки, чтобы отключить любую оптимизацию для Birday. Полезно, если уведомления не работают</string>
+    <string name="battery_optimization_tutorial">- Отобразить список всех приложений и найти Birday в этом списке\n- Нажать на Birday и выбрать \"Не оптимизировать\"</string>
     <string name="notification_sound_title">Звук уведомления</string>
     <string name="notification_sound_description">Ярлык для настройки звука уведомления, если вам не нравится звук птицы по умолчанию</string>
     <string name="missing_permission_notifications">Разрешение на уведомление было отклонено и Birday не может их отправлять! Включите эту возможность в настройках.</string>
@@ -122,6 +123,15 @@
     <string name="missing_permission_calendar_forever">Разрешение для календаря было отклонено и не может быть запрошено снова, поэтому Birday не может импортировать из него. Активируйте разрешение вручную через настройки.</string>
     <string name="import_calendar_title">Импортировать из календаря</string>
     <string name="import_calendar_description">Импортируйте любое событие в году из ваших календарей. Не забудьте установить тип события и дату, дабы всё было структурировано!</string>
+    <string name="loop_avd_title">Цикл анимации</string>
+    <string name="loop_avd_description_on">Анимации зациклены бесконечно</string>
+    <string name="loop_avd_description_off">Анимации будут запускаться один раз</string>
+    <string name="order_alphabetically_title">В алфавитном порядке</string>
+    <string name="order_alphabetically_description_on">События упорядочены по алфавиту</string>
+    <string name="order_alphabetically_description_off">События упорядочены по дате</string>
+    <string name="grouped_notifications_title">Группировка уведомлений</string>
+    <string name="grouped_notifications_description_on">Если за один день происходит два или более события, уведомления группируются</string>
+    <string name="grouped_notifications_description_off">Если есть два или более события за один день, день рождения посылает уведомление о каждом</string>
     <!-- Developer -->
     <string name="dev_description">Я вежливый парень и люблю красивые вещи - анимации, иконки, спортивные машины и 3D-печать. Я работаю дизайнером и компьютерным инженером.</string>
     <string name="easter_egg">Прикольный логотип, не? ;D</string>
@@ -164,6 +174,7 @@
     <string name="wishes_birthday">С днем рождения!</string>
     <string name="no_default_dialer">Не найдено приложение по умолчанию для звонков!</string>
     <string name="no_default_sms">Не найдено приложение по умолчанию для СМС!</string>
+    <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
     <string name="did_you_know">Знаете ли вы?</string>
     <string name="age_average">Средний возраст %s</string>
@@ -270,6 +281,8 @@
     <string name="align_start_widget_description">Выровнять содержимое виджета до начала (справа или слева в зависимости от вашего языка)</string>
     <string name="hide_far_widget_title">Скрыть виджет для далеких событий</string>
     <string name="hide_far_widget_description">Скрыть виджет, если следующие события после дополнительного периода уведомлений (например: уведомление за 7 дней до этого следующее событие через 10 дней -&gt; виджет скрыт)</string>
+    <string name="show_following_widget_title">Показать следующее событие</string>
+    <string name="show_following_widget_description">Показать в дополнительной строке событие или события, следующие за другим</string>
     <!-- Search -->
     <string name="search_event">Поиск…</string>
     <string name="search_no_result_title">Ничего не найдено</string>
@@ -280,7 +293,7 @@
     <!-- Overview -->
     <string name="overview">Обзор</string>
     <string name="overview_description">Годовой обзор сохраненных событий</string>
-    <!-- Experimental preferences -->
+    <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Экспериментальный</string>
     <string name="experimental_settings_description">Некоторые экспериментальные или недоработанные настройки и особенности. Использовать на свой страх и риск</string>
     <string name="experimental_disclaimer">Данные функции находятся в этапе экспериментирования и могу работать с ошибками. Используйте их только в том случае, если не боитесь что-то потерять. Обращайтесь к Github для поиска любого прогресса приложения, так как некоторые из этих функций могут быть улучшены и переведены</string>
@@ -306,6 +319,14 @@
     <string name="import_csv_description">Импортировать из файла CSV. Обратитесь к Wiki на Github для требуемой структуры файлов</string>
     <string name="export_csv_title">Экспотировать в CSV</string>
     <string name="export_csv_description">Экспортировать каждое событие в файл CSV, без изображений</string>
+    <string name="export_calendar_title">Export to calendar</string>
+    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
+    <string name="auto_export_title">Auto export events</string>
+    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
+    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
+    <string name="add_demo_entries_title">Добавить демо записи</string>
+    <string name="add_demo_entries_description">Заполнить базу данных демонстрационным набором событий, преимущественно связанных с актерами и историческими личностями</string>
+    <string name="add_demo_entries_dialog_description">Эта операция навсегда добавит ТЫСЯЧИ записей в базу данных и предназначена для целей отладки. Она не удалит ни одного существующего события, но если вы хотите удалить новые записи, вам придется сделать это вручную. Удачи вам с этим.</string>
     <string name="delete_db_title">Удалить все события</string>
     <string name="delete_db_description">Простое удаление всей базы данных. Перед нажатием подумайте дважды!</string>
     <string name="delete_db_dialog_title">Вы уверены?</string>
@@ -319,4 +340,7 @@
     <string name="advanced_overview_title">Расширенный обзор</string>
     <string name="advanced_overview_description_off">На экране обзора будет отображаться только основная информация</string>
     <string name="advanced_overview_description_on">На экране обзора будут показаны другие годы и подробная информация</string>
+    <string name="replace_on_conflict_title">Заменить при конфликте</string>
+    <string name="replace_on_conflict_description_off">При импорте дубликат события не будет заменен импортируемым дубликатом</string>
+    <string name="replace_on_conflict_description_on">При импорте дубликат события будет перезаписан импортируемым дубликатом</string>
 </resources>
