@@ -34,6 +34,7 @@ internal class EventWidgetRemoteViewsFactory(private val context: Context) : Rem
         // In onCreate(), setup any connections / cursors to the data source
         val sp = PreferenceManager.getDefaultSharedPreferences(context)
         surnameFirst = sp.getBoolean("surname_first", false)
+        events = emptyList()
     }
 
     override fun onDestroy() {
