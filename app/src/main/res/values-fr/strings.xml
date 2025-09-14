@@ -223,7 +223,7 @@
     <string name="tomorrow">Demain !</string>
     <plurals name="years">
         <item quantity="one">%d année</item>
-        <item quantity="other">%d années</item>
+        <item quantity="other">%d ans</item>
     </plurals>
     <string name="born_in">né(e) en</string>
     <string name="and">et</string>
