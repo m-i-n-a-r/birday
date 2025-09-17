@@ -107,7 +107,7 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
                                     COLUMN_YEAR_MATTER,
                                     -1
                                 )
-                            )?.toBooleanStrict() ?: true,
+                            )?.lowercase()?.toBooleanStrict() ?: true,
                             notes = rowValues.getOrNull(
                                 columnsMapping.getOrDefault(
                                     COLUMN_NOTES,
@@ -199,8 +199,8 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
                 } catch (_: Exception) {
                 }
             // Boolean (yearMatter) detection
-            if (rowItem.toBooleanStrictOrNull() != null) {
-                yearMatter = rowItem.toBooleanStrict()
+            if (rowItem.lowercase().toBooleanStrictOrNull() != null) {
+                yearMatter = rowItem.lowercase().toBooleanStrict()
                 return@forEach
             }
             // Type detection
