@@ -3,7 +3,7 @@
     <!-- Style for the light theme -->
     <style name="AppTheme" parent="AppTheme.Base" />
 
-    <style name="AppTheme.Base" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="AppTheme.Base" parent="Theme.Material3Expressive.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:colorBackground">@color/colorBackground</item>
         <item name="colorSurfaceContainerLow">@color/colorBackground</item>
@@ -40,7 +40,7 @@
     </style>
 
     <!-- Monet theme -->
-    <style name="AppTheme.Monet" parent="Theme.Material3.DynamicColors.DayNight.NoActionBar">
+    <style name="AppTheme.Monet" parent="Theme.Material3Expressive.DynamicColors.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">true</item>
         <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker.Monet</item>
         <item name="materialTimePickerTheme">@style/ThemeOverlay.App.TimePicker.Monet</item>
@@ -55,7 +55,7 @@
     <!-- Splash screen theme -->
     <style name="SplashTheme" parent="SplashTheme.Base.Legacy" />
 
-    <style name="SplashTheme.Base" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="SplashTheme.Base" parent="Theme.Material3Expressive.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">@color/colorBackground</item>
         <item name="android:colorBackground">@color/colorBackground</item>
@@ -67,7 +67,7 @@
     </style>
 
     <!-- Widget theme -->
-    <style name="WidgetTheme" parent="Theme.Material3.DynamicColors.DayNight">
+    <style name="WidgetTheme" parent="Theme.Material3Expressive.DynamicColors.DayNight">
         <item name="appWidgetRadius">@dimen/rounded_corners</item>
         <item name="appWidgetInnerRadius">@dimen/rounded_corners_inner</item>
         <item name="appWidgetPadding">@dimen/activity_horizontal_margin</item>
@@ -213,7 +213,7 @@
     </style>
 
     <!-- Bottom navigation for non-monet accents -->
-    <style name="CustomBottomNavigation" parent="Widget.Material3.BottomNavigationView">
+    <style name="CustomBottomNavigation" parent="Widget.Material3Expressive.BottomNavigationView">
         <item name="itemTextColor">@drawable/bottom_navbar_item</item>
         <item name="itemIconTint">@drawable/bottom_navbar_item</item>
     </style>
@@ -232,7 +232,7 @@
     </style>
 
     <!-- Custom button group -->
-    <style name="Widget.App.Button.OutlinedButton.IconOnly" parent="Widget.Material3.Button.OutlinedButton">
+    <style name="Widget.App.Button.OutlinedButton.IconOnly" parent="Widget.Material3Expressive.Button.OutlinedButton">
         <item name="iconPadding">0dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>

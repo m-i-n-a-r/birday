@@ -3,7 +3,7 @@
     <!-- Style for the dark theme -->
     <style name="AppTheme" parent="AppTheme.Base" />
 
-    <style name="AppTheme.Base" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="AppTheme.Base" parent="Theme.Material3Expressive.DayNight.NoActionBar">
         <item name="android:colorBackground">@color/colorBackgroundInverse</item>
         <item name="colorSurfaceContainerLow">@color/colorBackgroundInverse</item>
         <item name="android:textColorPrimary">@color/textColorPrimaryInverse</item>
@@ -39,7 +39,7 @@
     </style>
 
     <!-- Monet theme -->
-    <style name="AppTheme.Monet" parent="Theme.Material3.DynamicColors.DayNight.NoActionBar">
+    <style name="AppTheme.Monet" parent="Theme.Material3Expressive.DynamicColors.DayNight.NoActionBar">
         <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker.Monet</item>
         <item name="materialTimePickerTheme">@style/ThemeOverlay.App.TimePicker.Monet</item>
         <item name="snackbarStyle">@style/Widget.App.Snackbar</item>

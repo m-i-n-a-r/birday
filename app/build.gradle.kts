@@ -98,7 +98,7 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.1")
 
     // Material Components
-    implementation("com.google.android.material:material:1.13.0")
+    implementation("com.google.android.material:material:1.14.0-alpha04")
 
     // WorkManager
     implementation("androidx.work:work-runtime-ktx:2.10.4")
