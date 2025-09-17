@@ -20,6 +20,7 @@ import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getNextYears
 import com.minar.birday.utilities.getReducedDate
+import com.minar.birday.utilities.getYears
 import com.minar.birday.utilities.setEventImageOrPlaceholder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -183,15 +184,16 @@ class EventAdapter(
                 formatName(event, sharedPrefs.getBoolean("surname_first", false))
             // If the year isn't considered, show only the day and the month
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
-            val originalDate = if (event.yearMatter!!) "${event.originalDate.format(formatter)} - ${
-                String.format(
-                    context.resources.getQuantityString(R.plurals.years, getNextYears(event)),
-                    getNextYears(event)
-                )
-            }"
-            else getReducedDate(event.originalDate).replaceFirstChar {
-                if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
-            }
+            val originalDate =
+                if (event.yearMatter!!) "${event.originalDate.format(formatter)} - ${getYears(event)}▶${
+                    String.format(
+                        context.resources.getQuantityString(R.plurals.years, getNextYears(event)),
+                        getNextYears(event)
+                    )
+                }"
+                else getReducedDate(event.originalDate).replaceFirstChar {
+                    if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+                }
             // The original date row also has the current age
             eventPerson.text = formattedPersonName
             eventDate.text = originalDate
