@@ -325,7 +325,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Auto import on launch
-        if (sharedPrefs.getBoolean("auto_import", false)) {
+        val autoImportEnabled = sharedPrefs.getBoolean("auto_import", false)
+        if (autoImportEnabled) {
             val currentLaunchTime = System.currentTimeMillis()
             val lastLaunch = sharedPrefs.getLong("last_launch", 0L)
 
@@ -336,6 +337,26 @@ class MainActivity : AppCompatActivity() {
                     ContactsImporter(this, null).importContacts(this)
                 }
             }
+
+            // Schedule periodic WorkManager job that checks weekly if an import is needed
+            try {
+                val importRequest = androidx.work.PeriodicWorkRequestBuilder<com.minar.birday.workers.ImportContactsWorker>(
+                    7, java.util.concurrent.TimeUnit.DAYS
+                ).build()
+
+                androidx.work.WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+                    "import_contacts_periodic",
+                    androidx.work.ExistingPeriodicWorkPolicy.KEEP,
+                    importRequest
+                )
+            } catch (_: Exception) {
+                // ignore scheduling issues on older devices / vendors
+            }
+        } else {
+            // Cancel any previously scheduled import worker when disabled
+            try {
+                androidx.work.WorkManager.getInstance(this).cancelUniqueWork("import_contacts_periodic")
+            } catch (_: Exception) { }
         }
 
         // Only the next events, without considering the search string, ordered
