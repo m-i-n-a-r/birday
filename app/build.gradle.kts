@@ -109,7 +109,7 @@ dependencies {
 
     // Lifecycle and ViewModel
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.3")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
 
     // Room
@@ -130,7 +130,7 @@ dependencies {
     implementation("nl.dionsegijn:konfetti:1.3.2")
 
     // TastiCalendar (my library :D)
-    implementation("com.github.m-i-n-a-r:tasticalendar:1.3.6")
+    implementation("com.github.m-i-n-a-r:tasticalendar:1.4.0")
 
     // [Testing] Basic
     testImplementation("junit:junit:4.13.2")
