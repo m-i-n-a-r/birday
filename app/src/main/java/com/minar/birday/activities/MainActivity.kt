@@ -44,10 +44,14 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.animation.PathInterpolatorCompat
 import androidx.core.view.isGone
 import androidx.core.view.updatePadding
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.preference.PreferenceManager
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
@@ -67,13 +71,19 @@ import com.minar.birday.utilities.addInsetsByPadding
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 import com.minar.birday.utilities.getThemeColor
 import com.minar.birday.utilities.resultToEvent
+import com.minar.birday.utilities.shareUri
 import com.minar.birday.utilities.showIfNotAdded
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidgetProvider
 import com.minar.birday.widgets.MinimalWidgetProvider
+import com.minar.birday.workers.ImportContactsWorker
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.time.LocalDateTime
 import java.time.ZoneOffset
+import java.util.concurrent.TimeUnit
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
@@ -340,13 +350,13 @@ class MainActivity : AppCompatActivity() {
 
             // Schedule periodic WorkManager job that checks weekly if an import is needed
             try {
-                val importRequest = androidx.work.PeriodicWorkRequestBuilder<com.minar.birday.workers.ImportContactsWorker>(
-                    7, java.util.concurrent.TimeUnit.DAYS
+                val importRequest = PeriodicWorkRequestBuilder<ImportContactsWorker>(
+                    7, TimeUnit.DAYS
                 ).build()
 
-                androidx.work.WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+                WorkManager.getInstance(this).enqueueUniquePeriodicWork(
                     "import_contacts_periodic",
-                    androidx.work.ExistingPeriodicWorkPolicy.KEEP,
+                    ExistingPeriodicWorkPolicy.KEEP,
                     importRequest
                 )
             } catch (_: Exception) {
@@ -355,8 +365,9 @@ class MainActivity : AppCompatActivity() {
         } else {
             // Cancel any previously scheduled import worker when disabled
             try {
-                androidx.work.WorkManager.getInstance(this).cancelUniqueWork("import_contacts_periodic")
-            } catch (_: Exception) { }
+                WorkManager.getInstance(this).cancelUniqueWork("import_contacts_periodic")
+            } catch (_: Exception) {
+            }
         }
 
         // Only the next events, without considering the search string, ordered
@@ -381,7 +392,7 @@ class MainActivity : AppCompatActivity() {
             sharedPrefs.edit { putLong("last_auto_export", currentTime) }
             val exporter = BirdayExporter(this, null)
             val thread = Thread {
-                exporter.exportEvents(this, autoBackup = true)
+                exporter.exportEvents(this, uri = null, autoBackup = true)
             }
             thread.start()
         }
@@ -477,6 +488,28 @@ class MainActivity : AppCompatActivity() {
                 // Invalid file, other errors, can't even try to import
                 e.printStackTrace()
                 showSnackbar(getString(R.string.birday_import_failure))
+            }
+        }
+
+    // Birday (DB backup) TODO Add json and csv
+    val saveBackup =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode != RESULT_OK) return@registerForActivityResult
+            val uri: Uri = result.data?.data ?: return@registerForActivityResult
+            lifecycleScope.launch {
+                val exportedPath = withContext(Dispatchers.IO) {
+                    BirdayExporter(this@MainActivity, null).exportEvents(
+                        applicationContext,
+                        uri,
+                        false
+                    )
+                }
+                if (exportedPath.isNotEmpty()) {
+                    showSnackbar(getString(R.string.birday_export_success))
+                    shareUri(this@MainActivity, uri)
+                } else {
+                    showSnackbar(getString(R.string.birday_export_failure))
+                }
             }
         }
 
@@ -743,7 +776,8 @@ class MainActivity : AppCompatActivity() {
                             action = fun() {
                                 askContactsPermission()
                             })
-                    else showSnackbar(getString(R.string.missing_permission_contacts_forever),
+                    else showSnackbar(
+                        getString(R.string.missing_permission_contacts_forever),
                         actionText = getString(R.string.title_settings),
                         action = fun() {
                             startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
@@ -763,11 +797,11 @@ class MainActivity : AppCompatActivity() {
                             getString(R.string.missing_permission_notifications),
                             actionText = getString(R.string.cancel),
                             action =
-                            fun() {
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                                    askNotificationPermission()
-                                }
-                            })
+                                fun() {
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                                        askNotificationPermission()
+                                    }
+                                })
                     else showSnackbar(
                         getString(R.string.missing_permission_notifications_forever),
                         actionText = getString(R.string.title_settings),
@@ -798,12 +832,12 @@ class MainActivity : AppCompatActivity() {
                                 data = Uri.fromParts("package", packageName, null)
                             })
                         })
-                }
-                else {
+                } else {
                     val calendarExporter = CalendarExporter(this, null)
                     calendarExporter.exportCalendar(this)
                 }
             }
+
             402 -> {
                 if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     if (shouldShowRequestPermissionRationale(Manifest.permission.WRITE_CALENDAR))
@@ -821,8 +855,7 @@ class MainActivity : AppCompatActivity() {
                                 data = Uri.fromParts("package", packageName, null)
                             })
                         })
-                }
-                else {
+                } else {
                     val calendarExporter = CalendarExporter(this, null)
                     calendarExporter.exportCalendar(this)
                 }

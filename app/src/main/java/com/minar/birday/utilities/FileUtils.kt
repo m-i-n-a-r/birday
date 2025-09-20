@@ -7,6 +7,7 @@ import android.net.Uri
 import androidx.annotation.AnyRes
 import androidx.core.content.FileProvider
 import com.minar.birday.BuildConfig
+import com.minar.birday.R
 import java.io.File
 
 // Share the backup to a supported app
@@ -31,3 +32,14 @@ fun getResourceUri(@AnyRes resourceId: Int): Uri =
         .authority(BuildConfig.APPLICATION_ID)
         .path(resourceId.toString())
         .build()
+
+// Share a content Uri (e.g. an Uri from SAF)
+fun shareUri(context: Context, uri: Uri) {
+    val shareIntent = Intent(Intent.ACTION_SEND).apply {
+        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        putExtra(Intent.EXTRA_STREAM, uri)
+        type = context.contentResolver.getType(uri) ?: "*/*"
+    }
+    if (shareIntent.resolveActivity(context.packageManager) != null)
+        context.startActivity(Intent.createChooser(shareIntent, context.getString(R.string.share_event)))
+}
