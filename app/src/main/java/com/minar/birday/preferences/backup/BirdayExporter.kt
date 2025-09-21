@@ -33,7 +33,6 @@ class BirdayExporter(context: Context, attrs: AttributeSet?) : Preference(contex
             act.showSnackbar(context.getString(R.string.no_events))
             return
         }
-
         val fileName = "BirdayBackup_${LocalDate.now()}"
         val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
             addCategory(Intent.CATEGORY_OPENABLE)
@@ -43,99 +42,89 @@ class BirdayExporter(context: Context, attrs: AttributeSet?) : Preference(contex
         act.saveBackup.launch(intent)
     }
 
-    // Export to internal app folder and return file path
-    fun exportEvents(
-        context: Context,
-        uri: Uri?,
-        autoBackup: Boolean = false
-    ): String {
-        val eventDao = EventDatabase.getBirdayDatabase(context).eventDao()
-        // checkpoint WAL to flush DB to disk
-        eventDao.checkpoint(SimpleSQLiteQuery("pragma wal_checkpoint(full)"))
-
-        val dbFile = context.getDatabasePath("BirdayDB").absoluteFile
-
-        // quick sanity checks
-        if (!dbFile.exists() || dbFile.length() == 0L) {
-            // DB file missing or empty: return failure
-            (context as? MainActivity)?.runOnUiThread {
-                if (!autoBackup)
-                    context.showSnackbar(context.getString(R.string.birday_export_failure))
-                else
-                    Toast.makeText(
-                        context,
-                        context.getString(R.string.birday_export_failure),
-                        Toast.LENGTH_SHORT
-                    ).show()
+    companion object {
+        // Export to internal app folder and return file path
+        fun exportEvents(
+            context: Context,
+            uri: Uri?,
+            autoBackup: Boolean = false
+        ): String {
+            val eventDao = EventDatabase.getBirdayDatabase(context).eventDao()
+            // Checkpoint WAL to flush DB to disk
+            eventDao.checkpoint(SimpleSQLiteQuery("pragma wal_checkpoint(full)"))
+            val dbFile = context.getDatabasePath("BirdayDB").absoluteFile
+            // Quick sanity checks
+            if (!dbFile.exists() || dbFile.length() == 0L) {
+                // DB file missing or empty: return failure
+                (context as? MainActivity)?.runOnUiThread {
+                    if (!autoBackup)
+                        context.showSnackbar(context.getString(R.string.birday_export_failure))
+                    else
+                        Toast.makeText(
+                            context,
+                            context.getString(R.string.birday_export_failure),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                }
+                return ""
             }
-            return ""
-        }
-
-        try {
-            if (uri != null) {
-                // Write to the SAF Uri provided by the user
-                context.contentResolver.openOutputStream(uri)?.use { os ->
-                    dbFile.inputStream().use { fis ->
-                        fis.copyTo(os)
-                        os.flush()
+            try {
+                if (uri != null) {
+                    // Write to the SAF Uri provided by the user
+                    context.contentResolver.openOutputStream(uri)?.use { os ->
+                        dbFile.inputStream().use { fis ->
+                            fis.copyTo(os)
+                            os.flush()
+                        }
+                    } ?: throw IOException("Cannot open output stream for uri: $uri")
+                    // Optional: try taking persistable permission (may or may not be supported)
+                    try {
+                        val takeFlags =
+                            (Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+                        context.contentResolver.takePersistableUriPermission(uri, takeFlags)
+                    } catch (_: Exception) {
+                        // not critical — ignore if provider doesn't allow persistable permission
                     }
-                } ?: throw IOException("Cannot open output stream for uri: $uri")
-
-                // Optional: try taking persistable permission (may or may not be supported)
-                try {
-                    val takeFlags =
-                        (Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
-                    context.contentResolver.takePersistableUriPermission(uri, takeFlags)
-                } catch (_: Exception) {
-                    // not critical — ignore if provider doesn't allow persistable permission
+                    // Notify user on UI thread
+                    (context as? MainActivity)?.runOnUiThread {
+                        if (autoBackup)
+                            Toast.makeText(
+                                context,
+                                context.getString(R.string.birday_export_success),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                    }
+                    // Return the uri string so the caller can share it
+                    return uri.toString()
+                } else {
+                    // Legacy behavior: write to app files dir
+                    val appDirectory = File(context.getExternalFilesDir(null)!!.absolutePath)
+                    val fileName =
+                        if (autoBackup) "BirdayBackup_auto.db" else "BirdayBackup_${LocalDate.now()}.db"
+                    val destFile = File(appDirectory, fileName)
+                    dbFile.copyTo(destFile, overwrite = true)
+                    (context as? MainActivity)?.runOnUiThread {
+                        if (autoBackup)
+                            Toast.makeText(
+                                context,
+                                context.getString(R.string.birday_export_success),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                    }
+                    return destFile.absolutePath
                 }
-
-                // Notify user on UI thread
+            } catch (e: Exception) {
+                e.printStackTrace()
                 (context as? MainActivity)?.runOnUiThread {
-                    if (!autoBackup)
-                        context.showSnackbar(context.getString(R.string.birday_export_success))
-                    else
+                    if (autoBackup)
                         Toast.makeText(
                             context,
-                            context.getString(R.string.birday_export_success),
+                            context.getString(R.string.birday_export_failure),
                             Toast.LENGTH_SHORT
                         ).show()
                 }
-
-                // Return the uri string so the caller can share it
-                return uri.toString()
-            } else {
-                // Legacy behavior: write to app files dir
-                val appDirectory = File(context.getExternalFilesDir(null)!!.absolutePath)
-                val fileName =
-                    if (autoBackup) "BirdayBackup_auto.db" else "BirdayBackup_${LocalDate.now()}.db"
-                val destFile = File(appDirectory, fileName)
-                dbFile.copyTo(destFile, overwrite = true)
-                (context as? MainActivity)?.runOnUiThread {
-                    if (!autoBackup)
-                        context.showSnackbar(context.getString(R.string.birday_export_success))
-                    else
-                        Toast.makeText(
-                            context,
-                            context.getString(R.string.birday_export_success),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                }
-                return destFile.absolutePath
+                return ""
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
-            (context as? MainActivity)?.runOnUiThread {
-                if (!autoBackup)
-                    context.showSnackbar(context.getString(R.string.birday_export_failure))
-                else
-                    Toast.makeText(
-                        context,
-                        context.getString(R.string.birday_export_failure),
-                        Toast.LENGTH_SHORT
-                    ).show()
-            }
-            return ""
         }
     }
 }

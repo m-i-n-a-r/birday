@@ -1,6 +1,8 @@
 package com.minar.birday.preferences.backup
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.util.AttributeSet
 import android.view.View
 import androidx.preference.Preference
@@ -8,8 +10,8 @@ import androidx.preference.PreferenceViewHolder
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.persistence.EventDatabase
-import com.minar.birday.utilities.shareFile
 import java.io.File
+import java.io.IOException
 import java.time.LocalDate
 
 
@@ -24,53 +26,65 @@ class CsvExporter(context: Context, attrs: AttributeSet?) : Preference(context, 
 
     // Vibrate, export a backup and immediately share it if possible
     override fun onClick(v: View) {
-        val act = context as MainActivity
+        val act = context as? MainActivity ?: return
         act.vibrate()
-        // Only export if there's at least one event
         if (act.mainViewModel.allEventsUnfiltered.value.isNullOrEmpty()) {
             act.showSnackbar(context.getString(R.string.no_events))
-        } else {
-            val thread = Thread {
-                val exported = exportEventsCsv(context)
-                if (exported.isNotBlank()) shareFile(context, exported)
-            }
-            thread.start()
+            return
         }
+        val fileName = "BirdayCsv_${LocalDate.now()}.csv"
+        act.saveCsv.launch(fileName)
     }
 
-    // Convert the data in a CSV file and save it in Android/data/com.minar.birday/files
-    private fun exportEventsCsv(context: Context): String {
-        // Take the list of events
-        val eventDao = EventDatabase.getBirdayDatabase(context).eventDao()
-        val events = eventDao.getOrderedEventsStatic()
-        val sb = StringBuilder()
-        // Prepare the first row, for the column names
-        sb.append("type, name, surname, yearMatter, date, notes\n")
-        for (event in events) {
-            sb.append(
-                "${event.type}," +
-                        "${event.name.replace(',', ' ')}," +
-                        "${(event.surname ?: "").replace(',', ' ')}," +
-                        "${event.yearMatter}," +
-                        "${event.originalDate}," +
-                        "${(event.notes ?: "").replace(',', ' ')}\n"
-            )
-        }
-
-        val appDirectory = File(context.getExternalFilesDir(null)!!.absolutePath)
-        val fileName = "BirdayCsv_${LocalDate.now()}.csv"
-        val fileFullPath: String = appDirectory.path + File.separator + fileName
-        // Snackbar need the UI thread to work, so they must be forced on that thread
-        try {
-            File(fileFullPath).writeText(sb.toString())
-            (context as MainActivity).runOnUiThread { context.showSnackbar(context.getString(R.string.birday_export_success)) }
-        } catch (e: Exception) {
-            (context as MainActivity).runOnUiThread {
-                context.showSnackbar(context.getString(R.string.birday_export_failure))
+    companion object {
+        // Convert the data in a CSV file and save it in a given uri
+        fun exportEventsCsv(
+            context: Context,
+            uri: Uri?,
+        ): String {
+            val eventDao = EventDatabase.getBirdayDatabase(context).eventDao()
+            val sb = StringBuilder()
+            val events = eventDao.getOrderedEventsStatic()
+            // Prepare the first row, for the column names, and the csv itself
+            sb.append("type, name, surname, yearMatter, date, notes\n")
+            for (event in events) {
+                sb.append(
+                    "${event.type}," +
+                            "${event.name.replace(',', ' ')}," +
+                            "${(event.surname ?: "").replace(',', ' ')}," +
+                            "${event.yearMatter}," +
+                            "${event.originalDate}," +
+                            "${(event.notes ?: "").replace(',', ' ')}\n"
+                )
             }
-            e.printStackTrace()
-            return ""
+            try {
+                if (uri != null) {
+                    // Write to SAF uri
+                    context.contentResolver.openOutputStream(uri)?.use { os ->
+                        os.write(sb.toString().toByteArray(Charsets.UTF_8))
+                        os.flush()
+                    } ?: throw IOException("Cannot open output stream for uri: $uri")
+                    // Try to persist permission
+                    try {
+                        val takeFlags =
+                            (Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+                        context.contentResolver.takePersistableUriPermission(uri, takeFlags)
+                    } catch (_: Exception) {
+                        // Ignore if provider doesn't allow persistable permission
+                    }
+                    return uri.toString()
+                } else {
+                    // Legacy: write to app files dir
+                    val appDir = File(context.getExternalFilesDir(null)!!.absolutePath)
+                    val fileName = "BirdayCsv_${LocalDate.now()}.csv"
+                    val dest = File(appDir, fileName)
+                    dest.writeText(sb.toString(), Charsets.UTF_8)
+                    return dest.absolutePath
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                return ""
+            }
         }
-        return fileFullPath
     }
 }

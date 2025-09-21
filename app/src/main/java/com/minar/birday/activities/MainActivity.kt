@@ -63,7 +63,9 @@ import com.minar.birday.preferences.backup.BirdayExporter
 import com.minar.birday.preferences.backup.BirdayImporter
 import com.minar.birday.preferences.backup.CalendarExporter
 import com.minar.birday.preferences.backup.ContactsImporter
+import com.minar.birday.preferences.backup.CsvExporter
 import com.minar.birday.preferences.backup.CsvImporter
+import com.minar.birday.preferences.backup.JsonExporter
 import com.minar.birday.preferences.backup.JsonImporter
 import com.minar.birday.utilities.AppRater
 import com.minar.birday.utilities.addInsetsByMargin
@@ -390,9 +392,8 @@ class MainActivity : AppCompatActivity() {
         val currentTime = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)
         if (autoExport && currentTime > allowedExportTime) {
             sharedPrefs.edit { putLong("last_auto_export", currentTime) }
-            val exporter = BirdayExporter(this, null)
             val thread = Thread {
-                exporter.exportEvents(this, uri = null, autoBackup = true)
+                BirdayExporter.exportEvents(this, uri = null, autoBackup = true)
             }
             thread.start()
         }
@@ -491,14 +492,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-    // Birday (DB backup) TODO Add json and csv
+    // Birday DB backup
     val saveBackup =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode != RESULT_OK) return@registerForActivityResult
             val uri: Uri = result.data?.data ?: return@registerForActivityResult
             lifecycleScope.launch {
                 val exportedPath = withContext(Dispatchers.IO) {
-                    BirdayExporter(this@MainActivity, null).exportEvents(
+                    BirdayExporter.exportEvents(
                         applicationContext,
                         uri,
                         false
@@ -512,6 +513,38 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+    // CSV backup
+    val saveCsv = registerForActivityResult(ActivityResultContracts.CreateDocument("text/csv")) { uri ->
+        if (uri == null) return@registerForActivityResult
+        lifecycleScope.launch {
+            val exportedPath = withContext(Dispatchers.IO) {
+                CsvExporter.exportEventsCsv(applicationContext, uri)
+            }
+            if (exportedPath.isNotEmpty()) {
+                showSnackbar(getString(R.string.birday_export_success))
+                shareUri(this@MainActivity, uri)
+            } else {
+                showSnackbar(getString(R.string.birday_export_failure))
+            }
+        }
+    }
+
+    // JSON backup
+    val saveJson = registerForActivityResult(ActivityResultContracts.CreateDocument("application/json")) { uri ->
+        if (uri == null) return@registerForActivityResult
+        lifecycleScope.launch {
+            val exportedPath = withContext(Dispatchers.IO) {
+                    JsonExporter.exportEventsJson(applicationContext, uri)
+            }
+            if (exportedPath.isNotEmpty()) {
+                showSnackbar(getString(R.string.birday_export_success))
+                shareUri(this@MainActivity, uri)
+            } else {
+                showSnackbar(getString(R.string.birday_export_failure))
+            }
+        }
+    }
 
 
     // Some utility functions, used from every fragment connected to this activity
