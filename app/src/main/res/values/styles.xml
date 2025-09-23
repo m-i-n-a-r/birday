@@ -74,7 +74,7 @@
     </style>
 
     <!-- Preference dialog theme -->
-    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3Expressive.MaterialAlertDialog">
         <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
         <item name="dialogCornerRadius">@dimen/rounded_corners</item>
         <!-- Remove the accent-ish tint -->
@@ -83,19 +83,19 @@
     </style>
 
     <!-- Preference dialog Monet theme -->
-    <style name="ThemeOverlay.App.MaterialAlertDialog.Monet" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+    <style name="ThemeOverlay.App.MaterialAlertDialog.Monet" parent="ThemeOverlay.Material3Expressive.MaterialAlertDialog">
         <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
         <item name="dialogCornerRadius">@dimen/rounded_corners</item>
         <item name="android:background">@drawable/dialog_bg_monet</item>
     </style>
 
-    <style name="ThemeOverlay.App.PreferenceDialog.Monet" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+    <style name="ThemeOverlay.App.PreferenceDialog.Monet" parent="ThemeOverlay.Material3Expressive.MaterialAlertDialog">
         <item name="dialogCornerRadius">@dimen/rounded_corners</item>
         <item name="android:background">@drawable/dialog_bg_monet</item>
     </style>
 
     <!-- Note: shape appearance doesn't work with the preference dialogs (they're not material) -->
-    <style name="MaterialAlertDialog.App" parent="MaterialAlertDialog.Material3">
+    <style name="MaterialAlertDialog.App" parent="MaterialAlertDialog.Material3Expressive">
         <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
         <item name="shapeAppearanceOverlay">@null</item>
     </style>
@@ -232,7 +232,7 @@
     </style>
 
     <!-- Custom button group -->
-    <style name="Widget.App.Button.OutlinedButton.IconOnly" parent="Widget.Material3Expressive.Button.OutlinedButton">
+    <style name="Widget.App.Button.OutlinedButton.IconOnly" parent="Widget.Material3.Button.OutlinedButton">
         <item name="iconPadding">0dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
