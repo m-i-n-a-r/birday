@@ -44,7 +44,7 @@ class CalendarImporter(context: Context, attrs: AttributeSet?) : Preference(cont
     }
 
     // Import the yearly events from the system calendar
-    private fun importCalendar(context: Context): Boolean {
+    fun importCalendar(context: Context): Boolean {
         val act = context as MainActivity
         // Ask for calendar permission
         val permission = act.askCalendarPermission(302)

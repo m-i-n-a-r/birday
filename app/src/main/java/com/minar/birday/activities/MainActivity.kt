@@ -62,6 +62,7 @@ import com.minar.birday.model.EventResult
 import com.minar.birday.preferences.backup.BirdayExporter
 import com.minar.birday.preferences.backup.BirdayImporter
 import com.minar.birday.preferences.backup.CalendarExporter
+import com.minar.birday.preferences.backup.CalendarImporter
 import com.minar.birday.preferences.backup.ContactsImporter
 import com.minar.birday.preferences.backup.CsvExporter
 import com.minar.birday.preferences.backup.CsvImporter
@@ -876,8 +877,8 @@ class MainActivity : AppCompatActivity() {
                             })
                         })
                 } else {
-                    val calendarExporter = CalendarExporter(this, null)
-                    calendarExporter.exportCalendar(this)
+                    val calendarImporter = CalendarImporter(this, null)
+                    calendarImporter.importCalendar(this)
                 }
             }
 
