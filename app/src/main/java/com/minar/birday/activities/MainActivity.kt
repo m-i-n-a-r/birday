@@ -632,6 +632,16 @@ class MainActivity : AppCompatActivity() {
         snackbar.show()
     }
 
+    // Show a generic loading indicator
+    fun showLoadingIndicator() {
+        binding.birdayLoadingIndicator.visibility = View.VISIBLE
+    }
+
+    // Hide the generic loading indicator
+    fun hideLoadingIndicator() {
+        binding.birdayLoadingIndicator.visibility = View.GONE
+    }
+
     // Insert a previously deleted event back in the database
     fun insertBack(eventResult: EventResult) {
         mainViewModel.insert(resultToEvent(eventResult))

@@ -63,4 +63,11 @@
         app:srcCompat="@drawable/ic_delete_24dp"
         app:tint="@null" />
 
+    <com.google.android.material.loadingindicator.LoadingIndicator
+        android:id="@+id/birdayLoadingIndicator"
+        style="@style/Widget.Material3.LoadingIndicator.Contained"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

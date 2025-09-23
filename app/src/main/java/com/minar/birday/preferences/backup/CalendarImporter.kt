@@ -32,11 +32,13 @@ class CalendarImporter(context: Context, attrs: AttributeSet?) : Preference(cont
     override fun onClick(v: View) {
         val act = context as MainActivity
         v.setOnClickListener(null)
+        act.showLoadingIndicator()
         act.vibrate()
         thread {
             importCalendar(context)
             (context as MainActivity).runOnUiThread {
                 v.setOnClickListener(this)
+                act.hideLoadingIndicator()
             }
         }
     }

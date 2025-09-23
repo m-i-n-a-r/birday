@@ -112,6 +112,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
 
+    // SAF access management
+    implementation("androidx.documentfile:documentfile:1.1.0")
+
     // Room
     val roomVersion = "2.8.0"
     implementation("androidx.room:room-runtime:$roomVersion")

@@ -31,6 +31,7 @@ class CalendarExporter(context: Context, attrs: AttributeSet?) : Preference(cont
         val act = context as MainActivity
         v.setOnClickListener(null)
         act.vibrate()
+        act.showLoadingIndicator()
         // Only export if there's at least one event
         if (act.mainViewModel.allEventsUnfiltered.value.isNullOrEmpty()) {
             act.showSnackbar(context.getString(R.string.no_events))
@@ -39,6 +40,7 @@ class CalendarExporter(context: Context, attrs: AttributeSet?) : Preference(cont
                 exportCalendar(context)
                 (context as MainActivity).runOnUiThread {
                     v.setOnClickListener(this)
+                    act.hideLoadingIndicator()
                 }
             }
         }

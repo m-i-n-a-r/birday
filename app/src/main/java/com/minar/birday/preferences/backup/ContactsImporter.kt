@@ -36,6 +36,7 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
             shimmer.startShimmer()
             shimmer.showShimmer(true)
         }
+        act.showLoadingIndicator()
         act.vibrate()
         thread {
             importContacts(context)
@@ -44,6 +45,7 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                     shimmer.stopShimmer()
                     shimmer.hideShimmer()
                 }
+                act.hideLoadingIndicator()
                 v.setOnClickListener(this)
             }
         }
