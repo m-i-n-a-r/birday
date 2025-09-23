@@ -385,16 +385,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        // TODO Only available in experimental settings
+        // TODO Experimental settings
         val autoExport = sharedPrefs.getBoolean("auto_export", false)
         val lastExport = sharedPrefs.getLong("last_auto_export", 0)
+        val exportFolderUri = sharedPrefs.getString("export_folder", "")?.toUri()
         // Max one auto export every 30 seconds
         val allowedExportTime = lastExport + 30
         val currentTime = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)
         if (autoExport && currentTime > allowedExportTime) {
             sharedPrefs.edit { putLong("last_auto_export", currentTime) }
             val thread = Thread {
-                BirdayExporter.exportEvents(this, uri = null, autoBackup = true)
+                BirdayExporter.exportEvents(this, uri = exportFolderUri, autoBackup = true)
             }
             thread.start()
         }
@@ -498,6 +499,8 @@ class MainActivity : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode != RESULT_OK) return@registerForActivityResult
             val uri: Uri = result.data?.data ?: return@registerForActivityResult
+            // Save the selected uri to make it accessible for auto backup
+            sharedPrefs.edit(commit = true) { putString("export_folder", uri.toString()) }
             lifecycleScope.launch {
                 val exportedPath = withContext(Dispatchers.IO) {
                     BirdayExporter.exportEvents(
@@ -516,36 +519,38 @@ class MainActivity : AppCompatActivity() {
         }
 
     // CSV backup
-    val saveCsv = registerForActivityResult(ActivityResultContracts.CreateDocument("text/csv")) { uri ->
-        if (uri == null) return@registerForActivityResult
-        lifecycleScope.launch {
-            val exportedPath = withContext(Dispatchers.IO) {
-                CsvExporter.exportEventsCsv(applicationContext, uri)
-            }
-            if (exportedPath.isNotEmpty()) {
-                showSnackbar(getString(R.string.birday_export_success))
-                shareUri(this@MainActivity, uri)
-            } else {
-                showSnackbar(getString(R.string.birday_export_failure))
+    val saveCsv =
+        registerForActivityResult(ActivityResultContracts.CreateDocument("text/csv")) { uri ->
+            if (uri == null) return@registerForActivityResult
+            lifecycleScope.launch {
+                val exportedPath = withContext(Dispatchers.IO) {
+                    CsvExporter.exportEventsCsv(applicationContext, uri)
+                }
+                if (exportedPath.isNotEmpty()) {
+                    showSnackbar(getString(R.string.birday_export_success))
+                    shareUri(this@MainActivity, uri)
+                } else {
+                    showSnackbar(getString(R.string.birday_export_failure))
+                }
             }
         }
-    }
 
     // JSON backup
-    val saveJson = registerForActivityResult(ActivityResultContracts.CreateDocument("application/json")) { uri ->
-        if (uri == null) return@registerForActivityResult
-        lifecycleScope.launch {
-            val exportedPath = withContext(Dispatchers.IO) {
+    val saveJson =
+        registerForActivityResult(ActivityResultContracts.CreateDocument("application/json")) { uri ->
+            if (uri == null) return@registerForActivityResult
+            lifecycleScope.launch {
+                val exportedPath = withContext(Dispatchers.IO) {
                     JsonExporter.exportEventsJson(applicationContext, uri)
-            }
-            if (exportedPath.isNotEmpty()) {
-                showSnackbar(getString(R.string.birday_export_success))
-                shareUri(this@MainActivity, uri)
-            } else {
-                showSnackbar(getString(R.string.birday_export_failure))
+                }
+                if (exportedPath.isNotEmpty()) {
+                    showSnackbar(getString(R.string.birday_export_success))
+                    shareUri(this@MainActivity, uri)
+                } else {
+                    showSnackbar(getString(R.string.birday_export_failure))
+                }
             }
         }
-    }
 
 
     // Some utility functions, used from every fragment connected to this activity

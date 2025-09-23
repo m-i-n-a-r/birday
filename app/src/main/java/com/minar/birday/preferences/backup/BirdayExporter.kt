@@ -49,6 +49,7 @@ class BirdayExporter(context: Context, attrs: AttributeSet?) : Preference(contex
             uri: Uri?,
             autoBackup: Boolean = false
         ): String {
+            // TODO At the moment, the autobackup has the same name of the last saved manual backup
             val eventDao = EventDatabase.getBirdayDatabase(context).eventDao()
             // Checkpoint WAL to flush DB to disk
             eventDao.checkpoint(SimpleSQLiteQuery("pragma wal_checkpoint(full)"))
@@ -56,16 +57,7 @@ class BirdayExporter(context: Context, attrs: AttributeSet?) : Preference(contex
             // Quick sanity checks
             if (!dbFile.exists() || dbFile.length() == 0L) {
                 // DB file missing or empty: return failure
-                (context as? MainActivity)?.runOnUiThread {
-                    if (!autoBackup)
-                        context.showSnackbar(context.getString(R.string.birday_export_failure))
-                    else
-                        Toast.makeText(
-                            context,
-                            context.getString(R.string.birday_export_failure),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                }
+                handleResult(autoBackup, false, context, false)
                 return ""
             }
             try {
@@ -83,47 +75,56 @@ class BirdayExporter(context: Context, attrs: AttributeSet?) : Preference(contex
                             (Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
                         context.contentResolver.takePersistableUriPermission(uri, takeFlags)
                     } catch (_: Exception) {
-                        // not critical — ignore if provider doesn't allow persistable permission
+                        // Not critical — ignore if provider doesn't allow persistable permission
                     }
                     // Notify user on UI thread
-                    (context as? MainActivity)?.runOnUiThread {
-                        if (autoBackup)
-                            Toast.makeText(
-                                context,
-                                context.getString(R.string.birday_export_success),
-                                Toast.LENGTH_SHORT
-                            ).show()
-                    }
+                    handleResult(autoBackup, true, context, true)
                     // Return the uri string so the caller can share it
                     return uri.toString()
                 } else {
                     // Legacy behavior: write to app files dir
+                    val dbFile = context.getDatabasePath("BirdayDB").absoluteFile
                     val appDirectory = File(context.getExternalFilesDir(null)!!.absolutePath)
                     val fileName =
-                        if (autoBackup) "BirdayBackup_auto.db" else "BirdayBackup_${LocalDate.now()}.db"
-                    val destFile = File(appDirectory, fileName)
-                    dbFile.copyTo(destFile, overwrite = true)
-                    (context as? MainActivity)?.runOnUiThread {
-                        if (autoBackup)
-                            Toast.makeText(
-                                context,
-                                context.getString(R.string.birday_export_success),
-                                Toast.LENGTH_SHORT
-                            ).show()
+                        if (autoBackup) "BirdayBackup_auto" else "BirdayBackup_${LocalDate.now()}"
+                    val fileFullPath: String = appDirectory.path + File.separator + fileName
+                    // Snackbar need the UI thread to work, so they must be forced on that thread
+                    try {
+                        dbFile.copyTo(File(fileFullPath), true)
+                        handleResult(autoBackup, true, context, false)
+                    } catch (e: Exception) {
+                        handleResult(autoBackup, false, context, false)
+                        e.printStackTrace()
+                        return ""
                     }
-                    return destFile.absolutePath
+                    return fileFullPath
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
-                (context as? MainActivity)?.runOnUiThread {
-                    if (autoBackup)
-                        Toast.makeText(
-                            context,
-                            context.getString(R.string.birday_export_failure),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                }
+                handleResult(autoBackup, false, context, true)
                 return ""
+            }
+        }
+        // Show a toast or a snackbar depending on the result
+        private fun handleResult(
+            autoBackup: Boolean = false,
+            success: Boolean = true,
+            context: Context,
+            onlyToast: Boolean = false
+        ) {
+            val resultString =
+                if (success) context.getString(R.string.birday_export_success)
+                else context.getString(R.string.birday_export_failure)
+            (context as? MainActivity)?.runOnUiThread {
+                if (!autoBackup && !onlyToast)
+                    context.showSnackbar(resultString)
+                else {
+                    Toast.makeText(
+                        context,
+                        resultString,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
     }
