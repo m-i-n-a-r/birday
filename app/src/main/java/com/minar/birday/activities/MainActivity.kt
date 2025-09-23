@@ -330,7 +330,7 @@ class MainActivity : AppCompatActivity() {
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.navigation, null)
 
-        // Hide on scroll, requires restart TODO Only available in experimental settings
+        // Hide on scroll, requires restart TODO Experimental settings
         if (sharedPrefs.getBoolean("hide_scroll", false)) {
             binding.bottomBar.hideOnScroll = true
             binding.navHostFragment.updatePadding(bottom = 0)

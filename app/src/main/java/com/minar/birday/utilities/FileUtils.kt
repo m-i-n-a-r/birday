@@ -5,10 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.annotation.AnyRes
-import androidx.core.content.FileProvider
 import com.minar.birday.BuildConfig
 import com.minar.birday.R
-import java.io.File
 
 // Get the URI for a file in the raw folder
 fun getResourceUri(@AnyRes resourceId: Int): Uri =

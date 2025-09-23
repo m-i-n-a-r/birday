@@ -34,26 +34,20 @@ class ImportContactsBottomSheet : BottomSheetDialogFragment() {
     @SuppressLint("MissingPermission")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val binding = BottomSheetImportContactsBinding.bind(view)
-
         act.animateAvd(
             binding.importContactsImage,
             R.drawable.animated_balloon, 1500L
         )
-
         binding.importContactsCancelButton.setOnClickListener { dismiss() }
-
         binding.importContactsConfirmButton.setOnClickListener {
             binding.importContactsButtons.visibility = View.INVISIBLE
             binding.importContactsProgressIndicator.visibility = View.VISIBLE
-
             // Actually import contacts
             viewLifecycleOwner.lifecycleScope.launch {
                 val events = withContext(Dispatchers.IO) {
                     contactsRepository.getEventsFromContacts(requireContext().contentResolver)
                 }
-
                 viewModel.insertAll(events)
-
                 dismiss()
             }
         }
