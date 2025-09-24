@@ -90,8 +90,7 @@
     <string name="birday_import_description">Valitse Birdayn varmuuskopio palauttaaksesi tapahtumia. Kaikki olemassa olevat tiedot
     ylikirjoitetaan!</string>
     <string name="birday_export_title">Vie ja jaa tapahtumia</string>
-    <string name="birday_export_description">Vie saatavilla olevat tapahtumat varmuuskopioon, ja jaa ne halutessasi. Tiedosto on
-    Android/data/com.minar.birday/files</string>
+    <string name="birday_export_description">Vie saatavilla olevat tapahtumat varmuuskopioon, ja jaa ne halutessasi</string>
     <string name="birday_import_success">Tuonti valmis!</string>
     <string name="birday_import_failure">Tuonti epäonnistui. Valitsitko oikean tiedoston?</string>
     <string name="birday_import_invalid_file">Tuonti epäonnistui. Valittu tiedosto ei ole Birdayn varmuuskopio!</string>
