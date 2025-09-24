@@ -87,7 +87,7 @@
     <string name="birday_import_title">Importera en Birday-säkerhetskopia</string>
     <string name="birday_import_description">Välj en giltig Birday-säkerhetskopia för att manuellt återställa händelserna. Varje befintlig data kommer att skrivas över!</string>
     <string name="birday_export_title">Exportera och dela händelser</string>
-    <string name="birday_export_description">Exportera tillgängliga händelser och dela dem, om du vill. Filen finns i Android/data/com.minar.birday/files</string>
+    <string name="birday_export_description">Exportera tillgängliga händelser och dela dem, om du vill</string>
     <string name="birday_import_success">Importen är klar!</string>
     <string name="birday_import_failure">Importen misslyckades. Valde du filen korrekt?</string>
     <string name="birday_import_invalid_file">Importen misslyckades. Den valda filen är inte en Birday-säkerhetskopia!</string>
