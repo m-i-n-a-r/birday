@@ -92,8 +92,7 @@
     <string name="birday_import_description">Alege o copie de rezervă validă pentru Birday pentru a restabili evenimentele. Toate datele existente
     vor fi suprascrise!</string>
     <string name="birday_export_title">Exportă și distribuie evenimentele</string>
-    <string name="birday_export_description">Exportă evenimentele disponibile într-o copie de rezervă și partajează-le dacă dorești. Fișierul este în
-    Android/data/com.minar.birday/file</string>
+    <string name="birday_export_description">Exportă evenimentele disponibile într-o copie de rezervă și partajează-le dacă dorești</string>
     <string name="birday_import_success">Import finalizat!</string>
     <string name="birday_import_failure">Importarea a eșuat. Ai ales fișierul corect?</string>
     <string name="birday_import_invalid_file">Importarea a eșuat. Fișierul ales nu este o copie de rezervă a Birday!</string>
