@@ -87,7 +87,7 @@
     <string name="birday_import_title">Import a Birday backup</string>
     <string name="birday_import_description">तुमचे कार्यक्रम पुनर्संचयित करण्यासाठी वैध Birday बॅकअप निवडा. सर्व विद्यमान डेटा अधिलिखित केले जाईल!</string>
     <string name="birday_export_title">कार्यक्रम निर्यात आणि शेअर करा</string>
-    <string name="birday_export_description">उपलब्ध कार्यक्रम्स बॅकअपमध्ये एक्सपोर्ट करा आणि तुम्हाला हवे असल्यास ते शेअर करा. फाइल Android/data/com.minar.birday/files मध्ये आहे</string>
+    <string name="birday_export_description">उपलब्ध कार्यक्रम्स बॅकअपमध्ये एक्सपोर्ट करा आणि तुम्हाला हवे असल्यास ते शेअर करा</string>
     <string name="birday_import_success">आयात पूर्ण झाले!</string>
     <string name="birday_import_failure">आयात अयशस्वी. तुम्ही फाइल योग्यरित्या निवडली आहे का?</string>
     <string name="birday_import_invalid_file">आयात अयशस्वी. निवडलेली फाइल Birday बॅकअप नाही!</string>
