@@ -90,8 +90,7 @@
     <string name="birday_import_description">Επιλέξτε ένα έγκυρο αντίγραφο ασφαλείας Birday για να επαναφέρετε τις εκδηλώσεις σας. Όλα τα υπάρχοντα δεδομένα
     θα αντικατασταθούν!</string>
     <string name="birday_export_title">Εξαγωγή και κοινοποίηση εκδηλώσεων</string>
-    <string name="birday_export_description">Μπορείτε να εξάγετε τις διαθέσιμες εκδηλώσεις σε ένα αντίγραφο ασφαλείας και να τις κοινοποιήσετε αν θέλετε. Το αρχείο βρίσκετε στο
-    Android/data/com.minar.birday/files</string>
+    <string name="birday_export_description">Μπορείτε να εξάγετε τις διαθέσιμες εκδηλώσεις σε ένα αντίγραφο ασφαλείας και να τις κοινοποιήσετε αν θέλετε</string>
     <string name="birday_import_success">Η εισαγωγή ολοκληρώθηκε!</string>
     <string name="birday_import_failure">Η εισαγωγή απέτυχε. Διαλέξατε σωστά το αρχείο;</string>
     <string name="birday_import_invalid_file">Η εισαγωγή απέτυχε. Το επιλεγμένο αρχείο δεν είναι αντίγραφο ασφαλείας Birday!</string>
