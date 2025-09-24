@@ -91,8 +91,7 @@
     <string name="birday_import_title">Импортировать резервную копию Birday</string>
     <string name="birday_import_description">Выберите резервную копию Birday, чтобы восстановить события. Все текущие данные будут потеряны!</string>
     <string name="birday_export_title">Экспортируйте и делитесь событиями</string>
-    <string name="birday_export_description">Экспортируйте события и делитесь ими, если хотите. Файл находится в
-    Android/data/com.minar.birday/files</string>
+    <string name="birday_export_description">Экспортируйте события и делитесь ими, если хотите</string>
     <string name="birday_import_success">Импорт завершен!</string>
     <string name="birday_import_failure">Импорт не удался! Вы выбрали тот файл, что нужно?</string>
     <string name="birday_import_invalid_file">Импорт не удался. Выбранный файл - не резервная копия Birday!</string>
