@@ -87,7 +87,7 @@
     <string name="birday_import_title">एक बर्डे बैकअप आयात करें</string>
     <string name="birday_import_description">अपने ईवेंट को पुनर्स्थापित करने के लिए एक मान्य जन्मदिन बैकअप चुनें। सभी मौजूदा डेटा को अधिलेखित कर दिया जाएगा!</string>
     <string name="birday_export_title">इवेंट्स को निर्यात और साझा करें</string>
-    <string name="birday_export_description">उपलब्ध ईवेंट को बैकअप में निर्यात करें, और यदि आप चाहें तो उन्हें साझा करें। फ़ाइल Android/data/com.minar.birday/files में है</string>
+    <string name="birday_export_description">उपलब्ध ईवेंट को बैकअप में निर्यात करें, और यदि आप चाहें तो उन्हें साझा करें</string>
     <string name="birday_import_success">आयात पूरा हुआ!</string>
     <string name="birday_import_failure">आयात विफल. क्या आपने फ़ाइल को सही ढंग से चुना?</string>
     <string name="birday_import_invalid_file">आयात विफल. चुनी गई फ़ाइल बर्डे बैकअप नहीं है!</string>

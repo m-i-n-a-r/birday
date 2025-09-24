@@ -87,7 +87,7 @@
     <string name="birday_import_title">Importálj egy Birday biztonsági másolatot</string>
     <string name="birday_import_description">Válasszon egy érvényes Birday biztonsági másolatot a eseményjainak manuális visszaállításához. Minden létező adat felül lesz írva!</string>
     <string name="birday_export_title">Eseményeket exportálása és megosztása</string>
-    <string name="birday_export_description">Exportáld a rendelkezésre álló eseményeketat, és oszd meg őket, ha szeretnéd. A fájl az Android/data/com.minar.birday/files helyen található.</string>
+    <string name="birday_export_description">Exportáld a rendelkezésre álló eseményeketat, és oszd meg őket, ha szeretnéd</string>
     <string name="birday_import_success">Az importálás befejeződött!</string>
     <string name="birday_import_failure">Az importálás sikertelen. Helyes fájlt választottál?</string>
     <string name="birday_import_invalid_file">Az importálás sikertelen. A kiválasztott fájl nem Birday biztonsági másolat!</string>

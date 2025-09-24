@@ -87,7 +87,7 @@
     <string name="birday_import_title">Inportatu Birdayren segurtasun-kopia</string>
     <string name="birday_import_description">Aukeratu zure hitzorduak berrezartzeko Birdayren segurtasun-kopia zuzen bat. Datu guztiak gainidatzi egingo dira!</string>
     <string name="birday_export_title">Esportatu eta partekatu hitzorduak</string>
-    <string name="birday_export_description">Esportatu hitzorduak segurtasun-kopia bat eginez eta partekatu hala nahi baduzu. Fitxategia Android/data/com.minar.birday/files karpetan gordeko da,</string>
+    <string name="birday_export_description">Esportatu hitzorduak segurtasun-kopia bat eginez eta partekatu hala nahi baduzu</string>
     <string name="birday_import_success">Inportazioa ondo egin da!</string>
     <string name="birday_import_failure">Inportazioak huts egin du. Fitxategia ondo aukeratu duzu?</string>
     <string name="birday_import_invalid_file">Inportazioak huts egin du. Aukeratu duzun fitxategia ez da Birdayren segurtasun-kopia bat!</string>

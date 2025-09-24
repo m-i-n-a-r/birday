@@ -90,8 +90,7 @@
     <string name="birday_import_description">Tria una còpia de seguretat de Birday vàlida per restaurar els teus esdeveniments. Totes les dades existents
     se sobreescriuran!</string>
     <string name="birday_export_title">Exportar i compartir esdeveniments</string>
-    <string name="birday_export_description">Exporta els esdeveniments disponibles a una còpia de seguretat i comparteix-la si vols. L\'arxiu està dins
-    Android/data/com.minar.birday/files</string>
+    <string name="birday_export_description">Exporta els esdeveniments disponibles a una còpia de seguretat i comparteix-la si vols</string>
     <string name="birday_import_success">Importació completada!</string>
     <string name="birday_import_failure">La importació ha fallat. Has escollit el fitxer correctament?</string>
     <string name="birday_import_invalid_file">La importació ha fallat. El fitxer escollit no és una còpia de seguretat de Birday!</string>

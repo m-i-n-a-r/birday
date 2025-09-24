@@ -90,8 +90,7 @@
     <string name="birday_import_description">Velg en gyldig sikkerhetskopi fra Birday for å gjenopprette hendelsene dine. Alle eksisterende data
     vil bli overskrevet!</string>
     <string name="birday_export_title">Export and share events</string>
-    <string name="birday_export_description">Eksporter tilgjengelige hendelser til en sikkerhetskopi, og del dem om du ønsker. Filen ligger under
-    Android/data/com.minar.birday/files</string>
+    <string name="birday_export_description">Eksporter tilgjengelige hendelser til en sikkerhetskopi, og del dem om du ønsker</string>
     <string name="birday_import_success">Import fullført!</string>
     <string name="birday_import_failure">Import failed. Did you choose the file correctly?</string>
     <string name="birday_import_invalid_file">Importering feilet. Den valgte filen er ikke en sikkerhetskopi fra Birday!</string>

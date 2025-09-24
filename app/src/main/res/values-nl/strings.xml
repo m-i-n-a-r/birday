@@ -90,8 +90,7 @@
     <string name="birday_import_description">Kies een geldige Birday backup om handmatig je evenementen te herstellen. Bestaande
     data zal worden overschreven!</string>
     <string name="birday_export_title">Exporteer en deel evenementen</string>
-    <string name="birday_export_description">Exporteer de beschikbare evenementen en deel ze, als je wilt. Het bestand staat in
-    Android/data/com.minar.birday/files</string>
+    <string name="birday_export_description">Exporteer de beschikbare evenementen en deel ze, als je wilt</string>
     <string name="birday_import_success">Importeren voltooid!</string>
     <string name="birday_import_failure">Importeren mislukt. Heb je het juiste bestand gekozen?</string>
     <string name="birday_import_invalid_file">Importeren mislukt. Het gekozen bestand is geen Birday backup!</string>

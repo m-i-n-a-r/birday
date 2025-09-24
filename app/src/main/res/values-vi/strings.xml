@@ -85,7 +85,7 @@
     <string name="birday_import_title">Nhập bản sao lưu Birday</string>
     <string name="birday_import_description">Chọn một bản sao lưu Birday hợp lệ để tự khôi phục ngày sự kiện của bạn. Mọi dữ liệu hiện có sẽ bị ghi đè!</string>
     <string name="birday_export_title">Xuất khẩu và chia sẻ ngày sự kiện</string>
-    <string name="birday_export_description">Xuất các ngày sự kiện có sẵn và chia sẻ chúng, nếu bạn muốn. Các tập tin là trong Android / data / com.minar.birday / tệp</string>
+    <string name="birday_export_description">Xuất các ngày sự kiện có sẵn và chia sẻ chúng, nếu bạn muốn</string>
     <string name="birday_import_success">Nhập xong!</string>
     <string name="birday_import_failure">Nhập thất bại. Bạn kiểm tra lại có chọn đúng tập tin không?</string>
     <string name="birday_import_invalid_file">Nhập thất bại. Các tập tin được chọn không phải là một bản sao lưu của Birday!</string>

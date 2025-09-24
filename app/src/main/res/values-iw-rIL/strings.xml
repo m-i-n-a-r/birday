@@ -92,8 +92,7 @@
     <string name="birday_import_title">ייבוא גיבוי יום הולדת</string>
     <string name="birday_import_description">בחר גיבוי חוקי של יום הולדת כדי לשחזר את האירועים שלך. כל הנתונים הקיימים יימחקו!</string>
     <string name="birday_export_title">ייצוא ושיתוף אירועים</string>
-    <string name="birday_export_description">ייצא את האירועים הזמינים לגיבוי, ושתפו אותם אם תרצו. הקובץ נמצא ב-
-Android/data/com.minar.birday/files</string>
+    <string name="birday_export_description">ייצא את האירועים הזמינים לגיבוי, ושתפו אותם אם תרצו</string>
     <string name="birday_import_success">הייבוא הושלם!</string>
     <string name="birday_import_failure">הייבוא ​​נכשל. האם בחרת את הקובץ נכון?</string>
     <string name="birday_import_invalid_file">הייבוא ​​נכשל. הקובץ שנבחר אינו גיבוי של Birday!</string>

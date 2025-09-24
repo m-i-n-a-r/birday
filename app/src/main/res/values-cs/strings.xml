@@ -91,7 +91,7 @@
     <string name="birday_import_title">Importujte zálohu Birday</string>
     <string name="birday_import_description">Vyberte si platnou zálohu Birday a ručně obnovte své události. Všechna existující data budou přepsána!</string>
     <string name="birday_export_title">Exportovat a sdílet události</string>
-    <string name="birday_export_description">Exportujte všechny vaše události a nabídne je ke sdílení. Soubor s exportem se automaticky uloží do složky Android/data/com.minar.birday/files/</string>
+    <string name="birday_export_description">Exportujte všechny vaše události a nabídne je ke sdílení</string>
     <string name="birday_import_success">Import dokončen!</string>
     <string name="birday_import_failure">Import se nezdařil. Vybrali jste soubor správně?</string>
     <string name="birday_import_invalid_file">Import se nezdařil. Zvolený soubor není soubor zálohy Birday!</string>
