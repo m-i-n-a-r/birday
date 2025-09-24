@@ -87,7 +87,7 @@
     <string name="birday_import_title">Bir Birday yedeğini içe aktarın</string>
     <string name="birday_import_description">Etkinliklerinizi kurtarmak için geçerli bi yedek seçiniz. Şimdiki verilerin üstüne yazılacak!</string>
     <string name="birday_export_title">Dışa aktar ve paylaş</string>
-    <string name="birday_export_description">Geçerli etkinlikleri bir yedek dosyasına aktar. Dosya Android/data/com.minar.birday/files konumundadır</string>
+    <string name="birday_export_description">Geçerli etkinlikleri bir yedek dosyasına aktar</string>
     <string name="birday_import_success">İçe aktarım tamamlandı!</string>
     <string name="birday_import_failure">İçe aktarılamadı. Doğru dosyayı seçtiğinden emin misin?</string>
     <string name="birday_import_invalid_file">İçe aktarılamadı. Seçilen dosya bir Birday yedeği değil!</string>
