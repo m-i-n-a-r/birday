@@ -92,8 +92,7 @@
     <string name="birday_import_description">Odaberite validan Birday backup kako biste uvezli događaje. Svi postojeći podaci
 		će biti izbrisani!</string>
     <string name="birday_export_title">Izvezite i podelite događaje</string>
-    <string name="birday_export_description">Izvezi postojeće događaje u backup, i podelite ih ako želite. Datoteka se nalazi u
-		Android/data/com.minar.birday/files</string>
+    <string name="birday_export_description">Izvezi postojeće događaje u backup, i podelite ih ako želite</string>
     <string name="birday_import_success">Uvoz je završen!</string>
     <string name="birday_import_failure">Uvoz nije uspeo. Da niste izabrali pogrešan fajl?</string>
     <string name="birday_import_invalid_file">Uvoz nije uspeo. Izabran fajl nije Birday backup!</string>
