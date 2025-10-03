@@ -78,7 +78,8 @@
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/dialer"
                     app:icon="@drawable/ic_apps_dialer_24dp"
-                    app:iconTint="?attr/colorPrimary" />
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
                 <Button
                     android:id="@+id/messagesButton"
@@ -88,7 +89,8 @@
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/text_message"
                     app:icon="@drawable/ic_apps_messages_24dp"
-                    app:iconTint="?attr/colorPrimary" />
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
                 <Button
                     android:id="@+id/emailButton"
@@ -98,7 +100,8 @@
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/email"
                     app:icon="@drawable/ic_apps_email_24dp"
-                    app:iconTint="?attr/colorPrimary" />
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
                 <Button
                     android:id="@+id/whatsappButton"
@@ -108,7 +111,8 @@
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/whatsapp"
                     app:icon="@drawable/ic_apps_whatsapp_24dp"
-                    app:iconTint="?attr/colorPrimary" />
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
                 <Button
                     android:id="@+id/telegramButton"
@@ -118,7 +122,8 @@
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/telegram"
                     app:icon="@drawable/ic_apps_telegram_24dp"
-                    app:iconTint="?attr/colorPrimary" />
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
                 <Button
                     android:id="@+id/instagramButton"
@@ -128,7 +133,8 @@
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/instagram"
                     app:icon="@drawable/ic_instagram_black_24dp"
-                    app:iconTint="?attr/colorPrimary" />
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
                 <Button
                     android:id="@+id/messengerButton"
@@ -138,7 +144,8 @@
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/messenger"
                     app:icon="@drawable/ic_apps_messenger_24dp"
-                    app:iconTint="?attr/colorPrimary" />
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
                 <Button
                     android:id="@+id/viberButton"
@@ -148,7 +155,8 @@
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/viber"
                     app:icon="@drawable/ic_apps_viber_24dp"
-                    app:iconTint="?attr/colorPrimary" />
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
                 <Button
                     android:id="@+id/signalButton"
@@ -158,7 +166,8 @@
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/signal"
                     app:icon="@drawable/ic_apps_signal_24dp"
-                    app:iconTint="?attr/colorPrimary" />
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
                 <Button
                     android:id="@+id/threemaButton"
@@ -168,7 +177,8 @@
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/threema"
                     app:icon="@drawable/ic_apps_threema_24dp"
-                    app:iconTint="?attr/colorPrimary" />
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
             </LinearLayout>
 
