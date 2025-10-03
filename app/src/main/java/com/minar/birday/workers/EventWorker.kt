@@ -138,7 +138,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                 .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)
                 .build()
             WorkManager.getInstance(applicationContext).enqueue(dailyWorkRequest)
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             return Result.retry()
         }
 

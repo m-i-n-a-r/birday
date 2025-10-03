@@ -87,7 +87,7 @@
     <string name="birday_import_title">Importer une sauvegarde Birday</string>
     <string name="birday_import_description">Veuillez choisir une sauvegarde valide pour restaurer manuellement vos événements. Toutes vos données existantes seront écrasées !</string>
     <string name="birday_export_title">Exporter et partager des événements</string>
-    <string name="birday_export_description">Exportez vos événements et partagez-les ! Le fichier se trouve dans Android/data/com.minar.birday/files.</string>
+    <string name="birday_export_description">Exportez vos événements et partagez-les</string>
     <string name="birday_import_success">Importation terminée !</string>
     <string name="birday_import_failure">L\'importation a échouée. Avez-vous choisi le bon fichier ?</string>
     <string name="birday_import_invalid_file">L\'importation a échoué. Le fichier n\'est pas une sauvegarde Birday !</string>
@@ -223,7 +223,7 @@
     <string name="tomorrow">Demain !</string>
     <plurals name="years">
         <item quantity="one">%d année</item>
-        <item quantity="other">%d années</item>
+        <item quantity="other">%d ans</item>
     </plurals>
     <string name="born_in">né(e) en</string>
     <string name="and">et</string>

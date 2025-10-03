@@ -31,6 +31,7 @@ import com.minar.birday.utilities.isBirthday
 import com.minar.birday.viewmodels.MainViewModel
 import java.time.LocalDate
 import java.util.Locale
+import androidx.core.content.edit
 
 
 class FavoritesFragment : Fragment() {
@@ -96,12 +97,12 @@ class FavoritesFragment : Fragment() {
             when (favoriteMotionLayout.progress) {
                 0.0F -> {
                     favoriteMotionLayout.transitionToEnd()
-                    sharedPrefs.edit().putFloat("favorite_motion_state", 1.0F).apply()
+                    sharedPrefs.edit { putFloat("favorite_motion_state", 1.0F) }
                 }
 
                 1.0F -> {
                     favoriteMotionLayout.transitionToStart()
-                    sharedPrefs.edit().putFloat("favorite_motion_state", 0.0F).apply()
+                    sharedPrefs.edit { putFloat("favorite_motion_state", 0.0F) }
                 }
             }
         }

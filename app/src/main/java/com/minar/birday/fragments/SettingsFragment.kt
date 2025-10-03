@@ -22,6 +22,7 @@ import com.minar.birday.utilities.addInsetsByPadding
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidgetProvider
 import com.minar.birday.widgets.MinimalWidgetProvider
+import androidx.core.content.edit
 
 
 class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeListener {
@@ -71,7 +72,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
             "theme_color" -> {
                 // The activity should be refreshed automatically when the main theme changes,
                 // so there's no point in using a custom approach
-                sharedPreferences.edit().putBoolean("refreshed", true).apply()
+                sharedPreferences.edit { putBoolean("refreshed", true) }
                 when (sharedPreferences.getString("theme_color", "")) {
                     "dark" -> {
                         // Needed because passing from Amoled to dark doesn't trigger the refresh
@@ -105,7 +106,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
 
     // Reload the activity and make sure to stay in the settings
     private fun hotReloadActivity(sharedPreferences: SharedPreferences) {
-        sharedPreferences.edit().putBoolean("refreshed", true).apply()
+        sharedPreferences.edit { putBoolean("refreshed", true) }
         // Recreate doesn't support an animation, but any workaround is buggy
         val activity = requireActivity()
         ActivityCompat.recreate(activity)

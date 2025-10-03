@@ -2,8 +2,8 @@ package com.minar.birday.preferences.standard
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.util.AttributeSet
+import androidx.core.net.toUri
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import com.minar.birday.BuildConfig
@@ -28,14 +28,14 @@ class ExperimentalDisclaimerPreference(context: Context, attrs: AttributeSet?) :
         // Set the "open Github develop branch" button
         binding.checkGithubButton.setOnClickListener {
             (context as MainActivity).vibrate()
-            val uri = Uri.parse(context.getString(R.string.github_repo_develop))
+            val uri = context.getString(R.string.github_repo_develop).toUri()
             context.startActivity(Intent(Intent.ACTION_VIEW, uri))
         }
 
         // Set the "translate the app" button
         binding.translateButton.setOnClickListener {
             (context as MainActivity).vibrate()
-            val uri = Uri.parse(context.getString(R.string.crowdin_project))
+            val uri = context.getString(R.string.crowdin_project).toUri()
             context.startActivity(Intent(Intent.ACTION_VIEW, uri))
         }
 

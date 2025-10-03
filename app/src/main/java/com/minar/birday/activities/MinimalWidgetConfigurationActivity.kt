@@ -29,6 +29,7 @@ import com.minar.birday.utilities.removeOrGetUpcomingEvents
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
+import androidx.core.content.edit
 
 
 class MinimalWidgetConfigurationActivity : AppCompatActivity() {
@@ -50,14 +51,14 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
 
         // Avoid crashes when the widget is used before opening the app for the very first time
         if (sharedPrefs.getBoolean("first", true)) {
-            val editor = sharedPrefs.edit()
-            // Set default accent based on the Android version
-            when (Build.VERSION.SDK_INT) {
-                23, 24, 25, 26, 27, 28, 29 -> editor.putString("accent_color", "blue")
-                31 -> editor.putString("accent_color", "system")
-                else -> editor.putString("accent_color", "monet")
+            sharedPrefs.edit {
+                // Set default accent based on the Android version
+                when (Build.VERSION.SDK_INT) {
+                    23, 24, 25, 26, 27, 28, 29 -> putString("accent_color", "blue")
+                    31 -> putString("accent_color", "system")
+                    else -> putString("accent_color", "monet")
+                }
             }
-            editor.apply()
         }
 
         // Set the base theme and the accent
@@ -319,15 +320,15 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
         // Collect the options selected
         doneButton.setOnClickListener {
             // Save everything in shared preferences
-            val editor = sharedPrefs.edit()
-            editor.putBoolean("widget_minimal_dark_text", darkText.isChecked)
-            editor.putBoolean("widget_minimal_background", background.isChecked)
-            editor.putBoolean("widget_minimal_compact", compact.isChecked)
-            editor.putBoolean("widget_minimal_align_start", alignStart.isChecked)
-            editor.putBoolean("widget_minimal_hide_if_far", hideIfFar.isChecked)
-            editor.putBoolean("widget_minimal_only_favorites", onlyFavorites.isChecked)
-            editor.putBoolean("widget_minimal_show_following", showFollowing.isChecked)
-            editor.apply()
+            sharedPrefs.edit {
+                putBoolean("widget_minimal_dark_text", darkText.isChecked)
+                putBoolean("widget_minimal_background", background.isChecked)
+                putBoolean("widget_minimal_compact", compact.isChecked)
+                putBoolean("widget_minimal_align_start", alignStart.isChecked)
+                putBoolean("widget_minimal_hide_if_far", hideIfFar.isChecked)
+                putBoolean("widget_minimal_only_favorites", onlyFavorites.isChecked)
+                putBoolean("widget_minimal_show_following", showFollowing.isChecked)
+            }
 
             // Hide the text views and backgrounds depending on light or dark
             val titleTextView: Int

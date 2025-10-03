@@ -91,7 +91,7 @@
     <string name="birday_import_title">Importujte zálohu Birday</string>
     <string name="birday_import_description">Vyberte si platnou zálohu Birday a ručně obnovte své události. Všechna existující data budou přepsána!</string>
     <string name="birday_export_title">Exportovat a sdílet události</string>
-    <string name="birday_export_description">Exportujte všechny vaše události a nabídne je ke sdílení. Soubor s exportem se automaticky uloží do složky Android/data/com.minar.birday/files/</string>
+    <string name="birday_export_description">Exportujte všechny vaše události a nabídne je ke sdílení</string>
     <string name="birday_import_success">Import dokončen!</string>
     <string name="birday_import_failure">Import se nezdařil. Vybrali jste soubor správně?</string>
     <string name="birday_import_invalid_file">Import se nezdařil. Zvolený soubor není soubor zálohy Birday!</string>
@@ -122,15 +122,15 @@
     <string name="missing_permission_calendar_forever">Oprávnění k přístupu ke kalendáři bylo zamítnuto a Birday nemůže importovat položky z kalendáře! Udělte oprávnění ručně z nastavení smartphonu, protože Birday již nemůže znovu otevřít dialogové okno oprávnění.</string>
     <string name="import_calendar_title">Importovat z kalendáře</string>
     <string name="import_calendar_description">Importujte libovolnou roční událost ze svých kalendářů. Nezapomeňte nastavit typ události a rok, aby bylo vše správně seřazeno!</string>
-    <string name="loop_avd_title">Loop animations</string>
-    <string name="loop_avd_description_on">The animations are looped infinitely</string>
-    <string name="loop_avd_description_off">The animations will run a single time</string>
-    <string name="order_alphabetically_title">Alphabetical order</string>
-    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
-    <string name="order_alphabetically_description_off">The events are ordered by date</string>
-    <string name="grouped_notifications_title">Group multiple notifications</string>
-    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
-    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
+    <string name="loop_avd_title">Smyčka animací</string>
+    <string name="loop_avd_description_on">Animace se přehrávají v nekonečné smyčce</string>
+    <string name="loop_avd_description_off">Animace se přehrají pouze jednou</string>
+    <string name="order_alphabetically_title">Abecední řazení</string>
+    <string name="order_alphabetically_description_on">Události jsou řazeny abecedně</string>
+    <string name="order_alphabetically_description_off">Události jsou řazeny podle data</string>
+    <string name="grouped_notifications_title">Sloučení oznámení</string>
+    <string name="grouped_notifications_description_on">Pokud jsou v jeden den dvě nebo více událostí, jejich oznámení jsou sloučeny</string>
+    <string name="grouped_notifications_description_off">Pokud jsou v jeden den dvě nebo více událostí, Birday odešle oznámení pro každou zvlášť</string>
     <!-- Developer -->
     <string name="dev_description">Jsem milý a skromný člověk, který má rád krásné věci, jako jsou animace, ikony, sportovní auta a 3D tisk. Pracuji jako designér a počítačový inženýr.</string>
     <string name="easter_egg">Husté logo, žeee? ;D</string>
@@ -173,7 +173,7 @@
     <string name="wishes_birthday">Všechno nejlepší k narozeninám!</string>
     <string name="no_default_dialer">Nebyla nalezena žádná výchozí aplikace telefonu!</string>
     <string name="no_default_sms">Nebyla nalezena žádná výchozí aplikace pro SMS!</string>
-    <string name="might_have_missed">You might have missed:</string>
+    <string name="might_have_missed">Mohlo vám uniknout:</string>
     <!-- Statistics -->
     <string name="did_you_know">Věděli jste?</string>
     <string name="age_average">Průměrný věk je %s</string>
@@ -273,8 +273,8 @@
     <string name="align_start_widget_description">Zarovnejte obsah widgetu na začátek (zprava nebo zleva v závislosti na vaší lokalizaci)</string>
     <string name="hide_far_widget_title">Skrýt widget pro vzdálené události</string>
     <string name="hide_far_widget_description">Skrýt widget, pokud události nastanou až po dodatečném upozornění (např.: widget zůstane skrytý, je-li dod. upozornění nastaveno 7 dní před událostí, ale událost se koná až o 10 dní -&gt;)</string>
-    <string name="show_following_widget_title">Show the following event</string>
-    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
+    <string name="show_following_widget_title">Zobrazení následující události</string>
+    <string name="show_following_widget_description">Zobrazit událost či události následující tu předchozí v dalším řádku</string>
     <!-- Search -->
     <string name="search_event">Vyhledávání…</string>
     <string name="search_no_result_title">Nebyly nalezeny žádné výsledky</string>
@@ -311,11 +311,11 @@
     <string name="import_csv_description">Importovat z CSV. Požadovanou strukturu souboru najdete na wiki na Githubu</string>
     <string name="export_csv_title">Exportovat do CSV</string>
     <string name="export_csv_description">Exportovat každou událost (kromě obrázku) do CSV</string>
-    <string name="export_calendar_title">Export to calendar</string>
-    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
-    <string name="auto_export_title">Auto export events</string>
-    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
-    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
+    <string name="export_calendar_title">Exportovat do kalendáře</string>
+    <string name="export_calendar_description">Ukládat každou událost do vašeho místního kalendáře, je-li to možné. Vyžaduje povolení ke kalendáři</string>
+    <string name="auto_export_title">Automatický export událostí</string>
+    <string name="auto_export_description_on">Birday automaticky exportuje zálohu při ukončení aplikace. Každá záloha přepíše zálohu předchozí</string>
+    <string name="auto_export_description_off">Místní zálohy Birday musí být vykonány manuálně</string>
     <string name="add_demo_entries_title">Add demo entries</string>
     <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
     <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>

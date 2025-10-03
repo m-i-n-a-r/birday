@@ -47,6 +47,7 @@ import nl.dionsegijn.konfetti.models.Size
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.time.temporal.ChronoUnit
+import androidx.core.content.edit
 
 
 class HomeFragment : Fragment() {
@@ -224,12 +225,12 @@ class HomeFragment : Fragment() {
             when (homeMotionLayout.progress) {
                 0.0F -> {
                     homeMotionLayout.transitionToEnd()
-                    sharedPrefs.edit().putFloat("home_motion_state", 1.0F).apply()
+                    sharedPrefs.edit { putFloat("home_motion_state", 1.0F) }
                 }
 
                 1.0F -> {
                     homeMotionLayout.transitionToStart()
-                    sharedPrefs.edit().putFloat("home_motion_state", 0.0F).apply()
+                    sharedPrefs.edit { putFloat("home_motion_state", 0.0F) }
                 }
             }
         }

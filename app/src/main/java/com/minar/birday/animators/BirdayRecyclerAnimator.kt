@@ -458,28 +458,6 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
                 }
             }
         }
-
-
-        if (mRemoveAnimations.remove(item) && DEBUG) {
-            throw IllegalStateException(
-                "after animation is cancelled, item should not be in " + "mRemoveAnimations list"
-            )
-        }
-        if (mAddAnimations.remove(item) && DEBUG) {
-            throw IllegalStateException(
-                ("after animation is cancelled, item should not be in " + "mAddAnimations list")
-            )
-        }
-        if (mChangeAnimations.remove(item) && DEBUG) {
-            throw IllegalStateException(
-                ("after animation is cancelled, item should not be in " + "mChangeAnimations list")
-            )
-        }
-        if (mMoveAnimations.remove(item) && DEBUG) {
-            throw IllegalStateException(
-                ("after animation is cancelled, item should not be in " + "mMoveAnimations list")
-            )
-        }
         dispatchFinishedWhenDone()
     }
 
@@ -596,7 +574,6 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
     }
 
     companion object {
-        private const val DEBUG = false
         private var sDefaultInterpolator: TimeInterpolator? = null
     }
 }

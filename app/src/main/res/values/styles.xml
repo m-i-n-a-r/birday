@@ -3,7 +3,7 @@
     <!-- Style for the light theme -->
     <style name="AppTheme" parent="AppTheme.Base" />
 
-    <style name="AppTheme.Base" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="AppTheme.Base" parent="Theme.Material3Expressive.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:colorBackground">@color/colorBackground</item>
         <item name="colorSurfaceContainerLow">@color/colorBackground</item>
@@ -40,7 +40,7 @@
     </style>
 
     <!-- Monet theme -->
-    <style name="AppTheme.Monet" parent="Theme.Material3.DynamicColors.DayNight.NoActionBar">
+    <style name="AppTheme.Monet" parent="Theme.Material3Expressive.DynamicColors.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">true</item>
         <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker.Monet</item>
         <item name="materialTimePickerTheme">@style/ThemeOverlay.App.TimePicker.Monet</item>
@@ -55,7 +55,7 @@
     <!-- Splash screen theme -->
     <style name="SplashTheme" parent="SplashTheme.Base.Legacy" />
 
-    <style name="SplashTheme.Base" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="SplashTheme.Base" parent="Theme.Material3Expressive.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">@color/colorBackground</item>
         <item name="android:colorBackground">@color/colorBackground</item>
@@ -67,14 +67,14 @@
     </style>
 
     <!-- Widget theme -->
-    <style name="WidgetTheme" parent="Theme.Material3.DynamicColors.DayNight">
+    <style name="WidgetTheme" parent="Theme.Material3Expressive.DynamicColors.DayNight">
         <item name="appWidgetRadius">@dimen/rounded_corners</item>
         <item name="appWidgetInnerRadius">@dimen/rounded_corners_inner</item>
         <item name="appWidgetPadding">@dimen/activity_horizontal_margin</item>
     </style>
 
     <!-- Preference dialog theme -->
-    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3Expressive.MaterialAlertDialog">
         <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
         <item name="dialogCornerRadius">@dimen/rounded_corners</item>
         <!-- Remove the accent-ish tint -->
@@ -83,19 +83,19 @@
     </style>
 
     <!-- Preference dialog Monet theme -->
-    <style name="ThemeOverlay.App.MaterialAlertDialog.Monet" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+    <style name="ThemeOverlay.App.MaterialAlertDialog.Monet" parent="ThemeOverlay.Material3Expressive.MaterialAlertDialog">
         <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
         <item name="dialogCornerRadius">@dimen/rounded_corners</item>
         <item name="android:background">@drawable/dialog_bg_monet</item>
     </style>
 
-    <style name="ThemeOverlay.App.PreferenceDialog.Monet" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+    <style name="ThemeOverlay.App.PreferenceDialog.Monet" parent="ThemeOverlay.Material3Expressive.MaterialAlertDialog">
         <item name="dialogCornerRadius">@dimen/rounded_corners</item>
         <item name="android:background">@drawable/dialog_bg_monet</item>
     </style>
 
     <!-- Note: shape appearance doesn't work with the preference dialogs (they're not material) -->
-    <style name="MaterialAlertDialog.App" parent="MaterialAlertDialog.Material3">
+    <style name="MaterialAlertDialog.App" parent="MaterialAlertDialog.Material3Expressive">
         <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
         <item name="shapeAppearanceOverlay">@null</item>
     </style>
@@ -213,7 +213,7 @@
     </style>
 
     <!-- Bottom navigation for non-monet accents -->
-    <style name="CustomBottomNavigation" parent="Widget.Material3.BottomNavigationView">
+    <style name="CustomBottomNavigation" parent="Widget.Material3Expressive.BottomNavigationView">
         <item name="itemTextColor">@drawable/bottom_navbar_item</item>
         <item name="itemIconTint">@drawable/bottom_navbar_item</item>
     </style>
@@ -240,7 +240,6 @@
         <item name="android:minHeight">20dp</item>
         <item name="iconGravity">textStart</item>
         <item name="strokeWidth">@dimen/card_stroke</item>
-        <item name="cornerRadius">@dimen/rounded_corners</item>
     </style>
 
     <!-- Custom color styles -->

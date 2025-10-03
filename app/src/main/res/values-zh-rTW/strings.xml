@@ -85,7 +85,7 @@
     <string name="birday_import_title">匯入 Birday 備份</string>
     <string name="birday_import_description">選擇任何可用的 Birday 備份進行還原。請注意，所有現有資料將被覆寫！</string>
     <string name="birday_export_title">匯出及分享紀念日</string>
-    <string name="birday_export_description">匯出現有的節日作為備份或分享用。匯出後的檔案位於 Android/data/com.minar.birday/files。</string>
+    <string name="birday_export_description">匯出現有的節日作為備份或分享用</string>
     <string name="birday_import_success">匯入成功！</string>
     <string name="birday_import_failure">匯入失敗。您是否正常選擇了適當的檔案？</string>
     <string name="birday_import_invalid_file">匯入失敗。您所選的檔案不是 Birday 的備份檔案！</string>

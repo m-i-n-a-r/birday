@@ -43,6 +43,7 @@ This is an open source app to remember **birthdays** and other events in a fast,
 | **Hindi**               | assembleDebug     |                             |
 | **Finnish**             | manaryde          |                             |
 | **Turkish**             | Ömer Selim Öztürk |                             |
+| **Basque**              | erral             |                             |
 
 ## Features
 - Notification the day of the event (with selectable time and optional grouping for multiple events in the same day)

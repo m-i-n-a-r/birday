@@ -30,10 +30,6 @@ import java.time.format.FormatStyle
 abstract class BirdayWidgetProvider : AppWidgetProvider() {
     abstract var widgetLayout: Int
 
-    override fun onDeleted(context: Context?, appWidgetIds: IntArray?) {
-        super.onDeleted(context, appWidgetIds)
-    }
-
     override fun onReceive(context: Context, intent: Intent) {
         super.onReceive(context, intent)
     }

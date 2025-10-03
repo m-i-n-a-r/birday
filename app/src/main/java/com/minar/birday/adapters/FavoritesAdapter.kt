@@ -14,6 +14,7 @@ import com.minar.birday.databinding.FavoriteRowBinding
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.formatName
+import com.minar.birday.utilities.getNextYears
 import com.minar.birday.utilities.getRemainingDays
 import com.minar.birday.utilities.getYears
 import java.time.format.DateTimeFormatter
@@ -33,7 +34,7 @@ class FavoritesAdapter(
         return FavoriteViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: FavoritesAdapter.FavoriteViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
@@ -66,6 +67,7 @@ class FavoritesAdapter(
                 formatName(event, sharedPrefs.getBoolean("surname_first", false))
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
             val age = getYears(event)
+            val nextAge = getNextYears(event)
             val daysRemaining = getRemainingDays(event.nextDate!!)
             val daysCountdown = if (daysRemaining > 0) "-$daysRemaining"
             else context.getString(R.string.exclamation)
@@ -73,8 +75,8 @@ class FavoritesAdapter(
 
             if (event.yearMatter == false) nextDate = event.nextDate.format(formatter)
             val actualAge = if (event.type == EventCode.BIRTHDAY.name)
-                "${context.getString(R.string.next_age_years)}: $age, ${context.getString(R.string.born_in)} ${event.originalDate.year}"
-            else "${context.getString(R.string.next_age_years)}: $age"
+                "${context.getString(R.string.next_age_years)}: $age▶$nextAge, ${context.getString(R.string.born_in)} ${event.originalDate.year}"
+            else "${context.getString(R.string.next_age_years)}: $age▶$nextAge"
             eventPerson.text = formattedPersonName
             // Show an icon if there's a note
             if (!event.notes.isNullOrEmpty()) eventNote.visibility = View.VISIBLE

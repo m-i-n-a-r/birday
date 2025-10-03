@@ -1,0 +1,7 @@
+- Many important fixes, again
+- Material3 Expressive
+- Open contacts details from event details, if available
+- Better disable battery optimization procedure
+- Choose where to export Birday, csv, json backups
+- Better layout for current/next age
+- New translations and translations updated

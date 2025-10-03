@@ -240,7 +240,7 @@ fun getStringForTypeCodename(context: Context, codename: String): String {
             EventCode.NAME_DAY -> context.getString(R.string.name_day)
             EventCode.OTHER -> context.getString(R.string.other)
         }
-    } catch (e: Exception) {
+    } catch (_: Exception) {
         context.getString(R.string.unknown)
     }
 }

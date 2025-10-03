@@ -2,7 +2,6 @@ package com.minar.birday.fragments.dialogs
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.provider.Telephony
 import android.view.LayoutInflater
@@ -17,6 +16,7 @@ import com.minar.birday.adapters.MissedCarouselAdapter
 import com.minar.birday.databinding.BottomSheetQuickAppsBinding
 import java.time.Duration
 import java.time.LocalDate
+import androidx.core.net.toUri
 
 
 class QuickAppsBottomSheet(private val act: MainActivity) : BottomSheetDialogFragment() {
@@ -96,7 +96,7 @@ class QuickAppsBottomSheet(private val act: MainActivity) : BottomSheetDialogFra
             try {
                 val dialIntent = Intent(Intent.ACTION_DIAL)
                 act.startActivity(dialIntent)
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 act.showSnackbar(act.getString(R.string.no_default_dialer))
             }
             dismiss()
@@ -109,7 +109,7 @@ class QuickAppsBottomSheet(private val act: MainActivity) : BottomSheetDialogFra
                 val smsIntent: Intent? =
                     act.packageManager.getLaunchIntentForPackage(defaultSmsPackage)
                 act.startActivity(smsIntent)
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 act.showSnackbar(act.getString(R.string.no_default_sms))
             }
             dismiss()
@@ -119,12 +119,12 @@ class QuickAppsBottomSheet(private val act: MainActivity) : BottomSheetDialogFra
             act.vibrate()
             try {
                 val intent = Intent(Intent.ACTION_SENDTO)
-                intent.data = Uri.parse("mailto:")
+                intent.data = "mailto:".toUri()
                 intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.wishes_birthday))
                 if (intent.resolveActivity(act.packageManager) != null) {
                     startActivity(intent)
                 }
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 launchOrOpenAppStore("com.google.android.gm")
             }
         }
@@ -164,11 +164,11 @@ class QuickAppsBottomSheet(private val act: MainActivity) : BottomSheetDialogFra
         try {
             val intent = requireContext().packageManager.getLaunchIntentForPackage(packageName)
             requireContext().startActivity(intent)
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             startActivity(
                 Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("https://play.google.com/store/apps/details?id=${packageName}")
+                    "https://play.google.com/store/apps/details?id=${packageName}".toUri()
                 )
             )
         }

@@ -21,6 +21,7 @@ import kotlinx.coroutines.launch
 import nl.dionsegijn.konfetti.KonfettiView
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
+import androidx.core.net.toUri
 
 class CustomAuthorPreference(context: Context, attrs: AttributeSet?) :
     Preference(context, attrs), View.OnClickListener {
@@ -118,31 +119,31 @@ class CustomAuthorPreference(context: Context, attrs: AttributeSet?) :
             } else easterEggCounter++
             R.id.minarig -> {
                 act.vibrate()
-                uri = Uri.parse(context.getString(R.string.dev_instagram))
+                uri = context.getString(R.string.dev_instagram).toUri()
                 val intent1 = Intent(Intent.ACTION_VIEW, uri)
                 context.startActivity(intent1)
             }
             R.id.minartg -> {
                 act.vibrate()
-                uri = Uri.parse(context.getString(R.string.dev_telegram_channel))
+                uri = context.getString(R.string.dev_telegram_channel).toUri()
                 val intent2 = Intent(Intent.ACTION_VIEW, uri)
                 context.startActivity(intent2)
             }
             R.id.minarps -> {
                 act.vibrate()
-                uri = Uri.parse(context.getString(R.string.dev_other_apps))
+                uri = context.getString(R.string.dev_other_apps).toUri()
                 val intent3 = Intent(Intent.ACTION_VIEW, uri)
                 context.startActivity(intent3)
             }
             R.id.minargit -> {
                 act.vibrate()
-                uri = Uri.parse(context.getString(R.string.dev_github))
+                uri = context.getString(R.string.dev_github).toUri()
                 val intent4 = Intent(Intent.ACTION_VIEW, uri)
                 context.startActivity(intent4)
             }
             R.id.minarsite -> {
                 act.vibrate()
-                uri = Uri.parse(context.getString(R.string.dev_personal_site))
+                uri = context.getString(R.string.dev_personal_site).toUri()
                 val intent5 = Intent(Intent.ACTION_VIEW, uri)
                 context.startActivity(intent5)
             }

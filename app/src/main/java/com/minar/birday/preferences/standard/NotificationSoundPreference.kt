@@ -30,7 +30,7 @@ class NotificationSoundPreference(context: Context, attrs: AttributeSet?) :
                 .putExtra("android.provider.extra.APP_PACKAGE", context.packageName)
                 .putExtra(Settings.EXTRA_CHANNEL_ID, "events_channel")
             context.startActivity(intent)
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             Toast.makeText(
                 context, context.getString(R.string.wtf), Toast.LENGTH_LONG
             ).show()

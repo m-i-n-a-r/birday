@@ -72,93 +72,113 @@
 
                 <Button
                     android:id="@+id/dialerButton"
-                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    style="@style/Widget.Material3Expressive.Button.OutlinedButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/dialer"
-                    app:icon="@drawable/ic_apps_dialer_24dp" />
+                    app:icon="@drawable/ic_apps_dialer_24dp"
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
                 <Button
                     android:id="@+id/messagesButton"
-                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    style="@style/Widget.Material3Expressive.Button.OutlinedButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/text_message"
-                    app:icon="@drawable/ic_apps_messages_24dp" />
+                    app:icon="@drawable/ic_apps_messages_24dp"
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
                 <Button
                     android:id="@+id/emailButton"
-                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    style="@style/Widget.Material3Expressive.Button.OutlinedButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/email"
-                    app:icon="@drawable/ic_apps_email_24dp" />
+                    app:icon="@drawable/ic_apps_email_24dp"
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
                 <Button
                     android:id="@+id/whatsappButton"
-                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    style="@style/Widget.Material3Expressive.Button.OutlinedButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/whatsapp"
-                    app:icon="@drawable/ic_apps_whatsapp_24dp" />
+                    app:icon="@drawable/ic_apps_whatsapp_24dp"
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
                 <Button
                     android:id="@+id/telegramButton"
-                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    style="@style/Widget.Material3Expressive.Button.OutlinedButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/telegram"
-                    app:icon="@drawable/ic_apps_telegram_24dp" />
+                    app:icon="@drawable/ic_apps_telegram_24dp"
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
                 <Button
                     android:id="@+id/instagramButton"
-                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    style="@style/Widget.Material3Expressive.Button.OutlinedButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/instagram"
-                    app:icon="@drawable/ic_instagram_black_24dp" />
+                    app:icon="@drawable/ic_instagram_black_24dp"
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
                 <Button
                     android:id="@+id/messengerButton"
-                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    style="@style/Widget.Material3Expressive.Button.OutlinedButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/messenger"
-                    app:icon="@drawable/ic_apps_messenger_24dp" />
+                    app:icon="@drawable/ic_apps_messenger_24dp"
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
                 <Button
                     android:id="@+id/viberButton"
-                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    style="@style/Widget.Material3Expressive.Button.OutlinedButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/viber"
-                    app:icon="@drawable/ic_apps_viber_24dp" />
+                    app:icon="@drawable/ic_apps_viber_24dp"
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
                 <Button
                     android:id="@+id/signalButton"
-                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    style="@style/Widget.Material3Expressive.Button.OutlinedButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/signal"
-                    app:icon="@drawable/ic_apps_signal_24dp" />
+                    app:icon="@drawable/ic_apps_signal_24dp"
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
                 <Button
                     android:id="@+id/threemaButton"
-                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    style="@style/Widget.Material3Expressive.Button.OutlinedButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="@dimen/in_row_button_padding"
                     android:text="@string/threema"
-                    app:icon="@drawable/ic_apps_threema_24dp" />
+                    app:icon="@drawable/ic_apps_threema_24dp"
+                    app:iconTint="?attr/colorPrimary"
+                    app:strokeColor="@color/goodGraySemiTranslucent" />
 
             </LinearLayout>
 

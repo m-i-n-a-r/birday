@@ -216,10 +216,10 @@
             android:textColor="?attr/colorTertiary"
             android:textStyle="bold"
             android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/detailsDivider"
+            app:layout_constraintBottom_toTopOf="@id/detailsCountdownShimmer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/detailsCountdownShimmer" />
+            app:layout_constraintTop_toBottomOf="@id/detailsDivider" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detailsZodiacSign"
@@ -276,19 +276,21 @@
             app:layout_constraintTop_toTopOf="@id/detailsChineseSign" />
 
         <Button
-            android:id="@+id/detailsEditButton"
-            style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+            android:id="@+id/detailsContactButton"
+            style="@style/Widget.Material3Expressive.Button.ElevatedButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/linear_vertical_margin"
             android:layout_marginTop="@dimen/linear_vertical_margin"
+            android:contentDescription="@string/event_details"
+            android:padding="@dimen/in_row_button_padding"
             android:paddingVertical="@dimen/in_row_button_padding"
-            android:text="@string/edit_event"
-            android:textColor="?attr/colorPrimary"
+            android:text="@string/event_details"
             android:tint="?attr/colorPrimary"
-            app:icon="@drawable/ic_edit_24dp"
-            app:layout_constraintBottom_toTopOf="@id/detailsDeleteButton"
+            android:visibility="invisible"
+            app:icon="@drawable/ic_person_search_24dp"
+            app:layout_constraintBottom_toTopOf="@id/detailsEditButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsChineseSign"
@@ -298,8 +300,27 @@
             app:rippleColor="?attr/colorPrimary" />
 
         <Button
+            android:id="@+id/detailsEditButton"
+            style="@style/Widget.Material3Expressive.Button.ElevatedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/linear_vertical_margin"
+            android:paddingVertical="@dimen/in_row_button_padding"
+            android:text="@string/edit_event"
+            android:textColor="?attr/colorPrimary"
+            android:tint="?attr/colorPrimary"
+            app:icon="@drawable/ic_edit_24dp"
+            app:layout_constraintBottom_toTopOf="@id/detailsDeleteButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsContactButton"
+            app:layout_constraintWidth_max="@dimen/details_button_max_width"
+            app:rippleColor="?attr/colorPrimary" />
+
+        <Button
             android:id="@+id/detailsDeleteButton"
-            style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+            style="@style/Widget.Material3Expressive.Button.ElevatedButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -318,7 +339,7 @@
 
         <Button
             android:id="@+id/detailsShareButton"
-            style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+            style="@style/Widget.Material3Expressive.Button.ElevatedButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -337,7 +358,7 @@
 
         <Button
             android:id="@+id/detailsNotesButton"
-            style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+            style="@style/Widget.Material3Expressive.Button.ElevatedButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

@@ -91,7 +91,7 @@
     <string name="birday_import_title">Importuj kopię zapasową Birday</string>
     <string name="birday_import_description">Wybierz poprawną kopię zapasową Birday w celu przywrócenia wydarzenia. Istniejące dane zostaną nadpisane!</string>
     <string name="birday_export_title">Eksportuj i udostępnij wydarzenia</string>
-    <string name="birday_export_description">Eksportuj dostępne wydarzenia do kopii zapasowej i udostępnij je, jeżeli chcesz. Plik zostanie zapisany w     Android/data/com.minar.birday/files</string>
+    <string name="birday_export_description">Eksportuj dostępne wydarzenia do kopii zapasowej i udostępnij je, jeżeli chcesz</string>
     <string name="birday_import_success">Import zakończony!</string>
     <string name="birday_import_failure">Import nie powiódł się. Czy wybrany został poprawny plik?</string>
     <string name="birday_import_invalid_file">Import nie powiódł się. Wybrany plik to nie kopia zapasowa Birday!</string>

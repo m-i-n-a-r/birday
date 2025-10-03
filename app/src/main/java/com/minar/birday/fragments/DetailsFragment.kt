@@ -1,7 +1,13 @@
 package com.minar.birday.fragments
 
+import android.Manifest
+import android.content.ContentUris
+import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.provider.ContactsContract
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +34,7 @@ import com.minar.birday.fragments.dialogs.InsertEventBottomSheet
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
+import com.minar.birday.persistence.ContactsRepository
 import com.minar.birday.utilities.StatsGenerator
 import com.minar.birday.utilities.addInsetsByPadding
 import com.minar.birday.utilities.byteArrayToBitmap
@@ -107,6 +114,59 @@ class DetailsFragment : Fragment() {
         val editButton = binding.detailsEditButton
         val shareButton = binding.detailsShareButton
         val notesButton = binding.detailsNotesButton
+        val contactButton = binding.detailsContactButton
+
+        // Spawn a contact button if a contact with the same name is found in the contacts (asynchronously)
+        contactButton.visibility = View.INVISIBLE
+        try {
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.READ_CONTACTS
+                ) == PackageManager.PERMISSION_GRANTED
+            ) {
+                Thread {
+                    try {
+                        val surname = event.surname ?: ""
+                        val contactId = ContactsRepository()
+                            .findContactIdByName(
+                                requireContext().contentResolver,
+                                event.name,
+                                surname
+                            )
+                        if (contactId != null) {
+                            Log.d("contacts", "Matching contact found for ${event.name}")
+                            requireActivity().runOnUiThread {
+                                contactButton.visibility = View.VISIBLE
+                                contactButton.setOnClickListener {
+                                    try {
+                                        val contactUri = ContentUris.withAppendedId(
+                                            ContactsContract.Contacts.CONTENT_URI,
+                                            contactId.toLong()
+                                        )
+                                        val intent = Intent(Intent.ACTION_VIEW, contactUri)
+                                        startActivity(intent)
+                                    } catch (_: Exception) {
+                                        // Ignore malformed ID
+                                    }
+                                }
+                            }
+                        } else {
+                            Log.d("contacts", "No matching contact for ${event.name}")
+                            requireActivity().runOnUiThread {
+                                // Probably redundant
+                                contactButton.visibility = View.INVISIBLE
+                            }
+                        }
+                    } catch (_: Exception) {
+                    }
+                }.start()
+            } else {
+                contactButton.visibility = View.GONE
+            }
+        } catch (_: Exception) {
+            contactButton.visibility = View.GONE
+        }
+
 
         // Manage the shimmer
         if (shimmerEnabled) {

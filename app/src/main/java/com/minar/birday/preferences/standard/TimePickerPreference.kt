@@ -16,6 +16,7 @@ import com.minar.birday.databinding.TimePickerRowBinding
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
+import androidx.core.content.edit
 
 // A custom preference to show a time picker
 class TimePickerPreference(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
@@ -62,10 +63,10 @@ class TimePickerPreference(context: Context, attrs: AttributeSet?) : Preference(
                 .build()
 
         picker.addOnPositiveButtonClickListener {
-            val editor = sharedPrefs.edit()
-            editor.putString("notification_hour", "${picker.hour}")
-            editor.putString("notification_minute", "${picker.minute}")
-            editor.apply()
+            sharedPrefs.edit {
+                putString("notification_hour", "${picker.hour}")
+                putString("notification_minute", "${picker.minute}")
+            }
 
             // Format the selected hour and update the text
             val currentTime = LocalTime.of(picker.hour, picker.minute)

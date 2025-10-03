@@ -88,7 +88,7 @@
     <string name="birday_import_title">ബെർഡേ ബാക്കപ്പ് കൊണ്ടുവരുക</string>
     <string name="birday_import_description">ശെരിയായ ബാക്കപ്പ് തിരഞ്ഞെടുക്കുന്നതിലൂടെ താങ്കളുടെ എല്ലാ ഇവന്റും തിരികെ കൊണ്ടുവരാനാകും. നിലവിൽ ഉള്ള എല്ലാവിവരങ്ങളും പുതുക്കപ്പെടും!</string>
     <string name="birday_export_title">ഇവെന്റുകൾ കൊണ്ടുപോകാനും പങ്കുവയ്ക്കാനും</string>
-    <string name="birday_export_description">ഇവെന്റുകൾ ബാക്കപ്പ് ആക്കി മാറ്റുക, താങ്കൾക്ക് വേണമെങ്കിൽ ബാക്കപ്പ് പങ്കുവയ്ക്കാം. ബാക്കപ്പ് ഫയൽ Android/data/com.minar.birday/files ആകും ഉണ്ടാകുക.</string>
+    <string name="birday_export_description">ഇവെന്റുകൾ ബാക്കപ്പ് ആക്കി മാറ്റുക, താങ്കൾക്ക് വേണമെങ്കിൽ ബാക്കപ്പ് പങ്കുവയ്ക്കാം</string>
     <string name="birday_import_success">കൊണ്ടുവരുന്നത് പൂർണമായി!</string>
     <string name="birday_import_failure">കൊണ്ടുവരുന്നത് പരാജയപെട്ടു. താങ്കൾ ശെരിയായ ഫയൽ തന്നെയാണോ തിരഞ്ഞെടുത്തത്?</string>
     <string name="birday_import_invalid_file">കൊണ്ടുവരുന്നത് പരാജയപെട്ടു. താങ്കൾ തിരഞ്ഞെടുത്ത ഫയൽ ഒരു ബെർഡേ ബാക്കപ്പ് അല്ല!</string>

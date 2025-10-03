@@ -36,7 +36,7 @@
 
     <Button
         android:id="@+id/checkGithubButton"
-        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+        style="@style/Widget.Material3Expressive.Button.ElevatedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/in_row_button_padding"
@@ -50,7 +50,7 @@
 
     <Button
         android:id="@+id/translateButton"
-        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+        style="@style/Widget.Material3Expressive.Button.ElevatedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/in_row_button_padding"

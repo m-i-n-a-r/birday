@@ -87,7 +87,7 @@
     <string name="birday_import_title">Importar um backup do Birday</string>
     <string name="birday_import_description">Escolha um backup Birday válido para restaurar manualmente seus eventos. Todos os dados existentes serão sobrescrito!</string>
     <string name="birday_export_title">Exportar e compartilhar eventos</string>
-    <string name="birday_export_description">Exporte os eventos disponíveis e compartilhe-os, se quiser. O arquivo está em Android/data/com.minar.birday/files</string>
+    <string name="birday_export_description">Exporte os eventos disponíveis e compartilhe-os, se quiser</string>
     <string name="birday_import_success">Importação concluída!</string>
     <string name="birday_import_failure">A importação falhou. Você escolheu o arquivo corretamente?</string>
     <string name="birday_import_invalid_file">A importação falhou. O arquivo escolhido não é um backup do Birday!</string>

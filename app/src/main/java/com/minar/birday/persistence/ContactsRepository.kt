@@ -212,9 +212,36 @@ class ContactsRepository {
                     image = contact.image,
                     notes = notes
                 )
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 null
             }
         }
     }
+
+    @RequiresPermission(Manifest.permission.READ_CONTACTS)
+    fun findContactIdByName(resolver: ContentResolver, givenName: String, familyName: String): String? {
+        val selection = ContactsContract.Data.MIMETYPE + " = ? AND " +
+                ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME + " = ? AND " +
+                ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME + " = ?"
+        val selectionArgs = arrayOf(
+            ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE,
+            givenName,
+            familyName
+        )
+        val cursor = resolver.query(
+            ContactsContract.Data.CONTENT_URI,
+            arrayOf(ContactsContract.CommonDataKinds.StructuredName.CONTACT_ID),
+            selection,
+            selectionArgs,
+            null
+        )
+        cursor?.use {
+            if (it.moveToFirst()) {
+                val idIndex = it.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.CONTACT_ID)
+                if (idIndex >= 0) return it.getString(idIndex)
+            }
+        }
+        return null
+    }
+
 }

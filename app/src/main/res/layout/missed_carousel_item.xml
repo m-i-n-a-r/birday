@@ -3,8 +3,8 @@
     android:id="@+id/carousel_item_container"
     android:layout_width="@dimen/carousel_item_width"
     android:layout_height="match_parent"
-    android:layout_marginStart="4dp"
-    android:layout_marginEnd="4dp"
+    android:layout_marginStart="@dimen/list_vertical_padding"
+    android:layout_marginEnd="@dimen/list_vertical_padding"
     android:foreground="?attr/selectableItemBackground"
     app:shapeAppearance="?attr/shapeAppearanceCornerExtraLarge">
 

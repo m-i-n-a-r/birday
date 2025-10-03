@@ -3,7 +3,7 @@
     <string name="app_welcome">Üdvözlünk a Birday-ben</string>
     <string name="app_name_extended">Birday - Esemény Kezelő</string>
     <string name="leave_review_title">Birday Véleményezése</string>
-    <string name="leave_review_subtitle">Írj egy véleményt, hogy segíts nekem az alkalmazással. Vedd figyelembe, hogy az adományoktól eltekintve ez az alkalmazás teljesen ingyenes és hirdetésmentes!</string>
+    <string name="leave_review_subtitle">Írjon véleményt, hogy segítsen nekem az alkalmazásban. Ne feledje, hogy az adományokat leszámítva ez az alkalmazás teljesen ingyenes és reklámmentes!</string>
     <string name="yes_review">Véleményezés!</string>
     <string name="later">Később, esküszöm</string>
     <string name="no_thanks">Semmiképpen!</string>
@@ -15,11 +15,11 @@
     <string name="add_favorite">Hozzáadás a kedvencekhez</string>
     <string name="stats">Statisztika</string>
     <string name="no_stats">Nincs megjeleníthető statisztika!</string>
-    <string name="stats_summary">Statisztika összefoglaló</string>
+    <string name="stats_summary">Statisztikai összefoglaló</string>
     <string name="no_stats_description">Nincs elég esemény a statisztikák megjelenítéséhez. Adj hozzá néhányat, és gyere vissza később!</string>
     <plurals name="stats_total">
-        <item quantity="one">A Birday segít, hogy összesen emlékezz %d esemény</item>
-        <item quantity="other">A Birday segít, hogy emlékezz %d eseményre</item>
+        <item quantity="one">Birday is helping you to remember a total of %d event</item>
+        <item quantity="other">Birday is helping you to remember a total of %d events</item>
     </plurals>
     <string name="next_event">Következő esemény</string>
     <string name="no_next_event">Nincs megjeleníthető esemény!</string>
@@ -50,10 +50,10 @@
     <string name="vibration_description_on">Rezgés egy gomb megnyomásakor</string>
     <string name="vibration_description_off">Nincs rezgés egy gomb megnyomásakor</string>
     <string name="date_format_name">Dátum formátum</string>
-    <string name="notification_hour_name">Értesítési óra</string>
+    <string name="notification_hour_name">Értesítési idő</string>
     <string name="notification_hour_description">%s \n\nFelhívjuk a figyelmed, hogy az értesítés nem működik, ha a rendszer leállítja az alkalmazást néhány Huawei, Xiaomi és OnePlus eszközön. További információt a dontkillmyapp.com oldalon találsz</string>
-    <string name="accent_description">Alapértelmezett ékezetes szín módosítása</string>
-    <string name="accent_name">Ékezetes szín</string>
+    <string name="accent_description">Az alapértelmezett ékezet színének módosítása</string>
+    <string name="accent_name">Kiemelő szín</string>
     <string name="theme_description">Használjon sötét, világos vagy automatikus alkalmazás témát</string>
     <string name="theme_name">Alkalmazás téma</string>
     <!-- ^ Untranslated for now -->
@@ -87,7 +87,7 @@
     <string name="birday_import_title">Importálj egy Birday biztonsági másolatot</string>
     <string name="birday_import_description">Válasszon egy érvényes Birday biztonsági másolatot a eseményjainak manuális visszaállításához. Minden létező adat felül lesz írva!</string>
     <string name="birday_export_title">Eseményeket exportálása és megosztása</string>
-    <string name="birday_export_description">Exportáld a rendelkezésre álló eseményeketat, és oszd meg őket, ha szeretnéd. A fájl az Android/data/com.minar.birday/files helyen található.</string>
+    <string name="birday_export_description">Exportáld a rendelkezésre álló eseményeketat, és oszd meg őket, ha szeretnéd</string>
     <string name="birday_import_success">Az importálás befejeződött!</string>
     <string name="birday_import_failure">Az importálás sikertelen. Helyes fájlt választottál?</string>
     <string name="birday_import_invalid_file">Az importálás sikertelen. A kiválasztott fájl nem Birday biztonsági másolat!</string>
@@ -95,13 +95,13 @@
     <string name="birday_export_failure">Az exportálás sikertelen. Hoppá!</string>
     <string name="birday_export_nothing_found">Nincs mit exportálni!</string>
     <string name="surname_first">Vezetéknév először</string>
-    <string name="surname_first_description_on">Mutassa meg a vezetéknevet a név előtt</string>
-    <string name="surname_first_description_off">Mutassa meg a nevet a vezetéknév előtt</string>
+    <string name="surname_first_description_on">Mutassa meg a vezetéknevet a keresztnév előtt</string>
+    <string name="surname_first_description_off">Mutassa meg a keresztnevet a vezetéknév előtt</string>
     <string name="hide_images">Képek elrejtése</string>
-    <string name="hide_images_description_on">Rejtett esemény képek</string>
-    <string name="hide_images_description_off">Esemény képek látható</string>
+    <string name="hide_images_description_on">Az esemény képei elrejtve</string>
+    <string name="hide_images_description_off">Az esemény képei láthatók</string>
     <string name="notification_only_favorites">Csak a kedvencek</string>
-    <string name="notification_only_favorites_description_on">Csak a kedvenc eseményeknél küldjön értesítést</string>
+    <string name="notification_only_favorites_description_on">Csak a kedvenc eseményekről küldjön értesítést</string>
     <string name="notification_only_favorites_description_off">Minden megadott eseménynél küldjön üzenetet</string>
     <string name="additional_notification_only_favorites">További értesítés a kedvenceknek</string>
     <string name="additional_notification_only_favorites_description_on">Csak a kedvenc eseményekről küldjön további értesítést</string>
@@ -116,17 +116,17 @@
     <string name="missing_permission_notifications_forever">Az értesítés engedély nem lett elfogadva, és nem lehet újra kérvényezni, szóval Birday nem tud értesítést küldeni! Engedélyezd az értesítéseket a beállításokból manuálisan.</string>
     <string name="missing_permission_calendar">A naptár engedély nem lett elfogadva, és Birday nem tud importálni a naptárból! Aktiváld az engedélyt a beállításokból.</string>
     <string name="missing_permission_calendar_forever">Az naptár engedély nem lett elfogadva, és nem lehet újra kérvényezni, szóval Birday nem tud importálni a naptárból! Engedélyezd a naptárat a beállításokból manuálisan.</string>
-    <string name="import_calendar_title">Naptár importálása</string>
+    <string name="import_calendar_title">Importálás naptárból</string>
     <string name="import_calendar_description">Importálj akármilyen éves eseményt a naptárodból. Ne felejtsd el beállítani az esemény típúsát és az évet, hhog rendben tartsd a dolgokat!</string>
     <string name="loop_avd_title">Loop animations</string>
-    <string name="loop_avd_description_on">The animations are looped infinitely</string>
-    <string name="loop_avd_description_off">The animations will run a single time</string>
-    <string name="order_alphabetically_title">Alphabetical order</string>
-    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
-    <string name="order_alphabetically_description_off">The events are ordered by date</string>
-    <string name="grouped_notifications_title">Group multiple notifications</string>
-    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
-    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
+    <string name="loop_avd_description_on">Az animációk a végtelenségig ismétlődnek</string>
+    <string name="loop_avd_description_off">Az animációk egyszer kerülnek végrehajtásra</string>
+    <string name="order_alphabetically_title">ABC sorrendben</string>
+    <string name="order_alphabetically_description_on">Az események betűrendben vannak</string>
+    <string name="order_alphabetically_description_off">Az események dátum szerinti sorrendben</string>
+    <string name="grouped_notifications_title">Több értesítés csoportosítása</string>
+    <string name="grouped_notifications_description_on">Ha egy napon két vagy több esemény van, az értesítések csoportosítva lesznek</string>
+    <string name="grouped_notifications_description_off">Ha egy napon belül két vagy több esemény van, a Birday minden egyes eseményről értesítést küld</string>
     <!-- Developer -->
     <string name="dev_description">Udvarias srác vagyok, és szeretem a szép dolgokat, mint animációk, ikonok, sportkocsik és 3D nyomtatás. Tervezőként és számítógépes mérnökként dolgozom.</string>
     <string name="easter_egg">Szép logó, mi? ;D</string>
@@ -139,7 +139,7 @@
     <string name="insert_surname_hint">Vezetéknév beírása</string>
     <string name="insert_date_hint">Dátum kiválasztása</string>
     <string name="invalid_value_name">Érvénytelen név!</string>
-    <string name="consider_year">Számolja az évet</string>
+    <string name="consider_year">Vegye figyelembe az évet</string>
     <string name="event_type_hint">Esemény típus</string>
     <string name="birthday">Születésnap</string>
     <string name="anniversary">Évforduló</string>
@@ -169,7 +169,7 @@
     <string name="wishes_birthday">Boldog születésnapot!</string>
     <string name="no_default_dialer">Nem található alapértelmezett tárcsázó alkalmazás!</string>
     <string name="no_default_sms">Nem található alapértelmezett sms alkalmazás!</string>
-    <string name="might_have_missed">You might have missed:</string>
+    <string name="might_have_missed">Lehet, hogy kihagyta:</string>
     <!-- Statistics -->
     <string name="did_you_know">Tudtad?</string>
     <string name="age_average">Az átlagos életkor %s</string>
@@ -237,7 +237,7 @@
     <string name="notification_title">Birday Emlékeztető</string>
     <string name="notification_description_part_1">A mai eseményeket:</string>
     <string name="notification_description_part_2">Szép napot!</string>
-    <string name="additional_notification_text">Közelgő eseményeket!</string>
+    <string name="additional_notification_text">Közelgő események!</string>
     <!-- Introduction slides -->
     <string name="slide_one_title">Üdvözlünk a Birday-ben!</string>
     <string name="slide_one_description">A Birday egy egyszerű és könnyű alkalmazás a fontos események kezelésére! Segítségével megbízhatóan és gyorsan elmentheti és archiválhatja szerettei születésnapját vagy más eseményeket.</string>
@@ -250,21 +250,21 @@
     <!-- Widget -->
     <string name="appwidget_upcoming">Közelgő eseményeket</string>
     <string name="add_widget">Birday - közelgő</string>
-    <string name="dark_widget_name">Sötét kütyü</string>
+    <string name="dark_widget_name">Sötét widget</string>
     <string name="dark_widget_description_on">A widget sötét témát használ</string>
     <string name="dark_widget_description_off">A widget világos témát használ</string>
     <string name="widget_configuration_title">Widget konfiguráció</string>
     <string name="widget_configuration_description">Konfiguráld a widget-et, hogy egyezzen a stílusoddal</string>
     <string name="widget_background_title">Háttér</string>
-    <string name="widget_background_description">Mutassa a hátteret a widget-nek</string>
+    <string name="widget_background_description">A widget hátterének megjelenítése</string>
     <string name="compact_widget_title">Kompakt elrendezés</string>
     <string name="compact_widget_description">Optimalizáld az elrendezést, hhog nagyon durván extrém kompakt legyen</string>
-    <string name="align_start_widget_title">Igazítsa a kezdésnél</string>
+    <string name="align_start_widget_title">Igazítás indításkor</string>
     <string name="align_start_widget_description">Igazítsa a widget-et a kezdéshez (jobb vagy bal, a lokalizációdtól függően)</string>
     <string name="hide_far_widget_title">Rejtse el a widget-et a távoli eseményeknél</string>
     <string name="hide_far_widget_description">A widget elrejtése, ha a következő események a további értesítési időszak utánra esnek (pl.: értesítés 7 nappal előtte, a következő esemény 10 nap múlva lesz -&gt; a widget el van rejtve)</string>
-    <string name="show_following_widget_title">Show the following event</string>
-    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
+    <string name="show_following_widget_title">A következő esemény megjelenítése</string>
+    <string name="show_following_widget_description">Az esemény vagy a következő eseményt követő események megjelenítése egy további sorban</string>
     <!-- Search -->
     <string name="search_event">Keresés…</string>
     <string name="search_no_result_title">Nincs találat</string>
@@ -284,7 +284,7 @@
     <string name="launch_auto_import_title">Automatikus importálás indításkor</string>
     <string name="launch_auto_import_description_off">Birday nem fog automatikusan kontaktokat importálni kilövésnél!</string>
     <string name="launch_auto_import_description_on">Birday automatikusan fog szinkronizálni a kontaktokkal indításkor</string>
-    <string name="hide_on_scroll_title">A navigációs sáv és az izé elrejtése</string>
+    <string name="hide_on_scroll_title">Navigációs sáv elrejtése görgetéskor</string>
     <string name="hide_on_scroll_description_on">Navigációs sáv elrejtése görgetésnél</string>
     <string name="hide_on_scroll_description_off">Az alsó navigációs sáv mindig látható marad</string>
     <string name="angry_bird_title">Morcos Madár mód</string>
@@ -301,14 +301,14 @@
     <string name="import_csv_description">Importálás CSV-fájlból. A szükséges fájlstruktúrát a Github wikijében találod</string>
     <string name="export_csv_title">CSV-be exportálás</string>
     <string name="export_csv_description">Minden esemény exportálása CSV-fájlba, kép nélkűl</string>
-    <string name="export_calendar_title">Export to calendar</string>
-    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
-    <string name="auto_export_title">Auto export events</string>
-    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
-    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
-    <string name="add_demo_entries_title">Add demo entries</string>
-    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
-    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
+    <string name="export_calendar_title">Exportálás naptárba</string>
+    <string name="export_calendar_description">Ha lehetséges, mentsen el minden eseményt a helyi naptárába. A naptár engedélye szükséges</string>
+    <string name="auto_export_title">Események automatikus exportálása</string>
+    <string name="auto_export_description_on">A Birday automatikusan exportál egy biztonsági mentést, amikor az alkalmazást bezárja. Felhívjuk figyelmét, hogy minden egyes biztonsági mentés felülírja az előzőt</string>
+    <string name="auto_export_description_off">A Birday helyi biztonsági mentését manuálisan kell végrehajtani</string>
+    <string name="add_demo_entries_title">Demó bejegyzések hozzáadása</string>
+    <string name="add_demo_entries_description">Töltse fel az adatbázist egy demó eseménykészlettel, főként színészekkel és történelmi személyiségekkel</string>
+    <string name="add_demo_entries_dialog_description">Ez tartósan több ezer bejegyzést ad az adatbázishoz, és hibakeresési célokra szolgál. Nem törli a meglévő eseményeket, de manuálisan kell megcsinálnia, ha törölni akarja az új bejegyzéseket. Sok szerencsét hozzá.</string>
     <string name="delete_db_title">Összes eseméy törlése</string>
     <string name="delete_db_description">Szimplán robbantsd fel a DB-t. Azért gondold meg kétszer!</string>
     <string name="delete_db_dialog_title">Biztos?</string>
@@ -322,7 +322,7 @@
     <string name="advanced_overview_title">Részletes áttekintés</string>
     <string name="advanced_overview_description_off">Az áttekintő képernyő csak az alapvető információkat jeleníti meg</string>
     <string name="advanced_overview_description_on">Az áttekintő képernyő más éveket és részletes információkat mutat</string>
-    <string name="replace_on_conflict_title">Replace on conflict</string>
-    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
-    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+    <string name="replace_on_conflict_title">Cserélje ki konfliktus esetén</string>
+    <string name="replace_on_conflict_description_off">Importáláskor a megkettőzött eseményt nem cseréli le az importált ismétlődés</string>
+    <string name="replace_on_conflict_description_on">Importáláskor a duplikált eseményt az importált példány felülírja</string>
 </resources>

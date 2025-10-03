@@ -90,7 +90,7 @@
     <string name="birday_import_title">Uvezite sigurnosnu kopiju za Birday</string>
     <string name="birday_import_description">Odaberite valjanu sigurnosnu kopiju za Birday kako biste uvezli događaje. Svi postojeći podaci će biti izbrisani!</string>
     <string name="birday_export_title">Izvezite i podijelite događaje</string>
-    <string name="birday_export_description">Izvezite dostupne događaje u sigurnosnu kopiju i podijelite ih ako želite. Datoteka se nalazi u Android/data/com.minar.birday/files</string>
+    <string name="birday_export_description">Izvezite dostupne događaje u sigurnosnu kopiju i podijelite ih ako želite</string>
     <string name="birday_import_success">Uvoz je završen!</string>
     <string name="birday_import_failure">Uvoz nije uspio. Jeste li ispravno odabrali datoteku?</string>
     <string name="birday_import_invalid_file">Uvoz nije uspio. Odabrana datoteka nije Birday sigurnosna kopija!</string>

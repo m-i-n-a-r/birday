@@ -31,6 +31,7 @@ class CalendarExporter(context: Context, attrs: AttributeSet?) : Preference(cont
         val act = context as MainActivity
         v.setOnClickListener(null)
         act.vibrate()
+        act.showLoadingIndicator()
         // Only export if there's at least one event
         if (act.mainViewModel.allEventsUnfiltered.value.isNullOrEmpty()) {
             act.showSnackbar(context.getString(R.string.no_events))
@@ -39,6 +40,7 @@ class CalendarExporter(context: Context, attrs: AttributeSet?) : Preference(cont
                 exportCalendar(context)
                 (context as MainActivity).runOnUiThread {
                     v.setOnClickListener(this)
+                    act.hideLoadingIndicator()
                 }
             }
         }
@@ -57,25 +59,25 @@ class CalendarExporter(context: Context, attrs: AttributeSet?) : Preference(cont
         var calendarId = createOrGetCalendar(act)
         if (calendarId == -1L) calendarId = createOrGetCalendar(act)
         if (calendarId == -1L) {
-            context.runOnUiThread(Runnable { context.showSnackbar(context.getString(R.string.birday_export_failure)) })
+            context.runOnUiThread { context.showSnackbar(context.getString(R.string.birday_export_failure)) }
             return false
         }
 
         // Phase 2: get every event and write it the the system calendar
         val events = act.mainViewModel.allEventsUnfiltered.value
         if (events.isNullOrEmpty()) {
-            context.runOnUiThread(Runnable {
+            context.runOnUiThread {
                 context.showSnackbar(context.getString(R.string.import_nothing_found))
-            })
+            }
         }
         val writeOk = writeEventsToCalendar(act, events!!, calendarId)
 
         // Phase 3: check if the write event went as expected and return accordingly
         return if (writeOk) {
-            context.runOnUiThread(Runnable { context.showSnackbar(context.getString(R.string.birday_export_success)) })
+            context.runOnUiThread { context.showSnackbar(context.getString(R.string.birday_export_success)) }
             true
         } else {
-            context.runOnUiThread(Runnable { context.showSnackbar(context.getString(R.string.birday_export_failure)) })
+            context.runOnUiThread { context.showSnackbar(context.getString(R.string.birday_export_failure)) }
             false
         }
 

@@ -88,8 +88,7 @@
     <string name="birday_import_title">Importar um backup de Birday</string>
     <string name="birday_import_description">Escolha um ficheiro válido para restaurar os seus eventos. Todos os dados existentes serão removidos!</string>
     <string name="birday_export_title">Exportar e partilhar eventos</string>
-    <string name="birday_export_description">Exporte os eventos para um backup e partilhe-os com quem quiser. O ficheiro foi colocado em
-    Android/data/com.minar.birday/files</string>
+    <string name="birday_export_description">Exporte os eventos para um backup e partilhe-os com quem quiser</string>
     <string name="birday_import_success">Importação terminada!</string>
     <string name="birday_import_failure">Falha ao importar. Escolheu o ficheiro correto?</string>
     <string name="birday_import_invalid_file">Falha ao importar. O ficheiro escolhido não é um backup Birday!</string>
@@ -285,7 +284,7 @@
     <string name="experimental_settings_title">Experimental</string>
     <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
     <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
-    <string name="check_github">Check Github</string>
+    <string name="check_github">Verifique o Github</string>
     <string name="translate_app">Translate the app</string>
     <string name="launch_auto_import_title">Auto import on launch</string>
     <string name="launch_auto_import_description_off">Birday won\'t import contacts automatically when launched</string>
@@ -301,7 +300,7 @@
     <string name="disable_astrology_description_off">Zodiac information are displayed normally</string>
     <string name="import_json_title">Import from JSON</string>
     <string name="import_json_description">Import from a JSON file. Refer to the wiki on Github for the required file structure</string>
-    <string name="export_json_title">Export to JSON</string>
+    <string name="export_json_title">Exportar como JSON</string>
     <string name="export_json_description">Export each event to a JSON file, image excluded</string>
     <string name="import_csv_title">Import from CSV</string>
     <string name="import_csv_description">Import from a CSV file. Refer to the wiki on Github for the required file structure</string>

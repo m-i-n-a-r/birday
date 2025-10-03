@@ -53,7 +53,7 @@
 
     <Button
         android:id="@+id/importContactsConfirmButton"
-        style="@style/Widget.Material3.Button.TextButton"
+        style="@style/Widget.Material3Expressive.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/card_padding"
@@ -70,7 +70,7 @@
 
     <Button
         android:id="@+id/importContactsCancelButton"
-        style="@style/Widget.Material3.Button.TextButton"
+        style="@style/Widget.Material3Expressive.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/card_padding"
@@ -79,13 +79,14 @@
         app:layout_constraintEnd_toStartOf="@id/importContactsConfirmButton"
         app:layout_constraintTop_toBottomOf="@id/importContactsDescription" />
 
-    <com.google.android.material.progressindicator.LinearProgressIndicator
+    <com.google.android.material.loadingindicator.LoadingIndicator
         android:id="@+id/importContactsProgressIndicator"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminate="true"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/importContactsDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

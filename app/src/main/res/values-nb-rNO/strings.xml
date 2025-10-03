@@ -90,8 +90,7 @@
     <string name="birday_import_description">Velg en gyldig sikkerhetskopi fra Birday for å gjenopprette hendelsene dine. Alle eksisterende data
     vil bli overskrevet!</string>
     <string name="birday_export_title">Eksporter og del hendelser</string>
-    <string name="birday_export_description">Eksporter tilgjengelige hendelser til en sikkerhetskopi, og del dem om du ønsker. Filen ligger under
-    Android/data/com.minar.birday/files</string>
+    <string name="birday_export_description">Eksporter tilgjengelige hendelser til en sikkerhetskopi, og del dem om du ønsker</string>
     <string name="birday_import_success">Import fullført!</string>
     <string name="birday_import_failure">Import feilet. Valgte du riktig fil?</string>
     <string name="birday_import_invalid_file">Importering feilet. Den valgte filen er ikke en sikkerhetskopi fra Birday!</string>
@@ -292,7 +291,7 @@
     <string name="translate_app">Oversett appen</string>
     <string name="launch_auto_import_title">Importer automatisk ved oppstart</string>
     <string name="launch_auto_import_description_off">Birday vil ikke importere kontakter automatisk når åpnet</string>
-    <string name="launch_auto_import_description_on">Birday vil automatisk synkronisere kontakter når åpnet</string>
+    <string name="launch_auto_import_description_on">Birday vil automatisk synkronisere kontakter når appen startes</string>
     <string name="hide_on_scroll_title">Skjul navigasjonslinjen ved rulling</string>
     <string name="hide_on_scroll_description_on">Skjul nedre navigasjonslinge når du blar ned</string>
     <string name="hide_on_scroll_description_off">Den nedre navigasjonslinjen vil alltid være synlig</string>
