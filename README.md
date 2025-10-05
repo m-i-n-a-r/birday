@@ -1,6 +1,6 @@
 # Birday
 
-An open source app to remember birthdays and events without having to open Facebook, set alarms or rely on Google Calendar.
+An open source app to remember birthdays and events without having to rely on apps like Facebook or Google Calendar or set alarms manually.
 
 <p align='center'>
   <a href='https://github.com/m-i-n-a-r/birday/blob/master/LICENSE.md'><img src='https://img.shields.io/badge/license-GPL 3-333333'/></a>
