@@ -296,7 +296,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">ניסיוני</string>
     <string name="experimental_settings_description">הגדרות ותכונות ניסיוניות או עם באגים. השימוש בהן על אחריותך בלבד</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of these features could be \"promoted\" and translated</string>
     <string name="check_github">בדוק בגיטהאב</string>
     <string name="translate_app">עזור לתרם את היישום</string>
     <string name="launch_auto_import_title">ייבוא אוטומטי בעת ההפעלה</string>
