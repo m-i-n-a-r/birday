@@ -288,10 +288,10 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimentální funkce</string>
     <string name="experimental_settings_description">Zopár experimentálních nastavení a funkcí. Můžou obsahovat chyby. Používejte na vlastní riziko</string>
-    <string name="experimental_disclaimer">Následující funkce jsou experimentální a nemusí fungovat správně. Používejte je na vlastní riziko. Pro kontrolu aktuálního stavu zkontrolujte Github, některé z těchto funkcí by mohly být \"aktualizovány\" a preloženy</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of these features could be \"promoted\" and translated</string>
     <string name="check_github">Check GitHub</string>
     <string name="translate_app">Pomozte s překladem Birday</string>
-    <string name="launch_auto_import_title">Synchronizace s kontakty při spuštění</string>
+    <string name="launch_auto_import_title">Automatic import on launch</string>
     <string name="launch_auto_import_description_off">Birday se při spuštění nebude automaticky synchronizovat s kontakty</string>
     <string name="launch_auto_import_description_on">Birday se při spuštění automaticky synchronizuje s kontakty</string>
     <string name="hide_on_scroll_title">Skrýt spodní navigační lištu při posouvání</string>
@@ -318,8 +318,8 @@
     <string name="auto_export_description_off">Místní zálohy Birday musí být vykonány manuálně</string>
     <string name="add_demo_entries_title">Add demo entries</string>
     <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
-    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
-    <string name="delete_db_title">Smazat všechny události</string>
+    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck with that.</string>
+    <string name="delete_db_title">Delete all events</string>
     <string name="delete_db_description">Jednoduše řečeno, smaže celou databázi. Než kliknete, dvakrát si to rozmyslete!</string>
     <string name="delete_db_dialog_title">Jste si jistý?</string>
     <string name="delete_db_dialog_description">Nezapomeňte si události nejprve zálohovat, tato operace vymaže databázi a měla by se používat pouze pro účely odstraňování chyb</string>
