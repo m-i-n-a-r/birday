@@ -290,10 +290,10 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Eksperimentalno</string>
     <string name="experimental_settings_description">Eksperimentalne, nestabilne i neprevedene postavke i mogućnosti. Koristiti s oprezom</string>
-    <string name="experimental_disclaimer">Ove značajke su eksperimentalne i možda ne rade kako treba. Koristite ih na vlastitu odgovornost. Možete provjeriti napredak njihova razvoja na GitHubu.</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of these features could be \"promoted\" and translated</string>
     <string name="check_github">Check GitHub</string>
     <string name="translate_app">Prevedite aplikaciju</string>
-    <string name="launch_auto_import_title">Uvezi automatski pri pokretanju</string>
+    <string name="launch_auto_import_title">Automatic import on launch</string>
     <string name="launch_auto_import_description_off">Birday neće automatski uvesti kontakte pri pokretanju</string>
     <string name="launch_auto_import_description_on">Birday će automatski uvesti kontakte pri pokretanju</string>
     <string name="hide_on_scroll_title">Sakrij navigacijsku traku pri scrollanju</string>
@@ -320,8 +320,8 @@
     <string name="auto_export_description_off">Komanda za izvoz sigurnosne kopije će se morati izvršavati ručno</string>
     <string name="add_demo_entries_title">Dodaj demo događaje</string>
     <string name="add_demo_entries_description">Ispunite podatkovnu bazu s par demonstracijskih događaja, pretežno u vezi s glumcima i povijesnim ličnostima</string>
-    <string name="add_demo_entries_dialog_description">Ovo će trajno dodati TISUĆE događaja u podatkovnu bazu i namijenjeno je otklanjanju poteškoća. Postojeći događaji neće biti izbrisani, no ako želite izbrisati dodane događaje, to ćete morati ručno. Sretno vam bilo.</string>
-    <string name="delete_db_title">Izbriši sve događaje</string>
+    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck with that.</string>
+    <string name="delete_db_title">Delete all events</string>
     <string name="delete_db_description">Ovo će izbrisati cijelu podatkovnu bazu, razmislite dvaput prije nego kliknete!</string>
     <string name="delete_db_dialog_title">Jeste li sigurni?</string>
     <string name="delete_db_dialog_description">Prvo napravite rezervnu kopiju događaja, ovo će obrisati podatkovnu bazu i trebalo bi se koristiti samo u svrhe otklanjanja grešaka</string>
