@@ -284,10 +284,10 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimenteel</string>
     <string name="experimental_settings_description">Enkele experimentele of buggy-instellingen en functies. Gebruik ze op eigen risico</string>
-    <string name="experimental_disclaimer">De volgende functies zijn experimenteel en werken mogelijk niet goed. Gebruik ze op eigen risico. Raadpleeg Github voor eventuele voortgang, aangezien sommige van deze functies kunnen worden \"gepromoot\" en vertaald</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of these features could be \"promoted\" and translated</string>
     <string name="check_github">Check GitHub</string>
     <string name="translate_app">Vertaal de app</string>
-    <string name="launch_auto_import_title">Automatisch importeren bij opstarten</string>
+    <string name="launch_auto_import_title">Automatic import on launch</string>
     <string name="launch_auto_import_description_off">Birday importeert contacten niet automatisch wanneer het wordt opgestart</string>
     <string name="launch_auto_import_description_on">Birday importeert contacten automatisch wanneer het wordt opgestart</string>
     <string name="hide_on_scroll_title">Verberg de navigatiebalk tijdens het scrollen</string>
@@ -314,8 +314,8 @@
     <string name="auto_export_description_off">Om een lokale Birday-back-up uit te voeren, moet deze handmatig worden gestuurd</string>
     <string name="add_demo_entries_title">Demo invoergegevens toevoegen</string>
     <string name="add_demo_entries_description">Populeren van de DB met een demo reeks gebeurtenissen, voornamelijk acteurs en historische cijfers</string>
-    <string name="add_demo_entries_dialog_description">Dit zal permanent DUIZENDEN vermeldingen aan de DB toevoegen en is bedoeld voor debug-doeleinden. Er worden geen bestaande evenementen verwijderd, maar als u de nieuwe invoer wilt verwijderen, moet u dit handmatig doen. Succes daarmee.</string>
-    <string name="delete_db_title">Alle gebeurtenissen verwijderen</string>
+    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck with that.</string>
+    <string name="delete_db_title">Delete all events</string>
     <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
     <string name="delete_db_dialog_title">Weet je het zeker?</string>
     <string name="delete_db_dialog_description">Zorg ervoor dat u eerst een back-up maakt van uw gebeurtenissen, deze actie zal de DB wissen en moet alleen worden gebruikt voor debugging doeleinden</string>
