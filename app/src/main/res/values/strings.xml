@@ -313,7 +313,7 @@
     <string name="translate_app">Translate the app</string>
     <string name="github_repo_develop" translatable="false">https://github.com/m-i-n-a-r/birday/commits/develop</string>
     <string name="crowdin_project" translatable="false">https://crwd.in/birday</string>
-    <string name="launch_auto_import_title">Auto import on launch</string>
+    <string name="launch_auto_import_title">Automatic import on launch</string>
     <string name="launch_auto_import_description_off">Birday won\'t import contacts automatically when launched</string>
     <string name="launch_auto_import_description_on">Birday will automatically sync with contacts at startup</string>
     <string name="hide_on_scroll_title">Hide navbar on scroll</string>

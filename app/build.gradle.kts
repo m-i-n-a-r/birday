@@ -16,8 +16,8 @@ android {
         applicationId = "com.minar.birday"
         targetSdk = 36
         minSdk = 26
-        versionCode = 35
-        versionName = "4.6.1"
+        versionCode = 36
+        versionName = "4.7.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -113,7 +113,7 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     
     // Room
-    val roomVersion = "2.8.1"
+    val roomVersion = "2.8.2"
     implementation("androidx.room:room-runtime:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
 
