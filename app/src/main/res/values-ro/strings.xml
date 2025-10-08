@@ -292,10 +292,10 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimentale</string>
     <string name="experimental_settings_description">Unele setări și funcții experimentale sau cu erori. Folosește-le pe propriul risc</string>
-    <string name="experimental_disclaimer">Următoarele caracteristici sunt experimentale și este posibil să nu funcționeze corect. Folosește-le pe propriul risc. Consultă Github pentru orice progres, deoarece unele dintre aceste caracteristici ar putea fi „promovate” și traduse</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of these features could be \"promoted\" and translated</string>
     <string name="check_github">Check GitHub</string>
     <string name="translate_app">Tradu aplicația</string>
-    <string name="launch_auto_import_title">Import automat la lansare</string>
+    <string name="launch_auto_import_title">Automatic import on launch</string>
     <string name="launch_auto_import_description_off">Birday nu va importa contactele automat la lansare</string>
     <string name="launch_auto_import_description_on">Birday se va sincroniza automat cu contactele la pornire</string>
     <string name="hide_on_scroll_title">Ascunde bara de navigare la derulare</string>
@@ -322,8 +322,8 @@
     <string name="auto_export_description_off">Pentru a efectua o copie de rezervă locală Birday, trebuie să fie executată manual</string>
     <string name="add_demo_entries_title">Adaugă intrări demo</string>
     <string name="add_demo_entries_description">Completează baza de date cu un set demo de evenimente, în principal actori și cifre istorice</string>
-    <string name="add_demo_entries_dialog_description">Acest lucru va adăuga permanent SUTE de evenimente în baza de date și este destinat pentru depanare. Nu va șterge niciun eveniment existent, dar dacă dorești să ștergi noile evenimente, va trebui să faci acest lucru manual. Mult noroc cu asta.</string>
-    <string name="delete_db_title">Șterge toate evenimentele</string>
+    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck with that.</string>
+    <string name="delete_db_title">Delete all events</string>
     <string name="delete_db_description">Pur și simplu, șterge BD. Gândește-te de două ori înainte de a da clic!</string>
     <string name="delete_db_dialog_title">Ești sigur?</string>
     <string name="delete_db_dialog_description">Asigură-te că faci mai întâi o copie de rezervă a evenimentelor, această operațiune va șterge baza de date și ar trebui să fie utilizată numai în scopuri de depanare</string>
