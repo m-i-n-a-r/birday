@@ -1,6 +1,6 @@
 # Birday
 
-An open source app to remember birthdays and events without having to open Facebook, set alarms or rely on Google Calendar.
+An open source app to remember birthdays and events without having to rely on apps like Facebook or Google Calendar or set alarms manually.
 
 <p align='center'>
   <a href='https://github.com/m-i-n-a-r/birday/blob/master/LICENSE.md'><img src='https://img.shields.io/badge/license-GPL 3-333333'/></a>
@@ -9,7 +9,7 @@ An open source app to remember birthdays and events without having to open Faceb
 </p>
 
 ## Introduction
-This is an open source app to remember **birthdays** and other events in a fast, light and beautiful way. No less, no more. I had this idea considering that Google Calendar doesn't display an automatic notification the day of the birthday, and sometimes i need to remember a birthday for a person who is not in my Contacts. Also, adding too much events to the calendar makes it messy and i prefer to manage them separately. The main focus of this app is being easy to use, clean and lightweight. I'm always glad to add features, but only important and really useful features!
+This is an open source app to remember **birthdays** and other events in a fast, light and beautiful way. No less, no more. I had this idea considering that Google Calendar doesn't display an automatic notification the day of the birthday, and sometimes I need to remember a birthday for a person who is not in my Contacts. Also, adding too much events to the calendar makes it messy and I prefer to manage them separately. The main focus of this app is being easy to use, clean and lightweight. I'm always glad to add features, but only important and really useful features!
 
 ## Translations (guide and info below, refer to [Crowdin](https://crwd.in/birday))
 
@@ -65,7 +65,7 @@ This is an open source app to remember **birthdays** and other events in a fast,
 - A nice searchbar and an event type selector
 - Quick apps launcher
 - Light, dark, Amoled black and system default theme
-- Full Material 3 / Monet support
+- Full Material 3 Expressive / Monet support
 - Selectable accent (no app restart needed, 12 choices)
 - Shimmer effect (it can be disabled) and confetti, because why not
 - Name first or surname first choice
@@ -115,6 +115,6 @@ Top contributors (special thanks to them!):
 - [Dominik Novosel](https://github.com/DominikNovosel) for the suggestions, for supporting the project and for the LTS version
 - [Simone Sestito](https://github.com/simonesestito) for adding useful features and for being a great friend
 
-Currently, Birday supports the languages in the above table. If you want to translate the app in any other language or update an existing translation, just contact me or send a pull request: you'll be quoted both on Github and in the Play Store description. For a detailed guide on how to translate the app, refer to the [Wiki](https://github.com/m-i-n-a-r/birday/wiki/Translate-the-app)
+Currently, Birday supports the languages in the above table. If you want to translate the app in any other language or update an existing translation, just contact me or send a pull request: you'll be quoted both on GitHub and in the Play Store description. For a detailed guide on how to translate the app, refer to the [Wiki](https://github.com/m-i-n-a-r/birday/wiki/Translate-the-app)
 
 This app was written during my free time as a training. It was first published on May 1, 2020. Many good devs helped me understanding the best practices and they taught me a lot of useful tricks. A special thank to every contributor here and on Reddit. and God bless Stack Overflow.

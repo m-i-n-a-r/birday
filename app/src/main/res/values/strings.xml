@@ -179,7 +179,7 @@
     <!-- Quick apps -->
     <string name="event_apps">Quick apps</string>
     <string name="event_apps_description">Apps to wish all the best rapidly!</string>
-    <string name="whatsapp" translatable="false">Whatsapp</string>
+    <string name="whatsapp" translatable="false">WhatsApp</string>
     <string name="signal" translatable="false">Signal</string>
     <string name="telegram" translatable="false">Telegram</string>
     <string name="instagram" translatable="false">Instagram</string>
@@ -309,7 +309,7 @@
     <string name="experimental_settings_title">Experimental</string>
     <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
     <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
-    <string name="check_github">Check Github</string>
+    <string name="check_github">Check GitHub</string>
     <string name="translate_app">Translate the app</string>
     <string name="github_repo_develop" translatable="false">https://github.com/m-i-n-a-r/birday/commits/develop</string>
     <string name="crowdin_project" translatable="false">https://crwd.in/birday</string>
