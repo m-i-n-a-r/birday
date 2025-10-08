@@ -281,7 +281,7 @@
     <string name="experimental_settings_title">Probatako aukerak</string>
     <string name="experimental_settings_description">Probatako ezarpen batzuk. Zure kontura erabili, batzuk huts egin dezakete.</string>
     <string name="experimental_disclaimer">Ezarpen hauek probatakoak dira eta agian ez dabiltza ondo. Zure kontura erabili. Begiratu GitHuben aldaketaren bat badago.</string>
-    <string name="check_github">Begiratu GitHub</string>
+    <string name="check_github">Check GitHub</string>
     <string name="translate_app">Itzuli aplikazioa</string>
     <string name="launch_auto_import_title">Automatikoki inportatu abiaraztean</string>
     <string name="launch_auto_import_description_off">Birdayk ez ditu zure kontaktuak inportatuko abiaraztean</string>
