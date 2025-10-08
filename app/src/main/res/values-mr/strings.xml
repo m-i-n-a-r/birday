@@ -280,7 +280,7 @@
     <string name="experimental_settings_title">Experimental</string>
     <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
     <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
-    <string name="check_github">Check Github</string>
+    <string name="check_github">Check GitHub</string>
     <string name="translate_app">Translate the app</string>
     <string name="launch_auto_import_title">Auto import on launch</string>
     <string name="launch_auto_import_description_off">Birday won\'t import contacts automatically when launched</string>
