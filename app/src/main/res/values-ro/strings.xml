@@ -293,7 +293,7 @@
     <string name="experimental_settings_title">Experimentale</string>
     <string name="experimental_settings_description">Unele setări și funcții experimentale sau cu erori. Folosește-le pe propriul risc</string>
     <string name="experimental_disclaimer">Următoarele caracteristici sunt experimentale și este posibil să nu funcționeze corect. Folosește-le pe propriul risc. Consultă Github pentru orice progres, deoarece unele dintre aceste caracteristici ar putea fi „promovate” și traduse</string>
-    <string name="check_github">Verifică Github</string>
+    <string name="check_github">Check GitHub</string>
     <string name="translate_app">Tradu aplicația</string>
     <string name="launch_auto_import_title">Import automat la lansare</string>
     <string name="launch_auto_import_description_off">Birday nu va importa contactele automat la lansare</string>
