@@ -291,7 +291,7 @@
     <string name="experimental_settings_title">Eksperimentalno</string>
     <string name="experimental_settings_description">Eksperimentalne, nestabilne i neprevedene postavke i mogućnosti. Koristiti s oprezom</string>
     <string name="experimental_disclaimer">Ove značajke su eksperimentalne i možda ne rade kako treba. Koristite ih na vlastitu odgovornost. Možete provjeriti napredak njihova razvoja na GitHubu.</string>
-    <string name="check_github">Provjeri GitHub</string>
+    <string name="check_github">Check GitHub</string>
     <string name="translate_app">Prevedite aplikaciju</string>
     <string name="launch_auto_import_title">Uvezi automatski pri pokretanju</string>
     <string name="launch_auto_import_description_off">Birday neće automatski uvesti kontakte pri pokretanju</string>
