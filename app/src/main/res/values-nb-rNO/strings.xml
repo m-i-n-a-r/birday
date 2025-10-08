@@ -286,10 +286,10 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Eksperimentelt</string>
     <string name="experimental_settings_description">Noen eksperimentelle eller ustabile innstillinger og funksjoner. Bruk dem på eget ansvar</string>
-    <string name="experimental_disclaimer">Følgende funksjoner er eksperimentelle, og fungerer ikke nødvendigvis som de skal. Bruk dem på eget ansvar. Sjekk GitHub for progresjon, ettersom disse funksjonene kan bli fullført og oversatt</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of these features could be \"promoted\" and translated</string>
     <string name="check_github">Check GitHub</string>
     <string name="translate_app">Oversett appen</string>
-    <string name="launch_auto_import_title">Importer automatisk ved oppstart</string>
+    <string name="launch_auto_import_title">Automatic import on launch</string>
     <string name="launch_auto_import_description_off">Birday vil ikke importere kontakter automatisk når åpnet</string>
     <string name="launch_auto_import_description_on">Birday vil automatisk synkronisere kontakter når appen startes</string>
     <string name="hide_on_scroll_title">Skjul navigasjonslinjen ved rulling</string>
@@ -316,8 +316,8 @@
     <string name="auto_export_description_off">For å kjøre en lokal sikkerhetskopi, må dette gjøres manuelt</string>
     <string name="add_demo_entries_title">Legg til demo-hendelser</string>
     <string name="add_demo_entries_description">Legg til et sett med demo-hendelser i databasen, for det meste skuespillere og historiske figurer</string>
-    <string name="add_demo_entries_dialog_description">Dette vil permanent legge til TUSENVIS av hendelser i databasen og er bare beregnet for testing. Det vil ikke slette noen eksisterende hendelser, men hvis du vil slette demo-hendelsene må du gjøre dette manuelt. Lykke til med det.</string>
-    <string name="delete_db_title">Slett alle hendelser</string>
+    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck with that.</string>
+    <string name="delete_db_title">Delete all events</string>
     <string name="delete_db_description">Eliminer databasen. Tenk deg om en ekstra gang før du trykker!</string>
     <string name="delete_db_dialog_title">Er du sikker?</string>
     <string name="delete_db_dialog_description">Sørg for å ta en sikkerhetskopi av hendelsene dine først, denne handlingen vil slette hele databasen og bør kun brukes for testing</string>
