@@ -277,7 +277,7 @@
     <string name="experimental_settings_title">प्रयोगात्मक</string>
     <string name="experimental_settings_description">कुछ सेटिंग्स और विशेषताएं प्रयोगात्मक अथवा त्रउटइबद्ध हैं। इन्का प्रयोग करने से यदि कोई हानि हुई तो उत्तरदायित्व स्वयं आपका होगा</string>
     <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
-    <string name="check_github">Check Github</string>
+    <string name="check_github">Check GitHub</string>
     <string name="translate_app">Translate the app</string>
     <string name="launch_auto_import_title">Auto import on launch</string>
     <string name="launch_auto_import_description_off">Birday won\'t import contacts automatically when launched</string>
