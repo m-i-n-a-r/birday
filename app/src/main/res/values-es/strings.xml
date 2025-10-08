@@ -276,10 +276,10 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimental</string>
     <string name="experimental_settings_description">Algunas opciones y características experimentales. Utilícelas bajo tu propio riesgo</string>
-    <string name="experimental_disclaimer">Las siguientes características son experimentales y pueden no funcionar correctamente. Utilícelas bajo su propio riesgo. Consulte Github para cualquier progreso, ya que algunas de estas características podrían ser \"promocionadas\" y traducidas</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of these features could be \"promoted\" and translated</string>
     <string name="check_github">Check GitHub</string>
     <string name="translate_app">Traducir la app</string>
-    <string name="launch_auto_import_title">Auto importación al iniciar</string>
+    <string name="launch_auto_import_title">Automatic import on launch</string>
     <string name="launch_auto_import_description_off">Birday no importará contactos automáticamente cuando se inicie</string>
     <string name="launch_auto_import_description_on">Birday se sincronizará automáticamente con los contactos al iniciar</string>
     <string name="hide_on_scroll_title">Ocultar barra de navegación al desplazar</string>
@@ -306,8 +306,8 @@
     <string name="auto_export_description_off">Para realizar un backup local de Birday, se debe ejecutar manualmente</string>
     <string name="add_demo_entries_title">Añadir entradas demo</string>
     <string name="add_demo_entries_description">Puebla el DB con un set de eventos demo, en su mayoría actores y figuras históricas</string>
-    <string name="add_demo_entries_dialog_description">Esto añadirá MILES de entradas a la base de datos permanentemente y está destinado para propósitos de debug. No eliminará ningún evento existente, pero si quieres eliminar las nuevas entradas, tendrás que hacerlo manualmente. Buena suerte por eso.</string>
-    <string name="delete_db_title">Eliminar todos los eventos</string>
+    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck with that.</string>
+    <string name="delete_db_title">Delete all events</string>
     <string name="delete_db_description">Sencillamente, destruye el DB. ¡Piensa dos veces antes de hacer clic!</string>
     <string name="delete_db_dialog_title">¿Estás seguro?</string>
     <string name="delete_db_dialog_description">Asegúrese de hacer una copia de seguridad de sus eventos, esta operación borrará la base de datos y debe ser usada solo para propósitos de debug</string>
