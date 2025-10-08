@@ -278,10 +278,10 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">kísérleti labor, belépés csak védőfelszerélessel!</string>
     <string name="experimental_settings_description">Néhány kísérleti, vagy bogaras (bugos) beállítások és fícsörök. Csak saját felelősségre használd őket!</string>
-    <string name="experimental_disclaimer">A következő funkciók kísérleti jellegűek, és előfordulhat, hogy nem működnek megfelelően. Használd őket saját felelősségére. Nézd meg a Githubot az előrehaladásról, mivel ezeknek a funkcióknak egy része „előléptethető” és lefordítható</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of these features could be \"promoted\" and translated</string>
     <string name="check_github">Check GitHub</string>
     <string name="translate_app">Alkalmazás fordítása</string>
-    <string name="launch_auto_import_title">Automatikus importálás indításkor</string>
+    <string name="launch_auto_import_title">Automatic import on launch</string>
     <string name="launch_auto_import_description_off">Birday nem fog automatikusan kontaktokat importálni kilövésnél!</string>
     <string name="launch_auto_import_description_on">Birday automatikusan fog szinkronizálni a kontaktokkal indításkor</string>
     <string name="hide_on_scroll_title">Navigációs sáv elrejtése görgetéskor</string>
@@ -308,8 +308,8 @@
     <string name="auto_export_description_off">A Birday helyi biztonsági mentését manuálisan kell végrehajtani</string>
     <string name="add_demo_entries_title">Demó bejegyzések hozzáadása</string>
     <string name="add_demo_entries_description">Töltse fel az adatbázist egy demó eseménykészlettel, főként színészekkel és történelmi személyiségekkel</string>
-    <string name="add_demo_entries_dialog_description">Ez tartósan több ezer bejegyzést ad az adatbázishoz, és hibakeresési célokra szolgál. Nem törli a meglévő eseményeket, de manuálisan kell megcsinálnia, ha törölni akarja az új bejegyzéseket. Sok szerencsét hozzá.</string>
-    <string name="delete_db_title">Összes eseméy törlése</string>
+    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck with that.</string>
+    <string name="delete_db_title">Delete all events</string>
     <string name="delete_db_description">Szimplán robbantsd fel a DB-t. Azért gondold meg kétszer!</string>
     <string name="delete_db_dialog_title">Biztos?</string>
     <string name="delete_db_dialog_description">Először mindenképpen készíts biztonsági másolatot az eseményekről, ez a művelet törli a DB-t, és csak hibakeresési célokra használható</string>
