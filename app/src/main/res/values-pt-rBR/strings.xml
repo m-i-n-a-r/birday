@@ -280,7 +280,7 @@
     <string name="experimental_settings_title">Experimental</string>
     <string name="experimental_settings_description">Algumas configurações e recursos experimentais. Utilize-os a seu próprio risco</string>
     <string name="experimental_disclaimer">Os recursos a seguir são experimentais e podem não funcionar devidamente. Utilize-os a sua própria conta e risco. Faça requisições no GitHub para novos recursos e traduções</string>
-    <string name="check_github">Cheque o GitHub</string>
+    <string name="check_github">Check GitHub</string>
     <string name="translate_app">Traduza o app</string>
     <string name="launch_auto_import_title">Importar automaticamente ao iniciar</string>
     <string name="launch_auto_import_description_off">O Birday não irá importar contatos automaticamente quando iniciado</string>
