@@ -286,7 +286,7 @@
     <string name="experimental_settings_title">Kokeellinen</string>
     <string name="experimental_settings_description">Joitakin kokeellisia tai bugisia asetuksia ja ominaisuuksia. Käytä niitä omalla vastuullasi</string>
     <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
-    <string name="check_github">Check Github</string>
+    <string name="check_github">Check GitHub</string>
     <string name="translate_app">Käännä tämä sovellus</string>
     <string name="launch_auto_import_title">Tuo automaattisesti käynnistettäessä</string>
     <string name="launch_auto_import_description_off">Birday ei tuo yhteystietoja automaattisesti käynnistettäessä</string>
