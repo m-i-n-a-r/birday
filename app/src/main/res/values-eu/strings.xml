@@ -280,10 +280,10 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Probatako aukerak</string>
     <string name="experimental_settings_description">Probatako ezarpen batzuk. Zure kontura erabili, batzuk huts egin dezakete.</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of these features could be \"promoted\" and translated</string>
-    <string name="check_github">Check GitHub</string>
+    <string name="experimental_disclaimer">Ezarpen hauek probatakoak dira eta agian ez dabiltza ondo. Zure kontura erabili. Begiratu GitHuben aldaketaren bat badago</string>
+    <string name="check_github">Begiratu GitHub</string>
     <string name="translate_app">Itzuli aplikazioa</string>
-    <string name="launch_auto_import_title">Automatic import on launch</string>
+    <string name="launch_auto_import_title">Automatikoki inportatu abiaraztean</string>
     <string name="launch_auto_import_description_off">Birdayk ez ditu zure kontaktuak inportatuko abiaraztean</string>
     <string name="launch_auto_import_description_on">Birdayk zure kontaktuak inportatutako ditu abiaraztean</string>
     <string name="hide_on_scroll_title">Ezkutatu nabigazio barra korritzean</string>
@@ -310,8 +310,8 @@
     <string name="auto_export_description_off">Birdayren segurtasun-kopia lokala egiteko, eskuz egin behar da</string>
     <string name="add_demo_entries_title">Gehitu probatako hitzorduak</string>
     <string name="add_demo_entries_description">Zerrendara probatako hitzordu batzuk gehitzen ditu, aktoreak eta pertsonaia historikoak</string>
-    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck with that.</string>
-    <string name="delete_db_title">Delete all events</string>
+    <string name="add_demo_entries_dialog_description">Aukera honek milaka datu kargatuko ditu eta probak egiteko besterik ez da. Ez du zerrendako hitzordirik ezabatuko baina gehitutakoak ezabatu nahi badituzu, eskuz egin beharko duzu. Zorte on lan horretan.</string>
+    <string name="delete_db_title">Ezabatu hitzordu guztiak</string>
     <string name="delete_db_description">Zerrenda husten du. Sakatu aurretik bi aldiz pentsatu!!</string>
     <string name="delete_db_dialog_title">Ziur zaude?</string>
     <string name="delete_db_dialog_description">Egin zure hitzorduen segurtasun-kopia, ekintza honek zerrenda hustu egingo du-eta.</string>
