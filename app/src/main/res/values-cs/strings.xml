@@ -288,7 +288,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimentální funkce</string>
     <string name="experimental_settings_description">Zopár experimentálních nastavení a funkcí. Můžou obsahovat chyby. Používejte na vlastní riziko</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="experimental_disclaimer">Následující funkce jsou experimentální a nemusí fungovat správně. Používejte je na vlastní riziko. Pro kontrolu aktuálního stavu zkontrolujte GitHub, některé z těchto funkcí by mohly být \"aktualizovány\" a preloženy</string>
     <string name="check_github">Přejít na GitHub</string>
     <string name="translate_app">Pomozte s překladem Birday</string>
     <string name="launch_auto_import_title">Synchronizace s kontakty při spuštění</string>

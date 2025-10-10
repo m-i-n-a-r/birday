@@ -285,7 +285,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Kokeellinen</string>
     <string name="experimental_settings_description">Joitakin kokeellisia tai bugisia asetuksia ja ominaisuuksia. Käytä niitä omalla vastuullasi</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="experimental_disclaimer">Seuraavat ominaisuudet ovat kokeellisia, eivätkä ne välttämättä toimi oikein. Käytä niitä omalla vastuullasi. Katso GitHub mitään edistystä, koska jotkut näistä ominaisuuksista voitaisiin \"edistää\" ja kääntää</string>
     <string name="check_github">Check GitHub</string>
     <string name="translate_app">Käännä tämä sovellus</string>
     <string name="launch_auto_import_title">Tuo automaattisesti käynnistettäessä</string>
