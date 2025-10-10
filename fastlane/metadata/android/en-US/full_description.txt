@@ -3,8 +3,8 @@ This app was created to remember and manage events in a simple and effective way
 The app contains some basic personalization options and an introduction, plus some new resources like animated vector drawables and the automatic dark/light theme. Support and updates are guaranteed!
   
 
-<h2><b>Why should i use Birday? 😕</b></h2>
-Well, i'll tell you 3 main reasons:
+<h2><b>Why should I use Birday? 😕</b></h2>
+Well, I'll tell you 3 main reasons:
 <ul>
     <li> It can help you to remember every birthday in the moment you prefer! </li>
     <li> It will cost just a few MB of storage! </li>
@@ -12,7 +12,7 @@ Well, i'll tell you 3 main reasons:
 </ul>
 
 Birday allows you to import the events directly from your contacts or calendar, with a simple favorite system and a set of stats to discover!
-if you're starting to develop apps and you need an app to look at, to find some inspiration and tricks: click on the Github link, and the Birday source code is served!
+if you're starting to develop apps and you need an app to look at, to find some inspiration and tricks: click on the GitHub link, and the Birday source code is served!
   
 
 <h2><b>Features 🎂</b></h2>

@@ -61,7 +61,7 @@ class BirdayExporter(context: Context, attrs: AttributeSet?) : Preference(contex
                 return ""
             }
             try {
-                if (uri != null) {
+                if (uri != null  && uri.toString().isNotBlank()) {
                     // Write to the SAF Uri provided by the user
                     context.contentResolver.openOutputStream(uri)?.use { os ->
                         dbFile.inputStream().use { fis ->

@@ -16,8 +16,8 @@ android {
         applicationId = "com.minar.birday"
         targetSdk = 36
         minSdk = 26
-        versionCode = 34
-        versionName = "4.6.0"
+        versionCode = 36
+        versionName = "4.7.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -98,14 +98,14 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.1")
 
     // Material Components
-    implementation("com.google.android.material:material:1.14.0-alpha04")
+    implementation("com.google.android.material:material:1.14.0-alpha05")
 
     // WorkManager
-    implementation("androidx.work:work-runtime-ktx:2.10.4")
+    implementation("androidx.work:work-runtime-ktx:2.10.5")
 
     // Navigation component
-    implementation("androidx.navigation:navigation-fragment-ktx:2.9.4")
-    implementation("androidx.navigation:navigation-ui-ktx:2.9.4")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.9.5")
+    implementation("androidx.navigation:navigation-ui-ktx:2.9.5")
 
     // Lifecycle and ViewModel
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
@@ -113,7 +113,7 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     
     // Room
-    val roomVersion = "2.8.0"
+    val roomVersion = "2.8.2"
     implementation("androidx.room:room-runtime:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
 
