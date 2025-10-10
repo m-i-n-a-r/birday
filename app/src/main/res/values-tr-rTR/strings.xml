@@ -283,10 +283,10 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Deneysel</string>
     <string name="experimental_settings_description">Bazı deneysel ve sorun yaratabilecek özellikleri içerir. Sorumluluk size aittir</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of these features could be \"promoted\" and translated</string>
-    <string name="check_github">Check GitHub</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="check_github">GitHub\'a göz at</string>
     <string name="translate_app">Uygulamayı çevirin</string>
-    <string name="launch_auto_import_title">Automatic import on launch</string>
+    <string name="launch_auto_import_title">Uygulama açılırken otomatik içe aktar</string>
     <string name="launch_auto_import_description_off">Birday açılırken kişileri otomatik olarak içe aktarmayacak</string>
     <string name="launch_auto_import_description_on">Birday açılırken kişileri otomatik olarak senkronize edecek</string>
     <string name="hide_on_scroll_title">Kaydırırken navigasyon çubuğunu gizle</string>
@@ -313,8 +313,8 @@
     <string name="auto_export_description_off">Yerel Birday yedeklemesi gerçekleştirmek için manuel olarak yürütülmesi gerekir</string>
     <string name="add_demo_entries_title">Demo girişleri ekleyin</string>
     <string name="add_demo_entries_description">DB\'yi aktörler ve tarihi şahsiyetlerden oluşan bir dizi etkinlikle doldurun</string>
-    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck with that.</string>
-    <string name="delete_db_title">Delete all events</string>
+    <string name="add_demo_entries_dialog_description">Bu, hata ayıklama amaçlı DB\'ye kalıcı olarak BİNLERCE giriş ekler. Var olan etkinlikler silinmeyecek ancak yeni girişleri silmek istemeniz durumunda bunu manuel olarak yapmak zorunda kalacaksınız. Bol şans.</string>
+    <string name="delete_db_title">Tüm etkinlikleri sil</string>
     <string name="delete_db_description">Kısaca, DB\'yi havaya uçurur. Tıklamadan önce iki kez düşün!</string>
     <string name="delete_db_dialog_title">Emin misin?</string>
     <string name="delete_db_dialog_description">Önce etkinliklerini yedeklediğinden emin ol, bu tüm DB\'yi silip süpürecek. Sadece hata ayıklama amacıyla kullanılmalıdır.</string>
