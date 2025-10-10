@@ -276,10 +276,10 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimentella</string>
     <string name="experimental_settings_description">Vissa experimentella eller buggiga inställningar och funktioner. Använd dem på egen risk</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of these features could be \"promoted\" and translated</string>
-    <string name="check_github">Check GitHub</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="check_github">Kolla GitHub</string>
     <string name="translate_app">Översätt appen</string>
-    <string name="launch_auto_import_title">Automatic import on launch</string>
+    <string name="launch_auto_import_title">Automatisk import vid start</string>
     <string name="launch_auto_import_description_off">Birday importerar inte kontakter automatiskt när den startas</string>
     <string name="launch_auto_import_description_on">Birday synkroniseras automatiskt med kontakter vid uppstart</string>
     <string name="hide_on_scroll_title">Dölj navigeringsfält vid rullning</string>
@@ -306,8 +306,8 @@
     <string name="auto_export_description_off">För att utföra en lokal Birday-säkerhetskopiering måste den köras manuellt</string>
     <string name="add_demo_entries_title">Lägg till demoinlägg</string>
     <string name="add_demo_entries_description">Populera DB med en demouppsättning händelser, mestadels skådespelare och historiska figurer</string>
-    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck with that.</string>
-    <string name="delete_db_title">Delete all events</string>
+    <string name="add_demo_entries_dialog_description">Detta kommer permanent lägga till TUSENTALS av poster till DB och är avsedd för debug-ändamål. Det kommer inte att ta bort någon befintlig händelse, men om du vill ta bort de nya posterna, måste du göra det manuellt. Lycka till för det.</string>
+    <string name="delete_db_title">Radera alla händelser</string>
     <string name="delete_db_description">Radera databasen. Tänk om innan du klickar!</string>
     <string name="delete_db_dialog_title">Är du säker?</string>
     <string name="delete_db_dialog_description">Se till att säkerhetskopiera dina händelser först, den här åtgärden kommer att radera databasen och bör endast användas i felsökningssyfte</string>
