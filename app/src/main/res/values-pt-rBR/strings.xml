@@ -279,10 +279,10 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimental</string>
     <string name="experimental_settings_description">Algumas configurações e recursos experimentais. Utilize-os a seu próprio risco</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of these features could be \"promoted\" and translated</string>
-    <string name="check_github">Check GitHub</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="check_github">Cheque o GitHub</string>
     <string name="translate_app">Traduza o app</string>
-    <string name="launch_auto_import_title">Automatic import on launch</string>
+    <string name="launch_auto_import_title">Importar automaticamente ao iniciar</string>
     <string name="launch_auto_import_description_off">O Birday não irá importar contatos automaticamente quando iniciado</string>
     <string name="launch_auto_import_description_on">Birday irá automaticamente sincronizar os contatos quando iniciado</string>
     <string name="hide_on_scroll_title">Esconder barra de navegação na rolagem</string>
@@ -309,8 +309,8 @@
     <string name="auto_export_description_off">Para realizar um Birday backup local, ele tem que ser executado manualmente</string>
     <string name="add_demo_entries_title">Adicionar entradas de demonstração</string>
     <string name="add_demo_entries_description">Popular o banco de dados com uma lista de eventos exemplares, grande parte sendo atores e figuras históricas</string>
-    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck with that.</string>
-    <string name="delete_db_title">Delete all events</string>
+    <string name="add_demo_entries_dialog_description">Isto irá adicionar permanentemente MILHARES de registros ao banco de dados e só deverá ser utilizado para fins de desenvolvimento. nenhum evento existente será deletado, porém, se quiser deletar novos registros, terá que fazer manualmente. Boa sorte.</string>
+    <string name="delete_db_title">Excluir todos os eventos</string>
     <string name="delete_db_description">Simplesmente deletar o banco de dados. Pense bem antes de clicar!</string>
     <string name="delete_db_dialog_title">Você tem certeza?</string>
     <string name="delete_db_dialog_description">Certifique-se de realizar um backup de seus eventos primeiro, esta operação irá apagar o banco de dados existente e deverá ser utilizada apenas para fins de desenvolvimento</string>
