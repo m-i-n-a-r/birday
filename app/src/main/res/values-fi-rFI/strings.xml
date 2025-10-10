@@ -112,7 +112,7 @@
     <string name="troubleshoot">Vianmääritys ja muut</string>
     <string name="battery_optimization_title">Ota akun käytön optimointi pois käytöstä</string>
     <string name="battery_optimization_description">Avaa asetukset, jotta voit poistaa käytöstä akun optimoinnin Birdaylle. Hyödyllinen, jos ilmoitukset eivät toimi</string>
-    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
+    <string name="battery_optimization_tutorial">- Näytä kaikki sovellukset ja löydä Birday luettelosta\n- Napauta Birdaa ja valitse \"Älä optimoi\"</string>
     <string name="notification_sound_title">Ilmoituksen ääni</string>
     <string name="notification_sound_description">Pikakuvake ilmoitusääni-asetuksiin, jos et pidä oletus-lintuäänestä</string>
     <string name="missing_permission_notifications">Ilmoituslupa on kielletty, eikä Birday voi lähettää ilmoituksia! Anna käyttöoikeudet asetuksista.</string>
@@ -121,15 +121,15 @@
     <string name="missing_permission_calendar_forever">Kalenterin käyttöoikeus on estetty ja sitä ei voi kysyä uudestaan, joten Birday ei voi tuoda kalenterista! Aseta käyttöoikeudet manuaalisesti.</string>
     <string name="import_calendar_title">Tuo kalenterista</string>
     <string name="import_calendar_description">Tuo vuosittaiset tapahtumat kalentereista. Muista asettaa tapahtumatyyppi ja vuosi pitääksesi asiat järjestyksessä!</string>
-    <string name="loop_avd_title">Loop animations</string>
-    <string name="loop_avd_description_on">The animations are looped infinitely</string>
-    <string name="loop_avd_description_off">The animations will run a single time</string>
-    <string name="order_alphabetically_title">Alphabetical order</string>
-    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
-    <string name="order_alphabetically_description_off">The events are ordered by date</string>
-    <string name="grouped_notifications_title">Group multiple notifications</string>
-    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
-    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
+    <string name="loop_avd_title">Silmukan animaatiot</string>
+    <string name="loop_avd_description_on">Animaatiot ovat looppeja äärettömän</string>
+    <string name="loop_avd_description_off">Animaatiot suorittavat yhden kerran</string>
+    <string name="order_alphabetically_title">Aakkosjärjestys</string>
+    <string name="order_alphabetically_description_on">Tapahtumat tilataan aakkosjärjestyksessä</string>
+    <string name="order_alphabetically_description_off">Tapahtumat tilataan päivämäärän mukaan</string>
+    <string name="grouped_notifications_title">Ryhmittele useita ilmoituksia</string>
+    <string name="grouped_notifications_description_on">Jos yhden päivän aikana on kaksi tai useampia tapahtumia, ilmoitukset ryhmitellään</string>
+    <string name="grouped_notifications_description_off">Jos yhden päivän aikana on kaksi tai useampia tapahtumia, Birday lähettää ilmoituksen jokaisesta</string>
     <!-- Developer -->
     <string name="dev_description">Olen kohtelias kaveri. Pidän kauniista asioita, kuten animaatioista, kuvakkeista, urheiluautoista ja 3D-tulostuksesta. Työskentelen suunnittelijana ja tietokoneinsinöörinä.</string>
     <string name="easter_egg">Hieno logo, eikö? ;D</string>
@@ -172,7 +172,7 @@
     <string name="wishes_birthday">Hyvää syntymäpäivää!</string>
     <string name="no_default_dialer">Oletus-puhelinsovellusta ei löytynyt!</string>
     <string name="no_default_sms">Oletustekstiviestisovellusta ei löytynyt!</string>
-    <string name="might_have_missed">You might have missed:</string>
+    <string name="might_have_missed">Olet saattanut unohtua:</string>
     <!-- Statistics -->
     <string name="did_you_know">Tiesitkö?</string>
     <string name="age_average">Keskimääräinen ikä on %s</string>
@@ -270,8 +270,8 @@
     <string name="align_start_widget_description">Kohdista pienoissovelluksen sisältö alkuun (oikea tai vasen riippuen maa-asetuksistasi)</string>
     <string name="hide_far_widget_title">Piilota pienoissovelluksesta kaukaiset tapahtumat</string>
     <string name="hide_far_widget_description">Piilota pienoissovellus, jos seuraavat tapahtumat ovat ilmoitusajan jälkeen (esim. ilmoitus 7 päivää ennen, seuraava tapahtuma on 10 päivää -&gt; pienoissovellus piilotetaan)</string>
-    <string name="show_following_widget_title">Show the following event</string>
-    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
+    <string name="show_following_widget_title">Näytä seuraava tapahtuma</string>
+    <string name="show_following_widget_description">Näytä seuraava tapahtuma tai seuraavan tapahtuman seuraavat tapahtumat ylimääräisellä rivillä</string>
     <!-- Search -->
     <string name="search_event">Hae…</string>
     <string name="search_no_result_title">Ei tuloksia</string>
@@ -285,10 +285,10 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Kokeellinen</string>
     <string name="experimental_settings_description">Joitakin kokeellisia tai bugisia asetuksia ja ominaisuuksia. Käytä niitä omalla vastuullasi</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
     <string name="check_github">Check GitHub</string>
     <string name="translate_app">Käännä tämä sovellus</string>
-    <string name="launch_auto_import_title">Automatic import on launch</string>
+    <string name="launch_auto_import_title">Tuo automaattisesti käynnistettäessä</string>
     <string name="launch_auto_import_description_off">Birday ei tuo yhteystietoja automaattisesti käynnistettäessä</string>
     <string name="launch_auto_import_description_on">Birday synkronoi automaattisesti yhteystiedot käynnistettäessä</string>
     <string name="hide_on_scroll_title">Piilota navigointipalkki vieritettäessä</string>
@@ -308,15 +308,15 @@
     <string name="import_csv_description">Import from a CSV file. Refer to the wiki on Github for the required file structure</string>
     <string name="export_csv_title">Vie CSV-tiedostoon</string>
     <string name="export_csv_description">Export each event to a CSV file, image excluded</string>
-    <string name="export_calendar_title">Export to calendar</string>
-    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
-    <string name="auto_export_title">Auto export events</string>
-    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
-    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
-    <string name="add_demo_entries_title">Add demo entries</string>
-    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
-    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck with that.</string>
-    <string name="delete_db_title">Delete all events</string>
+    <string name="export_calendar_title">Vie kalenteriin</string>
+    <string name="export_calendar_description">Tallenna jokainen tapahtuma paikalliseen kalenteriin, jos mahdollista. Edellyttää kalenterin käyttöoikeuden</string>
+    <string name="auto_export_title">Vie automaattisesti tapahtumat</string>
+    <string name="auto_export_description_on">Birday vie varmuuskopion automaattisesti kun sovellus on suljettu. Huomaa, että jokainen varmuuskopio korvaa edellisen</string>
+    <string name="auto_export_description_off">Voit suorittaa paikallisen Birday varmuuskopion, se on suoritettava manuaalisesti</string>
+    <string name="add_demo_entries_title">Lisää esittelykohteita</string>
+    <string name="add_demo_entries_description">Populaatio DB kanssa demo joukko tapahtumia, lähinnä näyttelijöitä ja historiallisia lukuja</string>
+    <string name="add_demo_entries_dialog_description">Tämä pysyvästi lisätä TIETOJA tietueita tietokantaan ja se on tarkoitettu vianjäljitystarkoituksiin. Se ei poista olemassa olevaa tapahtumaa, mutta jos haluat poistaa uudet merkinnät, sinun täytyy tehdä se manuaalisesti. Onnea tuolla.</string>
+    <string name="delete_db_title">Poista kaikki tapahtumat</string>
     <string name="delete_db_description">Poistaa KAIKKI tiedot. Mieti kaksi kertaa ennen kuin klikkaat!</string>
     <string name="delete_db_dialog_title">Oletko varma?</string>
     <string name="delete_db_dialog_description">Varmista, että varmuuskopioit tapahtumasi ensin, koska tämä toiminto pyyhkii kaikki tiedot, ja sitä kannattaa käyttää vain jos mikään muu ei auta</string>
@@ -329,7 +329,7 @@
     <string name="advanced_overview_title">Edistynyt yleiskatsaus</string>
     <string name="advanced_overview_description_off">Yleisnäkymä näyttää vain perustiedot</string>
     <string name="advanced_overview_description_on">Yleisnäkymä näyttää muut vuodet sekä yksityiskohtaisia tietoja</string>
-    <string name="replace_on_conflict_title">Replace on conflict</string>
-    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
-    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+    <string name="replace_on_conflict_title">Korvaa konfliktissa</string>
+    <string name="replace_on_conflict_description_off">Tuotaessa kaksoiskappaletta tapahtumaa ei korvata tuodulla kaksoiskappaleella</string>
+    <string name="replace_on_conflict_description_on">Tuonnin yhteydessä kaksinkertainen tapahtuma korvataan tuodulla kaksoiskappaleella</string>
 </resources>
