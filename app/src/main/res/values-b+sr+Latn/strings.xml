@@ -289,10 +289,10 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Eksperimentalno</string>
     <string name="experimental_settings_description">Pojedina podešavanja i opcije su eksperimentalne. Koristiti na sopstveni rizik</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of these features could be \"promoted\" and translated</string>
-    <string name="check_github">Check GitHub</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="check_github">Poseti GitHub</string>
     <string name="translate_app">Prevedi ovu aplikaciju</string>
-    <string name="launch_auto_import_title">Automatic import on launch</string>
+    <string name="launch_auto_import_title">Automatski uključi pri pokretanju programa</string>
     <string name="launch_auto_import_description_off">Birday ne može automatski pristupiti kontaktima pri otvaranju</string>
     <string name="launch_auto_import_description_on">Aplikacija će automatski ažurirati listu kontakta pri pokretanju</string>
     <string name="hide_on_scroll_title">Sakrij traku za navigaciju pri pomeranju</string>
@@ -320,7 +320,7 @@
     <string name="add_demo_entries_title">Add demo entries</string>
     <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
     <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck with that.</string>
-    <string name="delete_db_title">Delete all events</string>
+    <string name="delete_db_title">Obriši sve događaje</string>
     <string name="delete_db_description">Ukratko, bombardirajte DB. Razmislite dvaput pre nego što kliknete!</string>
     <string name="delete_db_dialog_title">Da li ste sigurni?</string>
     <string name="delete_db_dialog_description">Napravite rezervnu kopiju događaja, ovo će obrisati DB i trebalo bi da se koristi samo u svrhe otklanjanja grešaka</string>
