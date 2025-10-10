@@ -284,7 +284,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimenteel</string>
     <string name="experimental_settings_description">Enkele experimentele of buggy-instellingen en functies. Gebruik ze op eigen risico</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="experimental_disclaimer">De volgende functies zijn experimenteel en werken mogelijk niet goed. Gebruik ze op eigen risico. Raadpleeg GitHub voor eventuele voortgang, aangezien sommige van deze functies kunnen worden \"gepromoot\" en vertaald</string>
     <string name="check_github">Check GitHub</string>
     <string name="translate_app">Vertaal de app</string>
     <string name="launch_auto_import_title">Automatisch importeren bij opstarten</string>
