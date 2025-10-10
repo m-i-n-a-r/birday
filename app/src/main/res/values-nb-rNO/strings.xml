@@ -286,7 +286,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Eksperimentelt</string>
     <string name="experimental_settings_description">Noen eksperimentelle eller ustabile innstillinger og funksjoner. Bruk dem på eget ansvar</string>
-    <string name="experimental_disclaimer">Følgende funksjoner er eksperimentelle, og fungerer ikke nødvendigvis som de skal. Bruk dem på eget ansvar. Sjekk GitHub for progresjon, ettersom disse funksjonene kan bli fullført og oversatt</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
     <string name="check_github">Sjekk GitHub</string>
     <string name="translate_app">Oversett appen</string>
     <string name="launch_auto_import_title">Importer automatisk ved oppstart</string>

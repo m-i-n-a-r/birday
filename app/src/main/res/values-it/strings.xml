@@ -276,8 +276,8 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Sperimentale</string>
     <string name="experimental_settings_description">Alcune impostazioni e funzioni sperimentali o ancora problematiche. Usale a tuo rischio e pericolo</string>
-    <string name="experimental_disclaimer">Le seguenti funzioni sono sperimentali, e potrebbero non funzionare correttamente. Usale a tuo rischio. Per progressi su queste funzionalità, fare riferimento a Github, dato che alcune di queste funzioni potrebbero essere \"promosse\" e tradotte</string>
-    <string name="check_github">Controlla Github</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="check_github">Controlla GitHub</string>
     <string name="translate_app">Traduci l\'app</string>
     <string name="launch_auto_import_title">Importa automaticamente al lancio</string>
     <string name="launch_auto_import_description_off">Birday non importerà i contatti automaticamente al lancio</string>
@@ -307,7 +307,7 @@
     <string name="add_demo_entries_title">Aggiungi elementi demo</string>
     <string name="add_demo_entries_description">Popola il DB con un set di eventi demo, per lo più attori e figure storiche</string>
     <string name="add_demo_entries_dialog_description">Questo aggiungerà permanentemente MIGLIAIA di elementi al DB ed è inteso per scopi di debug. Non eliminerà nessun evento esistente, ma se vorrai cancellare i nuovi elementi, dovrai farlo manualmente. Buona fortuna con quello.</string>
-    <string name="delete_db_title">Elimina tutti gli eventi</string>
+    <string name="delete_db_title">Rimuovi tutti gli eventi</string>
     <string name="delete_db_description">Semplicemente, elimina il DB. Pensa due volte prima di cliccare!</string>
     <string name="delete_db_dialog_title">Sei sicuro?</string>
     <string name="delete_db_dialog_description">Assicurati di eseguire prima il backup dei tuoi eventi, questa operazione eliminerà il DB e dovrebbe essere usata solo per scopi di debug</string>

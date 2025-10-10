@@ -286,7 +286,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Πειραματικές</string>
     <string name="experimental_settings_description">Μερικές πειραματικές ή προβληματικές ρυθμίσεις και λειτουργίες. Χρησιμοποιήστε τις με δική σας ευθύνη</string>
-    <string name="experimental_disclaimer">Τα ακόλουθα χαρακτηριστικά είναι πειραματικά και μπορεί να μη λειτουργούν σωστά. Χρησιμοποιήστε τα με δική σας ευθύνη. Ανατρέξτε στο Github για οποιαδήποτε πρόοδο, καθώς μερικά από αυτά τα χαρακτηριστικά θα μπορούσαν να \"προωθηθούν\" και να μεταφραστούν</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
     <string name="check_github">Δείτε το Github</string>
     <string name="translate_app">Μετάφραση της εφαρμογής</string>
     <string name="launch_auto_import_title">Αυτόματη εισαγωγή κατά την εκκίνηση</string>
@@ -317,7 +317,7 @@
     <string name="add_demo_entries_title">Προσθήκη καταχωρήσεων επίδειξης</string>
     <string name="add_demo_entries_description">Γέμισε τη βάση δεδομένων με ένα σύνολο εκδηλώσεων επίδειξης, με κατά βάση ηθοποιούς και ιστορικές προσωπικότητες</string>
     <string name="add_demo_entries_dialog_description">Αυτό θα προσθέσει μόνιμα ΧΙΛΙΑΔΕΣ καταχωρήσεις στη βάση δεδομένων και προορίζεται για σκοπούς αποσφαλμάτωσης. Δε θα διαγράψει οποιαδήποτε υπάρχουσα εκδήλωση, αλλά αν θέλετε να διαγράψετε τις νέες καταχωρήσεις, θα πρέπει να το κάνετε χειροκίνητα. Καλή τύχη με αυτό.</string>
-    <string name="delete_db_title">Διαγραφή όλων των εκδηλώσεων</string>
+    <string name="delete_db_title">Διαγραφή όλων των γεγονότων</string>
     <string name="delete_db_description">Απλώς, διαγράψτε τη Βάση Δεδομένων. Σκεφτείτε το δύο φορές πριν κάνετε κλικ!</string>
     <string name="delete_db_dialog_title">Είστε σίγουρος/η;</string>
     <string name="delete_db_dialog_description">Πρώτα βεβαιωθείτε ότι έχετε δημιουργήσει αντίγραφα ασφαλείας των εκδηλώσεών σας, αυτή η λειτουργία θα διαγράψει τη Βάση Δεδομένων και θα πρέπει να χρησιμοποιηθεί μόνο για σκοπούς εντοπισμού σφαλμάτων</string>

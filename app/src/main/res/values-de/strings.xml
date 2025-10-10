@@ -278,7 +278,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimentell</string>
     <string name="experimental_settings_description">Einige experimentelle oder fehlerhafte Einstellungen und Funktionen, verwende sie auf eigene Gefahr</string>
-    <string name="experimental_disclaimer">Die folgenden Funktionen sind experimentell und funktionieren möglicherweise nicht richtig. Verwendung auf eigene Gefahr. Beziehe dich auf Github für jeglichen Fortschritt, da einige dieser Funktionen \"gefördert\" und übersetzt werden könnten</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
     <string name="check_github">Schau auf Github nach</string>
     <string name="translate_app">Übersetze die App</string>
     <string name="launch_auto_import_title">Automatischer Import beim Start</string>
@@ -309,7 +309,7 @@
     <string name="add_demo_entries_title">Demo-Einträge hinzufügen</string>
     <string name="add_demo_entries_description">Fülle die DB mit einer Reihe von Demo-Ereignissen, hauptsächlich Schauspielern und historischen Figuren</string>
     <string name="add_demo_entries_dialog_description">Dies fügt dauerhaft TAUSENDE von Einträgen zur DB hinzu und ist für Debugging-Zwecke gedacht. Es wird kein existierendes Ereignis gelöscht, aber wenn du die neuen Einträge löschen möchtest, musst du es manuell tun. Viel Glück dabei.</string>
-    <string name="delete_db_title">Alle Events löschen</string>
+    <string name="delete_db_title">Ereignis löschen</string>
     <string name="delete_db_description">Lösche die Datenbank. Überlege es dir zweimal bevor du klickst!</string>
     <string name="delete_db_dialog_title">Bist du dir sicher?</string>
     <string name="delete_db_dialog_description">Stelle sicher, dass du zuerst ein Backup deiner Ereignisse erstellst. Dieser Vorgang löscht die Datenbank und sollte nur zum Zweck des Debuggings verwendet werden</string>

@@ -113,7 +113,7 @@
     <string name="troubleshoot">Odstraňování problémů a další</string>
     <string name="battery_optimization_title">Zakázat optimalizaci baterie</string>
     <string name="battery_optimization_description">Otevřete nastavení a deaktivujte jakoukoli optimalizaci baterie pro Birday. Užitečné, pokud nefungují upozornění</string>
-    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
+    <string name="battery_optimization_tutorial">- Zobrazit všechny aplikace a najít narozeniny v seznamu\n- Klepněte na narozeniny a vyberte \"Neoptimalizovat\"</string>
     <string name="notification_sound_title">Zvuk upozornění</string>
     <string name="notification_sound_description">Přejít k nastavení zvuku upozornění, pokud se vám nelíbí výchozí zvuk ptáčků</string>
     <string name="missing_permission_notifications">Oprávnění k upozornění bylo zamítnuto. Birday vás nebude moct upozornit na události. Povolte prosím oprávnění v nastaveních smartphonu!</string>
@@ -288,8 +288,8 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimentální funkce</string>
     <string name="experimental_settings_description">Zopár experimentálních nastavení a funkcí. Můžou obsahovat chyby. Používejte na vlastní riziko</string>
-    <string name="experimental_disclaimer">Následující funkce jsou experimentální a nemusí fungovat správně. Používejte je na vlastní riziko. Pro kontrolu aktuálního stavu zkontrolujte Github, některé z těchto funkcí by mohly být \"aktualizovány\" a preloženy</string>
-    <string name="check_github">Přejít na Github</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="check_github">Přejít na GitHub</string>
     <string name="translate_app">Pomozte s překladem Birday</string>
     <string name="launch_auto_import_title">Synchronizace s kontakty při spuštění</string>
     <string name="launch_auto_import_description_off">Birday se při spuštění nebude automaticky synchronizovat s kontakty</string>
@@ -316,9 +316,9 @@
     <string name="auto_export_title">Automatický export událostí</string>
     <string name="auto_export_description_on">Birday automaticky exportuje zálohu při ukončení aplikace. Každá záloha přepíše zálohu předchozí</string>
     <string name="auto_export_description_off">Místní zálohy Birday musí být vykonány manuálně</string>
-    <string name="add_demo_entries_title">Add demo entries</string>
-    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
-    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck with that.</string>
+    <string name="add_demo_entries_title">Přidat ukázkové záznamy</string>
+    <string name="add_demo_entries_description">Vyplňte DB ukázkovou sadou událostí, většinou herců a historických postav</string>
+    <string name="add_demo_entries_dialog_description">To trvale přidá THOUSANDS položek do DB a je určeno pro účely ladění. Neodstraní žádnou existující událost, ale pokud chcete odstranit nové položky, musíte to udělat ručně. Hodně štěstí.</string>
     <string name="delete_db_title">Smazat všechny události</string>
     <string name="delete_db_description">Jednoduše řečeno, smaže celou databázi. Než kliknete, dvakrát si to rozmyslete!</string>
     <string name="delete_db_dialog_title">Jste si jistý?</string>
@@ -332,7 +332,7 @@
     <string name="advanced_overview_title">Rozšířený přehled</string>
     <string name="advanced_overview_description_off">Menu přehledu zobrazí pouze základní informace</string>
     <string name="advanced_overview_description_on">Menu přehledu zobrazí ostatní roky a detailní informace</string>
-    <string name="replace_on_conflict_title">Replace on conflict</string>
-    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
-    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+    <string name="replace_on_conflict_title">Nahradit v konfliktu</string>
+    <string name="replace_on_conflict_description_off">Při importu nebude duplicitní událost nahrazena importovanou duplicitou</string>
+    <string name="replace_on_conflict_description_on">Při importu nebude duplicitní událost nahrazena importovanou duplicitou</string>
 </resources>

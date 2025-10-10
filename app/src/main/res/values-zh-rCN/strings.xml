@@ -273,7 +273,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">试验性</string>
     <string name="experimental_settings_description">一些试验性或bug多的设置和功能。使用它们风险自负</string>
-    <string name="experimental_disclaimer">以下功能是试验性的，并且可能无法正常使用。使用它们风险自负。参考Github来看进度，因为其中部分功能可能被提升或翻译。</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
     <string name="check_github">查看Github</string>
     <string name="translate_app">翻译app</string>
     <string name="launch_auto_import_title">开启时自动导入</string>

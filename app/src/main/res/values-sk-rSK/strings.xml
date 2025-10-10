@@ -288,8 +288,8 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimentálne funkcie</string>
     <string name="experimental_settings_description">Zopár experimentálnych nastavení a funkcií. Môžu obsahovať chyby. Používajte na vlastné riziko</string>
-    <string name="experimental_disclaimer">Nasledujúce funkcie sú experimentálne a nemusia fungovať správne. Používajte ich na vlastné riziko. Aktuálny stav skontrolujte na Githube, niektoré z týchto funkcií by mohli byť \"aktualizované\" a preložené</string>
-    <string name="check_github">Prejsť na Github</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="check_github">Prejsť na GitHub</string>
     <string name="translate_app">Pomôžte s prekladom Birday</string>
     <string name="launch_auto_import_title">Synchronizácia s kontaktmi pri spustení</string>
     <string name="launch_auto_import_description_off">Birday sa pri spustení nebude automaticky synchronizovať s vašimi kontaktmi</string>

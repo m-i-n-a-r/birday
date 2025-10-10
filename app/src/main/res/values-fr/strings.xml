@@ -276,7 +276,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Expérimental</string>
     <string name="experimental_settings_description">Paramètres et fonctionnalités expérimentaux ou buggés. À utiliser à vos risques et périls</string>
-    <string name="experimental_disclaimer">Les fonctionnalités suivantes sont expérimentales et risquent de ne pas marcher correctement. Utilisez-les à vos propres risques. Consultez GitHub pour l\'avancement, car certaines fonctionnalités pourraient être \"promues\" et traduites</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
     <string name="check_github">Consulter GitHub</string>
     <string name="translate_app">Traduire l\'application</string>
     <string name="launch_auto_import_title">Importer automatiquement au lancement</string>
@@ -307,7 +307,7 @@
     <string name="add_demo_entries_title">Ajouter des entrées démo</string>
     <string name="add_demo_entries_description">Remplir le DB avec un ensemble de démonstrations d\'événements, principalement des acteurs et des figures historiques</string>
     <string name="add_demo_entries_dialog_description">Ceci ajoutera définitivement des MILLIERS d\'entrées à le DB et est destiné à des fins de debug. Il ne supprimera aucun événement existant, mais si vous voulez supprimer les nouvelles entrées, vous devez le faire manuellement. Bonne chance pour cela.</string>
-    <string name="delete_db_title">Supprimer tous les événements</string>
+    <string name="delete_db_title">Supprimé tous les événements</string>
     <string name="delete_db_description">Détruit tout simplement la base de données. Réfléchissez-y bien avant de cliquer !</string>
     <string name="delete_db_dialog_title">Êtes-vous sûr ?</string>
     <string name="delete_db_dialog_description">Assurez-vous de sauvegarder vos événements au préalable, cette opération va supprimer la base de données et ne doit être utilisée qu\'à des fins de débuggage</string>

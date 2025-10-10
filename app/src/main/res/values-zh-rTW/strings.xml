@@ -272,8 +272,8 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">試驗性</string>
     <string name="experimental_settings_description">一些試驗性或bug多的設置和功能。使用它們風險自負</string>
-    <string name="experimental_disclaimer">以下功能是試驗性的，並且可能無法正常使用。使用它們風險自負。參考Github來看進度，因為其中部分功能可能被提升或翻譯。</string>
-    <string name="check_github">查看Github</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="check_github">查看GitHub</string>
     <string name="translate_app">翻譯app</string>
     <string name="launch_auto_import_title">開啟時自動導入</string>
     <string name="launch_auto_import_description_off">Birday不會在開啟時自動導入通訊錄</string>
