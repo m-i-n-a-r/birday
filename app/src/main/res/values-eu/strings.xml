@@ -280,7 +280,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Probatako aukerak</string>
     <string name="experimental_settings_description">Probatako ezarpen batzuk. Zure kontura erabili, batzuk huts egin dezakete.</string>
-    <string name="experimental_disclaimer">Ezarpen hauek probatakoak dira eta agian ez dabiltza ondo. Zure kontura erabili. Begiratu GitHuben aldaketaren bat badago</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
     <string name="check_github">Begiratu GitHub</string>
     <string name="translate_app">Itzuli aplikazioa</string>
     <string name="launch_auto_import_title">Automatikoki inportatu abiaraztean</string>
