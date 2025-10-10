@@ -294,10 +294,10 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Експериментальні налаштування</string>
     <string name="experimental_settings_description">Деякі експериментальні або нестабільні функції. Користуйтесь ними на свій ризик</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of these features could be \"promoted\" and translated</string>
-    <string name="check_github">Check GitHub</string>
+    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="check_github">Переглянути GitHub</string>
     <string name="translate_app">Перекласти додаток</string>
-    <string name="launch_auto_import_title">Automatic import on launch</string>
+    <string name="launch_auto_import_title">Автоматичний імпорт при запуску</string>
     <string name="launch_auto_import_description_off">При запуску, Birday не імпортує контакти автоматично</string>
     <string name="launch_auto_import_description_on">Birday буде автоматично синхронізуватись з контактами при запуску</string>
     <string name="hide_on_scroll_title">Ховати навігацію при прокрутці</string>
@@ -324,8 +324,8 @@
     <string name="auto_export_description_off">Щоб виконати локальне резервне копіювання Birday, його потрібно виконати вручну</string>
     <string name="add_demo_entries_title">Додайте демонстраційні записи</string>
     <string name="add_demo_entries_description">Заповніть базу даних демонстраційним набором подій, переважно акторами та історичними діячами</string>
-    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck with that.</string>
-    <string name="delete_db_title">Delete all events</string>
+    <string name="add_demo_entries_dialog_description">Це назавжди додасть ТИСЯЧІ записів до бази даних і призначить цілями для налагодження. Це не призведе до видалення наявних подій, але якщо ви хочете видалити нові записи, вам потрібно буде зробити це вручну. Удачі в цьому.</string>
+    <string name="delete_db_title">Видалити всі події</string>
     <string name="delete_db_description">Просто знищити базу даних. Подумайте двічі перш ніж натискати!</string>
     <string name="delete_db_dialog_title">Ви впевнені?</string>
     <string name="delete_db_dialog_description">Переконайтесь, що зробили резервну копію, адже ця операція видалить базу даних і це варто використовувати лише для налагодження</string>
