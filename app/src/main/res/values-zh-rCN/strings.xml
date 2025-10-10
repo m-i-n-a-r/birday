@@ -273,10 +273,10 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">试验性</string>
     <string name="experimental_settings_description">一些试验性或bug多的设置和功能。使用它们风险自负</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of these features could be \"promoted\" and translated</string>
-    <string name="check_github">Check GitHub</string>
+    <string name="experimental_disclaimer">以下功能是试验性的，并且可能无法正常使用。使用它们风险自负。参考Github来看进度，因为其中部分功能可能被提升或翻译</string>
+    <string name="check_github">查看Github</string>
     <string name="translate_app">翻译app</string>
-    <string name="launch_auto_import_title">Automatic import on launch</string>
+    <string name="launch_auto_import_title">开启时自动导入</string>
     <string name="launch_auto_import_description_off">Birday不会在开启时自动导入通讯录</string>
     <string name="launch_auto_import_description_on">Birday会在开启时与通讯录自动同步</string>
     <string name="hide_on_scroll_title">滑动时隐藏导航栏</string>
@@ -303,8 +303,8 @@
     <string name="auto_export_description_off">要在本地备份Birday信息，则必须手动进行</string>
     <string name="add_demo_entries_title">添加演示条目</string>
     <string name="add_demo_entries_description">使用一组演示事件填充数据库，其中大部分是演员和历史人物</string>
-    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck with that.</string>
-    <string name="delete_db_title">Delete all events</string>
+    <string name="add_demo_entries_dialog_description">这将永久地向数据库添加数千个条目，用于调试目的。它不会删除任何现有事件，但如果您想删除新条目，则需要手动执行。祝你好运。</string>
+    <string name="delete_db_title">删除所有事件</string>
     <string name="delete_db_description">单纯的，把数据库核爆掉。好好思考下再点！</string>
     <string name="delete_db_dialog_title">你确认吗？</string>
     <string name="delete_db_dialog_description">确认先备份好你的事件，这个操作会抹除掉数据库而且只应该用作debug的用途</string>
