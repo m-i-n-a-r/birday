@@ -276,7 +276,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Sperimentale</string>
     <string name="experimental_settings_description">Alcune impostazioni e funzioni sperimentali o ancora problematiche. Usale a tuo rischio e pericolo</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="experimental_disclaimer">Le seguenti funzioni sono sperimentali, e potrebbero non funzionare correttamente. Usale a tuo rischio. Per progressi su queste funzionalità, fare riferimento a GitHub, dato che alcune di queste funzioni potrebbero essere \"promosse\" e tradotte</string>
     <string name="check_github">Controlla GitHub</string>
     <string name="translate_app">Traduci l\'app</string>
     <string name="launch_auto_import_title">Importa automaticamente al lancio</string>
