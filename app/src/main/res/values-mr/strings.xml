@@ -279,7 +279,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimental</string>
     <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="experimental_disclaimer">खालील वैशिष्ट्ये प्रायोगिक आहेत आणि ती योग्यरित्या कार्य करणार नाहीत. कृपया त्यांचा वापर स्वतःच्या जबाबदारीवर करा. काही वैशिष्ट्ये “प्रमोशन” होऊ शकतात आणि त्यांचे भाषांतर केले जाऊ शकते, त्यामुळे प्रगतीसाठी GitHub तपासा</string>
     <string name="check_github">Check Github</string>
     <string name="translate_app">Translate the app</string>
     <string name="launch_auto_import_title">Auto import on launch</string>
@@ -309,7 +309,7 @@
     <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
     <string name="add_demo_entries_title">Add demo entries</string>
     <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
-    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck with that.</string>
+    <string name="add_demo_entries_dialog_description">हे डेटाबेसमध्ये कायमस्वरूपी हजारो नोंदी जोडेल आणि हे फक्त डिबग उद्देशांसाठी आहे. हे कोणतीही विद्यमान घटना हटवणार नाही, परंतु जर तुम्हाला नवीन नोंदी हटवायच्या असतील, तर तुम्हाला त्या हाताने कराव्या लागतील. त्यासाठी शुभेच्छा.</string>
     <string name="delete_db_title">Delete all the events</string>
     <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
     <string name="delete_db_dialog_title">Are you sure?</string>
