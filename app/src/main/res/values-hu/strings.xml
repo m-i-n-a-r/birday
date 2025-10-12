@@ -278,7 +278,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">kísérleti labor, belépés csak védőfelszerélessel!</string>
     <string name="experimental_settings_description">Néhány kísérleti, vagy bogaras (bugos) beállítások és fícsörök. Csak saját felelősségre használd őket!</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="experimental_disclaimer">A következő funkciók kísérleti jellegűek, és előfordulhat, hogy nem működnek megfelelően. Használatuk csak saját felelősségre javasolt. A fejlesztésekért látogass el a GitHub-oldalra, mivel egyes funkciók „előléptethetők” és lefordíthatók lehetnek</string>
     <string name="check_github">Csekkold a GitHubot</string>
     <string name="translate_app">Alkalmazás fordítása</string>
     <string name="launch_auto_import_title">Automatikus importálás indításkor</string>
