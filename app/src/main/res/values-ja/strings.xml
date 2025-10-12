@@ -280,7 +280,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimental</string>
     <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="experimental_disclaimer">以下の機能は実験的なもので、正常に動作しない可能性があります。自己責任で使用してください。 これらの機能のいくつかは「プロモート」され翻訳される可能性があるため、GitHubを参照してください</string>
     <string name="check_github">Check GitHub</string>
     <string name="translate_app">Translate the app</string>
     <string name="launch_auto_import_title">起動時に自動インポート</string>
@@ -310,7 +310,7 @@
     <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
     <string name="add_demo_entries_title">Add demo entries</string>
     <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
-    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck with that.</string>
+    <string name="add_demo_entries_dialog_description">これはデバッグ目的のために、数千件のエントリをデータベースに永久に追加します。既存のイベントは削除されませんが、新しく追加されたエントリを削除したい場合は、手動で行う必要があります。それは大変ですよ。頑張ってください。</string>
     <string name="delete_db_title">すべてのイベントを削除</string>
     <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
     <string name="delete_db_dialog_title">よろしいですか？</string>

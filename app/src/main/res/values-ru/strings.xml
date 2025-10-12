@@ -295,7 +295,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Экспериментальный</string>
     <string name="experimental_settings_description">Некоторые экспериментальные или недоработанные настройки и особенности. Использовать на свой страх и риск</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="experimental_disclaimer">Данные функции находятся в этапе экспериментирования и могу работать с ошибками. Используйте их только в том случае, если не боитесь что-то потерять. Обращайтесь к GitHub для поиска любого прогресса приложения, так как некоторые из этих функций могут быть улучшены и переведены</string>
     <string name="check_github">Проверьте GitHub</string>
     <string name="translate_app">Перевести приложение</string>
     <string name="launch_auto_import_title">Автоматический импорт при запуске</string>

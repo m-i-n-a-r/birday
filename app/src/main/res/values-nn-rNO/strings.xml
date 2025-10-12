@@ -286,7 +286,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Eksperimentelt</string>
     <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to GitHub for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="experimental_disclaimer">Følgende funksjoner er eksperimentelle og fungerer kanskje ikke som de skal. Bruk dem på eget ansvar. Se GitHub for enhver progresjon, siden noen av disse funksjonene kan \"forfremmes\" og oversette</string>
     <string name="check_github">Sjekk GitHub</string>
     <string name="translate_app">Oversett appen</string>
     <string name="launch_auto_import_title">Importer automatisk ved oppstart</string>
@@ -316,7 +316,7 @@
     <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
     <string name="add_demo_entries_title">Add demo entries</string>
     <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
-    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck with that.</string>
+    <string name="add_demo_entries_dialog_description">Dette vil legge til THOUSANNER av oppføringer på DB og er ment for feilsøking. Det vil ikke slette noen eksisterende arrangementer, men hvis du vil slette de nye oppføringene manuelt. Lykke til med det.</string>
     <string name="delete_db_title">Slett alle hendelser</string>
     <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
     <string name="delete_db_dialog_title">Are you sure?</string>
