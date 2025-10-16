@@ -2,6 +2,7 @@ package com.minar.birday.activities
 
 import android.Manifest
 import android.app.ActivityManager
+import android.app.AlertDialog
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.appwidget.AppWidgetManager
@@ -58,6 +59,7 @@ import com.minar.birday.R
 import com.minar.birday.databinding.ActivityMainBinding
 import com.minar.birday.fragments.dialogs.ImportContactsBottomSheet
 import com.minar.birday.fragments.dialogs.InsertEventBottomSheet
+import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
 import com.minar.birday.preferences.backup.BirdayExporter
 import com.minar.birday.preferences.backup.BirdayImporter
@@ -72,6 +74,8 @@ import com.minar.birday.utilities.AppRater
 import com.minar.birday.utilities.addInsetsByMargin
 import com.minar.birday.utilities.addInsetsByPadding
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
+import com.minar.birday.utilities.eventToResult
+import com.minar.birday.utilities.formatTextPreview
 import com.minar.birday.utilities.getThemeColor
 import com.minar.birday.utilities.resultToEvent
 import com.minar.birday.utilities.shareUri
@@ -347,7 +351,8 @@ class MainActivity : AppCompatActivity() {
             if (lastLaunch + (3 * 60 * 1000) < currentLaunchTime) {
                 sharedPrefs.edit { putLong("last_launch", currentLaunchTime) }
                 thread {
-                    ContactsImporter(this, null).importContacts(this)
+                    ContactsImporter(this, null)
+                        .importContacts(this, withDialog = false)
                 }
             }
 
@@ -715,6 +720,76 @@ class MainActivity : AppCompatActivity() {
                 5000L,
             )
         }
+    }
+
+    // Show a dialog to select the events to import
+    fun showImportDialog(
+        events: List<Event>,
+        title: String? = null,
+        message: String? = null,
+        icon: Int = R.drawable.ic_backup_restore_24dp,
+        showSnack: Boolean = true,
+        onInserted: (() -> Unit)? = null
+    ) {
+        // Shouldn't happen
+        if (events.isEmpty()) return
+
+        // Prepare the dialog content
+        val sp = PreferenceManager.getDefaultSharedPreferences(this)
+        val surnameFirst = sp.getBoolean("surname_first", false)
+        val items: Array<CharSequence> = events.map { ev ->
+            formatTextPreview(
+                eventToResult(ev),
+                this,
+                surnameFirst = surnameFirst,
+                multiline = false
+            )
+        }.toTypedArray()
+
+        // Default: all the events are unselected
+        val checked = BooleanArray(items.size) { false }
+
+        val builder = MaterialAlertDialogBuilder(this)
+        if (!title.isNullOrBlank()) builder.setTitle(title)
+        if (!message.isNullOrBlank()) builder.setMessage(message)
+        builder.setIcon(icon)
+
+        builder.setMultiChoiceItems(items, checked) { _, which, isChecked ->
+            checked[which] = isChecked
+        }
+            .setPositiveButton(android.R.string.ok) { dialogInterface, _ ->
+                val toInsert = events.filterIndexed { i, _ -> checked[i] }
+                if (toInsert.isNotEmpty()) {
+                    mainViewModel.insertAll(toInsert)
+                    if (showSnack) {
+                        showSnackbar(getString(R.string.import_success))
+                    }
+                    onInserted?.invoke()
+                } else {
+                    if (showSnack) showSnackbar(getString(R.string.import_nothing_found))
+                }
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .setNeutralButton(android.R.string.selectAll, null)
+
+        val dialog = builder.create()
+
+        dialog.setOnShowListener {
+            val neutralButton = dialog.getButton(AlertDialog.BUTTON_NEUTRAL)
+            val listView = dialog.listView
+            neutralButton.setOnClickListener {
+                val allSelected = checked.all { it }
+                val newValue = !allSelected
+                for (i in checked.indices) {
+                    checked[i] = newValue
+                    listView.setItemChecked(i, newValue)
+                }
+            }
+            listView.setOnItemClickListener { _, _, position, _ ->
+                checked[position] = listView.isItemChecked(position)
+            }
+        }
+        dialog.show()
     }
 
     // Ask contacts permission
