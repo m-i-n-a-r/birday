@@ -75,6 +75,12 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
                         title = act.getString(R.string.import_contacts_title)
                     )
                 }
+            else {
+                act.mainViewModel.insertAll(events)
+                context.runOnUiThread {
+                    context.showSnackbar(context.getString(R.string.import_success))
+                }
+            }
             true
         }
     }
