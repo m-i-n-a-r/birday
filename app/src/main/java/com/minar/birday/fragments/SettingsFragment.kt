@@ -67,7 +67,11 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-        if (sharedPreferences == null) return
+        // Check if either sharedPreferences or key is null
+        if (sharedPreferences == null || key == null) {
+            return // Exit the function early if either is null
+        }
+
         when (key) {
             "theme_color" -> {
                 // The activity should be refreshed automatically when the main theme changes,
@@ -111,7 +115,6 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
         val activity = requireActivity()
         ActivityCompat.recreate(activity)
     }
-
     // Refresh one or more widgets
     private fun updateWidgets(updateUpcoming: Boolean = false, updateMinimal: Boolean = false) {
         // Update every existing widget with a broadcast
