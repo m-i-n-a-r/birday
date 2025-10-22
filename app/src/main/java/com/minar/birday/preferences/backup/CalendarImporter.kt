@@ -93,9 +93,9 @@ class CalendarImporter(context: Context, attrs: AttributeSet?) : Preference(cont
             }
             true
         } else {
-            act.mainViewModel.insertAll(events)
+            // Show the dialog to select the events to import
             context.runOnUiThread {
-                context.showSnackbar(context.getString(R.string.import_success))
+                act.showImportDialog(events, title = act.getString(R.string.import_calendar_title))
             }
             true
         }

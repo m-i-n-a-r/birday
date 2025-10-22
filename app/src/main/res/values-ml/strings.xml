@@ -284,7 +284,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimental</string>
     <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
+    <string name="experimental_disclaimer">താഴെപ്പറയുന്ന സവിശേഷതകൾ പരീക്ഷണാടിസ്ഥാനത്തിലുള്ളവയാണ്, അവ ശരിയായി പ്രവർത്തിക്കണമെന്നില്ല. നിങ്ങളുടെ സ്വന്തം ഉത്തരവാദിത്വത്തിൽ അവ ഉപയോഗിക്കുക. ചില സവിശേഷതകൾ “പ്രമോട്ടുചെയ്യപ്പെടാനും” വിവർത്തനം ചെയ്യപ്പെടാനും സാധ്യതയുള്ളതിനാൽ, പുരോഗതി അറിയാൻ GitHub കാണുക</string>
     <string name="check_github">Check Github</string>
     <string name="translate_app">Translate the app</string>
     <string name="launch_auto_import_title">Auto import on launch</string>
@@ -314,8 +314,8 @@
     <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
     <string name="add_demo_entries_title">Add demo entries</string>
     <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
-    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
-    <string name="delete_db_title">Delete all the events</string>
+    <string name="add_demo_entries_dialog_description">ഇത് ആയിരക്കണക്കിന് എൻട്രികൾ ഡാറ്റാബേസിലേക്ക് സ്ഥിരമായി ചേർക്കും, ഇത് ഡീബഗ് ഉദ്ദേശങ്ങൾക്കായാണ്. ഇത് നിലവിലുള്ള ഇവന്റുകളെ ഇല്ലാതാക്കില്ല, പക്ഷേ പുതിയ എൻട്രികൾ നീക്കംചെയ്യേണ്ടത് നിങ്ങൾക്ക് മാനുവലായി ചെയ്യേണ്ടിവരും. അതിനായി നിങ്ങളുടെ ഭാഗ്യത്തെ ആശ്രയിക്കാം.</string>
+    <string name="delete_db_title">എല്ലാ ഇവന്റുകളും ഇല്ലാതാക്കുക</string>
     <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
     <string name="delete_db_dialog_title">Are you sure?</string>
     <string name="delete_db_dialog_description">Make sure to backup your events first, this operation will wipe the DB and should be used for debugging purposes only</string>

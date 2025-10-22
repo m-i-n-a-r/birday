@@ -18,8 +18,8 @@
     <string name="stats_summary">Statisztikai összefoglaló</string>
     <string name="no_stats_description">Nincs elég esemény a statisztikák megjelenítéséhez. Adj hozzá néhányat, és gyere vissza később!</string>
     <plurals name="stats_total">
-        <item quantity="one">Birday is helping you to remember a total of %d event</item>
-        <item quantity="other">Birday is helping you to remember a total of %d events</item>
+        <item quantity="one">A Birday segít, hogy emlékezz összesen %d eseményre</item>
+        <item quantity="other">A Birday segít, hogy emlékezz összesen %d eseményre</item>
     </plurals>
     <string name="next_event">Következő esemény</string>
     <string name="no_next_event">Nincs megjeleníthető esemény!</string>
@@ -109,7 +109,7 @@
     <string name="troubleshoot">Hibaelhárítás</string>
     <string name="battery_optimization_title">Az akkumulátor optimalizálás letiltása</string>
     <string name="battery_optimization_description">Nyissa meg a beállításokat a Birday optimalizálásának letiltásához</string>
-    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
+    <string name="battery_optimization_tutorial">Mutasd az összes alkalmazást, és keresd meg a Birday-t a listában\nÉrintsd meg a Birday-t, majd válaszd a „Ne optimalizáld” lehetőséget</string>
     <string name="notification_sound_title">Értesítési hang</string>
     <string name="notification_sound_description">Parancsikon az értesítési hangbeállításokhoz, ha nem tetszik az alapértelmezett madárhang</string>
     <string name="missing_permission_notifications">Az értesítés engedély nem lett elfogadva, és Birday nem tud értesítést küldeni! Engedélyezd az értesítéseket a beállításokból, különben Birday morcos lesz!</string>
@@ -118,7 +118,7 @@
     <string name="missing_permission_calendar_forever">Az naptár engedély nem lett elfogadva, és nem lehet újra kérvényezni, szóval Birday nem tud importálni a naptárból! Engedélyezd a naptárat a beállításokból manuálisan.</string>
     <string name="import_calendar_title">Importálás naptárból</string>
     <string name="import_calendar_description">Importálj akármilyen éves eseményt a naptárodból. Ne felejtsd el beállítani az esemény típúsát és az évet, hhog rendben tartsd a dolgokat!</string>
-    <string name="loop_avd_title">Loop animations</string>
+    <string name="loop_avd_title">Animációs hurok</string>
     <string name="loop_avd_description_on">Az animációk a végtelenségig ismétlődnek</string>
     <string name="loop_avd_description_off">Az animációk egyszer kerülnek végrehajtásra</string>
     <string name="order_alphabetically_title">ABC sorrendben</string>
@@ -278,8 +278,8 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">kísérleti labor, belépés csak védőfelszerélessel!</string>
     <string name="experimental_settings_description">Néhány kísérleti, vagy bogaras (bugos) beállítások és fícsörök. Csak saját felelősségre használd őket!</string>
-    <string name="experimental_disclaimer">A következő funkciók kísérleti jellegűek, és előfordulhat, hogy nem működnek megfelelően. Használd őket saját felelősségére. Nézd meg a Githubot az előrehaladásról, mivel ezeknek a funkcióknak egy része „előléptethető” és lefordítható</string>
-    <string name="check_github">Csekkold a Githubot</string>
+    <string name="experimental_disclaimer">A következő funkciók kísérleti jellegűek, és előfordulhat, hogy nem működnek megfelelően. Használatuk csak saját felelősségre javasolt. A fejlesztésekért látogass el a GitHub-oldalra, mivel egyes funkciók „előléptethetők” és lefordíthatók lehetnek</string>
+    <string name="check_github">Csekkold a GitHubot</string>
     <string name="translate_app">Alkalmazás fordítása</string>
     <string name="launch_auto_import_title">Automatikus importálás indításkor</string>
     <string name="launch_auto_import_description_off">Birday nem fog automatikusan kontaktokat importálni kilövésnél!</string>

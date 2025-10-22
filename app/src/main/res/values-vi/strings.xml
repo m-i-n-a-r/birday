@@ -274,7 +274,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimental</string>
     <string name="experimental_settings_description">Some experimental or buggy settings and features. Use them at your own risk</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
+    <string name="experimental_disclaimer">Các tính năng sau đây là thử nghiệm và có thể không hoạt động đúng cách. Hãy sử dụng chúng dưới sự tự chịu trách nhiệm của bạn. Kiểm tra GitHub để biết tiến độ, vì một số tính năng này có thể được “nâng cấp” và dịch</string>
     <string name="check_github">Check Github</string>
     <string name="translate_app">Translate the app</string>
     <string name="launch_auto_import_title">Auto import on launch</string>
@@ -304,8 +304,8 @@
     <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
     <string name="add_demo_entries_title">Add demo entries</string>
     <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
-    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
-    <string name="delete_db_title">Delete all the events</string>
+    <string name="add_demo_entries_dialog_description">Điều này sẽ vĩnh viễn thêm HÀNG NGHÌN mục vào cơ sở dữ liệu và chỉ nhằm mục đích gỡ lỗi. Nó sẽ không xóa bất kỳ sự kiện hiện có nào, nhưng nếu bạn muốn xóa các mục mới, bạn sẽ phải làm điều đó thủ công. Chúc may mắn với việc đó.</string>
+    <string name="delete_db_title">Xóa tất cả sự kiện</string>
     <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
     <string name="delete_db_dialog_title">Are you sure?</string>
     <string name="delete_db_dialog_description">Make sure to backup your events first, this operation will wipe the DB and should be used for debugging purposes only</string>

@@ -276,10 +276,10 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">प्रयोगात्मक</string>
     <string name="experimental_settings_description">कुछ सेटिंग्स और विशेषताएं प्रयोगात्मक अथवा त्रउटइबद्ध हैं। इन्का प्रयोग करने से यदि कोई हानि हुई तो उत्तरदायित्व स्वयं आपका होगा</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of this features could be \"promoted\" and translated</string>
-    <string name="check_github">Check Github</string>
+    <string name="experimental_disclaimer">निम्नलिखित सुविधाएँ प्रायोगिक हैं और संभव है कि वे सही तरीके से काम न करें। इन्हें अपने स्वयं के जोखिम पर उपयोग करें। GitHub पर प्रगति की जानकारी देखें, क्योंकि इन सुविधाओं में से कुछ को “उन्नत” किया जा सकता है और अनुवादित किया जा सकता है</string>
+    <string name="check_github">GitHub जाँचें</string>
     <string name="translate_app">Translate the app</string>
-    <string name="launch_auto_import_title">Auto import on launch</string>
+    <string name="launch_auto_import_title">प्रारंभ पर स्वचालित आयात</string>
     <string name="launch_auto_import_description_off">Birday won\'t import contacts automatically when launched</string>
     <string name="launch_auto_import_description_on">Birday will automatically sync with contacts at startup</string>
     <string name="hide_on_scroll_title">Hide navbar on scroll</string>
@@ -306,8 +306,8 @@
     <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
     <string name="add_demo_entries_title">Add demo entries</string>
     <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
-    <string name="add_demo_entries_dialog_description">This will permanently add THOUSANDS of entries to the DB and is intended for debug purposes. It won\'t delete any existing event, but if you want to delete the new entries, you\'ll need to do it manually. Good luck for that.</string>
-    <string name="delete_db_title">Delete all the events</string>
+    <string name="add_demo_entries_dialog_description">यह डेटाबेस में स्थायी रूप से हज़ारों प्रविष्टियाँ जोड़ देगा और यह केवल डिबग उद्देश्यों के लिए है। यह किसी भी मौजूदा इवेंट को नहीं हटाएगा, लेकिन यदि आप नई प्रविष्टियाँ हटाना चाहते हैं, तो आपको यह मैन्युअली करना होगा। इसके लिए शुभकामनाएँ।</string>
+    <string name="delete_db_title">सभी घटनाएँ हटाएँ</string>
     <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
     <string name="delete_db_dialog_title">क्या आप सुनिश्चित हैं?</string>
     <string name="delete_db_dialog_description">Make sure to backup your events first, this operation will wipe the DB and should be used for debugging purposes only</string>

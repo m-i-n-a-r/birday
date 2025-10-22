@@ -53,7 +53,7 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
 
     // Import the contacts from device contacts (not necessarily Google)
     @SuppressLint("MissingPermission")
-    fun importContacts(context: Context): Boolean {
+    fun importContacts(context: Context, withDialog: Boolean? = true): Boolean {
         val act = context as MainActivity
         // Ask for contacts permission
         val permission = act.askContactsPermission(102)
@@ -67,9 +67,19 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
             }
             true
         } else {
-            act.mainViewModel.insertAll(events)
-            context.runOnUiThread {
-                context.showSnackbar(context.getString(R.string.import_success))
+            // Show dialog to select what to import
+            if (withDialog == true)
+                context.runOnUiThread {
+                    act.showImportDialog(
+                        events,
+                        title = act.getString(R.string.import_contacts_title)
+                    )
+                }
+            else {
+                act.mainViewModel.insertAll(events)
+                context.runOnUiThread {
+                    context.showSnackbar(context.getString(R.string.import_success))
+                }
             }
             true
         }

@@ -22,7 +22,8 @@ import com.minar.birday.utilities.getYears
 
 
 class MissedCarouselAdapter(private val missedEvents: List<EventResult>,
-                            private val hideImages: Boolean = true
+                            private val hideImages: Boolean = true,
+                            private val onItemClick: ((EventResult) -> Unit)? = null
 ) :
     RecyclerView.Adapter<MissedCarouselAdapter.ViewHolder>() {
     private lateinit var context: Context
@@ -96,6 +97,11 @@ class MissedCarouselAdapter(private val missedEvents: List<EventResult>,
             )
         }"
         viewHolder.previewText.text = eventQuickDescription
+
+        // Delegate click to caller if provided
+        viewHolder.itemView.setOnClickListener {
+            onItemClick?.invoke(event)
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)

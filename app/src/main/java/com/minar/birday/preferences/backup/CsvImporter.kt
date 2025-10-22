@@ -123,13 +123,11 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
             }
             // If the list is empty, the file was probably malformed
             if (eventList.isEmpty())
-                (context as MainActivity)
-                    .showSnackbar(context.getString(R.string.import_nothing_found))
-            // Bulk insert, using the standard duplicate detection strategy
-            act.mainViewModel.insertAll(eventList)
-            // Done. There's no need to restart the app
+                (context as MainActivity).showSnackbar(context.getString(R.string.import_nothing_found))
+            else
+            // Show the dialog to select the events to import
+                act.showImportDialog(eventList, title = act.getString(R.string.import_csv_title))
             fileStream.close()
-            (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_success))
         } catch (e: Exception) {
             (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_failure))
             e.printStackTrace()

@@ -36,6 +36,28 @@ fun resultToEvent(eventResult: EventResult) = Event(
     image = eventResult.image
 )
 
+// Transform an event in a result event
+fun eventToResult(event: Event) = EventResult(
+    id = event.id,
+    type = event.type,
+    name = event.name,
+    surname = event.surname,
+    favorite = event.favorite,
+    originalDate = event.originalDate,
+    nextDate = getNextDate(event.originalDate),
+    yearMatter = event.yearMatter,
+    notes = event.notes,
+    image = event.image
+)
+
+// Simply returns the next date for a given date
+fun getNextDate(date: LocalDate): LocalDate {
+    val now = LocalDate.now()
+    val nextDate = date.withYear(now.year)
+    if (nextDate.isBefore(now)) nextDate.plusYears(1)
+    return nextDate
+}
+
 // Destroy any illegal character and length in the fields, add missing fields if possible
 fun normalizeEvent(event: Event): Event {
     // The id is automatically fixed in Room
@@ -258,4 +280,42 @@ fun forceMonthDayFormat(date: LocalDate, style: FormatStyle = FormatStyle.MEDIUM
     formattedDate = formattedDate.replace(yearAsString, "")
     formattedDate = formattedDate.trim()
     return formattedDate
+}
+
+// Format a text preview for a given event, useful for the share event and import event dialog scenarios
+fun formatTextPreview(
+    event: EventResult,
+    context: Context,
+    surnameFirst: Boolean = false,
+    multiline: Boolean = true
+): String {
+    val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
+    var typeEmoji = String(Character.toChars(0x1F973))
+    when (event.type) {
+        EventCode.ANNIVERSARY.name -> typeEmoji = String(Character.toChars(0x1F495))
+        EventCode.DEATH.name -> typeEmoji = String(Character.toChars(0x1FAA6))
+        EventCode.NAME_DAY.name -> typeEmoji = String(Character.toChars(0x1F607))
+        EventCode.OTHER.name -> typeEmoji = String(Character.toChars(0x1F7E2))
+    }
+    val eventInformation =
+        if (multiline)
+            String(Character.toChars(0x1F388)) + "  " +
+                    context.getString(R.string.notification_title) +
+                    "\n" + typeEmoji + "  " +
+                    formatName(event, surnameFirst) +
+                    " (" + getStringForTypeCodename(context, event.type!!) +
+                    ")\n" + String(Character.toChars(0x1F56F)) + "  " +
+                    event.nextDate!!.format(formatter) +
+                    // Add a fourth line with the original date, if the year matters
+                    if (event.yearMatter!!)
+                        "\n" + String(Character.toChars(0x1F4C5)) + "  " +
+                                event.originalDate.format(formatter)
+                    else ""
+        else "$typeEmoji ${
+            formatName(
+                event,
+                surnameFirst
+            )
+        }\n${event.originalDate.format(formatter)}"
+    return eventInformation
 }

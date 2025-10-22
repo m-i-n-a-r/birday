@@ -294,8 +294,8 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Експериментальні налаштування</string>
     <string name="experimental_settings_description">Деякі експериментальні або нестабільні функції. Користуйтесь ними на свій ризик</string>
-    <string name="experimental_disclaimer">Наступні функції є експериментальними, і можуть працювати не належним чином. Використовуйте їх на свій страх і ризик. Зверніться до Github для будь-якого прогресу, оскільки деякі з цих функцій можна \"просунути\" і перекласти</string>
-    <string name="check_github">Переглянути Github</string>
+    <string name="experimental_disclaimer">Наступні функції є експериментальними, і можуть працювати не належним чином. Використовуйте їх на свій страх і ризик. Зверніться до GitHub для будь-якого прогресу, оскільки деякі з цих функцій можна \"просунути\" і перекласти</string>
+    <string name="check_github">Переглянути GitHub</string>
     <string name="translate_app">Перекласти додаток</string>
     <string name="launch_auto_import_title">Автоматичний імпорт при запуску</string>
     <string name="launch_auto_import_description_off">При запуску, Birday не імпортує контакти автоматично</string>

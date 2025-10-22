@@ -284,8 +284,8 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimenteel</string>
     <string name="experimental_settings_description">Enkele experimentele of buggy-instellingen en functies. Gebruik ze op eigen risico</string>
-    <string name="experimental_disclaimer">De volgende functies zijn experimenteel en werken mogelijk niet goed. Gebruik ze op eigen risico. Raadpleeg Github voor eventuele voortgang, aangezien sommige van deze functies kunnen worden \"gepromoot\" en vertaald</string>
-    <string name="check_github">Check Github</string>
+    <string name="experimental_disclaimer">De volgende functies zijn experimenteel en werken mogelijk niet goed. Gebruik ze op eigen risico. Raadpleeg GitHub voor eventuele voortgang, aangezien sommige van deze functies kunnen worden \"gepromoot\" en vertaald</string>
+    <string name="check_github">Check GitHub</string>
     <string name="translate_app">Vertaal de app</string>
     <string name="launch_auto_import_title">Automatisch importeren bij opstarten</string>
     <string name="launch_auto_import_description_off">Birday importeert contacten niet automatisch wanneer het wordt opgestart</string>
@@ -315,13 +315,13 @@
     <string name="add_demo_entries_title">Demo invoergegevens toevoegen</string>
     <string name="add_demo_entries_description">Populeren van de DB met een demo reeks gebeurtenissen, voornamelijk acteurs en historische cijfers</string>
     <string name="add_demo_entries_dialog_description">Dit zal permanent DUIZENDEN vermeldingen aan de DB toevoegen en is bedoeld voor debug-doeleinden. Er worden geen bestaande evenementen verwijderd, maar als u de nieuwe invoer wilt verwijderen, moet u dit handmatig doen. Succes daarmee.</string>
-    <string name="delete_db_title">Alle gebeurtenissen verwijderen</string>
-    <string name="delete_db_description">Simply, nuke the DB. Think twice before clicking!</string>
+    <string name="delete_db_title">Verwijder alle events</string>
+    <string name="delete_db_description">Denk twee keer voordat je klikt!</string>
     <string name="delete_db_dialog_title">Weet je het zeker?</string>
     <string name="delete_db_dialog_description">Zorg ervoor dat u eerst een back-up maakt van uw gebeurtenissen, deze actie zal de DB wissen en moet alleen worden gebruikt voor debugging doeleinden</string>
     <string name="delete_search_title">Zoekselectie verwijderen</string>
     <string name="delete_search_description_off">Het is niet mogelijk meerdere gebeurtenissen tegelijk te verwijderen</string>
-    <string name="delete_search_description_on">Press the trash button when you search one or more events to quickly delete them all from Birday. Use with caution!</string>
+    <string name="delete_search_description_on">Druk op de prullenbak knop wanneer je één of meer gebeurtenissen zoekt om ze snel vanaf geboorte te verwijderen. Wees voorzichtig!</string>
     <string name="delete_search_confirm">Dit zal alle resultaten van deze zoekopdracht verwijderen. U kunt het proces kort na klikken op OK ongedaan maken als u van gedachten verandert!</string>
     <string name="import_contacts_bottom_sheet_description">Wil je nu alle evenementen uit je contacten importeren?</string>
     <string name="yes_import">Importeer</string>
@@ -329,6 +329,6 @@
     <string name="advanced_overview_description_off">Het overzichtsscherm toont alleen basisinformatie</string>
     <string name="advanced_overview_description_on">Het overzichtsscherm toont andere jaren en gedetailleerde informatie</string>
     <string name="replace_on_conflict_title">Vervangen bij conflict</string>
-    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
-    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+    <string name="replace_on_conflict_description_off">Bij het importeren wordt een gedupliceerde afspraak niet vervangen door het geïmporteerde duplicaat</string>
+    <string name="replace_on_conflict_description_on">Bij het importeren wordt een gedupliceerde afspraak niet vervangen door het geïmporteerde duplicaat</string>
 </resources>
