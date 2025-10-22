@@ -79,18 +79,18 @@ This is an open source app to remember **birthdays** and other events in a fast,
 - 30+ locales supported and counting!
 
 ## Screenshots
-<p align='center'>
-  <img src='https://i.imgur.com/UFMMkEu.png' width='19%'/>
-  <img src='https://i.imgur.com/RvSy5y5.png' width='19%'/>
-  <img src='https://i.imgur.com/2y9lX2d.png' width='19%'/>
-  <img src='https://i.imgur.com/ztLm6Um.png' width='19%'/>
-  <img src='https://i.imgur.com/CSqWCcy.png' width='19%'/>
+<p align="center">
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/01.png" width="19%" alt="01"/>
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/02.png" width="19%" alt="02"/>
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/03.png" width="19%" alt="03"/>
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/04.png" width="19%" alt="04"/>
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/05.png" width="19%" alt="05"/>
 
-  <img src='https://i.imgur.com/seGRReK.png' width='19%'/>
-  <img src='https://i.imgur.com/z6DbIof.png' width='19%'/>
-  <img src='https://i.imgur.com/RyMyprK.png' width='19%'/>
-  <img src='https://i.imgur.com/qQJdQTN.png' width='19%'/>
-  <img src='https://i.imgur.com/k3UV8XG.png' width='19%'/>
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/06.png" width="19%" alt="06"/>
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/07.png" width="19%" alt="07"/>
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/08.png" width="19%" alt="08"/>
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/09.png" width="19%" alt="09"/>
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/10.png" width="19%" alt="10"/>
 </p>
 
 ## Download
