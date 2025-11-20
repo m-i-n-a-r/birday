@@ -85,7 +85,7 @@ dependencies {
     implementation("androidx.core:core-ktx:1.17.0")
     implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.activity:activity-ktx:1.11.0")
+    implementation("androidx.activity:activity-ktx:1.12.0")
     implementation("androidx.fragment:fragment-ktx:1.8.9")
 
     // Transition
@@ -98,7 +98,7 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.2.0")
 
     // Material Components
-    implementation("com.google.android.material:material:1.14.0-alpha06")
+    implementation("com.google.android.material:material:1.14.0-alpha07")
 
     // WorkManager
     implementation("androidx.work:work-runtime-ktx:2.11.0")
@@ -109,11 +109,11 @@ dependencies {
 
     // Lifecycle and ViewModel
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.10.0")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     
     // Room
-    val roomVersion = "2.8.3"
+    val roomVersion = "2.8.4"
     implementation("androidx.room:room-runtime:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
 
