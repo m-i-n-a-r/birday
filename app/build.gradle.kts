@@ -85,7 +85,7 @@ dependencies {
     implementation("androidx.core:core-ktx:1.17.0")
     implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.activity:activity-ktx:1.12.0")
+    implementation("androidx.activity:activity-ktx:1.12.1")
     implementation("androidx.fragment:fragment-ktx:1.8.9")
 
     // Transition
