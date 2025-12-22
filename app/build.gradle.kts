@@ -85,7 +85,7 @@ dependencies {
     implementation("androidx.core:core-ktx:1.17.0")
     implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.activity:activity-ktx:1.12.1")
+    implementation("androidx.activity:activity-ktx:1.12.2")
     implementation("androidx.fragment:fragment-ktx:1.8.9")
 
     // Transition
@@ -98,7 +98,7 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.2.0")
 
     // Material Components
-    implementation("com.google.android.material:material:1.14.0-alpha07")
+    implementation("com.google.android.material:material:1.14.0-alpha08")
 
     // WorkManager
     implementation("androidx.work:work-runtime-ktx:2.11.0")
