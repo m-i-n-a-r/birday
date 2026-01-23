@@ -89,7 +89,7 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.8.9")
 
     // Transition
-    implementation("androidx.transition:transition-ktx:1.6.0")
+    implementation("androidx.transition:transition-ktx:1.7.0")
 
     // Constraint / motion layout
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
@@ -138,5 +138,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.7.0")
 
     // [Testing] ICU
-    testImplementation("com.ibm.icu:icu4j:78.1")
+    testImplementation("com.ibm.icu:icu4j:78.2")
 }
