@@ -35,6 +35,7 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
     private var hideImages = false
     private var maxRows = Int.MAX_VALUE
     private var bgAlpha = 204 // 80% of 255
+    private var textSizeSp = 12f
 
     override fun onCreate() {
         // In onCreate(), setup any connections / cursors to the data source
@@ -43,6 +44,7 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
         hideImages = sp.getBoolean("widget_compact_hide_images", false)
         maxRows = sp.getInt("widget_compact_max_rows", Int.MAX_VALUE)
         bgAlpha = sp.getInt("widget_compact_opacity", 80) * 255 / 100
+        textSizeSp = sp.getInt("widget_compact_text_size", 12).toFloat()
         events = emptyList()
     }
 
@@ -70,6 +72,35 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
         }
         rv.setImageViewResource(R.id.compactWidgetRowBg, bgDrawable)
         rv.setInt(R.id.compactWidgetRowBg, "setImageAlpha", bgAlpha)
+
+        // Add equal padding on edges so background has uniform inset
+        val sidePadding = context.resources.getDimension(R.dimen.widget_padding).toInt()
+        when {
+            rowCount == 1 -> rv.setViewPadding(
+                R.id.compactWidgetRowContent, sidePadding, sidePadding, sidePadding, sidePadding
+            )
+            position == 0 -> rv.setViewPadding(
+                R.id.compactWidgetRowContent, sidePadding, sidePadding, sidePadding, 0
+            )
+            position == rowCount - 1 -> rv.setViewPadding(
+                R.id.compactWidgetRowContent, sidePadding, 0, sidePadding, sidePadding
+            )
+            else -> rv.setViewPadding(
+                R.id.compactWidgetRowContent, sidePadding, 0, sidePadding, 0
+            )
+        }
+
+        // Apply configured text size
+        val smallTextSizeSp = textSizeSp * 0.78f
+        rv.setTextViewTextSize(R.id.compactWidgetRowName, android.util.TypedValue.COMPLEX_UNIT_SP, textSizeSp)
+        rv.setTextViewTextSize(R.id.compactWidgetRowDate, android.util.TypedValue.COMPLEX_UNIT_SP, smallTextSizeSp)
+        rv.setTextViewTextSize(R.id.compactWidgetRowAge, android.util.TypedValue.COMPLEX_UNIT_SP, textSizeSp)
+        rv.setTextViewTextSize(R.id.compactWidgetRowCountdown, android.util.TypedValue.COMPLEX_UNIT_SP, textSizeSp)
+
+        // Scale image size to match text size (2x the text size in dp)
+        val imageSizeDp = textSizeSp * 2f
+        rv.setViewLayoutWidth(R.id.compactWidgetRowImage, imageSizeDp, android.util.TypedValue.COMPLEX_UNIT_DIP)
+        rv.setViewLayoutHeight(R.id.compactWidgetRowImage, imageSizeDp, android.util.TypedValue.COMPLEX_UNIT_DIP)
 
         // Name
         rv.setTextViewText(R.id.compactWidgetRowName, formatName(event, surnameFirst))
@@ -166,6 +197,7 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
         hideImages = sp.getBoolean("widget_compact_hide_images", false)
         maxRows = sp.getInt("widget_compact_max_rows", Int.MAX_VALUE)
         bgAlpha = sp.getInt("widget_compact_opacity", 80) * 255 / 100
+        textSizeSp = sp.getInt("widget_compact_text_size", 12).toFloat()
         val eventDao: EventDao = EventDatabase.getBirdayDatabase(context).eventDao()
         // Get all upcoming events sorted by next occurrence, including today
         events = eventDao.getOrderedEventsStatic()

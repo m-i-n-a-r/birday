@@ -16,11 +16,12 @@
 
     <!-- Row content -->
     <LinearLayout
+        android:id="@+id/compactWidgetRowContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingHorizontal="@dimen/in_row_padding"
+        android:paddingHorizontal="@dimen/widget_padding"
         android:paddingVertical="2dp">
 
         <!-- Contact photo -->

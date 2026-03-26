@@ -89,6 +89,31 @@
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             tools:text="80%" />
 
+        <!-- Text size -->
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/linear_vertical_margin"
+            android:text="@string/compact_widget_text_size_title"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+            android:textSize="@dimen/custom_preference_title_text_size" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/configurationTextSizeSlider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stepSize="1"
+            android:valueFrom="8"
+            android:valueTo="18" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/configurationTextSizeValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            tools:text="12 sp" />
+
         <!-- Show contact photos -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -129,6 +154,7 @@
                 android:background="#CC000000" />
 
             <LinearLayout
+                android:id="@+id/previewContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -142,7 +168,7 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingHorizontal="@dimen/in_row_padding"
-                    android:paddingVertical="2dp">
+                    android:paddingVertical="0dp">
 
                     <ImageView
                         android:id="@+id/previewAvatar1"
@@ -198,7 +224,7 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingHorizontal="@dimen/in_row_padding"
-                    android:paddingVertical="2dp">
+                    android:paddingVertical="0dp">
 
                     <ImageView
                         android:id="@+id/previewAvatar2"
@@ -254,7 +280,7 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingHorizontal="@dimen/in_row_padding"
-                    android:paddingVertical="2dp">
+                    android:paddingVertical="0dp">
 
                     <ImageView
                         android:id="@+id/previewAvatar3"

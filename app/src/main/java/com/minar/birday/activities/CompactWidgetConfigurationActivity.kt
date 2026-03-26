@@ -143,7 +143,23 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
             previewAvatars.forEach { it.visibility = visibility }
         }
 
-        // Update preview when slider changes
+        // Text size slider (default 12sp)
+        val textSizeSlider = binding.configurationTextSizeSlider
+        val textSizeValue = binding.configurationTextSizeValue
+        val savedTextSize = sharedPrefs.getInt("widget_compact_text_size", 12)
+        val previewContent = binding.previewContent
+
+        textSizeSlider.value = savedTextSize.toFloat()
+        textSizeValue.text = "${savedTextSize} sp"
+        updatePreviewTextSize(previewContent, savedTextSize.toFloat())
+
+        textSizeSlider.addOnChangeListener { _, value, _ ->
+            val size = value.toInt()
+            textSizeValue.text = "${size} sp"
+            updatePreviewTextSize(previewContent, size.toFloat())
+        }
+
+        // Update preview when opacity slider changes
         slider.addOnChangeListener { _, value, _ ->
             val opacity = value.toInt()
             opacityValue.text = "$opacity%"
@@ -156,6 +172,7 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
             sharedPrefs.edit {
                 putInt("widget_compact_opacity", opacity)
                 putBoolean("widget_compact_hide_images", !showPhotos.isChecked)
+                putInt("widget_compact_text_size", textSizeSlider.value.toInt())
             }
 
             // Trigger widget update
@@ -177,5 +194,31 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
     private fun updatePreviewBackground(view: android.view.View, opacityPercent: Int) {
         val alpha = (opacityPercent * 255 / 100)
         view.setBackgroundColor(Color.argb(alpha, 0, 0, 0))
+    }
+
+    private fun updatePreviewTextSize(container: android.view.ViewGroup, sp: Float) {
+        val smallSp = (sp * 0.78f) // date text is smaller
+        for (i in 0 until container.childCount) {
+            val row = container.getChildAt(i)
+            if (row is android.view.ViewGroup) {
+                updateTextSizeRecursive(row, sp, smallSp)
+            }
+        }
+    }
+
+    private fun updateTextSizeRecursive(group: android.view.ViewGroup, sp: Float, smallSp: Float) {
+        for (i in 0 until group.childCount) {
+            val child = group.getChildAt(i)
+            if (child is android.widget.TextView) {
+                // Date texts have smaller size (identified by their lighter color)
+                if (child.currentTextColor == android.graphics.Color.parseColor("#B3FFFFFF")) {
+                    child.textSize = smallSp
+                } else {
+                    child.textSize = sp
+                }
+            } else if (child is android.view.ViewGroup) {
+                updateTextSizeRecursive(child, sp, smallSp)
+            }
+        }
     }
 }

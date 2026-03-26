@@ -251,9 +251,10 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
 
         // Calculate how many rows fit in the widget height
         val options = appWidgetManager.getAppWidgetOptions(appWidgetId)
+        val textSizeSp = sp.getInt("widget_compact_text_size", 12)
         val widgetHeightDp = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MAX_HEIGHT, 120)
-        val containerPaddingDp = 8 // widget_margin top + bottom
-        val rowHeightDp = 34 // approximate row height (24dp image + text lines)
+        val containerPaddingDp = 16 // top + bottom edge padding (widget_padding * 2)
+        val rowHeightDp = (textSizeSp * 2.5).toInt() // image + text lines scale with text size
         val maxRows = ((widgetHeightDp - containerPaddingDp) / rowHeightDp).coerceAtLeast(1)
         sp.edit().putInt("widget_compact_max_rows", maxRows).apply()
 

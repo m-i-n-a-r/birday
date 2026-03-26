@@ -300,6 +300,7 @@
     <string name="compact_widget_opacity_title">Background opacity</string>
     <string name="compact_widget_opacity_description">Adjust the darkness of the widget background</string>
     <string name="compact_widget_show_photos_title">Show contact photos</string>
+    <string name="compact_widget_text_size_title">Text size</string>
     <string name="compact_widget_turns">turns %d</string>
     <string name="compact_widget_today">Today!</string>
     <string name="compact_widget_tomorrow">Tomorrow</string>
