@@ -30,7 +30,7 @@ This is an open source app to remember **birthdays** and other events in a fast,
 | **Polish**              | mateusz-bak       |                             |
 | **Croatian**            | Dominik Novosel   | Dominik Novosel             |
 | **Portuguese**          | smarquespt        | smarquespt                  |
-| **Brazilian**           | BadJuice67        | Paiusco                     |
+| **Brazilian Portuguese**           | BadJuice67        | Paiusco                     |
 | **Romanian**            | ygorigor          | ygorigor                    |
 | **Traditional Chinese** | Still34           | daoxi                       |
 | **Simplified Chinese**  | daoxi             | daoxi                       |
