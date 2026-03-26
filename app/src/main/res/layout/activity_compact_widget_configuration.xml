@@ -68,15 +68,40 @@
                 android:orientation="vertical"
                 android:paddingHorizontal="@dimen/in_row_padding">
 
-                <TextView
+                <LinearLayout
                     android:id="@+id/previewDateAbove1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/compact_widget_preview_date_1"
-                    android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-                    android:textColor="#B3FFFFFF"
-                    android:textSize="10sp"
-                    android:visibility="gone" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/previewZodiacBeforeAbove1"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_aries"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/compact_widget_preview_date_1"
+                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                        android:textColor="#B3FFFFFF"
+                        android:textSize="10sp" />
+
+                    <ImageView
+                        android:id="@+id/previewZodiacAfterAbove1"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginStart="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_aries"
+                        android:visibility="gone" />
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -85,15 +110,40 @@
                     android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                     android:textColor="#FFFFFFFF" />
 
-                <TextView
+                <LinearLayout
                     android:id="@+id/previewDateBelow1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/compact_widget_preview_date_1"
-                    android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-                    android:textColor="#B3FFFFFF"
-                    android:textSize="10sp"
-                    android:visibility="visible" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/previewZodiacBeforeBelow1"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_aries"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/compact_widget_preview_date_1"
+                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                        android:textColor="#B3FFFFFF"
+                        android:textSize="10sp" />
+
+                    <ImageView
+                        android:id="@+id/previewZodiacAfterBelow1"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginStart="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_aries"
+                        android:visibility="gone" />
+                </LinearLayout>
             </LinearLayout>
 
             <TextView
@@ -135,15 +185,40 @@
                 android:orientation="vertical"
                 android:paddingHorizontal="@dimen/in_row_padding">
 
-                <TextView
+                <LinearLayout
                     android:id="@+id/previewDateAbove2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/compact_widget_preview_date_2"
-                    android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-                    android:textColor="#B3FFFFFF"
-                    android:textSize="10sp"
-                    android:visibility="gone" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/previewZodiacBeforeAbove2"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_leo"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/compact_widget_preview_date_2"
+                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                        android:textColor="#B3FFFFFF"
+                        android:textSize="10sp" />
+
+                    <ImageView
+                        android:id="@+id/previewZodiacAfterAbove2"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginStart="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_leo"
+                        android:visibility="gone" />
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -152,15 +227,40 @@
                     android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                     android:textColor="#FFFFFFFF" />
 
-                <TextView
+                <LinearLayout
                     android:id="@+id/previewDateBelow2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/compact_widget_preview_date_2"
-                    android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-                    android:textColor="#B3FFFFFF"
-                    android:textSize="10sp"
-                    android:visibility="visible" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/previewZodiacBeforeBelow2"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_leo"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/compact_widget_preview_date_2"
+                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                        android:textColor="#B3FFFFFF"
+                        android:textSize="10sp" />
+
+                    <ImageView
+                        android:id="@+id/previewZodiacAfterBelow2"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginStart="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_leo"
+                        android:visibility="gone" />
+                </LinearLayout>
             </LinearLayout>
 
             <TextView
@@ -202,15 +302,40 @@
                 android:orientation="vertical"
                 android:paddingHorizontal="@dimen/in_row_padding">
 
-                <TextView
+                <LinearLayout
                     android:id="@+id/previewDateAbove3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/compact_widget_preview_date_3"
-                    android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-                    android:textColor="#B3FFFFFF"
-                    android:textSize="10sp"
-                    android:visibility="gone" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/previewZodiacBeforeAbove3"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_sagittarius"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/compact_widget_preview_date_3"
+                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                        android:textColor="#B3FFFFFF"
+                        android:textSize="10sp" />
+
+                    <ImageView
+                        android:id="@+id/previewZodiacAfterAbove3"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginStart="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_sagittarius"
+                        android:visibility="gone" />
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -219,15 +344,40 @@
                     android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                     android:textColor="#FFFFFFFF" />
 
-                <TextView
+                <LinearLayout
                     android:id="@+id/previewDateBelow3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/compact_widget_preview_date_3"
-                    android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-                    android:textColor="#B3FFFFFF"
-                    android:textSize="10sp"
-                    android:visibility="visible" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/previewZodiacBeforeBelow3"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_sagittarius"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/compact_widget_preview_date_3"
+                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                        android:textColor="#B3FFFFFF"
+                        android:textSize="10sp" />
+
+                    <ImageView
+                        android:id="@+id/previewZodiacAfterBelow3"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginStart="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_sagittarius"
+                        android:visibility="gone" />
+                </LinearLayout>
             </LinearLayout>
 
             <TextView

@@ -175,9 +175,26 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
             binding.previewDateBelow1, binding.previewDateBelow2, binding.previewDateBelow3
         )
 
+        // Preview zodiac icons
+        val previewZodiacBeforeAbove = listOf(
+            binding.previewZodiacBeforeAbove1, binding.previewZodiacBeforeAbove2, binding.previewZodiacBeforeAbove3
+        )
+        val previewZodiacAfterAbove = listOf(
+            binding.previewZodiacAfterAbove1, binding.previewZodiacAfterAbove2, binding.previewZodiacAfterAbove3
+        )
+        val previewZodiacBeforeBelow = listOf(
+            binding.previewZodiacBeforeBelow1, binding.previewZodiacBeforeBelow2, binding.previewZodiacBeforeBelow3
+        )
+        val previewZodiacAfterBelow = listOf(
+            binding.previewZodiacAfterBelow1, binding.previewZodiacAfterBelow2, binding.previewZodiacAfterBelow3
+        )
+        val allPreviewZodiacIcons = previewZodiacBeforeAbove + previewZodiacAfterAbove +
+            previewZodiacBeforeBelow + previewZodiacAfterBelow
+
         // Initialize preview date position + zodiac row visibility
         val zodiacRow = binding.configurationZodiacRow
         updatePreviewDatePosition(previewDatesAbove, previewDatesBelow, savedDatePosition)
+        updatePreviewZodiacPosition(previewZodiacBeforeAbove, previewZodiacAfterAbove, previewZodiacBeforeBelow, previewZodiacAfterBelow, savedZodiacPosition, savedDatePosition)
         zodiacRow.visibility = if (savedDatePosition == "hidden") android.view.View.GONE else android.view.View.VISIBLE
 
         // Update preview when date position changes
@@ -188,6 +205,18 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
                 zodiacRow.visibility = if (position == "hidden") android.view.View.GONE else android.view.View.VISIBLE
                 // Reset zodiac to hidden when date is hidden
                 if (position == "hidden") zodiacPositionSpinner.setSelection(0)
+                val zodiacPosition = zodiacPositionValues[zodiacPositionSpinner.selectedItemPosition]
+                updatePreviewZodiacPosition(previewZodiacBeforeAbove, previewZodiacAfterAbove, previewZodiacBeforeBelow, previewZodiacAfterBelow, zodiacPosition, position)
+            }
+            override fun onNothingSelected(parent: android.widget.AdapterView<*>?) {}
+        }
+
+        // Update preview when zodiac position changes
+        zodiacPositionSpinner.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: android.view.View?, pos: Int, id: Long) {
+                val zodiacPosition = zodiacPositionValues[pos]
+                val datePosition = datePositionValues[datePositionSpinner.selectedItemPosition]
+                updatePreviewZodiacPosition(previewZodiacBeforeAbove, previewZodiacAfterAbove, previewZodiacBeforeBelow, previewZodiacAfterBelow, zodiacPosition, datePosition)
             }
             override fun onNothingSelected(parent: android.widget.AdapterView<*>?) {}
         }
@@ -250,6 +279,7 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
         buildColorPicker(binding.generalTextColorPickerContainer, allColors, selectedWidgetTextColor) { name, color ->
             selectedWidgetTextColor = name
             updatePreviewGeneralTextColor(previewContent, color)
+            allPreviewZodiacIcons.forEach { it.setColorFilter(color) }
         }
 
         // 3. Highlight background color
@@ -287,6 +317,7 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
         val initHlTextColor = allColors[selectedHighlightTextColor] ?: Color.WHITE
         updatePreviewBackground(previewBackground, savedOpacity, initBgColor)
         updatePreviewGeneralTextColor(previewContent, initTextColor)
+        allPreviewZodiacIcons.forEach { it.setColorFilter(initTextColor) }
         updatePreviewHighlight(previewHighlightRow, initHlBgColor, savedHighlightOpacity)
         updatePreviewHighlightText(previewHighlightRow, initHlTextColor)
 
@@ -449,6 +480,27 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
                 updateTextSizeRecursive(child, sp, smallSp)
             }
         }
+    }
+
+    private fun updatePreviewZodiacPosition(
+        beforeAbove: List<android.view.View>, afterAbove: List<android.view.View>,
+        beforeBelow: List<android.view.View>, afterBelow: List<android.view.View>,
+        zodiacPosition: String, datePosition: String
+    ) {
+        val showBefore = zodiacPosition == "before"
+        val showAfter = zodiacPosition == "after"
+        val showAbove = datePosition == "above"
+        val showBelow = datePosition == "below"
+
+        val beforeAboveVis = if (showBefore && showAbove) android.view.View.VISIBLE else android.view.View.GONE
+        val afterAboveVis = if (showAfter && showAbove) android.view.View.VISIBLE else android.view.View.GONE
+        val beforeBelowVis = if (showBefore && showBelow) android.view.View.VISIBLE else android.view.View.GONE
+        val afterBelowVis = if (showAfter && showBelow) android.view.View.VISIBLE else android.view.View.GONE
+
+        beforeAbove.forEach { it.visibility = beforeAboveVis }
+        afterAbove.forEach { it.visibility = afterAboveVis }
+        beforeBelow.forEach { it.visibility = beforeBelowVis }
+        afterBelow.forEach { it.visibility = afterBelowVis }
     }
 
     private fun updatePreviewDatePosition(
