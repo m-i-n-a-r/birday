@@ -88,10 +88,16 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
         rv.setInt(R.id.compactWidgetRowBg, "setColorFilter", widgetBgColor)
         rv.setInt(R.id.compactWidgetRowBg, "setImageAlpha", bgAlpha)
 
-        // Apply configured text colors
+        // Apply configured text colors (date + age subdued at 70% opacity)
+        val subduedTextColor = android.graphics.Color.argb(
+            (android.graphics.Color.alpha(widgetTextColor) * 0.7f).toInt(),
+            android.graphics.Color.red(widgetTextColor),
+            android.graphics.Color.green(widgetTextColor),
+            android.graphics.Color.blue(widgetTextColor)
+        )
         rv.setTextColor(R.id.compactWidgetRowName, widgetTextColor)
-        rv.setTextColor(R.id.compactWidgetRowDate, widgetTextColor)
-        rv.setTextColor(R.id.compactWidgetRowAge, widgetTextColor)
+        rv.setTextColor(R.id.compactWidgetRowDate, subduedTextColor)
+        rv.setTextColor(R.id.compactWidgetRowAge, subduedTextColor)
         rv.setTextColor(R.id.compactWidgetRowCountdown, widgetTextColor)
 
         // Add equal padding on edges so background has uniform inset
@@ -143,7 +149,7 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
                 rv.setViewVisibility(R.id.compactWidgetRowDateBelow, View.GONE)
                 rv.setViewVisibility(R.id.compactWidgetRowDateAbove, View.VISIBLE)
                 rv.setTextViewText(R.id.compactWidgetRowDateAboveText, dateText)
-                rv.setTextColor(R.id.compactWidgetRowDateAboveText, widgetTextColor)
+                rv.setTextColor(R.id.compactWidgetRowDateAboveText, subduedTextColor)
                 applyZodiac(rv, event, R.id.compactWidgetRowZodiacBeforeAbove, R.id.compactWidgetRowZodiacAfterAbove)
             }
             else -> { // "below" (default)
