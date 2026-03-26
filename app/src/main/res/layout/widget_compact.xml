@@ -1,0 +1,16 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/compactWidgetBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/WidgetTheme">
+
+    <!-- List of upcoming events -->
+    <ListView
+        android:id="@+id/compactWidgetList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:minHeight="0dp"
+        android:padding="@dimen/widget_margin" />
+
+</FrameLayout>

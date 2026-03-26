@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/compactWidgetRowItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Background shape (tinted programmatically for opacity + rounded corners) -->
+    <ImageView
+        android:id="@+id/compactWidgetRowBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/widget_compact_row_bg_middle" />
+
+    <!-- Row content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/in_row_padding"
+        android:paddingVertical="2dp">
+
+        <!-- Contact photo -->
+        <ImageView
+            android:id="@+id/compactWidgetRowImage"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/next_event"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder_other_image" />
+
+        <!-- Name + birth date -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/in_row_padding">
+
+            <TextView
+                android:id="@+id/compactWidgetRowName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/invalid_value_name"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textColor="#FFFFFFFF" />
+
+            <TextView
+                android:id="@+id/compactWidgetRowDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/birth_date"
+                android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                android:textColor="#B3FFFFFF"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- Age ("turns X") -->
+        <TextView
+            android:id="@+id/compactWidgetRowAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingHorizontal="@dimen/in_row_padding"
+            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+            android:textColor="#B3FFFFFF"
+            tools:text="turns 43" />
+
+        <!-- Countdown -->
+        <TextView
+            android:id="@+id/compactWidgetRowCountdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="end"
+            android:minWidth="72dp"
+            android:paddingHorizontal="@dimen/in_row_padding"
+            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+            android:textColor="#FFFFFFFF"
+            tools:text="in 5 days" />
+
+    </LinearLayout>
+
+</FrameLayout>

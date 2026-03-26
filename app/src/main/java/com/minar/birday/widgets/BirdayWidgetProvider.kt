@@ -68,6 +68,10 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
                 R.layout.widget_minimal -> {
                     updateMinimal(context, appWidgetManager, appWidgetId)
                 }
+
+                R.layout.widget_compact -> {
+                    updateCompact(context, appWidgetManager, appWidgetId)
+                }
             }
 
         } catch (e: Exception) {
@@ -227,6 +231,64 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
                     views.setViewVisibility(R.id.minimalWidgetMain, View.INVISIBLE)
                 else views.setViewVisibility(R.id.minimalWidgetMain, View.VISIBLE)
             } else views.setViewVisibility(R.id.minimalWidgetMain, View.VISIBLE)
+
+            // Instruct the widget manager to update the widget
+            appWidgetManager.updateAppWidget(appWidgetId, views)
+        }.start()
+    }
+
+    // Update the compact table widget
+    private fun updateCompact(
+        context: Context,
+        appWidgetManager: AppWidgetManager,
+        appWidgetId: Int
+    ) {
+        val sp = PreferenceManager.getDefaultSharedPreferences(context)
+        val opacityPercent = sp.getInt("widget_compact_opacity", 80)
+        val alpha = (opacityPercent * 255 / 100)
+        val views = RemoteViews(context.packageName, R.layout.widget_compact)
+        val intent = Intent(context, MainActivity::class.java)
+
+        // Calculate how many rows fit in the widget height
+        val options = appWidgetManager.getAppWidgetOptions(appWidgetId)
+        val widgetHeightDp = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MAX_HEIGHT, 120)
+        val containerPaddingDp = 8 // widget_margin top + bottom
+        val rowHeightDp = 34 // approximate row height (24dp image + text lines)
+        val maxRows = ((widgetHeightDp - containerPaddingDp) / rowHeightDp).coerceAtLeast(1)
+        sp.edit().putInt("widget_compact_max_rows", maxRows).apply()
+
+        Thread {
+            // Launch the app on click
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            val pendingIntent =
+                PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
+            views.setOnClickPendingIntent(R.id.compactWidgetBackground, pendingIntent)
+
+            // Set up the intent that starts the CompactWidgetService, which will provide the views
+            val widgetServiceIntent = Intent(context, CompactWidgetService::class.java)
+
+            // Set up the RemoteViews object to use a RemoteViews adapter and populate the data
+            views.apply {
+                setRemoteAdapter(R.id.compactWidgetList, widgetServiceIntent)
+            }
+
+            // Template to handle the click listener for each item
+            val clickIntentTemplate = Intent(context, MainActivity::class.java)
+            val clickPendingIntentTemplate: PendingIntent = TaskStackBuilder.create(context)
+                .addNextIntentWithParentStack(clickIntentTemplate)
+                .getPendingIntent(
+                    4,
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                )
+            views.setPendingIntentTemplate(R.id.compactWidgetList, clickPendingIntentTemplate)
+
+            // Fill the list with the next events
+            appWidgetManager.notifyAppWidgetViewDataChanged(
+                appWidgetId,
+                R.id.compactWidgetList
+            )
 
             // Instruct the widget manager to update the widget
             appWidgetManager.updateAppWidget(appWidgetId, views)

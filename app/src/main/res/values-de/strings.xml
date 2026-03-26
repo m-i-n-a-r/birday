@@ -265,6 +265,23 @@
     <string name="hide_far_widget_description">Widget ausblenden, wenn die nächsten Ereignisse nach der zusätzlichen Benachrichtigungsfrist sind (zB.: Benachrichtigung 7 Tage zuvor das nächste Ereignis ist in 10 Tagen -&gt; das Widget ist versteckt)</string>
     <string name="show_following_widget_title">Nächstes Ereignis anzeigen</string>
     <string name="show_following_widget_description">Zeige das Ereignis oder die Ereignisse, die auf das Nächste folgen, in einer zusätzlichen Zeile</string>
+    <string name="appwidget_compact">Kompakte Tabelle</string>
+    <string name="add_widget_compact">Birday - Kompakt</string>
+    <string name="compact_widget_opacity_title">Hintergrund-Deckkraft</string>
+    <string name="compact_widget_opacity_description">Stellt die Abdunklung des Widget-Hintergrunds ein</string>
+    <string name="compact_widget_show_photos_title">Kontaktfotos anzeigen</string>
+    <string name="compact_widget_turns">wird %d</string>
+    <string name="compact_widget_today">Heute!</string>
+    <string name="compact_widget_tomorrow">Morgen</string>
+    <plurals name="compact_widget_in_days">
+        <item quantity="one">in %d Tag</item>
+        <item quantity="other">in %d Tagen</item>
+    </plurals>
+    <string name="compact_widget_preview_age_1">wird 36</string>
+    <string name="compact_widget_preview_age_2">wird 41</string>
+    <string name="compact_widget_preview_days_2">in 7 Tagen</string>
+    <string name="compact_widget_preview_age_3">wird 34</string>
+    <string name="compact_widget_preview_days_3">in 15 Tagen</string>
     <!-- Search -->
     <string name="search_event">Suchen…</string>
     <string name="search_no_result_title">Keine Ergebnisse gefunden</string>
