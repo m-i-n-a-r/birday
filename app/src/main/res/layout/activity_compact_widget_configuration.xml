@@ -69,6 +69,16 @@
                 android:paddingHorizontal="@dimen/in_row_padding">
 
                 <TextView
+                    android:id="@+id/previewDateAbove1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/compact_widget_preview_date_1"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                    android:textColor="#B3FFFFFF"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/compact_widget_preview_name_1"
@@ -76,12 +86,14 @@
                     android:textColor="#FFFFFFFF" />
 
                 <TextView
+                    android:id="@+id/previewDateBelow1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/compact_widget_preview_date_1"
                     android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                     android:textColor="#B3FFFFFF"
-                    android:textSize="10sp" />
+                    android:textSize="10sp"
+                    android:visibility="visible" />
             </LinearLayout>
 
             <TextView
@@ -124,6 +136,16 @@
                 android:paddingHorizontal="@dimen/in_row_padding">
 
                 <TextView
+                    android:id="@+id/previewDateAbove2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/compact_widget_preview_date_2"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                    android:textColor="#B3FFFFFF"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/compact_widget_preview_name_2"
@@ -131,12 +153,14 @@
                     android:textColor="#FFFFFFFF" />
 
                 <TextView
+                    android:id="@+id/previewDateBelow2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/compact_widget_preview_date_2"
                     android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                     android:textColor="#B3FFFFFF"
-                    android:textSize="10sp" />
+                    android:textSize="10sp"
+                    android:visibility="visible" />
             </LinearLayout>
 
             <TextView
@@ -179,6 +203,16 @@
                 android:paddingHorizontal="@dimen/in_row_padding">
 
                 <TextView
+                    android:id="@+id/previewDateAbove3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/compact_widget_preview_date_3"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                    android:textColor="#B3FFFFFF"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/compact_widget_preview_name_3"
@@ -186,12 +220,14 @@
                     android:textColor="#FFFFFFFF" />
 
                 <TextView
+                    android:id="@+id/previewDateBelow3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/compact_widget_preview_date_3"
                     android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                     android:textColor="#B3FFFFFF"
-                    android:textSize="10sp" />
+                    android:textSize="10sp"
+                    android:visibility="visible" />
             </LinearLayout>
 
             <TextView
@@ -251,6 +287,53 @@
                     android:checked="true"
                     android:paddingStart="@dimen/activity_horizontal_margin"
                     android:paddingEnd="@dimen/card_margin" />
+            </LinearLayout>
+
+            <!-- Birth date position -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/compact_widget_date_position_title"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textSize="@dimen/custom_preference_title_text_size" />
+
+                <Spinner
+                    android:id="@+id/configurationDatePositionSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/activity_horizontal_margin" />
+            </LinearLayout>
+
+            <!-- Zodiac sign position -->
+            <LinearLayout
+                android:id="@+id/configurationZodiacRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/compact_widget_zodiac_position_title"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textSize="@dimen/custom_preference_title_text_size" />
+
+                <Spinner
+                    android:id="@+id/configurationZodiacPositionSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/activity_horizontal_margin" />
             </LinearLayout>
 
             <!-- ═══ Darstellung / Appearance ═══ -->

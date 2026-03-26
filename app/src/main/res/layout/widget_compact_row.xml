@@ -34,7 +34,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/placeholder_other_image" />
 
-        <!-- Name + birth date -->
+        <!-- Name + date column -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -42,6 +42,42 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:paddingHorizontal="@dimen/in_row_padding">
+
+            <!-- Date above name (hidden by default) -->
+            <LinearLayout
+                android:id="@+id/compactWidgetRowDateAbove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/compactWidgetRowZodiacBeforeAbove"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginEnd="2dp"
+                    android:contentDescription="@string/compact_widget_zodiac_position_title"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/compactWidgetRowDateAboveText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                    android:textColor="#B3FFFFFF"
+                    android:textSize="10sp" />
+
+                <ImageView
+                    android:id="@+id/compactWidgetRowZodiacAfterAbove"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="2dp"
+                    android:contentDescription="@string/compact_widget_zodiac_position_title"
+                    android:visibility="gone" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/compactWidgetRowName"
@@ -53,16 +89,41 @@
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                 android:textColor="#FFFFFFFF" />
 
-            <TextView
-                android:id="@+id/compactWidgetRowDate"
+            <!-- Date below name (visible by default) -->
+            <LinearLayout
+                android:id="@+id/compactWidgetRowDateBelow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="@string/birth_date"
-                android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-                android:textColor="#B3FFFFFF"
-                android:textSize="10sp" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/compactWidgetRowZodiacBeforeBelow"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginEnd="2dp"
+                    android:contentDescription="@string/compact_widget_zodiac_position_title"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/compactWidgetRowDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/birth_date"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                    android:textColor="#B3FFFFFF"
+                    android:textSize="10sp" />
+
+                <ImageView
+                    android:id="@+id/compactWidgetRowZodiacAfterBelow"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="2dp"
+                    android:contentDescription="@string/compact_widget_zodiac_position_title"
+                    android:visibility="gone" />
+            </LinearLayout>
         </LinearLayout>
 
         <!-- Age ("turns X") -->

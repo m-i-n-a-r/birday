@@ -122,6 +122,34 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
         val savedShowPhotos = !sharedPrefs.getBoolean("widget_compact_hide_images", false)
         showPhotos.isChecked = savedShowPhotos
 
+        // Date position spinner
+        val datePositionSpinner = binding.configurationDatePositionSpinner
+        val datePositionOptions = arrayOf(
+            getString(R.string.compact_widget_date_below),
+            getString(R.string.compact_widget_date_above),
+            getString(R.string.compact_widget_date_hidden),
+        )
+        val datePositionValues = arrayOf("below", "above", "hidden")
+        datePositionSpinner.adapter = android.widget.ArrayAdapter(
+            this, android.R.layout.simple_spinner_dropdown_item, datePositionOptions
+        )
+        val savedDatePosition = sharedPrefs.getString("widget_compact_date_position", "below") ?: "below"
+        datePositionSpinner.setSelection(datePositionValues.indexOf(savedDatePosition).coerceAtLeast(0))
+
+        // Zodiac position spinner
+        val zodiacPositionSpinner = binding.configurationZodiacPositionSpinner
+        val zodiacPositionOptions = arrayOf(
+            getString(R.string.compact_widget_zodiac_hidden),
+            getString(R.string.compact_widget_zodiac_before_date),
+            getString(R.string.compact_widget_zodiac_after_date),
+        )
+        val zodiacPositionValues = arrayOf("hidden", "before", "after")
+        zodiacPositionSpinner.adapter = android.widget.ArrayAdapter(
+            this, android.R.layout.simple_spinner_dropdown_item, zodiacPositionOptions
+        )
+        val savedZodiacPosition = sharedPrefs.getString("widget_compact_zodiac_position", "hidden") ?: "hidden"
+        zodiacPositionSpinner.setSelection(zodiacPositionValues.indexOf(savedZodiacPosition).coerceAtLeast(0))
+
         // Preview avatars
         val previewAvatars = listOf(
             binding.previewAvatar1,
@@ -137,11 +165,37 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
             previewAvatars.forEach { it.visibility = visibility }
         }
 
+        val previewContent = binding.previewContent
+
+        // Preview date views
+        val previewDatesAbove = listOf(
+            binding.previewDateAbove1, binding.previewDateAbove2, binding.previewDateAbove3
+        )
+        val previewDatesBelow = listOf(
+            binding.previewDateBelow1, binding.previewDateBelow2, binding.previewDateBelow3
+        )
+
+        // Initialize preview date position + zodiac row visibility
+        val zodiacRow = binding.configurationZodiacRow
+        updatePreviewDatePosition(previewDatesAbove, previewDatesBelow, savedDatePosition)
+        zodiacRow.visibility = if (savedDatePosition == "hidden") android.view.View.GONE else android.view.View.VISIBLE
+
+        // Update preview when date position changes
+        datePositionSpinner.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: android.view.View?, pos: Int, id: Long) {
+                val position = datePositionValues[pos]
+                updatePreviewDatePosition(previewDatesAbove, previewDatesBelow, position)
+                zodiacRow.visibility = if (position == "hidden") android.view.View.GONE else android.view.View.VISIBLE
+                // Reset zodiac to hidden when date is hidden
+                if (position == "hidden") zodiacPositionSpinner.setSelection(0)
+            }
+            override fun onNothingSelected(parent: android.widget.AdapterView<*>?) {}
+        }
+
         // Text size slider (default 12sp)
         val textSizeSlider = binding.configurationTextSizeSlider
         val textSizeValue = binding.configurationTextSizeValue
         val savedTextSize = sharedPrefs.getInt("widget_compact_text_size", 12)
-        val previewContent = binding.previewContent
 
         textSizeSlider.value = savedTextSize.toFloat()
         textSizeValue.text = "${savedTextSize} sp"
@@ -248,6 +302,8 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
                 putString("widget_compact_general_text_color", selectedWidgetTextColor)
                 putString("widget_compact_highlight_color", selectedHighlightBgColor)
                 putString("widget_compact_highlight_text_color", selectedHighlightTextColor)
+                putString("widget_compact_date_position", datePositionValues[datePositionSpinner.selectedItemPosition])
+                putString("widget_compact_zodiac_position", zodiacPositionValues[zodiacPositionSpinner.selectedItemPosition])
             }
 
             // Trigger widget update
@@ -391,6 +447,25 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
                 }
             } else if (child is android.view.ViewGroup) {
                 updateTextSizeRecursive(child, sp, smallSp)
+            }
+        }
+    }
+
+    private fun updatePreviewDatePosition(
+        above: List<android.view.View>, below: List<android.view.View>, position: String
+    ) {
+        when (position) {
+            "hidden" -> {
+                above.forEach { it.visibility = android.view.View.GONE }
+                below.forEach { it.visibility = android.view.View.GONE }
+            }
+            "above" -> {
+                above.forEach { it.visibility = android.view.View.VISIBLE }
+                below.forEach { it.visibility = android.view.View.GONE }
+            }
+            else -> { // "below"
+                above.forEach { it.visibility = android.view.View.GONE }
+                below.forEach { it.visibility = android.view.View.VISIBLE }
             }
         }
     }

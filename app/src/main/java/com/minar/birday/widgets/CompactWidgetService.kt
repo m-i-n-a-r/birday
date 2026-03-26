@@ -41,6 +41,8 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
     private var highlightColor = android.graphics.Color.rgb(0xFF, 0x52, 0x52) // red
     private var highlightAlpha = 153 // 60% of 255
     private var highlightTextColor = android.graphics.Color.WHITE
+    private var datePosition = "below"
+    private var zodiacPosition = "hidden"
 
     override fun onCreate() {
         // In onCreate(), setup any connections / cursors to the data source
@@ -55,6 +57,8 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
         highlightAlpha = sp.getInt("widget_compact_highlight_opacity", 60) * 255 / 100
         highlightColor = resolveColor(sp.getString("widget_compact_highlight_color", "red") ?: "red")
         highlightTextColor = resolveColor(sp.getString("widget_compact_highlight_text_color", "white") ?: "white")
+        datePosition = sp.getString("widget_compact_date_position", "below") ?: "below"
+        zodiacPosition = sp.getString("widget_compact_zodiac_position", "hidden") ?: "hidden"
         events = emptyList()
     }
 
@@ -111,25 +115,44 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
         val smallTextSizeSp = textSizeSp * 0.78f
         rv.setTextViewTextSize(R.id.compactWidgetRowName, android.util.TypedValue.COMPLEX_UNIT_SP, textSizeSp)
         rv.setTextViewTextSize(R.id.compactWidgetRowDate, android.util.TypedValue.COMPLEX_UNIT_SP, smallTextSizeSp)
+        rv.setTextViewTextSize(R.id.compactWidgetRowDateAboveText, android.util.TypedValue.COMPLEX_UNIT_SP, smallTextSizeSp)
         rv.setTextViewTextSize(R.id.compactWidgetRowAge, android.util.TypedValue.COMPLEX_UNIT_SP, textSizeSp)
         rv.setTextViewTextSize(R.id.compactWidgetRowCountdown, android.util.TypedValue.COMPLEX_UNIT_SP, textSizeSp)
 
-        // Scale image size to match text size (2x the text size in dp)
-        val imageSizeDp = textSizeSp * 2f
+        // Scale image size: smaller when date is hidden (single line)
+        val imageSizeDp = if (datePosition == "hidden") textSizeSp * 1.4f else textSizeSp * 2f
         rv.setViewLayoutWidth(R.id.compactWidgetRowImage, imageSizeDp, android.util.TypedValue.COMPLEX_UNIT_DIP)
         rv.setViewLayoutHeight(R.id.compactWidgetRowImage, imageSizeDp, android.util.TypedValue.COMPLEX_UNIT_DIP)
 
         // Name
         rv.setTextViewText(R.id.compactWidgetRowName, formatName(event, surnameFirst))
 
-        // Birth date
-        rv.setTextViewText(
-            R.id.compactWidgetRowDate,
-            if (event.yearMatter!!) event.originalDate.format(formatter)
+        // Birth date text
+        val dateText = if (event.yearMatter!!) event.originalDate.format(formatter)
             else event.originalDate.month.getDisplayName(
                 java.time.format.TextStyle.FULL, Locale.getDefault()
             ) + ", " + event.originalDate.dayOfMonth.toString()
-        )
+
+        // Date position + zodiac
+        when (datePosition) {
+            "hidden" -> {
+                rv.setViewVisibility(R.id.compactWidgetRowDateBelow, View.GONE)
+                rv.setViewVisibility(R.id.compactWidgetRowDateAbove, View.GONE)
+            }
+            "above" -> {
+                rv.setViewVisibility(R.id.compactWidgetRowDateBelow, View.GONE)
+                rv.setViewVisibility(R.id.compactWidgetRowDateAbove, View.VISIBLE)
+                rv.setTextViewText(R.id.compactWidgetRowDateAboveText, dateText)
+                rv.setTextColor(R.id.compactWidgetRowDateAboveText, widgetTextColor)
+                applyZodiac(rv, event, R.id.compactWidgetRowZodiacBeforeAbove, R.id.compactWidgetRowZodiacAfterAbove)
+            }
+            else -> { // "below" (default)
+                rv.setViewVisibility(R.id.compactWidgetRowDateBelow, View.VISIBLE)
+                rv.setViewVisibility(R.id.compactWidgetRowDateAbove, View.GONE)
+                rv.setTextViewText(R.id.compactWidgetRowDate, dateText)
+                applyZodiac(rv, event, R.id.compactWidgetRowZodiacBeforeBelow, R.id.compactWidgetRowZodiacAfterBelow)
+            }
+        }
 
         // Age ("turns X")
         val nextYears = getNextYears(event)
@@ -226,9 +249,38 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
         highlightAlpha = sp.getInt("widget_compact_highlight_opacity", 60) * 255 / 100
         highlightColor = resolveColor(sp.getString("widget_compact_highlight_color", "red") ?: "red")
         highlightTextColor = resolveColor(sp.getString("widget_compact_highlight_text_color", "white") ?: "white")
+        datePosition = sp.getString("widget_compact_date_position", "below") ?: "below"
+        zodiacPosition = sp.getString("widget_compact_zodiac_position", "hidden") ?: "hidden"
         val eventDao: EventDao = EventDatabase.getBirdayDatabase(context).eventDao()
         // Get all upcoming events sorted by next occurrence, including today
         events = eventDao.getOrderedEventsStatic()
+    }
+
+    private fun applyZodiac(rv: RemoteViews, event: EventResult, beforeId: Int, afterId: Int) {
+        if (zodiacPosition == "hidden" || datePosition == "hidden") {
+            rv.setViewVisibility(beforeId, View.GONE)
+            rv.setViewVisibility(afterId, View.GONE)
+            return
+        }
+        val zodiacDrawable = getZodiacDrawable(event)
+        when (zodiacPosition) {
+            "before" -> {
+                rv.setViewVisibility(beforeId, View.VISIBLE)
+                rv.setViewVisibility(afterId, View.GONE)
+                rv.setImageViewResource(beforeId, zodiacDrawable)
+                rv.setInt(beforeId, "setColorFilter", widgetTextColor)
+            }
+            "after" -> {
+                rv.setViewVisibility(beforeId, View.GONE)
+                rv.setViewVisibility(afterId, View.VISIBLE)
+                rv.setImageViewResource(afterId, zodiacDrawable)
+                rv.setInt(afterId, "setColorFilter", widgetTextColor)
+            }
+            else -> {
+                rv.setViewVisibility(beforeId, View.GONE)
+                rv.setViewVisibility(afterId, View.GONE)
+            }
+        }
     }
 
     private fun resolveColor(name: String): Int {
@@ -253,6 +305,41 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
                 }
                 context.getColor(colorRes)
             }
+        }
+    }
+
+    private fun getZodiacDrawable(event: EventResult): Int {
+        val day = event.originalDate.dayOfMonth
+        val month = event.originalDate.month.value
+        val signNumber = when (month) {
+            12 -> if (day <= 21) 0 else 1
+            1 -> if (day <= 20) 1 else 2
+            2 -> if (day <= 18) 2 else 3
+            3 -> if (day <= 20) 3 else 4
+            4 -> if (day <= 20) 4 else 5
+            5 -> if (day <= 20) 5 else 6
+            6 -> if (day <= 21) 6 else 7
+            7 -> if (day <= 22) 7 else 8
+            8 -> if (day <= 23) 8 else 9
+            9 -> if (day <= 22) 9 else 10
+            10 -> if (day <= 22) 10 else 11
+            11 -> if (day <= 22) 11 else 0
+            else -> 0
+        }
+        return when (signNumber) {
+            0 -> R.drawable.ic_zodiac_sagittarius
+            1 -> R.drawable.ic_zodiac_capricorn
+            2 -> R.drawable.ic_zodiac_aquarius
+            3 -> R.drawable.ic_zodiac_pisces
+            4 -> R.drawable.ic_zodiac_aries
+            5 -> R.drawable.ic_zodiac_taurus
+            6 -> R.drawable.ic_zodiac_gemini
+            7 -> R.drawable.ic_zodiac_cancer
+            8 -> R.drawable.ic_zodiac_leo
+            9 -> R.drawable.ic_zodiac_virgo
+            10 -> R.drawable.ic_zodiac_libra
+            11 -> R.drawable.ic_zodiac_scorpio
+            else -> R.drawable.ic_zodiac_sagittarius
         }
     }
 }

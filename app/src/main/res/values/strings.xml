@@ -303,6 +303,14 @@
     <string name="compact_widget_bg_color_title">Background color</string>
     <string name="compact_widget_text_color_title">Text color</string>
     <string name="compact_widget_show_photos_title">Show contact photos</string>
+    <string name="compact_widget_date_position_title">Birth date</string>
+    <string name="compact_widget_date_hidden">Hidden</string>
+    <string name="compact_widget_date_below">Below name</string>
+    <string name="compact_widget_date_above">Above name</string>
+    <string name="compact_widget_zodiac_position_title">Zodiac sign</string>
+    <string name="compact_widget_zodiac_hidden">Hidden</string>
+    <string name="compact_widget_zodiac_before_date">Before date</string>
+    <string name="compact_widget_zodiac_after_date">After date</string>
     <string name="compact_widget_text_size_title">Text size</string>
     <string name="compact_widget_highlight_title">Today highlighting</string>
     <string name="compact_widget_highlight_opacity_title">Background opacity</string>
