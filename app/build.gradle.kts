@@ -82,14 +82,14 @@ dependencies {
 
     // Default dependencies
     implementation("androidx.appcompat:appcompat:1.7.1")
-    implementation("androidx.core:core-ktx:1.17.0")
+    implementation("androidx.core:core-ktx:1.18.0")
     implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.activity:activity-ktx:1.12.2")
+    implementation("androidx.activity:activity-ktx:1.13.0")
     implementation("androidx.fragment:fragment-ktx:1.8.9")
 
     // Transition
-    implementation("androidx.transition:transition-ktx:1.6.0")
+    implementation("androidx.transition:transition-ktx:1.7.0")
 
     // Constraint / motion layout
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
@@ -98,14 +98,14 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.2.0")
 
     // Material Components
-    implementation("com.google.android.material:material:1.14.0-alpha08")
+    implementation("com.google.android.material:material:1.14.0-alpha10")
 
     // WorkManager
-    implementation("androidx.work:work-runtime-ktx:2.11.0")
+    implementation("androidx.work:work-runtime-ktx:2.11.2")
 
     // Navigation component
-    implementation("androidx.navigation:navigation-fragment-ktx:2.9.6")
-    implementation("androidx.navigation:navigation-ui-ktx:2.9.6")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.9.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.9.7")
 
     // Lifecycle and ViewModel
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
@@ -138,5 +138,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.7.0")
 
     // [Testing] ICU
-    testImplementation("com.ibm.icu:icu4j:78.1")
+    testImplementation("com.ibm.icu:icu4j:78.3")
 }
