@@ -71,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:paddingHorizontal="@dimen/in_row_padding"
+            android:paddingStart="@dimen/in_row_padding"
             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
             android:textColor="#B3FFFFFF"
             tools:text="turns 43" />
@@ -83,11 +83,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="end"
-            android:minWidth="72dp"
-            android:paddingHorizontal="@dimen/in_row_padding"
+            android:minWidth="56dp"
+            android:paddingStart="@dimen/in_row_padding"
             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
             android:textColor="#FFFFFFFF"
-            tools:text="in 5 days" />
+            tools:text="5 days" />
 
     </LinearLayout>
 

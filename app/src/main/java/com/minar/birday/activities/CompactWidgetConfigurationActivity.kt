@@ -14,7 +14,6 @@ import androidx.preference.PreferenceManager
 import com.minar.birday.R
 import com.minar.birday.databinding.ActivityCompactWidgetConfigurationBinding
 import com.minar.birday.utilities.addInsetsByPadding
-import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 import com.minar.birday.widgets.CompactWidgetProvider
 import androidx.core.content.edit
 
@@ -31,7 +30,7 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
         // Retrieve the shared preferences
         val theme = sharedPrefs.getString("theme_color", "system")
         val accent = sharedPrefs.getString("accent_color", "system")
-        val avdLooping = sharedPrefs.getBoolean("loop_avd", true)
+
 
         // Avoid crashes when the widget is used before opening the app for the very first time
         if (sharedPrefs.getBoolean("first", true)) {
@@ -108,20 +107,15 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
             return
         }
 
-        // Animate the title image
-        binding.configurationTitleImage.applyLoopingAnimatedVectorDrawable(
-            R.drawable.animated_nav_settings, 1000, disableLooping = !avdLooping
-        )
 
         // Restore the saved opacity value (default 80%)
         val savedOpacity = sharedPrefs.getInt("widget_compact_opacity", 80)
         val slider = binding.configurationOpacitySlider
         val opacityValue = binding.configurationOpacityValue
-        val previewBackground = binding.compactWidgetPreviewBackground
+        val previewBackground = binding.previewContent
 
         slider.value = savedOpacity.toFloat()
         opacityValue.text = "$savedOpacity%"
-        updatePreviewBackground(previewBackground, savedOpacity)
 
         // Restore the saved show photos value (default true)
         val showPhotos = binding.configurationShowPhotosSwitch
@@ -159,12 +153,88 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
             updatePreviewTextSize(previewContent, size.toFloat())
         }
 
-        // Update preview when opacity slider changes
+        // Highlight opacity slider (default 60%)
+        val highlightOpacitySlider = binding.configurationHighlightOpacitySlider
+        val highlightOpacityValue = binding.configurationHighlightOpacityValue
+        val savedHighlightOpacity = sharedPrefs.getInt("widget_compact_highlight_opacity", 60)
+        highlightOpacitySlider.value = savedHighlightOpacity.toFloat()
+        highlightOpacityValue.text = "$savedHighlightOpacity%"
+
+        // Unified color palette
+        val allColors = linkedMapOf(
+            "white" to Color.WHITE,
+            "black" to Color.BLACK,
+            "red" to getColor(R.color.red),
+            "crimson" to getColor(R.color.crimson),
+            "orange" to getColor(R.color.orange),
+            "yellow" to getColor(R.color.yellow),
+            "lime" to getColor(R.color.lime),
+            "green" to getColor(R.color.green),
+            "teal" to getColor(R.color.teal),
+            "aqua" to getColor(R.color.aqua),
+            "lightBlue" to getColor(R.color.lightBlue),
+            "blue" to getColor(R.color.blue),
+            "violet" to getColor(R.color.violet),
+            "pink" to getColor(R.color.pink),
+        )
+
+        val previewHighlightRow = binding.previewHighlightRow
+
+        // Current selections
+        var selectedWidgetBgColor = sharedPrefs.getString("widget_compact_bg_color", "black") ?: "black"
+        var selectedWidgetTextColor = sharedPrefs.getString("widget_compact_general_text_color", "white") ?: "white"
+        var selectedHighlightBgColor = sharedPrefs.getString("widget_compact_highlight_color", "red") ?: "red"
+        var selectedHighlightTextColor = sharedPrefs.getString("widget_compact_highlight_text_color", "white") ?: "white"
+
+        // 1. Widget background color
+        buildColorPicker(binding.bgColorPickerContainer, allColors, selectedWidgetBgColor) { name, color ->
+            selectedWidgetBgColor = name
+            updatePreviewBackground(previewBackground, slider.value.toInt(), color)
+        }
+
+        // 2. General text color
+        buildColorPicker(binding.generalTextColorPickerContainer, allColors, selectedWidgetTextColor) { name, color ->
+            selectedWidgetTextColor = name
+            updatePreviewGeneralTextColor(previewContent, color)
+        }
+
+        // 3. Highlight background color
+        buildColorPicker(binding.colorPickerContainer, allColors, selectedHighlightBgColor) { name, color ->
+            selectedHighlightBgColor = name
+            updatePreviewHighlight(previewHighlightRow, color, highlightOpacitySlider.value.toInt())
+        }
+
+        // 4. Highlight text color
+        buildColorPicker(binding.textColorPickerContainer, allColors, selectedHighlightTextColor) { name, color ->
+            selectedHighlightTextColor = name
+            updatePreviewHighlightText(previewHighlightRow, color)
+        }
+
+        // Update preview highlight when opacity slider changes
+        highlightOpacitySlider.addOnChangeListener { _, value, _ ->
+            val hlOpacity = value.toInt()
+            highlightOpacityValue.text = "$hlOpacity%"
+            val color = allColors[selectedHighlightBgColor] ?: getColor(R.color.red)
+            updatePreviewHighlight(previewHighlightRow, color, hlOpacity)
+        }
+
+        // Update preview bg when opacity slider changes (with selected color)
         slider.addOnChangeListener { _, value, _ ->
             val opacity = value.toInt()
             opacityValue.text = "$opacity%"
-            updatePreviewBackground(previewBackground, opacity)
+            val color = allColors[selectedWidgetBgColor] ?: Color.BLACK
+            updatePreviewBackground(previewBackground, opacity, color)
         }
+
+        // Initialize preview
+        val initBgColor = allColors[selectedWidgetBgColor] ?: Color.BLACK
+        val initTextColor = allColors[selectedWidgetTextColor] ?: Color.WHITE
+        val initHlBgColor = allColors[selectedHighlightBgColor] ?: getColor(R.color.red)
+        val initHlTextColor = allColors[selectedHighlightTextColor] ?: Color.WHITE
+        updatePreviewBackground(previewBackground, savedOpacity, initBgColor)
+        updatePreviewGeneralTextColor(previewContent, initTextColor)
+        updatePreviewHighlight(previewHighlightRow, initHlBgColor, savedHighlightOpacity)
+        updatePreviewHighlightText(previewHighlightRow, initHlTextColor)
 
         // Confirm button
         binding.configurationConfirmButton.setOnClickListener {
@@ -173,6 +243,11 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
                 putInt("widget_compact_opacity", opacity)
                 putBoolean("widget_compact_hide_images", !showPhotos.isChecked)
                 putInt("widget_compact_text_size", textSizeSlider.value.toInt())
+                putInt("widget_compact_highlight_opacity", highlightOpacitySlider.value.toInt())
+                putString("widget_compact_bg_color", selectedWidgetBgColor)
+                putString("widget_compact_general_text_color", selectedWidgetTextColor)
+                putString("widget_compact_highlight_color", selectedHighlightBgColor)
+                putString("widget_compact_highlight_text_color", selectedHighlightTextColor)
             }
 
             // Trigger widget update
@@ -191,9 +266,107 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
         }
     }
 
-    private fun updatePreviewBackground(view: android.view.View, opacityPercent: Int) {
+    private fun createColorCircle(
+        color: Int, selected: Boolean, size: Int, margin: Int
+    ): android.widget.FrameLayout {
+        val frame = android.widget.FrameLayout(this).apply {
+            layoutParams = android.widget.LinearLayout.LayoutParams(size, size).apply {
+                marginEnd = margin
+            }
+            alpha = if (selected) 1.0f else 0.4f
+        }
+        // Filled circle
+        val fill = android.widget.ImageView(this).apply {
+            layoutParams = android.widget.FrameLayout.LayoutParams(
+                android.widget.FrameLayout.LayoutParams.MATCH_PARENT,
+                android.widget.FrameLayout.LayoutParams.MATCH_PARENT
+            )
+            setImageResource(R.drawable.ic_dot_black_24dp)
+            setColorFilter(color)
+            scaleType = android.widget.ImageView.ScaleType.FIT_CENTER
+        }
+        // Ring border
+        val ring = android.widget.ImageView(this).apply {
+            layoutParams = android.widget.FrameLayout.LayoutParams(
+                android.widget.FrameLayout.LayoutParams.MATCH_PARENT,
+                android.widget.FrameLayout.LayoutParams.MATCH_PARENT
+            )
+            setImageResource(R.drawable.ic_ring_24dp)
+            val luminance = Color.luminance(color)
+            setColorFilter(if (luminance > 0.5f) Color.DKGRAY else Color.LTGRAY)
+            scaleType = android.widget.ImageView.ScaleType.FIT_CENTER
+        }
+        frame.addView(fill)
+        frame.addView(ring)
+        return frame
+    }
+
+    private fun updatePreviewHighlight(row: android.view.View, color: Int, opacityPercent: Int) {
         val alpha = (opacityPercent * 255 / 100)
-        view.setBackgroundColor(Color.argb(alpha, 0, 0, 0))
+        val r = Color.red(color)
+        val g = Color.green(color)
+        val b = Color.blue(color)
+        row.setBackgroundColor(Color.argb(alpha, r, g, b))
+    }
+
+    private fun updatePreviewHighlightText(row: android.view.View, color: Int) {
+        // Only color the last TextView (countdown "Heute!") in the row
+        if (row is android.view.ViewGroup) {
+            val lastChild = row.getChildAt(row.childCount - 1)
+            if (lastChild is android.widget.TextView) {
+                lastChild.setTextColor(color)
+            }
+        }
+    }
+
+    private fun buildColorPicker(
+        container: android.widget.LinearLayout,
+        colors: Map<String, Int>,
+        selectedName: String,
+        onColorSelected: (String, Int) -> Unit
+    ) {
+        val circleSize = (36 * resources.displayMetrics.density).toInt()
+        val circleMargin = (4 * resources.displayMetrics.density).toInt()
+        val views = mutableMapOf<String, android.view.View>()
+        for ((name, color) in colors) {
+            val circle = createColorCircle(color, name == selectedName, circleSize, circleMargin)
+            circle.setOnClickListener {
+                views.values.forEach { v -> v.alpha = 0.4f }
+                circle.alpha = 1.0f
+                onColorSelected(name, color)
+            }
+            views[name] = circle
+            container.addView(circle)
+        }
+    }
+
+    private fun updatePreviewBackground(view: android.view.View, opacityPercent: Int, color: Int = Color.BLACK) {
+        val alpha = (opacityPercent * 255 / 100)
+        val r = Color.red(color)
+        val g = Color.green(color)
+        val b = Color.blue(color)
+        view.setBackgroundColor(Color.argb(alpha, r, g, b))
+    }
+
+    private fun updatePreviewGeneralTextColor(container: android.view.ViewGroup, color: Int) {
+        // Update text color for non-highlight rows (rows 1 and 2, index-based)
+        for (i in 1 until container.childCount) {
+            val row = container.getChildAt(i)
+            if (row is android.view.ViewGroup) {
+                setTextColorRecursive(row, color)
+            }
+        }
+    }
+
+    private fun setTextColorRecursive(group: android.view.ViewGroup, color: Int) {
+        for (i in 0 until group.childCount) {
+            val child = group.getChildAt(i)
+            if (child is android.widget.TextView) {
+                child.setTextColor(color)
+            } else if (child is android.view.ViewGroup) {
+                setTextColorRecursive(child, color)
+            }
+        }
     }
 
     private fun updatePreviewTextSize(container: android.view.ViewGroup, sp: Float) {

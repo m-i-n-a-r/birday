@@ -36,6 +36,11 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
     private var maxRows = Int.MAX_VALUE
     private var bgAlpha = 204 // 80% of 255
     private var textSizeSp = 12f
+    private var widgetBgColor = android.graphics.Color.BLACK
+    private var widgetTextColor = android.graphics.Color.WHITE
+    private var highlightColor = android.graphics.Color.rgb(0xFF, 0x52, 0x52) // red
+    private var highlightAlpha = 153 // 60% of 255
+    private var highlightTextColor = android.graphics.Color.WHITE
 
     override fun onCreate() {
         // In onCreate(), setup any connections / cursors to the data source
@@ -45,6 +50,11 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
         maxRows = sp.getInt("widget_compact_max_rows", Int.MAX_VALUE)
         bgAlpha = sp.getInt("widget_compact_opacity", 80) * 255 / 100
         textSizeSp = sp.getInt("widget_compact_text_size", 12).toFloat()
+        widgetBgColor = resolveColor(sp.getString("widget_compact_bg_color", "black") ?: "black")
+        widgetTextColor = resolveColor(sp.getString("widget_compact_general_text_color", "white") ?: "white")
+        highlightAlpha = sp.getInt("widget_compact_highlight_opacity", 60) * 255 / 100
+        highlightColor = resolveColor(sp.getString("widget_compact_highlight_color", "red") ?: "red")
+        highlightTextColor = resolveColor(sp.getString("widget_compact_highlight_text_color", "white") ?: "white")
         events = emptyList()
     }
 
@@ -71,7 +81,14 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
             else -> R.drawable.widget_compact_row_bg_middle
         }
         rv.setImageViewResource(R.id.compactWidgetRowBg, bgDrawable)
+        rv.setInt(R.id.compactWidgetRowBg, "setColorFilter", widgetBgColor)
         rv.setInt(R.id.compactWidgetRowBg, "setImageAlpha", bgAlpha)
+
+        // Apply configured text colors
+        rv.setTextColor(R.id.compactWidgetRowName, widgetTextColor)
+        rv.setTextColor(R.id.compactWidgetRowDate, widgetTextColor)
+        rv.setTextColor(R.id.compactWidgetRowAge, widgetTextColor)
+        rv.setTextColor(R.id.compactWidgetRowCountdown, widgetTextColor)
 
         // Add equal padding on edges so background has uniform inset
         val sidePadding = context.resources.getDimension(R.dimen.widget_padding).toInt()
@@ -128,24 +145,30 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
 
         // Countdown
         val remainingDays = getRemainingDays(event.nextDate!!)
-        rv.setTextViewText(
-            R.id.compactWidgetRowCountdown,
-            when (remainingDays) {
-                0 -> context.getString(R.string.compact_widget_today)
-                1 -> context.getString(R.string.compact_widget_tomorrow)
-                else -> context.resources.getQuantityString(
-                    R.plurals.compact_widget_in_days, remainingDays, remainingDays
-                )
-            }
-        )
-
-        // Today highlight: red text and row background
-        if (remainingDays == 0) {
-            rv.setTextColor(R.id.compactWidgetRowCountdown, context.getColor(R.color.red))
-            rv.setInt(R.id.compactWidgetRowBg, "setImageAlpha", 255)
-            rv.setInt(R.id.compactWidgetRowBg, "setColorFilter",
-                android.graphics.Color.argb(0x99, 0xE5, 0x39, 0x35)
+        val countdownText = when (remainingDays) {
+            0 -> context.getString(R.string.compact_widget_today)
+            1 -> context.getString(R.string.compact_widget_tomorrow)
+            else -> context.resources.getQuantityString(
+                R.plurals.compact_widget_in_days, remainingDays, remainingDays
             )
+        }
+        // Bold text for today
+        if (remainingDays == 0) {
+            val bold = android.text.SpannableString(countdownText)
+            bold.setSpan(
+                android.text.style.StyleSpan(android.graphics.Typeface.BOLD),
+                0, countdownText.length, android.text.Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            rv.setTextViewText(R.id.compactWidgetRowCountdown, bold)
+        } else {
+            rv.setTextViewText(R.id.compactWidgetRowCountdown, countdownText)
+        }
+
+        // Today highlighting: colored row background + configurable countdown text color
+        if (remainingDays == 0) {
+            rv.setInt(R.id.compactWidgetRowBg, "setImageAlpha", highlightAlpha)
+            rv.setInt(R.id.compactWidgetRowBg, "setColorFilter", highlightColor)
+            rv.setTextColor(R.id.compactWidgetRowCountdown, highlightTextColor)
         }
 
         // Contact photo
@@ -198,8 +221,38 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
         maxRows = sp.getInt("widget_compact_max_rows", Int.MAX_VALUE)
         bgAlpha = sp.getInt("widget_compact_opacity", 80) * 255 / 100
         textSizeSp = sp.getInt("widget_compact_text_size", 12).toFloat()
+        widgetBgColor = resolveColor(sp.getString("widget_compact_bg_color", "black") ?: "black")
+        widgetTextColor = resolveColor(sp.getString("widget_compact_general_text_color", "white") ?: "white")
+        highlightAlpha = sp.getInt("widget_compact_highlight_opacity", 60) * 255 / 100
+        highlightColor = resolveColor(sp.getString("widget_compact_highlight_color", "red") ?: "red")
+        highlightTextColor = resolveColor(sp.getString("widget_compact_highlight_text_color", "white") ?: "white")
         val eventDao: EventDao = EventDatabase.getBirdayDatabase(context).eventDao()
         // Get all upcoming events sorted by next occurrence, including today
         events = eventDao.getOrderedEventsStatic()
+    }
+
+    private fun resolveColor(name: String): Int {
+        return when (name) {
+            "white" -> android.graphics.Color.WHITE
+            "black" -> android.graphics.Color.BLACK
+            else -> {
+                val colorRes = when (name) {
+                    "red" -> R.color.red
+                    "crimson" -> R.color.crimson
+                    "orange" -> R.color.orange
+                    "yellow" -> R.color.yellow
+                    "lime" -> R.color.lime
+                    "green" -> R.color.green
+                    "teal" -> R.color.teal
+                    "aqua" -> R.color.aqua
+                    "lightBlue" -> R.color.lightBlue
+                    "blue" -> R.color.blue
+                    "violet" -> R.color.violet
+                    "pink" -> R.color.pink
+                    else -> R.color.red
+                }
+                context.getColor(colorRes)
+            }
+        }
     }
 }
