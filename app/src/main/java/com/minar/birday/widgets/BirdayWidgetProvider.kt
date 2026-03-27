@@ -259,15 +259,17 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
         // Row height = max(photo, text block). Photo scales with text size.
         val showDate = datePosition != "hidden"
         val photoHeightDp = if (!hideImages) {
-            if (showDate) textSizeSp * 2.0f else textSizeSp * 1.4f
+            if (showDate) textSizeSp * CompactWidgetRemoteViewsFactory.PHOTO_SCALE_WITH_DATE
+            else textSizeSp * CompactWidgetRemoteViewsFactory.PHOTO_SCALE_WITHOUT_DATE
         } else 0f
-        val nameLineHeightDp = textSizeSp * 1.35f
-        val dateLineHeightDp = textSizeSp * 0.78f * 1.35f
+        val nameLineHeightDp = textSizeSp * CompactWidgetRemoteViewsFactory.LINE_HEIGHT_FACTOR
+        val dateLineHeightDp = textSizeSp * CompactWidgetRemoteViewsFactory.DATE_TEXT_SCALE *
+            CompactWidgetRemoteViewsFactory.LINE_HEIGHT_FACTOR
         val textBlockHeightDp = if (showDate) nameLineHeightDp + dateLineHeightDp else nameLineHeightDp
         val rowHeightDp = maxOf(photoHeightDp, textBlockHeightDp)
 
         // First and last row each add 8dp edge padding (widget_padding)
-        val edgePaddingDp = 16f
+        val edgePaddingDp = CompactWidgetRemoteViewsFactory.EDGE_PADDING_DP
         val maxRows = ((widgetHeightDp - edgePaddingDp) / rowHeightDp).toInt().coerceAtLeast(1)
         sp.edit().putInt("widget_compact_max_rows", maxRows).apply()
 

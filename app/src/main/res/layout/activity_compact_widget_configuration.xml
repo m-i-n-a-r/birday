@@ -88,6 +88,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:tag="date"
                         android:text="@string/compact_widget_preview_date_1"
                         android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                         android:textColor="#B3FFFFFF"
@@ -130,6 +131,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:tag="date"
                         android:text="@string/compact_widget_preview_date_1"
                         android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                         android:textColor="#B3FFFFFF"
@@ -150,6 +152,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/in_row_padding"
+                android:tag="date"
                 android:text="@string/compact_widget_preview_age_1"
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                 android:textColor="#B3FFFFFF" />
@@ -205,6 +208,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:tag="date"
                         android:text="@string/compact_widget_preview_date_2"
                         android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                         android:textColor="#B3FFFFFF"
@@ -247,6 +251,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:tag="date"
                         android:text="@string/compact_widget_preview_date_2"
                         android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                         android:textColor="#B3FFFFFF"
@@ -267,6 +272,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/in_row_padding"
+                android:tag="date"
                 android:text="@string/compact_widget_preview_age_2"
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                 android:textColor="#B3FFFFFF" />
@@ -322,6 +328,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:tag="date"
                         android:text="@string/compact_widget_preview_date_3"
                         android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                         android:textColor="#B3FFFFFF"
@@ -364,6 +371,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:tag="date"
                         android:text="@string/compact_widget_preview_date_3"
                         android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                         android:textColor="#B3FFFFFF"
@@ -384,6 +392,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/in_row_padding"
+                android:tag="date"
                 android:text="@string/compact_widget_preview_age_3"
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                 android:textColor="#B3FFFFFF" />
