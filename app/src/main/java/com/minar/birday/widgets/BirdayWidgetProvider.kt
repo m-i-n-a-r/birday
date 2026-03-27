@@ -244,8 +244,6 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
         appWidgetId: Int
     ) {
         val sp = PreferenceManager.getDefaultSharedPreferences(context)
-        val opacityPercent = sp.getInt("widget_compact_opacity", 80)
-        val alpha = (opacityPercent * 255 / 100)
         val views = RemoteViews(context.packageName, R.layout.widget_compact)
         val intent = Intent(context, MainActivity::class.java)
 

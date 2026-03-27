@@ -181,7 +181,7 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
 
     private fun applyDateAndZodiac(rv: RemoteViews, event: EventResult) {
         val formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
-        val dateText = if (event.yearMatter!!) event.originalDate.format(formatter)
+        val dateText = if (event.yearMatter != false) event.originalDate.format(formatter)
             else event.originalDate.month.getDisplayName(
                 java.time.format.TextStyle.FULL, Locale.getDefault()
             ) + ", " + event.originalDate.dayOfMonth.toString()
@@ -221,7 +221,8 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
     }
 
     private fun applyCountdown(rv: RemoteViews, event: EventResult) {
-        val remainingDays = getRemainingDays(event.nextDate!!)
+        val nextDate = event.nextDate ?: return
+        val remainingDays = getRemainingDays(nextDate)
         val countdownText = when (remainingDays) {
             0 -> context.getString(R.string.compact_widget_today)
             1 -> context.getString(R.string.compact_widget_tomorrow)
@@ -278,7 +279,7 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
     }
 
     override fun hasStableIds(): Boolean {
-        return true
+        return false
     }
 
     override fun onDataSetChanged() {

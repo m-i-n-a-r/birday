@@ -22,7 +22,7 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingHorizontal="@dimen/widget_padding"
-        android:paddingVertical="2dp">
+        android:paddingVertical="@dimen/widget_compact_row_vertical_padding">
 
         <!-- Contact photo -->
         <ImageView
@@ -133,6 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:paddingStart="@dimen/in_row_padding"
+            android:paddingEnd="0dp"
             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
             android:textColor="#B3FFFFFF"
             tools:text="turns 43" />
@@ -146,6 +147,7 @@
             android:gravity="end"
             android:minWidth="56dp"
             android:paddingStart="@dimen/in_row_padding"
+            android:paddingEnd="0dp"
             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
             android:textColor="#FFFFFFFF"
             tools:text="5 days" />
