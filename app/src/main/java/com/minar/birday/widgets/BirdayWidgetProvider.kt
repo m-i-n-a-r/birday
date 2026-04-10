@@ -68,6 +68,10 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
                 R.layout.widget_minimal -> {
                     updateMinimal(context, appWidgetManager, appWidgetId)
                 }
+
+                R.layout.widget_compact -> {
+                    updateCompact(context, appWidgetManager, appWidgetId)
+                }
             }
 
         } catch (e: Exception) {
@@ -227,6 +231,78 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
                     views.setViewVisibility(R.id.minimalWidgetMain, View.INVISIBLE)
                 else views.setViewVisibility(R.id.minimalWidgetMain, View.VISIBLE)
             } else views.setViewVisibility(R.id.minimalWidgetMain, View.VISIBLE)
+
+            // Instruct the widget manager to update the widget
+            appWidgetManager.updateAppWidget(appWidgetId, views)
+        }.start()
+    }
+
+    // Update the compact table widget
+    private fun updateCompact(
+        context: Context,
+        appWidgetManager: AppWidgetManager,
+        appWidgetId: Int
+    ) {
+        val sp = PreferenceManager.getDefaultSharedPreferences(context)
+        val views = RemoteViews(context.packageName, R.layout.widget_compact)
+        val intent = Intent(context, MainActivity::class.java)
+
+        // Calculate how many rows fit in the widget height
+        val options = appWidgetManager.getAppWidgetOptions(appWidgetId)
+        val textSizeSp = sp.getInt("widget_compact_text_size", 12)
+        val datePosition = sp.getString("widget_compact_date_position", "below") ?: "below"
+        val hideImages = sp.getBoolean("widget_compact_hide_images", false)
+        val widgetHeightDp = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MAX_HEIGHT, 120)
+
+        // Row height = max(photo, text block). Photo scales with text size.
+        val showDate = datePosition != "hidden"
+        val photoHeightDp = if (!hideImages) {
+            if (showDate) textSizeSp * CompactWidgetRemoteViewsFactory.PHOTO_SCALE_WITH_DATE
+            else textSizeSp * CompactWidgetRemoteViewsFactory.PHOTO_SCALE_WITHOUT_DATE
+        } else 0f
+        val nameLineHeightDp = textSizeSp * CompactWidgetRemoteViewsFactory.LINE_HEIGHT_FACTOR
+        val dateLineHeightDp = textSizeSp * CompactWidgetRemoteViewsFactory.DATE_TEXT_SCALE *
+            CompactWidgetRemoteViewsFactory.LINE_HEIGHT_FACTOR
+        val textBlockHeightDp = if (showDate) nameLineHeightDp + dateLineHeightDp else nameLineHeightDp
+        val rowHeightDp = maxOf(photoHeightDp, textBlockHeightDp)
+
+        // First and last row each add 8dp edge padding (widget_padding)
+        val edgePaddingDp = CompactWidgetRemoteViewsFactory.EDGE_PADDING_DP
+        val maxRows = ((widgetHeightDp - edgePaddingDp) / rowHeightDp).toInt().coerceAtLeast(1)
+        sp.edit().putInt("widget_compact_max_rows", maxRows).apply()
+
+        Thread {
+            // Launch the app on click
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            val pendingIntent =
+                PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
+            views.setOnClickPendingIntent(R.id.compactWidgetBackground, pendingIntent)
+
+            // Set up the intent that starts the CompactWidgetService, which will provide the views
+            val widgetServiceIntent = Intent(context, CompactWidgetService::class.java)
+
+            // Set up the RemoteViews object to use a RemoteViews adapter and populate the data
+            views.apply {
+                setRemoteAdapter(R.id.compactWidgetList, widgetServiceIntent)
+            }
+
+            // Template to handle the click listener for each item
+            val clickIntentTemplate = Intent(context, MainActivity::class.java)
+            val clickPendingIntentTemplate: PendingIntent = TaskStackBuilder.create(context)
+                .addNextIntentWithParentStack(clickIntentTemplate)
+                .getPendingIntent(
+                    4,
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                )
+            views.setPendingIntentTemplate(R.id.compactWidgetList, clickPendingIntentTemplate)
+
+            // Fill the list with the next events
+            appWidgetManager.notifyAppWidgetViewDataChanged(
+                appWidgetId,
+                R.id.compactWidgetList
+            )
 
             // Instruct the widget manager to update the widget
             appWidgetManager.updateAppWidget(appWidgetId, views)

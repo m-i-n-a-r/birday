@@ -1,0 +1,694 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.CompactWidgetConfigurationActivity">
+
+    <!-- ═══ Fixed top: Title + Save ═══ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/widget_padding">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/widget_configuration_title"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+            android:textStyle="bold" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/configurationConfirmButton"
+            style="@style/Widget.Material3.FloatingActionButton.Secondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@android:string/ok"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_appintro_done" />
+    </LinearLayout>
+
+    <!-- ═══ Fixed: Preview ═══ -->
+    <LinearLayout
+        android:id="@+id/previewContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:background="#CC000000"
+        android:orientation="vertical"
+        android:padding="@dimen/widget_margin">
+
+        <!-- Today's birthday row (highlighted) -->
+        <LinearLayout
+            android:id="@+id/previewHighlightRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/in_row_padding">
+
+            <ImageView
+                android:id="@+id/previewAvatar1"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@string/next_event"
+                android:src="@drawable/preview_avatar_1" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/in_row_padding">
+
+                <LinearLayout
+                    android:id="@+id/previewDateAbove1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/previewZodiacBeforeAbove1"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_aries"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="date"
+                        android:text="@string/compact_widget_preview_date_1"
+                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                        android:textColor="#B3FFFFFF"
+                        android:textSize="10sp" />
+
+                    <ImageView
+                        android:id="@+id/previewZodiacAfterAbove1"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginStart="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_aries"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/compact_widget_preview_name_1"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                    android:textColor="#FFFFFFFF" />
+
+                <LinearLayout
+                    android:id="@+id/previewDateBelow1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/previewZodiacBeforeBelow1"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_aries"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="date"
+                        android:text="@string/compact_widget_preview_date_1"
+                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                        android:textColor="#B3FFFFFF"
+                        android:textSize="10sp" />
+
+                    <ImageView
+                        android:id="@+id/previewZodiacAfterBelow1"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginStart="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_aries"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/in_row_padding"
+                android:tag="date"
+                android:text="@string/compact_widget_preview_age_1"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textColor="#B3FFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/in_row_padding"
+                android:text="@string/compact_widget_today"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textColor="#FFFFFFFF" />
+        </LinearLayout>
+
+        <!-- Normal row 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/in_row_padding">
+
+            <ImageView
+                android:id="@+id/previewAvatar2"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@string/next_event"
+                android:src="@drawable/preview_avatar_2" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/in_row_padding">
+
+                <LinearLayout
+                    android:id="@+id/previewDateAbove2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/previewZodiacBeforeAbove2"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_leo"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="date"
+                        android:text="@string/compact_widget_preview_date_2"
+                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                        android:textColor="#B3FFFFFF"
+                        android:textSize="10sp" />
+
+                    <ImageView
+                        android:id="@+id/previewZodiacAfterAbove2"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginStart="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_leo"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/compact_widget_preview_name_2"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                    android:textColor="#FFFFFFFF" />
+
+                <LinearLayout
+                    android:id="@+id/previewDateBelow2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/previewZodiacBeforeBelow2"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_leo"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="date"
+                        android:text="@string/compact_widget_preview_date_2"
+                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                        android:textColor="#B3FFFFFF"
+                        android:textSize="10sp" />
+
+                    <ImageView
+                        android:id="@+id/previewZodiacAfterBelow2"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginStart="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_leo"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/in_row_padding"
+                android:tag="date"
+                android:text="@string/compact_widget_preview_age_2"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textColor="#B3FFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/in_row_padding"
+                android:text="@string/compact_widget_preview_days_2"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textColor="#FFFFFFFF" />
+        </LinearLayout>
+
+        <!-- Normal row 3 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/in_row_padding">
+
+            <ImageView
+                android:id="@+id/previewAvatar3"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@string/next_event"
+                android:src="@drawable/preview_avatar_initial" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/in_row_padding">
+
+                <LinearLayout
+                    android:id="@+id/previewDateAbove3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/previewZodiacBeforeAbove3"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_sagittarius"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="date"
+                        android:text="@string/compact_widget_preview_date_3"
+                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                        android:textColor="#B3FFFFFF"
+                        android:textSize="10sp" />
+
+                    <ImageView
+                        android:id="@+id/previewZodiacAfterAbove3"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginStart="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_sagittarius"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/compact_widget_preview_name_3"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                    android:textColor="#FFFFFFFF" />
+
+                <LinearLayout
+                    android:id="@+id/previewDateBelow3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/previewZodiacBeforeBelow3"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_sagittarius"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="date"
+                        android:text="@string/compact_widget_preview_date_3"
+                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                        android:textColor="#B3FFFFFF"
+                        android:textSize="10sp" />
+
+                    <ImageView
+                        android:id="@+id/previewZodiacAfterBelow3"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginStart="2dp"
+                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:src="@drawable/ic_zodiac_sagittarius"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/in_row_padding"
+                android:tag="date"
+                android:text="@string/compact_widget_preview_age_3"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textColor="#B3FFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/in_row_padding"
+                android:text="@string/compact_widget_preview_days_3"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textColor="#FFFFFFFF" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- ═══ Scrollable settings ═══ -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fadingEdgeLength="@dimen/linear_vertical_margin"
+        android:requiresFadingEdge="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/linear_vertical_margin">
+
+            <!-- Switches -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/compact_widget_show_photos_title"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textSize="@dimen/custom_preference_title_text_size" />
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/configurationShowPhotosSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:paddingStart="@dimen/activity_horizontal_margin"
+                    android:paddingEnd="@dimen/card_margin" />
+            </LinearLayout>
+
+            <!-- Birth date position -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/compact_widget_date_position_title"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textSize="@dimen/custom_preference_title_text_size" />
+
+                <Spinner
+                    android:id="@+id/configurationDatePositionSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/activity_horizontal_margin" />
+            </LinearLayout>
+
+            <!-- Zodiac sign position -->
+            <LinearLayout
+                android:id="@+id/configurationZodiacRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/compact_widget_zodiac_position_title"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textSize="@dimen/custom_preference_title_text_size" />
+
+                <Spinner
+                    android:id="@+id/configurationZodiacPositionSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/activity_horizontal_margin" />
+            </LinearLayout>
+
+            <!-- ═══ Darstellung / Appearance ═══ -->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/linear_vertical_margin"
+                android:text="@string/compact_widget_appearance_title"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/widget_margin" />
+
+            <!-- Background color -->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/compact_widget_bg_color_title"
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                android:textSize="@dimen/custom_preference_title_text_size" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/widget_padding"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/bgColorPickerContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/widget_margin" />
+            </HorizontalScrollView>
+
+            <!-- Background opacity -->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/compact_widget_opacity_title"
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                android:textSize="@dimen/custom_preference_title_text_size" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/configurationOpacitySlider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stepSize="5"
+                android:valueFrom="0"
+                android:valueTo="100" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/configurationOpacityValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                tools:text="80%" />
+
+            <!-- Text color -->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/compact_widget_text_color_title"
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                android:textSize="@dimen/custom_preference_title_text_size" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/widget_padding"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/generalTextColorPickerContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/widget_margin" />
+            </HorizontalScrollView>
+
+            <!-- Text size -->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/compact_widget_text_size_title"
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                android:textSize="@dimen/custom_preference_title_text_size" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/configurationTextSizeSlider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stepSize="1"
+                android:valueFrom="8"
+                android:valueTo="18" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/configurationTextSizeValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                tools:text="12 sp" />
+
+            <!-- ═══ Heute-Hervorhebung / Today Highlighting ═══ -->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/linear_vertical_margin"
+                android:text="@string/compact_widget_highlight_title"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/widget_margin" />
+
+            <!-- Highlight text color -->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/compact_widget_highlight_text_color_title"
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                android:textSize="@dimen/custom_preference_title_text_size" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/widget_padding"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/textColorPickerContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/widget_margin" />
+            </HorizontalScrollView>
+
+            <!-- Highlight background color -->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/compact_widget_highlight_color_title"
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                android:textSize="@dimen/custom_preference_title_text_size" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/widget_padding"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/colorPickerContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/widget_margin" />
+            </HorizontalScrollView>
+
+            <!-- Highlight opacity -->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/compact_widget_highlight_opacity_title"
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                android:textSize="@dimen/custom_preference_title_text_size" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/configurationHighlightOpacitySlider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stepSize="5"
+                android:valueFrom="10"
+                android:valueTo="100" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/configurationHighlightOpacityValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                tools:text="60%" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
