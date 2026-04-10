@@ -138,6 +138,8 @@ fun removeOrGetUpcomingEvents(
     onlyFavorites: Boolean = false
 ): List<EventResult> {
     val upcomingResult: MutableList<EventResult> = events.toMutableList()
+    // Always exclude ignored events TODO test
+    upcomingResult.removeIf { it.favorite == null }
     if (onlyFavorites)
         upcomingResult.removeIf { it.favorite == false }
     if (returnUpcoming) {
