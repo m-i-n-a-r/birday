@@ -50,6 +50,18 @@
                 android:resource="@xml/widget_upcoming_info" />
         </receiver>
 
+        <!-- Compact table widget -->
+        <receiver
+            android:name=".widgets.CompactWidgetProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_compact_info" />
+        </receiver>
+
         <!-- Old minimal text only widget -->
         <receiver
             android:name=".widgets.MinimalWidgetProvider"
@@ -101,6 +113,18 @@
             android:noHistory="true"
             android:theme="@style/AppTheme" />
 
+        <!-- Activity to configure the compact widget -->
+        <activity
+            android:name=".activities.CompactWidgetConfigurationActivity"
+            android:exported="true"
+            android:label="@string/widget_configuration_title"
+            android:noHistory="true"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
         <!-- Activity to configure the minimal widget -->
         <activity
             android:name=".activities.MinimalWidgetConfigurationActivity"
@@ -115,6 +139,11 @@
 
         <service
             android:name=".widgets.EventWidgetService"
+            android:foregroundServiceType="dataSync"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <service
+            android:name=".widgets.CompactWidgetService"
             android:foregroundServiceType="dataSync"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
