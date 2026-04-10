@@ -279,6 +279,37 @@
     <string name="hide_far_widget_description">Ascunde widget-ul dacă următoarele evenimente sunt după perioada suplimentară de notificare (de exemplu: notificare cu 7 zile înainte Următorul eveniment este în 10 zile -&gt; widget-ul este ascuns)</string>
     <string name="show_following_widget_title">Afișează următorul eveniment</string>
     <string name="show_following_widget_description">Arată evenimentul sau evenimentele care îl urmează pe următorul într-un rând suplimentar</string>
+    <string name="appwidget_compact">Compact table</string>
+    <string name="add_widget_compact">Birday - Compact</string>
+    <string name="compact_widget_opacity_title">Background opacity</string>
+    <string name="compact_widget_opacity_description">Adjust the darkness of the widget background</string>
+    <string name="compact_widget_appearance_title">Appearance</string>
+    <string name="compact_widget_bg_color_title">Background color</string>
+    <string name="compact_widget_text_color_title">Text color</string>
+    <string name="compact_widget_show_photos_title">Show contact photos</string>
+    <string name="compact_widget_date_position_title">Birth date</string>
+    <string name="compact_widget_date_hidden">Hidden</string>
+    <string name="compact_widget_date_below">Below name</string>
+    <string name="compact_widget_date_above">Above name</string>
+    <string name="compact_widget_zodiac_position_title">Zodiac sign</string>
+    <string name="compact_widget_zodiac_hidden">Hidden</string>
+    <string name="compact_widget_zodiac_before_date">Before date</string>
+    <string name="compact_widget_zodiac_after_date">After date</string>
+    <string name="compact_widget_text_size_title">Text size</string>
+    <string name="compact_widget_highlight_title">Today highlighting</string>
+    <string name="compact_widget_highlight_opacity_title">Background opacity</string>
+    <string name="compact_widget_highlight_color_title">Background color</string>
+    <string name="compact_widget_highlight_text_color_title">Text color</string>
+    <string name="compact_widget_turns">%d</string>
+    <string name="compact_widget_today">Today!</string>
+    <string name="compact_widget_tomorrow">Tomorrow</string>
+    <plurals name="compact_widget_in_days">
+        <item quantity="one">%d day</item>
+        <item quantity="few">%d days</item>
+        <item quantity="other">%d days</item>
+    </plurals>
+    <string name="compact_widget_preview_days_2">7 days</string>
+    <string name="compact_widget_preview_days_3">15 days</string>
     <!-- Search -->
     <string name="search_event">Căutare…</string>
     <string name="search_no_result_title">Niciun rezultat găsit</string>
