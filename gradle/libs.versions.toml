@@ -1,6 +1,5 @@
 [versions]
 agp = "9.1.0"
-kotlin = "2.3.20"
 ksp = "2.3.2"
 navigation = "2.9.7"
 
@@ -24,6 +23,7 @@ appintro = "6.3.1"
 shimmer = "0.5.0"
 konfetti = "1.3.2"
 tasticalendar = "1.4.0"
+ucrop = "2.2.10"
 
 junit = "4.13.2"
 androidx-test-ext-junit = "1.3.0"
@@ -54,6 +54,7 @@ appintro = { group = "com.github.AppIntro", name = "AppIntro", version.ref = "ap
 shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = "shimmer" }
 konfetti = { group = "nl.dionsegijn", name = "konfetti", version.ref = "konfetti" }
 tasticalendar = { group = "com.github.m-i-n-a-r", name = "tasticalendar", version.ref = "tasticalendar" }
+ucrop = { group = "com.github.yalantis", name = "ucrop", version.ref = "ucrop" }
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
@@ -62,6 +63,5 @@ icu4j = { group = "com.ibm.icu", name = "icu4j", version.ref = "icu4j" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 navigation-safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }

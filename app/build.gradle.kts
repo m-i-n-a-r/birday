@@ -2,12 +2,15 @@
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.navigation.safeargs)
 }
 
-android {
+kotlin {
+    jvmToolchain(17)
+}
+
+configure<com.android.build.api.dsl.ApplicationExtension>  {
     namespace = "com.minar.birday"
     compileSdk = 36
 
@@ -35,15 +38,7 @@ android {
         generateLocaleConfig = true
     }
 
-    java {
-        toolchain {
-            languageVersion = JavaLanguageVersion.of(17)
-        }
-    }
 
-    kotlin {
-        jvmToolchain(17)
-    }
 
     packaging {
         jniLibs {
@@ -70,11 +65,6 @@ android {
     lint {
         disable += listOf("MissingTranslation", "MissingQuantity")
     }
-}
-
-configurations.configureEach {
-    exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk7")
-    exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk8")
 }
 
 dependencies {
@@ -129,6 +119,9 @@ dependencies {
 
     // TastiCalendar (my library :D)
     implementation(libs.tasticalendar)
+
+    // UCrop (image cropping)
+    implementation(libs.ucrop)
 
     // [Testing] Basic
     testImplementation(libs.junit)
