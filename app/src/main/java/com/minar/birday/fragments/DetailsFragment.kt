@@ -60,6 +60,7 @@ class DetailsFragment : Fragment() {
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
     private var easterEggCounter = 0
+    private var foundContactId: Long? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -118,54 +119,74 @@ class DetailsFragment : Fragment() {
         val contactButton = binding.detailsContactButton
 
         // Spawn a contact button if a contact with the same name is found in the contacts (asynchronously)
-        contactButton.visibility = View.INVISIBLE
-        try {
-            if (ContextCompat.checkSelfPermission(
-                    requireContext(),
-                    Manifest.permission.READ_CONTACTS
-                ) == PackageManager.PERMISSION_GRANTED
-            ) {
-                Thread {
-                    try {
-                        val surname = event.surname ?: ""
-                        val contactId = ContactsRepository()
-                            .findContactIdByName(
-                                requireContext().contentResolver,
-                                event.name,
-                                surname
-                            )
-                        if (contactId != null) {
-                            Log.d("contacts", "Matching contact found for ${event.name}")
-                            requireActivity().runOnUiThread {
-                                contactButton.visibility = View.VISIBLE
-                                contactButton.setOnClickListener {
-                                    try {
-                                        val contactUri = ContentUris.withAppendedId(
-                                            ContactsContract.Contacts.CONTENT_URI,
-                                            contactId.toLong()
-                                        )
-                                        val intent = Intent(Intent.ACTION_VIEW, contactUri)
-                                        startActivity(intent)
-                                    } catch (_: Exception) {
-                                        // Ignore malformed ID
+        // If the contact was already found (e.g. view recreated), show the button immediately
+        if (foundContactId != null) {
+            contactButton.visibility = View.VISIBLE
+            contactButton.setOnClickListener {
+                try {
+                    val contactUri = ContentUris.withAppendedId(
+                        ContactsContract.Contacts.CONTENT_URI,
+                        foundContactId!!
+                    )
+                    val intent = Intent(Intent.ACTION_VIEW, contactUri)
+                    startActivity(intent)
+                } catch (_: Exception) {
+                    // Ignore malformed ID
+                }
+            }
+        } else {
+            contactButton.visibility = View.INVISIBLE
+            try {
+                if (ContextCompat.checkSelfPermission(
+                        requireContext(),
+                        Manifest.permission.READ_CONTACTS
+                    ) == PackageManager.PERMISSION_GRANTED
+                ) {
+                    // Capture contentResolver on the main thread before spawning the background thread
+                    val contentResolver = requireContext().contentResolver
+                    val surname = event.surname ?: ""
+                    Thread {
+                        try {
+                            val contactId = ContactsRepository()
+                                .findContactIdByName(contentResolver, event.name, surname)
+                            if (contactId != null) {
+                                Log.d("contacts", "Matching contact found for ${event.name}")
+                                foundContactId = contactId.toLong()
+                                activity?.runOnUiThread {
+                                    if (isAdded) {
+                                        contactButton.visibility = View.VISIBLE
+                                        contactButton.setOnClickListener {
+                                            try {
+                                                val contactUri = ContentUris.withAppendedId(
+                                                    ContactsContract.Contacts.CONTENT_URI,
+                                                    contactId.toLong()
+                                                )
+                                                val intent = Intent(Intent.ACTION_VIEW, contactUri)
+                                                startActivity(intent)
+                                            } catch (_: Exception) {
+                                                // Ignore malformed ID
+                                            }
+                                        }
+                                    }
+                                }
+                            } else {
+                                Log.d("contacts", "No matching contact for ${event.name}")
+                                activity?.runOnUiThread {
+                                    if (isAdded) {
+                                        // Probably redundant
+                                        contactButton.visibility = View.INVISIBLE
                                     }
                                 }
                             }
-                        } else {
-                            Log.d("contacts", "No matching contact for ${event.name}")
-                            requireActivity().runOnUiThread {
-                                // Probably redundant
-                                contactButton.visibility = View.INVISIBLE
-                            }
+                        } catch (_: Exception) {
                         }
-                    } catch (_: Exception) {
-                    }
-                }.start()
-            } else {
+                    }.start()
+                } else {
+                    contactButton.visibility = View.GONE
+                }
+            } catch (_: Exception) {
                 contactButton.visibility = View.GONE
             }
-        } catch (_: Exception) {
-            contactButton.visibility = View.GONE
         }
 
 
@@ -298,7 +319,7 @@ class DetailsFragment : Fragment() {
             DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
         val subject: MutableList<EventResult> = mutableListOf()
         subject.add(event)
-        val statsGenerator = StatsGenerator(subject, context)
+        val statsGenerator = StatsGenerator(subject, requireActivity())
         val daysRemaining = getRemainingDays(event.nextDate!!)
         val nextDateFormatted = event.nextDate.format(formatter)
         // Days remaining, plus next date properly formatted
@@ -310,7 +331,7 @@ class DetailsFragment : Fragment() {
 
         // Manage the different event types
         if (event.type == (EventCode.BIRTHDAY.name)) {
-            // Hide the age and the chinese sign and use a shorter birth date if the year is unknown
+            // Hide the age and the chinese sign and use a shorter birthdate if the year is unknown
             if (!event.yearMatter!!) {
                 binding.detailsNextAge.visibility = View.GONE
                 binding.detailsNextAgeValue.visibility = View.GONE
@@ -490,7 +511,6 @@ class DetailsFragment : Fragment() {
                 }
 
                 override fun handleOnBackCancelled() {
-                    initialTouchY = -1f
                     background.run {
                         translationX = 0f
                         translationY = 0f
