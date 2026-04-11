@@ -17,7 +17,7 @@ import kotlin.random.Random
 // Generate a series of stats based on a list of events and focused on birthdays
 class StatsGenerator(
     eventList: List<EventResult>,
-    context: Context?,
+    context: Context,
     private val astrologyDisabled: Boolean = false
 ) {
     private val events: List<EventResult> = eventList
@@ -74,7 +74,7 @@ class StatsGenerator(
         sb.appendBulletSpans(
             stats,
             16,
-            getThemeColor(R.attr.colorOnSurfaceVariant, applicationContext!!)
+            getThemeColor(R.attr.colorOnSurfaceVariant, applicationContext)
         )
         return sb
     }
@@ -87,15 +87,15 @@ class StatsGenerator(
             others.isEmpty()
         ) return ""
         val typesSummary = SpannableStringBuilder()
-        typesSummary.append("${applicationContext?.getString(R.string.birthday)}: ${birthdays.size}")
+        typesSummary.append("${applicationContext.getString(R.string.birthday)}: ${birthdays.size}")
         if (anniversaries.isNotEmpty())
-            typesSummary.append(", ${applicationContext?.getString(R.string.anniversary)}: ${anniversaries.size}")
+            typesSummary.append(", ${applicationContext.getString(R.string.anniversary)}: ${anniversaries.size}")
         if (deathAnniversaries.isNotEmpty())
-            typesSummary.append(", ${applicationContext?.getString(R.string.death_anniversary)}: ${deathAnniversaries.size}")
+            typesSummary.append(", ${applicationContext.getString(R.string.death_anniversary)}: ${deathAnniversaries.size}")
         if (nameDays.isNotEmpty())
-            typesSummary.append(", ${applicationContext?.getString(R.string.name_day)}: ${nameDays.size}")
+            typesSummary.append(", ${applicationContext.getString(R.string.name_day)}: ${nameDays.size}")
         if (others.isNotEmpty())
-            typesSummary.append(", ${applicationContext?.getString(R.string.other)}: ${others.size}")
+            typesSummary.append(", ${applicationContext.getString(R.string.other)}: ${others.size}")
         return typesSummary.toString()
     }
 
@@ -103,8 +103,8 @@ class StatsGenerator(
     private fun ageAverage(): String {
         val average = truncate(getAges().values.average()).toInt()
         return String.format(
-            applicationContext?.getString(R.string.age_average)!!,
-            applicationContext.resources?.getQuantityString(R.plurals.years, average, average),
+            applicationContext.getString(R.string.age_average),
+            applicationContext.resources.getQuantityString(R.plurals.years, average, average),
         )
     }
 
@@ -124,13 +124,13 @@ class StatsGenerator(
             }
         }
         return String.format(
-            applicationContext?.getString(R.string.oldest_person)!!,
+            applicationContext.getString(R.string.oldest_person),
             oldestName,
-        ) + ", " + applicationContext.resources?.getQuantityString(
+        ) + ", " + applicationContext.resources.getQuantityString(
             R.plurals.years,
             oldestAge,
             oldestAge
-        ).toString()
+        )
     }
 
     // The youngest person, taking into account months and days
@@ -149,19 +149,19 @@ class StatsGenerator(
             }
         }
         val commonPart = String.format(
-            applicationContext?.getString(R.string.youngest_person)!!,
+            applicationContext.getString(R.string.youngest_person),
             youngestName,
         )
         // If the youngest person is a baby, return the age in months
         return if (youngestAge == 0) {
             val months = getYearsMonths(youngestDate)
-            "$commonPart, " + applicationContext.resources?.getQuantityString(
+            "$commonPart, " + applicationContext.resources.getQuantityString(
                 R.plurals.months,
                 months,
                 months
             )
         } else {
-            "$commonPart, " + applicationContext.resources?.getQuantityString(
+            "$commonPart, " + applicationContext.resources.getQuantityString(
                 R.plurals.years,
                 youngestAge,
                 youngestAge
@@ -180,7 +180,7 @@ class StatsGenerator(
         val commonMonth: String = evaluateResult(months)
         if (commonMonth.isBlank()) return commonMonth
         return String.format(
-            applicationContext?.getString(R.string.most_common_month)!!,
+            applicationContext.getString(R.string.most_common_month),
             commonMonth,
         )
     }
@@ -200,13 +200,13 @@ class StatsGenerator(
         val commonRange: String = evaluateResult(ageRanges)
         if (commonRange.isBlank()) return commonRange
         return String.format(
-            applicationContext?.getString(R.string.most_common_age_range)!!,
+            applicationContext.getString(R.string.most_common_age_range),
             commonRange,
-            commonRange.toInt() + 10,
+            (commonRange.toInt() + 10).toString(),
         )
     }
 
-    // The most common decade (80s, 90s..). When there's no common decade, return a blank string
+    // The most common decade (80s, 90s...). When there's no common decade, return a blank string
     private fun mostCommonDecade(): String {
         val decades = mutableMapOf<String, Int>()
         birthdays.forEach {
@@ -221,7 +221,7 @@ class StatsGenerator(
         val commonDecade: String = evaluateResult(decades)
         if (commonDecade.isBlank()) return commonDecade
         return String.format(
-            applicationContext?.getString(R.string.most_common_decade)!!,
+            applicationContext.getString(R.string.most_common_decade),
             commonDecade,
         )
     }
@@ -242,21 +242,21 @@ class StatsGenerator(
             val chosen = specialPersons.keys.random()
             val years = specialPersons[chosen]!!
             // Format the first half of the sentence
-            return String.format(
-                applicationContext?.getString(R.string.special_ages)!!,
+            String.format(
+                applicationContext.getString(R.string.special_ages),
                 chosen,
-            ) + ", " + applicationContext.resources?.getQuantityString(
+            ) + ", " + applicationContext.resources.getQuantityString(
                 R.plurals.years,
                 years,
                 years
-            ).toString()
+            )
         }
     }
 
     // Get the zodiac sign for a random person
     private fun zodiacSign(person: EventResult): String {
         return String.format(
-            applicationContext?.getString(R.string.random_zodiac_sign)!!,
+            applicationContext.getString(R.string.random_zodiac_sign),
             person.name,
             getZodiacSign(person),
         )
@@ -272,7 +272,7 @@ class StatsGenerator(
         val commonZodiacSign: String = evaluateResult(zodiacSigns)
         if (commonZodiacSign.isBlank()) return commonZodiacSign
         return String.format(
-            applicationContext?.getString(R.string.most_common_zodiac_sign)!!,
+            applicationContext.getString(R.string.most_common_zodiac_sign),
             commonZodiacSign,
         )
     }
@@ -287,7 +287,7 @@ class StatsGenerator(
         val commonChineseSign: String = evaluateResult(chineseSigns)
         if (commonChineseSign.isBlank()) return commonChineseSign
         return String.format(
-            applicationContext?.getString(R.string.most_common_chinese_sign)!!,
+            applicationContext.getString(R.string.most_common_chinese_sign),
             commonChineseSign,
         )
     }
@@ -296,7 +296,7 @@ class StatsGenerator(
     private fun dayOfWeek(person: EventResult): String {
         return if (!person.yearMatter!!) ""
         else String.format(
-            applicationContext?.getString(R.string.random_day_of_week)!!,
+            applicationContext.getString(R.string.random_day_of_week),
             person.name,
             person.originalDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault()),
         )
@@ -316,7 +316,7 @@ class StatsGenerator(
         val commonWeekDay: String = evaluateResult(weekDays)
         if (commonWeekDay.isBlank()) return commonWeekDay
         return String.format(
-            applicationContext?.getString(R.string.most_common_day_of_week)!!,
+            applicationContext.getString(R.string.most_common_day_of_week),
             commonWeekDay
         )
     }
@@ -327,18 +327,18 @@ class StatsGenerator(
         birthdays.forEach {
             if (it.yearMatter!!) if (it.originalDate.isLeapYear) leapTotal++
         }
-        return applicationContext?.resources?.getQuantityString(
+        return applicationContext.resources.getQuantityString(
             R.plurals.leap_year_total,
             leapTotal,
             leapTotal
-        ).toString()
+        )
     }
 
     // Get the chinese year of a random person
     private fun chineseSign(person: EventResult): String {
         return if (!person.yearMatter!!) ""
         else String.format(
-            applicationContext?.getString(R.string.random_chinese_year)!!,
+            applicationContext.getString(R.string.random_chinese_year),
             person.name,
             getChineseSign(person),
         )
@@ -358,18 +358,18 @@ class StatsGenerator(
 
     fun getChineseSign(person: EventResult): String {
         return when (chineseAnimal(person.originalDate)) {
-            0 -> applicationContext!!.getString(R.string.chinese_zodiac_rat)
-            1 -> applicationContext!!.getString(R.string.chinese_zodiac_ox)
-            2 -> applicationContext!!.getString(R.string.chinese_zodiac_tiger)
-            3 -> applicationContext!!.getString(R.string.chinese_zodiac_rabbit)
-            4 -> applicationContext!!.getString(R.string.chinese_zodiac_dragon)
-            5 -> applicationContext!!.getString(R.string.chinese_zodiac_snake)
-            6 -> applicationContext!!.getString(R.string.chinese_zodiac_horse)
-            7 -> applicationContext!!.getString(R.string.chinese_zodiac_goat)
-            8 -> applicationContext!!.getString(R.string.chinese_zodiac_monkey)
-            9 -> applicationContext!!.getString(R.string.chinese_zodiac_rooster)
-            10 -> applicationContext!!.getString(R.string.chinese_zodiac_dog)
-            11 -> applicationContext!!.getString(R.string.chinese_zodiac_pig)
+            0 -> applicationContext.getString(R.string.chinese_zodiac_rat)
+            1 -> applicationContext.getString(R.string.chinese_zodiac_ox)
+            2 -> applicationContext.getString(R.string.chinese_zodiac_tiger)
+            3 -> applicationContext.getString(R.string.chinese_zodiac_rabbit)
+            4 -> applicationContext.getString(R.string.chinese_zodiac_dragon)
+            5 -> applicationContext.getString(R.string.chinese_zodiac_snake)
+            6 -> applicationContext.getString(R.string.chinese_zodiac_horse)
+            7 -> applicationContext.getString(R.string.chinese_zodiac_goat)
+            8 -> applicationContext.getString(R.string.chinese_zodiac_monkey)
+            9 -> applicationContext.getString(R.string.chinese_zodiac_rooster)
+            10 -> applicationContext.getString(R.string.chinese_zodiac_dog)
+            11 -> applicationContext.getString(R.string.chinese_zodiac_pig)
             else -> throw Exception("Unexpected Chinese animal index")
         }
     }
@@ -378,18 +378,18 @@ class StatsGenerator(
     fun getZodiacSign(person: EventResult): String {
         var sign = ""
         when (getZodiacSignNumber(person)) {
-            0 -> sign = applicationContext?.getString(R.string.zodiac_sagittarius).toString()
-            1 -> sign = applicationContext?.getString(R.string.zodiac_capricorn).toString()
-            2 -> sign = applicationContext?.getString(R.string.zodiac_aquarius).toString()
-            3 -> sign = applicationContext?.getString(R.string.zodiac_pisces).toString()
-            4 -> sign = applicationContext?.getString(R.string.zodiac_aries).toString()
-            5 -> sign = applicationContext?.getString(R.string.zodiac_taurus).toString()
-            6 -> sign = applicationContext?.getString(R.string.zodiac_gemini).toString()
-            7 -> sign = applicationContext?.getString(R.string.zodiac_cancer).toString()
-            8 -> sign = applicationContext?.getString(R.string.zodiac_leo).toString()
-            9 -> sign = applicationContext?.getString(R.string.zodiac_virgo).toString()
-            10 -> sign = applicationContext?.getString(R.string.zodiac_libra).toString()
-            11 -> sign = applicationContext?.getString(R.string.zodiac_scorpio).toString()
+            0 -> sign = applicationContext.getString(R.string.zodiac_sagittarius)
+            1 -> sign = applicationContext.getString(R.string.zodiac_capricorn)
+            2 -> sign = applicationContext.getString(R.string.zodiac_aquarius)
+            3 -> sign = applicationContext.getString(R.string.zodiac_pisces)
+            4 -> sign = applicationContext.getString(R.string.zodiac_aries)
+            5 -> sign = applicationContext.getString(R.string.zodiac_taurus)
+            6 -> sign = applicationContext.getString(R.string.zodiac_gemini)
+            7 -> sign = applicationContext.getString(R.string.zodiac_cancer)
+            8 -> sign = applicationContext.getString(R.string.zodiac_leo)
+            9 -> sign = applicationContext.getString(R.string.zodiac_virgo)
+            10 -> sign = applicationContext.getString(R.string.zodiac_libra)
+            11 -> sign = applicationContext.getString(R.string.zodiac_scorpio)
         }
         return sign
     }
