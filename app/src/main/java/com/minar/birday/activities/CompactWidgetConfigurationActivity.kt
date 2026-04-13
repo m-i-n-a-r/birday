@@ -1,6 +1,5 @@
 package com.minar.birday.activities
 
-import android.app.Activity
 import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.content.SharedPreferences
@@ -119,31 +118,32 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
     private fun setupOpacitySlider() {
         val savedOpacity = sharedPrefs.getInt("widget_compact_opacity", 80)
         binding.configurationOpacitySlider.value = savedOpacity.toFloat()
-        binding.configurationOpacityValue.text = "$savedOpacity%"
+        val opacityString = "$savedOpacity%"
+        binding.configurationOpacityValue.text = opacityString
     }
 
     private fun setupPhotosSwitch() {
-        val savedShowPhotos = !sharedPrefs.getBoolean("widget_compact_hide_images", false)
-        binding.configurationShowPhotosSwitch.isChecked = savedShowPhotos
+        val savedHideImages = sharedPrefs.getBoolean("widget_compact_hide_images", false)
+        binding.configurationShowPhotosSwitch.isChecked = savedHideImages
 
         val previewAvatars = listOf(
             binding.previewAvatar1, binding.previewAvatar2, binding.previewAvatar3,
         )
         previewAvatars.forEach {
-            it.visibility = if (savedShowPhotos) android.view.View.VISIBLE else android.view.View.GONE
+            it.visibility = if (!savedHideImages) android.view.View.VISIBLE else android.view.View.GONE
         }
 
         binding.configurationShowPhotosSwitch.setOnCheckedChangeListener { _, isChecked ->
-            val visibility = if (isChecked) android.view.View.VISIBLE else android.view.View.GONE
+            val visibility = if (!isChecked) android.view.View.VISIBLE else android.view.View.GONE
             previewAvatars.forEach { it.visibility = visibility }
         }
     }
 
     private fun setupDatePositionSpinner() {
         val datePositionOptions = arrayOf(
-            getString(R.string.compact_widget_date_below),
-            getString(R.string.compact_widget_date_above),
-            getString(R.string.compact_widget_date_hidden),
+            getString(R.string.compact_widget_below_name),
+            getString(R.string.compact_widget_above_name),
+            getString(R.string.compact_widget_hidden),
         )
         binding.configurationDatePositionSpinner.adapter = android.widget.ArrayAdapter(
             this, android.R.layout.simple_spinner_dropdown_item, datePositionOptions
@@ -181,9 +181,9 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
 
     private fun setupZodiacPositionSpinner() {
         val zodiacPositionOptions = arrayOf(
-            getString(R.string.compact_widget_zodiac_hidden),
-            getString(R.string.compact_widget_zodiac_before_date),
-            getString(R.string.compact_widget_zodiac_after_date),
+            getString(R.string.compact_widget_hidden),
+            getString(R.string.compact_widget_before_date),
+            getString(R.string.compact_widget_after_date),
         )
         binding.configurationZodiacPositionSpinner.adapter = android.widget.ArrayAdapter(
             this, android.R.layout.simple_spinner_dropdown_item, zodiacPositionOptions
@@ -209,12 +209,14 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
     private fun setupTextSizeSlider() {
         val savedTextSize = sharedPrefs.getInt("widget_compact_text_size", 12)
         binding.configurationTextSizeSlider.value = savedTextSize.toFloat()
-        binding.configurationTextSizeValue.text = "${savedTextSize} sp"
+        val textSizeString = "$savedTextSize sp"
+        binding.configurationTextSizeValue.text = textSizeString
         updatePreviewTextSize(binding.previewContent, savedTextSize.toFloat())
 
         binding.configurationTextSizeSlider.addOnChangeListener { _, value, _ ->
             val size = value.toInt()
-            binding.configurationTextSizeValue.text = "${size} sp"
+            val sizeString = "$size sp"
+            binding.configurationTextSizeValue.text = sizeString
             updatePreviewTextSize(binding.previewContent, size.toFloat())
         }
     }
@@ -222,7 +224,8 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
     private fun setupHighlightOpacitySlider() {
         val savedHighlightOpacity = sharedPrefs.getInt("widget_compact_highlight_opacity", 60)
         binding.configurationHighlightOpacitySlider.value = savedHighlightOpacity.toFloat()
-        binding.configurationHighlightOpacityValue.text = "$savedHighlightOpacity%"
+        val opacityString = "$savedHighlightOpacity%"
+        binding.configurationHighlightOpacityValue.text = opacityString
     }
 
     private fun getAllPreviewZodiacLists(): List<List<android.view.View>> {
@@ -255,17 +258,16 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
         val allPreviewZodiacIcons = getAllPreviewZodiacLists().flatten()
 
         var selectedWidgetBgColor = sharedPrefs.getString("widget_compact_bg_color", "black") ?: "black"
-        var selectedWidgetTextColor = sharedPrefs.getString("widget_compact_general_text_color", "white") ?: "white"
+        val selectedWidgetTextColor = sharedPrefs.getString("widget_compact_general_text_color", "white") ?: "white"
         var selectedHighlightBgColor = sharedPrefs.getString("widget_compact_highlight_color", "red") ?: "red"
-        var selectedHighlightTextColor = sharedPrefs.getString("widget_compact_highlight_text_color", "white") ?: "white"
+        val selectedHighlightTextColor = sharedPrefs.getString("widget_compact_highlight_text_color", "white") ?: "white"
 
         buildColorPicker(binding.bgColorPickerContainer, allColors, selectedWidgetBgColor) { name, color ->
             selectedWidgetBgColor = name
             updatePreviewBackground(previewContent, slider.value.toInt(), color)
         }
 
-        buildColorPicker(binding.generalTextColorPickerContainer, allColors, selectedWidgetTextColor) { name, color ->
-            selectedWidgetTextColor = name
+        buildColorPicker(binding.generalTextColorPickerContainer, allColors, selectedWidgetTextColor) { _, color ->
             updatePreviewGeneralTextColor(previewContent, color)
             allPreviewZodiacIcons.forEach { (it as android.widget.ImageView).setColorFilter(color) }
         }
@@ -275,21 +277,22 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
             updatePreviewHighlight(previewHighlightRow, color, highlightOpacitySlider.value.toInt())
         }
 
-        buildColorPicker(binding.textColorPickerContainer, allColors, selectedHighlightTextColor) { name, color ->
-            selectedHighlightTextColor = name
+        buildColorPicker(binding.textColorPickerContainer, allColors, selectedHighlightTextColor) { _, color ->
             updatePreviewHighlightText(previewHighlightRow, color)
         }
 
         highlightOpacitySlider.addOnChangeListener { _, value, _ ->
             val hlOpacity = value.toInt()
-            highlightOpacityValue.text = "$hlOpacity%"
+            val hlOpacityString = "$hlOpacity%"
+            highlightOpacityValue.text = hlOpacityString
             val color = allColors[selectedHighlightBgColor] ?: getColor(R.color.red)
             updatePreviewHighlight(previewHighlightRow, color, hlOpacity)
         }
 
         slider.addOnChangeListener { _, value, _ ->
             val opacity = value.toInt()
-            opacityValue.text = "$opacity%"
+            val opacityString = "$opacity%"
+            opacityValue.text = opacityString
             val color = allColors[selectedWidgetBgColor] ?: Color.BLACK
             updatePreviewBackground(previewContent, opacity, color)
         }
@@ -322,7 +325,7 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
         binding.configurationConfirmButton.setOnClickListener {
             sharedPrefs.edit {
                 putInt("widget_compact_opacity", binding.configurationOpacitySlider.value.toInt())
-                putBoolean("widget_compact_hide_images", !binding.configurationShowPhotosSwitch.isChecked)
+                putBoolean("widget_compact_hide_images", binding.configurationShowPhotosSwitch.isChecked)
                 putInt("widget_compact_text_size", binding.configurationTextSizeSlider.value.toInt())
                 putInt("widget_compact_highlight_opacity", binding.configurationHighlightOpacitySlider.value.toInt())
                 putString("widget_compact_bg_color", getSelectedColorName(binding.bgColorPickerContainer))
@@ -340,7 +343,7 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
             sendBroadcast(updateIntent)
 
             val resultValue = Intent().putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId)
-            setResult(Activity.RESULT_OK, resultValue)
+            setResult(RESULT_OK, resultValue)
             finish()
         }
     }

@@ -213,7 +213,7 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
             rv.setViewVisibility(R.id.compactWidgetRowAge, View.VISIBLE)
             rv.setTextViewText(
                 R.id.compactWidgetRowAge,
-                context.getString(R.string.compact_widget_turns, nextYears)
+                nextYears.toString()
             )
         } else {
             rv.setViewVisibility(R.id.compactWidgetRowAge, View.GONE)
@@ -224,10 +224,10 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
         val nextDate = event.nextDate ?: return
         val remainingDays = getRemainingDays(nextDate)
         val countdownText = when (remainingDays) {
-            0 -> context.getString(R.string.compact_widget_today)
-            1 -> context.getString(R.string.compact_widget_tomorrow)
+            0 -> context.getString(R.string.today)
+            1 -> context.getString(R.string.tomorrow)
             else -> context.resources.getQuantityString(
-                R.plurals.compact_widget_in_days, remainingDays, remainingDays
+                R.plurals.days_left, remainingDays, remainingDays
             )
         }
         if (remainingDays == 0) {

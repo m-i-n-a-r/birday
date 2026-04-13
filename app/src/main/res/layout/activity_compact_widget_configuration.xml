@@ -81,7 +81,7 @@
                         android:layout_width="12dp"
                         android:layout_height="12dp"
                         android:layout_marginEnd="2dp"
-                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:contentDescription="@string/zodiac_sign"
                         android:src="@drawable/ic_zodiac_aries"
                         android:visibility="gone" />
 
@@ -89,7 +89,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:tag="date"
-                        android:text="@string/compact_widget_preview_date_1"
+                        android:text="1990-03-26"
+                        tools:ignore="HardcodedText"
                         android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                         android:textColor="#B3FFFFFF"
                         android:textSize="10sp" />
@@ -99,7 +100,7 @@
                         android:layout_width="12dp"
                         android:layout_height="12dp"
                         android:layout_marginStart="2dp"
-                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:contentDescription="@string/zodiac_sign"
                         android:src="@drawable/ic_zodiac_aries"
                         android:visibility="gone" />
                 </LinearLayout>
@@ -107,7 +108,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/compact_widget_preview_name_1"
+                    android:text="Alice Smith"
+                    tools:ignore="HardcodedText"
                     android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                     android:textColor="#FFFFFFFF" />
 
@@ -124,7 +126,7 @@
                         android:layout_width="12dp"
                         android:layout_height="12dp"
                         android:layout_marginEnd="2dp"
-                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:contentDescription="@string/zodiac_sign"
                         android:src="@drawable/ic_zodiac_aries"
                         android:visibility="gone" />
 
@@ -132,7 +134,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:tag="date"
-                        android:text="@string/compact_widget_preview_date_1"
+                        android:text="1990-03-26"
+                        tools:ignore="HardcodedText"
                         android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                         android:textColor="#B3FFFFFF"
                         android:textSize="10sp" />
@@ -142,7 +145,7 @@
                         android:layout_width="12dp"
                         android:layout_height="12dp"
                         android:layout_marginStart="2dp"
-                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:contentDescription="@string/zodiac_sign"
                         android:src="@drawable/ic_zodiac_aries"
                         android:visibility="gone" />
                 </LinearLayout>
@@ -153,7 +156,8 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/in_row_padding"
                 android:tag="date"
-                android:text="@string/compact_widget_preview_age_1"
+                android:text="36"
+                tools:ignore="HardcodedText"
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                 android:textColor="#B3FFFFFF" />
 
@@ -161,7 +165,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/in_row_padding"
-                android:text="@string/compact_widget_today"
+                android:text="@string/today"
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                 android:textColor="#FFFFFFFF" />
         </LinearLayout>
@@ -201,7 +205,7 @@
                         android:layout_width="12dp"
                         android:layout_height="12dp"
                         android:layout_marginEnd="2dp"
-                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:contentDescription="@string/zodiac_sign"
                         android:src="@drawable/ic_zodiac_leo"
                         android:visibility="gone" />
 
@@ -209,7 +213,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:tag="date"
-                        android:text="@string/compact_widget_preview_date_2"
+                        android:text="1985-04-02"
+                        tools:ignore="HardcodedText"
                         android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                         android:textColor="#B3FFFFFF"
                         android:textSize="10sp" />
@@ -219,7 +224,7 @@
                         android:layout_width="12dp"
                         android:layout_height="12dp"
                         android:layout_marginStart="2dp"
-                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:contentDescription="@string/zodiac_sign"
                         android:src="@drawable/ic_zodiac_leo"
                         android:visibility="gone" />
                 </LinearLayout>
@@ -227,7 +232,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/compact_widget_preview_name_2"
+                    android:text="Bob Jones"
+                    tools:ignore="HardcodedText"
                     android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                     android:textColor="#FFFFFFFF" />
 
@@ -244,7 +250,7 @@
                         android:layout_width="12dp"
                         android:layout_height="12dp"
                         android:layout_marginEnd="2dp"
-                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:contentDescription="@string/zodiac_sign"
                         android:src="@drawable/ic_zodiac_leo"
                         android:visibility="gone" />
 
@@ -252,7 +258,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:tag="date"
-                        android:text="@string/compact_widget_preview_date_2"
+                        android:text="1985-04-02"
+                        tools:ignore="HardcodedText"
                         android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                         android:textColor="#B3FFFFFF"
                         android:textSize="10sp" />
@@ -262,7 +269,7 @@
                         android:layout_width="12dp"
                         android:layout_height="12dp"
                         android:layout_marginStart="2dp"
-                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:contentDescription="@string/zodiac_sign"
                         android:src="@drawable/ic_zodiac_leo"
                         android:visibility="gone" />
                 </LinearLayout>
@@ -273,7 +280,8 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/in_row_padding"
                 android:tag="date"
-                android:text="@string/compact_widget_preview_age_2"
+                android:text="41"
+                tools:ignore="HardcodedText"
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                 android:textColor="#B3FFFFFF" />
 
@@ -281,7 +289,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/in_row_padding"
-                android:text="@string/compact_widget_preview_days_2"
+                android:text="7 days"
+                tools:ignore="HardcodedText"
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                 android:textColor="#FFFFFFFF" />
         </LinearLayout>
@@ -321,7 +330,7 @@
                         android:layout_width="12dp"
                         android:layout_height="12dp"
                         android:layout_marginEnd="2dp"
-                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:contentDescription="@string/zodiac_sign"
                         android:src="@drawable/ic_zodiac_sagittarius"
                         android:visibility="gone" />
 
@@ -329,7 +338,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:tag="date"
-                        android:text="@string/compact_widget_preview_date_3"
+                        android:text="1992-04-10"
+                        tools:ignore="HardcodedText"
                         android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                         android:textColor="#B3FFFFFF"
                         android:textSize="10sp" />
@@ -339,7 +349,7 @@
                         android:layout_width="12dp"
                         android:layout_height="12dp"
                         android:layout_marginStart="2dp"
-                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:contentDescription="@string/zodiac_sign"
                         android:src="@drawable/ic_zodiac_sagittarius"
                         android:visibility="gone" />
                 </LinearLayout>
@@ -347,7 +357,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/compact_widget_preview_name_3"
+                    android:text="Carol Lee"
+                    tools:ignore="HardcodedText"
                     android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                     android:textColor="#FFFFFFFF" />
 
@@ -364,7 +375,7 @@
                         android:layout_width="12dp"
                         android:layout_height="12dp"
                         android:layout_marginEnd="2dp"
-                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:contentDescription="@string/zodiac_sign"
                         android:src="@drawable/ic_zodiac_sagittarius"
                         android:visibility="gone" />
 
@@ -372,7 +383,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:tag="date"
-                        android:text="@string/compact_widget_preview_date_3"
+                        android:text="1992-04-10"
+                        tools:ignore="HardcodedText"
                         android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                         android:textColor="#B3FFFFFF"
                         android:textSize="10sp" />
@@ -382,7 +394,7 @@
                         android:layout_width="12dp"
                         android:layout_height="12dp"
                         android:layout_marginStart="2dp"
-                        android:contentDescription="@string/compact_widget_zodiac_position_title"
+                        android:contentDescription="@string/zodiac_sign"
                         android:src="@drawable/ic_zodiac_sagittarius"
                         android:visibility="gone" />
                 </LinearLayout>
@@ -393,7 +405,8 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/in_row_padding"
                 android:tag="date"
-                android:text="@string/compact_widget_preview_age_3"
+                android:text="34"
+                tools:ignore="HardcodedText"
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                 android:textColor="#B3FFFFFF" />
 
@@ -401,7 +414,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/in_row_padding"
-                android:text="@string/compact_widget_preview_days_3"
+                android:text="15 days"
+                tools:ignore="HardcodedText"
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                 android:textColor="#FFFFFFFF" />
         </LinearLayout>
@@ -435,7 +449,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/compact_widget_show_photos_title"
+                    android:text="@string/hide_images"
                     android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
                     android:textSize="@dimen/custom_preference_title_text_size" />
 
@@ -460,7 +474,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/compact_widget_date_position_title"
+                    android:text="@string/birth_date"
                     android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
                     android:textSize="@dimen/custom_preference_title_text_size" />
 
@@ -484,7 +498,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/compact_widget_zodiac_position_title"
+                    android:text="@string/zodiac_sign"
                     android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
                     android:textSize="@dimen/custom_preference_title_text_size" />
 
@@ -496,13 +510,6 @@
             </LinearLayout>
 
             <!-- ═══ Darstellung / Appearance ═══ -->
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/linear_vertical_margin"
-                android:text="@string/compact_widget_appearance_title"
-                android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
-
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -513,7 +520,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/compact_widget_bg_color_title"
+                android:text="@string/compact_widget_bg_color"
                 android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
                 android:textSize="@dimen/custom_preference_title_text_size" />
 
@@ -536,7 +543,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/compact_widget_opacity_title"
+                android:text="@string/compact_widget_opacity"
                 android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
                 android:textSize="@dimen/custom_preference_title_text_size" />
 
@@ -561,7 +568,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/compact_widget_text_color_title"
+                android:text="@string/compact_widget_text_color"
                 android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
                 android:textSize="@dimen/custom_preference_title_text_size" />
 
@@ -584,7 +591,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/compact_widget_text_size_title"
+                android:text="@string/compact_widget_text_size"
                 android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
                 android:textSize="@dimen/custom_preference_title_text_size" />
 
@@ -609,7 +616,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/linear_vertical_margin"
-                android:text="@string/compact_widget_highlight_title"
+                android:text="@string/today"
                 android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
 
             <com.google.android.material.divider.MaterialDivider
@@ -622,7 +629,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/compact_widget_highlight_text_color_title"
+                android:text="@string/compact_widget_text_color"
                 android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
                 android:textSize="@dimen/custom_preference_title_text_size" />
 
@@ -645,7 +652,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/compact_widget_highlight_color_title"
+                android:text="@string/compact_widget_bg_color"
                 android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
                 android:textSize="@dimen/custom_preference_title_text_size" />
 
@@ -668,7 +675,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/compact_widget_highlight_opacity_title"
+                android:text="@string/compact_widget_opacity"
                 android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
                 android:textSize="@dimen/custom_preference_title_text_size" />
 
