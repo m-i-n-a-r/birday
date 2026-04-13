@@ -120,8 +120,8 @@ dependencies {
     // TastiCalendar (my library :D)
     implementation(libs.tasticalendar)
 
-    // UCrop (image cropping)
-    implementation(libs.ucrop)
+    // Image cropping
+    implementation(libs.imageCropper)
 
     // [Testing] Basic
     testImplementation(libs.junit)
