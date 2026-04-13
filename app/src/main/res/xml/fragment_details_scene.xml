@@ -73,6 +73,11 @@
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />
         </Constraint>
+        <Constraint android:id="@id/detailsContactButton">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -146,6 +151,11 @@
                 app:visibilityMode="ignore" />
         </Constraint>
         <Constraint android:id="@id/detailsCountdownShimmer">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsContactButton">
             <PropertySet
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />
