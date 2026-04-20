@@ -13,6 +13,7 @@ import androidx.preference.PreferenceManager
 import com.minar.birday.R
 import com.minar.birday.databinding.ActivityCompactWidgetConfigurationBinding
 import com.minar.birday.utilities.addInsetsByPadding
+import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 import com.minar.birday.widgets.CompactWidgetProvider
 import com.minar.birday.widgets.CompactWidgetRemoteViewsFactory
 import androidx.core.content.edit
@@ -44,6 +45,16 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
             finish()
             return
         }
+
+        // Loop the title icon like in the minimal widget configuration
+        val avdLooping = sharedPrefs.getBoolean("loop_avd", true)
+        binding.configurationTitleImage.applyLoopingAnimatedVectorDrawable(
+            R.drawable.animated_nav_settings, 1000, disableLooping = !avdLooping
+        )
+
+        // Localized countdown labels for the preview rows (mirror what the widget shows)
+        binding.previewCountdown2.text = resources.getQuantityString(R.plurals.days_left, 7, 7)
+        binding.previewCountdown3.text = resources.getQuantityString(R.plurals.days_left, 15, 15)
 
         setupOpacitySlider()
         setupPhotosSwitch()

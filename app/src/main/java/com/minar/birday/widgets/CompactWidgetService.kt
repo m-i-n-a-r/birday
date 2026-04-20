@@ -251,10 +251,10 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
             rv.setViewVisibility(R.id.compactWidgetRowImage, View.GONE)
         } else {
             rv.setViewVisibility(R.id.compactWidgetRowImage, View.VISIBLE)
-            if (event.image != null && event.image!!.isNotEmpty()) {
+            if (event.image != null && event.image.isNotEmpty()) {
                 rv.setImageViewBitmap(
                     R.id.compactWidgetRowImage,
-                    getCircularBitmap(byteArrayToBitmap(event.image!!))
+                    getCircularBitmap(byteArrayToBitmap(event.image))
                 )
             } else {
                 rv.setImageViewBitmap(
@@ -331,7 +331,7 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
         }
     }
 
-    private fun resolveColor(name: String): Int = Companion.resolveColor(context, name)
+    private fun resolveColor(name: String): Int = resolveColor(context, name)
 
     private fun getZodiacDrawable(event: EventResult): Int {
         val day = event.originalDate.dayOfMonth
