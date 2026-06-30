@@ -80,7 +80,7 @@
         android:focusable="true"
         android:hapticFeedbackEnabled="false"
         android:paddingVertical="@dimen/in_row_button_padding"
-        android:src="@drawable/animated_to_favorite"
+        android:src="@drawable/animated_favorite_normal_to_favorite"
         app:layout_constraintBottom_toBottomOf="@id/eventDate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/eventPerson" />

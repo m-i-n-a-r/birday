@@ -16,8 +16,8 @@ android {
         applicationId = "com.minar.birday"
         targetSdk = 36
         minSdk = 26
-        versionCode = 36
-        versionName = "4.7.0"
+        versionCode = 37
+        versionName = "4.7.2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -82,38 +82,38 @@ dependencies {
 
     // Default dependencies
     implementation("androidx.appcompat:appcompat:1.7.1")
-    implementation("androidx.core:core-ktx:1.17.0")
+    implementation("androidx.core:core-ktx:1.18.0")
     implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.activity:activity-ktx:1.11.0")
+    implementation("androidx.activity:activity-ktx:1.13.0")
     implementation("androidx.fragment:fragment-ktx:1.8.9")
 
     // Transition
-    implementation("androidx.transition:transition-ktx:1.6.0")
+    implementation("androidx.transition:transition-ktx:1.7.0")
 
     // Constraint / motion layout
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
 
     // Splashscreen
-    implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation("androidx.core:core-splashscreen:1.2.0")
 
     // Material Components
-    implementation("com.google.android.material:material:1.14.0-alpha05")
+    implementation("com.google.android.material:material:1.14.0-alpha10")
 
     // WorkManager
-    implementation("androidx.work:work-runtime-ktx:2.10.5")
+    implementation("androidx.work:work-runtime-ktx:2.11.2")
 
     // Navigation component
-    implementation("androidx.navigation:navigation-fragment-ktx:2.9.5")
-    implementation("androidx.navigation:navigation-ui-ktx:2.9.5")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.9.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.9.7")
 
     // Lifecycle and ViewModel
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.10.0")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     
     // Room
-    val roomVersion = "2.8.2"
+    val roomVersion = "2.8.4"
     implementation("androidx.room:room-runtime:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
 
@@ -138,5 +138,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.7.0")
 
     // [Testing] ICU
-    testImplementation("com.ibm.icu:icu4j:77.1")
+    testImplementation("com.ibm.icu:icu4j:78.3")
 }

@@ -17,16 +17,10 @@ import com.minar.birday.utilities.bitmapToByteArray
 import com.minar.birday.utilities.getBitmapSquareSize
 import java.time.LocalDate
 
-/**
- * Fetches the contacts from the system.
- *
- * It needs all contacts related permissions in order to work properly.
- */
+
+// Fetches the contacts from the system. It needs all contacts related permissions in order to work properly
 class ContactsRepository {
 
-    /**
-     * Read all the possible events from the contacts.
-     */
     @RequiresPermission(Manifest.permission.READ_CONTACTS)
     private fun getContactEvents(resolver: ContentResolver): List<ImportedEvent> {
         return queryContacts(resolver).asSequence()

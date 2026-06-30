@@ -1,7 +1,9 @@
 package com.minar.birday.adapters
 
 import android.content.Context
+import android.graphics.drawable.Animatable2
 import android.graphics.drawable.AnimatedVectorDrawable
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,7 +26,6 @@ import com.minar.birday.utilities.getYears
 import com.minar.birday.utilities.setEventImageOrPlaceholder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -247,27 +248,49 @@ class EventAdapter(
                 }
             } else eventTypeImage.visibility = View.GONE
 
-            // Manage the favorite/ignored logic TODO finish it
-            if (event.favorite == false) favoriteButton.setImageResource(R.drawable.animated_to_favorite)
-            else favoriteButton.setImageResource(R.drawable.animated_from_favorite)
+            // Manage the normal/favorite/ignored logic
+            when (event.favorite) {
+                null -> favoriteButton.setImageResource(R.drawable.animated_favorite_ignored_to_normal)
+                false -> favoriteButton.setImageResource(R.drawable.animated_favorite_normal_to_favorite)
+                true -> favoriteButton.setImageResource(R.drawable.animated_favorite_favorite_to_ignored)
+            }
             favoriteButton.setOnClickListener {
-                if (event.favorite == true) {
-                    event.favorite = false
-                    activityScope.launch {
-                        updateFavorite(event)
-                        delay(800)
-                        favoriteButton.setImageResource(R.drawable.animated_to_favorite)
+                favoriteButton.isEnabled = false
+                var favoriteDrawable: Int
+                when (event.favorite) {
+                    // Favorite becomes ignored
+                    true -> {
+                        favoriteDrawable = R.drawable.animated_favorite_ignored_to_normal
+                        event.favorite = null
                     }
-                    (favoriteButton.drawable as AnimatedVectorDrawable).start()
-                } else {
-                    event.favorite = true
-                    activityScope.launch {
-                        updateFavorite(event)
-                        delay(800)
-                        favoriteButton.setImageResource(R.drawable.animated_from_favorite)
+                    // Normal becomes favorite
+                    false -> {
+                        favoriteDrawable = R.drawable.animated_favorite_favorite_to_ignored
+                        event.favorite = true
                     }
-                    (favoriteButton.drawable as AnimatedVectorDrawable).start()
+                    // Ignored becomes normal
+                    null -> {
+                        favoriteDrawable = R.drawable.animated_favorite_normal_to_favorite
+                        event.favorite = false
+                    }
                 }
+                updateFavorite(event)
+                val animated = (favoriteButton.drawable as AnimatedVectorDrawable)
+                animated.registerAnimationCallback(object : Animatable2.AnimationCallback() {
+                    override fun onAnimationEnd(drawable: Drawable?) {
+                        // Unregister callback
+                        try {
+                            animated.unregisterAnimationCallback(this)
+                        } catch (_: Exception) { }
+                        animated.reset()
+                        // Avoid state sharing problems
+                        val next = ContextCompat.getDrawable(context, favoriteDrawable)
+                            ?.constantState?.newDrawable()?.mutate()
+                        favoriteButton.setImageDrawable(next)
+                        favoriteButton.isEnabled = true
+                    }
+                })
+                animated.start()
             }
             favoriteButton.setOnLongClickListener {
                 showFavoriteHint()

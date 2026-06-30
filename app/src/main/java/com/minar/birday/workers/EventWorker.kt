@@ -30,6 +30,7 @@ import java.time.temporal.ChronoUnit
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
 
+
 class EventWorker(context: Context, params: WorkerParameters) : Worker(context, params) {
     override fun doWork(): Result {
         val appContext = applicationContext
@@ -62,13 +63,15 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                             .toInt()
                     }
                 ) {
-                    if (onlyFavoritesAdditional && event.favorite == false) continue
+                    // Favorite = null means that the event is ignored
+                    if (onlyFavoritesAdditional && event.favorite == false || event.favorite == null) continue
                     anticipated.add(event)
                 }
 
                 // Fill the list of events happening today
                 if (event.nextDate!!.isEqual(LocalDate.now())) {
-                    if (onlyFavoritesNotification && event.favorite == false) continue
+                    // Favorite = null means that the event is ignored
+                    if (onlyFavoritesNotification && event.favorite == false || event.favorite == null) continue
                     actual.add(event)
                 }
             }

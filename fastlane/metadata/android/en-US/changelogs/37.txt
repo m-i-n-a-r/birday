@@ -1,0 +1,9 @@
+- Many important fixes, again
+- Material3 Expressive and various UI improvements
+- Open contacts details from event details, if available
+- Better disable battery optimization procedure
+- Tristate favorite button: normal, favorite, ignored (no notification for that event, ever)
+- Choose what to import from Birday, csv, json and calendar import
+- Choose where to export Birday, csv, json backups
+- Better layout for current/next age
+- New translations and translations updated

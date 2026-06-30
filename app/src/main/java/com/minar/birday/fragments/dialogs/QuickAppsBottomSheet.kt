@@ -150,7 +150,34 @@ class QuickAppsBottomSheet(private val act: MainActivity) : BottomSheetDialogFra
         carousel.layoutManager = CarouselLayoutManager()
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(act)
         val hideImages = sharedPrefs.getBoolean("hide_images", false)
-        carousel.adapter = MissedCarouselAdapter(allEventsFiltered, hideImages)
+        carousel.adapter = MissedCarouselAdapter(allEventsFiltered, hideImages) { event ->
+            // Open contact if exists (no action otherwise). Run in background to avoid UI blocking
+            try {
+                if (requireContext().checkSelfPermission(android.Manifest.permission.READ_CONTACTS) == android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                    Thread {
+                        try {
+                            val surname = event.surname ?: ""
+                            val contactId = com.minar.birday.persistence.ContactsRepository()
+                                .findContactIdByName(requireContext().contentResolver, event.name, surname)
+                            if (contactId != null) {
+                                val contactUri = android.content.ContentUris.withAppendedId(
+                                    android.provider.ContactsContract.Contacts.CONTENT_URI,
+                                    contactId.toLong()
+                                )
+                                requireActivity().runOnUiThread {
+                                    try {
+                                        val intent =
+                                            Intent(Intent.ACTION_VIEW, contactUri)
+                                        startActivity(intent)
+                                    } catch (_: Exception) { }
+                                }
+                            }
+                        } catch (_: Exception) { }
+                    }.start()
+                }
+            } catch (_: Exception) { }
+        }
+
     }
 
     override fun onDestroyView() {

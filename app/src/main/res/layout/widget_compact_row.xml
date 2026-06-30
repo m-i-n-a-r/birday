@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/compactWidgetRowItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Background shape (tinted programmatically for opacity + rounded corners) -->
+    <ImageView
+        android:id="@+id/compactWidgetRowBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/widget_compact_row_bg_middle" />
+
+    <!-- Row content -->
+    <LinearLayout
+        android:id="@+id/compactWidgetRowContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/widget_padding"
+        android:paddingVertical="@dimen/widget_compact_row_vertical_padding">
+
+        <!-- Contact photo -->
+        <ImageView
+            android:id="@+id/compactWidgetRowImage"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/next_event"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder_other_image" />
+
+        <!-- Name + date column -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/in_row_padding">
+
+            <!-- Date above name (hidden by default) -->
+            <LinearLayout
+                android:id="@+id/compactWidgetRowDateAbove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/compactWidgetRowZodiacBeforeAbove"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginEnd="2dp"
+                    android:contentDescription="@string/compact_widget_zodiac_position_title"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/compactWidgetRowDateAboveText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                    android:textColor="#B3FFFFFF"
+                    android:textSize="10sp" />
+
+                <ImageView
+                    android:id="@+id/compactWidgetRowZodiacAfterAbove"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="2dp"
+                    android:contentDescription="@string/compact_widget_zodiac_position_title"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/compactWidgetRowName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/invalid_value_name"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textColor="#FFFFFFFF" />
+
+            <!-- Date below name (visible by default) -->
+            <LinearLayout
+                android:id="@+id/compactWidgetRowDateBelow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/compactWidgetRowZodiacBeforeBelow"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginEnd="2dp"
+                    android:contentDescription="@string/compact_widget_zodiac_position_title"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/compactWidgetRowDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/birth_date"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                    android:textColor="#B3FFFFFF"
+                    android:textSize="10sp" />
+
+                <ImageView
+                    android:id="@+id/compactWidgetRowZodiacAfterBelow"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="2dp"
+                    android:contentDescription="@string/compact_widget_zodiac_position_title"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Age ("turns X") -->
+        <TextView
+            android:id="@+id/compactWidgetRowAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingStart="@dimen/in_row_padding"
+            android:paddingEnd="0dp"
+            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+            android:textColor="#B3FFFFFF"
+            tools:text="turns 43" />
+
+        <!-- Countdown -->
+        <TextView
+            android:id="@+id/compactWidgetRowCountdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="end"
+            android:minWidth="56dp"
+            android:paddingStart="@dimen/in_row_padding"
+            android:paddingEnd="0dp"
+            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+            android:textColor="#FFFFFFFF"
+            tools:text="5 days" />
+
+    </LinearLayout>
+
+</FrameLayout>

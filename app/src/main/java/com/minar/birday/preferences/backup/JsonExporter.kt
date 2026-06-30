@@ -36,7 +36,7 @@ class JsonExporter(context: Context, attrs: AttributeSet?) : Preference(context,
             act.showSnackbar(context.getString(R.string.no_events))
             return
         }
-        val fileName = "BirdayBackup_${LocalDate.now()}.json"
+        val fileName = "BirdayJson_${LocalDate.now()}.json"
         act.saveJson.launch(fileName)
     }
 
