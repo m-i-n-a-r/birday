@@ -17,6 +17,8 @@ import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
+import com.minar.birday.receivers.WidgetMidnightReceiver
+import com.minar.birday.utilities.bodyMediumTextSizeSp
 import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.formatEventList
 import com.minar.birday.utilities.getNextYears
@@ -26,6 +28,7 @@ import com.minar.birday.utilities.removeOrGetUpcomingEvents
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
+import androidx.core.content.edit
 
 abstract class BirdayWidgetProvider : AppWidgetProvider() {
     abstract var widgetLayout: Int
@@ -43,15 +46,22 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
         appWidgetIds.forEach { appWidgetId ->
             updateAppWidget(context, appWidgetManager, appWidgetId)
         }
+        // onEnabled only fires for the first widget ever added, so widgets already placed by users
+        // updating from an older version would never get the alarm. Rescheduling here is idempotent.
+        WidgetMidnightReceiver.scheduleNextMidnight(context)
         super.onUpdate(context, appWidgetManager, appWidgetIds)
     }
 
     override fun onEnabled(context: Context) {
-        // Enter relevant functionality for when the first widget is created
+        // Schedule the exact midnight alarm so widgets refresh as soon as the date changes
+        WidgetMidnightReceiver.scheduleNextMidnight(context)
     }
 
     override fun onDisabled(context: Context) {
-        // Enter relevant functionality for when the last widget is disabled
+        // Cancel the alarm only when no Birday widget of any type is still active
+        if (!WidgetMidnightReceiver.anyWidgetActive(context)) {
+            WidgetMidnightReceiver.cancel(context)
+        }
     }
 
     internal fun updateAppWidget(
@@ -249,7 +259,9 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
 
         // Calculate how many rows fit in the widget height
         val options = appWidgetManager.getAppWidgetOptions(appWidgetId)
-        val textSizeSp = sp.getInt("widget_compact_text_size", 12)
+        val savedTextSize = sp.getInt("widget_compact_text_size", 0)
+        val textSizeSp = if (savedTextSize == 0) context.bodyMediumTextSizeSp().toInt()
+        else savedTextSize.coerceAtLeast(6)
         val datePosition = sp.getString("widget_compact_date_position", "below") ?: "below"
         val hideImages = sp.getBoolean("widget_compact_hide_images", false)
         val widgetHeightDp = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MAX_HEIGHT, 120)
@@ -269,7 +281,7 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
         // First and last row each add 8dp edge padding (widget_padding)
         val edgePaddingDp = CompactWidgetRemoteViewsFactory.EDGE_PADDING_DP
         val maxRows = ((widgetHeightDp - edgePaddingDp) / rowHeightDp).toInt().coerceAtLeast(1)
-        sp.edit().putInt("widget_compact_max_rows", maxRows).apply()
+        sp.edit { putInt("widget_compact_max_rows", maxRows) }
 
         Thread {
             // Launch the app on click

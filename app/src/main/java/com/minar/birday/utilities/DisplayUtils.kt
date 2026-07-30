@@ -1,12 +1,34 @@
 package com.minar.birday.utilities
 
+import android.content.Context
+import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+import com.google.android.material.R as MaterialR
 import com.minar.birday.R
+
+// The text size the compact widget uses when the user leaves the size on "Auto", read from the
+// Material body style so the widget follows the same scale as the rest of the app.
+// DisplayMetrics.scaledDensity is deprecated because font scaling is non linear since Android 14,
+// so the sp/px ratio is derived through TypedValue instead.
+fun Context.bodyMediumTextSizeSp(): Float {
+    val pxPerSp = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_SP, 1f, resources.displayMetrics
+    )
+    val attributes = obtainStyledAttributes(
+        MaterialR.style.TextAppearance_Material3_BodyMedium,
+        intArrayOf(android.R.attr.textSize)
+    )
+    val px = attributes.getDimension(0, DEFAULT_BODY_MEDIUM_SP * pxPerSp)
+    attributes.recycle()
+    return px / pxPerSp
+}
+
+private const val DEFAULT_BODY_MEDIUM_SP = 14f
 
 fun View.addInsetsByPadding(
     top: Boolean = false,

@@ -2,14 +2,19 @@ package com.minar.birday.widgets
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
+import android.view.ContextThemeWrapper
 import android.view.View
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import android.widget.RemoteViewsService.RemoteViewsFactory
 import androidx.preference.PreferenceManager
+import com.google.android.material.R as MaterialR
+import com.google.android.material.color.MaterialColors
 import com.minar.birday.R
 import com.minar.birday.model.EventResult
 import com.minar.birday.persistence.EventDao
+import com.minar.birday.utilities.bodyMediumTextSizeSp
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.getCircularBitmap
@@ -294,7 +299,9 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
         hideImages = sp.getBoolean("widget_compact_hide_images", false)
         maxRows = sp.getInt("widget_compact_max_rows", Int.MAX_VALUE)
         bgAlpha = sp.getInt("widget_compact_opacity", 80) * 255 / 100
-        textSizeSp = sp.getInt("widget_compact_text_size", 12).toFloat()
+        val savedTextSize = sp.getInt("widget_compact_text_size", 0)
+        textSizeSp = if (savedTextSize == 0) context.bodyMediumTextSizeSp()
+        else savedTextSize.toFloat().coerceAtLeast(6f)
         widgetBgColor = resolveColor(sp.getString("widget_compact_bg_color", "black") ?: "black")
         widgetTextColor = resolveColor(sp.getString("widget_compact_general_text_color", "white") ?: "white")
         highlightAlpha = sp.getInt("widget_compact_highlight_opacity", 60) * 255 / 100
@@ -302,6 +309,57 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
         highlightTextColor = resolveColor(sp.getString("widget_compact_highlight_text_color", "white") ?: "white")
         datePosition = sp.getString("widget_compact_date_position", "below") ?: "below"
         zodiacPosition = sp.getString("widget_compact_zodiac_position", "hidden") ?: "hidden"
+
+        if (sp.getBoolean("widget_compact_monet", true)) {
+            val themed = monetThemeContext(sp)
+            widgetBgColor = MaterialColors.getColor(themed, MaterialR.attr.colorSurface, android.graphics.Color.BLACK)
+            widgetTextColor = MaterialColors.getColor(themed, MaterialR.attr.colorOnSurface, android.graphics.Color.WHITE)
+            highlightColor = MaterialColors.getColor(themed, MaterialR.attr.colorPrimaryContainer, android.graphics.Color.BLUE)
+            highlightTextColor = MaterialColors.getColor(themed, MaterialR.attr.colorOnPrimaryContainer, android.graphics.Color.BLACK)
+            bgAlpha = 255
+            highlightAlpha = 255
+        }
+    }
+
+    private fun monetThemeContext(sp: android.content.SharedPreferences): Context {
+        val accent = sp.getString("accent_color", "system") ?: "system"
+        val theme = sp.getString("theme_color", "system") ?: "system"
+        val isDark = (context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) ==
+            Configuration.UI_MODE_NIGHT_YES
+        val resId = if (theme == "black" && isDark) when (accent) {
+            "monet" -> R.style.AppTheme_Monet_PerfectDark
+            "system" -> R.style.AppTheme_System_PerfectDark
+            "brown" -> R.style.AppTheme_Brown_PerfectDark
+            "blue" -> R.style.AppTheme_Blue_PerfectDark
+            "green" -> R.style.AppTheme_Green_PerfectDark
+            "orange" -> R.style.AppTheme_Orange_PerfectDark
+            "yellow" -> R.style.AppTheme_Yellow_PerfectDark
+            "teal" -> R.style.AppTheme_Teal_PerfectDark
+            "violet" -> R.style.AppTheme_Violet_PerfectDark
+            "pink" -> R.style.AppTheme_Pink_PerfectDark
+            "lightBlue" -> R.style.AppTheme_LightBlue_PerfectDark
+            "red" -> R.style.AppTheme_Red_PerfectDark
+            "lime" -> R.style.AppTheme_Lime_PerfectDark
+            "crimson" -> R.style.AppTheme_Crimson_PerfectDark
+            else -> R.style.AppTheme_PerfectDark
+        } else when (accent) {
+            "monet" -> R.style.AppTheme_Monet
+            "system" -> R.style.AppTheme_System
+            "brown" -> R.style.AppTheme_Brown
+            "blue" -> R.style.AppTheme_Blue
+            "green" -> R.style.AppTheme_Green
+            "orange" -> R.style.AppTheme_Orange
+            "yellow" -> R.style.AppTheme_Yellow
+            "teal" -> R.style.AppTheme_Teal
+            "violet" -> R.style.AppTheme_Violet
+            "pink" -> R.style.AppTheme_Pink
+            "lightBlue" -> R.style.AppTheme_LightBlue
+            "red" -> R.style.AppTheme_Red
+            "lime" -> R.style.AppTheme_Lime
+            "crimson" -> R.style.AppTheme_Crimson
+            else -> R.style.AppTheme
+        }
+        return ContextThemeWrapper(context, resId)
     }
 
     private fun applyZodiac(rv: RemoteViews, event: EventResult, beforeId: Int, afterId: Int) {

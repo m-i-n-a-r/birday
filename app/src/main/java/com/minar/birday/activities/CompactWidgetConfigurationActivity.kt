@@ -10,9 +10,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
+import com.google.android.material.R as MaterialR
+import com.google.android.material.color.MaterialColors
 import com.minar.birday.R
 import com.minar.birday.databinding.ActivityCompactWidgetConfigurationBinding
 import com.minar.birday.utilities.addInsetsByPadding
+import com.minar.birday.utilities.bodyMediumTextSizeSp
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 import com.minar.birday.widgets.CompactWidgetProvider
 import com.minar.birday.widgets.CompactWidgetRemoteViewsFactory
@@ -64,6 +67,7 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
         setupHighlightOpacitySlider()
         setupColorPickers()
         initializePreview()
+        setupMonetSwitch()
         setupConfirmButton(widgetId)
     }
 
@@ -217,26 +221,67 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
         }
     }
 
+    // Slider internal range: 0 = Auto, 1..19 = 6sp..24sp
+    private fun sliderToSp(sliderVal: Int): Int = if (sliderVal == 0) 0 else sliderVal + 5
+    private fun spToSlider(sp: Int): Int = if (sp == 0) 0 else (sp - 5).coerceAtLeast(1)
+
     private fun setupTextSizeSlider() {
-        val savedTextSize = sharedPrefs.getInt("widget_compact_text_size", 12)
-        binding.configurationTextSizeSlider.value = savedTextSize.toFloat()
-        val textSizeString = "$savedTextSize sp"
-        binding.configurationTextSizeValue.text = textSizeString
-        updatePreviewTextSize(binding.previewContent, savedTextSize.toFloat())
+        val savedSp = sharedPrefs.getInt("widget_compact_text_size", 0)
+        binding.configurationTextSizeSlider.value = spToSlider(savedSp).toFloat()
+        binding.configurationTextSizeValue.text = textSizeLabel(spToSlider(savedSp))
+        updatePreviewTextSize(binding.previewContent, resolvedTextSizeSp(spToSlider(savedSp)))
 
         binding.configurationTextSizeSlider.addOnChangeListener { _, value, _ ->
-            val size = value.toInt()
-            val sizeString = "$size sp"
-            binding.configurationTextSizeValue.text = sizeString
-            updatePreviewTextSize(binding.previewContent, size.toFloat())
+            val sliderVal = value.toInt()
+            binding.configurationTextSizeValue.text = textSizeLabel(sliderVal)
+            updatePreviewTextSize(binding.previewContent, resolvedTextSizeSp(sliderVal))
         }
     }
+
+    private fun textSizeLabel(sliderVal: Int): String =
+        if (sliderVal == 0) getString(R.string.compact_widget_text_size_auto)
+        else "${sliderToSp(sliderVal)} sp"
+
+    private fun resolvedTextSizeSp(sliderVal: Int): Float =
+        if (sliderVal == 0) bodyMediumTextSizeSp() else sliderToSp(sliderVal).toFloat()
 
     private fun setupHighlightOpacitySlider() {
         val savedHighlightOpacity = sharedPrefs.getInt("widget_compact_highlight_opacity", 60)
         binding.configurationHighlightOpacitySlider.value = savedHighlightOpacity.toFloat()
         val opacityString = "$savedHighlightOpacity%"
         binding.configurationHighlightOpacityValue.text = opacityString
+    }
+
+    private fun setupMonetSwitch() {
+        val monetEnabled = sharedPrefs.getBoolean("widget_compact_monet", true)
+        binding.configurationMonetSwitch.isChecked = monetEnabled
+        binding.colorSettingsContainer.visibility =
+            if (monetEnabled) android.view.View.GONE else android.view.View.VISIBLE
+        if (monetEnabled) applyMonetToPreview()
+
+        binding.configurationMonetSwitch.setOnCheckedChangeListener { _, isChecked ->
+            binding.colorSettingsContainer.visibility =
+                if (isChecked) android.view.View.GONE else android.view.View.VISIBLE
+            if (isChecked) {
+                applyMonetToPreview()
+            } else {
+                initializePreview()
+            }
+        }
+    }
+
+    private fun applyMonetToPreview() {
+        val bgColor = MaterialColors.getColor(this, MaterialR.attr.colorSurface, Color.BLACK)
+        val textColor = MaterialColors.getColor(this, MaterialR.attr.colorOnSurface, Color.WHITE)
+        val hlBgColor = MaterialColors.getColor(this, MaterialR.attr.colorPrimaryContainer, Color.BLUE)
+        val hlTextColor = MaterialColors.getColor(this, MaterialR.attr.colorOnPrimaryContainer, Color.BLACK)
+        val allPreviewZodiacIcons = getAllPreviewZodiacLists().flatten()
+
+        updatePreviewBackground(binding.previewContent, 100, bgColor)
+        updatePreviewGeneralTextColor(binding.previewContent, textColor)
+        allPreviewZodiacIcons.forEach { (it as android.widget.ImageView).setColorFilter(textColor) }
+        updatePreviewHighlight(binding.previewHighlightRow, hlBgColor, 100)
+        updatePreviewHighlightText(binding.previewHighlightRow, hlTextColor)
     }
 
     private fun getAllPreviewZodiacLists(): List<List<android.view.View>> {
@@ -335,9 +380,10 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
     private fun setupConfirmButton(widgetId: Int) {
         binding.configurationConfirmButton.setOnClickListener {
             sharedPrefs.edit {
+                putBoolean("widget_compact_monet", binding.configurationMonetSwitch.isChecked)
                 putInt("widget_compact_opacity", binding.configurationOpacitySlider.value.toInt())
                 putBoolean("widget_compact_hide_images", binding.configurationShowPhotosSwitch.isChecked)
-                putInt("widget_compact_text_size", binding.configurationTextSizeSlider.value.toInt())
+                putInt("widget_compact_text_size", sliderToSp(binding.configurationTextSizeSlider.value.toInt()))
                 putInt("widget_compact_highlight_opacity", binding.configurationHighlightOpacitySlider.value.toInt())
                 putString("widget_compact_bg_color", getSelectedColorName(binding.bgColorPickerContainer))
                 putString("widget_compact_general_text_color", getSelectedColorName(binding.generalTextColorPickerContainer))

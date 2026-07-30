@@ -100,7 +100,8 @@
                     android:id="@+id/configurationDatePositionSpinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/activity_horizontal_margin" />
+                    android:paddingStart="@dimen/activity_horizontal_margin"
+                    tools:ignore="RtlSymmetry" />
             </LinearLayout>
 
             <!-- Zodiac sign position -->
@@ -124,7 +125,8 @@
                     android:id="@+id/configurationZodiacPositionSpinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/activity_horizontal_margin" />
+                    android:paddingStart="@dimen/activity_horizontal_margin"
+                    tools:ignore="RtlSymmetry" />
             </LinearLayout>
 
             <com.google.android.material.divider.MaterialDivider
@@ -132,78 +134,31 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/widget_margin" />
 
-            <!-- Background color -->
-            <com.google.android.material.textview.MaterialTextView
+            <!-- Monet switch -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/compact_widget_bg_color"
-                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-                android:textSize="@dimen/custom_preference_title_text_size" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/widget_padding"
-                android:scrollbars="none">
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/monet"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textSize="@dimen/custom_preference_title_text_size" />
 
-                <LinearLayout
-                    android:id="@+id/bgColorPickerContainer"
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/configurationMonetSwitch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingVertical="@dimen/widget_margin" />
-            </HorizontalScrollView>
+                    android:paddingStart="@dimen/activity_horizontal_margin"
+                    android:paddingEnd="@dimen/card_margin" />
+            </LinearLayout>
 
-            <!-- Background opacity -->
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/compact_widget_opacity"
-                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-                android:textSize="@dimen/custom_preference_title_text_size" />
-
-            <com.google.android.material.slider.Slider
-                android:id="@+id/configurationOpacitySlider"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:stepSize="5"
-                android:valueFrom="0"
-                android:valueTo="100" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/configurationOpacityValue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                tools:text="80%" />
-
-            <!-- Text color -->
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/compact_widget_text_color"
-                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-                android:textSize="@dimen/custom_preference_title_text_size" />
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/widget_padding"
-                android:scrollbars="none">
-
-                <LinearLayout
-                    android:id="@+id/generalTextColorPickerContainer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingVertical="@dimen/widget_margin" />
-            </HorizontalScrollView>
-
-            <!-- Text size -->
+            <!-- Text size — always visible regardless of Monet -->
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -217,8 +172,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:stepSize="1"
-                android:valueFrom="8"
-                android:valueTo="18" />
+                android:valueFrom="0"
+                android:valueTo="19" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/configurationTextSizeValue"
@@ -228,89 +183,169 @@
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                 tools:text="12 sp" />
 
-            <!-- Today highlight section -->
-            <com.google.android.material.textview.MaterialTextView
+            <!-- Color settings — hidden when Monet is ON -->
+            <LinearLayout
+                android:id="@+id/colorSettingsContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/linear_vertical_margin"
-                android:text="@string/today"
-                android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+                android:orientation="vertical">
 
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/widget_margin" />
-
-            <!-- Highlight text color -->
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/compact_widget_text_color"
-                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-                android:textSize="@dimen/custom_preference_title_text_size" />
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/widget_padding"
-                android:scrollbars="none">
-
-                <LinearLayout
-                    android:id="@+id/textColorPickerContainer"
-                    android:layout_width="wrap_content"
+                <!-- Background color -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingVertical="@dimen/widget_margin" />
-            </HorizontalScrollView>
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@string/compact_widget_bg_color"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textSize="@dimen/custom_preference_title_text_size" />
 
-            <!-- Highlight background color -->
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/compact_widget_bg_color"
-                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-                android:textSize="@dimen/custom_preference_title_text_size" />
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/widget_padding"
-                android:scrollbars="none">
-
-                <LinearLayout
-                    android:id="@+id/colorPickerContainer"
-                    android:layout_width="wrap_content"
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingVertical="@dimen/widget_margin" />
-            </HorizontalScrollView>
+                    android:layout_marginTop="@dimen/widget_padding"
+                    android:scrollbars="none">
 
-            <!-- Highlight opacity -->
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/compact_widget_opacity"
-                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-                android:textSize="@dimen/custom_preference_title_text_size" />
+                    <LinearLayout
+                        android:id="@+id/bgColorPickerContainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/widget_margin" />
+                </HorizontalScrollView>
 
-            <com.google.android.material.slider.Slider
-                android:id="@+id/configurationHighlightOpacitySlider"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:stepSize="5"
-                android:valueFrom="10"
-                android:valueTo="100" />
+                <!-- Background opacity -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@string/compact_widget_opacity"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textSize="@dimen/custom_preference_title_text_size" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/configurationHighlightOpacityValue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                tools:text="60%" />
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/configurationOpacitySlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stepSize="5"
+                    android:valueFrom="0"
+                    android:valueTo="100" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/configurationOpacityValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    tools:text="80%" />
+
+                <!-- General text color -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@string/compact_widget_text_color"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textSize="@dimen/custom_preference_title_text_size" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widget_padding"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/generalTextColorPickerContainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/widget_margin" />
+                </HorizontalScrollView>
+
+                <!-- Today highlight section -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/linear_vertical_margin"
+                    android:text="@string/today"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widget_margin" />
+
+                <!-- Highlight text color -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@string/compact_widget_text_color"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textSize="@dimen/custom_preference_title_text_size" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widget_padding"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/textColorPickerContainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/widget_margin" />
+                </HorizontalScrollView>
+
+                <!-- Highlight background color -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@string/compact_widget_bg_color"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textSize="@dimen/custom_preference_title_text_size" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widget_padding"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/colorPickerContainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/widget_margin" />
+                </HorizontalScrollView>
+
+                <!-- Highlight opacity -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@string/compact_widget_opacity"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textSize="@dimen/custom_preference_title_text_size" />
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/configurationHighlightOpacitySlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stepSize="5"
+                    android:valueFrom="10"
+                    android:valueTo="100" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/configurationHighlightOpacityValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    tools:text="60%" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -388,7 +423,6 @@
                             android:text="1990-03-26"
                             android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                             android:textColor="#B3FFFFFF"
-                            android:textSize="10sp"
                             tools:ignore="HardcodedText" />
 
                         <ImageView
@@ -433,7 +467,6 @@
                             android:text="1990-03-26"
                             android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                             android:textColor="#B3FFFFFF"
-                            android:textSize="10sp"
                             tools:ignore="HardcodedText" />
 
                         <ImageView
@@ -512,7 +545,6 @@
                             android:text="1985-04-02"
                             android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                             android:textColor="#B3FFFFFF"
-                            android:textSize="10sp"
                             tools:ignore="HardcodedText" />
 
                         <ImageView
@@ -557,7 +589,6 @@
                             android:text="1985-04-02"
                             android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                             android:textColor="#B3FFFFFF"
-                            android:textSize="10sp"
                             tools:ignore="HardcodedText" />
 
                         <ImageView
@@ -637,7 +668,6 @@
                             android:text="1992-04-10"
                             android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                             android:textColor="#B3FFFFFF"
-                            android:textSize="10sp"
                             tools:ignore="HardcodedText" />
 
                         <ImageView
@@ -682,7 +712,6 @@
                             android:text="1992-04-10"
                             android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                             android:textColor="#B3FFFFFF"
-                            android:textSize="10sp"
                             tools:ignore="HardcodedText" />
 
                         <ImageView
@@ -692,7 +721,8 @@
                             android:layout_marginStart="2dp"
                             android:contentDescription="@string/zodiac_sign"
                             android:src="@drawable/ic_zodiac_sagittarius"
-                            android:visibility="gone" />
+                            android:visibility="gone"
+                            tools:ignore="TooManyViews" />
                     </LinearLayout>
                 </LinearLayout>
 
