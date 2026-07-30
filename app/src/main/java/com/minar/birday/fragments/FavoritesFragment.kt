@@ -276,7 +276,7 @@ class FavoritesFragment : Fragment() {
 
             val cardSubtitle: TextView = binding.statsSubtitle
             val cardDescription: TextView = binding.statsDescription
-            val generator = StatsGenerator(currentEvents, context, astrologyDisabled)
+            val generator = StatsGenerator(currentEvents, requireContext(), astrologyDisabled)
             val randomStat = generator.generateRandomStat()
             fullStats = mainViewModel.fullStats.value
             // Stop all UI updates if the fragment is not visible

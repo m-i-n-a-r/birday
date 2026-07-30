@@ -757,7 +757,7 @@ class MainActivity : AppCompatActivity() {
         builder.setMultiChoiceItems(items, checked) { _, which, isChecked ->
             checked[which] = isChecked
         }
-            .setPositiveButton(android.R.string.ok) { dialogInterface, _ ->
+            .setPositiveButton(android.R.string.ok) { _, _ ->
                 val toInsert = events.filterIndexed { i, _ -> checked[i] }
                 if (toInsert.isNotEmpty()) {
                     mainViewModel.insertAll(toInsert)
