@@ -64,3 +64,6 @@ gen-external-apklibs
 # Json Output
 app/debug/output.json
 app/release/output.json
+
+# Local scratch notes, never to be published
+/test/

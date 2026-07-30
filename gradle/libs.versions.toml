@@ -1,24 +1,22 @@
 [versions]
-agp = "9.1.1"
+agp = "9.3.1"
 ksp = "2.3.2"
-navigation = "2.9.7"
+navigation = "2.9.8"
 
 appcompat = "1.7.1"
-core-ktx = "1.18.0"
+core-ktx = "1.19.0"
 preference = "1.2.1"
-legacy-support = "1.0.0"
 activity-ktx = "1.13.0"
 fragment-ktx = "1.8.9"
 transition = "1.7.0"
-constraintlayout = "2.2.1"
+constraintlayout = "2.2.2"
 splashscreen = "1.2.0"
-material = "1.14.0-beta01"
+material = "1.14.0"
 work = "2.11.2"
-lifecycle = "2.10.0"
-lifecycle-extensions = "2.2.0"
+lifecycle = "2.11.0"
 recyclerview = "1.4.0"
 room = "2.8.4"
-gson = "2.13.2"
+gson = "2.14.0"
 appintro = "6.3.1"
 shimmer = "0.5.0"
 konfetti = "1.3.2"
@@ -34,7 +32,6 @@ icu4j = "78.3"
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 preference-ktx = { group = "androidx.preference", name = "preference-ktx", version.ref = "preference" }
-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacy-support" }
 activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity-ktx" }
 fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragment-ktx" }
 transition-ktx = { group = "androidx.transition", name = "transition-ktx", version.ref = "transition" }
@@ -44,7 +41,6 @@ material = { group = "com.google.android.material", name = "material", version.r
 work-runtime-ktx = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "work" }
 navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
 navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
-lifecycle-extensions = { group = "androidx.lifecycle", name = "lifecycle-extensions", version.ref = "lifecycle-extensions" }
 lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }

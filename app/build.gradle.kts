@@ -12,11 +12,11 @@ kotlin {
 
 configure<com.android.build.api.dsl.ApplicationExtension>  {
     namespace = "com.minar.birday"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.minar.birday"
-        targetSdk = 36
+        targetSdk = 37
         minSdk = 26
         versionCode = 37
         versionName = "4.7.2"
@@ -73,7 +73,6 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.core.ktx)
     implementation(libs.preference.ktx)
-    implementation(libs.legacy.support.v4)
     implementation(libs.activity.ktx)
     implementation(libs.fragment.ktx)
 
@@ -97,7 +96,6 @@ dependencies {
     implementation(libs.navigation.ui.ktx)
 
     // Lifecycle and ViewModel
-    implementation(libs.lifecycle.extensions)
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.recyclerview)
 
