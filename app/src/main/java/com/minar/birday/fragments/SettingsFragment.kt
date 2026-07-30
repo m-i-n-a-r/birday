@@ -18,6 +18,7 @@ import androidx.preference.PreferenceFragmentCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
+import com.minar.birday.persistence.LocalDateTypeConverter
 import com.minar.birday.utilities.addInsetsByPadding
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidgetProvider
@@ -101,6 +102,12 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
             "hide_images" -> updateWidgets(updateUpcoming = true)
             "multi_additional_notification" -> updateWidgets(updateMinimal = true)
             "disable_astrology" -> (requireActivity() as MainActivity).forceRefreshStats()
+            // The dao is already bound here, so the flag is set directly instead of going through
+            // EventDatabase, then the list is reloaded to reproject the Feb 29 events
+            LocalDateTypeConverter.PREFERENCE_KEY -> {
+                LocalDateTypeConverter.loadPreference(requireContext())
+                mainViewModel.refreshEvents()
+            }
         }
     }
 

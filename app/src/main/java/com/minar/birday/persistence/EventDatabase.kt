@@ -39,6 +39,9 @@ abstract class EventDatabase : RoomDatabase() {
             }
         }
         fun getBirdayDatabase(context: Context): EventDatabase {
+            // Every entry point (app, widgets, worker, importers) goes through here, so this is the
+            // only place guaranteed to run before any date is read back from the database
+            LocalDateTypeConverter.loadPreference(context)
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance

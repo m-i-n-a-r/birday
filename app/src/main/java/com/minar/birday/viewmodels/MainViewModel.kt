@@ -27,6 +27,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val searchString = MutableLiveData<String>()
     val selectedType = MutableLiveData<String>()
     private val searchValues = MediatorLiveData<Pair<String?, String?>>()
+    private val refreshTrigger = MutableLiveData<Unit>(Unit)
     var fullStats = MutableLiveData<SpannableStringBuilder>()
     private val eventDao: EventDao = EventDatabase.getBirdayDatabase(application).eventDao()
     var confettiDone: Boolean = false
@@ -38,10 +39,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         searchValues.apply {
             addSource(searchString) { value = it to selectedType.value }
             addSource(selectedType) { value = searchString.value to it }
+            addSource(refreshTrigger) { value = searchString.value to selectedType.value }
         }
 
         // All the events, unfiltered
-        allEventsUnfiltered = eventDao.getOrderedEvents()
+        allEventsUnfiltered = refreshTrigger.switchMap { eventDao.getOrderedEvents() }
         // All the events, filtered by search string and type
         allEvents = searchValues.switchMap { pair ->
             val searchString = pair.first
@@ -115,6 +117,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             .build()
         // Enqueue the request
         workManager.enqueue(dailyWorkRequest)
+    }
+
+    fun refreshEvents() {
+        refreshTrigger.value = Unit
     }
 
     // Update the name searched in the search bar

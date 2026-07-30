@@ -90,6 +90,16 @@
             android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
+        <!-- Feb 29 birthdays in non-leap years -->
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="leap_year_feb28"
+            android:summaryOff="@string/feb29_assignment_description_off"
+            android:summaryOn="@string/feb29_assignment_description_on"
+            android:title="@string/feb29_assignment_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
