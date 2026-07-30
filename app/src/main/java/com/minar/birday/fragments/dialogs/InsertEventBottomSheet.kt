@@ -2,7 +2,6 @@ package com.minar.birday.fragments.dialogs
 
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
-import android.media.ThumbnailUtils
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -17,6 +16,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -52,7 +52,8 @@ class InsertEventBottomSheet(
     BottomSheetDialogFragment() {
     private var _binding: BottomSheetInsertEventBinding? = null
     private val binding get() = _binding!!
-    private lateinit var resultLauncher: ActivityResultLauncher<String>
+    private lateinit var pickImageLauncher: ActivityResultLauncher<PickVisualMediaRequest>
+    private lateinit var cropImageLauncher: ActivityResultLauncher<Uri>
     private var imageChosen = false
     private val viewModel: InsertEventViewModel by viewModels()
 
@@ -64,15 +65,19 @@ class InsertEventBottomSheet(
         // Inflate the bottom sheet, initialize the shared preferences and the recent options list
         _binding = BottomSheetInsertEventBinding.inflate(inflater, container, false)
 
-        // Result launcher stuff
-        resultLauncher =
-            registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-                // Handle the returned Uri (atm, the image can't be cropped)
-                if (uri != null) {
-                    imageChosen = true
-                    setImage(uri)
-                }
+        // Two-step flow: pick an image from the gallery, then hand it to our crop activity.
+        // Keeping them split makes each contract trivial and respects the library's recommended
+        // pattern of embedding CropImageView inside an app-owned activity.
+        pickImageLauncher =
+            registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+                if (uri != null) cropImageLauncher.launch(uri)
             }
+        cropImageLauncher = registerForActivityResult(ImageCropContract()) { croppedUri ->
+            if (croppedUri != null) {
+                imageChosen = true
+                setImage(croppedUri)
+            }
+        }
         return binding.root
     }
 
@@ -123,7 +128,11 @@ class InsertEventBottomSheet(
             surname.setText(surnameValue)
             countYear.isChecked = countYearValue
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
-            eventDate.setText(eventDateValue.format(formatter))
+            // Hide the year in the field if it doesn't matter
+            eventDate.setText(
+                if (countYearValue) eventDateValue.format(formatter)
+                else forceMonthDayFormat(eventDateValue)
+            )
             imageChosen = setEventImageOrPlaceholder(event, eventImage)
             positiveButton.isEnabled = true
         }
@@ -255,10 +264,18 @@ class InsertEventBottomSheet(
         // Update the boolean value on each click
         countYear.setOnCheckedChangeListener { _, isChecked ->
             countYearValue = isChecked
+            // Reformat the date field, if already filled, to show or hide the year
+            if (!eventDate.text.isNullOrBlank())
+                eventDate.setText(
+                    if (isChecked) eventDateValue.format(formatter)
+                    else forceMonthDayFormat(eventDateValue)
+                )
         }
 
         eventImage.setOnClickListener {
-            resultLauncher.launch("image/*")
+            pickImageLauncher.launch(
+                PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+            )
         }
 
         eventDate.setOnClickListener {
@@ -301,7 +318,10 @@ class InsertEventBottomSheet(
                                 eventDateValue.dayOfMonth
                             )
                         }
-                        eventDate.setText(eventDateValue.format(formatter))
+                        eventDate.setText(
+                            if (countYearValue) eventDateValue.format(formatter)
+                            else forceMonthDayFormat(eventDateValue)
+                        )
                         // The last selected date is saved if the dialog is reopened
                         lastDate.set(eventDateValue.year, month - 1, day)
                     }
@@ -365,7 +385,7 @@ class InsertEventBottomSheet(
         _binding = null
     }
 
-    // Set the chosen image in the circular image
+    // Set the chosen image in the circular image (called after crop, the bitmap is already cropped)
     private fun setImage(data: Uri) {
         var bitmap: Bitmap? = null
         try {
@@ -379,19 +399,7 @@ class InsertEventBottomSheet(
         } catch (_: IOException) {
         }
         if (bitmap == null) return
-
-        // Bitmap ready. Avoid images larger than 450*450
-        var dimension: Int = getBitmapSquareSize(bitmap)
-        if (dimension > 450) dimension = 450
-
-        val resizedBitmap = ThumbnailUtils.extractThumbnail(
-            bitmap,
-            dimension,
-            dimension,
-            ThumbnailUtils.OPTIONS_RECYCLE_INPUT,
-        )
-        val image = binding.imageEvent
-        image.setImageBitmap(resizedBitmap)
+        binding.imageEvent.setImageBitmap(bitmap)
     }
 
     private inline fun afterTextChangedWatcher(crossinline afterTextChanged: (editable: Editable) -> Unit) =

@@ -150,6 +150,7 @@
     <string name="new_event_description">Enter a person you care about, and Birday will help you to remember their birthday or other events!</string>
     <string name="insert_event">Insert event</string>
     <string name="cancel">Cancel</string>
+    <string name="crop_image_error">Something went wrong while cropping the image</string>
     <string name="insert_name_hint">Insert First Name</string>
     <string name="insert_surname_hint">Insert Last Name</string>
     <string name="insert_date_hint">Select a date</string>
@@ -303,6 +304,7 @@
     <string name="compact_widget_bg_color">Background color</string>
     <string name="compact_widget_text_color">Text color</string>
     <string name="compact_widget_text_size">Text size</string>
+    <string name="compact_widget_text_size_auto">Auto</string>
     <string name="compact_widget_hidden">Hidden</string>
     <string name="compact_widget_below_name">Below name</string>
     <string name="compact_widget_above_name">Above name</string>

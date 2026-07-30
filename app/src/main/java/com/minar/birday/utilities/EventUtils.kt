@@ -1,6 +1,7 @@
 package com.minar.birday.utilities
 
 import android.content.Context
+import android.text.format.DateFormat
 import com.minar.birday.R
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventCode
@@ -10,7 +11,6 @@ import java.time.LocalDate
 import java.time.Period
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
-import java.time.format.TextStyle
 import java.time.temporal.ChronoUnit
 import java.util.Locale
 
@@ -208,9 +208,7 @@ fun formatName(event: EventResult, surnameFirst: Boolean): String {
 }
 
 // Get the reduced date for an event, i.e. the month and day date, unsupported natively
-fun getReducedDate(date: LocalDate) =
-    date.month.getDisplayName(TextStyle.FULL, Locale.getDefault()) +
-            ", " + date.dayOfMonth.toString()
+fun getReducedDate(date: LocalDate) = forceMonthDayFormat(date, FormatStyle.FULL)
 
 // Get the years also considering the possible corner cases
 fun getYears(eventResult: EventResult): Int {
@@ -269,19 +267,17 @@ fun getStringForTypeCodename(context: Context, codename: String): String {
     }
 }
 
-// Format a normal LocalDate in a year-less format. It probably doesn't work in every locale
+// Format a normal LocalDate in a year-less format, respecting the locale conventions
 fun forceMonthDayFormat(date: LocalDate, style: FormatStyle = FormatStyle.MEDIUM): String {
-    val formatter = DateTimeFormatter.ofLocalizedDate(style)
-    var formattedDate = date.format(formatter)
-    val yearAsString = date.year.toString()
-    val yearIndex = formattedDate.indexOf(yearAsString)
-    if (!formattedDate[yearIndex - 1].isWhitespace() && !(formattedDate[yearIndex - 1]).isLetterOrDigit())
-        formattedDate = formattedDate.removeRange(yearIndex - 1, yearIndex)
-    if (!formattedDate[yearIndex - 2].isWhitespace() && !(formattedDate[yearIndex - 2]).isLetterOrDigit())
-        formattedDate = formattedDate.removeRange(yearIndex - 2, yearIndex - 1)
-    formattedDate = formattedDate.replace(yearAsString, "")
-    formattedDate = formattedDate.trim()
-    return formattedDate
+    // The skeleton is resolved to the correct localized month-day pattern (e.g. "d. MMMM" in German)
+    val skeleton = when (style) {
+        FormatStyle.SHORT -> "Md"
+        FormatStyle.MEDIUM -> "MMMd"
+        else -> "MMMMd"
+    }
+    val locale = Locale.getDefault()
+    val pattern = DateFormat.getBestDateTimePattern(locale, skeleton)
+    return date.format(DateTimeFormatter.ofPattern(pattern, locale))
 }
 
 // Format a text preview for a given event, useful for the share event and import event dialog scenarios
