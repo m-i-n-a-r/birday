@@ -24,7 +24,7 @@ import com.minar.birday.databinding.FragmentFavoritesBinding
 import com.minar.birday.fragments.dialogs.StatsBottomSheet
 import com.minar.birday.model.Event
 import com.minar.birday.utilities.StatsGenerator
-import com.minar.birday.utilities.addInsetsByPadding
+import com.minar.birday.utilities.addNavbarClearance
 import com.minar.birday.utilities.getRemainingDays
 import com.minar.birday.utilities.getThemeColor
 import com.minar.birday.utilities.isBirthday
@@ -126,15 +126,17 @@ class FavoritesFragment : Fragment() {
         // Setup the recycler view
         val recycler = binding.favoritesRecycler
         recycler.adapter = adapter
+        // Assigned once: swapping it while it animates leaves rows stuck at the alpha it set
+        recycler.itemAnimator = BirdayRecyclerAnimator()
         with(mainViewModel) {
             getFavorites().observe(viewLifecycleOwner) { events ->
                 // Update the cached copy in the adapter
                 if (events != null && events.isNotEmpty()) {
                     removePlaceholder()
                     adapter.submitList(events)
-                    recycler.itemAnimator = BirdayRecyclerAnimator()
                 }
                 if (events.isNullOrEmpty()) {
+                    recycler.itemAnimator?.endAnimations()
                     adapter.submitList(emptyList())
                     restorePlaceholder()
                 }
@@ -142,7 +144,7 @@ class FavoritesFragment : Fragment() {
         }
 
         // Add insets
-        recycler.addInsetsByPadding(bottom = true)
+        recycler.addNavbarClearance()
 
         // Set the overview button
         overviewButton.setOnClickListener {

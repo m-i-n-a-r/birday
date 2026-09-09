@@ -170,28 +170,15 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
             }).start()
     }
 
+    // Only stages where the row starts from. The animation itself belongs to animateAddImpl,
+    // which runPendingAnimations drives and which keeps the bookkeeping straight
     override fun animateAdd(holder: RecyclerView.ViewHolder): Boolean {
         resetAnimation(holder)
-        holder.itemView.alpha = 0f
-        mPendingAdditions.add(holder)
-
-        val height: Int = holder.itemView.measuredHeight / 3
         val view = holder.itemView
-
-        // Reset some view parameters
-        view.translationY = height.toFloat()
         view.alpha = 0F
         view.scaleY = 1F
-
-        // Perform the animation
-        view.animate().translationY(0F).alpha(1F).setInterpolator(FastOutSlowInInterpolator())
-            .setDuration(400).setStartDelay(50 + (holder.layoutPosition % 30) * 20L)
-            .setListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    super.onAnimationEnd(animation)
-                    dispatchAddFinished(holder)
-                }
-            }).start()
+        view.translationY = (view.measuredHeight / 3).toFloat()
+        mPendingAdditions.add(holder)
         return true
     }
 
@@ -199,18 +186,30 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
         val view = holder.itemView
         val animation = view.animate()
         mAddAnimations.add(holder)
-        animation.alpha(1f).setDuration(addDuration)
+        // The rows come in one after the other, cycling so a long list does not end up with a
+        // start delay measured in seconds
+        val stagger = 50 + (holder.layoutPosition.coerceAtLeast(0) % 30) * 20L
+        animation.translationY(0f).alpha(1f)
+            .setInterpolator(FastOutSlowInInterpolator())
+            .setDuration(ADD_DURATION)
+            .setStartDelay(stagger)
             .setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationStart(animator: Animator) {
                     dispatchAddStarting(holder)
                 }
 
                 override fun onAnimationCancel(animator: Animator) {
+                    // A cancelled entry must not leave the row invisible or still pushed down
                     view.alpha = 1f
+                    view.translationY = 0f
                 }
 
                 override fun onAnimationEnd(animator: Animator) {
                     animation.setListener(null)
+                    // The delay sticks to the animator and would hold up the next move or removal
+                    animation.startDelay = 0
+                    view.alpha = 1f
+                    view.translationY = 0f
                     dispatchAddFinished(holder)
                     mAddAnimations.remove(holder)
                     dispatchFinishedWhenDone()
@@ -423,6 +422,7 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
         }
         if (mPendingAdditions.remove(item)) {
             view.alpha = 1f
+            view.translationY = 0f
             dispatchAddFinished(item)
         }
         for (i in mChangesList.indices.reversed()) {
@@ -452,6 +452,7 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
             val additions = mAdditionsList[i]
             if (additions.remove(item)) {
                 view.alpha = 1f
+                view.translationY = 0f
                 dispatchAddFinished(item)
                 if (additions.isEmpty()) {
                     mAdditionsList.removeAt(i)
@@ -500,6 +501,7 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
         for (i in count - 1 downTo 0) {
             val item = mPendingAdditions[i]
             item.itemView.alpha = 1f
+            item.itemView.translationY = 0f
             dispatchAddFinished(item)
             mPendingAdditions.removeAt(i)
         }
@@ -536,6 +538,7 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
                 val item = additions[j]
                 val view = item.itemView
                 view.alpha = 1f
+                view.translationY = 0f
                 dispatchAddFinished(item)
                 additions.removeAt(j)
                 if (additions.isEmpty()) {
@@ -575,5 +578,8 @@ class BirdayRecyclerAnimator : SimpleItemAnimator() {
 
     companion object {
         private var sDefaultInterpolator: TimeInterpolator? = null
+
+        // Longer than the inherited addDuration: the rows slide up as well as fade in
+        private const val ADD_DURATION = 400L
     }
 }

@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.FileProvider
 import androidx.preference.PreferenceManager
 import com.canhub.cropper.CropImageView
@@ -17,6 +16,7 @@ import com.minar.birday.R
 import com.minar.birday.databinding.ActivityImageCropBinding
 import com.minar.birday.utilities.addInsetsByMargin
 import com.minar.birday.utilities.addInsetsByPadding
+import com.minar.birday.utilities.applyUserTheme
 import java.io.File
 
 /**
@@ -63,54 +63,7 @@ class ImageCropActivity : AppCompatActivity() {
     }
 
     private fun applyTheme() {
-        val sp = PreferenceManager.getDefaultSharedPreferences(this)
-        val theme = sp.getString("theme_color", "system")
-        val accent = sp.getString("accent_color", "system")
-
-        when (theme) {
-            "system" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-            "dark", "black" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
-
-        if (theme == "black") {
-            setTheme(R.style.AppTheme)
-            when (accent) {
-                "monet" -> setTheme(R.style.AppTheme_Monet_PerfectDark)
-                "system" -> setTheme(R.style.AppTheme_System_PerfectDark)
-                "brown" -> setTheme(R.style.AppTheme_Brown_PerfectDark)
-                "blue" -> setTheme(R.style.AppTheme_Blue_PerfectDark)
-                "green" -> setTheme(R.style.AppTheme_Green_PerfectDark)
-                "orange" -> setTheme(R.style.AppTheme_Orange_PerfectDark)
-                "yellow" -> setTheme(R.style.AppTheme_Yellow_PerfectDark)
-                "teal" -> setTheme(R.style.AppTheme_Teal_PerfectDark)
-                "violet" -> setTheme(R.style.AppTheme_Violet_PerfectDark)
-                "pink" -> setTheme(R.style.AppTheme_Pink_PerfectDark)
-                "lightBlue" -> setTheme(R.style.AppTheme_LightBlue_PerfectDark)
-                "red" -> setTheme(R.style.AppTheme_Red_PerfectDark)
-                "lime" -> setTheme(R.style.AppTheme_Lime_PerfectDark)
-                "crimson" -> setTheme(R.style.AppTheme_Crimson_PerfectDark)
-                else -> setTheme(R.style.AppTheme_PerfectDark)
-            }
-        } else {
-            when (accent) {
-                "monet" -> setTheme(R.style.AppTheme_Monet)
-                "system" -> setTheme(R.style.AppTheme_System)
-                "brown" -> setTheme(R.style.AppTheme_Brown)
-                "blue" -> setTheme(R.style.AppTheme_Blue)
-                "green" -> setTheme(R.style.AppTheme_Green)
-                "orange" -> setTheme(R.style.AppTheme_Orange)
-                "yellow" -> setTheme(R.style.AppTheme_Yellow)
-                "teal" -> setTheme(R.style.AppTheme_Teal)
-                "violet" -> setTheme(R.style.AppTheme_Violet)
-                "pink" -> setTheme(R.style.AppTheme_Pink)
-                "lightBlue" -> setTheme(R.style.AppTheme_LightBlue)
-                "red" -> setTheme(R.style.AppTheme_Red)
-                "lime" -> setTheme(R.style.AppTheme_Lime)
-                "crimson" -> setTheme(R.style.AppTheme_Crimson)
-                else -> setTheme(R.style.AppTheme)
-            }
-        }
+        applyUserTheme(PreferenceManager.getDefaultSharedPreferences(this))
     }
 
     private fun confirmCrop() {

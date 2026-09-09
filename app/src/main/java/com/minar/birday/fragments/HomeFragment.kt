@@ -33,7 +33,7 @@ import com.minar.birday.fragments.dialogs.QuickAppsBottomSheet
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventDataItem
 import com.minar.birday.model.EventResult
-import com.minar.birday.utilities.addInsetsByPadding
+import com.minar.birday.utilities.addNavbarClearance
 import com.minar.birday.utilities.formatDaysRemaining
 import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getNextYears
@@ -109,7 +109,7 @@ class HomeFragment : Fragment() {
         if (shimmerEnabled) shimmer.startShimmer()
 
         // Add insets
-        recycler.addInsetsByPadding(bottom = true)
+        recycler.addNavbarClearance()
 
         // Setup the search bar
         typeSelector.scaleX = 0F
@@ -253,6 +253,10 @@ class HomeFragment : Fragment() {
 
         // Setup the recycler view
         recycler.adapter = adapter
+        // One animator for the whole life of the list. Replacing it on every emission abandons
+        // whatever it had in flight: the views animateAdd had already put at alpha 0 never get
+        // faded back in, which is what left rows half washed out or missing after a quick search
+        recycler.itemAnimator = BirdayRecyclerAnimator()
 
         // The events, ordered and filtered by the eventual search
         mainViewModel.allEvents.observe(viewLifecycleOwner)
@@ -293,11 +297,11 @@ class HomeFragment : Fragment() {
             recycler.doOnPreDraw {
                 startPostponedEnterTransition()
             }.also {
-                if (events.isEmpty()) recycler.visibility = View.GONE
-                else {
-                    recycler.visibility = View.VISIBLE
-                    recycler.itemAnimator = BirdayRecyclerAnimator()
-                }
+                if (events.isEmpty()) {
+                    // Hiding the list mid animation would strand the rows it is still fading in
+                    recycler.itemAnimator?.endAnimations()
+                    recycler.visibility = View.GONE
+                } else recycler.visibility = View.VISIBLE
             }
         }
 

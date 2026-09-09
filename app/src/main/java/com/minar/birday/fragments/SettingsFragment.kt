@@ -15,11 +15,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.MultiSelectListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreferenceCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.persistence.LocalDateTypeConverter
 import com.minar.birday.utilities.addInsetsByPadding
+import com.minar.birday.utilities.addNavbarClearance
+import com.minar.birday.utilities.isProgressiveBlurAvailable
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidgetProvider
 import com.minar.birday.widgets.MinimalWidgetProvider
@@ -37,6 +40,15 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
             val navController: NavController =
                 findNavController()
             navController.navigate(R.id.action_navigationSettings_to_experimentalSettingsFragment)
+            true
+        }
+
+        // The progressive blur needs a runtime shader, so below Android 13 the option is hidden
+        // instead of sitting there doing nothing
+        val blurPreference: SwitchPreferenceCompat? = findPreference("edge_blur")
+        if (!isProgressiveBlurAvailable) blurPreference?.isVisible = false
+        else blurPreference?.setOnPreferenceChangeListener { _, newValue ->
+            (activity as? MainActivity)?.applyEdgeBlur(newValue as Boolean)
             true
         }
 
@@ -170,6 +182,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
 
         // Add insets for preferences
         val recyclerView = view.findViewById<RecyclerView>(androidx.preference.R.id.recycler_view)
-        recyclerView.addInsetsByPadding(bottom = true)
+        recyclerView.clipToPadding = false
+        recyclerView.addNavbarClearance()
     }
 }

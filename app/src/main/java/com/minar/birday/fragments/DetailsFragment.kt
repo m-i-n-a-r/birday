@@ -37,6 +37,7 @@ import com.minar.birday.model.EventResult
 import com.minar.birday.persistence.ContactsRepository
 import com.minar.birday.utilities.StatsGenerator
 import com.minar.birday.utilities.addInsetsByPadding
+import com.minar.birday.utilities.addNavbarClearance
 import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.formatDaysRemaining
 import com.minar.birday.utilities.formatName
@@ -197,11 +198,7 @@ class DetailsFragment : Fragment() {
         }
 
         // Add insets
-        fullView.addInsetsByPadding(bottom = true)
-        if (act.binding.bottomBar.hideOnScroll) {
-            val navbarHeight = resources.getDimensionPixelSize(R.dimen.bottom_navbar_height)
-            fullView.updatePadding(bottom = fullView.paddingBottom + navbarHeight)
-        }
+        fullView.addNavbarClearance()
 
         // Bind the data on the views and set the transition name, to play it in reverse
         title.text = titleText

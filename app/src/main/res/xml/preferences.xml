@@ -2,10 +2,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.minar.birday.preferences.standard.CustomAuthorPreference
-        android:layout="@layout/author_preference_row"
-        android:selectable="false" />
-
     <PreferenceCategory
         android:key="notifications"
         android:title="@string/events_notification_channel"
@@ -123,6 +119,16 @@
             android:key="accent_color"
             android:summary="%s"
             android:title="@string/accent_name"
+            app:iconSpaceReserved="false" />
+
+        <!-- Hidden below Android 13 by SettingsFragment: the shader it needs is API 33 -->
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="edge_blur"
+            android:summaryOff="@string/edge_blur_description_off"
+            android:summaryOn="@string/edge_blur_description_on"
+            android:title="@string/edge_blur"
+            android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
         <SwitchPreferenceCompat

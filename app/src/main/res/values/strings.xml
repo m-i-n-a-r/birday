@@ -376,4 +376,34 @@
     <string name="replace_on_conflict_title">Replace on conflict</string>
     <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
     <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
+    <string name="about_title">About</string>
+    <string name="about_description">Info about Birday, its author and the app language</string>
+    <string name="about_version">Version</string>
+    <string name="about_language_title">Language</string>
+    <string name="about_language_summary">Pick the language used by Birday</string>
+    <string name="about_rate_title">Rate the app</string>
+    <string name="about_rate_summary">Leave a review on the Play Store</string>
+    <string name="about_share_title">Share Birday</string>
+    <string name="about_share_summary">Tell a friend about the app</string>
+    <string name="about_share_text">Birday, a simple and beautiful way to never forget a birthday: %1$s</string>
+    <string name="about_store_url" translatable="false">https://play.google.com/store/apps/details?id=com.minar.birday</string>
+    <string name="about_no_app_found">No app can handle this, sorry!</string>
+    <string name="about_privacy_title">Privacy policy</string>
+    <string name="about_privacy_url" translatable="false"></string>
+    <string name="about_privacy_missing">The privacy policy is not online yet, sorry!</string>
+    <string name="about_contact_title">Contact the developer</string>
+    <string name="about_translate_summary">Help translating Birday in your language</string>
+    <string name="translate_email_subject" translatable="false">Birday translation</string>
+    <string name="translate_email_body">Hi! I\'d like to help translating Birday in </string>
+    <string name="dev_instagram_desc" translatable="false">Instagram</string>
+    <string name="dev_telegram_desc" translatable="false">Telegram</string>
+    <string name="dev_play_store_desc" translatable="false">Play Store</string>
+    <string name="dev_github_desc" translatable="false">GitHub</string>
+    <string name="dev_site_desc" translatable="false">Website</string>
+
+    <!-- Edge blur -->
+    <string name="edge_blur">Edge blur</string>
+    <string name="edge_blur_description_on">Content softly dissolves as it scrolls under the navbar</string>
+    <string name="edge_blur_description_off">Content scrolls under the navbar with no blur</string>
 </resources>

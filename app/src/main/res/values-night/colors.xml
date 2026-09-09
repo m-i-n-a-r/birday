@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Material 3 container roles, one tonal ramp per accent. Generated from the accent
+         seed: containers sit at tone 90 in light and 30 in dark, their on- pair mirrors them
+         at 10 and 90. The *Translucent colors are the old navbar halo and are NOT these -->
+    <color name="aquaPrimaryContainer">#035138</color>
+    <color name="aquaOnPrimaryContainer">#80f9c5</color>
+    <color name="aquaSecondaryContainer">#2e4d3f</color>
+    <color name="aquaOnSecondaryContainer">#c6ebd9</color>
+    <color name="aquaTertiaryContainer">#1c503b</color>
+    <color name="aquaOnTertiaryContainer">#b7efd4</color>
+
+    <color name="brownPrimaryContainer">#812900</color>
+    <color name="brownOnPrimaryContainer">#fedbcd</color>
+    <color name="brownSecondaryContainer">#5c4034</color>
+    <color name="brownOnSecondaryContainer">#ffdbcd</color>
+    <color name="brownTertiaryContainer">#653d2b</color>
+    <color name="brownOnTertiaryContainer">#ffdbcd</color>
+
+    <color name="bluePrimaryContainer">#01458e</color>
+    <color name="blueOnPrimaryContainer">#dce1ff</color>
+    <color name="blueSecondaryContainer">#3f465f</color>
+    <color name="blueOnSecondaryContainer">#dce1ff</color>
+    <color name="blueTertiaryContainer">#39456b</color>
+    <color name="blueOnTertiaryContainer">#dce1ff</color>
+
+    <color name="greenPrimaryContainer">#02522b</color>
+    <color name="greenOnPrimaryContainer">#66fea3</color>
+    <color name="greenSecondaryContainer">#334c3b</color>
+    <color name="greenOnSecondaryContainer">#cbead4</color>
+    <color name="greenTertiaryContainer">#264f35</color>
+    <color name="greenOnTertiaryContainer">#bfedcc</color>
+
+    <color name="yellowPrimaryContainer">#5d4200</color>
+    <color name="yellowOnPrimaryContainer">#ffdeab</color>
+    <color name="yellowSecondaryContainer">#53452e</color>
+    <color name="yellowOnSecondaryContainer">#f3e0c4</color>
+    <color name="yellowTertiaryContainer">#574421</color>
+    <color name="yellowOnTertiaryContainer">#fadfb5</color>
+
+    <color name="orangePrimaryContainer">#7a2f00</color>
+    <color name="orangeOnPrimaryContainer">#fedbca</color>
+    <color name="orangeSecondaryContainer">#5b4133</color>
+    <color name="orangeOnSecondaryContainer">#fedbca</color>
+    <color name="orangeTertiaryContainer">#643e29</color>
+    <color name="orangeOnTertiaryContainer">#fedbca</color>
+
+    <color name="tealPrimaryContainer">#004f4f</color>
+    <color name="tealOnPrimaryContainer">#29fbfb</color>
+    <color name="tealSecondaryContainer">#214e4d</color>
+    <color name="tealOnSecondaryContainer">#bcebea</color>
+    <color name="tealTertiaryContainer">#004f4f</color>
+    <color name="tealOnTertiaryContainer">#a5f0ee</color>
+
+    <color name="violetPrimaryContainer">#790e8b</color>
+    <color name="violetOnPrimaryContainer">#fbd7ff</color>
+    <color name="violetSecondaryContainer">#544056</color>
+    <color name="violetOnSecondaryContainer">#f3dbf5</color>
+    <color name="violetTertiaryContainer">#5a3c5d</color>
+    <color name="violetOnTertiaryContainer">#fbd7fe</color>
+
+    <color name="pinkPrimaryContainer">#880166</color>
+    <color name="pinkOnPrimaryContainer">#fed8ee</color>
+    <color name="pinkSecondaryContainer">#5a3e4f</color>
+    <color name="pinkOnSecondaryContainer">#fbd9ed</color>
+    <color name="pinkTertiaryContainer">#633953</color>
+    <color name="pinkOnTertiaryContainer">#fed8ee</color>
+
+    <color name="lightBluePrimaryContainer">#034c6a</color>
+    <color name="lightBlueOnPrimaryContainer">#c7e7ff</color>
+    <color name="lightBlueSecondaryContainer">#2b4a5e</color>
+    <color name="lightBlueOnSecondaryContainer">#c7e7ff</color>
+    <color name="lightBlueTertiaryContainer">#084c6a</color>
+    <color name="lightBlueOnTertiaryContainer">#c7e7ff</color>
+
+    <color name="redPrimaryContainer">#92021a</color>
+    <color name="redOnPrimaryContainer">#ffdad6</color>
+    <color name="redSecondaryContainer">#5f3e3b</color>
+    <color name="redOnSecondaryContainer">#fedad6</color>
+    <color name="redTertiaryContainer">#693935</color>
+    <color name="redOnTertiaryContainer">#fedad6</color>
+
+    <color name="limePrimaryContainer">#424b01</color>
+    <color name="limeOnPrimaryContainer">#d7ef27</color>
+    <color name="limeSecondaryContainer">#47482f</color>
+    <color name="limeOnSecondaryContainer">#e4e5c6</color>
+    <color name="limeTertiaryContainer">#464923</color>
+    <color name="limeOnTertiaryContainer">#e4e6b7</color>
+
+    <color name="crimsonPrimaryContainer">#920223</color>
+    <color name="crimsonOnPrimaryContainer">#fedad8</color>
+    <color name="crimsonSecondaryContainer">#5f3e3d</color>
+    <color name="crimsonOnSecondaryContainer">#fedad8</color>
+    <color name="crimsonTertiaryContainer">#6a3938</color>
+    <color name="crimsonOnTertiaryContainer">#fedad8</color>
+
+
+</resources>

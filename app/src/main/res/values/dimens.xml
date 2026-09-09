@@ -80,4 +80,27 @@
     <dimen name="bottom_sheet_icon_size">40dp</dimen>
     <dimen name="main_fab_icon_size">40dp</dimen>
 
+    <!-- Floating navbar -->
+    <dimen name="nav_pill_corner">28dp</dimen>
+    <dimen name="nav_pill_padding">8dp</dimen>
+    <dimen name="nav_tab_corner">20dp</dimen>
+    <dimen name="nav_tab_height">48dp</dimen>
+    <dimen name="nav_tab_padding">14dp</dimen>
+    <dimen name="nav_tab_spacing">6dp</dimen>
+    <dimen name="nav_tab_icon_size">24dp</dimen>
+    <dimen name="nav_tab_label_margin">8dp</dimen>
+    <dimen name="nav_action_size">56dp</dimen>
+    <dimen name="nav_action_corner">20dp</dimen>
+    <dimen name="nav_action_icon_size">28dp</dimen>
+    <dimen name="floating_navbar_margin">12dp</dimen>
+    <dimen name="floating_navbar_elevation">6dp</dimen>
+    <!-- Room left below the content so it can scroll clear of the floating navbar -->
+    <dimen name="floating_navbar_space">88dp</dimen>
+    <!-- Height of the band that dissolves under the navbar when the edge blur is on -->
+    <dimen name="edge_blur_band">160dp</dimen>
+    <!-- About page -->
+    <dimen name="about_row_padding_horizontal">24dp</dimen>
+    <dimen name="about_row_padding_vertical">14dp</dimen>
+    <dimen name="about_row_icon_margin">16dp</dimen>
+    <dimen name="about_logo_height">90dp</dimen>
 </resources>

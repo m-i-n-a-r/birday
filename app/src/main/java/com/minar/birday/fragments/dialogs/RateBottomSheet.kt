@@ -1,5 +1,6 @@
 package com.minar.birday.fragments.dialogs
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -36,12 +37,30 @@ class RateBottomSheet(private val editor: SharedPreferences.Editor) : BottomShee
 
         // Handling the positive button
         positiveButton.setOnClickListener {
-            requireContext().startActivity(
-                Intent(
-                    Intent.ACTION_VIEW,
-                    "market://details?id=${requireContext().packageName}".toUri()
+            // No store app on an F-Droid only device: fall back to the web listing, and give up
+            // quietly rather than crash if there is no browser either
+            try {
+                requireContext().startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        "market://details?id=${requireContext().packageName}".toUri()
+                    )
                 )
-            )
+            } catch (_: ActivityNotFoundException) {
+                try {
+                    requireContext().startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            getString(R.string.about_store_url).toUri()
+                        )
+                    )
+                } catch (_: ActivityNotFoundException) {
+                    try {
+                        (context as MainActivity).showSnackbar(getString(R.string.about_no_app_found))
+                    } catch (_: Exception) {
+                    }
+                }
+            }
             editor.putBoolean(DO_NOT_SHOW_AGAIN, true)
             editor.commit()
             dismiss()

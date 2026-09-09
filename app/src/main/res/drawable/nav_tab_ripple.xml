@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Touch feedback clipped to the tab corners: selectableItemBackground ripples in a square,
+     ignoring the rounded shape the tab actually has -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?attr/colorControlHighlight">
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/nav_tab_corner" />
+            <solid android:color="@android:color/white" />
+        </shape>
+    </item>
+</ripple>

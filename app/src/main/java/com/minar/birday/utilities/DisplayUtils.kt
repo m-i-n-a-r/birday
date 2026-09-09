@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.children
 import androidx.core.view.updatePadding
+import androidx.core.view.updatePaddingRelative
 import com.google.android.material.R as MaterialR
 import com.minar.birday.R
 
@@ -29,6 +31,17 @@ fun Context.bodyMediumTextSizeSp(): Float {
 }
 
 private const val DEFAULT_BODY_MEDIUM_SP = 14f
+
+// Reserve room under a scrolling view for the floating navbar, on top of whatever the system
+// insets ask for. The content still draws all the way down: the view has to keep clipToPadding
+// off, or the padding crops it instead of letting it scroll through
+fun View.addNavbarClearance() {
+    val space = resources.getDimensionPixelSize(R.dimen.floating_navbar_space)
+    val last = getTag(R.id.tag_navbar_clearance_bottom) as? Int ?: 0
+    updatePadding(bottom = paddingBottom - last + space)
+    setTag(R.id.tag_navbar_clearance_bottom, space)
+    addInsetsByPadding(bottom = true)
+}
 
 fun View.addInsetsByPadding(
     top: Boolean = false,

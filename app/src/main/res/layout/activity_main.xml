@@ -4,6 +4,8 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     tools:context=".activities.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
@@ -11,63 +13,95 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="@dimen/bottom_navbar_height"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottomBar"
-        style="@style/Widget.Material3.BottomAppBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:fabAlignmentMode="end"
-        app:fabAnimationMode="slide"
-        app:title="@string/app_name">
-
-        <!-- A transparent background navigation view, with no elevation -->
-        <!-- app:itemIconTint="@drawable/bottom_navbar_item" for custom state colors -->
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/navigation"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/bottom_navbar_height"
-            android:background="@android:color/transparent"
-            app:itemPaddingBottom="@dimen/bottom_navbar_item_padding"
-            app:itemPaddingTop="@dimen/bottom_navbar_item_padding"
-            app:labelVisibilityMode="selected"
-            app:menu="@menu/navigation_bottomappbar" />
-
-    </com.google.android.material.bottomappbar.BottomAppBar>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        style="@style/Widget.Material3.FloatingActionButton.Secondary"
+    <!-- The floating navbar: a pill with the destinations, plus a detached action button whose
+         meaning depends on where the user is. HideBottomViewOnScrollBehavior replaces what
+         BottomAppBar.hideOnScroll used to do, and is attached at runtime only when the option is on -->
+    <LinearLayout
+        android:id="@+id/floatingNavbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/new_event"
-        android:hapticFeedbackEnabled="false"
-        app:layout_anchor="@id/navigation"
-        app:maxImageSize="@dimen/main_fab_icon_size"
-        app:srcCompat="@drawable/ic_party_24dp"
-        app:tint="@null" />
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginHorizontal="@dimen/floating_navbar_margin"
+        android:layout_marginBottom="@dimen/floating_navbar_margin"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabDelete"
-        style="@style/Widget.Material3.FloatingActionButton.Tertiary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/delete_search_title"
-        android:hapticFeedbackEnabled="false"
-        android:visibility="gone"
-        app:maxImageSize="@dimen/main_fab_icon_size"
-        app:srcCompat="@drawable/ic_delete_24dp"
-        app:tint="@null" />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/navPill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="?attr/colorSurfaceContainer"
+            app:cardCornerRadius="@dimen/nav_pill_corner"
+            app:cardElevation="@dimen/floating_navbar_elevation"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:id="@+id/navTabs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/nav_pill_padding">
+
+                <include
+                    android:id="@+id/navTabHome"
+                    layout="@layout/nav_tab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/nav_tab_height" />
+
+                <include
+                    android:id="@+id/navTabFavorites"
+                    layout="@layout/nav_tab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/nav_tab_height"
+                    android:layout_marginStart="@dimen/nav_tab_spacing" />
+
+                <include
+                    android:id="@+id/navTabSettings"
+                    layout="@layout/nav_tab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/nav_tab_height"
+                    android:layout_marginStart="@dimen/nav_tab_spacing" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/navAction"
+            android:layout_width="@dimen/nav_action_size"
+            android:layout_height="@dimen/nav_action_size"
+            android:layout_marginStart="@dimen/floating_navbar_margin"
+            android:clickable="true"
+            android:focusable="true"
+            android:hapticFeedbackEnabled="false"
+            app:cardBackgroundColor="?attr/colorPrimaryContainer"
+            app:cardCornerRadius="@dimen/nav_action_corner"
+            app:cardElevation="@dimen/floating_navbar_elevation"
+            app:strokeWidth="0dp">
+
+            <ImageView
+                android:id="@+id/navActionIcon"
+                android:layout_width="@dimen/nav_action_icon_size"
+                android:layout_height="@dimen/nav_action_icon_size"
+                android:layout_gravity="center"
+                android:contentDescription="@string/new_event"
+                app:tint="?attr/colorOnPrimaryContainer"
+                tools:src="@drawable/ic_party_24dp" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
 
     <com.google.android.material.loadingindicator.LoadingIndicator
         android:id="@+id/birdayLoadingIndicator"
         style="@style/Widget.Material3.LoadingIndicator.Contained"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

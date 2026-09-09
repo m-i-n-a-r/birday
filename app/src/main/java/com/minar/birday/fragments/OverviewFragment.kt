@@ -16,6 +16,7 @@ import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.FragmentOverviewBinding
 import com.minar.birday.model.EventResult
+import com.minar.birday.utilities.addNavbarClearance
 import com.minar.birday.utilities.formatEventList
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.tasticalendar.model.TastiCalendarEvent
@@ -56,16 +57,8 @@ class OverviewFragment : Fragment() {
 
         val advancedView = sharedPrefs.getBoolean("advanced_overview", false)
 
-        // Add some bottom padding to avoid hidden content behind the bottom navigation bar
-        val hideNavbar = sharedPrefs.getBoolean("hide_scroll", false)
-        if (hideNavbar) {
-            binding.overviewMain.setPadding(
-                0,
-                0,
-                0,
-                act.resources.getDimension(R.dimen.bottom_navbar_height).toInt()
-            )
-        }
+        // Scroll room to lift the last card clear of the floating navbar
+        binding.root.addNavbarClearance()
 
         val title: String =
             if (advancedView) getString(R.string.overview) else getString(R.string.overview) + " - $yearNumber"
@@ -93,7 +86,7 @@ class OverviewFragment : Fragment() {
             setSnackBarsDuration(5000, false)
             setSnackBarsPrefix(R.plurals.event, plural = true, false)
             setSundayHighlight(TcSundayHighlight.BOLDCOLORED, false)
-            setSnackBarBaseView(act.binding.bottomBar)
+            setSnackBarBaseView(act.binding.floatingNavbar)
         }
 
         // Manage the advanced views and buttons

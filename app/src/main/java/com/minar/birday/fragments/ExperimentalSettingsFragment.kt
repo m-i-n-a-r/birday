@@ -6,16 +6,24 @@ import androidx.activity.BackEventCompat
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreferenceCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.utilities.addInsetsByPadding
+import com.minar.birday.utilities.addNavbarClearance
 
 
 class ExperimentalSettingsFragment : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.experimental_preferences, rootKey)
+
+        // No restart needed: the activity re-attaches the behavior as soon as this flips
+        findPreference<SwitchPreferenceCompat>("hide_scroll")?.setOnPreferenceChangeListener { _, value ->
+            (activity as? MainActivity)?.applyNavbarHideOnScroll(value as Boolean)
+            true
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -23,7 +31,8 @@ class ExperimentalSettingsFragment : PreferenceFragmentCompat() {
 
         // Add insets for preferences
         val recyclerView = view.findViewById<RecyclerView>(androidx.preference.R.id.recycler_view)
-        recyclerView.addInsetsByPadding(bottom = true)
+        recyclerView.clipToPadding = false
+        recyclerView.addNavbarClearance()
 
         // Manage the predictive back between fragments
         val predictiveBackMargin =

@@ -14,6 +14,7 @@ import com.google.android.material.color.MaterialColors
 import com.minar.birday.R
 import com.minar.birday.model.EventResult
 import com.minar.birday.persistence.EventDao
+import com.minar.birday.utilities.accentThemeRes
 import com.minar.birday.utilities.bodyMediumTextSizeSp
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.byteArrayToBitmap
@@ -324,42 +325,13 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
     private fun monetThemeContext(sp: android.content.SharedPreferences): Context {
         val accent = sp.getString("accent_color", "system") ?: "system"
         val theme = sp.getString("theme_color", "system") ?: "system"
+        // Unlike the activities, a RemoteViews factory can't force the night mode, so the amoled
+        // variant is picked only when the system is actually in dark mode
         val isDark = (context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) ==
             Configuration.UI_MODE_NIGHT_YES
-        val resId = if (theme == "black" && isDark) when (accent) {
-            "monet" -> R.style.AppTheme_Monet_PerfectDark
-            "system" -> R.style.AppTheme_System_PerfectDark
-            "brown" -> R.style.AppTheme_Brown_PerfectDark
-            "blue" -> R.style.AppTheme_Blue_PerfectDark
-            "green" -> R.style.AppTheme_Green_PerfectDark
-            "orange" -> R.style.AppTheme_Orange_PerfectDark
-            "yellow" -> R.style.AppTheme_Yellow_PerfectDark
-            "teal" -> R.style.AppTheme_Teal_PerfectDark
-            "violet" -> R.style.AppTheme_Violet_PerfectDark
-            "pink" -> R.style.AppTheme_Pink_PerfectDark
-            "lightBlue" -> R.style.AppTheme_LightBlue_PerfectDark
-            "red" -> R.style.AppTheme_Red_PerfectDark
-            "lime" -> R.style.AppTheme_Lime_PerfectDark
-            "crimson" -> R.style.AppTheme_Crimson_PerfectDark
-            else -> R.style.AppTheme_PerfectDark
-        } else when (accent) {
-            "monet" -> R.style.AppTheme_Monet
-            "system" -> R.style.AppTheme_System
-            "brown" -> R.style.AppTheme_Brown
-            "blue" -> R.style.AppTheme_Blue
-            "green" -> R.style.AppTheme_Green
-            "orange" -> R.style.AppTheme_Orange
-            "yellow" -> R.style.AppTheme_Yellow
-            "teal" -> R.style.AppTheme_Teal
-            "violet" -> R.style.AppTheme_Violet
-            "pink" -> R.style.AppTheme_Pink
-            "lightBlue" -> R.style.AppTheme_LightBlue
-            "red" -> R.style.AppTheme_Red
-            "lime" -> R.style.AppTheme_Lime
-            "crimson" -> R.style.AppTheme_Crimson
-            else -> R.style.AppTheme
-        }
-        return ContextThemeWrapper(context, resId)
+        return ContextThemeWrapper(
+            context, accentThemeRes(accent, perfectDark = theme == "black" && isDark)
+        )
     }
 
     private fun applyZodiac(rv: RemoteViews, event: EventResult, beforeId: Int, afterId: Int) {

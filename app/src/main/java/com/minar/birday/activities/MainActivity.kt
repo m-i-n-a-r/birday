@@ -24,6 +24,11 @@ import android.os.VibratorManager
 import android.provider.OpenableColumns
 import android.provider.Settings
 import android.view.View
+import androidx.core.view.updatePaddingRelative
+import androidx.core.view.updateLayoutParams
+import android.widget.LinearLayout
+import android.view.Gravity
+import android.content.res.Configuration
 import android.view.animation.Interpolator
 import android.widget.ImageView
 import androidx.activity.OnBackPressedCallback
@@ -34,7 +39,6 @@ import androidx.activity.viewModels
 import androidx.annotation.IdRes
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -74,6 +78,7 @@ import com.minar.birday.utilities.AppRater
 import com.minar.birday.utilities.addInsetsByMargin
 import com.minar.birday.utilities.addInsetsByPadding
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
+import com.minar.birday.utilities.applyUserTheme
 import com.minar.birday.utilities.eventToResult
 import com.minar.birday.utilities.formatTextPreview
 import com.minar.birday.utilities.getThemeColor
@@ -87,6 +92,20 @@ import com.minar.birday.workers.ImportContactsWorker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import android.content.res.ColorStateList
+import android.animation.ValueAnimator
+import androidx.transition.ChangeBounds
+import androidx.transition.Fade
+import androidx.transition.Transition
+import androidx.transition.TransitionListenerAdapter
+import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+import androidx.core.view.isVisible
+import com.google.android.material.behavior.HideViewOnScrollBehavior
+import com.minar.birday.databinding.NavTabBinding
+import com.minar.birday.utilities.applyBottomProgressiveBlur
 import java.io.IOException
 import java.time.LocalDateTime
 import java.time.ZoneOffset
@@ -97,9 +116,41 @@ class MainActivity : AppCompatActivity() {
     val mainViewModel: MainViewModel by viewModels()
     private lateinit var sharedPrefs: SharedPreferences
     internal lateinit var binding: ActivityMainBinding
+    private lateinit var navTabs: List<NavTab>
+    private lateinit var backHomeCallback: OnBackPressedCallback
+    private var selectedTabIndex = 0
+
+    // In landscape the navbar stands along the edge, where an expanding label would cost width.
+    // Read every time: the activity keeps configuration changes, so this flips without a recreation
+    private val isNavRail: Boolean
+        get() = resources.getBoolean(R.bool.nav_rail)
+    private var deleteActionActive = false
+    private var renderedActionMode: NavActionMode? = null
+
+    // Read by the fragments that need to know whether the navbar leaves its space free
+    var navbarHidesOnScroll = false
+        private set
+
+    // A destination of the floating navbar, together with the icon and label of its tab
+    private data class NavTab(
+        val binding: NavTabBinding,
+        @param:IdRes val destination: Int,
+        @param:DrawableRes val icon: Int,
+        @param:StringRes val label: Int,
+    )
+
+    // What the detached action button on the right of the navbar does right now
+    private enum class NavActionMode { NEW_EVENT, DELETE_SEARCH, ABOUT }
 
     companion object {
         val GestureInterpolator: Interpolator = PathInterpolatorCompat.create(0f, 0f, 0f, 1f)
+
+        // Material 3 emphasized decelerate. The gesture interpolator above starts at full speed and
+        // stops dead, which on a pill this small reads as a jerk rather than as motion
+        val NavTabInterpolator: Interpolator = PathInterpolatorCompat.create(0.05f, 0.7f, 0.1f, 1f)
+
+        // One beat for the whole tab change: bounds, colors and label move together
+        const val NAV_TAB_DURATION = 500L
     }
 
     private val navController: NavController
@@ -125,10 +176,6 @@ class MainActivity : AppCompatActivity() {
         }
         createNotificationChannel()
 
-        // Retrieve the shared preferences
-        val theme = sharedPrefs.getString("theme_color", "system")
-        val accent = sharedPrefs.getString("accent_color", "system")
-
         // Show the introduction for the first launch
         if (sharedPrefs.getBoolean("first", true)) {
             sharedPrefs.edit {
@@ -146,50 +193,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Set the base theme and the accent
-        when (theme) {
-            "system" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-            "dark", "black" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
-
-        // Set an amoled theme or a normal theme depending on amoled mode
-        if (theme == "black") {
-            setTheme(R.style.AppTheme)
-            when (accent) {
-                "monet" -> setTheme(R.style.AppTheme_Monet_PerfectDark)
-                "system" -> setTheme(R.style.AppTheme_System_PerfectDark)
-                "brown" -> setTheme(R.style.AppTheme_Brown_PerfectDark)
-                "blue" -> setTheme(R.style.AppTheme_Blue_PerfectDark)
-                "green" -> setTheme(R.style.AppTheme_Green_PerfectDark)
-                "orange" -> setTheme(R.style.AppTheme_Orange_PerfectDark)
-                "yellow" -> setTheme(R.style.AppTheme_Yellow_PerfectDark)
-                "teal" -> setTheme(R.style.AppTheme_Teal_PerfectDark)
-                "violet" -> setTheme(R.style.AppTheme_Violet_PerfectDark)
-                "pink" -> setTheme(R.style.AppTheme_Pink_PerfectDark)
-                "lightBlue" -> setTheme(R.style.AppTheme_LightBlue_PerfectDark)
-                "red" -> setTheme(R.style.AppTheme_Red_PerfectDark)
-                "lime" -> setTheme(R.style.AppTheme_Lime_PerfectDark)
-                "crimson" -> setTheme(R.style.AppTheme_Crimson_PerfectDark)
-                else -> setTheme(R.style.AppTheme_PerfectDark)
-            }
-        } else
-            when (accent) {
-                "monet" -> setTheme(R.style.AppTheme_Monet)
-                "system" -> setTheme(R.style.AppTheme_System)
-                "brown" -> setTheme(R.style.AppTheme_Brown)
-                "blue" -> setTheme(R.style.AppTheme_Blue)
-                "green" -> setTheme(R.style.AppTheme_Green)
-                "orange" -> setTheme(R.style.AppTheme_Orange)
-                "yellow" -> setTheme(R.style.AppTheme_Yellow)
-                "teal" -> setTheme(R.style.AppTheme_Teal)
-                "violet" -> setTheme(R.style.AppTheme_Violet)
-                "pink" -> setTheme(R.style.AppTheme_Pink)
-                "lightBlue" -> setTheme(R.style.AppTheme_LightBlue)
-                "red" -> setTheme(R.style.AppTheme_Red)
-                "lime" -> setTheme(R.style.AppTheme_Lime)
-                "crimson" -> setTheme(R.style.AppTheme_Crimson)
-                else -> setTheme(R.style.AppTheme) // Default (aqua)
-            }
+        applyUserTheme(sharedPrefs)
 
         // Set the task appearance in recent apps
         @Suppress("DEPRECATION")
@@ -215,103 +219,74 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        // Get the bottom navigation bar and configure it for the navigation plugin
-        val navigation = binding.navigation
-
         // Prepare the back home callback
-        val backHomeCallback = object : OnBackPressedCallback(enabled = false) {
+        backHomeCallback = object : OnBackPressedCallback(enabled = false) {
             override fun handleOnBackPressed() {
-                binding.navigation.selectedItemId = R.id.navigationMain
-                navController.navigateWithOptions(R.id.navigationMain)
+                selectNavTab(0)
             }
         }
 
-        // Activate or disable the callback to return to the home fragment before exiting the app
-        navigation.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.navigationMain -> {
-                    backHomeCallback.isEnabled = false
-                    navController.navigateWithOptions(R.id.navigationMain)
-                }
-
-                R.id.navigationFavorites -> {
-                    backHomeCallback.isEnabled = true
-                    navController.navigateWithOptions(R.id.navigationFavorites)
-                }
-
-                R.id.navigationSettings -> {
-                    backHomeCallback.isEnabled = true
-                    navController.navigateWithOptions(R.id.navigationSettings)
-                }
+        // The floating navbar keeps its own selection, so tab, icon state and label all move
+        // together. Tapping the tab already selected pops whatever secondary destination is on top
+        navTabs = listOf(
+            NavTab(
+                binding.navTabHome, R.id.navigationMain,
+                R.drawable.nav_animation_home, R.string.title_home
+            ),
+            NavTab(
+                binding.navTabFavorites, R.id.navigationFavorites,
+                R.drawable.nav_animation_favorites, R.string.title_favorites
+            ),
+            NavTab(
+                binding.navTabSettings, R.id.navigationSettings,
+                R.drawable.nav_animation_settings, R.string.title_settings
+            ),
+        )
+        navTabs.forEachIndexed { index, tab ->
+            tab.binding.tabIcon.setImageResource(tab.icon)
+            tab.binding.tabLabel.setText(tab.label)
+            tab.binding.root.contentDescription = getString(tab.label)
+            tab.binding.root.setOnClickListener {
+                vibrate()
+                if (index == selectedTabIndex) popSecondaryDestination()
+                else selectNavTab(index)
             }
-            true
         }
-        navigation.setOnItemReselectedListener {
-            // Only do something if there's something in the back stack (only in event details)
-            if (navController.currentBackStackEntry != null &&
-                (navController.currentDestination?.label == "fragment_details" ||
-                        navController.currentDestination?.label == "fragment_overview" ||
-                        navController.currentDestination?.label == "fragment_experimental_settings")
-            )
-                navController.popBackStack()
-        }
+        applyNavbarPlacement()
 
         // Rating stuff
         AppRater.appLaunched(this)
 
-        // Manage the fab
-        val addFab = binding.fab
-        val deleteFab = binding.fabDelete
-
-        // Open the bottom sheet to insert a new event
-        addFab.setOnClickListener {
+        // The single action button replaces the two fabs: same actions, chosen by where the user is
+        binding.navAction.setOnClickListener {
             vibrate()
-            val bottomSheet = InsertEventBottomSheet(this)
-            if (bottomSheet.isAdded) return@setOnClickListener
-            bottomSheet.show(supportFragmentManager, "insert_event_bottom_sheet")
-        }
-        // Show a quick description of the action
-        addFab.setOnLongClickListener {
-            vibrate()
-            showSnackbar(getString(R.string.new_event_description))
-            true
-        }
+            when (currentNavActionMode()) {
+                NavActionMode.NEW_EVENT -> {
+                    val bottomSheet = InsertEventBottomSheet(this)
+                    if (bottomSheet.isAdded) return@setOnClickListener
+                    bottomSheet.show(supportFragmentManager, "insert_event_bottom_sheet")
+                }
 
-        // Animate the fab icon
-        animateAvd(addFab, R.drawable.animated_add_event, 5000L)
-
-        // Set the delete search action (initially hidden)
-        deleteFab.setOnClickListener {
-            vibrate()
-            val searchedEvents = mainViewModel.allEvents.value
-            if (!searchedEvents.isNullOrEmpty()) {
-                // Native dialog
-                MaterialAlertDialogBuilder(this)
-                    .setTitle(getString(R.string.delete_db_dialog_title))
-                    .setMessage(getString(R.string.delete_search_confirm))
-                    .setIcon(R.drawable.ic_delete_24dp)
-                    .setPositiveButton(resources.getString(android.R.string.ok)) { dialog, _ ->
-                        dialog.dismiss()
-                        mainViewModel.deleteAll(searchedEvents.map { resultToEvent(it) })
-                        showSnackbar(
-                            getString(R.string.deleted),
-                            actionText = getString(R.string.cancel),
-                            action = fun() {
-                                mainViewModel.insertAll(searchedEvents.map { resultToEvent(it) })
-                            })
-                    }
-                    .setNegativeButton(resources.getString(android.R.string.cancel)) { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    .show()
+                NavActionMode.DELETE_SEARCH -> confirmDeleteSearch()
+                NavActionMode.ABOUT ->
+                    navController.navigate(R.id.action_navigationSettings_to_aboutFragment)
             }
         }
         // Show a quick description of the action
-        deleteFab.setOnLongClickListener {
+        binding.navAction.setOnLongClickListener {
             vibrate()
-            showSnackbar(getString(R.string.delete_search_title))
+            showSnackbar(
+                getString(
+                    when (currentNavActionMode()) {
+                        NavActionMode.NEW_EVENT -> R.string.new_event_description
+                        NavActionMode.DELETE_SEARCH -> R.string.delete_search_title
+                        NavActionMode.ABOUT -> R.string.about_description
+                    }
+                )
+            )
             true
         }
+        renderNavAction()
 
         // Enable edge to edge, but specify the navigation bar color for android < Q
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q)
@@ -329,17 +304,12 @@ class MainActivity : AppCompatActivity() {
             window.isNavigationBarContrastEnforced = false
         }
         binding.navHostFragment.addInsetsByMargin(top = true, right = true, left = true)
-        binding.bottomBar.addInsetsByPadding(bottom = true, left = true, right = true)
-        binding.fab.addInsetsByMargin(bottom = true, halveInsets = true)
-        binding.fabDelete.addInsetsByMargin(bottom = true, halveInsets = true)
+        binding.floatingNavbar.addInsetsByMargin(bottom = true, left = true, right = true)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.navigation, null)
+        applyNavbarHideOnScroll(sharedPrefs.getBoolean("hide_scroll", false))
 
-        // Hide on scroll, requires restart TODO Experimental settings
-        if (sharedPrefs.getBoolean("hide_scroll", false)) {
-            binding.bottomBar.hideOnScroll = true
-            binding.navHostFragment.updatePadding(bottom = 0)
-        }
+        // Soften the content sliding under the navbar, when the user asked for it
+        applyEdgeBlur(sharedPrefs.getBoolean("edge_blur", false))
 
         // Auto import on launch
         val autoImportEnabled = sharedPrefs.getBoolean("auto_import", false)
@@ -633,7 +603,7 @@ class MainActivity : AppCompatActivity() {
         if (attachView != null)
             snackbar.anchorView = attachView
         else
-            snackbar.anchorView = binding.bottomBar
+            snackbar.anchorView = binding.floatingNavbar
         if (action != null) {
             snackbar.setActionTextColor(getThemeColor(android.R.attr.colorSecondary, this))
             snackbar.setAction(actionText) {
@@ -665,62 +635,242 @@ class MainActivity : AppCompatActivity() {
             mainViewModel.getStats(events, this)
     }
 
-    // Change the fab to show a delete icon
+    // Swap the navbar action between adding an event and deleting the current search results
     fun toggleDeleteFab(active: Boolean = false) {
-        val addFab = binding.fab
-        val deleteFab = binding.fabDelete
-        val bottomBarId = binding.bottomBar.id
-        val addParams: CoordinatorLayout.LayoutParams =
-            addFab.layoutParams as CoordinatorLayout.LayoutParams
-        val deleteParams: CoordinatorLayout.LayoutParams =
-            deleteFab.layoutParams as CoordinatorLayout.LayoutParams
+        if (deleteActionActive == active) return
+        deleteActionActive = active
+        renderNavAction()
+    }
 
-        // Case 1: add fab currently hidden, it needs to be active
-        if (!active && addFab.isGone) {
-            // Change anchors to avoid visual problems
-            addParams.anchorId = bottomBarId
-            addFab.layoutParams = addParams
+    // Ask before wiping whatever the current search matched, then offer an undo
+    private fun confirmDeleteSearch() {
+        val searchedEvents = mainViewModel.allEvents.value
+        if (searchedEvents.isNullOrEmpty()) return
+        // Native dialog
+        MaterialAlertDialogBuilder(this)
+            .setTitle(getString(R.string.delete_db_dialog_title))
+            .setMessage(getString(R.string.delete_search_confirm))
+            .setIcon(R.drawable.ic_delete_24dp)
+            .setPositiveButton(resources.getString(android.R.string.ok)) { dialog, _ ->
+                dialog.dismiss()
+                mainViewModel.deleteAll(searchedEvents.map { resultToEvent(it) })
+                showSnackbar(
+                    getString(R.string.deleted),
+                    actionText = getString(R.string.cancel),
+                    action = fun() {
+                        mainViewModel.insertAll(searchedEvents.map { resultToEvent(it) })
+                    })
+            }
+            .setNegativeButton(resources.getString(android.R.string.cancel)) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
 
-            deleteParams.anchorId = View.NO_ID
-            deleteFab.layoutParams = deleteParams
+    // The navbar lies at the bottom in portrait and stands along the starting edge in landscape,
+    // where height is the scarce dimension. The activity handles orientation changes itself, so
+    // nothing is ever re-inflated: the placement is applied here and again on every rotation.
+    // Margins of the bar itself are left alone, they carry the window insets
+    private fun applyNavbarPlacement() {
+        val rail = isNavRail
+        val margin = resources.getDimensionPixelSize(R.dimen.floating_navbar_margin)
+        val spacing = resources.getDimensionPixelSize(R.dimen.nav_tab_spacing)
+        val tabSize = resources.getDimensionPixelSize(R.dimen.nav_tab_height)
+        val tabPadding =
+            if (rail) 0 else resources.getDimensionPixelSize(R.dimen.nav_tab_padding)
 
-            addFab.visibility = View.VISIBLE
-            deleteFab.visibility = View.GONE
-            animateAvd(
-                deleteFab,
-                R.drawable.animated_delete,
-                3000L,
-            )
-            animateAvd(
-                addFab,
-                R.drawable.animated_add_event,
-                5000L
-            )
+        binding.floatingNavbar.orientation =
+            if (rail) LinearLayout.VERTICAL else LinearLayout.HORIZONTAL
+        binding.floatingNavbar.gravity =
+            if (rail) Gravity.CENTER_HORIZONTAL else Gravity.CENTER_VERTICAL
+        binding.floatingNavbar.updateLayoutParams<CoordinatorLayout.LayoutParams> {
+            gravity = if (rail) Gravity.END or Gravity.CENTER_VERTICAL
+            else Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL
+        }
+        // Beside the rail the whole fragment steps aside, header card included; under a bottom bar
+        // the content runs below it instead and only the scrolling lists reserve room
+        binding.navHostFragment.updatePaddingRelative(
+            end = if (rail) resources.getDimensionPixelSize(R.dimen.floating_navbar_space) else 0
+        )
+        binding.navTabs.orientation =
+            if (rail) LinearLayout.VERTICAL else LinearLayout.HORIZONTAL
+
+        navTabs.forEachIndexed { index, tab ->
+            tab.binding.root.updateLayoutParams<LinearLayout.LayoutParams> {
+                width = if (rail) tabSize else LinearLayout.LayoutParams.WRAP_CONTENT
+                height = tabSize
+                marginStart = if (!rail && index > 0) spacing else 0
+                topMargin = if (rail && index > 0) spacing else 0
+            }
+            tab.binding.root.gravity = if (rail) Gravity.CENTER else Gravity.CENTER_VERTICAL
+            tab.binding.root.updatePaddingRelative(start = tabPadding, end = tabPadding)
         }
 
-        // Case 2: delete fab currently hidden, it needs to be active
-        if (active && deleteFab.isGone) {
-            // Change anchors to avoid visual problems
-            addParams.anchorId = View.NO_ID
-            addFab.layoutParams = addParams
+        binding.navAction.updateLayoutParams<LinearLayout.LayoutParams> {
+            marginStart = if (rail) 0 else margin
+            topMargin = if (rail) margin else 0
+        }
 
-            deleteParams.anchorId = bottomBarId
-            deleteFab.layoutParams = deleteParams
+        renderNavTabs(animate = false)
+    }
 
-            addFab.visibility = View.GONE
-            deleteFab.visibility = View.VISIBLE
-            animateAvd(
-                deleteFab,
-                R.drawable.animated_delete,
-                3000L
+    // Everything keyed to the edge the navbar sits on has to be redone by hand on rotation
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        applyNavbarPlacement()
+        applyNavbarHideOnScroll(navbarHidesOnScroll)
+    }
+
+    // Attach or drop the scroll behavior on the spot, so the option takes effect the moment it is
+    // switched instead of on the next launch. The behavior replaces BottomAppBar.hideOnScroll,
+    // which went away together with the bar itself
+    fun applyNavbarHideOnScroll(enabled: Boolean) {
+        navbarHidesOnScroll = enabled
+        val params = binding.floatingNavbar.layoutParams as CoordinatorLayout.LayoutParams
+        params.behavior = if (enabled) HideViewOnScrollBehavior<View>().apply {
+            setViewEdge(
+                if (!isNavRail) HideViewOnScrollBehavior.EDGE_BOTTOM
+                else if (isRtl) HideViewOnScrollBehavior.EDGE_LEFT
+                else HideViewOnScrollBehavior.EDGE_RIGHT
             )
-            animateAvd(
-                addFab,
-                R.drawable.animated_add_event,
-                5000L,
-            )
+        } else null
+        binding.floatingNavbar.layoutParams = params
+        // Switching the option off while the bar sits off screen would strand it there
+        if (!enabled) binding.floatingNavbar.run {
+            animate().cancel()
+            translationY = 0f
+            translationX = 0f
+            visibility = View.VISIBLE
         }
     }
+
+    // Navigate to the destination of a tab, keeping the navbar and the back callback in sync
+    private fun selectNavTab(index: Int) {
+        selectedTabIndex = index
+        // Only the home tab exits the app on back, the others go back to it first
+        backHomeCallback.isEnabled = index != 0
+        renderNavTabs(animate = true)
+        renderNavAction()
+        navController.navigateWithOptions(navTabs[index].destination)
+    }
+
+    // Only do something if there's something in the back stack (only in event details)
+    private fun popSecondaryDestination() {
+        if (navController.currentBackStackEntry != null &&
+            (navController.currentDestination?.label == "fragment_details" ||
+                    navController.currentDestination?.label == "fragment_overview" ||
+                    navController.currentDestination?.label == "fragment_about" ||
+                    navController.currentDestination?.label == "fragment_experimental_settings")
+        ) navController.popBackStack()
+    }
+
+    // Paint the tabs and grow the selected one around its label. Bounds, label and colors all run
+    // on the same beat, and the icons only morph once it is over: starting the vectors together
+    // with the growth reads as two unrelated animations fighting each other
+    private fun renderNavTabs(animate: Boolean) {
+        // Material 3 navigation bar roles: the bar is the neutral surface and the active
+        // destination is the tinted one, not the other way round. Idle tabs stay transparent so
+        // they simply show the pill behind them
+        val selectedContainer = getThemeColor(R.attr.colorSecondaryContainer, this)
+        val idleContainer = Color.TRANSPARENT
+        val selectedContent = getThemeColor(R.attr.colorOnSecondaryContainer, this)
+        val idleContent = getThemeColor(R.attr.colorOnSurfaceVariant, this)
+
+        if (animate) TransitionManager.beginDelayedTransition(
+            binding.navTabs,
+            TransitionSet().apply {
+                ordering = TransitionSet.ORDERING_TOGETHER
+                addTransition(ChangeBounds())
+                addTransition(Fade())
+                duration = NAV_TAB_DURATION
+                interpolator = NavTabInterpolator
+                addListener(object : TransitionListenerAdapter() {
+                    override fun onTransitionEnd(transition: Transition) = morphNavTabIcons()
+                })
+            }
+        )
+
+        navTabs.forEachIndexed { index, tab ->
+            val selected = index == selectedTabIndex
+            tab.binding.tabLabel.isVisible = selected && !isNavRail
+            tab.binding.root.isSelected = selected
+            val container = if (selected) selectedContainer else idleContainer
+            val content = if (selected) selectedContent else idleContent
+            animateTint(tab.binding.root.backgroundTintList?.defaultColor, container, animate) {
+                tab.binding.root.backgroundTintList = ColorStateList.valueOf(it)
+            }
+            animateTint(tab.binding.tabIcon.imageTintList?.defaultColor, content, animate) {
+                tab.binding.tabIcon.imageTintList = ColorStateList.valueOf(it)
+                tab.binding.tabLabel.setTextColor(it)
+            }
+        }
+        // Without a transition to wait for, the icons take their state right away
+        if (!animate) morphNavTabIcons()
+    }
+
+    // Flip the checked state the animated selectors of the tab icons pick their frames from. Reads
+    // the current selection instead of capturing it, so a tab changed mid-animation still lands right
+    private fun morphNavTabIcons() = navTabs.forEachIndexed { index, tab ->
+        tab.binding.tabIcon.isChecked = index == selectedTabIndex
+    }
+
+    // Cross-fade a tint rather than snapping it, so the color lands together with the bounds
+    private fun animateTint(from: Int?, to: Int, animate: Boolean, apply: (Int) -> Unit) {
+        if (!animate || from == null || from == to) {
+            apply(to)
+            return
+        }
+        ValueAnimator.ofArgb(from, to).apply {
+            duration = NAV_TAB_DURATION
+            interpolator = NavTabInterpolator
+            addUpdateListener { apply(it.animatedValue as Int) }
+        }.start()
+    }
+
+    // The action button means a different thing on every tab, and while a search is running
+    private fun currentNavActionMode(): NavActionMode = when {
+        selectedTabIndex == 2 -> NavActionMode.ABOUT
+        deleteActionActive -> NavActionMode.DELETE_SEARCH
+        else -> NavActionMode.NEW_EVENT
+    }
+
+    // Every looping vector registers a callback that restarts it forever, so the icon is only
+    // rebuilt when the mode really changed: switching tab otherwise stacks up a loop each time
+    private fun renderNavAction() {
+        val mode = currentNavActionMode()
+        if (mode == renderedActionMode) return
+        renderedActionMode = mode
+        val icon = binding.navActionIcon
+        when (mode) {
+            NavActionMode.NEW_EVENT -> {
+                icon.contentDescription = getString(R.string.new_event)
+                animateAvd(icon, R.drawable.animated_add_event, 5000L)
+            }
+
+            NavActionMode.DELETE_SEARCH -> {
+                icon.contentDescription = getString(R.string.delete_search_title)
+                animateAvd(icon, R.drawable.animated_delete, 3000L)
+            }
+
+            NavActionMode.ABOUT -> {
+                icon.contentDescription = getString(R.string.about_title)
+                animateAvd(icon, R.drawable.animated_info, 4000L)
+            }
+        }
+    }
+
+    // The blur is a runtime shader, which exists only from Android 13 on
+    fun applyEdgeBlur(enabled: Boolean) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) return
+        binding.navHostFragment.applyBottomProgressiveBlur(
+            enabled = enabled,
+            bandPx = resources.getDimension(R.dimen.edge_blur_band)
+        )
+    }
+
+    // The rail follows the layout direction, and so do the behaviors keyed to its edge
+    private val isRtl: Boolean
+        get() = resources.configuration.layoutDirection == View.LAYOUT_DIRECTION_RTL
 
     // Show a dialog to select the events to import
     fun showImportDialog(
