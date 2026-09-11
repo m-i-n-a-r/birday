@@ -69,7 +69,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/typeEventLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
@@ -223,24 +223,33 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/countYearSwitch"
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/countYearGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:checked="true"
-                android:drawableStart="@drawable/ic_date_question_black_24dp"
-                android:drawablePadding="@dimen/text_field_horizontal_margin"
-                android:drawableTint="?attr/colorOutline"
-                android:text="@string/consider_year"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-                android:textColor="?attr/colorOutline"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                app:checkedButton="@id/countYearOn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/dateEventLayout"
-                app:switchPadding="@dimen/text_switch_padding"
-                app:switchTextAppearance="@style/TextAppearance.Material3.BodyLarge" />
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <Button
+                    android:id="@+id/countYearOn"
+                    style="@style/Widget.App.Button.YearSegment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/with_year" />
+
+                <Button
+                    android:id="@+id/countYearOff"
+                    style="@style/Widget.App.Button.YearSegment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/without_year" />
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
 
             <Button
                 android:id="@+id/positiveButton"
@@ -251,7 +260,7 @@
                 android:text="@string/insert_event"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/countYearSwitch" />
+                app:layout_constraintTop_toBottomOf="@id/countYearGroup" />
 
             <Button
                 android:id="@+id/negativeButton"

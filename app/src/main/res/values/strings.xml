@@ -390,7 +390,7 @@
     <string name="about_store_url" translatable="false">https://play.google.com/store/apps/details?id=com.minar.birday</string>
     <string name="about_no_app_found">No app can handle this, sorry!</string>
     <string name="about_privacy_title">Privacy policy</string>
-    <string name="about_privacy_url" translatable="false"></string>
+    <string name="about_privacy_url" translatable="false">https://docs.google.com/document/d/1rshKfGyn6EijwfDmDYLYDMOGaCwGyTWZ4U53M5GMI30/edit?usp=sharing</string>
     <string name="about_privacy_missing">The privacy policy is not online yet, sorry!</string>
     <string name="about_contact_title">Contact the developer</string>
     <string name="about_translate_summary">Help translating Birday in your language</string>
@@ -401,6 +401,12 @@
     <string name="dev_play_store_desc" translatable="false">Play Store</string>
     <string name="dev_github_desc" translatable="false">GitHub</string>
     <string name="dev_site_desc" translatable="false">Website</string>
+
+    <string name="amoled_description_on">The dark theme uses pure black, ideal for OLED screens</string>
+    <string name="amoled_description_off">The dark theme uses the standard dark surfaces</string>
+
+    <string name="with_year">With year</string>
+    <string name="without_year">Without year</string>
 
     <!-- Edge blur -->
     <string name="edge_blur">Edge blur</string>

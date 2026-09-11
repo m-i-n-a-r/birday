@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
+import androidx.core.content.edit
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -20,13 +21,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.persistence.LocalDateTypeConverter
-import com.minar.birday.utilities.addInsetsByPadding
 import com.minar.birday.utilities.addNavbarClearance
 import com.minar.birday.utilities.isProgressiveBlurAvailable
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidgetProvider
 import com.minar.birday.widgets.MinimalWidgetProvider
-import androidx.core.content.edit
 
 
 class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeListener {

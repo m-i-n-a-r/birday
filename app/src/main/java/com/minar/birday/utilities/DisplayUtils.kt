@@ -9,11 +9,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.children
 import androidx.core.view.isVisible
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.core.view.updatePadding
-import androidx.core.view.updatePaddingRelative
-import com.google.android.material.R as MaterialR
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.minar.birday.R
+import com.google.android.material.R as MaterialR
 
 // The text size the compact widget uses when the user leaves the size on "Auto", read from the
 // Material body style so the widget follows the same scale as the rest of the app.

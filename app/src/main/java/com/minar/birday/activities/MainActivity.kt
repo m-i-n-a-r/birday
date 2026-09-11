@@ -1,6 +1,7 @@
 package com.minar.birday.activities
 
 import android.Manifest
+import android.animation.ValueAnimator
 import android.app.ActivityManager
 import android.app.AlertDialog
 import android.app.NotificationChannel
@@ -11,6 +12,8 @@ import android.content.ContentResolver
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.content.res.ColorStateList
+import android.content.res.Configuration
 import android.database.Cursor
 import android.graphics.Color
 import android.media.AudioAttributes
@@ -23,22 +26,21 @@ import android.os.Vibrator
 import android.os.VibratorManager
 import android.provider.OpenableColumns
 import android.provider.Settings
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.updatePaddingRelative
-import androidx.core.view.updateLayoutParams
-import android.widget.LinearLayout
-import android.view.Gravity
-import android.content.res.Configuration
 import android.view.animation.Interpolator
 import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import androidx.annotation.RequiresApi
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ActivityCompat
@@ -46,10 +48,10 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.net.toUri
-import androidx.core.view.ViewCompat
 import androidx.core.view.animation.PathInterpolatorCompat
-import androidx.core.view.isGone
-import androidx.core.view.updatePadding
+import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePaddingRelative
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
@@ -58,10 +60,12 @@ import androidx.preference.PreferenceManager
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
+import com.google.android.material.behavior.HideViewOnScrollBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.minar.birday.R
 import com.minar.birday.databinding.ActivityMainBinding
+import com.minar.birday.databinding.NavTabBinding
 import com.minar.birday.fragments.dialogs.ImportContactsBottomSheet
 import com.minar.birday.fragments.dialogs.InsertEventBottomSheet
 import com.minar.birday.model.Event
@@ -77,7 +81,7 @@ import com.minar.birday.preferences.backup.JsonExporter
 import com.minar.birday.preferences.backup.JsonImporter
 import com.minar.birday.utilities.AppRater
 import com.minar.birday.utilities.addInsetsByMargin
-import com.minar.birday.utilities.addInsetsByPadding
+import com.minar.birday.utilities.applyBottomProgressiveBlur
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 import com.minar.birday.utilities.applyUserTheme
 import com.minar.birday.utilities.eventToResult
@@ -93,14 +97,6 @@ import com.minar.birday.workers.ImportContactsWorker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import android.content.res.ColorStateList
-import android.animation.ValueAnimator
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
-import androidx.core.view.isVisible
-import com.google.android.material.behavior.HideViewOnScrollBehavior
-import com.minar.birday.databinding.NavTabBinding
-import com.minar.birday.utilities.applyBottomProgressiveBlur
 import java.io.IOException
 import java.time.LocalDateTime
 import java.time.ZoneOffset
@@ -761,7 +757,6 @@ class MainActivity : AppCompatActivity() {
     private fun renderNavTabs(animate: Boolean) {
         // Material 3 roles: neutral bar, tinted active destination, idle tabs transparent
         val selectedContainer = getThemeColor(R.attr.colorSecondaryContainer, this)
-        val idleContainer = Color.TRANSPARENT
         val selectedContent = getThemeColor(R.attr.colorOnSecondaryContainer, this)
         val idleContent = getThemeColor(R.attr.colorOnSurfaceVariant, this)
 
@@ -769,7 +764,7 @@ class MainActivity : AppCompatActivity() {
             val selected = index == selectedTabIndex
             animateTabLabel(tab, selected && !isNavRail, animate)
             tab.binding.root.isSelected = selected
-            val container = if (selected) selectedContainer else idleContainer
+            val container = if (selected) selectedContainer else 0
             val content = if (selected) selectedContent else idleContent
             animateTint(tab.binding.root.backgroundTintList?.defaultColor, container, animate) {
                 tab.binding.root.backgroundTintList = ColorStateList.valueOf(it)

@@ -424,7 +424,7 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
             }.start()
 
             val resultValue = Intent().putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId)
-            setResult(Activity.RESULT_OK, resultValue)
+            setResult(RESULT_OK, resultValue)
             finish()
         }
     }

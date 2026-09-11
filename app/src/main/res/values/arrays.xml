@@ -5,14 +5,12 @@
         <item>@string/system_theme</item>
         <item>@string/dark_theme</item>
         <item>@string/light_theme</item>
-        <item>@string/black_theme</item>
     </string-array>
 
     <string-array name="themeValues">
         <item>system</item>
         <item>dark</item>
         <item>light</item>
-        <item>black</item>
     </string-array>
 
     <string-array name="accents" tools:ignore="InconsistentArrays">

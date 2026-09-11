@@ -22,14 +22,11 @@
     <dimen name="between_row_padding">8dp</dimen>
     <dimen name="recycler_padding">18dp</dimen>
     <dimen name="recycler_extra_space_top">42dp</dimen>
-    <dimen name="recycler_extra_space_bottom">84dp</dimen>
     <dimen name="dialog_actions_padding">40dp</dimen>
     <dimen name="dialog_horizontal_padding">24dp</dimen>
     <dimen name="details_button_max_width">320dp</dimen>
     <dimen name="settings_row_padding">16dp</dimen>
     <dimen name="fast_scroll_corners">32dp</dimen>
-    <dimen name="card_margin_big">16dp</dimen>
-    <dimen name="text_switch_padding">24dp</dimen>
     <dimen name="mini_fab_opacity">0.9</dimen>
     <dimen name="note_icon_opacity">0.6</dimen>
     <dimen name="event_countdown_opacity">0.3</dimen>
@@ -38,19 +35,13 @@
     <dimen name="minar_banner_height">84dp</dimen>
     <dimen name="minar_banner_padding">12dp</dimen>
     <dimen name="minar_description_padding">16dp</dimen>
-    <dimen name="bottom_navbar_height">80dp</dimen>
-    <dimen name="bottom_navbar_item_padding">12dp</dimen>
-    <dimen name="result_text_margin">42dp</dimen>
     <dimen name="text_field_corner">14dp</dimen>
     <dimen name="text_field_horizontal_margin">12dp</dimen>
-    <dimen name="splash_image_size">192dp</dimen>
-    <dimen name="splash_image_padding">24dp</dimen>
     <dimen name="cursor_size">2.5dp</dimen>
     <dimen name="notes_minimum_height">150dp</dimen>
     <dimen name="notes_maximum_height">220dp</dimen>
     <dimen name="details_image_size">172dp</dimen>
     <dimen name="details_image_padding">26dp</dimen>
-    <dimen name="predictive_back_margin">8dp</dimen>
     <dimen name="carousel_item_width">200dp</dimen>
     <dimen name="carousel_item_height">200dp</dimen>
 
@@ -63,8 +54,6 @@
     <dimen name="widget_image_horizontal_margin">2dp</dimen>
     <dimen name="widget_type_icon_background_size">28dp</dimen>
     <dimen name="widget_type_icon_size">14dp</dimen>
-    <dimen name="widget_min_width">200dp</dimen>
-    <dimen name="widget_min_height">64dp</dimen>
     <dimen name="widget_compact_row_vertical_padding">2dp</dimen>
 
     <!-- Shimmer and miscellaneous -->
@@ -76,9 +65,7 @@
     <dimen name="custom_preference_title_text_size">16sp</dimen>
     <dimen name="custom_preference_subtitle_text_size">13.6sp</dimen>
     <dimen name="preview_dot_size">24dp</dimen>
-    <dimen name="bottom_sheet_peek_height">1000dp</dimen>
     <dimen name="bottom_sheet_icon_size">40dp</dimen>
-    <dimen name="main_fab_icon_size">40dp</dimen>
 
     <!-- Floating navbar -->
     <dimen name="nav_pill_corner">28dp</dimen>
@@ -102,5 +89,4 @@
     <dimen name="about_row_padding_horizontal">24dp</dimen>
     <dimen name="about_row_padding_vertical">14dp</dimen>
     <dimen name="about_row_icon_margin">16dp</dimen>
-    <dimen name="about_logo_height">90dp</dimen>
 </resources>

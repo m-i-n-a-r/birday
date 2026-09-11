@@ -36,7 +36,7 @@ class ImageCropActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Default outcome: predictive back / system back simply finishes with CANCELED
-        setResult(Activity.RESULT_CANCELED)
+        setResult(RESULT_CANCELED)
 
         // Insets: pad the crop view so the image isn't clipped, push the FABs in from the system bars
         binding.cropImageView.addInsetsByPadding(top = true, bottom = true, left = true, right = true)

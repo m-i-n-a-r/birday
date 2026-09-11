@@ -16,4 +16,5 @@
 
     <item name="tag_navbar_clearance_start" type="id" />
     <item name="tag_navbar_clearance_bottom" type="id" />
+    <item name="tag_nav_label_fraction" type="id" />
 </resources>

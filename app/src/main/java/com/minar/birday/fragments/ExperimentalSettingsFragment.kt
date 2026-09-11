@@ -2,12 +2,9 @@ package com.minar.birday.fragments
 
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceFragmentCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
-import com.minar.birday.activities.MainActivity
-import com.minar.birday.utilities.addInsetsByPadding
 import com.minar.birday.utilities.addNavbarClearance
 
 

@@ -29,6 +29,7 @@ import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
+import com.minar.birday.utilities.animateChildrenCascade
 import com.minar.birday.adapters.ContactsFilterArrayAdapter
 import com.minar.birday.databinding.BottomSheetInsertEventBinding
 import com.minar.birday.model.ContactInfo
@@ -122,11 +123,11 @@ class InsertEventBottomSheet(
             val name = binding.nameEvent
             val surname = binding.surnameEvent
             val eventDate = binding.dateEvent
-            val countYear = binding.countYearSwitch
+            val countYear = binding.countYearGroup
             type.setText(typeValue, false)
             name.setText(nameValue)
             surname.setText(surnameValue)
-            countYear.isChecked = countYearValue
+            countYear.check(if (countYearValue) R.id.countYearOn else R.id.countYearOff)
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
             // Hide the year in the field if it doesn't matter
             eventDate.setText(
@@ -181,7 +182,7 @@ class InsertEventBottomSheet(
         val name = binding.nameEvent
         val surname = binding.surnameEvent
         val eventDate = binding.dateEvent
-        val countYear = binding.countYearSwitch
+        val countYear = binding.countYearGroup
 
         // Set the dropdown to show the available event types
         val items = getAvailableTypes(act)
@@ -194,12 +195,14 @@ class InsertEventBottomSheet(
                     typeValue = items[position].codeName.name
                     // Automatically uncheck "the year matters" for name days
                     if (typeValue == EventCode.NAME_DAY.name) {
-                        countYear.isChecked = false
-                        countYear.isEnabled = false
+                        countYear.check(R.id.countYearOff)
+                        binding.countYearOn.isEnabled = false
+                        binding.countYearOff.isEnabled = false
                         countYearValue = false
                     } else {
-                        countYear.isChecked = true
-                        countYear.isEnabled = true
+                        countYear.check(R.id.countYearOn)
+                        binding.countYearOn.isEnabled = true
+                        binding.countYearOff.isEnabled = true
                         countYearValue = true
                     }
                     if (!imageChosen)
@@ -262,12 +265,14 @@ class InsertEventBottomSheet(
         lastDate.set(eventDateValue.year, eventDateValue.monthValue - 1, eventDateValue.dayOfMonth)
 
         // Update the boolean value on each click
-        countYear.setOnCheckedChangeListener { _, isChecked ->
-            countYearValue = isChecked
+        countYear.addOnButtonCheckedListener { _, checkedId, isChecked ->
+            // The group reports the button leaving the selection too, only the incoming one counts
+            if (!isChecked) return@addOnButtonCheckedListener
+            countYearValue = checkedId == R.id.countYearOn
             // Reformat the date field, if already filled, to show or hide the year
             if (!eventDate.text.isNullOrBlank())
                 eventDate.setText(
-                    if (isChecked) eventDateValue.format(formatter)
+                    if (countYearValue) eventDateValue.format(formatter)
                     else forceMonthDayFormat(eventDateValue)
                 )
         }
@@ -309,14 +314,13 @@ class InsertEventBottomSheet(
                         val day = date.get(Calendar.DAY_OF_MONTH)
                         eventDateValue = LocalDate.of(year, month, day)
                         val todayDate = LocalDate.now()
-
-                        // Force the date to be max one day after today, to consider different time zones
-                        while (eventDateValue.isAfter(todayDate.plusDays(1))) {
-                            eventDateValue = LocalDate.of(
-                                todayDate.year - 1,
-                                eventDateValue.monthValue,
-                                eventDateValue.dayOfMonth
-                            )
+                        // The current year means the real one is not known, and a year still to
+                        // come cannot be one to count from
+                        if (typeValue != EventCode.NAME_DAY.name) {
+                            val yearKnown =
+                                year != todayDate.year && !eventDateValue.isAfter(todayDate)
+                            countYear.check(if (yearKnown) R.id.countYearOn else R.id.countYearOff)
+                            countYearValue = yearKnown
                         }
                         eventDate.setText(
                             if (countYearValue) eventDateValue.format(formatter)
@@ -377,6 +381,8 @@ class InsertEventBottomSheet(
         name.addTextChangedListener(watcher)
         surname.addTextChangedListener(watcher)
         eventDate.addTextChangedListener(watcher)
+
+        binding.insertEventBottomSheet.animateChildrenCascade()
     }
 
     override fun onDestroyView() {

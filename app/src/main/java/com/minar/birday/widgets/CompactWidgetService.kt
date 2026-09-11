@@ -9,24 +9,23 @@ import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import android.widget.RemoteViewsService.RemoteViewsFactory
 import androidx.preference.PreferenceManager
-import com.google.android.material.R as MaterialR
 import com.google.android.material.color.MaterialColors
 import com.minar.birday.R
 import com.minar.birday.model.EventResult
 import com.minar.birday.persistence.EventDao
+import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.accentThemeRes
 import com.minar.birday.utilities.bodyMediumTextSizeSp
-import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.byteArrayToBitmap
+import com.minar.birday.utilities.forceMonthDayFormat
+import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getCircularBitmap
 import com.minar.birday.utilities.getInitialBitmap
-import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getNextYears
 import com.minar.birday.utilities.getRemainingDays
-
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
-import java.util.*
+import com.google.android.material.R as MaterialR
 
 
 class CompactWidgetService : RemoteViewsService() {
@@ -188,9 +187,7 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
     private fun applyDateAndZodiac(rv: RemoteViews, event: EventResult) {
         val formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
         val dateText = if (event.yearMatter != false) event.originalDate.format(formatter)
-            else event.originalDate.month.getDisplayName(
-                java.time.format.TextStyle.FULL, Locale.getDefault()
-            ) + ", " + event.originalDate.dayOfMonth.toString()
+        else forceMonthDayFormat(event.originalDate)
 
         when (datePosition) {
             "hidden" -> {
@@ -324,13 +321,13 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
 
     private fun monetThemeContext(sp: android.content.SharedPreferences): Context {
         val accent = sp.getString("accent_color", "system") ?: "system"
-        val theme = sp.getString("theme_color", "system") ?: "system"
         // Unlike the activities, a RemoteViews factory can't force the night mode, so the amoled
         // variant is picked only when the system is actually in dark mode
         val isDark = (context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) ==
             Configuration.UI_MODE_NIGHT_YES
         return ContextThemeWrapper(
-            context, accentThemeRes(accent, perfectDark = theme == "black" && isDark)
+            context,
+            accentThemeRes(accent, perfectDark = sp.getBoolean("amoled_dark", false) && isDark)
         )
     }
 

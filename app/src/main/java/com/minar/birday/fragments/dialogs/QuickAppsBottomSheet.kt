@@ -14,6 +14,7 @@ import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.MissedCarouselAdapter
 import com.minar.birday.databinding.BottomSheetQuickAppsBinding
+import com.minar.birday.utilities.animateChildrenCascade
 import java.time.Duration
 import java.time.LocalDate
 import androidx.core.net.toUri
@@ -32,6 +33,7 @@ class QuickAppsBottomSheet(private val act: MainActivity) : BottomSheetDialogFra
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.quickAppsBottomSheet.animateChildrenCascade()
         // Animate the drawable in loop
         val titleIcon = binding.quickAppsImage
         val whatsAppButton = binding.whatsappButton

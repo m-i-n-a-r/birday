@@ -32,7 +32,7 @@ class StatsGenerator(
     fun generateRandomStat(): String {
         // Use a response string to re-execute the stats calculation if a stat cannot be computed correctly
         var response: String? = null
-        val randomPerson = birthdays.random()
+        val randomPerson = birthdays.randomOrNull() ?: return ""
         while (response.isNullOrBlank()) {
             response = when (Random.nextInt(0, 12)) {
                 1 -> ageAverage()
@@ -56,18 +56,21 @@ class StatsGenerator(
     fun generateFullStats(): SpannableStringBuilder {
         val sb = SpannableStringBuilder()
         val stats = mutableListOf<String>()
-        stats.add(ageAverage())
-        stats.add(oldestPerson())
-        stats.add(youngestPerson())
-        stats.add(mostCommonAgeRange())
-        stats.add(mostCommonDayOfWeek())
-        stats.add(mostCommonDecade())
-        stats.add(mostCommonMonth())
-        stats.add(leapYearTotal())
-        // Only include astrology related stats if astrology is enabled
-        if (!astrologyDisabled) {
-            stats.add(mostCommonZodiacSign())
-            stats.add(mostCommonChineseSign())
+        // Every stat below needs at least one birthday, only the type recap works without
+        if (birthdays.isNotEmpty()) {
+            stats.add(ageAverage())
+            stats.add(oldestPerson())
+            stats.add(youngestPerson())
+            stats.add(mostCommonAgeRange())
+            stats.add(mostCommonDayOfWeek())
+            stats.add(mostCommonDecade())
+            stats.add(mostCommonMonth())
+            stats.add(leapYearTotal())
+            // Only include astrology related stats if astrology is enabled
+            if (!astrologyDisabled) {
+                stats.add(mostCommonZodiacSign())
+                stats.add(mostCommonChineseSign())
+            }
         }
         stats.add(eventTypesNumbers())
         stats.removeIf { it.isBlank() }

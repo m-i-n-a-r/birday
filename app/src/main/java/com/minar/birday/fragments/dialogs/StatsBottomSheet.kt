@@ -11,6 +11,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.BottomSheetStatsBinding
+import com.minar.birday.utilities.animateChildrenCascade
 import kotlin.math.min
 
 
@@ -34,6 +35,7 @@ class StatsBottomSheet(
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.statsBottomSheet.animateChildrenCascade()
         // Animate the drawable in loop
         val titleIcon = binding.statsImage
         act.animateAvd(titleIcon, R.drawable.animated_stats, 1500L)

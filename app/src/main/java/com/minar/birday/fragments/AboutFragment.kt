@@ -20,19 +20,20 @@ import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.AboutRowBinding
 import com.minar.birday.databinding.FragmentAboutBinding
 import com.minar.birday.utilities.addNavbarClearance
+import com.minar.birday.utilities.animateChildrenCascade
 import com.minar.birday.utilities.getThemeColor
-import com.minar.birday.utilities.setupPredictiveBack
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
+import kotlin.time.Duration.Companion.milliseconds
 
 /**
  * The former author preference, promoted to a page of its own: it is opened by the navbar action
  * button while the settings are on screen. No toolbar and no back arrow, the back gesture is the
- * only way out and it is animated by [setupPredictiveBack].
+ * only way out, and the framework animates it.
  */
 class AboutFragment : Fragment() {
     private lateinit var act: MainActivity
@@ -65,7 +66,7 @@ class AboutFragment : Fragment() {
 
         // Spawn the logo with a little delay
         fragmentScope.launch {
-            delay(300)
+            delay(300.milliseconds)
             (binding.imageMinar.drawable as? AnimatedVectorDrawable)?.start()
         }
 
@@ -83,7 +84,7 @@ class AboutFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupPredictiveBack(binding.aboutRoot)
+        binding.aboutRows.animateChildrenCascade()
         binding.aboutScroll.addNavbarClearance()
     }
 
