@@ -1,9 +1,12 @@
 package com.minar.birday.utilities
 
+import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import androidx.annotation.StyleRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.edit
 import com.minar.birday.R
 
 // The accent themes are a flat list of styles, each one with an amoled twin, so the accent
@@ -31,22 +34,42 @@ fun accentThemeRes(accent: String?, perfectDark: Boolean): Int = when (accent) {
 
 // Apply the night mode and the accent chosen by the user. Must be called before setContentView(),
 // otherwise the views are inflated with the previous theme.
+// Amoled used to be a theme value on its own, it is a switch over the dark one now
+private fun SharedPreferences.migrateAmoledTheme() {
+    if (getString("theme_color", "system") != "black") return
+    edit {
+        putString("theme_color", "dark")
+        putBoolean("amoled_dark", true)
+    }
+}
+
+// Pure black applies to whatever ends up being dark, the system theme included
+fun SharedPreferences.isAmoledActive(context: Context): Boolean {
+    if (!getBoolean("amoled_dark", false)) return false
+    return when (getString("theme_color", "system")) {
+        "dark" -> true
+        "light" -> false
+        else -> context.resources.configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+    }
+}
+
 fun AppCompatActivity.applyUserTheme(sharedPrefs: SharedPreferences) {
+    sharedPrefs.migrateAmoledTheme()
     val theme = sharedPrefs.getString("theme_color", "system")
     val accent = sharedPrefs.getString("accent_color", "system")
 
-    // Black is the amoled variant of the dark theme, so it forces the night mode as well
     when (theme) {
         "system" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-        "dark", "black" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
+    val amoled = sharedPrefs.isAmoledActive(this)
     // The base theme is applied first, so the amoled styles only override what they redefine
-    if (theme == "black") setTheme(R.style.AppTheme)
-    setTheme(accentThemeRes(accent, perfectDark = theme == "black"))
+    if (amoled) setTheme(R.style.AppTheme)
+    setTheme(accentThemeRes(accent, perfectDark = amoled))
 
-    // Dynamic colors leave the on*Container roles on the static baseline in light, so Monet gets
-    // them pinned back. A fixed accent must not: it carries its own, from its tonal ramp
+    // Dynamic colors leave the on*Container roles on the static baseline in light
     if (accent == "monet") setTheme(R.style.ThemeOverlay_App_MonetContainerFix)
 }

@@ -112,6 +112,15 @@
             android:title="@string/theme_name"
             app:iconSpaceReserved="false" />
 
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="amoled_dark"
+            android:summaryOff="@string/amoled_description_off"
+            android:summaryOn="@string/amoled_description_on"
+            android:title="@string/black_theme"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
+
         <ListPreference
             android:defaultValue="system"
             android:entries="@array/accents"
@@ -146,6 +155,15 @@
             android:summaryOff="@string/vibration_description_off"
             android:summaryOn="@string/vibration_description_on"
             android:title="@string/vibration_name"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="hide_scroll"
+            android:summaryOff="@string/hide_on_scroll_description_off"
+            android:summaryOn="@string/hide_on_scroll_description_on"
+            android:title="@string/hide_on_scroll_title"
             android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
     </PreferenceCategory>

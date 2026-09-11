@@ -9,7 +9,6 @@
     android:background="@drawable/nav_tab_background"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="@drawable/nav_tab_ripple"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:paddingHorizontal="@dimen/nav_tab_padding">

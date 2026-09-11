@@ -12,6 +12,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.BottomSheetRateBinding
+import com.minar.birday.utilities.animateChildrenCascade
 
 class RateBottomSheet(private val editor: SharedPreferences.Editor) : BottomSheetDialogFragment() {
     private var _binding: BottomSheetRateBinding? = null
@@ -28,6 +29,7 @@ class RateBottomSheet(private val editor: SharedPreferences.Editor) : BottomShee
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.rateBottomSheet.animateChildrenCascade()
         // Animate the drawable in loop
         val titleIcon = binding.rateImage
         act.animateAvd(titleIcon, R.drawable.animated_review_star, 1500L)
@@ -37,8 +39,7 @@ class RateBottomSheet(private val editor: SharedPreferences.Editor) : BottomShee
 
         // Handling the positive button
         positiveButton.setOnClickListener {
-            // No store app on an F-Droid only device: fall back to the web listing, and give up
-            // quietly rather than crash if there is no browser either
+            // No store app on an F-Droid install: fall back to the web listing, then give up
             try {
                 requireContext().startActivity(
                     Intent(

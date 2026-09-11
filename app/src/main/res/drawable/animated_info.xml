@@ -7,6 +7,17 @@
             android:viewportWidth="24"
             android:viewportHeight="24">
             <group
+                android:name="pulse"
+                android:pivotX="12"
+                android:pivotY="12">
+                <path
+                    android:name="pulse_path"
+                    android:pathData="M3,12 A9,9 0 1,1 21,12 A9,9 0 1,1 3,12"
+                    android:strokeAlpha="0"
+                    android:strokeColor="#000000"
+                    android:strokeWidth="1.5" />
+            </group>
+            <group
                 android:name="ring"
                 android:pivotX="12"
                 android:pivotY="12">
@@ -36,68 +47,199 @@
         </vector>
     </aapt:attr>
 
-    <!-- The ring breathes once, then the i writes itself back in: stem from its base, dot last -->
-    <target android:name="ring">
+    <!-- Rests complete for 2.6s, then a halo pulses out while the i redraws itself -->
+    <target android:name="pulse">
         <aapt:attr name="android:animation">
-            <set>
+            <set android:ordering="sequentially">
                 <objectAnimator
-                    android:duration="900"
-                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:duration="2600"
                     android:propertyName="scaleX"
-                    android:repeatCount="1"
-                    android:repeatMode="reverse"
                     android:valueFrom="1.0"
-                    android:valueTo="1.12"
+                    android:valueTo="1.0"
                     android:valueType="floatType" />
                 <objectAnimator
-                    android:duration="900"
-                    android:interpolator="@android:interpolator/fast_out_slow_in"
-                    android:propertyName="scaleY"
-                    android:repeatCount="1"
-                    android:repeatMode="reverse"
+                    android:duration="950"
+                    android:interpolator="@android:interpolator/decelerate_quad"
+                    android:propertyName="scaleX"
                     android:valueFrom="1.0"
-                    android:valueTo="1.12"
+                    android:valueTo="1.75"
                     android:valueType="floatType" />
             </set>
         </aapt:attr>
     </target>
-
+    <target android:name="pulse">
+        <aapt:attr name="android:animation">
+            <set android:ordering="sequentially">
+                <objectAnimator
+                    android:duration="2600"
+                    android:propertyName="scaleY"
+                    android:valueFrom="1.0"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="950"
+                    android:interpolator="@android:interpolator/decelerate_quad"
+                    android:propertyName="scaleY"
+                    android:valueFrom="1.0"
+                    android:valueTo="1.75"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="pulse_path">
+        <aapt:attr name="android:animation">
+            <set android:ordering="sequentially">
+                <objectAnimator
+                    android:duration="2600"
+                    android:propertyName="strokeAlpha"
+                    android:valueFrom="0.0"
+                    android:valueTo="0.0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="1"
+                    android:propertyName="strokeAlpha"
+                    android:valueFrom="0.0"
+                    android:valueTo="0.0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="950"
+                    android:interpolator="@android:interpolator/decelerate_quad"
+                    android:propertyName="strokeAlpha"
+                    android:valueFrom="0.85"
+                    android:valueTo="0.0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
     <target android:name="stem">
         <aapt:attr name="android:animation">
-            <set>
+            <set android:ordering="sequentially">
                 <objectAnimator
-                    android:duration="360"
+                    android:duration="2600"
+                    android:propertyName="scaleY"
+                    android:valueFrom="1.0"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="200"
                     android:interpolator="@android:interpolator/fast_out_slow_in"
                     android:propertyName="scaleY"
-                    android:startOffset="180"
+                    android:valueFrom="1.0"
+                    android:valueTo="0.0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="520"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="scaleY"
+                    android:startOffset="160"
                     android:valueFrom="0.0"
                     android:valueTo="1.0"
                     android:valueType="floatType" />
             </set>
         </aapt:attr>
     </target>
-
     <target android:name="dot">
         <aapt:attr name="android:animation">
-            <set>
+            <set android:ordering="sequentially">
                 <objectAnimator
-                    android:duration="260"
-                    android:interpolator="@android:interpolator/overshoot"
+                    android:duration="2600"
                     android:propertyName="scaleX"
-                    android:startOffset="520"
-                    android:valueFrom="0.0"
+                    android:valueFrom="1.0"
                     android:valueTo="1.0"
                     android:valueType="floatType" />
                 <objectAnimator
-                    android:duration="260"
+                    android:duration="160"
+                    android:propertyName="scaleX"
+                    android:valueFrom="1.0"
+                    android:valueTo="0.0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="320"
                     android:interpolator="@android:interpolator/overshoot"
-                    android:propertyName="scaleY"
-                    android:startOffset="520"
+                    android:propertyName="scaleX"
+                    android:startOffset="560"
                     android:valueFrom="0.0"
                     android:valueTo="1.0"
                     android:valueType="floatType" />
             </set>
         </aapt:attr>
     </target>
-
+    <target android:name="dot">
+        <aapt:attr name="android:animation">
+            <set android:ordering="sequentially">
+                <objectAnimator
+                    android:duration="2600"
+                    android:propertyName="scaleY"
+                    android:valueFrom="1.0"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="160"
+                    android:propertyName="scaleY"
+                    android:valueFrom="1.0"
+                    android:valueTo="0.0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="320"
+                    android:interpolator="@android:interpolator/overshoot"
+                    android:propertyName="scaleY"
+                    android:startOffset="560"
+                    android:valueFrom="0.0"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="ring">
+        <aapt:attr name="android:animation">
+            <set android:ordering="sequentially">
+                <objectAnimator
+                    android:duration="2600"
+                    android:propertyName="scaleX"
+                    android:valueFrom="1.0"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="460"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="scaleX"
+                    android:valueFrom="1.0"
+                    android:valueTo="1.08"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="460"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="scaleX"
+                    android:valueFrom="1.08"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="ring">
+        <aapt:attr name="android:animation">
+            <set android:ordering="sequentially">
+                <objectAnimator
+                    android:duration="2600"
+                    android:propertyName="scaleY"
+                    android:valueFrom="1.0"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="460"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="scaleY"
+                    android:valueFrom="1.0"
+                    android:valueTo="1.08"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="460"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="scaleY"
+                    android:valueFrom="1.08"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
 </animated-vector>

@@ -253,9 +253,7 @@ class HomeFragment : Fragment() {
 
         // Setup the recycler view
         recycler.adapter = adapter
-        // One animator for the whole life of the list. Replacing it on every emission abandons
-        // whatever it had in flight: the views animateAdd had already put at alpha 0 never get
-        // faded back in, which is what left rows half washed out or missing after a quick search
+        // Assigned once: replacing it mid flight leaves rows stuck at the alpha it set
         recycler.itemAnimator = BirdayRecyclerAnimator()
 
         // The events, ordered and filtered by the eventual search
@@ -298,7 +296,7 @@ class HomeFragment : Fragment() {
                 startPostponedEnterTransition()
             }.also {
                 if (events.isEmpty()) {
-                    // Hiding the list mid animation would strand the rows it is still fading in
+                    // Hiding it mid animation would strand the rows still fading in
                     recycler.itemAnimator?.endAnimations()
                     recycler.visibility = View.GONE
                 } else recycler.visibility = View.VISIBLE

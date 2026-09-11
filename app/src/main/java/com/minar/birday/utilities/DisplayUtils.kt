@@ -8,6 +8,8 @@ import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.children
+import androidx.core.view.isVisible
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.core.view.updatePadding
 import androidx.core.view.updatePaddingRelative
 import com.google.android.material.R as MaterialR
@@ -32,9 +34,32 @@ fun Context.bodyMediumTextSizeSp(): Float {
 
 private const val DEFAULT_BODY_MEDIUM_SP = 14f
 
-// Reserve room under a scrolling view for the floating navbar, on top of whatever the system
-// insets ask for. The content still draws all the way down: the view has to keep clipToPadding
-// off, or the padding crops it instead of letting it scroll through
+private const val CASCADE_STAGGER = 35L
+private const val CASCADE_DURATION = 240L
+private const val CASCADE_OFFSET_DP = 18f
+
+// Content rides in one after the other. Translation is optional: inside a MotionLayout the scene
+// owns the positions, so there only the fade is safe
+fun List<View>.animateCascade(translate: Boolean = true) {
+    val density = firstOrNull()?.resources?.displayMetrics?.density ?: return
+    forEachIndexed { index, view ->
+        view.alpha = 0f
+        if (translate) view.translationY = CASCADE_OFFSET_DP * density
+        view.animate()
+            .alpha(1f)
+            .apply { if (translate) translationY(0f) }
+            .setStartDelay(CASCADE_STAGGER * index)
+            .setDuration(CASCADE_DURATION)
+            .setInterpolator(FastOutSlowInInterpolator())
+            .start()
+    }
+}
+
+// Everything the container holds, minus the drag handle that has to stay where the finger left it
+fun ViewGroup.animateChildrenCascade(translate: Boolean = true) =
+    children.filter { it.id != R.id.dragHandle && it.isVisible }.toList().animateCascade(translate)
+
+// Room under a scrolling view for the navbar, insets included. Needs clipToPadding off
 fun View.addNavbarClearance() {
     val space = resources.getDimensionPixelSize(R.dimen.floating_navbar_space)
     val last = getTag(R.id.tag_navbar_clearance_bottom) as? Int ?: 0

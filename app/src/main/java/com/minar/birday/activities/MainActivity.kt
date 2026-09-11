@@ -24,6 +24,7 @@ import android.os.VibratorManager
 import android.provider.OpenableColumns
 import android.provider.Settings
 import android.view.View
+import android.view.ViewGroup
 import androidx.core.view.updatePaddingRelative
 import androidx.core.view.updateLayoutParams
 import android.widget.LinearLayout
@@ -94,12 +95,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import android.content.res.ColorStateList
 import android.animation.ValueAnimator
-import androidx.transition.ChangeBounds
-import androidx.transition.Fade
-import androidx.transition.Transition
-import androidx.transition.TransitionListenerAdapter
-import androidx.transition.TransitionManager
-import androidx.transition.TransitionSet
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.view.isVisible
@@ -120,8 +115,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var backHomeCallback: OnBackPressedCallback
     private var selectedTabIndex = 0
 
-    // In landscape the navbar stands along the edge, where an expanding label would cost width.
-    // Read every time: the activity keeps configuration changes, so this flips without a recreation
+    // Read every time: the activity keeps config changes, so this flips without a recreation
     private val isNavRail: Boolean
         get() = resources.getBoolean(R.bool.nav_rail)
     private var deleteActionActive = false
@@ -145,8 +139,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         val GestureInterpolator: Interpolator = PathInterpolatorCompat.create(0f, 0f, 0f, 1f)
 
-        // Material 3 emphasized decelerate. The gesture interpolator above starts at full speed and
-        // stops dead, which on a pill this small reads as a jerk rather than as motion
+        // Material 3 emphasized decelerate, gentler than the gesture one above
         val NavTabInterpolator: Interpolator = PathInterpolatorCompat.create(0.05f, 0.7f, 0.1f, 1f)
 
         // One beat for the whole tab change: bounds, colors and label move together
@@ -242,6 +235,11 @@ class MainActivity : AppCompatActivity() {
                 R.drawable.nav_animation_settings, R.string.title_settings
             ),
         )
+        // Only a tab destination goes back to home: on a secondary one the navigation pops first
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            val onTab = navTabs.any { it.destination == destination.id }
+            backHomeCallback.isEnabled = onTab && selectedTabIndex != 0
+        }
         navTabs.forEachIndexed { index, tab ->
             tab.binding.tabIcon.setImageResource(tab.icon)
             tab.binding.tabLabel.setText(tab.label)
@@ -381,10 +379,10 @@ class MainActivity : AppCompatActivity() {
         // Only way to use custom animations with the bottom navigation bar
         val options = NavOptions.Builder()
             .setLaunchSingleTop(true)
-            .setEnterAnim(R.anim.nav_enter_anim)
-            .setExitAnim(R.anim.nav_exit_anim)
-            .setPopEnterAnim(R.anim.nav_pop_enter_anim)
-            .setPopExitAnim(R.anim.nav_pop_exit_anim)
+            .setEnterAnim(R.animator.nav_enter_anim)
+            .setExitAnim(R.animator.nav_exit_anim)
+            .setPopEnterAnim(R.animator.nav_pop_enter_anim)
+            .setPopExitAnim(R.animator.nav_pop_exit_anim)
             .setPopUpTo(R.id.nav_graph, true)
             .build()
 
@@ -667,10 +665,8 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
-    // The navbar lies at the bottom in portrait and stands along the starting edge in landscape,
-    // where height is the scarce dimension. The activity handles orientation changes itself, so
-    // nothing is ever re-inflated: the placement is applied here and again on every rotation.
-    // Margins of the bar itself are left alone, they carry the window insets
+    // Bottom bar in portrait, side rail in landscape, re-applied on rotation since nothing is
+    // inflated again. Bar margins are left alone, they carry the insets
     private fun applyNavbarPlacement() {
         val rail = isNavRail
         val margin = resources.getDimensionPixelSize(R.dimen.floating_navbar_margin)
@@ -687,8 +683,7 @@ class MainActivity : AppCompatActivity() {
             gravity = if (rail) Gravity.END or Gravity.CENTER_VERTICAL
             else Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL
         }
-        // Beside the rail the whole fragment steps aside, header card included; under a bottom bar
-        // the content runs below it instead and only the scrolling lists reserve room
+        // Beside the rail the whole fragment steps aside, card included
         binding.navHostFragment.updatePaddingRelative(
             end = if (rail) resources.getDimensionPixelSize(R.dimen.floating_navbar_space) else 0
         )
@@ -721,9 +716,7 @@ class MainActivity : AppCompatActivity() {
         applyNavbarHideOnScroll(navbarHidesOnScroll)
     }
 
-    // Attach or drop the scroll behavior on the spot, so the option takes effect the moment it is
-    // switched instead of on the next launch. The behavior replaces BottomAppBar.hideOnScroll,
-    // which went away together with the bar itself
+    // Attached and dropped live, so the option needs no restart
     fun applyNavbarHideOnScroll(enabled: Boolean) {
         navbarHidesOnScroll = enabled
         val params = binding.floatingNavbar.layoutParams as CoordinatorLayout.LayoutParams
@@ -735,7 +728,7 @@ class MainActivity : AppCompatActivity() {
             )
         } else null
         binding.floatingNavbar.layoutParams = params
-        // Switching the option off while the bar sits off screen would strand it there
+        // Off while the bar sits off screen would strand it there
         if (!enabled) binding.floatingNavbar.run {
             animate().cancel()
             translationY = 0f
@@ -764,35 +757,17 @@ class MainActivity : AppCompatActivity() {
         ) navController.popBackStack()
     }
 
-    // Paint the tabs and grow the selected one around its label. Bounds, label and colors all run
-    // on the same beat, and the icons only morph once it is over: starting the vectors together
-    // with the growth reads as two unrelated animations fighting each other
+    // Bounds, label and colors on one beat, icons morph after: together they fight each other
     private fun renderNavTabs(animate: Boolean) {
-        // Material 3 navigation bar roles: the bar is the neutral surface and the active
-        // destination is the tinted one, not the other way round. Idle tabs stay transparent so
-        // they simply show the pill behind them
+        // Material 3 roles: neutral bar, tinted active destination, idle tabs transparent
         val selectedContainer = getThemeColor(R.attr.colorSecondaryContainer, this)
         val idleContainer = Color.TRANSPARENT
         val selectedContent = getThemeColor(R.attr.colorOnSecondaryContainer, this)
         val idleContent = getThemeColor(R.attr.colorOnSurfaceVariant, this)
 
-        if (animate) TransitionManager.beginDelayedTransition(
-            binding.navTabs,
-            TransitionSet().apply {
-                ordering = TransitionSet.ORDERING_TOGETHER
-                addTransition(ChangeBounds())
-                addTransition(Fade())
-                duration = NAV_TAB_DURATION
-                interpolator = NavTabInterpolator
-                addListener(object : TransitionListenerAdapter() {
-                    override fun onTransitionEnd(transition: Transition) = morphNavTabIcons()
-                })
-            }
-        )
-
         navTabs.forEachIndexed { index, tab ->
             val selected = index == selectedTabIndex
-            tab.binding.tabLabel.isVisible = selected && !isNavRail
+            animateTabLabel(tab, selected && !isNavRail, animate)
             tab.binding.root.isSelected = selected
             val container = if (selected) selectedContainer else idleContainer
             val content = if (selected) selectedContent else idleContent
@@ -804,17 +779,49 @@ class MainActivity : AppCompatActivity() {
                 tab.binding.tabLabel.setTextColor(it)
             }
         }
-        // Without a transition to wait for, the icons take their state right away
-        if (!animate) morphNavTabIcons()
+        // The icons morph once the pill has finished growing around the label
+        if (animate) binding.floatingNavbar.postDelayed(::morphNavTabIcons, NAV_TAB_DURATION)
+        else morphNavTabIcons()
     }
 
-    // Flip the checked state the animated selectors of the tab icons pick their frames from. Reads
-    // the current selection instead of capturing it, so a tab changed mid-animation still lands right
+    // The label drives the width, so the pill wrapping it grows and shrinks on the same animation
+    private fun animateTabLabel(tab: NavTab, selected: Boolean, animate: Boolean) {
+        val label = tab.binding.tabLabel
+        // Gone in the layout, the width and the alpha are what hide it from here on
+        label.isVisible = true
+        val params = label.layoutParams as ViewGroup.MarginLayoutParams
+        val unspecified = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+        label.measure(unspecified, unspecified)
+        val fullWidth = label.measuredWidth
+        val fullMargin = resources.getDimensionPixelSize(R.dimen.nav_tab_label_margin)
+
+        fun apply(fraction: Float) {
+            params.width = (fullWidth * fraction).toInt()
+            params.marginStart = (fullMargin * fraction).toInt()
+            label.alpha = fraction
+            label.layoutParams = params
+            label.setTag(R.id.tag_nav_label_fraction, fraction)
+        }
+
+        val to = if (selected) 1f else 0f
+        val from = label.getTag(R.id.tag_nav_label_fraction) as? Float ?: (1f - to)
+        if (!animate || from == to) {
+            apply(to)
+            return
+        }
+        ValueAnimator.ofFloat(from, to).apply {
+            duration = NAV_TAB_DURATION
+            interpolator = NavTabInterpolator
+            addUpdateListener { apply(it.animatedValue as Float) }
+        }.start()
+    }
+
+    // Reads the current selection, so a tab changed mid animation still lands right
     private fun morphNavTabIcons() = navTabs.forEachIndexed { index, tab ->
         tab.binding.tabIcon.isChecked = index == selectedTabIndex
     }
 
-    // Cross-fade a tint rather than snapping it, so the color lands together with the bounds
+    // Cross-fade the tint, so the color lands together with the bounds
     private fun animateTint(from: Int?, to: Int, animate: Boolean, apply: (Int) -> Unit) {
         if (!animate || from == null || from == to) {
             apply(to)
@@ -854,7 +861,7 @@ class MainActivity : AppCompatActivity() {
 
             NavActionMode.ABOUT -> {
                 icon.contentDescription = getString(R.string.about_title)
-                animateAvd(icon, R.drawable.animated_info, 4000L)
+                animateAvd(icon, R.drawable.animated_info, 2000L)
             }
         }
     }

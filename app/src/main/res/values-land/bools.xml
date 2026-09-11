@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Landscape has height to spare far less than width, so the navbar stands up along the edge -->
+    <!-- Landscape is short on height, so the navbar stands up along the edge -->
     <bool name="nav_rail">true</bool>
 </resources>

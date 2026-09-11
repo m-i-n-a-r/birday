@@ -1,8 +1,6 @@
 <resources>
 
-    <!-- Material maps colorOn*Container to the static baseline palette in its light dynamic color
-         overlay, which paints them the baseline purple over a wallpaper tinted container. Only the
-         light theme needs the correction, so this stays empty here and is filled in on API 31+ -->
+    <!-- Empty on purpose, only light needs the fix: filled in on API 31+ -->
     <style name="ThemeOverlay.App.MonetContainerFix" parent="" />
 
     <!-- Style for the dark theme -->

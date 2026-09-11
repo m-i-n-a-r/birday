@@ -35,6 +35,12 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
 
+        // Applied live, no restart needed
+        findPreference<SwitchPreferenceCompat>("hide_scroll")?.setOnPreferenceChangeListener { _, value ->
+            (activity as? MainActivity)?.applyNavbarHideOnScroll(value as Boolean)
+            true
+        }
+
         val experimentalPreference: Preference? = findPreference("experimental")
         experimentalPreference?.setOnPreferenceClickListener {
             val navController: NavController =
@@ -94,10 +100,6 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                     }
 
                     "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                    "black" -> {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                        hotReloadActivity(sharedPreferences)
-                    }
                     // Else means system, or unexpected (and impossible) case
                     else -> {
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
@@ -107,6 +109,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
             }
 
             "accent_color" -> hotReloadActivity(sharedPreferences)
+            "amoled_dark" -> hotReloadActivity(sharedPreferences)
             "shimmer" -> hotReloadActivity(sharedPreferences)
             "notification_hour" -> mainViewModel.scheduleNextCheck()
             "notification_minute" -> mainViewModel.scheduleNextCheck()

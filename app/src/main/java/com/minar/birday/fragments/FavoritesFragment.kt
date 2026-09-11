@@ -126,7 +126,7 @@ class FavoritesFragment : Fragment() {
         // Setup the recycler view
         val recycler = binding.favoritesRecycler
         recycler.adapter = adapter
-        // Assigned once: swapping it while it animates leaves rows stuck at the alpha it set
+        // Assigned once: swapping it mid flight leaves rows stuck at the alpha it set
         recycler.itemAnimator = BirdayRecyclerAnimator()
         with(mainViewModel) {
             getFavorites().observe(viewLifecycleOwner) { events ->

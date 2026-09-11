@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Material 3 container roles, one tonal ramp per accent. Generated from the accent
-         seed: containers sit at tone 90 in light and 30 in dark, their on- pair mirrors them
-         at 10 and 90. The *Translucent colors are the old navbar halo and are NOT these -->
+    <!-- M3 container roles, a tonal ramp per accent: tone 90 light, 30 dark, on- pair at 10 and 90 -->
     <color name="aquaPrimaryContainer">#035138</color>
     <color name="aquaOnPrimaryContainer">#80f9c5</color>
     <color name="aquaSecondaryContainer">#2e4d3f</color>
