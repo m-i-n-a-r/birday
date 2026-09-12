@@ -20,7 +20,6 @@
     <plurals name="stats_total">
         <item quantity="one">יום הולדת עוזר לך לזכור סך של %d אירוע</item>
         <item quantity="two">יום הולדת עוזר לך לזכור סך של %d אירועים</item>
-        <item quantity="many">יום הולדת עוזר לך לזכור סך של %d אירועים</item>
         <item quantity="other">יום הולדת עוזר לך לזכור סך של %d אירועים</item>
     </plurals>
     <string name="next_event">אירוע הבא</string>
@@ -31,7 +30,6 @@
     <plurals name="days_left">
         <item quantity="one">יום %d נותר</item>
         <item quantity="two">נותרו %d ימים</item>
-        <item quantity="many">נותרו %d ימים</item>
         <item quantity="other">נותרו %d ימים</item>
     </plurals>
     <!-- Settings -->
@@ -192,7 +190,6 @@
     <plurals name="leap_year_total">
         <item quantity="one">מספר האנשים שנולדו בשנה מעוברת הוא %d</item>
         <item quantity="two">מספר האנשים שנולדו בשנה מעוברת הוא %d</item>
-        <item quantity="many">מספר האנשים שנולדו בשנה מעוברת הוא %d</item>
         <item quantity="other">מספר האנשים שנולדו בשנה מעוברת הוא %d</item>
     </plurals>
     <string name="random_chinese_year">המזל הסיני סימן ל- %1$s: %2$s</string>
@@ -224,7 +221,6 @@
     <plurals name="months">
         <item quantity="one">חודש %d</item>
         <item quantity="two">%d חודשים</item>
-        <item quantity="many">%d חודשים</item>
         <item quantity="other">%d חודשים</item>
     </plurals>
     <string name="today">היום!</string>
@@ -233,7 +229,6 @@
     <plurals name="years">
         <item quantity="one">שנה %d</item>
         <item quantity="two">%d שנים</item>
-        <item quantity="many">%d שנים</item>
         <item quantity="other">%d שנים</item>
     </plurals>
     <string name="born_in">נולד ב</string>
@@ -241,7 +236,6 @@
     <plurals name="event">
         <item quantity="one">אירוע: %s</item>
         <item quantity="two">אירועים: %s</item>
-        <item quantity="many">אירועים: %s</item>
         <item quantity="other">אירועים: %s</item>
     </plurals>
     <!-- Notifications -->
@@ -310,7 +304,6 @@
     <plurals name="compact_widget_in_days">
         <item quantity="one">%d day</item>
         <item quantity="two">%d days</item>
-        <item quantity="many">%d days</item>
         <item quantity="other">%d days</item>
     </plurals>
     <string name="compact_widget_preview_days_2">7 days</string>
