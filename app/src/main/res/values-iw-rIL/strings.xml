@@ -20,7 +20,6 @@
     <plurals name="stats_total">
         <item quantity="one">יום הולדת עוזר לך לזכור סך של %d אירוע</item>
         <item quantity="two">יום הולדת עוזר לך לזכור סך של %d אירועים</item>
-        <item quantity="many">יום הולדת עוזר לך לזכור סך של %d אירועים</item>
         <item quantity="other">יום הולדת עוזר לך לזכור סך של %d אירועים</item>
     </plurals>
     <string name="next_event">אירוע הבא</string>
@@ -31,7 +30,6 @@
     <plurals name="days_left">
         <item quantity="one">יום %d נותר</item>
         <item quantity="two">נותרו %d ימים</item>
-        <item quantity="many">נותרו %d ימים</item>
         <item quantity="other">נותרו %d ימים</item>
     </plurals>
     <!-- Settings -->
@@ -192,7 +190,6 @@
     <plurals name="leap_year_total">
         <item quantity="one">מספר האנשים שנולדו בשנה מעוברת הוא %d</item>
         <item quantity="two">מספר האנשים שנולדו בשנה מעוברת הוא %d</item>
-        <item quantity="many">מספר האנשים שנולדו בשנה מעוברת הוא %d</item>
         <item quantity="other">מספר האנשים שנולדו בשנה מעוברת הוא %d</item>
     </plurals>
     <string name="random_chinese_year">המזל הסיני סימן ל- %1$s: %2$s</string>
@@ -224,7 +221,6 @@
     <plurals name="months">
         <item quantity="one">חודש %d</item>
         <item quantity="two">%d חודשים</item>
-        <item quantity="many">%d חודשים</item>
         <item quantity="other">%d חודשים</item>
     </plurals>
     <string name="today">היום!</string>
@@ -233,7 +229,6 @@
     <plurals name="years">
         <item quantity="one">שנה %d</item>
         <item quantity="two">%d שנים</item>
-        <item quantity="many">%d שנים</item>
         <item quantity="other">%d שנים</item>
     </plurals>
     <string name="born_in">נולד ב</string>
@@ -241,7 +236,6 @@
     <plurals name="event">
         <item quantity="one">אירוע: %s</item>
         <item quantity="two">אירועים: %s</item>
-        <item quantity="many">אירועים: %s</item>
         <item quantity="other">אירועים: %s</item>
     </plurals>
     <!-- Notifications -->
@@ -283,6 +277,37 @@
     <string name="hide_far_widget_description">Hide the widget if the next events are after the additional notification period (eg: notification 7 days before, the next event is in 10 days -&gt; the widget is hidden)</string>
     <string name="show_following_widget_title">Show the following event</string>
     <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
+    <string name="appwidget_compact">Compact table</string>
+    <string name="add_widget_compact">Birday - Compact</string>
+    <string name="compact_widget_opacity_title">Background opacity</string>
+    <string name="compact_widget_opacity_description">Adjust the darkness of the widget background</string>
+    <string name="compact_widget_appearance_title">Appearance</string>
+    <string name="compact_widget_bg_color_title">Background color</string>
+    <string name="compact_widget_text_color_title">Text color</string>
+    <string name="compact_widget_show_photos_title">Show contact photos</string>
+    <string name="compact_widget_date_position_title">Birth date</string>
+    <string name="compact_widget_date_hidden">Hidden</string>
+    <string name="compact_widget_date_below">Below name</string>
+    <string name="compact_widget_date_above">Above name</string>
+    <string name="compact_widget_zodiac_position_title">Zodiac sign</string>
+    <string name="compact_widget_zodiac_hidden">Hidden</string>
+    <string name="compact_widget_zodiac_before_date">Before date</string>
+    <string name="compact_widget_zodiac_after_date">After date</string>
+    <string name="compact_widget_text_size_title">Text size</string>
+    <string name="compact_widget_highlight_title">Today highlighting</string>
+    <string name="compact_widget_highlight_opacity_title">Background opacity</string>
+    <string name="compact_widget_highlight_color_title">Background color</string>
+    <string name="compact_widget_highlight_text_color_title">Text color</string>
+    <string name="compact_widget_turns">%d</string>
+    <string name="compact_widget_today">Today!</string>
+    <string name="compact_widget_tomorrow">Tomorrow</string>
+    <plurals name="compact_widget_in_days">
+        <item quantity="one">%d day</item>
+        <item quantity="two">%d days</item>
+        <item quantity="other">%d days</item>
+    </plurals>
+    <string name="compact_widget_preview_days_2">7 days</string>
+    <string name="compact_widget_preview_days_3">15 days</string>
     <!-- Search -->
     <string name="search_event">חיפוש…</string>
     <string name="search_no_result_title">לא נמצאו תוצאות</string>

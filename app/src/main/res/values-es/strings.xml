@@ -263,6 +263,36 @@
     <string name="hide_far_widget_description">Ocultar el widget si los siguientes eventos son después del período de notificación adicional (por ejemplo: notificación 7 días antes, el siguiente evento está en 10 días -&gt; el widget está oculto)</string>
     <string name="show_following_widget_title">Mostrar el siguiente evento</string>
     <string name="show_following_widget_description">Muestra el evento o los eventos posteriores al siguiente, en una fila adicional</string>
+    <string name="appwidget_compact">Tabla compacta</string>
+    <string name="add_widget_compact">Birday - Compacto</string>
+    <string name="compact_widget_opacity_title">Opacidad del fondo</string>
+    <string name="compact_widget_opacity_description">Ajustar el brillo del fondo del widget</string>
+    <string name="compact_widget_appearance_title">Aspecto</string>
+    <string name="compact_widget_bg_color_title">Color del fondo</string>
+    <string name="compact_widget_text_color_title">Color del texto</string>
+    <string name="compact_widget_show_photos_title">Mostrar fotos de los contactos</string>
+    <string name="compact_widget_date_position_title">Fecha de nacimiento</string>
+    <string name="compact_widget_date_hidden">Oculto</string>
+    <string name="compact_widget_date_below">Debajo del nombre</string>
+    <string name="compact_widget_date_above">Encima del nombre</string>
+    <string name="compact_widget_zodiac_position_title">Signo del zodiaco</string>
+    <string name="compact_widget_zodiac_hidden">Oculto</string>
+    <string name="compact_widget_zodiac_before_date">Antes de la fecha</string>
+    <string name="compact_widget_zodiac_after_date">Después de la fecha</string>
+    <string name="compact_widget_text_size_title">Tamaño del texto</string>
+    <string name="compact_widget_highlight_title">Destacado hoy</string>
+    <string name="compact_widget_highlight_opacity_title">Opacidad del fondo</string>
+    <string name="compact_widget_highlight_color_title">Color del fondo</string>
+    <string name="compact_widget_highlight_text_color_title">Color del texto</string>
+    <string name="compact_widget_turns">%d</string>
+    <string name="compact_widget_today">¡Hoy!</string>
+    <string name="compact_widget_tomorrow">Mañana</string>
+    <plurals name="compact_widget_in_days">
+        <item quantity="one">%d día</item>
+        <item quantity="other">%d días</item>
+    </plurals>
+    <string name="compact_widget_preview_days_2">7 días</string>
+    <string name="compact_widget_preview_days_3">15 días</string>
     <!-- Search -->
     <string name="search_event">Buscar…</string>
     <string name="search_no_result_title">Sin resultados</string>
