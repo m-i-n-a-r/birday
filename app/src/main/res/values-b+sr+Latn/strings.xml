@@ -84,15 +84,21 @@
     <string name="import_success">Uvoz je uspešno završen!</string>
     <string name="import_nothing_found">Nijedan događaj nije pronađen!</string>
     <string name="import_failed">Nešta je pošlo po zlu!</string>
-    <string name="missing_permission_contacts">Dozvola kontaktima je odbijena. Pokušajte ponovo ili dajte dozvolu ručno,
-		ili uvoz iz kontakata neće raditi!</string>
-    <string name="missing_permission_contacts_forever">Birday ne može da pita za dozvolu da uveze iz kontakata,
-		jer ste štiklirali \"ne pitaj ponovo\". Dajte je ručno!</string>
+    <string name="missing_permission_contacts">
+		Dozvola kontaktima je odbijena. Pokušajte ponovo ili dajte dozvolu ručno,
+		ili uvoz iz kontakata neće raditi!
+	</string>
+    <string name="missing_permission_contacts_forever">
+		Birday ne može da pita za dozvolu da uveze iz kontakata,
+		jer ste štiklirali \"ne pitaj ponovo\". Dajte je ručno!
+	</string>
     <string name="birday_import_title">Uvezite Birday backup</string>
-    <string name="birday_import_description">Odaberite validan Birday backup kako biste uvezli događaje. Svi postojeći podaci
-		će biti izbrisani!</string>
+    <string name="birday_import_description">
+		Odaberite validan Birday backup kako biste uvezli događaje. Svi postojeći podaci
+		će biti izbrisani!
+	</string>
     <string name="birday_export_title">Izvezite i podelite događaje</string>
-    <string name="birday_export_description">Izvezi postojeće događaje u backup, i podelite ih ako želite</string>
+    <string name="birday_export_description">Izvezi postojeće događaje u backup, i podelite ih ako želite	</string>
     <string name="birday_import_success">Uvoz je završen!</string>
     <string name="birday_import_failure">Uvoz nije uspeo. Da niste izabrali pogrešan fajl?</string>
     <string name="birday_import_invalid_file">Uvoz nije uspeo. Izabran fajl nije Birday backup!</string>
@@ -249,15 +255,21 @@
     <string name="additional_notification_text">Predstojeći događaji!</string>
     <!-- Introduction slides -->
     <string name="slide_one_title">Dobro došli u Birday!</string>
-    <string name="slide_one_description">Birday je prosta i nezahtevna aplikacija za upravljanje važnim događajima!
-		Možete je koristiti za pamćenje i skladištenje rođendana, i drugih događaja, ljudi koje volite, na pouzdan način.</string>
+    <string name="slide_one_description">
+		Birday je prosta i nezahtevna aplikacija za upravljanje važnim događajima!
+		Možete je koristiti za pamćenje i skladištenje rođendana, i drugih događaja, ljudi koje volite, na pouzdan način.
+	</string>
     <string name="slide_two_title">Besplatan, jednostavan, prilagodljiv</string>
-    <string name="slide_two_description">Birday je besplatan, bez reklama i otvorenog koda. Pruža
+    <string name="slide_two_description">
+		Birday je besplatan, bez reklama i otvorenog koda. Pruža
 		statistiku o vašim događajima, sistem omiljenih i prilagodljiv interfejs. I garantovanu
-		podršku i ažuriranja!</string>
+		podršku i ažuriranja!
+	</string>
     <string name="slide_three_title">Uvezi iz kontakata</string>
-    <string name="slide_three_description">Takođe je moguće uvesti već sačuvane događaje
-		iz kontakata. Birday može to da uradi za vas, samo dozvolite pristu kontaktima. Uživajte!</string>
+    <string name="slide_three_description">
+		Takođe je moguće uvesti već sačuvane događaje
+		iz kontakata. Birday može to da uradi za vas, samo dozvolite pristu kontaktima. Uživajte!
+	</string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Predstojeći događaji</string>
     <string name="add_widget">Birday - Predstojeći</string>
