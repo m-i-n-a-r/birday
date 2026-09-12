@@ -84,13 +84,19 @@
     <string name="import_success">Увоз је успешно завршен!</string>
     <string name="import_nothing_found">Ниједан догађај није пронађен!</string>
     <string name="import_failed">Нешта је пошло по злу!</string>
-    <string name="missing_permission_contacts">Дозвола контактима је одбијена. Покушајте поново или дајте дозволу ручно,
-		или увоз из контаката неће радити!</string>
-    <string name="missing_permission_contacts_forever">Birday не може да пита за дозволу да увезе из контаката,
-		јер сте штиклирали \"не питај поново\". Дајте је ручно!</string>
+    <string name="missing_permission_contacts">
+		Дозвола контактима је одбијена. Покушајте поново или дајте дозволу ручно,
+		или увоз из контаката неће радити!
+	</string>
+    <string name="missing_permission_contacts_forever">
+		Birday не може да пита за дозволу да увезе из контаката,
+		јер сте штиклирали \"не питај поново\". Дајте је ручно!
+	</string>
     <string name="birday_import_title">Увезите Birday backup</string>
-    <string name="birday_import_description">Одаберите валидан Birday backup како бисте увезли догађаје. Сви постојећи подаци
-		ће бити избрисани!</string>
+    <string name="birday_import_description">
+		Одаберите валидан Birday backup како бисте увезли догађаје. Сви постојећи подаци
+		ће бити избрисани!
+	</string>
     <string name="birday_export_title">Извезите и поделите догађаје</string>
     <string name="birday_export_description">Извези постојеће догађаје у backup, и поделите их ако желите</string>
     <string name="birday_import_success">Увоз је завршен!</string>
@@ -249,15 +255,21 @@
     <string name="additional_notification_text">Предстојећи догађаји!</string>
     <!-- Introduction slides -->
     <string name="slide_one_title">Добро дошли у Birday!</string>
-    <string name="slide_one_description">Birday је проста и незахтевна апликација за управљање важним догађајима!
-		Можете је користити за памћење и складиштење рођендана, и других догађаја, људи које волите, на поуздан начин.</string>
+    <string name="slide_one_description">
+		Birday је проста и незахтевна апликација за управљање важним догађајима!
+		Можете је користити за памћење и складиштење рођендана, и других догађаја, људи које волите, на поуздан начин.
+	</string>
     <string name="slide_two_title">Бесплатан, једноставан, прилагодљив</string>
-    <string name="slide_two_description">Birday је бесплатан, без реклама и отвореног кода. Пружа
+    <string name="slide_two_description">
+		Birday је бесплатан, без реклама и отвореног кода. Пружа
 		статистику о вашим догађајима, систем омиљених и прилагодљив интерфејс. И гарантовану
-		подршку и ажурирања!</string>
+		подршку и ажурирања!
+	</string>
     <string name="slide_three_title">Увези из контаката</string>
-    <string name="slide_three_description">Такође је могуће увести већ сачуване догађаје
-		из контаката. Birday може то да уради за вас, само дозволите присту контактима. Уживајте!</string>
+    <string name="slide_three_description">
+		Такође је могуће увести већ сачуване догађаје
+		из контаката. Birday може то да уради за вас, само дозволите присту контактима. Уживајте!
+	</string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Предстојећи догађаји</string>
     <string name="add_widget">Birday - Предстојећи</string>
