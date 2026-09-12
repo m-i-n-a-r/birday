@@ -240,7 +240,8 @@
     <string name="additional_notification_text">Közelgő események!</string>
     <!-- Introduction slides -->
     <string name="slide_one_title">Üdvözlünk a Birday-ben!</string>
-    <string name="slide_one_description">A Birday egy egyszerű és könnyű alkalmazás a fontos események kezelésére! Segítségével megbízhatóan és gyorsan elmentheti és archiválhatja szerettei születésnapját vagy más eseményeket.</string>
+    <string name="slide_one_description">A Birday egy egyszerű és könnyű alkalmazás a fontos események kezelésére! Segítségével megbízhatóan és gyorsan elmentheti és archiválhatja szerettei születésnapját vagy más eseményeket.
+	</string>
     <string name="slide_two_title">Ingyenes, egyszerű, testreszabható</string>
     <string name="slide_two_description">A Birday ingyenes, hirdetésmentes és nyílt forráskódú. Statisztikát biztosít a születésnapokról, kedvenc rendszert és a testreszabható felületet biztosít. És garantált támogatást és frissítéseket!
     </string>
