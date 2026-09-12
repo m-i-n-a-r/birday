@@ -84,13 +84,19 @@
     <string name="import_success">Увоз је успешно завршен!</string>
     <string name="import_nothing_found">Ниједан догађај није пронађен!</string>
     <string name="import_failed">Нешта је пошло по злу!</string>
-    <string name="missing_permission_contacts">Дозвола контактима је одбијена. Покушајте поново или дајте дозволу ручно,
-		или увоз из контаката неће радити!</string>
-    <string name="missing_permission_contacts_forever">Birday не може да пита за дозволу да увезе из контаката,
-		јер сте штиклирали \"не питај поново\". Дајте је ручно!</string>
+    <string name="missing_permission_contacts">
+		Дозвола контактима је одбијена. Покушајте поново или дајте дозволу ручно,
+		или увоз из контаката неће радити!
+	</string>
+    <string name="missing_permission_contacts_forever">
+		Birday не може да пита за дозволу да увезе из контаката,
+		јер сте штиклирали \"не питај поново\". Дајте је ручно!
+	</string>
     <string name="birday_import_title">Увезите Birday backup</string>
-    <string name="birday_import_description">Одаберите валидан Birday backup како бисте увезли догађаје. Сви постојећи подаци
-		ће бити избрисани!</string>
+    <string name="birday_import_description">
+		Одаберите валидан Birday backup како бисте увезли догађаје. Сви постојећи подаци
+		ће бити избрисани!
+	</string>
     <string name="birday_export_title">Извезите и поделите догађаје</string>
     <string name="birday_export_description">Извези постојеће догађаје у backup, и поделите их ако желите</string>
     <string name="birday_import_success">Увоз је завршен!</string>
@@ -249,15 +255,21 @@
     <string name="additional_notification_text">Предстојећи догађаји!</string>
     <!-- Introduction slides -->
     <string name="slide_one_title">Добро дошли у Birday!</string>
-    <string name="slide_one_description">Birday је проста и незахтевна апликација за управљање важним догађајима!
-		Можете је користити за памћење и складиштење рођендана, и других догађаја, људи које волите, на поуздан начин.</string>
+    <string name="slide_one_description">
+		Birday је проста и незахтевна апликација за управљање важним догађајима!
+		Можете је користити за памћење и складиштење рођендана, и других догађаја, људи које волите, на поуздан начин.
+	</string>
     <string name="slide_two_title">Бесплатан, једноставан, прилагодљив</string>
-    <string name="slide_two_description">Birday је бесплатан, без реклама и отвореног кода. Пружа
+    <string name="slide_two_description">
+		Birday је бесплатан, без реклама и отвореног кода. Пружа
 		статистику о вашим догађајима, систем омиљених и прилагодљив интерфејс. И гарантовану
-		подршку и ажурирања!</string>
+		подршку и ажурирања!
+	</string>
     <string name="slide_three_title">Увези из контаката</string>
-    <string name="slide_three_description">Такође је могуће увести већ сачуване догађаје
-		из контаката. Birday може то да уради за вас, само дозволите присту контактима. Уживајте!</string>
+    <string name="slide_three_description">
+		Такође је могуће увести већ сачуване догађаје
+		из контаката. Birday може то да уради за вас, само дозволите присту контактима. Уживајте!
+	</string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Предстојећи догађаји</string>
     <string name="add_widget">Birday - Предстојећи</string>
@@ -276,6 +288,37 @@
     <string name="hide_far_widget_description">Hide the widget if the next events are after the additional notification period (eg: notification 7 days before, the next event is in 10 days -&gt; the widget is hidden)</string>
     <string name="show_following_widget_title">Show the following event</string>
     <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
+    <string name="appwidget_compact">Compact table</string>
+    <string name="add_widget_compact">Birday - Compact</string>
+    <string name="compact_widget_opacity_title">Background opacity</string>
+    <string name="compact_widget_opacity_description">Adjust the darkness of the widget background</string>
+    <string name="compact_widget_appearance_title">Appearance</string>
+    <string name="compact_widget_bg_color_title">Background color</string>
+    <string name="compact_widget_text_color_title">Text color</string>
+    <string name="compact_widget_show_photos_title">Show contact photos</string>
+    <string name="compact_widget_date_position_title">Birth date</string>
+    <string name="compact_widget_date_hidden">Hidden</string>
+    <string name="compact_widget_date_below">Below name</string>
+    <string name="compact_widget_date_above">Above name</string>
+    <string name="compact_widget_zodiac_position_title">Zodiac sign</string>
+    <string name="compact_widget_zodiac_hidden">Hidden</string>
+    <string name="compact_widget_zodiac_before_date">Before date</string>
+    <string name="compact_widget_zodiac_after_date">After date</string>
+    <string name="compact_widget_text_size_title">Text size</string>
+    <string name="compact_widget_highlight_title">Today highlighting</string>
+    <string name="compact_widget_highlight_opacity_title">Background opacity</string>
+    <string name="compact_widget_highlight_color_title">Background color</string>
+    <string name="compact_widget_highlight_text_color_title">Text color</string>
+    <string name="compact_widget_turns">%d</string>
+    <string name="compact_widget_today">Today!</string>
+    <string name="compact_widget_tomorrow">Tomorrow</string>
+    <plurals name="compact_widget_in_days">
+        <item quantity="one">%d day</item>
+        <item quantity="few">%d days</item>
+        <item quantity="other">%d days</item>
+    </plurals>
+    <string name="compact_widget_preview_days_2">7 days</string>
+    <string name="compact_widget_preview_days_3">15 days</string>
     <!-- Search -->
     <string name="search_event">Претражите…</string>
     <string name="search_no_result_title">Нема резултата</string>
