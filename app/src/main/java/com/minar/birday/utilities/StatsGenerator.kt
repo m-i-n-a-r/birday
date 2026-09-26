@@ -1,18 +1,25 @@
 package com.minar.birday.utilities
 
 import android.content.Context
-import android.os.Build
+import android.graphics.Typeface
 import android.text.SpannableStringBuilder
 import android.text.Spanned
-import android.text.style.BulletSpan
-import androidx.annotation.ColorInt
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import com.minar.birday.R
 import com.minar.birday.model.EventResult
+import com.minar.birday.model.Stat
 import java.time.LocalDate
 import java.time.format.TextStyle
 import java.util.*
 import kotlin.math.truncate
 import kotlin.random.Random
+
+// How many times generateRandomStat() re-rolls before admitting that this event list cannot
+// produce a single stat. Twelve branches, so a couple of dozen rolls is plenty
+private const val MAX_RANDOM_STAT_ATTEMPTS = 24
 
 // Generate a series of stats based on a list of events and focused on birthdays
 class StatsGenerator(
@@ -27,13 +34,22 @@ class StatsGenerator(
     private val nameDays = filterNameDays()
     private val others = filterOthers()
     private val applicationContext = context
+    // The accent the highlighted values are painted with, resolved once against the themed context
+    private val highlightColor = getThemeColor(R.attr.colorPrimary, context)
 
-    // Generate a random stat choosing randomly between one of the available functions
+    // Generate a random stat choosing randomly between one of the available functions. The card it
+    // ends up in wants one flat run of text, so the highlighting the stats sheet relies on is
+    // dropped here on the way out
     fun generateRandomStat(): String {
         // Use a response string to re-execute the stats calculation if a stat cannot be computed correctly
-        var response: String? = null
+        var response: CharSequence? = null
         val randomPerson = birthdays.randomOrNull() ?: return ""
-        while (response.isNullOrBlank()) {
+        // Rolling again until something comes out is the whole point, the card is meant to show a
+        // different stat every time it is opened. The cap only exists because a list where nothing
+        // at all can be computed would otherwise spin here forever
+        var attempts = 0
+        while (response.isNullOrBlank() && attempts < MAX_RANDOM_STAT_ATTEMPTS) {
+            attempts++
             response = when (Random.nextInt(0, 12)) {
                 1 -> ageAverage()
                 2 -> mostCommonMonth()
@@ -49,70 +65,134 @@ class StatsGenerator(
                 else -> ageAverage()
             }
         }
-        return response
+        return response?.toString() ?: ""
     }
 
     // Generate a summary of the cumulative stats
-    fun generateFullStats(): SpannableStringBuilder {
-        val sb = SpannableStringBuilder()
-        val stats = mutableListOf<String>()
+    fun generateFullStats(): List<Stat> = buildList {
         // Every stat below needs at least one birthday, only the type recap works without
         if (birthdays.isNotEmpty()) {
-            stats.add(ageAverage())
-            stats.add(oldestPerson())
-            stats.add(youngestPerson())
-            stats.add(mostCommonAgeRange())
-            stats.add(mostCommonDayOfWeek())
-            stats.add(mostCommonDecade())
-            stats.add(mostCommonMonth())
-            stats.add(leapYearTotal())
+            addStat(R.drawable.ic_stats_24dp, ageAverage())
+            addStat(R.drawable.ic_elderly_24dp, oldestPerson())
+            addStat(R.drawable.ic_child_care_24dp, youngestPerson())
+            addStat(R.drawable.ic_groups_24dp, mostCommonAgeRange())
+            addStat(R.drawable.ic_event_repeat_24dp, mostCommonDayOfWeek())
+            addStat(R.drawable.ic_history_24dp, mostCommonDecade())
+            addStat(R.drawable.ic_date_black_24dp, mostCommonMonth())
+            addStat(R.drawable.ic_event_available_24dp, leapYearTotal())
             // Only include astrology related stats if astrology is enabled
             if (!astrologyDisabled) {
-                stats.add(mostCommonZodiacSign())
-                stats.add(mostCommonChineseSign())
+                // The only icon here that is genuinely the subject of its own line: the winning
+                // sign draws itself
+                addStat(zodiacDrawable(mostCommonZodiacSignNumber()), mostCommonZodiacSign())
+                addStat(R.drawable.ic_pets_24dp, mostCommonChineseSign())
             }
         }
-        stats.add(eventTypesNumbers())
-        stats.removeIf { it.isBlank() }
-        sb.appendBulletSpans(
-            stats,
-            16,
-            getThemeColor(R.attr.colorOnSurfaceVariant, applicationContext)
+        addStat(R.drawable.ic_event_type_black_24dp, eventTypesNumbers())
+    }
+
+    // A stat that could not be computed comes back blank, and a blank line is not worth a row
+    private fun MutableList<Stat>.addStat(@DrawableRes icon: Int, text: CharSequence) {
+        if (text.isNotBlank()) add(Stat(icon, text))
+    }
+
+    // Format a string resource and make every value substituted into it stand out, so the eye
+    // lands on the name or the number instead of re-reading the sentence around it. The whole
+    // substituted value is highlighted, not just its digits: languages disagree on whether the
+    // unit comes before or after, and on whether it is a separate word at all
+    private fun highlight(@StringRes resource: Int, vararg values: String): SpannableStringBuilder {
+        return highlightIn(applicationContext.getString(resource, *values), *values)
+    }
+
+    private fun highlightIn(text: String, vararg values: String): SpannableStringBuilder {
+        val builder = SpannableStringBuilder(text)
+        var searchFrom = 0
+        for (value in values) {
+            if (value.isBlank()) continue
+            val start = text.indexOf(value, searchFrom)
+            if (start < 0) continue
+            val end = start + value.length
+            builder.setSpan(
+                StyleSpan(Typeface.BOLD), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            builder.setSpan(
+                ForegroundColorSpan(highlightColor), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            searchFrom = end
+        }
+        return builder
+    }
+
+    // Append ", " and a highlighted tail to a sentence that was already built
+    private fun SpannableStringBuilder.appendHighlighted(value: String): SpannableStringBuilder {
+        append(", ")
+        val start = length
+        append(value)
+        setSpan(StyleSpan(Typeface.BOLD), start, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        setSpan(
+            ForegroundColorSpan(highlightColor), start, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )
-        return sb
+        return this
+    }
+
+    private fun years(amount: Int): String =
+        applicationContext.resources.getQuantityString(R.plurals.years, amount, amount)
+
+    @DrawableRes
+    private fun zodiacDrawable(signNumber: Int): Int = when (signNumber) {
+        0 -> R.drawable.ic_zodiac_sagittarius
+        1 -> R.drawable.ic_zodiac_capricorn
+        2 -> R.drawable.ic_zodiac_aquarius
+        3 -> R.drawable.ic_zodiac_pisces
+        4 -> R.drawable.ic_zodiac_aries
+        5 -> R.drawable.ic_zodiac_taurus
+        6 -> R.drawable.ic_zodiac_gemini
+        7 -> R.drawable.ic_zodiac_cancer
+        8 -> R.drawable.ic_zodiac_leo
+        9 -> R.drawable.ic_zodiac_virgo
+        10 -> R.drawable.ic_zodiac_libra
+        else -> R.drawable.ic_zodiac_scorpio
     }
 
     // The number of events for each type, or nothing if there are only birthdays
-    private fun eventTypesNumbers(): String {
+    private fun eventTypesNumbers(): CharSequence {
         if (anniversaries.isEmpty() &&
             deathAnniversaries.isEmpty() &&
             nameDays.isEmpty() &&
             others.isEmpty()
         ) return ""
-        val typesSummary = SpannableStringBuilder()
-        typesSummary.append("${applicationContext.getString(R.string.birthday)}: ${birthdays.size}")
-        if (anniversaries.isNotEmpty())
-            typesSummary.append(", ${applicationContext.getString(R.string.anniversary)}: ${anniversaries.size}")
+        val summary = SpannableStringBuilder()
+
+        fun appendType(label: Int, amount: Int, first: Boolean = false) {
+            if (!first) summary.append(", ")
+            summary.append(applicationContext.getString(label)).append(": ")
+            val start = summary.length
+            summary.append(amount.toString())
+            summary.setSpan(
+                StyleSpan(Typeface.BOLD), start, summary.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            summary.setSpan(
+                ForegroundColorSpan(highlightColor), start, summary.length,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+        }
+        appendType(R.string.birthday, birthdays.size, first = true)
+        if (anniversaries.isNotEmpty()) appendType(R.string.anniversary, anniversaries.size)
         if (deathAnniversaries.isNotEmpty())
-            typesSummary.append(", ${applicationContext.getString(R.string.death_anniversary)}: ${deathAnniversaries.size}")
-        if (nameDays.isNotEmpty())
-            typesSummary.append(", ${applicationContext.getString(R.string.name_day)}: ${nameDays.size}")
-        if (others.isNotEmpty())
-            typesSummary.append(", ${applicationContext.getString(R.string.other)}: ${others.size}")
-        return typesSummary.toString()
+            appendType(R.string.death_anniversary, deathAnniversaries.size)
+        if (nameDays.isNotEmpty()) appendType(R.string.name_day, nameDays.size)
+        if (others.isNotEmpty()) appendType(R.string.other, others.size)
+        return summary
     }
 
     // The average age
-    private fun ageAverage(): String {
+    private fun ageAverage(): CharSequence {
         val average = truncate(getAges().values.average()).toInt()
-        return String.format(
-            applicationContext.getString(R.string.age_average),
-            applicationContext.resources.getQuantityString(R.plurals.years, average, average),
-        )
+        return highlight(R.string.age_average, years(average))
     }
 
     // The oldest person, taking into account months and days
-    private fun oldestPerson(): String {
+    private fun oldestPerson(): CharSequence {
         var oldestDate = LocalDate.now()
         var oldestName = ""
         var oldestAge = 0
@@ -126,18 +206,12 @@ class StatsGenerator(
                 oldestAge = getYears(it)
             }
         }
-        return String.format(
-            applicationContext.getString(R.string.oldest_person),
-            oldestName,
-        ) + ", " + applicationContext.resources.getQuantityString(
-            R.plurals.years,
-            oldestAge,
-            oldestAge
-        )
+        if (oldestName.isBlank()) return ""
+        return highlight(R.string.oldest_person, oldestName).appendHighlighted(years(oldestAge))
     }
 
     // The youngest person, taking into account months and days
-    private fun youngestPerson(): String {
+    private fun youngestPerson(): CharSequence {
         var youngestDate = LocalDate.of(START_YEAR, 1, 1)
         var youngestName = ""
         var youngestAge = 0
@@ -151,29 +225,19 @@ class StatsGenerator(
                 youngestAge = getYears(it)
             }
         }
-        val commonPart = String.format(
-            applicationContext.getString(R.string.youngest_person),
-            youngestName,
-        )
+        if (youngestName.isBlank()) return ""
+        val commonPart = highlight(R.string.youngest_person, youngestName)
         // If the youngest person is a baby, return the age in months
         return if (youngestAge == 0) {
             val months = getYearsMonths(youngestDate)
-            "$commonPart, " + applicationContext.resources.getQuantityString(
-                R.plurals.months,
-                months,
-                months
+            commonPart.appendHighlighted(
+                applicationContext.resources.getQuantityString(R.plurals.months, months, months)
             )
-        } else {
-            "$commonPart, " + applicationContext.resources.getQuantityString(
-                R.plurals.years,
-                youngestAge,
-                youngestAge
-            )
-        }
+        } else commonPart.appendHighlighted(years(youngestAge))
     }
 
     // The most common month. When there's no common month, return a blank string
-    private fun mostCommonMonth(): String {
+    private fun mostCommonMonth(): CharSequence {
         val months = mutableMapOf<String, Int>()
         birthdays.forEach {
             val month = it.originalDate.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
@@ -182,14 +246,11 @@ class StatsGenerator(
         }
         val commonMonth: String = evaluateResult(months)
         if (commonMonth.isBlank()) return commonMonth
-        return String.format(
-            applicationContext.getString(R.string.most_common_month),
-            commonMonth,
-        )
+        return highlight(R.string.most_common_month, commonMonth)
     }
 
     // The most common age range (decade). When there's no common range, return a blank string
-    private fun mostCommonAgeRange(): String {
+    private fun mostCommonAgeRange(): CharSequence {
         val ageRanges = mutableMapOf<String, Int>()
         birthdays.forEach {
             // Quite unnecessary both here and in other functions, but it's for extra safety
@@ -202,15 +263,13 @@ class StatsGenerator(
         }
         val commonRange: String = evaluateResult(ageRanges)
         if (commonRange.isBlank()) return commonRange
-        return String.format(
-            applicationContext.getString(R.string.most_common_age_range),
-            commonRange,
-            (commonRange.toInt() + 10).toString(),
+        return highlight(
+            R.string.most_common_age_range, commonRange, (commonRange.toInt() + 10).toString()
         )
     }
 
     // The most common decade (80s, 90s...). When there's no common decade, return a blank string
-    private fun mostCommonDecade(): String {
+    private fun mostCommonDecade(): CharSequence {
         val decades = mutableMapOf<String, Int>()
         birthdays.forEach {
             // Quite unnecessary both here and in other functions, but it's for extra safety
@@ -223,14 +282,11 @@ class StatsGenerator(
         }
         val commonDecade: String = evaluateResult(decades)
         if (commonDecade.isBlank()) return commonDecade
-        return String.format(
-            applicationContext.getString(R.string.most_common_decade),
-            commonDecade,
-        )
+        return highlight(R.string.most_common_decade, commonDecade)
     }
 
     // Get a random "special age" person. Special age means 1, 10, 18, 20, 30, 40, and so on
-    private fun specialAges(): String {
+    private fun specialAges(): CharSequence {
         val specialAges = arrayOf(1, 10, 18, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130)
         val specialPersons = mutableMapOf<String, Int>()
         birthdays.forEach {
@@ -245,43 +301,37 @@ class StatsGenerator(
             val chosen = specialPersons.keys.random()
             val years = specialPersons[chosen]!!
             // Format the first half of the sentence
-            String.format(
-                applicationContext.getString(R.string.special_ages),
-                chosen,
-            ) + ", " + applicationContext.resources.getQuantityString(
-                R.plurals.years,
-                years,
-                years
-            )
+            highlight(R.string.special_ages, chosen).appendHighlighted(years(years))
         }
     }
 
     // Get the zodiac sign for a random person
-    private fun zodiacSign(person: EventResult): String {
-        return String.format(
-            applicationContext.getString(R.string.random_zodiac_sign),
-            person.name,
-            getZodiacSign(person),
-        )
-    }
+    private fun zodiacSign(person: EventResult): CharSequence =
+        highlight(R.string.random_zodiac_sign, person.name, getZodiacSign(person))
 
     // The most common zodiac sign. When there's no common zodiac sign, return a blank string
-    private fun mostCommonZodiacSign(): String {
-        val zodiacSigns = mutableMapOf<String, Int>()
+    private fun mostCommonZodiacSign(
+        signNumber: Int = mostCommonZodiacSignNumber()
+    ): CharSequence {
+        if (signNumber < 0) return ""
+        return highlight(R.string.most_common_zodiac_sign, zodiacSignName(signNumber))
+    }
+
+    // The winning sign as a number, or -1 when nothing wins outright. Counting by number instead of
+    // by name is what lets the row draw the sign itself as its icon
+    private fun mostCommonZodiacSignNumber(): Int {
+        val counts = mutableMapOf<Int, Int>()
         birthdays.forEach {
-            if (zodiacSigns[getZodiacSign(it)] == null) zodiacSigns[getZodiacSign(it)] = 1
-            else zodiacSigns[getZodiacSign(it)] = zodiacSigns[getZodiacSign(it)]!!.plus(1)
+            val sign = getZodiacSignNumber(it)
+            counts[sign] = (counts[sign] ?: 0) + 1
         }
-        val commonZodiacSign: String = evaluateResult(zodiacSigns)
-        if (commonZodiacSign.isBlank()) return commonZodiacSign
-        return String.format(
-            applicationContext.getString(R.string.most_common_zodiac_sign),
-            commonZodiacSign,
-        )
+        val maxValue = counts.values.maxOrNull() ?: return -1
+        if (counts.values.count { it == maxValue } > 1) return -1
+        return counts.entries.first { it.value == maxValue }.key
     }
 
     // The most common chinese sign. When there's no common chinese sign, return a blank string
-    private fun mostCommonChineseSign(): String {
+    private fun mostCommonChineseSign(): CharSequence {
         val chineseSigns = mutableMapOf<String, Int>()
         birthdays.forEach {
             if (chineseSigns[getChineseSign(it)] == null) chineseSigns[getChineseSign(it)] = 1
@@ -289,24 +339,20 @@ class StatsGenerator(
         }
         val commonChineseSign: String = evaluateResult(chineseSigns)
         if (commonChineseSign.isBlank()) return commonChineseSign
-        return String.format(
-            applicationContext.getString(R.string.most_common_chinese_sign),
-            commonChineseSign,
-        )
+        return highlight(R.string.most_common_chinese_sign, commonChineseSign)
     }
 
     // Get the day of the week of birth for a random person
-    private fun dayOfWeek(person: EventResult): String {
+    private fun dayOfWeek(person: EventResult): CharSequence {
         return if (!person.yearMatter!!) ""
-        else String.format(
-            applicationContext.getString(R.string.random_day_of_week),
-            person.name,
-            person.originalDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault()),
+        else highlight(
+            R.string.random_day_of_week, person.name,
+            person.originalDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault())
         )
     }
 
     // The most common day of the week of birth. When there's no common day of the week, return a blank string
-    private fun mostCommonDayOfWeek(): String {
+    private fun mostCommonDayOfWeek(): CharSequence {
         val weekDays = mutableMapOf<String, Int>()
         birthdays.forEach {
             if (it.yearMatter!!) {
@@ -318,33 +364,27 @@ class StatsGenerator(
         }
         val commonWeekDay: String = evaluateResult(weekDays)
         if (commonWeekDay.isBlank()) return commonWeekDay
-        return String.format(
-            applicationContext.getString(R.string.most_common_day_of_week),
-            commonWeekDay
-        )
+        return highlight(R.string.most_common_day_of_week, commonWeekDay)
     }
 
     // Get the number of persons born in a leap year. Even 0 is an acceptable result
-    private fun leapYearTotal(): String {
+    private fun leapYearTotal(): CharSequence {
         var leapTotal = 0
         birthdays.forEach {
             if (it.yearMatter!!) if (it.originalDate.isLeapYear) leapTotal++
         }
-        return applicationContext.resources.getQuantityString(
-            R.plurals.leap_year_total,
-            leapTotal,
-            leapTotal
+        return highlightIn(
+            applicationContext.resources.getQuantityString(
+                R.plurals.leap_year_total, leapTotal, leapTotal
+            ),
+            leapTotal.toString()
         )
     }
 
     // Get the chinese year of a random person
-    private fun chineseSign(person: EventResult): String {
+    private fun chineseSign(person: EventResult): CharSequence {
         return if (!person.yearMatter!!) ""
-        else String.format(
-            applicationContext.getString(R.string.random_chinese_year),
-            person.name,
-            getChineseSign(person),
-        )
+        else highlight(R.string.random_chinese_year, person.name, getChineseSign(person))
     }
 
     // Get a list containing the names and an int containing the age
@@ -378,24 +418,25 @@ class StatsGenerator(
     }
 
     // Get the zodiac sign
-    fun getZodiacSign(person: EventResult): String {
-        var sign = ""
-        when (getZodiacSignNumber(person)) {
-            0 -> sign = applicationContext.getString(R.string.zodiac_sagittarius)
-            1 -> sign = applicationContext.getString(R.string.zodiac_capricorn)
-            2 -> sign = applicationContext.getString(R.string.zodiac_aquarius)
-            3 -> sign = applicationContext.getString(R.string.zodiac_pisces)
-            4 -> sign = applicationContext.getString(R.string.zodiac_aries)
-            5 -> sign = applicationContext.getString(R.string.zodiac_taurus)
-            6 -> sign = applicationContext.getString(R.string.zodiac_gemini)
-            7 -> sign = applicationContext.getString(R.string.zodiac_cancer)
-            8 -> sign = applicationContext.getString(R.string.zodiac_leo)
-            9 -> sign = applicationContext.getString(R.string.zodiac_virgo)
-            10 -> sign = applicationContext.getString(R.string.zodiac_libra)
-            11 -> sign = applicationContext.getString(R.string.zodiac_scorpio)
+    fun getZodiacSign(person: EventResult): String =
+        zodiacSignName(getZodiacSignNumber(person))
+
+    private fun zodiacSignName(signNumber: Int): String = applicationContext.getString(
+        when (signNumber) {
+            0 -> R.string.zodiac_sagittarius
+            1 -> R.string.zodiac_capricorn
+            2 -> R.string.zodiac_aquarius
+            3 -> R.string.zodiac_pisces
+            4 -> R.string.zodiac_aries
+            5 -> R.string.zodiac_taurus
+            6 -> R.string.zodiac_gemini
+            7 -> R.string.zodiac_cancer
+            8 -> R.string.zodiac_leo
+            9 -> R.string.zodiac_virgo
+            10 -> R.string.zodiac_libra
+            else -> R.string.zodiac_scorpio
         }
-        return sign
-    }
+    )
 
     // Only return the number of the sign
     fun getZodiacSignNumber(person: EventResult): Int {
@@ -433,19 +474,6 @@ class StatsGenerator(
         else result
     }
 
-    // Functions to build the statistics in a bullet list
-    private fun SpannableStringBuilder.appendBulletSpans(
-        paragraphs: List<String>,
-        margin: Int,
-        @ColorInt color: Int
-    ): SpannableStringBuilder {
-        for (paragraph in paragraphs) {
-            if (paragraphs.indexOf(paragraph) == 0) appendBulletSpan(paragraph, margin, color, true)
-            else appendBulletSpan(paragraph, margin, color)
-        }
-        return this
-    }
-
     // Return the list filtering the birthdays
     private fun filterBirthdays(): List<EventResult> {
         return events.filter { isBirthday(it) }
@@ -471,22 +499,4 @@ class StatsGenerator(
         return events.filter { isOther(it) }
     }
 
-    // Prepare the bulleted list
-    private fun SpannableStringBuilder.appendBulletSpan(
-        paragraph: String,
-        margin: Int,
-        @ColorInt color: Int,
-        first: Boolean = false
-    ): SpannableStringBuilder {
-        if (!first) append("\n")
-        val bulletSpan =
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) BulletSpan(margin, color, 12)
-            else BulletSpan(margin, color)
-        val spaceBefore = length
-        append(paragraph)
-        val spaceAfter = length
-        append("\n")
-        setSpan(bulletSpan, spaceBefore, spaceAfter, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
-        return this
-    }
 }

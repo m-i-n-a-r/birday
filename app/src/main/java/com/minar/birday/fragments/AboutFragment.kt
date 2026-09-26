@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
@@ -211,6 +212,9 @@ class AboutFragment : Fragment() {
         )
     )
 
+    // Only reachable from the row that buildRows() adds on Android 13+, but the check lives in
+    // another method, so lint needs to be told where the floor is
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun openLanguageSettings() = startSafely(
         Intent(Settings.ACTION_APP_LOCALE_SETTINGS, "package:${act.packageName}".toUri())
     ) { openAppInfo() }

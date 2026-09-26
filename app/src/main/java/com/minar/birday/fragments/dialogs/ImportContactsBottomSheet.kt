@@ -12,6 +12,7 @@ import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.BottomSheetImportContactsBinding
 import com.minar.birday.persistence.ContactsRepository
+import com.minar.birday.utilities.CASCADE_SHEET_DELAY
 import com.minar.birday.utilities.animateChildrenCascade
 import com.minar.birday.viewmodels.MainViewModel
 import kotlinx.coroutines.Dispatchers
@@ -35,7 +36,7 @@ class ImportContactsBottomSheet : BottomSheetDialogFragment() {
     @SuppressLint("MissingPermission")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val binding = BottomSheetImportContactsBinding.bind(view)
-        binding.importContactsBottomSheet.animateChildrenCascade()
+        binding.importContactsBottomSheet.animateChildrenCascade(startDelay = CASCADE_SHEET_DELAY)
         act.animateAvd(
             binding.importContactsImage,
             R.drawable.animated_balloon, 1500L

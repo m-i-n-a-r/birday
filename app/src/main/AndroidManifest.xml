@@ -113,6 +113,19 @@
                 android:resource="@xml/filepaths" />
         </provider>
 
+        <!-- Birday's events in the Axiris launcher search. Exported because Axiris is another app;
+             the provider itself answers only Axiris. Contract: github.com/m-i-n-a-r/yawncher,
+             docs/INTEGRATIONS.md -->
+        <provider
+            android:name=".integrations.AxirisSearchProvider"
+            android:authorities="${applicationId}.axiris"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.minar.axiris.action.INTEGRATION" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </provider>
+
         <!-- Main activity, the core of Birday -->
         <activity
             android:name=".activities.MainActivity"

@@ -22,6 +22,7 @@ import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.persistence.LocalDateTypeConverter
 import com.minar.birday.utilities.addNavbarClearance
+import com.minar.birday.utilities.getThemeColor
 import com.minar.birday.utilities.isProgressiveBlurAvailable
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidgetProvider
@@ -181,6 +182,10 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // A PreferenceFragmentCompat comes with a see through root, and two see through pages
+        // sliding over each other during a navigation read as one smeared page
+        view.setBackgroundColor(getThemeColor(android.R.attr.colorBackground, requireContext()))
 
         // Add insets for preferences
         val recyclerView = view.findViewById<RecyclerView>(androidx.preference.R.id.recycler_view)

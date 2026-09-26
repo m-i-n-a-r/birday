@@ -12,6 +12,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.BottomSheetRateBinding
+import com.minar.birday.utilities.CASCADE_SHEET_DELAY
 import com.minar.birday.utilities.animateChildrenCascade
 
 class RateBottomSheet(private val editor: SharedPreferences.Editor) : BottomSheetDialogFragment() {
@@ -29,7 +30,7 @@ class RateBottomSheet(private val editor: SharedPreferences.Editor) : BottomShee
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.rateBottomSheet.animateChildrenCascade()
+        binding.rateBottomSheet.animateChildrenCascade(startDelay = CASCADE_SHEET_DELAY)
         // Animate the drawable in loop
         val titleIcon = binding.rateImage
         act.animateAvd(titleIcon, R.drawable.animated_review_star, 1500L)

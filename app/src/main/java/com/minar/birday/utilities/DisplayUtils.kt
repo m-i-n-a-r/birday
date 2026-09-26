@@ -33,21 +33,36 @@ fun Context.bodyMediumTextSizeSp(): Float {
 
 private const val DEFAULT_BODY_MEDIUM_SP = 14f
 
-private const val CASCADE_STAGGER = 35L
-private const val CASCADE_DURATION = 240L
+private const val CASCADE_STAGGER = 55L
+private const val CASCADE_DURATION = 300L
 private const val CASCADE_OFFSET_DP = 18f
+
+// A bottom sheet slides up over roughly a fifth of a second, and a cascade started with it is over
+// before the sheet has settled. Hold it until the sheet is actually where the eye is looking
+const val CASCADE_SHEET_DELAY = 220L
+
+// A list of a dozen rows staggered at the usual pace would still be arriving a second and a half
+// in, so anything long asks for a tighter one
+const val CASCADE_TIGHT_STAGGER = 32L
 
 // Content rides in one after the other. Translation is optional: inside a MotionLayout the scene
 // owns the positions, so there only the fade is safe
-fun List<View>.animateCascade(translate: Boolean = true) {
+fun List<View>.animateCascade(
+    translate: Boolean = true,
+    startDelay: Long = 0L,
+    stagger: Long = CASCADE_STAGGER
+) {
     val density = firstOrNull()?.resources?.displayMetrics?.density ?: return
     forEachIndexed { index, view ->
+        // Whatever alpha the view already carries is the one to land on: fading everything to 1
+        // silently undoes a translucency that means something, like the event counter background
+        val target = view.alpha.takeIf { it > 0f } ?: 1f
         view.alpha = 0f
         if (translate) view.translationY = CASCADE_OFFSET_DP * density
         view.animate()
-            .alpha(1f)
+            .alpha(target)
             .apply { if (translate) translationY(0f) }
-            .setStartDelay(CASCADE_STAGGER * index)
+            .setStartDelay(startDelay + stagger * index)
             .setDuration(CASCADE_DURATION)
             .setInterpolator(FastOutSlowInInterpolator())
             .start()
@@ -55,8 +70,12 @@ fun List<View>.animateCascade(translate: Boolean = true) {
 }
 
 // Everything the container holds, minus the drag handle that has to stay where the finger left it
-fun ViewGroup.animateChildrenCascade(translate: Boolean = true) =
-    children.filter { it.id != R.id.dragHandle && it.isVisible }.toList().animateCascade(translate)
+fun ViewGroup.animateChildrenCascade(
+    translate: Boolean = true,
+    startDelay: Long = 0L,
+    stagger: Long = CASCADE_STAGGER
+) = children.filter { it.id != R.id.dragHandle && it.isVisible }.toList()
+    .animateCascade(translate, startDelay, stagger)
 
 // Room under a scrolling view for the navbar, insets included. Needs clipToPadding off
 fun View.addNavbarClearance() {

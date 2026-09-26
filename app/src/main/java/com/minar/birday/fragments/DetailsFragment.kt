@@ -36,6 +36,7 @@ import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import com.minar.birday.persistence.ContactsRepository
 import com.minar.birday.utilities.StatsGenerator
+import com.minar.birday.utilities.CASCADE_TIGHT_STAGGER
 import com.minar.birday.utilities.addNavbarClearance
 import com.minar.birday.utilities.animateCascade
 import com.minar.birday.utilities.byteArrayToBitmap
@@ -53,6 +54,11 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
 
+// The morph from the row into this page. Also the beat the rest of the content waits out before
+// it starts arriving, minus the overlap that keeps the two from looking like separate events
+private const val SHARED_ELEMENT_DURATION = 400L
+private const val CONTENT_CASCADE_DELAY = 260L
+
 class DetailsFragment : Fragment() {
     private lateinit var act: MainActivity
     private val mainViewModel: MainViewModel by activityViewModels()
@@ -67,16 +73,27 @@ class DetailsFragment : Fragment() {
         super.onCreate(savedInstanceState)
         act = activity as MainActivity
 
-        // Recognize the image from the row of the recycler and animate the transition accordingly
+        // Recognize the image from the row of the recycler and animate the transition accordingly.
+        // Going forward there is no gesture to follow, so the richer container transform is free to
+        // be as unseekable as it likes
         val animation = MaterialContainerTransform()
-        animation.duration = 400
+        animation.duration = SHARED_ELEMENT_DURATION
         animation.fadeMode = MaterialContainerTransform.FADE_MODE_THROUGH
         animation.startElevation = 0f
         animation.endElevation = 0f
-        animation.setAllContainerColors(getThemeColor(R.attr.backgroundColor, act))
-        animation.scrimColor = getThemeColor(R.attr.backgroundColor, act)
+        animation.setAllContainerColors(getThemeColor(android.R.attr.colorBackground, act))
+        animation.scrimColor = getThemeColor(android.R.attr.colorBackground, act)
         animation.isElevationShadowEnabled = false
         sharedElementEnterTransition = animation
+
+        // Coming back is a gesture, and a gesture needs seeking. A shared element transition on the
+        // way out would be handled by a TransitionEffect, and that effect declares itself seekable
+        // only when *every* operation it covers carries a non null seekable Transition of its own,
+        // which a plain fragment does not. Not seekable means a cancelled back ends the pop
+        // animators on their last frame instead of reversing them, and the page is left invisible.
+        // Explicitly clearing the return transition drops the effect altogether: back is animators
+        // only, like every other destination, and it survives being cancelled
+        sharedElementReturnTransition = null
 
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
     }
@@ -470,7 +487,10 @@ class DetailsFragment : Fragment() {
             disableAstrology()
         }
         startPostponedEnterTransition()
-        // The shared views are still in flight and the scene owns the positions: the rest, fade only
+        // The rest of the page is claimed at alpha zero right now and only rides in once the morph
+        // is nearly home, overlapping it by a hair: starting together meant the whole page was
+        // already drawn by the time the shared element landed, which read as a jump cut.
+        // The scene owns the positions inside a MotionLayout, so this is a fade and nothing else
         binding.detailsMotionLayout.children
             .filter {
                 it !is Guideline && it.isVisible && it.id !in setOf(
@@ -482,7 +502,11 @@ class DetailsFragment : Fragment() {
                 )
             }
             .toList()
-            .animateCascade(translate = false)
+            .animateCascade(
+                translate = false,
+                startDelay = CONTENT_CASCADE_DELAY,
+                stagger = CASCADE_TIGHT_STAGGER
+            )
     }
 
     // Delete an existing event and show a snackbar

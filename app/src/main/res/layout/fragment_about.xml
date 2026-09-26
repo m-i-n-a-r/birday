@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- No toolbar and no back arrow on purpose: the page is dismissed with the back gesture, which is
-     animated by the predictive back handler in AboutFragment -->
+<!-- No toolbar and no back arrow on purpose: the page is dismissed with the back gesture, which
+     the navigation animators in nav_graph animate -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"

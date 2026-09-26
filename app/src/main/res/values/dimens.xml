@@ -89,4 +89,13 @@
     <dimen name="about_row_padding_horizontal">24dp</dimen>
     <dimen name="about_row_padding_vertical">14dp</dimen>
     <dimen name="about_row_icon_margin">16dp</dimen>
+
+    <!-- How far a secondary page travels sideways. Wide enough to clear a phone; the back gesture
+         maps its progress onto this distance, so it doubles as the reach of the swipe -->
+    <dimen name="nav_slide_distance">420dp</dimen>
+    <!-- The page underneath only drifts, it must never leave the screen -->
+    <dimen name="nav_slide_parallax">-64dp</dimen>
+
+    <!-- Material 3 asks for 48dp of touch target on a menu row -->
+    <dimen name="dropdown_item_min_height">48dp</dimen>
 </resources>

@@ -4,6 +4,7 @@
     android:id="@+id/fragmentBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
     android:fadingEdgeLength="@dimen/linear_vertical_margin"
     android:fillViewport="true"
     android:requiresFadingEdge="vertical"

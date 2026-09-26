@@ -2,13 +2,13 @@ package com.minar.birday.viewmodels
 
 import android.app.Application
 import android.content.Context
-import android.text.SpannableStringBuilder
 import androidx.lifecycle.*
 import androidx.preference.PreferenceManager
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
+import com.minar.birday.model.Stat
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.StatsGenerator
@@ -28,7 +28,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val selectedType = MutableLiveData<String>()
     private val searchValues = MediatorLiveData<Pair<String?, String?>>()
     private val refreshTrigger = MutableLiveData<Unit>(Unit)
-    var fullStats = MutableLiveData<SpannableStringBuilder>()
+    var fullStats = MutableLiveData<List<Stat>>()
+    // The favorites card subtitle. It used to be built in the fragment, on the main thread, and the
+    // first open of the tab paid the whole bill: generateRandomStat() keeps re-rolling until a stat
+    // comes out non blank, and every roll walks the event list again
+    var randomStat = MutableLiveData<String>()
     private val eventDao: EventDao = EventDatabase.getBirdayDatabase(application).eventDao()
     var confettiDone: Boolean = false
 
@@ -65,6 +69,17 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             val astrologyDisabled = sharedPrefs.getBoolean("disable_astrology", false)
             val generator = StatsGenerator(events, context, astrologyDisabled)
             fullStats.postValue(generator.generateFullStats())
+        }
+
+    // Rolled again every time the favorites come back on screen, so the card greets you with a
+    // different stat each visit. It is a separate call from getStats because that one only runs
+    // when the events change, while this is supposed to run on every return to the tab
+    fun refreshRandomStat(events: List<EventResult>, context: Context) =
+        viewModelScope.launch(Dispatchers.IO) {
+            val astrologyDisabled = sharedPrefs.getBoolean("disable_astrology", false)
+            randomStat.postValue(
+                StatsGenerator(events, context, astrologyDisabled).generateRandomStat()
+            )
         }
 
     fun getFavorites(): LiveData<List<EventResult>> =

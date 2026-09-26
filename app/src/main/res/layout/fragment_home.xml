@@ -4,6 +4,7 @@
     android:id="@+id/homeMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
     android:focusableInTouchMode="true"
     android:transitionGroup="true"
     app:layoutDescription="@xml/fragment_home_scene">

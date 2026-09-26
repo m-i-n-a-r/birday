@@ -94,6 +94,7 @@ import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidgetProvider
 import com.minar.birday.widgets.MinimalWidgetProvider
 import com.minar.birday.workers.ImportContactsWorker
+import com.minar.birday.persistence.EventDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -140,6 +141,9 @@ class MainActivity : AppCompatActivity() {
 
         // One beat for the whole tab change: bounds, colors and label move together
         const val NAV_TAB_DURATION = 500L
+
+        // An event to open in the details, from outside the app (the Axiris search)
+        const val EXTRA_EVENT_ID = "com.minar.birday.extra.EVENT_ID"
     }
 
     private val navController: NavController
@@ -351,6 +355,31 @@ class MainActivity : AppCompatActivity() {
         }
 
         onBackPressedDispatcher.addCallback(this, backHomeCallback)
+        openEventFromIntent(intent)
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        openEventFromIntent(intent)
+    }
+
+    // Opens the details of the event named by EXTRA_EVENT_ID, if any, then forgets it
+    private fun openEventFromIntent(intent: Intent?) {
+        val id = intent?.getIntExtra(EXTRA_EVENT_ID, -1) ?: -1
+        if (id < 0) return
+        intent?.removeExtra(EXTRA_EVENT_ID)
+        lifecycleScope.launch {
+            val event = withContext(Dispatchers.IO) {
+                EventDatabase.getBirdayDatabase(this@MainActivity).eventDao()
+                    .getOrderedEventsStatic().firstOrNull { it.id == id }
+            } ?: return@launch
+            // From wherever the app was: back to the list first, so Back leads home
+            navController.popBackStack(R.id.navigationMain, false)
+            navController.navigate(
+                R.id.detailsFragment,
+                androidx.core.os.bundleOf("event" to event, "position" to -1)
+            )
+        }
     }
 
     override fun onDestroy() {

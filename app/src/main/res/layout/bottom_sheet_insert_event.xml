@@ -89,13 +89,17 @@
                 app:startIconDrawable="@drawable/ic_event_type_black_24dp"
                 app:startIconTint="?attr/colorOutline">
 
-                <AutoCompleteTextView
+                <!-- Material, not the plain framework one: the exposed dropdown menu gets its
+                     rounded and elevated popup, and its measuring, from this class -->
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/typeEvent"
+                    style="?attr/textInputOutlinedExposedDropdownMenuStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
                     android:inputType="none"
                     android:padding="0dp"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                     android:textCursorDrawable="@drawable/custom_cursor" />
 
             </com.google.android.material.textfield.TextInputLayout>

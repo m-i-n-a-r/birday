@@ -3,6 +3,7 @@ package com.minar.birday.widgets
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
+import android.os.Build
 import android.view.ContextThemeWrapper
 import android.view.View
 import android.widget.RemoteViews
@@ -177,7 +178,10 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
         rv.setTextViewTextSize(R.id.compactWidgetRowCountdown, android.util.TypedValue.COMPLEX_UNIT_SP, textSizeSp)
     }
 
+    // Sizing a RemoteViews child at runtime needs API 31: below that the photo keeps the 24dp the
+    // row layout declares, which sits right in the middle of the range the scale factors produce
     private fun applyImageSize(rv: RemoteViews) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return
         val imageSizeDp = if (datePosition == "hidden") textSizeSp * PHOTO_SCALE_WITHOUT_DATE
             else textSizeSp * PHOTO_SCALE_WITH_DATE
         rv.setViewLayoutWidth(R.id.compactWidgetRowImage, imageSizeDp, android.util.TypedValue.COMPLEX_UNIT_DIP)

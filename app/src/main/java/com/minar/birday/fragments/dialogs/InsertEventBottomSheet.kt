@@ -29,6 +29,7 @@ import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
+import com.minar.birday.utilities.CASCADE_SHEET_DELAY
 import com.minar.birday.utilities.animateChildrenCascade
 import com.minar.birday.adapters.ContactsFilterArrayAdapter
 import com.minar.birday.databinding.BottomSheetInsertEventBinding
@@ -382,7 +383,7 @@ class InsertEventBottomSheet(
         surname.addTextChangedListener(watcher)
         eventDate.addTextChangedListener(watcher)
 
-        binding.insertEventBottomSheet.animateChildrenCascade()
+        binding.insertEventBottomSheet.animateChildrenCascade(startDelay = CASCADE_SHEET_DELAY)
     }
 
     override fun onDestroyView() {
