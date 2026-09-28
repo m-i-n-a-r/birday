@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Velkommen til Birday</string>
-    <string name="app_name_extended">Birday - Hendelsesbehandler</string>
     <string name="leave_review_title">Gi Birday en vurdering</string>
     <string name="leave_review_subtitle">Gi en vurdering for å hjelpe meg med appen. Husk at utenom donasjoner, så er appen helt gratis og fri fra reklame!</string>
     <string name="yes_review">Gi vurdering!</string>
@@ -15,7 +14,6 @@
     <string name="add_favorite">Legg til som favoritt</string>
     <string name="stats">Statistikk</string>
     <string name="no_stats">Ingen statistikk å vise!</string>
-    <string name="stats_summary">Oppsummering av statistikk</string>
     <string name="no_stats_description">Du har ikke nok hendelser til å generere statistikk. Legg til flere hendelser og kom tilbake seinere!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday hjelper deg å huske på totalt %d hendelse</item>
@@ -30,12 +28,16 @@
         <item quantity="one">%d dag igjen</item>
         <item quantity="other">%d dager igjen</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s day</item>
+        <item quantity="other">%s days</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">Personalisering</string>
     <string name="app_behavior">Appens virkemåte</string>
     <string name="additional_notification_name">Ekstra varsel</string>
     <string name="additional_notification_description">Send et ekstra varsel dager før hendelsen. %s</string>
-    <string name="no_additional_notification">Ikke ekstra varsel</string>
     <string name="one_day_before">En dag før</string>
     <string name="two_days_before">To dager før</string>
     <string name="three_days_before">Tre dager før</string>
@@ -49,12 +51,9 @@
     <string name="vibration_name">Vibrasjon</string>
     <string name="vibration_description_on">Vibrer når en knapp trykkes</string>
     <string name="vibration_description_off">Ingen vibrasjoner når en knapp trykkes</string>
-    <string name="date_format_name">Datoformat</string>
     <string name="notification_hour_name">Tidspunkt for varsel</string>
     <string name="notification_hour_description">%s \n\nVær oppmerksom på at varsler kanskje ikke fungerer når appen avsluttes av systemet på noen Huawei, Xiaomi og OnePlus enheter. Se dontkillmyapp.com for mer informasjon</string>
-    <string name="accent_description">Endre standard aksentfarge</string>
     <string name="accent_name">Aksentfarge</string>
-    <string name="theme_description">Bruk mørkt, lyst eller automatisk tema i appen</string>
     <string name="theme_name">Appens tema</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Akvamarin</string>
@@ -81,7 +80,6 @@
     <string name="import_contacts_description">Sørg for å endre hendelsene uten årstall for mer nøyaktig statistikk!</string>
     <string name="import_success">Importering vellykket!</string>
     <string name="import_nothing_found">Ingen hendelser funnet!</string>
-    <string name="import_failed">Noe gikk galt!</string>
     <string name="missing_permission_contacts">Tilgangen til kontakter ble avvist. Prøv igjen eller aktiver tilgangen manuelt,
     ellers vil det ikke fungere å importere kontakter!</string>
     <string name="missing_permission_contacts_forever">Birday får ikke spurt om tillatelse til å importere kontakter,
@@ -96,7 +94,6 @@
     <string name="birday_import_invalid_file">Importering feilet. Den valgte filen er ikke en sikkerhetskopi fra Birday!</string>
     <string name="birday_export_success">Eksport fullført!</string>
     <string name="birday_export_failure">Eksport feilet. Ups!</string>
-    <string name="birday_export_nothing_found">Ingenting å eksportere!</string>
     <string name="surname_first">Etternavn først</string>
     <string name="surname_first_description_on">Vis etternavn foran fornavn</string>
     <string name="surname_first_description_off">Vis fornavn foran etternavn</string>
@@ -138,21 +135,19 @@
     <string name="new_event_description">Legg inn en person du bryr deg om, og Birday vil hjelpe deg å huske bursdagen deres eller andre hendelser!</string>
     <string name="insert_event">Sett inn hendelse</string>
     <string name="cancel">Avbryt</string>
+    <string name="crop_image_error">Something went wrong while cropping the image</string>
     <string name="insert_name_hint">Sett inn fornavn</string>
     <string name="insert_surname_hint">Legg inn etternavn</string>
     <string name="insert_date_hint">Velg en dato</string>
     <string name="invalid_value_name">Ugyldig navn!</string>
-    <string name="consider_year">Inkluder år</string>
     <string name="event_type_hint">Hendelsestype</string>
     <string name="birthday">Bursdag</string>
     <string name="anniversary">Jubileum</string>
     <string name="death_anniversary">Dødsfall</string>
-    <string name="festivity">Festlighet</string>
     <string name="name_day">Navnedag</string>
     <string name="other">Annet</string>
     <!-- Event actions -->
     <string name="event_actions">Handlinger</string>
-    <string name="event_actions_description">Her kan du redigere eller slette denne hendelsen!</string>
     <string name="edit_event">Rediger hendelse</string>
     <string name="delete_event">Slett hendelse</string>
     <string name="update_event">Oppdater hendelse</string>
@@ -164,6 +159,8 @@
     <string name="next_age">Neste alder:</string>
     <string name="zodiac_sign">Stjernetegn:</string>
     <string name="chinese_zodiac_sign">Kinesisk dyretegn:</string>
+    <string name="days_lived">Days lived</string>
+    <string name="next_unbirthday">Next unbirthday</string>
     <!-- Quick apps -->
     <string name="event_apps">Snarvei til apper</string>
     <string name="event_apps_description">Velg en app for å sende en gratulasjon!</string>
@@ -174,7 +171,6 @@
     <string name="no_default_sms">Kunne ikke finne standardapp for SMS!</string>
     <string name="might_have_missed">Du kan ha gått glipp av:</string>
     <!-- Statistics -->
-    <string name="did_you_know">Visste du?</string>
     <string name="age_average">Gjennomsnittlig alder er %s</string>
     <string name="oldest_person">Den eldste personen er %s</string>
     <string name="youngest_person">Den yngste personen er %s</string>
@@ -229,7 +225,6 @@
         <item quantity="other">%d år</item>
     </plurals>
     <string name="born_in">født i</string>
-    <string name="and">og</string>
     <plurals name="event">
         <item quantity="one">hendelse: %s</item>
         <item quantity="other">hendelser: %s</item>
@@ -257,10 +252,8 @@
     </string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Kommende hendelser</string>
-    <string name="add_widget">Birday - Kommende</string>
     <string name="dark_widget_name">Mørk modul</string>
     <string name="dark_widget_description_on">Modulen bruker mørkt tema</string>
-    <string name="dark_widget_description_off">Modulen bruker lyst tema</string>
     <string name="widget_configuration_title">Modulkonfigurasjon</string>
     <string name="widget_configuration_description">Konfigurer modulen til å passe stilen din</string>
     <string name="widget_background_title">Bakgrunn</string>
@@ -274,35 +267,18 @@
     <string name="show_following_widget_title">Vis neste hendelse</string>
     <string name="show_following_widget_description">Vis hendelsen, eller hendelsene, som kommer etter den neste hendelsen</string>
     <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
-    <string name="compact_widget_opacity_title">Background opacity</string>
-    <string name="compact_widget_opacity_description">Adjust the darkness of the widget background</string>
-    <string name="compact_widget_appearance_title">Appearance</string>
-    <string name="compact_widget_bg_color_title">Background color</string>
-    <string name="compact_widget_text_color_title">Text color</string>
-    <string name="compact_widget_show_photos_title">Show contact photos</string>
-    <string name="compact_widget_date_position_title">Birth date</string>
-    <string name="compact_widget_date_hidden">Hidden</string>
-    <string name="compact_widget_date_below">Below name</string>
-    <string name="compact_widget_date_above">Above name</string>
-    <string name="compact_widget_zodiac_position_title">Zodiac sign</string>
-    <string name="compact_widget_zodiac_hidden">Hidden</string>
-    <string name="compact_widget_zodiac_before_date">Before date</string>
-    <string name="compact_widget_zodiac_after_date">After date</string>
-    <string name="compact_widget_text_size_title">Text size</string>
-    <string name="compact_widget_highlight_title">Today highlighting</string>
-    <string name="compact_widget_highlight_opacity_title">Background opacity</string>
-    <string name="compact_widget_highlight_color_title">Background color</string>
-    <string name="compact_widget_highlight_text_color_title">Text color</string>
-    <string name="compact_widget_turns">%d</string>
-    <string name="compact_widget_today">Today!</string>
-    <string name="compact_widget_tomorrow">Tomorrow</string>
-    <plurals name="compact_widget_in_days">
-        <item quantity="one">%d day</item>
-        <item quantity="other">%d days</item>
-    </plurals>
-    <string name="compact_widget_preview_days_2">7 days</string>
-    <string name="compact_widget_preview_days_3">15 days</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">Background opacity</string>
+    <string name="compact_widget_bg_color">Background color</string>
+    <string name="compact_widget_text_color">Text color</string>
+    <string name="compact_widget_text_size">Text size</string>
+    <string name="compact_widget_text_size_auto">Auto</string>
+    <string name="compact_widget_scroll">Scroll through all the events</string>
+    <string name="compact_widget_hidden">Hidden</string>
+    <string name="compact_widget_below_name">Below name</string>
+    <string name="compact_widget_above_name">Above name</string>
+    <string name="compact_widget_before_date">Before date</string>
+    <string name="compact_widget_after_date">After date</string>
     <!-- Search -->
     <string name="search_event">Søk…</string>
     <string name="search_no_result_title">Ingen resultater</string>
@@ -360,7 +336,54 @@
     <string name="advanced_overview_title">Avansert oversikt</string>
     <string name="advanced_overview_description_off">Oversiktssiden viser kun grunnleggende informasjon</string>
     <string name="advanced_overview_description_on">Oversiktssiden viser flere år og detaljert informasjon</string>
+    <string name="feb29_assignment_title">Feb 29 in non-leap years</string>
+    <string name="feb29_assignment_description_off">Feb 29 birthdays fall on March 1st in non-leap years</string>
+    <string name="feb29_assignment_description_on">Feb 29 birthdays fall on February 28th in non-leap years</string>
     <string name="replace_on_conflict_title">Erstatt ved konflikt</string>
     <string name="replace_on_conflict_description_off">Når du importerer vil ikke dupliserte hendelser bli skrevet over av duplikaten</string>
     <string name="replace_on_conflict_description_on">Når du importerer vil dupliserte hendelser bli skrevet over av duplikaten</string>
+    <string name="contacts_full_name_title">Full names from contacts</string>
+    <string name="contacts_full_name_description_on">Titles, middle names and suffixes are kept when reading names from contacts</string>
+    <string name="contacts_full_name_description_off">Only first and last name are read from contacts</string>
+    <string name="days_milestones_title">Days lived milestones</string>
+    <string name="days_milestones_description_on">The details show the days lived, and every 1000 days is celebrated and notified like a birthday</string>
+    <string name="days_milestones_description_off">No days lived counter and no milestones</string>
+    <string name="unbirthdays_title">Unbirthdays</string>
+    <string name="alternative_calendar_title">Alternative calendar</string>
+    <string name="alternative_calendar_none">None, Gregorian only</string>
+    <string name="calendar_gregorian">Gregorian</string>
+    <string name="calendar_chinese">Chinese</string>
+    <string name="calendar_dangi">Korean</string>
+    <string name="calendar_hebrew">Hebrew</string>
+    <string name="calendar_islamic">Islamic</string>
+    <string name="calendar_islamic_civil">Islamic (civil)</string>
+    <string name="user_card_title">Your birthday</string>
+    <string name="user_birthday_greeting">Happy birthday, %s!</string>
+    <string name="user_card_empty">Enter your birthday</string>
+    <string name="user_card_save">Save</string>
+    <string name="user_card_remove">Remove</string>
+    <string name="unbirthdays_description_on">The details show the next day with the same weekday and day of the month as the birth, like Friday the 13th</string>
+    <string name="unbirthdays_description_off">No unbirthdays in the details</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
+    <string name="about_title">About</string>
+    <string name="about_description">Info about Birday, its author and the app language</string>
+    <string name="about_version">Version</string>
+    <string name="about_language_title">Language</string>
+    <string name="about_language_summary">Pick the language used by Birday</string>
+    <string name="about_rate_title">Rate the app</string>
+    <string name="about_rate_summary">Leave a review on the Play Store</string>
+    <string name="about_share_title">Share Birday</string>
+    <string name="about_share_summary">Tell a friend about the app</string>
+    <string name="about_share_text">Birday, a simple and beautiful way to never forget a birthday: %1$s</string>
+    <string name="about_no_app_found">No app can handle this, sorry!</string>
+    <string name="about_privacy_title">Privacy policy</string>
+    <string name="about_contact_title">Contact the developer</string>
+    <string name="amoled_description_on">The dark theme uses pure black, ideal for OLED screens</string>
+    <string name="amoled_description_off">The dark theme uses the standard dark surfaces</string>
+    <string name="with_year">With year</string>
+    <string name="without_year">Without year</string>
+    <!-- Edge blur -->
+    <string name="edge_blur">Edge blur</string>
+    <string name="edge_blur_description_on">Content softly dissolves as it scrolls under the navbar</string>
+    <string name="edge_blur_description_off">Content scrolls under the navbar with no blur</string>
 </resources>
