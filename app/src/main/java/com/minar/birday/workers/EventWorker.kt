@@ -21,19 +21,32 @@ import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.receivers.NotificationActionReceiver
 import com.minar.birday.utilities.byteArrayToBitmap
+import com.minar.birday.utilities.daysMilestonesEnabled
 import com.minar.birday.utilities.formatDaysRemaining
 import com.minar.birday.utilities.formatEventList
+import com.minar.birday.utilities.formatMilestoneList
 import com.minar.birday.utilities.getCircularBitmap
 import com.minar.birday.utilities.getRemainingDays
+import com.minar.birday.utilities.getUserBirthday
+import com.minar.birday.utilities.isUserBirthday
+import com.minar.birday.utilities.loadUserImage
+import com.minar.birday.utilities.isDaysMilestone
+import com.minar.birday.utilities.refreshCalendarDates
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
 
 
+// Far from the birthday ids, which never exceed the number of events of a single day
+private const val MILESTONE_ID_GROUPED = 1000
+private const val MILESTONE_ID_SINGLE = 2000
+private const val USER_BIRTHDAY_ID = 999
+
 class EventWorker(context: Context, params: WorkerParameters) : Worker(context, params) {
     override fun doWork(): Result {
         val appContext = applicationContext
+        refreshCalendarDates(appContext)
         val eventDao: EventDao = EventDatabase.getBirdayDatabase(appContext).eventDao()
         val allEvents: List<EventResult> = eventDao.getOrderedEventsStatic()
         val currentDate = Calendar.getInstance()
@@ -50,12 +63,28 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         val angryBird = sharedPrefs.getBoolean("angry_bird", false)
         val groupNotification = sharedPrefs.getBoolean("grouped_notifications", true)
         val loopAvd = sharedPrefs.getBoolean("loop_avd", true)
+        val milestoneNotification = daysMilestonesEnabled(applicationContext)
 
         try {
             // Check for upcoming and actual birthdays and send notification
             val anticipated = mutableListOf<EventResult>()
             val actual = mutableListOf<EventResult>()
+            // Milestones, paired with the day they fall on: the birthday date says nothing about them
+            val anticipatedMilestones = mutableListOf<Pair<EventResult, LocalDate>>()
+            val actualMilestones = mutableListOf<EventResult>()
             for (event in allEvents) {
+                // Same rules as the birthdays below: ignored events never, favorites only if asked
+                if (milestoneNotification && event.favorite != null) {
+                    additionalNotificationDays?.map { LocalDate.now().plusDays(it.toLong()) }
+                        ?.firstOrNull { isDaysMilestone(event, it) }
+                        ?.let {
+                            if (!(onlyFavoritesAdditional && event.favorite == false))
+                                anticipatedMilestones.add(event to it)
+                        }
+                    if (isDaysMilestone(event) && !(onlyFavoritesNotification && event.favorite == false))
+                        actualMilestones.add(event)
+                }
+
                 // Fill the list of upcoming events
                 if (!additionalNotificationDays.isNullOrEmpty() &&
                     additionalNotificationDays.any {
@@ -131,6 +160,66 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                     }
             }
 
+            // The user's own birthday, from the card in the settings, at the same hour as the rest
+            getUserBirthday(appContext)?.let { (name, birthday) ->
+                if (isUserBirthday(birthday))
+                    sendUserBirthdayNotification(name, angryBird, disableAnimations = !loopAvd, hideImage)
+            }
+
+            // Milestones get their own notifications, sent exactly like the birthdays
+            if (groupNotification) {
+                anticipatedMilestones.groupBy({ it.second }, { it.first }).entries
+                    .forEachIndexed { index, (date, events) ->
+                        sendNotification(
+                            events,
+                            MILESTONE_ID_GROUPED + 1 + index,
+                            surnameFirst,
+                            hideImage,
+                            true,
+                            angryBird = angryBird,
+                            disableAnimations = !loopAvd,
+                            ungrouped = false,
+                            milestoneDate = date
+                        )
+                    }
+                if (actualMilestones.isNotEmpty()) sendNotification(
+                    actualMilestones,
+                    MILESTONE_ID_GROUPED,
+                    surnameFirst,
+                    hideImage,
+                    angryBird = angryBird,
+                    disableAnimations = !loopAvd,
+                    ungrouped = false,
+                    milestoneDate = LocalDate.now()
+                )
+            } else {
+                anticipatedMilestones.forEachIndexed { index, (event, date) ->
+                    sendNotification(
+                        listOf(event),
+                        MILESTONE_ID_SINGLE + index,
+                        surnameFirst,
+                        hideImage,
+                        true,
+                        angryBird = angryBird,
+                        disableAnimations = !loopAvd,
+                        milestoneDate = date
+                    )
+                }
+                actualMilestones.forEachIndexed { index, event ->
+                    sendNotification(
+                        listOf(event),
+                        MILESTONE_ID_SINGLE + anticipatedMilestones.size + index,
+                        surnameFirst,
+                        hideImage,
+                        false,
+                        angryBird = angryBird,
+                        disableAnimations = !loopAvd,
+                        ungrouped = true,
+                        milestoneDate = LocalDate.now()
+                    )
+                }
+            }
+
             // Set Execution at the time specified + 15 seconds to avoid midnight problems
             dueDate.set(Calendar.HOUR_OF_DAY, workHour)
             dueDate.set(Calendar.MINUTE, workMinute)
@@ -158,6 +247,8 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         angryBird: Boolean = false,
         disableAnimations: Boolean = false,
         ungrouped: Boolean = false,
+        // Set for a days lived milestone, to the day it falls on
+        milestoneDate: LocalDate? = null,
     ) {
         val intent = Intent(applicationContext, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -165,11 +256,17 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         val pendingIntent: PendingIntent =
             PendingIntent.getActivity(applicationContext, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
+        // A milestone lists the days lived where a birthday lists the age, the rest is shared
+        val eventList =
+            if (milestoneDate != null)
+                formatMilestoneList(nextEvents, surnameFirst, applicationContext, milestoneDate)
+            else formatEventList(nextEvents, surnameFirst, applicationContext)
+
         // Distinguish between normal notification and upcoming birthday notification
         val notificationText =
-            if (!upcoming && ungrouped) formulateNotificationText(nextEvents, surnameFirst, angryBird, true)
-            else if (!upcoming) formulateNotificationText(nextEvents, surnameFirst, angryBird)
-            else formulateAdditionalNotificationText(nextEvents, surnameFirst, angryBird)
+            if (!upcoming && ungrouped) formulateNotificationText(eventList, nextEvents.size, angryBird, true)
+            else if (!upcoming) formulateNotificationText(eventList, nextEvents.size, angryBird)
+            else formulateAdditionalNotificationText(eventList, angryBird)
 
         val builder = NotificationCompat.Builder(applicationContext, "events_channel")
             .setSmallIcon(
@@ -180,7 +277,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             // Use the title to quickly distinguish between reminders and additional notifications
             .setContentTitle(
                 if (upcoming) formatDaysRemaining(
-                    getRemainingDays(nextEvents[0].nextDate!!),
+                    getRemainingDays(milestoneDate ?: nextEvents[0].nextDate!!),
                     applicationContext
                 ) else applicationContext.getString(R.string.notification_title)
             )
@@ -263,33 +360,62 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         }
     }
 
+    // Best wishes to the user, same look as the event notifications
+    private fun sendUserBirthdayNotification(
+        name: String,
+        angryBird: Boolean,
+        disableAnimations: Boolean,
+        hideImage: Boolean,
+    ) {
+        val intent = Intent(applicationContext, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        val pendingIntent: PendingIntent =
+            PendingIntent.getActivity(applicationContext, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+        val text = applicationContext.getString(R.string.notification_description_part_2)
+        val builder = NotificationCompat.Builder(applicationContext, "events_channel")
+            .setSmallIcon(
+                if (disableAnimations) R.drawable.static_notification_icon
+                else if (!angryBird) R.drawable.animated_notification_icon
+                else R.drawable.animated_angry_notification_icon
+            )
+            .setContentTitle(applicationContext.getString(R.string.user_birthday_greeting, name))
+            .setContentText(text)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+        if (!hideImage) loadUserImage(applicationContext)?.let { builder.setLargeIcon(getCircularBitmap(it)) }
+        with(NotificationManagerCompat.from(applicationContext)) {
+            if (ActivityCompat.checkSelfPermission(
+                    applicationContext,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) return
+            notify(USER_BIRTHDAY_ID, builder.build())
+        }
+    }
+
     // Notification for upcoming events, also considering
     private fun formulateAdditionalNotificationText(
-        nextEvents: List<EventResult>,
-        surnameFirst: Boolean,
+        eventList: String,
         angryBird: Boolean = false
     ) =
-        if (angryBird) formatEventList(nextEvents, surnameFirst, applicationContext) + "."
+        if (angryBird) "$eventList."
         else
-            applicationContext.getString(R.string.additional_notification_text) + " " + formatEventList(
-                nextEvents, surnameFirst, applicationContext
-            ) + ". "
+            applicationContext.getString(R.string.additional_notification_text) + " " + eventList + ". "
 
     // Notification for actual events, extended if there's one event only
     private fun formulateNotificationText(
-        nextEvents: List<EventResult>,
-        surnameFirst: Boolean,
+        eventList: String,
+        eventCount: Int,
         angryBird: Boolean = false,
         ungrouped: Boolean = false,
     ) =
-        if (angryBird || ungrouped) formatEventList(nextEvents, surnameFirst, applicationContext) + "."
+        if (angryBird || ungrouped) "$eventList."
         else {
-            if (nextEvents.size == 1)
-                applicationContext.getString(R.string.notification_description_part_1) + ": " + formatEventList(
-                    nextEvents, surnameFirst, applicationContext
-                ) + ". " + applicationContext.getString(R.string.notification_description_part_2)
-            else applicationContext.getString(R.string.notification_description_part_1) + ": " + formatEventList(
-                nextEvents, surnameFirst, applicationContext
-            ) + ". "
+            if (eventCount == 1)
+                applicationContext.getString(R.string.notification_description_part_1) + ": " +
+                        eventList + ". " + applicationContext.getString(R.string.notification_description_part_2)
+            else applicationContext.getString(R.string.notification_description_part_1) + ": " +
+                    eventList + ". "
         }
 }

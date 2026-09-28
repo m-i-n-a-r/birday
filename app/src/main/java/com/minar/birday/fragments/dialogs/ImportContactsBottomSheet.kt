@@ -48,7 +48,10 @@ class ImportContactsBottomSheet : BottomSheetDialogFragment() {
             // Actually import contacts
             viewLifecycleOwner.lifecycleScope.launch {
                 val events = withContext(Dispatchers.IO) {
-                    contactsRepository.getEventsFromContacts(requireContext().contentResolver)
+                    contactsRepository.getEventsFromContacts(
+                        requireContext().contentResolver,
+                        ContactsRepository.useFullName(requireContext())
+                    )
                 }
                 viewModel.insertAll(events)
                 dismiss()

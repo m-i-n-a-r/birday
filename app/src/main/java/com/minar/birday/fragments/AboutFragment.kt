@@ -114,25 +114,13 @@ class AboutFragment : Fragment() {
             getString(R.string.about_share_summary)
         ) { shareApp() }
         addRow(R.drawable.ic_privacy_24dp, getString(R.string.about_privacy_title), null) {
-            val url = getString(R.string.about_privacy_url)
-            if (url.isBlank()) act.showSnackbar(getString(R.string.about_privacy_missing))
-            else openUrl(url)
+            openUrl(getString(R.string.about_privacy_url))
         }
         addRow(
             R.drawable.ic_apps_email_24dp,
             getString(R.string.about_contact_title),
             getString(R.string.dev_email)
         ) { sendMail(getString(R.string.app_name), null) }
-        addRow(
-            R.drawable.ic_translate_24dp,
-            getString(R.string.translate_app),
-            getString(R.string.about_translate_summary)
-        ) {
-            sendMail(
-                getString(R.string.translate_email_subject),
-                getString(R.string.translate_email_body)
-            )
-        }
     }
 
     private fun addRow(

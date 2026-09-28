@@ -49,10 +49,23 @@
                 app:layout_constraintStart_toEndOf="@id/insertEventImage"
                 app:layout_constraintTop_toBottomOf="@id/dragHandle" />
 
+            <View
+                android:id="@+id/imageEventGlow"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/image_glow"
+                android:importantForAccessibility="no"
+                android:scaleX="@dimen/image_glow_scale"
+                android:scaleY="@dimen/image_glow_scale"
+                app:layout_constraintBottom_toBottomOf="@id/imageEvent"
+                app:layout_constraintEnd_toEndOf="@id/imageEvent"
+                app:layout_constraintStart_toStartOf="@id/imageEvent"
+                app:layout_constraintTop_toTopOf="@id/imageEvent" />
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageEvent"
-                android:layout_width="@dimen/card_image_height"
-                android:layout_height="@dimen/card_image_height"
+                android:layout_width="@dimen/form_image_size"
+                android:layout_height="@dimen/form_image_size"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                 android:background="?attr/selectableItemBackgroundBorderless"
@@ -63,42 +76,32 @@
                 android:src="@drawable/placeholder_birthday_image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/insertEventTitle"
-                app:shapeAppearanceOverlay="@style/roundedImageView"
-                app:strokeColor="?attr/colorOutline"
-                app:strokeWidth="@dimen/card_stroke" />
+                app:shapeAppearanceOverlay="@style/roundedImageView" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/typeEventLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                style="@style/Widget.App.TextInputLayout.Tonal.ExposedDropdownMenu"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                 android:hint="@string/event_type_hint"
                 android:labelFor="@+id/typeEvent"
-                app:boxBackgroundColor="@color/transparent"
-                app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
-                app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
-                app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
-                app:boxCornerRadiusTopStart="@dimen/text_field_corner"
+                app:errorEnabled="true"
                 app:hintAnimationEnabled="true"
-                app:hintTextColor="?attr/colorPrimary"
-                app:layout_constraintBottom_toBottomOf="@id/imageEvent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imageEvent"
                 app:layout_constraintTop_toTopOf="@id/imageEvent"
-                app:startIconDrawable="@drawable/ic_event_type_black_24dp"
-                app:startIconTint="?attr/colorOutline">
+                app:startIconDrawable="@drawable/ic_event_type_black_24dp">
 
                 <!-- Material, not the plain framework one: the exposed dropdown menu gets its
                      rounded and elevated popup, and its measuring, from this class -->
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/typeEvent"
-                    style="?attr/textInputOutlinedExposedDropdownMenuStyle"
+                    style="?attr/textInputFilledExposedDropdownMenuStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
                     android:inputType="none"
-                    android:padding="0dp"
                     android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                     android:textCursorDrawable="@drawable/custom_cursor" />
 
@@ -106,41 +109,32 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/nameEventLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.App.TextInputLayout.Tonal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginTop="@dimen/form_vertical_margin"
                 android:hint="@string/insert_name_hint"
-                app:boxBackgroundColor="@color/transparent"
-                app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
-                app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
-                app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
-                app:boxCornerRadiusTopStart="@dimen/text_field_corner"
-                app:boxStrokeErrorColor="@color/redError"
                 app:errorContentDescription="@string/insert_name_hint"
                 app:errorEnabled="true"
                 app:errorIconDrawable="@drawable/ic_alert_24dp"
                 app:errorIconTint="?attr/colorPrimary"
                 app:errorTextColor="?attr/colorPrimary"
                 app:hintAnimationEnabled="true"
-                app:hintTextColor="?attr/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageEvent"
-                app:startIconDrawable="@drawable/ic_cool_black_24dp"
-                app:startIconTint="?attr/colorOutline">
+                app:layout_constraintTop_toBottomOf="@id/typeEventLayout"
+                app:startIconDrawable="@drawable/ic_cool_black_24dp">
 
                 <!-- Someone uses 2 names for anniversaries in this fields -->
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/nameEvent"
-                    style="?attr/textInputOutlinedExposedDropdownMenuStyle"
+                    style="?attr/textInputFilledExposedDropdownMenuStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
                     android:inputType="textCapWords|textPersonName"
                     android:maxLength="30"
-                    android:padding="0dp"
                     android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                     android:textCursorDrawable="@drawable/custom_cursor" />
 
@@ -148,40 +142,31 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/surnameEventLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.App.TextInputLayout.Tonal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/form_vertical_margin"
                 android:hint="@string/insert_surname_hint"
-                app:boxBackgroundColor="@color/transparent"
-                app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
-                app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
-                app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
-                app:boxCornerRadiusTopStart="@dimen/text_field_corner"
-                app:boxStrokeErrorColor="@color/redError"
                 app:errorContentDescription="@string/insert_surname_hint"
                 app:errorEnabled="true"
                 app:errorIconDrawable="@drawable/ic_alert_24dp"
                 app:errorIconTint="?attr/colorPrimary"
                 app:errorTextColor="?attr/colorPrimary"
                 app:hintAnimationEnabled="true"
-                app:hintTextColor="?attr/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/nameEventLayout"
-                app:startIconDrawable="@drawable/ic_smile_24dp"
-                app:startIconTint="?attr/colorOutline">
+                app:startIconDrawable="@drawable/ic_smile_24dp">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/surnameEvent"
-                    style="?attr/textInputOutlinedExposedDropdownMenuStyle"
+                    style="?attr/textInputFilledExposedDropdownMenuStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
                     android:inputType="textCapWords|textPersonName"
                     android:maxLength="30"
-                    android:padding="0dp"
                     android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                     android:textCursorDrawable="@drawable/custom_cursor" />
 
@@ -189,30 +174,22 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/dateEventLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.App.TextInputLayout.Tonal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/form_vertical_margin"
                 android:hint="@string/insert_date_hint"
-                app:boxBackgroundColor="@color/transparent"
-                app:boxCornerRadiusBottomEnd="@dimen/text_field_corner"
-                app:boxCornerRadiusBottomStart="@dimen/text_field_corner"
-                app:boxCornerRadiusTopEnd="@dimen/text_field_corner"
-                app:boxCornerRadiusTopStart="@dimen/text_field_corner"
-                app:boxStrokeErrorColor="@color/redError"
                 app:errorContentDescription="@string/insert_date_hint"
                 app:errorEnabled="true"
                 app:errorIconDrawable="@drawable/ic_alert_24dp"
                 app:errorIconTint="?attr/colorPrimary"
                 app:errorTextColor="?attr/colorPrimary"
                 app:hintAnimationEnabled="true"
-                app:hintTextColor="?attr/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/surnameEventLayout"
-                app:startIconDrawable="@drawable/ic_date_black_24dp"
-                app:startIconTint="?attr/colorOutline">
+                app:startIconDrawable="@drawable/ic_date_black_24dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/dateEvent"
@@ -221,7 +198,6 @@
                     android:clickable="true"
                     android:focusable="false"
                     android:inputType="none"
-                    android:padding="0dp"
                     android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                     android:textCursorDrawable="@drawable/custom_cursor" />
 
@@ -255,6 +231,36 @@
 
             </com.google.android.material.button.MaterialButtonToggleGroup>
 
+            <!-- Shown only with an alternative calendar chosen in the settings -->
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/calendarGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/form_vertical_margin"
+                android:visibility="gone"
+                app:checkedButton="@id/calendarGregorian"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/countYearGroup"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <Button
+                    android:id="@+id/calendarGregorian"
+                    style="@style/Widget.App.Button.YearSegment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/calendar_gregorian" />
+
+                <Button
+                    android:id="@+id/calendarAlternative"
+                    style="@style/Widget.App.Button.YearSegment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/calendar_chinese" />
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
             <Button
                 android:id="@+id/positiveButton"
                 style="@style/Widget.Material3Expressive.Button.TextButton"
@@ -264,7 +270,7 @@
                 android:text="@string/insert_event"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/countYearGroup" />
+                app:layout_constraintTop_toBottomOf="@id/calendarGroup" />
 
             <Button
                 android:id="@+id/negativeButton"

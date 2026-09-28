@@ -29,7 +29,10 @@ class InsertEventViewModel(application: Application) : AndroidViewModel(applicat
             val resolver = getApplication<Application>().contentResolver
             viewModelScope.launch {
                 val contacts = withContext(Dispatchers.IO) {
-                    contactsRepository.queryContacts(resolver)
+                    contactsRepository.queryContacts(
+                        resolver,
+                        ContactsRepository.useFullName(getApplication())
+                    )
                 }
                 _contactsList.postValue(contacts)
             }

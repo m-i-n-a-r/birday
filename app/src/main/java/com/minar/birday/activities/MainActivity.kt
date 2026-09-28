@@ -142,6 +142,12 @@ class MainActivity : AppCompatActivity() {
         // One beat for the whole tab change: bounds, colors and label move together
         const val NAV_TAB_DURATION = 500L
 
+        // The label is fully opaque halfway through, while the pill is still growing around it
+        const val NAV_LABEL_FADE_PORTION = 0.5f
+
+        // The selected tab, kept across a recreation that keeps the destination too
+        const val STATE_SELECTED_TAB = "selected_tab"
+
         // An event to open in the details, from outside the app (the Axiris search)
         const val EXTRA_EVENT_ID = "com.minar.birday.extra.EVENT_ID"
     }
@@ -155,6 +161,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Changing the theme recreates the activity on the same destination: the tab has to follow
+        selectedTabIndex = savedInstanceState?.getInt(STATE_SELECTED_TAB, 0) ?: 0
 
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
 
@@ -213,7 +221,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         // Prepare the back home callback
-        backHomeCallback = object : OnBackPressedCallback(enabled = false) {
+        backHomeCallback = object : OnBackPressedCallback(enabled = selectedTabIndex != 0) {
             override fun handleOnBackPressed() {
                 selectNavTab(0)
             }
@@ -377,7 +385,10 @@ class MainActivity : AppCompatActivity() {
             navController.popBackStack(R.id.navigationMain, false)
             navController.navigate(
                 R.id.detailsFragment,
-                androidx.core.os.bundleOf("event" to event, "position" to -1)
+                Bundle().apply {
+                    putSerializable("event", event)
+                    putInt("position", -1)
+                }
             )
         }
     }
@@ -420,6 +431,8 @@ class MainActivity : AppCompatActivity() {
         if (refreshed) {
             sharedPrefs.edit { putBoolean("refreshed", false) }
             super.onSaveInstanceState(outState)
+            // The navigation comes back on this destination, and the navbar with it
+            outState.putInt(STATE_SELECTED_TAB, selectedTabIndex)
         } else {
             // Dirty, dirty fix to avoid TransactionTooBigException:
             // it will restore the home fragment when the theme is changed from system for example,
@@ -808,27 +821,31 @@ class MainActivity : AppCompatActivity() {
         else morphNavTabIcons()
     }
 
-    // The label drives the width, so the pill wrapping it grows and shrinks on the same animation
+    // The label drives the width, so the pill wrapping it grows and shrinks on the same animation.
+    // Only its frame is resized: the label keeps its full width, so it is never laid out again
+    // into a narrower space, where a single line gets cut and the letters trickle in one by one
     private fun animateTabLabel(tab: NavTab, selected: Boolean, animate: Boolean) {
+        val frame = tab.binding.tabLabelFrame
         val label = tab.binding.tabLabel
         // Gone in the layout, the width and the alpha are what hide it from here on
-        label.isVisible = true
-        val params = label.layoutParams as ViewGroup.MarginLayoutParams
+        frame.isVisible = true
         val unspecified = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
         label.measure(unspecified, unspecified)
         val fullWidth = label.measuredWidth
+        label.updateLayoutParams { width = fullWidth }
+        val params = frame.layoutParams as ViewGroup.MarginLayoutParams
         val fullMargin = resources.getDimensionPixelSize(R.dimen.nav_tab_label_margin)
 
         fun apply(fraction: Float) {
             params.width = (fullWidth * fraction).toInt()
             params.marginStart = (fullMargin * fraction).toInt()
-            label.alpha = fraction
-            label.layoutParams = params
-            label.setTag(R.id.tag_nav_label_fraction, fraction)
+            label.alpha = (fraction / NAV_LABEL_FADE_PORTION).coerceAtMost(1f)
+            frame.layoutParams = params
+            frame.setTag(R.id.tag_nav_label_fraction, fraction)
         }
 
         val to = if (selected) 1f else 0f
-        val from = label.getTag(R.id.tag_nav_label_fraction) as? Float ?: (1f - to)
+        val from = frame.getTag(R.id.tag_nav_label_fraction) as? Float ?: (1f - to)
         if (!animate || from == to) {
             apply(to)
             return

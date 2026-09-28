@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Birday Chào bạn</string>
-    <string name="app_name_extended">Birday - Người quản lý sự kiện</string>
     <string name="leave_review_title">Đánh giá cho Birday</string>
     <string name="leave_review_subtitle">Xin mời bạn đánh giá để giúp tôi với các ứng dụng. Hãy nhớ rằng, đóng góp sang một bên, ứng dụng này là miễn phí và không có quảng cáo!</string>
     <string name="yes_review">Đánh giá!</string>
@@ -15,7 +14,6 @@
     <string name="add_favorite">Thêm vào mục yêu thích</string>
     <string name="stats">Số liệu</string>
     <string name="no_stats">Chưa có số liệu!</string>
-    <string name="stats_summary">Tóm tắt số liệu</string>
     <string name="no_stats_description">Bạn chưa có lưu đủ sự kiện đệ xem số liệu thống kê. Mời bạn lưu thêm sinh nhật và quay lại sau!</string>
     <plurals name="stats_total">
         <item quantity="other">Birday giúp bạn nhớ sinh nhật tổng cộng %d sự kiện</item>
@@ -33,7 +31,6 @@
     <string name="app_behavior">Hành vi ứng dụng</string>
     <string name="additional_notification_name">Thông báo bổ sung</string>
     <string name="additional_notification_description">Gửi một ngày thông báo bổ sung trước khi sự kiện. %s</string>
-    <string name="no_additional_notification">Không có thông báo bổ sung</string>
     <string name="one_day_before">Một ngày trước</string>
     <string name="two_days_before">Hai ngày trước</string>
     <string name="three_days_before">Ba ngày trước</string>
@@ -47,12 +44,9 @@
     <string name="vibration_name">Rung</string>
     <string name="vibration_description_on">Rung khi nhấn nút</string>
     <string name="vibration_description_off">Không rung khi nhấn nút</string>
-    <string name="date_format_name">Định dạng ngày tháng</string>
     <string name="notification_hour_name">Giờ thông báo</string>
     <string name="notification_hour_description">%s \n\nXin lưu ý rằng thông báo có thể không hoạt động khi ứng dụng bị hệ thống tiêu diệt trong một số thiết bị Huawei, Xiaomi và OnePlus. Tham khảo dontkillmyapp.com để biết thêm thông tin</string>
-    <string name="accent_description">Thay đổi màu nhấn mặc định</string>
     <string name="accent_name">Màu nhấn</string>
-    <string name="theme_description">Sử dụng chủ đề ứng dụng tối, sáng hoặc tự động</string>
     <string name="theme_name">Chủ đề ứng dụng</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Thủy màu xanh</string>
@@ -79,7 +73,6 @@
     <string name="import_contacts_description">Hãy chắc chắn sửa đổi các sự kiện với đúng năm để luôn có số liệu thống kê chính xác!</string>
     <string name="import_success">Nhập hoàn tất thành công!</string>
     <string name="import_nothing_found">Không tìm thấy sự kiện!</string>
-    <string name="import_failed">Đã bị lỗi!</string>
     <string name="missing_permission_contacts">Sự cho phép liên lạc đã bị từ chối. Thử lại hoặc kích hoạt quyền theo cách thủ công, Nếu không, nhập danh bạ sẽ không hoạt động!</string>
     <string name="missing_permission_contacts_forever">Birday không thể nhập danh bạ của bạn và không xin phép được. Lý do khi bạn bấm \"không bao giờ hỏi lại\". Kích hoạt thủ công!</string>
     <string name="birday_import_title">Nhập bản sao lưu Birday</string>
@@ -91,7 +84,6 @@
     <string name="birday_import_invalid_file">Nhập thất bại. Các tập tin được chọn không phải là một bản sao lưu của Birday!</string>
     <string name="birday_export_success">Xuất xong!</string>
     <string name="birday_export_failure">Xuất khẩu thất bại. Rất tiếc!</string>
-    <string name="birday_export_nothing_found">Không có gì để xuất khẩu!</string>
     <string name="surname_first">Họ cho đầu tiên</string>
     <string name="surname_first_description_on">Hiển thị họ trước tên</string>
     <string name="surname_first_description_off">Hiển thị tên trước họ</string>
@@ -137,17 +129,14 @@
     <string name="insert_surname_hint">Thêm họ tên</string>
     <string name="insert_date_hint">Chọn ngày</string>
     <string name="invalid_value_name">Tên không hợp lệ!</string>
-    <string name="consider_year">Xem xét năm</string>
     <string name="event_type_hint">Thể loại của sự kiện</string>
     <string name="birthday">Ngày sinh nhật</string>
     <string name="anniversary">Dịp kỉ niệm</string>
     <string name="death_anniversary">Ngày giỗ</string>
-    <string name="festivity">Lễ hội</string>
     <string name="name_day">Tên ngày</string>
     <string name="other">Khác</string>
     <!-- Event actions -->
     <string name="event_actions">Hành động</string>
-    <string name="event_actions_description">Tại đây bạn có thể xóa hoặc sửa đổi sự kiện này!</string>
     <string name="edit_event">Chỉnh sửa sự kiện</string>
     <string name="delete_event">Xóa sự kiện</string>
     <string name="update_event">Cập nhật sự kiện</string>
@@ -169,7 +158,6 @@
     <string name="no_default_sms">Không tìm được ứng dụng sms mặc định!</string>
     <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
-    <string name="did_you_know">Bạn có biết không?</string>
     <string name="age_average">Tuổi trung bình là %s</string>
     <string name="oldest_person">Người già nhất là %s</string>
     <string name="youngest_person">Người trẻ nhất là %s</string>
@@ -221,7 +209,6 @@
         <item quantity="other">%d năm</item>
     </plurals>
     <string name="born_in">sinh ra</string>
-    <string name="and">và</string>
     <plurals name="event">
         <item quantity="other">sự kiện: %s</item>
     </plurals>
@@ -245,10 +232,8 @@
     </string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Sự kiện sắp tới</string>
-    <string name="add_widget">Birday - sắp tới</string>
     <string name="dark_widget_name">Tiện ích tối</string>
     <string name="dark_widget_description_on">Tiện ích sử dụng chủ đề tối</string>
-    <string name="dark_widget_description_off">Tiện ích sử dụng chủ đề rõ ràng</string>
     <string name="widget_configuration_title">Widget configuration</string>
     <string name="widget_configuration_description">Configure the widget to match your style</string>
     <string name="widget_background_title">Background</string>
@@ -262,34 +247,6 @@
     <string name="show_following_widget_title">Show the following event</string>
     <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
-    <string name="compact_widget_opacity_title">Background opacity</string>
-    <string name="compact_widget_opacity_description">Adjust the darkness of the widget background</string>
-    <string name="compact_widget_appearance_title">Appearance</string>
-    <string name="compact_widget_bg_color_title">Background color</string>
-    <string name="compact_widget_text_color_title">Text color</string>
-    <string name="compact_widget_show_photos_title">Show contact photos</string>
-    <string name="compact_widget_date_position_title">Birth date</string>
-    <string name="compact_widget_date_hidden">Hidden</string>
-    <string name="compact_widget_date_below">Below name</string>
-    <string name="compact_widget_date_above">Above name</string>
-    <string name="compact_widget_zodiac_position_title">Zodiac sign</string>
-    <string name="compact_widget_zodiac_hidden">Hidden</string>
-    <string name="compact_widget_zodiac_before_date">Before date</string>
-    <string name="compact_widget_zodiac_after_date">After date</string>
-    <string name="compact_widget_text_size_title">Text size</string>
-    <string name="compact_widget_highlight_title">Today highlighting</string>
-    <string name="compact_widget_highlight_opacity_title">Background opacity</string>
-    <string name="compact_widget_highlight_color_title">Background color</string>
-    <string name="compact_widget_highlight_text_color_title">Text color</string>
-    <string name="compact_widget_turns">%d</string>
-    <string name="compact_widget_today">Today!</string>
-    <string name="compact_widget_tomorrow">Tomorrow</string>
-    <plurals name="compact_widget_in_days">
-        <item quantity="other">%d days</item>
-    </plurals>
-    <string name="compact_widget_preview_days_2">7 days</string>
-    <string name="compact_widget_preview_days_3">15 days</string>
     <!-- Search -->
     <string name="search_event">Tìm kiếm…</string>
     <string name="search_no_result_title">Không có kết quả</string>

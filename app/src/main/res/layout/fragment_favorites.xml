@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/favoritesMain"
     android:layout_width="match_parent"
@@ -9,25 +10,23 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/favoritesCard"
+        style="@style/Widget.App.CardView.Tonal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/card_margin"
         android:layout_marginTop="@dimen/linear_vertical_margin"
         android:clickable="true"
         android:focusable="true"
-        app:cardCornerRadius="@dimen/rounded_corners"
-        app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:rippleColor="?attr/colorSecondary"
-        app:strokeColor="?attr/colorOutline"
-        app:strokeWidth="@dimen/card_stroke">
+        app:rippleColor="?attr/colorSecondary">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/card_padding">
+            android:paddingTop="@dimen/card_padding"
+            android:paddingBottom="@dimen/card_padding">
 
             <!-- Duration and repeat delay must be hardcoded -->
             <com.facebook.shimmer.ShimmerFrameLayout
@@ -94,7 +93,7 @@
                         android:layout_height="@dimen/card_image_height"
                         android:layout_gravity="center"
                         android:contentDescription="@string/app_name"
-                        android:src="@drawable/animated_candle"
+                        tools:src="@drawable/animated_candle_new"
                         app:layout_constraintBottom_toBottomOf="@id/statsDescription"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/favoriteCardGuideline"
@@ -112,26 +111,30 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/overviewButton"
-                android:layout_width="match_parent"
+                style="@style/Widget.App.CardView.Tonal.Inner"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
+                android:layout_marginHorizontal="@dimen/card_padding"
                 android:clickable="true"
                 android:focusable="true"
                 android:hapticFeedbackEnabled="false"
-                app:cardCornerRadius="@dimen/rounded_corners"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/favoritesCardShimmer"
-                app:rippleColor="?attr/colorPrimary"
-                app:strokeColor="?attr/colorOutline"
-                app:strokeWidth="@dimen/card_stroke">
+                app:rippleColor="?attr/colorPrimary">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <!-- A plain row on purpose. It used to be a Flow in a ConstraintLayout, and a Flow is a
+                     chain for the linear solver: nested in two wrap_content cards and measured for both
+                     states of the MotionLayout, it cost a 190ms frame the first time the tab opened.
+                     The weighted spaces spread the days exactly like spread_inside did -->
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginHorizontal="@dimen/between_row_padding">
+                    android:layout_marginHorizontal="@dimen/between_row_padding"
+                    android:layout_marginVertical="@dimen/text_field_horizontal_margin"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/overviewDotsImage"
@@ -141,262 +144,317 @@
                         android:src="@drawable/ic_date_black_24dp"
                         app:tint="?attr/colorPrimary" />
 
-                    <ImageView
-                        android:id="@+id/overviewDot1"
-                        android:layout_width="@dimen/preview_dot_size"
-                        android:layout_height="@dimen/preview_dot_size"
-                        android:contentDescription="@string/overview"
-                        android:src="@drawable/ic_dot_black_24dp"
-                        app:tint="?attr/colorOutline" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/overviewText1"
+                    <Space
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:autoSizeMaxTextSize="11sp"
-                        android:autoSizeMinTextSize="4sp"
-                        android:autoSizeTextType="uniform"
-                        android:gravity="center"
-                        android:text="@string/exclamation"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-                        app:layout_constraintBottom_toBottomOf="@id/overviewDot1"
-                        app:layout_constraintEnd_toEndOf="@id/overviewDot1"
-                        app:layout_constraintStart_toStartOf="@id/overviewDot1"
-                        app:layout_constraintTop_toTopOf="@id/overviewDot1" />
+                        android:layout_weight="1" />
 
-                    <ImageView
-                        android:id="@+id/overviewDot2"
+                    <FrameLayout
                         android:layout_width="@dimen/preview_dot_size"
-                        android:layout_height="@dimen/preview_dot_size"
-                        android:contentDescription="@string/overview"
-                        android:src="@drawable/ic_dot_black_24dp"
-                        app:tint="?attr/colorOutline" />
+                        android:layout_height="@dimen/preview_dot_size">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/overviewText2"
+                        <ImageView
+                            android:id="@+id/overviewDot1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/overview"
+                            android:src="@drawable/ic_dot_black_24dp"
+                            app:tint="?attr/colorOutline" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/overviewText1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:autoSizeMaxTextSize="11sp"
+                            android:autoSizeMinTextSize="4sp"
+                            android:autoSizeTextType="uniform"
+                            android:gravity="center"
+                            android:text="@string/exclamation"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+
+                    </FrameLayout>
+
+                    <Space
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:autoSizeMaxTextSize="11sp"
-                        android:autoSizeMinTextSize="4sp"
-                        android:autoSizeTextType="uniform"
-                        android:gravity="center"
-                        android:text="@string/exclamation"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-                        app:layout_constraintBottom_toBottomOf="@id/overviewDot2"
-                        app:layout_constraintEnd_toEndOf="@id/overviewDot2"
-                        app:layout_constraintStart_toStartOf="@id/overviewDot2"
-                        app:layout_constraintTop_toTopOf="@id/overviewDot2" />
+                        android:layout_weight="1" />
 
-                    <ImageView
-                        android:id="@+id/overviewDot3"
+                    <FrameLayout
                         android:layout_width="@dimen/preview_dot_size"
-                        android:layout_height="@dimen/preview_dot_size"
-                        android:contentDescription="@string/overview"
-                        android:src="@drawable/ic_dot_black_24dp"
-                        app:tint="?attr/colorOutline" />
+                        android:layout_height="@dimen/preview_dot_size">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/overviewText3"
+                        <ImageView
+                            android:id="@+id/overviewDot2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/overview"
+                            android:src="@drawable/ic_dot_black_24dp"
+                            app:tint="?attr/colorOutline" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/overviewText2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:autoSizeMaxTextSize="11sp"
+                            android:autoSizeMinTextSize="4sp"
+                            android:autoSizeTextType="uniform"
+                            android:gravity="center"
+                            android:text="@string/exclamation"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+
+                    </FrameLayout>
+
+                    <Space
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:autoSizeMaxTextSize="11sp"
-                        android:autoSizeMinTextSize="4sp"
-                        android:autoSizeTextType="uniform"
-                        android:gravity="center"
-                        android:text="@string/exclamation"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-                        app:layout_constraintBottom_toBottomOf="@id/overviewDot3"
-                        app:layout_constraintEnd_toEndOf="@id/overviewDot3"
-                        app:layout_constraintStart_toStartOf="@id/overviewDot3"
-                        app:layout_constraintTop_toTopOf="@id/overviewDot3" />
+                        android:layout_weight="1" />
 
-                    <ImageView
-                        android:id="@+id/overviewDot4"
+                    <FrameLayout
                         android:layout_width="@dimen/preview_dot_size"
-                        android:layout_height="@dimen/preview_dot_size"
-                        android:contentDescription="@string/overview"
-                        android:src="@drawable/ic_dot_black_24dp"
-                        app:tint="?attr/colorOutline" />
+                        android:layout_height="@dimen/preview_dot_size">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/overviewText4"
+                        <ImageView
+                            android:id="@+id/overviewDot3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/overview"
+                            android:src="@drawable/ic_dot_black_24dp"
+                            app:tint="?attr/colorOutline" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/overviewText3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:autoSizeMaxTextSize="11sp"
+                            android:autoSizeMinTextSize="4sp"
+                            android:autoSizeTextType="uniform"
+                            android:gravity="center"
+                            android:text="@string/exclamation"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+
+                    </FrameLayout>
+
+                    <Space
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:autoSizeMaxTextSize="11sp"
-                        android:autoSizeMinTextSize="4sp"
-                        android:autoSizeTextType="uniform"
-                        android:gravity="center"
-                        android:text="@string/exclamation"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-                        app:layout_constraintBottom_toBottomOf="@id/overviewDot4"
-                        app:layout_constraintEnd_toEndOf="@id/overviewDot4"
-                        app:layout_constraintStart_toStartOf="@id/overviewDot4"
-                        app:layout_constraintTop_toTopOf="@id/overviewDot4" />
+                        android:layout_weight="1" />
 
-                    <ImageView
-                        android:id="@+id/overviewDot5"
+                    <FrameLayout
                         android:layout_width="@dimen/preview_dot_size"
-                        android:layout_height="@dimen/preview_dot_size"
-                        android:contentDescription="@string/overview"
-                        android:src="@drawable/ic_dot_black_24dp"
-                        app:tint="?attr/colorOutline" />
+                        android:layout_height="@dimen/preview_dot_size">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/overviewText5"
+                        <ImageView
+                            android:id="@+id/overviewDot4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/overview"
+                            android:src="@drawable/ic_dot_black_24dp"
+                            app:tint="?attr/colorOutline" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/overviewText4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:autoSizeMaxTextSize="11sp"
+                            android:autoSizeMinTextSize="4sp"
+                            android:autoSizeTextType="uniform"
+                            android:gravity="center"
+                            android:text="@string/exclamation"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+
+                    </FrameLayout>
+
+                    <Space
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:autoSizeMaxTextSize="11sp"
-                        android:autoSizeMinTextSize="4sp"
-                        android:autoSizeTextType="uniform"
-                        android:gravity="center"
-                        android:text="@string/exclamation"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-                        app:layout_constraintBottom_toBottomOf="@id/overviewDot5"
-                        app:layout_constraintEnd_toEndOf="@id/overviewDot5"
-                        app:layout_constraintStart_toStartOf="@id/overviewDot5"
-                        app:layout_constraintTop_toTopOf="@id/overviewDot5" />
+                        android:layout_weight="1" />
 
-                    <ImageView
-                        android:id="@+id/overviewDot6"
+                    <FrameLayout
                         android:layout_width="@dimen/preview_dot_size"
-                        android:layout_height="@dimen/preview_dot_size"
-                        android:contentDescription="@string/overview"
-                        android:src="@drawable/ic_dot_black_24dp"
-                        app:tint="?attr/colorOutline" />
+                        android:layout_height="@dimen/preview_dot_size">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/overviewText6"
+                        <ImageView
+                            android:id="@+id/overviewDot5"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/overview"
+                            android:src="@drawable/ic_dot_black_24dp"
+                            app:tint="?attr/colorOutline" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/overviewText5"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:autoSizeMaxTextSize="11sp"
+                            android:autoSizeMinTextSize="4sp"
+                            android:autoSizeTextType="uniform"
+                            android:gravity="center"
+                            android:text="@string/exclamation"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+
+                    </FrameLayout>
+
+                    <Space
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:autoSizeMaxTextSize="11sp"
-                        android:autoSizeMinTextSize="4sp"
-                        android:autoSizeTextType="uniform"
-                        android:gravity="center"
-                        android:text="@string/exclamation"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-                        app:layout_constraintBottom_toBottomOf="@id/overviewDot6"
-                        app:layout_constraintEnd_toEndOf="@id/overviewDot6"
-                        app:layout_constraintStart_toStartOf="@id/overviewDot6"
-                        app:layout_constraintTop_toTopOf="@id/overviewDot6" />
+                        android:layout_weight="1" />
 
-                    <ImageView
-                        android:id="@+id/overviewDot7"
+                    <FrameLayout
                         android:layout_width="@dimen/preview_dot_size"
-                        android:layout_height="@dimen/preview_dot_size"
-                        android:contentDescription="@string/overview"
-                        android:src="@drawable/ic_dot_black_24dp"
-                        app:tint="?attr/colorOutline" />
+                        android:layout_height="@dimen/preview_dot_size">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/overviewText7"
+                        <ImageView
+                            android:id="@+id/overviewDot6"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/overview"
+                            android:src="@drawable/ic_dot_black_24dp"
+                            app:tint="?attr/colorOutline" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/overviewText6"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:autoSizeMaxTextSize="11sp"
+                            android:autoSizeMinTextSize="4sp"
+                            android:autoSizeTextType="uniform"
+                            android:gravity="center"
+                            android:text="@string/exclamation"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+
+                    </FrameLayout>
+
+                    <Space
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:autoSizeMaxTextSize="11sp"
-                        android:autoSizeMinTextSize="4sp"
-                        android:autoSizeTextType="uniform"
-                        android:gravity="center"
-                        android:text="@string/exclamation"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-                        app:layout_constraintBottom_toBottomOf="@id/overviewDot7"
-                        app:layout_constraintEnd_toEndOf="@id/overviewDot7"
-                        app:layout_constraintStart_toStartOf="@id/overviewDot7"
-                        app:layout_constraintTop_toTopOf="@id/overviewDot7" />
+                        android:layout_weight="1" />
 
-                    <ImageView
-                        android:id="@+id/overviewDot8"
+                    <FrameLayout
                         android:layout_width="@dimen/preview_dot_size"
-                        android:layout_height="@dimen/preview_dot_size"
-                        android:contentDescription="@string/overview"
-                        android:src="@drawable/ic_dot_black_24dp"
-                        app:tint="?attr/colorOutline" />
+                        android:layout_height="@dimen/preview_dot_size">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/overviewText8"
+                        <ImageView
+                            android:id="@+id/overviewDot7"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/overview"
+                            android:src="@drawable/ic_dot_black_24dp"
+                            app:tint="?attr/colorOutline" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/overviewText7"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:autoSizeMaxTextSize="11sp"
+                            android:autoSizeMinTextSize="4sp"
+                            android:autoSizeTextType="uniform"
+                            android:gravity="center"
+                            android:text="@string/exclamation"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+
+                    </FrameLayout>
+
+                    <Space
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:autoSizeMaxTextSize="11sp"
-                        android:autoSizeMinTextSize="4sp"
-                        android:autoSizeTextType="uniform"
-                        android:gravity="center"
-                        android:text="@string/exclamation"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-                        app:layout_constraintBottom_toBottomOf="@id/overviewDot8"
-                        app:layout_constraintEnd_toEndOf="@id/overviewDot8"
-                        app:layout_constraintStart_toStartOf="@id/overviewDot8"
-                        app:layout_constraintTop_toTopOf="@id/overviewDot8" />
+                        android:layout_weight="1" />
 
-                    <ImageView
-                        android:id="@+id/overviewDot9"
+                    <FrameLayout
                         android:layout_width="@dimen/preview_dot_size"
-                        android:layout_height="@dimen/preview_dot_size"
-                        android:contentDescription="@string/overview"
-                        android:src="@drawable/ic_dot_black_24dp"
-                        app:tint="?attr/colorOutline" />
+                        android:layout_height="@dimen/preview_dot_size">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/overviewText9"
+                        <ImageView
+                            android:id="@+id/overviewDot8"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/overview"
+                            android:src="@drawable/ic_dot_black_24dp"
+                            app:tint="?attr/colorOutline" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/overviewText8"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:autoSizeMaxTextSize="11sp"
+                            android:autoSizeMinTextSize="4sp"
+                            android:autoSizeTextType="uniform"
+                            android:gravity="center"
+                            android:text="@string/exclamation"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+
+                    </FrameLayout>
+
+                    <Space
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:autoSizeMaxTextSize="11sp"
-                        android:autoSizeMinTextSize="4sp"
-                        android:autoSizeTextType="uniform"
-                        android:gravity="center"
-                        android:text="@string/exclamation"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-                        app:layout_constraintBottom_toBottomOf="@id/overviewDot9"
-                        app:layout_constraintEnd_toEndOf="@id/overviewDot9"
-                        app:layout_constraintStart_toStartOf="@id/overviewDot9"
-                        app:layout_constraintTop_toTopOf="@id/overviewDot9" />
+                        android:layout_weight="1" />
 
-                    <ImageView
-                        android:id="@+id/overviewDot10"
+                    <FrameLayout
                         android:layout_width="@dimen/preview_dot_size"
-                        android:layout_height="@dimen/preview_dot_size"
-                        android:contentDescription="@string/overview"
-                        android:src="@drawable/ic_dot_black_24dp"
-                        app:tint="?attr/colorOutline" />
+                        android:layout_height="@dimen/preview_dot_size">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/overviewText10"
+                        <ImageView
+                            android:id="@+id/overviewDot9"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/overview"
+                            android:src="@drawable/ic_dot_black_24dp"
+                            app:tint="?attr/colorOutline" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/overviewText9"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:autoSizeMaxTextSize="11sp"
+                            android:autoSizeMinTextSize="4sp"
+                            android:autoSizeTextType="uniform"
+                            android:gravity="center"
+                            android:text="@string/exclamation"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+
+                    </FrameLayout>
+
+                    <Space
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:autoSizeMaxTextSize="11sp"
-                        android:autoSizeMinTextSize="4sp"
-                        android:autoSizeTextType="uniform"
-                        android:gravity="center"
-                        android:text="@string/exclamation"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-                        app:layout_constraintBottom_toBottomOf="@id/overviewDot10"
-                        app:layout_constraintEnd_toEndOf="@id/overviewDot10"
-                        app:layout_constraintStart_toStartOf="@id/overviewDot10"
-                        app:layout_constraintTop_toTopOf="@id/overviewDot10" />
+                        android:layout_weight="1" />
 
-                    <androidx.constraintlayout.helper.widget.Flow
-                        android:id="@+id/quickGlanceRow"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/text_field_horizontal_margin"
-                        app:constraint_referenced_ids="overviewDotsImage,overviewDot1,overviewDot2,overviewDot3,overviewDot4,overviewDot5,overviewDot6,overviewDot7,overviewDot8,overviewDot9,overviewDot10"
-                        app:flow_horizontalAlign="start"
-                        app:flow_horizontalStyle="spread_inside"
-                        app:flow_maxElementsWrap="11"
-                        app:flow_wrapMode="none"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                    <FrameLayout
+                        android:layout_width="@dimen/preview_dot_size"
+                        android:layout_height="@dimen/preview_dot_size">
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <ImageView
+                            android:id="@+id/overviewDot10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/overview"
+                            android:src="@drawable/ic_dot_black_24dp"
+                            app:tint="?attr/colorOutline" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/overviewText10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:autoSizeMaxTextSize="11sp"
+                            android:autoSizeMinTextSize="4sp"
+                            android:autoSizeTextType="uniform"
+                            android:gravity="center"
+                            android:text="@string/exclamation"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -423,6 +481,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/favoritesCard" />
 
+    <!-- The list starts behind the rounded bottom of the card, which has the higher elevation:
+         the rows slide under the corners instead of being cut on a straight line -->
+    <Space
+        android:id="@+id/favoritesRecyclerAnchor"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/recycler_under_card"
+        app:layout_constraintBottom_toBottomOf="@id/favoritesCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <!-- The effect of overScrollMode = ifContentScrolls is bad on Android < 12 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favoritesRecycler"
@@ -430,36 +498,26 @@
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:overScrollMode="never"
-        android:paddingTop="@dimen/recycler_extra_space_top"
+        android:paddingTop="@dimen/recycler_extra_space_top_under_card"
         android:scrollbarSize="0dp"
         android:scrollbarStyle="outsideOverlay"
-        app:fastScrollEnabled="true"
-        app:fastScrollHorizontalThumbDrawable="@drawable/scroll_thumb_drawable"
-        app:fastScrollHorizontalTrackDrawable="@drawable/scroll_line_drawable"
-        app:fastScrollVerticalThumbDrawable="@drawable/scroll_thumb_drawable"
-        app:fastScrollVerticalTrackDrawable="@drawable/scroll_line_drawable"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/favoritesCard" />
+        app:layout_constraintTop_toTopOf="@id/favoritesRecyclerAnchor" />
 
     <Button
         android:id="@+id/favoritesMiniFab"
-        style="@style/Widget.Material3Expressive.Button.IconButton.Outlined"
+        style="@style/Widget.App.Button.IconButton.CardHandle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hapticFeedbackEnabled="false"
-        app:backgroundTint="?attr/colorSurface"
-        app:elevation="@dimen/bottom_navbar_elevation"
         app:icon="@drawable/ic_arrow_up_24dp"
-        app:iconTint="?attr/colorPrimary"
         app:layout_constraintBottom_toTopOf="@id/favoritesCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/favoritesCard"
-        app:rippleColor="?attr/colorSecondary"
-        app:strokeColor="?attr/colorOutline"
-        app:strokeWidth="@dimen/card_stroke" />
+        app:rippleColor="?attr/colorSecondary" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

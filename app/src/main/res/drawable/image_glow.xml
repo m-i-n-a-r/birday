@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A soft tertiary halo around the event pictures, where a gray outline used to be. The view is
+     scaled past the picture, so only the fading ring outside it shows -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <gradient
+        android:centerColor="@color/image_glow"
+        android:endColor="@color/image_glow_clear"
+        android:gradientRadius="50%"
+        android:startColor="@color/image_glow"
+        android:type="radial" />
+</shape>

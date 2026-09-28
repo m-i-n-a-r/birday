@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The veil every tonal input sits on: the same one as the details pills, visible on any surface,
+     cards, sheets, dialogs and the Amoled black alike -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:alpha="0.38" android:color="?attr/colorSecondaryContainer" android:state_enabled="false" />
+    <item android:alpha="0.55" android:color="?attr/colorSecondaryContainer" />
+</selector>

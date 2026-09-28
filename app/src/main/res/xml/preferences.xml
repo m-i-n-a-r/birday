@@ -2,8 +2,15 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- The user's own name and birthday, to be celebrated as well -->
+    <com.minar.birday.preferences.standard.UserCardPreference
+        android:layout="@layout/user_card_row"
+        android:selectable="false"
+        app:allowDividerBelow="false" />
+
     <PreferenceCategory
         android:key="notifications"
+        android:layout="@layout/preference_category_row"
         android:title="@string/events_notification_channel"
         app:icon="@drawable/ic_notifications_24dp">
 
@@ -41,10 +48,21 @@
             android:layout="@layout/notification_sound_row"
             android:selectable="true" />
 
+        <!-- Single notifications instead of grouped notifications -->
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="grouped_notifications"
+            android:summaryOff="@string/grouped_notifications_description_off"
+            android:summaryOn="@string/grouped_notifications_description_on"
+            android:title="@string/grouped_notifications_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="app_behavior"
+        android:layout="@layout/preference_category_row"
         android:title="@string/app_behavior"
         app:icon="@drawable/ic_app_behavior_24dp">
 
@@ -96,10 +114,21 @@
             android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
+        <!-- Quickly delete searched events -->
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="delete_search"
+            android:summaryOff="@string/delete_search_description_off"
+            android:summaryOn="@string/delete_search_description_on"
+            android:title="@string/delete_search_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="customization"
+        android:layout="@layout/preference_category_row"
         android:title="@string/customization"
         app:icon="@drawable/ic_customization_24dp">
 
@@ -170,6 +199,7 @@
 
     <PreferenceCategory
         android:key="import_export"
+        android:layout="@layout/preference_category_row"
         android:title="@string/import_export"
         app:icon="@drawable/ic_backup_restore_24dp">
 
@@ -199,10 +229,21 @@
             android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
+        <!-- Auto export on each modification or when the app is closed -->
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="auto_export"
+            android:summaryOff="@string/auto_export_description_off"
+            android:summaryOn="@string/auto_export_description_on"
+            android:title="@string/auto_export_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="troubleshoot"
+        android:layout="@layout/preference_category_row"
         android:title="@string/troubleshoot"
         app:icon="@drawable/ic_troubleshoot_24dp">
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">ברוך הבא ליום הולדת</string>
-    <string name="app_name_extended">יום הולדת - מנהלת אירועים</string>
     <string name="leave_review_title">סקירת יום הולדת</string>
     <string name="leave_review_subtitle">השאר ביקורת כדי לעזור לי עם האפליקציה. זכור כי, מלבד תרומות, האפליקציה הזו חינמית לחלוטין וללא פרסומות!</string>
     <string name="yes_review">סקירה!</string>
@@ -15,7 +14,6 @@
     <string name="add_favorite">הוסף למועדפים</string>
     <string name="stats">סטטיסטיקות</string>
     <string name="no_stats">אין סטטיסטיקה להצגה!</string>
-    <string name="stats_summary">סיכום סטטיסטיקות</string>
     <string name="no_stats_description">אין לך מספיק אירועים כדי ליצור סטטיסטיקות. הוסף כמה ונסה שוב מאוחר יותר!</string>
     <plurals name="stats_total">
         <item quantity="one">יום הולדת עוזר לך לזכור סך של %d אירוע</item>
@@ -37,7 +35,6 @@
     <string name="app_behavior">התנהגות היישום</string>
     <string name="additional_notification_name">התראה נוספת</string>
     <string name="additional_notification_description">שלח הודעה נוספת ימים לפני האירוע. %s</string>
-    <string name="no_additional_notification">אין התראה נוספת</string>
     <string name="one_day_before">יום אחד לפני</string>
     <string name="two_days_before">יומיים לפני</string>
     <string name="three_days_before">שלושה ימים לפני</string>
@@ -51,12 +48,9 @@
     <string name="vibration_name">רטט</string>
     <string name="vibration_description_on">רטט כשכפתור נלחץ</string>
     <string name="vibration_description_off">ללא רטט כשכפתור נלחץ</string>
-    <string name="date_format_name">תבנית תאריך</string>
     <string name="notification_hour_name">שעת התראה</string>
     <string name="notification_hour_description">%s \n\nשים לב שייתכן שהתראה לא תעבוד כאשר האפליקציה נסגרת על ידי המערכת בחלק ממכשירי Huawei, Xiaomi ו-OnePlus. עיין ב-dontkillmyapp.com למידע נוסף</string>
-    <string name="accent_description">שנה את צבע ההדגשה המוגדר כברירת מחדל</string>
     <string name="accent_name">צבע הדגשה</string>
-    <string name="theme_description">השתמש בעיצוב אפליקציה כהה, בהיר או אוטומטי</string>
     <string name="theme_name">עיצוב</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">מים</string>
@@ -83,7 +77,6 @@
     <string name="import_contacts_description">הקפד לשנות את האירועים עם שנים חסרות כדי שתמיד יהיו נתונים סטטיסטיים מדויקים!</string>
     <string name="import_success">ייבוא הושלם בהצלחה!</string>
     <string name="import_nothing_found">לא נמצאו ארועים!</string>
-    <string name="import_failed">משהו השתבש!</string>
     <string name="missing_permission_contacts">ההרשאה לאנשי קשר נדחתה.  נסה שוב או הפעל את ההרשאה באופן ידני,
      או שייבוא אנשי הקשר לא יעבוד!</string>
     <string name="missing_permission_contacts_forever">יום הולדת לא יכול לבקש רשות לייבא אנשי קשר, מכיוון שסימנת \"לעולם אל תשאל שוב\".  תן הרשאה באופן ידני!</string>
@@ -96,7 +89,6 @@
     <string name="birday_import_invalid_file">הייבוא ​​נכשל. הקובץ שנבחר אינו גיבוי של Birday!</string>
     <string name="birday_export_success">הייצוא הושלם!</string>
     <string name="birday_export_failure">הייצוא נכשל. אופס!</string>
-    <string name="birday_export_nothing_found">אין מה לייצא!</string>
     <string name="surname_first">שם משפחה קודם</string>
     <string name="surname_first_description_on">הצג שם משפחה לפני שם פרטי</string>
     <string name="surname_first_description_off">הצג שם פרטי לפני שם המשפחה</string>
@@ -142,17 +134,14 @@
     <string name="insert_surname_hint">הכנס שם משפחה</string>
     <string name="insert_date_hint">בחר תאריך</string>
     <string name="invalid_value_name">שם לא חוקי!</string>
-    <string name="consider_year">קח בחשבון את השנה</string>
     <string name="event_type_hint">סוג האירוע</string>
     <string name="birthday">Birthday</string>
     <string name="anniversary">יום השנה</string>
     <string name="death_anniversary">יום השנה לפטירה</string>
-    <string name="festivity">חגיגה</string>
     <string name="name_day">שם יום</string>
     <string name="other">אחר</string>
     <!-- Event actions -->
     <string name="event_actions">פעולות</string>
-    <string name="event_actions_description">כאן תוכלו לשנות או להסיר אירוע זה!</string>
     <string name="edit_event">ערוך אירוע</string>
     <string name="delete_event">מחק אירוע</string>
     <string name="update_event">עדכן אירוע</string>
@@ -174,7 +163,6 @@
     <string name="no_default_sms">לא נמצא יישום הודעות ברירת מחדל!</string>
     <string name="might_have_missed">ייתכן שפספסת:</string>
     <!-- Statistics -->
-    <string name="did_you_know">הידעת?</string>
     <string name="age_average">הגיל הממוצע הוא %s</string>
     <string name="oldest_person">האדם המבוגר ביותר הוא %s</string>
     <string name="youngest_person">האדם הצעיר ביותר הוא %s</string>
@@ -232,7 +220,6 @@
         <item quantity="other">%d שנים</item>
     </plurals>
     <string name="born_in">נולד ב</string>
-    <string name="and">ו-</string>
     <plurals name="event">
         <item quantity="one">אירוע: %s</item>
         <item quantity="two">אירועים: %s</item>
@@ -261,10 +248,8 @@
     </string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Upcoming events</string>
-    <string name="add_widget">יום הולדת - בקרוב</string>
     <string name="dark_widget_name">ווידג\'ט כהה</string>
     <string name="dark_widget_description_on">הווידג\'ט משתמש בעיצוב כהה</string>
-    <string name="dark_widget_description_off">הווידג\'ט משתמש בעיצוב בהיר</string>
     <string name="widget_configuration_title">תצורת ווידג\'ט</string>
     <string name="widget_configuration_description">הגדר את הווידג\'ט כך שיתאים לסגנון שלך</string>
     <string name="widget_background_title">רקע</string>
@@ -278,36 +263,6 @@
     <string name="show_following_widget_title">Show the following event</string>
     <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
-    <string name="compact_widget_opacity_title">Background opacity</string>
-    <string name="compact_widget_opacity_description">Adjust the darkness of the widget background</string>
-    <string name="compact_widget_appearance_title">Appearance</string>
-    <string name="compact_widget_bg_color_title">Background color</string>
-    <string name="compact_widget_text_color_title">Text color</string>
-    <string name="compact_widget_show_photos_title">Show contact photos</string>
-    <string name="compact_widget_date_position_title">Birth date</string>
-    <string name="compact_widget_date_hidden">Hidden</string>
-    <string name="compact_widget_date_below">Below name</string>
-    <string name="compact_widget_date_above">Above name</string>
-    <string name="compact_widget_zodiac_position_title">Zodiac sign</string>
-    <string name="compact_widget_zodiac_hidden">Hidden</string>
-    <string name="compact_widget_zodiac_before_date">Before date</string>
-    <string name="compact_widget_zodiac_after_date">After date</string>
-    <string name="compact_widget_text_size_title">Text size</string>
-    <string name="compact_widget_highlight_title">Today highlighting</string>
-    <string name="compact_widget_highlight_opacity_title">Background opacity</string>
-    <string name="compact_widget_highlight_color_title">Background color</string>
-    <string name="compact_widget_highlight_text_color_title">Text color</string>
-    <string name="compact_widget_turns">%d</string>
-    <string name="compact_widget_today">Today!</string>
-    <string name="compact_widget_tomorrow">Tomorrow</string>
-    <plurals name="compact_widget_in_days">
-        <item quantity="one">%d day</item>
-        <item quantity="two">%d days</item>
-        <item quantity="other">%d days</item>
-    </plurals>
-    <string name="compact_widget_preview_days_2">7 days</string>
-    <string name="compact_widget_preview_days_3">15 days</string>
     <!-- Search -->
     <string name="search_event">חיפוש…</string>
     <string name="search_no_result_title">לא נמצאו תוצאות</string>

@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:text="@string/delete_db_title"
         android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+        android:textColor="?attr/colorError"
         android:textSize="@dimen/custom_preference_title_text_size" />
 
     <com.google.android.material.textview.MaterialTextView

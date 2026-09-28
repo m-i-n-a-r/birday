@@ -18,8 +18,8 @@ configure<com.android.build.api.dsl.ApplicationExtension>  {
         applicationId = "com.minar.birday"
         targetSdk = 37
         minSdk = 26
-        versionCode = 37
-        versionName = "4.7.2"
+        versionCode = 38
+        versionName = "5.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -72,6 +72,8 @@ dependencies {
     // Default dependencies
     implementation(libs.appcompat)
     implementation(libs.core.ktx)
+    // Widget lists handed over whole, instead of the deprecated RemoteViewsService adapters
+    implementation(libs.core.remoteviews)
     implementation(libs.preference.ktx)
     implementation(libs.activity.ktx)
     implementation(libs.fragment.ktx)

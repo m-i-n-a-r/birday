@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Birday\'e Hoşgeldin</string>
-    <string name="app_name_extended">Birday - Etkinlik Yöneticisi</string>
     <string name="leave_review_title">Birday\'i Yorumlayın</string>
     <string name="leave_review_subtitle">Uygulamayı yorumlamanız benim için önemli. Bağışlar dışında bu uygulamanın tamamen ücretsiz ve reklamsız olduğunu unutmayın!</string>
     <string name="yes_review">Yorumla!</string>
@@ -15,7 +14,6 @@
     <string name="add_favorite">Favorilere ekle</string>
     <string name="stats">İstatistikler</string>
     <string name="no_stats">Henüz bir şey yok!</string>
-    <string name="stats_summary">İstatistik özeti</string>
     <string name="no_stats_description">İstatistik oluşturacak kadar etkinliğin yok. Biraz daha ekle ve geri dön!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday toplamda %d etkinliği hatırlamanda yardımcı oluyor</item>
@@ -35,7 +33,6 @@
     <string name="app_behavior">Uygulama davranışı</string>
     <string name="additional_notification_name">Ek bildirim</string>
     <string name="additional_notification_description">Etkinlikten birkaç gün önce ek bildirim gönder. %s</string>
-    <string name="no_additional_notification">Ek bir bildirim yok</string>
     <string name="one_day_before">Bir gün önce</string>
     <string name="two_days_before">İki gün önce</string>
     <string name="three_days_before">Üç gün önce</string>
@@ -49,12 +46,9 @@
     <string name="vibration_name">Titreşim</string>
     <string name="vibration_description_on">Bir tuşa basıldığında titret</string>
     <string name="vibration_description_off">Titreşim yok</string>
-    <string name="date_format_name">Tarih formatı</string>
     <string name="notification_hour_name">Bildirim saati</string>
     <string name="notification_hour_description">%s \n\n Uygulamanın arkaplanda çalışması sistem tarafından durdurulursa (genelde Xiaomi, Huawei ve OnePlus cihazlarda) düzgün çalışmayabileceğini unutmayınız. Daha fazla bilgi için dontkillmyapp.com</string>
-    <string name="accent_description">Varsayılan vurgu rengini değiştir</string>
     <string name="accent_name">Vurgu tonu</string>
-    <string name="theme_description">Karanlık, açık ya da otomatik tema kullan</string>
     <string name="theme_name">Uygulama teması</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Aqua</string>
@@ -81,7 +75,6 @@
     <string name="import_contacts_description">İstatistiklerin doğru olması için eksik sene içeren etkinlikleri düzelttiğinizden emin olun!</string>
     <string name="import_success">İçe aktarım başarılı!</string>
     <string name="import_nothing_found">Etkinlik bulunamadı!</string>
-    <string name="import_failed">Bir şeyler ters gitti!</string>
     <string name="missing_permission_contacts">Kişiler izni reddedildi. Tekrar deneyin veya uygulama iznini ayarlardan kendiniz verin aksi halde içe aktarım çalışmayacak!</string>
     <string name="missing_permission_contacts_forever">\"Bir daha sorma\" seçeneğini işaretlediğiniz için Birday kişileri aktarmak için izin isteyemez. Ayarlardan kendiniz izni verin!</string>
     <string name="birday_import_title">Bir Birday yedeğini içe aktarın</string>
@@ -93,7 +86,6 @@
     <string name="birday_import_invalid_file">İçe aktarılamadı. Seçilen dosya bir Birday yedeği değil!</string>
     <string name="birday_export_success">Dışa aktarım tamamlandı!</string>
     <string name="birday_export_failure">Dışa aktarılamadı. Oops!</string>
-    <string name="birday_export_nothing_found">Dışa aktarılacak bir şey yok!</string>
     <string name="surname_first">Önce soyad</string>
     <string name="surname_first_description_on">Soyismi isimden önce göster</string>
     <string name="surname_first_description_off">İsmi soyisimden önce göster</string>
@@ -139,17 +131,14 @@
     <string name="insert_surname_hint">Soyisim</string>
     <string name="insert_date_hint">Bir tarih seç</string>
     <string name="invalid_value_name">Geçersiz isim!</string>
-    <string name="consider_year">Seneyi de say</string>
     <string name="event_type_hint">Etkinlik tipi</string>
     <string name="birthday">Doğum günü</string>
     <string name="anniversary">Yıl dönümü</string>
     <string name="death_anniversary">Ölüm yıl dönümü</string>
-    <string name="festivity">Şenlik</string>
     <string name="name_day">İsim günü</string>
     <string name="other">Diğer</string>
     <!-- Event actions -->
     <string name="event_actions">Hareketler</string>
-    <string name="event_actions_description">Etkinliği bu kısımdan değiştirebilir veya kaldırabilirsin!</string>
     <string name="edit_event">Düzenle</string>
     <string name="delete_event">Etkinliği sil</string>
     <string name="update_event">Güncelle</string>
@@ -171,7 +160,6 @@
     <string name="no_default_sms">Varsayılan SMS uygulaması bulunamadı!</string>
     <string name="might_have_missed">Kaçırmış olabilirsin:</string>
     <!-- Statistics -->
-    <string name="did_you_know">Biliyor muydun?</string>
     <string name="age_average">%s, Dünyadaki ortalama yaştır</string>
     <string name="oldest_person">En yaşlı kişi: %s</string>
     <string name="youngest_person">En genç kişi: %s</string>
@@ -226,7 +214,6 @@
         <item quantity="other">%d sene</item>
     </plurals>
     <string name="born_in">doğum</string>
-    <string name="and">ve</string>
     <plurals name="event">
         <item quantity="one">etkinlik: %s</item>
         <item quantity="other">etkinlikler: %s</item>
@@ -254,10 +241,8 @@
     </string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Yaklaşan etkinlikler</string>
-    <string name="add_widget">Birday - Yakında</string>
     <string name="dark_widget_name">Karanlık tema widget\'ı</string>
     <string name="dark_widget_description_on">Karanlık tema kullanan widget</string>
-    <string name="dark_widget_description_off">Açık tema kullanan widget</string>
     <string name="widget_configuration_title">Widget yapılandırması</string>
     <string name="widget_configuration_description">Widget\'ı kendi stilinize göre düzenleyin</string>
     <string name="widget_background_title">Arka plan</string>
@@ -271,35 +256,6 @@
     <string name="show_following_widget_title">Sıradaki etkinliği göster</string>
     <string name="show_following_widget_description">Sıradaki etkinliği takip eden etkinlikleri ek bir satırda göster</string>
     <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
-    <string name="compact_widget_opacity_title">Background opacity</string>
-    <string name="compact_widget_opacity_description">Adjust the darkness of the widget background</string>
-    <string name="compact_widget_appearance_title">Appearance</string>
-    <string name="compact_widget_bg_color_title">Background color</string>
-    <string name="compact_widget_text_color_title">Text color</string>
-    <string name="compact_widget_show_photos_title">Show contact photos</string>
-    <string name="compact_widget_date_position_title">Birth date</string>
-    <string name="compact_widget_date_hidden">Hidden</string>
-    <string name="compact_widget_date_below">Below name</string>
-    <string name="compact_widget_date_above">Above name</string>
-    <string name="compact_widget_zodiac_position_title">Zodiac sign</string>
-    <string name="compact_widget_zodiac_hidden">Hidden</string>
-    <string name="compact_widget_zodiac_before_date">Before date</string>
-    <string name="compact_widget_zodiac_after_date">After date</string>
-    <string name="compact_widget_text_size_title">Metin boyutu</string>
-    <string name="compact_widget_highlight_title">Today highlighting</string>
-    <string name="compact_widget_highlight_opacity_title">Arka plan opaklığı</string>
-    <string name="compact_widget_highlight_color_title">Arka plan rengi</string>
-    <string name="compact_widget_highlight_text_color_title">Metin rengi</string>
-    <string name="compact_widget_turns">%d</string>
-    <string name="compact_widget_today">Bugün!</string>
-    <string name="compact_widget_tomorrow">Yarın</string>
-    <plurals name="compact_widget_in_days">
-        <item quantity="one">%d day</item>
-        <item quantity="other">%d days</item>
-    </plurals>
-    <string name="compact_widget_preview_days_2">7 gün</string>
-    <string name="compact_widget_preview_days_3">15 gün</string>
     <!-- Search -->
     <string name="search_event">Ara…</string>
     <string name="search_no_result_title">Sonuç bulunamadı</string>

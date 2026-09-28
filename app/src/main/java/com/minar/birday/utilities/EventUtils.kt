@@ -2,13 +2,18 @@ package com.minar.birday.utilities
 
 import android.content.Context
 import android.text.format.DateFormat
+import androidx.preference.PreferenceManager
 import com.minar.birday.R
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import com.minar.birday.model.EventType
+import com.minar.birday.persistence.LocalDateTypeConverter
+import java.text.NumberFormat
 import java.time.LocalDate
+import java.time.MonthDay
 import java.time.Period
+import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.time.temporal.ChronoUnit
@@ -33,7 +38,8 @@ fun resultToEvent(eventResult: EventResult) = Event(
     originalDate = eventResult.originalDate,
     yearMatter = eventResult.yearMatter,
     notes = eventResult.notes,
-    image = eventResult.image
+    image = eventResult.image,
+    calendar = eventResult.calendar
 )
 
 // Transform an event in a result event
@@ -47,7 +53,8 @@ fun eventToResult(event: Event) = EventResult(
     nextDate = getNextDate(event.originalDate),
     yearMatter = event.yearMatter,
     notes = event.notes,
-    image = event.image
+    image = event.image,
+    calendar = event.calendar
 )
 
 // Simply returns the next date for a given date
@@ -227,6 +234,104 @@ fun getNextYears(eventResult: EventResult): Int {
     if (eventResult.yearMatter!!) years =
         eventResult.nextDate!!.year - eventResult.originalDate.year
     return if (years <= -1 && eventResult.yearMatter) 0 else years
+}
+
+// A round number of days lived, celebrated like a birthday
+const val DAYS_MILESTONE = 1000L
+
+// The whole days lived feature (counter, celebrations, notifications) is off unless opted in
+fun daysMilestonesEnabled(context: Context) = PreferenceManager
+    .getDefaultSharedPreferences(context)
+    .getBoolean("days_milestones", false)
+
+// Days since the birth. Only a birthday with a known year, already happened, has an answer
+fun getDaysLived(eventResult: EventResult, on: LocalDate = LocalDate.now()): Long? {
+    if (eventResult.type != EventCode.BIRTHDAY.name || eventResult.yearMatter != true) return null
+    val days = ChronoUnit.DAYS.between(eventResult.originalDate, on)
+    return if (days >= 0) days else null
+}
+
+// Whether the given day is a milestone for this person (the day of birth itself is not)
+fun isDaysMilestone(eventResult: EventResult, on: LocalDate = LocalDate.now()): Boolean {
+    val days = getDaysLived(eventResult, on) ?: return false
+    return days > 0 && days % DAYS_MILESTONE == 0L
+}
+
+// The days lived with the digits grouped as the locale wants them, "10,000" or "10.000"
+fun formatDaysLived(days: Long): String = NumberFormat.getIntegerInstance().format(days)
+
+// Same shape as formatEventList, with the milestone in place of the age
+fun formatMilestoneList(
+    events: List<EventResult>,
+    surnameFirst: Boolean,
+    context: Context,
+    on: LocalDate = LocalDate.now(),
+): String {
+    var formattedEventList = ""
+    events.take(3).forEachIndexed { index, event ->
+        if (index != 0) formattedEventList += ", "
+        formattedEventList +=
+            if (events.size == 1) formatName(event, surnameFirst) else event.name
+        val days = getDaysLived(event, on) ?: return@forEachIndexed
+        formattedEventList += ", " + context.resources.getQuantityString(
+            R.plurals.days_lived_count,
+            days.coerceAtMost(Int.MAX_VALUE.toLong()).toInt(),
+            formatDaysLived(days)
+        )
+    }
+    if (events.size > 3) formattedEventList += ", ${context.getString(R.string.event_others)}"
+    return formattedEventList
+}
+
+// Keys of the card at the top of the settings, where the user tells who they are
+const val PREF_USER_NAME = "user_name"
+const val PREF_USER_BIRTHDAY = "user_birthday"
+
+// The user's own name and birthday. Both are needed to celebrate, one without the other is nothing
+fun getUserBirthday(context: Context): Pair<String, LocalDate>? {
+    val prefs = PreferenceManager.getDefaultSharedPreferences(context)
+    val name = prefs.getString(PREF_USER_NAME, null)?.trim().orEmpty()
+    val birthday = prefs.getString(PREF_USER_BIRTHDAY, null)
+        ?.let { runCatching { LocalDate.parse(it) }.getOrNull() }
+    return if (name.isNotEmpty() && birthday != null) name to birthday else null
+}
+
+// Whether a day is the user's birthday. February 29 follows the same rule as the events do
+fun isUserBirthday(birthday: LocalDate, on: LocalDate = LocalDate.now()): Boolean {
+    if (birthday.monthValue == 2 && birthday.dayOfMonth == 29 && !on.isLeapYear) {
+        val substitute =
+            if (LocalDateTypeConverter.useFebruary28) MonthDay.of(2, 28) else MonthDay.of(3, 1)
+        return MonthDay.from(on) == substitute
+    }
+    return MonthDay.from(birthday) == MonthDay.from(on)
+}
+
+// The next day the user is celebrated, today included. There's always one within a year
+fun nextUserBirthday(birthday: LocalDate, from: LocalDate = LocalDate.now()): LocalDate =
+    generateSequence(from) { it.plusDays(1) }.take(367).first { isUserBirthday(birthday, it) }
+
+// Unbirthdays (#29) are off unless opted in
+fun unbirthdaysEnabled(context: Context) = PreferenceManager
+    .getDefaultSharedPreferences(context)
+    .getBoolean("unbirthdays", false)
+
+// A 13th falls on each day of the week within 14 months, but a 31st can take years
+private const val UNBIRTHDAY_SEARCH_MONTHS = 120L
+
+// The next day, today included, with the same day of the month and day of the week as the birth,
+// like Friday the 13th for someone born on a Friday the 13th. It can also be the birthday itself
+fun getNextUnbirthday(eventResult: EventResult, from: LocalDate = LocalDate.now()): LocalDate? {
+    if (eventResult.type != EventCode.BIRTHDAY.name || eventResult.yearMatter != true) return null
+    val birth = eventResult.originalDate
+    if (birth.isAfter(from)) return null
+    val firstMonth = YearMonth.from(from)
+    for (offset in 0 until UNBIRTHDAY_SEARCH_MONTHS) {
+        val month = firstMonth.plusMonths(offset)
+        if (!month.isValidDay(birth.dayOfMonth)) continue
+        val candidate = month.atDay(birth.dayOfMonth)
+        if (!candidate.isBefore(from) && candidate.dayOfWeek == birth.dayOfWeek) return candidate
+    }
+    return null
 }
 
 // Get the decade of birth

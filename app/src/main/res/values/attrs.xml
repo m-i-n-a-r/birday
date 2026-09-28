@@ -4,6 +4,14 @@
     <!-- Translucent wash of the accent, for gradients that fade over content -->
     <attr name="colorAccentVeil" format="color" />
 
+    <!-- Background of the tonal cards. A surface container, lifted from the black in Amoled -->
+    <attr name="colorTonalCard" format="color" />
+
+
+    <declare-styleable name="CenteredFlowLayout">
+        <attr name="centeredFlowHorizontalGap" format="dimension" />
+        <attr name="centeredFlowVerticalGap" format="dimension" />
+    </declare-styleable>
 
     <declare-styleable name="AppWidgetAttrs">
         <attr name="appWidgetPadding" format="dimension" />

@@ -6,86 +6,122 @@
         android:layout="@layout/experimental_disclaimer_row"
         android:selectable="false" />
 
-    <!-- Single notifications instead of grouped notifications -->
-    <SwitchPreferenceCompat
-        android:defaultValue="true"
-        android:key="grouped_notifications"
-        android:summaryOff="@string/grouped_notifications_description_off"
-        android:summaryOn="@string/grouped_notifications_description_on"
-        android:title="@string/grouped_notifications_title"
-        android:widgetLayout="@layout/preference_switch_widget"
-        app:iconSpaceReserved="false" />
+    <!-- Advanced features, kept here so the main screen stays simple: dates and names -->
+    <PreferenceCategory
+        android:key="experimental_events"
+        android:layout="@layout/preference_category_row"
+        android:title="@string/app_behavior"
+        app:icon="@drawable/ic_app_behavior_24dp">
 
+        <!-- A lunar or lunisolar calendar new events can recur by, each event keeps its own -->
+        <ListPreference
+            android:defaultValue="none"
+            android:entries="@array/alternativeCalendars"
+            android:entryValues="@array/alternativeCalendarValues"
+            android:key="alternative_calendar"
+            android:summary="%s"
+            android:title="@string/alternative_calendar_title"
+            app:iconSpaceReserved="false" />
 
-    <!-- Don't loop animated vector drawables -->
-    <SwitchPreferenceCompat
-        android:defaultValue="true"
-        android:key="loop_avd"
-        android:summaryOff="@string/loop_avd_description_off"
-        android:summaryOn="@string/loop_avd_description_on"
-        android:title="@string/loop_avd_title"
-        android:widgetLayout="@layout/preference_switch_widget"
-        app:iconSpaceReserved="false" />
+        <!-- Days lived counter, and every 1000 days celebrated and notified like a birthday -->
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="days_milestones"
+            android:summaryOff="@string/days_milestones_description_off"
+            android:summaryOn="@string/days_milestones_description_on"
+            android:title="@string/days_milestones_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
 
-    <!-- Order events alphabetically (by first or last name, depending on the surname first option) -->
-    <SwitchPreferenceCompat
-        android:defaultValue="false"
-        android:key="order_alphabetically"
-        android:summaryOff="@string/order_alphabetically_description_off"
-        android:summaryOn="@string/order_alphabetically_description_on"
-        android:title="@string/order_alphabetically_title"
-        android:widgetLayout="@layout/preference_switch_widget"
-        app:iconSpaceReserved="false" />
+        <!-- Next day with the same day of the month and day of the week as the birth (#29) -->
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="unbirthdays"
+            android:summaryOff="@string/unbirthdays_description_off"
+            android:summaryOn="@string/unbirthdays_description_on"
+            android:title="@string/unbirthdays_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
 
-    <!-- Quickly delete searched events -->
-    <SwitchPreferenceCompat
-        android:defaultValue="false"
-        android:key="delete_search"
-        android:summaryOff="@string/delete_search_description_off"
-        android:summaryOn="@string/delete_search_description_on"
-        android:title="@string/delete_search_title"
-        android:widgetLayout="@layout/preference_switch_widget"
-        app:iconSpaceReserved="false" />
+        <!-- Order events alphabetically (by first or last name, depending on the surname first option) -->
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="order_alphabetically"
+            android:summaryOff="@string/order_alphabetically_description_off"
+            android:summaryOn="@string/order_alphabetically_description_on"
+            android:title="@string/order_alphabetically_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
 
-    <!-- Ignore or replace duplicate events when importing -->
-    <SwitchPreferenceCompat
-        android:defaultValue="true"
-        android:key="replace_on_conflict"
-        android:summaryOff="@string/replace_on_conflict_description_off"
-        android:summaryOn="@string/replace_on_conflict_description_on"
-        android:title="@string/replace_on_conflict_title"
-        android:widgetLayout="@layout/preference_switch_widget"
-        app:iconSpaceReserved="false" />
+        <!-- Keep titles, middle names and suffixes when reading names from contacts -->
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="contacts_full_name"
+            android:summaryOff="@string/contacts_full_name_description_off"
+            android:summaryOn="@string/contacts_full_name_description_on"
+            android:title="@string/contacts_full_name_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
 
-    <!-- Auto export on each modification or when the app is closed -->
-    <SwitchPreferenceCompat
-        android:defaultValue="false"
-        android:key="auto_export"
-        android:summaryOff="@string/auto_export_description_off"
-        android:summaryOn="@string/auto_export_description_on"
-        android:title="@string/auto_export_title"
-        android:widgetLayout="@layout/preference_switch_widget"
-        app:iconSpaceReserved="false" />
+    </PreferenceCategory>
 
-    <!-- Save events on local calendar -->
-    <com.minar.birday.preferences.backup.CalendarExporter android:layout="@layout/calendar_export_row" />
+    <!-- Files and data -->
+    <PreferenceCategory
+        android:key="experimental_data"
+        android:layout="@layout/preference_category_row"
+        android:title="@string/import_export"
+        app:icon="@drawable/ic_backup_restore_24dp">
 
-    <!-- Import from CSV -->
-    <com.minar.birday.preferences.backup.CsvImporter android:layout="@layout/csv_import_row" />
+        <!-- Ignore or replace duplicate events when importing -->
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="replace_on_conflict"
+            android:summaryOff="@string/replace_on_conflict_description_off"
+            android:summaryOn="@string/replace_on_conflict_description_on"
+            android:title="@string/replace_on_conflict_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
 
-    <!-- Export to CSV -->
-    <com.minar.birday.preferences.backup.CsvExporter android:layout="@layout/csv_export_row" />
+        <!-- Save events on local calendar -->
+        <com.minar.birday.preferences.backup.CalendarExporter android:layout="@layout/calendar_export_row" />
 
-    <!-- Import from JSON -->
-    <com.minar.birday.preferences.backup.JsonImporter android:layout="@layout/json_import_row" />
+        <!-- Import from CSV -->
+        <com.minar.birday.preferences.backup.CsvImporter android:layout="@layout/csv_import_row" />
 
-    <!-- Export to JSON -->
-    <com.minar.birday.preferences.backup.JsonExporter android:layout="@layout/json_export_row" />
+        <!-- Export to CSV -->
+        <com.minar.birday.preferences.backup.CsvExporter android:layout="@layout/csv_export_row" />
 
-    <!-- Add demo entries (mostly VIP) -->
-    <com.minar.birday.preferences.standard.AddDemoEntriesPreference android:layout="@layout/add_demo_entries_row" />
+        <!-- Import from JSON -->
+        <com.minar.birday.preferences.backup.JsonImporter android:layout="@layout/json_import_row" />
 
-    <!-- Clear DB (with confirmation dialog) -->
-    <com.minar.birday.preferences.standard.ClearDBPreference android:layout="@layout/clear_db_row" />
+        <!-- Export to JSON -->
+        <com.minar.birday.preferences.backup.JsonExporter android:layout="@layout/json_export_row" />
+
+    </PreferenceCategory>
+
+    <!-- Anything else -->
+    <PreferenceCategory
+        android:key="experimental_extra"
+        android:layout="@layout/preference_category_row"
+        android:title="@string/troubleshoot"
+        app:icon="@drawable/ic_troubleshoot_24dp">
+
+        <!-- Don't loop animated vector drawables -->
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="loop_avd"
+            android:summaryOff="@string/loop_avd_description_off"
+            android:summaryOn="@string/loop_avd_description_on"
+            android:title="@string/loop_avd_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
+
+        <!-- Add demo entries (mostly VIP) -->
+        <com.minar.birday.preferences.standard.AddDemoEntriesPreference android:layout="@layout/add_demo_entries_row" />
+
+        <!-- Clear DB (with confirmation dialog) -->
+        <com.minar.birday.preferences.standard.ClearDBPreference android:layout="@layout/clear_db_row" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

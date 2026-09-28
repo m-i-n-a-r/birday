@@ -68,6 +68,19 @@
             app:layout_constraintTop_toBottomOf="@id/detailsEventName"
             app:srcCompat="@drawable/animated_ripple_circle" />
 
+        <View
+            android:id="@+id/detailsEventImageGlow"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/image_glow"
+            android:importantForAccessibility="no"
+            android:scaleX="@dimen/image_glow_scale"
+            android:scaleY="@dimen/image_glow_scale"
+            app:layout_constraintBottom_toBottomOf="@id/detailsEventImage"
+            app:layout_constraintEnd_toEndOf="@id/detailsEventImage"
+            app:layout_constraintStart_toStartOf="@id/detailsEventImage"
+            app:layout_constraintTop_toTopOf="@id/detailsEventImage" />
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/detailsEventImage"
             android:layout_width="0dp"
@@ -81,9 +94,7 @@
             app:layout_constraintEnd_toEndOf="@id/detailsEventImageBackground"
             app:layout_constraintStart_toStartOf="@id/detailsEventImageBackground"
             app:layout_constraintTop_toTopOf="@id/detailsEventImageBackground"
-            app:shapeAppearanceOverlay="@style/roundedImageView"
-            app:strokeColor="?attr/colorOutline"
-            app:strokeWidth="@dimen/card_stroke" />
+            app:shapeAppearanceOverlay="@style/roundedImageView" />
 
         <ImageView
             android:id="@+id/detailsClearBackground"
@@ -170,40 +181,6 @@
 
         </com.facebook.shimmer.ShimmerFrameLayout>
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/detailsGuideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent=".5" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/detailsNextAge"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/in_row_padding"
-            android:padding="@dimen/in_row_padding"
-            android:text="@string/next_age"
-            android:textAlignment="viewEnd"
-            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-            android:textColor="?attr/colorOutline"
-            app:layout_constraintEnd_toStartOf="@id/detailsGuideline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detailsCountdownShimmer" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/detailsNextAgeValue"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/in_row_padding"
-            android:padding="@dimen/in_row_padding"
-            android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-            app:layout_constraintBottom_toBottomOf="@id/detailsNextAge"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/detailsGuideline"
-            app:layout_constraintTop_toTopOf="@id/detailsNextAge" />
-
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detailsNextAgeYears"
             android:layout_width="0dp"
@@ -222,59 +199,212 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailsDivider" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/detailsZodiacSign"
+        <!-- The facts about the event as translucent tonal pills, wrapping on as many lines as
+             they need and letting the zodiac sign behind them show through -->
+        <com.minar.birday.views.CenteredFlowLayout
+            android:id="@+id/detailsInfoPills"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/in_row_padding"
-            android:padding="@dimen/in_row_padding"
-            android:text="@string/zodiac_sign"
-            android:textAlignment="viewEnd"
-            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-            android:textColor="?attr/colorOutline"
-            app:layout_constraintEnd_toStartOf="@+id/detailsGuideline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detailsNextAge" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/detailsZodiacSignValue"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/in_row_padding"
-            android:padding="@dimen/in_row_padding"
-            android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-            app:layout_constraintBottom_toBottomOf="@id/detailsZodiacSign"
+            android:layout_marginTop="@dimen/form_vertical_margin"
+            app:centeredFlowHorizontalGap="@dimen/info_pill_gap"
+            app:centeredFlowVerticalGap="@dimen/info_pill_gap"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/detailsGuideline"
-            app:layout_constraintTop_toTopOf="@id/detailsZodiacSign" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/detailsChineseSign"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/in_row_padding"
-            android:padding="@dimen/in_row_padding"
-            android:text="@string/chinese_zodiac_sign"
-            android:textAlignment="viewEnd"
-            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-            android:textColor="?attr/colorOutline"
-            app:layout_constraintEnd_toStartOf="@+id/detailsGuideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detailsZodiacSign" />
+            app:layout_constraintTop_toBottomOf="@+id/detailsCountdownShimmer">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/detailsChineseSignValue"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/in_row_padding"
-            android:padding="@dimen/in_row_padding"
-            android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-            app:layout_constraintBottom_toBottomOf="@id/detailsChineseSign"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/detailsGuideline"
-            app:layout_constraintTop_toTopOf="@id/detailsChineseSign" />
+            <LinearLayout
+                android:id="@+id/detailsNextAgePill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/info_pill_background"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/info_pill_padding_horizontal"
+                android:paddingVertical="@dimen/info_pill_padding_vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/detailsNextAgeValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/app_name"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="?attr/colorOnSecondaryContainer"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/detailsNextAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.75"
+                    android:gravity="center"
+                    android:text="@string/next_age"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                    android:textColor="?attr/colorOnSecondaryContainer" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/detailsZodiacSignPill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/info_pill_background"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/info_pill_padding_horizontal"
+                android:paddingVertical="@dimen/info_pill_padding_vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/detailsZodiacSignValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/app_name"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="?attr/colorOnSecondaryContainer"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/detailsZodiacSign"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.75"
+                    android:gravity="center"
+                    android:text="@string/zodiac_sign"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                    android:textColor="?attr/colorOnSecondaryContainer" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/detailsChineseSignPill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/info_pill_background"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/info_pill_padding_horizontal"
+                android:paddingVertical="@dimen/info_pill_padding_vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/detailsChineseSignValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/app_name"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="?attr/colorOnSecondaryContainer"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/detailsChineseSign"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.75"
+                    android:gravity="center"
+                    android:text="@string/chinese_zodiac_sign"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                    android:textColor="?attr/colorOnSecondaryContainer" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/detailsDaysLivedPill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/info_pill_background"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/info_pill_padding_horizontal"
+                android:paddingVertical="@dimen/info_pill_padding_vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/detailsDaysLivedValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/app_name"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="?attr/colorOnSecondaryContainer"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/detailsDaysLived"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.75"
+                    android:gravity="center"
+                    android:text="@string/days_lived"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                    android:textColor="?attr/colorOnSecondaryContainer" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/detailsUnbirthdayPill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/info_pill_background"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/info_pill_padding_horizontal"
+                android:paddingVertical="@dimen/info_pill_padding_vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/detailsUnbirthdayValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/app_name"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="?attr/colorOnSecondaryContainer"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/detailsUnbirthday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.75"
+                    android:gravity="center"
+                    android:text="@string/next_unbirthday"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                    android:textColor="?attr/colorOnSecondaryContainer" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/detailsCalendarPill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/info_pill_background"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/info_pill_padding_horizontal"
+                android:paddingVertical="@dimen/info_pill_padding_vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/detailsCalendarValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/app_name"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="?attr/colorOnSecondaryContainer"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/detailsCalendar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.75"
+                    android:gravity="center"
+                    android:text="@string/calendar_chinese"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                    android:textColor="?attr/colorOnSecondaryContainer" />
+
+            </LinearLayout>
+
+        </com.minar.birday.views.CenteredFlowLayout>
 
         <Button
             android:id="@+id/detailsContactButton"
@@ -294,7 +424,7 @@
             app:layout_constraintBottom_toTopOf="@id/detailsEditButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detailsChineseSign"
+            app:layout_constraintTop_toBottomOf="@id/detailsInfoPills"
             app:layout_constraintVertical_bias="1"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintWidth_max="@dimen/details_button_max_width"
@@ -376,6 +506,16 @@
             app:layout_constraintTop_toBottomOf="@id/detailsShareButton"
             app:layout_constraintWidth_max="@dimen/details_button_max_width"
             app:rippleColor="?attr/colorPrimary" />
+
+        <!-- Last, so the confetti of a days lived milestone falls over everything else -->
+        <nl.dionsegijn.konfetti.KonfettiView
+            android:id="@+id/detailsConfettiView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 

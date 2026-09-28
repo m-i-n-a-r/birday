@@ -5,7 +5,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="linear_vertical_margin">22dp</dimen>
     <dimen name="form_vertical_margin">8dp</dimen>
-    <dimen name="bottom_navbar_elevation">0.1dp</dimen>
     <dimen name="placeholders_padding">48dp</dimen>
     <dimen name="card_margin">6dp</dimen>
     <dimen name="card_padding">8dp</dimen>
@@ -21,12 +20,23 @@
     <dimen name="event_type_badge_padding">5dp</dimen>
     <dimen name="between_row_padding">8dp</dimen>
     <dimen name="recycler_padding">18dp</dimen>
-    <dimen name="recycler_extra_space_top">42dp</dimen>
+    <!-- The list starts this far up behind the card, the radius of its bottom corners -->
+    <dimen name="recycler_under_card">@dimen/tonal_card_radius</dimen>
+    <!-- The space above the first row when the list starts behind the card: 42dp plus the radius -->
+    <dimen name="recycler_extra_space_top_under_card">70dp</dimen>
     <dimen name="dialog_actions_padding">40dp</dimen>
     <dimen name="dialog_horizontal_padding">24dp</dimen>
     <dimen name="details_button_max_width">320dp</dimen>
     <dimen name="settings_row_padding">16dp</dimen>
-    <dimen name="fast_scroll_corners">32dp</dimen>
+    <dimen name="fast_scroll_width">6dp</dimen>
+    <dimen name="fast_scroll_thumb_height">48dp</dimen>
+    <!-- The bubble next to the thumb, with the month or the letter -->
+    <dimen name="fast_scroll_popup_size">64dp</dimen>
+    <dimen name="fast_scroll_popup_margin">16dp</dimen>
+    <dimen name="fast_scroll_popup_padding">16dp</dimen>
+    <!-- The thumb from the edge of the list, and the width where a touch grabs it -->
+    <dimen name="fast_scroll_edge_inset">2dp</dimen>
+    <dimen name="fast_scroll_touch_width">32dp</dimen>
     <dimen name="mini_fab_opacity">0.9</dimen>
     <dimen name="note_icon_opacity">0.6</dimen>
     <dimen name="event_countdown_opacity">0.3</dimen>
@@ -98,4 +108,35 @@
 
     <!-- Material 3 asks for 48dp of touch target on a menu row -->
     <dimen name="dropdown_item_min_height">48dp</dimen>
+    <!-- Details info pills -->
+    <dimen name="info_pill_radius">20dp</dimen>
+    <dimen name="info_pill_padding_horizontal">16dp</dimen>
+    <dimen name="info_pill_padding_vertical">10dp</dimen>
+    <dimen name="info_pill_gap">8dp</dimen>
+    <!-- Tonal elevated cards, the look replacing the outlined ones -->
+    <dimen name="tonal_card_radius">28dp</dimen>
+    <!-- The settings as tiles: the corners of a group, those between its tiles, the gap between
+         the tiles and the space after the last one -->
+    <dimen name="preference_tile_radius">24dp</dimen>
+    <dimen name="preference_tile_radius_inner">6dp</dimen>
+    <dimen name="preference_tile_gap">3dp</dimen>
+    <dimen name="preference_tile_group_end">12dp</dimen>
+    <!-- The title of a group: its icon lines up with the text of the tiles, 16dp of margin and
+         16dp of padding -->
+    <dimen name="preference_category_padding_start">32dp</dimen>
+    <dimen name="preference_category_padding_top">16dp</dimen>
+    <dimen name="preference_category_padding_bottom">14dp</dimen>
+    <dimen name="preference_category_icon_size">24dp</dimen>
+    <dimen name="preference_category_icon_gap">14dp</dimen>
+    <dimen name="tonal_card_elevation">6dp</dimen>
+    <dimen name="tonal_card_radius_inner">20dp</dimen>
+    <dimen name="tonal_card_image_size">56dp</dimen>
+    <dimen name="user_sheet_image_size">96dp</dimen>
+    <!-- How far the picture halo reaches past the picture -->
+    <item name="image_glow_scale" format="float" type="dimen">1.25</item>
+    <!-- The search field has no floating label: same room above and below the text, and as tall
+         as the calendar row of the favorites card -->
+    <dimen name="search_field_padding_vertical">13dp</dimen>
+    <!-- The picture next to the event type, as tall as the field beside it -->
+    <dimen name="form_image_size">56dp</dimen>
 </resources>

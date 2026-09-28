@@ -19,6 +19,7 @@ import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
+import com.minar.birday.preferences.PreferenceTilesDecoration
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.persistence.LocalDateTypeConverter
 import com.minar.birday.utilities.addNavbarClearance
@@ -191,5 +192,8 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
         val recyclerView = view.findViewById<RecyclerView>(androidx.preference.R.id.recycler_view)
         recyclerView.clipToPadding = false
         recyclerView.addNavbarClearance()
+        // Tiles instead of dividers: the groups already tell the categories apart
+        setDivider(null)
+        recyclerView.addItemDecoration(PreferenceTilesDecoration(this))
     }
 }

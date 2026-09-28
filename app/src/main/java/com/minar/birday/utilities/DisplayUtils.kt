@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -13,6 +14,9 @@ import androidx.core.view.updatePadding
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.minar.birday.R
 import com.google.android.material.R as MaterialR
+import nl.dionsegijn.konfetti.KonfettiView
+import nl.dionsegijn.konfetti.models.Shape
+import nl.dionsegijn.konfetti.models.Size
 
 // The text size the compact widget uses when the user leaves the size on "Auto", read from the
 // Material body style so the widget follows the same scale as the rest of the app.
@@ -176,3 +180,57 @@ fun View.addInsetsByMargin(
         return@setOnApplyWindowInsetsListener insets
     }
 }
+
+// The birthday confetti (stream, 4 colors, 4 shapes), falling from the top edge of this view
+fun KonfettiView.streamBirdayConfetti(context: Context) {
+    birdayConfetti(context)
+        .setDirection(0.0, 359.0)
+        .setSpeed(0.5f, 4f)
+        .setTimeToLive(2000L)
+        .setPosition(-50f, width + 50f, -50f, -50f)
+        .streamFor(200, 2000L)
+}
+
+// The user's own birthday gets its own party: two party poppers going off from the bottom
+// corners, towards the middle of the screen. Angles are clockwise from the right, 270 is up
+fun KonfettiView.burstFromCorners(context: Context) {
+    birdayConfetti(context)
+        .setDirection(POPPER_LEFT_MIN_ANGLE, POPPER_LEFT_MAX_ANGLE)
+        .setSpeed(POPPER_MIN_SPEED, POPPER_MAX_SPEED)
+        .setTimeToLive(POPPER_TIME_TO_LIVE)
+        .setPosition(0f, height.toFloat())
+        .burst(POPPER_AMOUNT)
+    birdayConfetti(context)
+        .setDirection(POPPER_RIGHT_MIN_ANGLE, POPPER_RIGHT_MAX_ANGLE)
+        .setSpeed(POPPER_MIN_SPEED, POPPER_MAX_SPEED)
+        .setTimeToLive(POPPER_TIME_TO_LIVE)
+        .setPosition(width.toFloat(), height.toFloat())
+        .burst(POPPER_AMOUNT)
+}
+
+private const val POPPER_LEFT_MIN_ANGLE = 285.0
+private const val POPPER_LEFT_MAX_ANGLE = 335.0
+private const val POPPER_RIGHT_MIN_ANGLE = 205.0
+private const val POPPER_RIGHT_MAX_ANGLE = 255.0
+private const val POPPER_MIN_SPEED = 12f
+private const val POPPER_MAX_SPEED = 24f
+private const val POPPER_TIME_TO_LIVE = 3000L
+private const val POPPER_AMOUNT = 120
+
+// What every Birday confetti shares: the theme colors and the four shapes
+private fun KonfettiView.birdayConfetti(context: Context) = build()
+    .addColors(
+        getThemeColor(R.attr.colorTertiary, context),
+        getThemeColor(R.attr.colorSecondary, context),
+        getThemeColor(R.attr.colorPrimary, context),
+        getThemeColor(R.attr.colorOnSurface, context),
+    )
+    .setRotationEnabled(true)
+    .setFadeOutEnabled(true)
+    .addShapes(
+        Shape.DrawableShape(ContextCompat.getDrawable(context, R.drawable.ic_triangle_24dp)!!),
+        Shape.DrawableShape(ContextCompat.getDrawable(context, R.drawable.ic_favorites_24dp)!!),
+        Shape.DrawableShape(ContextCompat.getDrawable(context, R.drawable.ic_star_24dp)!!),
+        Shape.DrawableShape(ContextCompat.getDrawable(context, R.drawable.ic_octagram_24dp)!!)
+    )
+    .addSizes(Size(8), Size(12), Size(16))

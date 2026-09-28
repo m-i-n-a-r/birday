@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/userBirthdayBottomSheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:padding="@dimen/linear_vertical_margin">
+
+            <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+                android:id="@+id/dragHandle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/userBirthdayTitleImage"
+                android:layout_width="@dimen/bottom_sheet_icon_size"
+                android:layout_height="@dimen/bottom_sheet_icon_size"
+                android:layout_marginStart="@dimen/activity_vertical_margin"
+                android:contentDescription="@string/user_card_title"
+                app:layout_constraintBottom_toBottomOf="@id/userBirthdayTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/userBirthdayTitle" />
+
+            <TextView
+                android:id="@+id/userBirthdayTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/activity_horizontal_margin"
+                android:paddingVertical="@dimen/activity_vertical_margin"
+                android:text="@string/user_card_title"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/userBirthdayTitleImage"
+                app:layout_constraintTop_toBottomOf="@id/dragHandle" />
+
+            <View
+                android:id="@+id/userBirthdayPhotoGlow"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/image_glow"
+                android:importantForAccessibility="no"
+                android:scaleX="@dimen/image_glow_scale"
+                android:scaleY="@dimen/image_glow_scale"
+                app:layout_constraintBottom_toBottomOf="@id/userBirthdayPhoto"
+                app:layout_constraintEnd_toEndOf="@id/userBirthdayPhoto"
+                app:layout_constraintStart_toStartOf="@id/userBirthdayPhoto"
+                app:layout_constraintTop_toTopOf="@id/userBirthdayPhoto" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/userBirthdayPhoto"
+                android:layout_width="@dimen/user_sheet_image_size"
+                android:layout_height="@dimen/user_sheet_image_size"
+                android:layout_marginTop="@dimen/linear_vertical_margin"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:contentDescription="@string/user_card_title"
+                android:focusable="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/placeholder_birthday_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/userBirthdayTitle"
+                app:shapeAppearanceOverlay="@style/roundedImageView" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/userNameLayout"
+                style="@style/Widget.App.TextInputLayout.Tonal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/linear_vertical_margin"
+                android:hint="@string/insert_name_hint"
+                app:hintAnimationEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/userBirthdayPhoto"
+                app:startIconDrawable="@drawable/ic_cool_black_24dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/userName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionDone"
+                    android:inputType="textCapWords|textPersonName"
+                    android:maxLength="30"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                    android:textCursorDrawable="@drawable/custom_cursor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/userBirthdayLayout"
+                style="@style/Widget.App.TextInputLayout.Tonal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/form_vertical_margin"
+                android:hint="@string/birth_date"
+                app:hintAnimationEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/userNameLayout"
+                app:startIconDrawable="@drawable/ic_date_black_24dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/userBirthday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:inputType="none"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                    android:textCursorDrawable="@drawable/custom_cursor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/userBirthdaySave"
+                style="@style/Widget.Material3Expressive.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/linear_vertical_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:enabled="false"
+                android:text="@string/user_card_save"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/userBirthdayLayout" />
+
+            <Button
+                android:id="@+id/userBirthdayRemove"
+                style="@style/Widget.Material3Expressive.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/form_vertical_margin"
+                android:text="@string/user_card_remove"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/userBirthdaySave"
+                app:layout_constraintEnd_toStartOf="@id/userBirthdaySave"
+                app:layout_constraintTop_toTopOf="@id/userBirthdaySave" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

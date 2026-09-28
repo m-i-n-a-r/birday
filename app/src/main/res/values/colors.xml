@@ -12,21 +12,17 @@
     <color name="goodGrayTranslucent">#66959595</color>
     <color name="goodGrayTotalTranslucent">#3f959595</color>
     <color name="deepGray">#0f0f0f</color>
-    <color name="deepGrayLight">#3f3f3f</color>
     <color name="shadowGray">#d00f0f0f</color>
-    <color name="transparent">#00ffffff</color>
     <color name="redError">#70df5252</color>
 
     <!-- Light theme colors -->
     <color name="colorBackground">#ffffff</color>
-    <color name="colorPrimary">#ffffff</color>
     <color name="colorSurface">#f5f5f5</color>
     <color name="textColorPrimary">#1f1f1f</color>
     <color name="textColorSecondary">#252525</color>
 
     <!-- Dark theme colors -->
     <color name="colorBackgroundInverse">#1f1f1f</color>
-    <color name="colorPrimaryInverse">#1f1f1f</color>
     <color name="colorSurfaceInverse">#2f2f2f</color>
     <color name="textColorPrimaryInverse">#f0f0f0</color>
     <color name="textColorSecondaryInverse">#e5e5e5</color>
@@ -203,4 +199,6 @@
     <color name="colorAccentOnTertiaryContainer">@color/aquaOnTertiaryContainer</color>
 
 
+    <!-- Tonal cards in the Amoled themes: a shade above black, or they would vanish -->
+    <color name="amoledTonalCard">#FF151515</color>
 </resources>

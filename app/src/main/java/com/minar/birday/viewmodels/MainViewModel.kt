@@ -12,6 +12,7 @@ import com.minar.birday.model.Stat
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.StatsGenerator
+import com.minar.birday.utilities.refreshCalendarDates
 import com.minar.birday.workers.EventWorker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,10 +36,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     var randomStat = MutableLiveData<String>()
     private val eventDao: EventDao = EventDatabase.getBirdayDatabase(application).eventDao()
     var confettiDone: Boolean = false
+    // The user's own birthday is celebrated once per session, apart from the events
+    var userBirthdayCelebrated: Boolean = false
 
     init {
         searchString.value = ""
         selectedType.value = ""
+        refreshCalendars()
         // The Pair values are nullable as getting "liveData.value" can be null
         searchValues.apply {
             addSource(searchString) { value = it to selectedType.value }
@@ -89,12 +93,14 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         val replaceOnConflict = sharedPrefs.getBoolean("replace_on_conflict", true)
         if (replaceOnConflict)
             eventDao.insertEventReplace(event) else eventDao.insertEventIgnore(event)
+        refreshCalendarDates(getApplication())
     }
 
     fun insertAll(events: List<Event>) = viewModelScope.launch(Dispatchers.IO) {
         val replaceOnConflict = sharedPrefs.getBoolean("replace_on_conflict", true)
         if (replaceOnConflict)
             eventDao.insertAllEventReplace(events) else eventDao.insertAllEventIgnore(events)
+        refreshCalendarDates(getApplication())
     }
 
     fun delete(event: Event) = viewModelScope.launch(Dispatchers.IO) {
@@ -109,6 +115,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         val replaceOnConflict = sharedPrefs.getBoolean("replace_on_conflict", true)
         if (replaceOnConflict)
             eventDao.updateEventReplace(event) else eventDao.updateEventIgnore(event)
+        refreshCalendarDates(getApplication())
+    }
+
+    // The dates of the alternative calendars move day by day, and with the setting
+    fun refreshCalendars() = viewModelScope.launch(Dispatchers.IO) {
+        refreshCalendarDates(getApplication())
     }
 
     // Schedule the next work for the specified hour, nothing will happen if there's no event

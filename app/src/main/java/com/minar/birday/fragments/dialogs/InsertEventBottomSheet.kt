@@ -110,6 +110,19 @@ class InsertEventBottomSheet(
         var typeValue = EventCode.BIRTHDAY.name
         positiveButton.isEnabled = false
 
+        // The calendar of the event: its own when it has one, else the one in the settings. With
+        // none chosen the switch never shows and the event keeps what it had
+        val calendarGroup = binding.calendarGroup
+        val eventCalendar =
+            EventCalendar.fromKey(event?.calendar) ?: alternativeCalendar(act)
+        val calendarAvailable = alternativeCalendar(act) != null && eventCalendar != null
+        // The user's choice, kept aside while "without year" forces the Gregorian calendar
+        var alternativeChosen = event == null || event.calendar != null
+        if (calendarAvailable) {
+            calendarGroup.visibility = View.VISIBLE
+            binding.calendarAlternative.text = getString(eventCalendar.title)
+        }
+
         if (event != null) {
             typeValue = event.type!!
             nameValue = event.name
@@ -142,6 +155,11 @@ class InsertEventBottomSheet(
             var image: ByteArray? = null
             if (imageChosen)
                 image = bitmapToByteArray(eventImage.drawable.toBitmap())
+            // Without the year there's no day to convert from
+            val calendarValue =
+                if (!calendarAvailable) event?.calendar
+                else if (alternativeChosen && countYearValue) eventCalendar.key
+                else null
             // Use the data to create an event object and insert it in the db
             val tuple = if (event != null) Event(
                 id = event.id,
@@ -152,7 +170,8 @@ class InsertEventBottomSheet(
                 surname = surnameValue.smartFixName(),
                 favorite = event.favorite,
                 notes = event.notes,
-                image = image
+                image = image,
+                calendar = calendarValue
             ) else
                 Event(
                     id = 0,
@@ -162,6 +181,7 @@ class InsertEventBottomSheet(
                     yearMatter = countYearValue,
                     type = typeValue,
                     image = image,
+                    calendar = calendarValue,
                 )
             // Insert using another thread
             val thread = Thread {
@@ -265,11 +285,28 @@ class InsertEventBottomSheet(
         val lastDate = Calendar.getInstance()
         lastDate.set(eventDateValue.year, eventDateValue.monthValue - 1, eventDateValue.dayOfMonth)
 
+        // Without the year there's no day to convert from: Gregorian, and nothing else to pick
+        fun updateCalendarGroup() {
+            calendarGroup.check(
+                if (countYearValue && alternativeChosen) R.id.calendarAlternative
+                else R.id.calendarGregorian
+            )
+            binding.calendarGregorian.isEnabled = countYearValue
+            binding.calendarAlternative.isEnabled = countYearValue
+        }
+        updateCalendarGroup()
+        calendarGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
+            // Only a choice of the user, not the Gregorian forced by "without year"
+            if (!isChecked || !countYearValue) return@addOnButtonCheckedListener
+            alternativeChosen = checkedId == R.id.calendarAlternative
+        }
+
         // Update the boolean value on each click
         countYear.addOnButtonCheckedListener { _, checkedId, isChecked ->
             // The group reports the button leaving the selection too, only the incoming one counts
             if (!isChecked) return@addOnButtonCheckedListener
             countYearValue = checkedId == R.id.countYearOn
+            updateCalendarGroup()
             // Reformat the date field, if already filled, to show or hide the year
             if (!eventDate.text.isNullOrBlank())
                 eventDate.setText(

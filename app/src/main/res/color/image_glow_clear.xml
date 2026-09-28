@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Same hue at zero alpha: fading to transparent black would muddy the middle of the gradient -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:alpha="0" android:color="?attr/colorTertiary" />
+</selector>

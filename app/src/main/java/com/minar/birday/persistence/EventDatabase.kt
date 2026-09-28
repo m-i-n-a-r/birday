@@ -10,7 +10,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.minar.birday.model.Event
 
 
-@Database(entities = [Event::class], version = 11, exportSchema = false)
+@Database(entities = [Event::class], version = 12, exportSchema = false)
 @TypeConverters(LocalDateTypeConverter::class)
 abstract class EventDatabase : RoomDatabase() {
     abstract fun eventDao(): EventDao
@@ -38,6 +38,17 @@ abstract class EventDatabase : RoomDatabase() {
                 )
             }
         }
+        // Migration strategy to add the alternative calendars from version 11 to 12
+        private val MIGRATION_11_12: Migration = object : Migration(11, 12) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    "ALTER TABLE Event ADD COLUMN calendar TEXT DEFAULT NULL"
+                )
+                db.execSQL(
+                    "ALTER TABLE Event ADD COLUMN nextDateOverride TEXT DEFAULT NULL"
+                )
+            }
+        }
         fun getBirdayDatabase(context: Context): EventDatabase {
             // Every entry point (app, widgets, worker, importers) goes through here, so this is the
             // only place guaranteed to run before any date is read back from the database
@@ -54,6 +65,7 @@ abstract class EventDatabase : RoomDatabase() {
                 )
                     .addMigrations(MIGRATION_9_10)
                     .addMigrations(MIGRATION_10_11)
+                    .addMigrations(MIGRATION_11_12)
                     .build()
                 INSTANCE = instance
                 return instance

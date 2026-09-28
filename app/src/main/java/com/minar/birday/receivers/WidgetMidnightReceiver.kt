@@ -8,6 +8,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import com.minar.birday.utilities.refreshCalendarDates
 import com.minar.birday.widgets.CompactWidgetProvider
 import com.minar.birday.widgets.EventWidgetProvider
 import com.minar.birday.widgets.MinimalWidgetProvider
@@ -25,22 +26,35 @@ class WidgetMidnightReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         when (intent.action) {
             ACTION_MIDNIGHT_UPDATE, Intent.ACTION_BOOT_COMPLETED -> {
-                // Force-update every widget provider that has active instances
-                val appWidgetManager = AppWidgetManager.getInstance(context)
-                for (providerClass in ALL_PROVIDERS) {
-                    val ids = appWidgetManager.getAppWidgetIds(
-                        ComponentName(context, providerClass)
-                    )
-                    if (ids.isNotEmpty()) {
-                        val updateIntent = Intent(context, providerClass).apply {
-                            action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-                            putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
-                        }
-                        context.sendBroadcast(updateIntent)
+                // The alternative calendar dates of the new day come first, off the main thread
+                val pendingResult = goAsync()
+                Thread {
+                    try {
+                        refreshCalendarDates(context)
+                        updateAllWidgets(context)
+                    } finally {
+                        pendingResult.finish()
                     }
-                }
+                }.start()
                 // Reschedule for the next midnight
                 scheduleNextMidnight(context)
+            }
+        }
+    }
+
+    // Force-update every widget provider that has active instances
+    private fun updateAllWidgets(context: Context) {
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        for (providerClass in ALL_PROVIDERS) {
+            val ids = appWidgetManager.getAppWidgetIds(
+                ComponentName(context, providerClass)
+            )
+            if (ids.isNotEmpty()) {
+                val updateIntent = Intent(context, providerClass).apply {
+                    action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+                    putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+                }
+                context.sendBroadcast(updateIntent)
             }
         }
     }

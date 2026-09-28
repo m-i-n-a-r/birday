@@ -119,7 +119,8 @@
         <provider
             android:name=".integrations.AxirisSearchProvider"
             android:authorities="${applicationId}.axiris"
-            android:exported="true">
+            android:exported="true"
+            tools:ignore="ExportedContentProvider">
             <intent-filter>
                 <action android:name="com.minar.axiris.action.INTEGRATION" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -168,16 +169,6 @@
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
-
-        <service
-            android:name=".widgets.EventWidgetService"
-            android:foregroundServiceType="dataSync"
-            android:permission="android.permission.BIND_REMOTEVIEWS" />
-
-        <service
-            android:name=".widgets.CompactWidgetService"
-            android:foregroundServiceType="dataSync"
-            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <!-- Hosts the image cropper view for event pictures -->
         <activity

@@ -4,6 +4,16 @@
     android:layout_height="match_parent"
     android:theme="@style/WidgetTheme">
 
+    <!-- Behind the scrolling list, whose rows have no background of their own -->
+    <ImageView
+        android:id="@+id/compactWidgetListBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/widget_compact_row_bg_single"
+        android:visibility="gone" />
+
     <!-- List of upcoming events -->
     <ListView
         android:id="@+id/compactWidgetList"

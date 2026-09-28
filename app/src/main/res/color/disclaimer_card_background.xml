@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The experimental disclaimer: a tonal card of its own color, apart from the tiles below -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:alpha="0.45" android:color="?attr/colorPrimaryContainer" />
+</selector>

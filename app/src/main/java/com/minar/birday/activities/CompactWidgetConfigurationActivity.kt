@@ -18,7 +18,7 @@ import com.minar.birday.utilities.bodyMediumTextSizeSp
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 import com.minar.birday.utilities.applyUserTheme
 import com.minar.birday.widgets.CompactWidgetProvider
-import com.minar.birday.widgets.CompactWidgetRemoteViewsFactory
+import com.minar.birday.widgets.CompactWidgetRows
 import androidx.core.content.edit
 
 
@@ -61,6 +61,8 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
 
         setupOpacitySlider()
         setupPhotosSwitch()
+        binding.configurationScrollSwitch.isChecked =
+            sharedPrefs.getBoolean("widget_compact_scroll", false)
         setupDatePositionSpinner()
         setupZodiacPositionSpinner()
         setupTextSizeSlider()
@@ -86,7 +88,7 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
     }
 
     private fun setupOpacitySlider() {
-        val savedOpacity = sharedPrefs.getInt("widget_compact_opacity", 80)
+        val savedOpacity = sharedPrefs.getInt("widget_compact_opacity", 100)
         binding.configurationOpacitySlider.value = savedOpacity.toFloat()
         val opacityString = "$savedOpacity%"
         binding.configurationOpacityValue.text = opacityString
@@ -232,7 +234,7 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
         val hlTextColor = MaterialColors.getColor(this, MaterialR.attr.colorOnPrimaryContainer, Color.BLACK)
         val allPreviewZodiacIcons = getAllPreviewZodiacLists().flatten()
 
-        updatePreviewBackground(binding.previewContent, 100, bgColor)
+        updatePreviewBackground(binding.previewContent, binding.configurationOpacitySlider.value.toInt(), bgColor)
         updatePreviewGeneralTextColor(binding.previewContent, textColor)
         allPreviewZodiacIcons.forEach { (it as android.widget.ImageView).setColorFilter(textColor) }
         updatePreviewHighlight(binding.previewHighlightRow, hlBgColor, 100)
@@ -254,7 +256,7 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
             "lime", "green", "teal", "aqua", "lightBlue", "blue", "violet", "pink"
         )
         val palette = linkedMapOf<String, Int>()
-        names.forEach { palette[it] = CompactWidgetRemoteViewsFactory.resolveColor(this, it) }
+        names.forEach { palette[it] = CompactWidgetRows.resolveColor(this, it) }
         return palette
     }
 
@@ -304,7 +306,11 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
             val opacity = value.toInt()
             val opacityString = "$opacity%"
             opacityValue.text = opacityString
-            val color = allColors[selectedWidgetBgColor] ?: Color.BLACK
+            // With Monet the background is the surface color, the opacity is still this one
+            val color =
+                if (binding.configurationMonetSwitch.isChecked)
+                    MaterialColors.getColor(this, MaterialR.attr.colorSurface, Color.BLACK)
+                else allColors[selectedWidgetBgColor] ?: Color.BLACK
             updatePreviewBackground(previewContent, opacity, color)
         }
     }
@@ -321,7 +327,7 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
         val initHlBgColor = allColors[selectedHighlightBgColor] ?: getColor(R.color.red)
         val initHlTextColor = allColors[selectedHighlightTextColor] ?: Color.WHITE
 
-        val savedOpacity = sharedPrefs.getInt("widget_compact_opacity", 80)
+        val savedOpacity = binding.configurationOpacitySlider.value.toInt()
         val savedHighlightOpacity = sharedPrefs.getInt("widget_compact_highlight_opacity", 60)
         val allPreviewZodiacIcons = getAllPreviewZodiacLists().flatten()
 
@@ -338,6 +344,7 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
                 putBoolean("widget_compact_monet", binding.configurationMonetSwitch.isChecked)
                 putInt("widget_compact_opacity", binding.configurationOpacitySlider.value.toInt())
                 putBoolean("widget_compact_hide_images", binding.configurationShowPhotosSwitch.isChecked)
+                putBoolean("widget_compact_scroll", binding.configurationScrollSwitch.isChecked)
                 putInt("widget_compact_text_size", sliderToSp(binding.configurationTextSizeSlider.value.toInt()))
                 putInt("widget_compact_highlight_opacity", binding.configurationHighlightOpacitySlider.value.toInt())
                 putString("widget_compact_bg_color", getSelectedColorName(binding.bgColorPickerContainer))
@@ -452,7 +459,7 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
         }
         // Restore highlight countdown text color on the first row
         val hlColorName = getSelectedColorName(binding.textColorPickerContainer)
-        val hlTextColor = CompactWidgetRemoteViewsFactory.resolveColor(this, hlColorName)
+        val hlTextColor = CompactWidgetRows.resolveColor(this, hlColorName)
         updatePreviewHighlightText(binding.previewHighlightRow, hlTextColor)
     }
 
@@ -477,7 +484,7 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
     }
 
     private fun updatePreviewTextSize(container: android.view.ViewGroup, sp: Float) {
-        val smallSp = sp * CompactWidgetRemoteViewsFactory.DATE_TEXT_SCALE
+        val smallSp = sp * CompactWidgetRows.DATE_TEXT_SCALE
         for (i in 0 until container.childCount) {
             val row = container.getChildAt(i)
             if (row is android.view.ViewGroup) {

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Welcome to Birday</string>
-    <string name="app_name_extended">Birday - Event Manager</string>
     <string name="leave_review_title">Review Birday</string>
     <string name="leave_review_subtitle">Leave a review to help me with the app. Keep in mind that, donations aside, this app is completely free and ad-free!</string>
     <string name="yes_review">Review!</string>
@@ -15,7 +14,6 @@
     <string name="add_favorite">Add to favorites</string>
     <string name="stats">Statistics</string>
     <string name="no_stats">No stats to show!</string>
-    <string name="stats_summary">Stats summary</string>
     <string name="no_stats_description">You don\'t have enough events to generate stats. Add some and come back later!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday is helping you to remember a total of %d event</item>
@@ -35,7 +33,6 @@
     <string name="app_behavior">App behavior</string>
     <string name="additional_notification_name">Additional notification</string>
     <string name="additional_notification_description">Send an additional notification days before the event. %s</string>
-    <string name="no_additional_notification">No additional notification</string>
     <string name="one_day_before">One day before</string>
     <string name="two_days_before">Two days before</string>
     <string name="three_days_before">Three days before</string>
@@ -49,12 +46,9 @@
     <string name="vibration_name">Vibration</string>
     <string name="vibration_description_on">Vibrate when a button is pressed</string>
     <string name="vibration_description_off">No vibrations when a button is pressed</string>
-    <string name="date_format_name">Date format</string>
     <string name="notification_hour_name">Notification hour</string>
     <string name="notification_hour_description">%s \n\nPlease note that the notification might not work when the app is killed by the system in some Huawei, Xiaomi and OnePlus devices. Refer to dontkillmyapp.com for more information</string>
-    <string name="accent_description">Change the default accent color</string>
     <string name="accent_name">Accent color</string>
-    <string name="theme_description">Use a dark, light or automatic app theme</string>
     <string name="theme_name">App theme</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Aqua</string>
@@ -81,7 +75,6 @@
     <string name="import_contacts_description">Make sure to modify the events with missing years to always have accurate statistics!</string>
     <string name="import_success">Import completed successfully!</string>
     <string name="import_nothing_found">No event found!</string>
-    <string name="import_failed">Something went wrong!</string>
     <string name="missing_permission_contacts">The contact permission was denied. Try again or activate the permission manually,
     or the contacts import won\'t work!</string>
     <string name="missing_permission_contacts_forever">Birday can\'t ask for permission to import contacts,
@@ -97,7 +90,6 @@
     <string name="birday_import_invalid_file">Import failed. The chosen file is not a Birday backup!</string>
     <string name="birday_export_success">Export completed!</string>
     <string name="birday_export_failure">Export failed. Whoopsie!</string>
-    <string name="birday_export_nothing_found">Nothing to export!</string>
     <string name="surname_first">Surname first</string>
     <string name="surname_first_description_on">Show the surname before the name</string>
     <string name="surname_first_description_off">Show the name before the surname</string>
@@ -143,17 +135,14 @@
     <string name="insert_surname_hint">Insert Last Name</string>
     <string name="insert_date_hint">Select a date</string>
     <string name="invalid_value_name">Invalid name!</string>
-    <string name="consider_year">Consider the year</string>
     <string name="event_type_hint">Event type</string>
     <string name="birthday">Birthday</string>
     <string name="anniversary">Anniversary</string>
     <string name="death_anniversary">Death anniversary</string>
-    <string name="festivity">Festivity</string>
     <string name="name_day">Name day</string>
     <string name="other">Other</string>
     <!-- Event actions -->
     <string name="event_actions">Actions</string>
-    <string name="event_actions_description">Here you can change or remove this event!</string>
     <string name="edit_event">Edit event</string>
     <string name="delete_event">Delete event</string>
     <string name="update_event">Update event</string>
@@ -175,7 +164,6 @@
     <string name="no_default_sms">No default SMS app found!</string>
     <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
-    <string name="did_you_know">Did you know?</string>
     <string name="age_average">The average age is %s</string>
     <string name="oldest_person">The oldest person is %s</string>
     <string name="youngest_person">The youngest person is %s</string>
@@ -230,7 +218,6 @@
         <item quantity="other">%d years</item>
     </plurals>
     <string name="born_in">born in</string>
-    <string name="and">and</string>
     <plurals name="event">
         <item quantity="one">event: %s</item>
         <item quantity="other">events: %s</item>
@@ -258,10 +245,8 @@
     </string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Upcoming events</string>
-    <string name="add_widget">Birday - Upcoming</string>
     <string name="dark_widget_name">Dark widget</string>
     <string name="dark_widget_description_on">The widget uses the dark theme</string>
-    <string name="dark_widget_description_off">The widget uses the light theme</string>
     <string name="widget_configuration_title">Widget configuration</string>
     <string name="widget_configuration_description">Configure the widget to match your style</string>
     <string name="widget_background_title">Background</string>

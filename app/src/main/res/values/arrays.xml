@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <string-array name="alternativeCalendars">
+        <item>@string/alternative_calendar_none</item>
+        <item>@string/calendar_chinese</item>
+        <item>@string/calendar_dangi</item>
+        <item>@string/calendar_hebrew</item>
+        <item>@string/calendar_islamic</item>
+        <item>@string/calendar_islamic_civil</item>
+    </string-array>
+
+    <!-- The keys of EventCalendar, "none" for no alternative calendar -->
+    <string-array name="alternativeCalendarValues">
+        <item>none</item>
+        <item>chinese</item>
+        <item>dangi</item>
+        <item>hebrew</item>
+        <item>islamic-umalqura</item>
+        <item>islamic-civil</item>
+    </string-array>
+
     <string-array name="themes">
         <item>@string/system_theme</item>
         <item>@string/dark_theme</item>

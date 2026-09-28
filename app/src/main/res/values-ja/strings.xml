@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Birdayへようこそ</string>
-    <string name="app_name_extended">Birday - イベントマネージャー</string>
     <string name="leave_review_title">Birdayをレビュー</string>
     <string name="leave_review_subtitle">アプリで私を助けるためにレビューを残してください。 寄付は別として、このアプリは完全に無料で広告もありません！</string>
     <string name="yes_review">レビュー！</string>
@@ -15,7 +14,6 @@
     <string name="add_favorite">お気に入りに追加</string>
     <string name="stats">統計</string>
     <string name="no_stats">表示する統計がありません！</string>
-    <string name="stats_summary">統計の概要</string>
     <string name="no_stats_description">You don\'t have enough events to generate stats. Add some and come back later!</string>
     <plurals name="stats_total">
         <item quantity="other">Birday is helping you to remember a total of %d events</item>
@@ -33,7 +31,6 @@
     <string name="app_behavior">App behavior</string>
     <string name="additional_notification_name">Additional notification</string>
     <string name="additional_notification_description">Send an additional notification days before the event. %s</string>
-    <string name="no_additional_notification">No additional notification</string>
     <string name="one_day_before">One day before</string>
     <string name="two_days_before">Two days before</string>
     <string name="three_days_before">Three days before</string>
@@ -47,12 +44,9 @@
     <string name="vibration_name">Vibration</string>
     <string name="vibration_description_on">Vibrate when a button is pressed</string>
     <string name="vibration_description_off">No vibrations when a button is pressed</string>
-    <string name="date_format_name">Date format</string>
     <string name="notification_hour_name">Notification hour</string>
     <string name="notification_hour_description">%s \n\nPlease note that the notification might not work when the app is killed by the system in some Huawei, Xiaomi and OnePlus devices. Refer to dontkillmyapp.com for more information</string>
-    <string name="accent_description">Change the default accent color</string>
     <string name="accent_name">Accent color</string>
-    <string name="theme_description">Use a dark, light or automatic app theme</string>
     <string name="theme_name">App theme</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">水色</string>
@@ -79,7 +73,6 @@
     <string name="import_contacts_description">Make sure to modify the events with missing years to always have accurate statistics!</string>
     <string name="import_success">Import completed successfully!</string>
     <string name="import_nothing_found">No event found!</string>
-    <string name="import_failed">Something went wrong!</string>
     <string name="missing_permission_contacts">The contact permission was denied. Try again or activate the permission manually,
     or the contacts import won\'t work!</string>
     <string name="missing_permission_contacts_forever">Birday can\'t ask for permission to import contacts,
@@ -94,7 +87,6 @@
     <string name="birday_import_invalid_file">Import failed. The chosen file is not a Birday backup!</string>
     <string name="birday_export_success">Export completed!</string>
     <string name="birday_export_failure">Export failed. Whoopsie!</string>
-    <string name="birday_export_nothing_found">Nothing to export!</string>
     <string name="surname_first">Surname first</string>
     <string name="surname_first_description_on">Show the surname before the name</string>
     <string name="surname_first_description_off">Show the name before the surname</string>
@@ -140,17 +132,14 @@
     <string name="insert_surname_hint">Insert Last Name</string>
     <string name="insert_date_hint">Select a date</string>
     <string name="invalid_value_name">Invalid name!</string>
-    <string name="consider_year">年を考慮する</string>
     <string name="event_type_hint">Event type</string>
     <string name="birthday">誕生日</string>
     <string name="anniversary">記念日</string>
     <string name="death_anniversary">死亡記念日。</string>
-    <string name="festivity">Festivity</string>
     <string name="name_day">Name day</string>
     <string name="other">Other</string>
     <!-- Event actions -->
     <string name="event_actions">Actions</string>
-    <string name="event_actions_description">Here you can change or remove this event!</string>
     <string name="edit_event">Edit event</string>
     <string name="delete_event">Delete event</string>
     <string name="update_event">Update event</string>
@@ -172,7 +161,6 @@
     <string name="no_default_sms">No default SMS app found!</string>
     <string name="might_have_missed">You might have missed:</string>
     <!-- Statistics -->
-    <string name="did_you_know">Did you know?</string>
     <string name="age_average">The average age is %s</string>
     <string name="oldest_person">The oldest person is %s</string>
     <string name="youngest_person">The youngest person is %s</string>
@@ -224,7 +212,6 @@
         <item quantity="other">%d years</item>
     </plurals>
     <string name="born_in">born in</string>
-    <string name="and">and</string>
     <plurals name="event">
         <item quantity="other">events: %s</item>
     </plurals>
@@ -251,10 +238,8 @@
     </string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Upcoming events</string>
-    <string name="add_widget">Birday - Upcoming</string>
     <string name="dark_widget_name">Dark widget</string>
     <string name="dark_widget_description_on">The widget uses the dark theme</string>
-    <string name="dark_widget_description_off">The widget uses the light theme</string>
     <string name="widget_configuration_title">Widget configuration</string>
     <string name="widget_configuration_description">Configure the widget to match your style</string>
     <string name="widget_background_title">Background</string>
@@ -268,34 +253,6 @@
     <string name="show_following_widget_title">Show the following event</string>
     <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
-    <string name="compact_widget_opacity_title">Background opacity</string>
-    <string name="compact_widget_opacity_description">Adjust the darkness of the widget background</string>
-    <string name="compact_widget_appearance_title">Appearance</string>
-    <string name="compact_widget_bg_color_title">Background color</string>
-    <string name="compact_widget_text_color_title">Text color</string>
-    <string name="compact_widget_show_photos_title">Show contact photos</string>
-    <string name="compact_widget_date_position_title">Birth date</string>
-    <string name="compact_widget_date_hidden">Hidden</string>
-    <string name="compact_widget_date_below">Below name</string>
-    <string name="compact_widget_date_above">Above name</string>
-    <string name="compact_widget_zodiac_position_title">Zodiac sign</string>
-    <string name="compact_widget_zodiac_hidden">Hidden</string>
-    <string name="compact_widget_zodiac_before_date">Before date</string>
-    <string name="compact_widget_zodiac_after_date">After date</string>
-    <string name="compact_widget_text_size_title">Text size</string>
-    <string name="compact_widget_highlight_title">Today highlighting</string>
-    <string name="compact_widget_highlight_opacity_title">Background opacity</string>
-    <string name="compact_widget_highlight_color_title">Background color</string>
-    <string name="compact_widget_highlight_text_color_title">Text color</string>
-    <string name="compact_widget_turns">%d</string>
-    <string name="compact_widget_today">Today!</string>
-    <string name="compact_widget_tomorrow">Tomorrow</string>
-    <plurals name="compact_widget_in_days">
-        <item quantity="other">%d days</item>
-    </plurals>
-    <string name="compact_widget_preview_days_2">7 days</string>
-    <string name="compact_widget_preview_days_3">15 days</string>
     <!-- Search -->
     <string name="search_event">Search…</string>
     <string name="search_no_result_title">No results found</string>

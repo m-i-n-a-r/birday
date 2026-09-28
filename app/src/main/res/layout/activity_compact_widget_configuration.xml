@@ -80,6 +80,30 @@
                     android:paddingEnd="@dimen/card_margin" />
             </LinearLayout>
 
+            <!-- Scrolling list of the events instead of those that fit -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/compact_widget_scroll"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textSize="@dimen/custom_preference_title_text_size" />
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/configurationScrollSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/activity_horizontal_margin"
+                    android:paddingEnd="@dimen/card_margin" />
+            </LinearLayout>
+
             <!-- Birth date position -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -133,6 +157,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/widget_margin" />
+
+            <!-- Background opacity, with Monet too -->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/compact_widget_opacity"
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                android:textSize="@dimen/custom_preference_title_text_size" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/configurationOpacitySlider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stepSize="5"
+                android:valueFrom="0"
+                android:valueTo="100" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/configurationOpacityValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                tools:text="100%" />
 
             <!-- Monet switch -->
             <LinearLayout
@@ -212,31 +261,6 @@
                         android:orientation="horizontal"
                         android:paddingVertical="@dimen/widget_margin" />
                 </HorizontalScrollView>
-
-                <!-- Background opacity -->
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:text="@string/compact_widget_opacity"
-                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-                    android:textSize="@dimen/custom_preference_title_text_size" />
-
-                <com.google.android.material.slider.Slider
-                    android:id="@+id/configurationOpacitySlider"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:stepSize="5"
-                    android:valueFrom="0"
-                    android:valueTo="100" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/configurationOpacityValue"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                    tools:text="80%" />
 
                 <!-- General text color -->
                 <com.google.android.material.textview.MaterialTextView

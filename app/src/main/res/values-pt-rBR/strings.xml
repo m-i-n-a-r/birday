@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Bem-vindo ao Birday</string>
-    <string name="app_name_extended">Birday - Gerenciador de Eventos</string>
     <string name="leave_review_title">Avalie o Birday</string>
     <string name="leave_review_subtitle">Deixe um comentário para me ajudar com o aplicativo. Tenha em mente que, doações à parte, este aplicativo é totalmente gratuito e sem anúncios!</string>
     <string name="yes_review">Avaliar!</string>
@@ -15,7 +14,6 @@
     <string name="add_favorite">Adicionar aos favoritos</string>
     <string name="stats">Estatísticas</string>
     <string name="no_stats">Sem estatísticas para mostrar!</string>
-    <string name="stats_summary">Resumo estatístico</string>
     <string name="no_stats_description">Você não tem eventos suficientes para exibir as estatísticas. Adicione alguns e volte mais tarde!</string>
     <plurals name="stats_total">
         <item quantity="one">O Birday está ajudando você a se lembrar de um total de %d evento</item>
@@ -35,7 +33,6 @@
     <string name="app_behavior">Comportamento do aplicativo</string>
     <string name="additional_notification_name">Notificação adicional</string>
     <string name="additional_notification_description">Envie uma notificação adicional dias antes do evento. %s</string>
-    <string name="no_additional_notification">Sem notificação adicional</string>
     <string name="one_day_before">Um dia antes</string>
     <string name="two_days_before">Dois dias antes</string>
     <string name="three_days_before">Três dias antes</string>
@@ -49,12 +46,9 @@
     <string name="vibration_name">Vibração</string>
     <string name="vibration_description_on">Vibrar quando um botão é pressionado</string>
     <string name="vibration_description_off">Sem vibrações quando um botão é pressionado</string>
-    <string name="date_format_name">Formato de data</string>
     <string name="notification_hour_name">Hora de notificação</string>
     <string name="notification_hour_description">%s \n\nPor favor, note que a notificação pode não funcionar quando o aplicativo é encerrado pelo sistema em alguns dispositivos Huawei, Xiaomi e OnePlus. Consulte dontkillmyapp.com para obter mais informações</string>
-    <string name="accent_description">Alterar a cor de destaque padrão</string>
     <string name="accent_name">Cor de destaque</string>
-    <string name="theme_description">Use um tema de aplicativo escuro, claro ou automático</string>
     <string name="theme_name">Tema do aplicativo</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Água</string>
@@ -81,7 +75,6 @@
     <string name="import_contacts_description">Certifique-se de modificar os eventos com o ano ausente para sempre ter estatísticas precisas!</string>
     <string name="import_success">Importação concluída com sucesso!</string>
     <string name="import_nothing_found">Nenhum evento encontrado!</string>
-    <string name="import_failed">Algo deu errado!</string>
     <string name="missing_permission_contacts">A permissão de contato foi negada. Tente novamente ou ative a permissão manualmente, ou a importação de contatos não funcionará!</string>
     <string name="missing_permission_contacts_forever">O Birday não pôde importar seus contatos e nem pedir permissão, pois você marcou \"nunca perguntar novamente\". Habilite-o manualmente!</string>
     <string name="birday_import_title">Importar um backup do Birday</string>
@@ -93,7 +86,6 @@
     <string name="birday_import_invalid_file">A importação falhou. O arquivo escolhido não é um backup do Birday!</string>
     <string name="birday_export_success">Exportação concluída!</string>
     <string name="birday_export_failure">A exportação falhou. Ups!</string>
-    <string name="birday_export_nothing_found">Nada para exportar!</string>
     <string name="surname_first">Sobrenome primeiro</string>
     <string name="surname_first_description_on">Mostre o sobrenome antes do nome</string>
     <string name="surname_first_description_off">Mostre o nome antes do sobrenome</string>
@@ -139,17 +131,14 @@
     <string name="insert_surname_hint">Insira o sobrenome</string>
     <string name="insert_date_hint">Selecione uma data</string>
     <string name="invalid_value_name">Nome inválido!</string>
-    <string name="consider_year">Considere o ano</string>
     <string name="event_type_hint">Tipo de evento</string>
     <string name="birthday">Data de nascimento</string>
     <string name="anniversary">Aniversário</string>
     <string name="death_anniversary">Aniversário de morte</string>
-    <string name="festivity">Festividade</string>
     <string name="name_day">Nome-dia</string>
     <string name="other">Outro</string>
     <!-- Event actions -->
     <string name="event_actions">Ações</string>
-    <string name="event_actions_description">Aqui você pode deletar ou modificar facilmente este evento!</string>
     <string name="edit_event">Editar evento</string>
     <string name="delete_event">Apagar evento</string>
     <string name="update_event">Atualizar evento</string>
@@ -171,7 +160,6 @@
     <string name="no_default_sms">Nenhum aplicativo SMS padrão encontrado!</string>
     <string name="might_have_missed">Você poderia ter perdido:</string>
     <!-- Statistics -->
-    <string name="did_you_know">Você sabia?</string>
     <string name="age_average">A idade média é %s</string>
     <string name="oldest_person">A pessoa mais velha é %s</string>
     <string name="youngest_person">A pessoa mais jovem é %s</string>
@@ -226,7 +214,6 @@
         <item quantity="other">%d anos</item>
     </plurals>
     <string name="born_in">nasceu em</string>
-    <string name="and">e</string>
     <plurals name="event">
         <item quantity="one">evento: %s</item>
         <item quantity="other">eventos: %s</item>
@@ -250,10 +237,8 @@
     </string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Próximos eventos</string>
-    <string name="add_widget">Birday - Próximos</string>
     <string name="dark_widget_name">Widget escuro</string>
     <string name="dark_widget_description_on">O widget usa o tema escuro</string>
-    <string name="dark_widget_description_off">O widget usa o tema claro</string>
     <string name="widget_configuration_title">Configurações do widget</string>
     <string name="widget_configuration_description">Configure o widget de acordo com seu estilo</string>
     <string name="widget_background_title">Plano de fundo</string>
@@ -267,35 +252,6 @@
     <string name="show_following_widget_title">Exibir o evento seguinte</string>
     <string name="show_following_widget_description">Mostrar o evento ou os eventos seguintes em uma nova linha</string>
     <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
-    <string name="compact_widget_opacity_title">Background opacity</string>
-    <string name="compact_widget_opacity_description">Adjust the darkness of the widget background</string>
-    <string name="compact_widget_appearance_title">Appearance</string>
-    <string name="compact_widget_bg_color_title">Background color</string>
-    <string name="compact_widget_text_color_title">Text color</string>
-    <string name="compact_widget_show_photos_title">Show contact photos</string>
-    <string name="compact_widget_date_position_title">Birth date</string>
-    <string name="compact_widget_date_hidden">Hidden</string>
-    <string name="compact_widget_date_below">Below name</string>
-    <string name="compact_widget_date_above">Above name</string>
-    <string name="compact_widget_zodiac_position_title">Zodiac sign</string>
-    <string name="compact_widget_zodiac_hidden">Hidden</string>
-    <string name="compact_widget_zodiac_before_date">Before date</string>
-    <string name="compact_widget_zodiac_after_date">After date</string>
-    <string name="compact_widget_text_size_title">Text size</string>
-    <string name="compact_widget_highlight_title">Today highlighting</string>
-    <string name="compact_widget_highlight_opacity_title">Background opacity</string>
-    <string name="compact_widget_highlight_color_title">Background color</string>
-    <string name="compact_widget_highlight_text_color_title">Text color</string>
-    <string name="compact_widget_turns">%d</string>
-    <string name="compact_widget_today">Today!</string>
-    <string name="compact_widget_tomorrow">Tomorrow</string>
-    <plurals name="compact_widget_in_days">
-        <item quantity="one">%d day</item>
-        <item quantity="other">%d days</item>
-    </plurals>
-    <string name="compact_widget_preview_days_2">7 days</string>
-    <string name="compact_widget_preview_days_3">15 days</string>
     <!-- Search -->
     <string name="search_event">Pesquisa…</string>
     <string name="search_no_result_title">Nenhum resultado encontrado</string>

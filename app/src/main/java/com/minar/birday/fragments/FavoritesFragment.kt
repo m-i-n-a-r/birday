@@ -24,6 +24,7 @@ import com.minar.birday.fragments.dialogs.StatsBottomSheet
 import com.minar.birday.model.Event
 import com.minar.birday.model.Stat
 import com.minar.birday.utilities.addNavbarClearance
+import com.minar.birday.views.BirdayFastScroller
 import com.minar.birday.utilities.getRemainingDays
 import com.minar.birday.utilities.getThemeColor
 import com.minar.birday.utilities.isBirthday
@@ -124,6 +125,7 @@ class FavoritesFragment : Fragment() {
         // Setup the recycler view
         val recycler = binding.favoritesRecycler
         recycler.adapter = adapter
+        BirdayFastScroller(recycler)
         // Assigned once: swapping it mid flight leaves rows stuck at the alpha it set
         recycler.itemAnimator = BirdayRecyclerAnimator()
         with(mainViewModel) {
@@ -325,7 +327,8 @@ class FavoritesFragment : Fragment() {
                     surname = event.surname,
                     favorite = event.favorite,
                     notes = note,
-                    image = event.image
+                    image = event.image,
+                    calendar = event.calendar
                 )
                 mainViewModel.update(tuple)
                 dialog.dismiss()

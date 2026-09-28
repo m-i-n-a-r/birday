@@ -43,6 +43,7 @@
         <item name="colorOutline">@color/goodGray</item>
         <item name="colorSurfaceVariant">@color/goodGrayTranslucent</item>
         <item name="android:dialogPreferenceStyle">@style/ThemeOverlay.App.PreferenceDialog.Monet</item>
+        <item name="colorTonalCard">?attr/colorSurfaceContainerHigh</item>
     </style>
 
     <!-- Monet theme -->
@@ -57,6 +58,7 @@
         <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog.Monet</item>
         <item name="alertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog.Monet</item>
         <item name="android:dialogPreferenceStyle">@style/ThemeOverlay.App.PreferenceDialog.Monet</item>
+        <item name="colorTonalCard">?attr/colorSurfaceContainerHigh</item>
     </style>
 
     <!-- Splash screen theme -->
@@ -215,10 +217,6 @@
         <item name="cornerSize">@dimen/rounded_corners</item>
     </style>
 
-    <style name="ShapeAppearance.App.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
-        <item name="cornerSize">@dimen/rounded_corners</item>
-    </style>
-
     <!-- Bottom navigation for non-monet accents -->
     <style name="CustomBottomNavigation" parent="Widget.Material3Expressive.BottomNavigationView">
         <item name="itemTextColor">@drawable/bottom_navbar_item</item>
@@ -239,20 +237,81 @@
     </style>
 
     <!-- Selected segment matches the navbar: secondary container, not a filled primary -->
-    <style name="Widget.App.Button.YearSegment" parent="Widget.Material3.Button.OutlinedButton">
+    <style name="Widget.App.Button.YearSegment" parent="Widget.Material3Expressive.Button.TonalButton">
         <item name="backgroundTint">@color/year_segment_background</item>
         <item name="android:textColor">@color/year_segment_text</item>
+        <item name="strokeWidth">0dp</item>
     </style>
 
-    <!-- Custom button group -->
-    <style name="Widget.App.Button.OutlinedButton.IconOnly" parent="Widget.Material3.Button.OutlinedButton">
+    <!-- Icon only segments of the type selector, inside the home card -->
+    <style name="Widget.App.Button.TonalButton.IconOnly" parent="Widget.Material3Expressive.Button.TonalButton">
         <item name="iconPadding">0dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:minWidth">20dp</item>
         <item name="android:minHeight">20dp</item>
         <item name="iconGravity">textStart</item>
-        <item name="strokeWidth">@dimen/card_stroke</item>
+        <item name="backgroundTint">@color/type_selector_background</item>
+        <item name="iconTint">@color/type_selector_icon</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <!-- Tonal text field: filled with the veil, no box stroke and no underline, all corners round -->
+    <style name="Widget.App.TextInputLayout.Tonal" parent="Widget.Material3.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">@color/tonal_field_background</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/text_field_corner</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/text_field_corner</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/text_field_corner</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/text_field_corner</item>
+        <item name="hintTextColor">?attr/colorPrimary</item>
+        <item name="startIconTint">?attr/colorOnSecondaryContainer</item>
+        <item name="endIconTint">?attr/colorOnSecondaryContainer</item>
+    </style>
+
+    <!-- The same, for the fields opening a dropdown -->
+    <style name="Widget.App.TextInputLayout.Tonal.ExposedDropdownMenu" parent="Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu">
+        <item name="boxBackgroundColor">@color/tonal_field_background</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/text_field_corner</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/text_field_corner</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/text_field_corner</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/text_field_corner</item>
+        <item name="hintTextColor">?attr/colorPrimary</item>
+        <item name="startIconTint">?attr/colorOnSecondaryContainer</item>
+        <item name="endIconTint">?attr/colorOnSecondaryContainer</item>
+    </style>
+
+    <!-- Rounded like the inside of a tonal card, for what sits within one -->
+    <style name="ShapeAppearance.App.TonalInner" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/tonal_card_radius_inner</item>
+    </style>
+
+    <!-- Tonal elevated card, the look replacing the outlined cards -->
+    <style name="Widget.App.CardView.Tonal" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">?attr/colorTonalCard</item>
+        <item name="cardCornerRadius">@dimen/tonal_card_radius</item>
+        <item name="cardElevation">@dimen/tonal_card_elevation</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <!-- A card inside a tonal card: no shadow of its own, a denser veil than the details pills -->
+    <style name="Widget.App.CardView.Tonal.Inner">
+        <item name="cardBackgroundColor">@color/inner_card_background</item>
+        <item name="cardCornerRadius">@dimen/tonal_card_radius_inner</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <!-- The round handle sitting on the edge of a tonal card: a container of its own, so it never
+         blends into the card it opens and closes -->
+    <style name="Widget.App.Button.IconButton.CardHandle" parent="Widget.Material3Expressive.Button.IconButton.Filled">
+        <item name="backgroundTint">?attr/colorSecondaryContainer</item>
+        <item name="iconTint">?attr/colorOnSecondaryContainer</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="android:elevation">@dimen/tonal_card_elevation</item>
     </style>
 
     <!-- Custom color styles -->

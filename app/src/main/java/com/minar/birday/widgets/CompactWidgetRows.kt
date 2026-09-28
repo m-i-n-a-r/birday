@@ -3,18 +3,18 @@ package com.minar.birday.widgets
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
+import android.graphics.Bitmap
 import android.os.Build
 import android.view.ContextThemeWrapper
 import android.view.View
 import android.widget.RemoteViews
-import android.widget.RemoteViewsService
-import android.widget.RemoteViewsService.RemoteViewsFactory
+import androidx.core.graphics.scale
+import androidx.core.widget.RemoteViewsCompat
 import androidx.preference.PreferenceManager
 import com.google.android.material.color.MaterialColors
 import com.minar.birday.R
+import com.minar.birday.activities.MainActivity
 import com.minar.birday.model.EventResult
-import com.minar.birday.persistence.EventDao
-import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.accentThemeRes
 import com.minar.birday.utilities.bodyMediumTextSizeSp
 import com.minar.birday.utilities.byteArrayToBitmap
@@ -29,18 +29,13 @@ import java.time.format.FormatStyle
 import com.google.android.material.R as MaterialR
 
 
-class CompactWidgetService : RemoteViewsService() {
-    override fun onGetViewFactory(intent: Intent): RemoteViewsFactory {
-        return CompactWidgetRemoteViewsFactory(this.applicationContext)
-    }
-}
-
-internal class CompactWidgetRemoteViewsFactory(private val context: Context) : RemoteViewsFactory {
-    private lateinit var events: List<EventResult>
+// The rows of the compact widget, all built at once and handed to the list as a whole. In the
+// scrolling list the background belongs to the widget and the rows are see through, since the
+// rounded corners of the first and last row would scroll away with them
+internal class CompactWidgetRows(private val context: Context, private val scroll: Boolean) {
     private var surnameFirst = false
     private var hideImages = false
-    private var maxRows = Int.MAX_VALUE
-    private var bgAlpha = 204 // 80% of 255
+    private var bgAlpha = 255
     private var textSizeSp = 12f
     private var widgetBgColor = android.graphics.Color.BLACK
     private var widgetTextColor = android.graphics.Color.WHITE
@@ -58,6 +53,11 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
         internal const val LINE_HEIGHT_FACTOR = 1.35f
         internal const val EDGE_PADDING_DP = 16f
         private const val AVATAR_SIZE_PX = 96
+        // The scrolling list stops somewhere: every row travels to the launcher in one go
+        internal const val MAX_SCROLL_ROWS = 30
+        // Up to Android 12 the rows are stored by the compat library in a flat copy, where a bitmap
+        // can't take more than 16KB: 64 * 64 pixels, not far from the size the photos are shown at
+        private const val LEGACY_PHOTO_SIZE_PX = 64
 
         internal fun resolveColor(context: Context, name: String): Int {
             return when (name) {
@@ -85,24 +85,41 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
         }
     }
 
-    override fun onCreate() {
+    private val avatarSizePx =
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.S) AVATAR_SIZE_PX else LEGACY_PHOTO_SIZE_PX
+
+    init {
         loadPreferences()
-        events = emptyList()
     }
 
-    override fun onDestroy() {
-        // Any connection or data source must be cleared here
-        events = emptyList()
+    // The list for the widget, a row for each event
+    fun items(events: List<EventResult>): RemoteViewsCompat.RemoteCollectionItems {
+        val builder = RemoteViewsCompat.RemoteCollectionItems.Builder()
+            .setHasStableIds(true)
+            .setViewTypeCount(1)
+        events.forEachIndexed { position, event ->
+            builder.addItem(event.id.toLong(), row(event, position, events.size))
+        }
+        return builder.build()
     }
 
-    override fun getCount(): Int {
-        return events.size.coerceAtMost(maxRows)
+    // The widget itself: in the scrolling list the background sits behind the whole list, and
+    // the edge padding goes around it instead of on the first and last row
+    fun applyToWidget(views: RemoteViews) {
+        val edgePadding = context.resources.getDimension(R.dimen.widget_padding).toInt()
+        if (scroll) {
+            views.setViewVisibility(R.id.compactWidgetListBg, View.VISIBLE)
+            views.setInt(R.id.compactWidgetListBg, "setColorFilter", widgetBgColor)
+            views.setInt(R.id.compactWidgetListBg, "setImageAlpha", bgAlpha)
+            views.setViewPadding(R.id.compactWidgetList, 0, edgePadding, 0, edgePadding)
+        } else {
+            views.setViewVisibility(R.id.compactWidgetListBg, View.GONE)
+            views.setViewPadding(R.id.compactWidgetList, 0, 0, 0, 0)
+        }
     }
 
-    override fun getViewAt(position: Int): RemoteViews {
+    private fun row(event: EventResult, position: Int, rowCount: Int): RemoteViews {
         val rv = RemoteViews(context.packageName, R.layout.widget_compact_row)
-        val event = events[position]
-        val rowCount = count
 
         applyRowBackground(rv, position, rowCount)
         applyRowPadding(rv, position, rowCount)
@@ -116,19 +133,26 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
         applyCountdown(rv, event)
         applyContactPhoto(rv, event)
 
-        val fillInIntent = Intent()
-        fillInIntent.putExtra("event", event)
+        // Just the id: the whole event would weigh on the list, and the app opens its details
+        val fillInIntent = Intent().putExtra(MainActivity.EXTRA_EVENT_ID, event.id)
         rv.setOnClickFillInIntent(R.id.compactWidgetRowItem, fillInIntent)
         return rv
     }
 
     private fun applyRowBackground(rv: RemoteViews, position: Int, rowCount: Int) {
+        // Scrolling, a row has no background of its own, unless highlighted
+        if (scroll) {
+            rv.setViewVisibility(R.id.compactWidgetRowBg, View.GONE)
+            rv.setImageViewResource(R.id.compactWidgetRowBg, R.drawable.widget_compact_row_bg_single)
+            return
+        }
         val bgDrawable = when {
             rowCount == 1 -> R.drawable.widget_compact_row_bg_single
             position == 0 -> R.drawable.widget_compact_row_bg_top
             position == rowCount - 1 -> R.drawable.widget_compact_row_bg_bottom
             else -> R.drawable.widget_compact_row_bg_middle
         }
+        rv.setViewVisibility(R.id.compactWidgetRowBg, View.VISIBLE)
         rv.setImageViewResource(R.id.compactWidgetRowBg, bgDrawable)
         rv.setInt(R.id.compactWidgetRowBg, "setColorFilter", widgetBgColor)
         rv.setInt(R.id.compactWidgetRowBg, "setImageAlpha", bgAlpha)
@@ -137,6 +161,9 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
     private fun applyRowPadding(rv: RemoteViews, position: Int, rowCount: Int) {
         val sidePadding = context.resources.getDimension(R.dimen.widget_padding).toInt()
         when {
+            scroll -> rv.setViewPadding(
+                R.id.compactWidgetRowContent, sidePadding, 0, sidePadding, 0
+            )
             rowCount == 1 -> rv.setViewPadding(
                 R.id.compactWidgetRowContent, sidePadding, sidePadding, sidePadding, sidePadding
             )
@@ -245,6 +272,7 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
             )
             rv.setTextViewText(R.id.compactWidgetRowCountdown, bold)
             // Today highlighting
+            rv.setViewVisibility(R.id.compactWidgetRowBg, View.VISIBLE)
             rv.setInt(R.id.compactWidgetRowBg, "setImageAlpha", highlightAlpha)
             rv.setInt(R.id.compactWidgetRowBg, "setColorFilter", highlightColor)
             rv.setTextColor(R.id.compactWidgetRowCountdown, highlightTextColor)
@@ -261,46 +289,30 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
             if (event.image != null && event.image.isNotEmpty()) {
                 rv.setImageViewBitmap(
                     R.id.compactWidgetRowImage,
-                    getCircularBitmap(byteArrayToBitmap(event.image))
+                    getCircularBitmap(photoSized(byteArrayToBitmap(event.image)))
                 )
             } else {
                 rv.setImageViewBitmap(
                     R.id.compactWidgetRowImage,
-                    getInitialBitmap(event.name, event.surname, AVATAR_SIZE_PX)
+                    getInitialBitmap(event.name, event.surname, avatarSizePx)
                 )
             }
         }
     }
 
-    override fun getLoadingView(): RemoteViews? {
-        // Here can be specified a custom loading view. Null is the default loading view
-        return null
-    }
-
-    override fun getViewTypeCount(): Int {
-        return 1
-    }
-
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
-
-    override fun hasStableIds(): Boolean {
-        return false
-    }
-
-    override fun onDataSetChanged() {
-        loadPreferences()
-        val eventDao: EventDao = EventDatabase.getBirdayDatabase(context).eventDao()
-        events = eventDao.getOrderedEventsStatic()
+    // The stored photo is far larger than the row shows it, and every row travels to the launcher
+    private fun photoSized(photo: Bitmap): Bitmap {
+        val size = minOf(photo.width, photo.height)
+        if (size <= avatarSizePx) return photo
+        val scale = avatarSizePx.toFloat() / size
+        return photo.scale((photo.width * scale).toInt(), (photo.height * scale).toInt())
     }
 
     private fun loadPreferences() {
         val sp = PreferenceManager.getDefaultSharedPreferences(context)
         surnameFirst = sp.getBoolean("surname_first", false)
         hideImages = sp.getBoolean("widget_compact_hide_images", false)
-        maxRows = sp.getInt("widget_compact_max_rows", Int.MAX_VALUE)
-        bgAlpha = sp.getInt("widget_compact_opacity", 80) * 255 / 100
+        bgAlpha = sp.getInt("widget_compact_opacity", 100) * 255 / 100
         val savedTextSize = sp.getInt("widget_compact_text_size", 0)
         textSizeSp = if (savedTextSize == 0) context.bodyMediumTextSizeSp()
         else savedTextSize.toFloat().coerceAtLeast(6f)
@@ -318,7 +330,6 @@ internal class CompactWidgetRemoteViewsFactory(private val context: Context) : R
             widgetTextColor = MaterialColors.getColor(themed, MaterialR.attr.colorOnSurface, android.graphics.Color.WHITE)
             highlightColor = MaterialColors.getColor(themed, MaterialR.attr.colorPrimaryContainer, android.graphics.Color.BLUE)
             highlightTextColor = MaterialColors.getColor(themed, MaterialR.attr.colorOnPrimaryContainer, android.graphics.Color.BLACK)
-            bgAlpha = 255
             highlightAlpha = 255
         }
     }

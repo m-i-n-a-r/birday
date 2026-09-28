@@ -5,12 +5,17 @@ import android.content.ContentUris
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
+import android.os.SystemClock
+import android.text.format.DateFormat
 import android.provider.ContactsContract
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.OvershootInterpolator
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.widget.Guideline
 import androidx.core.app.ShareCompat
@@ -40,24 +45,42 @@ import com.minar.birday.utilities.CASCADE_TIGHT_STAGGER
 import com.minar.birday.utilities.addNavbarClearance
 import com.minar.birday.utilities.animateCascade
 import com.minar.birday.utilities.byteArrayToBitmap
+import com.minar.birday.utilities.daysMilestonesEnabled
+import com.minar.birday.utilities.formatDaysLived
 import com.minar.birday.utilities.formatDaysRemaining
 import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.formatTextPreview
 import com.minar.birday.utilities.getNextYears
+import com.minar.birday.utilities.getDaysLived
+import com.minar.birday.utilities.EventCalendar
+import com.minar.birday.utilities.alternativeCalendar
+import com.minar.birday.utilities.formatInCalendar
+import com.minar.birday.utilities.getNextUnbirthday
 import com.minar.birday.utilities.getReducedDate
 import com.minar.birday.utilities.getRemainingDays
 import com.minar.birday.utilities.getStringForTypeCodename
 import com.minar.birday.utilities.getThemeColor
+import com.minar.birday.utilities.isDaysMilestone
 import com.minar.birday.utilities.resultToEvent
+import com.minar.birday.utilities.streamBirdayConfetti
+import com.minar.birday.utilities.unbirthdaysEnabled
 import com.minar.birday.viewmodels.MainViewModel
+import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
+import java.util.Locale
 
 
-// The morph from the row into this page. Also the beat the rest of the content waits out before
-// it starts arriving, minus the overlap that keeps the two from looking like separate events
+// The morph from the row into this page, and how far into it the rest of the content starts
+// arriving: late enough that the image leads, early enough that the two land together
 private const val SHARED_ELEMENT_DURATION = 400L
-private const val CONTENT_CASCADE_DELAY = 260L
+private const val CONTENT_CASCADE_DELAY = 140L
+private const val CONTACT_FADE_DURATION = 220L
+// The info pills pop in one after the other, with a hint of a spring
+private const val PILL_STAGGER = 45L
+private const val PILL_DURATION = 380L
+private const val PILL_START_SCALE = 0.85f
+private const val PILL_OVERSHOOT = 1.6f
 
 class DetailsFragment : Fragment() {
     private lateinit var act: MainActivity
@@ -68,6 +91,8 @@ class DetailsFragment : Fragment() {
     private val binding get() = _binding!!
     private var easterEggCounter = 0
     private var foundContactId: Long? = null
+    // When the content cascade started, so a view arriving late can still take its own turn
+    private var cascadeStartedAt = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,7 +107,10 @@ class DetailsFragment : Fragment() {
         animation.startElevation = 0f
         animation.endElevation = 0f
         animation.setAllContainerColors(getThemeColor(android.R.attr.colorBackground, act))
-        animation.scrimColor = getThemeColor(android.R.attr.colorBackground, act)
+        // The scrim is drawn in the overlay, above every view of the page. An opaque one hid the
+        // content cascade for the whole morph and then vanished with it, so the page popped in all
+        // at once. The page already has its own background: nothing needs covering
+        animation.scrimColor = Color.TRANSPARENT
         animation.isElevationShadowEnabled = false
         sharedElementEnterTransition = animation
 
@@ -171,8 +199,15 @@ class DetailsFragment : Fragment() {
                                 Log.d("contacts", "Matching contact found for ${event.name}")
                                 foundContactId = contactId.toLong()
                                 activity?.runOnUiThread {
-                                    if (isAdded) {
+                                    if (isAdded && _binding != null) {
+                                        // The lookup lands whenever it lands: fade in, don't pop
+                                        contactButton.alpha = 0f
                                         contactButton.visibility = View.VISIBLE
+                                        contactButton.animate()
+                                            .alpha(1f)
+                                            .setStartDelay(contactCascadeDelay(contactButton))
+                                            .setDuration(CONTACT_FADE_DURATION)
+                                            .start()
                                         contactButton.setOnClickListener {
                                             try {
                                                 val contactUri = ContentUris.withAppendedId(
@@ -190,7 +225,7 @@ class DetailsFragment : Fragment() {
                             } else {
                                 Log.d("contacts", "No matching contact for ${event.name}")
                                 activity?.runOnUiThread {
-                                    if (isAdded) {
+                                    if (isAdded && _binding != null) {
                                         // Probably redundant
                                         contactButton.visibility = View.INVISIBLE
                                     }
@@ -310,7 +345,8 @@ class DetailsFragment : Fragment() {
                         surname = event.surname,
                         favorite = event.favorite,
                         notes = note,
-                        image = event.image
+                        image = event.image,
+                        calendar = event.calendar
                     )
                     mainViewModel.update(tuple)
                     // Update locally (no livedata here)
@@ -486,27 +522,122 @@ class DetailsFragment : Fragment() {
             binding.detailsNextAge.visibility = View.GONE
             disableAstrology()
         }
-        startPostponedEnterTransition()
-        // The rest of the page is claimed at alpha zero right now and only rides in once the morph
-        // is nearly home, overlapping it by a hair: starting together meant the whole page was
-        // already drawn by the time the shared element landed, which read as a jump cut.
-        // The scene owns the positions inside a MotionLayout, so this is a fade and nothing else
-        binding.detailsMotionLayout.children
-            .filter {
-                it !is Guideline && it.isVisible && it.id !in setOf(
-                    R.id.expanderView,
-                    R.id.detailsEventImage,
-                    R.id.detailsEventName,
-                    R.id.detailsEventImageBackground,
-                    R.id.detailsClearBackground,
-                )
+
+        // Days lived, for a birthday with a known year, only if opted in. A round thousand is a
+        // party like a birthday
+        val daysLived = if (daysMilestonesEnabled(act)) getDaysLived(event) else null
+        if (daysLived == null) {
+            binding.detailsDaysLived.visibility = View.GONE
+            binding.detailsDaysLivedValue.visibility = View.GONE
+        } else {
+            val daysLivedValue = binding.detailsDaysLivedValue
+            daysLivedValue.text = formatDaysLived(daysLived)
+            if (isDaysMilestone(event)) {
+                daysLivedValue.setTextColor(getThemeColor(R.attr.colorPrimary, act))
+                daysLivedValue.setTypeface(daysLivedValue.typeface, Typeface.BOLD)
+                // Once the morph has landed: before that the view has no size to rain from
+                binding.detailsConfettiView.postDelayed({
+                    _binding?.detailsConfettiView?.streamBirdayConfetti(act)
+                }, SHARED_ELEMENT_DURATION)
             }
-            .toList()
+        }
+
+        // Next unbirthday (#29), same day of the month and of the week as the birth, if opted in
+        val nextUnbirthday = if (unbirthdaysEnabled(act)) getNextUnbirthday(event) else null
+        if (nextUnbirthday == null) {
+            binding.detailsUnbirthday.visibility = View.GONE
+            binding.detailsUnbirthdayValue.visibility = View.GONE
+        } else {
+            binding.detailsUnbirthdayValue.text =
+                if (nextUnbirthday == LocalDate.now()) getString(R.string.today)
+                // Short weekday and month: the weekday is the whole point, the rest must fit a pill
+                else nextUnbirthday.format(
+                    DateTimeFormatter.ofPattern(
+                        DateFormat.getBestDateTimePattern(Locale.getDefault(), "EEEyMMMd")
+                    )
+                )
+        }
+
+        // The date in the event's own calendar, while the alternative calendars are on
+        val eventCalendar =
+            if (alternativeCalendar(act) != null && event.yearMatter == true)
+                EventCalendar.fromKey(event.calendar)
+            else null
+        if (eventCalendar == null) {
+            binding.detailsCalendar.visibility = View.GONE
+            binding.detailsCalendarValue.visibility = View.GONE
+        } else {
+            binding.detailsCalendarValue.text = formatInCalendar(event.originalDate, eventCalendar)
+            binding.detailsCalendar.text = getString(eventCalendar.title)
+        }
+
+        // A pill is there only if its value is. The labels are shared with rows that end with a
+        // colon, which a pill has no use for
+        val pills = listOf(
+            binding.detailsNextAgePill to binding.detailsNextAgeValue,
+            binding.detailsZodiacSignPill to binding.detailsZodiacSignValue,
+            binding.detailsChineseSignPill to binding.detailsChineseSignValue,
+            binding.detailsDaysLivedPill to binding.detailsDaysLivedValue,
+            binding.detailsUnbirthdayPill to binding.detailsUnbirthdayValue,
+            binding.detailsCalendarPill to binding.detailsCalendarValue,
+        )
+        pills.forEach { (pill, value) -> pill.isVisible = value.isVisible }
+        binding.detailsInfoPills.isVisible = pills.any { (pill, _) -> pill.isVisible }
+        listOf(
+            binding.detailsNextAge,
+            binding.detailsZodiacSign,
+            binding.detailsChineseSign,
+            binding.detailsDaysLived,
+            binding.detailsUnbirthday,
+        ).forEach { it.text = it.text.trimEnd(':', ' ', '\u00A0') }
+        startPostponedEnterTransition()
+        // The rest of the page is claimed at alpha zero right now and rides in while the morph is
+        // still traveling, so the image leads and the page follows it home instead of waiting for
+        // it. The scene owns the positions inside a MotionLayout, so this is a fade and nothing else
+        cascadeStartedAt = SystemClock.uptimeMillis()
+        cascadeCandidates()
+            .filter { it.isVisible }
             .animateCascade(
                 translate = false,
                 startDelay = CONTENT_CASCADE_DELAY,
                 stagger = CASCADE_TIGHT_STAGGER
             )
+        // While their container fades in, the pills themselves grow into place
+        binding.detailsInfoPills.children.filter { it.isVisible }.forEachIndexed { index, pill ->
+            pill.scaleX = PILL_START_SCALE
+            pill.scaleY = PILL_START_SCALE
+            pill.animate()
+                .scaleX(1f)
+                .scaleY(1f)
+                .setStartDelay(CONTENT_CASCADE_DELAY + PILL_STAGGER * index)
+                .setDuration(PILL_DURATION)
+                .setInterpolator(OvershootInterpolator(PILL_OVERSHOOT))
+                .start()
+        }
+    }
+
+    // The children riding in with the cascade, in order: everything but the shared elements
+    private fun cascadeCandidates() = binding.detailsMotionLayout.children
+        .filter {
+            it !is Guideline && it.id !in setOf(
+                R.id.expanderView,
+                R.id.detailsEventImage,
+                R.id.detailsEventName,
+                R.id.detailsEventImageBackground,
+                R.id.detailsConfettiView,
+            )
+        }
+        .toList()
+
+    // The contact lookup lands whenever it lands. The button waits for the turn it would have had
+    // in the cascade, as if it had been visible from the start, instead of popping in on its own
+    private fun contactCascadeDelay(contactButton: View): Long {
+        val slot = cascadeCandidates()
+            .filter { it.isVisible || it == contactButton }
+            .indexOf(contactButton)
+            .coerceAtLeast(0)
+        val turn = CONTENT_CASCADE_DELAY + CASCADE_TIGHT_STAGGER * slot
+        return (turn - (SystemClock.uptimeMillis() - cascadeStartedAt)).coerceAtLeast(0L)
     }
 
     // Delete an existing event and show a snackbar

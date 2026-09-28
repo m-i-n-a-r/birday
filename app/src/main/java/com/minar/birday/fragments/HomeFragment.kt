@@ -14,7 +14,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.animation.doOnEnd
-import androidx.core.content.ContextCompat
+import androidx.core.view.doOnLayout
 import androidx.core.view.doOnPreDraw
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -34,21 +34,31 @@ import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventDataItem
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.addNavbarClearance
+import com.minar.birday.views.BirdayFastScroller
 import com.minar.birday.utilities.formatDaysRemaining
 import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getNextYears
+import com.minar.birday.utilities.daysMilestonesEnabled
+import com.minar.birday.utilities.burstFromCorners
 import com.minar.birday.utilities.getRemainingDays
-import com.minar.birday.utilities.getThemeColor
+import com.minar.birday.utilities.getUserBirthday
+import com.minar.birday.utilities.isUserBirthday
+import com.minar.birday.utilities.isDaysMilestone
 import com.minar.birday.utilities.nextDateFormatted
 import com.minar.birday.utilities.resultToEvent
+import com.minar.birday.utilities.streamBirdayConfetti
 import com.minar.birday.viewmodels.MainViewModel
-import nl.dionsegijn.konfetti.models.Shape
-import nl.dionsegijn.konfetti.models.Size
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.time.temporal.ChronoUnit
 import androidx.core.content.edit
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
+
+// Long enough for the page to be up and settled before the user's own party starts
+private const val USER_PARTY_DELAY = 600L
 
 class HomeFragment : Fragment() {
     private val mainViewModel: MainViewModel by activityViewModels()
@@ -110,6 +120,7 @@ class HomeFragment : Fragment() {
 
         // Add insets
         recycler.addNavbarClearance()
+        BirdayFastScroller(recycler, adapter::fastScrollText)
 
         // Setup the search bar
         typeSelector.scaleX = 0F
@@ -306,6 +317,25 @@ class HomeFragment : Fragment() {
         // Restore search string in the search bar
         if (mainViewModel.searchString.value!!.isNotBlank())
             searchBar.setText(mainViewModel.searchString.value)
+
+        // The user's own birthday, from the card in the settings: a party just for them. Not right
+        // away: when the app theme differs from the system one the activity is recreated as it
+        // starts, and a party thrown in the first instance would die with it, already marked done.
+        // A coroutine tied to this view is cancelled along with it, so the next one throws it
+        viewLifecycleOwner.lifecycleScope.launch {
+            delay(USER_PARTY_DELAY)
+            celebrateUserBirthday()
+        }
+    }
+
+    private fun celebrateUserBirthday() {
+        val (name, birthday) = getUserBirthday(act) ?: return
+        if (mainViewModel.userBirthdayCelebrated || !isUserBirthday(birthday)) return
+        mainViewModel.userBirthdayCelebrated = true
+        // The confetti need the view measured to know where to fall from
+        binding.confettiView.doOnLayout { binding.confettiView.burstFromCorners(act) }
+        act.vibrate()
+        act.showSnackbar(getString(R.string.user_birthday_greeting, name))
     }
 
     override fun onPause() {
@@ -446,22 +476,27 @@ class HomeFragment : Fragment() {
             )
         }
 
+        // A days lived milestone is a party too, and it can fall on any day of the year
+        val milestoneToday = daysMilestonesEnabled(act) && events.any { isDaysMilestone(it) }
+
         // Remove events in the future today (eg: now is december 1st 2023, an event has original date = december 1st 2050)
         var filteredNextEvents = nextEvents.toMutableList()
         filteredNextEvents.removeIf { getNextYears(it) == 0 }
-        // If the events are all in the future, display them but avoid confetti
+        // If the events are all in the future, display them but avoid confetti (a milestone still counts)
         if (filteredNextEvents.isEmpty()) {
             filteredNextEvents = nextEvents.toMutableList()
-            mainViewModel.confettiDone = true
+            if (!milestoneToday) mainViewModel.confettiDone = true
         }
 
         // Trigger confetti if there's an event today, except for "only death anniversaries" days
         if (
-            getRemainingDays(upcomingDate!!) == 0 &&
-            !mainViewModel.confettiDone &&
-            !nextEvents.all { it.type == EventCode.DEATH.name }
+            !mainViewModel.confettiDone && (
+                getRemainingDays(upcomingDate!!) == 0 &&
+                    !nextEvents.all { it.type == EventCode.DEATH.name } ||
+                    milestoneToday
+                )
         ) {
-            triggerConfetti()
+            binding.confettiView.streamBirdayConfetti(act)
             mainViewModel.confettiDone = true
         }
 
@@ -513,50 +548,5 @@ class HomeFragment : Fragment() {
         bottomSheet.show(act.supportFragmentManager, "quick_apps_bottom_sheet")
     }
 
-    // Activate the confetti effect (stream, 3 colors, 4 shapes)
-    private fun triggerConfetti() {
-        val confetti = binding.confettiView
-        confetti.build()
-            .addColors(
-                getThemeColor(R.attr.colorTertiary, act),
-                getThemeColor(R.attr.colorSecondary, act),
-                getThemeColor(R.attr.colorPrimary, act),
-                getThemeColor(R.attr.colorOnSurface, act),
-            )
-            .setDirection(0.0, 359.0)
-            .setSpeed(0.5f, 4f)
-            .setRotationEnabled(true)
-            .setFadeOutEnabled(true)
-            .setTimeToLive(2000L)
-            .addShapes(
-                Shape.DrawableShape(
-                    ContextCompat.getDrawable(
-                        act,
-                        R.drawable.ic_triangle_24dp
-                    )!!
-                ),
-                Shape.DrawableShape(
-                    ContextCompat.getDrawable(
-                        act,
-                        R.drawable.ic_favorites_24dp
-                    )!!
-                ),
-                Shape.DrawableShape(
-                    ContextCompat.getDrawable(
-                        act,
-                        R.drawable.ic_star_24dp
-                    )!!
-                ),
-                Shape.DrawableShape(
-                    ContextCompat.getDrawable(
-                        act,
-                        R.drawable.ic_octagram_24dp
-                    )!!
-                )
-            )
-            .addSizes(Size(8), Size(12), Size(16))
-            .setPosition(-50f, confetti.width + 50f, -50f, -50f)
-            .streamFor(200, 2000L)
-    }
 }
 

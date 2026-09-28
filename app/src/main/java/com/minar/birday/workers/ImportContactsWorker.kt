@@ -42,7 +42,10 @@ class ImportContactsWorker(appContext: Context, params: WorkerParameters) :
 
         return try {
             val events = withContext(Dispatchers.IO) {
-                ContactsRepository().getEventsFromContacts(applicationContext.contentResolver)
+                ContactsRepository().getEventsFromContacts(
+                    applicationContext.contentResolver,
+                    ContactsRepository.useFullName(applicationContext)
+                )
             }
 
             if (events.isNotEmpty()) {

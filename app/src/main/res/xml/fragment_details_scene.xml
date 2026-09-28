@@ -35,35 +35,7 @@
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />
         </Constraint>
-        <Constraint android:id="@id/detailsNextAge">
-            <PropertySet app:visibilityMode="ignore" />
-        </Constraint>
-        <Constraint android:id="@id/detailsNextAgeValue">
-            <PropertySet
-                app:applyMotionScene="false"
-                app:visibilityMode="ignore" />
-        </Constraint>
         <Constraint android:id="@id/detailsNextAgeYears">
-            <PropertySet
-                app:applyMotionScene="false"
-                app:visibilityMode="ignore" />
-        </Constraint>
-        <Constraint android:id="@id/detailsZodiacSign">
-            <PropertySet
-                app:applyMotionScene="false"
-                app:visibilityMode="ignore" />
-        </Constraint>
-        <Constraint android:id="@id/detailsZodiacSignValue">
-            <PropertySet
-                app:applyMotionScene="false"
-                app:visibilityMode="ignore" />
-        </Constraint>
-        <Constraint android:id="@id/detailsChineseSign">
-            <PropertySet
-                app:applyMotionScene="false"
-                app:visibilityMode="ignore" />
-        </Constraint>
-        <Constraint android:id="@id/detailsChineseSignValue">
             <PropertySet
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />
@@ -74,6 +46,11 @@
                 app:visibilityMode="ignore" />
         </Constraint>
         <Constraint android:id="@id/detailsContactButton">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsInfoPills">
             <PropertySet
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />
@@ -100,42 +77,7 @@
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />
         </Constraint>
-        <Constraint android:id="@id/detailsNextAge">
-            <PropertySet
-                app:applyMotionScene="false"
-                app:visibilityMode="ignore" />
-        </Constraint>
-        <Constraint android:id="@id/detailsChineseSignValue">
-            <PropertySet
-                app:applyMotionScene="false"
-                app:visibilityMode="ignore" />
-        </Constraint>
-        <Constraint android:id="@id/detailsZodiacSignValue">
-            <PropertySet
-                app:applyMotionScene="false"
-                app:visibilityMode="ignore" />
-        </Constraint>
-        <Constraint android:id="@id/detailsNextAgeValue">
-            <PropertySet
-                app:applyMotionScene="false"
-                app:visibilityMode="ignore" />
-        </Constraint>
-        <Constraint android:id="@id/detailsNextAge">
-            <PropertySet
-                app:applyMotionScene="false"
-                app:visibilityMode="ignore" />
-        </Constraint>
         <Constraint android:id="@id/detailsBirthDate">
-            <PropertySet
-                app:applyMotionScene="false"
-                app:visibilityMode="ignore" />
-        </Constraint>
-        <Constraint android:id="@id/detailsZodiacSign">
-            <PropertySet
-                app:applyMotionScene="false"
-                app:visibilityMode="ignore" />
-        </Constraint>
-        <Constraint android:id="@id/detailsChineseSign">
             <PropertySet
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />
@@ -156,6 +98,11 @@
                 app:visibilityMode="ignore" />
         </Constraint>
         <Constraint android:id="@id/detailsContactButton">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsInfoPills">
             <PropertySet
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />

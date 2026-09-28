@@ -1,5 +1,6 @@
 package com.minar.birday.utilities
 
+import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.Drawable
 import android.os.Handler
@@ -13,6 +14,7 @@ import com.minar.birday.R
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import java.io.ByteArrayOutputStream
+import java.io.File
 import androidx.core.graphics.createBitmap
 
 
@@ -147,3 +149,19 @@ fun Bitmap.toByteArray(): ByteArray {
         return toByteArray()
     }
 }
+
+// The user's own picture, from the birthday card in the settings. A plain file in the app storage,
+// which the Android backup already covers
+private const val USER_IMAGE_FILE = "user_image.jpg"
+private const val USER_IMAGE_QUALITY = 90
+
+fun loadUserImage(context: Context): Bitmap? = File(context.filesDir, USER_IMAGE_FILE)
+    .takeIf { it.exists() }
+    ?.let { BitmapFactory.decodeFile(it.path) }
+
+fun saveUserImage(context: Context, bitmap: Bitmap) =
+    File(context.filesDir, USER_IMAGE_FILE).outputStream().use {
+        bitmap.compress(Bitmap.CompressFormat.JPEG, USER_IMAGE_QUALITY, it)
+    }
+
+fun deleteUserImage(context: Context) = File(context.filesDir, USER_IMAGE_FILE).delete()

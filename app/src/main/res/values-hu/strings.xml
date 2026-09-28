@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Üdvözlünk a Birday-ben</string>
-    <string name="app_name_extended">Birday - Esemény Kezelő</string>
     <string name="leave_review_title">Birday Véleményezése</string>
     <string name="leave_review_subtitle">Írjon véleményt, hogy segítsen nekem az alkalmazásban. Ne feledje, hogy az adományokat leszámítva ez az alkalmazás teljesen ingyenes és reklámmentes!</string>
     <string name="yes_review">Véleményezés!</string>
@@ -15,7 +14,6 @@
     <string name="add_favorite">Hozzáadás a kedvencekhez</string>
     <string name="stats">Statisztika</string>
     <string name="no_stats">Nincs megjeleníthető statisztika!</string>
-    <string name="stats_summary">Statisztikai összefoglaló</string>
     <string name="no_stats_description">Nincs elég esemény a statisztikák megjelenítéséhez. Adj hozzá néhányat, és gyere vissza később!</string>
     <plurals name="stats_total">
         <item quantity="one">A Birday segít, hogy emlékezz összesen %d eseményre</item>
@@ -35,7 +33,6 @@
     <string name="app_behavior">Az alkalmazás viselkedése</string>
     <string name="additional_notification_name">További értesítés</string>
     <string name="additional_notification_description">Küldjön további értesítést napokkal az esemény előtt. %s</string>
-    <string name="no_additional_notification">Nincs további értesítés</string>
     <string name="one_day_before">Egy nappal korábban</string>
     <string name="two_days_before">Két nappal korábban</string>
     <string name="three_days_before">Három nappal korábban</string>
@@ -49,12 +46,9 @@
     <string name="vibration_name">Rezgés</string>
     <string name="vibration_description_on">Rezgés egy gomb megnyomásakor</string>
     <string name="vibration_description_off">Nincs rezgés egy gomb megnyomásakor</string>
-    <string name="date_format_name">Dátum formátum</string>
     <string name="notification_hour_name">Értesítési idő</string>
     <string name="notification_hour_description">%s \n\nFelhívjuk a figyelmed, hogy az értesítés nem működik, ha a rendszer leállítja az alkalmazást néhány Huawei, Xiaomi és OnePlus eszközön. További információt a dontkillmyapp.com oldalon találsz</string>
-    <string name="accent_description">Az alapértelmezett ékezet színének módosítása</string>
     <string name="accent_name">Kiemelő szín</string>
-    <string name="theme_description">Használjon sötét, világos vagy automatikus alkalmazás témát</string>
     <string name="theme_name">Alkalmazás téma</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Aqua</string>
@@ -81,7 +75,6 @@
     <string name="import_contacts_description">Ügyelj arra, hogy módosítsd az eseményeket a hiányzó évvel, hogy mindig pontos statisztikák legyenek!</string>
     <string name="import_success">Az importálás sikeresen befejeződött!</string>
     <string name="import_nothing_found">Nem található esemény!</string>
-    <string name="import_failed">Hiba történt!</string>
     <string name="missing_permission_contacts">A kapcsolattartási engedély meg lett tagadva. Próbálkozz újra, vagy aktiváld az engedélyt manuálisan, vagy a névjegyek importálása nem fog működni!</string>
     <string name="missing_permission_contacts_forever">A Birday nem tudta importálni a kapcsolatait, és nem kérhető engedély, mivel bejelölted a \"soha ne kérdezzen újra\" lehetőséget. Manuálisan engedélyezd!</string>
     <string name="birday_import_title">Importálj egy Birday biztonsági másolatot</string>
@@ -93,7 +86,6 @@
     <string name="birday_import_invalid_file">Az importálás sikertelen. A kiválasztott fájl nem Birday biztonsági másolat!</string>
     <string name="birday_export_success">Az exportálás befejeződött!</string>
     <string name="birday_export_failure">Az exportálás sikertelen. Hoppá!</string>
-    <string name="birday_export_nothing_found">Nincs mit exportálni!</string>
     <string name="surname_first">Vezetéknév először</string>
     <string name="surname_first_description_on">Mutassa meg a vezetéknevet a keresztnév előtt</string>
     <string name="surname_first_description_off">Mutassa meg a keresztnevet a vezetéknév előtt</string>
@@ -139,17 +131,14 @@
     <string name="insert_surname_hint">Vezetéknév beírása</string>
     <string name="insert_date_hint">Dátum kiválasztása</string>
     <string name="invalid_value_name">Érvénytelen név!</string>
-    <string name="consider_year">Vegye figyelembe az évet</string>
     <string name="event_type_hint">Esemény típus</string>
     <string name="birthday">Születésnap</string>
     <string name="anniversary">Évforduló</string>
     <string name="death_anniversary">Halál évfordulója</string>
-    <string name="festivity">Ünnepség</string>
     <string name="name_day">Névnap</string>
     <string name="other">Egyéb</string>
     <!-- Event actions -->
     <string name="event_actions">Tevékenységek</string>
-    <string name="event_actions_description">itt törölheti vagy egyszerűen módosíthatja ezt az eseményt!</string>
     <string name="edit_event">Esemény szerkesztése</string>
     <string name="delete_event">Esemény törlése</string>
     <string name="update_event">Esemény frissítése</string>
@@ -171,7 +160,6 @@
     <string name="no_default_sms">Nem található alapértelmezett sms alkalmazás!</string>
     <string name="might_have_missed">Lehet, hogy kihagyta:</string>
     <!-- Statistics -->
-    <string name="did_you_know">Tudtad?</string>
     <string name="age_average">Az átlagos életkor %s</string>
     <string name="oldest_person">A legidősebb ember %s</string>
     <string name="youngest_person">A legfiatalabb ember %s</string>
@@ -226,7 +214,6 @@
         <item quantity="other">%d év</item>
     </plurals>
     <string name="born_in">született</string>
-    <string name="and">és</string>
     <plurals name="event">
         <item quantity="one">esemény: %s</item>
         <item quantity="other">eseményeket: %s</item>
@@ -250,10 +237,8 @@
     </string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Közelgő eseményeket</string>
-    <string name="add_widget">Birday - közelgő</string>
     <string name="dark_widget_name">Sötét widget</string>
     <string name="dark_widget_description_on">A widget sötét témát használ</string>
-    <string name="dark_widget_description_off">A widget világos témát használ</string>
     <string name="widget_configuration_title">Widget konfiguráció</string>
     <string name="widget_configuration_description">Konfiguráld a widget-et, hogy egyezzen a stílusoddal</string>
     <string name="widget_background_title">Háttér</string>
@@ -267,35 +252,6 @@
     <string name="show_following_widget_title">A következő esemény megjelenítése</string>
     <string name="show_following_widget_description">Az esemény vagy a következő eseményt követő események megjelenítése egy további sorban</string>
     <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
-    <string name="compact_widget_opacity_title">Background opacity</string>
-    <string name="compact_widget_opacity_description">Adjust the darkness of the widget background</string>
-    <string name="compact_widget_appearance_title">Appearance</string>
-    <string name="compact_widget_bg_color_title">Background color</string>
-    <string name="compact_widget_text_color_title">Text color</string>
-    <string name="compact_widget_show_photos_title">Show contact photos</string>
-    <string name="compact_widget_date_position_title">Birth date</string>
-    <string name="compact_widget_date_hidden">Hidden</string>
-    <string name="compact_widget_date_below">Below name</string>
-    <string name="compact_widget_date_above">Above name</string>
-    <string name="compact_widget_zodiac_position_title">Zodiac sign</string>
-    <string name="compact_widget_zodiac_hidden">Hidden</string>
-    <string name="compact_widget_zodiac_before_date">Before date</string>
-    <string name="compact_widget_zodiac_after_date">After date</string>
-    <string name="compact_widget_text_size_title">Text size</string>
-    <string name="compact_widget_highlight_title">Today highlighting</string>
-    <string name="compact_widget_highlight_opacity_title">Background opacity</string>
-    <string name="compact_widget_highlight_color_title">Background color</string>
-    <string name="compact_widget_highlight_text_color_title">Text color</string>
-    <string name="compact_widget_turns">%d</string>
-    <string name="compact_widget_today">Today!</string>
-    <string name="compact_widget_tomorrow">Tomorrow</string>
-    <plurals name="compact_widget_in_days">
-        <item quantity="one">%d day</item>
-        <item quantity="other">%d days</item>
-    </plurals>
-    <string name="compact_widget_preview_days_2">7 days</string>
-    <string name="compact_widget_preview_days_3">15 days</string>
     <!-- Search -->
     <string name="search_event">Keresés…</string>
     <string name="search_no_result_title">Nincs találat</string>

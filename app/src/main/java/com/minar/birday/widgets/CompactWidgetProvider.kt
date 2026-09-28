@@ -26,7 +26,6 @@ class CompactWidgetProvider : BirdayWidgetProvider() {
                 val cn = ComponentName(context, CompactWidgetProvider::class.java)
                 val ids = mgr.getAppWidgetIds(cn)
                 ids.forEach { id -> updateAppWidget(context, mgr, id) }
-                mgr.notifyAppWidgetViewDataChanged(ids, R.id.compactWidgetList)
             }
         }
         super.onReceive(context, intent)
