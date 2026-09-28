@@ -105,6 +105,7 @@ class DetailsFragment : Fragment() {
         val shimmer = binding.detailsCountdownShimmer
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
         val astrologyDisabled = sharedPrefs.getBoolean("disable_astrology", false)
+        val republicanCalendarDisabled = sharedPrefs.getBoolean("disable_republican_calendar", false)
         val hideImage = sharedPrefs.getBoolean("hide_images", false)
         val surnameFirst = sharedPrefs.getBoolean("surname_first", false)
         val titleText = formatName(event, surnameFirst)
@@ -307,6 +308,14 @@ class DetailsFragment : Fragment() {
         binding.detailsZodiacSignValue.text =
             statsGenerator.getZodiacSign(event)
         binding.detailsCountdown.text = daysCountdown
+
+        // Set republican calendar value
+        if (republicanCalendarDisabled || !event.yearMatter!!) {
+            binding.detailsRepublicanCalendar.visibility = View.GONE
+            binding.detailsRepublicanCalendarValue.visibility = View.GONE
+        } else {
+            binding.detailsRepublicanCalendarValue.text = statsGenerator.getRepublicanDate(event)
+        }
 
         // Manage the different event types
         if (event.type == (EventCode.BIRTHDAY.name)) {
