@@ -417,7 +417,7 @@ class StatsGenerator(
     }
 
     fun getRepublicanDate(person: EventResult): String {
-        return formatRepublicanDate(person.originalDate)
+        return formatRepublicanDate(person.originalDate, applicationContext)
     }
 
     // Evaluate the result, differently from maxBy. If there's a tie, return an empty string
