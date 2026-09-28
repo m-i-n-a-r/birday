@@ -86,6 +86,7 @@
         android:summaryOff="@string/disable_republican_calendar_description_off"
         android:summaryOn="@string/disable_republican_calendar_description_on"
         android:title="@string/disable_republican_calendar_title"
+        android:widgetLayout="@layout/preference_switch_widget"
         app:iconSpaceReserved="false" />
     <!-- Import from CSV -->
     <com.minar.birday.preferences.backup.CsvImporter android:layout="@layout/csv_import_row" />
