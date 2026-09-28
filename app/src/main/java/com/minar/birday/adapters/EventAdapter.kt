@@ -167,7 +167,7 @@ class EventAdapter(
         return super.getItem(position)
     }
 
-    inner class IndexHeaderViewHolder(binding: MonthHeaderRowBinding) :
+    class IndexHeaderViewHolder(binding: MonthHeaderRowBinding) :
         RecyclerView.ViewHolder(binding.root) {
         private val monthHeaderText = binding.eventDateHeader
 

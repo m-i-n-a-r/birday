@@ -66,11 +66,11 @@ interface EventDao {
     @Query("SELECT *, $NEXT_DATE AS nextDate FROM Event WHERE nextDate <> (SELECT $NEXT_DATE AS nextDateFirst FROM Event ORDER BY nextDateFirst, originalDate limit 1) ORDER BY nextDate, originalDate")
     fun getOrderedEventsExceptNext(): LiveData<List<EventResult>>
 
-    @SuppressWarnings(RoomWarnings.Companion.QUERY_MISMATCH)
+    @SuppressWarnings(RoomWarnings.QUERY_MISMATCH)
     @Query("SELECT *, $NEXT_DATE AS nextDate FROM Event WHERE strftime('%Y', nextDate)-strftime('%Y', originalDate) = :age AND type = :type ORDER BY nextDate, originalDate;")
     fun getSpecialAgeEvents(age: Int, type: String): LiveData<List<Event>>
 
-    @SuppressWarnings(RoomWarnings.Companion.QUERY_MISMATCH)
+    @SuppressWarnings(RoomWarnings.QUERY_MISMATCH)
     // The events following an alternative calendar, whose next date has to be computed
     @Query("SELECT * FROM Event WHERE calendar IS NOT NULL")
     fun getAlternativeCalendarEvents(): List<Event>

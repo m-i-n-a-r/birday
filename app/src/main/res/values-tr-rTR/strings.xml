@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_welcome">Birday\'e Hoşgeldin</string>
     <string name="leave_review_title">Birday\'i Yorumlayın</string>
     <string name="leave_review_subtitle">Uygulamayı yorumlamanız benim için önemli. Bağışlar dışında bu uygulamanın tamamen ücretsiz ve reklamsız olduğunu unutmayın!</string>
@@ -118,7 +118,7 @@
     <string name="order_alphabetically_description_off">Etkinlikler tarihe göre sınıflandırılır</string>
     <string name="grouped_notifications_title">Çoklu grup bildirimleri</string>
     <string name="grouped_notifications_description_on">Eğer bir günde iki veya daha fazla etkinlik varsa bildirimler gruplandırılır</string>
-    <string name="grouped_notifications_description_off">Eğer bir günde iki veya daha fazla etkinlik varsa bildirimler ayrı ayrı gönderilir</string>
+    <string name="grouped_notifications_description_off" tools:ignore="Typos">Eğer bir günde iki veya daha fazla etkinlik varsa bildirimler ayrı ayrı gönderilir</string>
     <!-- Developer -->
     <string name="dev_description">Efendi bir adamımdır. Animasyon, ikonlar, spor arabalar ve 3D yazıcılar gibi şeyleri severim. Bilgisayar mühendisliği ve dizayn ile uğraşıyorum.</string>
     <string name="easter_egg">Hoş logo, değil mi? ;D</string>

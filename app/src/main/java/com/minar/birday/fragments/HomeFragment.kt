@@ -55,6 +55,7 @@ import androidx.core.content.edit
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.milliseconds
 
 
 // Long enough for the page to be up and settled before the user's own party starts
@@ -318,12 +319,9 @@ class HomeFragment : Fragment() {
         if (mainViewModel.searchString.value!!.isNotBlank())
             searchBar.setText(mainViewModel.searchString.value)
 
-        // The user's own birthday, from the card in the settings: a party just for them. Not right
-        // away: when the app theme differs from the system one the activity is recreated as it
-        // starts, and a party thrown in the first instance would die with it, already marked done.
-        // A coroutine tied to this view is cancelled along with it, so the next one throws it
+        // The user's own birthday, from the card in the settings
         viewLifecycleOwner.lifecycleScope.launch {
-            delay(USER_PARTY_DELAY)
+            delay(USER_PARTY_DELAY.milliseconds)
             celebrateUserBirthday()
         }
     }
