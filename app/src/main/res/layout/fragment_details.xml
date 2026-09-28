@@ -278,32 +278,56 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detailsRepublicanCalendar"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/in_row_padding"
-            android:maxWidth="@dimen/details_text_max_width"
             android:padding="@dimen/in_row_padding"
             android:text="@string/republican_calendar"
             android:textAlignment="viewEnd"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             android:textColor="?attr/colorOutline"
-            app:layout_constraintBaseline_toBaselineOf="@+id/detailsRepublicanCalendarValue"
-            app:layout_constraintEnd_toStartOf="@+id/detailsRepublicanCalendarValue"
-            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintBaseline_toBaselineOf="@id/detailsRepublicanCalendarValue"
+            app:layout_constraintEnd_toStartOf="@id/detailsGuideline"
             app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detailsRepublicanCalendarValue"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/in_row_padding"
             android:padding="@dimen/in_row_padding"
             android:text="@string/app_name"
             android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/detailsRepublicanCalendar"
-            app:layout_constraintTop_toBottomOf="@+id/detailsChineseSign"
+            app:layout_constraintStart_toEndOf="@id/detailsGuideline"
+            app:layout_constraintTop_toBottomOf="@id/detailsChineseSignValue"
             tools:layout_editor_absoluteY="390dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailsGregorianEquivalent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/in_row_padding"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/republican_birthday"
+            android:textAlignment="viewEnd"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?attr/colorOutline"
+            app:layout_constraintBaseline_toBaselineOf="@id/detailsGregorianEquivalentValue"
+            app:layout_constraintEnd_toStartOf="@id/detailsGuideline"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailsGregorianEquivalentValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/in_row_padding"
+            android:padding="@dimen/in_row_padding"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/detailsGuideline"
+            app:layout_constraintTop_toBottomOf="@id/detailsRepublicanCalendarValue" />
 
         <Button
             android:id="@+id/detailsContactButton"
@@ -323,7 +347,7 @@
             app:layout_constraintBottom_toTopOf="@id/detailsEditButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detailsRepublicanCalendarValue"
+            app:layout_constraintTop_toBottomOf="@id/detailsGregorianEquivalentValue"
             app:layout_constraintVertical_bias="1"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintWidth_max="@dimen/details_button_max_width"

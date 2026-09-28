@@ -189,3 +189,31 @@ fun formatRepublicanDate(date: LocalDate, context: Context?): String {
 
     return "$day $month $year"
 }
+
+/** Returns the next Gregorian date on which this Republican calendar date occurs. */
+fun getNextRepublicanBirthday(date: LocalDate, today: LocalDate = LocalDate.now()): LocalDate {
+    val birthdayTimestamp = timestampFromUnix(date.toEpochDay() * GREGORIAN_SECONDS_PER_DAY)
+    val birthdayYear0 = tsToYear0(birthdayTimestamp)
+    val birthdayDayOfYear =
+        ((birthdayTimestamp - getYearStart0(birthdayYear0)) / REPUBLICAN_SECONDS_PER_DAY).toInt()
+
+    var targetYear0 = tsToYear0(timestampFromUnix(today.toEpochDay() * GREGORIAN_SECONDS_PER_DAY))
+    while (true) {
+        if (birthdayDayOfYear < getDayCount0(targetYear0)) {
+            val republicanTimestamp =
+                getYearStart0(targetYear0) + birthdayDayOfYear * REPUBLICAN_SECONDS_PER_DAY
+            val unixTimestamp =
+                republicanTimestamp * GREGORIAN_SECONDS_PER_DAY / REPUBLICAN_SECONDS_PER_DAY +
+                        REPUBLICAN_EPOCH_GREGORIAN_SECONDS
+            // LocalDate represents Gregorian midnight, so use the first midnight on or after
+            // the Republican day starts (which may occur during the Gregorian day).
+            val candidateEpochDay = Math.floorDiv(
+                unixTimestamp + GREGORIAN_SECONDS_PER_DAY - 1,
+                GREGORIAN_SECONDS_PER_DAY
+            )
+            val candidate = LocalDate.ofEpochDay(candidateEpochDay)
+            if (!candidate.isBefore(today)) return candidate
+        }
+        targetYear0++
+    }
+}

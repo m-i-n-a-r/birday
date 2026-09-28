@@ -41,6 +41,7 @@ import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.formatDaysRemaining
 import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.formatTextPreview
+import com.minar.birday.utilities.getNextRepublicanBirthday
 import com.minar.birday.utilities.getNextYears
 import com.minar.birday.utilities.getReducedDate
 import com.minar.birday.utilities.getRemainingDays
@@ -50,6 +51,7 @@ import com.minar.birday.utilities.resultToEvent
 import com.minar.birday.viewmodels.MainViewModel
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
+import java.util.Locale
 
 
 class DetailsFragment : Fragment() {
@@ -309,12 +311,23 @@ class DetailsFragment : Fragment() {
             statsGenerator.getZodiacSign(event)
         binding.detailsCountdown.text = daysCountdown
 
-        // Set republican calendar value
+        // Set republican calendar values
         if (republicanCalendarDisabled || !event.yearMatter!!) {
             binding.detailsRepublicanCalendar.visibility = View.GONE
             binding.detailsRepublicanCalendarValue.visibility = View.GONE
+            binding.detailsGregorianEquivalent.visibility = View.GONE
+            binding.detailsGregorianEquivalentValue.visibility = View.GONE
         } else {
             binding.detailsRepublicanCalendarValue.text = statsGenerator.getRepublicanDate(event)
+            if (event.type == EventCode.BIRTHDAY.name) {
+                binding.detailsGregorianEquivalentValue.text =
+                    getNextRepublicanBirthday(event.originalDate).format(
+                        DateTimeFormatter.ofPattern("d MMMM", Locale.getDefault())
+                    )
+            } else {
+                binding.detailsGregorianEquivalent.visibility = View.GONE
+                binding.detailsGregorianEquivalentValue.visibility = View.GONE
+            }
         }
 
         // Manage the different event types

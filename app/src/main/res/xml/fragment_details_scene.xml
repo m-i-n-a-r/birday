@@ -78,6 +78,16 @@
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />
         </Constraint>
+        <Constraint android:id="@id/detailsGregorianEquivalent">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsGregorianEquivalentValue">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
         <Constraint android:id="@id/detailsCountdownShimmer">
             <PropertySet
                 app:applyMotionScene="false"
@@ -116,6 +126,16 @@
                 app:visibilityMode="ignore" />
         </Constraint>
         <Constraint android:id="@id/detailsRepublicanCalendarValue">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsGregorianEquivalent">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint android:id="@id/detailsGregorianEquivalentValue">
             <PropertySet
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />
