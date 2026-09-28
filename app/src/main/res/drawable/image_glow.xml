@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- A soft tertiary halo around the event pictures, where a gray outline used to be. The view is
-     scaled past the picture, so only the fading ring outside it shows -->
+     scaled past the picture, so only the fading ring outside it shows. The gradient is plain white
+     and the view tints it: older Android versions can't read theme colors inside a gradient, and fell
+     back to a default one -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
     <gradient
-        android:centerColor="@color/image_glow"
-        android:endColor="@color/image_glow_clear"
+        android:centerColor="#99FFFFFF"
+        android:endColor="#00FFFFFF"
         android:gradientRadius="50%"
-        android:startColor="@color/image_glow"
+        android:startColor="#99FFFFFF"
         android:type="radial" />
 </shape>

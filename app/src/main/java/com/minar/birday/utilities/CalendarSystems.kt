@@ -140,10 +140,17 @@ fun refreshCalendarDates(context: Context) {
     }
 }
 
+// Languages with real names for the lunar months. Elsewhere ICU has none: older versions fall back
+// to the Gregorian names, a lie, newer ones to codes like M08, so the month is a number there, the
+// way lunar dates are usually written anyway
+private val LUNAR_MONTH_NAME_LANGUAGES = setOf("zh", "ko", "ja", "vi")
+
 // The day and month of a date in the given calendar, in the words of the current locale
 fun formatInCalendar(date: LocalDate, calendar: EventCalendar): String {
     val icuCalendar = Calendar.getInstance(TimeZone.GMT_ZONE, ULocale("@calendar=${calendar.key}"))
     icuCalendar.timeInMillis = date.toCalendarMillis()
-    return DateFormat.getInstanceForSkeleton(icuCalendar, "MMMMd", Locale.getDefault())
-        .format(icuCalendar)
+    val locale = Locale.getDefault()
+    val lunar = calendar == EventCalendar.CHINESE || calendar == EventCalendar.DANGI
+    val skeleton = if (lunar && locale.language !in LUNAR_MONTH_NAME_LANGUAGES) "Md" else "MMMMd"
+    return DateFormat.getInstanceForSkeleton(icuCalendar, skeleton, locale).format(icuCalendar)
 }

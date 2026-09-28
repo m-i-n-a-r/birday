@@ -79,6 +79,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:background="@drawable/image_glow"
+                    android:backgroundTint="?attr/colorTertiary"
                     android:importantForAccessibility="no"
                     android:scaleX="@dimen/image_glow_scale"
                     android:scaleY="@dimen/image_glow_scale"
