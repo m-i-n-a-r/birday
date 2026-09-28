@@ -314,7 +314,7 @@ class DetailsFragment : Fragment() {
             binding.detailsRepublicanCalendar.visibility = View.GONE
             binding.detailsRepublicanCalendarValue.visibility = View.GONE
         } else {
-            binding.detailsRepublicanCalendarValue.text = "27 vendémiaire 252" // TODO: remove this testing value
+            binding.detailsRepublicanCalendarValue.text = statsGenerator.getRepublicanDate(event)
         }
 
         // Manage the different event types

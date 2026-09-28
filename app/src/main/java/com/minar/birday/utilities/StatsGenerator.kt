@@ -416,6 +416,10 @@ class StatsGenerator(
         return signNumber
     }
 
+    fun getRepublicanDate(person: EventResult): String {
+        return formatRepublicanDate(person.originalDate)
+    }
+
     // Evaluate the result, differently from maxBy. If there's a tie, return an empty string
     private fun evaluateResult(map: Map<String, Int>): String {
         var maxValue = 0
