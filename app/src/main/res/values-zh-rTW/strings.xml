@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">歡迎使用 Birday</string>
+    <string name="app_name_extended">Birday - Event Manager</string>
     <string name="leave_review_title">替 Birday 評分</string>
     <string name="leave_review_subtitle">幫我留個評價吧！記得，除非你選擇贊助，否則這個程式是完全免費且無廣告的！</string>
     <string name="yes_review">評價！</string>
@@ -14,6 +15,7 @@
     <string name="add_favorite">新增至我的最愛中</string>
     <string name="stats">統計</string>
     <string name="no_stats">沒有數據可顯示！</string>
+    <string name="stats_summary">Stats summary</string>
     <string name="no_stats_description">您目前沒有足夠的節日來生成統計。新增一些項目再回來吧！</string>
     <plurals name="stats_total">
         <item quantity="other">Birday 幫你記住了多達 %d 個重要日子</item>
@@ -35,6 +37,7 @@
     <string name="app_behavior">應用程式行為</string>
     <string name="additional_notification_name">附加通知</string>
     <string name="additional_notification_description">在活動開始前幾天多發送一個通知。 %s</string>
+    <string name="no_additional_notification">No additional notification</string>
     <string name="one_day_before">一天前</string>
     <string name="two_days_before">兩天前</string>
     <string name="three_days_before">三天前</string>
@@ -48,9 +51,12 @@
     <string name="vibration_name">振動</string>
     <string name="vibration_description_on">按下按鈕時振動</string>
     <string name="vibration_description_off">按下按鈕時無振動</string>
+    <string name="date_format_name">Date format</string>
     <string name="notification_hour_name">通知時間</string>
     <string name="notification_hour_description">%s \n\n請注意，某些裝置 (如華為、小米、OnePlus 等) 可能會在背景中把此 Birday 殺掉，導致生日通知無法正常運作。詳情請參閱 dontkillmyapp.com。</string>
+    <string name="accent_description">Change the default accent color</string>
     <string name="accent_name">配色</string>
+    <string name="theme_description">Use a dark, light or automatic app theme</string>
     <string name="theme_name">應用程式主題</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">水色</string>
@@ -77,6 +83,7 @@
     <string name="import_contacts_description">請確保各個聯絡人的節日有出生年份設好，否則統計數據可能會不準！</string>
     <string name="import_success">已成功匯入！</string>
     <string name="import_nothing_found">找不到任何可匯入的紀念日！</string>
+    <string name="import_failed">Something went wrong!</string>
     <string name="missing_permission_contacts">聯絡人存取權限被拒。請再試一次或手動允許該權限，否則無法匯入聯絡人生日！</string>
     <string name="missing_permission_contacts_forever">因為你初次拒絕了聯絡人存取權限，Birday 無法再次要求該權限。請進入設定，並手動允許聯絡人權限。</string>
     <string name="birday_import_title">匯入 Birday 備份</string>
@@ -86,8 +93,10 @@
     <string name="birday_import_success">匯入成功！</string>
     <string name="birday_import_failure">匯入失敗。您是否正常選擇了適當的檔案？</string>
     <string name="birday_import_invalid_file">匯入失敗。您所選的檔案不是 Birday 的備份檔案！</string>
+    <string name="birday_import_newer_backup">This backup comes from a newer version of Birday: update the app to import it</string>
     <string name="birday_export_success">匯出成功！</string>
     <string name="birday_export_failure">匯出失敗。噢不！</string>
+    <string name="birday_export_nothing_found">Nothing to export!</string>
     <string name="surname_first">姓氏優先</string>
     <string name="surname_first_description_on">顯示姓+名</string>
     <string name="surname_first_description_off">顯示名+姓</string>
@@ -134,14 +143,17 @@
     <string name="insert_surname_hint">輸入名稱</string>
     <string name="insert_date_hint">選擇日期</string>
     <string name="invalid_value_name">名稱無效！</string>
+    <string name="consider_year">Consider the year</string>
     <string name="event_type_hint">紀念日類別</string>
     <string name="birthday">生日</string>
     <string name="anniversary">週年紀念日</string>
     <string name="death_anniversary">逝世紀念日</string>
+    <string name="festivity">Festivity</string>
     <string name="name_day">命名日</string>
     <string name="other">其他</string>
     <!-- Event actions -->
     <string name="event_actions">動作</string>
+    <string name="event_actions_description">Here you can change or remove this event!</string>
     <string name="edit_event">編輯紀念日</string>
     <string name="delete_event">刪除紀念日</string>
     <string name="update_event">更新紀念日</string>
@@ -164,6 +176,7 @@
     <string name="no_default_dialer">找不到預設撥號器！</string>
     <string name="no_default_sms">找不到預設簡訊 App！</string>
     <string name="might_have_missed">You might have missed:</string>
+    <string name="did_you_know">Did you know?</string>
     <!-- Statistics -->
     <string name="age_average">大家的平均年齡是 %s</string>
     <string name="oldest_person">年齡最大的人是 %s</string>
@@ -216,6 +229,7 @@
         <item quantity="other">%d 年</item>
     </plurals>
     <string name="born_in">出生於</string>
+    <string name="and">and</string>
     <plurals name="event">
         <item quantity="other">事件: %s</item>
     </plurals>
@@ -237,8 +251,10 @@
     <string name="slide_three_description">如果你的聯絡人資料中含有節日相關資訊，Birday 也可以從聯絡人中匯入此資訊！</string>
     <!-- Widget -->
     <string name="appwidget_upcoming">即將到來的紀念日</string>
+    <string name="add_widget">Birday - Upcoming</string>
     <string name="dark_widget_name">深色小工具</string>
     <string name="dark_widget_description_on">桌面小工具使用深色主題</string>
+    <string name="dark_widget_description_off">The widget uses the light theme</string>
     <string name="widget_configuration_title">設置小部件</string>
     <string name="widget_configuration_description">設置小部件以適合你的美觀</string>
     <string name="widget_background_title">背景</string>
@@ -252,12 +268,15 @@
     <string name="show_following_widget_title">Show the following event</string>
     <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <string name="appwidget_compact">Compact table</string>
+    <string name="add_widget_compact">Birday - Compact</string>
     <!-- Compact widget -->
     <string name="compact_widget_opacity">Background opacity</string>
     <string name="compact_widget_bg_color">Background color</string>
     <string name="compact_widget_text_color">Text color</string>
     <string name="compact_widget_text_size">Text size</string>
     <string name="compact_widget_text_size_auto">Auto</string>
+    <string name="export_ics_title">Export to iCalendar</string>
+    <string name="export_ics_description">Export each event to an .ics file, for any calendar app</string>
     <string name="compact_widget_scroll">Scroll through all the events</string>
     <string name="compact_widget_hidden">Hidden</string>
     <string name="compact_widget_below_name">Below name</string>
@@ -351,6 +370,7 @@
     <string name="unbirthdays_description_off">No unbirthdays in the details</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">About</string>
+    <string name="back">Back</string>
     <string name="about_description">Info about Birday, its author and the app language</string>
     <string name="about_version">Version</string>
     <string name="about_language_title">Language</string>
