@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Добро пожаловать в Birday</string>
+    <string name="app_name_extended">Birday - Event Manager</string>
     <string name="leave_review_title">Оставить отзыв о Birday</string>
     <string name="leave_review_subtitle">Оставьте отзыв, чтобы помочь мне с приложением. Имейте в виду, что, не считая пожертвований, это приложение бесплатно и не содержит рекламы!</string>
     <string name="yes_review">Оставить отзыв!</string>
@@ -14,6 +15,7 @@
     <string name="add_favorite">Добавить в избранное</string>
     <string name="stats">Статистика</string>
     <string name="no_stats">Нет статистики для просмотра!</string>
+    <string name="stats_summary">Stats summary</string>
     <string name="no_stats_description">Недостаточно событий, чтобы показать статистику. Добавьте несколько и заходите еще!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday помогает вам запомнить %d событие</item>
@@ -44,6 +46,7 @@
     <string name="app_behavior">Поведение приложения</string>
     <string name="additional_notification_name">Дополнительные уведомления</string>
     <string name="additional_notification_description">Отправлять дополнительные уведомления до наступления события. %s</string>
+    <string name="no_additional_notification">No additional notification</string>
     <string name="one_day_before">За день</string>
     <string name="two_days_before">За два дня</string>
     <string name="three_days_before">За три дня</string>
@@ -57,9 +60,12 @@
     <string name="vibration_name">Вибрация</string>
     <string name="vibration_description_on">Вибрировать при нажатии</string>
     <string name="vibration_description_off">Не вибрировать при нажатии</string>
+    <string name="date_format_name">Date format</string>
     <string name="notification_hour_name">Час уведомления</string>
     <string name="notification_hour_description">%s \n\nОбратите внимание, что уведомление может не работать, когда приложение остановлено системой в некоторых устройствах Huawei, Xiaomi и OnePlus. Подробности на dontkillmyapp.com.</string>
+    <string name="accent_description">Change the default accent color</string>
     <string name="accent_name">Цвет акцента</string>
+    <string name="theme_description">Use a dark, light or automatic app theme</string>
     <string name="theme_name">Тема приложения</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Aква-синий</string>
@@ -86,6 +92,7 @@
     <string name="import_contacts_description">Дополните события, в которых не указан год, чтобы улучшить статистику!</string>
     <string name="import_success">Импорт успешно завершен!</string>
     <string name="import_nothing_found">События не найдены!</string>
+    <string name="import_failed">Something went wrong!</string>
     <string name="missing_permission_contacts">Доступ к контактам запрещен. Попробуйте еще раз или разрешите доступ вручную - без него импорт контактов работать не будет!</string>
     <string name="missing_permission_contacts_forever">Birday не может импортировать контакты или спросить на это разрешения, так как вы выбрали \"Больше не спрашивать\". Разрешите доступ вручную!</string>
     <string name="birday_import_title">Импортировать резервную копию Birday</string>
@@ -95,8 +102,10 @@
     <string name="birday_import_success">Импорт завершен!</string>
     <string name="birday_import_failure">Импорт не удался! Вы выбрали тот файл, что нужно?</string>
     <string name="birday_import_invalid_file">Импорт не удался. Выбранный файл - не резервная копия Birday!</string>
+    <string name="birday_import_newer_backup">This backup comes from a newer version of Birday: update the app to import it</string>
     <string name="birday_export_success">Экспорт завершен!</string>
     <string name="birday_export_failure">Экспорт не удался. Ой!</string>
+    <string name="birday_export_nothing_found">Nothing to export!</string>
     <string name="surname_first">Фамилия впереди</string>
     <string name="surname_first_description_on">Показывать фамилию перед именем</string>
     <string name="surname_first_description_off">Показывать имя перед фамилией</string>
@@ -143,14 +152,17 @@
     <string name="insert_surname_hint">Введите фамилию</string>
     <string name="insert_date_hint">Выберите дату</string>
     <string name="invalid_value_name">Неверное имя!</string>
+    <string name="consider_year">Consider the year</string>
     <string name="event_type_hint">Тип события</string>
     <string name="birthday">День рождения</string>
     <string name="anniversary">Годовщина</string>
     <string name="death_anniversary">Годовщина смерти</string>
+    <string name="festivity">Festivity</string>
     <string name="name_day">Именины</string>
     <string name="other">Другой</string>
     <!-- Event actions -->
     <string name="event_actions">Действия</string>
+    <string name="event_actions_description">Here you can change or remove this event!</string>
     <string name="edit_event">Изменить событие</string>
     <string name="delete_event">Удалить событие</string>
     <string name="update_event">Обновить событие</string>
@@ -173,6 +185,7 @@
     <string name="no_default_dialer">Не найдено приложение по умолчанию для звонков!</string>
     <string name="no_default_sms">Не найдено приложение по умолчанию для СМС!</string>
     <string name="might_have_missed">Возможно, вы пропустили:</string>
+    <string name="did_you_know">Did you know?</string>
     <!-- Statistics -->
     <string name="age_average">Средний возраст %s</string>
     <string name="oldest_person">Самый старший - %s</string>
@@ -234,6 +247,7 @@
         <item quantity="other">%d лет</item>
     </plurals>
     <string name="born_in">родился/лась в</string>
+    <string name="and">and</string>
     <plurals name="event">
         <item quantity="one">событие: %s</item>
         <item quantity="few">события: %s</item>
@@ -263,8 +277,10 @@
     </string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Скоро события</string>
+    <string name="add_widget">Birday - Upcoming</string>
     <string name="dark_widget_name">Темный виджет</string>
     <string name="dark_widget_description_on">Виджет использует темную тему</string>
+    <string name="dark_widget_description_off">The widget uses the light theme</string>
     <string name="widget_configuration_title">Настройки виджета</string>
     <string name="widget_configuration_description">Настройте виджет в соответствии с вашим стилем</string>
     <string name="widget_background_title">Фон</string>
@@ -278,12 +294,15 @@
     <string name="show_following_widget_title">Показать следующее событие</string>
     <string name="show_following_widget_description">Показать в дополнительной строке событие или события, следующие за другим</string>
     <string name="appwidget_compact">Compact table</string>
+    <string name="add_widget_compact">Birday - Compact</string>
     <!-- Compact widget -->
     <string name="compact_widget_opacity">Background opacity</string>
     <string name="compact_widget_bg_color">Background color</string>
     <string name="compact_widget_text_color">Text color</string>
     <string name="compact_widget_text_size">Text size</string>
     <string name="compact_widget_text_size_auto">Auto</string>
+    <string name="export_ics_title">Export to iCalendar</string>
+    <string name="export_ics_description">Export each event to an .ics file, for any calendar app</string>
     <string name="compact_widget_scroll">Scroll through all the events</string>
     <string name="compact_widget_hidden">Hidden</string>
     <string name="compact_widget_below_name">Below name</string>
@@ -377,6 +396,7 @@
     <string name="unbirthdays_description_off">No unbirthdays in the details</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">About</string>
+    <string name="back">Back</string>
     <string name="about_description">Info about Birday, its author and the app language</string>
     <string name="about_version">Version</string>
     <string name="about_language_title">Language</string>
