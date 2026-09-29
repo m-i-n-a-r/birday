@@ -1,5 +1,8 @@
 package com.minar.birday.fragments
 
+import android.content.ComponentName
+import com.minar.birday.preferences.backup.IcsExporter
+import com.minar.birday.utilities.ICS_MIME_TYPE
 import android.Manifest
 import android.content.ContentUris
 import android.content.Intent
@@ -664,11 +667,17 @@ class DetailsFragment : Fragment() {
             sharedPrefs.getBoolean("surname_first", false),
             multiline = true
         )
-        ShareCompat.IntentBuilder(requireActivity())
+        // The event in a file too, which Birday on the other side imports, as any calendar app does
+        val shareIntent = ShareCompat.IntentBuilder(requireActivity())
             .setText(eventInformation)
-            .setType("text/plain")
-            .setChooserTitle(getString(R.string.share_event))
-            .startChooser()
+            .setStream(IcsExporter.shareableIcs(act, resultToEvent(event)))
+            .setType(ICS_MIME_TYPE)
+            .intent
+            .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        // Birday itself opens such files, but sharing an event to the app it comes from makes no sense
+        val chooser = Intent.createChooser(shareIntent, getString(R.string.share_event))
+            .putExtra(Intent.EXTRA_EXCLUDE_COMPONENTS, arrayOf(ComponentName(act, MainActivity::class.java)))
+        startActivity(chooser)
     }
 
     // Disable any astrology related view

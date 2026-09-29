@@ -14,6 +14,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
 import com.minar.birday.BuildConfig
 import com.minar.birday.R
@@ -23,8 +24,6 @@ import com.minar.birday.databinding.FragmentAboutBinding
 import com.minar.birday.utilities.addNavbarClearance
 import com.minar.birday.utilities.animateChildrenCascade
 import com.minar.birday.utilities.getThemeColor
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import nl.dionsegijn.konfetti.models.Shape
@@ -40,7 +39,6 @@ class AboutFragment : Fragment() {
     private lateinit var act: MainActivity
     private var _binding: FragmentAboutBinding? = null
     private val binding get() = _binding!!
-    private val fragmentScope = CoroutineScope(Dispatchers.Main)
 
     // Easter egg stuff, why not
     private var easterEggCounter = 0
@@ -65,12 +63,6 @@ class AboutFragment : Fragment() {
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         if (sharedPrefs.getBoolean("shimmer", false)) binding.settingsShimmer.startShimmer()
 
-        // Spawn the logo with a little delay
-        fragmentScope.launch {
-            delay(300.milliseconds)
-            (binding.imageMinar.drawable as? AnimatedVectorDrawable)?.start()
-        }
-
         binding.imageMinar.setOnClickListener { onLogoClick() }
         binding.minarig.setOnClickListener { openLink(R.string.dev_instagram) }
         binding.minartg.setOnClickListener { openLink(R.string.dev_telegram_channel) }
@@ -85,6 +77,11 @@ class AboutFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Spawn the logo with a little delay, unless the screen is already gone
+        viewLifecycleOwner.lifecycleScope.launch {
+            delay(300.milliseconds)
+            (binding.imageMinar.drawable as? AnimatedVectorDrawable)?.start()
+        }
         binding.aboutRows.animateChildrenCascade()
         binding.aboutScroll.addNavbarClearance()
     }

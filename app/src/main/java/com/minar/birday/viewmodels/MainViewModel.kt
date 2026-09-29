@@ -12,6 +12,7 @@ import com.minar.birday.model.Stat
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.StatsGenerator
+import com.minar.birday.utilities.delayToNextCheck
 import com.minar.birday.utilities.refreshCalendarDates
 import com.minar.birday.workers.EventWorker
 import kotlinx.coroutines.Dispatchers
@@ -130,17 +131,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         // Cancel every previous scheduled work
         workManager.cancelAllWork()
         workManager.pruneWork()
-        val currentDate = Calendar.getInstance()
-        val dueDate = Calendar.getInstance()
-        // Set Execution at the time specified + 15 seconds to avoid midnight problems
-        dueDate.set(Calendar.HOUR_OF_DAY, workHour)
-        dueDate.set(Calendar.MINUTE, workMinute)
-        dueDate.set(Calendar.SECOND, 15)
-        if (dueDate.before(currentDate)) dueDate.add(Calendar.HOUR_OF_DAY, 24)
-        // Setup the work request using the difference between now and the next check as delay
-        val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis
+        // Setup the work request using the time until the next check as delay
         val dailyWorkRequest = OneTimeWorkRequestBuilder<EventWorker>()
-            .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)
+            .setInitialDelay(delayToNextCheck(workHour, workMinute).toMillis(), TimeUnit.MILLISECONDS)
             .build()
         // Enqueue the request
         workManager.enqueue(dailyWorkRequest)

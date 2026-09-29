@@ -127,6 +127,11 @@ fun ImageView.applyLoopingAnimatedVectorDrawable(
     endDelay: Long = 0,
     disableLooping: Boolean = false
 ) {
+    // The icon being replaced would otherwise keep restarting its loop, unseen
+    (drawable as? AnimatedVectorDrawableCompat)?.run {
+        clearAnimationCallbacks()
+        stop()
+    }
     val animated = AnimatedVectorDrawableCompat.create(context, animatedVector)
     // Ability to disable the loop, for a future option
     if (!disableLooping) {

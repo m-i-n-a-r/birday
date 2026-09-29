@@ -52,7 +52,9 @@ import androidx.core.view.animation.PathInterpolatorCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePaddingRelative
+import androidx.core.content.IntentCompat
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.withResumed
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
@@ -77,6 +79,7 @@ import com.minar.birday.preferences.backup.CalendarImporter
 import com.minar.birday.preferences.backup.ContactsImporter
 import com.minar.birday.preferences.backup.CsvExporter
 import com.minar.birday.preferences.backup.CsvImporter
+import com.minar.birday.preferences.backup.IcsExporter
 import com.minar.birday.preferences.backup.JsonExporter
 import com.minar.birday.preferences.backup.JsonImporter
 import com.minar.birday.utilities.AppRater
@@ -86,6 +89,8 @@ import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
 import com.minar.birday.utilities.applyUserTheme
 import com.minar.birday.utilities.eventToResult
 import com.minar.birday.utilities.formatTextPreview
+import com.minar.birday.utilities.ICS_MIME_TYPE
+import com.minar.birday.utilities.icsToEvents
 import com.minar.birday.utilities.getThemeColor
 import com.minar.birday.utilities.resultToEvent
 import com.minar.birday.utilities.shareUri
@@ -131,7 +136,7 @@ class MainActivity : AppCompatActivity() {
     )
 
     // What the detached action button on the right of the navbar does right now
-    private enum class NavActionMode { NEW_EVENT, DELETE_SEARCH, ABOUT }
+    private enum class NavActionMode { NEW_EVENT, DELETE_SEARCH, ABOUT, BACK }
 
     companion object {
         val GestureInterpolator: Interpolator = PathInterpolatorCompat.create(0f, 0f, 0f, 1f)
@@ -144,6 +149,10 @@ class MainActivity : AppCompatActivity() {
 
         // The label is fully opaque halfway through, while the pill is still growing around it
         const val NAV_LABEL_FADE_PORTION = 0.5f
+
+        // Each half of the action icon swap, and how far it turns on the way
+        const val NAV_ACTION_SWAP_DURATION = 150L
+        const val NAV_ACTION_SPIN = 90f
 
         // The selected tab, kept across a recreation that keeps the destination too
         const val STATE_SELECTED_TAB = "selected_tab"
@@ -247,6 +256,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             val onTab = navTabs.any { it.destination == destination.id }
             backHomeCallback.isEnabled = onTab && selectedTabIndex != 0
+            renderNavAction()
         }
         navTabs.forEachIndexed { index, tab ->
             tab.binding.tabIcon.setImageResource(tab.icon)
@@ -274,8 +284,13 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 NavActionMode.DELETE_SEARCH -> confirmDeleteSearch()
-                NavActionMode.ABOUT ->
-                    navController.navigate(R.id.action_navigationSettings_to_aboutFragment)
+                NavActionMode.ABOUT -> navController.navigate(
+                    if (navController.currentDestination?.id == R.id.experimentalSettingsFragment)
+                        R.id.action_experimentalSettingsFragment_to_aboutFragment
+                    else R.id.action_navigationSettings_to_aboutFragment
+                )
+
+                NavActionMode.BACK -> navController.popBackStack()
             }
         }
         // Show a quick description of the action
@@ -287,6 +302,7 @@ class MainActivity : AppCompatActivity() {
                         NavActionMode.NEW_EVENT -> R.string.new_event_description
                         NavActionMode.DELETE_SEARCH -> R.string.delete_search_title
                         NavActionMode.ABOUT -> R.string.about_description
+                        NavActionMode.BACK -> R.string.back
                     }
                 )
             )
@@ -364,11 +380,59 @@ class MainActivity : AppCompatActivity() {
 
         onBackPressedDispatcher.addCallback(this, backHomeCallback)
         openEventFromIntent(intent)
+        importIcsFromIntent(intent)
     }
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         openEventFromIntent(intent)
+        importIcsFromIntent(intent)
+    }
+
+    // An iCalendar file opened or shared to Birday, then forgotten, so a recreation won't import it
+    // again. A single event lands in the insert sheet, to be checked and saved, more of them, as in
+    // a whole export, are imported at once
+    private fun importIcsFromIntent(intent: Intent?) {
+        intent ?: return
+        val uri = when (intent.action) {
+            Intent.ACTION_VIEW -> intent.data
+            Intent.ACTION_SEND -> IntentCompat.getParcelableExtra(intent, Intent.EXTRA_STREAM, Uri::class.java)
+            else -> null
+        } ?: return
+        intent.action = Intent.ACTION_MAIN
+        intent.data = null
+        intent.removeExtra(Intent.EXTRA_STREAM)
+        lifecycleScope.launch {
+            val events = withContext(Dispatchers.IO) {
+                runCatching {
+                    contentResolver.openInputStream(uri)?.use { icsToEvents(it.bufferedReader().readText()) }
+                }.getOrNull().orEmpty()
+            }
+            // A single event already here opens as it is: saved again, it would replace the one
+            // with its favorite, notes and picture
+            val existing = events.singleOrNull()?.let { received ->
+                withContext(Dispatchers.IO) {
+                    EventDatabase.getBirdayDatabase(this@MainActivity).eventDao()
+                        .getOrderedEventsStatic().firstOrNull {
+                            it.name == received.name && it.surname.orEmpty() == received.surname.orEmpty() &&
+                                it.originalDate == received.originalDate
+                        }
+                }
+            }
+            withResumed {
+                when {
+                    events.isEmpty() -> showSnackbar(getString(R.string.import_nothing_found))
+                    existing != null -> showEventDetails(existing)
+                    events.size == 1 -> InsertEventBottomSheet(this@MainActivity, template = events.first())
+                        .show(supportFragmentManager, "insert_event_bottom_sheet")
+
+                    else -> {
+                        mainViewModel.insertAll(events)
+                        showSnackbar(getString(R.string.import_success))
+                    }
+                }
+            }
+        }
     }
 
     // Opens the details of the event named by EXTRA_EVENT_ID, if any, then forgets it
@@ -381,16 +445,20 @@ class MainActivity : AppCompatActivity() {
                 EventDatabase.getBirdayDatabase(this@MainActivity).eventDao()
                     .getOrderedEventsStatic().firstOrNull { it.id == id }
             } ?: return@launch
-            // From wherever the app was: back to the list first, so Back leads home
-            navController.popBackStack(R.id.navigationMain, false)
-            navController.navigate(
-                R.id.detailsFragment,
-                Bundle().apply {
-                    putSerializable("event", event)
-                    putInt("position", -1)
-                }
-            )
+            showEventDetails(event)
         }
+    }
+
+    // The details of an event, from wherever the app was: back to the list first, so Back leads home
+    private fun showEventDetails(event: EventResult) {
+        navController.popBackStack(R.id.navigationMain, false)
+        navController.navigate(
+            R.id.detailsFragment,
+            Bundle().apply {
+                putSerializable("event", event)
+                putInt("position", -1)
+            }
+        )
     }
 
     override fun onDestroy() {
@@ -543,6 +611,21 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     showSnackbar(getString(R.string.birday_export_failure))
                 }
+            }
+        }
+
+    // iCalendar export
+    val saveIcs =
+        registerForActivityResult(ActivityResultContracts.CreateDocument(ICS_MIME_TYPE)) { uri ->
+            if (uri == null) return@registerForActivityResult
+            lifecycleScope.launch {
+                val exported = withContext(Dispatchers.IO) {
+                    IcsExporter.exportEventsIcs(applicationContext, uri)
+                }
+                if (exported) {
+                    showSnackbar(getString(R.string.birday_export_success))
+                    shareUri(this@MainActivity, uri)
+                } else showSnackbar(getString(R.string.birday_export_failure))
             }
         }
 
@@ -877,6 +960,7 @@ class MainActivity : AppCompatActivity() {
 
     // The action button means a different thing on every tab, and while a search is running
     private fun currentNavActionMode(): NavActionMode = when {
+        navController.currentDestination?.id == R.id.aboutFragment -> NavActionMode.BACK
         selectedTabIndex == 2 -> NavActionMode.ABOUT
         deleteActionActive -> NavActionMode.DELETE_SEARCH
         else -> NavActionMode.NEW_EVENT
@@ -887,7 +971,49 @@ class MainActivity : AppCompatActivity() {
     private fun renderNavAction() {
         val mode = currentNavActionMode()
         if (mode == renderedActionMode) return
+        val animate = renderedActionMode != null
         renderedActionMode = mode
+
+        // Deleting stands apart from everything else the button does, as a tertiary action
+        val deleting = mode == NavActionMode.DELETE_SEARCH
+        val container = getThemeColor(
+            if (deleting) R.attr.colorTertiaryContainer else R.attr.colorPrimaryContainer, this
+        )
+        val content = getThemeColor(
+            if (deleting) R.attr.colorOnTertiaryContainer else R.attr.colorOnPrimaryContainer, this
+        )
+        animateTint(binding.navAction.cardBackgroundColor.defaultColor, container, animate) {
+            binding.navAction.setCardBackgroundColor(it)
+        }
+        animateTint(binding.navActionIcon.imageTintList?.defaultColor, content, animate) {
+            binding.navActionIcon.imageTintList = ColorStateList.valueOf(it)
+        }
+
+        // The old icon spins away and the new one spins in, landing where the old one left
+        val icon = binding.navActionIcon
+        icon.animate().cancel()
+        if (!animate) {
+            showNavActionIcon(mode)
+            return
+        }
+        icon.animate()
+            .scaleX(0f).scaleY(0f).alpha(0f).rotation(-NAV_ACTION_SPIN)
+            .setDuration(NAV_ACTION_SWAP_DURATION)
+            .setInterpolator(NavTabInterpolator)
+            .withEndAction {
+                showNavActionIcon(mode)
+                icon.rotation = NAV_ACTION_SPIN
+                icon.animate()
+                    .scaleX(1f).scaleY(1f).alpha(1f).rotation(0f)
+                    .setDuration(NAV_ACTION_SWAP_DURATION)
+                    .setInterpolator(NavTabInterpolator)
+                    .withEndAction(null)
+                    .start()
+            }
+            .start()
+    }
+
+    private fun showNavActionIcon(mode: NavActionMode) {
         val icon = binding.navActionIcon
         when (mode) {
             NavActionMode.NEW_EVENT -> {
@@ -903,6 +1029,11 @@ class MainActivity : AppCompatActivity() {
             NavActionMode.ABOUT -> {
                 icon.contentDescription = getString(R.string.about_title)
                 animateAvd(icon, R.drawable.animated_info, 2000L)
+            }
+
+            NavActionMode.BACK -> {
+                icon.contentDescription = getString(R.string.back)
+                icon.setImageResource(R.drawable.ic_arrow_back_24dp)
             }
         }
     }

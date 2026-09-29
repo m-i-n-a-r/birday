@@ -31,10 +31,10 @@ import com.minar.birday.utilities.getUserBirthday
 import com.minar.birday.utilities.isUserBirthday
 import com.minar.birday.utilities.loadUserImage
 import com.minar.birday.utilities.isDaysMilestone
+import com.minar.birday.utilities.delayToNextCheck
 import com.minar.birday.utilities.refreshCalendarDates
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
-import java.util.Calendar
 import java.util.concurrent.TimeUnit
 
 
@@ -49,8 +49,6 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         refreshCalendarDates(appContext)
         val eventDao: EventDao = EventDatabase.getBirdayDatabase(appContext).eventDao()
         val allEvents: List<EventResult> = eventDao.getOrderedEventsStatic()
-        val currentDate = Calendar.getInstance()
-        val dueDate = Calendar.getInstance()
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(applicationContext)
         val workHour = sharedPrefs.getString("notification_hour", "8")!!.toInt()
         val workMinute = sharedPrefs.getString("notification_minute", "0")!!.toInt()
@@ -220,14 +218,9 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
                 }
             }
 
-            // Set Execution at the time specified + 15 seconds to avoid midnight problems
-            dueDate.set(Calendar.HOUR_OF_DAY, workHour)
-            dueDate.set(Calendar.MINUTE, workMinute)
-            dueDate.set(Calendar.SECOND, 15)
-            if (dueDate.before(currentDate)) dueDate.add(Calendar.HOUR_OF_DAY, 24)
-            val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis
+            // The next check, tomorrow at the same time on the clock
             val dailyWorkRequest = OneTimeWorkRequestBuilder<EventWorker>()
-                .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)
+                .setInitialDelay(delayToNextCheck(workHour, workMinute).toMillis(), TimeUnit.MILLISECONDS)
                 .build()
             WorkManager.getInstance(applicationContext).enqueue(dailyWorkRequest)
         } catch (_: Exception) {

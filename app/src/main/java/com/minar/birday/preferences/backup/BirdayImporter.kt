@@ -1,5 +1,8 @@
 package com.minar.birday.preferences.backup
 
+import com.minar.birday.persistence.DATABASE_VERSION
+import java.nio.ByteBuffer
+import java.io.DataInputStream
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -12,6 +15,7 @@ import androidx.preference.PreferenceViewHolder
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.persistence.EventDatabase
+import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStreamReader
 
@@ -38,18 +42,29 @@ class BirdayImporter(context: Context, attrs: AttributeSet?) : Preference(contex
             (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_invalid_file))
             return false
         }
+        // A database from a newer version can't be opened here: Room has no way back, and the
+        // app would crash on every start. Nothing is touched
+        if ((backupVersion(fileUri) ?: 0) > DATABASE_VERSION) {
+            (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_newer_backup))
+            return false
+        }
         EventDatabase.destroyInstance()
-        val fileStream = context.contentResolver.openInputStream(fileUri)!!
         val dbFile = context.getDatabasePath("BirdayDB").absoluteFile
         try {
-            fileStream.copyTo(FileOutputStream(dbFile))
+            // What's left of the journal of the old database must not be replayed on the new one
+            File(dbFile.path + "-wal").delete()
+            File(dbFile.path + "-shm").delete()
+            context.contentResolver.openInputStream(fileUri)!!.use { input ->
+                FileOutputStream(dbFile).use { output -> input.copyTo(output) }
+            }
+            // The settings saved with the backup, if it has them
+            restoreBackupSettings(context, dbFile)
             (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_success))
         } catch (e: Exception) {
             (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_failure))
             e.printStackTrace()
             return false
         }
-        fileStream.close()
 
         // Completely restart the application with a slight delay to be extra-safe
         val intent: Intent =
@@ -59,6 +74,16 @@ class BirdayImporter(context: Context, attrs: AttributeSet?) : Preference(contex
         Handler(Looper.getMainLooper()).postDelayed({ act.startActivity(intent) }, 400)
         return true
     }
+
+    // The version of the database in a backup: Room keeps it in the user version of the SQLite
+    // header, four bytes at offset 60
+    private fun backupVersion(fileUri: Uri): Int? = runCatching {
+        context.contentResolver.openInputStream(fileUri)!!.use { stream ->
+            val header = ByteArray(64)
+            DataInputStream(stream).readFully(header)
+            ByteBuffer.wrap(header, 60, 4).int
+        }
+    }.getOrNull()
 
     // Check if a backup file is valid. A wrong import would result in a crash or empty db
     private fun isBackupValid(fileUri: Uri): Boolean {

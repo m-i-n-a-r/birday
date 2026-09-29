@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Dobro došli u Birday</string>
+    <string name="app_name_extended">Birday - Upravitelj Događajima</string>
     <string name="leave_review_title">Ocijenite Birday</string>
     <string name="leave_review_subtitle">Ostavite recenziju kako biste mi pomogli s aplikacijom. Imajte na umu da je, osim donacija, ova aplikacija potpuno besplatna i bez oglasa!</string>
     <string name="yes_review">Ocijeni!</string>
@@ -14,6 +15,7 @@
     <string name="add_favorite">Dodaj u favorite</string>
     <string name="stats">Statistika</string>
     <string name="no_stats">Nema statistike za prikazati!</string>
+    <string name="stats_summary">Sažetak statistike</string>
     <string name="no_stats_description">Nemate dovoljno događaja za generiranje statistike. Dodajte ih nekoliko i vratite se kasnije!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday vam pomaže da se sjetite ukupno %d događaja</item>
@@ -35,6 +37,7 @@
     <string name="app_behavior">Ponašanje aplikacije</string>
     <string name="additional_notification_name">Dodatna obavijest</string>
     <string name="additional_notification_description">Prikaži dodatnu obavijest par dana prije događaja. %s</string>
+    <string name="no_additional_notification">Bez dodatne obavijesti</string>
     <string name="one_day_before">Jedan dan prije</string>
     <string name="two_days_before">Dva dana prije</string>
     <string name="three_days_before">Tri dana prije</string>
@@ -48,9 +51,12 @@
     <string name="vibration_name">Vibracija</string>
     <string name="vibration_description_on">Vibrira na pritisak tipke</string>
     <string name="vibration_description_off">Nema vibracije na pritisak tipke</string>
+    <string name="date_format_name">Oblik datuma</string>
     <string name="notification_hour_name">Vrijeme obavijesti</string>
     <string name="notification_hour_description">%s \n\nImajte na umu da obavijest možda neće funkcionirati kada sustav zaustavi aplikaciju na nekim  Huawei, Xiaomi i OnePlus uređajima. Dodatne informacije potražite na dontkillmyapp.com</string>
+    <string name="accent_description">Promijenite zadanu boju sučelja</string>
     <string name="accent_name">Boja sučelja</string>
+    <string name="theme_description">Upotrijebite tamnu, svijetlu ili automatsku temu aplikacije</string>
     <string name="theme_name">Tema aplikacije</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Aqua</string>
@@ -77,6 +83,7 @@
     <string name="import_contacts_description">Svakako dopunite događaje s godinama koje nedostaju kako biste uvijek imali točne statistike!</string>
     <string name="import_success">Uvoz je uspješno završen!</string>
     <string name="import_nothing_found">Nema pronađenih događaja!</string>
+    <string name="import_failed">Uvoz neuspješan!</string>
     <string name="missing_permission_contacts">Dozvola za pristup kontaktima je odbijena. Pokušajte ponovo ili aktivirajte dozvolu ručno, ili uvoz kontakata neće uspjeti!</string>
     <string name="missing_permission_contacts_forever">Birday ne može tražiti dopuštenje za uvoz kontakata,
     budući da ste označili \"nikad više ne pitaj\". Omogućite ga ručno!</string>
@@ -89,6 +96,7 @@
     <string name="birday_import_invalid_file">Uvoz nije uspio. Odabrana datoteka nije Birday sigurnosna kopija!</string>
     <string name="birday_export_success">Izvoz je završen!</string>
     <string name="birday_export_failure">Izvoz nije uspio. Ups!</string>
+    <string name="birday_export_nothing_found">Nema ničega za izvoz!</string>
     <string name="surname_first">Prezime prvo</string>
     <string name="surname_first_description_on">Prikaži prezime prije imena</string>
     <string name="surname_first_description_off">Prikaži ime prije prezimena</string>
@@ -134,14 +142,17 @@
     <string name="insert_surname_hint">Unesite prezime</string>
     <string name="insert_date_hint">Izaberite datum</string>
     <string name="invalid_value_name">Nevažeće ime!</string>
+    <string name="consider_year">Uzmi godinu u obzir</string>
     <string name="event_type_hint">Vrsta događaja</string>
     <string name="birthday">Rođendan</string>
     <string name="anniversary">Godišnjica</string>
     <string name="death_anniversary">Godišnjica smrti</string>
+    <string name="festivity">Svečanost</string>
     <string name="name_day">Imendan</string>
     <string name="other">Ostalo</string>
     <!-- Event actions -->
     <string name="event_actions">Radnje</string>
+    <string name="event_actions_description">Ovdje možete promijeniti ili ukloniti ovaj događaj!</string>
     <string name="edit_event">Uredi događaj</string>
     <string name="delete_event">Izbriši događaj</string>
     <string name="update_event">Ažuriraj događaj</string>
@@ -162,6 +173,7 @@
     <string name="no_default_dialer">Nije pronađena zadana aplikacija za biranje brojeva!</string>
     <string name="no_default_sms">Nije pronađena zadana aplikacija za SMS!</string>
     <string name="might_have_missed">Možda ste propustili:</string>
+    <string name="did_you_know">Jeste li znali?</string>
     <!-- Statistics -->
     <string name="age_average">Prosječna dob je: %s</string>
     <string name="oldest_person">Najstarija osoba je %s</string>
@@ -220,6 +232,7 @@
         <item quantity="other">%d godina</item>
     </plurals>
     <string name="born_in">rođen/a u</string>
+    <string name="and">i</string>
     <plurals name="event">
         <item quantity="one">događaja: %s</item>
         <item quantity="few">događaja: %s</item>
@@ -248,8 +261,10 @@
     </string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Nadolazeći događaji</string>
+    <string name="add_widget">Birday - Nadolazeće</string>
     <string name="dark_widget_name">Tamni widget</string>
     <string name="dark_widget_description_on">Widget koristi tamnu temu</string>
+    <string name="dark_widget_description_off">Widget koristi svijetlu temu</string>
     <string name="widget_configuration_title">Postavke widgeta</string>
     <string name="widget_configuration_description">Postavite stil widgeta</string>
     <string name="widget_background_title">Pozadina</string>
@@ -263,6 +278,7 @@
     <string name="show_following_widget_title">Prikaži idući događaj</string>
     <string name="show_following_widget_description">Prikaži događaje nakon nadolazećeg događaja u dodatnom retku</string>
     <string name="appwidget_compact">Compact table</string>
+    <string name="add_widget_compact">Birday - Compact</string>
     <!-- Search -->
     <string name="search_event">Pretražite…</string>
     <string name="search_no_result_title">Nema rezultata</string>

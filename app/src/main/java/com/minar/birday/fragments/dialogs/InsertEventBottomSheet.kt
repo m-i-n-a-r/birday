@@ -49,7 +49,9 @@ import java.util.*
 @OptIn(ExperimentalStdlibApi::class)
 class InsertEventBottomSheet(
     private val act: MainActivity,
-    private val event: EventResult? = null
+    private val event: EventResult? = null,
+    // A new event with its fields already filled, as one received in a file
+    private val template: Event? = null,
 ) :
     BottomSheetDialogFragment() {
     private var _binding: BottomSheetInsertEventBinding? = null
@@ -114,10 +116,11 @@ class InsertEventBottomSheet(
         // none chosen the switch never shows and the event keeps what it had
         val calendarGroup = binding.calendarGroup
         val eventCalendar =
-            EventCalendar.fromKey(event?.calendar) ?: alternativeCalendar(act)
+            EventCalendar.fromKey(event?.calendar ?: template?.calendar) ?: alternativeCalendar(act)
         val calendarAvailable = alternativeCalendar(act) != null && eventCalendar != null
         // The user's choice, kept aside while "without year" forces the Gregorian calendar
-        var alternativeChosen = event == null || event.calendar != null
+        var alternativeChosen =
+            if (event == null && template == null) true else (event?.calendar ?: template?.calendar) != null
         if (calendarAvailable) {
             calendarGroup.visibility = View.VISIBLE
             binding.calendarAlternative.text = getString(eventCalendar.title)
@@ -150,6 +153,24 @@ class InsertEventBottomSheet(
             )
             imageChosen = setEventImageOrPlaceholder(event, eventImage)
             positiveButton.isEnabled = true
+        } else if (template != null) {
+            typeValue = template.type ?: EventCode.BIRTHDAY.name
+            nameValue = template.name
+            surnameValue = template.surname ?: ""
+            countYearValue = template.yearMatter ?: true
+            eventDateValue = template.originalDate
+
+            // Set the fields, the sheet stays an insert one
+            binding.nameEvent.setText(nameValue)
+            binding.surnameEvent.setText(surnameValue)
+            binding.countYearGroup.check(if (countYearValue) R.id.countYearOn else R.id.countYearOff)
+            val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
+            binding.dateEvent.setText(
+                if (countYearValue) eventDateValue.format(formatter)
+                else forceMonthDayFormat(eventDateValue)
+            )
+            imageChosen = setEventImageOrPlaceholder(eventToResult(template), eventImage)
+            positiveButton.isEnabled = true
         }
         positiveButton.setOnClickListener {
             var image: ByteArray? = null
@@ -157,7 +178,7 @@ class InsertEventBottomSheet(
                 image = bitmapToByteArray(eventImage.drawable.toBitmap())
             // Without the year there's no day to convert from
             val calendarValue =
-                if (!calendarAvailable) event?.calendar
+                if (!calendarAvailable) event?.calendar ?: template?.calendar
                 else if (alternativeChosen && countYearValue) eventCalendar.key
                 else null
             // Use the data to create an event object and insert it in the db
@@ -181,6 +202,7 @@ class InsertEventBottomSheet(
                     yearMatter = countYearValue,
                     type = typeValue,
                     image = image,
+                    notes = template?.notes,
                     calendar = calendarValue,
                 )
             // Insert using another thread
@@ -378,7 +400,7 @@ class InsertEventBottomSheet(
         // Validate each field in the form with the same watcher
         var nameCorrect = false
         var surnameCorrect = true // Surname is not mandatory
-        var eventDateCorrect = event != null
+        var eventDateCorrect = event != null || template != null
         val watcher = afterTextChangedWatcher { editable ->
             when {
                 editable === name.editableText -> {

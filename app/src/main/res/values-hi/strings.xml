@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">बर्डे में आपका स्वागत है</string>
+    <string name="app_name_extended">बर्डे - इवेंट मैनेजर</string>
     <string name="leave_review_title">जन्मदिन की समीक्षा करें</string>
     <string name="leave_review_subtitle">ऐप के साथ मेरी मदद करने के लिए एक समीक्षा छोड़ें। ध्यान रखें कि, एक तरफ दान, यह ऐप पूरी तरह से मुफ़्त और विज्ञापन-मुक्त है!</string>
     <string name="yes_review">समीक्षा!</string>
@@ -14,6 +15,7 @@
     <string name="add_favorite">पसंदीदा में जोड़े</string>
     <string name="stats">आंकड़े</string>
     <string name="no_stats">दिखाने के लिए कोई आँकड़े नहीं!</string>
+    <string name="stats_summary">आँकड़े सारांश</string>
     <string name="no_stats_description">आपके पास आंकड़े जनरेट करने के लिए काफ़ी इवेंट नहीं हैं. कुछ जोड़ें और बाद में वापस आएं!</string>
     <plurals name="stats_total">
         <item quantity="one">बर्डे कुल %d इवेंट को याद रखने में आपकी मदद कर रहा है</item>
@@ -33,6 +35,7 @@
     <string name="app_behavior">ऐप व्यवहार</string>
     <string name="additional_notification_name">अतिरिक्त नोटिफिकेशन</string>
     <string name="additional_notification_description">इवेंट से कुछ दिन पहले एक अतिरिक्त नोटिफिकेशन भेजें। %s </string>
+    <string name="no_additional_notification">कोई अतिरिक्त नोटिफिकेशन नहीं</string>
     <string name="one_day_before">एक दिन पहले</string>
     <string name="two_days_before">दो दिन पहले</string>
     <string name="three_days_before">तीन दिन पहले</string>
@@ -46,9 +49,12 @@
     <string name="vibration_name">कंपन</string>
     <string name="vibration_description_on">बटन दबाए जाने पर कंपन करें</string>
     <string name="vibration_description_off">बटन दबाए जाने पर कोई कंपन नहीं</string>
+    <string name="date_format_name">तारीख का प्रारूप</string>
     <string name="notification_hour_name">नोटिफिकेशन घंटे</string>
     <string name="notification_hour_description">%s \n\nकृपया ध्यान दें कि कुछ Huawei, Xiaomi और OnePlus उपकरणों में सिस्टम द्वारा ऐप के समाप्त होने पर नोटिफिकेशन काम नहीं करते है। अधिक जानकारी के लिए dontkillmyapp.com देखें</string>
+    <string name="accent_description">डिफ़ॉल्ट एक्सेंट रंग बदलें</string>
     <string name="accent_name">एक्सेंट रंग</string>
+    <string name="theme_description">डार्क, लाइट या ऑटोमैटिक ऐप थीम का उपयोग करें</string>
     <string name="theme_name">ऐप थीम</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">पानी</string>
@@ -75,6 +81,7 @@
     <string name="import_contacts_description">हमेशा सटीक आंकड़े रखने के लिए लापता वर्षों वाले इवेंट्स को संशोधित करना सुनिश्चित करें!</string>
     <string name="import_success">आयात सफलतापूर्वक पूरा हुआ!</string>
     <string name="import_nothing_found">कोई घटना नहीं मिली!</string>
+    <string name="import_failed">कुछ गलत हो गया!</string>
     <string name="missing_permission_contacts">संपर्क अनुमति अस्वीकार कर दी गई थी। पुन: प्रयास करें या मैन्युअल रूप से अनुमति सक्रिय करें, या संपर्क आयात काम नहीं करेगा!</string>
     <string name="missing_permission_contacts_forever">बर्डे संपर्कों को आयात करने की अनुमति नहीं मांग सकता, क्योंकि आपने \"फिर कभी न पूछें\" चेक किया है। इसे मैन्युअल रूप से सक्षम करें!</string>
     <string name="birday_import_title">एक बर्डे बैकअप आयात करें</string>
@@ -86,6 +93,7 @@
     <string name="birday_import_invalid_file">आयात विफल. चुनी गई फ़ाइल बर्डे बैकअप नहीं है!</string>
     <string name="birday_export_success">निर्यात पूरा हुआ!</string>
     <string name="birday_export_failure">निर्यात विफल। वूप्सी!</string>
+    <string name="birday_export_nothing_found">निर्यात करने के लिए कुछ भी नहीं!</string>
     <string name="surname_first">उपनाम पहले</string>
     <string name="surname_first_description_on">नाम से पहले उपनाम दिखाएं</string>
     <string name="surname_first_description_off">उपनाम से पहले नाम दिखाएं</string>
@@ -131,14 +139,17 @@
     <string name="insert_surname_hint">अंतिम नाम डालें</string>
     <string name="insert_date_hint">एक तारीख चुनें</string>
     <string name="invalid_value_name">अमान्य नाम!</string>
+    <string name="consider_year">वर्ष पर विचार करें</string>
     <string name="event_type_hint">इवेंट प्रकार</string>
     <string name="birthday">जन्मदिन</string>
     <string name="anniversary">सालगिरह</string>
     <string name="death_anniversary">पुण्यतिथि</string>
+    <string name="festivity">उत्सव</string>
     <string name="name_day">दिन का नाम</string>
     <string name="other">अन्य</string>
     <!-- Event actions -->
     <string name="event_actions">कार्रवाई</string>
+    <string name="event_actions_description">यहां आप इस इवेंट को बदल या हटा सकते हैं!</string>
     <string name="edit_event">इवेंट संपादित करें</string>
     <string name="delete_event">इवेंट हटाएं</string>
     <string name="update_event">इवेंट का अद्यतन करें</string>
@@ -159,6 +170,7 @@
     <string name="no_default_dialer">कोई डिफ़ॉल्ट डायलर ऐप नहीं मिला!</string>
     <string name="no_default_sms">कोई डिफ़ॉल्ट SMS ऐप नहीं मिला!</string>
     <string name="might_have_missed">You might have missed:</string>
+    <string name="did_you_know">क्या तुम्हें पता था?</string>
     <!-- Statistics -->
     <string name="age_average">औसत आयु %s है</string>
     <string name="oldest_person">सबसे बड़ा व्यक्ति %s है</string>
@@ -214,6 +226,7 @@
         <item quantity="other">%d वर्षों</item>
     </plurals>
     <string name="born_in">जन्म</string>
+    <string name="and">तथा</string>
     <plurals name="event">
         <item quantity="one">इवेंट: %s</item>
         <item quantity="other">इवेंट्स: %s</item>
@@ -234,8 +247,10 @@
     <string name="slide_three_description">आपके द्वारा अपने संपर्कों से पहले से सहेजे गए ईवेंट आयात करना भी संभव है। बर्डे आपके लिए यह कर सकता है, बस संपर्कों को अनुमति दें। आनंद लें!</string>
     <!-- Widget -->
     <string name="appwidget_upcoming">आगामी इवेंट्स</string>
+    <string name="add_widget">बर्डे - आगामी</string>
     <string name="dark_widget_name">डार्क विजेट</string>
     <string name="dark_widget_description_on">विजेट डार्क रंग वाली थीम का उपयोग करता है</string>
+    <string name="dark_widget_description_off">विजेट लाइट थीम का उपयोग करता है</string>
     <string name="widget_configuration_title">विजेत विन्यास</string>
     <string name="widget_configuration_description">अपनी शैली अनुसार विजेट विन्यास करें</string>
     <string name="widget_background_title">पृष्ठभूमि</string>
@@ -249,6 +264,7 @@
     <string name="show_following_widget_title">Show the following event</string>
     <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <string name="appwidget_compact">Compact table</string>
+    <string name="add_widget_compact">Birday - Compact</string>
     <!-- Search -->
     <string name="search_event">खोजें…</string>
     <string name="search_no_result_title">कोई परिणाम नहीं मिला</string>

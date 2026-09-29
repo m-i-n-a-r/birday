@@ -97,6 +97,9 @@
         <!-- Export to JSON -->
         <com.minar.birday.preferences.backup.JsonExporter android:layout="@layout/json_export_row" />
 
+        <!-- Export to iCalendar -->
+        <com.minar.birday.preferences.backup.IcsExporter android:layout="@layout/ics_export_row" />
+
     </PreferenceCategory>
 
     <!-- Anything else -->

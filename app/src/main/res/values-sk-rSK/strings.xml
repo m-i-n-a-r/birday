@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Vitajte v Birday</string>
+    <string name="app_name_extended">Birthday - Správca udalostí</string>
     <string name="leave_review_title">Ohodnoťte Birday</string>
     <string name="leave_review_subtitle">Zanechajte recenziu, ktorá mi pomôže s aplikáciou. Majte na pamäti, že okrem darov je táto aplikácia úplne zadarmo a bez reklám!</string>
     <string name="yes_review">Rád pomôžem!</string>
@@ -14,6 +15,7 @@
     <string name="add_favorite">Pridať do obľúbených</string>
     <string name="stats">Štatistiky</string>
     <string name="no_stats">Žiadne štatistiky na zobrazenie!</string>
+    <string name="stats_summary">Prehľad štatistík</string>
     <string name="no_stats_description">Na zobrazenie štatistík nemáte dostatok udalostí. Pridajte ďalšie a vráťte sa neskôr!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday vám pomáha zapamätať si %d udalosť</item>
@@ -37,6 +39,7 @@
     <string name="app_behavior">Správanie aplikácie</string>
     <string name="additional_notification_name">Dodatočné upozornenie</string>
     <string name="additional_notification_description">Nastavte dodatočné upozornenie, ktoré sa odošle niekoľko dní pred udalosťou. Aktuálne nastavené na %s pred udalosťou</string>
+    <string name="no_additional_notification">Žiadne ďalšie upozornenie</string>
     <string name="one_day_before">1 deň</string>
     <string name="two_days_before">2 dni</string>
     <string name="three_days_before">3 dni</string>
@@ -50,9 +53,12 @@
     <string name="vibration_name">Vibrácie</string>
     <string name="vibration_description_on">Vibrovať pri stlačení tlačidla</string>
     <string name="vibration_description_off">Žiadne vibrácie pri stlačení tlačidla</string>
+    <string name="date_format_name">Formát dátumu</string>
     <string name="notification_hour_name">Hodina upozornenia</string>
     <string name="notification_hour_description">%s \n\nVezmite prosím na vedomie, že v niektorých zariadeniach Huawei, Xiaomi a OnePlus nemusí upozornenie fungovať, keď aplikáciu ukončí systém. Ďalšie informácie nájdete na stránkach dontkillmyapp.com</string>
+    <string name="accent_description">Zmeňte predvolenú farbu zvýraznenia</string>
     <string name="accent_name">Farba zvýraznenia</string>
+    <string name="theme_description">Použite tmavý, svetlý alebo automatický motív aplikácie</string>
     <string name="theme_name">Motív aplikácie</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Aqua</string>
@@ -79,6 +85,7 @@
     <string name="import_contacts_description">Nezabudnite upraviť udalosti s chýbajúcimi rokmi, aby ste mali vždy presné štatistiky!</string>
     <string name="import_success">Import bol úspešne dokončený!</string>
     <string name="import_nothing_found">Nebola nájdená žiadna udalosť!</string>
+    <string name="import_failed">Niečo sa pokazilo!</string>
     <string name="missing_permission_contacts">Oprávnenie na prístup ku kontaktom bolo zamietnuté. Skúste to znova alebo povoľte oprávnenie ručne z nastavení smartfónu, inak import kontaktov nebude fungovať!</string>
     <string name="missing_permission_contacts_forever">Birday nemôže požiadať o povolenie importovať kontakty, pretože ste zaškrtli možnosť \"Nikdy sa nepýtať\" alebo \"Zakázať\". Povoľte oprávnenie pre prístup ku kontaktom ručne v nastaveniach smartfónu!</string>
     <string name="birday_import_title">Importujte zálohu Birday</string>
@@ -90,6 +97,7 @@
     <string name="birday_import_invalid_file">Import zlyhal. Zvolený súbor nie je súbor zálohy Birday!</string>
     <string name="birday_export_success">Export dokončený!</string>
     <string name="birday_export_failure">Jejda! Export zlyhal.</string>
+    <string name="birday_export_nothing_found">Nie je čo exportovať!</string>
     <string name="surname_first">Priezvisko prvé</string>
     <string name="surname_first_description_on">Zobraziť priezvisko pred menom</string>
     <string name="surname_first_description_off">Zobraziť meno pred priezviskom</string>
@@ -135,14 +143,17 @@
     <string name="insert_surname_hint">Vložte priezvisko</string>
     <string name="insert_date_hint">Vyberte dátum</string>
     <string name="invalid_value_name">Neplatné meno!</string>
+    <string name="consider_year">Zohľadniť rok</string>
     <string name="event_type_hint">Typ udalosti</string>
     <string name="birthday">Narodeniny</string>
     <string name="anniversary">Výročie</string>
     <string name="death_anniversary">Výročie úmrtia</string>
+    <string name="festivity">Slávnosť</string>
     <string name="name_day">Meniny</string>
     <string name="other">Iné</string>
     <!-- Event actions -->
     <string name="event_actions">Akcie</string>
+    <string name="event_actions_description">Tu môžete túto udalosť zmazať alebo jednoducho upraviť!</string>
     <string name="edit_event">Upraviť udalosť</string>
     <string name="delete_event">Odstrániť udalosť</string>
     <string name="update_event">Upraviť udalosť</string>
@@ -163,6 +174,7 @@
     <string name="no_default_dialer">Nebola nájdená žiadna predvolená aplikácia telefónu!</string>
     <string name="no_default_sms">Nebola nájdená žiadna predvolená aplikácia pre SMS!</string>
     <string name="might_have_missed">You might have missed:</string>
+    <string name="did_you_know">Vedeli ste?</string>
     <!-- Statistics -->
     <string name="age_average">Priemerný vek je %s</string>
     <string name="oldest_person">Najstaršia osoba je %s</string>
@@ -224,6 +236,7 @@
         <item quantity="other">%d rokov</item>
     </plurals>
     <string name="born_in">narodený v</string>
+    <string name="and">a</string>
     <plurals name="event">
         <item quantity="one">%s udalosť</item>
         <item quantity="few">%s udalosti</item>
@@ -246,8 +259,10 @@
     <string name="slide_three_description">Môžete tiež importovať udalosti, ktoré máte uložené v kontaktoch alebo kalendári. Birday urobí všetko za vás, stačí udeliť povolenia na prístup ku kontaktom a kalendáru a udalosti sa načítajú okamžite. Príjemnú zábavu!</string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Nadchádzajúce udalosti</string>
+    <string name="add_widget">Birday - nadchádzajúce</string>
     <string name="dark_widget_name">Tmavý widget</string>
     <string name="dark_widget_description_on">Widget používa tmavý motív</string>
+    <string name="dark_widget_description_off">Widget používa svetlý motív</string>
     <string name="widget_configuration_title">Nastavenia widgetu</string>
     <string name="widget_configuration_description">Nastavte widget tak, aby zodpovedal vášmu štýlu</string>
     <string name="widget_background_title">Pozadie</string>
@@ -261,6 +276,7 @@
     <string name="show_following_widget_title">Show the following event</string>
     <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <string name="appwidget_compact">Compact table</string>
+    <string name="add_widget_compact">Birday - Compact</string>
     <!-- Search -->
     <string name="search_event">Vyhľadávanie…</string>
     <string name="search_no_result_title">Nenašli sa žiadne výsledky</string>

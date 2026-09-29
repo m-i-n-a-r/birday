@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Velkommen til Birday</string>
+    <string name="app_name_extended">Birday - Hendelsesbehandler</string>
     <string name="leave_review_title">Gi Birday en vurdering</string>
     <string name="leave_review_subtitle">Gi en vurdering for å hjelpe meg med appen. Husk at utenom donasjoner, så er appen helt gratis og fri fra reklame!</string>
     <string name="yes_review">Gi vurdering!</string>
@@ -14,6 +15,7 @@
     <string name="add_favorite">Legg til som favoritt</string>
     <string name="stats">Statistikk</string>
     <string name="no_stats">Ingen statistikk å vise!</string>
+    <string name="stats_summary">Oppsummering av statistikk</string>
     <string name="no_stats_description">Du har ikke nok hendelser til å generere statistikk. Legg til flere hendelser og kom tilbake seinere!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday hjelper deg å huske på totalt %d hendelse</item>
@@ -33,6 +35,7 @@
     <string name="app_behavior">Appens virkemåte</string>
     <string name="additional_notification_name">Ekstra varsel</string>
     <string name="additional_notification_description">Send et ekstra varsel dager før hendelsen. %s</string>
+    <string name="no_additional_notification">Ikke ekstra varsel</string>
     <string name="one_day_before">En dag før</string>
     <string name="two_days_before">To dager før</string>
     <string name="three_days_before">Tre dager før</string>
@@ -46,9 +49,12 @@
     <string name="vibration_name">Vibrasjon</string>
     <string name="vibration_description_on">Vibrer når en knapp trykkes</string>
     <string name="vibration_description_off">Ingen vibrasjoner når en knapp trykkes</string>
+    <string name="date_format_name">Datoformat</string>
     <string name="notification_hour_name">Tidspunkt for varsel</string>
     <string name="notification_hour_description">%s \n\nVær oppmerksom på at varsler kanskje ikke fungerer når appen avsluttes av systemet på noen Huawei, Xiaomi og OnePlus enheter. Se dontkillmyapp.com for mer informasjon</string>
+    <string name="accent_description">Endre standard aksentfarge</string>
     <string name="accent_name">Aksentfarge</string>
+    <string name="theme_description">Bruk mørkt, lyst eller automatisk tema i appen</string>
     <string name="theme_name">Appens tema</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Akvamarin</string>
@@ -75,6 +81,7 @@
     <string name="import_contacts_description">Sørg for å endre hendelsene uten årstall for mer nøyaktig statistikk!</string>
     <string name="import_success">Importering vellykket!</string>
     <string name="import_nothing_found">Ingen hendelser funnet!</string>
+    <string name="import_failed">Noe gikk galt!</string>
     <string name="missing_permission_contacts">Tilgangen til kontakter ble avvist. Prøv igjen eller aktiver tilgangen manuelt,
     ellers vil det ikke fungere å importere kontakter!</string>
     <string name="missing_permission_contacts_forever">Birday får ikke spurt om tillatelse til å importere kontakter,
@@ -89,6 +96,7 @@
     <string name="birday_import_invalid_file">Importering feilet. Den valgte filen er ikke en sikkerhetskopi fra Birday!</string>
     <string name="birday_export_success">Eksport fullført!</string>
     <string name="birday_export_failure">Eksport feilet. Ups!</string>
+    <string name="birday_export_nothing_found">Ingenting å eksportere!</string>
     <string name="surname_first">Etternavn først</string>
     <string name="surname_first_description_on">Vis etternavn foran fornavn</string>
     <string name="surname_first_description_off">Vis fornavn foran etternavn</string>
@@ -134,14 +142,17 @@
     <string name="insert_surname_hint">Legg inn etternavn</string>
     <string name="insert_date_hint">Velg en dato</string>
     <string name="invalid_value_name">Ugyldig navn!</string>
+    <string name="consider_year">Inkluder år</string>
     <string name="event_type_hint">Hendelsestype</string>
     <string name="birthday">Bursdag</string>
     <string name="anniversary">Jubileum</string>
     <string name="death_anniversary">Dødsfall</string>
+    <string name="festivity">Festlighet</string>
     <string name="name_day">Navnedag</string>
     <string name="other">Annet</string>
     <!-- Event actions -->
     <string name="event_actions">Handlinger</string>
+    <string name="event_actions_description">Her kan du redigere eller slette denne hendelsen!</string>
     <string name="edit_event">Rediger hendelse</string>
     <string name="delete_event">Slett hendelse</string>
     <string name="update_event">Oppdater hendelse</string>
@@ -162,6 +173,7 @@
     <string name="no_default_dialer">Kunne ikke finne standardapp for taleanrop!</string>
     <string name="no_default_sms">Kunne ikke finne standardapp for SMS!</string>
     <string name="might_have_missed">Du kan ha gått glipp av:</string>
+    <string name="did_you_know">Visste du?</string>
     <!-- Statistics -->
     <string name="age_average">Gjennomsnittlig alder er %s</string>
     <string name="oldest_person">Den eldste personen er %s</string>
@@ -217,6 +229,7 @@
         <item quantity="other">%d år</item>
     </plurals>
     <string name="born_in">født i</string>
+    <string name="and">og</string>
     <plurals name="event">
         <item quantity="one">hendelse: %s</item>
         <item quantity="other">hendelser: %s</item>
@@ -244,8 +257,10 @@
     </string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Kommende hendelser</string>
+    <string name="add_widget">Birday - Kommende</string>
     <string name="dark_widget_name">Mørk modul</string>
     <string name="dark_widget_description_on">Modulen bruker mørkt tema</string>
+    <string name="dark_widget_description_off">Modulen bruker lyst tema</string>
     <string name="widget_configuration_title">Modulkonfigurasjon</string>
     <string name="widget_configuration_description">Konfigurer modulen til å passe stilen din</string>
     <string name="widget_background_title">Bakgrunn</string>
@@ -259,6 +274,7 @@
     <string name="show_following_widget_title">Vis neste hendelse</string>
     <string name="show_following_widget_description">Vis hendelsen, eller hendelsene, som kommer etter den neste hendelsen</string>
     <string name="appwidget_compact">Compact table</string>
+    <string name="add_widget_compact">Birday - Compact</string>
     <!-- Search -->
     <string name="search_event">Søk…</string>
     <string name="search_no_result_title">Ingen resultater</string>

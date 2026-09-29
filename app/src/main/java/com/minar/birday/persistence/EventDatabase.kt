@@ -10,7 +10,10 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.minar.birday.model.Event
 
 
-@Database(entities = [Event::class], version = 12, exportSchema = false)
+// Also the version written in a Birday backup, which is a copy of this database
+const val DATABASE_VERSION = 12
+
+@Database(entities = [Event::class], version = DATABASE_VERSION, exportSchema = false)
 @TypeConverters(LocalDateTypeConverter::class)
 abstract class EventDatabase : RoomDatabase() {
     abstract fun eventDao(): EventDao

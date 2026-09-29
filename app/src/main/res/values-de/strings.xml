@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Willkommen bei Birday</string>
+    <string name="app_name_extended">Birday - Ereignismanager</string>
     <string name="leave_review_title">Birday bewerten</string>
     <string name="leave_review_subtitle">Lass eine Bewertung da, um mir mit der App zu helfen. Berücksichtige, dass diese App, abgesehen von Spenden, völlig kostenlos und werbefrei ist!</string>
     <string name="yes_review">Bewerten!</string>
@@ -14,6 +15,7 @@
     <string name="add_favorite">Zu Favoriten hinzufügen</string>
     <string name="stats">Statistik</string>
     <string name="no_stats">Keine Statistiken zu zeigen!</string>
+    <string name="stats_summary">Zusammenfassung der Statistiken</string>
     <string name="no_stats_description">Du hast nicht genügend Ereignisse, um Statistiken zu erstellen. Füge einige hinzu und komme später wieder!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday hilft dir beim Erinnern an insgesamt %d Ereignis</item>
@@ -33,6 +35,7 @@
     <string name="app_behavior">App-Verhalten</string>
     <string name="additional_notification_name">Zusätzliche Benachrichtigung</string>
     <string name="additional_notification_description">Sende eine zusätzliche Benachrichtigung vor jedem Geburtstag: %s</string>
+    <string name="no_additional_notification">Keine</string>
     <string name="one_day_before">Einen Tag vorher</string>
     <string name="two_days_before">Zwei Tag vorher</string>
     <string name="three_days_before">Drei Tage vorher</string>
@@ -46,9 +49,12 @@
     <string name="vibration_name">Vibration</string>
     <string name="vibration_description_on">Vibriere bei Tastendruck</string>
     <string name="vibration_description_off">Keine Vibration bei Tastendruck</string>
+    <string name="date_format_name">Datumsformat</string>
     <string name="notification_hour_name">Uhrzeit der Benachrichtigung</string>
     <string name="notification_hour_description">%s \n\nBitte beachte, dass die Benachrichtigung möglicherweise nicht funktioniert, wenn die App auf einigen Huawei-, Xiaomi- und OnePlus-Geräten vom System beendet wird. Weitere Informationen findest du unter dontkillmyapp.com</string>
+    <string name="accent_description">Ändern der Standard-Akzentfarbe</string>
     <string name="accent_name">Akzentfarbe</string>
+    <string name="theme_description">Verwende ein dunkles, helles oder automatisches App-Theme</string>
     <string name="theme_name">App-Theme</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Wasserblau</string>
@@ -75,6 +81,7 @@
     <string name="import_contacts_description">Achte darauf, die Ereignisse mit fehlendem Jahr zu ändern, um immer genaue Statistiken zu haben!</string>
     <string name="import_success">Import erfolgreich abgeschlossen!</string>
     <string name="import_nothing_found">Keine Ereignisse gefunden!</string>
+    <string name="import_failed">Etwas ist schief gelaufen!</string>
     <string name="missing_permission_contacts">Die Kontaktberechtigung wurde verweigert. Versuche es noch einmal oder aktiviere die Berechtigung manuell, sonst funktioniert der Import der Kontakte nicht!</string>
     <string name="missing_permission_contacts_forever">Birday konnte deine Kontakte weder importieren noch um Berechtigung fragen, da \"nie wieder fragen\" angekreuzt wurde. Du musst es manuell aktivieren!</string>
     <string name="birday_import_title">Importiere ein Birday Backup</string>
@@ -86,6 +93,7 @@
     <string name="birday_import_invalid_file">Import fehlgeschlagen. Die ausgewählte Datei ist kein Birday Backup!</string>
     <string name="birday_export_success">Export abgeschlossen!</string>
     <string name="birday_export_failure">Export fehlgeschlagen. Ups!</string>
+    <string name="birday_export_nothing_found">Nichts zum exportieren!</string>
     <string name="surname_first">Nachname zuerst</string>
     <string name="surname_first_description_on">Zeige den Nachnamen vor dem Vornamen</string>
     <string name="surname_first_description_off">Zeige den Vornamen vor dem Nachnamen</string>
@@ -131,14 +139,17 @@
     <string name="insert_surname_hint">Nachnamen eingeben</string>
     <string name="insert_date_hint">Wähle ein Datum</string>
     <string name="invalid_value_name">Ungültiger Name!</string>
+    <string name="consider_year">Jahr berücksichtigen</string>
     <string name="event_type_hint">Ereignistyp</string>
     <string name="birthday">Geburtstag</string>
     <string name="anniversary">Jubiläum</string>
     <string name="death_anniversary">Todestag</string>
+    <string name="festivity">Feierlichkeit</string>
     <string name="name_day">Namenstag</string>
     <string name="other">Andere</string>
     <!-- Event actions -->
     <string name="event_actions">Aktion</string>
+    <string name="event_actions_description">Hier kannst du dieses Ereignis löschen oder bearbeiten!</string>
     <string name="edit_event">Ereignis bearbeiten</string>
     <string name="delete_event">Ereignis löschen</string>
     <string name="update_event">Ereignis aktualisieren</string>
@@ -159,6 +170,7 @@
     <string name="no_default_dialer">Keine Standard-Telefon-App gefunden!</string>
     <string name="no_default_sms">Keine Standard SMS App gefunden!</string>
     <string name="might_have_missed">Du könntest verpasst haben:</string>
+    <string name="did_you_know">Wusstest du das?</string>
     <!-- Statistics -->
     <string name="age_average">Das Durchschnittsalter ist %s</string>
     <string name="oldest_person">Die älteste Person ist %s</string>
@@ -214,6 +226,7 @@
         <item quantity="other">%d Jahre</item>
     </plurals>
     <string name="born_in">geboren</string>
+    <string name="and">und</string>
     <plurals name="event">
         <item quantity="one">ereignis: %s</item>
         <item quantity="other">ereignisse: %s</item>
@@ -236,8 +249,10 @@
     <string name="slide_three_description">Es ist auch möglich, die bereits gespeicherten Ereignisse aus deinen Kontakten zu importieren. Birday kann das für dich erledigen, gib der App einfach die Kontaktberechtigung. Viel Spaß!</string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Bevorstehende Ereignisse</string>
+    <string name="add_widget">Birday - bevorstehend</string>
     <string name="dark_widget_name">Dunkles Widget</string>
     <string name="dark_widget_description_on">Das Widget verwendet das dunkle Design</string>
+    <string name="dark_widget_description_off">Das Widget verwendet das helle Design</string>
     <string name="widget_configuration_title">Widget-Konfiguration</string>
     <string name="widget_configuration_description">Konfiguriere das Widget so, dass es deinem Stil entspricht</string>
     <string name="widget_background_title">Hintergrund</string>
@@ -251,6 +266,7 @@
     <string name="show_following_widget_title">Nächstes Ereignis anzeigen</string>
     <string name="show_following_widget_description">Zeige das Ereignis oder die Ereignisse, die auf das Nächste folgen, in einer zusätzlichen Zeile</string>
     <string name="appwidget_compact">Kompakte Tabelle</string>
+    <string name="add_widget_compact">Birday - Kompakt</string>
     <string name="compact_widget_opacity">Hintergrund-Deckkraft</string>
     <string name="compact_widget_bg_color">Hintergrund-Farbe</string>
     <string name="compact_widget_text_color">Text-Farbe</string>

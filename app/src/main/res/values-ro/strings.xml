@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Bine ai venit la Birday</string>
+    <string name="app_name_extended">Birday - Manager Evenimente</string>
     <string name="leave_review_title">Lasă o recenzie despre Birday</string>
     <string name="leave_review_subtitle">Lasă o recenzie pentru a mă ajuta cu aplicația. Reține că, lăsând la o parte donațiile, această aplicație este complet gratuită și fără publicitate!</string>
     <string name="yes_review">Recenzie!</string>
@@ -14,6 +15,7 @@
     <string name="add_favorite">Adaugă la favorite</string>
     <string name="stats">Statistici</string>
     <string name="no_stats">Nu există statistici de afișat!</string>
+    <string name="stats_summary">Sumar statistici</string>
     <string name="no_stats_description">Nu ai destule evenimente pentru a genera statistici. Adaugă unele și întoarce-te mai târziu!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday te ajută să îți amintești un total de %d eveniment</item>
@@ -35,6 +37,7 @@
     <string name="app_behavior">Comportamentul aplicației</string>
     <string name="additional_notification_name">Notificări suplimentare</string>
     <string name="additional_notification_description">Trimite o notificare suplimentară cu câteva zile înainte de eveniment. %s</string>
+    <string name="no_additional_notification">Nicio notificare suplimentară</string>
     <string name="one_day_before">Cu o zi înainte</string>
     <string name="two_days_before">Cu două zile înainte</string>
     <string name="three_days_before">Cu trei zile înainte</string>
@@ -48,9 +51,12 @@
     <string name="vibration_name">Vibrare</string>
     <string name="vibration_description_on">Vibrează când este apăsat un buton</string>
     <string name="vibration_description_off">Fără vibrații atunci când este apăsat un buton</string>
+    <string name="date_format_name">Format dată</string>
     <string name="notification_hour_name">Ora notificării</string>
     <string name="notification_hour_description">%s \n\nReține că notificarea ar putea să nu funcționeze atunci când aplicația este oprită de sistem în câteva dispozitive Huawei, Xiaomi și OnePlus. Consultă dontkillmyapp.com pentru mai multe informații</string>
+    <string name="accent_description">Schimbă culoarea de accent implicită</string>
     <string name="accent_name">Culoare accent</string>
+    <string name="theme_description">Folosește o temă întunecată, luminoasă sau automată a aplicației</string>
     <string name="theme_name">Tema aplicației</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Turcoaz</string>
@@ -77,6 +83,7 @@
     <string name="import_contacts_description">Asigură-te că modifici evenimentele cu ani lipsă pentru a avea întotdeauna statistici exacte!</string>
     <string name="import_success">Import efectuat cu succes!</string>
     <string name="import_nothing_found">Niciun eveniment găsit!</string>
+    <string name="import_failed">Ceva nu a mers bine!</string>
     <string name="missing_permission_contacts">Permisiunea de citire a contactelor a fost refuzată. Încearcă din nou sau activează manual permisiunea,
     sau importul contactelor nu va funcționa!</string>
     <string name="missing_permission_contacts_forever">Birday nu poate cere permisiunea de a importa contactele,
@@ -91,6 +98,7 @@
     <string name="birday_import_invalid_file">Importarea a eșuat. Fișierul ales nu este o copie de rezervă a Birday!</string>
     <string name="birday_export_success">Export finalizat!</string>
     <string name="birday_export_failure">Exportul a eșuat. Hopa!</string>
+    <string name="birday_export_nothing_found">Nimic de exportat!</string>
     <string name="surname_first">Numele mai întâi</string>
     <string name="surname_first_description_on">Se afișează numele înainte de prenume</string>
     <string name="surname_first_description_off">Se afișează prenumele înainte de nume</string>
@@ -136,14 +144,17 @@
     <string name="insert_surname_hint">Introdu numele</string>
     <string name="insert_date_hint">Selectează data</string>
     <string name="invalid_value_name">Nume nevalid!</string>
+    <string name="consider_year">Consideră anul</string>
     <string name="event_type_hint">Tipul evenimentului</string>
     <string name="birthday">Zi de naștere</string>
     <string name="anniversary">Aniversare</string>
     <string name="death_anniversary">Aniversarea morții</string>
+    <string name="festivity">Festivitate</string>
     <string name="name_day">Ziua numelui</string>
     <string name="other">Altele</string>
     <!-- Event actions -->
     <string name="event_actions">Acțiuni</string>
+    <string name="event_actions_description">Aici poți schimba sau elimina acest eveniment!</string>
     <string name="edit_event">Editează evenimentul</string>
     <string name="delete_event">Șterge evenimentul</string>
     <string name="update_event">Actualizează evenimentul</string>
@@ -164,6 +175,7 @@
     <string name="no_default_dialer">Nu a fost găsită nicio aplicație de apelare implicită!</string>
     <string name="no_default_sms">Nu a fost găsită nicio aplicație prestabilită pentru SMS!</string>
     <string name="might_have_missed">S-ar putea să fi ratat:</string>
+    <string name="did_you_know">Știai că?</string>
     <!-- Statistics -->
     <string name="age_average">Vârsta medie este %s</string>
     <string name="oldest_person">Cea mai în vârstă persoană este %s</string>
@@ -222,6 +234,7 @@
         <item quantity="other">%d ani</item>
     </plurals>
     <string name="born_in">născut în</string>
+    <string name="and">și</string>
     <plurals name="event">
         <item quantity="one">eveniment: %s</item>
         <item quantity="few">evenimente: %s</item>
@@ -250,8 +263,10 @@
     </string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Evenimente viitoare</string>
+    <string name="add_widget">Birday - Urmează</string>
     <string name="dark_widget_name">Widget întunecat</string>
     <string name="dark_widget_description_on">Widget-ul utilizează tema întunecată</string>
+    <string name="dark_widget_description_off">Widget-ul utilizează tema luminoasă</string>
     <string name="widget_configuration_title">Configurare widget</string>
     <string name="widget_configuration_description">Configurează widget-ul pentru a se potrivi cu stilul tău</string>
     <string name="widget_background_title">Fundal</string>
@@ -265,6 +280,7 @@
     <string name="show_following_widget_title">Afișează următorul eveniment</string>
     <string name="show_following_widget_description">Arată evenimentul sau evenimentele care îl urmează pe următorul într-un rând suplimentar</string>
     <string name="appwidget_compact">Tabel compact</string>
+    <string name="add_widget_compact">Birday - Compact</string>
     <!-- Search -->
     <string name="search_event">Căutare…</string>
     <string name="search_no_result_title">Niciun rezultat găsit</string>

@@ -2,4 +2,5 @@
 <paths>
     <external-path path="Android/data/com.minar.birday/files/" name="birday_database" />
     <cache-path path="image_crop/" name="image_crop" />
+    <cache-path path="shared_events/" name="shared_events" />
 </paths>
