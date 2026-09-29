@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Birday\'e Hoşgeldin</string>
+    <string name="app_name_extended">Birday - Event Manager</string>
     <string name="leave_review_title">Birday\'i Yorumlayın</string>
     <string name="leave_review_subtitle">Uygulamayı yorumlamanız benim için önemli. Bağışlar dışında bu uygulamanın tamamen ücretsiz ve reklamsız olduğunu unutmayın!</string>
     <string name="yes_review">Yorumla!</string>
@@ -14,6 +15,7 @@
     <string name="add_favorite">Favorilere ekle</string>
     <string name="stats">İstatistikler</string>
     <string name="no_stats">Henüz bir şey yok!</string>
+    <string name="stats_summary">Stats summary</string>
     <string name="no_stats_description">İstatistik oluşturacak kadar etkinliğin yok. Biraz daha ekle ve geri dön!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday toplamda %d etkinliği hatırlamanda yardımcı oluyor</item>
@@ -38,6 +40,7 @@
     <string name="app_behavior">Uygulama davranışı</string>
     <string name="additional_notification_name">Ek bildirim</string>
     <string name="additional_notification_description">Etkinlikten birkaç gün önce ek bildirim gönder. %s</string>
+    <string name="no_additional_notification">No additional notification</string>
     <string name="one_day_before">Bir gün önce</string>
     <string name="two_days_before">İki gün önce</string>
     <string name="three_days_before">Üç gün önce</string>
@@ -51,9 +54,12 @@
     <string name="vibration_name">Titreşim</string>
     <string name="vibration_description_on">Bir tuşa basıldığında titret</string>
     <string name="vibration_description_off">Titreşim yok</string>
+    <string name="date_format_name">Date format</string>
     <string name="notification_hour_name">Bildirim saati</string>
     <string name="notification_hour_description">%s \n\n Uygulamanın arkaplanda çalışması sistem tarafından durdurulursa (genelde Xiaomi, Huawei ve OnePlus cihazlarda) düzgün çalışmayabileceğini unutmayınız. Daha fazla bilgi için dontkillmyapp.com</string>
+    <string name="accent_description">Change the default accent color</string>
     <string name="accent_name">Vurgu tonu</string>
+    <string name="theme_description">Use a dark, light or automatic app theme</string>
     <string name="theme_name">Uygulama teması</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Aqua</string>
@@ -80,6 +86,7 @@
     <string name="import_contacts_description">İstatistiklerin doğru olması için eksik sene içeren etkinlikleri düzelttiğinizden emin olun!</string>
     <string name="import_success">İçe aktarım başarılı!</string>
     <string name="import_nothing_found">Etkinlik bulunamadı!</string>
+    <string name="import_failed">Something went wrong!</string>
     <string name="missing_permission_contacts">Kişiler izni reddedildi. Tekrar deneyin veya uygulama iznini ayarlardan kendiniz verin aksi halde içe aktarım çalışmayacak!</string>
     <string name="missing_permission_contacts_forever">\"Bir daha sorma\" seçeneğini işaretlediğiniz için Birday kişileri aktarmak için izin isteyemez. Ayarlardan kendiniz izni verin!</string>
     <string name="birday_import_title">Bir Birday yedeğini içe aktarın</string>
@@ -89,8 +96,10 @@
     <string name="birday_import_success">İçe aktarım tamamlandı!</string>
     <string name="birday_import_failure">İçe aktarılamadı. Doğru dosyayı seçtiğinden emin misin?</string>
     <string name="birday_import_invalid_file">İçe aktarılamadı. Seçilen dosya bir Birday yedeği değil!</string>
+    <string name="birday_import_newer_backup">This backup comes from a newer version of Birday: update the app to import it</string>
     <string name="birday_export_success">Dışa aktarım tamamlandı!</string>
     <string name="birday_export_failure">Dışa aktarılamadı. Oops!</string>
+    <string name="birday_export_nothing_found">Nothing to export!</string>
     <string name="surname_first">Önce soyad</string>
     <string name="surname_first_description_on">Soyismi isimden önce göster</string>
     <string name="surname_first_description_off">İsmi soyisimden önce göster</string>
@@ -137,14 +146,17 @@
     <string name="insert_surname_hint">Soyisim</string>
     <string name="insert_date_hint">Bir tarih seç</string>
     <string name="invalid_value_name">Geçersiz isim!</string>
+    <string name="consider_year">Consider the year</string>
     <string name="event_type_hint">Etkinlik tipi</string>
     <string name="birthday">Doğum günü</string>
     <string name="anniversary">Yıl dönümü</string>
     <string name="death_anniversary">Ölüm yıl dönümü</string>
+    <string name="festivity">Festivity</string>
     <string name="name_day">İsim günü</string>
     <string name="other">Diğer</string>
     <!-- Event actions -->
     <string name="event_actions">Hareketler</string>
+    <string name="event_actions_description">Here you can change or remove this event!</string>
     <string name="edit_event">Düzenle</string>
     <string name="delete_event">Etkinliği sil</string>
     <string name="update_event">Güncelle</string>
@@ -167,6 +179,7 @@
     <string name="no_default_dialer">Varsayılan arama uygulaması bulunamadı!</string>
     <string name="no_default_sms">Varsayılan SMS uygulaması bulunamadı!</string>
     <string name="might_have_missed">Kaçırmış olabilirsin:</string>
+    <string name="did_you_know">Did you know?</string>
     <!-- Statistics -->
     <string name="age_average">%s, Dünyadaki ortalama yaştır</string>
     <string name="oldest_person">En yaşlı kişi: %s</string>
@@ -222,6 +235,7 @@
         <item quantity="other">%d sene</item>
     </plurals>
     <string name="born_in">doğum</string>
+    <string name="and">and</string>
     <plurals name="event">
         <item quantity="one">etkinlik: %s</item>
         <item quantity="other">etkinlikler: %s</item>
@@ -249,8 +263,10 @@
     </string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Yaklaşan etkinlikler</string>
+    <string name="add_widget">Birday - Upcoming</string>
     <string name="dark_widget_name">Karanlık tema widget\'ı</string>
     <string name="dark_widget_description_on">Karanlık tema kullanan widget</string>
+    <string name="dark_widget_description_off">The widget uses the light theme</string>
     <string name="widget_configuration_title">Widget yapılandırması</string>
     <string name="widget_configuration_description">Widget\'ı kendi stilinize göre düzenleyin</string>
     <string name="widget_background_title">Arka plan</string>
@@ -264,12 +280,15 @@
     <string name="show_following_widget_title">Sıradaki etkinliği göster</string>
     <string name="show_following_widget_description">Sıradaki etkinliği takip eden etkinlikleri ek bir satırda göster</string>
     <string name="appwidget_compact">Compact table</string>
+    <string name="add_widget_compact">Birday - Compact</string>
     <!-- Compact widget -->
     <string name="compact_widget_opacity">Background opacity</string>
     <string name="compact_widget_bg_color">Background color</string>
     <string name="compact_widget_text_color">Text color</string>
     <string name="compact_widget_text_size">Text size</string>
     <string name="compact_widget_text_size_auto">Auto</string>
+    <string name="export_ics_title">Export to iCalendar</string>
+    <string name="export_ics_description">Export each event to an .ics file, for any calendar app</string>
     <string name="compact_widget_scroll">Scroll through all the events</string>
     <string name="compact_widget_hidden">Hidden</string>
     <string name="compact_widget_below_name">Below name</string>
@@ -363,6 +382,7 @@
     <string name="unbirthdays_description_off">No unbirthdays in the details</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">About</string>
+    <string name="back">Back</string>
     <string name="about_description">Info about Birday, its author and the app language</string>
     <string name="about_version">Version</string>
     <string name="about_language_title">Language</string>
