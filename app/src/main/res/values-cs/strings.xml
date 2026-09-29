@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Vítejte v Birday</string>
+    <string name="app_name_extended">Birday - Event Manager</string>
     <string name="leave_review_title">Ohodnoťte Birday</string>
     <string name="leave_review_subtitle">Zanechte recenzi, která mi pomůže s aplikací. Mějte na paměti, že kromě darů je tato aplikace zcela zdarma a bez reklam!</string>
     <string name="yes_review">Rád pomůžu!</string>
@@ -14,6 +15,7 @@
     <string name="add_favorite">Přidat do oblíbených</string>
     <string name="stats">Statistiky</string>
     <string name="no_stats">Žádné statistiky k zobrazení!</string>
+    <string name="stats_summary">Stats summary</string>
     <string name="no_stats_description">Pro zobrazení statistik nemáte dostatek událostí. Přidejte další a vraťte se později!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday vám pomáhá zapamatovat si %d událost</item>
@@ -44,6 +46,7 @@
     <string name="app_behavior">Chování aplikace</string>
     <string name="additional_notification_name">Dodatečné upozornění</string>
     <string name="additional_notification_description">Nastavte dodatečné upozornění, které se odešle několik dní před událostí. Aktuálně nastaveno na %s před událostí</string>
+    <string name="no_additional_notification">No additional notification</string>
     <string name="one_day_before">Jeden den předtím</string>
     <string name="two_days_before">Dva dny předtím</string>
     <string name="three_days_before">Tři dny předtím</string>
@@ -57,9 +60,12 @@
     <string name="vibration_name">Vibrace</string>
     <string name="vibration_description_on">Vibrovat při stisknutí tlačítka</string>
     <string name="vibration_description_off">Žádné vibrace při stisknutí tlačítka</string>
+    <string name="date_format_name">Date format</string>
     <string name="notification_hour_name">Hodina upozornění</string>
     <string name="notification_hour_description">%s \n\nVezměte prosím na vědomí, že v některých zařízeních Huawei, Xiaomi a OnePlus nemusí upozornění fungovat, když aplikaci ukončí systém. Další informace naleznete na stránkách dontkillmyapp.com</string>
+    <string name="accent_description">Change the default accent color</string>
     <string name="accent_name">Barva zvýraznění</string>
+    <string name="theme_description">Use a dark, light or automatic app theme</string>
     <string name="theme_name">Motiv aplikace</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Aqua</string>
@@ -86,6 +92,7 @@
     <string name="import_contacts_description">Nezapomeňte upravit události s chybějícími roky, abyste měli vždy přesné statistiky!</string>
     <string name="import_success">Import byl úspěšně dokončen!</string>
     <string name="import_nothing_found">Nebyla nalezena žádná událost!</string>
+    <string name="import_failed">Something went wrong!</string>
     <string name="missing_permission_contacts">Oprávnění pro přístupu ke kontaktům bylo zamítnuto. Zkuste to znovu nebo povolte oprávnění ručně z nastavení smartphonu, jinak import kontaktů nebude fungovat!</string>
     <string name="missing_permission_contacts_forever">Birday nemůže požádat o povolení importovat kontakty, protože jste zaškrtli možnost \"Nikdy se neptat\" nebo \"Zakázat\". Povolte oprávnění pro přístup ke kontaktům ručně v nastaveních smartphonu!</string>
     <string name="birday_import_title">Importujte zálohu Birday</string>
@@ -95,8 +102,10 @@
     <string name="birday_import_success">Import dokončen!</string>
     <string name="birday_import_failure">Import se nezdařil. Vybrali jste soubor správně?</string>
     <string name="birday_import_invalid_file">Import se nezdařil. Zvolený soubor není soubor zálohy Birday!</string>
+    <string name="birday_import_newer_backup">This backup comes from a newer version of Birday: update the app to import it</string>
     <string name="birday_export_success">Export dokončen!</string>
     <string name="birday_export_failure">Jejda! Export se nezdařil.</string>
+    <string name="birday_export_nothing_found">Nothing to export!</string>
     <string name="surname_first">Nejprve příjmení</string>
     <string name="surname_first_description_on">Zobrazit příjmení před jménem</string>
     <string name="surname_first_description_off">Zobrazit jméno před příjmením</string>
@@ -143,14 +152,17 @@
     <string name="insert_surname_hint">Vložte příjmení</string>
     <string name="insert_date_hint">Vyberte datum</string>
     <string name="invalid_value_name">Neplatné jméno!</string>
+    <string name="consider_year">Consider the year</string>
     <string name="event_type_hint">Typ události</string>
     <string name="birthday">Narozeniny</string>
     <string name="anniversary">Výročí</string>
     <string name="death_anniversary">Výročí úmrtí</string>
+    <string name="festivity">Festivity</string>
     <string name="name_day">Svátek</string>
     <string name="other">Jiný</string>
     <!-- Event actions -->
     <string name="event_actions">Akce</string>
+    <string name="event_actions_description">Here you can change or remove this event!</string>
     <string name="edit_event">Upravit událost</string>
     <string name="delete_event">Smazat událost</string>
     <string name="update_event">Aktualizovat událost</string>
@@ -173,6 +185,7 @@
     <string name="no_default_dialer">Nebyla nalezena žádná výchozí aplikace telefonu!</string>
     <string name="no_default_sms">Nebyla nalezena žádná výchozí aplikace pro SMS!</string>
     <string name="might_have_missed">Mohlo vám uniknout:</string>
+    <string name="did_you_know">Did you know?</string>
     <!-- Statistics -->
     <string name="age_average">Průměrný věk je %s</string>
     <string name="oldest_person">Nejstarší osoba je %s</string>
@@ -234,6 +247,7 @@
         <item quantity="other">%d let</item>
     </plurals>
     <string name="born_in">narozen v</string>
+    <string name="and">and</string>
     <plurals name="event">
         <item quantity="one">událost: %s</item>
         <item quantity="few">události: %s</item>
@@ -256,8 +270,10 @@
     <string name="slide_three_description">Můžete také importovat události, které máte uložené u svých kontaktů nebo v kalendáři. Birday vše udělá za vás, stačí jen udělit oprávnění pro přístup ke kontaktům a kalendáři a události se v mžiku načtou. Příjemnou zábavu!</string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Nadcházející události</string>
+    <string name="add_widget">Birday - Upcoming</string>
     <string name="dark_widget_name">Tmavý widget</string>
     <string name="dark_widget_description_on">Widget používá tmavý motiv</string>
+    <string name="dark_widget_description_off">The widget uses the light theme</string>
     <string name="widget_configuration_title">Nastavení widgetu</string>
     <string name="widget_configuration_description">Nastavte widget tak, aby odpovídal vašemu stylu</string>
     <string name="widget_background_title">Pozadí</string>
@@ -271,12 +287,15 @@
     <string name="show_following_widget_title">Zobrazení následující události</string>
     <string name="show_following_widget_description">Zobrazit událost či události následující tu předchozí v dalším řádku</string>
     <string name="appwidget_compact">Compact table</string>
+    <string name="add_widget_compact">Birday - Compact</string>
     <!-- Compact widget -->
     <string name="compact_widget_opacity">Background opacity</string>
     <string name="compact_widget_bg_color">Background color</string>
     <string name="compact_widget_text_color">Text color</string>
     <string name="compact_widget_text_size">Text size</string>
     <string name="compact_widget_text_size_auto">Auto</string>
+    <string name="export_ics_title">Export to iCalendar</string>
+    <string name="export_ics_description">Export each event to an .ics file, for any calendar app</string>
     <string name="compact_widget_scroll">Scroll through all the events</string>
     <string name="compact_widget_hidden">Hidden</string>
     <string name="compact_widget_below_name">Below name</string>
@@ -370,6 +389,7 @@
     <string name="unbirthdays_description_off">No unbirthdays in the details</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">About</string>
+    <string name="back">Back</string>
     <string name="about_description">Info about Birday, its author and the app language</string>
     <string name="about_version">Version</string>
     <string name="about_language_title">Language</string>
