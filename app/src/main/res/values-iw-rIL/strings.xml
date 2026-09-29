@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">ברוך הבא ליום הולדת</string>
+    <string name="app_name_extended">Birday - Event Manager</string>
     <string name="leave_review_title">סקירת יום הולדת</string>
     <string name="leave_review_subtitle">השאר ביקורת כדי לעזור לי עם האפליקציה. זכור כי, מלבד תרומות, האפליקציה הזו חינמית לחלוטין וללא פרסומות!</string>
     <string name="yes_review">סקירה!</string>
@@ -14,6 +15,7 @@
     <string name="add_favorite">הוסף למועדפים</string>
     <string name="stats">סטטיסטיקות</string>
     <string name="no_stats">אין סטטיסטיקה להצגה!</string>
+    <string name="stats_summary">Stats summary</string>
     <string name="no_stats_description">אין לך מספיק אירועים כדי ליצור סטטיסטיקות. הוסף כמה ונסה שוב מאוחר יותר!</string>
     <plurals name="stats_total">
         <item quantity="one">יום הולדת עוזר לך לזכור סך של %d אירוע</item>
@@ -41,6 +43,7 @@
     <string name="app_behavior">התנהגות היישום</string>
     <string name="additional_notification_name">התראה נוספת</string>
     <string name="additional_notification_description">שלח הודעה נוספת ימים לפני האירוע. %s</string>
+    <string name="no_additional_notification">No additional notification</string>
     <string name="one_day_before">יום אחד לפני</string>
     <string name="two_days_before">יומיים לפני</string>
     <string name="three_days_before">שלושה ימים לפני</string>
@@ -54,9 +57,12 @@
     <string name="vibration_name">רטט</string>
     <string name="vibration_description_on">רטט כשכפתור נלחץ</string>
     <string name="vibration_description_off">ללא רטט כשכפתור נלחץ</string>
+    <string name="date_format_name">Date format</string>
     <string name="notification_hour_name">שעת התראה</string>
     <string name="notification_hour_description">%s \n\nשים לב שייתכן שהתראה לא תעבוד כאשר האפליקציה נסגרת על ידי המערכת בחלק ממכשירי Huawei, Xiaomi ו-OnePlus. עיין ב-dontkillmyapp.com למידע נוסף</string>
+    <string name="accent_description">Change the default accent color</string>
     <string name="accent_name">צבע הדגשה</string>
+    <string name="theme_description">Use a dark, light or automatic app theme</string>
     <string name="theme_name">עיצוב</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">מים</string>
@@ -83,6 +89,7 @@
     <string name="import_contacts_description">הקפד לשנות את האירועים עם שנים חסרות כדי שתמיד יהיו נתונים סטטיסטיים מדויקים!</string>
     <string name="import_success">ייבוא הושלם בהצלחה!</string>
     <string name="import_nothing_found">לא נמצאו ארועים!</string>
+    <string name="import_failed">Something went wrong!</string>
     <string name="missing_permission_contacts">ההרשאה לאנשי קשר נדחתה.  נסה שוב או הפעל את ההרשאה באופן ידני,
      או שייבוא אנשי הקשר לא יעבוד!</string>
     <string name="missing_permission_contacts_forever">יום הולדת לא יכול לבקש רשות לייבא אנשי קשר, מכיוון שסימנת \"לעולם אל תשאל שוב\".  תן הרשאה באופן ידני!</string>
@@ -93,8 +100,10 @@
     <string name="birday_import_success">הייבוא הושלם!</string>
     <string name="birday_import_failure">הייבוא ​​נכשל. האם בחרת את הקובץ נכון?</string>
     <string name="birday_import_invalid_file">הייבוא ​​נכשל. הקובץ שנבחר אינו גיבוי של Birday!</string>
+    <string name="birday_import_newer_backup">This backup comes from a newer version of Birday: update the app to import it</string>
     <string name="birday_export_success">הייצוא הושלם!</string>
     <string name="birday_export_failure">הייצוא נכשל. אופס!</string>
+    <string name="birday_export_nothing_found">Nothing to export!</string>
     <string name="surname_first">שם משפחה קודם</string>
     <string name="surname_first_description_on">הצג שם משפחה לפני שם פרטי</string>
     <string name="surname_first_description_off">הצג שם פרטי לפני שם המשפחה</string>
@@ -141,14 +150,17 @@
     <string name="insert_surname_hint">הכנס שם משפחה</string>
     <string name="insert_date_hint">בחר תאריך</string>
     <string name="invalid_value_name">שם לא חוקי!</string>
+    <string name="consider_year">Consider the year</string>
     <string name="event_type_hint">סוג האירוע</string>
     <string name="birthday">Birthday</string>
     <string name="anniversary">יום השנה</string>
     <string name="death_anniversary">יום השנה לפטירה</string>
+    <string name="festivity">Festivity</string>
     <string name="name_day">שם יום</string>
     <string name="other">אחר</string>
     <!-- Event actions -->
     <string name="event_actions">פעולות</string>
+    <string name="event_actions_description">Here you can change or remove this event!</string>
     <string name="edit_event">ערוך אירוע</string>
     <string name="delete_event">מחק אירוע</string>
     <string name="update_event">עדכן אירוע</string>
@@ -171,6 +183,7 @@
     <string name="no_default_dialer">לא נמצא יישום חייגן ברירת מחדל!</string>
     <string name="no_default_sms">לא נמצא יישום הודעות ברירת מחדל!</string>
     <string name="might_have_missed">ייתכן שפספסת:</string>
+    <string name="did_you_know">Did you know?</string>
     <!-- Statistics -->
     <string name="age_average">הגיל הממוצע הוא %s</string>
     <string name="oldest_person">האדם המבוגר ביותר הוא %s</string>
@@ -229,6 +242,7 @@
         <item quantity="other">%d שנים</item>
     </plurals>
     <string name="born_in">נולד ב</string>
+    <string name="and">and</string>
     <plurals name="event">
         <item quantity="one">אירוע: %s</item>
         <item quantity="two">אירועים: %s</item>
@@ -257,8 +271,10 @@
     </string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Upcoming events</string>
+    <string name="add_widget">Birday - Upcoming</string>
     <string name="dark_widget_name">ווידג\'ט כהה</string>
     <string name="dark_widget_description_on">הווידג\'ט משתמש בעיצוב כהה</string>
+    <string name="dark_widget_description_off">The widget uses the light theme</string>
     <string name="widget_configuration_title">תצורת ווידג\'ט</string>
     <string name="widget_configuration_description">הגדר את הווידג\'ט כך שיתאים לסגנון שלך</string>
     <string name="widget_background_title">רקע</string>
@@ -272,12 +288,15 @@
     <string name="show_following_widget_title">Show the following event</string>
     <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <string name="appwidget_compact">Compact table</string>
+    <string name="add_widget_compact">Birday - Compact</string>
     <!-- Compact widget -->
     <string name="compact_widget_opacity">Background opacity</string>
     <string name="compact_widget_bg_color">Background color</string>
     <string name="compact_widget_text_color">Text color</string>
     <string name="compact_widget_text_size">Text size</string>
     <string name="compact_widget_text_size_auto">Auto</string>
+    <string name="export_ics_title">Export to iCalendar</string>
+    <string name="export_ics_description">Export each event to an .ics file, for any calendar app</string>
     <string name="compact_widget_scroll">Scroll through all the events</string>
     <string name="compact_widget_hidden">Hidden</string>
     <string name="compact_widget_below_name">Below name</string>
@@ -371,6 +390,7 @@
     <string name="unbirthdays_description_off">No unbirthdays in the details</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">About</string>
+    <string name="back">Back</string>
     <string name="about_description">Info about Birday, its author and the app language</string>
     <string name="about_version">Version</string>
     <string name="about_language_title">Language</string>
