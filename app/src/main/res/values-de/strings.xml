@@ -260,17 +260,17 @@
     <string name="show_following_widget_description">Zeige das Ereignis oder die Ereignisse, die auf das Nächste folgen, in einer zusätzlichen Zeile</string>
     <string name="appwidget_compact">Kompakte Tabelle</string>
     <!-- Compact widget -->
-    <string name="compact_widget_opacity">Background opacity</string>
-    <string name="compact_widget_bg_color">Background color</string>
-    <string name="compact_widget_text_color">Text color</string>
-    <string name="compact_widget_text_size">Text size</string>
+    <string name="compact_widget_opacity">Hintergrund-Deckkraft</string>
+    <string name="compact_widget_bg_color">Hintergrund-Farbe</string>
+    <string name="compact_widget_text_color">Text-Farbe</string>
+    <string name="compact_widget_text_size">Textgröße</string>
     <string name="compact_widget_text_size_auto">Auto</string>
     <string name="compact_widget_scroll">Scroll through all the events</string>
-    <string name="compact_widget_hidden">Hidden</string>
-    <string name="compact_widget_below_name">Below name</string>
-    <string name="compact_widget_above_name">Above name</string>
-    <string name="compact_widget_before_date">Before date</string>
-    <string name="compact_widget_after_date">After date</string>
+    <string name="compact_widget_hidden">Ausblenden</string>
+    <string name="compact_widget_below_name">Unter dem Namen</string>
+    <string name="compact_widget_above_name">Über dem Namen</string>
+    <string name="compact_widget_before_date">Vor dem Datum</string>
+    <string name="compact_widget_after_date">Hinter dem Datum</string>
     <!-- Search -->
     <string name="search_event">Suchen…</string>
     <string name="search_no_result_title">Keine Ergebnisse gefunden</string>
