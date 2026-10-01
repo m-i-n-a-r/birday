@@ -32,6 +32,12 @@
         <item quantity="few">%d zile rămase</item>
         <item quantity="other">%d zile rămase</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s zi</item>
+        <item quantity="few">%s zile</item>
+        <item quantity="other">%s de zile</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">Personalizare</string>
     <string name="app_behavior">Comportamentul aplicației</string>
@@ -96,6 +102,7 @@
     <string name="birday_import_success">Import finalizat!</string>
     <string name="birday_import_failure">Importarea a eșuat. Ai ales fișierul corect?</string>
     <string name="birday_import_invalid_file">Importarea a eșuat. Fișierul ales nu este o copie de rezervă a Birday!</string>
+    <string name="birday_import_newer_backup">Această copie de rezervă provine de la o versiune mai nouă de Birday: actualizează aplicația pentru a o importa</string>
     <string name="birday_export_success">Export finalizat!</string>
     <string name="birday_export_failure">Exportul a eșuat. Hopa!</string>
     <string name="birday_export_nothing_found">Nimic de exportat!</string>
@@ -140,6 +147,7 @@
     <string name="new_event_description">Introdu o persoană de care îți pasă, iar Birday te va ajuta să îți amintești de ziua ei de naștere sau alte evenimente!</string>
     <string name="insert_event">Inserare eveniment</string>
     <string name="cancel">Anulează</string>
+    <string name="crop_image_error">Ceva nu a mers bine în timpul decupării imaginii</string>
     <string name="insert_name_hint">Introdu prenumele</string>
     <string name="insert_surname_hint">Introdu numele</string>
     <string name="insert_date_hint">Selectează data</string>
@@ -166,6 +174,8 @@
     <string name="next_age">Următoarea vârstă:</string>
     <string name="zodiac_sign">Semn zodiacal:</string>
     <string name="chinese_zodiac_sign">Semn zodiacal chinezesc:</string>
+    <string name="days_lived">Zile trăite</string>
+    <string name="next_unbirthday">Următoarea zi de naștere</string>
     <!-- Quick apps -->
     <string name="event_apps">Aplicații rapide</string>
     <string name="event_apps_description">Aplicații pentru a ura tot binele rapid!</string>
@@ -281,6 +291,20 @@
     <string name="show_following_widget_description">Arată evenimentul sau evenimentele care îl urmează pe următorul într-un rând suplimentar</string>
     <string name="appwidget_compact">Tabel compact</string>
     <string name="add_widget_compact">Birday - Compact</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">Opacitatea fundalului</string>
+    <string name="compact_widget_bg_color">Culoarea fundalului</string>
+    <string name="compact_widget_text_color">Culoarea textului</string>
+    <string name="compact_widget_text_size">Dimensiunea textului</string>
+    <string name="compact_widget_text_size_auto">Automat</string>
+    <string name="export_ics_title">Exportă în iCalendar</string>
+    <string name="export_ics_description">Exportă fiecare eveniment într-un fișier .ics, pentru orice aplicație calendar</string>
+    <string name="compact_widget_scroll">Derulează prin toate evenimentele</string>
+    <string name="compact_widget_hidden">Ascuns</string>
+    <string name="compact_widget_below_name">Sub nume</string>
+    <string name="compact_widget_above_name">Deasupra numelui</string>
+    <string name="compact_widget_before_date">Înainte de dată</string>
+    <string name="compact_widget_after_date">După dată</string>
     <!-- Search -->
     <string name="search_event">Căutare…</string>
     <string name="search_no_result_title">Niciun rezultat găsit</string>
@@ -338,34 +362,12 @@
     <string name="advanced_overview_title">Prezentare avansată</string>
     <string name="advanced_overview_description_off">Ecranul de ansamblu va afișa doar informațiile de bază</string>
     <string name="advanced_overview_description_on">Ecranul de ansamblu va arăta alți ani și informații detaliate</string>
-    <string name="replace_on_conflict_title">Înlocuiește la conflict</string>
-    <string name="replace_on_conflict_description_off">Atunci când se importă, un eveniment duplicat nu va fi înlocuit cu duplicatul importat</string>
-    <string name="replace_on_conflict_description_on">Atunci când se importă, un eveniment duplicat va fi înlocuit cu duplicatul importat</string>
-    <plurals name="days_lived_count">
-        <item quantity="one">%s zi</item>
-        <item quantity="few">%s zile</item>
-        <item quantity="other">%s de zile</item>
-    </plurals>
-    <string name="birday_import_newer_backup">Această copie de rezervă provine de la o versiune mai nouă de Birday: actualizează aplicația pentru a o importa</string>
-    <string name="crop_image_error">Ceva nu a mers bine în timpul decupării imaginii</string>
-    <string name="days_lived">Zile trăite</string>
-    <string name="next_unbirthday">Următoarea zi de naștere</string>
-    <string name="compact_widget_opacity">Opacitatea fundalului</string>
-    <string name="compact_widget_bg_color">Culoarea fundalului</string>
-    <string name="compact_widget_text_color">Culoarea textului</string>
-    <string name="compact_widget_text_size">Dimensiunea textului</string>
-    <string name="compact_widget_text_size_auto">Automat</string>
-    <string name="export_ics_title">Exportă în iCalendar</string>
-    <string name="export_ics_description">Exportă fiecare eveniment într-un fișier .ics, pentru orice aplicație calendar</string>
-    <string name="compact_widget_scroll">Derulează prin toate evenimentele</string>
-    <string name="compact_widget_hidden">Ascuns</string>
-    <string name="compact_widget_below_name">Sub nume</string>
-    <string name="compact_widget_above_name">Deasupra numelui</string>
-    <string name="compact_widget_before_date">Înainte de dată</string>
-    <string name="compact_widget_after_date">După dată</string>
     <string name="feb29_assignment_title">29 februarie în anii non-bisecți</string>
     <string name="feb29_assignment_description_off">Zilele de naștere de 29 februarie cad pe 1 martie în anii non-bisecți</string>
     <string name="feb29_assignment_description_on">Zilele de naștere de 29 februarie cad pe 28 februarie în anii non-bisecți</string>
+    <string name="replace_on_conflict_title">Înlocuiește la conflict</string>
+    <string name="replace_on_conflict_description_off">Atunci când se importă, un eveniment duplicat nu va fi înlocuit cu duplicatul importat</string>
+    <string name="replace_on_conflict_description_on">Atunci când se importă, un eveniment duplicat va fi înlocuit cu duplicatul importat</string>
     <string name="contacts_full_name_title">Nume complete de la contacte</string>
     <string name="contacts_full_name_description_on">Titlurile, numele de mijloc și sufixele sunt păstrate atunci când se citesc numele contactelor</string>
     <string name="contacts_full_name_description_off">Numai prenumele și numele de familie sunt citite din contacte</string>
@@ -388,6 +390,7 @@
     <string name="user_card_remove">Șterge</string>
     <string name="unbirthdays_description_on">Detaliile arată ziua următoare cu aceeași zi lucrătoare și aceeași zi a lunii ca și nașterea, cum ar fi vineri, 13.</string>
     <string name="unbirthdays_description_off">Nu sunt zile de naștere în detalii</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Despre</string>
     <string name="back">Înapoi</string>
     <string name="about_description">Informații despre Birday, autorul acesteia și limba aplicației</string>
@@ -406,6 +409,7 @@
     <string name="amoled_description_off">Tema întunecată folosește suprafețe întunecate standard</string>
     <string name="with_year">Cu an</string>
     <string name="without_year">Fără an</string>
+    <!-- Edge blur -->
     <string name="edge_blur">Estompare margini</string>
     <string name="edge_blur_description_on">Conținutul se dizolvă ușor pe măsură ce derulează sub bara de navigare</string>
     <string name="edge_blur_description_off">Conținutul se derulează sub bara de navigare fără estompare</string>
