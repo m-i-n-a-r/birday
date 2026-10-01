@@ -7,7 +7,7 @@
     <string name="yes_review">Recensione!</string>
     <string name="later">Dopo, giuro</string>
     <string name="no_thanks">Anche no!</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">Pagina principale</string>
     <string name="title_favorites">Preferiti</string>
     <string name="title_settings">Impostazioni</string>
     <string name="no_events">Nessun evento! Comincia aggiungendone uno usando il bottone sotto!</string>
@@ -15,7 +15,7 @@
     <string name="add_favorite">Aggiungi ai preferiti</string>
     <string name="stats">Statistiche</string>
     <string name="no_stats">Nessuna statistica da mostrare!</string>
-    <string name="stats_summary">Riepiligo statistiche</string>
+    <string name="stats_summary">Riepilogo statistiche</string>
     <string name="no_stats_description">Non hai abbastanza eventi per mostrare le statistiche. Aggiungine alcuni e torna a controllare!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday ti sta aiutando a ricordare un totale di %d evento</item>
@@ -73,7 +73,7 @@
     <string name="pink">Rosa</string>
     <string name="light_blue">Azzurro</string>
     <string name="red">Rosso</string>
-    <string name="lime">Lime</string>
+    <string name="lime">Verde lime</string>
     <string name="crimson">Cremisi</string>
     <string name="system_theme">Default di sistema</string>
     <string name="dark_theme">Scuro</string>
@@ -272,8 +272,8 @@
     <string name="hide_far_widget_description">Nascondi il widget se i prossimi eventi sono dopo il periodo di notifica aggiuntiva (es: notifica 7 giorni prima, il prossimo evento è tra 10 giorni -&gt; il widget è nascosto)</string>
     <string name="show_following_widget_title">Mostra l\'evento successivo</string>
     <string name="show_following_widget_description">Mostra l\'evento o gli eventi che seguono il prossimo in una riga aggiuntiva</string>
-    <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
+    <string name="appwidget_compact">Tabella compatta</string>
+    <string name="add_widget_compact">Birday - Compatto</string>
     <!-- Compact widget -->
     <string name="compact_widget_opacity">Opacità dello sfondo</string>
     <string name="compact_widget_bg_color">Colore dello sfondo</string>
