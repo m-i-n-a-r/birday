@@ -73,7 +73,7 @@
     <string name="pink">Rosa</string>
     <string name="light_blue">Azul claro</string>
     <string name="red">Vermelho</string>
-    <string name="lime">Lima</string>
+    <string name="lime">Verde-lima</string>
     <string name="crimson">Carmesim</string>
     <string name="system_theme">Padrão do sistema</string>
     <string name="dark_theme">Escuro</string>
@@ -275,8 +275,8 @@
     <string name="hide_far_widget_description">Esconder o widget se os próximos eventos forem depois do período de notificação adicional (por exemplo: notificação 7 dias antes, o próximo evento está em 10 dias -&gt; o widget está oculto)</string>
     <string name="show_following_widget_title">Exibir o evento seguinte</string>
     <string name="show_following_widget_description">Mostrar o evento ou os eventos seguintes em uma nova linha</string>
-    <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
+    <string name="appwidget_compact">Tabela compacta</string>
+    <string name="add_widget_compact">Birday - Compacto</string>
     <!-- Compact widget -->
     <string name="compact_widget_opacity">Opacidade do fundo</string>
     <string name="compact_widget_bg_color">Cor do fundo</string>
@@ -304,7 +304,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Experimental</string>
     <string name="experimental_settings_description">Algumas configurações e recursos experimentais. Utilize-os a seu próprio risco</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="experimental_disclaimer">Os recursos a seguir são experimentais e podem não funcionar corretamente. Use-os por sua conta e risco. Acompanhe o progresso no GitHub, pois alguns desses recursos poderão ser incorporados aos recursos estáveis e traduzidos</string>
     <string name="check_github">Cheque o GitHub</string>
     <string name="translate_app">Traduza o app</string>
     <string name="launch_auto_import_title">Importar automaticamente ao iniciar</string>
