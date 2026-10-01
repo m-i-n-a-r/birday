@@ -34,6 +34,13 @@
         <item quantity="many">Залишилося %d днів</item>
         <item quantity="other">Залишилося %d днів</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s день</item>
+        <item quantity="few">%s дні</item>
+        <item quantity="many">%s днів</item>
+        <item quantity="other">%s дня</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">Налаштування</string>
     <string name="app_behavior">Поведінка додатку</string>
@@ -95,6 +102,7 @@
     <string name="birday_import_success">Імпорт завершено!</string>
     <string name="birday_import_failure">Помилка імпорту. Ви впевнені що обрали правильний файл?</string>
     <string name="birday_import_invalid_file">Помилка імпорту. Вибраний вами файл не є резервною копією Birday!</string>
+    <string name="birday_import_newer_backup">Цю резервну копію створено в новішій версії Birday. Оновіть застосунок, щоб імпортувати її</string>
     <string name="birday_export_success">Експорт завершено!</string>
     <string name="birday_export_failure">Помилка експорту. Упс!</string>
     <string name="birday_export_nothing_found">Нічого експортувати!</string>
@@ -139,6 +147,7 @@
     <string name="new_event_description">Введіть близьку вам людину, і Birday допоможе вам згадати його/її день народження або ж інші події!</string>
     <string name="insert_event">Додати подію</string>
     <string name="cancel">Відмінити</string>
+    <string name="crop_image_error">Не вдалося обрізати зображення</string>
     <string name="insert_name_hint">Введіть ім\'я</string>
     <string name="insert_surname_hint">Введіть прізвище</string>
     <string name="insert_date_hint">Виберіть дату</string>
@@ -165,6 +174,8 @@
     <string name="next_age">Наступний ювілей:</string>
     <string name="zodiac_sign">Знак зодіаку:</string>
     <string name="chinese_zodiac_sign">По китайському календарю:</string>
+    <string name="days_lived">Прожиті дні</string>
+    <string name="next_unbirthday">Наступний не-день народження</string>
     <!-- Quick apps -->
     <string name="event_apps">Швидкі додатки</string>
     <string name="event_apps_description">Додатки де можна швидко поздоровити!</string>
@@ -283,6 +294,20 @@
     <string name="show_following_widget_description">Показати подію або слідкувати за наступними подіями, у додатковому рядку</string>
     <string name="appwidget_compact">Компактна таблиця</string>
     <string name="add_widget_compact">Birday — Компактний</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">Непрозорість тла</string>
+    <string name="compact_widget_bg_color">Колір тла</string>
+    <string name="compact_widget_text_color">Колір тексту</string>
+    <string name="compact_widget_text_size">Розмір тексту</string>
+    <string name="compact_widget_text_size_auto">Автоматично</string>
+    <string name="export_ics_title">Експорт до iCalendar</string>
+    <string name="export_ics_description">Експортувати кожну подію у файл .ics для будь-якого застосунку-календаря</string>
+    <string name="compact_widget_scroll">Прокручувати всі події</string>
+    <string name="compact_widget_hidden">Приховано</string>
+    <string name="compact_widget_below_name">Під іменем</string>
+    <string name="compact_widget_above_name">Над іменем</string>
+    <string name="compact_widget_before_date">Перед датою</string>
+    <string name="compact_widget_after_date">Після дати</string>
     <!-- Search -->
     <string name="search_event">Шукати…</string>
     <string name="search_no_result_title">Нічого не знайдено</string>
@@ -340,35 +365,12 @@
     <string name="advanced_overview_title">Розширений огляд</string>
     <string name="advanced_overview_description_off">Огляд буде відображати тільки основну інформацію</string>
     <string name="advanced_overview_description_on">Огляд відображатиме інші роки та детальну інформацію</string>
-    <string name="replace_on_conflict_title">Замінити при конфлікті</string>
-    <string name="replace_on_conflict_description_off">Під час імпортування дубльована подія не буде замінена імпортованим дублікатом</string>
-    <string name="replace_on_conflict_description_on">Під час імпортування дубльована подія буде перезаписана імпортованим дублікатом</string>
-    <plurals name="days_lived_count">
-        <item quantity="one">%s день</item>
-        <item quantity="few">%s дні</item>
-        <item quantity="many">%s днів</item>
-        <item quantity="other">%s дня</item>
-    </plurals>
-    <string name="birday_import_newer_backup">Цю резервну копію створено в новішій версії Birday. Оновіть застосунок, щоб імпортувати її</string>
-    <string name="crop_image_error">Не вдалося обрізати зображення</string>
-    <string name="days_lived">Прожиті дні</string>
-    <string name="next_unbirthday">Наступний не-день народження</string>
-    <string name="compact_widget_opacity">Непрозорість тла</string>
-    <string name="compact_widget_bg_color">Колір тла</string>
-    <string name="compact_widget_text_color">Колір тексту</string>
-    <string name="compact_widget_text_size">Розмір тексту</string>
-    <string name="compact_widget_text_size_auto">Автоматично</string>
-    <string name="export_ics_title">Експорт до iCalendar</string>
-    <string name="export_ics_description">Експортувати кожну подію у файл .ics для будь-якого застосунку-календаря</string>
-    <string name="compact_widget_scroll">Прокручувати всі події</string>
-    <string name="compact_widget_hidden">Приховано</string>
-    <string name="compact_widget_below_name">Під іменем</string>
-    <string name="compact_widget_above_name">Над іменем</string>
-    <string name="compact_widget_before_date">Перед датою</string>
-    <string name="compact_widget_after_date">Після дати</string>
     <string name="feb29_assignment_title">29 лютого в невисокосні роки</string>
     <string name="feb29_assignment_description_off">У невисокосні роки дні народження 29 лютого відзначаються 1 березня</string>
     <string name="feb29_assignment_description_on">У невисокосні роки дні народження 29 лютого відзначаються 28 лютого</string>
+    <string name="replace_on_conflict_title">Замінити при конфлікті</string>
+    <string name="replace_on_conflict_description_off">Під час імпортування дубльована подія не буде замінена імпортованим дублікатом</string>
+    <string name="replace_on_conflict_description_on">Під час імпортування дубльована подія буде перезаписана імпортованим дублікатом</string>
     <string name="contacts_full_name_title">Повні імена з контактів</string>
     <string name="contacts_full_name_description_on">Під час читання імен із контактів зберігаються звертання, додаткові імена та суфікси</string>
     <string name="contacts_full_name_description_off">З контактів читаються лише ім\'я та прізвище</string>
@@ -391,6 +393,7 @@
     <string name="user_card_remove">Видалити</string>
     <string name="unbirthdays_description_on">У відомостях показується найближча дата з тими самими днем тижня та числом місяця, що й під час народження, наприклад п\'ятниця, 13-те</string>
     <string name="unbirthdays_description_off">Не показувати не-дні народження у відомостях</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Про застосунок</string>
     <string name="back">Назад</string>
     <string name="about_description">Відомості про Birday, його автора та мову застосунку</string>
@@ -409,6 +412,7 @@
     <string name="amoled_description_off">Темна тема використовує стандартні темні відтінки</string>
     <string name="with_year">З роком</string>
     <string name="without_year">Без року</string>
+    <!-- Edge blur -->
     <string name="edge_blur">Розмиття країв</string>
     <string name="edge_blur_description_on">Вміст плавно розмивається під час прокручування під панель навігації</string>
     <string name="edge_blur_description_off">Вміст прокручується під панель навігації без розмиття</string>

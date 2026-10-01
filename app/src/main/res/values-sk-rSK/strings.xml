@@ -34,6 +34,13 @@
         <item quantity="many">Zostáva %d dní</item>
         <item quantity="other">Zostáva %d dní</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s deň</item>
+        <item quantity="few">%s dni</item>
+        <item quantity="many">%s dňa</item>
+        <item quantity="other">%s dní</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">Prispôsobenie</string>
     <string name="app_behavior">Správanie aplikácie</string>
@@ -95,6 +102,7 @@
     <string name="birday_import_success">Import dokončený!</string>
     <string name="birday_import_failure">Import zlyhal. Vybrali ste súbor správne?</string>
     <string name="birday_import_invalid_file">Import zlyhal. Zvolený súbor nie je súbor zálohy Birday!</string>
+    <string name="birday_import_newer_backup">Táto záloha pochádza z novšej verzie aplikácie Birday. Ak ju chcete importovať, aktualizujte aplikáciu</string>
     <string name="birday_export_success">Export dokončený!</string>
     <string name="birday_export_failure">Jejda! Export zlyhal.</string>
     <string name="birday_export_nothing_found">Nie je čo exportovať!</string>
@@ -139,6 +147,7 @@
     <string name="new_event_description">Pridajte novú osobu, na ktorej vám záleží a Birday vám pomôže pripomenúť jej narodeniny alebo inú životnú udalosť!</string>
     <string name="insert_event">Vložte udalosť</string>
     <string name="cancel">Zrušiť</string>
+    <string name="crop_image_error">Pri orezávaní obrázka sa vyskytla chyba</string>
     <string name="insert_name_hint">Vložte meno</string>
     <string name="insert_surname_hint">Vložte priezvisko</string>
     <string name="insert_date_hint">Vyberte dátum</string>
@@ -165,6 +174,8 @@
     <string name="next_age">Budúci vek:</string>
     <string name="zodiac_sign">Znamenie:</string>
     <string name="chinese_zodiac_sign">Čínske znamenie:</string>
+    <string name="days_lived">Prežité dni</string>
+    <string name="next_unbirthday">Nasledujúce nenarodeniny</string>
     <!-- Quick apps -->
     <string name="event_apps">Pošlite blahoželanie</string>
     <string name="event_apps_description">Aplikácia pre rýchle prianie všetkého najlepšieho!</string>
@@ -277,6 +288,20 @@
     <string name="show_following_widget_description">V ďalšom riadku zobrazí udalosť alebo udalosti nasledujúce po najbližšej</string>
     <string name="appwidget_compact">Kompaktná tabuľka</string>
     <string name="add_widget_compact">Birday – Kompaktný</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">Nepriehľadnosť pozadia</string>
+    <string name="compact_widget_bg_color">Farba pozadia</string>
+    <string name="compact_widget_text_color">Farba textu</string>
+    <string name="compact_widget_text_size">Veľkosť textu</string>
+    <string name="compact_widget_text_size_auto">Automatická</string>
+    <string name="export_ics_title">Exportovať do iCalendar</string>
+    <string name="export_ics_description">Exportovať každú udalosť do súboru .ics pre ľubovoľnú kalendárovú aplikáciu</string>
+    <string name="compact_widget_scroll">Prechádzať všetky udalosti</string>
+    <string name="compact_widget_hidden">Skryté</string>
+    <string name="compact_widget_below_name">Pod menom</string>
+    <string name="compact_widget_above_name">Nad menom</string>
+    <string name="compact_widget_before_date">Pred dátumom</string>
+    <string name="compact_widget_after_date">Za dátumom</string>
     <!-- Search -->
     <string name="search_event">Vyhľadávanie…</string>
     <string name="search_no_result_title">Nenašli sa žiadne výsledky</string>
@@ -334,35 +359,12 @@
     <string name="advanced_overview_title">Pokročilý prehľad</string>
     <string name="advanced_overview_description_off">Na obrazovke prehľadu sa zobrazia len základné informácie</string>
     <string name="advanced_overview_description_on">Na obrazovke prehľadu sa zobrazia ďalšie roky a podrobné informácie</string>
-    <string name="replace_on_conflict_title">Nahradiť pri konflikte</string>
-    <string name="replace_on_conflict_description_off">Pri importe duplicitná udalosť nenahradí existujúcu udalosť</string>
-    <string name="replace_on_conflict_description_on">Pri importe duplicitná udalosť prepíše existujúcu udalosť</string>
-    <plurals name="days_lived_count">
-        <item quantity="one">%s deň</item>
-        <item quantity="few">%s dni</item>
-        <item quantity="many">%s dňa</item>
-        <item quantity="other">%s dní</item>
-    </plurals>
-    <string name="birday_import_newer_backup">Táto záloha pochádza z novšej verzie aplikácie Birday. Ak ju chcete importovať, aktualizujte aplikáciu</string>
-    <string name="crop_image_error">Pri orezávaní obrázka sa vyskytla chyba</string>
-    <string name="days_lived">Prežité dni</string>
-    <string name="next_unbirthday">Nasledujúce nenarodeniny</string>
-    <string name="compact_widget_opacity">Nepriehľadnosť pozadia</string>
-    <string name="compact_widget_bg_color">Farba pozadia</string>
-    <string name="compact_widget_text_color">Farba textu</string>
-    <string name="compact_widget_text_size">Veľkosť textu</string>
-    <string name="compact_widget_text_size_auto">Automatická</string>
-    <string name="export_ics_title">Exportovať do iCalendar</string>
-    <string name="export_ics_description">Exportovať každú udalosť do súboru .ics pre ľubovoľnú kalendárovú aplikáciu</string>
-    <string name="compact_widget_scroll">Prechádzať všetky udalosti</string>
-    <string name="compact_widget_hidden">Skryté</string>
-    <string name="compact_widget_below_name">Pod menom</string>
-    <string name="compact_widget_above_name">Nad menom</string>
-    <string name="compact_widget_before_date">Pred dátumom</string>
-    <string name="compact_widget_after_date">Za dátumom</string>
     <string name="feb29_assignment_title">29. február v nepriestupných rokoch</string>
     <string name="feb29_assignment_description_off">Narodeniny 29. februára sa v nepriestupných rokoch oslavujú 1. marca</string>
     <string name="feb29_assignment_description_on">Narodeniny 29. februára sa v nepriestupných rokoch oslavujú 28. februára</string>
+    <string name="replace_on_conflict_title">Nahradiť pri konflikte</string>
+    <string name="replace_on_conflict_description_off">Pri importe duplicitná udalosť nenahradí existujúcu udalosť</string>
+    <string name="replace_on_conflict_description_on">Pri importe duplicitná udalosť prepíše existujúcu udalosť</string>
     <string name="contacts_full_name_title">Celé mená z kontaktov</string>
     <string name="contacts_full_name_description_on">Pri čítaní mien z kontaktov sa zachovajú tituly, ďalšie mená a prípony</string>
     <string name="contacts_full_name_description_off">Z kontaktov sa číta iba meno a priezvisko</string>
@@ -385,6 +387,7 @@
     <string name="user_card_remove">Odstrániť</string>
     <string name="unbirthdays_description_on">Podrobnosti zobrazujú najbližší dátum s rovnakým dňom v týždni a dňom v mesiaci ako pri narodení, napríklad piatok trinásteho</string>
     <string name="unbirthdays_description_off">Bez nenarodenín v podrobnostiach</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">O aplikácii</string>
     <string name="back">Späť</string>
     <string name="about_description">Informácie o aplikácii Birday, jej autorovi a jazyku aplikácie</string>
@@ -403,6 +406,7 @@
     <string name="amoled_description_off">Tmavý motív používa štandardné tmavé plochy</string>
     <string name="with_year">S rokom</string>
     <string name="without_year">Bez roka</string>
+    <!-- Edge blur -->
     <string name="edge_blur">Rozmazanie okrajov</string>
     <string name="edge_blur_description_on">Obsah sa pri posúvaní pod navigačný panel jemne rozmazáva</string>
     <string name="edge_blur_description_off">Obsah sa posúva pod navigačný panel bez rozmazania</string>

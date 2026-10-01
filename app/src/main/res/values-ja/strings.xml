@@ -28,6 +28,10 @@
     <plurals name="days_left">
         <item quantity="other">あと%d日</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="other">%s 日</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">カスタマイズ</string>
     <string name="app_behavior">アプリの動作</string>
@@ -89,6 +93,7 @@
     <string name="birday_import_success">インポートが完了しました！</string>
     <string name="birday_import_failure">インポートに失敗しました。正しいファイルを選択しましたか？</string>
     <string name="birday_import_invalid_file">インポートに失敗しました。選択したファイルはBirdayのバックアップではありません！</string>
+    <string name="birday_import_newer_backup">このバックアップは新しいバージョンの Birday で作成されています。アプリを更新してからインポートしてください</string>
     <string name="birday_export_success">エクスポートが完了しました！</string>
     <string name="birday_export_failure">エクスポートに失敗しました！</string>
     <string name="birday_export_nothing_found">エクスポートするイベントがありません！</string>
@@ -133,6 +138,7 @@
     <string name="new_event_description">大切な人を登録しましょう。Birdayが誕生日やその他のイベントを忘れないようにお手伝いします！</string>
     <string name="insert_event">イベントを追加</string>
     <string name="cancel">キャンセル</string>
+    <string name="crop_image_error">画像の切り抜き中にエラーが発生しました</string>
     <string name="insert_name_hint">名を入力</string>
     <string name="insert_surname_hint">姓を入力</string>
     <string name="insert_date_hint">日付を選択</string>
@@ -159,6 +165,8 @@
     <string name="next_age">次の誕生日の年齢：</string>
     <string name="zodiac_sign">星座：</string>
     <string name="chinese_zodiac_sign">十二支：</string>
+    <string name="days_lived">生まれてからの日数</string>
+    <string name="next_unbirthday">次の曜日・日付の一致日</string>
     <!-- Quick apps -->
     <string name="event_apps">アプリでお祝い</string>
     <string name="event_apps_description">アプリを使って手軽にお祝いを伝えましょう！</string>
@@ -259,6 +267,20 @@
     <string name="show_following_widget_description">直近のイベントに続くイベントを追加の行に表示します</string>
     <string name="appwidget_compact">コンパクトな表</string>
     <string name="add_widget_compact">Birday - コンパクト</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">背景の不透明度</string>
+    <string name="compact_widget_bg_color">背景色</string>
+    <string name="compact_widget_text_color">文字色</string>
+    <string name="compact_widget_text_size">文字サイズ</string>
+    <string name="compact_widget_text_size_auto">自動</string>
+    <string name="export_ics_title">iCalendar にエクスポート</string>
+    <string name="export_ics_description">各イベントを .ics ファイルに書き出します。さまざまなカレンダーアプリで利用できます</string>
+    <string name="compact_widget_scroll">すべてのイベントをスクロール</string>
+    <string name="compact_widget_hidden">非表示</string>
+    <string name="compact_widget_below_name">名前の下</string>
+    <string name="compact_widget_above_name">名前の上</string>
+    <string name="compact_widget_before_date">日付の前</string>
+    <string name="compact_widget_after_date">日付の後</string>
     <!-- Search -->
     <string name="search_event">検索…</string>
     <string name="search_no_result_title">見つかりませんでした</string>
@@ -316,32 +338,12 @@
     <string name="advanced_overview_title">高度な概要</string>
     <string name="advanced_overview_description_off">概要画面には基本情報のみが表示されます</string>
     <string name="advanced_overview_description_on">概要画面に他の年と詳細情報が表示されます</string>
-    <string name="replace_on_conflict_title">重複するイベントを置き換える</string>
-    <string name="replace_on_conflict_description_off">インポート時、既存のイベントと重複するものは置き換えません</string>
-    <string name="replace_on_conflict_description_on">インポート時、既存のイベントと重複するものはインポートした内容で上書きします</string>
-    <plurals name="days_lived_count">
-        <item quantity="other">%s 日</item>
-    </plurals>
-    <string name="birday_import_newer_backup">このバックアップは新しいバージョンの Birday で作成されています。アプリを更新してからインポートしてください</string>
-    <string name="crop_image_error">画像の切り抜き中にエラーが発生しました</string>
-    <string name="days_lived">生まれてからの日数</string>
-    <string name="next_unbirthday">次の曜日・日付の一致日</string>
-    <string name="compact_widget_opacity">背景の不透明度</string>
-    <string name="compact_widget_bg_color">背景色</string>
-    <string name="compact_widget_text_color">文字色</string>
-    <string name="compact_widget_text_size">文字サイズ</string>
-    <string name="compact_widget_text_size_auto">自動</string>
-    <string name="export_ics_title">iCalendar にエクスポート</string>
-    <string name="export_ics_description">各イベントを .ics ファイルに書き出します。さまざまなカレンダーアプリで利用できます</string>
-    <string name="compact_widget_scroll">すべてのイベントをスクロール</string>
-    <string name="compact_widget_hidden">非表示</string>
-    <string name="compact_widget_below_name">名前の下</string>
-    <string name="compact_widget_above_name">名前の上</string>
-    <string name="compact_widget_before_date">日付の前</string>
-    <string name="compact_widget_after_date">日付の後</string>
     <string name="feb29_assignment_title">2月29日生まれの平年の誕生日</string>
     <string name="feb29_assignment_description_off">うるう年以外は、2月29日の誕生日を3月1日に祝います</string>
     <string name="feb29_assignment_description_on">うるう年以外は、2月29日の誕生日を2月28日に祝います</string>
+    <string name="replace_on_conflict_title">重複するイベントを置き換える</string>
+    <string name="replace_on_conflict_description_off">インポート時、既存のイベントと重複するものは置き換えません</string>
+    <string name="replace_on_conflict_description_on">インポート時、既存のイベントと重複するものはインポートした内容で上書きします</string>
     <string name="contacts_full_name_title">連絡先のフルネームを使用</string>
     <string name="contacts_full_name_description_on">連絡先の名前を読み込むときに、敬称、ミドルネーム、接尾辞を保持します</string>
     <string name="contacts_full_name_description_off">連絡先から姓と名のみを読み込みます</string>
@@ -364,6 +366,7 @@
     <string name="user_card_remove">削除</string>
     <string name="unbirthdays_description_on">生まれた日と曜日と日付が一致する次の日を詳細に表示します。たとえば、生まれた日が13日の金曜日なら、次の13日の金曜日です</string>
     <string name="unbirthdays_description_off">誕生日と同じ曜日・日付の日を詳細に表示しません</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">このアプリについて</string>
     <string name="back">戻る</string>
     <string name="about_description">Birday、開発者、アプリの言語に関する情報</string>
@@ -382,6 +385,7 @@
     <string name="amoled_description_off">ダークテーマで標準の暗い背景色を使います</string>
     <string name="with_year">年あり</string>
     <string name="without_year">年なし</string>
+    <!-- Edge blur -->
     <string name="edge_blur">端のぼかし</string>
     <string name="edge_blur_description_on">ナビゲーションバーの下にスクロールした内容をなめらかにぼかします</string>
     <string name="edge_blur_description_off">ナビゲーションバーの下にスクロールしても内容をぼかしません</string>

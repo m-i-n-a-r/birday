@@ -30,6 +30,11 @@
         <item quantity="one">Falta %d dia</item>
         <item quantity="other">Faltam %d dias</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s dia</item>
+        <item quantity="other">%s dias</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">Personalização</string>
     <string name="app_behavior">Comportamento da aplicação</string>
@@ -92,6 +97,7 @@
     <string name="birday_import_success">Importação terminada!</string>
     <string name="birday_import_failure">Falha ao importar. Escolheu o ficheiro correto?</string>
     <string name="birday_import_invalid_file">Falha ao importar. O ficheiro escolhido não é um backup Birday!</string>
+    <string name="birday_import_newer_backup">Esta cópia de segurança foi criada por uma versão mais recente do Birday: atualiza a aplicação para a importar</string>
     <string name="birday_export_success">Exportação terminada!</string>
     <string name="birday_export_failure">Falha ao exportar!</string>
     <string name="birday_export_nothing_found">Não existem dados para exportar!</string>
@@ -136,6 +142,7 @@
     <string name="new_event_description">Indique uma pessoa de quem gosta e o Birday ajudará a lembrar-se do seu aniversário e outros eventos!</string>
     <string name="insert_event">Inserir evento</string>
     <string name="cancel">Cancelar</string>
+    <string name="crop_image_error">Ocorreu um erro ao recortar a imagem</string>
     <string name="insert_name_hint">Introduza o nome</string>
     <string name="insert_surname_hint">Introduza o apelido</string>
     <string name="insert_date_hint">Escolha uma data</string>
@@ -162,6 +169,8 @@
     <string name="next_age">Vai fazer:</string>
     <string name="zodiac_sign">Signo do zodíaco:</string>
     <string name="chinese_zodiac_sign">Signo chinês:</string>
+    <string name="days_lived">Dias vividos</string>
+    <string name="next_unbirthday">Próximo desaniversário</string>
     <!-- Quick apps -->
     <string name="event_apps">Aplicações</string>
     <string name="event_apps_description">Aplicações para desejar um bom aniversário!</string>
@@ -272,6 +281,20 @@
     <string name="show_following_widget_description">Mostra numa linha adicional o evento ou os eventos que se seguem ao próximo</string>
     <string name="appwidget_compact">Tabela compacta</string>
     <string name="add_widget_compact">Birday - Compacto</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">Opacidade do fundo</string>
+    <string name="compact_widget_bg_color">Cor do fundo</string>
+    <string name="compact_widget_text_color">Cor do texto</string>
+    <string name="compact_widget_text_size">Tamanho do texto</string>
+    <string name="compact_widget_text_size_auto">Automático</string>
+    <string name="export_ics_title">Exportar para iCalendar</string>
+    <string name="export_ics_description">Exporta cada evento para um ficheiro .ics, compatível com qualquer aplicação de calendário</string>
+    <string name="compact_widget_scroll">Percorrer todos os eventos</string>
+    <string name="compact_widget_hidden">Oculto</string>
+    <string name="compact_widget_below_name">Abaixo do nome</string>
+    <string name="compact_widget_above_name">Acima do nome</string>
+    <string name="compact_widget_before_date">Antes da data</string>
+    <string name="compact_widget_after_date">Depois da data</string>
     <!-- Search -->
     <string name="search_event">Pesquisar…</string>
     <string name="search_no_result_title">Não existem resultados</string>
@@ -329,33 +352,12 @@
     <string name="advanced_overview_title">Visão geral avançada</string>
     <string name="advanced_overview_description_off">A visão geral apresenta apenas informações básicas</string>
     <string name="advanced_overview_description_on">A visão geral apresenta outros anos e informações detalhadas</string>
-    <string name="replace_on_conflict_title">Substituir em caso de conflito</string>
-    <string name="replace_on_conflict_description_off">Ao importar, um evento duplicado não substitui o evento existente</string>
-    <string name="replace_on_conflict_description_on">Ao importar, um evento duplicado substitui o evento existente</string>
-    <plurals name="days_lived_count">
-        <item quantity="one">%s dia</item>
-        <item quantity="other">%s dias</item>
-    </plurals>
-    <string name="birday_import_newer_backup">Esta cópia de segurança foi criada por uma versão mais recente do Birday: atualiza a aplicação para a importar</string>
-    <string name="crop_image_error">Ocorreu um erro ao recortar a imagem</string>
-    <string name="days_lived">Dias vividos</string>
-    <string name="next_unbirthday">Próximo desaniversário</string>
-    <string name="compact_widget_opacity">Opacidade do fundo</string>
-    <string name="compact_widget_bg_color">Cor do fundo</string>
-    <string name="compact_widget_text_color">Cor do texto</string>
-    <string name="compact_widget_text_size">Tamanho do texto</string>
-    <string name="compact_widget_text_size_auto">Automático</string>
-    <string name="export_ics_title">Exportar para iCalendar</string>
-    <string name="export_ics_description">Exporta cada evento para um ficheiro .ics, compatível com qualquer aplicação de calendário</string>
-    <string name="compact_widget_scroll">Percorrer todos os eventos</string>
-    <string name="compact_widget_hidden">Oculto</string>
-    <string name="compact_widget_below_name">Abaixo do nome</string>
-    <string name="compact_widget_above_name">Acima do nome</string>
-    <string name="compact_widget_before_date">Antes da data</string>
-    <string name="compact_widget_after_date">Depois da data</string>
     <string name="feb29_assignment_title">29 de fevereiro em anos não bissextos</string>
     <string name="feb29_assignment_description_off">Em anos não bissextos, os aniversários de 29 de fevereiro são comemorados em 1º de março</string>
     <string name="feb29_assignment_description_on">Em anos não bissextos, os aniversários de 29 de fevereiro são comemorados em 28 de fevereiro</string>
+    <string name="replace_on_conflict_title">Substituir em caso de conflito</string>
+    <string name="replace_on_conflict_description_off">Ao importar, um evento duplicado não substitui o evento existente</string>
+    <string name="replace_on_conflict_description_on">Ao importar, um evento duplicado substitui o evento existente</string>
     <string name="contacts_full_name_title">Nomes completos dos contactos</string>
     <string name="contacts_full_name_description_on">Os títulos, nomes do meio e sufixos são mantidos ao ler os nomes dos contactos</string>
     <string name="contacts_full_name_description_off">Apenas o nome e o apelido são lidos dos contactos</string>
@@ -378,6 +380,7 @@
     <string name="user_card_remove">Remover</string>
     <string name="unbirthdays_description_on">Os detalhes mostram a próxima data com o mesmo dia da semana e do mês do nascimento, como uma sexta-feira 13</string>
     <string name="unbirthdays_description_off">Sem desaniversários nos detalhes</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Sobre</string>
     <string name="back">Voltar</string>
     <string name="about_description">Informações sobre o Birday, o seu autor e o idioma da aplicação</string>
@@ -396,6 +399,7 @@
     <string name="amoled_description_off">O tema escuro utiliza os tons escuros predefinidos</string>
     <string name="with_year">Com ano</string>
     <string name="without_year">Sem ano</string>
+    <!-- Edge blur -->
     <string name="edge_blur">Desfocagem nas margens</string>
     <string name="edge_blur_description_on">O conteúdo desvanece-se suavemente ao passar por baixo da barra de navegação</string>
     <string name="edge_blur_description_off">O conteúdo passa por baixo da barra de navegação sem desfocagem</string>

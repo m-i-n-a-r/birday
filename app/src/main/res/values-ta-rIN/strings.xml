@@ -30,6 +30,11 @@
         <item quantity="one">%d நாள் மீதமுள்ளது</item>
         <item quantity="other">%d நாட்கள் மீதமுள்ளது</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s நாள்</item>
+        <item quantity="other">%s நாட்கள்</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">தனிப்பயனாக்கல்</string>
     <string name="app_behavior">செயலி நடத்தை</string>
@@ -91,6 +96,7 @@
     <string name="birday_import_success">இறக்குமதி முடிந்தது!</string>
     <string name="birday_import_failure">இறக்குமதி தோல்வியடைந்தது. சரியான கோப்பைத் தேர்ந்தெடுத்தீர்களா?</string>
     <string name="birday_import_invalid_file">இறக்குமதி தோல்வியடைந்தது. தேர்ந்தெடுத்த கோப்பு Birday காப்புப்பிரதி அல்ல!</string>
+    <string name="birday_import_newer_backup">இந்தக் காப்புப்பிரதி Birday-இன் புதிய பதிப்பில் உருவாக்கப்பட்டது. இதை இறக்குமதி செய்ய செயலியைப் புதுப்பிக்கவும்</string>
     <string name="birday_export_success">ஏற்றுமதி முடிந்தது!</string>
     <string name="birday_export_failure">ஏற்றுமதி தோல்வியடைந்தது!</string>
     <string name="birday_export_nothing_found">ஏற்றுமதி செய்ய எதுவும் இல்லை!</string>
@@ -135,6 +141,7 @@
     <string name="new_event_description">உங்களுக்கு முக்கியமான ஒருவரைச் சேருங்கள். அவரது பிறந்தநாளையும் பிற நிகழ்வுகளையும் நினைவில் வைத்திருக்க Birday உதவும்!</string>
     <string name="insert_event">நிகழ்வைச் சேர்</string>
     <string name="cancel">ரத்துசெய்</string>
+    <string name="crop_image_error">படத்தைச் செதுக்கும்போது பிழை ஏற்பட்டது</string>
     <string name="insert_name_hint">பெயரை உள்ளிடுங்கள்</string>
     <string name="insert_surname_hint">குடும்பப்பெயரை உள்ளிடுங்கள்</string>
     <string name="insert_date_hint">தேதியைத் தேர்ந்தெடுங்கள்</string>
@@ -161,6 +168,8 @@
     <string name="next_age">அடுத்த பிறந்தநாளில் வயது:</string>
     <string name="zodiac_sign">ராசி:</string>
     <string name="chinese_zodiac_sign">சீன ராசி:</string>
+    <string name="days_lived">வாழ்ந்த நாட்கள்</string>
+    <string name="next_unbirthday">பிறந்த கிழமையும் தேதியும் பொருந்தும் அடுத்த நாள்</string>
     <!-- Quick apps -->
     <string name="event_apps">விரைவுச் செயலிகள்</string>
     <string name="event_apps_description">உடனே வாழ்த்துத் தெரிவிக்க உதவும் செயலிகள்!</string>
@@ -265,6 +274,20 @@
     <string name="show_following_widget_description">அடுத்த நிகழ்வைத் தொடர்ந்து வரும் நிகழ்வு அல்லது நிகழ்வுகளை மற்றொரு வரியில் காட்டு</string>
     <string name="appwidget_compact">சுருக்கமான அட்டவணை</string>
     <string name="add_widget_compact">Birday - சுருக்கமானது</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">பின்னணியின் ஒளிபுகாமை</string>
+    <string name="compact_widget_bg_color">பின்னணி நிறம்</string>
+    <string name="compact_widget_text_color">உரை நிறம்</string>
+    <string name="compact_widget_text_size">உரை அளவு</string>
+    <string name="compact_widget_text_size_auto">தானாக</string>
+    <string name="export_ics_title">iCalendar-க்கு ஏற்றுமதி செய்</string>
+    <string name="export_ics_description">ஒவ்வொரு நிகழ்வையும் எந்த நாட்காட்டிச் செயலியிலும் பயன்படுத்தக்கூடிய .ics கோப்பாக ஏற்றுமதி செய்யவும்</string>
+    <string name="compact_widget_scroll">எல்லா நிகழ்வுகளையும் உருட்டிப் பார்</string>
+    <string name="compact_widget_hidden">மறைக்கப்பட்டது</string>
+    <string name="compact_widget_below_name">பெயருக்குக் கீழே</string>
+    <string name="compact_widget_above_name">பெயருக்கு மேலே</string>
+    <string name="compact_widget_before_date">தேதிக்கு முன்</string>
+    <string name="compact_widget_after_date">தேதிக்குப் பின்</string>
     <!-- Search -->
     <string name="search_event">தேடு…</string>
     <string name="search_no_result_title">முடிவுகள் எதுவும் கிடைக்கவில்லை</string>
@@ -322,33 +345,12 @@
     <string name="advanced_overview_title">விரிவான கண்ணோட்டம்</string>
     <string name="advanced_overview_description_off">கண்ணோட்டத் திரையில் அடிப்படைத் தகவல்கள் மட்டுமே காட்டப்படும்</string>
     <string name="advanced_overview_description_on">கண்ணோட்டத் திரையில் மற்ற ஆண்டுகளும் விரிவான தகவல்களும் காட்டப்படும்</string>
-    <string name="replace_on_conflict_title">முரண்பட்டால் மாற்று</string>
-    <string name="replace_on_conflict_description_off">இறக்குமதியின்போது ஏற்கெனவே உள்ள நிகழ்வு, இறக்குமதி செய்யப்படும் நகலால் மாற்றப்படாது</string>
-    <string name="replace_on_conflict_description_on">இறக்குமதியின்போது ஏற்கெனவே உள்ள நிகழ்வு, இறக்குமதி செய்யப்படும் நகலால் மேலெழுதப்படும்</string>
-    <plurals name="days_lived_count">
-        <item quantity="one">%s நாள்</item>
-        <item quantity="other">%s நாட்கள்</item>
-    </plurals>
-    <string name="birday_import_newer_backup">இந்தக் காப்புப்பிரதி Birday-இன் புதிய பதிப்பில் உருவாக்கப்பட்டது. இதை இறக்குமதி செய்ய செயலியைப் புதுப்பிக்கவும்</string>
-    <string name="crop_image_error">படத்தைச் செதுக்கும்போது பிழை ஏற்பட்டது</string>
-    <string name="days_lived">வாழ்ந்த நாட்கள்</string>
-    <string name="next_unbirthday">பிறந்த கிழமையும் தேதியும் பொருந்தும் அடுத்த நாள்</string>
-    <string name="compact_widget_opacity">பின்னணியின் ஒளிபுகாமை</string>
-    <string name="compact_widget_bg_color">பின்னணி நிறம்</string>
-    <string name="compact_widget_text_color">உரை நிறம்</string>
-    <string name="compact_widget_text_size">உரை அளவு</string>
-    <string name="compact_widget_text_size_auto">தானாக</string>
-    <string name="export_ics_title">iCalendar-க்கு ஏற்றுமதி செய்</string>
-    <string name="export_ics_description">ஒவ்வொரு நிகழ்வையும் எந்த நாட்காட்டிச் செயலியிலும் பயன்படுத்தக்கூடிய .ics கோப்பாக ஏற்றுமதி செய்யவும்</string>
-    <string name="compact_widget_scroll">எல்லா நிகழ்வுகளையும் உருட்டிப் பார்</string>
-    <string name="compact_widget_hidden">மறைக்கப்பட்டது</string>
-    <string name="compact_widget_below_name">பெயருக்குக் கீழே</string>
-    <string name="compact_widget_above_name">பெயருக்கு மேலே</string>
-    <string name="compact_widget_before_date">தேதிக்கு முன்</string>
-    <string name="compact_widget_after_date">தேதிக்குப் பின்</string>
     <string name="feb29_assignment_title">சாதாரண ஆண்டுகளில் பிப்ரவரி 29</string>
     <string name="feb29_assignment_description_off">நெட்டாண்டு அல்லாத ஆண்டுகளில் பிப்ரவரி 29 பிறந்தநாட்கள் மார்ச் 1 அன்று கொண்டாடப்படும்</string>
     <string name="feb29_assignment_description_on">நெட்டாண்டு அல்லாத ஆண்டுகளில் பிப்ரவரி 29 பிறந்தநாட்கள் பிப்ரவரி 28 அன்று கொண்டாடப்படும்</string>
+    <string name="replace_on_conflict_title">முரண்பட்டால் மாற்று</string>
+    <string name="replace_on_conflict_description_off">இறக்குமதியின்போது ஏற்கெனவே உள்ள நிகழ்வு, இறக்குமதி செய்யப்படும் நகலால் மாற்றப்படாது</string>
+    <string name="replace_on_conflict_description_on">இறக்குமதியின்போது ஏற்கெனவே உள்ள நிகழ்வு, இறக்குமதி செய்யப்படும் நகலால் மேலெழுதப்படும்</string>
     <string name="contacts_full_name_title">தொடர்புகளிலிருந்து முழுப் பெயர்கள்</string>
     <string name="contacts_full_name_description_on">தொடர்புகளின் பெயர்களைப் படிக்கும்போது பட்டங்கள், நடுப்பெயர்கள் மற்றும் பெயரின் பின்னொட்டுகள் தக்கவைக்கப்படும்</string>
     <string name="contacts_full_name_description_off">தொடர்புகளிலிருந்து முதல் பெயரும் குடும்பப்பெயரும் மட்டும் படிக்கப்படும்</string>
@@ -371,6 +373,7 @@
     <string name="user_card_remove">அகற்று</string>
     <string name="unbirthdays_description_on">பிறந்த நாளின் கிழமையும் மாதத்தின் தேதியும் பொருந்தும் அடுத்த நாள் விவரங்களில் காட்டப்படும், எடுத்துக்காட்டாக வெள்ளிக்கிழமை 13-ஆம் தேதி</string>
     <string name="unbirthdays_description_off">பிறந்த கிழமையும் தேதியும் பொருந்தும் நாட்கள் விவரங்களில் காட்டப்படாது</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">செயலியைப் பற்றி</string>
     <string name="back">பின்செல்</string>
     <string name="about_description">Birday, அதன் உருவாக்குநர் மற்றும் செயலியின் மொழி பற்றிய தகவல்கள்</string>
@@ -389,6 +392,7 @@
     <string name="amoled_description_off">இருண்ட தீம் வழக்கமான இருண்ட நிறங்களைப் பயன்படுத்தும்</string>
     <string name="with_year">ஆண்டுடன்</string>
     <string name="without_year">ஆண்டு இல்லாமல்</string>
+    <!-- Edge blur -->
     <string name="edge_blur">விளிம்புகளை மங்கலாக்கு</string>
     <string name="edge_blur_description_on">வழிசெலுத்தல் பட்டிக்குக் கீழே உருளும்போது உள்ளடக்கம் மெதுவாக மங்கும்</string>
     <string name="edge_blur_description_off">உள்ளடக்கம் மங்காமல் வழிசெலுத்தல் பட்டிக்குக் கீழே உருளும்</string>

@@ -32,6 +32,12 @@
         <item quantity="few">za %d dana</item>
         <item quantity="other">za %d dana</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s dan</item>
+        <item quantity="few">%s dana</item>
+        <item quantity="other">%s dana</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">Prilagođavanje</string>
     <string name="app_behavior">Ponašanje aplikacije</string>
@@ -102,6 +108,7 @@
     <string name="birday_import_success">Uvoz je završen!</string>
     <string name="birday_import_failure">Uvoz nije uspeo. Da niste izabrali pogrešan fajl?</string>
     <string name="birday_import_invalid_file">Uvoz nije uspeo. Izabran fajl nije Birday backup!</string>
+    <string name="birday_import_newer_backup">Ova rezervna kopija potiče iz novije verzije aplikacije Birday. Ažurirajte aplikaciju da biste je uvezli</string>
     <string name="birday_export_success">Izvoz je završen!</string>
     <string name="birday_export_failure">Izvoz nije uspeo. Ups!</string>
     <string name="birday_export_nothing_found">Nema ništa za izvoz!</string>
@@ -146,6 +153,7 @@
     <string name="new_event_description">Unesite osobu do koje vam je stalo, i Birday će vam pomoći da se setite njenog rođendana ili nekog drugog događaja!</string>
     <string name="insert_event">Unesite događaj</string>
     <string name="cancel">Otkaži</string>
+    <string name="crop_image_error">Došlo je do greške pri isecanju slike</string>
     <string name="insert_name_hint">Unesite Ime</string>
     <string name="insert_surname_hint">Unesite Prezime</string>
     <string name="insert_date_hint">Izaberite datum</string>
@@ -172,6 +180,8 @@
     <string name="next_age">Sledeća dob:</string>
     <string name="zodiac_sign">Horoskopski znak:</string>
     <string name="chinese_zodiac_sign">Kineski znak:</string>
+    <string name="days_lived">Proživljeni dani</string>
+    <string name="next_unbirthday">Sledeći nerođendan</string>
     <!-- Quick apps -->
     <string name="event_apps">Brze aplikacije</string>
     <string name="event_apps_description">Aplikacije da brzo poželite sve najbolje!</string>
@@ -290,6 +300,20 @@
     <string name="show_following_widget_description">U dodatnom redu prikaži događaj ili događaje koji slede posle najbližeg</string>
     <string name="appwidget_compact">Kompaktna tabela</string>
     <string name="add_widget_compact">Birday — Kompaktni</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">Neprozirnost pozadine</string>
+    <string name="compact_widget_bg_color">Boja pozadine</string>
+    <string name="compact_widget_text_color">Boja teksta</string>
+    <string name="compact_widget_text_size">Veličina teksta</string>
+    <string name="compact_widget_text_size_auto">Automatski</string>
+    <string name="export_ics_title">Izvoz u iCalendar</string>
+    <string name="export_ics_description">Izvezite svaki događaj u .ics datoteku za bilo koju aplikaciju kalendara</string>
+    <string name="compact_widget_scroll">Pomeranje kroz sve događaje</string>
+    <string name="compact_widget_hidden">Skriveno</string>
+    <string name="compact_widget_below_name">Ispod imena</string>
+    <string name="compact_widget_above_name">Iznad imena</string>
+    <string name="compact_widget_before_date">Pre datuma</string>
+    <string name="compact_widget_after_date">Posle datuma</string>
     <!-- Search -->
     <string name="search_event">Pretražite…</string>
     <string name="search_no_result_title">Nema rezultata</string>
@@ -347,34 +371,12 @@
     <string name="advanced_overview_title">Napredni pregled</string>
     <string name="advanced_overview_description_off">Ekran pregleda prikazuje samo osnovne podatke</string>
     <string name="advanced_overview_description_on">Ekran pregleda prikazuje druge godine i detaljne podatke</string>
-    <string name="replace_on_conflict_title">Zameni u slučaju sukoba</string>
-    <string name="replace_on_conflict_description_off">Pri uvozu duplirani događaj neće zameniti postojeći</string>
-    <string name="replace_on_conflict_description_on">Pri uvozu duplirani događaj će prepisati postojeći</string>
-    <plurals name="days_lived_count">
-        <item quantity="one">%s dan</item>
-        <item quantity="few">%s dana</item>
-        <item quantity="other">%s dana</item>
-    </plurals>
-    <string name="birday_import_newer_backup">Ova rezervna kopija potiče iz novije verzije aplikacije Birday. Ažurirajte aplikaciju da biste je uvezli</string>
-    <string name="crop_image_error">Došlo je do greške pri isecanju slike</string>
-    <string name="days_lived">Proživljeni dani</string>
-    <string name="next_unbirthday">Sledeći nerođendan</string>
-    <string name="compact_widget_opacity">Neprozirnost pozadine</string>
-    <string name="compact_widget_bg_color">Boja pozadine</string>
-    <string name="compact_widget_text_color">Boja teksta</string>
-    <string name="compact_widget_text_size">Veličina teksta</string>
-    <string name="compact_widget_text_size_auto">Automatski</string>
-    <string name="export_ics_title">Izvoz u iCalendar</string>
-    <string name="export_ics_description">Izvezite svaki događaj u .ics datoteku za bilo koju aplikaciju kalendara</string>
-    <string name="compact_widget_scroll">Pomeranje kroz sve događaje</string>
-    <string name="compact_widget_hidden">Skriveno</string>
-    <string name="compact_widget_below_name">Ispod imena</string>
-    <string name="compact_widget_above_name">Iznad imena</string>
-    <string name="compact_widget_before_date">Pre datuma</string>
-    <string name="compact_widget_after_date">Posle datuma</string>
     <string name="feb29_assignment_title">29. februar u neprestupnim godinama</string>
     <string name="feb29_assignment_description_off">Rođendani 29. februara u neprestupnim godinama slave se 1. marta</string>
     <string name="feb29_assignment_description_on">Rođendani 29. februara u neprestupnim godinama slave se 28. februara</string>
+    <string name="replace_on_conflict_title">Zameni u slučaju sukoba</string>
+    <string name="replace_on_conflict_description_off">Pri uvozu duplirani događaj neće zameniti postojeći</string>
+    <string name="replace_on_conflict_description_on">Pri uvozu duplirani događaj će prepisati postojeći</string>
     <string name="contacts_full_name_title">Puna imena iz kontakata</string>
     <string name="contacts_full_name_description_on">Pri čitanju imena iz kontakata zadržavaju se titule, dodatna imena i sufiksi</string>
     <string name="contacts_full_name_description_off">Iz kontakata se čitaju samo ime i prezime</string>
@@ -397,6 +399,7 @@
     <string name="user_card_remove">Ukloni</string>
     <string name="unbirthdays_description_on">Detalji prikazuju sledeći datum sa istim danom u nedelji i danom u mesecu kao pri rođenju, na primer petak 13.</string>
     <string name="unbirthdays_description_off">Bez nerođendana u detaljima</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">O aplikaciji</string>
     <string name="back">Nazad</string>
     <string name="about_description">Informacije o aplikaciji Birday, njenom autoru i jeziku aplikacije</string>
@@ -415,6 +418,7 @@
     <string name="amoled_description_off">Tamna tema koristi standardne tamne površine</string>
     <string name="with_year">Sa godinom</string>
     <string name="without_year">Bez godine</string>
+    <!-- Edge blur -->
     <string name="edge_blur">Zamućenje ivica</string>
     <string name="edge_blur_description_on">Sadržaj se postepeno zamućuje dok se pomera ispod trake za navigaciju</string>
     <string name="edge_blur_description_off">Sadržaj se pomera ispod trake za navigaciju bez zamućenja</string>

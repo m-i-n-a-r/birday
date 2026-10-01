@@ -30,6 +30,11 @@
         <item quantity="one">%d dag att</item>
         <item quantity="other">%d dagar att</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s dag</item>
+        <item quantity="other">%s dagar</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">Personalisering</string>
     <string name="app_behavior">Verkemåten til appen</string>
@@ -91,6 +96,7 @@
     <string name="birday_import_success">Import fullført!</string>
     <string name="birday_import_failure">Importen mislukkast. Valde du rett fil?</string>
     <string name="birday_import_invalid_file">Importen mislukkast. Den valde fila er ikkje ein Birday-tryggingskopi!</string>
+    <string name="birday_import_newer_backup">Denne tryggingskopien kjem frå ein nyare versjon av Birday. Oppdater appen for å importere han</string>
     <string name="birday_export_success">Eksport fullført!</string>
     <string name="birday_export_failure">Eksporten mislukkast. Oisann!</string>
     <string name="birday_export_nothing_found">Ingenting å eksportere!</string>
@@ -135,6 +141,7 @@
     <string name="new_event_description">Legg til ein person du bryr deg om, så hjelper Birday deg å hugse fødselsdagen og andre hendingar!</string>
     <string name="insert_event">Legg til hending</string>
     <string name="cancel">Avbryt</string>
+    <string name="crop_image_error">Noko gjekk gale då biletet vart skore til</string>
     <string name="insert_name_hint">Skriv inn førenamn</string>
     <string name="insert_surname_hint">Skriv inn etternamn</string>
     <string name="insert_date_hint">Vel ein dato</string>
@@ -161,6 +168,8 @@
     <string name="next_age">Neste alder:</string>
     <string name="zodiac_sign">Stjerneteikn:</string>
     <string name="chinese_zodiac_sign">Kinesisk dyreteikn:</string>
+    <string name="days_lived">Dagar levd</string>
+    <string name="next_unbirthday">Neste ikkje-fødselsdag</string>
     <!-- Quick apps -->
     <string name="event_apps">Snarvegar til appar</string>
     <string name="event_apps_description">Appar for å sende helsingar raskt!</string>
@@ -265,6 +274,20 @@
     <string name="show_following_widget_description">Vis hendinga eller hendingane etter den neste på ei ekstra linje</string>
     <string name="appwidget_compact">Kompakt tabell</string>
     <string name="add_widget_compact">Birday - Kompakt</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">Kor ugjennomsiktig bakgrunnen er</string>
+    <string name="compact_widget_bg_color">Bakgrunnsfarge</string>
+    <string name="compact_widget_text_color">Tekstfarge</string>
+    <string name="compact_widget_text_size">Tekststorleik</string>
+    <string name="compact_widget_text_size_auto">Automatisk</string>
+    <string name="export_ics_title">Eksporter til iCalendar</string>
+    <string name="export_ics_description">Eksporter kvar hending til ei .ics-fil som kan brukast i alle kalenderappar</string>
+    <string name="compact_widget_scroll">Bla gjennom alle hendingane</string>
+    <string name="compact_widget_hidden">Skjult</string>
+    <string name="compact_widget_below_name">Under namnet</string>
+    <string name="compact_widget_above_name">Over namnet</string>
+    <string name="compact_widget_before_date">Før datoen</string>
+    <string name="compact_widget_after_date">Etter datoen</string>
     <!-- Search -->
     <string name="search_event">Søk…</string>
     <string name="search_no_result_title">Ingen resultat</string>
@@ -322,33 +345,12 @@
     <string name="advanced_overview_title">Avansert oversikt</string>
     <string name="advanced_overview_description_off">Oversikta viser berre grunnleggjande informasjon</string>
     <string name="advanced_overview_description_on">Oversikta viser andre år og detaljert informasjon</string>
-    <string name="replace_on_conflict_title">Erstatt ved konflikt</string>
-    <string name="replace_on_conflict_description_off">Ved import vert ei eksisterande hending ikkje erstatta av ein importert kopi</string>
-    <string name="replace_on_conflict_description_on">Ved import vert ei eksisterande hending overskriven av ein importert kopi</string>
-    <plurals name="days_lived_count">
-        <item quantity="one">%s dag</item>
-        <item quantity="other">%s dagar</item>
-    </plurals>
-    <string name="birday_import_newer_backup">Denne tryggingskopien kjem frå ein nyare versjon av Birday. Oppdater appen for å importere han</string>
-    <string name="crop_image_error">Noko gjekk gale då biletet vart skore til</string>
-    <string name="days_lived">Dagar levd</string>
-    <string name="next_unbirthday">Neste ikkje-fødselsdag</string>
-    <string name="compact_widget_opacity">Kor ugjennomsiktig bakgrunnen er</string>
-    <string name="compact_widget_bg_color">Bakgrunnsfarge</string>
-    <string name="compact_widget_text_color">Tekstfarge</string>
-    <string name="compact_widget_text_size">Tekststorleik</string>
-    <string name="compact_widget_text_size_auto">Automatisk</string>
-    <string name="export_ics_title">Eksporter til iCalendar</string>
-    <string name="export_ics_description">Eksporter kvar hending til ei .ics-fil som kan brukast i alle kalenderappar</string>
-    <string name="compact_widget_scroll">Bla gjennom alle hendingane</string>
-    <string name="compact_widget_hidden">Skjult</string>
-    <string name="compact_widget_below_name">Under namnet</string>
-    <string name="compact_widget_above_name">Over namnet</string>
-    <string name="compact_widget_before_date">Før datoen</string>
-    <string name="compact_widget_after_date">Etter datoen</string>
     <string name="feb29_assignment_title">29. februar i vanlege år</string>
     <string name="feb29_assignment_description_off">Fødselsdagar den 29. februar vert feira den 1. mars i år som ikkje er skotår</string>
     <string name="feb29_assignment_description_on">Fødselsdagar den 29. februar vert feira den 28. februar i år som ikkje er skotår</string>
+    <string name="replace_on_conflict_title">Erstatt ved konflikt</string>
+    <string name="replace_on_conflict_description_off">Ved import vert ei eksisterande hending ikkje erstatta av ein importert kopi</string>
+    <string name="replace_on_conflict_description_on">Ved import vert ei eksisterande hending overskriven av ein importert kopi</string>
     <string name="contacts_full_name_title">Fullstendige kontaktnamn</string>
     <string name="contacts_full_name_description_on">Titlar, ekstra førenamn og namnesuffiks vert tekne vare på når kontaktnamn vert lesne</string>
     <string name="contacts_full_name_description_off">Berre førenamn og etternamn vert lesne frå kontaktane</string>
@@ -371,6 +373,7 @@
     <string name="user_card_remove">Fjern</string>
     <string name="unbirthdays_description_on">Detaljane viser neste dato med same vekedag og dag i månaden som ved fødselen, til dømes fredag den 13.</string>
     <string name="unbirthdays_description_off">Ingen ikkje-fødselsdagar i detaljane</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Om appen</string>
     <string name="back">Tilbake</string>
     <string name="about_description">Informasjon om Birday, utviklaren og språket i appen</string>
@@ -389,6 +392,7 @@
     <string name="amoled_description_off">Det mørke temaet brukar dei vanlege mørke flatene</string>
     <string name="with_year">Med år</string>
     <string name="without_year">Utan år</string>
+    <!-- Edge blur -->
     <string name="edge_blur">Uskarpe kantar</string>
     <string name="edge_blur_description_on">Innhaldet tonar mjukt ut når det rullar under navigasjonslinja</string>
     <string name="edge_blur_description_off">Innhaldet rullar under navigasjonslinja utan uskarpleik</string>

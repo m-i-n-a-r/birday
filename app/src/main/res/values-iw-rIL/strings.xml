@@ -32,6 +32,12 @@
         <item quantity="two">נותרו %d ימים</item>
         <item quantity="other">נותרו %d ימים</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s יום</item>
+        <item quantity="two">%s ימים</item>
+        <item quantity="other">%s ימים</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">התאמה אישית</string>
     <string name="app_behavior">התנהגות היישום</string>
@@ -94,6 +100,7 @@
     <string name="birday_import_success">הייבוא הושלם!</string>
     <string name="birday_import_failure">הייבוא ​​נכשל. האם בחרת את הקובץ נכון?</string>
     <string name="birday_import_invalid_file">הייבוא ​​נכשל. הקובץ שנבחר אינו גיבוי של Birday!</string>
+    <string name="birday_import_newer_backup">הגיבוי הזה נוצר בגרסה חדשה יותר של Birday. יש לעדכן את האפליקציה כדי לייבא אותו</string>
     <string name="birday_export_success">הייצוא הושלם!</string>
     <string name="birday_export_failure">הייצוא נכשל. אופס!</string>
     <string name="birday_export_nothing_found">אין מה לייצא!</string>
@@ -138,6 +145,7 @@
     <string name="new_event_description">הזינו אדם שחשוב לכם, ו-Birday יעזור לכם לזכור את יום ההולדת שלו או אירועים אחרים!</string>
     <string name="insert_event">הוסף אירוע</string>
     <string name="cancel">ביטול</string>
+    <string name="crop_image_error">אירעה שגיאה בחיתוך התמונה</string>
     <string name="insert_name_hint">הכנס שם פרטי</string>
     <string name="insert_surname_hint">הכנס שם משפחה</string>
     <string name="insert_date_hint">בחר תאריך</string>
@@ -164,6 +172,8 @@
     <string name="next_age">הגיל הבא:</string>
     <string name="zodiac_sign">סימן מזל:</string>
     <string name="chinese_zodiac_sign">סימן סיני:</string>
+    <string name="days_lived">ימים שחלפו מהלידה</string>
+    <string name="next_unbirthday">ההתאמה הבאה ליום הלידה</string>
     <!-- Quick apps -->
     <string name="event_apps">יישומים מהירים</string>
     <string name="event_apps_description">אפליקציות לאחל את כל הטוב במהירות!</string>
@@ -272,6 +282,20 @@
     <string name="show_following_widget_description">הצגת האירוע או האירועים שלאחר האירוע הקרוב בשורה נוספת</string>
     <string name="appwidget_compact">טבלה קומפקטית</string>
     <string name="add_widget_compact">Birday - קומפקטי</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">אטימות הרקע</string>
+    <string name="compact_widget_bg_color">צבע הרקע</string>
+    <string name="compact_widget_text_color">צבע הטקסט</string>
+    <string name="compact_widget_text_size">גודל הטקסט</string>
+    <string name="compact_widget_text_size_auto">אוטומטי</string>
+    <string name="export_ics_title">ייצוא ל־iCalendar</string>
+    <string name="export_ics_description">ייצוא כל אירוע לקובץ ‎.ics לשימוש בכל אפליקציית יומן</string>
+    <string name="compact_widget_scroll">גלילה בכל האירועים</string>
+    <string name="compact_widget_hidden">מוסתר</string>
+    <string name="compact_widget_below_name">מתחת לשם</string>
+    <string name="compact_widget_above_name">מעל לשם</string>
+    <string name="compact_widget_before_date">לפני התאריך</string>
+    <string name="compact_widget_after_date">אחרי התאריך</string>
     <!-- Search -->
     <string name="search_event">חיפוש…</string>
     <string name="search_no_result_title">לא נמצאו תוצאות</string>
@@ -329,34 +353,12 @@
     <string name="advanced_overview_title">סקירה מתקדמת</string>
     <string name="advanced_overview_description_off">מסך הסקירה מציג מידע בסיסי בלבד</string>
     <string name="advanced_overview_description_on">מסך הסקירה מציג שנים נוספות ומידע מפורט</string>
-    <string name="replace_on_conflict_title">החלפה במקרה של התנגשות</string>
-    <string name="replace_on_conflict_description_off">בעת ייבוא, אירוע כפול לא יחליף את האירוע הקיים</string>
-    <string name="replace_on_conflict_description_on">בעת ייבוא, אירוע כפול יחליף את האירוע הקיים</string>
-    <plurals name="days_lived_count">
-        <item quantity="one">%s יום</item>
-        <item quantity="two">%s ימים</item>
-        <item quantity="other">%s ימים</item>
-    </plurals>
-    <string name="birday_import_newer_backup">הגיבוי הזה נוצר בגרסה חדשה יותר של Birday. יש לעדכן את האפליקציה כדי לייבא אותו</string>
-    <string name="crop_image_error">אירעה שגיאה בחיתוך התמונה</string>
-    <string name="days_lived">ימים שחלפו מהלידה</string>
-    <string name="next_unbirthday">ההתאמה הבאה ליום הלידה</string>
-    <string name="compact_widget_opacity">אטימות הרקע</string>
-    <string name="compact_widget_bg_color">צבע הרקע</string>
-    <string name="compact_widget_text_color">צבע הטקסט</string>
-    <string name="compact_widget_text_size">גודל הטקסט</string>
-    <string name="compact_widget_text_size_auto">אוטומטי</string>
-    <string name="export_ics_title">ייצוא ל־iCalendar</string>
-    <string name="export_ics_description">ייצוא כל אירוע לקובץ ‎.ics לשימוש בכל אפליקציית יומן</string>
-    <string name="compact_widget_scroll">גלילה בכל האירועים</string>
-    <string name="compact_widget_hidden">מוסתר</string>
-    <string name="compact_widget_below_name">מתחת לשם</string>
-    <string name="compact_widget_above_name">מעל לשם</string>
-    <string name="compact_widget_before_date">לפני התאריך</string>
-    <string name="compact_widget_after_date">אחרי התאריך</string>
     <string name="feb29_assignment_title">29 בפברואר בשנים לא מעוברות</string>
     <string name="feb29_assignment_description_off">ימי הולדת של 29 בפברואר מצוינים ב־1 במרץ בשנים לא מעוברות</string>
     <string name="feb29_assignment_description_on">ימי הולדת של 29 בפברואר מצוינים ב־28 בפברואר בשנים לא מעוברות</string>
+    <string name="replace_on_conflict_title">החלפה במקרה של התנגשות</string>
+    <string name="replace_on_conflict_description_off">בעת ייבוא, אירוע כפול לא יחליף את האירוע הקיים</string>
+    <string name="replace_on_conflict_description_on">בעת ייבוא, אירוע כפול יחליף את האירוע הקיים</string>
     <string name="contacts_full_name_title">שמות מלאים מאנשי הקשר</string>
     <string name="contacts_full_name_description_on">תארים, שמות נוספים וסיומות נשמרים בעת קריאת השמות מאנשי הקשר</string>
     <string name="contacts_full_name_description_off">רק השם הפרטי ושם המשפחה נקראים מאנשי הקשר</string>
@@ -379,6 +381,7 @@
     <string name="user_card_remove">הסרה</string>
     <string name="unbirthdays_description_on">בפרטים מוצג התאריך הבא שחל באותו יום בשבוע ובאותו יום בחודש כמו הלידה, למשל יום שישי ה־13</string>
     <string name="unbirthdays_description_off">ללא התאמות ליום הלידה בפרטים</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">על האפליקציה</string>
     <string name="back">חזרה</string>
     <string name="about_description">מידע על Birday, על היוצר ועל שפת האפליקציה</string>
@@ -397,6 +400,7 @@
     <string name="amoled_description_off">העיצוב הכהה משתמש בגוונים הכהים הרגילים</string>
     <string name="with_year">עם שנה</string>
     <string name="without_year">ללא שנה</string>
+    <!-- Edge blur -->
     <string name="edge_blur">טשטוש קצוות</string>
     <string name="edge_blur_description_on">התוכן מיטשטש בעדינות כשהוא נגלל מתחת לסרגל הניווט</string>
     <string name="edge_blur_description_off">התוכן נגלל מתחת לסרגל הניווט ללא טשטוש</string>

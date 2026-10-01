@@ -30,6 +30,11 @@
         <item quantity="one">Falta %d dia</item>
         <item quantity="other">Falten %d dies</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s dia</item>
+        <item quantity="other">%s dies</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">Personalització</string>
     <string name="app_behavior">Comportament de l\'aplicació</string>
@@ -94,6 +99,7 @@
     <string name="birday_import_success">Importació completada!</string>
     <string name="birday_import_failure">La importació ha fallat. Has escollit el fitxer correctament?</string>
     <string name="birday_import_invalid_file">La importació ha fallat. El fitxer escollit no és una còpia de seguretat de Birday!</string>
+    <string name="birday_import_newer_backup">Aquesta còpia de seguretat prové d\'una versió més recent del Birday. Actualitza l\'aplicació per importar-la</string>
     <string name="birday_export_success">Exportació completada!</string>
     <string name="birday_export_failure">Ha fallat l\'exportació. Òndia!</string>
     <string name="birday_export_nothing_found">Res a exportar!</string>
@@ -138,6 +144,7 @@
     <string name="new_event_description">Afegeix una persona que t\'importi i el Birday t\'ajudarà a recordar-ne l\'aniversari i altres esdeveniments!</string>
     <string name="insert_event">Afegeix l\'esdeveniment</string>
     <string name="cancel">Cancel·la</string>
+    <string name="crop_image_error">S\'ha produït un error en retallar la imatge</string>
     <string name="insert_name_hint">Introdueix el nom</string>
     <string name="insert_surname_hint">Introdueix els cognoms</string>
     <string name="insert_date_hint">Selecciona una data</string>
@@ -164,6 +171,8 @@
     <string name="next_age">Edat que farà:</string>
     <string name="zodiac_sign">Signe del zodíac:</string>
     <string name="chinese_zodiac_sign">Signe xinès:</string>
+    <string name="days_lived">Dies viscuts</string>
+    <string name="next_unbirthday">Proper no-aniversari</string>
     <!-- Quick apps -->
     <string name="event_apps">Aplicacions ràpides</string>
     <string name="event_apps_description">Aplicacions per felicitar algú ràpidament!</string>
@@ -268,6 +277,20 @@
     <string name="show_following_widget_description">Mostra en una fila addicional l\'esdeveniment o els esdeveniments que venen després del proper</string>
     <string name="appwidget_compact">Taula compacta</string>
     <string name="add_widget_compact">Birday - Compacte</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">Opacitat del fons</string>
+    <string name="compact_widget_bg_color">Color del fons</string>
+    <string name="compact_widget_text_color">Color del text</string>
+    <string name="compact_widget_text_size">Mida del text</string>
+    <string name="compact_widget_text_size_auto">Automàtica</string>
+    <string name="export_ics_title">Exporta a iCalendar</string>
+    <string name="export_ics_description">Exporta cada esdeveniment a un fitxer .ics, compatible amb qualsevol aplicació de calendari</string>
+    <string name="compact_widget_scroll">Desplaça\'t per tots els esdeveniments</string>
+    <string name="compact_widget_hidden">Amagat</string>
+    <string name="compact_widget_below_name">Sota el nom</string>
+    <string name="compact_widget_above_name">Sobre el nom</string>
+    <string name="compact_widget_before_date">Abans de la data</string>
+    <string name="compact_widget_after_date">Després de la data</string>
     <!-- Search -->
     <string name="search_event">Cerca…</string>
     <string name="search_no_result_title">No s\'ha trobat cap resultat</string>
@@ -325,33 +348,12 @@
     <string name="advanced_overview_title">Visió general avançada</string>
     <string name="advanced_overview_description_off">La visió general només mostrarà informació bàsica</string>
     <string name="advanced_overview_description_on">La visió general mostrarà altres anys i informació detallada</string>
-    <string name="replace_on_conflict_title">Substitueix en cas de conflicte</string>
-    <string name="replace_on_conflict_description_off">En importar, un esdeveniment duplicat no substituirà l\'existent</string>
-    <string name="replace_on_conflict_description_on">En importar, un esdeveniment duplicat sobreescriurà l\'existent</string>
-    <plurals name="days_lived_count">
-        <item quantity="one">%s dia</item>
-        <item quantity="other">%s dies</item>
-    </plurals>
-    <string name="birday_import_newer_backup">Aquesta còpia de seguretat prové d\'una versió més recent del Birday. Actualitza l\'aplicació per importar-la</string>
-    <string name="crop_image_error">S\'ha produït un error en retallar la imatge</string>
-    <string name="days_lived">Dies viscuts</string>
-    <string name="next_unbirthday">Proper no-aniversari</string>
-    <string name="compact_widget_opacity">Opacitat del fons</string>
-    <string name="compact_widget_bg_color">Color del fons</string>
-    <string name="compact_widget_text_color">Color del text</string>
-    <string name="compact_widget_text_size">Mida del text</string>
-    <string name="compact_widget_text_size_auto">Automàtica</string>
-    <string name="export_ics_title">Exporta a iCalendar</string>
-    <string name="export_ics_description">Exporta cada esdeveniment a un fitxer .ics, compatible amb qualsevol aplicació de calendari</string>
-    <string name="compact_widget_scroll">Desplaça\'t per tots els esdeveniments</string>
-    <string name="compact_widget_hidden">Amagat</string>
-    <string name="compact_widget_below_name">Sota el nom</string>
-    <string name="compact_widget_above_name">Sobre el nom</string>
-    <string name="compact_widget_before_date">Abans de la data</string>
-    <string name="compact_widget_after_date">Després de la data</string>
     <string name="feb29_assignment_title">29 de febrer en anys no bixestos</string>
     <string name="feb29_assignment_description_off">En anys no bixestos, els aniversaris del 29 de febrer se celebren l\'1 de març</string>
     <string name="feb29_assignment_description_on">En anys no bixestos, els aniversaris del 29 de febrer se celebren el 28 de febrer</string>
+    <string name="replace_on_conflict_title">Substitueix en cas de conflicte</string>
+    <string name="replace_on_conflict_description_off">En importar, un esdeveniment duplicat no substituirà l\'existent</string>
+    <string name="replace_on_conflict_description_on">En importar, un esdeveniment duplicat sobreescriurà l\'existent</string>
     <string name="contacts_full_name_title">Noms complets dels contactes</string>
     <string name="contacts_full_name_description_on">Es conserven els títols, els segons noms i els sufixos en llegir els noms dels contactes</string>
     <string name="contacts_full_name_description_off">Dels contactes només es llegeixen el nom i els cognoms</string>
@@ -374,6 +376,7 @@
     <string name="user_card_remove">Elimina</string>
     <string name="unbirthdays_description_on">Els detalls mostren la propera data amb el mateix dia de la setmana i del mes que el naixement, com ara un divendres 13</string>
     <string name="unbirthdays_description_off">Sense no-aniversaris als detalls</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Quant a</string>
     <string name="back">Enrere</string>
     <string name="about_description">Informació sobre el Birday, el seu autor i l\'idioma de l\'aplicació</string>
@@ -392,6 +395,7 @@
     <string name="amoled_description_off">El tema fosc fa servir els tons foscos estàndard</string>
     <string name="with_year">Amb any</string>
     <string name="without_year">Sense any</string>
+    <!-- Edge blur -->
     <string name="edge_blur">Desenfocament de les vores</string>
     <string name="edge_blur_description_on">El contingut es difumina suaument en desplaçar-se sota la barra de navegació</string>
     <string name="edge_blur_description_off">El contingut es desplaça sota la barra de navegació sense desenfocament</string>

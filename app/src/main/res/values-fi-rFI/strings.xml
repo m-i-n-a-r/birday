@@ -30,6 +30,11 @@
         <item quantity="one">%d päivä jäljellä</item>
         <item quantity="other">%d päivää jäljellä</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s päivä</item>
+        <item quantity="other">%s päivää</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">Mukauttaminen</string>
     <string name="app_behavior">Sovelluksen käyttäytyminen</string>
@@ -94,6 +99,7 @@
     <string name="birday_import_success">Tuonti valmis!</string>
     <string name="birday_import_failure">Tuonti epäonnistui. Valitsitko oikean tiedoston?</string>
     <string name="birday_import_invalid_file">Tuonti epäonnistui. Valittu tiedosto ei ole Birdayn varmuuskopio!</string>
+    <string name="birday_import_newer_backup">Tämä varmuuskopio on tehty Birdayn uudemmalla versiolla. Päivitä sovellus, jotta voit tuoda sen</string>
     <string name="birday_export_success">Vienti valmis!</string>
     <string name="birday_export_failure">Vienti epäonnistui. Hupsis!</string>
     <string name="birday_export_nothing_found">Ei mitään vietävää!</string>
@@ -138,6 +144,7 @@
     <string name="new_event_description">Syötä sinulle tärkeä henkilö, ja Birday auttaa sinua muistamaan hänen syntymäpäivän tai muut tapahtumat!</string>
     <string name="insert_event">Lisää tapahtuma</string>
     <string name="cancel">Peruuta</string>
+    <string name="crop_image_error">Kuvan rajaaminen epäonnistui</string>
     <string name="insert_name_hint">Syötä etunimi</string>
     <string name="insert_surname_hint">Syötä sukunimi</string>
     <string name="insert_date_hint">Valitse päivämäärä</string>
@@ -164,6 +171,8 @@
     <string name="next_age">Seuraava ikä:</string>
     <string name="zodiac_sign">Horoskooppi-merkki:</string>
     <string name="chinese_zodiac_sign">Kiinalaisen horoskoopin merkki:</string>
+    <string name="days_lived">Eletyt päivät</string>
+    <string name="next_unbirthday">Seuraava ei-syntymäpäivä</string>
     <!-- Quick apps -->
     <string name="event_apps">Pikasovellukset</string>
     <string name="event_apps_description">Sovellukset nopeaan onnitteluun!</string>
@@ -274,6 +283,20 @@
     <string name="show_following_widget_description">Näytä seuraava tapahtuma tai seuraavan tapahtuman seuraavat tapahtumat ylimääräisellä rivillä</string>
     <string name="appwidget_compact">Tiivis taulukko</string>
     <string name="add_widget_compact">Birday – Tiivis</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">Taustan peittävyys</string>
+    <string name="compact_widget_bg_color">Taustan väri</string>
+    <string name="compact_widget_text_color">Tekstin väri</string>
+    <string name="compact_widget_text_size">Tekstin koko</string>
+    <string name="compact_widget_text_size_auto">Automaattinen</string>
+    <string name="export_ics_title">Vie iCalendar-muodossa</string>
+    <string name="export_ics_description">Vie jokainen tapahtuma .ics-tiedostoksi, jota voi käyttää eri kalenterisovelluksissa</string>
+    <string name="compact_widget_scroll">Selaa kaikkia tapahtumia</string>
+    <string name="compact_widget_hidden">Piilotettu</string>
+    <string name="compact_widget_below_name">Nimen alla</string>
+    <string name="compact_widget_above_name">Nimen yllä</string>
+    <string name="compact_widget_before_date">Ennen päivämäärää</string>
+    <string name="compact_widget_after_date">Päivämäärän jälkeen</string>
     <!-- Search -->
     <string name="search_event">Hae…</string>
     <string name="search_no_result_title">Ei tuloksia</string>
@@ -331,33 +354,12 @@
     <string name="advanced_overview_title">Edistynyt yleiskatsaus</string>
     <string name="advanced_overview_description_off">Yleisnäkymä näyttää vain perustiedot</string>
     <string name="advanced_overview_description_on">Yleisnäkymä näyttää muut vuodet sekä yksityiskohtaisia tietoja</string>
-    <string name="replace_on_conflict_title">Korvaa konfliktissa</string>
-    <string name="replace_on_conflict_description_off">Tuotaessa kaksoiskappaletta tapahtumaa ei korvata tuodulla kaksoiskappaleella</string>
-    <string name="replace_on_conflict_description_on">Tuonnin yhteydessä kaksinkertainen tapahtuma korvataan tuodulla kaksoiskappaleella</string>
-    <plurals name="days_lived_count">
-        <item quantity="one">%s päivä</item>
-        <item quantity="other">%s päivää</item>
-    </plurals>
-    <string name="birday_import_newer_backup">Tämä varmuuskopio on tehty Birdayn uudemmalla versiolla. Päivitä sovellus, jotta voit tuoda sen</string>
-    <string name="crop_image_error">Kuvan rajaaminen epäonnistui</string>
-    <string name="days_lived">Eletyt päivät</string>
-    <string name="next_unbirthday">Seuraava ei-syntymäpäivä</string>
-    <string name="compact_widget_opacity">Taustan peittävyys</string>
-    <string name="compact_widget_bg_color">Taustan väri</string>
-    <string name="compact_widget_text_color">Tekstin väri</string>
-    <string name="compact_widget_text_size">Tekstin koko</string>
-    <string name="compact_widget_text_size_auto">Automaattinen</string>
-    <string name="export_ics_title">Vie iCalendar-muodossa</string>
-    <string name="export_ics_description">Vie jokainen tapahtuma .ics-tiedostoksi, jota voi käyttää eri kalenterisovelluksissa</string>
-    <string name="compact_widget_scroll">Selaa kaikkia tapahtumia</string>
-    <string name="compact_widget_hidden">Piilotettu</string>
-    <string name="compact_widget_below_name">Nimen alla</string>
-    <string name="compact_widget_above_name">Nimen yllä</string>
-    <string name="compact_widget_before_date">Ennen päivämäärää</string>
-    <string name="compact_widget_after_date">Päivämäärän jälkeen</string>
     <string name="feb29_assignment_title">29. helmikuuta tavallisina vuosina</string>
     <string name="feb29_assignment_description_off">Helmikuun 29. päivän syntymäpäiviä vietetään 1. maaliskuuta, kun vuosi ei ole karkausvuosi</string>
     <string name="feb29_assignment_description_on">Helmikuun 29. päivän syntymäpäiviä vietetään 28. helmikuuta, kun vuosi ei ole karkausvuosi</string>
+    <string name="replace_on_conflict_title">Korvaa konfliktissa</string>
+    <string name="replace_on_conflict_description_off">Tuotaessa kaksoiskappaletta tapahtumaa ei korvata tuodulla kaksoiskappaleella</string>
+    <string name="replace_on_conflict_description_on">Tuonnin yhteydessä kaksinkertainen tapahtuma korvataan tuodulla kaksoiskappaleella</string>
     <string name="contacts_full_name_title">Yhteystietojen täydelliset nimet</string>
     <string name="contacts_full_name_description_on">Tittelit, muut etunimet ja nimen jälkiliitteet säilytetään yhteystietojen nimiä luettaessa</string>
     <string name="contacts_full_name_description_off">Yhteystiedoista luetaan vain etu- ja sukunimi</string>
@@ -380,6 +382,7 @@
     <string name="user_card_remove">Poista</string>
     <string name="unbirthdays_description_on">Tiedoissa näytetään seuraava päivämäärä, jonka viikonpäivä ja kuukauden päivä ovat samat kuin syntyessä, esimerkiksi perjantai 13. päivä</string>
     <string name="unbirthdays_description_off">Ei ei-syntymäpäiviä tiedoissa</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Tietoja</string>
     <string name="back">Takaisin</string>
     <string name="about_description">Tietoja Birdaysta, sen tekijästä ja sovelluksen kielestä</string>
@@ -398,6 +401,7 @@
     <string name="amoled_description_off">Tumma teema käyttää tavallisia tummia pintoja</string>
     <string name="with_year">Vuoden kanssa</string>
     <string name="without_year">Ilman vuotta</string>
+    <!-- Edge blur -->
     <string name="edge_blur">Reunojen sumennus</string>
     <string name="edge_blur_description_on">Sisältö sumenee pehmeästi vieriessään navigointipalkin alle</string>
     <string name="edge_blur_description_off">Sisältö vierii navigointipalkin alle ilman sumennusta</string>
