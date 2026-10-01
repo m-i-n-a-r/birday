@@ -31,10 +31,6 @@
         <item quantity="other">%d verbleibende Tage</item>
     </plurals>
     <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
-    <plurals name="days_lived_count">
-        <item quantity="one">%s day</item>
-        <item quantity="other">%s days</item>
-    </plurals>
     <!-- Settings -->
     <string name="customization">Anpassung</string>
     <string name="app_behavior">App-Verhalten</string>
@@ -96,7 +92,6 @@
     <string name="birday_import_success">Import abgeschlossen!</string>
     <string name="birday_import_failure">Import fehlgeschlagen. Hast du die Datei richtig ausgewählt?</string>
     <string name="birday_import_invalid_file">Import fehlgeschlagen. Die ausgewählte Datei ist kein Birday Backup!</string>
-    <string name="birday_import_newer_backup">This backup comes from a newer version of Birday: update the app to import it</string>
     <string name="birday_export_success">Export abgeschlossen!</string>
     <string name="birday_export_failure">Export fehlgeschlagen. Ups!</string>
     <string name="birday_export_nothing_found">Nichts zum exportieren!</string>
@@ -141,7 +136,6 @@
     <string name="new_event_description">Gib eine Person ein, die dir wichtig ist und Birday wird dir helfen, dich an ihren Geburtstag oder andere Ereignisse zu erinnern!</string>
     <string name="insert_event">Ereignis eingeben</string>
     <string name="cancel">Abbrechen</string>
-    <string name="crop_image_error">Something went wrong while cropping the image</string>
     <string name="insert_name_hint">Vornamen eingeben</string>
     <string name="insert_surname_hint">Nachnamen eingeben</string>
     <string name="insert_date_hint">Wähle ein Datum</string>
@@ -168,8 +162,6 @@
     <string name="next_age">Nächstes Alter:</string>
     <string name="zodiac_sign">Sternzeichen:</string>
     <string name="chinese_zodiac_sign">Chinesisches Zeichen:</string>
-    <string name="days_lived">Days lived</string>
-    <string name="next_unbirthday">Next unbirthday</string>
     <!-- Quick apps -->
     <string name="event_apps">Schnell-Apps</string>
     <string name="event_apps_description">Apps, um schnell alles Gute zu wünschen!</string>
@@ -281,10 +273,6 @@
     <string name="compact_widget_bg_color">Hintergrund-Farbe</string>
     <string name="compact_widget_text_color">Text-Farbe</string>
     <string name="compact_widget_text_size">Textgröße</string>
-    <string name="compact_widget_text_size_auto">Auto</string>
-    <string name="export_ics_title">Export to iCalendar</string>
-    <string name="export_ics_description">Export each event to an .ics file, for any calendar app</string>
-    <string name="compact_widget_scroll">Scroll through all the events</string>
     <string name="compact_widget_hidden">Ausblenden</string>
     <string name="compact_widget_below_name">Unter dem Namen</string>
     <string name="compact_widget_above_name">Über dem Namen</string>
@@ -347,55 +335,9 @@
     <string name="advanced_overview_title">Erweiterte Übersicht</string>
     <string name="advanced_overview_description_off">Der Übersichtsbildschirm zeigt nur Basisinformationen an</string>
     <string name="advanced_overview_description_on">Der Übersichtsbildschirm zeigt weitere Jahre und detaillierte Informationen</string>
-    <string name="feb29_assignment_title">Feb 29 in non-leap years</string>
-    <string name="feb29_assignment_description_off">Feb 29 birthdays fall on March 1st in non-leap years</string>
-    <string name="feb29_assignment_description_on">Feb 29 birthdays fall on February 28th in non-leap years</string>
     <string name="replace_on_conflict_title">Bei Konflikt ersetzen</string>
     <string name="replace_on_conflict_description_off">Beim Importieren wird ein doppeltes Ereignis nicht durch das importierte Duplikat ersetzt</string>
     <string name="replace_on_conflict_description_on">Beim Importieren wird ein doppeltes Ereignis durch das importierte Duplikat überschrieben</string>
-    <string name="contacts_full_name_title">Full names from contacts</string>
-    <string name="contacts_full_name_description_on">Titles, middle names and suffixes are kept when reading names from contacts</string>
-    <string name="contacts_full_name_description_off">Only first and last name are read from contacts</string>
-    <string name="days_milestones_title">Days lived milestones</string>
-    <string name="days_milestones_description_on">The details show the days lived, and every 1000 days is celebrated and notified like a birthday</string>
-    <string name="days_milestones_description_off">No days lived counter and no milestones</string>
-    <string name="unbirthdays_title">Unbirthdays</string>
-    <string name="alternative_calendar_title">Alternative calendar</string>
-    <string name="alternative_calendar_none">None, Gregorian only</string>
-    <string name="calendar_gregorian">Gregorian</string>
-    <string name="calendar_chinese">Chinese</string>
-    <string name="calendar_dangi">Korean</string>
-    <string name="calendar_hebrew">Hebrew</string>
-    <string name="calendar_islamic">Islamic</string>
-    <string name="calendar_islamic_civil">Islamic (civil)</string>
-    <string name="user_card_title">Your birthday</string>
-    <string name="user_birthday_greeting">Happy birthday, %s!</string>
-    <string name="user_card_empty">Enter your birthday</string>
-    <string name="user_card_save">Save</string>
-    <string name="user_card_remove">Remove</string>
-    <string name="unbirthdays_description_on">The details show the next day with the same weekday and day of the month as the birth, like Friday the 13th</string>
-    <string name="unbirthdays_description_off">No unbirthdays in the details</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
-    <string name="about_title">About</string>
-    <string name="back">Back</string>
-    <string name="about_description">Info about Birday, its author and the app language</string>
-    <string name="about_version">Version</string>
-    <string name="about_language_title">Language</string>
-    <string name="about_language_summary">Pick the language used by Birday</string>
-    <string name="about_rate_title">Rate the app</string>
-    <string name="about_rate_summary">Leave a review on the Play Store</string>
-    <string name="about_share_title">Share Birday</string>
-    <string name="about_share_summary">Tell a friend about the app</string>
-    <string name="about_share_text">Birday, a simple and beautiful way to never forget a birthday: %1$s</string>
-    <string name="about_no_app_found">No app can handle this, sorry!</string>
-    <string name="about_privacy_title">Privacy policy</string>
-    <string name="about_contact_title">Contact the developer</string>
-    <string name="amoled_description_on">The dark theme uses pure black, ideal for OLED screens</string>
-    <string name="amoled_description_off">The dark theme uses the standard dark surfaces</string>
-    <string name="with_year">With year</string>
-    <string name="without_year">Without year</string>
     <!-- Edge blur -->
-    <string name="edge_blur">Edge blur</string>
-    <string name="edge_blur_description_on">Content softly dissolves as it scrolls under the navbar</string>
-    <string name="edge_blur_description_off">Content scrolls under the navbar with no blur</string>
 </resources>
