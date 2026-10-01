@@ -220,7 +220,7 @@
     <string name="zodiac_scorpio">天蝎座</string>
     <!-- Common words -->
     <plurals name="months">
-        <item quantity="other">%d月</item>
+        <item quantity="other">%d个月</item>
     </plurals>
     <string name="today">今天！</string>
     <string name="yesterday">昨天！</string>
@@ -268,8 +268,8 @@
     <string name="hide_far_widget_description">如果下个事件是在额外通知时段后则隐藏组件（比如：7天前通知，下个事件是10天后 -&gt; 隐藏组件）</string>
     <string name="show_following_widget_title">显示紧随其后的事件</string>
     <string name="show_following_widget_description">在附加行中显示该事件或紧随其后的事件</string>
-    <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
+    <string name="appwidget_compact">紧凑表格</string>
+    <string name="add_widget_compact">Birday - 紧凑</string>
     <!-- Compact widget -->
     <string name="compact_widget_opacity">背景不透明度</string>
     <string name="compact_widget_bg_color">背景颜色</string>
