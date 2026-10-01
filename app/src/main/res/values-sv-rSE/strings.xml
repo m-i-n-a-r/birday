@@ -73,7 +73,7 @@
     <string name="pink">Rosa</string>
     <string name="light_blue">Ljusblå</string>
     <string name="red">Röd</string>
-    <string name="lime">Lime</string>
+    <string name="lime">Limegrön</string>
     <string name="crimson">Djupröd</string>
     <string name="system_theme">Systemstandard</string>
     <string name="dark_theme">Mörk</string>
@@ -272,8 +272,8 @@
     <string name="hide_far_widget_description">Dölj widgeten om nästa händelser är efter ytterligare aviseringsperiod (t.ex: avisering 7 dagar innan, nästa händelse är inom 10 dagar -&gt; widgeten är dold)</string>
     <string name="show_following_widget_title">Visa följande händelse</string>
     <string name="show_following_widget_description">Visa händelsen eller händelserna efter nästa i ytterligare en rad</string>
-    <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
+    <string name="appwidget_compact">Kompakt tabell</string>
+    <string name="add_widget_compact">Birday - Kompakt</string>
     <!-- Compact widget -->
     <string name="compact_widget_opacity">Bakgrundens opacitet</string>
     <string name="compact_widget_bg_color">Bakgrundsfärg</string>
