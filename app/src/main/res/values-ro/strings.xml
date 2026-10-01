@@ -76,7 +76,7 @@
     <string name="pink">Roz</string>
     <string name="light_blue">Albastru deschis</string>
     <string name="red">Roșu</string>
-    <string name="lime">Lime</string>
+    <string name="lime">Verde-lămâie</string>
     <string name="crimson">Purpuriu</string>
     <string name="system_theme">Implicit sistem</string>
     <string name="dark_theme">Întunecat</string>
@@ -175,7 +175,7 @@
     <string name="zodiac_sign">Semn zodiacal:</string>
     <string name="chinese_zodiac_sign">Semn zodiacal chinezesc:</string>
     <string name="days_lived">Zile trăite</string>
-    <string name="next_unbirthday">Următoarea zi de naștere</string>
+    <string name="next_unbirthday">Următoarea neaniversare</string>
     <!-- Quick apps -->
     <string name="event_apps">Aplicații rapide</string>
     <string name="event_apps_description">Aplicații pentru a ura tot binele rapid!</string>
@@ -374,7 +374,7 @@
     <string name="days_milestones_title">Zile trăite, etape importante</string>
     <string name="days_milestones_description_on">Detaliile arată zilele trăite, iar fiecare 1000 de zile sunt sărbătorite și anunțate ca o zi de naștere</string>
     <string name="days_milestones_description_off">Fără contor de zile trăite și fără etape importante</string>
-    <string name="unbirthdays_title">Zilele nașterii</string>
+    <string name="unbirthdays_title">Neaniversări</string>
     <string name="alternative_calendar_title">Calendar alternativ</string>
     <string name="alternative_calendar_none">Niciunul, doar Gregorian</string>
     <string name="calendar_gregorian">Gregorian</string>
@@ -385,11 +385,11 @@
     <string name="calendar_islamic_civil">Islamic (civil)</string>
     <string name="user_card_title">Ziua ta de naștere</string>
     <string name="user_birthday_greeting">La mulți ani, %s!</string>
-    <string name="user_card_empty">Introdu ziua ta de naștere</string>
+    <string name="user_card_empty">Introdu data nașterii tale</string>
     <string name="user_card_save">Salvează</string>
     <string name="user_card_remove">Șterge</string>
-    <string name="unbirthdays_description_on">Detaliile arată ziua următoare cu aceeași zi lucrătoare și aceeași zi a lunii ca și nașterea, cum ar fi vineri, 13.</string>
-    <string name="unbirthdays_description_off">Nu sunt zile de naștere în detalii</string>
+    <string name="unbirthdays_description_on">Detaliile arată următoarea dată cu aceeași zi a săptămânii și a lunii ca la naștere, de exemplu vineri, 13</string>
+    <string name="unbirthdays_description_off">Fără neaniversări în detalii</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Despre</string>
     <string name="back">Înapoi</string>
