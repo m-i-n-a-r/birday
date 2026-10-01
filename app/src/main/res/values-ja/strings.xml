@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Birdayへようこそ</string>
-    <string name="app_name_extended">Birday - Event Manager</string>
+    <string name="app_name_extended">Birday - イベントマネージャー</string>
     <string name="leave_review_title">Birdayをレビュー</string>
     <string name="leave_review_subtitle">アプリで私を助けるためにレビューを残してください。 寄付は別として、このアプリは完全に無料で広告もありません！</string>
     <string name="yes_review">レビュー！</string>
@@ -15,7 +15,7 @@
     <string name="add_favorite">お気に入りに追加</string>
     <string name="stats">統計</string>
     <string name="no_stats">表示する統計がありません！</string>
-    <string name="stats_summary">Stats summary</string>
+    <string name="stats_summary">統計の概要</string>
     <string name="no_stats_description">You don\'t have enough events to generate stats. Add some and come back later!</string>
     <plurals name="stats_total">
         <item quantity="other">Birday is helping you to remember a total of %d events</item>
@@ -146,7 +146,7 @@
     <string name="insert_surname_hint">Insert Last Name</string>
     <string name="insert_date_hint">Select a date</string>
     <string name="invalid_value_name">Invalid name!</string>
-    <string name="consider_year">Consider the year</string>
+    <string name="consider_year">年を考慮する</string>
     <string name="event_type_hint">Event type</string>
     <string name="birthday">誕生日</string>
     <string name="anniversary">記念日</string>
