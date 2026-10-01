@@ -7,7 +7,7 @@
     <string name="yes_review">Yorumla!</string>
     <string name="later">Sonra, söz</string>
     <string name="no_thanks">Olamaz!</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">Ana sayfa</string>
     <string name="title_favorites">Favoriler</string>
     <string name="title_settings">Ayarlar</string>
     <string name="no_events">Etkinlik yok! Aşağıdaki tuşa basarak yeni bir tane ekle!</string>
@@ -62,7 +62,7 @@
     <string name="theme_description">Karanlık, açık ya da otomatik tema kullan</string>
     <string name="theme_name">Uygulama teması</string>
     <!-- ^ Untranslated for now -->
-    <string name="aqua">Aqua</string>
+    <string name="aqua">Su mavisi</string>
     <string name="brown">Kahverengi</string>
     <string name="blue">Mavi</string>
     <string name="green">Yeşil</string>
@@ -73,7 +73,7 @@
     <string name="pink">Pembe</string>
     <string name="light_blue">Açık Mavi</string>
     <string name="red">Kırmızı</string>
-    <string name="lime">Lime</string>
+    <string name="lime">Limon yeşili</string>
     <string name="crimson">Kızıl</string>
     <string name="system_theme">Sistem varsayılanı</string>
     <string name="dark_theme">Karanlık</string>
@@ -194,8 +194,8 @@
     <string name="random_day_of_week">%1$s, %2$s\'de doğdu</string>
     <string name="most_common_day_of_week">%s en yaygın doğum günüdür</string>
     <plurals name="leap_year_total">
-        <item quantity="one">artık yılda doğan insan sayısı: %s</item>
-        <item quantity="other">artık yılda doğan insan sayısı: %s</item>
+        <item quantity="one">artık yılda doğan insan sayısı: %d</item>
+        <item quantity="other">artık yılda doğan insan sayısı: %d</item>
     </plurals>
     <string name="random_chinese_year">%1$s kişisinin Çin burcu: %2$s</string>
     <string name="chinese_zodiac_rat">fare</string>
@@ -279,8 +279,8 @@
     <string name="hide_far_widget_description">Sıradaki etkinlik ek bildirim periyodundan sonra ise widget\'ı gizle (ör: bildirimler 7 gün sonra ama etkinliğe daha 10 gün var ise &gt; widget gizlenir)</string>
     <string name="show_following_widget_title">Sıradaki etkinliği göster</string>
     <string name="show_following_widget_description">Sıradaki etkinliği takip eden etkinlikleri ek bir satırda göster</string>
-    <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
+    <string name="appwidget_compact">Kompakt tablo</string>
+    <string name="add_widget_compact">Birday - Kompakt</string>
     <!-- Compact widget -->
     <string name="compact_widget_opacity">Arka plan opaklığı</string>
     <string name="compact_widget_bg_color">Arka plan rengi</string>
