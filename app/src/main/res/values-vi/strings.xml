@@ -28,6 +28,10 @@
     <plurals name="days_left">
         <item quantity="other">%d ngày còn lại</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="other">%s ngày</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">Tùy biến</string>
     <string name="app_behavior">Hành vi ứng dụng</string>
@@ -89,6 +93,7 @@
     <string name="birday_import_success">Nhập xong!</string>
     <string name="birday_import_failure">Nhập thất bại. Bạn kiểm tra lại có chọn đúng tập tin không?</string>
     <string name="birday_import_invalid_file">Nhập thất bại. Các tập tin được chọn không phải là một bản sao lưu của Birday!</string>
+    <string name="birday_import_newer_backup">Bản sao lưu này được tạo bằng phiên bản Birday mới hơn. Hãy cập nhật ứng dụng để nhập</string>
     <string name="birday_export_success">Xuất xong!</string>
     <string name="birday_export_failure">Xuất khẩu thất bại. Rất tiếc!</string>
     <string name="birday_export_nothing_found">Không có gì để xuất khẩu!</string>
@@ -133,6 +138,7 @@
     <string name="new_event_description">Thêm một người mới mà bạn quan tâm rồi Birday sẽ giúp bạn tổ chức sinh nhật hoặc các sự kiện khác của họ!</string>
     <string name="insert_event">Thêm sự kiện</string>
     <string name="cancel">Hủy</string>
+    <string name="crop_image_error">Đã xảy ra lỗi khi cắt ảnh</string>
     <string name="insert_name_hint">Thêm tên</string>
     <string name="insert_surname_hint">Thêm họ tên</string>
     <string name="insert_date_hint">Chọn ngày</string>
@@ -159,6 +165,8 @@
     <string name="next_age">Tuổi tiếp theo:</string>
     <string name="zodiac_sign">Cung Hoàng Đạ:</string>
     <string name="chinese_zodiac_sign">Cung Hoàng Đạ Việt Nam:</string>
+    <string name="days_lived">Số ngày đã sống</string>
+    <string name="next_unbirthday">Ngày trùng thứ và ngày sinh tiếp theo</string>
     <!-- Quick apps -->
     <string name="event_apps">Ứng dụng nhanh</string>
     <string name="event_apps_description">Ứng dụng để chúc mọi điều tốt đẹp cho nhanh!</string>
@@ -263,6 +271,20 @@
     <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <string name="appwidget_compact">Compact table</string>
     <string name="add_widget_compact">Birday - Compact</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">Độ đục của nền</string>
+    <string name="compact_widget_bg_color">Màu nền</string>
+    <string name="compact_widget_text_color">Màu chữ</string>
+    <string name="compact_widget_text_size">Cỡ chữ</string>
+    <string name="compact_widget_text_size_auto">Tự động</string>
+    <string name="export_ics_title">Xuất sang iCalendar</string>
+    <string name="export_ics_description">Xuất mỗi sự kiện thành một tệp .ics để dùng với mọi ứng dụng lịch</string>
+    <string name="compact_widget_scroll">Cuộn qua tất cả sự kiện</string>
+    <string name="compact_widget_hidden">Ẩn</string>
+    <string name="compact_widget_below_name">Bên dưới tên</string>
+    <string name="compact_widget_above_name">Bên trên tên</string>
+    <string name="compact_widget_before_date">Trước ngày</string>
+    <string name="compact_widget_after_date">Sau ngày</string>
     <!-- Search -->
     <string name="search_event">Tìm kiếm…</string>
     <string name="search_no_result_title">Không có kết quả</string>
@@ -320,7 +342,55 @@
     <string name="advanced_overview_title">Advanced overview</string>
     <string name="advanced_overview_description_off">The overview screen will only display basic information</string>
     <string name="advanced_overview_description_on">The overview screen will show other years and detailed information</string>
+    <string name="feb29_assignment_title">Ngày 29 tháng 2 trong năm không nhuận</string>
+    <string name="feb29_assignment_description_off">Sinh nhật ngày 29 tháng 2 được tổ chức vào ngày 1 tháng 3 trong năm không nhuận</string>
+    <string name="feb29_assignment_description_on">Sinh nhật ngày 29 tháng 2 được tổ chức vào ngày 28 tháng 2 trong năm không nhuận</string>
     <string name="replace_on_conflict_title">Replace on conflict</string>
     <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
     <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+    <string name="contacts_full_name_title">Tên đầy đủ từ danh bạ</string>
+    <string name="contacts_full_name_description_on">Giữ danh xưng, tên đệm và hậu tố khi đọc tên từ danh bạ</string>
+    <string name="contacts_full_name_description_off">Chỉ đọc họ và tên từ danh bạ</string>
+    <string name="days_milestones_title">Cột mốc số ngày đã sống</string>
+    <string name="days_milestones_description_on">Phần chi tiết hiển thị số ngày đã sống. Mỗi 1000 ngày được kỷ niệm và thông báo như sinh nhật</string>
+    <string name="days_milestones_description_off">Không đếm số ngày đã sống và không có cột mốc</string>
+    <string name="unbirthdays_title">Ngày trùng thứ và ngày sinh</string>
+    <string name="alternative_calendar_title">Lịch thay thế</string>
+    <string name="alternative_calendar_none">Không, chỉ dùng lịch Gregory</string>
+    <string name="calendar_gregorian">Lịch Gregory</string>
+    <string name="calendar_chinese">Lịch Trung Quốc</string>
+    <string name="calendar_dangi">Lịch Hàn Quốc</string>
+    <string name="calendar_hebrew">Lịch Do Thái</string>
+    <string name="calendar_islamic">Lịch Hồi giáo</string>
+    <string name="calendar_islamic_civil">Lịch Hồi giáo (dân sự)</string>
+    <string name="user_card_title">Sinh nhật của bạn</string>
+    <string name="user_birthday_greeting">Chúc mừng sinh nhật, %s!</string>
+    <string name="user_card_empty">Nhập ngày sinh của bạn</string>
+    <string name="user_card_save">Lưu</string>
+    <string name="user_card_remove">Xóa</string>
+    <string name="unbirthdays_description_on">Phần chi tiết hiển thị ngày tiếp theo có cùng thứ trong tuần và ngày trong tháng với lúc sinh, ví dụ thứ Sáu ngày 13</string>
+    <string name="unbirthdays_description_off">Không hiển thị ngày trùng thứ và ngày sinh trong phần chi tiết</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
+    <string name="about_title">Giới thiệu</string>
+    <string name="back">Quay lại</string>
+    <string name="about_description">Thông tin về Birday, tác giả và ngôn ngữ của ứng dụng</string>
+    <string name="about_version">Phiên bản</string>
+    <string name="about_language_title">Ngôn ngữ</string>
+    <string name="about_language_summary">Chọn ngôn ngữ cho Birday</string>
+    <string name="about_rate_title">Đánh giá ứng dụng</string>
+    <string name="about_rate_summary">Viết đánh giá trên Cửa hàng Play</string>
+    <string name="about_share_title">Chia sẻ Birday</string>
+    <string name="about_share_summary">Giới thiệu ứng dụng với bạn bè</string>
+    <string name="about_share_text">Birday, cách đơn giản và đẹp mắt để không bao giờ quên sinh nhật: %1$s</string>
+    <string name="about_no_app_found">Không có ứng dụng nào thực hiện được thao tác này!</string>
+    <string name="about_privacy_title">Chính sách quyền riêng tư</string>
+    <string name="about_contact_title">Liên hệ nhà phát triển</string>
+    <string name="amoled_description_on">Giao diện tối dùng màu đen tuyệt đối, phù hợp với màn hình OLED</string>
+    <string name="amoled_description_off">Giao diện tối dùng các bề mặt tối tiêu chuẩn</string>
+    <string name="with_year">Có năm</string>
+    <string name="without_year">Không có năm</string>
+    <!-- Edge blur -->
+    <string name="edge_blur">Làm mờ mép</string>
+    <string name="edge_blur_description_on">Nội dung mờ dần khi cuộn xuống dưới thanh điều hướng</string>
+    <string name="edge_blur_description_off">Nội dung cuộn xuống dưới thanh điều hướng mà không bị làm mờ</string>
 </resources>
