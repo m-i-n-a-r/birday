@@ -188,7 +188,7 @@
     <string name="oldest_person">Den eldste personen er %s</string>
     <string name="youngest_person">Den yngste personen er %s</string>
     <string name="most_common_month">Den vanligste måneden for bursdager er %s</string>
-    <string name="most_common_decade">Den vanligste måneden for dødsfall er %s</string>
+    <string name="most_common_decade">Det tiåret flest er født i, er %s</string>
     <string name="most_common_age_range">Den vanligste aldersgruppen strekker seg mellom %1$s og %2$s</string>
     <string name="special_ages">En viktig kommende bursdag er %s</string>
     <string name="random_zodiac_sign">Stjernetegnet til %1$s: %2$s</string>
@@ -282,8 +282,8 @@
     <string name="hide_far_widget_description">Skjul modulen hvis neste hendelse kommer etter perioden for ekstra varsel (Eksempel: Ved ekstra varsel satt 7 dager før, vil modulen være skjult hvis neste hendelse er om 10 dager)</string>
     <string name="show_following_widget_title">Vis neste hendelse</string>
     <string name="show_following_widget_description">Vis hendelsen, eller hendelsene, som kommer etter den neste hendelsen</string>
-    <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
+    <string name="appwidget_compact">Kompakt tabell</string>
+    <string name="add_widget_compact">Birday - Kompakt</string>
     <!-- Compact widget -->
     <string name="compact_widget_opacity">Bakgrunnens ugjennomsiktighet</string>
     <string name="compact_widget_bg_color">Bakgrunnsfarge</string>
@@ -311,7 +311,7 @@
     <!-- Experimental preferences, unclassified -->
     <string name="experimental_settings_title">Eksperimentelt</string>
     <string name="experimental_settings_description">Noen eksperimentelle eller ustabile innstillinger og funksjoner. Bruk dem på eget ansvar</string>
-    <string name="experimental_disclaimer">The following features are experimental, and might not work properly. Use them at your own risk. Refer to Github for any progress, since some of these features could be \"promoted\" and translated</string>
+    <string name="experimental_disclaimer">Følgende funksjoner er eksperimentelle og fungerer kanskje ikke som de skal. Bruk dem på eget ansvar. Følg utviklingen på GitHub; noen av funksjonene kan senere bli en del av standardfunksjonene og bli oversatt</string>
     <string name="check_github">Sjekk GitHub</string>
     <string name="translate_app">Oversett appen</string>
     <string name="launch_auto_import_title">Importer automatisk ved oppstart</string>
