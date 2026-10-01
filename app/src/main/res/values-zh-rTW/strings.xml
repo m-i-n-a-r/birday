@@ -112,7 +112,7 @@
     <string name="troubleshoot">疑难解答</string>
     <string name="battery_optimization_title">禁用电池优化</string>
     <string name="battery_optimization_description">打开设置以禁用 Birday 的任何优化。 如果通知不起作用，则很有用</string>
-    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
+    <string name="battery_optimization_tutorial">- 顯示所有應用程式，並在清單中找到 Birday\n- 輕觸 Birday，然後選擇「不要最佳化」</string>
     <string name="notification_sound_title">通知声音</string>
     <string name="notification_sound_description">通知声音设置的快捷方式，如果您不喜欢默认的鸟声</string>
     <string name="missing_permission_notifications">發送通知許可被拒絕了，因此 Birday 並不能發送通知！請在設置裡開啟許可。</string>
@@ -121,15 +121,15 @@
     <string name="missing_permission_calendar_forever">行事曆的許可被拒絕了，且不能再詢問，因此 Birday 不能從行事曆裡引入！請自行前往設置裡開啟許可。</string>
     <string name="import_calendar_title">從行事曆裡引入</string>
     <string name="import_calendar_description">從行事曆裡引入各種年度節日。記得設置節日類型和年份，以避免混亂！</string>
-    <string name="loop_avd_title">Loop animations</string>
-    <string name="loop_avd_description_on">The animations are looped infinitely</string>
-    <string name="loop_avd_description_off">The animations will run a single time</string>
-    <string name="order_alphabetically_title">Alphabetical order</string>
-    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
-    <string name="order_alphabetically_description_off">The events are ordered by date</string>
-    <string name="grouped_notifications_title">Group multiple notifications</string>
-    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
-    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
+    <string name="loop_avd_title">循環播放動畫</string>
+    <string name="loop_avd_description_on">動畫會持續循環播放</string>
+    <string name="loop_avd_description_off">動畫只會播放一次</string>
+    <string name="order_alphabetically_title">依字母順序排列</string>
+    <string name="order_alphabetically_description_on">活動依字母順序排列</string>
+    <string name="order_alphabetically_description_off">活動依日期排列</string>
+    <string name="grouped_notifications_title">合併多則通知</string>
+    <string name="grouped_notifications_description_on">同一天有兩個以上活動時，會合併通知</string>
+    <string name="grouped_notifications_description_off">同一天有兩個以上活動時，Birday 會為每個活動個別傳送通知</string>
     <!-- Developer -->
     <string name="dev_description">我是一個有禮貌、喜歡漂亮東西的人，像動畫製作、圖案設計、跑車、跟3D列印。我目前擔任的職務是設計師及電腦工程師。</string>
     <string name="easter_egg">扛棒很棒吧，嘻嘻！</string>
@@ -175,7 +175,7 @@
     <string name="wishes_birthday">生日快樂！</string>
     <string name="no_default_dialer">找不到預設撥號器！</string>
     <string name="no_default_sms">找不到預設簡訊 App！</string>
-    <string name="might_have_missed">You might have missed:</string>
+    <string name="might_have_missed">你可能錯過了：</string>
     <string name="did_you_know">你知道嗎？</string>
     <!-- Statistics -->
     <string name="age_average">大家的平均年齡是 %s</string>
@@ -265,10 +265,10 @@
     <string name="align_start_widget_description">將組件內容向開始處對齊（根據你的區域設置決定向左或右）</string>
     <string name="hide_far_widget_title">對很久後的事件隱藏組件</string>
     <string name="hide_far_widget_description">如果下個事件是在額外通知時段後則隱藏組件（比如：7天前通知，下個事件是10天後 -&gt; 隱藏組件）</string>
-    <string name="show_following_widget_title">Show the following event</string>
-    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
-    <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
+    <string name="show_following_widget_title">顯示後續活動</string>
+    <string name="show_following_widget_description">在額外一列顯示下一個活動之後的活動</string>
+    <string name="appwidget_compact">精簡表格</string>
+    <string name="add_widget_compact">Birday - 精簡</string>
     <!-- Compact widget -->
     <string name="compact_widget_opacity">背景不透明度</string>
     <string name="compact_widget_bg_color">背景顏色</string>
@@ -319,13 +319,13 @@
     <string name="import_csv_description">從 CSV 文件引入。請參考 Github 的維基以獲得所需的文件結構</string>
     <string name="export_csv_title">導出至 CSV</string>
     <string name="export_csv_description">將每個事件導出到一個CSV文件，包含圖片</string>
-    <string name="export_calendar_title">Export to calendar</string>
-    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
-    <string name="auto_export_title">Auto export events</string>
-    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
-    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
-    <string name="add_demo_entries_title">Add demo entries</string>
-    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
+    <string name="export_calendar_title">匯出至行事曆</string>
+    <string name="export_calendar_description">盡可能將每個活動儲存至本機行事曆，需要行事曆存取權限</string>
+    <string name="auto_export_title">自動匯出活動</string>
+    <string name="auto_export_description_on">關閉應用程式時，Birday 會自動匯出備份。每次備份都會覆寫前一次備份</string>
+    <string name="auto_export_description_off">必須手動執行 Birday 本機備份</string>
+    <string name="add_demo_entries_title">新增示範活動</string>
+    <string name="add_demo_entries_description">將示範活動加入資料庫，主要為演員及歷史人物的活動</string>
     <string name="add_demo_entries_dialog_description">這將永久地在資料庫中新增數千筆記錄，僅供除錯用途。它不會刪除任何現有事件，但如果你想刪除這些新記錄，則需要手動進行。祝你好運。</string>
     <string name="delete_db_title">刪除所有事件</string>
     <string name="delete_db_description">單純的，把資料庫核爆掉。好好思考一下再點！</string>
@@ -343,9 +343,9 @@
     <string name="feb29_assignment_title">平年的 2 月 29 日生日</string>
     <string name="feb29_assignment_description_off">平年將 2 月 29 日的生日安排在 3 月 1 日</string>
     <string name="feb29_assignment_description_on">平年將 2 月 29 日的生日安排在 2 月 28 日</string>
-    <string name="replace_on_conflict_title">Replace on conflict</string>
-    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
-    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+    <string name="replace_on_conflict_title">發生衝突時取代</string>
+    <string name="replace_on_conflict_description_off">匯入時，不會以重複的匯入活動取代現有活動</string>
+    <string name="replace_on_conflict_description_on">匯入時，會以重複的匯入活動覆寫現有活動</string>
     <string name="contacts_full_name_title">讀取聯絡人完整姓名</string>
     <string name="contacts_full_name_description_on">讀取聯絡人姓名時保留稱謂、中間名和後綴</string>
     <string name="contacts_full_name_description_off">僅讀取聯絡人的名字和姓氏</string>
