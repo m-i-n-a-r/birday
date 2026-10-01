@@ -30,6 +30,11 @@
         <item quantity="one">%d दिवस उरलेला</item>
         <item quantity="other">%d दिवस उरलेले</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s दिवस</item>
+        <item quantity="other">%s दिवस</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">सानुकूलन</string>
     <string name="app_behavior">अॅप वर्तन</string>
@@ -91,6 +96,7 @@
     <string name="birday_import_success">आयात पूर्ण झाले!</string>
     <string name="birday_import_failure">आयात अयशस्वी. तुम्ही फाइल योग्यरित्या निवडली आहे का?</string>
     <string name="birday_import_invalid_file">आयात अयशस्वी. निवडलेली फाइल Birday बॅकअप नाही!</string>
+    <string name="birday_import_newer_backup">हा बॅकअप Birday च्या नवीन आवृत्तीत तयार केला आहे. तो आयात करण्यासाठी ॲप अद्ययावत करा</string>
     <string name="birday_export_success">निर्यात पूर्ण!</string>
     <string name="birday_export_failure">निर्यात अयशस्वी. अरेरे!</string>
     <string name="birday_export_nothing_found">निर्यात करण्यासाठी काहीही नाही!</string>
@@ -135,6 +141,7 @@
     <string name="new_event_description">एखादी व्यक्ती ज्याची तुम्हाला काळजी आहे एंटर करा आणि Birday तुम्हाला त्यांचा वाढदिवस किंवा इतर कार्यक्रम लक्षात ठेवण्यास मदत करेल!</string>
     <string name="insert_event">कार्यक्रम घाला</string>
     <string name="cancel">रद्द करा</string>
+    <string name="crop_image_error">चित्र कापताना काहीतरी चूक झाली</string>
     <string name="insert_name_hint">प्रथम नाव घाला</string>
     <string name="insert_surname_hint">आडनाव घाला</string>
     <string name="insert_date_hint">तारीख निवडा</string>
@@ -161,6 +168,8 @@
     <string name="next_age">पुढचे वय:</string>
     <string name="zodiac_sign">राशी चिन्ह:</string>
     <string name="chinese_zodiac_sign">चीनी राशिचक्र चिन्ह:</string>
+    <string name="days_lived">जगलेले दिवस</string>
+    <string name="next_unbirthday">जन्मासारखा वार व तारीख असलेला पुढचा दिवस</string>
     <!-- Quick apps -->
     <string name="event_apps">द्रुत अॅप्स</string>
     <string name="event_apps_description">सर्व जलद शुभेच्छा देण्यासाठी अॅप्स!</string>
@@ -268,6 +277,20 @@
     <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <string name="appwidget_compact">Compact table</string>
     <string name="add_widget_compact">Birday - Compact</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">पार्श्वभूमीची अपारदर्शकता</string>
+    <string name="compact_widget_bg_color">पार्श्वभूमीचा रंग</string>
+    <string name="compact_widget_text_color">मजकुराचा रंग</string>
+    <string name="compact_widget_text_size">मजकुराचा आकार</string>
+    <string name="compact_widget_text_size_auto">स्वयंचलित</string>
+    <string name="export_ics_title">iCalendar मध्ये निर्यात करा</string>
+    <string name="export_ics_description">प्रत्येक कार्यक्रम .ics फाइलमध्ये निर्यात करा, जी कोणत्याही दिनदर्शिका ॲपमध्ये वापरता येईल</string>
+    <string name="compact_widget_scroll">सर्व कार्यक्रम स्क्रोल करा</string>
+    <string name="compact_widget_hidden">लपवलेले</string>
+    <string name="compact_widget_below_name">नावाखाली</string>
+    <string name="compact_widget_above_name">नावाच्या वर</string>
+    <string name="compact_widget_before_date">तारखेच्या आधी</string>
+    <string name="compact_widget_after_date">तारखेनंतर</string>
     <!-- Search -->
     <string name="search_event">शोधा…</string>
     <string name="search_no_result_title">कोणतेही परिणाम आढळले नाहीत</string>
@@ -325,7 +348,55 @@
     <string name="advanced_overview_title">Advanced overview</string>
     <string name="advanced_overview_description_off">The overview screen will only display basic information</string>
     <string name="advanced_overview_description_on">The overview screen will show other years and detailed information</string>
+    <string name="feb29_assignment_title">सामान्य वर्षांमधील २९ फेब्रुवारी</string>
+    <string name="feb29_assignment_description_off">लीप वर्ष नसताना २९ फेब्रुवारीचे वाढदिवस १ मार्चला साजरे होतात</string>
+    <string name="feb29_assignment_description_on">लीप वर्ष नसताना २९ फेब्रुवारीचे वाढदिवस २८ फेब्रुवारीला साजरे होतात</string>
     <string name="replace_on_conflict_title">Replace on conflict</string>
     <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
     <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+    <string name="contacts_full_name_title">संपर्कांमधील पूर्ण नावे</string>
+    <string name="contacts_full_name_description_on">संपर्कांची नावे वाचताना पदव्या, मधली नावे आणि नावापुढील प्रत्यय जपले जातात</string>
+    <string name="contacts_full_name_description_off">संपर्कांमधून फक्त पहिले नाव आणि आडनाव वाचले जाते</string>
+    <string name="days_milestones_title">जगलेल्या दिवसांचे टप्पे</string>
+    <string name="days_milestones_description_on">तपशीलांमध्ये जगलेले दिवस दिसतात. दर १००० दिवसांचा टप्पा वाढदिवसाप्रमाणे साजरा केला जातो आणि त्याची सूचना दिली जाते</string>
+    <string name="days_milestones_description_off">जगलेल्या दिवसांची मोजणी आणि टप्पे दिसत नाहीत</string>
+    <string name="unbirthdays_title">जन्मासारखा वार व तारीख असलेले दिवस</string>
+    <string name="alternative_calendar_title">पर्यायी दिनदर्शिका</string>
+    <string name="alternative_calendar_none">कोणतीही नाही, फक्त ग्रेगोरियन</string>
+    <string name="calendar_gregorian">ग्रेगोरियन</string>
+    <string name="calendar_chinese">चिनी</string>
+    <string name="calendar_dangi">कोरियन</string>
+    <string name="calendar_hebrew">हिब्रू</string>
+    <string name="calendar_islamic">इस्लामी</string>
+    <string name="calendar_islamic_civil">इस्लामी (नागरी)</string>
+    <string name="user_card_title">तुमचा वाढदिवस</string>
+    <string name="user_birthday_greeting">वाढदिवसाच्या शुभेच्छा, %s!</string>
+    <string name="user_card_empty">तुमची जन्मतारीख नोंदवा</string>
+    <string name="user_card_save">जतन करा</string>
+    <string name="user_card_remove">काढून टाका</string>
+    <string name="unbirthdays_description_on">तपशीलांमध्ये जन्माच्या दिवसासारखाच वार आणि महिन्यातील तारीख असलेला पुढचा दिवस दिसतो, उदाहरणार्थ शुक्रवार, १३ तारीख</string>
+    <string name="unbirthdays_description_off">तपशीलांमध्ये जन्मासारखा वार व तारीख असलेले दिवस दिसत नाहीत</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
+    <string name="about_title">ॲपविषयी</string>
+    <string name="back">मागे</string>
+    <string name="about_description">Birday, त्याच्या निर्मात्याविषयी आणि ॲपच्या भाषेविषयी माहिती</string>
+    <string name="about_version">आवृत्ती</string>
+    <string name="about_language_title">भाषा</string>
+    <string name="about_language_summary">Birday ची भाषा निवडा</string>
+    <string name="about_rate_title">ॲपला गुण द्या</string>
+    <string name="about_rate_summary">Play Store वर अभिप्राय लिहा</string>
+    <string name="about_share_title">Birday शेअर करा</string>
+    <string name="about_share_summary">मित्राला ॲपविषयी सांगा</string>
+    <string name="about_share_text">Birday, कोणाचाही वाढदिवस न विसरण्याचा सोपा आणि सुंदर मार्ग: %1$s</string>
+    <string name="about_no_app_found">ही कृती करू शकणारे ॲप सापडले नाही!</string>
+    <string name="about_privacy_title">गोपनीयता धोरण</string>
+    <string name="about_contact_title">विकसकाशी संपर्क साधा</string>
+    <string name="amoled_description_on">गडद थीममध्ये पूर्ण काळा रंग वापरला जातो, जो OLED पडद्यांसाठी योग्य आहे</string>
+    <string name="amoled_description_off">गडद थीममध्ये नेहमीच्या गडद छटा वापरल्या जातात</string>
+    <string name="with_year">वर्षासह</string>
+    <string name="without_year">वर्षाशिवाय</string>
+    <!-- Edge blur -->
+    <string name="edge_blur">कडांवरील धूसरपणा</string>
+    <string name="edge_blur_description_on">नेव्हिगेशन पट्टीखाली स्क्रोल होताना मजकूर हळूहळू धूसर होतो</string>
+    <string name="edge_blur_description_off">मजकूर धूसर न होता नेव्हिगेशन पट्टीखाली स्क्रोल होतो</string>
 </resources>
