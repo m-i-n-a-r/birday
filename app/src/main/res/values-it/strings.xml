@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Benvenuto in Birday</string>
-    <string name="app_name_extended">Birday - Event Manager</string>
+    <string name="app_name_extended">Birday - Gestore di Eventi</string>
     <string name="leave_review_title">Recensisci Birday</string>
     <string name="leave_review_subtitle">Lascia una recensione per aiutarmi con l\'app. Ricordati che, donazioni a parte, questa app è completamente gratis e senza pubblicità!</string>
     <string name="yes_review">Recensione!</string>
@@ -15,7 +15,7 @@
     <string name="add_favorite">Aggiungi ai preferiti</string>
     <string name="stats">Statistiche</string>
     <string name="no_stats">Nessuna statistica da mostrare!</string>
-    <string name="stats_summary">Stats summary</string>
+    <string name="stats_summary">Riepiligo statistiche</string>
     <string name="no_stats_description">Non hai abbastanza eventi per mostrare le statistiche. Aggiungine alcuni e torna a controllare!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday ti sta aiutando a ricordare un totale di %d evento</item>
@@ -40,7 +40,7 @@
     <string name="app_behavior">Comportamento dell\'app</string>
     <string name="additional_notification_name">Notifica aggiuntiva</string>
     <string name="additional_notification_description">Manda una notifica aggiuntiva alcuni giorni prima dell\'evento. %s</string>
-    <string name="no_additional_notification">No additional notification</string>
+    <string name="no_additional_notification">Nessuna notifica aggiuntiva</string>
     <string name="one_day_before">Un giorno prima</string>
     <string name="two_days_before">Due giorni prima</string>
     <string name="three_days_before">Tre giorni prima</string>
@@ -54,12 +54,12 @@
     <string name="vibration_name">Vibrazione</string>
     <string name="vibration_description_on">Vibra alla pressione di alcuni bottoni</string>
     <string name="vibration_description_off">Nessuna vibrazione alla pressione</string>
-    <string name="date_format_name">Date format</string>
+    <string name="date_format_name">Formato data</string>
     <string name="notification_hour_name">Ora di invio notifica</string>
     <string name="notification_hour_description">%s \n\nLa notifica potrebbe non funzionare se l\'applicazione viene terminata dal sistema in alcuni dispositivi Huawei, Xiaomi e OnePlus. Ulteriori informazioni su dontkillmyapp.com</string>
-    <string name="accent_description">Change the default accent color</string>
+    <string name="accent_description">Cambia il colore di accento di default</string>
     <string name="accent_name">Colore accent</string>
-    <string name="theme_description">Use a dark, light or automatic app theme</string>
+    <string name="theme_description">Usa un tema scuro, chiaro o automatico</string>
     <string name="theme_name">Tema applicazione</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Acqua</string>
@@ -86,7 +86,7 @@
     <string name="import_contacts_description">Assicurati di modificare gli eventi con anno mancante per avere statistiche accurate!</string>
     <string name="import_success">Importazione completata con successo!</string>
     <string name="import_nothing_found">Nessun evento trovato!</string>
-    <string name="import_failed">Something went wrong!</string>
+    <string name="import_failed">Qualcosa è andato storto!</string>
     <string name="missing_permission_contacts">Il permesso di lettura contatti è stato negato. Prova ancora o attiva il permesso manualmente, o l\'importazione dai contatti non funzionerà!</string>
     <string name="missing_permission_contacts_forever">Birday non ha potuto importare i tuoi contatti o chiedere il permesso, perché lo hai negato selezionando non chiedere più. Abilitalo manualmente!</string>
     <string name="birday_import_title">Importa un backup di Birday</string>
@@ -99,7 +99,7 @@
     <string name="birday_import_newer_backup">This backup comes from a newer version of Birday: update the app to import it</string>
     <string name="birday_export_success">Esportazione completata!</string>
     <string name="birday_export_failure">Esportazione fallita. Ooops!</string>
-    <string name="birday_export_nothing_found">Nothing to export!</string>
+    <string name="birday_export_nothing_found">Nulla da esportare!</string>
     <string name="surname_first">Prima il cognome</string>
     <string name="surname_first_description_on">Mostra il cognome prima del nome</string>
     <string name="surname_first_description_off">Mostra il nome prima del cognome</string>
@@ -146,17 +146,17 @@
     <string name="insert_surname_hint">Inserisci cognome</string>
     <string name="insert_date_hint">Seleziona una data</string>
     <string name="invalid_value_name">Nome non valido!</string>
-    <string name="consider_year">Consider the year</string>
+    <string name="consider_year">Considera l\'anno</string>
     <string name="event_type_hint">Tipo di evento</string>
     <string name="birthday">Compleanno</string>
     <string name="anniversary">Anniversario</string>
     <string name="death_anniversary">Anniversario di morte</string>
-    <string name="festivity">Festivity</string>
+    <string name="festivity">Festività</string>
     <string name="name_day">Onomastico</string>
     <string name="other">Altro</string>
     <!-- Event actions -->
     <string name="event_actions">Azioni</string>
-    <string name="event_actions_description">Here you can change or remove this event!</string>
+    <string name="event_actions_description">qui puoi eliminare questo evento o modificarlo al volo!</string>
     <string name="edit_event">Modifica evento</string>
     <string name="delete_event">Elimina evento</string>
     <string name="update_event">Aggiorna evento</string>
@@ -179,7 +179,7 @@
     <string name="no_default_dialer">Nessuna app telefono di default trovata!</string>
     <string name="no_default_sms">Nessuna app sms di default trovata!</string>
     <string name="might_have_missed">Potresti esserti perso:</string>
-    <string name="did_you_know">Did you know?</string>
+    <string name="did_you_know">Lo sapevi?</string>
     <!-- Statistics -->
     <string name="age_average">L\'età media è %s</string>
     <string name="oldest_person">La persona più anziana è %s</string>
@@ -235,7 +235,7 @@
         <item quantity="other">%d anni</item>
     </plurals>
     <string name="born_in">nato/a nel</string>
-    <string name="and">and</string>
+    <string name="and">e</string>
     <plurals name="event">
         <item quantity="one">evento: %s</item>
         <item quantity="other">eventi: %s</item>
@@ -256,10 +256,10 @@
     <string name="slide_three_description">È inoltre possibile importare gli eventi che hai già salvato dai tuoi contatti. Birday può farlo per te, devi solo dare il permesso di lettura contatti. Buon divertimento!</string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Eventi in arrivo</string>
-    <string name="add_widget">Birday - Upcoming</string>
+    <string name="add_widget">Birday - in arrivo</string>
     <string name="dark_widget_name">Widget scuro</string>
     <string name="dark_widget_description_on">Il widget usa un tema scuro</string>
-    <string name="dark_widget_description_off">The widget uses the light theme</string>
+    <string name="dark_widget_description_off">Il widget usa un tema chiaro</string>
     <string name="widget_configuration_title">Configurazione widget</string>
     <string name="widget_configuration_description">Configura il widget in base al tuo stile</string>
     <string name="widget_background_title">Sfondo</string>
