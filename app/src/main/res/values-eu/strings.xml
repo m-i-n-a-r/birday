@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Ongi etorri Birdayra</string>
-    <string name="app_name_extended">Birday - Event Manager</string>
+    <string name="app_name_extended">Birday - Hitzordu kudeatzailea</string>
     <string name="leave_review_title">Birdayren iritzia eman</string>
     <string name="leave_review_subtitle">Eman zure iritzia aplikazioaren garapenarekin laguntzeko. Dohaintzak alde batera utzita, aplikazio hau doakoa da eta ez du iragarkirik!</string>
     <string name="yes_review">Eman iritzia!</string>
@@ -15,7 +15,7 @@
     <string name="add_favorite">Gehitu gogokoetan</string>
     <string name="stats">Estatistikak</string>
     <string name="no_stats">Ez dago estatistikarik!</string>
-    <string name="stats_summary">Stats summary</string>
+    <string name="stats_summary">Estatistiken laburpena</string>
     <string name="no_stats_description">Ez duzu estatistikak sortze behar beste hitzordu. Gehitu batzuk eta begiratu beranduago!</string>
     <plurals name="stats_total">
         <item quantity="one">Birdayk hitzordu %d gogorarazten laguntzen dizu</item>
@@ -40,7 +40,7 @@
     <string name="app_behavior">Aplikazioaren portaera</string>
     <string name="additional_notification_name">Jakinarazpen gehigarria</string>
     <string name="additional_notification_description">Bidali jakinarazpena hitzordua baino egun batzuk lehenago. %s</string>
-    <string name="no_additional_notification">No additional notification</string>
+    <string name="no_additional_notification">Ez dago jakinarazpen gehigarririk</string>
     <string name="one_day_before">Egun bat lehenago</string>
     <string name="two_days_before">Bi egun lehenago</string>
     <string name="three_days_before">Hiru egun lehenago</string>
@@ -54,12 +54,12 @@
     <string name="vibration_name">Bibrazioa</string>
     <string name="vibration_description_on">Bibratu botoi bat sakatzean</string>
     <string name="vibration_description_off">Ez bibratu botoi bat sakatzean</string>
-    <string name="date_format_name">Date format</string>
+    <string name="date_format_name">Dataren formatua</string>
     <string name="notification_hour_name">Jakinarazpenaren ordua</string>
     <string name="notification_hour_description">%s \n\nKontuan izan jakinarazpenak ez duela funtzionatuko zure sistemak aplikazioa hiltzen badu adibidez Huawei, Xiaomi edo OnePlus gailu batzuetan. Irakurri dontkillmyapp.com informazio gehiago lortzeko.</string>
-    <string name="accent_description">Change the default accent color</string>
+    <string name="accent_description">Aldatu defektuzko kolore nabarmendua</string>
     <string name="accent_name">Kolore nabarmendua</string>
-    <string name="theme_description">Use a dark, light or automatic app theme</string>
+    <string name="theme_description">Erabili aplikazioaren itxura iluna, argia edo automatikoa</string>
     <string name="theme_name">Aplikazioaren itxura</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Aqua</string>
@@ -86,7 +86,7 @@
     <string name="import_contacts_description">Ziurtatu hitzorduetan urteak ondo sartuta dituzula estatistikak ondo irten daitezen!</string>
     <string name="import_success">Inportazioa ondo egin da!</string>
     <string name="import_nothing_found">Ez da hitzordurik aurkitu!</string>
-    <string name="import_failed">Something went wrong!</string>
+    <string name="import_failed">Errore bat gertatu da!</string>
     <string name="missing_permission_contacts">Kontaktuak atzitzeko baimena ukatu duzu. Saiatu berriz edo aktibatu baimena eskuz, bestela kontaktuen inportazioak ez du funtzionatuko!</string>
     <string name="missing_permission_contacts_forever">Birdayk ezin du kontaktuak inportatzeko baimena eskatu \"berriz ez eskatu\" sakatu duzulako. Aktibatu ezazu eskuz!</string>
     <string name="birday_import_title">Inportatu Birdayren segurtasun-kopia</string>
@@ -99,7 +99,7 @@
     <string name="birday_import_newer_backup">This backup comes from a newer version of Birday: update the app to import it</string>
     <string name="birday_export_success">Esportazioa ondo egin da!</string>
     <string name="birday_export_failure">Esportazioak huts egin du. Ene bada!</string>
-    <string name="birday_export_nothing_found">Nothing to export!</string>
+    <string name="birday_export_nothing_found">Ez dago esportatzeko ezer!</string>
     <string name="surname_first">Abizena lehenengo</string>
     <string name="surname_first_description_on">Erakutsi abizena izenaren aurretik</string>
     <string name="surname_first_description_off">Erakutsi izena abizenaren aurretik</string>
@@ -146,17 +146,17 @@
     <string name="insert_surname_hint">Idatzi abizena</string>
     <string name="insert_date_hint">Aukeratu data</string>
     <string name="invalid_value_name">Izena ez da zuzena!</string>
-    <string name="consider_year">Consider the year</string>
+    <string name="consider_year">Aukeratu urtea</string>
     <string name="event_type_hint">Hitzordu mota</string>
     <string name="birthday">Urtebetetzea</string>
     <string name="anniversary">Urteurrena</string>
     <string name="death_anniversary">Heriotza urteurrena</string>
-    <string name="festivity">Festivity</string>
+    <string name="festivity">Jaia</string>
     <string name="name_day">Izen-eguna</string>
     <string name="other">Bestelakoa</string>
     <!-- Event actions -->
     <string name="event_actions">Ekintzak</string>
-    <string name="event_actions_description">Here you can change or remove this event!</string>
+    <string name="event_actions_description">Hemen hitzordua aldatu edo ezabatu dezakezu!</string>
     <string name="edit_event">Editatu hitzordua</string>
     <string name="delete_event">Ezabatu hitzordua</string>
     <string name="update_event">Eguneratu hitzordua</string>
@@ -179,7 +179,7 @@
     <string name="no_default_dialer">Ez da telefono aplikazioa aurkitu!</string>
     <string name="no_default_sms">Ez da defektuzko SMS aplikazioa aurkitu!</string>
     <string name="might_have_missed">Agian ez duzu ikusi:</string>
-    <string name="did_you_know">Did you know?</string>
+    <string name="did_you_know">Bazenekien..</string>
     <!-- Statistics -->
     <string name="age_average">Batazbesteko adina %s</string>
     <string name="oldest_person">Pertsona nagusienaren adina %s</string>
@@ -235,7 +235,7 @@
         <item quantity="other">%d urte</item>
     </plurals>
     <string name="born_in">jaioa</string>
-    <string name="and">and</string>
+    <string name="and">eta</string>
     <plurals name="event">
         <item quantity="one">hitzordu: %s</item>
         <item quantity="other">hitzorduak: %s</item>
@@ -260,10 +260,10 @@
     </string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Hurrengo hitzorduak</string>
-    <string name="add_widget">Birday - Upcoming</string>
+    <string name="add_widget">Birday - Hurrengoak</string>
     <string name="dark_widget_name">Widget iluna</string>
     <string name="dark_widget_description_on">Widgetak itxura iluna du</string>
-    <string name="dark_widget_description_off">The widget uses the light theme</string>
+    <string name="dark_widget_description_off">Widgetak itxura argia du</string>
     <string name="widget_configuration_title">Widgetaren ezarpenak</string>
     <string name="widget_configuration_description">Konfiguratu widgeta zure itxurarekin bat etor dadin</string>
     <string name="widget_background_title">Atzeko planoa</string>
