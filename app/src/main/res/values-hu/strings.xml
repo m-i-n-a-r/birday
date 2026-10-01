@@ -62,7 +62,7 @@
     <string name="theme_description">Használjon sötét, világos vagy automatikus alkalmazás témát</string>
     <string name="theme_name">Alkalmazás téma</string>
     <!-- ^ Untranslated for now -->
-    <string name="aqua">Aqua</string>
+    <string name="aqua">Vízkék</string>
     <string name="brown">Barna</string>
     <string name="blue">Kék</string>
     <string name="green">Zöld</string>
@@ -73,7 +73,7 @@
     <string name="pink">Rózsaszín</string>
     <string name="light_blue">Világoskék</string>
     <string name="red">Piros</string>
-    <string name="lime">Lime</string>
+    <string name="lime">Limezöld</string>
     <string name="crimson">Karmazsinvörös</string>
     <string name="system_theme">A rendszer alapértelmezése</string>
     <string name="dark_theme">Sötét</string>
@@ -238,7 +238,7 @@
     <string name="and">és</string>
     <plurals name="event">
         <item quantity="one">esemény: %s</item>
-        <item quantity="other">eseményeket: %s</item>
+        <item quantity="other">események: %s</item>
     </plurals>
     <!-- Notifications -->
     <string name="events_notification_channel">Esemény Emlékeztető</string>
@@ -275,8 +275,8 @@
     <string name="hide_far_widget_description">A widget elrejtése, ha a következő események a további értesítési időszak utánra esnek (pl.: értesítés 7 nappal előtte, a következő esemény 10 nap múlva lesz -&gt; a widget el van rejtve)</string>
     <string name="show_following_widget_title">A következő esemény megjelenítése</string>
     <string name="show_following_widget_description">Az esemény vagy a következő eseményt követő események megjelenítése egy további sorban</string>
-    <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
+    <string name="appwidget_compact">Tömör táblázat</string>
+    <string name="add_widget_compact">Birday – Tömör</string>
     <!-- Compact widget -->
     <string name="compact_widget_opacity">Háttér fedettsége</string>
     <string name="compact_widget_bg_color">Háttérszín</string>
