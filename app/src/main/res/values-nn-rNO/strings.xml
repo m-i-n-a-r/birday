@@ -30,6 +30,11 @@
         <item quantity="one">%d dag igjen</item>
         <item quantity="other">%d dager igjen</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s dag</item>
+        <item quantity="other">%s dagar</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">Personalisering</string>
     <string name="app_behavior">Appens virkemåte</string>
@@ -94,6 +99,7 @@
     <string name="birday_import_success">Import fullført!</string>
     <string name="birday_import_failure">Import failed. Did you choose the file correctly?</string>
     <string name="birday_import_invalid_file">Importering feilet. Den valgte filen er ikke en sikkerhetskopi fra Birday!</string>
+    <string name="birday_import_newer_backup">Denne tryggingskopien kjem frå ein nyare versjon av Birday. Oppdater appen for å importere han</string>
     <string name="birday_export_success">Eksport fullført!</string>
     <string name="birday_export_failure">Eksport feilet. Ups!</string>
     <string name="birday_export_nothing_found">Ingenting å eksportere!</string>
@@ -138,6 +144,7 @@
     <string name="new_event_description">Enter a person you care about, and Birday will help you to remember their birthday or other events!</string>
     <string name="insert_event">Sett inn hendelse</string>
     <string name="cancel">Avbryt</string>
+    <string name="crop_image_error">Noko gjekk gale då biletet vart skore til</string>
     <string name="insert_name_hint">Sett inn fornavn</string>
     <string name="insert_surname_hint">Legg inn etternavn</string>
     <string name="insert_date_hint">Velg en dato</string>
@@ -164,6 +171,8 @@
     <string name="next_age">Neste alder:</string>
     <string name="zodiac_sign">Stjernetegn:</string>
     <string name="chinese_zodiac_sign">Kinesisk dyretegn:</string>
+    <string name="days_lived">Dagar levd</string>
+    <string name="next_unbirthday">Neste ikkje-fødselsdag</string>
     <!-- Quick apps -->
     <string name="event_apps">Quick apps</string>
     <string name="event_apps_description">Apps to wish all the best rapidly!</string>
@@ -275,6 +284,20 @@
     <string name="show_following_widget_description">Vis hendelsen, eller hendelsene, som kommer etter den neste hendelsen</string>
     <string name="appwidget_compact">Compact table</string>
     <string name="add_widget_compact">Birday - Compact</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">Kor ugjennomsiktig bakgrunnen er</string>
+    <string name="compact_widget_bg_color">Bakgrunnsfarge</string>
+    <string name="compact_widget_text_color">Tekstfarge</string>
+    <string name="compact_widget_text_size">Tekststorleik</string>
+    <string name="compact_widget_text_size_auto">Automatisk</string>
+    <string name="export_ics_title">Eksporter til iCalendar</string>
+    <string name="export_ics_description">Eksporter kvar hending til ei .ics-fil som kan brukast i alle kalenderappar</string>
+    <string name="compact_widget_scroll">Bla gjennom alle hendingane</string>
+    <string name="compact_widget_hidden">Skjult</string>
+    <string name="compact_widget_below_name">Under namnet</string>
+    <string name="compact_widget_above_name">Over namnet</string>
+    <string name="compact_widget_before_date">Før datoen</string>
+    <string name="compact_widget_after_date">Etter datoen</string>
     <!-- Search -->
     <string name="search_event">Søk…</string>
     <string name="search_no_result_title">Ingen resultater</string>
@@ -332,7 +355,55 @@
     <string name="advanced_overview_title">Advanced overview</string>
     <string name="advanced_overview_description_off">The overview screen will only display basic information</string>
     <string name="advanced_overview_description_on">The overview screen will show other years and detailed information</string>
+    <string name="feb29_assignment_title">29. februar i vanlege år</string>
+    <string name="feb29_assignment_description_off">Fødselsdagar den 29. februar vert feira den 1. mars i år som ikkje er skotår</string>
+    <string name="feb29_assignment_description_on">Fødselsdagar den 29. februar vert feira den 28. februar i år som ikkje er skotår</string>
     <string name="replace_on_conflict_title">Replace on conflict</string>
     <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
     <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+    <string name="contacts_full_name_title">Fullstendige kontaktnamn</string>
+    <string name="contacts_full_name_description_on">Titlar, ekstra førenamn og namnesuffiks vert tekne vare på når kontaktnamn vert lesne</string>
+    <string name="contacts_full_name_description_off">Berre førenamn og etternamn vert lesne frå kontaktane</string>
+    <string name="days_milestones_title">Milepålar for dagar levd</string>
+    <string name="days_milestones_description_on">Detaljane viser talet på dagar levd. Kvar 1000. dag vert feira og varsla som ein fødselsdag</string>
+    <string name="days_milestones_description_off">Inga teljing av dagar levd og ingen milepålar</string>
+    <string name="unbirthdays_title">Ikkje-fødselsdagar</string>
+    <string name="alternative_calendar_title">Alternativ kalender</string>
+    <string name="alternative_calendar_none">Ingen, berre gregoriansk</string>
+    <string name="calendar_gregorian">Gregoriansk</string>
+    <string name="calendar_chinese">Kinesisk</string>
+    <string name="calendar_dangi">Koreansk</string>
+    <string name="calendar_hebrew">Hebraisk</string>
+    <string name="calendar_islamic">Islamsk</string>
+    <string name="calendar_islamic_civil">Islamsk (sivil)</string>
+    <string name="user_card_title">Fødselsdagen din</string>
+    <string name="user_birthday_greeting">Gratulerer med dagen, %s!</string>
+    <string name="user_card_empty">Skriv inn fødselsdatoen din</string>
+    <string name="user_card_save">Lagre</string>
+    <string name="user_card_remove">Fjern</string>
+    <string name="unbirthdays_description_on">Detaljane viser neste dato med same vekedag og dag i månaden som ved fødselen, til dømes fredag den 13.</string>
+    <string name="unbirthdays_description_off">Ingen ikkje-fødselsdagar i detaljane</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
+    <string name="about_title">Om appen</string>
+    <string name="back">Tilbake</string>
+    <string name="about_description">Informasjon om Birday, utviklaren og språket i appen</string>
+    <string name="about_version">Versjon</string>
+    <string name="about_language_title">Språk</string>
+    <string name="about_language_summary">Vel språket Birday skal bruke</string>
+    <string name="about_rate_title">Vurder appen</string>
+    <string name="about_rate_summary">Skriv ei vurdering i Play Butikk</string>
+    <string name="about_share_title">Del Birday</string>
+    <string name="about_share_summary">Tips ein ven om appen</string>
+    <string name="about_share_text">Birday, ein enkel og fin måte å aldri gløyme ein fødselsdag på: %1$s</string>
+    <string name="about_no_app_found">Ingen app kan utføre denne handlinga!</string>
+    <string name="about_privacy_title">Personvernfråsegn</string>
+    <string name="about_contact_title">Kontakt utviklaren</string>
+    <string name="amoled_description_on">Det mørke temaet brukar heilt svart, ideelt for OLED-skjermar</string>
+    <string name="amoled_description_off">Det mørke temaet brukar dei vanlege mørke flatene</string>
+    <string name="with_year">Med år</string>
+    <string name="without_year">Utan år</string>
+    <!-- Edge blur -->
+    <string name="edge_blur">Uskarpe kantar</string>
+    <string name="edge_blur_description_on">Innhaldet tonar mjukt ut når det rullar under navigasjonslinja</string>
+    <string name="edge_blur_description_off">Innhaldet rullar under navigasjonslinja utan uskarpleik</string>
 </resources>
