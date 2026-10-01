@@ -65,7 +65,7 @@
     <string name="theme_description">Upotrijebite tamnu, svijetlu ili automatsku temu aplikacije</string>
     <string name="theme_name">Tema aplikacije</string>
     <!-- ^ Untranslated for now -->
-    <string name="aqua">Aqua</string>
+    <string name="aqua">Akvamarin</string>
     <string name="brown">Smeđa</string>
     <string name="blue">Plava</string>
     <string name="green">Zelena</string>
@@ -244,7 +244,7 @@
     <string name="born_in">rođen/a u</string>
     <string name="and">i</string>
     <plurals name="event">
-        <item quantity="one">događaja: %s</item>
+        <item quantity="one">događaj: %s</item>
         <item quantity="few">događaja: %s</item>
         <item quantity="other">događaja: %s</item>
     </plurals>
@@ -287,8 +287,8 @@
     <string name="hide_far_widget_description">Sakrij widget ako su sljedeći događaji nakon postavljenog vremena dodatne obavijesti (npr. ako je dodatna obavijest 7 dana prije, a sljedeći događaj je za 10 dana -&gt;, widget će biti skriven)</string>
     <string name="show_following_widget_title">Prikaži idući događaj</string>
     <string name="show_following_widget_description">Prikaži događaje nakon nadolazećeg događaja u dodatnom retku</string>
-    <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
+    <string name="appwidget_compact">Kompaktna tablica</string>
+    <string name="add_widget_compact">Birday - Kompaktni</string>
     <!-- Compact widget -->
     <string name="compact_widget_opacity">Neprozirnost pozadine</string>
     <string name="compact_widget_bg_color">Boja pozadine</string>
