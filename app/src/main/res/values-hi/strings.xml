@@ -30,6 +30,11 @@
         <item quantity="one">%d दिन शेष</item>
         <item quantity="other">%d दिन शेष</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s दिन</item>
+        <item quantity="other">%s दिन</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">कस्टमाइजेशन</string>
     <string name="app_behavior">ऐप व्यवहार</string>
@@ -91,6 +96,7 @@
     <string name="birday_import_success">आयात पूरा हुआ!</string>
     <string name="birday_import_failure">आयात विफल. क्या आपने फ़ाइल को सही ढंग से चुना?</string>
     <string name="birday_import_invalid_file">आयात विफल. चुनी गई फ़ाइल बर्डे बैकअप नहीं है!</string>
+    <string name="birday_import_newer_backup">यह बैकअप Birday के नए संस्करण में बनाया गया था। इसे आयात करने के लिए ऐप अपडेट करें</string>
     <string name="birday_export_success">निर्यात पूरा हुआ!</string>
     <string name="birday_export_failure">निर्यात विफल। वूप्सी!</string>
     <string name="birday_export_nothing_found">निर्यात करने के लिए कुछ भी नहीं!</string>
@@ -135,6 +141,7 @@
     <string name="new_event_description">उस व्यक्ति को दर्ज करें जिसकी आप परवाह करते हैं, और बर्डे आपको उनके जन्मदिन या अन्य कार्यक्रमों को याद रखने में मदद करेगा!</string>
     <string name="insert_event">इवेंट सम्मिलित करें</string>
     <string name="cancel">रद्द करें</string>
+    <string name="crop_image_error">चित्र काटते समय कोई गड़बड़ी हुई</string>
     <string name="insert_name_hint">पहला नाम डालें</string>
     <string name="insert_surname_hint">अंतिम नाम डालें</string>
     <string name="insert_date_hint">एक तारीख चुनें</string>
@@ -161,6 +168,8 @@
     <string name="next_age">अगली उम्र:</string>
     <string name="zodiac_sign">राशि - चक्र चिन्ह:</string>
     <string name="chinese_zodiac_sign">चीनी संज्ञा:</string>
+    <string name="days_lived">जिए गए दिन</string>
+    <string name="next_unbirthday">अगला जन्म जैसे वार और तारीख वाला दिन</string>
     <!-- Quick apps -->
     <string name="event_apps">त्वरित ऐप्स</string>
     <string name="event_apps_description">ऐप्स तेजी से शुभकामनाएं देने के लिए!</string>
@@ -265,6 +274,20 @@
     <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <string name="appwidget_compact">Compact table</string>
     <string name="add_widget_compact">Birday - Compact</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">पृष्ठभूमि की अपारदर्शिता</string>
+    <string name="compact_widget_bg_color">पृष्ठभूमि का रंग</string>
+    <string name="compact_widget_text_color">पाठ का रंग</string>
+    <string name="compact_widget_text_size">पाठ का आकार</string>
+    <string name="compact_widget_text_size_auto">अपने आप</string>
+    <string name="export_ics_title">iCalendar में निर्यात करें</string>
+    <string name="export_ics_description">हर कार्यक्रम को .ics फ़ाइल में निर्यात करें, जिसे किसी भी कैलेंडर ऐप में इस्तेमाल किया जा सकता है</string>
+    <string name="compact_widget_scroll">सभी कार्यक्रमों को स्क्रॉल करें</string>
+    <string name="compact_widget_hidden">छिपा हुआ</string>
+    <string name="compact_widget_below_name">नाम के नीचे</string>
+    <string name="compact_widget_above_name">नाम के ऊपर</string>
+    <string name="compact_widget_before_date">तारीख से पहले</string>
+    <string name="compact_widget_after_date">तारीख के बाद</string>
     <!-- Search -->
     <string name="search_event">खोजें…</string>
     <string name="search_no_result_title">कोई परिणाम नहीं मिला</string>
@@ -322,7 +345,55 @@
     <string name="advanced_overview_title">Advanced overview</string>
     <string name="advanced_overview_description_off">The overview screen will only display basic information</string>
     <string name="advanced_overview_description_on">The overview screen will show other years and detailed information</string>
+    <string name="feb29_assignment_title">सामान्य वर्षों में 29 फ़रवरी</string>
+    <string name="feb29_assignment_description_off">लीप वर्ष न होने पर 29 फ़रवरी के जन्मदिन 1 मार्च को मनाए जाते हैं</string>
+    <string name="feb29_assignment_description_on">लीप वर्ष न होने पर 29 फ़रवरी के जन्मदिन 28 फ़रवरी को मनाए जाते हैं</string>
     <string name="replace_on_conflict_title">Replace on conflict</string>
     <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
     <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+    <string name="contacts_full_name_title">संपर्कों से पूरे नाम</string>
+    <string name="contacts_full_name_description_on">संपर्कों के नाम पढ़ते समय उपाधियाँ, बीच के नाम और नाम के प्रत्यय रखे जाते हैं</string>
+    <string name="contacts_full_name_description_off">संपर्कों से केवल पहला और अंतिम नाम पढ़ा जाता है</string>
+    <string name="days_milestones_title">जिए गए दिनों के पड़ाव</string>
+    <string name="days_milestones_description_on">विवरण में जिए गए दिन दिखते हैं। हर 1000 दिन का पड़ाव जन्मदिन की तरह मनाया जाता है और उसकी सूचना दी जाती है</string>
+    <string name="days_milestones_description_off">जिए गए दिनों की गिनती और पड़ाव नहीं दिखाए जाते</string>
+    <string name="unbirthdays_title">जन्म जैसे वार और तारीख वाले दिन</string>
+    <string name="alternative_calendar_title">वैकल्पिक कैलेंडर</string>
+    <string name="alternative_calendar_none">कोई नहीं, केवल ग्रेगोरियन</string>
+    <string name="calendar_gregorian">ग्रेगोरियन</string>
+    <string name="calendar_chinese">चीनी</string>
+    <string name="calendar_dangi">कोरियाई</string>
+    <string name="calendar_hebrew">हिब्रू</string>
+    <string name="calendar_islamic">इस्लामी</string>
+    <string name="calendar_islamic_civil">इस्लामी (नागरिक)</string>
+    <string name="user_card_title">आपका जन्मदिन</string>
+    <string name="user_birthday_greeting">जन्मदिन मुबारक हो, %s!</string>
+    <string name="user_card_empty">अपनी जन्मतिथि दर्ज करें</string>
+    <string name="user_card_save">सहेजें</string>
+    <string name="user_card_remove">हटाएँ</string>
+    <string name="unbirthdays_description_on">विवरण में अगली ऐसी तारीख दिखाई जाती है जिसका वार और महीने की तारीख जन्म के दिन जैसे हों, उदाहरण के लिए शुक्रवार, 13 तारीख</string>
+    <string name="unbirthdays_description_off">विवरण में जन्म जैसे वार और तारीख वाले दिन नहीं दिखाए जाते</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
+    <string name="about_title">ऐप के बारे में</string>
+    <string name="back">वापस</string>
+    <string name="about_description">Birday, इसके निर्माता और ऐप की भाषा की जानकारी</string>
+    <string name="about_version">संस्करण</string>
+    <string name="about_language_title">भाषा</string>
+    <string name="about_language_summary">Birday की भाषा चुनें</string>
+    <string name="about_rate_title">ऐप को रेटिंग दें</string>
+    <string name="about_rate_summary">Play Store पर समीक्षा लिखें</string>
+    <string name="about_share_title">Birday साझा करें</string>
+    <string name="about_share_summary">किसी दोस्त को ऐप के बारे में बताएँ</string>
+    <string name="about_share_text">Birday, किसी का जन्मदिन कभी न भूलने का आसान और खूबसूरत तरीका: %1$s</string>
+    <string name="about_no_app_found">यह काम करने वाला कोई ऐप नहीं मिला!</string>
+    <string name="about_privacy_title">गोपनीयता नीति</string>
+    <string name="about_contact_title">डेवलपर से संपर्क करें</string>
+    <string name="amoled_description_on">डार्क थीम में पूरी तरह काले रंग का इस्तेमाल होता है, जो OLED स्क्रीन के लिए उपयुक्त है</string>
+    <string name="amoled_description_off">डार्क थीम में सामान्य गहरे रंगों का इस्तेमाल होता है</string>
+    <string name="with_year">वर्ष के साथ</string>
+    <string name="without_year">वर्ष के बिना</string>
+    <!-- Edge blur -->
+    <string name="edge_blur">किनारों पर धुंधलापन</string>
+    <string name="edge_blur_description_on">नेविगेशन बार के नीचे स्क्रॉल होते समय सामग्री धीरे-धीरे धुंधली होती है</string>
+    <string name="edge_blur_description_off">सामग्री बिना धुंधली हुए नेविगेशन बार के नीचे स्क्रॉल होती है</string>
 </resources>
