@@ -68,7 +68,7 @@
     <string name="theme_description">Použijte tmavý, světlý nebo automatický motiv aplikace</string>
     <string name="theme_name">Motiv aplikace</string>
     <!-- ^ Untranslated for now -->
-    <string name="aqua">Aqua</string>
+    <string name="aqua">Akvamarínová</string>
     <string name="brown">Hnědá</string>
     <string name="blue">Modrá</string>
     <string name="green">Zelená</string>
@@ -286,8 +286,8 @@
     <string name="hide_far_widget_description">Skrýt widget, pokud události nastanou až po dodatečném upozornění (např.: widget zůstane skrytý, je-li dod. upozornění nastaveno 7 dní před událostí, ale událost se koná až o 10 dní -&gt;)</string>
     <string name="show_following_widget_title">Zobrazení následující události</string>
     <string name="show_following_widget_description">Zobrazit událost či události následující tu předchozí v dalším řádku</string>
-    <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
+    <string name="appwidget_compact">Kompaktní tabulka</string>
+    <string name="add_widget_compact">Birday – Kompaktní</string>
     <!-- Compact widget -->
     <string name="compact_widget_opacity">Neprůhlednost pozadí</string>
     <string name="compact_widget_bg_color">Barva pozadí</string>
