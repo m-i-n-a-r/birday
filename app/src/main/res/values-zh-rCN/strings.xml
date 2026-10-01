@@ -28,6 +28,10 @@
     <plurals name="days_left">
         <item quantity="other">剩余%d天</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="other">%s 天</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">自定义</string>
     <string name="app_behavior">App行为</string>
@@ -89,6 +93,7 @@
     <string name="birday_import_success">导入完成！</string>
     <string name="birday_import_failure">导入失败。请问你选择了正确的文件吗？</string>
     <string name="birday_import_invalid_file">导入失败。所选文件不是Birday备份！</string>
+    <string name="birday_import_newer_backup">此备份由较新版本的 Birday 创建，请更新应用后再导入</string>
     <string name="birday_export_success">导出完成！</string>
     <string name="birday_export_failure">导出失败。哎呀！</string>
     <string name="birday_export_nothing_found">没东西可导出！</string>
@@ -133,6 +138,7 @@
     <string name="new_event_description">输入一个你关心的人，然后Birday会帮你记住他们的生日或其它事件！</string>
     <string name="insert_event">插入事件</string>
     <string name="cancel">取消</string>
+    <string name="crop_image_error">裁剪图片时出错</string>
     <string name="insert_name_hint">插入名字</string>
     <string name="insert_surname_hint">插入姓氏</string>
     <string name="insert_date_hint">选择日期</string>
@@ -159,6 +165,8 @@
     <string name="next_age">下一个年龄：</string>
     <string name="zodiac_sign">星座：</string>
     <string name="chinese_zodiac_sign">中国生肖：</string>
+    <string name="days_lived">已度过的天数</string>
+    <string name="next_unbirthday">下一个非生日纪念日</string>
     <!-- Quick apps -->
     <string name="event_apps">快速app</string>
     <string name="event_apps_description">快速祝福的app！</string>
@@ -262,6 +270,20 @@
     <string name="show_following_widget_description">在附加行中显示该事件或紧随其后的事件</string>
     <string name="appwidget_compact">Compact table</string>
     <string name="add_widget_compact">Birday - Compact</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">背景不透明度</string>
+    <string name="compact_widget_bg_color">背景颜色</string>
+    <string name="compact_widget_text_color">文字颜色</string>
+    <string name="compact_widget_text_size">文字大小</string>
+    <string name="compact_widget_text_size_auto">自动</string>
+    <string name="export_ics_title">导出为 iCalendar</string>
+    <string name="export_ics_description">将每个事件导出为 .ics 文件，可用于各类日历应用</string>
+    <string name="compact_widget_scroll">滚动浏览所有事件</string>
+    <string name="compact_widget_hidden">隐藏</string>
+    <string name="compact_widget_below_name">姓名下方</string>
+    <string name="compact_widget_above_name">姓名上方</string>
+    <string name="compact_widget_before_date">日期之前</string>
+    <string name="compact_widget_after_date">日期之后</string>
     <!-- Search -->
     <string name="search_event">搜索…</string>
     <string name="search_no_result_title">未找到结果</string>
@@ -319,7 +341,55 @@
     <string name="advanced_overview_title">高级概述</string>
     <string name="advanced_overview_description_off">概览屏幕将只显示基本信息</string>
     <string name="advanced_overview_description_on">概览屏幕将显示其他年份和详细信息</string>
+    <string name="feb29_assignment_title">平年的 2 月 29 日生日</string>
+    <string name="feb29_assignment_description_off">平年将 2 月 29 日的生日安排在 3 月 1 日</string>
+    <string name="feb29_assignment_description_on">平年将 2 月 29 日的生日安排在 2 月 28 日</string>
     <string name="replace_on_conflict_title">冲突时替换</string>
     <string name="replace_on_conflict_description_off">导入备份时，重复的事件不会被导入的重复事件替换</string>
     <string name="replace_on_conflict_description_on">导入备份时，重复的事件将被导入的重复事件覆盖</string>
+    <string name="contacts_full_name_title">读取联系人完整姓名</string>
+    <string name="contacts_full_name_description_on">读取联系人姓名时保留称谓、中间名和后缀</string>
+    <string name="contacts_full_name_description_off">仅读取联系人的名字和姓氏</string>
+    <string name="days_milestones_title">人生天数里程碑</string>
+    <string name="days_milestones_description_on">详情中显示已度过的天数，每满 1000 天便像生日一样庆祝并发送通知</string>
+    <string name="days_milestones_description_off">不统计已度过的天数，也不庆祝里程碑</string>
+    <string name="unbirthdays_title">非生日纪念日</string>
+    <string name="alternative_calendar_title">其他历法</string>
+    <string name="alternative_calendar_none">无，仅使用公历</string>
+    <string name="calendar_gregorian">公历</string>
+    <string name="calendar_chinese">中国农历</string>
+    <string name="calendar_dangi">韩国农历</string>
+    <string name="calendar_hebrew">希伯来历</string>
+    <string name="calendar_islamic">伊斯兰历</string>
+    <string name="calendar_islamic_civil">伊斯兰历（民用）</string>
+    <string name="user_card_title">你的生日</string>
+    <string name="user_birthday_greeting">%s，生日快乐！</string>
+    <string name="user_card_empty">输入你的出生日期</string>
+    <string name="user_card_save">保存</string>
+    <string name="user_card_remove">移除</string>
+    <string name="unbirthdays_description_on">详情中显示下一个与出生时同为每月第几日且星期相同的日期，例如 13 日星期五</string>
+    <string name="unbirthdays_description_off">详情中不显示非生日纪念日</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
+    <string name="about_title">关于</string>
+    <string name="back">返回</string>
+    <string name="about_description">关于 Birday、开发者和应用语言的信息</string>
+    <string name="about_version">版本</string>
+    <string name="about_language_title">语言</string>
+    <string name="about_language_summary">选择 Birday 使用的语言</string>
+    <string name="about_rate_title">为应用评分</string>
+    <string name="about_rate_summary">在 Play 商店留下评价</string>
+    <string name="about_share_title">分享 Birday</string>
+    <string name="about_share_summary">向朋友推荐这款应用</string>
+    <string name="about_share_text">Birday，让你轻松愉快地记住每一个生日：%1$s</string>
+    <string name="about_no_app_found">没有应用可以执行此操作！</string>
+    <string name="about_privacy_title">隐私政策</string>
+    <string name="about_contact_title">联系开发者</string>
+    <string name="amoled_description_on">深色主题使用纯黑色，适合 OLED 屏幕</string>
+    <string name="amoled_description_off">深色主题使用常规深色背景</string>
+    <string name="with_year">包含年份</string>
+    <string name="without_year">不含年份</string>
+    <!-- Edge blur -->
+    <string name="edge_blur">边缘模糊</string>
+    <string name="edge_blur_description_on">内容滚动到导航栏下方时会柔和地淡出</string>
+    <string name="edge_blur_description_off">内容滚动到导航栏下方时不模糊</string>
 </resources>
