@@ -86,7 +86,7 @@
     <string name="import_contacts_description">Achte darauf, die Ereignisse mit fehlendem Jahr zu ändern, um immer genaue Statistiken zu haben!</string>
     <string name="import_success">Import erfolgreich abgeschlossen!</string>
     <string name="import_nothing_found">Keine Ereignisse gefunden!</string>
-    <string name="import_failed">Something went wrong!</string>
+    <string name="import_failed">Etwas ist schief gelaufen!</string>
     <string name="missing_permission_contacts">Die Kontaktberechtigung wurde verweigert. Versuche es noch einmal oder aktiviere die Berechtigung manuell, sonst funktioniert der Import der Kontakte nicht!</string>
     <string name="missing_permission_contacts_forever">Birday konnte deine Kontakte weder importieren noch um Berechtigung fragen, da \"nie wieder fragen\" angekreuzt wurde. Du musst es manuell aktivieren!</string>
     <string name="birday_import_title">Importiere ein Birday Backup</string>
@@ -99,7 +99,7 @@
     <string name="birday_import_newer_backup">This backup comes from a newer version of Birday: update the app to import it</string>
     <string name="birday_export_success">Export abgeschlossen!</string>
     <string name="birday_export_failure">Export fehlgeschlagen. Ups!</string>
-    <string name="birday_export_nothing_found">Nothing to export!</string>
+    <string name="birday_export_nothing_found">Nichts zum exportieren!</string>
     <string name="surname_first">Nachname zuerst</string>
     <string name="surname_first_description_on">Zeige den Nachnamen vor dem Vornamen</string>
     <string name="surname_first_description_off">Zeige den Vornamen vor dem Nachnamen</string>
