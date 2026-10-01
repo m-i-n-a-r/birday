@@ -282,8 +282,8 @@
     <string name="hide_far_widget_description">Απόκρυψη του widget εάν οι επόμενες εκδηλώσεις είναι μετά την πρόσθετη περίοδο ειδοποίησης (π. χ.: ειδοποίηση 7 ημέρες πριν, η επόμενη εκδήλωση είναι σε 10 ημέρες -&gt; το widget είναι κρυμμένο)</string>
     <string name="show_following_widget_title">Εμφάνιση της ακόλουθης εκδήλωσης</string>
     <string name="show_following_widget_description">Εμφάνιση της εκδήλωσης ή των εκδηλώσεων που ακολουθούν την επόμενη σε μια πρόσθετη γραμμή</string>
-    <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
+    <string name="appwidget_compact">Συμπαγής πίνακας</string>
+    <string name="add_widget_compact">Birday - Συμπαγές</string>
     <!-- Compact widget -->
     <string name="compact_widget_opacity">Αδιαφάνεια φόντου</string>
     <string name="compact_widget_bg_color">Χρώμα φόντου</string>
