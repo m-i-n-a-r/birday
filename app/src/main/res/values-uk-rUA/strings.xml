@@ -233,9 +233,9 @@
     <!-- Common words -->
     <plurals name="months">
         <item quantity="one">%d місяць</item>
-        <item quantity="few">%d месяці</item>
+        <item quantity="few">%d місяці</item>
         <item quantity="many">%d місяців</item>
-        <item quantity="other">%d місяців</item>
+        <item quantity="other">%d місяця</item>
     </plurals>
     <string name="today">Сьогодні!</string>
     <string name="yesterday">Учора!</string>
@@ -292,8 +292,8 @@
     <string name="hide_far_widget_description">Приховати віджет, якщо наступні події після додаткового періоду сповіщення (наприклад: сповіщення за 7 днів до події, наступна подія через 10 днів -&gt; віджет прихований)</string>
     <string name="show_following_widget_title">Показати наступну подію</string>
     <string name="show_following_widget_description">Показати подію або слідкувати за наступними подіями, у додатковому рядку</string>
-    <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
+    <string name="appwidget_compact">Компактна таблиця</string>
+    <string name="add_widget_compact">Birday — Компактний</string>
     <!-- Compact widget -->
     <string name="compact_widget_opacity">Непрозорість тла</string>
     <string name="compact_widget_bg_color">Колір тла</string>
