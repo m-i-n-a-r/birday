@@ -23,6 +23,13 @@
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+    <!-- Exact alarms for midnight widget refresh (API 33+ auto-granted for reminder apps) -->
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM"
+        tools:ignore="ExactAlarmPolicy" />
+    <!-- Fallback for API 31-32 (requires user to grant in Settings → Special app access) -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <!-- Needed to reschedule the midnight widget alarm, which doesn't survive a reboot -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -56,6 +63,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.WALLPAPER_CHANGED" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
@@ -84,6 +92,17 @@
             </intent-filter>
         </receiver>
 
+        <!-- Fires at 00:00:30 every day to refresh widgets; also handles BOOT_COMPLETED -->
+        <receiver
+            android:name=".receivers.WidgetMidnightReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="com.minar.birday.action.WIDGET_MIDNIGHT_UPDATE" />
+            </intent-filter>
+        </receiver>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
@@ -92,6 +111,20 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/filepaths" />
+        </provider>
+
+        <!-- Birday's events in the Axiris launcher search. Exported because Axiris is another app;
+             the provider itself answers only Axiris. Contract: github.com/m-i-n-a-r/yawncher,
+             docs/INTEGRATIONS.md -->
+        <provider
+            android:name=".integrations.AxirisSearchProvider"
+            android:authorities="${applicationId}.axiris"
+            android:exported="true"
+            tools:ignore="ExportedContentProvider">
+            <intent-filter>
+                <action android:name="com.minar.axiris.action.INTEGRATION" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </provider>
 
         <!-- Main activity, the core of Birday -->
@@ -103,6 +136,21 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- iCalendar files, as the one sent along with a shared event: opened or shared to
+                 Birday, their events are imported -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content" />
+                <data android:mimeType="text/calendar" />
+                <data android:mimeType="text/x-vcalendar" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/calendar" />
+                <data android:mimeType="text/x-vcalendar" />
             </intent-filter>
         </activity>
 
@@ -137,15 +185,11 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name=".widgets.EventWidgetService"
-            android:foregroundServiceType="dataSync"
-            android:permission="android.permission.BIND_REMOTEVIEWS" />
-
-        <service
-            android:name=".widgets.CompactWidgetService"
-            android:foregroundServiceType="dataSync"
-            android:permission="android.permission.BIND_REMOTEVIEWS" />
+        <!-- Hosts the image cropper view for event pictures -->
+        <activity
+            android:name=".activities.ImageCropActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
 
     </application>
 

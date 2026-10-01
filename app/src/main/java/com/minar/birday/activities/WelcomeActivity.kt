@@ -2,10 +2,14 @@ package com.minar.birday.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import androidx.activity.enableEdgeToEdge
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import com.github.appintro.AppIntro
 import com.github.appintro.AppIntroFragment.Companion.createInstance
@@ -19,6 +23,21 @@ class WelcomeActivity : AppIntro() {
         enableEdgeToEdge()
         showIntroSlides()
         hideSystemUi()
+        keepButtonsClear()
+    }
+
+    // Up to Android 10 hiding the navigation bar doesn't hold, and drawn edge to edge the buttons
+    // at the bottom sit right under it, out of reach, Done included: they stay above it. Where the
+    // bar is hidden for real its inset is zero and nothing moves
+    private fun keepButtonsClear() {
+        val bottomBar = findViewById<View>(com.github.appintro.R.id.bottom) ?: return
+        ViewCompat.setOnApplyWindowInsetsListener(bottomBar) { view, insets ->
+            val navigationBar = insets.getInsets(WindowInsetsCompat.Type.navigationBars())
+            view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = navigationBar.bottom
+            }
+            insets
+        }
     }
 
     private fun hideSystemUi() {

@@ -30,7 +30,6 @@
         <item quantity="one">%d dag resterend</item>
         <item quantity="other">%d dagen resterend</item>
     </plurals>
-    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
     <!-- Settings -->
     <string name="customization">Aanpassingen</string>
     <string name="app_behavior">App gedrag</string>
@@ -274,7 +273,6 @@
     <string name="show_following_widget_description">De gebeurtenis of de gebeurtenissen na de volgende op een extra rij weergeven</string>
     <string name="appwidget_compact">Compacte tabel</string>
     <string name="add_widget_compact">Birday - Compact</string>
-    <!-- Compact widget -->
     <!-- Search -->
     <string name="search_event">Zoeken…</string>
     <string name="search_no_result_title">Geen resultaten gevonden</string>
@@ -335,6 +333,4 @@
     <string name="replace_on_conflict_title">Vervangen bij conflict</string>
     <string name="replace_on_conflict_description_off">Bij het importeren wordt een gedupliceerde afspraak niet vervangen door het geïmporteerde duplicaat</string>
     <string name="replace_on_conflict_description_on">Bij het importeren wordt een gedupliceerde afspraak niet vervangen door het geïmporteerde duplicaat</string>
-    <!-- About page, reachable from the navbar action button while in the settings -->
-    <!-- Edge blur -->
 </resources>

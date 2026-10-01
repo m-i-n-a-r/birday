@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The user's own birthday, at the top of the settings. Prototype of the tonal, elevated card
+     meant to replace the outlined ones: no stroke, a surface container color and a soft shadow -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:paddingHorizontal="@dimen/activity_horizontal_margin"
+    android:paddingVertical="@dimen/activity_vertical_margin">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/userCard"
+        style="@style/Widget.App.CardView.Tonal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true">
+
+        <!-- Shines on the user's birthday, when the shimmer is enabled. Duration and repeat delay
+             must be hardcoded -->
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/userCardContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:shimmer_auto_start="false"
+            app:shimmer_base_alpha="@dimen/shimmer_base_alpha"
+            app:shimmer_dropoff="@dimen/shimmer_dropoff"
+            app:shimmer_duration="600"
+            app:shimmer_highlight_alpha="@dimen/shimmer_highlight_alpha"
+            app:shimmer_intensity="@dimen/shimmer_intensity"
+            app:shimmer_repeat_delay="2400"
+            app:shimmer_repeat_mode="reverse"
+            app:shimmer_tilt="@dimen/shimmer_tilt">
+
+            <!-- Nothing saved yet: one line, the whole card is the button -->
+            <LinearLayout
+                android:id="@+id/userCardEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/activity_horizontal_margin">
+
+                <ImageView
+                    android:id="@+id/userCardEmptyImage"
+                    android:layout_width="@dimen/bottom_sheet_icon_size"
+                    android:layout_height="@dimen/bottom_sheet_icon_size"
+                    android:contentDescription="@string/user_card_empty" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_weight="1"
+                    android:text="@string/user_card_empty"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_chevron_right_24dp"
+                    app:tint="?attr/colorOnSurfaceVariant" />
+
+            </LinearLayout>
+
+            <!-- Saved: compact and read only, the pencil is the way to change it -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/userCardFilled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:visibility="gone">
+
+                <View
+                    android:id="@+id/userCardPhotoGlow"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/image_glow"
+                    android:backgroundTint="?attr/colorTertiary"
+                    android:importantForAccessibility="no"
+                    android:scaleX="@dimen/image_glow_scale"
+                    android:scaleY="@dimen/image_glow_scale"
+                    app:layout_constraintBottom_toBottomOf="@id/userCardPhoto"
+                    app:layout_constraintEnd_toEndOf="@id/userCardPhoto"
+                    app:layout_constraintStart_toStartOf="@id/userCardPhoto"
+                    app:layout_constraintTop_toTopOf="@id/userCardPhoto" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/userCardPhoto"
+                    android:layout_width="@dimen/tonal_card_image_size"
+                    android:layout_height="@dimen/tonal_card_image_size"
+                    android:contentDescription="@string/user_card_title"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/placeholder_birthday_image"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/roundedImageView" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/userCardName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/userCardDate"
+                    app:layout_constraintEnd_toStartOf="@id/userCardEdit"
+                    app:layout_constraintStart_toEndOf="@id/userCardPhoto"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/userCardDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    app:layout_constraintBottom_toTopOf="@id/userCardCountdown"
+                    app:layout_constraintEnd_toEndOf="@id/userCardName"
+                    app:layout_constraintStart_toStartOf="@id/userCardName"
+                    app:layout_constraintTop_toBottomOf="@id/userCardName" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/userCardCountdown"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textColor="?attr/colorPrimary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/userCardName"
+                    app:layout_constraintStart_toStartOf="@id/userCardName"
+                    app:layout_constraintTop_toBottomOf="@id/userCardDate" />
+
+                <Button
+                    android:id="@+id/userCardEdit"
+                    style="@style/Widget.Material3Expressive.Button.IconButton.Tonal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/user_card_title"
+                    app:icon="@drawable/ic_edit_24dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>

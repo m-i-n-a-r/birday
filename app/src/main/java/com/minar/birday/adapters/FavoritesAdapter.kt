@@ -15,6 +15,7 @@ import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getNextYears
+import com.minar.birday.utilities.getReducedDate
 import com.minar.birday.utilities.getRemainingDays
 import com.minar.birday.utilities.getYears
 import java.time.format.DateTimeFormatter
@@ -73,7 +74,7 @@ class FavoritesAdapter(
             else context.getString(R.string.exclamation)
             var nextDate = event.nextDate.format(formatter)
 
-            if (event.yearMatter == false) nextDate = event.nextDate.format(formatter)
+            if (event.yearMatter == false) nextDate = getReducedDate(event.nextDate)
             val actualAge = if (event.type == EventCode.BIRTHDAY.name)
                 "${context.getString(R.string.next_age_years)}: $age▶$nextAge, ${context.getString(R.string.born_in)} ${event.originalDate.year}"
             else "${context.getString(R.string.next_age_years)}: $age▶$nextAge"

@@ -57,7 +57,7 @@
                     android:layout_width="12dp"
                     android:layout_height="12dp"
                     android:layout_marginEnd="2dp"
-                    android:contentDescription="@string/compact_widget_zodiac_position_title"
+                    android:contentDescription="@string/zodiac_sign"
                     android:visibility="gone" />
 
                 <TextView
@@ -68,14 +68,14 @@
                     android:maxLines="1"
                     android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                     android:textColor="#B3FFFFFF"
-                    android:textSize="10sp" />
+                    android:textSize="@dimen/custom_preference_subtitle_text_size" />
 
                 <ImageView
                     android:id="@+id/compactWidgetRowZodiacAfterAbove"
                     android:layout_width="12dp"
                     android:layout_height="12dp"
                     android:layout_marginStart="2dp"
-                    android:contentDescription="@string/compact_widget_zodiac_position_title"
+                    android:contentDescription="@string/zodiac_sign"
                     android:visibility="gone" />
             </LinearLayout>
 
@@ -102,7 +102,7 @@
                     android:layout_width="12dp"
                     android:layout_height="12dp"
                     android:layout_marginEnd="2dp"
-                    android:contentDescription="@string/compact_widget_zodiac_position_title"
+                    android:contentDescription="@string/zodiac_sign"
                     android:visibility="gone" />
 
                 <TextView
@@ -114,14 +114,14 @@
                     android:text="@string/birth_date"
                     android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                     android:textColor="#B3FFFFFF"
-                    android:textSize="10sp" />
+                    android:textSize="@dimen/custom_preference_subtitle_text_size" />
 
                 <ImageView
                     android:id="@+id/compactWidgetRowZodiacAfterBelow"
                     android:layout_width="12dp"
                     android:layout_height="12dp"
                     android:layout_marginStart="2dp"
-                    android:contentDescription="@string/compact_widget_zodiac_position_title"
+                    android:contentDescription="@string/zodiac_sign"
                     android:visibility="gone" />
             </LinearLayout>
         </LinearLayout>

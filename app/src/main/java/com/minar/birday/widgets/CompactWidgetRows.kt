@@ -1,0 +1,412 @@
+package com.minar.birday.widgets
+
+import android.content.Context
+import android.content.Intent
+import android.content.res.Configuration
+import android.graphics.Bitmap
+import android.os.Build
+import android.view.ContextThemeWrapper
+import android.view.View
+import android.widget.RemoteViews
+import androidx.core.graphics.scale
+import androidx.core.widget.RemoteViewsCompat
+import androidx.preference.PreferenceManager
+import com.google.android.material.color.MaterialColors
+import com.minar.birday.R
+import com.minar.birday.activities.MainActivity
+import com.minar.birday.model.EventResult
+import com.minar.birday.utilities.accentThemeRes
+import com.minar.birday.utilities.bodyMediumTextSizeSp
+import com.minar.birday.utilities.byteArrayToBitmap
+import com.minar.birday.utilities.forceMonthDayFormat
+import com.minar.birday.utilities.formatName
+import com.minar.birday.utilities.getCircularBitmap
+import com.minar.birday.utilities.getInitialBitmap
+import com.minar.birday.utilities.getNextYears
+import com.minar.birday.utilities.getRemainingDays
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
+import com.google.android.material.R as MaterialR
+
+
+// The rows of the compact widget, all built at once and handed to the list as a whole. In the
+// scrolling list the background belongs to the widget and the rows are see through, since the
+// rounded corners of the first and last row would scroll away with them
+internal class CompactWidgetRows(private val context: Context, private val scroll: Boolean) {
+    private var surnameFirst = false
+    private var hideImages = false
+    private var bgAlpha = 255
+    private var textSizeSp = 12f
+    private var widgetBgColor = android.graphics.Color.BLACK
+    private var widgetTextColor = android.graphics.Color.WHITE
+    private var highlightColor = android.graphics.Color.rgb(0xFF, 0x52, 0x52) // red
+    private var highlightAlpha = 153 // 60% of 255
+    private var highlightTextColor = android.graphics.Color.WHITE
+    private var datePosition = "below"
+    private var zodiacPosition = "hidden"
+
+    companion object {
+        private const val SUBDUED_ALPHA_FACTOR = 0.7f
+        internal const val DATE_TEXT_SCALE = 0.78f
+        internal const val PHOTO_SCALE_WITH_DATE = 2.0f
+        internal const val PHOTO_SCALE_WITHOUT_DATE = 1.4f
+        internal const val LINE_HEIGHT_FACTOR = 1.35f
+        internal const val EDGE_PADDING_DP = 16f
+        private const val AVATAR_SIZE_PX = 96
+        // The scrolling list stops somewhere: every row travels to the launcher in one go
+        internal const val MAX_SCROLL_ROWS = 30
+        // Up to Android 12 the rows are stored by the compat library in a flat copy, where a bitmap
+        // can't take more than 16KB: 64 * 64 pixels, not far from the size the photos are shown at
+        private const val LEGACY_PHOTO_SIZE_PX = 64
+
+        internal fun resolveColor(context: Context, name: String): Int {
+            return when (name) {
+                "white" -> android.graphics.Color.WHITE
+                "black" -> android.graphics.Color.BLACK
+                else -> {
+                    val colorRes = when (name) {
+                        "red" -> R.color.red
+                        "crimson" -> R.color.crimson
+                        "orange" -> R.color.orange
+                        "yellow" -> R.color.yellow
+                        "lime" -> R.color.lime
+                        "green" -> R.color.green
+                        "teal" -> R.color.teal
+                        "aqua" -> R.color.aqua
+                        "lightBlue" -> R.color.lightBlue
+                        "blue" -> R.color.blue
+                        "violet" -> R.color.violet
+                        "pink" -> R.color.pink
+                        else -> R.color.red
+                    }
+                    context.getColor(colorRes)
+                }
+            }
+        }
+    }
+
+    private val avatarSizePx =
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.S) AVATAR_SIZE_PX else LEGACY_PHOTO_SIZE_PX
+
+    init {
+        loadPreferences()
+    }
+
+    // The list for the widget, a row for each event
+    fun items(events: List<EventResult>): RemoteViewsCompat.RemoteCollectionItems {
+        val builder = RemoteViewsCompat.RemoteCollectionItems.Builder()
+            .setHasStableIds(true)
+            .setViewTypeCount(1)
+        events.forEachIndexed { position, event ->
+            builder.addItem(event.id.toLong(), row(event, position, events.size))
+        }
+        return builder.build()
+    }
+
+    // The widget itself: in the scrolling list the background sits behind the whole list, and
+    // the edge padding goes around it instead of on the first and last row
+    fun applyToWidget(views: RemoteViews) {
+        val edgePadding = context.resources.getDimension(R.dimen.widget_padding).toInt()
+        if (scroll) {
+            views.setViewVisibility(R.id.compactWidgetListBg, View.VISIBLE)
+            views.setInt(R.id.compactWidgetListBg, "setColorFilter", widgetBgColor)
+            views.setInt(R.id.compactWidgetListBg, "setImageAlpha", bgAlpha)
+            views.setViewPadding(R.id.compactWidgetList, 0, edgePadding, 0, edgePadding)
+        } else {
+            views.setViewVisibility(R.id.compactWidgetListBg, View.GONE)
+            views.setViewPadding(R.id.compactWidgetList, 0, 0, 0, 0)
+        }
+    }
+
+    private fun row(event: EventResult, position: Int, rowCount: Int): RemoteViews {
+        val rv = RemoteViews(context.packageName, R.layout.widget_compact_row)
+
+        applyRowBackground(rv, position, rowCount)
+        applyRowPadding(rv, position, rowCount)
+        applyTextColors(rv)
+        applyTextSizes(rv)
+        applyImageSize(rv)
+
+        rv.setTextViewText(R.id.compactWidgetRowName, formatName(event, surnameFirst))
+        applyDateAndZodiac(rv, event)
+        applyAge(rv, event)
+        applyCountdown(rv, event)
+        applyContactPhoto(rv, event)
+
+        // Just the id: the whole event would weigh on the list, and the app opens its details
+        val fillInIntent = Intent().putExtra(MainActivity.EXTRA_EVENT_ID, event.id)
+        rv.setOnClickFillInIntent(R.id.compactWidgetRowItem, fillInIntent)
+        return rv
+    }
+
+    private fun applyRowBackground(rv: RemoteViews, position: Int, rowCount: Int) {
+        // Scrolling, a row has no background of its own, unless highlighted
+        if (scroll) {
+            rv.setViewVisibility(R.id.compactWidgetRowBg, View.GONE)
+            rv.setImageViewResource(R.id.compactWidgetRowBg, R.drawable.widget_compact_row_bg_single)
+            return
+        }
+        val bgDrawable = when {
+            rowCount == 1 -> R.drawable.widget_compact_row_bg_single
+            position == 0 -> R.drawable.widget_compact_row_bg_top
+            position == rowCount - 1 -> R.drawable.widget_compact_row_bg_bottom
+            else -> R.drawable.widget_compact_row_bg_middle
+        }
+        rv.setViewVisibility(R.id.compactWidgetRowBg, View.VISIBLE)
+        rv.setImageViewResource(R.id.compactWidgetRowBg, bgDrawable)
+        rv.setInt(R.id.compactWidgetRowBg, "setColorFilter", widgetBgColor)
+        rv.setInt(R.id.compactWidgetRowBg, "setImageAlpha", bgAlpha)
+    }
+
+    private fun applyRowPadding(rv: RemoteViews, position: Int, rowCount: Int) {
+        val sidePadding = context.resources.getDimension(R.dimen.widget_padding).toInt()
+        when {
+            scroll -> rv.setViewPadding(
+                R.id.compactWidgetRowContent, sidePadding, 0, sidePadding, 0
+            )
+            rowCount == 1 -> rv.setViewPadding(
+                R.id.compactWidgetRowContent, sidePadding, sidePadding, sidePadding, sidePadding
+            )
+            position == 0 -> rv.setViewPadding(
+                R.id.compactWidgetRowContent, sidePadding, sidePadding, sidePadding, 0
+            )
+            position == rowCount - 1 -> rv.setViewPadding(
+                R.id.compactWidgetRowContent, sidePadding, 0, sidePadding, sidePadding
+            )
+            else -> rv.setViewPadding(
+                R.id.compactWidgetRowContent, sidePadding, 0, sidePadding, 0
+            )
+        }
+    }
+
+    private fun getSubduedTextColor(): Int {
+        return android.graphics.Color.argb(
+            (android.graphics.Color.alpha(widgetTextColor) * SUBDUED_ALPHA_FACTOR).toInt(),
+            android.graphics.Color.red(widgetTextColor),
+            android.graphics.Color.green(widgetTextColor),
+            android.graphics.Color.blue(widgetTextColor)
+        )
+    }
+
+    private fun applyTextColors(rv: RemoteViews) {
+        val subduedTextColor = getSubduedTextColor()
+        rv.setTextColor(R.id.compactWidgetRowName, widgetTextColor)
+        rv.setTextColor(R.id.compactWidgetRowDate, subduedTextColor)
+        rv.setTextColor(R.id.compactWidgetRowAge, subduedTextColor)
+        rv.setTextColor(R.id.compactWidgetRowCountdown, widgetTextColor)
+    }
+
+    private fun applyTextSizes(rv: RemoteViews) {
+        val smallTextSizeSp = textSizeSp * DATE_TEXT_SCALE
+        rv.setTextViewTextSize(R.id.compactWidgetRowName, android.util.TypedValue.COMPLEX_UNIT_SP, textSizeSp)
+        rv.setTextViewTextSize(R.id.compactWidgetRowDate, android.util.TypedValue.COMPLEX_UNIT_SP, smallTextSizeSp)
+        rv.setTextViewTextSize(R.id.compactWidgetRowDateAboveText, android.util.TypedValue.COMPLEX_UNIT_SP, smallTextSizeSp)
+        rv.setTextViewTextSize(R.id.compactWidgetRowAge, android.util.TypedValue.COMPLEX_UNIT_SP, textSizeSp)
+        rv.setTextViewTextSize(R.id.compactWidgetRowCountdown, android.util.TypedValue.COMPLEX_UNIT_SP, textSizeSp)
+    }
+
+    // Sizing a RemoteViews child at runtime needs API 31: below that the photo keeps the 24dp the
+    // row layout declares, which sits right in the middle of the range the scale factors produce
+    private fun applyImageSize(rv: RemoteViews) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return
+        val imageSizeDp = if (datePosition == "hidden") textSizeSp * PHOTO_SCALE_WITHOUT_DATE
+            else textSizeSp * PHOTO_SCALE_WITH_DATE
+        rv.setViewLayoutWidth(R.id.compactWidgetRowImage, imageSizeDp, android.util.TypedValue.COMPLEX_UNIT_DIP)
+        rv.setViewLayoutHeight(R.id.compactWidgetRowImage, imageSizeDp, android.util.TypedValue.COMPLEX_UNIT_DIP)
+    }
+
+    private fun applyDateAndZodiac(rv: RemoteViews, event: EventResult) {
+        val formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
+        val dateText = if (event.yearMatter != false) event.originalDate.format(formatter)
+        else forceMonthDayFormat(event.originalDate)
+
+        when (datePosition) {
+            "hidden" -> {
+                rv.setViewVisibility(R.id.compactWidgetRowDateBelow, View.GONE)
+                rv.setViewVisibility(R.id.compactWidgetRowDateAbove, View.GONE)
+            }
+            "above" -> {
+                rv.setViewVisibility(R.id.compactWidgetRowDateBelow, View.GONE)
+                rv.setViewVisibility(R.id.compactWidgetRowDateAbove, View.VISIBLE)
+                rv.setTextViewText(R.id.compactWidgetRowDateAboveText, dateText)
+                rv.setTextColor(R.id.compactWidgetRowDateAboveText, getSubduedTextColor())
+                applyZodiac(rv, event, R.id.compactWidgetRowZodiacBeforeAbove, R.id.compactWidgetRowZodiacAfterAbove)
+            }
+            else -> {
+                rv.setViewVisibility(R.id.compactWidgetRowDateBelow, View.VISIBLE)
+                rv.setViewVisibility(R.id.compactWidgetRowDateAbove, View.GONE)
+                rv.setTextViewText(R.id.compactWidgetRowDate, dateText)
+                applyZodiac(rv, event, R.id.compactWidgetRowZodiacBeforeBelow, R.id.compactWidgetRowZodiacAfterBelow)
+            }
+        }
+    }
+
+    private fun applyAge(rv: RemoteViews, event: EventResult) {
+        val nextYears = getNextYears(event)
+        if (nextYears > 0) {
+            rv.setViewVisibility(R.id.compactWidgetRowAge, View.VISIBLE)
+            rv.setTextViewText(
+                R.id.compactWidgetRowAge,
+                nextYears.toString()
+            )
+        } else {
+            rv.setViewVisibility(R.id.compactWidgetRowAge, View.GONE)
+        }
+    }
+
+    private fun applyCountdown(rv: RemoteViews, event: EventResult) {
+        val nextDate = event.nextDate ?: return
+        val remainingDays = getRemainingDays(nextDate)
+        val countdownText = when (remainingDays) {
+            0 -> context.getString(R.string.today)
+            1 -> context.getString(R.string.tomorrow)
+            else -> context.resources.getQuantityString(
+                R.plurals.days_left, remainingDays, remainingDays
+            )
+        }
+        if (remainingDays == 0) {
+            val bold = android.text.SpannableString(countdownText)
+            bold.setSpan(
+                android.text.style.StyleSpan(android.graphics.Typeface.BOLD),
+                0, countdownText.length, android.text.Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            rv.setTextViewText(R.id.compactWidgetRowCountdown, bold)
+            // Today highlighting
+            rv.setViewVisibility(R.id.compactWidgetRowBg, View.VISIBLE)
+            rv.setInt(R.id.compactWidgetRowBg, "setImageAlpha", highlightAlpha)
+            rv.setInt(R.id.compactWidgetRowBg, "setColorFilter", highlightColor)
+            rv.setTextColor(R.id.compactWidgetRowCountdown, highlightTextColor)
+        } else {
+            rv.setTextViewText(R.id.compactWidgetRowCountdown, countdownText)
+        }
+    }
+
+    private fun applyContactPhoto(rv: RemoteViews, event: EventResult) {
+        if (hideImages) {
+            rv.setViewVisibility(R.id.compactWidgetRowImage, View.GONE)
+        } else {
+            rv.setViewVisibility(R.id.compactWidgetRowImage, View.VISIBLE)
+            if (event.image != null && event.image.isNotEmpty()) {
+                rv.setImageViewBitmap(
+                    R.id.compactWidgetRowImage,
+                    getCircularBitmap(photoSized(byteArrayToBitmap(event.image)))
+                )
+            } else {
+                rv.setImageViewBitmap(
+                    R.id.compactWidgetRowImage,
+                    getInitialBitmap(event.name, event.surname, avatarSizePx)
+                )
+            }
+        }
+    }
+
+    // The stored photo is far larger than the row shows it, and every row travels to the launcher
+    private fun photoSized(photo: Bitmap): Bitmap {
+        val size = minOf(photo.width, photo.height)
+        if (size <= avatarSizePx) return photo
+        val scale = avatarSizePx.toFloat() / size
+        return photo.scale((photo.width * scale).toInt(), (photo.height * scale).toInt())
+    }
+
+    private fun loadPreferences() {
+        val sp = PreferenceManager.getDefaultSharedPreferences(context)
+        surnameFirst = sp.getBoolean("surname_first", false)
+        hideImages = sp.getBoolean("widget_compact_hide_images", false)
+        bgAlpha = sp.getInt("widget_compact_opacity", 100) * 255 / 100
+        val savedTextSize = sp.getInt("widget_compact_text_size", 0)
+        textSizeSp = if (savedTextSize == 0) context.bodyMediumTextSizeSp()
+        else savedTextSize.toFloat().coerceAtLeast(6f)
+        widgetBgColor = resolveColor(sp.getString("widget_compact_bg_color", "black") ?: "black")
+        widgetTextColor = resolveColor(sp.getString("widget_compact_general_text_color", "white") ?: "white")
+        highlightAlpha = sp.getInt("widget_compact_highlight_opacity", 60) * 255 / 100
+        highlightColor = resolveColor(sp.getString("widget_compact_highlight_color", "red") ?: "red")
+        highlightTextColor = resolveColor(sp.getString("widget_compact_highlight_text_color", "white") ?: "white")
+        datePosition = sp.getString("widget_compact_date_position", "below") ?: "below"
+        zodiacPosition = sp.getString("widget_compact_zodiac_position", "hidden") ?: "hidden"
+
+        if (sp.getBoolean("widget_compact_monet", true)) {
+            val themed = monetThemeContext(sp)
+            widgetBgColor = MaterialColors.getColor(themed, MaterialR.attr.colorSurface, android.graphics.Color.BLACK)
+            widgetTextColor = MaterialColors.getColor(themed, MaterialR.attr.colorOnSurface, android.graphics.Color.WHITE)
+            highlightColor = MaterialColors.getColor(themed, MaterialR.attr.colorPrimaryContainer, android.graphics.Color.BLUE)
+            highlightTextColor = MaterialColors.getColor(themed, MaterialR.attr.colorOnPrimaryContainer, android.graphics.Color.BLACK)
+            highlightAlpha = 255
+        }
+    }
+
+    private fun monetThemeContext(sp: android.content.SharedPreferences): Context {
+        val accent = sp.getString("accent_color", "system") ?: "system"
+        // Unlike the activities, a RemoteViews factory can't force the night mode, so the amoled
+        // variant is picked only when the system is actually in dark mode
+        val isDark = (context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) ==
+            Configuration.UI_MODE_NIGHT_YES
+        return ContextThemeWrapper(
+            context,
+            accentThemeRes(accent, perfectDark = sp.getBoolean("amoled_dark", false) && isDark)
+        )
+    }
+
+    private fun applyZodiac(rv: RemoteViews, event: EventResult, beforeId: Int, afterId: Int) {
+        if (zodiacPosition == "hidden" || datePosition == "hidden") {
+            rv.setViewVisibility(beforeId, View.GONE)
+            rv.setViewVisibility(afterId, View.GONE)
+            return
+        }
+        val zodiacDrawable = getZodiacDrawable(event)
+        when (zodiacPosition) {
+            "before" -> {
+                rv.setViewVisibility(beforeId, View.VISIBLE)
+                rv.setViewVisibility(afterId, View.GONE)
+                rv.setImageViewResource(beforeId, zodiacDrawable)
+                rv.setInt(beforeId, "setColorFilter", widgetTextColor)
+            }
+            "after" -> {
+                rv.setViewVisibility(beforeId, View.GONE)
+                rv.setViewVisibility(afterId, View.VISIBLE)
+                rv.setImageViewResource(afterId, zodiacDrawable)
+                rv.setInt(afterId, "setColorFilter", widgetTextColor)
+            }
+            else -> {
+                rv.setViewVisibility(beforeId, View.GONE)
+                rv.setViewVisibility(afterId, View.GONE)
+            }
+        }
+    }
+
+    private fun resolveColor(name: String): Int = resolveColor(context, name)
+
+    private fun getZodiacDrawable(event: EventResult): Int {
+        val day = event.originalDate.dayOfMonth
+        val month = event.originalDate.month.value
+        val signNumber = when (month) {
+            12 -> if (day <= 21) 0 else 1
+            1 -> if (day <= 20) 1 else 2
+            2 -> if (day <= 18) 2 else 3
+            3 -> if (day <= 20) 3 else 4
+            4 -> if (day <= 20) 4 else 5
+            5 -> if (day <= 20) 5 else 6
+            6 -> if (day <= 21) 6 else 7
+            7 -> if (day <= 22) 7 else 8
+            8 -> if (day <= 23) 8 else 9
+            9 -> if (day <= 22) 9 else 10
+            10 -> if (day <= 22) 10 else 11
+            11 -> if (day <= 22) 11 else 0
+            else -> 0
+        }
+        return when (signNumber) {
+            0 -> R.drawable.ic_zodiac_sagittarius
+            1 -> R.drawable.ic_zodiac_capricorn
+            2 -> R.drawable.ic_zodiac_aquarius
+            3 -> R.drawable.ic_zodiac_pisces
+            4 -> R.drawable.ic_zodiac_aries
+            5 -> R.drawable.ic_zodiac_taurus
+            6 -> R.drawable.ic_zodiac_gemini
+            7 -> R.drawable.ic_zodiac_cancer
+            8 -> R.drawable.ic_zodiac_leo
+            9 -> R.drawable.ic_zodiac_virgo
+            10 -> R.drawable.ic_zodiac_libra
+            11 -> R.drawable.ic_zodiac_scorpio
+            else -> R.drawable.ic_zodiac_sagittarius
+        }
+    }
+}

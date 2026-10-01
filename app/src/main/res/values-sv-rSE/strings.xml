@@ -30,7 +30,6 @@
         <item quantity="one">%d dag kvar</item>
         <item quantity="other">%d dagar kvar</item>
     </plurals>
-    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
     <!-- Settings -->
     <string name="customization">Anpassning</string>
     <string name="app_behavior">Appbeteende</string>
@@ -266,7 +265,6 @@
     <string name="show_following_widget_description">Visa händelsen eller händelserna efter nästa i ytterligare en rad</string>
     <string name="appwidget_compact">Compact table</string>
     <string name="add_widget_compact">Birday - Compact</string>
-    <!-- Compact widget -->
     <!-- Search -->
     <string name="search_event">Sök…</string>
     <string name="search_no_result_title">Inga resultat funna</string>
@@ -327,6 +325,4 @@
     <string name="replace_on_conflict_title">Ersätt vid konflikt</string>
     <string name="replace_on_conflict_description_off">Vid import kommer en duplicerad händelse inte att ersättas av den importerade dubbletten</string>
     <string name="replace_on_conflict_description_on">Vid import kommer en duplicerad händelse att skrivas över av den importerade dubbletten</string>
-    <!-- About page, reachable from the navbar action button while in the settings -->
-    <!-- Edge blur -->
 </resources>

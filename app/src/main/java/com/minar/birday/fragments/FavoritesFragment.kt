@@ -4,7 +4,6 @@ import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
-import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,8 +22,9 @@ import com.minar.birday.databinding.DialogNotesBinding
 import com.minar.birday.databinding.FragmentFavoritesBinding
 import com.minar.birday.fragments.dialogs.StatsBottomSheet
 import com.minar.birday.model.Event
-import com.minar.birday.utilities.StatsGenerator
-import com.minar.birday.utilities.addInsetsByPadding
+import com.minar.birday.model.Stat
+import com.minar.birday.utilities.addNavbarClearance
+import com.minar.birday.views.BirdayFastScroller
 import com.minar.birday.utilities.getRemainingDays
 import com.minar.birday.utilities.getThemeColor
 import com.minar.birday.utilities.isBirthday
@@ -39,7 +39,7 @@ class FavoritesFragment : Fragment() {
     private lateinit var adapter: FavoritesAdapter
     private lateinit var act: MainActivity
     private lateinit var sharedPrefs: SharedPreferences
-    private var fullStats: SpannableStringBuilder? = null
+    private var fullStats: List<Stat>? = null
     private var _binding: FragmentFavoritesBinding? = null
     private val binding get() = _binding!!
     private var _dialogNotesBinding: DialogNotesBinding? = null
@@ -80,7 +80,6 @@ class FavoritesFragment : Fragment() {
         val shimmer = binding.favoritesCardShimmer
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val shimmerEnabled = sharedPrefs.getBoolean("shimmer", false)
-        val astrologyDisabled = sharedPrefs.getBoolean("disable_astrology", false)
         val favoriteMotionLayout = binding.favoritesMain
         val favoritesCard = binding.favoritesCard
         val favoritesMiniFab = binding.favoritesMiniFab
@@ -126,15 +125,18 @@ class FavoritesFragment : Fragment() {
         // Setup the recycler view
         val recycler = binding.favoritesRecycler
         recycler.adapter = adapter
+        BirdayFastScroller(recycler)
+        // Assigned once: swapping it mid flight leaves rows stuck at the alpha it set
+        recycler.itemAnimator = BirdayRecyclerAnimator()
         with(mainViewModel) {
             getFavorites().observe(viewLifecycleOwner) { events ->
                 // Update the cached copy in the adapter
                 if (events != null && events.isNotEmpty()) {
                     removePlaceholder()
                     adapter.submitList(events)
-                    recycler.itemAnimator = BirdayRecyclerAnimator()
                 }
                 if (events.isNullOrEmpty()) {
+                    recycler.itemAnimator?.endAnimations()
                     adapter.submitList(emptyList())
                     restorePlaceholder()
                 }
@@ -142,7 +144,7 @@ class FavoritesFragment : Fragment() {
         }
 
         // Add insets
-        recycler.addInsetsByPadding(bottom = true)
+        recycler.addNavbarClearance()
 
         // Set the overview button
         overviewButton.setOnClickListener {
@@ -266,25 +268,31 @@ class FavoritesFragment : Fragment() {
             // Stats - Under a minimum size, no stats will be shown (at least 5 birthdays containing a year)
             val currentEvents = mainViewModel.allEventsUnfiltered.value ?: return@observe
             if (currentEvents.filter { it.yearMatter == true && isBirthday(it) }.size < 5) {
-                fullStats = SpannableStringBuilder(
-                    requireActivity().applicationContext.getString(
-                        R.string.no_stats_description
-                    )
+                fullStats = listOf(
+                    Stat(R.drawable.ic_info_24dp, getString(R.string.no_stats_description))
                 )
+                // The LiveData outlives this view, and with it the stat of an event that may not
+                // exist any more. Nothing left to say about these events means saying nothing
+                mainViewModel.randomStat.value = ""
                 return@observe
             }
 
-            val cardSubtitle: TextView = binding.statsSubtitle
             val cardDescription: TextView = binding.statsDescription
-            val generator = StatsGenerator(currentEvents, context, astrologyDisabled)
-            val randomStat = generator.generateRandomStat()
             fullStats = mainViewModel.fullStats.value
-            // Stop all UI updates if the fragment is not visible
-            cardSubtitle.text = randomStat
+            // Same trigger the inline generation used to have, so the subtitle still changes every
+            // time this page is built again. Only the work moved, onto IO
+            mainViewModel.refreshRandomStat(currentEvents, requireContext())
             val summary =
                 resources.getQuantityString(R.plurals.event, currentEvents.size, currentEvents.size)
                     .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
             cardDescription.text = summary
+        }
+
+        // The subtitle rides its own LiveData. Blank means this event list has no stat to give,
+        // either because it is too small or because every roll came up empty, and the card falls
+        // back to the same line the layout starts with
+        mainViewModel.randomStat.observe(viewLifecycleOwner) {
+            binding.statsSubtitle.text = it.ifBlank { getString(R.string.no_stats) }
         }
     }
 
@@ -319,7 +327,8 @@ class FavoritesFragment : Fragment() {
                     surname = event.surname,
                     favorite = event.favorite,
                     notes = note,
-                    image = event.image
+                    image = event.image,
+                    calendar = event.calendar
                 )
                 mainViewModel.update(tuple)
                 dialog.dismiss()

@@ -4,6 +4,8 @@
     android:description="@string/appwidget_upcoming"
     android:initialKeyguardLayout="@layout/widget_upcoming"
     android:initialLayout="@layout/widget_upcoming"
+    android:minWidth="180dp"
+    android:minHeight="40dp"
     android:previewImage="@drawable/birday_widget_preview"
     android:previewLayout="@layout/widget_upcoming"
     android:resizeMode="horizontal|vertical"
@@ -11,4 +13,4 @@
     android:targetCellHeight="1"
     android:updatePeriodMillis="10800000"
     android:widgetCategory="home_screen"
-    tools:targetApi="s" /><!-- Updated every 3 hours, minimum size is 3 * 1 -->
+    tools:targetApi="s" /><!-- Updated every 3 hours, minimum size is 3 * 1. The target cells need Android 12, minWidth and minHeight are for the launchers before it -->

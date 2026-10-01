@@ -2,6 +2,7 @@ package com.minar.birday.preferences.backup
 
 import android.content.Context
 import android.net.Uri
+import android.widget.Toast
 import android.util.AttributeSet
 import android.view.View
 import androidx.preference.Preference
@@ -17,7 +18,7 @@ import java.time.LocalDate
 
 class JsonImporter(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
     View.OnClickListener {
-    private val act = context as MainActivity
+    private val act = context as? MainActivity
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
@@ -27,8 +28,8 @@ class JsonImporter(context: Context, attrs: AttributeSet?) : Preference(context,
 
     // Vibrate and import the backup if possible
     override fun onClick(v: View) {
-        act.vibrate()
-        act.selectBackup.launch("application/json")
+        act?.vibrate()
+        act?.selectBackup?.launch("application/json")
     }
 
     // Import a backup with basic checks and add the entries to the current DB
@@ -48,15 +49,17 @@ class JsonImporter(context: Context, attrs: AttributeSet?) : Preference(context,
             // Show dialog to select what to import
             fileStream.close()
             if (normalizedEvents.isEmpty())
-                (context as MainActivity).showSnackbar(context.getString(R.string.import_nothing_found))
+                (context as? MainActivity)?.showSnackbar(context.getString(R.string.import_nothing_found))
+                    ?: Toast.makeText(context, context.getString(R.string.import_nothing_found), Toast.LENGTH_SHORT).show()
             else
             // Show the dialog to select the events to import
-                act.showImportDialog(
+                act?.showImportDialog(
                     normalizedEvents,
-                    title = act.getString(R.string.import_json_title)
+                    title = context.getString(R.string.import_json_title)
                 )
         } catch (e: Exception) {
-            (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_failure))
+            (context as? MainActivity)?.showSnackbar(context.getString(R.string.birday_import_failure))
+                ?: Toast.makeText(context, context.getString(R.string.birday_import_failure), Toast.LENGTH_SHORT).show()
             e.printStackTrace()
             return false
         }

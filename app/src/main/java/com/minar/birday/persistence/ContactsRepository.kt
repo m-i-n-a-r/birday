@@ -3,12 +3,14 @@ package com.minar.birday.persistence
 import android.Manifest
 import android.content.ContentResolver
 import android.content.ContentUris
+import android.content.Context
 import android.graphics.BitmapFactory
 import android.media.ThumbnailUtils
 import android.provider.ContactsContract
 import android.util.Log
 import androidx.annotation.RequiresPermission
 import androidx.core.database.getStringOrNull
+import androidx.preference.PreferenceManager
 import com.minar.birday.model.ContactInfo
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventCode
@@ -21,15 +23,23 @@ import java.time.LocalDate
 // Fetches the contacts from the system. It needs all contacts related permissions in order to work properly
 class ContactsRepository {
 
+    companion object {
+        // Titles, middle names and suffixes are part of the name unless the user opts out
+        private const val PREF_FULL_NAME = "contacts_full_name"
+
+        fun useFullName(context: Context) = PreferenceManager.getDefaultSharedPreferences(context)
+            .getBoolean(PREF_FULL_NAME, true)
+    }
+
     @RequiresPermission(Manifest.permission.READ_CONTACTS)
-    private fun getContactEvents(resolver: ContentResolver): List<ImportedEvent> {
-        return queryContacts(resolver).asSequence()
+    private fun getContactEvents(resolver: ContentResolver, fullName: Boolean): List<ImportedEvent> {
+        return queryContacts(resolver, fullName).asSequence()
             .flatMap { getEventsForContact(it, resolver) }
             .toList()
     }
 
     @RequiresPermission(Manifest.permission.READ_CONTACTS)
-    fun queryContacts(resolver: ContentResolver): List<ContactInfo> {
+    fun queryContacts(resolver: ContentResolver, fullName: Boolean = true): List<ContactInfo> {
         val contactsInfo = mutableListOf<ContactInfo>()
         val idsSet = mutableSetOf<String>() // For faster lookup, keep them in sync
 
@@ -78,9 +88,13 @@ class ContactsRepository {
                 val lastName = cursor.getStringOrNull(lastNameValue) ?: ""
                 val suffix = cursor.getStringOrNull(suffixValue) ?: ""
 
-                // The format at this time is first name, last name (+ extra stuff)
-                val birdayFirstName = "$prefix $firstName $middleName".replace(',', ' ').trim()
-                val birdayLastName = "$lastName $suffix".replace(',', ' ').trim()
+                // The format at this time is first name, last name (+ extra stuff, if wanted)
+                val birdayFirstName =
+                    (if (fullName) "$prefix $firstName $middleName" else firstName)
+                        .replace(',', ' ').trim()
+                val birdayLastName =
+                    (if (fullName) "$lastName $suffix" else lastName)
+                        .replace(',', ' ').trim()
 
                 // Get the image, if any, and convert it to byte array
                 val imageStream = ContactsContract.Contacts.openContactPhotoInputStream(
@@ -178,8 +192,8 @@ class ContactsRepository {
     }
 
     @RequiresPermission(Manifest.permission.READ_CONTACTS)
-    fun getEventsFromContacts(resolver: ContentResolver): List<Event> {
-        return getContactEvents(resolver).mapNotNull { contact ->
+    fun getEventsFromContacts(resolver: ContentResolver, fullName: Boolean = true): List<Event> {
+        return getContactEvents(resolver, fullName).mapNotNull { contact ->
             // Take the name and split it to separate name and surname
             val splitName = contact.completeName.split(",")
             var countYear = true

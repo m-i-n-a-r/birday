@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A single line of the stats sheet. Inflated once per stat by StatsBottomSheet: the sheet used
+     to be one long bulleted paragraph, and one view per stat is what lets them ride in one by one -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/statRowRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingVertical="@dimen/in_row_padding">
+
+    <ImageView
+        android:id="@+id/statRowIcon"
+        android:layout_width="@dimen/nav_tab_icon_size"
+        android:layout_height="@dimen/nav_tab_icon_size"
+        android:layout_marginEnd="@dimen/about_row_icon_margin"
+        app:tint="?attr/colorOnSurfaceVariant"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/ic_stats_24dp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/statRowText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        tools:text="The average age is 34 years" />
+
+</LinearLayout>

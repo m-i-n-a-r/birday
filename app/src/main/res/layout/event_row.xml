@@ -5,9 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
+    android:clipToPadding="false"
     android:hapticFeedbackEnabled="false"
     android:paddingHorizontal="@dimen/recycler_padding"
     android:paddingVertical="@dimen/between_row_padding">
+
+    <View
+        android:id="@+id/eventImageGlow"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/image_glow"
+        android:backgroundTint="?attr/colorTertiary"
+        android:importantForAccessibility="no"
+        android:scaleX="@dimen/image_glow_scale"
+        android:scaleY="@dimen/image_glow_scale"
+        app:layout_constraintBottom_toBottomOf="@id/eventImage"
+        app:layout_constraintEnd_toEndOf="@id/eventImage"
+        app:layout_constraintStart_toStartOf="@id/eventImage"
+        app:layout_constraintTop_toTopOf="@id/eventImage" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/eventImage"
@@ -22,9 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/eventPerson"
         app:layout_constraintWidth_max="@dimen/in_row_image"
-        app:shapeAppearanceOverlay="@style/roundedImageView"
-        app:strokeColor="?attr/colorOutline"
-        app:strokeWidth="@dimen/card_stroke" />
+        app:shapeAppearanceOverlay="@style/roundedImageView" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/eventPerson"

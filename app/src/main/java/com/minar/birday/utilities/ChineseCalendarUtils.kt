@@ -12,6 +12,12 @@ interface CalendarAdapter {
 
     // Wrapper for Calendar.get
     fun get(field: Int): Int
+
+    // Wrappers for Calendar.set, Calendar.clear, Calendar.getActualMaximum and Calendar.getTimeInMillis
+    fun set(field: Int, value: Int)
+    fun clear()
+    fun getActualMaximum(field: Int): Int
+    fun getTimeInMillis(): Long
 }
 
 /**
@@ -39,6 +45,10 @@ class AndroidCalendar(private val calendar: Calendar): CalendarAdapter {
         calendar.timeInMillis = value
     }
     override fun get(field: Int): Int = calendar.get(field)
+    override fun set(field: Int, value: Int) = calendar.set(field, value)
+    override fun clear() = calendar.clear()
+    override fun getActualMaximum(field: Int): Int = calendar.getActualMaximum(field)
+    override fun getTimeInMillis(): Long = calendar.timeInMillis
 }
 
 // Return the Animal index (starting from 0 = rat) corresponding to the given date

@@ -32,7 +32,6 @@
         <item quantity="few">за %d дана</item>
         <item quantity="other">за %d дана</item>
     </plurals>
-    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
     <!-- Settings -->
     <string name="customization">Прилагођавање</string>
     <string name="app_behavior">Понашање апликације</string>
@@ -291,7 +290,6 @@
     <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <string name="appwidget_compact">Compact table</string>
     <string name="add_widget_compact">Birday - Compact</string>
-    <!-- Compact widget -->
     <!-- Search -->
     <string name="search_event">Претражите…</string>
     <string name="search_no_result_title">Нема резултата</string>
@@ -352,6 +350,4 @@
     <string name="replace_on_conflict_title">Replace on conflict</string>
     <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
     <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
-    <!-- About page, reachable from the navbar action button while in the settings -->
-    <!-- Edge blur -->
 </resources>

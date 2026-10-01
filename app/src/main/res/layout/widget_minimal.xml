@@ -30,6 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:paddingHorizontal="@dimen/widget_margin"
         android:paddingVertical="@dimen/widget_margin">
 
         <TextView

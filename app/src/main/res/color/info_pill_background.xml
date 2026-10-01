@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Translucent on purpose: the zodiac sign behind the details must still show through the pills -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:alpha="0.55" android:color="?attr/colorSecondaryContainer" />
+</selector>

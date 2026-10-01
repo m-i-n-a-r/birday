@@ -17,12 +17,15 @@ class CompactWidgetProvider : BirdayWidgetProvider() {
         }
 
     override fun onReceive(context: Context, intent: Intent) {
-        val action = intent.action
-        if (action.equals(AppWidgetManager.ACTION_APPWIDGET_UPDATE)) {
-            val mgr = AppWidgetManager.getInstance(context)
-            val cn = ComponentName(context, CompactWidgetProvider::class.java)
-            mgr.getAppWidgetIds(cn).forEach { appWidgetId ->
-                updateAppWidget(context, mgr, appWidgetId)
+        when (intent.action) {
+            AppWidgetManager.ACTION_APPWIDGET_UPDATE,
+            // Deprecated since API 29 but still the only signal for a wallpaper change: activities are
+            // recreated automatically when the Monet palette changes, widgets are not
+            @Suppress("DEPRECATION") Intent.ACTION_WALLPAPER_CHANGED -> {
+                val mgr = AppWidgetManager.getInstance(context)
+                val cn = ComponentName(context, CompactWidgetProvider::class.java)
+                val ids = mgr.getAppWidgetIds(cn)
+                ids.forEach { id -> updateAppWidget(context, mgr, id) }
             }
         }
         super.onReceive(context, intent)

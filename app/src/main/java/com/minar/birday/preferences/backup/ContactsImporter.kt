@@ -60,7 +60,10 @@ class ContactsImporter(context: Context, attrs: AttributeSet?) : Preference(cont
         if (!permission) return false
 
         // Insert the remaining events in the db and update the recycler
-        val events = contactsRepository.getEventsFromContacts(act.contentResolver)
+        val events = contactsRepository.getEventsFromContacts(
+            act.contentResolver,
+            ContactsRepository.useFullName(act)
+        )
         return if (events.isEmpty()) {
             context.runOnUiThread {
                 context.showSnackbar(context.getString(R.string.import_nothing_found))

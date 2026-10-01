@@ -50,7 +50,10 @@ class BirdayExporter(context: Context, attrs: AttributeSet?) : Preference(contex
             autoBackup: Boolean = false
         ): String {
             // TODO At the moment, the autobackup has the same name of the last saved manual backup
-            val eventDao = EventDatabase.getBirdayDatabase(context).eventDao()
+            val database = EventDatabase.getBirdayDatabase(context)
+            val eventDao = database.eventDao()
+            // The settings go in the copy too, in a table older versions ignore
+            runCatching { writeBackupSettings(context, database.openHelper.writableDatabase) }
             // Checkpoint WAL to flush DB to disk
             eventDao.checkpoint(SimpleSQLiteQuery("pragma wal_checkpoint(full)"))
             val dbFile = context.getDatabasePath("BirdayDB").absoluteFile

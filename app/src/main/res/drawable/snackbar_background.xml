@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <stroke
-        android:width="@dimen/card_stroke"
-        android:color="?attr/colorSurfaceVariant" />
-    <solid android:color="?android:colorBackground" />
+    <solid android:color="?attr/colorTonalCard" />
     <corners android:radius="@dimen/rounded_corners" />
     <padding
         android:bottom="@dimen/card_stroke"

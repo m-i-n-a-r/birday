@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The title of a group of tiles: the icon lines up with the text of the tiles below -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/preference_category_padding_start"
+    android:paddingTop="@dimen/preference_category_padding_top"
+    android:paddingEnd="@dimen/settings_row_padding"
+    android:paddingBottom="@dimen/preference_category_padding_bottom">
+
+    <ImageView
+        android:id="@android:id/icon"
+        android:layout_width="@dimen/preference_category_icon_size"
+        android:layout_height="@dimen/preference_category_icon_size"
+        android:layout_marginEnd="@dimen/preference_category_icon_gap"
+        android:importantForAccessibility="no" />
+
+    <TextView
+        android:id="@android:id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+        android:textColor="?attr/colorPrimary" />
+
+</LinearLayout>

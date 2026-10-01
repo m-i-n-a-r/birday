@@ -30,7 +30,6 @@
         <item quantity="one">%d ദിവസം കൂടെ</item>
         <item quantity="other">%d ദിവസങ്ങൾ കൂടെ</item>
     </plurals>
-    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
     <!-- Settings -->
     <string name="customization">മാറ്റം വരുത്തുക </string>
     <string name="app_behavior">ആപ്പിന്റെ പെരുമാറ്റം</string>
@@ -274,7 +273,6 @@
     <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <string name="appwidget_compact">Compact table</string>
     <string name="add_widget_compact">Birday - Compact</string>
-    <!-- Compact widget -->
     <!-- Search -->
     <string name="search_event">തിരയുക …</string>
     <string name="search_no_result_title">ഒന്നും കണ്ടെത്താൻ കഴിഞ്ഞില്ല</string>
@@ -335,6 +333,4 @@
     <string name="replace_on_conflict_title">Replace on conflict</string>
     <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
     <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
-    <!-- About page, reachable from the navbar action button while in the settings -->
-    <!-- Edge blur -->
 </resources>

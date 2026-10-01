@@ -79,7 +79,7 @@ class JsonExporter(context: Context, attrs: AttributeSet?) : Preference(context,
                     return uri.toString()
                 } else {
                     // Legacy: write to app files dir
-                    val appDir = File(context.getExternalFilesDir(null)!!.absolutePath)
+                    val appDir = File((context.getExternalFilesDir(null) ?: context.filesDir).absolutePath)
                     val fileName = "BirdayJson_${LocalDate.now()}.json"
                     val dest = File(appDir, fileName)
                     dest.writeText(json, Charsets.UTF_8)

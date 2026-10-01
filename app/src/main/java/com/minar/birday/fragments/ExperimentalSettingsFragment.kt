@@ -2,80 +2,44 @@ package com.minar.birday.fragments
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.BackEventCompat
-import androidx.activity.OnBackPressedCallback
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.activityViewModels
+import androidx.preference.ListPreference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
-import com.minar.birday.activities.MainActivity
-import com.minar.birday.utilities.addInsetsByPadding
+import com.minar.birday.preferences.PreferenceTilesDecoration
+import com.minar.birday.utilities.addNavbarClearance
+import com.minar.birday.utilities.getThemeColor
+import com.minar.birday.viewmodels.MainViewModel
 
 
 class ExperimentalSettingsFragment : PreferenceFragmentCompat() {
 
+    private val mainViewModel: MainViewModel by activityViewModels()
+
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.experimental_preferences, rootKey)
+        // The dates follow the calendar, or go back to the Gregorian ones. The listener runs
+        // before the value is saved, the refresh right after it
+        findPreference<ListPreference>("alternative_calendar")?.setOnPreferenceChangeListener { _, _ ->
+            listView.post { mainViewModel.refreshCalendars() }
+            true
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // A PreferenceFragmentCompat comes with a see through root, and two see through pages
+        // sliding over each other during a navigation read as one smeared page
+        view.setBackgroundColor(getThemeColor(android.R.attr.colorBackground, requireContext()))
+
         // Add insets for preferences
         val recyclerView = view.findViewById<RecyclerView>(androidx.preference.R.id.recycler_view)
-        recyclerView.addInsetsByPadding(bottom = true)
-
-        // Manage the predictive back between fragments
-        val predictiveBackMargin =
-            resources.getDimensionPixelSize(R.dimen.predictive_back_margin)
-        var initialTouchY = -1f
-        val fragmentBackground = this.view
-        requireActivity().onBackPressedDispatcher.addCallback(
-            viewLifecycleOwner,
-            object : OnBackPressedCallback(true) {
-
-                override fun handleOnBackProgressed(backEvent: BackEventCompat) {
-                    if (fragmentBackground == null) return
-                    val progress =
-                        MainActivity.GestureInterpolator.getInterpolation(backEvent.progress)
-                    if (initialTouchY < 0f) {
-                        initialTouchY = backEvent.touchY
-                    }
-                    val progressY = MainActivity.GestureInterpolator.getInterpolation(
-                        (backEvent.touchY - initialTouchY) / fragmentBackground.height
-                    )
-
-                    // Shift horizontally
-                    val maxTranslationX = (fragmentBackground.width / 20) - predictiveBackMargin
-                    fragmentBackground.translationX = progress * maxTranslationX *
-                            (if (backEvent.swipeEdge == BackEventCompat.EDGE_LEFT) 1 else -1)
-
-                    // Shift vertically
-                    val maxTranslationY =
-                        (fragmentBackground.height / 20) - predictiveBackMargin
-                    fragmentBackground.translationY = progressY * maxTranslationY
-
-                    // Scale down from 100% to 90%
-                    val scale = 1f - (0.1f * progress)
-                    fragmentBackground.scaleX = scale
-                    fragmentBackground.scaleY = scale
-                }
-
-                override fun handleOnBackPressed() {
-                    findNavController().popBackStack()
-                }
-
-                override fun handleOnBackCancelled() {
-                    if (fragmentBackground == null) return
-                    initialTouchY = -1f
-                    fragmentBackground.run {
-                        translationX = 0f
-                        translationY = 0f
-                        scaleX = 1f
-                        scaleY = 1f
-                    }
-                }
-            }
-        )
+        recyclerView.clipToPadding = false
+        recyclerView.addNavbarClearance()
+        // Tiles instead of dividers: the groups already tell the categories apart
+        setDivider(null)
+        recyclerView.addItemDecoration(PreferenceTilesDecoration(this))
     }
 }

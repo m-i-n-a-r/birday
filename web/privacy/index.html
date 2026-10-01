@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birday · Privacy Policy</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --card: #171a21;
+    --text: #e8e9ec;
+    --muted: #9aa0ab;
+    --accent: #7c9cff;
+    --border: #262a33;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+  header {
+    margin-bottom: 40px;
+  }
+  header .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  header .brand .dot {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--accent), #4a5eea);
+    flex-shrink: 0;
+  }
+  header .brand span {
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--muted);
+    letter-spacing: 0.2px;
+  }
+  h1 {
+    font-size: 30px;
+    margin: 0 0 6px;
+    letter-spacing: -0.3px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: 14px;
+  }
+  h2 {
+    font-size: 19px;
+    margin: 40px 0 12px;
+    color: var(--text);
+  }
+  p, li {
+    color: #ccced4;
+    font-size: 15.5px;
+  }
+  ul {
+    padding-left: 22px;
+    margin: 10px 0;
+  }
+  li {
+    margin: 6px 0;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 22px;
+    margin: 16px 0;
+  }
+  .card h3 {
+    margin: 0 0 6px;
+    font-size: 15.5px;
+    color: var(--text);
+  }
+  .card p {
+    margin: 0;
+    font-size: 14.5px;
+    color: var(--muted);
+  }
+  .pill {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .pill.local { background: rgba(124,156,255,0.15); color: var(--accent); }
+  .pill.none { background: rgba(110,220,150,0.15); color: #7bdba0; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13.5px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand">
+      <div class="dot"></div>
+      <span>m.i.n.a.r. · Birday</span>
+    </div>
+    <h1>Privacy Policy</h1>
+    <div class="updated">Last updated: September 24, 2026</div>
+  </header>
+
+  <p>
+    Birday is an open source Android app to remember birthdays and other recurring events, built by
+    an independent developer (m.i.n.a.r.). This page explains, in plain language, what data the app
+    touches and what it does with it. The short version: <strong>Birday has no server backend, no
+    account, and no analytics or advertising SDK, and it does not even hold the permission to access
+    the Internet.</strong> Everything you save stays in the app's own private storage on your phone,
+    and it leaves the device only when you export or share it yourself, or through Android's own
+    backup, described below.
+  </p>
+
+  <h2>Network access</h2>
+  <div class="card">
+    <h3>Network<span class="pill none">None</span></h3>
+    <p>
+      Birday does not declare the INTERNET permission, so it has no way to send or receive anything
+      over the network. The only network-related permission it lists is the ability to check whether
+      a connection is available, added by Android's WorkManager library, which Birday uses to
+      schedule background tasks; that permission cannot be used to transfer data. Links in the app,
+      such as the Play Store page or the source code repository, open in your browser or in the
+      store app, outside of Birday.
+    </p>
+  </div>
+
+  <h2>Contacts</h2>
+  <div class="card">
+    <h3>Importing from your contacts<span class="pill local">Only if you allow it</span></h3>
+    <p>
+      The contacts permission is requested only when you use a feature that needs it, and the app
+      works without it. When granted, Birday reads the name parts of your contacts (prefix, first,
+      middle and last name, suffix), the dates saved in them as birthdays, anniversaries or other
+      events, together with their custom labels, and the contact photo, scaled down to a small
+      thumbnail. Phone numbers, email addresses, postal addresses and every other field are never
+      read.
+    </p>
+    <p>
+      This happens when you import from contacts, when you type a name while adding an event (to
+      suggest matching contacts), and when you open the details of an event (to find a contact with
+      the same name and offer a button that opens it in your contacts app). Events and photos are
+      saved in Birday only when you import them.
+    </p>
+  </div>
+  <div class="card">
+    <h3>Automatic import<span class="pill local">Optional, off by default</span></h3>
+    <p>
+      If you turn on automatic import in the settings, Birday repeats the contacts import when you
+      open the app, and a weekly background task does the same if the app has not been opened for
+      a week. Turning the option off cancels the background task.
+    </p>
+  </div>
+
+  <h2>Calendar</h2>
+  <div class="card">
+    <h3>Importing and exporting<span class="pill local">Only when you ask</span></h3>
+    <p>
+      The calendar permissions are requested only when you import from or export to the calendar.
+      Importing reads the events of the coming year from your phone's calendars (title, description,
+      date and repetition rule), keeps only the ones that repeat every year, and shows them to you
+      so you can pick which to add. Exporting creates a calendar named after the app on your device,
+      as a local calendar that is not linked to any online account, and writes your events into it.
+      A long press on the export option deletes that calendar.
+    </p>
+  </div>
+
+  <h2>Data that stays entirely on your device</h2>
+  <p>These are kept locally to make the app work, and never leave your phone unless you move them yourself:</p>
+
+  <div class="card">
+    <h3>Your events<span class="pill local">Local only</span></h3>
+    <p>
+      Names, dates, event types, notes, favorites and pictures are stored in a database in the app's
+      private storage. Statistics and countdowns are computed on the device from those same entries.
+    </p>
+  </div>
+  <div class="card">
+    <h3>Event pictures<span class="pill none">No permission at all</span></h3>
+    <p>
+      To give an event a picture, you choose one through Android's system photo picker, which hands
+      the app only the image you selected; no storage or media permission is requested. The image is
+      cropped on the device, and the result is saved inside the event. The temporary copy made while
+      cropping lives in the app's cache.
+    </p>
+  </div>
+  <div class="card">
+    <h3>Notifications, alarms and widgets<span class="pill local">Local only</span></h3>
+    <p>
+      Reminders are scheduled on your device and posted by your phone, and they can include the
+      names and the picture of the upcoming events (pictures can be hidden in the settings). The
+      alarm and boot permissions only serve to refresh the widgets right after midnight and to
+      restore that schedule after a restart. The widgets show your upcoming events on the home
+      screen, so they are visible to anyone who can see your screen. Asking to ignore battery
+      optimizations is optional and only makes reminders more reliable.
+    </p>
+  </div>
+  <div class="card">
+    <h3>Your settings<span class="pill local">Local only</span></h3>
+    <p>
+      The theme, notification preferences and every other option are stored in the app's private
+      storage. So are the launch counter and the date of first launch, used only to decide when to
+      ask you to rate the app.
+    </p>
+  </div>
+  <div class="card">
+    <h3>Quick apps<span class="pill none">No permission at all</span></h3>
+    <p>
+      The quick apps panel shows shortcuts to a few messaging apps (WhatsApp, Telegram, Viber,
+      Signal, Instagram, Messenger and Threema). To know which ones to show, Birday asks Android
+      whether those specific apps are installed, and nothing else: it never sees the full list of
+      apps on your phone. The dialer, messages and email shortcuts simply open those apps, and
+      nothing is sent on your behalf.
+    </p>
+  </div>
+
+  <h2>Backups and exports</h2>
+  <div class="card">
+    <h3>Files you export<span class="pill local">Only when you ask</span></h3>
+    <p>
+      You can export your events as a Birday backup, a JSON file or a CSV file. You choose where each
+      file is saved through Android's system file picker, and after saving, the share sheet opens so
+      you can send it wherever you want, if you want. The Birday backup is a copy of the whole
+      database, pictures included, so keep these files somewhere you trust. Importing reads only the
+      file you pick.
+    </p>
+  </div>
+  <div class="card">
+    <h3>Automatic backup<span class="pill local">Optional, off by default</span></h3>
+    <p>
+      An experimental option saves a Birday backup automatically when the app is closed, in the
+      location you picked for your last manual backup, or in the app's own folder on your device if
+      you never picked one.
+    </p>
+  </div>
+  <div class="card">
+    <h3>Android backup<span class="pill local">Managed by Android</span></h3>
+    <p>
+      Birday allows Android's built-in backup, so your events and settings can be included in your
+      device backup and moved to a new phone during setup. Whether this happens depends on your
+      phone's backup settings, not on Birday, and the backup is handled by Android and by the
+      account you use for it, under that provider's policy. The developer has no access to it.
+    </p>
+  </div>
+
+  <h2>What Birday does <em>not</em> do</h2>
+  <ul>
+    <li>No account or sign-up, ever.</li>
+    <li>No advertising, no ad SDKs, no advertising identifiers.</li>
+    <li>No analytics, telemetry, or crash-reporting SDK of any kind.</li>
+    <li>No Internet permission, so nothing can be sent to the developer or to anyone else.</li>
+    <li>No location access, and no access to your photos or files beyond what you hand it yourself.</li>
+    <li>No reading of phone numbers, email addresses or other contact details beyond names, dates and photos.</li>
+    <li>No selling or sharing of data with third parties, because none is collected.</li>
+  </ul>
+
+  <h2>Open source</h2>
+  <p>
+    Birday's source code is public and released under the GPL 3.0 license, so everything described
+    on this page can be verified on
+    <a href="https://github.com/m-i-n-a-r/birday">GitHub</a>.
+  </p>
+
+  <h2>Children's privacy</h2>
+  <p>
+    Birday is not directed at children and does not knowingly collect personal data from anyone, of
+    any age. The app has no account system and no network access, so there is no mechanism by which
+    it could.
+  </p>
+
+  <h2>Data retention &amp; deletion</h2>
+  <p>
+    Everything described above lives in your device's local storage. You can delete all your events
+    from the experimental settings at any time, and uninstalling Birday (or clearing its app data from Android
+    settings) permanently deletes all of it. Files you exported, the calendar created by the export
+    and your device backups stay where they are, and can be removed from there. There is nothing on
+    our end to delete, because nothing is stored on our end.
+  </p>
+
+  <h2>Changes to this policy</h2>
+  <p>
+    If this policy changes, the "last updated" date above will change accordingly. Meaningful
+    changes will also be reflected in the app's release notes.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Questions about this policy or how Birday handles data: reach out at
+    <a href="mailto:minar.tastic@gmail.com">minar.tastic@gmail.com</a>.
+  </p>
+
+  <footer>
+    Birday · m.i.n.a.r. · <a href="mailto:minar.tastic@gmail.com">minar.tastic@gmail.com</a>
+  </footer>
+
+</div>
+</body>
+</html>

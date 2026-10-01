@@ -2,7 +2,6 @@ package com.minar.birday.fragments.dialogs
 
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
-import android.media.ThumbnailUtils
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -17,6 +16,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -29,6 +29,8 @@ import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
+import com.minar.birday.utilities.CASCADE_SHEET_DELAY
+import com.minar.birday.utilities.animateChildrenCascade
 import com.minar.birday.adapters.ContactsFilterArrayAdapter
 import com.minar.birday.databinding.BottomSheetInsertEventBinding
 import com.minar.birday.model.ContactInfo
@@ -47,12 +49,15 @@ import java.util.*
 @OptIn(ExperimentalStdlibApi::class)
 class InsertEventBottomSheet(
     private val act: MainActivity,
-    private val event: EventResult? = null
+    private val event: EventResult? = null,
+    // A new event with its fields already filled, as one received in a file
+    private val template: Event? = null,
 ) :
     BottomSheetDialogFragment() {
     private var _binding: BottomSheetInsertEventBinding? = null
     private val binding get() = _binding!!
-    private lateinit var resultLauncher: ActivityResultLauncher<String>
+    private lateinit var pickImageLauncher: ActivityResultLauncher<PickVisualMediaRequest>
+    private lateinit var cropImageLauncher: ActivityResultLauncher<Uri>
     private var imageChosen = false
     private val viewModel: InsertEventViewModel by viewModels()
 
@@ -64,15 +69,19 @@ class InsertEventBottomSheet(
         // Inflate the bottom sheet, initialize the shared preferences and the recent options list
         _binding = BottomSheetInsertEventBinding.inflate(inflater, container, false)
 
-        // Result launcher stuff
-        resultLauncher =
-            registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-                // Handle the returned Uri (atm, the image can't be cropped)
-                if (uri != null) {
-                    imageChosen = true
-                    setImage(uri)
-                }
+        // Two-step flow: pick an image from the gallery, then hand it to our crop activity.
+        // Keeping them split makes each contract trivial and respects the library's recommended
+        // pattern of embedding CropImageView inside an app-owned activity.
+        pickImageLauncher =
+            registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+                if (uri != null) cropImageLauncher.launch(uri)
             }
+        cropImageLauncher = registerForActivityResult(ImageCropContract()) { croppedUri ->
+            if (croppedUri != null) {
+                imageChosen = true
+                setImage(croppedUri)
+            }
+        }
         return binding.root
     }
 
@@ -103,6 +112,20 @@ class InsertEventBottomSheet(
         var typeValue = EventCode.BIRTHDAY.name
         positiveButton.isEnabled = false
 
+        // The calendar of the event: its own when it has one, else the one in the settings. With
+        // none chosen the switch never shows and the event keeps what it had
+        val calendarGroup = binding.calendarGroup
+        val eventCalendar =
+            EventCalendar.fromKey(event?.calendar ?: template?.calendar) ?: alternativeCalendar(act)
+        val calendarAvailable = alternativeCalendar(act) != null && eventCalendar != null
+        // The user's choice, kept aside while "without year" forces the Gregorian calendar
+        var alternativeChosen =
+            if (event == null && template == null) true else (event?.calendar ?: template?.calendar) != null
+        if (calendarAvailable) {
+            calendarGroup.visibility = View.VISIBLE
+            binding.calendarAlternative.text = getString(eventCalendar.title)
+        }
+
         if (event != null) {
             typeValue = event.type!!
             nameValue = event.name
@@ -117,20 +140,47 @@ class InsertEventBottomSheet(
             val name = binding.nameEvent
             val surname = binding.surnameEvent
             val eventDate = binding.dateEvent
-            val countYear = binding.countYearSwitch
+            val countYear = binding.countYearGroup
             type.setText(typeValue, false)
             name.setText(nameValue)
             surname.setText(surnameValue)
-            countYear.isChecked = countYearValue
+            countYear.check(if (countYearValue) R.id.countYearOn else R.id.countYearOff)
             val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
-            eventDate.setText(eventDateValue.format(formatter))
+            // Hide the year in the field if it doesn't matter
+            eventDate.setText(
+                if (countYearValue) eventDateValue.format(formatter)
+                else forceMonthDayFormat(eventDateValue)
+            )
             imageChosen = setEventImageOrPlaceholder(event, eventImage)
+            positiveButton.isEnabled = true
+        } else if (template != null) {
+            typeValue = template.type ?: EventCode.BIRTHDAY.name
+            nameValue = template.name
+            surnameValue = template.surname ?: ""
+            countYearValue = template.yearMatter ?: true
+            eventDateValue = template.originalDate
+
+            // Set the fields, the sheet stays an insert one
+            binding.nameEvent.setText(nameValue)
+            binding.surnameEvent.setText(surnameValue)
+            binding.countYearGroup.check(if (countYearValue) R.id.countYearOn else R.id.countYearOff)
+            val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
+            binding.dateEvent.setText(
+                if (countYearValue) eventDateValue.format(formatter)
+                else forceMonthDayFormat(eventDateValue)
+            )
+            imageChosen = setEventImageOrPlaceholder(eventToResult(template), eventImage)
             positiveButton.isEnabled = true
         }
         positiveButton.setOnClickListener {
             var image: ByteArray? = null
             if (imageChosen)
                 image = bitmapToByteArray(eventImage.drawable.toBitmap())
+            // Without the year there's no day to convert from
+            val calendarValue =
+                if (!calendarAvailable) event?.calendar ?: template?.calendar
+                else if (alternativeChosen && countYearValue) eventCalendar.key
+                else null
             // Use the data to create an event object and insert it in the db
             val tuple = if (event != null) Event(
                 id = event.id,
@@ -141,7 +191,8 @@ class InsertEventBottomSheet(
                 surname = surnameValue.smartFixName(),
                 favorite = event.favorite,
                 notes = event.notes,
-                image = image
+                image = image,
+                calendar = calendarValue
             ) else
                 Event(
                     id = 0,
@@ -151,6 +202,8 @@ class InsertEventBottomSheet(
                     yearMatter = countYearValue,
                     type = typeValue,
                     image = image,
+                    notes = template?.notes,
+                    calendar = calendarValue,
                 )
             // Insert using another thread
             val thread = Thread {
@@ -172,7 +225,7 @@ class InsertEventBottomSheet(
         val name = binding.nameEvent
         val surname = binding.surnameEvent
         val eventDate = binding.dateEvent
-        val countYear = binding.countYearSwitch
+        val countYear = binding.countYearGroup
 
         // Set the dropdown to show the available event types
         val items = getAvailableTypes(act)
@@ -185,12 +238,14 @@ class InsertEventBottomSheet(
                     typeValue = items[position].codeName.name
                     // Automatically uncheck "the year matters" for name days
                     if (typeValue == EventCode.NAME_DAY.name) {
-                        countYear.isChecked = false
-                        countYear.isEnabled = false
+                        countYear.check(R.id.countYearOff)
+                        binding.countYearOn.isEnabled = false
+                        binding.countYearOff.isEnabled = false
                         countYearValue = false
                     } else {
-                        countYear.isChecked = true
-                        countYear.isEnabled = true
+                        countYear.check(R.id.countYearOn)
+                        binding.countYearOn.isEnabled = true
+                        binding.countYearOff.isEnabled = true
                         countYearValue = true
                     }
                     if (!imageChosen)
@@ -252,13 +307,40 @@ class InsertEventBottomSheet(
         val lastDate = Calendar.getInstance()
         lastDate.set(eventDateValue.year, eventDateValue.monthValue - 1, eventDateValue.dayOfMonth)
 
+        // Without the year there's no day to convert from: Gregorian, and nothing else to pick
+        fun updateCalendarGroup() {
+            calendarGroup.check(
+                if (countYearValue && alternativeChosen) R.id.calendarAlternative
+                else R.id.calendarGregorian
+            )
+            binding.calendarGregorian.isEnabled = countYearValue
+            binding.calendarAlternative.isEnabled = countYearValue
+        }
+        updateCalendarGroup()
+        calendarGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
+            // Only a choice of the user, not the Gregorian forced by "without year"
+            if (!isChecked || !countYearValue) return@addOnButtonCheckedListener
+            alternativeChosen = checkedId == R.id.calendarAlternative
+        }
+
         // Update the boolean value on each click
-        countYear.setOnCheckedChangeListener { _, isChecked ->
-            countYearValue = isChecked
+        countYear.addOnButtonCheckedListener { _, checkedId, isChecked ->
+            // The group reports the button leaving the selection too, only the incoming one counts
+            if (!isChecked) return@addOnButtonCheckedListener
+            countYearValue = checkedId == R.id.countYearOn
+            updateCalendarGroup()
+            // Reformat the date field, if already filled, to show or hide the year
+            if (!eventDate.text.isNullOrBlank())
+                eventDate.setText(
+                    if (countYearValue) eventDateValue.format(formatter)
+                    else forceMonthDayFormat(eventDateValue)
+                )
         }
 
         eventImage.setOnClickListener {
-            resultLauncher.launch("image/*")
+            pickImageLauncher.launch(
+                PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+            )
         }
 
         eventDate.setOnClickListener {
@@ -292,16 +374,18 @@ class InsertEventBottomSheet(
                         val day = date.get(Calendar.DAY_OF_MONTH)
                         eventDateValue = LocalDate.of(year, month, day)
                         val todayDate = LocalDate.now()
-
-                        // Force the date to be max one day after today, to consider different time zones
-                        while (eventDateValue.isAfter(todayDate.plusDays(1))) {
-                            eventDateValue = LocalDate.of(
-                                todayDate.year - 1,
-                                eventDateValue.monthValue,
-                                eventDateValue.dayOfMonth
-                            )
+                        // The current year means the real one is not known, and a year still to
+                        // come cannot be one to count from
+                        if (typeValue != EventCode.NAME_DAY.name) {
+                            val yearKnown =
+                                year != todayDate.year && !eventDateValue.isAfter(todayDate)
+                            countYear.check(if (yearKnown) R.id.countYearOn else R.id.countYearOff)
+                            countYearValue = yearKnown
                         }
-                        eventDate.setText(eventDateValue.format(formatter))
+                        eventDate.setText(
+                            if (countYearValue) eventDateValue.format(formatter)
+                            else forceMonthDayFormat(eventDateValue)
+                        )
                         // The last selected date is saved if the dialog is reopened
                         lastDate.set(eventDateValue.year, month - 1, day)
                     }
@@ -316,7 +400,7 @@ class InsertEventBottomSheet(
         // Validate each field in the form with the same watcher
         var nameCorrect = false
         var surnameCorrect = true // Surname is not mandatory
-        var eventDateCorrect = event != null
+        var eventDateCorrect = event != null || template != null
         val watcher = afterTextChangedWatcher { editable ->
             when {
                 editable === name.editableText -> {
@@ -357,6 +441,8 @@ class InsertEventBottomSheet(
         name.addTextChangedListener(watcher)
         surname.addTextChangedListener(watcher)
         eventDate.addTextChangedListener(watcher)
+
+        binding.insertEventBottomSheet.animateChildrenCascade(startDelay = CASCADE_SHEET_DELAY)
     }
 
     override fun onDestroyView() {
@@ -365,7 +451,7 @@ class InsertEventBottomSheet(
         _binding = null
     }
 
-    // Set the chosen image in the circular image
+    // Set the chosen image in the circular image (called after crop, the bitmap is already cropped)
     private fun setImage(data: Uri) {
         var bitmap: Bitmap? = null
         try {
@@ -379,19 +465,7 @@ class InsertEventBottomSheet(
         } catch (_: IOException) {
         }
         if (bitmap == null) return
-
-        // Bitmap ready. Avoid images larger than 450*450
-        var dimension: Int = getBitmapSquareSize(bitmap)
-        if (dimension > 450) dimension = 450
-
-        val resizedBitmap = ThumbnailUtils.extractThumbnail(
-            bitmap,
-            dimension,
-            dimension,
-            ThumbnailUtils.OPTIONS_RECYCLE_INPUT,
-        )
-        val image = binding.imageEvent
-        image.setImageBitmap(resizedBitmap)
+        binding.imageEvent.setImageBitmap(bitmap)
     }
 
     private inline fun afterTextChangedWatcher(crossinline afterTextChanged: (editable: Editable) -> Unit) =

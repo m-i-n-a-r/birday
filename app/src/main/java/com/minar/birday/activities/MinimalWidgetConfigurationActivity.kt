@@ -12,7 +12,6 @@ import android.view.View
 import android.widget.RemoteViews
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import com.minar.birday.R
 import com.minar.birday.databinding.ActivityMinimalWidgetConfigurationBinding
@@ -21,6 +20,7 @@ import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.addInsetsByPadding
 import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
+import com.minar.birday.utilities.applyUserTheme
 import com.minar.birday.utilities.formatEventList
 import com.minar.birday.utilities.getNextYears
 import com.minar.birday.utilities.maxNumberOfAdditionalNotificationDays
@@ -44,8 +44,6 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
 
         // Retrieve the shared preferences
-        val theme = sharedPrefs.getString("theme_color", "system")
-        val accent = sharedPrefs.getString("accent_color", "system")
         val avdLooping = sharedPrefs.getBoolean("loop_avd", true)
         val surnameFirst = sharedPrefs.getBoolean("surname_first", false)
 
@@ -62,50 +60,7 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
         }
 
         // Set the base theme and the accent
-        when (theme) {
-            "system" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-            "dark", "black" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
-
-        // Set an amoled theme or a normal theme depending on amoled mode
-        if (theme == "black") {
-            setTheme(R.style.AppTheme)
-            when (accent) {
-                "monet" -> setTheme(R.style.AppTheme_Monet_PerfectDark)
-                "system" -> setTheme(R.style.AppTheme_System_PerfectDark)
-                "brown" -> setTheme(R.style.AppTheme_Brown_PerfectDark)
-                "blue" -> setTheme(R.style.AppTheme_Blue_PerfectDark)
-                "green" -> setTheme(R.style.AppTheme_Green_PerfectDark)
-                "orange" -> setTheme(R.style.AppTheme_Orange_PerfectDark)
-                "yellow" -> setTheme(R.style.AppTheme_Yellow_PerfectDark)
-                "teal" -> setTheme(R.style.AppTheme_Teal_PerfectDark)
-                "violet" -> setTheme(R.style.AppTheme_Violet_PerfectDark)
-                "pink" -> setTheme(R.style.AppTheme_Pink_PerfectDark)
-                "lightBlue" -> setTheme(R.style.AppTheme_LightBlue_PerfectDark)
-                "red" -> setTheme(R.style.AppTheme_Red_PerfectDark)
-                "lime" -> setTheme(R.style.AppTheme_Lime_PerfectDark)
-                "crimson" -> setTheme(R.style.AppTheme_Crimson_PerfectDark)
-                else -> setTheme(R.style.AppTheme_PerfectDark)
-            }
-        } else
-            when (accent) {
-                "monet" -> setTheme(R.style.AppTheme_Monet)
-                "system" -> setTheme(R.style.AppTheme_System)
-                "brown" -> setTheme(R.style.AppTheme_Brown)
-                "blue" -> setTheme(R.style.AppTheme_Blue)
-                "green" -> setTheme(R.style.AppTheme_Green)
-                "orange" -> setTheme(R.style.AppTheme_Orange)
-                "yellow" -> setTheme(R.style.AppTheme_Yellow)
-                "teal" -> setTheme(R.style.AppTheme_Teal)
-                "violet" -> setTheme(R.style.AppTheme_Violet)
-                "pink" -> setTheme(R.style.AppTheme_Pink)
-                "lightBlue" -> setTheme(R.style.AppTheme_LightBlue)
-                "red" -> setTheme(R.style.AppTheme_Red)
-                "lime" -> setTheme(R.style.AppTheme_Lime)
-                "crimson" -> setTheme(R.style.AppTheme_Crimson)
-                else -> setTheme(R.style.AppTheme) // Default (aqua)
-            }
+        applyUserTheme(sharedPrefs)
 
         // Initialize the binding
         binding = ActivityMinimalWidgetConfigurationBinding.inflate(layoutInflater)
@@ -469,7 +424,7 @@ class MinimalWidgetConfigurationActivity : AppCompatActivity() {
             }.start()
 
             val resultValue = Intent().putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId)
-            setResult(Activity.RESULT_OK, resultValue)
+            setResult(RESULT_OK, resultValue)
             finish()
         }
     }

@@ -31,6 +31,11 @@ data class Event(
     val notes: String? = "",
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     val image: ByteArray? = null,
+    // Null for the Gregorian calendar, else the key of an EventCalendar
+    @Expose
+    val calendar: String? = null,
+    // Computed from the calendar and stored, since SQL can't: see refreshCalendarDates()
+    val nextDateOverride: LocalDate? = null,
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -44,6 +49,7 @@ data class Event(
         if (surname != other.surname) return false
         if (originalDate != other.originalDate) return false
         if (!image.contentEquals(other.image)) return false
+        if (calendar != other.calendar) return false
 
         return true
     }
@@ -58,6 +64,7 @@ data class Event(
         result = 31 * result + originalDate.hashCode()
         result = 31 * result + (notes?.hashCode() ?: 0)
         result = 31 * result + (image?.contentHashCode() ?: 0)
+        result = 31 * result + (calendar?.hashCode() ?: 0)
         return result
     }
 }

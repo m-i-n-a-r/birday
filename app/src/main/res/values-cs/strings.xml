@@ -34,7 +34,6 @@
         <item quantity="many">Zbývá %d dní</item>
         <item quantity="other">Zbývá %d dní</item>
     </plurals>
-    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
     <!-- Settings -->
     <string name="customization">Přizpůsobení</string>
     <string name="app_behavior">Chování aplikace</string>
@@ -278,7 +277,6 @@
     <string name="show_following_widget_description">Zobrazit událost či události následující tu předchozí v dalším řádku</string>
     <string name="appwidget_compact">Compact table</string>
     <string name="add_widget_compact">Birday - Compact</string>
-    <!-- Compact widget -->
     <!-- Search -->
     <string name="search_event">Vyhledávání…</string>
     <string name="search_no_result_title">Nebyly nalezeny žádné výsledky</string>
@@ -339,6 +337,4 @@
     <string name="replace_on_conflict_title">Nahradit v konfliktu</string>
     <string name="replace_on_conflict_description_off">Při importu nebude duplicitní událost nahrazena importovanou duplicitou</string>
     <string name="replace_on_conflict_description_on">Při importu nebude duplicitní událost nahrazena importovanou duplicitou</string>
-    <!-- About page, reachable from the navbar action button while in the settings -->
-    <!-- Edge blur -->
 </resources>

@@ -174,8 +174,8 @@
     <string name="no_default_dialer">Kunne ikke finne standardapp for taleanrop!</string>
     <string name="no_default_sms">Kunne ikke finne standardapp for SMS!</string>
     <string name="might_have_missed">You might have missed:</string>
-    <!-- Statistics -->
     <string name="did_you_know">Visste du?</string>
+    <!-- Statistics -->
     <string name="age_average">Gjennomsnittlig alder er %s</string>
     <string name="oldest_person">Den eldste personen er %s</string>
     <string name="youngest_person">Den yngste personen er %s</string>
