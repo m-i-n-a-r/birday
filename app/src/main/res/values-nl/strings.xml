@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Welkom bij Birday</string>
-    <string name="app_name_extended">Birday - Event Manager</string>
+    <string name="app_name_extended">Birday - Evenement Beheerder</string>
     <string name="leave_review_title">Beordeel Birday</string>
     <string name="leave_review_subtitle">Laat een review achter om mij te helpen met Birday. Deze app is, naast de donaties, geheel gratis en reclamevrij!</string>
     <string name="yes_review">Beoordelen</string>
@@ -15,7 +15,7 @@
     <string name="add_favorite">Toevoegen aan favorieten</string>
     <string name="stats">Statistieken</string>
     <string name="no_stats">Geen statistieken beschikbaar!</string>
-    <string name="stats_summary">Stats summary</string>
+    <string name="stats_summary">Overzicht statistieken</string>
     <string name="no_stats_description">Je hebt te weinig evenementen om statistieken te laten zien. Voeg er een aantal toe en kom dan terug!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday herinnert je aan %d evenement</item>
@@ -40,7 +40,7 @@
     <string name="app_behavior">App gedrag</string>
     <string name="additional_notification_name">Aanvullende notificatie</string>
     <string name="additional_notification_description">Stuur een aantal dagen voor de gebeurtenis een aanvullende notificatie. %s</string>
-    <string name="no_additional_notification">No additional notification</string>
+    <string name="no_additional_notification">Geen aanvullende notificatie</string>
     <string name="one_day_before">Een dag van tevoren</string>
     <string name="two_days_before">Twee dagen van tevoren</string>
     <string name="three_days_before">Drie dagen van tevoren</string>
@@ -54,12 +54,12 @@
     <string name="vibration_name">Trilling</string>
     <string name="vibration_description_on">Tril wanneer een knop wordt ingedrukt</string>
     <string name="vibration_description_off">Geen trillingen wanneer een knop wordt ingedrukt</string>
-    <string name="date_format_name">Date format</string>
+    <string name="date_format_name">Datumweergave</string>
     <string name="notification_hour_name">Notificatie tijdstip</string>
     <string name="notification_hour_description">%s \n\nHoud er rekening mee dat de notificaties wellicht niet werken op Huawei, Xiaomi of OnePlus apparaten. Zie dontkillmyapp.com voor meer informatie en mogelijke oplossingen.</string>
-    <string name="accent_description">Change the default accent color</string>
+    <string name="accent_description">Verander de standaard accentkleur</string>
     <string name="accent_name">Accentkleur</string>
-    <string name="theme_description">Use a dark, light or automatic app theme</string>
+    <string name="theme_description">Gebruik een donker, licht of automatisch app thema</string>
     <string name="theme_name">App thema</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Aqua</string>
@@ -86,7 +86,7 @@
     <string name="import_contacts_description">Zorg er dus voor dat je het jaar aanpast om de meest accurate statistieken te krijgen!</string>
     <string name="import_success">Het importeren is gelukt!</string>
     <string name="import_nothing_found">Geen evenementen gevonden!</string>
-    <string name="import_failed">Something went wrong!</string>
+    <string name="import_failed">Er ging iets mis!</string>
     <string name="missing_permission_contacts">Toestemming tot contacten is geweigerd. Probeer het opnieuw of geef handmatig toestemming,
         anders werkt het importeren vanuit contacten niet!</string>
     <string name="missing_permission_contacts_forever">Birday kan je contacten niet importeren en ook niet opnieuw om toestemming vragen,
@@ -102,7 +102,7 @@
     <string name="birday_import_newer_backup">This backup comes from a newer version of Birday: update the app to import it</string>
     <string name="birday_export_success">Exporteren voltooid!</string>
     <string name="birday_export_failure">Exporteren mislukt. Oeps!</string>
-    <string name="birday_export_nothing_found">Nothing to export!</string>
+    <string name="birday_export_nothing_found">Niets om te exporteren!</string>
     <string name="surname_first">Achternaam voor eerst</string>
     <string name="surname_first_description_on">Laat de achternaam voor de naam zien</string>
     <string name="surname_first_description_off">Laat de naam voor de achternaam zien</string>
@@ -149,17 +149,17 @@
     <string name="insert_surname_hint">Achternaam</string>
     <string name="insert_date_hint">Selecteer een datum</string>
     <string name="invalid_value_name">Ongeldige naam!</string>
-    <string name="consider_year">Consider the year</string>
+    <string name="consider_year">Overweeg het jaar</string>
     <string name="event_type_hint">Gebeurtenistype</string>
     <string name="birthday">Verjaardag</string>
     <string name="anniversary">Huwelijk</string>
     <string name="death_anniversary">Sterfdag</string>
-    <string name="festivity">Festivity</string>
+    <string name="festivity">Feestelijk</string>
     <string name="name_day">Naamdag</string>
     <string name="other">Ander</string>
     <!-- Event actions -->
     <string name="event_actions">Acties</string>
-    <string name="event_actions_description">Here you can change or remove this event!</string>
+    <string name="event_actions_description">hier kun je eenvoudig de gebeurtenis veranderen of verwijderen!</string>
     <string name="edit_event">Gebeurtenis wijzigen</string>
     <string name="delete_event">Gebeurtenis verwijderen</string>
     <string name="update_event">Gebeurtenis bijwerken</string>
@@ -182,7 +182,7 @@
     <string name="no_default_dialer">Geen standaard telefoon app gevonden!</string>
     <string name="no_default_sms">Geen standaard sms app gevonden!</string>
     <string name="might_have_missed">Je hebt misschien gemist:</string>
-    <string name="did_you_know">Did you know?</string>
+    <string name="did_you_know">Wist je dat?</string>
     <!-- Statistics -->
     <string name="age_average">De gemiddelde leeftijd is %s</string>
     <string name="oldest_person">De oudste persoon is %s</string>
@@ -238,7 +238,7 @@
         <item quantity="other">%d jaren</item>
     </plurals>
     <string name="born_in">geboren in</string>
-    <string name="and">and</string>
+    <string name="and">en</string>
     <plurals name="event">
         <item quantity="one">evenement: %s</item>
         <item quantity="other">evenementen: %s</item>
@@ -264,10 +264,10 @@
         Birday doet het voor je als je toestemming geeft tot je contacten. Veel plezier!</string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Aankomende evenementen</string>
-    <string name="add_widget">Birday - Upcoming</string>
+    <string name="add_widget">Birday - aankomend</string>
     <string name="dark_widget_name">Donkere widget</string>
     <string name="dark_widget_description_on">De widget gebruikt een donker thema</string>
-    <string name="dark_widget_description_off">The widget uses the light theme</string>
+    <string name="dark_widget_description_off">De widget maakt gebruik van een duidelijk thema</string>
     <string name="widget_configuration_title">Widget configuratie</string>
     <string name="widget_configuration_description">Configureer de widget op basis van uw stijl</string>
     <string name="widget_background_title">Achtergrond</string>
