@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Benvingut a Birday</string>
-    <string name="app_name_extended">Birday - Event Manager</string>
+    <string name="app_name_extended">Birday - Gestor d\'esdeveniments</string>
     <string name="leave_review_title">Ressenya Birday</string>
     <string name="leave_review_subtitle">Deixa una ressenya per ajudar-me amb l\'aplicació. Tingues en compte que, a banda de les donacions, aquesta aplicació és totalment gratuïta i sense anuncis!</string>
     <string name="yes_review">Ressenya!</string>
@@ -15,7 +15,7 @@
     <string name="add_favorite">Afegir als preferits</string>
     <string name="stats">Estadístiques</string>
     <string name="no_stats">No hi ha estadístiques per mostrar!</string>
-    <string name="stats_summary">Stats summary</string>
+    <string name="stats_summary">Resum d\'estadístiques</string>
     <string name="no_stats_description">No tens prou esdeveniments per generar estadístiques. Afegeix-ne alguns i torna més tard!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday t\'ajuda a recordar un total de %d esdeveniment</item>
@@ -40,7 +40,7 @@
     <string name="app_behavior">Comportament de l\'aplicació</string>
     <string name="additional_notification_name">Notificació addicional</string>
     <string name="additional_notification_description">Enviar una notificació addicional dies abans de l\'esdeveniment. %s</string>
-    <string name="no_additional_notification">No additional notification</string>
+    <string name="no_additional_notification">Sense notificació addicional</string>
     <string name="one_day_before">Un dia abans</string>
     <string name="two_days_before">Dos dies abans</string>
     <string name="three_days_before">Tres dies abans</string>
@@ -54,12 +54,12 @@
     <string name="vibration_name">Vibració</string>
     <string name="vibration_description_on">Vibrar quan es prem un botó</string>
     <string name="vibration_description_off">No vibrar quan es prem un botó</string>
-    <string name="date_format_name">Date format</string>
+    <string name="date_format_name">Format de data</string>
     <string name="notification_hour_name">Hora de notificació</string>
     <string name="notification_hour_description">%s \n\nTingues en compte que la notificació pot no funcionar quan el sistema elimina l\'aplicació en alguns dispositius Huawei, Xiaomi i OnePlus. Consulta dontkillmyapp.com per obtenir més informació</string>
-    <string name="accent_description">Change the default accent color</string>
+    <string name="accent_description">Canviar el color d\'accent predeterminat</string>
     <string name="accent_name">Color d\'accentuació</string>
-    <string name="theme_description">Use a dark, light or automatic app theme</string>
+    <string name="theme_description">Utilitzar un tema d\'aplicació fosc, clar o automàtic</string>
     <string name="theme_name">Tema de l\'aplicació</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Aqua</string>
@@ -86,7 +86,7 @@
     <string name="import_contacts_description">Assegura\'t de modificar els esdeveniments amb anys que falten per tenir sempre estadístiques precises!</string>
     <string name="import_success">La importació s\'ha completat correctament!</string>
     <string name="import_nothing_found">No s\'ha trobat cap esdeveniment!</string>
-    <string name="import_failed">Something went wrong!</string>
+    <string name="import_failed">Alguna cosa ha anat malament!</string>
     <string name="missing_permission_contacts">S\'ha denegat el permís de contacte. Torna-ho a provar o activa el permís manualment,
     o la importació de contactes no funcionarà!</string>
     <string name="missing_permission_contacts_forever">Birday no pot demanar permís per importar contactes,
@@ -102,7 +102,7 @@
     <string name="birday_import_newer_backup">This backup comes from a newer version of Birday: update the app to import it</string>
     <string name="birday_export_success">Exportació completada!</string>
     <string name="birday_export_failure">Ha fallat l\'exportació. Òndia!</string>
-    <string name="birday_export_nothing_found">Nothing to export!</string>
+    <string name="birday_export_nothing_found">Res a exportar!</string>
     <string name="surname_first">Primer cognom</string>
     <string name="surname_first_description_on">Mostrar el cognom abans del nom</string>
     <string name="surname_first_description_off">Mostrar el nom abans del cognom</string>
@@ -269,7 +269,7 @@
     <string name="add_widget">Birday - Upcoming</string>
     <string name="dark_widget_name">Giny fosc</string>
     <string name="dark_widget_description_on">El giny utilitza el tema fosc</string>
-    <string name="dark_widget_description_off">The widget uses the light theme</string>
+    <string name="dark_widget_description_off">El giny utilitza el tema clar</string>
     <string name="widget_configuration_title">Widget configuration</string>
     <string name="widget_configuration_description">Configure the widget to match your style</string>
     <string name="widget_background_title">Background</string>
