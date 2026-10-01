@@ -30,6 +30,11 @@
         <item quantity="one">%d ദിവസം കൂടെ</item>
         <item quantity="other">%d ദിവസങ്ങൾ കൂടെ</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s ദിവസം</item>
+        <item quantity="other">%s ദിവസം</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">മാറ്റം വരുത്തുക </string>
     <string name="app_behavior">ആപ്പിന്റെ പെരുമാറ്റം</string>
@@ -92,6 +97,7 @@
     <string name="birday_import_success">കൊണ്ടുവരുന്നത് പൂർണമായി!</string>
     <string name="birday_import_failure">കൊണ്ടുവരുന്നത് പരാജയപെട്ടു. താങ്കൾ ശെരിയായ ഫയൽ തന്നെയാണോ തിരഞ്ഞെടുത്തത്?</string>
     <string name="birday_import_invalid_file">കൊണ്ടുവരുന്നത് പരാജയപെട്ടു. താങ്കൾ തിരഞ്ഞെടുത്ത ഫയൽ ഒരു ബെർഡേ ബാക്കപ്പ് അല്ല!</string>
+    <string name="birday_import_newer_backup">ഈ ബാക്കപ്പ് Birday-യുടെ പുതിയ പതിപ്പിൽ തയ്യാറാക്കിയതാണ്. ഇറക്കുമതി ചെയ്യാൻ ആപ്പ് പുതുക്കുക</string>
     <string name="birday_export_success">കൊണ്ടുപോകുന്നത് പൂർണമായി!</string>
     <string name="birday_export_failure">കൊണ്ടുപോകുന്നത് പരാജയപെട്ടു. നശിപ്പിച്ച്!</string>
     <string name="birday_export_nothing_found">കൊണ്ടുപോകാൻ ഒന്നും തന്നെ ഇല്ല!</string>
@@ -136,6 +142,7 @@
     <string name="new_event_description">നിങ്ങൾക്ക് പ്രിയപ്പെട്ട വ്യക്തിയുടെ പേര് ചേർക്കുക, ബെർഡേ അവരുടെ ജന്മദിനമോ മറ്റ്   ഇവെന്റുകളോ ഓർത്തെടുക്കാൻ  നിങ്ങളെ സഹായിക്കും!</string>
     <string name="insert_event">ഇവന്റ് ചേർക്കുക</string>
     <string name="cancel">ഒഴിവാക്കുക</string>
+    <string name="crop_image_error">ചിത്രം മുറിക്കുമ്പോൾ ഒരു പിശക് സംഭവിച്ചു</string>
     <string name="insert_name_hint">ആദ്യ പേര് ചേർക്കുക</string>
     <string name="insert_surname_hint">അവസാന പേര് ചേർക്കുക</string>
     <string name="insert_date_hint">തിയതി തിരഞ്ഞെടുക്കുക</string>
@@ -162,6 +169,8 @@
     <string name="next_age">അടുത്ത വയസ്സ്:</string>
     <string name="zodiac_sign">രാശിചക്ര  ചിഹ്നം:</string>
     <string name="chinese_zodiac_sign">ചൈനീസ് ചിഹ്നം:</string>
+    <string name="days_lived">ജീവിച്ച ദിവസങ്ങൾ</string>
+    <string name="next_unbirthday">ജനിച്ച അതേ തീയതിയും ആഴ്ചദിവസവും വരുന്ന അടുത്ത ദിവസം</string>
     <!-- Quick apps -->
     <string name="event_apps">ക്വിക്ക് ആപ്പ്സ്</string>
     <string name="event_apps_description">ആശംസകൾ പെട്ടെന്ന് അയയ്ക്കാൻവേണ്ടി ആപ്പുകൾ!</string>
@@ -273,6 +282,20 @@
     <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <string name="appwidget_compact">Compact table</string>
     <string name="add_widget_compact">Birday - Compact</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">പശ്ചാത്തലത്തിന്റെ അതാര്യത</string>
+    <string name="compact_widget_bg_color">പശ്ചാത്തല നിറം</string>
+    <string name="compact_widget_text_color">അക്ഷരങ്ങളുടെ നിറം</string>
+    <string name="compact_widget_text_size">അക്ഷര വലുപ്പം</string>
+    <string name="compact_widget_text_size_auto">സ്വയമേവ</string>
+    <string name="export_ics_title">iCalendar-ലേക്ക് കയറ്റുമതി ചെയ്യുക</string>
+    <string name="export_ics_description">ഓരോ ഇവന്റും ഏത് കലണ്ടർ ആപ്പിലും ഉപയോഗിക്കാവുന്ന .ics ഫയലായി കയറ്റുമതി ചെയ്യുക</string>
+    <string name="compact_widget_scroll">എല്ലാ ഇവന്റുകളിലൂടെയും സ്ക്രോൾ ചെയ്യുക</string>
+    <string name="compact_widget_hidden">മറച്ചത്</string>
+    <string name="compact_widget_below_name">പേരിനു താഴെ</string>
+    <string name="compact_widget_above_name">പേരിനു മുകളിൽ</string>
+    <string name="compact_widget_before_date">തീയതിക്കു മുമ്പ്</string>
+    <string name="compact_widget_after_date">തീയതിക്കു ശേഷം</string>
     <!-- Search -->
     <string name="search_event">തിരയുക …</string>
     <string name="search_no_result_title">ഒന്നും കണ്ടെത്താൻ കഴിഞ്ഞില്ല</string>
@@ -330,7 +353,55 @@
     <string name="advanced_overview_title">Advanced overview</string>
     <string name="advanced_overview_description_off">The overview screen will only display basic information</string>
     <string name="advanced_overview_description_on">The overview screen will show other years and detailed information</string>
+    <string name="feb29_assignment_title">അധിവർഷമല്ലാത്ത വർഷങ്ങളിലെ ഫെബ്രുവരി 29</string>
+    <string name="feb29_assignment_description_off">അധിവർഷമല്ലാത്ത വർഷങ്ങളിൽ ഫെബ്രുവരി 29-ലെ ജന്മദിനങ്ങൾ മാർച്ച് 1-ന് ആഘോഷിക്കുന്നു</string>
+    <string name="feb29_assignment_description_on">അധിവർഷമല്ലാത്ത വർഷങ്ങളിൽ ഫെബ്രുവരി 29-ലെ ജന്മദിനങ്ങൾ ഫെബ്രുവരി 28-ന് ആഘോഷിക്കുന്നു</string>
     <string name="replace_on_conflict_title">Replace on conflict</string>
     <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
     <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+    <string name="contacts_full_name_title">കോൺടാക്റ്റുകളിലെ പൂർണ്ണ പേരുകൾ</string>
+    <string name="contacts_full_name_description_on">കോൺടാക്റ്റുകളിലെ പേരുകൾ വായിക്കുമ്പോൾ പദവികൾ, മധ്യനാമങ്ങൾ, പേരിന്റെ അനുബന്ധങ്ങൾ എന്നിവ നിലനിർത്തുന്നു</string>
+    <string name="contacts_full_name_description_off">കോൺടാക്റ്റുകളിൽനിന്ന് പേരും കുടുംബപ്പേരും മാത്രം വായിക്കുന്നു</string>
+    <string name="days_milestones_title">ജീവിച്ച ദിവസങ്ങളുടെ നാഴികക്കല്ലുകൾ</string>
+    <string name="days_milestones_description_on">വിശദാംശങ്ങളിൽ ജീവിച്ച ദിവസങ്ങൾ കാണിക്കുന്നു. ഓരോ 1000 ദിവസവും ജന്മദിനം പോലെ ആഘോഷിക്കുകയും അറിയിപ്പ് നൽകുകയും ചെയ്യുന്നു</string>
+    <string name="days_milestones_description_off">ജീവിച്ച ദിവസങ്ങളുടെ എണ്ണമോ നാഴികക്കല്ലുകളോ കാണിക്കില്ല</string>
+    <string name="unbirthdays_title">ജനിച്ച തീയതിയും ആഴ്ചദിവസവും ഒത്തുവരുന്ന ദിവസങ്ങൾ</string>
+    <string name="alternative_calendar_title">മറ്റൊരു കലണ്ടർ</string>
+    <string name="alternative_calendar_none">ഒന്നുമില്ല, ഗ്രിഗോറിയൻ മാത്രം</string>
+    <string name="calendar_gregorian">ഗ്രിഗോറിയൻ</string>
+    <string name="calendar_chinese">ചൈനീസ്</string>
+    <string name="calendar_dangi">കൊറിയൻ</string>
+    <string name="calendar_hebrew">ഹീബ്രു</string>
+    <string name="calendar_islamic">ഇസ്ലാമിക്</string>
+    <string name="calendar_islamic_civil">ഇസ്ലാമിക് (സിവിൽ)</string>
+    <string name="user_card_title">നിങ്ങളുടെ ജന്മദിനം</string>
+    <string name="user_birthday_greeting">ജന്മദിനാശംസകൾ, %s!</string>
+    <string name="user_card_empty">നിങ്ങളുടെ ജനനത്തീയതി നൽകുക</string>
+    <string name="user_card_save">സംരക്ഷിക്കുക</string>
+    <string name="user_card_remove">നീക്കം ചെയ്യുക</string>
+    <string name="unbirthdays_description_on">ജനിച്ച അതേ ആഴ്ചദിവസവും മാസത്തിലെ തീയതിയും ഒത്തുവരുന്ന അടുത്ത ദിവസം വിശദാംശങ്ങളിൽ കാണിക്കുന്നു, ഉദാഹരണത്തിന് വെള്ളിയാഴ്ച 13</string>
+    <string name="unbirthdays_description_off">ജനിച്ച തീയതിയും ആഴ്ചദിവസവും ഒത്തുവരുന്ന ദിവസങ്ങൾ വിശദാംശങ്ങളിൽ കാണിക്കില്ല</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
+    <string name="about_title">ആപ്പിനെക്കുറിച്ച്</string>
+    <string name="back">തിരികെ</string>
+    <string name="about_description">Birday, അതിന്റെ സ്രഷ്ടാവ്, ആപ്പിന്റെ ഭാഷ എന്നിവയെക്കുറിച്ചുള്ള വിവരങ്ങൾ</string>
+    <string name="about_version">പതിപ്പ്</string>
+    <string name="about_language_title">ഭാഷ</string>
+    <string name="about_language_summary">Birday ഉപയോഗിക്കേണ്ട ഭാഷ തിരഞ്ഞെടുക്കുക</string>
+    <string name="about_rate_title">ആപ്പിനെ വിലയിരുത്തുക</string>
+    <string name="about_rate_summary">Play Store-ൽ ഒരു അവലോകനം എഴുതുക</string>
+    <string name="about_share_title">Birday പങ്കിടുക</string>
+    <string name="about_share_summary">ആപ്പിനെക്കുറിച്ച് ഒരു സുഹൃത്തിനോട് പറയുക</string>
+    <string name="about_share_text">Birday, ഒരു ജന്മദിനവും മറക്കാതിരിക്കാനുള്ള ലളിതവും മനോഹരവുമായ വഴി: %1$s</string>
+    <string name="about_no_app_found">ഈ പ്രവൃത്തി ചെയ്യാൻ കഴിയുന്ന ആപ്പൊന്നുമില്ല!</string>
+    <string name="about_privacy_title">സ്വകാര്യതാ നയം</string>
+    <string name="about_contact_title">ഡെവലപ്പറെ ബന്ധപ്പെടുക</string>
+    <string name="amoled_description_on">ഇരുണ്ട തീം പൂർണ്ണ കറുപ്പ് ഉപയോഗിക്കുന്നു, OLED സ്ക്രീനുകൾക്ക് അനുയോജ്യം</string>
+    <string name="amoled_description_off">ഇരുണ്ട തീം സാധാരണ ഇരുണ്ട നിറങ്ങൾ ഉപയോഗിക്കുന്നു</string>
+    <string name="with_year">വർഷത്തോടെ</string>
+    <string name="without_year">വർഷമില്ലാതെ</string>
+    <!-- Edge blur -->
+    <string name="edge_blur">അരികുകൾ മങ്ങിക്കുക</string>
+    <string name="edge_blur_description_on">നാവിഗേഷൻ ബാറിനു കീഴിലൂടെ സ്ക്രോൾ ചെയ്യുമ്പോൾ ഉള്ളടക്കം പതുക്കെ മങ്ങുന്നു</string>
+    <string name="edge_blur_description_off">ഉള്ളടക്കം മങ്ങാതെ നാവിഗേഷൻ ബാറിനു കീഴിലൂടെ സ്ക്രോൾ ചെയ്യുന്നു</string>
 </resources>
