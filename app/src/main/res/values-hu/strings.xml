@@ -30,6 +30,11 @@
         <item quantity="one">%d hátralevő nap</item>
         <item quantity="other">%d nap van hátra</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s nap</item>
+        <item quantity="other">%s nap</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">Testreszabás</string>
     <string name="app_behavior">Az alkalmazás viselkedése</string>
@@ -91,6 +96,7 @@
     <string name="birday_import_success">Az importálás befejeződött!</string>
     <string name="birday_import_failure">Az importálás sikertelen. Helyes fájlt választottál?</string>
     <string name="birday_import_invalid_file">Az importálás sikertelen. A kiválasztott fájl nem Birday biztonsági másolat!</string>
+    <string name="birday_import_newer_backup">Ez a biztonsági mentés a Birday újabb verziójával készült. Frissítsd az alkalmazást az importálásához</string>
     <string name="birday_export_success">Az exportálás befejeződött!</string>
     <string name="birday_export_failure">Az exportálás sikertelen. Hoppá!</string>
     <string name="birday_export_nothing_found">Nincs mit exportálni!</string>
@@ -135,6 +141,7 @@
     <string name="new_event_description">Írj be egy új embert, akivel törődsz, és Birday segít emlékeztetni születésnapjára vagy valami másra!</string>
     <string name="insert_event">Esemény beírása</string>
     <string name="cancel">Mégsem</string>
+    <string name="crop_image_error">Hiba történt a kép körbevágásakor</string>
     <string name="insert_name_hint">Név beírása</string>
     <string name="insert_surname_hint">Vezetéknév beírása</string>
     <string name="insert_date_hint">Dátum kiválasztása</string>
@@ -161,6 +168,8 @@
     <string name="next_age">Következő kor:</string>
     <string name="zodiac_sign">Csillagjegy:</string>
     <string name="chinese_zodiac_sign">Kínai csillagjegy:</string>
+    <string name="days_lived">Megélt napok</string>
+    <string name="next_unbirthday">Következő nem-születésnap</string>
     <!-- Quick apps -->
     <string name="event_apps">Gyors alkalmazások</string>
     <string name="event_apps_description">Az alkalmazások arra, hogy gyorsan kívánd a legjobbakat!</string>
@@ -268,6 +277,20 @@
     <string name="show_following_widget_description">Az esemény vagy a következő eseményt követő események megjelenítése egy további sorban</string>
     <string name="appwidget_compact">Compact table</string>
     <string name="add_widget_compact">Birday - Compact</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">Háttér fedettsége</string>
+    <string name="compact_widget_bg_color">Háttérszín</string>
+    <string name="compact_widget_text_color">Szövegszín</string>
+    <string name="compact_widget_text_size">Szövegméret</string>
+    <string name="compact_widget_text_size_auto">Automatikus</string>
+    <string name="export_ics_title">Exportálás iCalendar formátumba</string>
+    <string name="export_ics_description">Minden esemény exportálása egy .ics-fájlba, bármely naptáralkalmazáshoz</string>
+    <string name="compact_widget_scroll">Az összes esemény görgetése</string>
+    <string name="compact_widget_hidden">Rejtett</string>
+    <string name="compact_widget_below_name">A név alatt</string>
+    <string name="compact_widget_above_name">A név felett</string>
+    <string name="compact_widget_before_date">A dátum előtt</string>
+    <string name="compact_widget_after_date">A dátum után</string>
     <!-- Search -->
     <string name="search_event">Keresés…</string>
     <string name="search_no_result_title">Nincs találat</string>
@@ -325,7 +348,55 @@
     <string name="advanced_overview_title">Részletes áttekintés</string>
     <string name="advanced_overview_description_off">Az áttekintő képernyő csak az alapvető információkat jeleníti meg</string>
     <string name="advanced_overview_description_on">Az áttekintő képernyő más éveket és részletes információkat mutat</string>
+    <string name="feb29_assignment_title">Február 29. nem szökőévekben</string>
+    <string name="feb29_assignment_description_off">A február 29-i születésnapok nem szökőévekben március 1-jére esnek</string>
+    <string name="feb29_assignment_description_on">A február 29-i születésnapok nem szökőévekben február 28-ára esnek</string>
     <string name="replace_on_conflict_title">Cserélje ki konfliktus esetén</string>
     <string name="replace_on_conflict_description_off">Importáláskor a megkettőzött eseményt nem cseréli le az importált ismétlődés</string>
     <string name="replace_on_conflict_description_on">Importáláskor a duplikált eseményt az importált példány felülírja</string>
+    <string name="contacts_full_name_title">Teljes nevek a névjegyekből</string>
+    <string name="contacts_full_name_description_on">A névjegyek neveinek beolvasásakor megmaradnak a címek, további keresztnevek és utótagok</string>
+    <string name="contacts_full_name_description_off">A névjegyekből csak a vezeték- és keresztnév kerül beolvasásra</string>
+    <string name="days_milestones_title">Megélt napok mérföldkövei</string>
+    <string name="days_milestones_description_on">A részletek megjelenítik a megélt napokat. Minden 1000. napot születésnaphoz hasonló ünneplés és értesítés jelez</string>
+    <string name="days_milestones_description_off">Nincs napszámláló és nincsenek mérföldkövek</string>
+    <string name="unbirthdays_title">Nem-születésnapok</string>
+    <string name="alternative_calendar_title">Alternatív naptár</string>
+    <string name="alternative_calendar_none">Nincs, csak Gergely-naptár</string>
+    <string name="calendar_gregorian">Gergely-naptár</string>
+    <string name="calendar_chinese">Kínai</string>
+    <string name="calendar_dangi">Koreai</string>
+    <string name="calendar_hebrew">Héber</string>
+    <string name="calendar_islamic">Iszlám</string>
+    <string name="calendar_islamic_civil">Iszlám (polgári)</string>
+    <string name="user_card_title">A születésnapod</string>
+    <string name="user_birthday_greeting">Boldog születésnapot, %s!</string>
+    <string name="user_card_empty">Add meg a születési dátumodat</string>
+    <string name="user_card_save">Mentés</string>
+    <string name="user_card_remove">Eltávolítás</string>
+    <string name="unbirthdays_description_on">A részletek megmutatják a következő dátumot, amely ugyanarra a hétköznapra és a hónap ugyanazon napjára esik, mint a születés dátuma, például péntek 13.</string>
+    <string name="unbirthdays_description_off">A részletek nem mutatják a nem-születésnapokat</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
+    <string name="about_title">Névjegy</string>
+    <string name="back">Vissza</string>
+    <string name="about_description">Információ a Birdayről, a készítőjéről és az alkalmazás nyelvéről</string>
+    <string name="about_version">Verzió</string>
+    <string name="about_language_title">Nyelv</string>
+    <string name="about_language_summary">Válaszd ki a Birday nyelvét</string>
+    <string name="about_rate_title">Az alkalmazás értékelése</string>
+    <string name="about_rate_summary">Írj értékelést a Play Áruházban</string>
+    <string name="about_share_title">Birday megosztása</string>
+    <string name="about_share_summary">Ajánld az alkalmazást egy ismerősödnek</string>
+    <string name="about_share_text">Birday: egyszerű és szép megoldás, hogy soha ne felejts el egy születésnapot sem: %1$s</string>
+    <string name="about_no_app_found">Nincs olyan alkalmazás, amely végre tudná hajtani ezt a műveletet!</string>
+    <string name="about_privacy_title">Adatvédelmi tájékoztató</string>
+    <string name="about_contact_title">Kapcsolat a fejlesztővel</string>
+    <string name="amoled_description_on">A sötét téma tiszta feketét használ, amely ideális az OLED-kijelzőkhöz</string>
+    <string name="amoled_description_off">A sötét téma a szokásos sötét felületeket használja</string>
+    <string name="with_year">Évvel</string>
+    <string name="without_year">Év nélkül</string>
+    <!-- Edge blur -->
+    <string name="edge_blur">Szélek elmosása</string>
+    <string name="edge_blur_description_on">A tartalom finoman elmosódik, amikor a navigációs sáv alá görgeted</string>
+    <string name="edge_blur_description_off">A tartalom elmosás nélkül gördül a navigációs sáv alá</string>
 </resources>
