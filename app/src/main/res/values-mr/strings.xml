@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Birday मध्ये आपले स्वागत आहे</string>
-    <string name="app_name_extended">Birday - Event Manager</string>
+    <string name="app_name_extended">Birday - कार्यक्रम व्यवस्थापक</string>
     <string name="leave_review_title">Birday कसे आहे ते आम्हाला सांगा</string>
     <string name="leave_review_subtitle">आम्हाला मदत करण्यासाठी अॅप कसे आहे ते आम्हाला सांगा. लक्षात ठेवा, देणग्या बाजूला ठेवून, हे अॅप पूर्णपणे विनामूल्य आणि जाहिरातमुक्त आहे!</string>
     <string name="yes_review">समीक्षा!</string>
@@ -15,7 +15,7 @@
     <string name="add_favorite">आवडींमध्ये जोडा</string>
     <string name="stats">आकडेवारी</string>
     <string name="no_stats">दाखवण्यासाठी कोणतीही आकडेवारी नाही!</string>
-    <string name="stats_summary">Stats summary</string>
+    <string name="stats_summary">आकडेवारीचा सारांश</string>
     <string name="no_stats_description">तुमच्याकडे आकडेवारी व्युत्पन्न करण्यासाठी पुरेसे कार्यक्रम नाहीत. काही जोडा आणि नंतर परत या!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday तुम्हाला एकूण %d कार्यक्रम लक्षात ठेवण्यास मदत करत आहे</item>
@@ -40,7 +40,7 @@
     <string name="app_behavior">अॅप वर्तन</string>
     <string name="additional_notification_name">अतिरिक्त सूचना</string>
     <string name="additional_notification_description">कार्यक्रमाच्या काही दिवस आधी अतिरिक्त सूचना पाठवा. %s</string>
-    <string name="no_additional_notification">No additional notification</string>
+    <string name="no_additional_notification">कोणतीही अतिरिक्त सूचना नाही</string>
     <string name="one_day_before">एक दिवस आधी</string>
     <string name="two_days_before">दोन दिवस आधी</string>
     <string name="three_days_before">तीन दिवस आधी</string>
@@ -54,12 +54,12 @@
     <string name="vibration_name">कंपन</string>
     <string name="vibration_description_on">बटण दाबल्यावर कंपन करा</string>
     <string name="vibration_description_off">बटण दाबल्यावर कंपन होत नाही</string>
-    <string name="date_format_name">Date format</string>
+    <string name="date_format_name">दिनांक प्रारुप</string>
     <string name="notification_hour_name">सूचना तास</string>
     <string name="notification_hour_description">%s \n\nकृपया लक्षात ठेवा की काही Huawei, Xiaomi आणि OnePlus डिव्‍हाइसमध्‍ये सिस्‍टीमद्वारे अॅप मारलेल्‍यावर सूचना कदाचित कार्य करणार नाही. अधिक माहितीसाठी dontkillmyapp.com चा संदर्भ घ्या</string>
-    <string name="accent_description">Change the default accent color</string>
+    <string name="accent_description">डीफॉल्ट उच्चारण रंग बदला</string>
     <string name="accent_name">उच्चारण रंग</string>
-    <string name="theme_description">Use a dark, light or automatic app theme</string>
+    <string name="theme_description">गडद, हलकी किंवा स्वयंचलित अॅप थीम वापरा</string>
     <string name="theme_name">अॅप थीम</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">पाण्यासारखा निळा</string>
@@ -86,7 +86,7 @@
     <string name="import_contacts_description">नेहमी अचूक आकडेवारी मिळण्यासाठी गहाळ वर्षांसह कार्यक्रम सुधारित करण्याचे सुनिश्चित करा!</string>
     <string name="import_success">आयात यशस्वीरित्या पूर्ण झाले!</string>
     <string name="import_nothing_found">कोणताही कार्यक्रम आढळला नाही!</string>
-    <string name="import_failed">Something went wrong!</string>
+    <string name="import_failed">काहीतरी चूक झाली!</string>
     <string name="missing_permission_contacts">संपर्क परवानगी नाकारली गेली. पुन्हा प्रयत्न करा किंवा परवानगी व्यक्तिचलितपणे सक्रिय करा, किंवा संपर्क आयात कार्य करणार नाही!</string>
     <string name="missing_permission_contacts_forever">Birday संपर्क आयात करण्याची परवानगी मागू शकत नाही, तुम्ही \"पुन्हा कधीही विचारू नका\" हे तपासले आहे. ते व्यक्तिचलितपणे सक्षम करा!</string>
     <string name="birday_import_title">Import a Birday backup</string>
@@ -99,7 +99,7 @@
     <string name="birday_import_newer_backup">This backup comes from a newer version of Birday: update the app to import it</string>
     <string name="birday_export_success">निर्यात पूर्ण!</string>
     <string name="birday_export_failure">निर्यात अयशस्वी. अरेरे!</string>
-    <string name="birday_export_nothing_found">Nothing to export!</string>
+    <string name="birday_export_nothing_found">निर्यात करण्यासाठी काहीही नाही!</string>
     <string name="surname_first">आधी आडनाव</string>
     <string name="surname_first_description_on">नावापूर्वी आडनाव दाखवा</string>
     <string name="surname_first_description_off">आडनावापूर्वी नाव दाखवा</string>
@@ -146,17 +146,17 @@
     <string name="insert_surname_hint">आडनाव घाला</string>
     <string name="insert_date_hint">तारीख निवडा</string>
     <string name="invalid_value_name">अवैध नाव!</string>
-    <string name="consider_year">Consider the year</string>
+    <string name="consider_year">वर्षाचा विचार करा</string>
     <string name="event_type_hint">कार्यक्रमाचा प्रकार</string>
     <string name="birthday">वाढदिवस</string>
     <string name="anniversary">वर्धापनदिन</string>
     <string name="death_anniversary">पुण्यतिथी</string>
-    <string name="festivity">Festivity</string>
+    <string name="festivity">उत्सव</string>
     <string name="name_day">बारसे</string>
     <string name="other">इतर</string>
     <!-- Event actions -->
     <string name="event_actions">क्रिया</string>
-    <string name="event_actions_description">Here you can change or remove this event!</string>
+    <string name="event_actions_description">येथे तुम्ही हा कार्यक्रम बदलू किंवा काढू शकता!</string>
     <string name="edit_event">कार्यक्रम संपादित करा</string>
     <string name="delete_event">कार्यक्रम हटवा</string>
     <string name="update_event">कार्यक्रम अद्यतनित करा</string>
@@ -179,7 +179,7 @@
     <string name="no_default_dialer">कोणतेही डीफॉल्ट डायलर अॅप आढळले नाही!</string>
     <string name="no_default_sms">कोणतेही डीफॉल्ट SMS अॅप आढळले नाही!</string>
     <string name="might_have_missed">You might have missed:</string>
-    <string name="did_you_know">Did you know?</string>
+    <string name="did_you_know">तुम्हाला माहीत आहे का?</string>
     <!-- Statistics -->
     <string name="age_average">सरासरी वय आहे %s</string>
     <string name="oldest_person">सर्वात वयस्कर व्यक्ती आहे %s</string>
@@ -235,7 +235,7 @@
         <item quantity="other">%d वर्ष</item>
     </plurals>
     <string name="born_in">मध्ये जन्मला</string>
-    <string name="and">and</string>
+    <string name="and">आणि</string>
     <plurals name="event">
         <item quantity="one">कार्यक्रम: %s</item>
         <item quantity="other">कार्यक्रम: %s</item>
@@ -259,10 +259,10 @@
     </string>
     <!-- Widget -->
     <string name="appwidget_upcoming">पुढील कार्यक्रम</string>
-    <string name="add_widget">Birday - Upcoming</string>
+    <string name="add_widget">Birday - आगामी</string>
     <string name="dark_widget_name">गडद विजेट</string>
     <string name="dark_widget_description_on">विजेट गडद थीम वापरते</string>
-    <string name="dark_widget_description_off">The widget uses the light theme</string>
+    <string name="dark_widget_description_off">विजेट लाइट थीम वापरते</string>
     <string name="widget_configuration_title">Widget configuration</string>
     <string name="widget_configuration_description">Configure the widget to match your style</string>
     <string name="widget_background_title">Background</string>
