@@ -293,8 +293,8 @@
     <string name="hide_far_widget_description">Скрыть виджет, если следующие события после дополнительного периода уведомлений (например: уведомление за 7 дней до этого следующее событие через 10 дней -&gt; виджет скрыт)</string>
     <string name="show_following_widget_title">Показать следующее событие</string>
     <string name="show_following_widget_description">Показать в дополнительной строке событие или события, следующие за другим</string>
-    <string name="appwidget_compact">Compact table</string>
-    <string name="add_widget_compact">Birday - Compact</string>
+    <string name="appwidget_compact">Компактная таблица</string>
+    <string name="add_widget_compact">Birday — Компактный</string>
     <!-- Compact widget -->
     <string name="compact_widget_opacity">Непрозрачность фона</string>
     <string name="compact_widget_bg_color">Цвет фона</string>
