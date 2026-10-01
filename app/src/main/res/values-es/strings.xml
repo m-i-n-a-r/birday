@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Bienvenido/a a Birday</string>
-    <string name="app_name_extended">Birday - Event Manager</string>
+    <string name="app_name_extended">Birday - Gestor de eventos</string>
     <string name="leave_review_title">Valora Birday</string>
     <string name="leave_review_subtitle">Apoya la aplicación dejando una valoración. Ten en cuenta que, aparte de las donaciones, esta aplicación es completamente gratuita y no contiene anuncios.</string>
     <string name="yes_review">¡Claro!</string>
@@ -15,7 +15,7 @@
     <string name="add_favorite">Añadir a favoritos</string>
     <string name="stats">Estadísticas</string>
     <string name="no_stats">¡No hay estadísticas que mostrar!</string>
-    <string name="stats_summary">Stats summary</string>
+    <string name="stats_summary">Resumen de las estadísticas</string>
     <string name="no_stats_description">No hay suficientes eventos para generar estadísticas. Añade algunos y vuelve más tarde.</string>
     <plurals name="stats_total">
         <item quantity="one">Birday te está ayudando a recordar %d evento en total</item>
@@ -40,7 +40,7 @@
     <string name="app_behavior">Ajustes generales</string>
     <string name="additional_notification_name">Notificación previa</string>
     <string name="additional_notification_description">Envía una notificación adificional antes del evento: %s</string>
-    <string name="no_additional_notification">No additional notification</string>
+    <string name="no_additional_notification">Sin notificación previa</string>
     <string name="one_day_before">1 día antes</string>
     <string name="two_days_before">2 días antes</string>
     <string name="three_days_before">3 días antes</string>
@@ -54,12 +54,12 @@
     <string name="vibration_name">Vibración</string>
     <string name="vibration_description_on">Se producen vibraciones al pulsar un botón</string>
     <string name="vibration_description_off">No se producen vibraciones al pulsar un botón</string>
-    <string name="date_format_name">Date format</string>
+    <string name="date_format_name">Formato de la fecha</string>
     <string name="notification_hour_name">Hora de notificación</string>
     <string name="notification_hour_description">%s \n\nTen en cuenta que la notificación puede no aparecer en algunos dispositivos Huawei, Xiaomi o OnePlus si el sistema cierra la aplicación. Puedes saber más en la web dontkillmyapp.com</string>
-    <string name="accent_description">Change the default accent color</string>
+    <string name="accent_description">Cambia el color principal</string>
     <string name="accent_name">Color principal</string>
-    <string name="theme_description">Use a dark, light or automatic app theme</string>
+    <string name="theme_description">Usa un tema oscuro, claro o automático</string>
     <string name="theme_name">Tema de la aplicación</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Aguamarina</string>
@@ -86,7 +86,7 @@
     <string name="import_contacts_description">No olvides modificar los eventos con los años que falten para tener estadísticas más precisas</string>
     <string name="import_success">¡Importado correctamente!</string>
     <string name="import_nothing_found">¡No se han encontrado eventos!</string>
-    <string name="import_failed">Something went wrong!</string>
+    <string name="import_failed">¡Algo ha salido mal!</string>
     <string name="missing_permission_contacts">No se ha permitido el acceso a contactos. Inténtalo de nuevo o permítelo manualmente si quieres importar desde contactos</string>
     <string name="missing_permission_contacts_forever">Birday no puede acceder a contactos. Debes permitirlo manualmente</string>
     <string name="birday_import_title">Importar copia de Birday</string>
@@ -99,7 +99,7 @@
     <string name="birday_import_newer_backup">This backup comes from a newer version of Birday: update the app to import it</string>
     <string name="birday_export_success">Exportación completada!</string>
     <string name="birday_export_failure">Exportación fallida. ¡Oops!</string>
-    <string name="birday_export_nothing_found">Nothing to export!</string>
+    <string name="birday_export_nothing_found">¡Nada que exportar!</string>
     <string name="surname_first">¿Apellido primero?</string>
     <string name="surname_first_description_on">Muestra el apellido antes que el nombre</string>
     <string name="surname_first_description_off">Muestra el nombre antes que el apellido</string>
@@ -146,17 +146,17 @@
     <string name="insert_surname_hint">Apellido</string>
     <string name="insert_date_hint">Fecha</string>
     <string name="invalid_value_name">¡Nombre inválido!</string>
-    <string name="consider_year">Consider the year</string>
+    <string name="consider_year">¿Tener en cuenta el año?</string>
     <string name="event_type_hint">Tipo de evento</string>
     <string name="birthday">Cumpleaños</string>
     <string name="anniversary">Aniversario</string>
     <string name="death_anniversary">Aniversario de la muerte</string>
-    <string name="festivity">Festivity</string>
+    <string name="festivity">Festividad</string>
     <string name="name_day">Día del nombre</string>
     <string name="other">Otro</string>
     <!-- Event actions -->
     <string name="event_actions">Acciones</string>
-    <string name="event_actions_description">Here you can change or remove this event!</string>
+    <string name="event_actions_description">Aquí podrás cambiar o eliminar este evento</string>
     <string name="edit_event">Editar evento</string>
     <string name="delete_event">Eliminar evento</string>
     <string name="update_event">Actualizar evento</string>
@@ -179,7 +179,7 @@
     <string name="no_default_dialer">¡No se ha encontrado la aplicación Teléfono!</string>
     <string name="no_default_sms">¡No se ha encontrado la aplicación Mensajes!</string>
     <string name="might_have_missed">Puede que te haya perdido:</string>
-    <string name="did_you_know">Did you know?</string>
+    <string name="did_you_know">¿Sabías que…?</string>
     <!-- Statistics -->
     <string name="age_average">La edad media es de %s</string>
     <string name="oldest_person">La persona más mayor es %s</string>
@@ -235,7 +235,7 @@
         <item quantity="other">%d años</item>
     </plurals>
     <string name="born_in">nacido/a en</string>
-    <string name="and">and</string>
+    <string name="and">y</string>
     <plurals name="event">
         <item quantity="one">evento: %s</item>
         <item quantity="other">eventos: %s</item>
@@ -256,10 +256,10 @@
     <string name="slide_three_description">También puedes importar los eventos que ya tengas guardados en tus contactos. Birday puede hacerlo por ti, solo tienes que permitir el acceso a tus contactos. ¡Que lo disfrutes!</string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Próximos eventos</string>
-    <string name="add_widget">Birday - Upcoming</string>
+    <string name="add_widget">Birday - Eventos</string>
     <string name="dark_widget_name">¿Widget oscuro?</string>
     <string name="dark_widget_description_on">El widget usa un tema oscuro</string>
-    <string name="dark_widget_description_off">The widget uses the light theme</string>
+    <string name="dark_widget_description_off">El widget usa un tema claro</string>
     <string name="widget_configuration_title">Configuración del widget</string>
     <string name="widget_configuration_description">Configura el widget para que coincida con tu estilo</string>
     <string name="widget_background_title">Fondo</string>
@@ -273,7 +273,7 @@
     <string name="show_following_widget_title">Mostrar el siguiente evento</string>
     <string name="show_following_widget_description">Muestra el evento o los eventos posteriores al siguiente, en una fila adicional</string>
     <string name="appwidget_compact">Tabla compacta</string>
-    <string name="add_widget_compact">Birday - Compact</string>
+    <string name="add_widget_compact">Birday - Compacto</string>
     <!-- Compact widget -->
     <string name="compact_widget_opacity">Background opacity</string>
     <string name="compact_widget_bg_color">Background color</string>
