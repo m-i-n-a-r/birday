@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Ласкаво просимо до Birday</string>
-    <string name="app_name_extended">Birday - Event Manager</string>
+    <string name="app_name_extended">Birday - Менеджер подій</string>
     <string name="leave_review_title">Залишити відгук для Birday</string>
     <string name="leave_review_subtitle">Залиште відгук щоб допомогти мені в розробці цього додатку. Не забувайте, що окрім донатів - цей додаток повністю безкоштовний та без будь-якої реклами!</string>
     <string name="yes_review">Залишити відгук!</string>
@@ -15,7 +15,7 @@
     <string name="add_favorite">Додати до вибраних</string>
     <string name="stats">Статистика</string>
     <string name="no_stats">Жодної статистики!</string>
-    <string name="stats_summary">Stats summary</string>
+    <string name="stats_summary">Підсумок статистики</string>
     <string name="no_stats_description">У вас не достатньо подій для генерації статистики. Додайте декілька подій та повертайтеся!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday допомагає вам запам\'ятати %d подію</item>
@@ -46,7 +46,7 @@
     <string name="app_behavior">Поведінка додатку</string>
     <string name="additional_notification_name">Додаткові сповіщення</string>
     <string name="additional_notification_description">Відправити додаткове сповіщення до наступлення події. %s</string>
-    <string name="no_additional_notification">No additional notification</string>
+    <string name="no_additional_notification">Бех додаткових сповіщень</string>
     <string name="one_day_before">За день</string>
     <string name="two_days_before">За два дні</string>
     <string name="three_days_before">За три дні</string>
@@ -60,12 +60,12 @@
     <string name="vibration_name">Вібрація</string>
     <string name="vibration_description_on">Вібрувати при натисненні</string>
     <string name="vibration_description_off">Не вібрувати при натисненні</string>
-    <string name="date_format_name">Date format</string>
+    <string name="date_format_name">Формат дати</string>
     <string name="notification_hour_name">Час сповіщення</string>
     <string name="notification_hour_description">%s \n\nЗверніть увагу що сповіщення можуть не працювати якщо додаток був зупинений системою на деяких телефонах Huawei, Xiaomi та OnePlus. Більше на dontkillmyapp.com</string>
-    <string name="accent_description">Change the default accent color</string>
+    <string name="accent_description">Змінити колір акценту за замовчуванням</string>
     <string name="accent_name">Колір акценту</string>
-    <string name="theme_description">Use a dark, light or automatic app theme</string>
+    <string name="theme_description">Використати темну, світлу, або ж змінувати автоматично</string>
     <string name="theme_name">Тема додатку</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">Аква</string>
@@ -92,7 +92,7 @@
     <string name="import_contacts_description">Доповніть події у яких не вказаний рік для покращення статистики!</string>
     <string name="import_success">Імпорт успішно завершено!</string>
     <string name="import_nothing_found">Жодних подій!</string>
-    <string name="import_failed">Something went wrong!</string>
+    <string name="import_failed">Щось пішло не так!</string>
     <string name="missing_permission_contacts">Доступ до контактів закрито. Спробуйте ще раз, або активуйте доступ вручну - без цього імпорт не буде працювати!</string>
     <string name="missing_permission_contacts_forever">Birday не може отримати доступ до імпорту контактів так як ви обрали \"ніколи не запитувати\". Увімкніть вручну!</string>
     <string name="birday_import_title">Імпортувати резервну копію Birday</string>
@@ -105,7 +105,7 @@
     <string name="birday_import_newer_backup">This backup comes from a newer version of Birday: update the app to import it</string>
     <string name="birday_export_success">Експорт завершено!</string>
     <string name="birday_export_failure">Помилка експорту. Упс!</string>
-    <string name="birday_export_nothing_found">Nothing to export!</string>
+    <string name="birday_export_nothing_found">Нічого експортувати!</string>
     <string name="surname_first">Спочатку прізвище</string>
     <string name="surname_first_description_on">Показувати прізвище перед ім\'ям</string>
     <string name="surname_first_description_off">Показувати ім\'я перед перед прізвищем</string>
@@ -152,17 +152,17 @@
     <string name="insert_surname_hint">Введіть прізвище</string>
     <string name="insert_date_hint">Виберіть дату</string>
     <string name="invalid_value_name">Невірне ім\'я!</string>
-    <string name="consider_year">Consider the year</string>
+    <string name="consider_year">Враховуйте рік</string>
     <string name="event_type_hint">Тип події</string>
     <string name="birthday">День Народження</string>
     <string name="anniversary">Річниця</string>
     <string name="death_anniversary">Річниця смерті</string>
-    <string name="festivity">Festivity</string>
+    <string name="festivity">Свята</string>
     <string name="name_day">Іменини</string>
     <string name="other">Інше</string>
     <!-- Event actions -->
     <string name="event_actions">Дії</string>
-    <string name="event_actions_description">Here you can change or remove this event!</string>
+    <string name="event_actions_description">Тут ви можете змінити або видалити цю подію!</string>
     <string name="edit_event">Редагувати подію</string>
     <string name="delete_event">Видалити подію</string>
     <string name="update_event">Оновити подію</string>
@@ -185,7 +185,7 @@
     <string name="no_default_dialer">Не знайдено додаток за умовчанням для набору номера!</string>
     <string name="no_default_sms">Не знайдено додаток за умовчанням для СМС!</string>
     <string name="might_have_missed">Ви могли пропустити:</string>
-    <string name="did_you_know">Did you know?</string>
+    <string name="did_you_know">А ви знали?</string>
     <!-- Statistics -->
     <string name="age_average">Середнім віком є %s</string>
     <string name="oldest_person">Найстаршою людина є %s</string>
@@ -247,7 +247,7 @@
         <item quantity="other">%d років</item>
     </plurals>
     <string name="born_in">народжений/народжена in</string>
-    <string name="and">and</string>
+    <string name="and">та</string>
     <plurals name="event">
         <item quantity="one">подія: %s</item>
         <item quantity="few">події: %s</item>
@@ -276,10 +276,10 @@
     </string>
     <!-- Widget -->
     <string name="appwidget_upcoming">Найближчі події</string>
-    <string name="add_widget">Birday - Upcoming</string>
+    <string name="add_widget">Birday - Найближчі</string>
     <string name="dark_widget_name">Темний віджет</string>
     <string name="dark_widget_description_on">Віджет використовує темну тему</string>
-    <string name="dark_widget_description_off">The widget uses the light theme</string>
+    <string name="dark_widget_description_off">Віджет використовує світлу тему</string>
     <string name="widget_configuration_title">Налаштування віджета</string>
     <string name="widget_configuration_description">Налаштуйте віджет відповідно до вашого стилю</string>
     <string name="widget_background_title">Тло</string>
