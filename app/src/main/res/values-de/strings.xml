@@ -237,8 +237,8 @@
     <string name="born_in">geboren</string>
     <string name="and">und</string>
     <plurals name="event">
-        <item quantity="one">ereignis: %s</item>
-        <item quantity="other">ereignisse: %s</item>
+        <item quantity="one">Ereignis: %s</item>
+        <item quantity="other">Ereignisse: %s</item>
     </plurals>
     <!-- Notifications -->
     <string name="events_notification_channel">Erinnerung an Ereignis</string>
@@ -285,11 +285,11 @@
     <string name="export_ics_title">Als iCalendar exportieren</string>
     <string name="export_ics_description">Jedes Ereignis als .ics-Datei für beliebige Kalender-Apps exportieren</string>
     <string name="compact_widget_scroll">Durch alle Ereignisse scrollen</string>
-    <string name="compact_widget_hidden">Ausblenden</string>
+    <string name="compact_widget_hidden">Ausgeblendet</string>
     <string name="compact_widget_below_name">Unter dem Namen</string>
     <string name="compact_widget_above_name">Über dem Namen</string>
     <string name="compact_widget_before_date">Vor dem Datum</string>
-    <string name="compact_widget_after_date">Hinter dem Datum</string>
+    <string name="compact_widget_after_date">Nach dem Datum</string>
     <!-- Search -->
     <string name="search_event">Suchen…</string>
     <string name="search_no_result_title">Keine Ergebnisse gefunden</string>
