@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Bine ai venit la Birday</string>
-    <string name="app_name_extended">Birday - Manager de evenimente</string>
+    <string name="app_name_extended">Birday - Manager Evenimente</string>
     <string name="leave_review_title">Lasă o recenzie despre Birday</string>
     <string name="leave_review_subtitle">Lasă o recenzie pentru a mă ajuta cu aplicația. Reține că, lăsând la o parte donațiile, această aplicație este complet gratuită și fără publicitate!</string>
     <string name="yes_review">Recenzie!</string>
