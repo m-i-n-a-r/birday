@@ -15,7 +15,7 @@
     <string name="add_favorite">பிடித்தவையில் சேர்</string>
     <string name="stats">புள்ளிவிவரம்</string>
     <string name="no_stats">காட்ட புள்ளிவிவரங்கள் எதும் இல்லை!</string>
-    <string name="stats_summary">Stats summary</string>
+    <string name="stats_summary">புள்ளிவிவரங்களின் சுருக்கம்</string>
     <string name="no_stats_description">புள்ளிவிவரங்களை உருவாக்க உங்களிடம் போதுமான நிகழ்வுகள் இல்லை. சிலவற்றைச் சேர்த்து, பின்னர் வரவும்!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday is helping you to remember a total of %d event</item>
@@ -54,12 +54,12 @@
     <string name="vibration_name">அதிர்வு</string>
     <string name="vibration_description_on">ஒரு பொத்தானை அழுத்தும்போது அதிர்வுறும்</string>
     <string name="vibration_description_off">பொத்தானை அழுத்தினால் அதிர்வுகள் இல்லை</string>
-    <string name="date_format_name">Date format</string>
+    <string name="date_format_name">தேதி வடிவமைப்பு</string>
     <string name="notification_hour_name">அறிவிப்பு நேரங்கள்</string>
     <string name="notification_hour_description">%s \n\nசில Huawei, Xiaomi மற்றும் OnePlus கருவிகளில் செயலி சிஸ்டத்தால் அழிக்கப்படும்போது அறிவிப்புகள் வேலை செய்யாமல் போகலாம் என்பதை நினைவில் கொள்ளவும். மேலும் தகவலுக்கு dontkillmyapp.com ஐப் பார்க்கவும்</string>
-    <string name="accent_description">Change the default accent color</string>
+    <string name="accent_description">இயல்புநிலை அழுத்த நிறத்தை மாற்றவும்</string>
     <string name="accent_name">அழுத்த வண்ணம்</string>
-    <string name="theme_description">Use a dark, light or automatic app theme</string>
+    <string name="theme_description">இருள், வெளிர் அல்லது தானியங்கி பயன்பாட்டு நிறம் பயன்படுத்தவும்</string>
     <string name="theme_name">செயலி நிறம்</string>
     <!-- ^ Untranslated for now -->
     <string name="aqua">பசும் நீலம்</string>
