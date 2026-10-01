@@ -30,6 +30,11 @@
         <item quantity="one">%d dag resterend</item>
         <item quantity="other">%d dagen resterend</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s dag</item>
+        <item quantity="other">%s dagen</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">Aanpassingen</string>
     <string name="app_behavior">App gedrag</string>
@@ -94,6 +99,7 @@
     <string name="birday_import_success">Importeren voltooid!</string>
     <string name="birday_import_failure">Importeren mislukt. Heb je het juiste bestand gekozen?</string>
     <string name="birday_import_invalid_file">Importeren mislukt. Het gekozen bestand is geen Birday backup!</string>
+    <string name="birday_import_newer_backup">Deze back-up is gemaakt met een nieuwere versie van Birday. Werk de app bij om de back-up te importeren</string>
     <string name="birday_export_success">Exporteren voltooid!</string>
     <string name="birday_export_failure">Exporteren mislukt. Oeps!</string>
     <string name="birday_export_nothing_found">Niets om te exporteren!</string>
@@ -138,6 +144,7 @@
     <string name="new_event_description">Voeg een nieuw persoon toe en Birday helpt je om zijn/haar evenement niet te vergeten!</string>
     <string name="insert_event">Evenement toevoegen</string>
     <string name="cancel">Annuleren</string>
+    <string name="crop_image_error">Er is iets misgegaan bij het bijsnijden van de afbeelding</string>
     <string name="insert_name_hint">Naam</string>
     <string name="insert_surname_hint">Achternaam</string>
     <string name="insert_date_hint">Selecteer een datum</string>
@@ -164,6 +171,8 @@
     <string name="next_age">Volgende leeftijd:</string>
     <string name="zodiac_sign">Sterrenbeeld:</string>
     <string name="chinese_zodiac_sign">Chinees sterrenbeeld:</string>
+    <string name="days_lived">Geleefde dagen</string>
+    <string name="next_unbirthday">Volgende niet-verjaardag</string>
     <!-- Quick apps -->
     <string name="event_apps">Snelkoppelingen</string>
     <string name="event_apps_description">Apps om je verjaardagswensen direct te versturen!</string>
@@ -273,6 +282,20 @@
     <string name="show_following_widget_description">De gebeurtenis of de gebeurtenissen na de volgende op een extra rij weergeven</string>
     <string name="appwidget_compact">Compacte tabel</string>
     <string name="add_widget_compact">Birday - Compact</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">Dekking van de achtergrond</string>
+    <string name="compact_widget_bg_color">Achtergrondkleur</string>
+    <string name="compact_widget_text_color">Tekstkleur</string>
+    <string name="compact_widget_text_size">Tekstgrootte</string>
+    <string name="compact_widget_text_size_auto">Automatisch</string>
+    <string name="export_ics_title">Exporteren naar iCalendar</string>
+    <string name="export_ics_description">Exporteer elke gebeurtenis naar een .ics-bestand voor elke agenda-app</string>
+    <string name="compact_widget_scroll">Door alle gebeurtenissen scrollen</string>
+    <string name="compact_widget_hidden">Verborgen</string>
+    <string name="compact_widget_below_name">Onder de naam</string>
+    <string name="compact_widget_above_name">Boven de naam</string>
+    <string name="compact_widget_before_date">Vóór de datum</string>
+    <string name="compact_widget_after_date">Na de datum</string>
     <!-- Search -->
     <string name="search_event">Zoeken…</string>
     <string name="search_no_result_title">Geen resultaten gevonden</string>
@@ -330,7 +353,55 @@
     <string name="advanced_overview_title">Geavanceerd overzicht</string>
     <string name="advanced_overview_description_off">Het overzichtsscherm toont alleen basisinformatie</string>
     <string name="advanced_overview_description_on">Het overzichtsscherm toont andere jaren en gedetailleerde informatie</string>
+    <string name="feb29_assignment_title">29 februari in niet-schrikkeljaren</string>
+    <string name="feb29_assignment_description_off">Verjaardagen op 29 februari worden in niet-schrikkeljaren op 1 maart gevierd</string>
+    <string name="feb29_assignment_description_on">Verjaardagen op 29 februari worden in niet-schrikkeljaren op 28 februari gevierd</string>
     <string name="replace_on_conflict_title">Vervangen bij conflict</string>
     <string name="replace_on_conflict_description_off">Bij het importeren wordt een gedupliceerde afspraak niet vervangen door het geïmporteerde duplicaat</string>
     <string name="replace_on_conflict_description_on">Bij het importeren wordt een gedupliceerde afspraak niet vervangen door het geïmporteerde duplicaat</string>
+    <string name="contacts_full_name_title">Volledige namen uit contacten</string>
+    <string name="contacts_full_name_description_on">Titels, extra voornamen en achtervoegsels blijven behouden bij het lezen van contactnamen</string>
+    <string name="contacts_full_name_description_off">Alleen de voor- en achternaam worden uit contacten gelezen</string>
+    <string name="days_milestones_title">Mijlpalen van geleefde dagen</string>
+    <string name="days_milestones_description_on">De details tonen het aantal geleefde dagen. Elke 1000 dagen wordt een mijlpaal gevierd en gemeld, net als een verjaardag</string>
+    <string name="days_milestones_description_off">Geen teller voor geleefde dagen en geen mijlpalen</string>
+    <string name="unbirthdays_title">Niet-verjaardagen</string>
+    <string name="alternative_calendar_title">Alternatieve kalender</string>
+    <string name="alternative_calendar_none">Geen, alleen Gregoriaans</string>
+    <string name="calendar_gregorian">Gregoriaans</string>
+    <string name="calendar_chinese">Chinees</string>
+    <string name="calendar_dangi">Koreaans</string>
+    <string name="calendar_hebrew">Hebreeuws</string>
+    <string name="calendar_islamic">Islamitisch</string>
+    <string name="calendar_islamic_civil">Islamitisch (burgerlijk)</string>
+    <string name="user_card_title">Je verjaardag</string>
+    <string name="user_birthday_greeting">Gefeliciteerd met je verjaardag, %s!</string>
+    <string name="user_card_empty">Voer je geboortedatum in</string>
+    <string name="user_card_save">Opslaan</string>
+    <string name="user_card_remove">Verwijderen</string>
+    <string name="unbirthdays_description_on">De details tonen de volgende datum met dezelfde weekdag en dag van de maand als bij de geboorte, bijvoorbeeld vrijdag de 13e</string>
+    <string name="unbirthdays_description_off">Geen niet-verjaardagen in de details</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
+    <string name="about_title">Over</string>
+    <string name="back">Terug</string>
+    <string name="about_description">Informatie over Birday, de maker en de taal van de app</string>
+    <string name="about_version">Versie</string>
+    <string name="about_language_title">Taal</string>
+    <string name="about_language_summary">Kies de taal die Birday gebruikt</string>
+    <string name="about_rate_title">De app beoordelen</string>
+    <string name="about_rate_summary">Laat een beoordeling achter in de Play Store</string>
+    <string name="about_share_title">Birday delen</string>
+    <string name="about_share_summary">Vertel een vriend over de app</string>
+    <string name="about_share_text">Birday, een eenvoudige en mooie manier om nooit meer een verjaardag te vergeten: %1$s</string>
+    <string name="about_no_app_found">Geen app kan deze actie uitvoeren!</string>
+    <string name="about_privacy_title">Privacybeleid</string>
+    <string name="about_contact_title">Contact met de ontwikkelaar</string>
+    <string name="amoled_description_on">Het donkere thema gebruikt puur zwart, ideaal voor OLED-schermen</string>
+    <string name="amoled_description_off">Het donkere thema gebruikt de gebruikelijke donkere tinten</string>
+    <string name="with_year">Met jaar</string>
+    <string name="without_year">Zonder jaar</string>
+    <!-- Edge blur -->
+    <string name="edge_blur">Randvervaging</string>
+    <string name="edge_blur_description_on">De inhoud vervaagt geleidelijk wanneer deze onder de navigatiebalk schuift</string>
+    <string name="edge_blur_description_off">De inhoud schuift zonder vervaging onder de navigatiebalk</string>
 </resources>
