@@ -34,6 +34,13 @@
         <item quantity="many">Осталось %d дней</item>
         <item quantity="other">Осталось %d дней</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s день</item>
+        <item quantity="few">%s дня</item>
+        <item quantity="many">%s дней</item>
+        <item quantity="other">%s дня</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">Настройка</string>
     <string name="app_behavior">Поведение приложения</string>
@@ -95,6 +102,7 @@
     <string name="birday_import_success">Импорт завершен!</string>
     <string name="birday_import_failure">Импорт не удался! Вы выбрали тот файл, что нужно?</string>
     <string name="birday_import_invalid_file">Импорт не удался. Выбранный файл - не резервная копия Birday!</string>
+    <string name="birday_import_newer_backup">Эта резервная копия создана в более новой версии Birday. Обновите приложение, чтобы импортировать её</string>
     <string name="birday_export_success">Экспорт завершен!</string>
     <string name="birday_export_failure">Экспорт не удался. Ой!</string>
     <string name="birday_export_nothing_found">Нечего экспортировать!</string>
@@ -139,6 +147,7 @@
     <string name="new_event_description">Запишите человека, который вам дорог, и Birday напомнит вам о его/ее дне рождения!</string>
     <string name="insert_event">Добавить событие</string>
     <string name="cancel">Отмена</string>
+    <string name="crop_image_error">Не удалось обрезать изображение</string>
     <string name="insert_name_hint">Введите имя</string>
     <string name="insert_surname_hint">Введите фамилию</string>
     <string name="insert_date_hint">Выберите дату</string>
@@ -165,6 +174,8 @@
     <string name="next_age">Следующий юбилей:</string>
     <string name="zodiac_sign">Знак зодиака:</string>
     <string name="chinese_zodiac_sign">По китайскому календарю:</string>
+    <string name="days_lived">Прожитые дни</string>
+    <string name="next_unbirthday">Следующий не-день рождения</string>
     <!-- Quick apps -->
     <string name="event_apps">Быстрые приложения</string>
     <string name="event_apps_description">Приложения, где можно быстро поздравить!</string>
@@ -284,6 +295,20 @@
     <string name="show_following_widget_description">Показать в дополнительной строке событие или события, следующие за другим</string>
     <string name="appwidget_compact">Compact table</string>
     <string name="add_widget_compact">Birday - Compact</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">Непрозрачность фона</string>
+    <string name="compact_widget_bg_color">Цвет фона</string>
+    <string name="compact_widget_text_color">Цвет текста</string>
+    <string name="compact_widget_text_size">Размер текста</string>
+    <string name="compact_widget_text_size_auto">Автоматически</string>
+    <string name="export_ics_title">Экспорт в iCalendar</string>
+    <string name="export_ics_description">Экспортировать каждое событие в файл .ics для любого приложения-календаря</string>
+    <string name="compact_widget_scroll">Прокручивать все события</string>
+    <string name="compact_widget_hidden">Скрыто</string>
+    <string name="compact_widget_below_name">Под именем</string>
+    <string name="compact_widget_above_name">Над именем</string>
+    <string name="compact_widget_before_date">Перед датой</string>
+    <string name="compact_widget_after_date">После даты</string>
     <!-- Search -->
     <string name="search_event">Поиск…</string>
     <string name="search_no_result_title">Ничего не найдено</string>
@@ -341,7 +366,55 @@
     <string name="advanced_overview_title">Расширенный обзор</string>
     <string name="advanced_overview_description_off">На экране обзора будет отображаться только основная информация</string>
     <string name="advanced_overview_description_on">На экране обзора будут показаны другие годы и подробная информация</string>
+    <string name="feb29_assignment_title">29 февраля в невисокосные годы</string>
+    <string name="feb29_assignment_description_off">В невисокосные годы дни рождения 29 февраля отмечаются 1 марта</string>
+    <string name="feb29_assignment_description_on">В невисокосные годы дни рождения 29 февраля отмечаются 28 февраля</string>
     <string name="replace_on_conflict_title">Заменить при конфликте</string>
     <string name="replace_on_conflict_description_off">При импорте дубликат события не будет заменен импортируемым дубликатом</string>
     <string name="replace_on_conflict_description_on">При импорте дубликат события будет перезаписан импортируемым дубликатом</string>
+    <string name="contacts_full_name_title">Полные имена из контактов</string>
+    <string name="contacts_full_name_description_on">При чтении имён из контактов сохраняются обращения, дополнительные имена и суффиксы</string>
+    <string name="contacts_full_name_description_off">Из контактов читаются только имя и фамилия</string>
+    <string name="days_milestones_title">Рубежи прожитых дней</string>
+    <string name="days_milestones_description_on">В сведениях показываются прожитые дни. Каждый рубеж в 1000 дней отмечается с уведомлением, как день рождения</string>
+    <string name="days_milestones_description_off">Без счётчика прожитых дней и памятных рубежей</string>
+    <string name="unbirthdays_title">Не-дни рождения</string>
+    <string name="alternative_calendar_title">Другой календарь</string>
+    <string name="alternative_calendar_none">Нет, только григорианский</string>
+    <string name="calendar_gregorian">Григорианский</string>
+    <string name="calendar_chinese">Китайский</string>
+    <string name="calendar_dangi">Корейский</string>
+    <string name="calendar_hebrew">Еврейский</string>
+    <string name="calendar_islamic">Исламский</string>
+    <string name="calendar_islamic_civil">Исламский (гражданский)</string>
+    <string name="user_card_title">Ваш день рождения</string>
+    <string name="user_birthday_greeting">С днём рождения, %s!</string>
+    <string name="user_card_empty">Укажите дату рождения</string>
+    <string name="user_card_save">Сохранить</string>
+    <string name="user_card_remove">Удалить</string>
+    <string name="unbirthdays_description_on">В сведениях показывается ближайшая дата с теми же днём недели и числом месяца, что и при рождении, например пятница, 13-е</string>
+    <string name="unbirthdays_description_off">Не показывать не-дни рождения в сведениях</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
+    <string name="about_title">О приложении</string>
+    <string name="back">Назад</string>
+    <string name="about_description">Сведения о Birday, его авторе и языке приложения</string>
+    <string name="about_version">Версия</string>
+    <string name="about_language_title">Язык</string>
+    <string name="about_language_summary">Выберите язык Birday</string>
+    <string name="about_rate_title">Оценить приложение</string>
+    <string name="about_rate_summary">Оставьте отзыв в Google Play</string>
+    <string name="about_share_title">Поделиться Birday</string>
+    <string name="about_share_summary">Расскажите другу о приложении</string>
+    <string name="about_share_text">Birday — простой и красивый способ больше не забывать о днях рождения: %1$s</string>
+    <string name="about_no_app_found">Нет приложения для выполнения этого действия!</string>
+    <string name="about_privacy_title">Политика конфиденциальности</string>
+    <string name="about_contact_title">Связаться с разработчиком</string>
+    <string name="amoled_description_on">В тёмной теме используется чистый чёрный цвет, подходящий для OLED-экранов</string>
+    <string name="amoled_description_off">В тёмной теме используются стандартные тёмные оттенки</string>
+    <string name="with_year">С годом</string>
+    <string name="without_year">Без года</string>
+    <!-- Edge blur -->
+    <string name="edge_blur">Размытие по краям</string>
+    <string name="edge_blur_description_on">При прокрутке под панель навигации содержимое плавно размывается</string>
+    <string name="edge_blur_description_off">Содержимое прокручивается под панель навигации без размытия</string>
 </resources>
