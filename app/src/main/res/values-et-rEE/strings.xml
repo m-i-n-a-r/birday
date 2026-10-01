@@ -15,7 +15,7 @@
     <string name="add_favorite">Lisa lemmikutesse</string>
     <string name="stats">Statistika</string>
     <string name="no_stats">Statistika puudub!</string>
-    <string name="stats_summary">Stats summary</string>
+    <string name="stats_summary">Statistika kokkuvõte</string>
     <string name="no_stats_description">Pole piisavalt sündmusi, et statistikat näidata. Vaata siia uuesti, kui oled üritusi lisanud!</string>
     <plurals name="stats_total">
         <item quantity="one">Birday is helping you to remember a total of %d event</item>
@@ -54,10 +54,10 @@
     <string name="vibration_name">Vibratsioon</string>
     <string name="vibration_description_on">Vibreeri nupu vajutamisel</string>
     <string name="vibration_description_off">Ära vibreeri nupu vajutamisel</string>
-    <string name="date_format_name">Date format</string>
+    <string name="date_format_name">Kuupäevaformaat</string>
     <string name="notification_hour_name">Notification hour</string>
     <string name="notification_hour_description">%s \n\nPlease note that the notification might not work when the app is killed by the system in some Huawei, Xiaomi and OnePlus devices. Refer to dontkillmyapp.com for more information</string>
-    <string name="accent_description">Change the default accent color</string>
+    <string name="accent_description">Muuda eelseadistatud aksentvärvi</string>
     <string name="accent_name">Aksentvärv</string>
     <string name="theme_description">Use a dark, light or automatic app theme</string>
     <string name="theme_name">App theme</string>
