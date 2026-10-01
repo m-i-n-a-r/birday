@@ -57,7 +57,7 @@
     <string name="theme_description">Utiliser un thème sombre, clair ou automatique</string>
     <string name="theme_name">Thème</string>
     <!-- ^ Untranslated for now -->
-    <string name="aqua">Aqua</string>
+    <string name="aqua">Bleu aqua</string>
     <string name="brown">Marron</string>
     <string name="blue">Bleu</string>
     <string name="green">Vert</string>
@@ -185,8 +185,8 @@
     <string name="random_day_of_week">%1$s est né(e) le %2$s</string>
     <string name="most_common_day_of_week">Le jour de naissance le plus répandu est %s</string>
     <plurals name="leap_year_total">
-        <item quantity="one">Le nombre de personnes nées dans une année bissextiles est de %d</item>
-        <item quantity="other">Le nombre de personnes nées dans une année bissextiles est de %d</item>
+        <item quantity="one">%d personne est née une année bissextile</item>
+        <item quantity="other">%d personnes sont nées une année bissextile</item>
     </plurals>
     <string name="random_chinese_year">Signe chinois de %1$s : %2$s</string>
     <string name="chinese_zodiac_rat">rat</string>
@@ -229,7 +229,7 @@
     <string name="and">et</string>
     <plurals name="event">
         <item quantity="one">événement : %s</item>
-        <item quantity="other">événement : %s</item>
+        <item quantity="other">événements : %s</item>
     </plurals>
     <!-- Notifications -->
     <string name="events_notification_channel">Rappel d\'événement</string>
@@ -263,8 +263,8 @@
     <string name="hide_far_widget_description">Masquer le widget si les prochains événements sont après la période de notification supplémentaire (ex: notification 7 jours avant, le prochain événement est dans 10 jours -&gt; le widget est masqué)</string>
     <string name="show_following_widget_title">Montrer l\'événement suivant</string>
     <string name="show_following_widget_description">Afficher l\'évènement ou les événements suivants le suivant dans une autre ligne</string>
-    <string name="appwidget_compact">Table compacte</string>
-    <string name="add_widget_compact">Birday - Compacte</string>
+    <string name="appwidget_compact">Tableau compact</string>
+    <string name="add_widget_compact">Birday - Compact</string>
     <!-- Search -->
     <string name="search_event">Rechercher…</string>
     <string name="search_no_result_title">Aucun résultat n\'a été trouvé</string>
@@ -325,4 +325,71 @@
     <string name="replace_on_conflict_title">Remplacer en cas de conflit</string>
     <string name="replace_on_conflict_description_off">Lors de l\'importation, un événement dupliqué ne sera pas remplacé par le doublon importé</string>
     <string name="replace_on_conflict_description_on">Lors de l\'importation, un événement dupliqué sera écrasé par le doublon importé</string>
+    <plurals name="days_lived_count">
+        <item quantity="one">%s jour</item>
+        <item quantity="other">%s jours</item>
+    </plurals>
+    <string name="birday_import_newer_backup">Cette sauvegarde provient d\'une version plus récente de Birday : mettez l\'application à jour pour l\'importer</string>
+    <string name="crop_image_error">Une erreur est survenue lors du recadrage de l\'image</string>
+    <string name="days_lived">Jours vécus</string>
+    <string name="next_unbirthday">Prochain non-anniversaire</string>
+    <string name="compact_widget_opacity">Opacité du fond</string>
+    <string name="compact_widget_bg_color">Couleur du fond</string>
+    <string name="compact_widget_text_color">Couleur du texte</string>
+    <string name="compact_widget_text_size">Taille du texte</string>
+    <string name="compact_widget_text_size_auto">Automatique</string>
+    <string name="export_ics_title">Exporter vers iCalendar</string>
+    <string name="export_ics_description">Exporter chaque événement dans un fichier .ics utilisable avec toute application de calendrier</string>
+    <string name="compact_widget_scroll">Faire défiler tous les événements</string>
+    <string name="compact_widget_hidden">Masqué</string>
+    <string name="compact_widget_below_name">Sous le nom</string>
+    <string name="compact_widget_above_name">Au-dessus du nom</string>
+    <string name="compact_widget_before_date">Avant la date</string>
+    <string name="compact_widget_after_date">Après la date</string>
+    <string name="feb29_assignment_title">29 février lors des années non bissextiles</string>
+    <string name="feb29_assignment_description_off">Lors des années non bissextiles, les anniversaires du 29 février sont célébrés le 1er mars</string>
+    <string name="feb29_assignment_description_on">Lors des années non bissextiles, les anniversaires du 29 février sont célébrés le 28 février</string>
+    <string name="contacts_full_name_title">Noms complets des contacts</string>
+    <string name="contacts_full_name_description_on">Les titres, prénoms supplémentaires et suffixes sont conservés lors de la lecture des noms des contacts</string>
+    <string name="contacts_full_name_description_off">Seuls le prénom et le nom de famille sont lus dans les contacts</string>
+    <string name="days_milestones_title">Étapes des jours vécus</string>
+    <string name="days_milestones_description_on">Les détails affichent les jours vécus et chaque tranche de 1 000 jours est célébrée et notifiée comme un anniversaire</string>
+    <string name="days_milestones_description_off">Aucun compteur de jours vécus ni étape à célébrer</string>
+    <string name="unbirthdays_title">Non-anniversaires</string>
+    <string name="alternative_calendar_title">Calendrier alternatif</string>
+    <string name="alternative_calendar_none">Aucun, grégorien uniquement</string>
+    <string name="calendar_gregorian">Grégorien</string>
+    <string name="calendar_chinese">Chinois</string>
+    <string name="calendar_dangi">Coréen</string>
+    <string name="calendar_hebrew">Hébraïque</string>
+    <string name="calendar_islamic">Islamique</string>
+    <string name="calendar_islamic_civil">Islamique (civil)</string>
+    <string name="user_card_title">Votre anniversaire</string>
+    <string name="user_birthday_greeting">Joyeux anniversaire, %s !</string>
+    <string name="user_card_empty">Saisissez votre date de naissance</string>
+    <string name="user_card_save">Enregistrer</string>
+    <string name="user_card_remove">Supprimer</string>
+    <string name="unbirthdays_description_on">Les détails affichent la prochaine date ayant le même jour de la semaine et du mois que votre naissance, par exemple un vendredi 13</string>
+    <string name="unbirthdays_description_off">Aucun non-anniversaire dans les détails</string>
+    <string name="about_title">À propos</string>
+    <string name="back">Retour</string>
+    <string name="about_description">Informations sur Birday, son auteur et la langue de l\'application</string>
+    <string name="about_version">Version</string>
+    <string name="about_language_title">Langue</string>
+    <string name="about_language_summary">Choisissez la langue utilisée par Birday</string>
+    <string name="about_rate_title">Évaluer l\'application</string>
+    <string name="about_rate_summary">Laissez un avis sur le Play Store</string>
+    <string name="about_share_title">Partager Birday</string>
+    <string name="about_share_summary">Faites découvrir l\'application à un ami</string>
+    <string name="about_share_text">Birday, une façon simple et agréable de ne plus jamais oublier un anniversaire : %1$s</string>
+    <string name="about_no_app_found">Aucune application ne peut effectuer cette action !</string>
+    <string name="about_privacy_title">Politique de confidentialité</string>
+    <string name="about_contact_title">Contacter le développeur</string>
+    <string name="amoled_description_on">Le thème sombre utilise un noir pur, idéal pour les écrans OLED</string>
+    <string name="amoled_description_off">Le thème sombre utilise les teintes sombres standard</string>
+    <string name="with_year">Avec l\'année</string>
+    <string name="without_year">Sans l\'année</string>
+    <string name="edge_blur">Flou sur les bords</string>
+    <string name="edge_blur_description_on">Le contenu s\'estompe doucement lorsqu\'il défile sous la barre de navigation</string>
+    <string name="edge_blur_description_off">Le contenu défile sous la barre de navigation sans flou</string>
 </resources>
