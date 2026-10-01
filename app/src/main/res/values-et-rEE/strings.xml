@@ -30,6 +30,11 @@
         <item quantity="one">%d day left</item>
         <item quantity="other">%d days left</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s päev</item>
+        <item quantity="other">%s päeva</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">Isikupärastamine</string>
     <string name="app_behavior">Äpi käitumine</string>
@@ -94,6 +99,7 @@
     <string name="birday_import_success">Import completed!</string>
     <string name="birday_import_failure">Import failed. Did you choose the file correctly?</string>
     <string name="birday_import_invalid_file">Import failed. The chosen file is not a Birday backup!</string>
+    <string name="birday_import_newer_backup">See varukoopia pärineb Birday uuemast versioonist. Importimiseks uuenda rakendust</string>
     <string name="birday_export_success">Export completed!</string>
     <string name="birday_export_failure">Export failed. Whoopsie!</string>
     <string name="birday_export_nothing_found">Nothing to export!</string>
@@ -138,6 +144,7 @@
     <string name="new_event_description">Enter a person you care about, and Birday will help you to remember their birthday or other events!</string>
     <string name="insert_event">Insert event</string>
     <string name="cancel">Cancel</string>
+    <string name="crop_image_error">Pildi kärpimisel tekkis viga</string>
     <string name="insert_name_hint">Insert First Name</string>
     <string name="insert_surname_hint">Insert Last Name</string>
     <string name="insert_date_hint">Select a date</string>
@@ -164,6 +171,8 @@
     <string name="next_age">Next age:</string>
     <string name="zodiac_sign">Zodiac sign:</string>
     <string name="chinese_zodiac_sign">Chinese sign:</string>
+    <string name="days_lived">Elatud päevad</string>
+    <string name="next_unbirthday">Järgmine mittesünnipäev</string>
     <!-- Quick apps -->
     <string name="event_apps">Quick apps</string>
     <string name="event_apps_description">Apps to wish all the best rapidly!</string>
@@ -275,6 +284,20 @@
     <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
     <string name="appwidget_compact">Compact table</string>
     <string name="add_widget_compact">Birday - Compact</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">Tausta läbipaistmatus</string>
+    <string name="compact_widget_bg_color">Taustavärv</string>
+    <string name="compact_widget_text_color">Teksti värv</string>
+    <string name="compact_widget_text_size">Teksti suurus</string>
+    <string name="compact_widget_text_size_auto">Automaatne</string>
+    <string name="export_ics_title">Ekspordi iCalendari</string>
+    <string name="export_ics_description">Ekspordi iga sündmus .ics-faili, mida saab kasutada igas kalendrirakenduses</string>
+    <string name="compact_widget_scroll">Keri kõiki sündmusi</string>
+    <string name="compact_widget_hidden">Peidetud</string>
+    <string name="compact_widget_below_name">Nime all</string>
+    <string name="compact_widget_above_name">Nime kohal</string>
+    <string name="compact_widget_before_date">Kuupäeva ees</string>
+    <string name="compact_widget_after_date">Kuupäeva järel</string>
     <!-- Search -->
     <string name="search_event">Search…</string>
     <string name="search_no_result_title">No results found</string>
@@ -332,7 +355,55 @@
     <string name="advanced_overview_title">Advanced overview</string>
     <string name="advanced_overview_description_off">The overview screen will only display basic information</string>
     <string name="advanced_overview_description_on">The overview screen will show other years and detailed information</string>
+    <string name="feb29_assignment_title">29. veebruar tavalistel aastatel</string>
+    <string name="feb29_assignment_description_off">29. veebruari sünnipäevi tähistatakse mitteliigaastatel 1. märtsil</string>
+    <string name="feb29_assignment_description_on">29. veebruari sünnipäevi tähistatakse mitteliigaastatel 28. veebruaril</string>
     <string name="replace_on_conflict_title">Replace on conflict</string>
     <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
     <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+    <string name="contacts_full_name_title">Kontaktide täisnimed</string>
+    <string name="contacts_full_name_description_on">Kontaktide nimede lugemisel säilitatakse tiitlid, lisanimed ja järelliited</string>
+    <string name="contacts_full_name_description_off">Kontaktidest loetakse ainult ees- ja perekonnanimi</string>
+    <string name="days_milestones_title">Elatud päevade verstapostid</string>
+    <string name="days_milestones_description_on">Üksikasjades kuvatakse elatud päevad. Iga 1000 päeva järel tähistatakse verstaposti ja saadetakse teavitus nagu sünnipäeval</string>
+    <string name="days_milestones_description_off">Elatud päevade loendurit ja verstaposte ei kuvata</string>
+    <string name="unbirthdays_title">Mittesünnipäevad</string>
+    <string name="alternative_calendar_title">Alternatiivne kalender</string>
+    <string name="alternative_calendar_none">Puudub, ainult Gregoriuse kalender</string>
+    <string name="calendar_gregorian">Gregoriuse</string>
+    <string name="calendar_chinese">Hiina</string>
+    <string name="calendar_dangi">Korea</string>
+    <string name="calendar_hebrew">Heebrea</string>
+    <string name="calendar_islamic">Islami</string>
+    <string name="calendar_islamic_civil">Islami (tsiviilkalender)</string>
+    <string name="user_card_title">Sinu sünnipäev</string>
+    <string name="user_birthday_greeting">Palju õnne sünnipäevaks, %s!</string>
+    <string name="user_card_empty">Sisesta oma sünnikuupäev</string>
+    <string name="user_card_save">Salvesta</string>
+    <string name="user_card_remove">Eemalda</string>
+    <string name="unbirthdays_description_on">Üksikasjades kuvatakse järgmine kuupäev, mille nädalapäev ja kuupäevanumber on samad nagu sündimisel, näiteks reede ja 13</string>
+    <string name="unbirthdays_description_off">Üksikasjades mittesünnipäevi ei kuvata</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
+    <string name="about_title">Rakendusest</string>
+    <string name="back">Tagasi</string>
+    <string name="about_description">Teave Birday, selle autori ja rakenduse keele kohta</string>
+    <string name="about_version">Versioon</string>
+    <string name="about_language_title">Keel</string>
+    <string name="about_language_summary">Vali Birday keel</string>
+    <string name="about_rate_title">Hinda rakendust</string>
+    <string name="about_rate_summary">Jäta Play poodi arvustus</string>
+    <string name="about_share_title">Jaga Birdayd</string>
+    <string name="about_share_summary">Soovita rakendust sõbrale</string>
+    <string name="about_share_text">Birday – lihtne ja ilus viis, kuidas mitte ühtegi sünnipäeva unustada: %1$s</string>
+    <string name="about_no_app_found">Ükski rakendus ei saa seda toimingut teha!</string>
+    <string name="about_privacy_title">Privaatsuspõhimõtted</string>
+    <string name="about_contact_title">Võta arendajaga ühendust</string>
+    <string name="amoled_description_on">Tume teema kasutab puhast musta, mis sobib OLED-ekraanidele</string>
+    <string name="amoled_description_off">Tume teema kasutab tavapäraseid tumedaid pindu</string>
+    <string name="with_year">Aastaga</string>
+    <string name="without_year">Aastata</string>
+    <!-- Edge blur -->
+    <string name="edge_blur">Servade hägustamine</string>
+    <string name="edge_blur_description_on">Sisu hägustub sujuvalt, kui see keritakse navigeerimisriba alla</string>
+    <string name="edge_blur_description_off">Sisu keritakse navigeerimisriba alla ilma hägustamata</string>
 </resources>
