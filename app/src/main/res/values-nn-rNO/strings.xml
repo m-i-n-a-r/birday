@@ -373,6 +373,13 @@
     <string name="user_card_remove">Fjern</string>
     <string name="unbirthdays_description_on">Detaljane viser neste dato med same vekedag og dag i månaden som ved fødselen, til dømes fredag den 13.</string>
     <string name="unbirthdays_description_off">Ingen ikkje-fødselsdagar i detaljane</string>
+    <string name="weekend_reminder_title">Påminn før helga</string>
+    <string name="weekend_reminder_description_on">Hendingar i helga vert varsla òg den siste arbeidsdagen før</string>
+    <string name="weekend_reminder_description_off">Hendingar i helga vert berre varsla som vanleg</string>
+    <string name="additional_notification_separate_title">Eige tidspunkt for ekstra varslingar</string>
+    <string name="additional_notification_separate_description_on">Ekstra varslingar kjem på tidspunktet valt nedanfor</string>
+    <string name="additional_notification_separate_description_off">Ekstra varslingar kjem saman med hovudvarslinga</string>
+    <string name="additional_notification_hour">Tidspunkt for ekstra varsling</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Om appen</string>
     <string name="back">Tilbake</string>
