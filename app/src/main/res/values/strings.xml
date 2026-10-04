@@ -408,6 +408,13 @@
     <string name="user_card_remove">Remove</string>
     <string name="unbirthdays_description_on">The details show the next day with the same weekday and day of the month as the birth, like Friday the 13th</string>
     <string name="unbirthdays_description_off">No unbirthdays in the details</string>
+    <string name="weekend_reminder_title">Remind before the weekend</string>
+    <string name="weekend_reminder_description_on">Events on a weekend are also notified on the last working day before it</string>
+    <string name="weekend_reminder_description_off">Events on a weekend are notified only as usual</string>
+    <string name="additional_notification_separate_title">Separate time for additional notifications</string>
+    <string name="additional_notification_separate_description_on">Additional notifications arrive at the time chosen below</string>
+    <string name="additional_notification_separate_description_off">Additional notifications arrive together with the main one</string>
+    <string name="additional_notification_hour">Additional notification hour</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">About</string>
     <string name="back">Back</string>
