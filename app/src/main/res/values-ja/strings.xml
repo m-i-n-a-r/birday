@@ -366,6 +366,13 @@
     <string name="user_card_remove">削除</string>
     <string name="unbirthdays_description_on">生まれた日と曜日と日付が一致する次の日を詳細に表示します。たとえば、生まれた日が13日の金曜日なら、次の13日の金曜日です</string>
     <string name="unbirthdays_description_off">誕生日と同じ曜日・日付の日を詳細に表示しません</string>
+    <string name="weekend_reminder_title">週末の前にリマインド</string>
+    <string name="weekend_reminder_description_on">週末のイベントは、その前の最後の平日にも通知されます</string>
+    <string name="weekend_reminder_description_off">週末のイベントは通常どおりにのみ通知されます</string>
+    <string name="additional_notification_separate_title">事前通知の時刻を分ける</string>
+    <string name="additional_notification_separate_description_on">事前通知は下で選んだ時刻に届きます</string>
+    <string name="additional_notification_separate_description_off">事前通知はメインの通知と一緒に届きます</string>
+    <string name="additional_notification_hour">事前通知の時刻</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">このアプリについて</string>
     <string name="back">戻る</string>
