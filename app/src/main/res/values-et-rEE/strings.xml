@@ -373,6 +373,13 @@
     <string name="user_card_remove">Eemalda</string>
     <string name="unbirthdays_description_on">Üksikasjades kuvatakse järgmine kuupäev, mille nädalapäev ja kuupäevanumber on samad nagu sündimisel, näiteks reede ja 13</string>
     <string name="unbirthdays_description_off">Üksikasjades mittesünnipäevi ei kuvata</string>
+    <string name="weekend_reminder_title">Tuleta meelde enne nädalavahetust</string>
+    <string name="weekend_reminder_description_on">Nädalavahetusel toimuvatest sündmustest teavitatakse ka eelneval viimasel tööpäeval</string>
+    <string name="weekend_reminder_description_off">Nädalavahetusel toimuvatest sündmustest teavitatakse ainult tavapäraselt</string>
+    <string name="additional_notification_separate_title">Eraldi kellaaeg lisateavitustele</string>
+    <string name="additional_notification_separate_description_on">Lisateavitused saabuvad allpool valitud kellaajal</string>
+    <string name="additional_notification_separate_description_off">Lisateavitused saabuvad koos põhiteavitusega</string>
+    <string name="additional_notification_hour">Lisateavituse kellaaeg</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Rakendusest</string>
     <string name="back">Tagasi</string>
