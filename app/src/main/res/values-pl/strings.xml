@@ -387,6 +387,13 @@
     <string name="user_card_remove">Usuń</string>
     <string name="unbirthdays_description_on">Szczegóły pokazują najbliższą datę z tym samym dniem tygodnia i dniem miesiąca co przy narodzinach, np. piątek trzynastego</string>
     <string name="unbirthdays_description_off">Bez nieurodzin w szczegółach</string>
+    <string name="weekend_reminder_title">Przypomnij przed weekendem</string>
+    <string name="weekend_reminder_description_on">Wydarzenia w weekend są zgłaszane także w ostatni dzień roboczy przed nim</string>
+    <string name="weekend_reminder_description_off">Wydarzenia w weekend są zgłaszane tylko jak zwykle</string>
+    <string name="additional_notification_separate_title">Osobna godzina dla dodatkowych powiadomień</string>
+    <string name="additional_notification_separate_description_on">Dodatkowe powiadomienia przychodzą o godzinie wybranej poniżej</string>
+    <string name="additional_notification_separate_description_off">Dodatkowe powiadomienia przychodzą razem z głównym</string>
+    <string name="additional_notification_hour">Godzina dodatkowego powiadomienia</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">O aplikacji</string>
     <string name="back">Wstecz</string>
