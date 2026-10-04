@@ -380,6 +380,13 @@
     <string name="user_card_remove">നീക്കം ചെയ്യുക</string>
     <string name="unbirthdays_description_on">ജനിച്ച അതേ ആഴ്ചദിവസവും മാസത്തിലെ തീയതിയും ഒത്തുവരുന്ന അടുത്ത ദിവസം വിശദാംശങ്ങളിൽ കാണിക്കുന്നു, ഉദാഹരണത്തിന് വെള്ളിയാഴ്ച 13</string>
     <string name="unbirthdays_description_off">ജനിച്ച തീയതിയും ആഴ്ചദിവസവും ഒത്തുവരുന്ന ദിവസങ്ങൾ വിശദാംശങ്ങളിൽ കാണിക്കില്ല</string>
+    <string name="weekend_reminder_title">വാരാന്ത്യത്തിന് മുമ്പ് ഓർമ്മിപ്പിക്കുക</string>
+    <string name="weekend_reminder_description_on">വാരാന്ത്യത്തിലെ ഇവന്റുകൾ അതിനു മുമ്പുള്ള അവസാന പ്രവൃത്തിദിവസവും അറിയിക്കും</string>
+    <string name="weekend_reminder_description_off">വാരാന്ത്യത്തിലെ ഇവന്റുകൾ സാധാരണ പോലെ മാത്രം അറിയിക്കും</string>
+    <string name="additional_notification_separate_title">കൂടുതൽ അറിയിപ്പുകൾക്ക് പ്രത്യേക സമയം</string>
+    <string name="additional_notification_separate_description_on">കൂടുതൽ അറിയിപ്പുകൾ താഴെ തിരഞ്ഞെടുത്ത സമയത്ത് എത്തും</string>
+    <string name="additional_notification_separate_description_off">കൂടുതൽ അറിയിപ്പുകൾ പ്രധാന അറിയിപ്പിനൊപ്പം എത്തും</string>
+    <string name="additional_notification_hour">കൂടുതൽ അറിയിപ്പിന്റെ സമയം</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">ആപ്പിനെക്കുറിച്ച്</string>
     <string name="back">തിരികെ</string>
