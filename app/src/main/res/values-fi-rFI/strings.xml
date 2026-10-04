@@ -382,6 +382,13 @@
     <string name="user_card_remove">Poista</string>
     <string name="unbirthdays_description_on">Tiedoissa näytetään seuraava päivämäärä, jonka viikonpäivä ja kuukauden päivä ovat samat kuin syntyessä, esimerkiksi perjantai 13. päivä</string>
     <string name="unbirthdays_description_off">Ei ei-syntymäpäiviä tiedoissa</string>
+    <string name="weekend_reminder_title">Muistuta ennen viikonloppua</string>
+    <string name="weekend_reminder_description_on">Viikonlopun tapahtumista ilmoitetaan myös edeltävänä viimeisenä arkipäivänä</string>
+    <string name="weekend_reminder_description_off">Viikonlopun tapahtumista ilmoitetaan vain tavalliseen tapaan</string>
+    <string name="additional_notification_separate_title">Oma aika lisäilmoituksille</string>
+    <string name="additional_notification_separate_description_on">Lisäilmoitukset tulevat alla valittuun aikaan</string>
+    <string name="additional_notification_separate_description_off">Lisäilmoitukset tulevat yhdessä pääilmoituksen kanssa</string>
+    <string name="additional_notification_hour">Lisäilmoituksen aika</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Tietoja</string>
     <string name="back">Takaisin</string>
