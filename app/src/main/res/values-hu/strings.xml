@@ -376,6 +376,13 @@
     <string name="user_card_remove">Eltávolítás</string>
     <string name="unbirthdays_description_on">A részletek megmutatják a következő dátumot, amely ugyanarra a hétköznapra és a hónap ugyanazon napjára esik, mint a születés dátuma, például péntek 13.</string>
     <string name="unbirthdays_description_off">A részletek nem mutatják a nem-születésnapokat</string>
+    <string name="weekend_reminder_title">Emlékeztetés hétvége előtt</string>
+    <string name="weekend_reminder_description_on">A hétvégi eseményekről az előtte lévő utolsó munkanapon is értesítést kapsz</string>
+    <string name="weekend_reminder_description_off">A hétvégi eseményekről csak a szokásos módon kapsz értesítést</string>
+    <string name="additional_notification_separate_title">Külön időpont a további értesítéseknek</string>
+    <string name="additional_notification_separate_description_on">A további értesítések a lent választott időpontban érkeznek</string>
+    <string name="additional_notification_separate_description_off">A további értesítések a fő értesítéssel együtt érkeznek</string>
+    <string name="additional_notification_hour">A további értesítés ideje</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Névjegy</string>
     <string name="back">Vissza</string>
