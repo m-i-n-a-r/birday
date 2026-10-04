@@ -375,6 +375,13 @@
     <string name="user_card_remove">Entfernen</string>
     <string name="unbirthdays_description_on">Die Details zeigen das nächste Datum mit demselben Wochentag und Tag des Monats wie bei der Geburt, etwa Freitag, den 13.</string>
     <string name="unbirthdays_description_off">Keine Nichtgeburtstage in den Details</string>
+    <string name="weekend_reminder_title">Vor dem Wochenende erinnern</string>
+    <string name="weekend_reminder_description_on">Ereignisse am Wochenende werden zusätzlich am letzten Werktag davor gemeldet</string>
+    <string name="weekend_reminder_description_off">Ereignisse am Wochenende werden nur wie gewohnt gemeldet</string>
+    <string name="additional_notification_separate_title">Eigene Uhrzeit für zusätzliche Benachrichtigungen</string>
+    <string name="additional_notification_separate_description_on">Zusätzliche Benachrichtigungen kommen zur unten gewählten Uhrzeit</string>
+    <string name="additional_notification_separate_description_off">Zusätzliche Benachrichtigungen kommen zusammen mit der Hauptbenachrichtigung</string>
+    <string name="additional_notification_hour">Uhrzeit der zusätzlichen Benachrichtigung</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Über die App</string>
     <string name="back">Zurück</string>
