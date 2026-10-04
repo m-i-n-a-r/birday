@@ -387,6 +387,13 @@
     <string name="user_card_remove">Odstrániť</string>
     <string name="unbirthdays_description_on">Podrobnosti zobrazujú najbližší dátum s rovnakým dňom v týždni a dňom v mesiaci ako pri narodení, napríklad piatok trinásteho</string>
     <string name="unbirthdays_description_off">Bez nenarodenín v podrobnostiach</string>
+    <string name="weekend_reminder_title">Pripomenúť pred víkendom</string>
+    <string name="weekend_reminder_description_on">Udalosti cez víkend sú oznámené aj posledný pracovný deň pred ním</string>
+    <string name="weekend_reminder_description_off">Udalosti cez víkend sú oznámené len ako zvyčajne</string>
+    <string name="additional_notification_separate_title">Samostatný čas pre dodatočné upozornenia</string>
+    <string name="additional_notification_separate_description_on">Dodatočné upozornenia prichádzajú v čase zvolenom nižšie</string>
+    <string name="additional_notification_separate_description_off">Dodatočné upozornenia prichádzajú spolu s hlavným</string>
+    <string name="additional_notification_hour">Čas dodatočného upozornenia</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">O aplikácii</string>
     <string name="back">Späť</string>

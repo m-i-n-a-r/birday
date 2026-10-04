@@ -390,6 +390,13 @@
     <string name="user_card_remove">Șterge</string>
     <string name="unbirthdays_description_on">Detaliile arată următoarea dată cu aceeași zi a săptămânii și a lunii ca la naștere, de exemplu vineri, 13</string>
     <string name="unbirthdays_description_off">Fără neaniversări în detalii</string>
+    <string name="weekend_reminder_title">Amintește înainte de weekend</string>
+    <string name="weekend_reminder_description_on">Evenimentele din weekend sunt notificate și în ultima zi lucrătoare dinainte</string>
+    <string name="weekend_reminder_description_off">Evenimentele din weekend sunt notificate doar ca de obicei</string>
+    <string name="additional_notification_separate_title">Oră separată pentru notificările suplimentare</string>
+    <string name="additional_notification_separate_description_on">Notificările suplimentare sosesc la ora aleasă mai jos</string>
+    <string name="additional_notification_separate_description_off">Notificările suplimentare sosesc împreună cu cea principală</string>
+    <string name="additional_notification_hour">Ora notificării suplimentare</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Despre</string>
     <string name="back">Înapoi</string>

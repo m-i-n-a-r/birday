@@ -393,6 +393,13 @@
     <string name="user_card_remove">Видалити</string>
     <string name="unbirthdays_description_on">У відомостях показується найближча дата з тими самими днем тижня та числом місяця, що й під час народження, наприклад п\'ятниця, 13-те</string>
     <string name="unbirthdays_description_off">Не показувати не-дні народження у відомостях</string>
+    <string name="weekend_reminder_title">Нагадувати перед вихідними</string>
+    <string name="weekend_reminder_description_on">Про події у вихідні також надходить сповіщення в останній робочий день перед ними</string>
+    <string name="weekend_reminder_description_off">Про події у вихідні сповіщення надходить лише як зазвичай</string>
+    <string name="additional_notification_separate_title">Окремий час для додаткових сповіщень</string>
+    <string name="additional_notification_separate_description_on">Додаткові сповіщення надходять у вибраний нижче час</string>
+    <string name="additional_notification_separate_description_off">Додаткові сповіщення надходять разом з основним</string>
+    <string name="additional_notification_hour">Час додаткового сповіщення</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Про застосунок</string>
     <string name="back">Назад</string>

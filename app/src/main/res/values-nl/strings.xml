@@ -381,6 +381,13 @@
     <string name="user_card_remove">Verwijderen</string>
     <string name="unbirthdays_description_on">De details tonen de volgende datum met dezelfde weekdag en dag van de maand als bij de geboorte, bijvoorbeeld vrijdag de 13e</string>
     <string name="unbirthdays_description_off">Geen niet-verjaardagen in de details</string>
+    <string name="weekend_reminder_title">Herinneren voor het weekend</string>
+    <string name="weekend_reminder_description_on">Gebeurtenissen in het weekend worden ook gemeld op de laatste werkdag ervoor</string>
+    <string name="weekend_reminder_description_off">Gebeurtenissen in het weekend worden alleen zoals gewoonlijk gemeld</string>
+    <string name="additional_notification_separate_title">Apart tijdstip voor aanvullende notificaties</string>
+    <string name="additional_notification_separate_description_on">Aanvullende notificaties komen op het hieronder gekozen tijdstip</string>
+    <string name="additional_notification_separate_description_off">Aanvullende notificaties komen samen met de hoofdnotificatie</string>
+    <string name="additional_notification_hour">Tijdstip aanvullende notificatie</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Over</string>
     <string name="back">Terug</string>

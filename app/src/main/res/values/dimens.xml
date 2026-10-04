@@ -89,6 +89,8 @@
     <dimen name="nav_action_size">56dp</dimen>
     <dimen name="nav_action_corner">20dp</dimen>
     <dimen name="nav_action_icon_size">28dp</dimen>
+    <!-- The canvas of a standard icon, the one drawn at the size above -->
+    <dimen name="nav_action_icon_canvas">24dp</dimen>
     <dimen name="floating_navbar_margin">12dp</dimen>
     <dimen name="floating_navbar_elevation">6dp</dimen>
     <!-- Room left below the content so it can scroll clear of the floating navbar -->
@@ -100,9 +102,10 @@
     <dimen name="about_row_padding_vertical">14dp</dimen>
     <dimen name="about_row_icon_margin">16dp</dimen>
 
-    <!-- How far a secondary page travels sideways. Wide enough to clear a phone; the back gesture
-         maps its progress onto this distance, so it doubles as the reach of the swipe -->
-    <dimen name="nav_slide_distance">420dp</dimen>
+    <!-- How far a secondary page travels sideways: at least the width of the window, redefined
+         for every wider window. The back gesture maps its progress onto this distance, so a
+         shorter one would stop the page halfway and then make it vanish -->
+    <dimen name="nav_slide_distance">480dp</dimen>
     <!-- The page underneath only drifts, it must never leave the screen -->
     <dimen name="nav_slide_parallax">-64dp</dimen>
 

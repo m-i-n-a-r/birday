@@ -376,6 +376,13 @@
     <string name="user_card_remove">काढून टाका</string>
     <string name="unbirthdays_description_on">तपशीलांमध्ये जन्माच्या दिवसासारखाच वार आणि महिन्यातील तारीख असलेला पुढचा दिवस दिसतो, उदाहरणार्थ शुक्रवार, १३ तारीख</string>
     <string name="unbirthdays_description_off">तपशीलांमध्ये जन्मासारखा वार व तारीख असलेले दिवस दिसत नाहीत</string>
+    <string name="weekend_reminder_title">आठवड्याच्या शेवटाआधी आठवण करा</string>
+    <string name="weekend_reminder_description_on">आठवड्याच्या शेवटी असलेल्या कार्यक्रमांची सूचना आधीच्या शेवटच्या कामकाजाच्या दिवशीही मिळते</string>
+    <string name="weekend_reminder_description_off">आठवड्याच्या शेवटी असलेल्या कार्यक्रमांची सूचना फक्त नेहमीप्रमाणे मिळते</string>
+    <string name="additional_notification_separate_title">अतिरिक्त सूचनांसाठी वेगळी वेळ</string>
+    <string name="additional_notification_separate_description_on">अतिरिक्त सूचना खाली निवडलेल्या वेळी येतात</string>
+    <string name="additional_notification_separate_description_off">अतिरिक्त सूचना मुख्य सूचनेसोबत येतात</string>
+    <string name="additional_notification_hour">अतिरिक्त सूचनेची वेळ</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">ॲपविषयी</string>
     <string name="back">मागे</string>

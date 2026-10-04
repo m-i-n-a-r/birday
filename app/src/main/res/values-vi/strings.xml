@@ -370,6 +370,13 @@
     <string name="user_card_remove">Xóa</string>
     <string name="unbirthdays_description_on">Phần chi tiết hiển thị ngày tiếp theo có cùng thứ trong tuần và ngày trong tháng với lúc sinh, ví dụ thứ Sáu ngày 13</string>
     <string name="unbirthdays_description_off">Không hiển thị ngày trùng thứ và ngày sinh trong phần chi tiết</string>
+    <string name="weekend_reminder_title">Nhắc trước cuối tuần</string>
+    <string name="weekend_reminder_description_on">Sự kiện vào cuối tuần cũng được thông báo vào ngày làm việc cuối cùng trước đó</string>
+    <string name="weekend_reminder_description_off">Sự kiện vào cuối tuần chỉ được thông báo như bình thường</string>
+    <string name="additional_notification_separate_title">Giờ riêng cho thông báo bổ sung</string>
+    <string name="additional_notification_separate_description_on">Thông báo bổ sung đến vào giờ chọn bên dưới</string>
+    <string name="additional_notification_separate_description_off">Thông báo bổ sung đến cùng với thông báo chính</string>
+    <string name="additional_notification_hour">Giờ thông báo bổ sung</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Giới thiệu</string>
     <string name="back">Quay lại</string>

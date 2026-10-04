@@ -380,6 +380,13 @@
     <string name="user_card_remove">Kaldır</string>
     <string name="unbirthdays_description_on">Ayrıntılarda, doğduğunuz günle haftanın günü ve ayın günü aynı olan bir sonraki tarih gösterilir; örneğin ayın 13\'üne denk gelen bir cuma</string>
     <string name="unbirthdays_description_off">Ayrıntılarda doğum günü eşleşmeleri gösterilmez</string>
+    <string name="weekend_reminder_title">Hafta sonundan önce hatırlat</string>
+    <string name="weekend_reminder_description_on">Hafta sonundaki etkinlikler önceki son iş gününde de bildirilir</string>
+    <string name="weekend_reminder_description_off">Hafta sonundaki etkinlikler yalnızca her zamanki gibi bildirilir</string>
+    <string name="additional_notification_separate_title">Ek bildirimler için ayrı saat</string>
+    <string name="additional_notification_separate_description_on">Ek bildirimler aşağıda seçilen saatte gelir</string>
+    <string name="additional_notification_separate_description_off">Ek bildirimler ana bildirimle birlikte gelir</string>
+    <string name="additional_notification_hour">Ek bildirim saati</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Hakkında</string>
     <string name="back">Geri</string>

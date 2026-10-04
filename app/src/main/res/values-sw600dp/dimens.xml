@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- A tablet is wider than a phone, so the page has further to go before it is gone -->
-    <dimen name="nav_slide_distance">760dp</dimen>
+    <!-- On a tablet the page underneath drifts a bit further -->
     <dimen name="nav_slide_parallax">-96dp</dimen>
 
 </resources>

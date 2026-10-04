@@ -63,6 +63,35 @@
             android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
+        <!-- An event on a weekend is also notified on the last working day before it (#382) -->
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="weekend_reminder"
+            android:summaryOff="@string/weekend_reminder_description_off"
+            android:summaryOn="@string/weekend_reminder_description_on"
+            android:title="@string/weekend_reminder_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
+
+        <!-- The additional notifications at a time of their own (#350), picked in the row below,
+             which only exists while this is on -->
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="additional_notification_separate"
+            android:summaryOff="@string/additional_notification_separate_description_off"
+            android:summaryOn="@string/additional_notification_separate_description_on"
+            android:title="@string/additional_notification_separate_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false"
+            app:singleLineTitle="false" />
+
+        <com.minar.birday.preferences.standard.TimePickerPreference
+            android:key="additional_notification"
+            android:layout="@layout/time_picker_row"
+            android:selectable="true"
+            android:title="@string/additional_notification_hour"
+            app:isPreferenceVisible="false" />
+
     </PreferenceCategory>
 
     <!-- Files and data -->

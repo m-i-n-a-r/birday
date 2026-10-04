@@ -142,8 +142,14 @@ class HomeFragment : Fragment() {
         searchBarLayout.setEndIconOnClickListener(listener)
         searchBar.addTextChangedListener { text ->
             mainViewModel.searchStringChanged(text.toString())
-            if (text.isNullOrBlank()) searchBarLayout.setEndIconDrawable(R.drawable.ic_arrow_left_24dp)
-            else searchBarLayout.setEndIconDrawable(R.drawable.ic_clear_24dp)
+            // The description follows the icon, it's what a long press shows
+            if (text.isNullOrBlank()) {
+                searchBarLayout.setEndIconDrawable(R.drawable.ic_arrow_left_24dp)
+                searchBarLayout.endIconContentDescription = getString(R.string.event_type_hint)
+            } else {
+                searchBarLayout.setEndIconDrawable(R.drawable.ic_clear_24dp)
+                searchBarLayout.endIconContentDescription = getString(R.string.cancel)
+            }
         }
 
         // Setup the toggle buttons

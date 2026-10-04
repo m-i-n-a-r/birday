@@ -383,6 +383,13 @@
     <string name="user_card_remove">Αφαίρεση</string>
     <string name="unbirthdays_description_on">Οι λεπτομέρειες δείχνουν την επόμενη ημερομηνία με την ίδια ημέρα της εβδομάδας και του μήνα όπως κατά τη γέννηση, π.χ. Παρασκευή και 13</string>
     <string name="unbirthdays_description_off">Χωρίς επαναλήψεις ημέρας γέννησης στις λεπτομέρειες</string>
+    <string name="weekend_reminder_title">Υπενθύμιση πριν το Σαββατοκύριακο</string>
+    <string name="weekend_reminder_description_on">Τα γεγονότα του Σαββατοκύριακου ειδοποιούνται και την τελευταία εργάσιμη πριν</string>
+    <string name="weekend_reminder_description_off">Τα γεγονότα του Σαββατοκύριακου ειδοποιούνται μόνο όπως συνήθως</string>
+    <string name="additional_notification_separate_title">Ξεχωριστή ώρα για τις πρόσθετες ειδοποιήσεις</string>
+    <string name="additional_notification_separate_description_on">Οι πρόσθετες ειδοποιήσεις έρχονται την ώρα που επιλέγεται παρακάτω</string>
+    <string name="additional_notification_separate_description_off">Οι πρόσθετες ειδοποιήσεις έρχονται μαζί με την κύρια</string>
+    <string name="additional_notification_hour">Ώρα πρόσθετης ειδοποίησης</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Σχετικά</string>
     <string name="back">Πίσω</string>

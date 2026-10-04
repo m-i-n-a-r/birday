@@ -381,6 +381,13 @@
     <string name="user_card_remove">הסרה</string>
     <string name="unbirthdays_description_on">בפרטים מוצג התאריך הבא שחל באותו יום בשבוע ובאותו יום בחודש כמו הלידה, למשל יום שישי ה־13</string>
     <string name="unbirthdays_description_off">ללא התאמות ליום הלידה בפרטים</string>
+    <string name="weekend_reminder_title">תזכורת לפני סוף השבוע</string>
+    <string name="weekend_reminder_description_on">על אירועים בסוף השבוע תגיע התראה גם ביום העבודה האחרון שלפניו</string>
+    <string name="weekend_reminder_description_off">על אירועים בסוף השבוע תגיע התראה רק כרגיל</string>
+    <string name="additional_notification_separate_title">שעה נפרדת להתראות נוספות</string>
+    <string name="additional_notification_separate_description_on">התראות נוספות מגיעות בשעה שנבחרה למטה</string>
+    <string name="additional_notification_separate_description_off">התראות נוספות מגיעות יחד עם ההתראה הראשית</string>
+    <string name="additional_notification_hour">שעת ההתראה הנוספת</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">על האפליקציה</string>
     <string name="back">חזרה</string>

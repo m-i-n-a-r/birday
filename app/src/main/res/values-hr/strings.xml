@@ -388,6 +388,13 @@
     <string name="user_card_remove">Ukloni</string>
     <string name="unbirthdays_description_on">Pojedinosti prikazuju sljedeći datum s istim danom u tjednu i danom u mjesecu kao pri rođenju, primjerice petak 13.</string>
     <string name="unbirthdays_description_off">Bez nerođendana u pojedinostima</string>
+    <string name="weekend_reminder_title">Podsjeti prije vikenda</string>
+    <string name="weekend_reminder_description_on">Događaji za vikend javljaju se i zadnjeg radnog dana prije njega</string>
+    <string name="weekend_reminder_description_off">Događaji za vikend javljaju se samo kao i inače</string>
+    <string name="additional_notification_separate_title">Zasebno vrijeme za dodatne obavijesti</string>
+    <string name="additional_notification_separate_description_on">Dodatne obavijesti stižu u vrijeme odabrano ispod</string>
+    <string name="additional_notification_separate_description_off">Dodatne obavijesti stižu zajedno s glavnom</string>
+    <string name="additional_notification_hour">Vrijeme dodatne obavijesti</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">O aplikaciji</string>
     <string name="back">Natrag</string>

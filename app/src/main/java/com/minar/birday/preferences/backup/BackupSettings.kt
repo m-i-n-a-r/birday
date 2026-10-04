@@ -24,6 +24,8 @@ private val BACKED_UP_KEYS = setOf(
     "notification_hour", "notification_minute", "notification_only_favorites",
     "order_alphabetically", "overview_scale", "replace_on_conflict", "shimmer", "surname_first",
     "theme_color", "unbirthdays", "user_birthday", "user_name", "vibration",
+    "weekend_reminder", "additional_notification_separate", "additional_notification_hour",
+    "additional_notification_minute",
 )
 private val BACKED_UP_PREFIXES = listOf("widget_compact_", "widget_minimal_")
 

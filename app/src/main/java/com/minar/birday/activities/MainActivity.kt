@@ -108,6 +108,7 @@ import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.util.concurrent.TimeUnit
 import kotlin.concurrent.thread
+import kotlin.math.roundToInt
 
 class MainActivity : AppCompatActivity() {
     val mainViewModel: MainViewModel by viewModels()
@@ -840,17 +841,15 @@ class MainActivity : AppCompatActivity() {
     // Attached and dropped live, so the option needs no restart
     fun applyNavbarHideOnScroll(enabled: Boolean) {
         navbarHidesOnScroll = enabled
+        // The side rail covers nothing, so in landscape it always stays
+        val hides = enabled && !isNavRail
         val params = binding.floatingNavbar.layoutParams as CoordinatorLayout.LayoutParams
-        params.behavior = if (enabled) HideViewOnScrollBehavior<View>().apply {
-            setViewEdge(
-                if (!isNavRail) HideViewOnScrollBehavior.EDGE_BOTTOM
-                else if (isRtl) HideViewOnScrollBehavior.EDGE_LEFT
-                else HideViewOnScrollBehavior.EDGE_RIGHT
-            )
+        params.behavior = if (hides) HideViewOnScrollBehavior<View>().apply {
+            setViewEdge(HideViewOnScrollBehavior.EDGE_BOTTOM)
         } else null
         binding.floatingNavbar.layoutParams = params
         // Off while the bar sits off screen would strand it there
-        if (!enabled) binding.floatingNavbar.run {
+        if (!hides) binding.floatingNavbar.run {
             animate().cancel()
             translationY = 0f
             translationX = 0f
@@ -1033,8 +1032,16 @@ class MainActivity : AppCompatActivity() {
 
             NavActionMode.BACK -> {
                 icon.contentDescription = getString(R.string.back)
-                icon.setImageResource(R.drawable.ic_arrow_back_24dp)
+                animateAvd(icon, R.drawable.animated_arrow_back, 3000L)
             }
+        }
+        // An icon drawn on a larger canvas, to give its animation room, keeps the size of the others
+        val standard = resources.getDimension(R.dimen.nav_action_icon_canvas)
+        val size = resources.getDimensionPixelSize(R.dimen.nav_action_icon_size)
+        val scaled = icon.drawable?.let { (size * it.intrinsicWidth / standard).roundToInt() } ?: size
+        if (icon.layoutParams.width != scaled) icon.updateLayoutParams {
+            width = scaled
+            height = scaled
         }
     }
 
@@ -1046,10 +1053,6 @@ class MainActivity : AppCompatActivity() {
             bandPx = resources.getDimension(R.dimen.edge_blur_band)
         )
     }
-
-    // The rail follows the layout direction, and so do the behaviors keyed to its edge
-    private val isRtl: Boolean
-        get() = resources.configuration.layoutDirection == View.LAYOUT_DIRECTION_RTL
 
     // Show a dialog to select the events to import
     fun showImportDialog(

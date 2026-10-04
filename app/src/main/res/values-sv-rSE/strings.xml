@@ -373,6 +373,13 @@
     <string name="user_card_remove">Ta bort</string>
     <string name="unbirthdays_description_on">Detaljerna visar nästa datum med samma veckodag och dag i månaden som vid födseln, till exempel fredag den 13:e</string>
     <string name="unbirthdays_description_off">Inga icke-födelsedagar i detaljerna</string>
+    <string name="weekend_reminder_title">Påminn före helgen</string>
+    <string name="weekend_reminder_description_on">Händelser på en helg notifieras även den sista arbetsdagen innan</string>
+    <string name="weekend_reminder_description_off">Händelser på en helg notifieras bara som vanligt</string>
+    <string name="additional_notification_separate_title">Egen tid för ytterligare notifikationer</string>
+    <string name="additional_notification_separate_description_on">Ytterligare notifikationer kommer vid tiden som väljs nedan</string>
+    <string name="additional_notification_separate_description_off">Ytterligare notifikationer kommer tillsammans med huvudnotifikationen</string>
+    <string name="additional_notification_hour">Tid för ytterligare notifikation</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Om appen</string>
     <string name="back">Tillbaka</string>

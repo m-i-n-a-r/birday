@@ -376,6 +376,13 @@
     <string name="user_card_remove">Elimina</string>
     <string name="unbirthdays_description_on">Els detalls mostren la propera data amb el mateix dia de la setmana i del mes que el naixement, com ara un divendres 13</string>
     <string name="unbirthdays_description_off">Sense no-aniversaris als detalls</string>
+    <string name="weekend_reminder_title">Recorda abans del cap de setmana</string>
+    <string name="weekend_reminder_description_on">Els esdeveniments en cap de setmana també es notifiquen l\'últim dia laborable anterior</string>
+    <string name="weekend_reminder_description_off">Els esdeveniments en cap de setmana es notifiquen només com sempre</string>
+    <string name="additional_notification_separate_title">Hora separada per a les notificacions addicionals</string>
+    <string name="additional_notification_separate_description_on">Les notificacions addicionals arriben a l\'hora escollida a sota</string>
+    <string name="additional_notification_separate_description_off">Les notificacions addicionals arriben juntament amb la principal</string>
+    <string name="additional_notification_hour">Hora de la notificació addicional</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Quant a</string>
     <string name="back">Enrere</string>

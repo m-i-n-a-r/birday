@@ -4,24 +4,19 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.*
 import androidx.preference.PreferenceManager
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
 import com.minar.birday.model.Event
 import com.minar.birday.model.EventResult
 import com.minar.birday.model.Stat
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
 import com.minar.birday.utilities.StatsGenerator
-import com.minar.birday.utilities.delayToNextCheck
+import com.minar.birday.utilities.scheduleChecks
 import com.minar.birday.utilities.refreshCalendarDates
-import com.minar.birday.workers.EventWorker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
-import java.util.concurrent.TimeUnit
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
-    private val workManager = WorkManager.getInstance(application)
     private val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(application)
     val allEvents: LiveData<List<EventResult>>
     val allEventsUnfiltered: LiveData<List<EventResult>>
@@ -125,19 +120,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     // Schedule the next work for the specified hour, nothing will happen if there's no event
-    fun scheduleNextCheck() {
-        val workHour = sharedPrefs.getString("notification_hour", "8")!!.toInt()
-        val workMinute = sharedPrefs.getString("notification_minute", "0")!!.toInt()
-        // Cancel every previous scheduled work
-        workManager.cancelAllWork()
-        workManager.pruneWork()
-        // Setup the work request using the time until the next check as delay
-        val dailyWorkRequest = OneTimeWorkRequestBuilder<EventWorker>()
-            .setInitialDelay(delayToNextCheck(workHour, workMinute).toMillis(), TimeUnit.MILLISECONDS)
-            .build()
-        // Enqueue the request
-        workManager.enqueue(dailyWorkRequest)
-    }
+    fun scheduleNextCheck() = scheduleChecks(getApplication())
 
     fun refreshEvents() {
         refreshTrigger.value = Unit

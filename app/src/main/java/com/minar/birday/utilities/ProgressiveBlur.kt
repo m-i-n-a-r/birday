@@ -10,13 +10,20 @@ import com.minar.birday.R
 // AGSL progressive blur: the radius ramps from 0 to blurRadius across the last "band" pixels before
 // the chosen edge, so the content dissolves under the navbar instead of being cut off by it.
 // The dither jitters the sample grid, otherwise the low sample count shows up as banding.
+// Nothing is drawn past the edges of the view: a page drawn beyond them while sliding during a
+// navigation leaves the effect covering that area, which would keep showing what it last saw.
+// For the same reason the samples near the edges stay inside the view.
 private val PROGRESSIVE_BLUR_SKSL = """
     uniform shader content;
     uniform float blurRadius;
     uniform float band;
     uniform float extent;
+    uniform float width;
 
     half4 main(float2 fragCoord) {
+        if (fragCoord.x < 0.0 || fragCoord.y < 0.0 || fragCoord.x > width || fragCoord.y > extent) {
+            return half4(0.0);
+        }
         float progress = 1.0 - clamp((extent - fragCoord.y) / band, 0.0, 1.0);
         progress = pow(progress, 1.5);
         float radius = progress * blurRadius;
@@ -36,7 +43,8 @@ private val PROGRESSIVE_BLUR_SKSL = """
                 float radiusSq = radius * radius;
                 if (distSq <= radiusSq) {
                     float weight = exp(-3.0 * distSq / radiusSq);
-                    accum += content.eval(fragCoord + offset) * weight;
+                    float2 inside = clamp(fragCoord + offset, float2(0.5), float2(width, extent) - 0.5);
+                    accum += content.eval(inside) * weight;
                     weightSum += weight;
                 }
             }
@@ -74,11 +82,12 @@ fun View.applyBottomProgressiveBlur(
 
     fun rebuild() {
         // A zero height view has nothing to blur yet, and the shader would divide by zero
-        if (height <= 0) return
+        if (height <= 0 || width <= 0) return
         val shader = RuntimeShader(PROGRESSIVE_BLUR_SKSL)
         shader.setFloatUniform("blurRadius", blurRadius)
         shader.setFloatUniform("band", bandPx)
         shader.setFloatUniform("extent", height.toFloat())
+        shader.setFloatUniform("width", width.toFloat())
         setRenderEffect(RenderEffect.createRuntimeShaderEffect(shader, "content"))
     }
 

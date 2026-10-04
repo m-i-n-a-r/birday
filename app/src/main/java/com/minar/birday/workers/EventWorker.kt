@@ -6,12 +6,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import androidx.annotation.DrawableRes
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.preference.PreferenceManager
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.minar.birday.R
@@ -31,17 +30,31 @@ import com.minar.birday.utilities.getUserBirthday
 import com.minar.birday.utilities.isUserBirthday
 import com.minar.birday.utilities.loadUserImage
 import com.minar.birday.utilities.isDaysMilestone
-import com.minar.birday.utilities.delayToNextCheck
+import com.minar.birday.utilities.CHECK_PART_KEY
+import com.minar.birday.utilities.CheckPart
+import com.minar.birday.utilities.enqueueCheck
+import com.minar.birday.utilities.weekendReminderDay
 import com.minar.birday.utilities.refreshCalendarDates
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
-import java.util.concurrent.TimeUnit
 
 
 // Far from the birthday ids, which never exceed the number of events of a single day
 private const val MILESTONE_ID_GROUPED = 1000
 private const val MILESTONE_ID_SINGLE = 2000
 private const val USER_BIRTHDAY_ID = 999
+
+// The animated icons flicker in the status bar, a platform bug (#443), so for now the icon stands
+// still. The animated ones stay for an option of their own, still ruled by the loop setting
+private const val ANIMATED_SMALL_ICON = false
+
+@DrawableRes
+private fun smallIcon(angryBird: Boolean, disableAnimations: Boolean) = when {
+    !ANIMATED_SMALL_ICON -> R.drawable.icon_birday_normal
+    disableAnimations -> R.drawable.static_notification_icon
+    !angryBird -> R.drawable.animated_notification_icon
+    else -> R.drawable.animated_angry_notification_icon
+}
 
 class EventWorker(context: Context, params: WorkerParameters) : Worker(context, params) {
     override fun doWork(): Result {
@@ -50,8 +63,11 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         val eventDao: EventDao = EventDatabase.getBirdayDatabase(appContext).eventDao()
         val allEvents: List<EventResult> = eventDao.getOrderedEventsStatic()
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(applicationContext)
-        val workHour = sharedPrefs.getString("notification_hour", "8")!!.toInt()
-        val workMinute = sharedPrefs.getString("notification_minute", "0")!!.toInt()
+        // Everything at once, or only the reminders of today or only the additional ones
+        val part = inputData.getString(CHECK_PART_KEY)
+            ?.let { name -> CheckPart.entries.firstOrNull { it.name == name } } ?: CheckPart.ALL
+        val sendMain = part != CheckPart.ADDITIONAL
+        val sendAdditional = part != CheckPart.MAIN
         val additionalNotificationDays =
             sharedPrefs.getStringSet("multi_additional_notification", setOf())
         val surnameFirst = sharedPrefs.getBoolean("surname_first", false)
@@ -62,6 +78,8 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
         val groupNotification = sharedPrefs.getBoolean("grouped_notifications", true)
         val loopAvd = sharedPrefs.getBoolean("loop_avd", true)
         val milestoneNotification = daysMilestonesEnabled(applicationContext)
+        val weekendReminder = sharedPrefs.getBoolean("weekend_reminder", false)
+        val today = LocalDate.now()
 
         try {
             // Check for upcoming and actual birthdays and send notification
@@ -73,30 +91,31 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             for (event in allEvents) {
                 // Same rules as the birthdays below: ignored events never, favorites only if asked
                 if (milestoneNotification && event.favorite != null) {
-                    additionalNotificationDays?.map { LocalDate.now().plusDays(it.toLong()) }
-                        ?.firstOrNull { isDaysMilestone(event, it) }
-                        ?.let {
-                            if (!(onlyFavoritesAdditional && event.favorite == false))
-                                anticipatedMilestones.add(event to it)
-                        }
-                    if (isDaysMilestone(event) && !(onlyFavoritesNotification && event.favorite == false))
-                        actualMilestones.add(event)
+                    if (sendAdditional)
+                        additionalNotificationDays?.map { today.plusDays(it.toLong()) }
+                            ?.firstOrNull { isDaysMilestone(event, it) }
+                            ?.let {
+                                if (!(onlyFavoritesAdditional && event.favorite == false))
+                                    anticipatedMilestones.add(event to it)
+                            }
+                    if (sendMain && isDaysMilestone(event) &&
+                        !(onlyFavoritesNotification && event.favorite == false)
+                    ) actualMilestones.add(event)
                 }
 
-                // Fill the list of upcoming events
-                if (!additionalNotificationDays.isNullOrEmpty() &&
-                    additionalNotificationDays.any {
-                        it.toInt() == ChronoUnit.DAYS.between(LocalDate.now(), event.nextDate)
-                            .toInt()
-                    }
-                ) {
+                // Fill the list of upcoming events: the chosen days before, and the last working
+                // day before a weekend the event falls on
+                val daysLeft = ChronoUnit.DAYS.between(today, event.nextDate).toInt()
+                val upcoming = additionalNotificationDays?.any { it.toInt() == daysLeft } == true ||
+                        (weekendReminder && daysLeft > 0 && weekendReminderDay(event.nextDate!!) == today)
+                if (sendAdditional && upcoming) {
                     // Favorite = null means that the event is ignored
                     if (onlyFavoritesAdditional && event.favorite == false || event.favorite == null) continue
                     anticipated.add(event)
                 }
 
                 // Fill the list of events happening today
-                if (event.nextDate!!.isEqual(LocalDate.now())) {
+                if (sendMain && event.nextDate!!.isEqual(today)) {
                     // Favorite = null means that the event is ignored
                     if (onlyFavoritesNotification && event.favorite == false || event.favorite == null) continue
                     actual.add(event)
@@ -159,7 +178,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             }
 
             // The user's own birthday, from the card in the settings, at the same hour as the rest
-            getUserBirthday(appContext)?.let { (name, birthday) ->
+            if (sendMain) getUserBirthday(appContext)?.let { (name, birthday) ->
                 if (isUserBirthday(birthday))
                     sendUserBirthdayNotification(name, angryBird, disableAnimations = !loopAvd, hideImage)
             }
@@ -219,10 +238,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             }
 
             // The next check, tomorrow at the same time on the clock
-            val dailyWorkRequest = OneTimeWorkRequestBuilder<EventWorker>()
-                .setInitialDelay(delayToNextCheck(workHour, workMinute).toMillis(), TimeUnit.MILLISECONDS)
-                .build()
-            WorkManager.getInstance(applicationContext).enqueue(dailyWorkRequest)
+            enqueueCheck(applicationContext, part)
         } catch (_: Exception) {
             return Result.retry()
         }
@@ -262,11 +278,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             else formulateAdditionalNotificationText(eventList, angryBird)
 
         val builder = NotificationCompat.Builder(applicationContext, "events_channel")
-            .setSmallIcon(
-                if (disableAnimations) R.drawable.static_notification_icon
-                else if (!angryBird) R.drawable.animated_notification_icon
-                else R.drawable.animated_angry_notification_icon
-            )
+            .setSmallIcon(smallIcon(angryBird, disableAnimations))
             // Use the title to quickly distinguish between reminders and additional notifications
             .setContentTitle(
                 if (upcoming) formatDaysRemaining(
@@ -367,11 +379,7 @@ class EventWorker(context: Context, params: WorkerParameters) : Worker(context, 
             PendingIntent.getActivity(applicationContext, 0, intent, PendingIntent.FLAG_IMMUTABLE)
         val text = applicationContext.getString(R.string.notification_description_part_2)
         val builder = NotificationCompat.Builder(applicationContext, "events_channel")
-            .setSmallIcon(
-                if (disableAnimations) R.drawable.static_notification_icon
-                else if (!angryBird) R.drawable.animated_notification_icon
-                else R.drawable.animated_angry_notification_icon
-            )
+            .setSmallIcon(smallIcon(angryBird, disableAnimations))
             .setContentTitle(applicationContext.getString(R.string.user_birthday_greeting, name))
             .setContentText(text)
             .setContentIntent(pendingIntent)

@@ -377,6 +377,13 @@
     <string name="user_card_remove">Kendu</string>
     <string name="unbirthdays_description_on">Xehetasunetan jaiotzako astegun eta hileko egun berak dituen hurrengo data agertzen da, adibidez, ostirala eta 13a</string>
     <string name="unbirthdays_description_off">Ez-urtebetetzerik ez xehetasunetan</string>
+    <string name="weekend_reminder_title">Gogorarazi asteburua baino lehen</string>
+    <string name="weekend_reminder_description_on">Asteburuko gertaerak aurreko azken lanegunean ere jakinarazten dira</string>
+    <string name="weekend_reminder_description_off">Asteburuko gertaerak ohi bezala bakarrik jakinarazten dira</string>
+    <string name="additional_notification_separate_title">Ordu bereizia jakinarazpen gehigarrientzat</string>
+    <string name="additional_notification_separate_description_on">Jakinarazpen gehigarriak behean aukeratutako orduan iristen dira</string>
+    <string name="additional_notification_separate_description_off">Jakinarazpen gehigarriak nagusiarekin batera iristen dira</string>
+    <string name="additional_notification_hour">Jakinarazpen gehigarriaren ordua</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Honi buruz</string>
     <string name="back">Atzera</string>

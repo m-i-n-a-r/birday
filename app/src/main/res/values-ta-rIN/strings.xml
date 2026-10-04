@@ -373,6 +373,13 @@
     <string name="user_card_remove">அகற்று</string>
     <string name="unbirthdays_description_on">பிறந்த நாளின் கிழமையும் மாதத்தின் தேதியும் பொருந்தும் அடுத்த நாள் விவரங்களில் காட்டப்படும், எடுத்துக்காட்டாக வெள்ளிக்கிழமை 13-ஆம் தேதி</string>
     <string name="unbirthdays_description_off">பிறந்த கிழமையும் தேதியும் பொருந்தும் நாட்கள் விவரங்களில் காட்டப்படாது</string>
+    <string name="weekend_reminder_title">வார இறுதிக்கு முன் நினைவூட்டு</string>
+    <string name="weekend_reminder_description_on">வார இறுதியில் வரும் நிகழ்வுகள் அதற்கு முந்தைய கடைசி வேலை நாளிலும் அறிவிக்கப்படும்</string>
+    <string name="weekend_reminder_description_off">வார இறுதியில் வரும் நிகழ்வுகள் வழக்கம் போல் மட்டுமே அறிவிக்கப்படும்</string>
+    <string name="additional_notification_separate_title">கூடுதல் அறிவிப்புகளுக்கு தனி நேரம்</string>
+    <string name="additional_notification_separate_description_on">கூடுதல் அறிவிப்புகள் கீழே தேர்ந்தெடுத்த நேரத்தில் வரும்</string>
+    <string name="additional_notification_separate_description_off">கூடுதல் அறிவிப்புகள் முதன்மை அறிவிப்புடன் சேர்ந்து வரும்</string>
+    <string name="additional_notification_hour">கூடுதல் அறிவிப்பு நேரம்</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">செயலியைப் பற்றி</string>
     <string name="back">பின்செல்</string>

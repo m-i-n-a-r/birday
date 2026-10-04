@@ -374,6 +374,13 @@
     <string name="user_card_remove">Fjern</string>
     <string name="unbirthdays_description_on">Detaljene viser neste dato med samme ukedag og dag i måneden som ved fødselen, for eksempel fredag den 13.</string>
     <string name="unbirthdays_description_off">Ingen ikke-fødselsdager i detaljene</string>
+    <string name="weekend_reminder_title">Påminn før helgen</string>
+    <string name="weekend_reminder_description_on">Hendelser i helgen får også en påminnelse den siste arbeidsdagen før</string>
+    <string name="weekend_reminder_description_off">Hendelser i helgen får bare påminnelse som vanlig</string>
+    <string name="additional_notification_separate_title">Eget tidspunkt for ekstra påminnelser</string>
+    <string name="additional_notification_separate_description_on">Ekstra påminnelser kommer på tidspunktet valgt nedenfor</string>
+    <string name="additional_notification_separate_description_off">Ekstra påminnelser kommer sammen med hovedpåminnelsen</string>
+    <string name="additional_notification_hour">Tidspunkt for ekstra påminnelse</string>
     <string name="about_title">Om appen</string>
     <string name="back">Tilbake</string>
     <string name="about_description">Informasjon om Birday, utvikleren og appens språk</string>

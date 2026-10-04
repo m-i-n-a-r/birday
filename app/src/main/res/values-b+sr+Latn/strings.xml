@@ -399,6 +399,13 @@
     <string name="user_card_remove">Ukloni</string>
     <string name="unbirthdays_description_on">Detalji prikazuju sledeći datum sa istim danom u nedelji i danom u mesecu kao pri rođenju, na primer petak 13.</string>
     <string name="unbirthdays_description_off">Bez nerođendana u detaljima</string>
+    <string name="weekend_reminder_title">Podseti pre vikenda</string>
+    <string name="weekend_reminder_description_on">Događaji tokom vikenda se javljaju i poslednjeg radnog dana pre njega</string>
+    <string name="weekend_reminder_description_off">Događaji tokom vikenda se javljaju samo kao i obično</string>
+    <string name="additional_notification_separate_title">Posebno vreme za dodatna obaveštenja</string>
+    <string name="additional_notification_separate_description_on">Dodatna obaveštenja stižu u vreme izabrano ispod</string>
+    <string name="additional_notification_separate_description_off">Dodatna obaveštenja stižu zajedno sa glavnim</string>
+    <string name="additional_notification_hour">Vreme dodatnog obaveštenja</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">O aplikaciji</string>
     <string name="back">Nazad</string>

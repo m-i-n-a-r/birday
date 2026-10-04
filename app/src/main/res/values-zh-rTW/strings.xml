@@ -368,6 +368,13 @@
     <string name="user_card_remove">移除</string>
     <string name="unbirthdays_description_on">詳細資料顯示下一個與出生時同為每月第幾日且星期相同的日期，例如 13 日星期五</string>
     <string name="unbirthdays_description_off">詳細資料不顯示非生日紀念日</string>
+    <string name="weekend_reminder_title">週末前提醒</string>
+    <string name="weekend_reminder_description_on">週末的事件也會在之前的最後一個工作日通知</string>
+    <string name="weekend_reminder_description_off">週末的事件只按平常通知</string>
+    <string name="additional_notification_separate_title">附加通知另設時間</string>
+    <string name="additional_notification_separate_description_on">附加通知在下方選擇的時間送達</string>
+    <string name="additional_notification_separate_description_off">附加通知與主要通知一起送達</string>
+    <string name="additional_notification_hour">附加通知時間</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">關於</string>
     <string name="back">返回</string>
