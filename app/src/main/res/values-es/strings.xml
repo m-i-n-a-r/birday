@@ -373,6 +373,13 @@
     <string name="user_card_remove">Eliminar</string>
     <string name="unbirthdays_description_on">Los detalles muestran la próxima fecha con el mismo día de la semana y del mes que el nacimiento, por ejemplo, un viernes 13</string>
     <string name="unbirthdays_description_off">Sin no cumpleaños en los detalles</string>
+    <string name="weekend_reminder_title">Recordar antes del fin de semana</string>
+    <string name="weekend_reminder_description_on">Los eventos en fin de semana también se notifican el último día laborable anterior</string>
+    <string name="weekend_reminder_description_off">Los eventos en fin de semana se notifican solo como siempre</string>
+    <string name="additional_notification_separate_title">Hora distinta para las notificaciones previas</string>
+    <string name="additional_notification_separate_description_on">Las notificaciones previas llegan a la hora elegida abajo</string>
+    <string name="additional_notification_separate_description_off">Las notificaciones previas llegan junto con la principal</string>
+    <string name="additional_notification_hour">Hora de la notificación previa</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">Acerca de</string>
     <string name="back">Atrás</string>
