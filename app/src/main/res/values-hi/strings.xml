@@ -373,6 +373,13 @@
     <string name="user_card_remove">हटाएँ</string>
     <string name="unbirthdays_description_on">विवरण में अगली ऐसी तारीख दिखाई जाती है जिसका वार और महीने की तारीख जन्म के दिन जैसे हों, उदाहरण के लिए शुक्रवार, 13 तारीख</string>
     <string name="unbirthdays_description_off">विवरण में जन्म जैसे वार और तारीख वाले दिन नहीं दिखाए जाते</string>
+    <string name="weekend_reminder_title">सप्ताहांत से पहले याद दिलाएँ</string>
+    <string name="weekend_reminder_description_on">सप्ताहांत पर पड़ने वाले इवेंट का नोटिफिकेशन उससे पहले के आख़िरी कार्यदिवस पर भी मिलता है</string>
+    <string name="weekend_reminder_description_off">सप्ताहांत पर पड़ने वाले इवेंट का नोटिफिकेशन सिर्फ़ हमेशा की तरह मिलता है</string>
+    <string name="additional_notification_separate_title">अतिरिक्त नोटिफिकेशन के लिए अलग समय</string>
+    <string name="additional_notification_separate_description_on">अतिरिक्त नोटिफिकेशन नीचे चुने गए समय पर आते हैं</string>
+    <string name="additional_notification_separate_description_off">अतिरिक्त नोटिफिकेशन मुख्य नोटिफिकेशन के साथ आते हैं</string>
+    <string name="additional_notification_hour">अतिरिक्त नोटिफिकेशन का समय</string>
     <!-- About page, reachable from the navbar action button while in the settings -->
     <string name="about_title">ऐप के बारे में</string>
     <string name="back">वापस</string>
