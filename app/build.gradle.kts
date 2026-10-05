@@ -18,7 +18,7 @@ configure<com.android.build.api.dsl.ApplicationExtension>  {
         applicationId = "com.minar.birday"
         targetSdk = 37
         minSdk = 26
-        versionCode = 38
+        versionCode = 39
         versionName = "5.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
