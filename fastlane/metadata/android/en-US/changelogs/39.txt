@@ -1,0 +1,8 @@
+- New compact widget, and widgets refreshed at midnight
+- Refreshed design: tonal cards, reorganized settings, smoother fast scroll
+- Your own birthday in the settings, celebrated by the app
+- Alternative calendars: Chinese, Korean, Hebrew, Islamic (experimental)
+- Days lived milestones and unbirthdays (experimental)
+- Crop event images, choose how to handle February 29th
+- Reworked stats and a ton of fixes
+- New translations and translations updated

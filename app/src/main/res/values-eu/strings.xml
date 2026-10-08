@@ -30,6 +30,11 @@
         <item quantity="one">egun %d barru</item>
         <item quantity="other">%d egun barru</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s egun</item>
+        <item quantity="other">%s egun</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">Pertsonalizazioa</string>
     <string name="app_behavior">Aplikazioaren portaera</string>
@@ -57,7 +62,7 @@
     <string name="theme_description">Erabili aplikazioaren itxura iluna, argia edo automatikoa</string>
     <string name="theme_name">Aplikazioaren itxura</string>
     <!-- ^ Untranslated for now -->
-    <string name="aqua">Aqua</string>
+    <string name="aqua">Ur-urdina</string>
     <string name="brown">Marroia</string>
     <string name="blue">Urdina</string>
     <string name="green">Berdea</string>
@@ -91,6 +96,7 @@
     <string name="birday_import_success">Inportazioa ondo egin da!</string>
     <string name="birday_import_failure">Inportazioak huts egin du. Fitxategia ondo aukeratu duzu?</string>
     <string name="birday_import_invalid_file">Inportazioak huts egin du. Aukeratu duzun fitxategia ez da Birdayren segurtasun-kopia bat!</string>
+    <string name="birday_import_newer_backup">Babeskopia hau Birdayren bertsio berriago batekin sortu da. Eguneratu aplikazioa inportatzeko</string>
     <string name="birday_export_success">Esportazioa ondo egin da!</string>
     <string name="birday_export_failure">Esportazioak huts egin du. Ene bada!</string>
     <string name="birday_export_nothing_found">Ez dago esportatzeko ezer!</string>
@@ -135,6 +141,7 @@
     <string name="new_event_description">Sartu pertsona baten datuak, eta Birdayk bere urtebetze eguna edo beste edozein hitzordu gogorarazten lagundiko dizu!</string>
     <string name="insert_event">Txertatu hitzordua</string>
     <string name="cancel">Utzi</string>
+    <string name="crop_image_error">Errore bat gertatu da irudia moztean</string>
     <string name="insert_name_hint">Idatzi izena</string>
     <string name="insert_surname_hint">Idatzi abizena</string>
     <string name="insert_date_hint">Aukeratu data</string>
@@ -161,6 +168,8 @@
     <string name="next_age">Urteak::</string>
     <string name="zodiac_sign">Zodiakoa:</string>
     <string name="chinese_zodiac_sign">Zodiako txinarra:</string>
+    <string name="days_lived">Bizitako egunak</string>
+    <string name="next_unbirthday">Hurrengo ez-urtebetetzea</string>
     <!-- Quick apps -->
     <string name="event_apps">Sarbide azkarrak</string>
     <string name="event_apps_description">Zoriontzeko sarbide azkarrak!</string>
@@ -170,8 +179,8 @@
     <string name="no_default_dialer">Ez da telefono aplikazioa aurkitu!</string>
     <string name="no_default_sms">Ez da defektuzko SMS aplikazioa aurkitu!</string>
     <string name="might_have_missed">Agian ez duzu ikusi:</string>
-    <!-- Statistics -->
     <string name="did_you_know">Bazenekien..</string>
+    <!-- Statistics -->
     <string name="age_average">Batazbesteko adina %s</string>
     <string name="oldest_person">Pertsona nagusienaren adina %s</string>
     <string name="youngest_person">Pertsona gazteenaren adina %s</string>
@@ -201,18 +210,18 @@
     <string name="chinese_zodiac_rooster">oiloa</string>
     <string name="chinese_zodiac_dog">txakurra</string>
     <string name="chinese_zodiac_pig">txerria</string>
-    <string name="zodiac_sagittarius">sagittarius</string>
-    <string name="zodiac_capricorn">capricorn</string>
-    <string name="zodiac_aquarius">aquarius</string>
-    <string name="zodiac_pisces">pisces</string>
+    <string name="zodiac_sagittarius">sagitario</string>
+    <string name="zodiac_capricorn">kaprikornio</string>
+    <string name="zodiac_aquarius">akuario</string>
+    <string name="zodiac_pisces">piszis</string>
     <string name="zodiac_aries">aries</string>
     <string name="zodiac_taurus">taurus</string>
     <string name="zodiac_gemini">gemini</string>
-    <string name="zodiac_cancer">cancer</string>
+    <string name="zodiac_cancer">kantzer</string>
     <string name="zodiac_leo">leo</string>
     <string name="zodiac_virgo">virgo</string>
     <string name="zodiac_libra">libra</string>
-    <string name="zodiac_scorpio">scorpio</string>
+    <string name="zodiac_scorpio">eskorpio</string>
     <!-- Common words -->
     <plurals name="months">
         <item quantity="one">hilabete %d</item>
@@ -267,6 +276,22 @@
     <string name="hide_far_widget_description">Ezkutatu widgeta hurrengo hitzorduak jakinarazpenak bidaltzeko epetik haragokoak badira (adb. jakinarazpena 7 egun lehenago bidaltzen da, hurrengo hitzordua 10 egun barru da -&gt; widgeta ezkutatuta dago)</string>
     <string name="show_following_widget_title">Erakutsi hurrengo hitzordua</string>
     <string name="show_following_widget_description">Erakutsi hurrengo hitzordua(k) hurrengo lerroan</string>
+    <string name="appwidget_compact">Taula trinkoa</string>
+    <string name="add_widget_compact">Birday - Trinkoa</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">Atzeko planoaren opakutasuna</string>
+    <string name="compact_widget_bg_color">Atzeko planoaren kolorea</string>
+    <string name="compact_widget_text_color">Testuaren kolorea</string>
+    <string name="compact_widget_text_size">Testuaren tamaina</string>
+    <string name="compact_widget_text_size_auto">Automatikoa</string>
+    <string name="export_ics_title">Esportatu iCalendar formatura</string>
+    <string name="export_ics_description">Esportatu gertaera bakoitza .ics fitxategi batera, edozein egutegi-aplikaziotan erabiltzeko</string>
+    <string name="compact_widget_scroll">Korritu gertaera guztiak</string>
+    <string name="compact_widget_hidden">Ezkutatuta</string>
+    <string name="compact_widget_below_name">Izenaren azpian</string>
+    <string name="compact_widget_above_name">Izenaren gainean</string>
+    <string name="compact_widget_before_date">Dataren aurretik</string>
+    <string name="compact_widget_after_date">Dataren ondoren</string>
     <!-- Search -->
     <string name="search_event">Bilatu…</string>
     <string name="search_no_result_title">Ez dago emaitzarik</string>
@@ -324,7 +349,62 @@
     <string name="advanced_overview_title">Ikuspegi aurreratua</string>
     <string name="advanced_overview_description_off">Ikuspegi orokorrean oinarrizko informazioa bakarrik ikusiko da</string>
     <string name="advanced_overview_description_on">Ikuspegi orokorrean beste urte batzuk eta informazio xehetua ikusiko da</string>
+    <string name="feb29_assignment_title">Otsailaren 29a bisurteak ez diren urteetan</string>
+    <string name="feb29_assignment_description_off">Otsailaren 29ko urtebetetzeak martxoaren 1ean ospatzen dira bisurteak ez diren urteetan</string>
+    <string name="feb29_assignment_description_on">Otsailaren 29ko urtebetetzeak otsailaren 28an ospatzen dira bisurteak ez diren urteetan</string>
     <string name="replace_on_conflict_title">Ordezkatu arazoak daudenean</string>
     <string name="replace_on_conflict_description_off">Inportatzean, errepikatutako hitzordu bat ez da ordezkatuko inportatu-berri denarekin</string>
     <string name="replace_on_conflict_description_on">Inportatzean, errepikatutako hitzordu bat inportatu-berri denarekin ordezkatuko da</string>
+    <string name="contacts_full_name_title">Kontaktuen izen-abizen osoak</string>
+    <string name="contacts_full_name_description_on">Kontaktuen izenak irakurtzean, tituluak, bigarren izenak eta atzizkiak mantentzen dira</string>
+    <string name="contacts_full_name_description_off">Kontaktuetatik izena eta abizena soilik irakurtzen dira</string>
+    <string name="days_milestones_title">Bizitako egunen mugarriak</string>
+    <string name="days_milestones_description_on">Xehetasunetan bizitako egunak agertzen dira. 1000 egunetik behin mugarri bat ospatu eta jakinarazten da, urtebetetze bat bezala</string>
+    <string name="days_milestones_description_off">Bizitako egunen kontagailurik eta mugarririk ez</string>
+    <string name="unbirthdays_title">Ez-urtebetetzeak</string>
+    <string name="alternative_calendar_title">Ordezko egutegia</string>
+    <string name="alternative_calendar_none">Bat ere ez, gregoriotarra soilik</string>
+    <string name="calendar_gregorian">Gregoriotarra</string>
+    <string name="calendar_chinese">Txinatarra</string>
+    <string name="calendar_dangi">Korearra</string>
+    <string name="calendar_hebrew">Hebrearra</string>
+    <string name="calendar_islamic">Islamiarra</string>
+    <string name="calendar_islamic_civil">Islamiarra (zibila)</string>
+    <string name="user_card_title">Zure urtebetetzea</string>
+    <string name="user_birthday_greeting">Zorionak, %s!</string>
+    <string name="user_card_empty">Idatzi zure jaioteguna</string>
+    <string name="user_card_save">Gorde</string>
+    <string name="user_card_remove">Kendu</string>
+    <string name="unbirthdays_description_on">Xehetasunetan jaiotzako astegun eta hileko egun berak dituen hurrengo data agertzen da, adibidez, ostirala eta 13a</string>
+    <string name="unbirthdays_description_off">Ez-urtebetetzerik ez xehetasunetan</string>
+    <string name="weekend_reminder_title">Gogorarazi asteburua baino lehen</string>
+    <string name="weekend_reminder_description_on">Asteburuko gertaerak aurreko azken lanegunean ere jakinarazten dira</string>
+    <string name="weekend_reminder_description_off">Asteburuko gertaerak ohi bezala bakarrik jakinarazten dira</string>
+    <string name="additional_notification_separate_title">Ordu bereizia jakinarazpen gehigarrientzat</string>
+    <string name="additional_notification_separate_description_on">Jakinarazpen gehigarriak behean aukeratutako orduan iristen dira</string>
+    <string name="additional_notification_separate_description_off">Jakinarazpen gehigarriak nagusiarekin batera iristen dira</string>
+    <string name="additional_notification_hour">Jakinarazpen gehigarriaren ordua</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
+    <string name="about_title">Honi buruz</string>
+    <string name="back">Atzera</string>
+    <string name="about_description">Birdayri, egileari eta aplikazioaren hizkuntzari buruzko informazioa</string>
+    <string name="about_version">Bertsioa</string>
+    <string name="about_language_title">Hizkuntza</string>
+    <string name="about_language_summary">Aukeratu Birdayren hizkuntza</string>
+    <string name="about_rate_title">Baloratu aplikazioa</string>
+    <string name="about_rate_summary">Utzi iritzia Play Store dendan</string>
+    <string name="about_share_title">Partekatu Birday</string>
+    <string name="about_share_summary">Gomendatu aplikazioa lagun bati</string>
+    <string name="about_share_text">Birday, urtebetetze bat ere ez ahazteko modu erraz eta ederra: %1$s</string>
+    <string name="about_no_app_found">Ez dago ekintza hau egin dezakeen aplikaziorik!</string>
+    <string name="about_privacy_title">Pribatutasun-politika</string>
+    <string name="about_contact_title">Jarri harremanetan garatzailearekin</string>
+    <string name="amoled_description_on">Gai ilunak beltz hutsa erabiltzen du, OLED pantailetarako aproposa</string>
+    <string name="amoled_description_off">Gai ilunak ohiko gainazal ilunak erabiltzen ditu</string>
+    <string name="with_year">Urtearekin</string>
+    <string name="without_year">Urterik gabe</string>
+    <!-- Edge blur -->
+    <string name="edge_blur">Ertzak lausotu</string>
+    <string name="edge_blur_description_on">Edukia leunki lausotzen da nabigazio-barraren azpitik korritzean</string>
+    <string name="edge_blur_description_off">Edukia lausotu gabe korritzen da nabigazio-barraren azpitik</string>
 </resources>

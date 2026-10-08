@@ -18,7 +18,8 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import androidx.core.content.edit
 
-// A custom preference to show a time picker
+// A custom preference to show a time picker. Without a key it's the time of the notifications,
+// with one it's another time, kept in "<key>_hour" and "<key>_minute" and starting from that one
 class TimePickerPreference(context: Context, attrs: AttributeSet?) : Preference(context, attrs),
     View.OnClickListener {
     private lateinit var sharedPrefs: SharedPreferences
@@ -26,30 +27,40 @@ class TimePickerPreference(context: Context, attrs: AttributeSet?) : Preference(
     private lateinit var currentMinute: String
     private lateinit var binding: TimePickerRowBinding
     private val formatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
+    private val main get() = key == null
+    private val hourKey get() = if (main) "notification_hour" else "${key}_hour"
+    private val minuteKey get() = if (main) "notification_minute" else "${key}_minute"
+
+    private fun readTime() {
+        val mainHour = sharedPrefs.getString("notification_hour", "8").toString()
+        val mainMinute = sharedPrefs.getString("notification_minute", "0").toString()
+        currentHour = sharedPrefs.getString(hourKey, mainHour).toString()
+        currentMinute = sharedPrefs.getString(minuteKey, mainMinute).toString()
+    }
+
+    // The main time carries the warning about the systems that kill the app, the others only the time
+    private fun describe(time: LocalTime): String {
+        val formatted = "~${formatter.format(time)}"
+        return if (main) String.format(context.getString(R.string.notification_hour_description), formatted)
+        else formatted
+    }
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context)
-        currentHour = sharedPrefs.getString("notification_hour", "8").toString()
-        currentMinute = sharedPrefs.getString("notification_minute", "0").toString()
+        readTime()
         super.onBindViewHolder(holder)
         binding = TimePickerRowBinding.bind(holder.itemView)
-
-        // Format the time correctly
-        val currentTime = LocalTime.of(currentHour.toInt(), currentMinute.toInt())
+        if (!main) binding.timePickerTitle.text = title
 
         binding.timePickerDescription.text =
-            String.format(
-                context.getString(R.string.notification_hour_description),
-                "~${formatter.format(currentTime)}"
-            )
+            describe(LocalTime.of(currentHour.toInt(), currentMinute.toInt()))
 
         binding.root.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
         val act = context as MainActivity
-        currentHour = sharedPrefs.getString("notification_hour", "8").toString()
-        currentMinute = sharedPrefs.getString("notification_minute", "0").toString()
+        readTime()
 
         // Show the time picker
         val isSystem24Hour = is24HourFormat(context)
@@ -59,23 +70,17 @@ class TimePickerPreference(context: Context, attrs: AttributeSet?) : Preference(
                 .setTimeFormat(clockFormat)
                 .setHour(currentHour.toInt())
                 .setMinute(currentMinute.toInt())
-                .setTitleText(context.getString(R.string.notification_hour_name))
+                .setTitleText(if (main) context.getString(R.string.notification_hour_name) else title)
                 .build()
 
         picker.addOnPositiveButtonClickListener {
             sharedPrefs.edit {
-                putString("notification_hour", "${picker.hour}")
-                putString("notification_minute", "${picker.minute}")
+                putString(hourKey, "${picker.hour}")
+                putString(minuteKey, "${picker.minute}")
             }
 
             // Format the selected hour and update the text
-            val currentTime = LocalTime.of(picker.hour, picker.minute)
-
-            binding.timePickerDescription.text =
-                String.format(
-                    context.getString(R.string.notification_hour_description),
-                    "~${formatter.format(currentTime)}"
-                )
+            binding.timePickerDescription.text = describe(LocalTime.of(picker.hour, picker.minute))
         }
 
         picker.show(act.supportFragmentManager, "timepicker")

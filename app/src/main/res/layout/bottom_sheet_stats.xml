@@ -48,16 +48,16 @@
                 app:layout_constraintStart_toEndOf="@id/statsImage"
                 app:layout_constraintTop_toBottomOf="@id/dragHandle" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/fullStats"
+            <!-- Filled in code, one stats_row per stat -->
+            <LinearLayout
+                android:id="@+id/statsList"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-                android:text="@string/stats"
-                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/statsTitle" />
+                app:layout_constraintTop_toBottomOf="@id/statsTitle" />
 
             <ImageView
                 android:id="@+id/eventCounterBackground"
@@ -86,7 +86,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fullStats" />
+                app:layout_constraintTop_toBottomOf="@id/statsList" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

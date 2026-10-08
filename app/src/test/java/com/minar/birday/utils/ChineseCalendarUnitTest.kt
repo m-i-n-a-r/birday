@@ -15,6 +15,10 @@ class ICUCalendar(private val calendar: Calendar): CalendarAdapter {
     }
 
     override fun get(field: Int): Int = calendar.get(field)
+    override fun set(field: Int, value: Int) = calendar.set(field, value)
+    override fun clear() = calendar.clear()
+    override fun getActualMaximum(field: Int): Int = calendar.getActualMaximum(field)
+    override fun getTimeInMillis(): Long = calendar.timeInMillis
 }
 
 fun chineseAnimalTest(date: LocalDate): Int = chineseAnimalGeneric(

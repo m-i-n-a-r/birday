@@ -1,12 +1,94 @@
 package com.minar.birday.utilities
 
+import android.content.Context
+import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.children
+import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.minar.birday.R
+import com.google.android.material.R as MaterialR
+import nl.dionsegijn.konfetti.KonfettiView
+import nl.dionsegijn.konfetti.models.Shape
+import nl.dionsegijn.konfetti.models.Size
+
+// The text size the compact widget uses when the user leaves the size on "Auto", read from the
+// Material body style so the widget follows the same scale as the rest of the app.
+// DisplayMetrics.scaledDensity is deprecated because font scaling is non linear since Android 14,
+// so the sp/px ratio is derived through TypedValue instead.
+fun Context.bodyMediumTextSizeSp(): Float {
+    val pxPerSp = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_SP, 1f, resources.displayMetrics
+    )
+    val attributes = obtainStyledAttributes(
+        MaterialR.style.TextAppearance_Material3_BodyMedium,
+        intArrayOf(android.R.attr.textSize)
+    )
+    val px = attributes.getDimension(0, DEFAULT_BODY_MEDIUM_SP * pxPerSp)
+    attributes.recycle()
+    return px / pxPerSp
+}
+
+private const val DEFAULT_BODY_MEDIUM_SP = 14f
+
+private const val CASCADE_STAGGER = 55L
+private const val CASCADE_DURATION = 300L
+private const val CASCADE_OFFSET_DP = 18f
+
+// A bottom sheet slides up over roughly a fifth of a second, and a cascade started with it is over
+// before the sheet has settled. Hold it until the sheet is actually where the eye is looking
+const val CASCADE_SHEET_DELAY = 220L
+
+// A list of a dozen rows staggered at the usual pace would still be arriving a second and a half
+// in, so anything long asks for a tighter one
+const val CASCADE_TIGHT_STAGGER = 32L
+
+// Content rides in one after the other. Translation is optional: inside a MotionLayout the scene
+// owns the positions, so there only the fade is safe
+fun List<View>.animateCascade(
+    translate: Boolean = true,
+    startDelay: Long = 0L,
+    stagger: Long = CASCADE_STAGGER
+) {
+    val density = firstOrNull()?.resources?.displayMetrics?.density ?: return
+    forEachIndexed { index, view ->
+        // Whatever alpha the view already carries is the one to land on: fading everything to 1
+        // silently undoes a translucency that means something, like the event counter background
+        val target = view.alpha.takeIf { it > 0f } ?: 1f
+        view.alpha = 0f
+        if (translate) view.translationY = CASCADE_OFFSET_DP * density
+        view.animate()
+            .alpha(target)
+            .apply { if (translate) translationY(0f) }
+            .setStartDelay(startDelay + stagger * index)
+            .setDuration(CASCADE_DURATION)
+            .setInterpolator(FastOutSlowInInterpolator())
+            .start()
+    }
+}
+
+// Everything the container holds, minus the drag handle that has to stay where the finger left it
+fun ViewGroup.animateChildrenCascade(
+    translate: Boolean = true,
+    startDelay: Long = 0L,
+    stagger: Long = CASCADE_STAGGER
+) = children.filter { it.id != R.id.dragHandle && it.isVisible }.toList()
+    .animateCascade(translate, startDelay, stagger)
+
+// Room under a scrolling view for the navbar, insets included. Needs clipToPadding off
+fun View.addNavbarClearance() {
+    val space = resources.getDimensionPixelSize(R.dimen.floating_navbar_space)
+    val last = getTag(R.id.tag_navbar_clearance_bottom) as? Int ?: 0
+    updatePadding(bottom = paddingBottom - last + space)
+    setTag(R.id.tag_navbar_clearance_bottom, space)
+    addInsetsByPadding(bottom = true)
+}
 
 fun View.addInsetsByPadding(
     top: Boolean = false,
@@ -98,3 +180,57 @@ fun View.addInsetsByMargin(
         return@setOnApplyWindowInsetsListener insets
     }
 }
+
+// The birthday confetti (stream, 4 colors, 4 shapes), falling from the top edge of this view
+fun KonfettiView.streamBirdayConfetti(context: Context) {
+    birdayConfetti(context)
+        .setDirection(0.0, 359.0)
+        .setSpeed(0.5f, 4f)
+        .setTimeToLive(2000L)
+        .setPosition(-50f, width + 50f, -50f, -50f)
+        .streamFor(200, 2000L)
+}
+
+// The user's own birthday gets its own party: two party poppers going off from the bottom
+// corners, towards the middle of the screen. Angles are clockwise from the right, 270 is up
+fun KonfettiView.burstFromCorners(context: Context) {
+    birdayConfetti(context)
+        .setDirection(POPPER_LEFT_MIN_ANGLE, POPPER_LEFT_MAX_ANGLE)
+        .setSpeed(POPPER_MIN_SPEED, POPPER_MAX_SPEED)
+        .setTimeToLive(POPPER_TIME_TO_LIVE)
+        .setPosition(0f, height.toFloat())
+        .burst(POPPER_AMOUNT)
+    birdayConfetti(context)
+        .setDirection(POPPER_RIGHT_MIN_ANGLE, POPPER_RIGHT_MAX_ANGLE)
+        .setSpeed(POPPER_MIN_SPEED, POPPER_MAX_SPEED)
+        .setTimeToLive(POPPER_TIME_TO_LIVE)
+        .setPosition(width.toFloat(), height.toFloat())
+        .burst(POPPER_AMOUNT)
+}
+
+private const val POPPER_LEFT_MIN_ANGLE = 285.0
+private const val POPPER_LEFT_MAX_ANGLE = 335.0
+private const val POPPER_RIGHT_MIN_ANGLE = 205.0
+private const val POPPER_RIGHT_MAX_ANGLE = 255.0
+private const val POPPER_MIN_SPEED = 12f
+private const val POPPER_MAX_SPEED = 24f
+private const val POPPER_TIME_TO_LIVE = 3000L
+private const val POPPER_AMOUNT = 120
+
+// What every Birday confetti shares: the theme colors and the four shapes
+private fun KonfettiView.birdayConfetti(context: Context) = build()
+    .addColors(
+        getThemeColor(R.attr.colorTertiary, context),
+        getThemeColor(R.attr.colorSecondary, context),
+        getThemeColor(R.attr.colorPrimary, context),
+        getThemeColor(R.attr.colorOnSurface, context),
+    )
+    .setRotationEnabled(true)
+    .setFadeOutEnabled(true)
+    .addShapes(
+        Shape.DrawableShape(ContextCompat.getDrawable(context, R.drawable.ic_triangle_24dp)!!),
+        Shape.DrawableShape(ContextCompat.getDrawable(context, R.drawable.ic_favorites_24dp)!!),
+        Shape.DrawableShape(ContextCompat.getDrawable(context, R.drawable.ic_star_24dp)!!),
+        Shape.DrawableShape(ContextCompat.getDrawable(context, R.drawable.ic_octagram_24dp)!!)
+    )
+    .addSizes(Size(8), Size(12), Size(16))

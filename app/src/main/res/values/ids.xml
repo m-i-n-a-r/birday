@@ -11,4 +11,10 @@
     <item name="view_add_insets_margin_left_tag" type="id" />
     <item name="view_add_insets_margin_right_tag" type="id" />
 
+    <!-- Keeps the layout listener that rebuilds the progressive blur when the view is resized -->
+    <item name="tag_progressive_blur_listener" type="id" />
+
+    <item name="tag_navbar_clearance_start" type="id" />
+    <item name="tag_navbar_clearance_bottom" type="id" />
+    <item name="tag_nav_label_fraction" type="id" />
 </resources>

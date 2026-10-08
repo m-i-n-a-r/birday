@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Navbar as a side rail instead of a bottom bar -->
+    <bool name="nav_rail">false</bool>
+</resources>

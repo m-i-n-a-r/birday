@@ -1,5 +1,6 @@
 package com.minar.birday.utilities
 
+import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.Drawable
 import android.os.Handler
@@ -13,6 +14,7 @@ import com.minar.birday.R
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import java.io.ByteArrayOutputStream
+import java.io.File
 import androidx.core.graphics.createBitmap
 
 
@@ -31,6 +33,46 @@ fun byteArrayToBitmap(byteImg: ByteArray): Bitmap {
     // If the string is empty, just return an empty white bitmap
     if (byteImg.isEmpty()) return createBitmap(1, 1)
     return BitmapFactory.decodeByteArray(byteImg, 0, byteImg.size)
+}
+
+// Generate a circular bitmap with initials (first + last name), used as placeholder
+fun getInitialBitmap(name: String, surname: String?, size: Int): Bitmap {
+    val bitmap = createBitmap(size, size)
+    val canvas = Canvas(bitmap)
+
+    // Pick a consistent color based on the full name
+    val fullName = "$name${surname.orEmpty()}"
+    val colors = intArrayOf(
+        0xFF1E88E5.toInt(), 0xFF43A047.toInt(), 0xFFE53935.toInt(),
+        0xFF8E24AA.toInt(), 0xFFFB8C00.toInt(), 0xFF00ACC1.toInt(),
+        0xFF3949AB.toInt(), 0xFFD81B60.toInt(), 0xFF6D4C41.toInt(),
+    )
+    val bgColor = colors[fullName.hashCode().and(0x7FFFFFFF) % colors.size]
+
+    val bgPaint = Paint().apply {
+        isAntiAlias = true
+        color = bgColor
+    }
+    canvas.drawCircle(size / 2f, size / 2f, size / 2f, bgPaint)
+
+    // Build initials: first letter of name + first letter of surname
+    val initials = buildString {
+        append(name.first().uppercaseChar())
+        if (!surname.isNullOrBlank()) append(surname.first().uppercaseChar())
+    }
+
+    val textPaint = Paint().apply {
+        isAntiAlias = true
+        color = Color.WHITE
+        textSize = if (initials.length > 1) size * 0.38f else size * 0.5f
+        textAlign = Paint.Align.CENTER
+        typeface = Typeface.DEFAULT_BOLD
+    }
+    val textBounds = Rect()
+    textPaint.getTextBounds(initials, 0, initials.length, textBounds)
+    canvas.drawText(initials, size / 2f, size / 2f + textBounds.height() / 2f, textPaint)
+
+    return bitmap
 }
 
 // Get the smallest dimension in a non-square image to crop and resize it
@@ -85,6 +127,11 @@ fun ImageView.applyLoopingAnimatedVectorDrawable(
     endDelay: Long = 0,
     disableLooping: Boolean = false
 ) {
+    // The icon being replaced would otherwise keep restarting its loop, unseen
+    (drawable as? AnimatedVectorDrawableCompat)?.run {
+        clearAnimationCallbacks()
+        stop()
+    }
     val animated = AnimatedVectorDrawableCompat.create(context, animatedVector)
     // Ability to disable the loop, for a future option
     if (!disableLooping) {
@@ -107,3 +154,19 @@ fun Bitmap.toByteArray(): ByteArray {
         return toByteArray()
     }
 }
+
+// The user's own picture, from the birthday card in the settings. A plain file in the app storage,
+// which the Android backup already covers
+private const val USER_IMAGE_FILE = "user_image.jpg"
+private const val USER_IMAGE_QUALITY = 90
+
+fun loadUserImage(context: Context): Bitmap? = File(context.filesDir, USER_IMAGE_FILE)
+    .takeIf { it.exists() }
+    ?.let { BitmapFactory.decodeFile(it.path) }
+
+fun saveUserImage(context: Context, bitmap: Bitmap) =
+    File(context.filesDir, USER_IMAGE_FILE).outputStream().use {
+        bitmap.compress(Bitmap.CompressFormat.JPEG, USER_IMAGE_QUALITY, it)
+    }
+
+fun deleteUserImage(context: Context) = File(context.filesDir, USER_IMAGE_FILE).delete()

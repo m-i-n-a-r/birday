@@ -6,10 +6,12 @@ import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
+import android.os.DeadSystemException
 import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.RemoteViews
+import androidx.core.widget.RemoteViewsCompat
 import androidx.preference.PreferenceManager
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
@@ -17,6 +19,8 @@ import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventResult
 import com.minar.birday.persistence.EventDao
 import com.minar.birday.persistence.EventDatabase
+import com.minar.birday.receivers.WidgetMidnightReceiver
+import com.minar.birday.utilities.bodyMediumTextSizeSp
 import com.minar.birday.utilities.byteArrayToBitmap
 import com.minar.birday.utilities.formatEventList
 import com.minar.birday.utilities.getNextYears
@@ -26,6 +30,7 @@ import com.minar.birday.utilities.removeOrGetUpcomingEvents
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
+import androidx.core.content.edit
 
 abstract class BirdayWidgetProvider : AppWidgetProvider() {
     abstract var widgetLayout: Int
@@ -43,15 +48,22 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
         appWidgetIds.forEach { appWidgetId ->
             updateAppWidget(context, appWidgetManager, appWidgetId)
         }
+        // onEnabled only fires for the first widget ever added, so widgets already placed by users
+        // updating from an older version would never get the alarm. Rescheduling here is idempotent.
+        WidgetMidnightReceiver.scheduleNextMidnight(context)
         super.onUpdate(context, appWidgetManager, appWidgetIds)
     }
 
     override fun onEnabled(context: Context) {
-        // Enter relevant functionality for when the first widget is created
+        // Schedule the exact midnight alarm so widgets refresh as soon as the date changes
+        WidgetMidnightReceiver.scheduleNextMidnight(context)
     }
 
     override fun onDisabled(context: Context) {
-        // Enter relevant functionality for when the last widget is disabled
+        // Cancel the alarm only when no Birday widget of any type is still active
+        if (!WidgetMidnightReceiver.anyWidgetActive(context)) {
+            WidgetMidnightReceiver.cancel(context)
+        }
     }
 
     internal fun updateAppWidget(
@@ -67,6 +79,10 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
 
                 R.layout.widget_minimal -> {
                     updateMinimal(context, appWidgetManager, appWidgetId)
+                }
+
+                R.layout.widget_compact -> {
+                    updateCompact(context, appWidgetManager, appWidgetId)
                 }
             }
 
@@ -144,7 +160,7 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
             views.setViewVisibility(titleTextView, View.VISIBLE)
         }
 
-        Thread {
+        runWidgetWork {
             // Get the next events and the proper formatter
             val eventDao: EventDao = EventDatabase.getBirdayDatabase(context).eventDao()
             val orderedEvents: List<EventResult> = eventDao.getOrderedEventsStatic()
@@ -230,7 +246,72 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
 
             // Instruct the widget manager to update the widget
             appWidgetManager.updateAppWidget(appWidgetId, views)
-        }.start()
+        }
+    }
+
+    // Update the compact table widget
+    private fun updateCompact(
+        context: Context,
+        appWidgetManager: AppWidgetManager,
+        appWidgetId: Int
+    ) {
+        val sp = PreferenceManager.getDefaultSharedPreferences(context)
+        val views = RemoteViews(context.packageName, R.layout.widget_compact)
+        val intent = Intent(context, MainActivity::class.java)
+
+        // Calculate how many rows fit in the widget height
+        val options = appWidgetManager.getAppWidgetOptions(appWidgetId)
+        val savedTextSize = sp.getInt("widget_compact_text_size", 0)
+        val textSizeSp = if (savedTextSize == 0) context.bodyMediumTextSizeSp().toInt()
+        else savedTextSize.coerceAtLeast(6)
+        val datePosition = sp.getString("widget_compact_date_position", "below") ?: "below"
+        val hideImages = sp.getBoolean("widget_compact_hide_images", false)
+        val widgetHeightDp = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MAX_HEIGHT, 120)
+
+        // Row height = max(photo, text block). Photo scales with text size.
+        val showDate = datePosition != "hidden"
+        val photoHeightDp = if (!hideImages) {
+            if (showDate) textSizeSp * CompactWidgetRows.PHOTO_SCALE_WITH_DATE
+            else textSizeSp * CompactWidgetRows.PHOTO_SCALE_WITHOUT_DATE
+        } else 0f
+        val nameLineHeightDp = textSizeSp * CompactWidgetRows.LINE_HEIGHT_FACTOR
+        val dateLineHeightDp = textSizeSp * CompactWidgetRows.DATE_TEXT_SCALE *
+            CompactWidgetRows.LINE_HEIGHT_FACTOR
+        val textBlockHeightDp = if (showDate) nameLineHeightDp + dateLineHeightDp else nameLineHeightDp
+        val rowHeightDp = maxOf(photoHeightDp, textBlockHeightDp)
+
+        // First and last row each add 8dp edge padding (widget_padding). The count belongs to this
+        // widget alone: two compact widgets can have different sizes
+        val edgePaddingDp = CompactWidgetRows.EDGE_PADDING_DP
+        val fittingRows = ((widgetHeightDp - edgePaddingDp) / rowHeightDp).toInt().coerceAtLeast(1)
+        val scroll = sp.getBoolean("widget_compact_scroll", false)
+        // A leftover of the shared count, which is no more
+        if (sp.contains("widget_compact_max_rows")) sp.edit { remove("widget_compact_max_rows") }
+
+        runWidgetWork {
+            // Launch the app on click
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            val pendingIntent =
+                PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
+            views.setOnClickPendingIntent(R.id.compactWidgetBackground, pendingIntent)
+
+            // The whole list at once: as many rows as fit, or a scrolling list
+            val events = EventDatabase.getBirdayDatabase(context).eventDao().getOrderedEventsStatic()
+                .take(if (scroll) CompactWidgetRows.MAX_SCROLL_ROWS else fittingRows)
+            val rows = CompactWidgetRows(context, scroll)
+            rows.applyToWidget(views)
+            RemoteViewsCompat.setRemoteAdapter(
+                context, views, appWidgetId, R.id.compactWidgetList, rows.items(events)
+            )
+
+            // A tap on a row opens the details of its event
+            views.setPendingIntentTemplate(R.id.compactWidgetList, rowClickTemplate(context, 4))
+
+            // Instruct the widget manager to update the widget
+            appWidgetManager.updateAppWidget(appWidgetId, views)
+        }
     }
 
     // Update the modern upcoming widget
@@ -248,7 +329,7 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
         val intent = Intent(context, MainActivity::class.java)
 
         views.setTextViewText(R.id.eventWidgetDate, fullFormatter.format(LocalDate.now()))
-        Thread {
+        runWidgetWork {
             // Get the next events and the proper formatter
             val eventDao: EventDao = EventDatabase.getBirdayDatabase(context).eventDao()
             val nextEvents: List<EventResult> = eventDao.getOrderedNextEventsStatic()
@@ -330,33 +411,40 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
                 }
 
 
-                // Set up the intent that starts the EventViewService, which will provide the views
-                val widgetServiceIntent = Intent(context, EventWidgetService::class.java)
-
-                // Set up the RemoteViews object to use a RemoteViews adapter and populate the data
-                views.apply {
-                    setRemoteAdapter(R.id.eventWidgetList, widgetServiceIntent)
-                    // setEmptyView can be used to choose the view displayed when the collection has no items
-                }
-
-                // Template to handle the click listener for each item
-                val clickIntentTemplate = Intent(context, MainActivity::class.java)
-                val clickPendingIntentTemplate: PendingIntent = TaskStackBuilder.create(context)
-                    .addNextIntentWithParentStack(clickIntentTemplate)
-                    .getPendingIntent(
-                        3,
-                        PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-                    )
-                views.setPendingIntentTemplate(R.id.eventWidgetList, clickPendingIntentTemplate)
-
-                // Fill the list with the next events
-                appWidgetManager.notifyAppWidgetViewDataChanged(
-                    appWidgetId,
-                    R.id.eventWidgetList
+                // The whole list at once, without the events already in the text above
+                val listEvents = removeOrGetUpcomingEvents(eventDao.getOrderedEventsStatic())
+                RemoteViewsCompat.setRemoteAdapter(
+                    context, views, appWidgetId, R.id.eventWidgetList,
+                    EventWidgetRows(context).items(listEvents)
                 )
+
+                // A tap on a row opens the details of its event
+                views.setPendingIntentTemplate(R.id.eventWidgetList, rowClickTemplate(context, 3))
             }
             // Instruct the widget manager to update the widget
             appWidgetManager.updateAppWidget(appWidgetId, views)
-        }.start()
+        }
     }
+
+    // The template the rows of a list fill in with the id of their event. Mutable on purpose: an
+    // immutable one ignores what the rows add, and the tap would just open the app
+    private fun rowClickTemplate(context: Context, requestCode: Int): PendingIntent =
+        TaskStackBuilder.create(context)
+            .addNextIntentWithParentStack(Intent(context, MainActivity::class.java))
+            .getPendingIntent(
+                requestCode,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+            )!!
+
+    // Widget work runs off the main thread. When the app is updated or killed in the middle of it,
+    // the system side of a binder call is gone and the call throws: there is nothing left to draw
+    // on, so nothing to crash for either. Anything else is a real failure and still crashes
+    private fun runWidgetWork(work: () -> Unit) = Thread {
+        try {
+            work()
+        } catch (e: RuntimeException) {
+            if (e.cause !is DeadSystemException) throw e
+            Log.d("widget", "System gone during a widget update, dropped")
+        }
+    }.start()
 }

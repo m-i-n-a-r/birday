@@ -12,10 +12,10 @@
         <action
             android:id="@+id/action_navigationMain_to_detailsFragment"
             app:destination="@id/detailsFragment"
-            app:enterAnim="@anim/nav_enter_secondary_anim"
-            app:exitAnim="@anim/nav_exit_secondary_anim"
-            app:popEnterAnim="@anim/nav_pop_enter_secondary_anim"
-            app:popExitAnim="@anim/nav_pop_exit_secondary_anim" />
+            app:enterAnim="@animator/nav_enter_secondary_anim"
+            app:exitAnim="@animator/nav_exit_secondary_anim"
+            app:popEnterAnim="@animator/nav_pop_enter_secondary_anim"
+            app:popExitAnim="@animator/nav_pop_exit_secondary_anim" />
     </fragment>
     <fragment
         android:id="@+id/navigationFavorites"
@@ -25,36 +25,56 @@
         <action
             android:id="@+id/action_navigationFavorites_to_overviewFragment"
             app:destination="@id/overviewFragment"
-            app:enterAnim="@anim/nav_enter_secondary_anim"
-            app:exitAnim="@anim/nav_exit_secondary_anim"
-            app:popEnterAnim="@anim/nav_pop_enter_secondary_anim"
-            app:popExitAnim="@anim/nav_pop_exit_secondary_anim" />
+            app:enterAnim="@animator/nav_enter_secondary_anim"
+            app:exitAnim="@animator/nav_exit_secondary_anim"
+            app:popEnterAnim="@animator/nav_pop_enter_secondary_anim"
+            app:popExitAnim="@animator/nav_pop_exit_secondary_anim" />
         <action
             android:id="@+id/action_navigationFavorites_to_detailsFragment"
             app:destination="@id/detailsFragment"
-            app:enterAnim="@anim/nav_enter_secondary_anim"
-            app:exitAnim="@anim/nav_exit_secondary_anim"
-            app:popEnterAnim="@anim/nav_pop_enter_secondary_anim"
-            app:popExitAnim="@anim/nav_pop_exit_secondary_anim" />
+            app:enterAnim="@animator/nav_enter_secondary_anim"
+            app:exitAnim="@animator/nav_exit_secondary_anim"
+            app:popEnterAnim="@animator/nav_pop_enter_secondary_anim"
+            app:popExitAnim="@animator/nav_pop_exit_secondary_anim" />
     </fragment>
     <fragment
         android:id="@+id/navigationSettings"
         android:name="com.minar.birday.fragments.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/author_preference_row">
+        tools:layout="@layout/fragment_about">
+        <action
+            android:id="@+id/action_navigationSettings_to_aboutFragment"
+            app:destination="@id/aboutFragment"
+            app:enterAnim="@animator/nav_enter_secondary_anim"
+            app:exitAnim="@animator/nav_exit_secondary_anim"
+            app:popEnterAnim="@animator/nav_pop_enter_secondary_anim"
+            app:popExitAnim="@animator/nav_pop_exit_secondary_anim" />
         <action
             android:id="@+id/action_navigationSettings_to_experimentalSettingsFragment"
             app:destination="@id/experimentalSettingsFragment"
-            app:enterAnim="@anim/nav_enter_secondary_anim"
-            app:exitAnim="@anim/nav_exit_secondary_anim"
-            app:popEnterAnim="@anim/nav_pop_enter_secondary_anim"
-            app:popExitAnim="@anim/nav_pop_exit_secondary_anim" />
+            app:enterAnim="@animator/nav_enter_secondary_anim"
+            app:exitAnim="@animator/nav_exit_secondary_anim"
+            app:popEnterAnim="@animator/nav_pop_enter_secondary_anim"
+            app:popExitAnim="@animator/nav_pop_exit_secondary_anim" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.minar.birday.fragments.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/experimentalSettingsFragment"
         android:name="com.minar.birday.fragments.ExperimentalSettingsFragment"
         android:label="fragment_experimental_settings"
-        tools:layout="@layout/experimental_disclaimer_row" />
+        tools:layout="@layout/experimental_disclaimer_row">
+        <action
+            android:id="@+id/action_experimentalSettingsFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment"
+            app:enterAnim="@animator/nav_enter_secondary_anim"
+            app:exitAnim="@animator/nav_exit_secondary_anim"
+            app:popEnterAnim="@animator/nav_pop_enter_secondary_anim"
+            app:popExitAnim="@animator/nav_pop_exit_secondary_anim" />
+    </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.minar.birday.fragments.DetailsFragment"

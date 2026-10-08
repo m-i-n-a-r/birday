@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A single tappable row of the about page. Inflated once per entry by AboutFragment, so the
+     list stays in one place in code instead of being repeated seven times in XML -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/aboutRowRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/about_row_padding_horizontal"
+    android:paddingVertical="@dimen/about_row_padding_vertical">
+
+    <ImageView
+        android:id="@+id/aboutRowIcon"
+        android:layout_width="@dimen/nav_tab_icon_size"
+        android:layout_height="@dimen/nav_tab_icon_size"
+        android:layout_marginEnd="@dimen/about_row_icon_margin"
+        app:tint="?attr/colorOnSurfaceVariant"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/ic_info_24dp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/aboutRowTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textColor="?attr/colorOnSurface"
+            tools:text="@string/about_version" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/aboutRowSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            tools:text="4.7.2" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="@dimen/nav_tab_icon_size"
+        android:layout_height="@dimen/nav_tab_icon_size"
+        android:src="@drawable/ic_chevron_right_24dp"
+        app:tint="?attr/colorOnSurfaceVariant"
+        tools:ignore="ContentDescription" />
+
+</LinearLayout>

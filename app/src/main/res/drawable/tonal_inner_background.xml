@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The color of an inner row as it shows on screen, the tonal card below and the veil above:
+     for what has to cover such a row, as the type selector covering the search field -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="?attr/colorTonalCard" />
+            <corners android:radius="@dimen/tonal_card_radius_inner" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/inner_card_background" />
+            <corners android:radius="@dimen/tonal_card_radius_inner" />
+        </shape>
+    </item>
+</layer-list>

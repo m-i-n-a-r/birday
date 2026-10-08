@@ -1,0 +1,541 @@
+package com.minar.birday.activities
+
+import android.appwidget.AppWidgetManager
+import android.content.Intent
+import android.content.SharedPreferences
+import android.graphics.Color
+import android.os.Build
+import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.preference.PreferenceManager
+import com.google.android.material.R as MaterialR
+import com.google.android.material.color.MaterialColors
+import com.minar.birday.R
+import com.minar.birday.databinding.ActivityCompactWidgetConfigurationBinding
+import com.minar.birday.utilities.addInsetsByPadding
+import com.minar.birday.utilities.bodyMediumTextSizeSp
+import com.minar.birday.utilities.applyLoopingAnimatedVectorDrawable
+import com.minar.birday.utilities.applyUserTheme
+import com.minar.birday.widgets.CompactWidgetProvider
+import com.minar.birday.widgets.CompactWidgetRows
+import androidx.core.content.edit
+
+
+class CompactWidgetConfigurationActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityCompactWidgetConfigurationBinding
+    private lateinit var sharedPrefs: SharedPreferences
+
+    private val datePositionValues = arrayOf("below", "above", "hidden")
+    private val zodiacPositionValues = arrayOf("hidden", "before", "after")
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setResult(RESULT_CANCELED)
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
+
+        applyAppTheme()
+
+        binding = ActivityCompactWidgetConfigurationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        enableEdgeToEdge()
+        binding.container.addInsetsByPadding(top = true, bottom = true, left = true, right = true)
+
+        val widgetId = intent?.extras?.getInt(
+            AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID
+        ) ?: AppWidgetManager.INVALID_APPWIDGET_ID
+        if (widgetId == AppWidgetManager.INVALID_APPWIDGET_ID) {
+            finish()
+            return
+        }
+
+        // Loop the title icon like in the minimal widget configuration
+        val avdLooping = sharedPrefs.getBoolean("loop_avd", true)
+        binding.configurationTitleImage.applyLoopingAnimatedVectorDrawable(
+            R.drawable.animated_nav_settings, 1000, disableLooping = !avdLooping
+        )
+
+        // Localized countdown labels for the preview rows (mirror what the widget shows)
+        binding.previewCountdown2.text = resources.getQuantityString(R.plurals.days_left, 7, 7)
+        binding.previewCountdown3.text = resources.getQuantityString(R.plurals.days_left, 15, 15)
+
+        setupOpacitySlider()
+        setupPhotosSwitch()
+        binding.configurationScrollSwitch.isChecked =
+            sharedPrefs.getBoolean("widget_compact_scroll", false)
+        setupDatePositionSpinner()
+        setupZodiacPositionSpinner()
+        setupTextSizeSlider()
+        setupHighlightOpacitySlider()
+        setupColorPickers()
+        initializePreview()
+        setupMonetSwitch()
+        setupConfirmButton(widgetId)
+    }
+
+    private fun applyAppTheme() {
+        if (sharedPrefs.getBoolean("first", true)) {
+            sharedPrefs.edit {
+                when (Build.VERSION.SDK_INT) {
+                    23, 24, 25, 26, 27, 28, 29 -> putString("accent_color", "blue")
+                    31 -> putString("accent_color", "system")
+                    else -> putString("accent_color", "monet")
+                }
+            }
+        }
+
+        applyUserTheme(sharedPrefs)
+    }
+
+    private fun setupOpacitySlider() {
+        val savedOpacity = sharedPrefs.getInt("widget_compact_opacity", 100)
+        binding.configurationOpacitySlider.value = savedOpacity.toFloat()
+        val opacityString = "$savedOpacity%"
+        binding.configurationOpacityValue.text = opacityString
+    }
+
+    private fun setupPhotosSwitch() {
+        val savedHideImages = sharedPrefs.getBoolean("widget_compact_hide_images", false)
+        binding.configurationShowPhotosSwitch.isChecked = savedHideImages
+
+        val previewAvatars = listOf(
+            binding.previewAvatar1, binding.previewAvatar2, binding.previewAvatar3,
+        )
+        previewAvatars.forEach {
+            it.visibility = if (!savedHideImages) android.view.View.VISIBLE else android.view.View.GONE
+        }
+
+        binding.configurationShowPhotosSwitch.setOnCheckedChangeListener { _, isChecked ->
+            val visibility = if (!isChecked) android.view.View.VISIBLE else android.view.View.GONE
+            previewAvatars.forEach { it.visibility = visibility }
+        }
+    }
+
+    private fun setupDatePositionSpinner() {
+        val datePositionOptions = arrayOf(
+            getString(R.string.compact_widget_below_name),
+            getString(R.string.compact_widget_above_name),
+            getString(R.string.compact_widget_hidden),
+        )
+        binding.configurationDatePositionSpinner.adapter = android.widget.ArrayAdapter(
+            this, android.R.layout.simple_spinner_dropdown_item, datePositionOptions
+        )
+        val savedDatePosition = sharedPrefs.getString("widget_compact_date_position", "below") ?: "below"
+        binding.configurationDatePositionSpinner.setSelection(
+            datePositionValues.indexOf(savedDatePosition).coerceAtLeast(0)
+        )
+
+        val previewDatesAbove = listOf(
+            binding.previewDateAbove1, binding.previewDateAbove2, binding.previewDateAbove3
+        )
+        val previewDatesBelow = listOf(
+            binding.previewDateBelow1, binding.previewDateBelow2, binding.previewDateBelow3
+        )
+        updatePreviewDatePosition(previewDatesAbove, previewDatesBelow, savedDatePosition)
+
+        val zodiacRow = binding.configurationZodiacRow
+        zodiacRow.visibility = if (savedDatePosition == "hidden") android.view.View.GONE else android.view.View.VISIBLE
+
+        binding.configurationDatePositionSpinner.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: android.view.View?, pos: Int, id: Long) {
+                val position = datePositionValues[pos]
+                updatePreviewDatePosition(previewDatesAbove, previewDatesBelow, position)
+                zodiacRow.visibility = if (position == "hidden") android.view.View.GONE else android.view.View.VISIBLE
+                if (position == "hidden") binding.configurationZodiacPositionSpinner.setSelection(0)
+                val zodiacPosition = zodiacPositionValues[binding.configurationZodiacPositionSpinner.selectedItemPosition]
+                updatePreviewZodiacPosition(
+                    getAllPreviewZodiacLists(), zodiacPosition, position
+                )
+            }
+            override fun onNothingSelected(parent: android.widget.AdapterView<*>?) {}
+        }
+    }
+
+    private fun setupZodiacPositionSpinner() {
+        val zodiacPositionOptions = arrayOf(
+            getString(R.string.compact_widget_hidden),
+            getString(R.string.compact_widget_before_date),
+            getString(R.string.compact_widget_after_date),
+        )
+        binding.configurationZodiacPositionSpinner.adapter = android.widget.ArrayAdapter(
+            this, android.R.layout.simple_spinner_dropdown_item, zodiacPositionOptions
+        )
+        val savedZodiacPosition = sharedPrefs.getString("widget_compact_zodiac_position", "hidden") ?: "hidden"
+        binding.configurationZodiacPositionSpinner.setSelection(
+            zodiacPositionValues.indexOf(savedZodiacPosition).coerceAtLeast(0)
+        )
+
+        val savedDatePosition = sharedPrefs.getString("widget_compact_date_position", "below") ?: "below"
+        updatePreviewZodiacPosition(getAllPreviewZodiacLists(), savedZodiacPosition, savedDatePosition)
+
+        binding.configurationZodiacPositionSpinner.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: android.view.View?, pos: Int, id: Long) {
+                val zodiacPosition = zodiacPositionValues[pos]
+                val datePosition = datePositionValues[binding.configurationDatePositionSpinner.selectedItemPosition]
+                updatePreviewZodiacPosition(getAllPreviewZodiacLists(), zodiacPosition, datePosition)
+            }
+            override fun onNothingSelected(parent: android.widget.AdapterView<*>?) {}
+        }
+    }
+
+    // Slider internal range: 0 = Auto, 1..19 = 6sp..24sp
+    private fun sliderToSp(sliderVal: Int): Int = if (sliderVal == 0) 0 else sliderVal + 5
+    private fun spToSlider(sp: Int): Int = if (sp == 0) 0 else (sp - 5).coerceAtLeast(1)
+
+    private fun setupTextSizeSlider() {
+        val savedSp = sharedPrefs.getInt("widget_compact_text_size", 0)
+        binding.configurationTextSizeSlider.value = spToSlider(savedSp).toFloat()
+        binding.configurationTextSizeValue.text = textSizeLabel(spToSlider(savedSp))
+        updatePreviewTextSize(binding.previewContent, resolvedTextSizeSp(spToSlider(savedSp)))
+
+        binding.configurationTextSizeSlider.addOnChangeListener { _, value, _ ->
+            val sliderVal = value.toInt()
+            binding.configurationTextSizeValue.text = textSizeLabel(sliderVal)
+            updatePreviewTextSize(binding.previewContent, resolvedTextSizeSp(sliderVal))
+        }
+    }
+
+    private fun textSizeLabel(sliderVal: Int): String =
+        if (sliderVal == 0) getString(R.string.compact_widget_text_size_auto)
+        else "${sliderToSp(sliderVal)} sp"
+
+    private fun resolvedTextSizeSp(sliderVal: Int): Float =
+        if (sliderVal == 0) bodyMediumTextSizeSp() else sliderToSp(sliderVal).toFloat()
+
+    private fun setupHighlightOpacitySlider() {
+        val savedHighlightOpacity = sharedPrefs.getInt("widget_compact_highlight_opacity", 60)
+        binding.configurationHighlightOpacitySlider.value = savedHighlightOpacity.toFloat()
+        val opacityString = "$savedHighlightOpacity%"
+        binding.configurationHighlightOpacityValue.text = opacityString
+    }
+
+    private fun setupMonetSwitch() {
+        val monetEnabled = sharedPrefs.getBoolean("widget_compact_monet", true)
+        binding.configurationMonetSwitch.isChecked = monetEnabled
+        binding.colorSettingsContainer.visibility =
+            if (monetEnabled) android.view.View.GONE else android.view.View.VISIBLE
+        if (monetEnabled) applyMonetToPreview()
+
+        binding.configurationMonetSwitch.setOnCheckedChangeListener { _, isChecked ->
+            binding.colorSettingsContainer.visibility =
+                if (isChecked) android.view.View.GONE else android.view.View.VISIBLE
+            if (isChecked) {
+                applyMonetToPreview()
+            } else {
+                initializePreview()
+            }
+        }
+    }
+
+    private fun applyMonetToPreview() {
+        val bgColor = MaterialColors.getColor(this, MaterialR.attr.colorSurface, Color.BLACK)
+        val textColor = MaterialColors.getColor(this, MaterialR.attr.colorOnSurface, Color.WHITE)
+        val hlBgColor = MaterialColors.getColor(this, MaterialR.attr.colorPrimaryContainer, Color.BLUE)
+        val hlTextColor = MaterialColors.getColor(this, MaterialR.attr.colorOnPrimaryContainer, Color.BLACK)
+        val allPreviewZodiacIcons = getAllPreviewZodiacLists().flatten()
+
+        updatePreviewBackground(binding.previewContent, binding.configurationOpacitySlider.value.toInt(), bgColor)
+        updatePreviewGeneralTextColor(binding.previewContent, textColor)
+        allPreviewZodiacIcons.forEach { (it as android.widget.ImageView).setColorFilter(textColor) }
+        updatePreviewHighlight(binding.previewHighlightRow, hlBgColor, 100)
+        updatePreviewHighlightText(binding.previewHighlightRow, hlTextColor)
+    }
+
+    private fun getAllPreviewZodiacLists(): List<List<android.view.View>> {
+        return listOf(
+            listOf(binding.previewZodiacBeforeAbove1, binding.previewZodiacBeforeAbove2, binding.previewZodiacBeforeAbove3),
+            listOf(binding.previewZodiacAfterAbove1, binding.previewZodiacAfterAbove2, binding.previewZodiacAfterAbove3),
+            listOf(binding.previewZodiacBeforeBelow1, binding.previewZodiacBeforeBelow2, binding.previewZodiacBeforeBelow3),
+            listOf(binding.previewZodiacAfterBelow1, binding.previewZodiacAfterBelow2, binding.previewZodiacAfterBelow3),
+        )
+    }
+
+    private fun buildColorPalette(): LinkedHashMap<String, Int> {
+        val names = listOf(
+            "white", "black", "red", "crimson", "orange", "yellow",
+            "lime", "green", "teal", "aqua", "lightBlue", "blue", "violet", "pink"
+        )
+        val palette = linkedMapOf<String, Int>()
+        names.forEach { palette[it] = CompactWidgetRows.resolveColor(this, it) }
+        return palette
+    }
+
+    private fun setupColorPickers() {
+        val allColors = buildColorPalette()
+        val previewContent = binding.previewContent
+        val previewHighlightRow = binding.previewHighlightRow
+        val slider = binding.configurationOpacitySlider
+        val opacityValue = binding.configurationOpacityValue
+        val highlightOpacitySlider = binding.configurationHighlightOpacitySlider
+        val highlightOpacityValue = binding.configurationHighlightOpacityValue
+        val allPreviewZodiacIcons = getAllPreviewZodiacLists().flatten()
+
+        var selectedWidgetBgColor = sharedPrefs.getString("widget_compact_bg_color", "black") ?: "black"
+        val selectedWidgetTextColor = sharedPrefs.getString("widget_compact_general_text_color", "white") ?: "white"
+        var selectedHighlightBgColor = sharedPrefs.getString("widget_compact_highlight_color", "red") ?: "red"
+        val selectedHighlightTextColor = sharedPrefs.getString("widget_compact_highlight_text_color", "white") ?: "white"
+
+        buildColorPicker(binding.bgColorPickerContainer, allColors, selectedWidgetBgColor) { name, color ->
+            selectedWidgetBgColor = name
+            updatePreviewBackground(previewContent, slider.value.toInt(), color)
+        }
+
+        buildColorPicker(binding.generalTextColorPickerContainer, allColors, selectedWidgetTextColor) { _, color ->
+            updatePreviewGeneralTextColor(previewContent, color)
+            allPreviewZodiacIcons.forEach { (it as android.widget.ImageView).setColorFilter(color) }
+        }
+
+        buildColorPicker(binding.colorPickerContainer, allColors, selectedHighlightBgColor) { name, color ->
+            selectedHighlightBgColor = name
+            updatePreviewHighlight(previewHighlightRow, color, highlightOpacitySlider.value.toInt())
+        }
+
+        buildColorPicker(binding.textColorPickerContainer, allColors, selectedHighlightTextColor) { _, color ->
+            updatePreviewHighlightText(previewHighlightRow, color)
+        }
+
+        highlightOpacitySlider.addOnChangeListener { _, value, _ ->
+            val hlOpacity = value.toInt()
+            val hlOpacityString = "$hlOpacity%"
+            highlightOpacityValue.text = hlOpacityString
+            val color = allColors[selectedHighlightBgColor] ?: getColor(R.color.red)
+            updatePreviewHighlight(previewHighlightRow, color, hlOpacity)
+        }
+
+        slider.addOnChangeListener { _, value, _ ->
+            val opacity = value.toInt()
+            val opacityString = "$opacity%"
+            opacityValue.text = opacityString
+            // With Monet the background is the surface color, the opacity is still this one
+            val color =
+                if (binding.configurationMonetSwitch.isChecked)
+                    MaterialColors.getColor(this, MaterialR.attr.colorSurface, Color.BLACK)
+                else allColors[selectedWidgetBgColor] ?: Color.BLACK
+            updatePreviewBackground(previewContent, opacity, color)
+        }
+    }
+
+    private fun initializePreview() {
+        val allColors = buildColorPalette()
+        val selectedWidgetBgColor = sharedPrefs.getString("widget_compact_bg_color", "black") ?: "black"
+        val selectedWidgetTextColor = sharedPrefs.getString("widget_compact_general_text_color", "white") ?: "white"
+        val selectedHighlightBgColor = sharedPrefs.getString("widget_compact_highlight_color", "red") ?: "red"
+        val selectedHighlightTextColor = sharedPrefs.getString("widget_compact_highlight_text_color", "white") ?: "white"
+
+        val initBgColor = allColors[selectedWidgetBgColor] ?: Color.BLACK
+        val initTextColor = allColors[selectedWidgetTextColor] ?: Color.WHITE
+        val initHlBgColor = allColors[selectedHighlightBgColor] ?: getColor(R.color.red)
+        val initHlTextColor = allColors[selectedHighlightTextColor] ?: Color.WHITE
+
+        val savedOpacity = binding.configurationOpacitySlider.value.toInt()
+        val savedHighlightOpacity = sharedPrefs.getInt("widget_compact_highlight_opacity", 60)
+        val allPreviewZodiacIcons = getAllPreviewZodiacLists().flatten()
+
+        updatePreviewBackground(binding.previewContent, savedOpacity, initBgColor)
+        updatePreviewGeneralTextColor(binding.previewContent, initTextColor)
+        allPreviewZodiacIcons.forEach { (it as android.widget.ImageView).setColorFilter(initTextColor) }
+        updatePreviewHighlight(binding.previewHighlightRow, initHlBgColor, savedHighlightOpacity)
+        updatePreviewHighlightText(binding.previewHighlightRow, initHlTextColor)
+    }
+
+    private fun setupConfirmButton(widgetId: Int) {
+        binding.configurationConfirmButton.setOnClickListener {
+            sharedPrefs.edit {
+                putBoolean("widget_compact_monet", binding.configurationMonetSwitch.isChecked)
+                putInt("widget_compact_opacity", binding.configurationOpacitySlider.value.toInt())
+                putBoolean("widget_compact_hide_images", binding.configurationShowPhotosSwitch.isChecked)
+                putBoolean("widget_compact_scroll", binding.configurationScrollSwitch.isChecked)
+                putInt("widget_compact_text_size", sliderToSp(binding.configurationTextSizeSlider.value.toInt()))
+                putInt("widget_compact_highlight_opacity", binding.configurationHighlightOpacitySlider.value.toInt())
+                putString("widget_compact_bg_color", getSelectedColorName(binding.bgColorPickerContainer))
+                putString("widget_compact_general_text_color", getSelectedColorName(binding.generalTextColorPickerContainer))
+                putString("widget_compact_highlight_color", getSelectedColorName(binding.colorPickerContainer))
+                putString("widget_compact_highlight_text_color", getSelectedColorName(binding.textColorPickerContainer))
+                putString("widget_compact_date_position", datePositionValues[binding.configurationDatePositionSpinner.selectedItemPosition])
+                putString("widget_compact_zodiac_position", zodiacPositionValues[binding.configurationZodiacPositionSpinner.selectedItemPosition])
+            }
+
+            val updateIntent = Intent(this, CompactWidgetProvider::class.java).apply {
+                action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+                putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, intArrayOf(widgetId))
+            }
+            sendBroadcast(updateIntent)
+
+            val resultValue = Intent().putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId)
+            setResult(RESULT_OK, resultValue)
+            finish()
+        }
+    }
+
+    private fun createColorCircle(
+        color: Int, selected: Boolean, size: Int, margin: Int
+    ): android.widget.FrameLayout {
+        val frame = android.widget.FrameLayout(this).apply {
+            layoutParams = android.widget.LinearLayout.LayoutParams(size, size).apply {
+                marginEnd = margin
+            }
+            alpha = if (selected) 1.0f else 0.4f
+        }
+        // Filled circle
+        val fill = android.widget.ImageView(this).apply {
+            layoutParams = android.widget.FrameLayout.LayoutParams(
+                android.widget.FrameLayout.LayoutParams.MATCH_PARENT,
+                android.widget.FrameLayout.LayoutParams.MATCH_PARENT
+            )
+            setImageResource(R.drawable.ic_dot_black_24dp)
+            setColorFilter(color)
+            scaleType = android.widget.ImageView.ScaleType.FIT_CENTER
+        }
+        // Ring border
+        val ring = android.widget.ImageView(this).apply {
+            layoutParams = android.widget.FrameLayout.LayoutParams(
+                android.widget.FrameLayout.LayoutParams.MATCH_PARENT,
+                android.widget.FrameLayout.LayoutParams.MATCH_PARENT
+            )
+            setImageResource(R.drawable.ic_ring_24dp)
+            val luminance = Color.luminance(color)
+            setColorFilter(if (luminance > 0.5f) Color.DKGRAY else Color.LTGRAY)
+            scaleType = android.widget.ImageView.ScaleType.FIT_CENTER
+        }
+        frame.addView(fill)
+        frame.addView(ring)
+        return frame
+    }
+
+    private fun updatePreviewHighlight(row: android.view.View, color: Int, opacityPercent: Int) {
+        val alpha = (opacityPercent * 255 / 100)
+        val r = Color.red(color)
+        val g = Color.green(color)
+        val b = Color.blue(color)
+        row.setBackgroundColor(Color.argb(alpha, r, g, b))
+    }
+
+    private fun updatePreviewHighlightText(row: android.view.View, color: Int) {
+        // Only color the last TextView (countdown "Heute!") in the row
+        if (row is android.view.ViewGroup) {
+            val lastChild = row.getChildAt(row.childCount - 1)
+            if (lastChild is android.widget.TextView) {
+                lastChild.setTextColor(color)
+            }
+        }
+    }
+
+    private fun buildColorPicker(
+        container: android.widget.LinearLayout,
+        colors: Map<String, Int>,
+        selectedName: String,
+        onColorSelected: (String, Int) -> Unit
+    ) {
+        val circleSize = (36 * resources.displayMetrics.density).toInt()
+        val circleMargin = (4 * resources.displayMetrics.density).toInt()
+        val views = mutableMapOf<String, android.view.View>()
+        for ((name, color) in colors) {
+            val circle = createColorCircle(color, name == selectedName, circleSize, circleMargin)
+            circle.setOnClickListener {
+                views.values.forEach { v -> v.alpha = 0.4f }
+                circle.alpha = 1.0f
+                onColorSelected(name, color)
+            }
+            views[name] = circle
+            container.addView(circle)
+        }
+    }
+
+    private fun updatePreviewBackground(view: android.view.View, opacityPercent: Int, color: Int = Color.BLACK) {
+        val alpha = (opacityPercent * 255 / 100)
+        val r = Color.red(color)
+        val g = Color.green(color)
+        val b = Color.blue(color)
+        view.setBackgroundColor(Color.argb(alpha, r, g, b))
+    }
+
+    private fun updatePreviewGeneralTextColor(container: android.view.ViewGroup, color: Int) {
+        // Apply text color to all rows including the highlight row
+        for (i in 0 until container.childCount) {
+            val row = container.getChildAt(i)
+            if (row is android.view.ViewGroup) {
+                setTextColorRecursive(row, color)
+            }
+        }
+        // Restore highlight countdown text color on the first row
+        val hlColorName = getSelectedColorName(binding.textColorPickerContainer)
+        val hlTextColor = CompactWidgetRows.resolveColor(this, hlColorName)
+        updatePreviewHighlightText(binding.previewHighlightRow, hlTextColor)
+    }
+
+    private fun setTextColorRecursive(group: android.view.ViewGroup, color: Int) {
+        for (i in 0 until group.childCount) {
+            val child = group.getChildAt(i)
+            if (child is android.widget.TextView) {
+                child.setTextColor(color)
+            } else if (child is android.view.ViewGroup) {
+                setTextColorRecursive(child, color)
+            }
+        }
+    }
+
+    private fun getSelectedColorName(container: android.widget.LinearLayout): String {
+        val allColors = buildColorPalette()
+        val names = allColors.keys.toList()
+        for (i in 0 until container.childCount) {
+            if (container.getChildAt(i).alpha == 1.0f) return names[i]
+        }
+        return names.first()
+    }
+
+    private fun updatePreviewTextSize(container: android.view.ViewGroup, sp: Float) {
+        val smallSp = sp * CompactWidgetRows.DATE_TEXT_SCALE
+        for (i in 0 until container.childCount) {
+            val row = container.getChildAt(i)
+            if (row is android.view.ViewGroup) {
+                updateTextSizeRecursive(row, sp, smallSp)
+            }
+        }
+    }
+
+    private fun updateTextSizeRecursive(group: android.view.ViewGroup, sp: Float, smallSp: Float) {
+        for (i in 0 until group.childCount) {
+            val child = group.getChildAt(i)
+            if (child is android.widget.TextView) {
+                child.textSize = if (child.tag == "date") smallSp else sp
+            } else if (child is android.view.ViewGroup) {
+                updateTextSizeRecursive(child, sp, smallSp)
+            }
+        }
+    }
+
+    private fun updatePreviewZodiacPosition(
+        zodiacLists: List<List<android.view.View>>,
+        zodiacPosition: String, datePosition: String
+    ) {
+        val (beforeAbove, afterAbove, beforeBelow, afterBelow) = zodiacLists
+        val showBefore = zodiacPosition == "before"
+        val showAfter = zodiacPosition == "after"
+        val showAbove = datePosition == "above"
+        val showBelow = datePosition == "below"
+
+        beforeAbove.forEach { it.visibility = if (showBefore && showAbove) android.view.View.VISIBLE else android.view.View.GONE }
+        afterAbove.forEach { it.visibility = if (showAfter && showAbove) android.view.View.VISIBLE else android.view.View.GONE }
+        beforeBelow.forEach { it.visibility = if (showBefore && showBelow) android.view.View.VISIBLE else android.view.View.GONE }
+        afterBelow.forEach { it.visibility = if (showAfter && showBelow) android.view.View.VISIBLE else android.view.View.GONE }
+    }
+
+    private fun updatePreviewDatePosition(
+        above: List<android.view.View>, below: List<android.view.View>, position: String
+    ) {
+        when (position) {
+            "hidden" -> {
+                above.forEach { it.visibility = android.view.View.GONE }
+                below.forEach { it.visibility = android.view.View.GONE }
+            }
+            "above" -> {
+                above.forEach { it.visibility = android.view.View.VISIBLE }
+                below.forEach { it.visibility = android.view.View.GONE }
+            }
+            else -> { // "below"
+                above.forEach { it.visibility = android.view.View.GONE }
+                below.forEach { it.visibility = android.view.View.VISIBLE }
+            }
+        }
+    }
+}

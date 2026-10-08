@@ -1,23 +1,25 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp")
-    id("androidx.navigation.safeargs.kotlin")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.navigation.safeargs)
 }
 
-android {
+kotlin {
+    jvmToolchain(17)
+}
+
+configure<com.android.build.api.dsl.ApplicationExtension>  {
     namespace = "com.minar.birday"
-    compileSdk = 36
-    buildToolsVersion = "35.0.0"
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.minar.birday"
-        targetSdk = 36
+        targetSdk = 37
         minSdk = 26
-        versionCode = 37
-        versionName = "4.7.2"
+        versionCode = 39
+        versionName = "5.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -36,15 +38,7 @@ android {
         generateLocaleConfig = true
     }
 
-    java {
-        toolchain {
-            languageVersion = JavaLanguageVersion.of(17)
-        }
-    }
 
-    kotlin {
-        jvmToolchain(17)
-    }
 
     packaging {
         jniLibs {
@@ -73,70 +67,67 @@ android {
     }
 }
 
-configurations.configureEach {
-    exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk7")
-    exclude("org.jetbrains.kotlin", "kotlin-stdlib-jdk8")
-}
-
 dependencies {
 
     // Default dependencies
-    implementation("androidx.appcompat:appcompat:1.7.1")
-    implementation("androidx.core:core-ktx:1.17.0")
-    implementation("androidx.preference:preference-ktx:1.2.1")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.activity:activity-ktx:1.11.0")
-    implementation("androidx.fragment:fragment-ktx:1.8.9")
+    implementation(libs.appcompat)
+    implementation(libs.core.ktx)
+    // Widget lists handed over whole, instead of the deprecated RemoteViewsService adapters
+    implementation(libs.core.remoteviews)
+    implementation(libs.preference.ktx)
+    implementation(libs.activity.ktx)
+    implementation(libs.fragment.ktx)
 
     // Transition
-    implementation("androidx.transition:transition-ktx:1.6.0")
+    implementation(libs.transition.ktx)
 
     // Constraint / motion layout
-    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
+    implementation(libs.constraintlayout)
 
     // Splashscreen
-    implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation(libs.core.splashscreen)
 
     // Material Components
-    implementation("com.google.android.material:material:1.14.0-alpha05")
+    implementation(libs.material)
 
     // WorkManager
-    implementation("androidx.work:work-runtime-ktx:2.10.5")
+    implementation(libs.work.runtime.ktx)
 
     // Navigation component
-    implementation("androidx.navigation:navigation-fragment-ktx:2.9.5")
-    implementation("androidx.navigation:navigation-ui-ktx:2.9.5")
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
 
     // Lifecycle and ViewModel
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4")
-    implementation("androidx.recyclerview:recyclerview:1.4.0")
-    
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.recyclerview)
+
     // Room
-    val roomVersion = "2.8.2"
-    implementation("androidx.room:room-runtime:$roomVersion")
-    ksp("androidx.room:room-compiler:$roomVersion")
+    implementation(libs.room.runtime)
+    ksp(libs.room.compiler)
 
     // Gson
-    implementation("com.google.code.gson:gson:2.13.2")
+    implementation(libs.gson)
 
     // App Intro
-    implementation("com.github.AppIntro:AppIntro:6.3.1")
+    implementation(libs.appintro)
 
     // Facebook shimmer effect
-    implementation("com.facebook.shimmer:shimmer:0.5.0")
+    implementation(libs.shimmer)
 
     // Confetti effect
-    implementation("nl.dionsegijn:konfetti:1.3.2")
+    implementation(libs.konfetti)
 
     // TastiCalendar (my library :D)
-    implementation("com.github.m-i-n-a-r:tasticalendar:1.4.0")
+    implementation(libs.tasticalendar)
+
+    // Image cropping
+    implementation(libs.imageCropper)
 
     // [Testing] Basic
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.3.0")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.7.0")
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.espresso.core)
 
     // [Testing] ICU
-    testImplementation("com.ibm.icu:icu4j:77.1")
+    testImplementation(libs.icu4j)
 }

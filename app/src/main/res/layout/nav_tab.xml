@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One destination in the floating navbar. The label is gone until the tab is selected, and the
+     pill grows around it: only the frame around the label changes width, the label itself is laid
+     out once at its full width and uncovered, so its letters never get cut and appear together -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tabRoot"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/nav_tab_height"
+    android:background="@drawable/nav_tab_background"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/nav_tab_padding">
+
+    <com.minar.birday.views.CheckableImageView
+        android:id="@+id/tabIcon"
+        android:layout_width="@dimen/nav_tab_icon_size"
+        android:layout_height="@dimen/nav_tab_icon_size"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/ic_favorites_24dp" />
+
+    <FrameLayout
+        android:id="@+id/tabLabelFrame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/nav_tab_label_margin"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tabLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textAppearance="?attr/textAppearanceLabelLarge"
+            android:textStyle="bold"
+            tools:text="@string/title_home" />
+
+    </FrameLayout>
+
+</LinearLayout>

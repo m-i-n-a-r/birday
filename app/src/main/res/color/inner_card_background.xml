@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The rows inside a tonal card, as the calendar and the search one: denser than the details pills,
+     which have to let the zodiac sign through, so they stand apart from the card in light theme too -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:alpha="0.85" android:color="?attr/colorSecondaryContainer" />
+</selector>

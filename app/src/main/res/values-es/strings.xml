@@ -30,6 +30,11 @@
         <item quantity="one">Falta %d día</item>
         <item quantity="other">Faltan %d días</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s día</item>
+        <item quantity="other">%s días</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">Personalización</string>
     <string name="app_behavior">Ajustes generales</string>
@@ -91,6 +96,7 @@
     <string name="birday_import_success">¡Importación completada!</string>
     <string name="birday_import_failure">Importación fallida ¿Has elegido el archivo correcto?</string>
     <string name="birday_import_invalid_file">Importación fallida. ¡El archivo elegido no es de Birday!</string>
+    <string name="birday_import_newer_backup">Esta copia de seguridad procede de una versión más reciente de Birday: actualiza la aplicación para importarla</string>
     <string name="birday_export_success">Exportación completada!</string>
     <string name="birday_export_failure">Exportación fallida. ¡Oops!</string>
     <string name="birday_export_nothing_found">¡Nada que exportar!</string>
@@ -135,6 +141,7 @@
     <string name="new_event_description">Escribe la persona que quieras añadir y Birday te ayudará a recordar su cumpleaños u otros eventos</string>
     <string name="insert_event">Añadir evento</string>
     <string name="cancel">Cancelar</string>
+    <string name="crop_image_error">Se ha producido un error al recortar la imagen</string>
     <string name="insert_name_hint">Nombre</string>
     <string name="insert_surname_hint">Apellido</string>
     <string name="insert_date_hint">Fecha</string>
@@ -161,6 +168,8 @@
     <string name="next_age">Próximamente cumplirá:</string>
     <string name="zodiac_sign">Signo del zodiaco:</string>
     <string name="chinese_zodiac_sign">Signo del zodiaco chino:</string>
+    <string name="days_lived">Días vividos</string>
+    <string name="next_unbirthday">Próximo no cumpleaños</string>
     <!-- Quick apps -->
     <string name="event_apps">Aplicaciones</string>
     <string name="event_apps_description">Algunas aplicaciones con las que poder felicitar los cumpleaños</string>
@@ -170,8 +179,8 @@
     <string name="no_default_dialer">¡No se ha encontrado la aplicación Teléfono!</string>
     <string name="no_default_sms">¡No se ha encontrado la aplicación Mensajes!</string>
     <string name="might_have_missed">Puede que te haya perdido:</string>
-    <!-- Statistics -->
     <string name="did_you_know">¿Sabías que…?</string>
+    <!-- Statistics -->
     <string name="age_average">La edad media es de %s</string>
     <string name="oldest_person">La persona más mayor es %s</string>
     <string name="youngest_person">La persona más joven es %s</string>
@@ -263,6 +272,22 @@
     <string name="hide_far_widget_description">Ocultar el widget si los siguientes eventos son después del período de notificación adicional (por ejemplo: notificación 7 días antes, el siguiente evento está en 10 días -&gt; el widget está oculto)</string>
     <string name="show_following_widget_title">Mostrar el siguiente evento</string>
     <string name="show_following_widget_description">Muestra el evento o los eventos posteriores al siguiente, en una fila adicional</string>
+    <string name="appwidget_compact">Tabla compacta</string>
+    <string name="add_widget_compact">Birday - Compacto</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">Opacidad del fondo</string>
+    <string name="compact_widget_bg_color">Color del fondo</string>
+    <string name="compact_widget_text_color">Color del texto</string>
+    <string name="compact_widget_text_size">Tamaño del texto</string>
+    <string name="compact_widget_text_size_auto">Automático</string>
+    <string name="export_ics_title">Exportar a iCalendar</string>
+    <string name="export_ics_description">Exporta cada evento a un archivo .ics, compatible con cualquier aplicación de calendario</string>
+    <string name="compact_widget_scroll">Desplazarse por todos los eventos</string>
+    <string name="compact_widget_hidden">Oculto</string>
+    <string name="compact_widget_below_name">Debajo del nombre</string>
+    <string name="compact_widget_above_name">Encima del nombre</string>
+    <string name="compact_widget_before_date">Antes de la fecha</string>
+    <string name="compact_widget_after_date">Después de la fecha</string>
     <!-- Search -->
     <string name="search_event">Buscar…</string>
     <string name="search_no_result_title">Sin resultados</string>
@@ -320,7 +345,62 @@
     <string name="advanced_overview_title">Resumen avanzado</string>
     <string name="advanced_overview_description_off">La pantalla de resumen solo mostrará información básica</string>
     <string name="advanced_overview_description_on">La pantalla de resumen mostrará otros años e información detallada</string>
+    <string name="feb29_assignment_title">29 de febrero en años no bisiestos</string>
+    <string name="feb29_assignment_description_off">En los años no bisiestos, los cumpleaños del 29 de febrero se celebran el 1 de marzo</string>
+    <string name="feb29_assignment_description_on">En los años no bisiestos, los cumpleaños del 29 de febrero se celebran el 28 de febrero</string>
     <string name="replace_on_conflict_title">Reemplazar cuando haya conflicto</string>
     <string name="replace_on_conflict_description_off">Cuando se importa, un evento duplicado no será reemplazado por el duplicado importado</string>
     <string name="replace_on_conflict_description_on">Cuando se importa, un evento duplicado será sobrescrito por el duplicado importado</string>
+    <string name="contacts_full_name_title">Nombres completos de los contactos</string>
+    <string name="contacts_full_name_description_on">Se conservan los títulos, los segundos nombres y los sufijos al leer los nombres de los contactos</string>
+    <string name="contacts_full_name_description_off">Solo se leen el nombre y los apellidos de los contactos</string>
+    <string name="days_milestones_title">Hitos de días vividos</string>
+    <string name="days_milestones_description_on">Los detalles muestran los días vividos y cada 1000 días se celebra y notifica un hito, como un cumpleaños</string>
+    <string name="days_milestones_description_off">Sin contador de días vividos ni hitos</string>
+    <string name="unbirthdays_title">No cumpleaños</string>
+    <string name="alternative_calendar_title">Calendario alternativo</string>
+    <string name="alternative_calendar_none">Ninguno, solo gregoriano</string>
+    <string name="calendar_gregorian">Gregoriano</string>
+    <string name="calendar_chinese">Chino</string>
+    <string name="calendar_dangi">Coreano</string>
+    <string name="calendar_hebrew">Hebreo</string>
+    <string name="calendar_islamic">Islámico</string>
+    <string name="calendar_islamic_civil">Islámico (civil)</string>
+    <string name="user_card_title">Tu cumpleaños</string>
+    <string name="user_birthday_greeting">¡Feliz cumpleaños, %s!</string>
+    <string name="user_card_empty">Introduce tu fecha de nacimiento</string>
+    <string name="user_card_save">Guardar</string>
+    <string name="user_card_remove">Eliminar</string>
+    <string name="unbirthdays_description_on">Los detalles muestran la próxima fecha con el mismo día de la semana y del mes que el nacimiento, por ejemplo, un viernes 13</string>
+    <string name="unbirthdays_description_off">Sin no cumpleaños en los detalles</string>
+    <string name="weekend_reminder_title">Recordar antes del fin de semana</string>
+    <string name="weekend_reminder_description_on">Los eventos en fin de semana también se notifican el último día laborable anterior</string>
+    <string name="weekend_reminder_description_off">Los eventos en fin de semana se notifican solo como siempre</string>
+    <string name="additional_notification_separate_title">Hora distinta para las notificaciones previas</string>
+    <string name="additional_notification_separate_description_on">Las notificaciones previas llegan a la hora elegida abajo</string>
+    <string name="additional_notification_separate_description_off">Las notificaciones previas llegan junto con la principal</string>
+    <string name="additional_notification_hour">Hora de la notificación previa</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
+    <string name="about_title">Acerca de</string>
+    <string name="back">Atrás</string>
+    <string name="about_description">Información sobre Birday, su autor y el idioma de la aplicación</string>
+    <string name="about_version">Versión</string>
+    <string name="about_language_title">Idioma</string>
+    <string name="about_language_summary">Elige el idioma de Birday</string>
+    <string name="about_rate_title">Valorar la aplicación</string>
+    <string name="about_rate_summary">Deja una reseña en Play Store</string>
+    <string name="about_share_title">Compartir Birday</string>
+    <string name="about_share_summary">Recomienda la aplicación a un amigo</string>
+    <string name="about_share_text">Birday, una forma sencilla y bonita de no olvidar nunca un cumpleaños: %1$s</string>
+    <string name="about_no_app_found">¡Ninguna aplicación puede realizar esta acción!</string>
+    <string name="about_privacy_title">Política de privacidad</string>
+    <string name="about_contact_title">Contactar con el desarrollador</string>
+    <string name="amoled_description_on">El tema oscuro usa negro puro, ideal para pantallas OLED</string>
+    <string name="amoled_description_off">El tema oscuro usa los tonos oscuros habituales</string>
+    <string name="with_year">Con año</string>
+    <string name="without_year">Sin año</string>
+    <!-- Edge blur -->
+    <string name="edge_blur">Desenfoque de los bordes</string>
+    <string name="edge_blur_description_on">El contenido se difumina suavemente al desplazarse bajo la barra de navegación</string>
+    <string name="edge_blur_description_off">El contenido se desplaza bajo la barra de navegación sin desenfoque</string>
 </resources>

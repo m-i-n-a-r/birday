@@ -2,7 +2,7 @@
 <com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/importContacts"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:shimmer_auto_start="false"
     app:shimmer_base_alpha="@dimen/shimmer_base_alpha"

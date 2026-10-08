@@ -38,15 +38,34 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
 
     // Import a backup overwriting any existing data and checking if the file is valid
     fun importEventsCsv(context: Context, fileUri: Uri): Boolean {
-        // Read the file as a list of rows
+        val eventList = parseEventsCsv(context, fileUri)
+        if (eventList == null) {
+            (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_failure))
+            return false
+        }
+        // If the list is empty, the file was probably malformed
+        if (eventList.isEmpty())
+            (context as MainActivity).showSnackbar(context.getString(R.string.import_nothing_found))
+        else
+        // Show the dialog to select the events to import
+            act.showImportDialog(eventList, title = act.getString(R.string.import_csv_title))
+        return true
+    }
+
+    // Read the file and turn it into events, without deciding what happens to them: a file the user
+    // picked is offered in the import dialog, while the demo set goes straight into the database.
+    // Null means the file could not be read at all. Nothing here touches a view, so unlike
+    // importEventsCsv this one is safe to call off the main thread
+    fun parseEventsCsv(context: Context, fileUri: Uri): List<Event>? {
         var separator = ','
-        val fileStream = context.contentResolver.openInputStream(fileUri)!!
-        val csvString = fileStream.bufferedReader().use { it.readText() }
-        val csvList = csvString.split('\n')
         val eventList = mutableListOf<Event>()
         var columnsMapping: Map<String, Int>? = null
         // Encapsulate in a try, to avoid crashes
         try {
+            // Read the file as a list of rows
+            val csvString = context.contentResolver.openInputStream(fileUri)!!
+                .bufferedReader().use { it.readText() }
+            val csvList = csvString.split('\n')
             // Check if the column names are in the file, in the smartest way possible
             val headerLower = csvList[0].lowercase()
             if (headerLower.contains("date")) {
@@ -121,19 +140,11 @@ class CsvImporter(context: Context, attrs: AttributeSet?) : Preference(context, 
                     }
                 }
             }
-            // If the list is empty, the file was probably malformed
-            if (eventList.isEmpty())
-                (context as MainActivity).showSnackbar(context.getString(R.string.import_nothing_found))
-            else
-            // Show the dialog to select the events to import
-                act.showImportDialog(eventList, title = act.getString(R.string.import_csv_title))
-            fileStream.close()
         } catch (e: Exception) {
-            (context as MainActivity).showSnackbar(context.getString(R.string.birday_import_failure))
             e.printStackTrace()
-            return false
+            return null
         }
-        return true
+        return eventList
     }
 
     // Return a map containing the order of the columns from the column names row

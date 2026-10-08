@@ -6,22 +6,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.BackEventCompat
-import androidx.activity.OnBackPressedCallback
+import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.FragmentOverviewBinding
 import com.minar.birday.model.EventResult
+import com.minar.birday.utilities.addNavbarClearance
+import com.minar.birday.utilities.animateChildrenCascade
 import com.minar.birday.utilities.formatEventList
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.tasticalendar.model.TastiCalendarEvent
 import com.minar.tasticalendar.model.TcSundayHighlight
 import java.time.LocalDate
-import androidx.core.content.edit
 
 
 class OverviewFragment : Fragment() {
@@ -56,16 +55,8 @@ class OverviewFragment : Fragment() {
 
         val advancedView = sharedPrefs.getBoolean("advanced_overview", false)
 
-        // Add some bottom padding to avoid hidden content behind the bottom navigation bar
-        val hideNavbar = sharedPrefs.getBoolean("hide_scroll", false)
-        if (hideNavbar) {
-            binding.overviewMain.setPadding(
-                0,
-                0,
-                0,
-                act.resources.getDimension(R.dimen.bottom_navbar_height).toInt()
-            )
-        }
+        // Scroll room to lift the last card clear of the floating navbar
+        binding.root.addNavbarClearance()
 
         val title: String =
             if (advancedView) getString(R.string.overview) else getString(R.string.overview) + " - $yearNumber"
@@ -93,7 +84,7 @@ class OverviewFragment : Fragment() {
             setSnackBarsDuration(5000, false)
             setSnackBarsPrefix(R.plurals.event, plural = true, false)
             setSundayHighlight(TcSundayHighlight.BOLDCOLORED, false)
-            setSnackBarBaseView(act.binding.bottomBar)
+            setSnackBarBaseView(act.binding.floatingNavbar)
         }
 
         // Manage the advanced views and buttons
@@ -155,54 +146,7 @@ class OverviewFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Manage the predictive back between fragments
-        val predictiveBackMargin = resources.getDimensionPixelSize(R.dimen.predictive_back_margin)
-        var initialTouchY = -1f
-        val background = binding.fragmentBackground
-        requireActivity().onBackPressedDispatcher.addCallback(
-            viewLifecycleOwner,
-            object : OnBackPressedCallback(true) {
-
-                override fun handleOnBackProgressed(backEvent: BackEventCompat) {
-                    val progress = MainActivity.GestureInterpolator.getInterpolation(backEvent.progress)
-                    if (initialTouchY < 0f) {
-                        initialTouchY = backEvent.touchY
-                    }
-                    val progressY = MainActivity.GestureInterpolator.getInterpolation(
-                        (backEvent.touchY - initialTouchY) / background.height
-                    )
-
-                    // Shift horizontally
-                    val maxTranslationX = (background.width / 20) - predictiveBackMargin
-                    background.translationX = progress * maxTranslationX *
-                            (if (backEvent.swipeEdge == BackEventCompat.EDGE_LEFT) 1 else -1)
-
-                    // Shift vertically
-                    val maxTranslationY = (background.height / 20) - predictiveBackMargin
-                    background.translationY = progressY * maxTranslationY
-
-                    // Scale down from 100% to 90%
-                    val scale = 1f - (0.1f * progress)
-                    background.scaleX = scale
-                    background.scaleY = scale
-                }
-
-                override fun handleOnBackPressed() {
-                    findNavController().popBackStack()
-                }
-
-                override fun handleOnBackCancelled() {
-                    initialTouchY = -1f
-                    background.run {
-                        translationX = 0f
-                        translationY = 0f
-                        scaleX = 1f
-                        scaleY = 1f
-                    }
-                }
-            }
-        )
+        binding.overviewMain.animateChildrenCascade()
     }
 
 }

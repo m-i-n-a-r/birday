@@ -4,6 +4,7 @@
     android:id="@+id/homeMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
     android:focusableInTouchMode="true"
     android:transitionGroup="true"
     app:layoutDescription="@xml/fragment_home_scene">
@@ -15,25 +16,23 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/homeCard"
+        style="@style/Widget.App.CardView.Tonal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/card_margin"
         android:layout_marginTop="@dimen/linear_vertical_margin"
         android:clickable="true"
         android:focusable="true"
-        app:cardCornerRadius="@dimen/rounded_corners"
-        app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:rippleColor="?attr/colorSecondary"
-        app:strokeColor="?attr/colorOutline"
-        app:strokeWidth="@dimen/card_stroke">
+        app:rippleColor="?attr/colorSecondary">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/card_padding">
+            android:paddingTop="@dimen/card_padding"
+            android:paddingBottom="@dimen/card_padding">
 
             <!-- Duration and repeat delay must be hardcoded -->
             <com.facebook.shimmer.ShimmerFrameLayout
@@ -119,116 +118,123 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.facebook.shimmer.ShimmerFrameLayout>
 
-            <!-- TODO Buggy box stroke color, is the higher width when focused a good choice? -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/homeSearchLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
+            <!-- Built like the calendar row of the favorites card: an inner card, the search field
+                 inside it with no box at all (a filled box is composited over colorSurface, so it
+                 is always opaque and never the color of the card), the type selector covering it
+                 when open -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/homeSearchCard"
+                style="@style/Widget.App.CardView.Tonal.Inner"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/search_event"
-                app:boxBackgroundColor="@android:color/transparent"
-                app:boxCornerRadiusBottomEnd="@dimen/rounded_corners"
-                app:boxCornerRadiusBottomStart="@dimen/rounded_corners"
-                app:boxCornerRadiusTopEnd="@dimen/rounded_corners"
-                app:boxCornerRadiusTopStart="@dimen/rounded_corners"
-                app:boxStrokeWidth="@dimen/card_stroke"
-                app:boxStrokeWidthFocused="3dp"
-                app:endIconContentDescription="@string/cancel"
-                app:endIconDrawable="@drawable/ic_arrow_left_24dp"
-                app:endIconMode="custom"
-                app:endIconTint="?attr/colorPrimary"
-                app:hintEnabled="false"
+                android:layout_marginHorizontal="@dimen/card_padding"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/homeCardShimmer"
-                app:startIconContentDescription="@string/search_event"
-                app:startIconDrawable="@drawable/ic_person_search_24dp"
-                app:startIconTint="?attr/colorPrimary">
+                app:layout_constraintTop_toBottomOf="@id/homeCardShimmer">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/homeSearch"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="@string/search_event"
-                    android:inputType="textPersonName"
-                    android:maxLength="25"
-                    android:padding="0dp"
-                    android:textCursorDrawable="@drawable/custom_cursor" />
+                    android:layout_height="wrap_content">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/homeSearchLayout"
+                        style="@style/Widget.App.TextInputLayout.Tonal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/search_event"
+                        app:boxBackgroundMode="none"
+                        app:endIconContentDescription="@string/event_type_hint"
+                        app:endIconDrawable="@drawable/ic_arrow_left_24dp"
+                        app:endIconMode="custom"
+                        app:endIconTint="?attr/colorPrimary"
+                        app:hintEnabled="false"
+                        app:startIconContentDescription="@string/search_event"
+                        app:startIconDrawable="@drawable/ic_person_search_24dp"
+                        app:startIconTint="?attr/colorPrimary">
 
-            <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/homeTypeSelector"
-                style="@style/Widget.Material3.MaterialButtonGroup.Connected"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:background="?attr/colorSurface"
-                android:spacing="0dp"
-                android:visibility="gone"
-                app:innerCornerSize="0dp"
-                app:layout_constraintBottom_toBottomOf="@id/homeSearchLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/homeSearchLayout"
-                app:shapeAppearance="@style/ShapeAppearance.App.SmallComponent"
-                app:singleSelection="true">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/homeSearch"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/search_event"
+                            android:inputType="textPersonName"
+                            android:maxLength="25"
+                            android:paddingVertical="@dimen/search_field_padding_vertical"
+                            android:textCursorDrawable="@drawable/custom_cursor" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/homeTypeSelectorBirthday"
-                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/birthday"
-                    app:icon="@drawable/ic_party_24dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/homeTypeSelectorAnniversary"
-                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/anniversary"
-                    app:icon="@drawable/ic_anniversary_24dp" />
+                    <com.google.android.material.button.MaterialButtonToggleGroup
+                        android:id="@+id/homeTypeSelector"
+                        style="@style/Widget.Material3.MaterialButtonGroup.Connected"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/tonal_inner_background"
+                        android:spacing="0dp"
+                        android:visibility="gone"
+                        app:innerCornerSize="0dp"
+                        app:shapeAppearance="@style/ShapeAppearance.App.TonalInner"
+                        app:singleSelection="true">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/homeTypeSelectorDeathAnniversary"
-                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/death_anniversary"
-                    app:icon="@drawable/ic_death_anniversary_24dp" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/homeTypeSelectorBirthday"
+                            style="@style/Widget.App.Button.TonalButton.IconOnly"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/birthday"
+                            app:icon="@drawable/ic_party_24dp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/homeTypeSelectorNameDay"
-                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/name_day"
-                    app:icon="@drawable/ic_name_day_24dp" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/homeTypeSelectorAnniversary"
+                            style="@style/Widget.App.Button.TonalButton.IconOnly"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/anniversary"
+                            app:icon="@drawable/ic_anniversary_24dp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/homeTypeSelectorOther"
-                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/other"
-                    app:icon="@drawable/ic_other_24dp" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/homeTypeSelectorDeathAnniversary"
+                            style="@style/Widget.App.Button.TonalButton.IconOnly"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/death_anniversary"
+                            app:icon="@drawable/ic_death_anniversary_24dp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/homeTypeSelectorClose"
-                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@android:string/cancel"
-                    app:backgroundTint="?attr/colorSurfaceVariant"
-                    app:icon="@drawable/ic_arrow_right_24dp"
-                    app:iconTint="?attr/colorPrimary" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/homeTypeSelectorNameDay"
+                            style="@style/Widget.App.Button.TonalButton.IconOnly"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/name_day"
+                            app:icon="@drawable/ic_name_day_24dp" />
 
-            </com.google.android.material.button.MaterialButtonToggleGroup>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/homeTypeSelectorOther"
+                            style="@style/Widget.App.Button.TonalButton.IconOnly"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/other"
+                            app:icon="@drawable/ic_other_24dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/homeTypeSelectorClose"
+                            style="@style/Widget.App.Button.TonalButton.IconOnly"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@android:string/cancel"
+                            app:icon="@drawable/ic_arrow_right_24dp"
+                            app:iconTint="?attr/colorPrimary" />
+
+                    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+                </FrameLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -253,6 +259,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/homeCard" />
 
+    <!-- The list starts behind the rounded bottom of the card, which has the higher elevation:
+         the rows slide under the corners instead of being cut on a straight line -->
+    <Space
+        android:id="@+id/homeRecyclerAnchor"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/recycler_under_card"
+        app:layout_constraintBottom_toBottomOf="@id/homeCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <!-- The effect of overScrollMode = ifContentScrolls is bad on Android < 12 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/eventRecycler"
@@ -260,38 +276,27 @@
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:overScrollMode="never"
-        android:paddingTop="@dimen/recycler_extra_space_top"
-        android:paddingBottom="@dimen/recycler_extra_space_bottom"
+        android:paddingTop="@dimen/recycler_extra_space_top_under_card"
         android:scrollbarSize="0dp"
         android:scrollbarStyle="outsideOverlay"
-        app:fastScrollEnabled="true"
-        app:fastScrollHorizontalThumbDrawable="@drawable/scroll_thumb_drawable"
-        app:fastScrollHorizontalTrackDrawable="@drawable/scroll_line_drawable"
-        app:fastScrollVerticalThumbDrawable="@drawable/scroll_thumb_drawable"
-        app:fastScrollVerticalTrackDrawable="@drawable/scroll_line_drawable"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/homeCard" />
+        app:layout_constraintTop_toTopOf="@id/homeRecyclerAnchor" />
 
     <Button
         android:id="@+id/homeMiniFab"
-        style="@style/Widget.Material3Expressive.Button.IconButton.Outlined"
+        style="@style/Widget.App.Button.IconButton.CardHandle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hapticFeedbackEnabled="false"
-        app:backgroundTint="?attr/colorSurface"
-        app:elevation="@dimen/bottom_navbar_elevation"
         app:icon="@drawable/ic_arrow_up_24dp"
-        app:iconTint="?attr/colorPrimary"
         app:layout_constraintBottom_toTopOf="@id/homeCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/homeCard"
-        app:rippleColor="?attr/colorSecondary"
-        app:strokeColor="?attr/colorOutline"
-        app:strokeWidth="@dimen/card_stroke" />
+        app:rippleColor="?attr/colorSecondary" />
 
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

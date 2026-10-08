@@ -14,6 +14,8 @@ import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.adapters.MissedCarouselAdapter
 import com.minar.birday.databinding.BottomSheetQuickAppsBinding
+import com.minar.birday.utilities.CASCADE_SHEET_DELAY
+import com.minar.birday.utilities.animateChildrenCascade
 import java.time.Duration
 import java.time.LocalDate
 import androidx.core.net.toUri
@@ -129,7 +131,14 @@ class QuickAppsBottomSheet(private val act: MainActivity) : BottomSheetDialogFra
             }
         }
 
-        // Setup the "you might have missed" carousel
+        // The carousel first: it decides whether the "missed" section is shown at all, and the
+        // cascade only picks up what is visible when it starts
+        setupMissedCarousel()
+        binding.quickAppsBottomSheet.animateChildrenCascade(startDelay = CASCADE_SHEET_DELAY)
+    }
+
+    // Setup the "you might have missed" carousel, left hidden when there's nothing to show
+    private fun setupMissedCarousel() {
         val allEvents = act.mainViewModel.allEventsUnfiltered.value
         if (allEvents.isNullOrEmpty()) return
         val allEventsFiltered = allEvents.toMutableList()
@@ -178,6 +187,7 @@ class QuickAppsBottomSheet(private val act: MainActivity) : BottomSheetDialogFra
             } catch (_: Exception) { }
         }
 
+    
     }
 
     override fun onDestroyView() {

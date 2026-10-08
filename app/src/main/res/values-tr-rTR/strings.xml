@@ -7,7 +7,7 @@
     <string name="yes_review">Yorumla!</string>
     <string name="later">Sonra, söz</string>
     <string name="no_thanks">Olamaz!</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">Ana sayfa</string>
     <string name="title_favorites">Favoriler</string>
     <string name="title_settings">Ayarlar</string>
     <string name="no_events">Etkinlik yok! Aşağıdaki tuşa basarak yeni bir tane ekle!</string>
@@ -29,6 +29,11 @@
     <plurals name="days_left">
         <item quantity="one">%d gün kaldı</item>
         <item quantity="other">%d gün kaldı</item>
+    </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s gün</item>
+        <item quantity="other">%s gün</item>
     </plurals>
     <!-- Settings -->
     <string name="customization">Kişiselleştirme</string>
@@ -57,7 +62,7 @@
     <string name="theme_description">Karanlık, açık ya da otomatik tema kullan</string>
     <string name="theme_name">Uygulama teması</string>
     <!-- ^ Untranslated for now -->
-    <string name="aqua">Aqua</string>
+    <string name="aqua">Su mavisi</string>
     <string name="brown">Kahverengi</string>
     <string name="blue">Mavi</string>
     <string name="green">Yeşil</string>
@@ -68,7 +73,7 @@
     <string name="pink">Pembe</string>
     <string name="light_blue">Açık Mavi</string>
     <string name="red">Kırmızı</string>
-    <string name="lime">Lime</string>
+    <string name="lime">Limon yeşili</string>
     <string name="crimson">Kızıl</string>
     <string name="system_theme">Sistem varsayılanı</string>
     <string name="dark_theme">Karanlık</string>
@@ -91,6 +96,7 @@
     <string name="birday_import_success">İçe aktarım tamamlandı!</string>
     <string name="birday_import_failure">İçe aktarılamadı. Doğru dosyayı seçtiğinden emin misin?</string>
     <string name="birday_import_invalid_file">İçe aktarılamadı. Seçilen dosya bir Birday yedeği değil!</string>
+    <string name="birday_import_newer_backup">Bu yedek Birday\'ın daha yeni bir sürümünde oluşturulmuş. İçe aktarmak için uygulamayı güncelleyin</string>
     <string name="birday_export_success">Dışa aktarım tamamlandı!</string>
     <string name="birday_export_failure">Dışa aktarılamadı. Oops!</string>
     <string name="birday_export_nothing_found">Dışa aktarılacak bir şey yok!</string>
@@ -135,6 +141,7 @@
     <string name="new_event_description">Önemsediğin birini yaz, Birday önemli yıl dönümlerini ve doğum günlerini hatırlamanda yardımcı olacak!</string>
     <string name="insert_event">Etkinlik oluştur</string>
     <string name="cancel">Vazgeç</string>
+    <string name="crop_image_error">Görsel kırpılırken bir hata oluştu</string>
     <string name="insert_name_hint">İsim</string>
     <string name="insert_surname_hint">Soyisim</string>
     <string name="insert_date_hint">Bir tarih seç</string>
@@ -161,6 +168,8 @@
     <string name="next_age">Sonraki yaş:</string>
     <string name="zodiac_sign">Burç:</string>
     <string name="chinese_zodiac_sign">Çin takvimi:</string>
+    <string name="days_lived">Yaşanan günler</string>
+    <string name="next_unbirthday">Sonraki doğum günü eşleşmesi</string>
     <!-- Quick apps -->
     <string name="event_apps">Hızlı uygulamalar</string>
     <string name="event_apps_description">En iyi dileklerini ileteceğin uygulamalar!</string>
@@ -170,8 +179,8 @@
     <string name="no_default_dialer">Varsayılan arama uygulaması bulunamadı!</string>
     <string name="no_default_sms">Varsayılan SMS uygulaması bulunamadı!</string>
     <string name="might_have_missed">Kaçırmış olabilirsin:</string>
-    <!-- Statistics -->
     <string name="did_you_know">Biliyor muydun?</string>
+    <!-- Statistics -->
     <string name="age_average">%s, Dünyadaki ortalama yaştır</string>
     <string name="oldest_person">En yaşlı kişi: %s</string>
     <string name="youngest_person">En genç kişi: %s</string>
@@ -185,8 +194,8 @@
     <string name="random_day_of_week">%1$s, %2$s\'de doğdu</string>
     <string name="most_common_day_of_week">%s en yaygın doğum günüdür</string>
     <plurals name="leap_year_total">
-        <item quantity="one">artık yılda doğan insan sayısı: %s</item>
-        <item quantity="other">artık yılda doğan insan sayısı: %s</item>
+        <item quantity="one">artık yılda doğan insan sayısı: %d</item>
+        <item quantity="other">artık yılda doğan insan sayısı: %d</item>
     </plurals>
     <string name="random_chinese_year">%1$s kişisinin Çin burcu: %2$s</string>
     <string name="chinese_zodiac_rat">fare</string>
@@ -270,6 +279,22 @@
     <string name="hide_far_widget_description">Sıradaki etkinlik ek bildirim periyodundan sonra ise widget\'ı gizle (ör: bildirimler 7 gün sonra ama etkinliğe daha 10 gün var ise &gt; widget gizlenir)</string>
     <string name="show_following_widget_title">Sıradaki etkinliği göster</string>
     <string name="show_following_widget_description">Sıradaki etkinliği takip eden etkinlikleri ek bir satırda göster</string>
+    <string name="appwidget_compact">Kompakt tablo</string>
+    <string name="add_widget_compact">Birday - Kompakt</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">Arka plan opaklığı</string>
+    <string name="compact_widget_bg_color">Arka plan rengi</string>
+    <string name="compact_widget_text_color">Metin rengi</string>
+    <string name="compact_widget_text_size">Metin boyutu</string>
+    <string name="compact_widget_text_size_auto">Otomatik</string>
+    <string name="export_ics_title">iCalendar\'a dışa aktar</string>
+    <string name="export_ics_description">Her etkinliği herhangi bir takvim uygulamasında kullanılabilen bir .ics dosyasına aktarır</string>
+    <string name="compact_widget_scroll">Tüm etkinliklerde kaydır</string>
+    <string name="compact_widget_hidden">Gizli</string>
+    <string name="compact_widget_below_name">Adın altında</string>
+    <string name="compact_widget_above_name">Adın üstünde</string>
+    <string name="compact_widget_before_date">Tarihten önce</string>
+    <string name="compact_widget_after_date">Tarihten sonra</string>
     <!-- Search -->
     <string name="search_event">Ara…</string>
     <string name="search_no_result_title">Sonuç bulunamadı</string>
@@ -327,7 +352,62 @@
     <string name="advanced_overview_title">Gelişmiş genel bakış</string>
     <string name="advanced_overview_description_off">Genel bakş ekranı sadece basit bilgiler gösterecek</string>
     <string name="advanced_overview_description_on">Genel bakış ekranı diğer seneleri ve detayları da gösterecek</string>
+    <string name="feb29_assignment_title">Artık olmayan yıllarda 29 Şubat</string>
+    <string name="feb29_assignment_description_off">29 Şubat doğum günleri artık olmayan yıllarda 1 Mart\'ta kutlanır</string>
+    <string name="feb29_assignment_description_on">29 Şubat doğum günleri artık olmayan yıllarda 28 Şubat\'ta kutlanır</string>
     <string name="replace_on_conflict_title">Çatışma durumunda değiştir</string>
     <string name="replace_on_conflict_description_off">İçe aktarırken kopyası oluşturulmuş etkinlik aktarılan kopya ile değiştirilmeyecek</string>
     <string name="replace_on_conflict_description_on">İçe aktarılırken, kopyası oluşturulmuş etkinliğin üzerine aktarılan kopya yazılacak</string>
+    <string name="contacts_full_name_title">Kişilerden tam adları al</string>
+    <string name="contacts_full_name_description_on">Kişi adları okunurken unvanlar, ikinci adlar ve ad ekleri korunur</string>
+    <string name="contacts_full_name_description_off">Kişilerden yalnızca ad ve soyad okunur</string>
+    <string name="days_milestones_title">Yaşanan gün dönüm noktaları</string>
+    <string name="days_milestones_description_on">Ayrıntılarda yaşanan günler gösterilir. Her 1000 günde bir doğum günü gibi kutlama yapılır ve bildirim gönderilir</string>
+    <string name="days_milestones_description_off">Yaşanan gün sayacı ve dönüm noktaları gösterilmez</string>
+    <string name="unbirthdays_title">Doğum günü eşleşmeleri</string>
+    <string name="alternative_calendar_title">Alternatif takvim</string>
+    <string name="alternative_calendar_none">Yok, yalnızca Miladi</string>
+    <string name="calendar_gregorian">Miladi</string>
+    <string name="calendar_chinese">Çin</string>
+    <string name="calendar_dangi">Kore</string>
+    <string name="calendar_hebrew">İbrani</string>
+    <string name="calendar_islamic">Hicri</string>
+    <string name="calendar_islamic_civil">Hicri (sivil)</string>
+    <string name="user_card_title">Doğum gününüz</string>
+    <string name="user_birthday_greeting">Doğum günün kutlu olsun, %s!</string>
+    <string name="user_card_empty">Doğum tarihinizi girin</string>
+    <string name="user_card_save">Kaydet</string>
+    <string name="user_card_remove">Kaldır</string>
+    <string name="unbirthdays_description_on">Ayrıntılarda, doğduğunuz günle haftanın günü ve ayın günü aynı olan bir sonraki tarih gösterilir; örneğin ayın 13\'üne denk gelen bir cuma</string>
+    <string name="unbirthdays_description_off">Ayrıntılarda doğum günü eşleşmeleri gösterilmez</string>
+    <string name="weekend_reminder_title">Hafta sonundan önce hatırlat</string>
+    <string name="weekend_reminder_description_on">Hafta sonundaki etkinlikler önceki son iş gününde de bildirilir</string>
+    <string name="weekend_reminder_description_off">Hafta sonundaki etkinlikler yalnızca her zamanki gibi bildirilir</string>
+    <string name="additional_notification_separate_title">Ek bildirimler için ayrı saat</string>
+    <string name="additional_notification_separate_description_on">Ek bildirimler aşağıda seçilen saatte gelir</string>
+    <string name="additional_notification_separate_description_off">Ek bildirimler ana bildirimle birlikte gelir</string>
+    <string name="additional_notification_hour">Ek bildirim saati</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
+    <string name="about_title">Hakkında</string>
+    <string name="back">Geri</string>
+    <string name="about_description">Birday, geliştiricisi ve uygulama dili hakkında bilgi</string>
+    <string name="about_version">Sürüm</string>
+    <string name="about_language_title">Dil</string>
+    <string name="about_language_summary">Birday\'ın kullanacağı dili seçin</string>
+    <string name="about_rate_title">Uygulamayı değerlendir</string>
+    <string name="about_rate_summary">Play Store\'da bir yorum bırakın</string>
+    <string name="about_share_title">Birday\'ı paylaş</string>
+    <string name="about_share_summary">Uygulamayı bir arkadaşınıza önerin</string>
+    <string name="about_share_text">Birday, bir doğum gününü bile unutmamanın basit ve güzel yolu: %1$s</string>
+    <string name="about_no_app_found">Bu işlemi gerçekleştirebilecek bir uygulama yok!</string>
+    <string name="about_privacy_title">Gizlilik politikası</string>
+    <string name="about_contact_title">Geliştiriciyle iletişime geç</string>
+    <string name="amoled_description_on">Koyu tema, OLED ekranlar için ideal olan saf siyah kullanır</string>
+    <string name="amoled_description_off">Koyu tema standart koyu yüzeyleri kullanır</string>
+    <string name="with_year">Yıl ile</string>
+    <string name="without_year">Yıl olmadan</string>
+    <!-- Edge blur -->
+    <string name="edge_blur">Kenar bulanıklığı</string>
+    <string name="edge_blur_description_on">İçerik gezinme çubuğunun altına kayarken yumuşakça bulanıklaşır</string>
+    <string name="edge_blur_description_off">İçerik gezinme çubuğunun altına bulanıklaşmadan kayar</string>
 </resources>

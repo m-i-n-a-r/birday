@@ -19,6 +19,7 @@ import com.minar.birday.databinding.MonthHeaderRowBinding
 import com.minar.birday.model.EventCode
 import com.minar.birday.model.EventDataItem
 import com.minar.birday.model.EventResult
+import com.minar.birday.utilities.fastScrollMonth
 import com.minar.birday.utilities.formatName
 import com.minar.birday.utilities.getNextYears
 import com.minar.birday.utilities.getReducedDate
@@ -44,6 +45,8 @@ class EventAdapter(
     private lateinit var context: Context
     private val activityScope = CoroutineScope(Dispatchers.Main)
     private val adapterScope = CoroutineScope(Dispatchers.Default)
+    private var orderAlphabetically = false
+    private var surnameFirst = false
 
     // Return the right view type for the object, to inflate the right view holder
     override fun getItemViewType(position: Int): Int {
@@ -59,6 +62,8 @@ class EventAdapter(
         orderAlphabetically: Boolean = false,
         surnameFirst: Boolean = false
     ) {
+        this.orderAlphabetically = orderAlphabetically
+        this.surnameFirst = surnameFirst
         if (list.isNullOrEmpty()) submitList(listOf())
         else adapterScope.launch {
             val organizedEvents = mutableListOf<EventDataItem>()
@@ -147,12 +152,22 @@ class EventAdapter(
         }
     }
 
+    // The bubble of the fast scroll: the section of the first event from the given position on
+    fun fastScrollText(position: Int): CharSequence {
+        val event = (position until itemCount).firstNotNullOfOrNull {
+            (getItem(it) as? EventDataItem.EventItem)?.eventResult
+        } ?: return ""
+        if (!orderAlphabetically) return event.nextDate?.let { fastScrollMonth(it) } ?: ""
+        val name = if (surnameFirst) event.surname else event.name
+        return name?.firstOrNull()?.uppercase() ?: "?"
+    }
+
     // Can't use elsewhere without overriding as a public function
     public override fun getItem(position: Int): EventDataItem {
         return super.getItem(position)
     }
 
-    inner class IndexHeaderViewHolder(binding: MonthHeaderRowBinding) :
+    class IndexHeaderViewHolder(binding: MonthHeaderRowBinding) :
         RecyclerView.ViewHolder(binding.root) {
         private val monthHeaderText = binding.eventDateHeader
 

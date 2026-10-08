@@ -2,12 +2,15 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.minar.birday.preferences.standard.CustomAuthorPreference
-        android:layout="@layout/author_preference_row"
-        android:selectable="false" />
+    <!-- The user's own name and birthday, to be celebrated as well -->
+    <com.minar.birday.preferences.standard.UserCardPreference
+        android:layout="@layout/user_card_row"
+        android:selectable="false"
+        app:allowDividerBelow="false" />
 
     <PreferenceCategory
         android:key="notifications"
+        android:layout="@layout/preference_category_row"
         android:title="@string/events_notification_channel"
         app:icon="@drawable/ic_notifications_24dp">
 
@@ -45,10 +48,21 @@
             android:layout="@layout/notification_sound_row"
             android:selectable="true" />
 
+        <!-- Single notifications instead of grouped notifications -->
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="grouped_notifications"
+            android:summaryOff="@string/grouped_notifications_description_off"
+            android:summaryOn="@string/grouped_notifications_description_on"
+            android:title="@string/grouped_notifications_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="app_behavior"
+        android:layout="@layout/preference_category_row"
         android:title="@string/app_behavior"
         app:icon="@drawable/ic_app_behavior_24dp">
 
@@ -90,10 +104,31 @@
             android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
+        <!-- Feb 29 birthdays in non-leap years -->
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="leap_year_feb28"
+            android:summaryOff="@string/feb29_assignment_description_off"
+            android:summaryOn="@string/feb29_assignment_description_on"
+            android:title="@string/feb29_assignment_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
+
+        <!-- Quickly delete searched events -->
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="delete_search"
+            android:summaryOff="@string/delete_search_description_off"
+            android:summaryOn="@string/delete_search_description_on"
+            android:title="@string/delete_search_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="customization"
+        android:layout="@layout/preference_category_row"
         android:title="@string/customization"
         app:icon="@drawable/ic_customization_24dp">
 
@@ -106,6 +141,15 @@
             android:title="@string/theme_name"
             app:iconSpaceReserved="false" />
 
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="amoled_dark"
+            android:summaryOff="@string/amoled_description_off"
+            android:summaryOn="@string/amoled_description_on"
+            android:title="@string/black_theme"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
+
         <ListPreference
             android:defaultValue="system"
             android:entries="@array/accents"
@@ -113,6 +157,16 @@
             android:key="accent_color"
             android:summary="%s"
             android:title="@string/accent_name"
+            app:iconSpaceReserved="false" />
+
+        <!-- Hidden below Android 13 by SettingsFragment: the shader it needs is API 33 -->
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="edge_blur"
+            android:summaryOff="@string/edge_blur_description_off"
+            android:summaryOn="@string/edge_blur_description_on"
+            android:title="@string/edge_blur"
+            android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
         <SwitchPreferenceCompat
@@ -132,10 +186,20 @@
             android:title="@string/vibration_name"
             android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="hide_scroll"
+            android:summaryOff="@string/hide_on_scroll_description_off"
+            android:summaryOn="@string/hide_on_scroll_description_on"
+            android:title="@string/hide_on_scroll_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="import_export"
+        android:layout="@layout/preference_category_row"
         android:title="@string/import_export"
         app:icon="@drawable/ic_backup_restore_24dp">
 
@@ -165,10 +229,21 @@
             android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
+        <!-- Auto export on each modification or when the app is closed -->
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="auto_export"
+            android:summaryOff="@string/auto_export_description_off"
+            android:summaryOn="@string/auto_export_description_on"
+            android:title="@string/auto_export_title"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="troubleshoot"
+        android:layout="@layout/preference_category_row"
         android:title="@string/troubleshoot"
         app:icon="@drawable/ic_troubleshoot_24dp">
 

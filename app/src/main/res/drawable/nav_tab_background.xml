@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Solid white on purpose: the real color arrives as a backgroundTintList, animated when the
+     selected tab changes -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="@dimen/nav_tab_corner" />
+    <solid android:color="@android:color/white" />
+</shape>

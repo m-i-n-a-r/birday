@@ -9,20 +9,25 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
+import androidx.core.content.edit
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.preference.MultiSelectListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreferenceCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.minar.birday.R
+import com.minar.birday.preferences.PreferenceTilesDecoration
 import com.minar.birday.activities.MainActivity
-import com.minar.birday.utilities.addInsetsByPadding
+import com.minar.birday.persistence.LocalDateTypeConverter
+import com.minar.birday.utilities.addNavbarClearance
+import com.minar.birday.utilities.getThemeColor
+import com.minar.birday.utilities.isProgressiveBlurAvailable
 import com.minar.birday.viewmodels.MainViewModel
 import com.minar.birday.widgets.EventWidgetProvider
 import com.minar.birday.widgets.MinimalWidgetProvider
-import androidx.core.content.edit
 
 
 class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeListener {
@@ -31,11 +36,26 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
 
+        // Applied live, no restart needed
+        findPreference<SwitchPreferenceCompat>("hide_scroll")?.setOnPreferenceChangeListener { _, value ->
+            (activity as? MainActivity)?.applyNavbarHideOnScroll(value as Boolean)
+            true
+        }
+
         val experimentalPreference: Preference? = findPreference("experimental")
         experimentalPreference?.setOnPreferenceClickListener {
             val navController: NavController =
                 findNavController()
             navController.navigate(R.id.action_navigationSettings_to_experimentalSettingsFragment)
+            true
+        }
+
+        // The progressive blur needs a runtime shader, so below Android 13 the option is hidden
+        // instead of sitting there doing nothing
+        val blurPreference: SwitchPreferenceCompat? = findPreference("edge_blur")
+        if (!isProgressiveBlurAvailable) blurPreference?.isVisible = false
+        else blurPreference?.setOnPreferenceChangeListener { _, newValue ->
+            (activity as? MainActivity)?.applyEdgeBlur(newValue as Boolean)
             true
         }
 
@@ -81,10 +101,6 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                     }
 
                     "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                    "black" -> {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                        hotReloadActivity(sharedPreferences)
-                    }
                     // Else means system, or unexpected (and impossible) case
                     else -> {
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
@@ -94,6 +110,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
             }
 
             "accent_color" -> hotReloadActivity(sharedPreferences)
+            "amoled_dark" -> hotReloadActivity(sharedPreferences)
             "shimmer" -> hotReloadActivity(sharedPreferences)
             "notification_hour" -> mainViewModel.scheduleNextCheck()
             "notification_minute" -> mainViewModel.scheduleNextCheck()
@@ -101,6 +118,12 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
             "hide_images" -> updateWidgets(updateUpcoming = true)
             "multi_additional_notification" -> updateWidgets(updateMinimal = true)
             "disable_astrology" -> (requireActivity() as MainActivity).forceRefreshStats()
+            // The dao is already bound here, so the flag is set directly instead of going through
+            // EventDatabase, then the list is reloaded to reproject the Feb 29 events
+            LocalDateTypeConverter.PREFERENCE_KEY -> {
+                LocalDateTypeConverter.loadPreference(requireContext())
+                mainViewModel.refreshEvents()
+            }
         }
     }
 
@@ -161,8 +184,16 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // A PreferenceFragmentCompat comes with a see through root, and two see through pages
+        // sliding over each other during a navigation read as one smeared page
+        view.setBackgroundColor(getThemeColor(android.R.attr.colorBackground, requireContext()))
+
         // Add insets for preferences
         val recyclerView = view.findViewById<RecyclerView>(androidx.preference.R.id.recycler_view)
-        recyclerView.addInsetsByPadding(bottom = true)
+        recyclerView.clipToPadding = false
+        recyclerView.addNavbarClearance()
+        // Tiles instead of dividers: the groups already tell the categories apart
+        setDivider(null)
+        recyclerView.addItemDecoration(PreferenceTilesDecoration(this))
     }
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- On a tablet the page underneath drifts a bit further -->
+    <dimen name="nav_slide_parallax">-96dp</dimen>
+
+</resources>

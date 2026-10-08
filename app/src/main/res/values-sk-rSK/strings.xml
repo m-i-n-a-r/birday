@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_welcome">Vitajte v Birday</string>
-    <string name="app_name_extended">Birthday - Správca udalostí</string>
+    <string name="app_name_extended">Birday – Správca udalostí</string>
     <string name="leave_review_title">Ohodnoťte Birday</string>
     <string name="leave_review_subtitle">Zanechajte recenziu, ktorá mi pomôže s aplikáciou. Majte na pamäti, že okrem darov je táto aplikácia úplne zadarmo a bez reklám!</string>
     <string name="yes_review">Rád pomôžem!</string>
@@ -34,6 +34,13 @@
         <item quantity="many">Zostáva %d dní</item>
         <item quantity="other">Zostáva %d dní</item>
     </plurals>
+    <!-- The number comes already formatted with the locale grouping, hence the string placeholder -->
+    <plurals name="days_lived_count">
+        <item quantity="one">%s deň</item>
+        <item quantity="few">%s dni</item>
+        <item quantity="many">%s dňa</item>
+        <item quantity="other">%s dní</item>
+    </plurals>
     <!-- Settings -->
     <string name="customization">Prispôsobenie</string>
     <string name="app_behavior">Správanie aplikácie</string>
@@ -61,7 +68,7 @@
     <string name="theme_description">Použite tmavý, svetlý alebo automatický motív aplikácie</string>
     <string name="theme_name">Motív aplikácie</string>
     <!-- ^ Untranslated for now -->
-    <string name="aqua">Aqua</string>
+    <string name="aqua">Akvamarínová</string>
     <string name="brown">Hnedá</string>
     <string name="blue">Modrá</string>
     <string name="green">Zelená</string>
@@ -95,6 +102,7 @@
     <string name="birday_import_success">Import dokončený!</string>
     <string name="birday_import_failure">Import zlyhal. Vybrali ste súbor správne?</string>
     <string name="birday_import_invalid_file">Import zlyhal. Zvolený súbor nie je súbor zálohy Birday!</string>
+    <string name="birday_import_newer_backup">Táto záloha pochádza z novšej verzie aplikácie Birday. Ak ju chcete importovať, aktualizujte aplikáciu</string>
     <string name="birday_export_success">Export dokončený!</string>
     <string name="birday_export_failure">Jejda! Export zlyhal.</string>
     <string name="birday_export_nothing_found">Nie je čo exportovať!</string>
@@ -113,7 +121,7 @@
     <string name="troubleshoot">Odstraňovanie problémov a ďalšie</string>
     <string name="battery_optimization_title">Zakázať optimalizáciu batérie</string>
     <string name="battery_optimization_description">Ak nefungujú upozornenia, otvorte nastavenie a deaktivujte akúkoľvek optimalizáciu batérie pre Birday</string>
-    <string name="battery_optimization_tutorial">- Show all the apps and find Birday in the list\n- Tap on Birday and select \"Don\'t optimize\"</string>
+    <string name="battery_optimization_tutorial">- Zobrazte všetky aplikácie a nájdite v zozname Birday\n- Ťuknite na Birday a vyberte možnosť „Neoptimalizovať“</string>
     <string name="notification_sound_title">Zvuk upozornení</string>
     <string name="notification_sound_description">Zmeniť nastavenie zvuku upozornení, ak sa vám nepáči predvolený zvuk vtáčikov</string>
     <string name="missing_permission_notifications">Oprávnenie na prístup k upozorneniam bolo zamietnuté. Birday vás nebude môcť upozorniť na udalosti. Povoľte prosím oprávnenie v nastaveniach smartfónu!</string>
@@ -122,15 +130,15 @@
     <string name="missing_permission_calendar_forever">Oprávnenie na prístup ku kalendáru bolo zamietnuté a Birday nemôže importovať položky z kalendára! Udeľte oprávnenie ručne z nastavení smartfónu, pretože Birday už nemôže znovu otvoriť dialógové okno oprávnenia.</string>
     <string name="import_calendar_title">Importovať z kalendára</string>
     <string name="import_calendar_description">Importujte ľubovoľnú ročnú udalosť zo svojich kalendárov. Nezabudnite nastaviť typ udalosti a rok, aby bolo všetko správne zoradené!</string>
-    <string name="loop_avd_title">Loop animations</string>
-    <string name="loop_avd_description_on">The animations are looped infinitely</string>
-    <string name="loop_avd_description_off">The animations will run a single time</string>
-    <string name="order_alphabetically_title">Alphabetical order</string>
-    <string name="order_alphabetically_description_on">The events are ordered alphabetically</string>
-    <string name="order_alphabetically_description_off">The events are ordered by date</string>
-    <string name="grouped_notifications_title">Group multiple notifications</string>
-    <string name="grouped_notifications_description_on">If there are two or more events in a single day, the notifications are grouped</string>
-    <string name="grouped_notifications_description_off">If there are two or more events in a single day, Birday will send a notification for each</string>
+    <string name="loop_avd_title">Opakovať animácie</string>
+    <string name="loop_avd_description_on">Animácie sa opakujú nepretržite</string>
+    <string name="loop_avd_description_off">Animácie sa prehrajú iba raz</string>
+    <string name="order_alphabetically_title">Abecedné poradie</string>
+    <string name="order_alphabetically_description_on">Udalosti sú zoradené podľa abecedy</string>
+    <string name="order_alphabetically_description_off">Udalosti sú zoradené podľa dátumu</string>
+    <string name="grouped_notifications_title">Zoskupovať upozornenia</string>
+    <string name="grouped_notifications_description_on">Ak sú v jeden deň aspoň dve udalosti, upozornenia sa zoskupia</string>
+    <string name="grouped_notifications_description_off">Ak sú v jeden deň aspoň dve udalosti, Birday odošle upozornenie pre každú z nich</string>
     <!-- Developer -->
     <string name="dev_description">Som milý a skromný človek, ktorý má rád krásne veci ako sú animácie, ikony, športové autá a 3D tlač. Pracujem ako dizajnér a počítačový inžinier.</string>
     <string name="easter_egg">Husté logo, žeee? ;D</string>
@@ -139,6 +147,7 @@
     <string name="new_event_description">Pridajte novú osobu, na ktorej vám záleží a Birday vám pomôže pripomenúť jej narodeniny alebo inú životnú udalosť!</string>
     <string name="insert_event">Vložte udalosť</string>
     <string name="cancel">Zrušiť</string>
+    <string name="crop_image_error">Pri orezávaní obrázka sa vyskytla chyba</string>
     <string name="insert_name_hint">Vložte meno</string>
     <string name="insert_surname_hint">Vložte priezvisko</string>
     <string name="insert_date_hint">Vyberte dátum</string>
@@ -165,6 +174,8 @@
     <string name="next_age">Budúci vek:</string>
     <string name="zodiac_sign">Znamenie:</string>
     <string name="chinese_zodiac_sign">Čínske znamenie:</string>
+    <string name="days_lived">Prežité dni</string>
+    <string name="next_unbirthday">Nasledujúce nenarodeniny</string>
     <!-- Quick apps -->
     <string name="event_apps">Pošlite blahoželanie</string>
     <string name="event_apps_description">Aplikácia pre rýchle prianie všetkého najlepšieho!</string>
@@ -173,9 +184,9 @@
     <string name="wishes_birthday">Všetko najlepšie k narodeninám!</string>
     <string name="no_default_dialer">Nebola nájdená žiadna predvolená aplikácia telefónu!</string>
     <string name="no_default_sms">Nebola nájdená žiadna predvolená aplikácia pre SMS!</string>
-    <string name="might_have_missed">You might have missed:</string>
-    <!-- Statistics -->
+    <string name="might_have_missed">Možno vám uniklo:</string>
     <string name="did_you_know">Vedeli ste?</string>
+    <!-- Statistics -->
     <string name="age_average">Priemerný vek je %s</string>
     <string name="oldest_person">Najstaršia osoba je %s</string>
     <string name="youngest_person">Najmladšia osoba je %s</string>
@@ -273,8 +284,24 @@
     <string name="align_start_widget_description">Zarovnajte obsah widgetu na začiatok (doprava alebo doľava v závislosti od vášho miestneho nastavenia)</string>
     <string name="hide_far_widget_title">Skryť widget pre vzdialené udalosti</string>
     <string name="hide_far_widget_description">Skryť widget, ak udalosti nastanú až po dodatočnom upozornení (napr.: widget zostane skrytý, ak je dod. upozornenie nastavené 7 dní pred udalosťou, ale udalosť sa koná až o 10 dní)</string>
-    <string name="show_following_widget_title">Show the following event</string>
-    <string name="show_following_widget_description">Show the event or the events following the next one in an additional row</string>
+    <string name="show_following_widget_title">Zobraziť nasledujúcu udalosť</string>
+    <string name="show_following_widget_description">V ďalšom riadku zobrazí udalosť alebo udalosti nasledujúce po najbližšej</string>
+    <string name="appwidget_compact">Kompaktná tabuľka</string>
+    <string name="add_widget_compact">Birday – Kompaktný</string>
+    <!-- Compact widget -->
+    <string name="compact_widget_opacity">Nepriehľadnosť pozadia</string>
+    <string name="compact_widget_bg_color">Farba pozadia</string>
+    <string name="compact_widget_text_color">Farba textu</string>
+    <string name="compact_widget_text_size">Veľkosť textu</string>
+    <string name="compact_widget_text_size_auto">Automatická</string>
+    <string name="export_ics_title">Exportovať do iCalendar</string>
+    <string name="export_ics_description">Exportovať každú udalosť do súboru .ics pre ľubovoľnú kalendárovú aplikáciu</string>
+    <string name="compact_widget_scroll">Prechádzať všetky udalosti</string>
+    <string name="compact_widget_hidden">Skryté</string>
+    <string name="compact_widget_below_name">Pod menom</string>
+    <string name="compact_widget_above_name">Nad menom</string>
+    <string name="compact_widget_before_date">Pred dátumom</string>
+    <string name="compact_widget_after_date">Za dátumom</string>
     <!-- Search -->
     <string name="search_event">Vyhľadávanie…</string>
     <string name="search_no_result_title">Nenašli sa žiadne výsledky</string>
@@ -311,13 +338,13 @@
     <string name="import_csv_description">Importovať z CSV. Požadovanú štruktúru súborov nájdete na wiki Github</string>
     <string name="export_csv_title">Exportovať do CSV</string>
     <string name="export_csv_description">Exportovať každú udalosť (okrem obrázku) do CSV</string>
-    <string name="export_calendar_title">Export to calendar</string>
-    <string name="export_calendar_description">Save every event to your local calendar, if possible. Requires the calendar permission</string>
-    <string name="auto_export_title">Auto export events</string>
-    <string name="auto_export_description_on">Birday will automatically export a backup when the app is closed. Please note that each backup will overwrite the previous</string>
-    <string name="auto_export_description_off">To perform a local Birday backup, it has to be executed manually</string>
-    <string name="add_demo_entries_title">Add demo entries</string>
-    <string name="add_demo_entries_description">Populate the DB with a demo set of events, mostly actors and historical figures</string>
+    <string name="export_calendar_title">Exportovať do kalendára</string>
+    <string name="export_calendar_description">Ak je to možné, uloží každú udalosť do miestneho kalendára. Vyžaduje povolenie na prístup ku kalendáru</string>
+    <string name="auto_export_title">Automaticky exportovať udalosti</string>
+    <string name="auto_export_description_on">Birday pri zatvorení aplikácie automaticky exportuje zálohu. Každá záloha prepíše predchádzajúcu</string>
+    <string name="auto_export_description_off">Miestnu zálohu aplikácie Birday treba spustiť ručne</string>
+    <string name="add_demo_entries_title">Pridať ukážkové udalosti</string>
+    <string name="add_demo_entries_description">Naplní databázu ukážkovými udalosťami, najmä hercov a historických osobností</string>
     <string name="add_demo_entries_dialog_description">Týmto sa natrvalo pridajú TISÍCE záznamov do databázy a je to určené len na účely ladenia. Neodstráni to žiadne existujúce udalosti, ale ak chceš nové záznamy vymazať, budeš to musieť urobiť manuálne. Veľa šťastia s tým.</string>
     <string name="delete_db_title">Odstrániť všetky udalosti</string>
     <string name="delete_db_description">Jednoducho povedané, vymaže celú databázu. Pred kliknutím si to dvakrát premyslite!</string>
@@ -332,7 +359,62 @@
     <string name="advanced_overview_title">Pokročilý prehľad</string>
     <string name="advanced_overview_description_off">Na obrazovke prehľadu sa zobrazia len základné informácie</string>
     <string name="advanced_overview_description_on">Na obrazovke prehľadu sa zobrazia ďalšie roky a podrobné informácie</string>
-    <string name="replace_on_conflict_title">Replace on conflict</string>
-    <string name="replace_on_conflict_description_off">When importing, a duplicated event won\'t be replaced by the imported duplicate</string>
-    <string name="replace_on_conflict_description_on">When importing, a duplicated event will be overwritten by the imported duplicate</string>
+    <string name="feb29_assignment_title">29. február v nepriestupných rokoch</string>
+    <string name="feb29_assignment_description_off">Narodeniny 29. februára sa v nepriestupných rokoch oslavujú 1. marca</string>
+    <string name="feb29_assignment_description_on">Narodeniny 29. februára sa v nepriestupných rokoch oslavujú 28. februára</string>
+    <string name="replace_on_conflict_title">Nahradiť pri konflikte</string>
+    <string name="replace_on_conflict_description_off">Pri importe duplicitná udalosť nenahradí existujúcu udalosť</string>
+    <string name="replace_on_conflict_description_on">Pri importe duplicitná udalosť prepíše existujúcu udalosť</string>
+    <string name="contacts_full_name_title">Celé mená z kontaktov</string>
+    <string name="contacts_full_name_description_on">Pri čítaní mien z kontaktov sa zachovajú tituly, ďalšie mená a prípony</string>
+    <string name="contacts_full_name_description_off">Z kontaktov sa číta iba meno a priezvisko</string>
+    <string name="days_milestones_title">Míľniky prežitých dní</string>
+    <string name="days_milestones_description_on">Podrobnosti zobrazujú prežité dni. Každých 1000 dní sa oslavuje s upozornením ako narodeniny</string>
+    <string name="days_milestones_description_off">Bez počítadla prežitých dní a míľnikov</string>
+    <string name="unbirthdays_title">Nenarodeniny</string>
+    <string name="alternative_calendar_title">Alternatívny kalendár</string>
+    <string name="alternative_calendar_none">Žiadny, iba gregoriánsky</string>
+    <string name="calendar_gregorian">Gregoriánsky</string>
+    <string name="calendar_chinese">Čínsky</string>
+    <string name="calendar_dangi">Kórejský</string>
+    <string name="calendar_hebrew">Hebrejský</string>
+    <string name="calendar_islamic">Islamský</string>
+    <string name="calendar_islamic_civil">Islamský (občiansky)</string>
+    <string name="user_card_title">Vaše narodeniny</string>
+    <string name="user_birthday_greeting">Všetko najlepšie k narodeninám, %s!</string>
+    <string name="user_card_empty">Zadajte svoj dátum narodenia</string>
+    <string name="user_card_save">Uložiť</string>
+    <string name="user_card_remove">Odstrániť</string>
+    <string name="unbirthdays_description_on">Podrobnosti zobrazujú najbližší dátum s rovnakým dňom v týždni a dňom v mesiaci ako pri narodení, napríklad piatok trinásteho</string>
+    <string name="unbirthdays_description_off">Bez nenarodenín v podrobnostiach</string>
+    <string name="weekend_reminder_title">Pripomenúť pred víkendom</string>
+    <string name="weekend_reminder_description_on">Udalosti cez víkend sú oznámené aj posledný pracovný deň pred ním</string>
+    <string name="weekend_reminder_description_off">Udalosti cez víkend sú oznámené len ako zvyčajne</string>
+    <string name="additional_notification_separate_title">Samostatný čas pre dodatočné upozornenia</string>
+    <string name="additional_notification_separate_description_on">Dodatočné upozornenia prichádzajú v čase zvolenom nižšie</string>
+    <string name="additional_notification_separate_description_off">Dodatočné upozornenia prichádzajú spolu s hlavným</string>
+    <string name="additional_notification_hour">Čas dodatočného upozornenia</string>
+    <!-- About page, reachable from the navbar action button while in the settings -->
+    <string name="about_title">O aplikácii</string>
+    <string name="back">Späť</string>
+    <string name="about_description">Informácie o aplikácii Birday, jej autorovi a jazyku aplikácie</string>
+    <string name="about_version">Verzia</string>
+    <string name="about_language_title">Jazyk</string>
+    <string name="about_language_summary">Vyberte jazyk aplikácie Birday</string>
+    <string name="about_rate_title">Ohodnotiť aplikáciu</string>
+    <string name="about_rate_summary">Napíšte recenziu v Obchode Play</string>
+    <string name="about_share_title">Zdieľať Birday</string>
+    <string name="about_share_summary">Odporučte aplikáciu priateľovi</string>
+    <string name="about_share_text">Birday, jednoduchý a pekný spôsob, ako už nikdy nezabudnúť na narodeniny: %1$s</string>
+    <string name="about_no_app_found">Žiadna aplikácia nedokáže vykonať túto akciu!</string>
+    <string name="about_privacy_title">Zásady ochrany súkromia</string>
+    <string name="about_contact_title">Kontaktovať vývojára</string>
+    <string name="amoled_description_on">Tmavý motív používa čisto čiernu farbu, ideálnu pre OLED displeje</string>
+    <string name="amoled_description_off">Tmavý motív používa štandardné tmavé plochy</string>
+    <string name="with_year">S rokom</string>
+    <string name="without_year">Bez roka</string>
+    <!-- Edge blur -->
+    <string name="edge_blur">Rozmazanie okrajov</string>
+    <string name="edge_blur_description_on">Obsah sa pri posúvaní pod navigačný panel jemne rozmazáva</string>
+    <string name="edge_blur_description_off">Obsah sa posúva pod navigačný panel bez rozmazania</string>
 </resources>

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Pins the on*Container roles back to the wallpaper palette, see the base configuration -->
+    <style name="ThemeOverlay.App.MonetContainerFix" parent="">
+        <item name="colorOnPrimaryContainer">@android:color/system_accent1_900</item>
+        <item name="colorOnSecondaryContainer">@android:color/system_accent1_900</item>
+        <item name="colorOnTertiaryContainer">@android:color/system_accent2_900</item>
+    </style>
+
     <!-- Splash screen theme -->
     <style name="SplashTheme" parent="Theme.SplashScreen">
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/animated_birday</item>
@@ -17,8 +24,11 @@
         <item name="colorSecondary">@android:color/system_accent1_600</item>
         <item name="colorTertiary">@android:color/system_accent2_400</item>
         <item name="colorPrimaryContainer">@android:color/system_accent1_200</item>
+        <item name="colorOnPrimaryContainer">@android:color/system_accent1_900</item>
         <item name="colorSecondaryContainer">@android:color/system_accent1_200</item>
+        <item name="colorOnSecondaryContainer">@android:color/system_accent1_900</item>
         <item name="colorTertiaryContainer">@android:color/system_accent2_300</item>
+        <item name="colorOnTertiaryContainer">@android:color/system_accent2_900</item>
     </style>
 
 </resources>

@@ -1,5 +1,6 @@
 package com.minar.birday.fragments.dialogs
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -11,6 +12,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.minar.birday.R
 import com.minar.birday.activities.MainActivity
 import com.minar.birday.databinding.BottomSheetRateBinding
+import com.minar.birday.utilities.CASCADE_SHEET_DELAY
+import com.minar.birday.utilities.animateChildrenCascade
 
 class RateBottomSheet(private val editor: SharedPreferences.Editor) : BottomSheetDialogFragment() {
     private var _binding: BottomSheetRateBinding? = null
@@ -27,6 +30,7 @@ class RateBottomSheet(private val editor: SharedPreferences.Editor) : BottomShee
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.rateBottomSheet.animateChildrenCascade(startDelay = CASCADE_SHEET_DELAY)
         // Animate the drawable in loop
         val titleIcon = binding.rateImage
         act.animateAvd(titleIcon, R.drawable.animated_review_star, 1500L)
@@ -36,12 +40,29 @@ class RateBottomSheet(private val editor: SharedPreferences.Editor) : BottomShee
 
         // Handling the positive button
         positiveButton.setOnClickListener {
-            requireContext().startActivity(
-                Intent(
-                    Intent.ACTION_VIEW,
-                    "market://details?id=${requireContext().packageName}".toUri()
+            // No store app on an F-Droid install: fall back to the web listing, then give up
+            try {
+                requireContext().startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        "market://details?id=${requireContext().packageName}".toUri()
+                    )
                 )
-            )
+            } catch (_: ActivityNotFoundException) {
+                try {
+                    requireContext().startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            getString(R.string.about_store_url).toUri()
+                        )
+                    )
+                } catch (_: ActivityNotFoundException) {
+                    try {
+                        (context as MainActivity).showSnackbar(getString(R.string.about_no_app_found))
+                    } catch (_: Exception) {
+                    }
+                }
+            }
             editor.putBoolean(DO_NOT_SHOW_AGAIN, true)
             editor.commit()
             dismiss()
