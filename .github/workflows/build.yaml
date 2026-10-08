@@ -6,11 +6,15 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v5
-      - name: Setup Java 17
+      # 17 compiles the app (jvmToolchain), 21 runs the Gradle daemon (gradle-daemon-jvm.properties).
+      # The last version listed becomes JAVA_HOME, so nothing has to be downloaded at build time
+      - name: Setup Java 17 and 21
         uses: actions/setup-java@v5
         with:
           distribution: 'corretto'
-          java-version: '17'
+          java-version: |
+            17
+            21
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
         with:
@@ -18,4 +22,4 @@ jobs:
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
       - name: Build gradle project
-        run: ./gradlew build
+        run: ./gradlew build -Porg.gradle.java.installations.fromEnv=JAVA_HOME_17_X64
