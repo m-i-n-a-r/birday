@@ -4,5 +4,6 @@
 - Alternative calendars: Chinese, Korean, Hebrew, Islamic (experimental)
 - Days lived milestones and unbirthdays (experimental)
 - Crop event images, choose how to handle February 29th
+- Share a single event in .ics format
 - Reworked stats and a ton of fixes
 - New translations and translations updated
