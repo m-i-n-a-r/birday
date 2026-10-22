@@ -6,6 +6,7 @@
     android:initialLayout="@layout/widget_compact"
     android:minWidth="250dp"
     android:minHeight="110dp"
+    android:minResizeHeight="40dp"
     android:previewImage="@drawable/birday_compact_widget_preview"
     android:previewLayout="@layout/widget_compact_preview"
     android:resizeMode="horizontal|vertical"
@@ -15,4 +16,4 @@
     android:configure="com.minar.birday.activities.CompactWidgetConfigurationActivity"
     android:widgetCategory="home_screen"
     android:widgetFeatures="reconfigurable"
-    tools:targetApi="s" /><!-- Updated every 3 hours, minimum size is 4 * 2. The target cells need Android 12, minWidth and minHeight are for the launchers before it -->
+    tools:targetApi="s" /><!-- Updated every 3 hours, default size is 4 * 2, it can be resized down to a height of 1. The target cells need Android 12, minWidth and minHeight are for the launchers before it -->
