@@ -104,6 +104,30 @@
                     android:paddingEnd="@dimen/card_margin" />
             </LinearLayout>
 
+            <!-- Show only the favorite events -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/notification_only_favorites"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textSize="@dimen/custom_preference_title_text_size" />
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/configurationShowOnlyFavoritesSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/activity_horizontal_margin"
+                    android:paddingEnd="@dimen/card_margin" />
+            </LinearLayout>
+
             <!-- Birth date position -->
             <LinearLayout
                 android:layout_width="match_parent"

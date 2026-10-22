@@ -63,6 +63,8 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
         setupPhotosSwitch()
         binding.configurationScrollSwitch.isChecked =
             sharedPrefs.getBoolean("widget_compact_scroll", false)
+        binding.configurationShowOnlyFavoritesSwitch.isChecked =
+            sharedPrefs.getBoolean("widget_compact_only_favorites", false)
         setupDatePositionSpinner()
         setupZodiacPositionSpinner()
         setupTextSizeSlider()
@@ -345,6 +347,7 @@ class CompactWidgetConfigurationActivity : AppCompatActivity() {
                 putInt("widget_compact_opacity", binding.configurationOpacitySlider.value.toInt())
                 putBoolean("widget_compact_hide_images", binding.configurationShowPhotosSwitch.isChecked)
                 putBoolean("widget_compact_scroll", binding.configurationScrollSwitch.isChecked)
+                putBoolean("widget_compact_only_favorites", binding.configurationShowOnlyFavoritesSwitch.isChecked)
                 putInt("widget_compact_text_size", sliderToSp(binding.configurationTextSizeSlider.value.toInt()))
                 putInt("widget_compact_highlight_opacity", binding.configurationHighlightOpacitySlider.value.toInt())
                 putString("widget_compact_bg_color", getSelectedColorName(binding.bgColorPickerContainer))
