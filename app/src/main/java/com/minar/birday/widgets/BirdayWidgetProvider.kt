@@ -285,6 +285,7 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
         val edgePaddingDp = CompactWidgetRows.EDGE_PADDING_DP
         val fittingRows = ((widgetHeightDp - edgePaddingDp) / rowHeightDp).toInt().coerceAtLeast(1)
         val scroll = sp.getBoolean("widget_compact_scroll", false)
+        val onlyFavorites = sp.getBoolean("widget_compact_only_favorites", false)
         // A leftover of the shared count, which is no more
         if (sp.contains("widget_compact_max_rows")) sp.edit { remove("widget_compact_max_rows") }
 
@@ -299,6 +300,7 @@ abstract class BirdayWidgetProvider : AppWidgetProvider() {
 
             // The whole list at once: as many rows as fit, or a scrolling list
             val events = EventDatabase.getBirdayDatabase(context).eventDao().getOrderedEventsStatic()
+                .filter { !onlyFavorites || it.favorite == true }
                 .take(if (scroll) CompactWidgetRows.MAX_SCROLL_ROWS else fittingRows)
             val rows = CompactWidgetRows(context, scroll)
             rows.applyToWidget(views)
