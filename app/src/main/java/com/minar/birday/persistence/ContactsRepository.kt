@@ -18,6 +18,15 @@ import com.minar.birday.model.ImportedEvent
 import com.minar.birday.utilities.bitmapToByteArray
 import com.minar.birday.utilities.getBitmapSquareSize
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+
+
+internal fun parseContactDate(value: String): LocalDate {
+    // Imported vCards can leave compact dates in the contacts provider.
+    val formatter = if (value.length == 8 && value.all { it in '0'..'9' })
+        DateTimeFormatter.BASIC_ISO_DATE else DateTimeFormatter.ISO_LOCAL_DATE
+    return LocalDate.parse(value, formatter)
+}
 
 
 // Fetches the contacts from the system. It needs all contacts related permissions in order to work properly
@@ -214,7 +223,7 @@ class ContactsRepository {
                     id = 0,
                     name = name,
                     surname = surname,
-                    originalDate = LocalDate.parse(parseDate),
+                    originalDate = parseContactDate(parseDate),
                     yearMatter = countYear,
                     type = contact.eventType,
                     image = contact.image,
