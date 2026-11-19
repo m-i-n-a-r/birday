@@ -23,7 +23,7 @@
     </plurals>
     <string name="next_event">Próximo evento</string>
     <string name="no_next_event">¡No hay eventos que mostrar!</string>
-    <string name="no_next_event_description">No has apuntado ningún eventos aún, ¡añade uno y deja que Birday te ayude!</string>
+    <string name="no_next_event_description">No has apuntado ningún evento aún, ¡añade uno y deja que Birday te ayude!</string>
     <string name="next_age_years">Años</string>
     <string name="event_others">y más</string>
     <plurals name="days_left">
@@ -82,13 +82,13 @@
     <string name="shimmer_description_on">Brilli brilli por aquí y por allá</string>
     <string name="shimmer_description_off">Nada de brilli brilli</string>
     <string name="import_export">Importar y exportar</string>
-    <string name="import_contacts_title">Importar eventos desde contactos</string>
+    <string name="import_contacts_title">Importar eventos desde tus contactos</string>
     <string name="import_contacts_description">No olvides modificar los eventos con los años que falten para tener estadísticas más precisas</string>
     <string name="import_success">¡Importado correctamente!</string>
     <string name="import_nothing_found">¡No se han encontrado eventos!</string>
     <string name="import_failed">¡Algo ha salido mal!</string>
-    <string name="missing_permission_contacts">No se ha permitido el acceso a contactos. Inténtalo de nuevo o permítelo manualmente si quieres importar desde contactos</string>
-    <string name="missing_permission_contacts_forever">Birday no puede acceder a contactos. Debes permitirlo manualmente</string>
+    <string name="missing_permission_contacts">No se ha permitido el acceso a tus contactos. Inténtalo de nuevo o permítelo manualmente si quieres importar desde contactos</string>
+    <string name="missing_permission_contacts_forever">Birday no puede acceder a tus contactos. Debes permitirlo manualmente</string>
     <string name="birday_import_title">Importar copia de Birday</string>
     <string name="birday_import_description">Elige una copia de seguridad de Birday para restaurarla. ¡Todos los datos existentes se sobrescribirán!</string>
     <string name="birday_export_title">Exportar y compartir eventos</string>
@@ -152,7 +152,7 @@
     <string name="anniversary">Aniversario</string>
     <string name="death_anniversary">Aniversario de la muerte</string>
     <string name="festivity">Festividad</string>
-    <string name="name_day">Día del nombre</string>
+    <string name="name_day">Onomástica/Santo</string>
     <string name="other">Otro</string>
     <!-- Event actions -->
     <string name="event_actions">Acciones</string>
@@ -172,7 +172,7 @@
     <string name="next_unbirthday">Próximo no cumpleaños</string>
     <!-- Quick apps -->
     <string name="event_apps">Aplicaciones</string>
-    <string name="event_apps_description">Algunas aplicaciones con las que poder felicitar los cumpleaños</string>
+    <string name="event_apps_description">Algunas aplicaciones con las que puedes felicitar los cumpleaños</string>
     <string name="text_message">Mensaje SMS</string>
     <string name="dialer">Teléfono</string>
     <string name="wishes_birthday">¡Feliz cumpleaños!</string>
@@ -268,7 +268,7 @@
     <string name="compact_widget_description">Optimizar la disposición para ser extremadamente compacta</string>
     <string name="align_start_widget_title">Alinear al inicio</string>
     <string name="align_start_widget_description">Alinear el contenido del widget al principio (derecha o izquierda dependiendo de su local)</string>
-    <string name="hide_far_widget_title">Ocultar widget para eventos lejanos</string>
+    <string name="hide_far_widget_title">Ocultar el widget para eventos lejanos</string>
     <string name="hide_far_widget_description">Ocultar el widget si los siguientes eventos son después del período de notificación adicional (por ejemplo: notificación 7 días antes, el siguiente evento está en 10 días -&gt; el widget está oculto)</string>
     <string name="show_following_widget_title">Mostrar el siguiente evento</string>
     <string name="show_following_widget_description">Muestra el evento o los eventos posteriores al siguiente, en una fila adicional</string>
@@ -325,13 +325,13 @@
     <string name="export_csv_title">Exportar a CSV</string>
     <string name="export_csv_description">Exportar cada evento a un archivo CSV, imagen excluida</string>
     <string name="export_calendar_title">Exportar al calendario</string>
-    <string name="export_calendar_description">Salva cada evento en tu calendario local, si es posible. Requiere el permiso del calendario</string>
+    <string name="export_calendar_description">Guarda cada evento en tu calendario local, si es posible. Requiere el permiso del calendario</string>
     <string name="auto_export_title">Autoexporta eventos</string>
     <string name="auto_export_description_on">Birday exportará automáticamente un backup cuando la aplicación esté cerrada. Tenga en cuenta que cada backup sobrescribirá la anterior</string>
     <string name="auto_export_description_off">Para realizar un backup local de Birday, se debe ejecutar manualmente</string>
     <string name="add_demo_entries_title">Añadir entradas demo</string>
     <string name="add_demo_entries_description">Puebla el DB con un set de eventos demo, en su mayoría actores y figuras históricas</string>
-    <string name="add_demo_entries_dialog_description">Esto añadirá MILES de entradas a la base de datos permanentemente y está destinado para propósitos de debug. No eliminará ningún evento existente, pero si quieres eliminar las nuevas entradas, tendrás que hacerlo manualmente. Buena suerte por eso.</string>
+    <string name="add_demo_entries_dialog_description">Esto añadirá MILES de entradas a la base de datos permanentemente y está destinado para propósitos de debug. No eliminará ningún evento existente, pero si quieres eliminar las nuevas entradas, tendrás que hacerlo manualmente. Buena suerte con eso.</string>
     <string name="delete_db_title">Eliminar todos los eventos</string>
     <string name="delete_db_description">Sencillamente, destruye el DB. ¡Piensa dos veces antes de hacer clic!</string>
     <string name="delete_db_dialog_title">¿Estás seguro?</string>
