@@ -1,5 +1,8 @@
 name: Build
-on: [pull_request, push]
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,3 +26,8 @@ jobs:
         run: chmod +x ./gradlew
       - name: Build gradle project
         run: ./gradlew build -Porg.gradle.java.installations.fromEnv=JAVA_HOME_17_X64
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: birday-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
