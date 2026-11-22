@@ -104,6 +104,16 @@
             android:widgetLayout="@layout/preference_switch_widget"
             app:iconSpaceReserved="false" />
 
+        <!-- Central tab as permanent yearly calendar -->
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="central_tab_calendar"
+            android:summaryOff="A aba central abre os Favoritos"
+            android:summaryOn="A aba central abre o Calendário anual"
+            android:title="Calendário na aba central"
+            android:widgetLayout="@layout/preference_switch_widget"
+            app:iconSpaceReserved="false" />
+
         <!-- Feb 29 birthdays in non-leap years -->
         <SwitchPreferenceCompat
             android:defaultValue="false"
