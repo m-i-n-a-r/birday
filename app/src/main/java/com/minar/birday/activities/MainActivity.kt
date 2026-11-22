@@ -237,37 +237,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // The floating navbar keeps its own selection, so tab, icon state and label all move
-        // together. Tapping the tab already selected pops whatever secondary destination is on top
-        navTabs = listOf(
-            NavTab(
-                binding.navTabHome, R.id.navigationMain,
-                R.drawable.nav_animation_home, R.string.title_home
-            ),
-            NavTab(
-                binding.navTabFavorites, R.id.navigationFavorites,
-                R.drawable.nav_animation_favorites, R.string.title_favorites
-            ),
-            NavTab(
-                binding.navTabSettings, R.id.navigationSettings,
-                R.drawable.nav_animation_settings, R.string.title_settings
-            ),
-        )
+        // Setup navigation tabs based on central_tab_calendar preference
+        setupNavTabs(sharedPrefs.getBoolean("central_tab_calendar", false))
+
         // Only a tab destination goes back to home: on a secondary one the navigation pops first
         navController.addOnDestinationChangedListener { _, destination, _ ->
             val onTab = navTabs.any { it.destination == destination.id }
             backHomeCallback.isEnabled = onTab && selectedTabIndex != 0
             renderNavAction()
-        }
-        navTabs.forEachIndexed { index, tab ->
-            tab.binding.tabIcon.setImageResource(tab.icon)
-            tab.binding.tabLabel.setText(tab.label)
-            tab.binding.root.contentDescription = getString(tab.label)
-            tab.binding.root.setOnClickListener {
-                vibrate()
-                if (index == selectedTabIndex) popSecondaryDestination()
-                else selectNavTab(index)
-            }
         }
         applyNavbarPlacement()
 
@@ -382,6 +359,45 @@ class MainActivity : AppCompatActivity() {
         onBackPressedDispatcher.addCallback(this, backHomeCallback)
         openEventFromIntent(intent)
         importIcsFromIntent(intent)
+    }
+
+    // Configures the bottom navigation tabs, allowing the central tab to switch between Favorites and Annual Calendar
+    fun setupNavTabs(useCalendar: Boolean) {
+        val centralTab = if (useCalendar) {
+            NavTab(
+                binding.navTabFavorites, R.id.overviewFragment,
+                R.drawable.animated_overview, R.string.overview
+            )
+        } else {
+            NavTab(
+                binding.navTabFavorites, R.id.navigationFavorites,
+                R.drawable.nav_animation_favorites, R.string.title_favorites
+            )
+        }
+
+        navTabs = listOf(
+            NavTab(
+                binding.navTabHome, R.id.navigationMain,
+                R.drawable.nav_animation_home, R.string.title_home
+            ),
+            centralTab,
+            NavTab(
+                binding.navTabSettings, R.id.navigationSettings,
+                R.drawable.nav_animation_settings, R.string.title_settings
+            ),
+        )
+
+        navTabs.forEachIndexed { index, tab ->
+            tab.binding.tabIcon.setImageResource(tab.icon)
+            tab.binding.tabLabel.setText(tab.label)
+            tab.binding.root.contentDescription = getString(tab.label)
+            tab.binding.root.setOnClickListener {
+                vibrate()
+                if (index == selectedTabIndex) popSecondaryDestination()
+                else selectNavTab(index)
+            }
+        }
+        renderNavTabs(animate = false)
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -869,9 +885,10 @@ class MainActivity : AppCompatActivity() {
 
     // Only do something if there's something in the back stack (only in event details)
     private fun popSecondaryDestination() {
+        val useCalendar = sharedPrefs.getBoolean("central_tab_calendar", false)
         if (navController.currentBackStackEntry != null &&
             (navController.currentDestination?.label == "fragment_details" ||
-                    navController.currentDestination?.label == "fragment_overview" ||
+                    (!useCalendar && navController.currentDestination?.label == "fragment_overview") ||
                     navController.currentDestination?.label == "fragment_about" ||
                     navController.currentDestination?.label == "fragment_experimental_settings")
         ) navController.popBackStack()
