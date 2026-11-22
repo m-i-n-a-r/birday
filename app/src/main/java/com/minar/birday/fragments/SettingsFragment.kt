@@ -42,6 +42,11 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
             true
         }
 
+        findPreference<SwitchPreferenceCompat>("central_tab_calendar")?.setOnPreferenceChangeListener { _, value ->
+            (activity as? MainActivity)?.setupNavTabs(value as Boolean)
+            true
+        }
+
         val experimentalPreference: Preference? = findPreference("experimental")
         experimentalPreference?.setOnPreferenceClickListener {
             val navController: NavController =
