@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">BirdayX</string>
+    <string name="app_name" translatable="false">Birday</string>
     <string name="app_welcome">Welcome to Birday</string>
     <string name="app_name_extended">Birday - Event Manager</string>
     <string name="leave_review_title">Review Birday</string>
